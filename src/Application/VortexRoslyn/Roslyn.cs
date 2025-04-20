@@ -626,7 +626,7 @@ namespace S100Framework.Applications
                         ComplexTypes = client.ComplexTypes,
                         CodeListTypes = client.CodeListTypes,
                         BaseClass = "ViewModelBase",
-                        LoadPrefix=$"{code}ViewModel",
+                        LoadPrefix = $"{code}ViewModel",
                     });
 
                     builderViewModel.AppendLine(s);
@@ -728,7 +728,7 @@ namespace S100Framework.Applications
                         BaseClass = $"InformationViewModel<{code}>",
                         LoadPrefix = $"override InformationViewModel<{code}>",
                     }, (b) => {
-                        b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");                       
+                        b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
                     });
 
                     builderViewModel.AppendLine(s);
@@ -999,105 +999,111 @@ namespace S100Framework.Applications
 
             var modelBuilder = new StringBuilder();
 
-            var isFirst = true;
-            var attributeBindings = e.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager).Union(e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager));
-            foreach (var attributeBinding in attributeBindings) {
-                if (!isFirst)
-                    builder.AppendLine();
-                isFirst = false;
+            BuildViewModelClassAttribute(code, e, builder, loadBuilder, serializeBuilder, modelBuilder, constructorBuilder, new BuildViewModelClassAttributeClient {
+                BuildViewModelClassClient = client,
+                XmlNamespaceManager = xmlNamespaceManager,
+                XPathNavigator = navigator,
+            });
 
-                var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
-                var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
-                var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                var _ = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
-                int? upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? null : int.Parse(_.Value!);
+            //var isFirst = true;
+            //var attributeBindings = e.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager).Union(e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager));
+            //foreach (var attributeBinding in attributeBindings) {
+            //    if (!isFirst)
+            //        builder.AppendLine();
+            //    isFirst = false;
 
-                var prefix = client.KnowTypesPrefix[referenceCode];
-                var postfix = client.KnowTypesPostfix.ContainsKey(referenceCode) ? $" = {client.KnowTypesPostfix[referenceCode]};" : ";";
+            //    var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
+            //    var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
+            //    var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+            //    var _ = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+            //    int? upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? null : int.Parse(_.Value!);
 
-                if (client.ComplexTypes.Contains(referenceCode)) {
-                    prefix += "ViewModel";
-                }
+            //    var prefix = client.KnowTypesPrefix[referenceCode];
+            //    var postfix = client.KnowTypesPostfix.ContainsKey(referenceCode) ? $" = {client.KnowTypesPostfix[referenceCode]};" : ";";
 
-                var isCollection = false;
-                if (lower == 0 && upper.HasValue && upper.Value == 1) {
-                    prefix += "?";
-                    postfix = " = default;";
-                }
-                else if (lower == 1 && upper.HasValue && upper.Value == 1) {
-                }
-                else {
-                    isCollection = true;
-                    prefix = $"ObservableCollection<{prefix}>";
-                    postfix = " { get; set; } = new ();";
-                }
+            //    if (client.ComplexTypes.Contains(referenceCode)) {
+            //        prefix += "ViewModel";
+            //    }
 
-                if (!isCollection) {
-                    builder.AppendLine($"\t\tprivate {prefix} _{referenceCode} {postfix}");
-                    builder.AppendLine();
-                    builder.AppendLine($"\t\t[Category(\"{code}\")]");
-                    builder.AppendLine($"\t\tpublic {prefix} {referenceCode} {{");
+            //    var isCollection = false;
+            //    if (lower == 0 && upper.HasValue && upper.Value == 1) {
+            //        prefix += "?";
+            //        postfix = " = default;";
+            //    }
+            //    else if (lower == 1 && upper.HasValue && upper.Value == 1) {
+            //    }
+            //    else {
+            //        isCollection = true;
+            //        prefix = $"ObservableCollection<{prefix}>";
+            //        postfix = " { get; set; } = new ();";
+            //    }
 
-                    builder.AppendLine("\t\t\tget {");
-                    builder.AppendLine($"\t\t\t\treturn _{referenceCode};");
-                    builder.AppendLine("\t\t\t}");
-                    builder.AppendLine("\t\t\tset {");
-                    builder.AppendLine($"\t\t\t\tSetValue(ref _{referenceCode}, value);");
-                    builder.AppendLine("\t\t\t}");
-                    builder.AppendLine("\t\t}");
+            //    if (!isCollection) {
+            //        builder.AppendLine($"\t\tprivate {prefix} _{referenceCode} {postfix}");
+            //        builder.AppendLine();
+            //        builder.AppendLine($"\t\t[Category(\"{code}\")]");
+            //        builder.AppendLine($"\t\tpublic {prefix} {referenceCode} {{");
 
-                    if (client.ComplexTypes.Contains(referenceCode)) {
-                        loadBuilder.AppendLine($"\t\t\t{referenceCode} = new ();");
-                        loadBuilder.AppendLine($"\t\t\tif (instance.{referenceCode} != default) {{");
-                        loadBuilder.AppendLine($"\t\t\t\t{referenceCode}.Load(instance.{referenceCode});");
-                        loadBuilder.AppendLine($"\t\t\t}}");
-                        serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode}?.Model,");
-                        modelBuilder.AppendLine($"\t\t\t{referenceCode} = this._{referenceCode}?.Model,");
-                    }
-                    else {
-                        loadBuilder.AppendLine($"\t\t\t{referenceCode} = instance.{referenceCode};");
-                        serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode},");
-                        modelBuilder.AppendLine($"\t\t\t{referenceCode} = this._{referenceCode},");
-                    }
-                }
-                else {
-                    constructorBuilder.AppendLine($"\t\t\t{referenceCode}.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {{");
-                    constructorBuilder.AppendLine($"\t\t\t\tOnPropertyChanged(nameof({referenceCode}));");
-                    constructorBuilder.AppendLine($"\t\t\t}};");
+            //        builder.AppendLine("\t\t\tget {");
+            //        builder.AppendLine($"\t\t\t\treturn _{referenceCode};");
+            //        builder.AppendLine("\t\t\t}");
+            //        builder.AppendLine("\t\t\tset {");
+            //        builder.AppendLine($"\t\t\t\tSetValue(ref _{referenceCode}, value);");
+            //        builder.AppendLine("\t\t\t}");
+            //        builder.AppendLine("\t\t}");
 
-                    builder.AppendLine($"\t\t[Category(\"{code}\")]");
-                    builder.AppendLine($"\t\tpublic {prefix} {referenceCode} {postfix}");
-                    loadBuilder.AppendLine($"\t\t\t{referenceCode}.Clear();");
-                    loadBuilder.AppendLine($"\t\t\tif (instance.{referenceCode} is not null) {{");
-                    loadBuilder.AppendLine($"\t\t\t\tforeach(var e in instance.{referenceCode})");
-                    if (client.ComplexTypes.Contains(referenceCode)) {
-                        loadBuilder.AppendLine($"\t\t\t\t\t{referenceCode}.Add(new {referenceCode}ViewModel().Load(e));");
-                        serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode}.Select(e => e.Model).ToList(),");
-                        modelBuilder.AppendLine($"\t\t\t{referenceCode} = this.{referenceCode}.Select(e => e.Model).ToList(),");
-                    }
-                    else {
-                        loadBuilder.AppendLine($"\t\t\t\t\t{referenceCode}.Add(e);");
-                        serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode}.ToList(),");
-                        modelBuilder.AppendLine($"\t\t\t{referenceCode} = this.{referenceCode}.ToList(),");
-                    }
-                    loadBuilder.AppendLine($"\t\t\t}}");
-                }
+            //        if (client.ComplexTypes.Contains(referenceCode)) {
+            //            loadBuilder.AppendLine($"\t\t\t{referenceCode} = new ();");
+            //            loadBuilder.AppendLine($"\t\t\tif (instance.{referenceCode} != default) {{");
+            //            loadBuilder.AppendLine($"\t\t\t\t{referenceCode}.Load(instance.{referenceCode});");
+            //            loadBuilder.AppendLine($"\t\t\t}}");
+            //            serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode}?.Model,");
+            //            modelBuilder.AppendLine($"\t\t\t{referenceCode} = this._{referenceCode}?.Model,");
+            //        }
+            //        else {
+            //            loadBuilder.AppendLine($"\t\t\t{referenceCode} = instance.{referenceCode};");
+            //            serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode},");
+            //            modelBuilder.AppendLine($"\t\t\t{referenceCode} = this._{referenceCode},");
+            //        }
+            //    }
+            //    else {
+            //        constructorBuilder.AppendLine($"\t\t\t{referenceCode}.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {{");
+            //        constructorBuilder.AppendLine($"\t\t\t\tOnPropertyChanged(nameof({referenceCode}));");
+            //        constructorBuilder.AppendLine($"\t\t\t}};");
 
-                if (permittedValues is not null) {
-                    if (client.CodeListTypes.Contains(referenceCode)) {
-                        builder.AppendLine();
-                        builder.AppendLine("\t\t[Browsable(false)]");
-                        builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List =>  CodeList.{pluralizer.Pluralize(referenceCode)}.ToArray();");
-                    }
-                    else {
-                        var values = permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value);
+            //        builder.AppendLine($"\t\t[Category(\"{code}\")]");
+            //        builder.AppendLine($"\t\tpublic {prefix} {referenceCode} {postfix}");
+            //        loadBuilder.AppendLine($"\t\t\t{referenceCode}.Clear();");
+            //        loadBuilder.AppendLine($"\t\t\tif (instance.{referenceCode} is not null) {{");
+            //        loadBuilder.AppendLine($"\t\t\t\tforeach(var e in instance.{referenceCode})");
+            //        if (client.ComplexTypes.Contains(referenceCode)) {
+            //            loadBuilder.AppendLine($"\t\t\t\t\t{referenceCode}.Add(new {referenceCode}ViewModel().Load(e));");
+            //            serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode}.Select(e => e.Model).ToList(),");
+            //            modelBuilder.AppendLine($"\t\t\t{referenceCode} = this.{referenceCode}.Select(e => e.Model).ToList(),");
+            //        }
+            //        else {
+            //            loadBuilder.AppendLine($"\t\t\t\t\t{referenceCode}.Add(e);");
+            //            serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode}.ToList(),");
+            //            modelBuilder.AppendLine($"\t\t\t{referenceCode} = this.{referenceCode}.ToList(),");
+            //        }
+            //        loadBuilder.AppendLine($"\t\t\t}}");
+            //    }
 
-                        builder.AppendLine();
-                        builder.AppendLine("\t\t[Browsable(false)]");
-                        builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List => [{string.Join(',', values.Select(e => $"({referenceCode}){e}"))}];");
-                    }
-                }
-            }
+            //    if (permittedValues is not null) {
+            //        if (client.CodeListTypes.Contains(referenceCode)) {
+            //            builder.AppendLine();
+            //            builder.AppendLine("\t\t[Browsable(false)]");
+            //            builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List =>  CodeList.{pluralizer.Pluralize(referenceCode)}.ToArray();");
+            //        }
+            //        else {
+            //            var values = permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value);
+
+            //            builder.AppendLine();
+            //            builder.AppendLine("\t\t[Browsable(false)]");
+            //            builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List => [{string.Join(',', values.Select(e => $"({referenceCode}){e}"))}];");
+            //        }
+            //    }
+            //}
 
             serializeBuilder.AppendLine("\t\t\t};");
             serializeBuilder.AppendLine("\t\t\treturn System.Text.Json.JsonSerializer.Serialize(instance);");
@@ -1134,6 +1140,126 @@ namespace S100Framework.Applications
             builder.AppendLine();
 
             return builder.ToString().TrimEnd([.. Environment.NewLine]);
+        }
+
+        struct BuildViewModelClassAttributeClient
+        {
+            public required BuildViewModelClassClient BuildViewModelClassClient { get; init; }
+            public required XmlNamespaceManager XmlNamespaceManager { get; init; }
+
+            public required XPathNavigator XPathNavigator { get; init; }
+        }
+
+        private static void BuildViewModelClassAttribute(string code, XElement e, StringBuilder builder, StringBuilder loadBuilder, StringBuilder serializeBuilder, StringBuilder modelBuilder, StringBuilder constructorBuilder, BuildViewModelClassAttributeClient client) {
+            var scopes = client.XPathNavigator.GetNamespacesInScope(XmlNamespaceScope.All);
+
+            var xmlNamespaceManager = client.XmlNamespaceManager;
+
+            var scope_S100 = scopes["S100FC"];
+
+            var superType = e.Elements(XName.Get("superType", scope_S100)).FirstOrDefault();
+            if (superType != null) {
+                var super = client.BuildViewModelClassClient.ProductSpecification.XPathSelectElement($"//*[S100FC:code = '{superType.Value}']", xmlNamespaceManager)!;
+
+                BuildViewModelClassAttribute(code, super, builder, loadBuilder, serializeBuilder, modelBuilder, constructorBuilder, client);
+            }
+
+            var attributeBindings = e.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager).Union(e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager));
+            foreach (var attributeBinding in attributeBindings) {
+
+                var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
+                var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
+                var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                var _ = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+                int? upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? null : int.Parse(_.Value!);
+
+                var prefix = client.BuildViewModelClassClient.KnowTypesPrefix[referenceCode];
+                var postfix = client.BuildViewModelClassClient.KnowTypesPostfix.ContainsKey(referenceCode) ? $" = {client.BuildViewModelClassClient.KnowTypesPostfix[referenceCode]};" : ";";
+
+                if (client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode)) {
+                    prefix += "ViewModel";
+                }
+
+                var isCollection = false;
+                if (lower == 0 && upper.HasValue && upper.Value == 1) {
+                    prefix += "?";
+                    postfix = " = default;";
+                }
+                else if (lower == 1 && upper.HasValue && upper.Value == 1) {
+                }
+                else {
+                    isCollection = true;
+                    prefix = $"ObservableCollection<{prefix}>";
+                    postfix = " { get; set; } = new ();";
+                }
+
+                if (!isCollection) {
+                    builder.AppendLine($"\t\tprivate {prefix} _{referenceCode} {postfix}");
+                    builder.AppendLine();
+                    builder.AppendLine($"\t\t[Category(\"{code}\")]");
+                    builder.AppendLine($"\t\tpublic {prefix} {referenceCode} {{");
+
+                    builder.AppendLine("\t\t\tget {");
+                    builder.AppendLine($"\t\t\t\treturn _{referenceCode};");
+                    builder.AppendLine("\t\t\t}");
+                    builder.AppendLine("\t\t\tset {");
+                    builder.AppendLine($"\t\t\t\tSetValue(ref _{referenceCode}, value);");
+                    builder.AppendLine("\t\t\t}");
+                    builder.AppendLine("\t\t}");
+
+                    if (client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode)) {
+                        loadBuilder.AppendLine($"\t\t\t{referenceCode} = new ();");
+                        loadBuilder.AppendLine($"\t\t\tif (instance.{referenceCode} != default) {{");
+                        loadBuilder.AppendLine($"\t\t\t\t{referenceCode}.Load(instance.{referenceCode});");
+                        loadBuilder.AppendLine($"\t\t\t}}");
+                        serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode}?.Model,");
+                        modelBuilder.AppendLine($"\t\t\t{referenceCode} = this._{referenceCode}?.Model,");
+                    }
+                    else {
+                        loadBuilder.AppendLine($"\t\t\t{referenceCode} = instance.{referenceCode};");
+                        serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode},");
+                        modelBuilder.AppendLine($"\t\t\t{referenceCode} = this._{referenceCode},");
+                    }
+                }
+                else {
+                    constructorBuilder.AppendLine($"\t\t\t{referenceCode}.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {{");
+                    constructorBuilder.AppendLine($"\t\t\t\tOnPropertyChanged(nameof({referenceCode}));");
+                    constructorBuilder.AppendLine($"\t\t\t}};");
+
+                    builder.AppendLine($"\t\t[Category(\"{code}\")]");
+                    builder.AppendLine($"\t\tpublic {prefix} {referenceCode} {postfix}");
+                    loadBuilder.AppendLine($"\t\t\t{referenceCode}.Clear();");
+                    loadBuilder.AppendLine($"\t\t\tif (instance.{referenceCode} is not null) {{");
+                    loadBuilder.AppendLine($"\t\t\t\tforeach(var e in instance.{referenceCode})");
+                    if (client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode)) {
+                        loadBuilder.AppendLine($"\t\t\t\t\t{referenceCode}.Add(new {referenceCode}ViewModel().Load(e));");
+                        serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode}.Select(e => e.Model).ToList(),");
+                        modelBuilder.AppendLine($"\t\t\t{referenceCode} = this.{referenceCode}.Select(e => e.Model).ToList(),");
+                    }
+                    else {
+                        loadBuilder.AppendLine($"\t\t\t\t\t{referenceCode}.Add(e);");
+                        serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode}.ToList(),");
+                        modelBuilder.AppendLine($"\t\t\t{referenceCode} = this.{referenceCode}.ToList(),");
+                    }
+                    loadBuilder.AppendLine($"\t\t\t}}");
+                }
+
+                if (permittedValues is not null) {
+                    if (client.BuildViewModelClassClient.CodeListTypes.Contains(referenceCode)) {
+                        builder.AppendLine();
+                        builder.AppendLine("\t\t[Browsable(false)]");
+                        builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List =>  CodeList.{pluralizer.Pluralize(referenceCode)}.ToArray();");
+                    }
+                    else {
+                        var values = permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value);
+
+                        builder.AppendLine();
+                        builder.AppendLine("\t\t[Browsable(false)]");
+                        builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List => [{string.Join(',', values.Select(e => $"({referenceCode}){e}"))}];");
+                    }
+                }
+            }
+            builder.AppendLine();
         }
 
         private static string RemoveSpecialChars(string input) {
