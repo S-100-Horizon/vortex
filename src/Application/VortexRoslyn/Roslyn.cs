@@ -63,6 +63,10 @@ namespace S100Framework.Applications
 
             var codelistTypes = new List<string>();
 
+            var informationAssociationsLookup = new Dictionary<string, ICollection<string>>();
+            var featureAssociationsLookup = new Dictionary<string, ICollection<string>>();
+
+
             //  --- S100_FC_SimpleAttributes ----------------------------------------------------
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_SimpleAttribute", xmlNamespaceManager);
@@ -81,7 +85,12 @@ namespace S100Framework.Applications
                     builderDomainModel.AppendLine("\t[System.Serializable()]");
                     builderDomainModel.AppendLine($"\tpublic enum {code} : int {{");
 
+                    var isFirst = true;
                     foreach (var listedValue in e.Element(XName.Get("listedValues", scope_S100))!.Elements()) {
+                        if(!isFirst)
+                            builderDomainModel.AppendLine();
+                        isFirst = false;
+
                         var listedValueLabel = listedValue.Element(XName.Get("label", scope_S100))!.Value!;
                         var listedValueDefinition = listedValue.Element(XName.Get("definition", scope_S100))!.Value!;
                         var listedValueCode = listedValue.Element(XName.Get("code", scope_S100))!.Value!;
@@ -341,6 +350,8 @@ namespace S100Framework.Applications
                             KnownTypes = knownTypes,
                             KnowTypesPrefix = knowTypesPrefix,
                             KnowTypesPostfix = knowTypesPostfix,
+                            InformationAssociationsLookup = informationAssociationsLookup,
+                            FeatureAssociationsLookup = featureAssociationsLookup,
                         });
 
                         builderDomainModel.AppendLine(s);
@@ -379,6 +390,8 @@ namespace S100Framework.Applications
                             KnownTypes = knownTypes,
                             KnowTypesPrefix = knowTypesPrefix,
                             KnowTypesPostfix = knowTypesPostfix,
+                            InformationAssociationsLookup = informationAssociationsLookup,
+                            FeatureAssociationsLookup = featureAssociationsLookup,
                         });
 
                         builderDomainModel.AppendLine(s);
@@ -451,6 +464,8 @@ namespace S100Framework.Applications
                             KnownTypes = knownTypes,
                             KnowTypesPrefix = knowTypesPrefix,
                             KnowTypesPostfix = knowTypesPostfix,
+                            InformationAssociationsLookup = informationAssociationsLookup,
+                            FeatureAssociationsLookup = featureAssociationsLookup,
                         });
 
                         builderDomainModel.AppendLine(s);
@@ -514,6 +529,8 @@ namespace S100Framework.Applications
                             KnownTypes = knownTypes,
                             KnowTypesPrefix = knowTypesPrefix,
                             KnowTypesPostfix = knowTypesPostfix,
+                            InformationAssociationsLookup = informationAssociationsLookup,
+                            FeatureAssociationsLookup = featureAssociationsLookup,
                         });
 
                         builderDomainModel.AppendLine(s);
@@ -536,7 +553,9 @@ namespace S100Framework.Applications
                 KnowTypesPrefix = knowTypesPrefix,
                 KnowTypesPostfix = knowTypesPostfix,
                 ComplexTypes = complexTypes,
-                CodeListTypes = codelistTypes
+                CodeListTypes = codelistTypes,
+                InformationAssociationsLookup = informationAssociationsLookup,
+                FeatureAssociationsLookup = featureAssociationsLookup,
             });
 
             return (builderDomainModel.ToString(), viewmodel);
@@ -552,6 +571,9 @@ namespace S100Framework.Applications
             public required IReadOnlyCollection<string> ComplexTypes { get; init; }
 
             public required IReadOnlyCollection<string> CodeListTypes { get; init; }
+
+            public required IReadOnlyDictionary<string, ICollection<string>> InformationAssociationsLookup { get; init; }
+            public required IReadOnlyDictionary<string, ICollection<string>> FeatureAssociationsLookup { get; init; }
         }
 
         private static string BuildViewModel(XDocument productSpecification, BuildViewModelClient client) {
@@ -778,10 +800,29 @@ namespace S100Framework.Applications
 
             builderViewModel.AppendLine("}");
 
-            builderViewModel.Insert(indexBootstrap, bootstrapCreateFeatureType.AppendLine("\t\t\t_ or \"\" => throw new InvalidOperationException(),").AppendLine("\t\t};").ToString());
+            var bootstrapInformationAssociationBindings = new StringBuilder().AppendLine("\t\tpublic static ICollection<string> InformationAssociationBindings(string association, string role) => (association, role) switch {");
+            foreach (var e in client.InformationAssociationsLookup) {
+                var values = e.Value.Distinct().Select(i => $"\"{i}\"");
+                bootstrapInformationAssociationBindings.AppendLine($"\t\t\t({e.Key}) => [{string.Join(',', values)}],");
+            }
+
+            var bootstrapFeatureAssociationBindings = new StringBuilder().AppendLine("\t\tpublic static ICollection<string> FeatureAssociationBindings(string association, string role) => (association, role) switch {");
+            foreach (var e in client.FeatureAssociationsLookup) {
+                var values = e.Value.Distinct().Select(i => $"\"{i}\"");
+                bootstrapFeatureAssociationBindings.AppendLine($"\t\t\t({e.Key}) => [{string.Join(',', values)}],");
+            }
+
+            builderViewModel.Insert(indexBootstrap, bootstrapFeatureAssociationBindings.AppendLine("\t\t\t_ => throw new InvalidOperationException(),").AppendLine("\t\t};").ToString());
+            builderViewModel.Insert(indexBootstrap, bootstrapInformationAssociationBindings.AppendLine("\t\t\t_ => throw new InvalidOperationException(),").AppendLine("\t\t};").AppendLine().ToString());
+
+            builderViewModel.Insert(indexBootstrap, bootstrapCreateFeatureType.AppendLine("\t\t\t_ or \"\" => throw new InvalidOperationException(),").AppendLine("\t\t};").AppendLine().ToString());
             builderViewModel.Insert(indexBootstrap, bootstrapCreateInformationType.AppendLine("\t\t\t_ or \"\" => throw new InvalidOperationException(),").AppendLine("\t\t};").AppendLine().ToString());
             builderViewModel.Insert(indexBootstrap, bootstrapCreateFeatureAssociation.AppendLine("\t\t\t_ or \"\" => throw new InvalidOperationException(),").AppendLine("\t\t};").AppendLine().ToString());
             builderViewModel.Insert(indexBootstrap, bootstrapCreateInformationAssociation.AppendLine("\t\t\t_ or \"\" => throw new InvalidOperationException(),").AppendLine("\t\t};").AppendLine().ToString());
+
+
+
+
 
             return builderViewModel.ToString();
         }
@@ -792,6 +833,9 @@ namespace S100Framework.Applications
             public required IReadOnlyCollection<string> KnownTypes { get; init; }
             public required IReadOnlyDictionary<string, string> KnowTypesPrefix { get; init; }
             public required IReadOnlyDictionary<string, string> KnowTypesPostfix { get; init; }
+
+            public required IDictionary<string, ICollection<string>> InformationAssociationsLookup { get; init; }
+            public required IDictionary<string, ICollection<string>> FeatureAssociationsLookup { get; init; }
         }
 
         private static string BuildClass(XElement e, BuildClassClient client) {
@@ -904,6 +948,13 @@ namespace S100Framework.Applications
                     informationBindings.AppendLine($"\t\t\t\t\trole = Enum.GetName<Role>(Role.{role})!,");
                     informationBindings.AppendLine($"\t\t\t\t\tinformationTypes = [{string.Join(',', informationBinding.Elements(XName.Get("informationType", scope_S100)).Select(e => $"nameof({e.Attribute("ref")!.Value})"))}],");
                     informationBindings.AppendLine("\t\t\t\t},");
+
+                    var key = $"\"{association}\", \"{role}\"";
+                    if (!client.InformationAssociationsLookup.ContainsKey(key))
+                        client.InformationAssociationsLookup.Add(key, new List<string>());
+                    foreach (var informationType in informationBinding.Elements(XName.Get("informationType", scope_S100))) {
+                        client.InformationAssociationsLookup[key].Add(informationType.Attribute("ref")!.Value);
+                    }
                 }
                 informationBindings.AppendLine("\t\t\t];");
                 builder.AppendLine(informationBindings.ToString().TrimEnd(Environment.NewLine.ToArray()));
@@ -937,6 +988,13 @@ namespace S100Framework.Applications
                     featureBindings.AppendLine($"\t\t\t\t\trole = Enum.GetName<Role>(Role.{role})!,");
                     featureBindings.AppendLine($"\t\t\t\t\tfeatureTypes = [{string.Join(',', featureBinding.Elements(XName.Get("featureType", scope_S100)).Select(e => $"nameof({e.Attribute("ref")!.Value})"))}],");
                     featureBindings.AppendLine("\t\t\t\t},");
+
+                    var key = $"\"{association}\", \"{role}\"";
+                    if (!client.FeatureAssociationsLookup.ContainsKey(key))
+                        client.FeatureAssociationsLookup.Add(key, new List<string>());
+                    foreach (var featureType in featureBinding.Elements(XName.Get("featureType", scope_S100))) {
+                        client.FeatureAssociationsLookup[key].Add(featureType.Attribute("ref")!.Value);
+                    }
                 }
                 featureBindings.AppendLine("\t\t\t];");
                 builder.AppendLine(featureBindings.ToString().TrimEnd(Environment.NewLine.ToArray()));

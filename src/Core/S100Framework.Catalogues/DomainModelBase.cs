@@ -81,6 +81,7 @@ namespace S100Framework.DomainModel {
 
     [System.SerializableAttribute()]
     public abstract class Association {
+        public virtual string Code { get; set; } = string.Empty;
     }
 
     [System.SerializableAttribute()]
