@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\Application\VortexRoslyn\bin\viewmodel.g.cs" Link="viewmodel.g.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.7.25104.5739" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
   </ItemGroup>

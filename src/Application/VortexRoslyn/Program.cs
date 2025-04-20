@@ -44,8 +44,8 @@ namespace S100Framework.Applications
 
             var result = Roslyn.Build(productSpecification);
 
-            File.WriteAllText(@".\..\..\..\domainmodel.g.cs", result.DomainModel);
-            File.WriteAllText(@".\..\..\viewmodel.g.cs", result.ViewModel.Replace("S100Framework.WPF.ViewModel.S101", "S100Framework.WPF.ViewModel.S10x"));
+            //File.WriteAllText(@".\..\..\..\domainmodel.g.cs", result.DomainModel);
+            //File.WriteAllText(@".\..\..\viewmodel.g.cs", result.ViewModel.Replace("S100Framework.WPF.ViewModel.S101", "S100Framework.WPF.ViewModel.S10x"));
 
             return 0;
         }
