@@ -61,6 +61,8 @@ namespace S100Framework.Applications
             var knowTypesPrefix = new Dictionary<string, string>();
             var knowTypesPostfix = new Dictionary<string, string>();
 
+            var codelistTypes = new List<string>();
+
             //  --- S100_FC_SimpleAttributes ----------------------------------------------------
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_SimpleAttribute", xmlNamespaceManager);
@@ -117,6 +119,8 @@ namespace S100Framework.Applications
                         builderDomainModel.AppendLine("\t\tpublic required int code { get; set; }");
                         builderDomainModel.AppendLine("\t}");
                         builderDomainModel.AppendLine();
+
+                        codelistTypes.Add(code);
                     }
 
                     builderDomainModel.AppendLine("\tpublic static class CodeList");
@@ -532,6 +536,7 @@ namespace S100Framework.Applications
                 KnowTypesPrefix = knowTypesPrefix,
                 KnowTypesPostfix = knowTypesPostfix,
                 ComplexTypes = complexTypes,
+                CodeListTypes = codelistTypes
             });
 
             return (builderDomainModel.ToString(), viewmodel);
@@ -545,6 +550,8 @@ namespace S100Framework.Applications
             public required IReadOnlyDictionary<string, string> KnowTypesPostfix { get; init; }
 
             public required IReadOnlyCollection<string> ComplexTypes { get; init; }
+
+            public required IReadOnlyCollection<string> CodeListTypes { get; init; }
         }
 
         private static string BuildViewModel(XDocument productSpecification, BuildViewModelClient client) {
@@ -578,9 +585,9 @@ namespace S100Framework.Applications
             if (productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager).Any())
                 builderViewModel.AppendLine($"using S100Framework.DomainModel.{productId}.FeatureTypes;");
             if (productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager).Any())
-                builderViewModel.AppendLine($"using S100Framework.DomainModel.{productId}.Associations.InformationAssociations;");
+                builderViewModel.AppendLine($"using S100Framework.DomainModel.{productId}.InformationAssociations;");
             if (productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager).Any())
-                builderViewModel.AppendLine($"using S100Framework.DomainModel.{productId}.Associations.FeatureAssociations;");
+                builderViewModel.AppendLine($"using S100Framework.DomainModel.{productId}.FeatureAssociations;");
 
             builderViewModel.AppendLine("using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;");
             builderViewModel.AppendLine();
@@ -617,6 +624,7 @@ namespace S100Framework.Applications
                         KnowTypesPrefix = client.KnowTypesPrefix,
                         KnowTypesPostfix = client.KnowTypesPostfix,
                         ComplexTypes = client.ComplexTypes,
+                        CodeListTypes = client.CodeListTypes,
                         BaseClass = "ViewModelBase",
                         LoadPrefix=$"{code}ViewModel",
                     });
@@ -648,6 +656,7 @@ namespace S100Framework.Applications
                         KnowTypesPrefix = client.KnowTypesPrefix,
                         KnowTypesPostfix = client.KnowTypesPostfix,
                         ComplexTypes = client.ComplexTypes,
+                        CodeListTypes = client.CodeListTypes,
                         BaseClass = "AssociationViewModel",
                         LoadPrefix = $"{code}ViewModel",
                     });
@@ -681,6 +690,7 @@ namespace S100Framework.Applications
                         KnowTypesPrefix = client.KnowTypesPrefix,
                         KnowTypesPostfix = client.KnowTypesPostfix,
                         ComplexTypes = client.ComplexTypes,
+                        CodeListTypes = client.CodeListTypes,
                         BaseClass = "AssociationViewModel",
                         LoadPrefix = $"{code}ViewModel",
                     });
@@ -714,6 +724,7 @@ namespace S100Framework.Applications
                         KnowTypesPrefix = client.KnowTypesPrefix,
                         KnowTypesPostfix = client.KnowTypesPostfix,
                         ComplexTypes = client.ComplexTypes,
+                        CodeListTypes = client.CodeListTypes,
                         BaseClass = $"InformationViewModel<{code}>",
                         LoadPrefix = $"override InformationViewModel<{code}>",
                     }, (b) => {
@@ -749,6 +760,7 @@ namespace S100Framework.Applications
                         KnowTypesPrefix = client.KnowTypesPrefix,
                         KnowTypesPostfix = client.KnowTypesPostfix,
                         ComplexTypes = client.ComplexTypes,
+                        CodeListTypes = client.CodeListTypes,
                         BaseClass = $"FeatureViewModel<{code}>",
                         LoadPrefix = $"override FeatureViewModel<{code}>",
                     }, (b) => {
@@ -944,6 +956,8 @@ namespace S100Framework.Applications
 
             public required IReadOnlyCollection<string> ComplexTypes { get; init; }
 
+            public required IReadOnlyCollection<string> CodeListTypes { get; init; }
+
             public required string BaseClass { get; init; }
 
             public required string LoadPrefix { get; init; }
@@ -1070,11 +1084,18 @@ namespace S100Framework.Applications
                 }
 
                 if (permittedValues is not null) {
-                    var values = permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value);
+                    if (client.CodeListTypes.Contains(referenceCode)) {
+                        builder.AppendLine();
+                        builder.AppendLine("\t\t[Browsable(false)]");
+                        builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List =>  CodeList.{pluralizer.Pluralize(referenceCode)}.ToArray();");
+                    }
+                    else {
+                        var values = permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value);
 
-                    builder.AppendLine();
-                    builder.AppendLine("\t\t[Browsable(false)]");
-                    builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List => [{string.Join(',', values.Select(e => $"({referenceCode}){e}"))}];");
+                        builder.AppendLine();
+                        builder.AppendLine("\t\t[Browsable(false)]");
+                        builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List => [{string.Join(',', values.Select(e => $"({referenceCode}){e}"))}];");
+                    }
                 }
             }
 

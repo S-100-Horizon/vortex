@@ -133,7 +133,7 @@ namespace TestS100Framework
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
                 File.WriteAllText(@".\..\..\..\S-101_FC.cs", content.DomainModel, Encoding.UTF8);
-                //File.WriteAllText(@".\..\..\..\S-101_ViewModel.cs", content.view, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-101_ViewModel.cs", content.ViewModel, Encoding.UTF8);
 
                 //File.WriteAllText(@".\..\..\..\DomainModelBase.cs", content.common, Encoding.UTF8);
             }
@@ -150,7 +150,7 @@ namespace TestS100Framework
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
                 File.WriteAllText(@".\..\..\..\S-122_FC.cs", content.DomainModel, Encoding.UTF8);
-//                File.WriteAllText(@".\..\..\..\S-122_ViewModel.cs", content.view, Encoding.UTF8);                
+                File.WriteAllText(@".\..\..\..\S-122_ViewModel.cs", content.ViewModel, Encoding.UTF8);                
             }
 
             [Fact]
@@ -168,7 +168,7 @@ namespace TestS100Framework
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
                 File.WriteAllText(@".\..\..\..\S-124_FC.cs", content.DomainModel, Encoding.UTF8);
-                //File.WriteAllText(@".\..\..\..\S-124_ViewModel.cs", content.view, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-124_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
@@ -185,7 +185,7 @@ namespace TestS100Framework
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S128/2.0");
 
                 File.WriteAllText(@".\..\..\..\S-128_FC.cs", content.DomainModel, Encoding.UTF8);
-                //File.WriteAllText(@".\..\..\..\S-128_ViewModel.cs", content.view, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-128_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
@@ -199,7 +199,7 @@ namespace TestS100Framework
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S131/1.0");
 
                 File.WriteAllText(@".\..\..\..\S-131_FC.cs", content.DomainModel, Encoding.UTF8);
-                //File.WriteAllText(@".\..\..\..\S-131_ViewModel.cs", content.view, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-131_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
@@ -213,7 +213,7 @@ namespace TestS100Framework
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S100FC/5.0");
 
                 File.WriteAllText(@".\..\..\..\S-201_FC.cs", content.DomainModel, Encoding.UTF8);
-                //File.WriteAllText(@".\..\..\..\S-201_ViewModel.cs", content.view, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-201_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
@@ -228,7 +228,7 @@ namespace TestS100Framework
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
                 File.WriteAllText(@".\..\..\..\S-501_FC.cs", content.DomainModel, Encoding.UTF8);
-                //File.WriteAllText(@".\..\..\..\S-501_ViewModel.cs", content.view, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-501_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
 
