@@ -1161,7 +1161,7 @@ namespace S100Framework.Applications
             if (superType != null) {
                 var super = client.BuildViewModelClassClient.ProductSpecification.XPathSelectElement($"//*[S100FC:code = '{superType.Value}']", xmlNamespaceManager)!;
 
-                BuildViewModelClassAttribute(code, super, builder, loadBuilder, serializeBuilder, modelBuilder, constructorBuilder, client);
+                BuildViewModelClassAttribute(super.Value, super, builder, loadBuilder, serializeBuilder, modelBuilder, constructorBuilder, client);
             }
 
             var attributeBindings = e.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager).Union(e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager));
