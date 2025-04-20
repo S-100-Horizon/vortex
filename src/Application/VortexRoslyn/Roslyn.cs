@@ -308,7 +308,7 @@ namespace S100Framework.Applications
                     builderDomainModel.AppendLine("\t}");
                     builderDomainModel.AppendLine();
                 }
-            }            
+            }
 
             //  --- S100_FC_InformationAssociations ---------------------------------------------
             {
@@ -595,6 +595,11 @@ namespace S100Framework.Applications
             builderViewModel.AppendLine("\t}");
             builderViewModel.AppendLine();
 
+            var bootstrapCreateInformationAssociation = new StringBuilder().AppendLine("\t\tpublic static AssociationViewModel CreateInformationAssociation(string type, string? pid = default) => type switch {");
+            var bootstrapCreateFeatureAssociation = new StringBuilder().AppendLine("\t\tpublic static AssociationViewModel CreateFeatureAssociation(string type, string? pid = default) => type switch {");
+            var bootstrapCreateInformationType = new StringBuilder().AppendLine("\t\tpublic static InformationViewModel CreateInformationType(string type, string? pid = default) => type switch {");
+            var bootstrapCreateFeatureType = new StringBuilder().AppendLine("\t\tpublic static FeatureViewModel CreateFeatureType(string type, string? pid = default) => type switch {");
+
             //  --- S100_FC_ComplexAttributes ---------------------------------------------------
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_ComplexAttribute", xmlNamespaceManager);
@@ -613,6 +618,7 @@ namespace S100Framework.Applications
                         KnowTypesPostfix = client.KnowTypesPostfix,
                         ComplexTypes = client.ComplexTypes,
                         BaseClass = "ViewModelBase",
+                        LoadPrefix=$"{code}ViewModel",
                     });
 
                     builderViewModel.AppendLine(s);
@@ -643,13 +649,16 @@ namespace S100Framework.Applications
                         KnowTypesPostfix = client.KnowTypesPostfix,
                         ComplexTypes = client.ComplexTypes,
                         BaseClass = "AssociationViewModel",
+                        LoadPrefix = $"{code}ViewModel",
                     });
 
-                    builderViewModel.AppendLine(s);                    
+                    builderViewModel.AppendLine(s);
+
+                    bootstrapCreateInformationAssociation.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ PID = pid }},");
                 }
                 builderViewModel.AppendLine();
             }
-            
+
             //  --- S100_FC_FeatureAssociations -------------------------------------------------
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager);
@@ -673,9 +682,12 @@ namespace S100Framework.Applications
                         KnowTypesPostfix = client.KnowTypesPostfix,
                         ComplexTypes = client.ComplexTypes,
                         BaseClass = "AssociationViewModel",
+                        LoadPrefix = $"{code}ViewModel",
                     });
 
                     builderViewModel.AppendLine(s);
+
+                    bootstrapCreateFeatureAssociation.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ PID = pid }},");
                 }
                 builderViewModel.AppendLine();
             }
@@ -702,10 +714,15 @@ namespace S100Framework.Applications
                         KnowTypesPrefix = client.KnowTypesPrefix,
                         KnowTypesPostfix = client.KnowTypesPostfix,
                         ComplexTypes = client.ComplexTypes,
-                        BaseClass = "ViewModelBase",
+                        BaseClass = $"InformationViewModel<{code}>",
+                        LoadPrefix = $"override InformationViewModel<{code}>",
+                    }, (b) => {
+                        b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");                       
                     });
 
                     builderViewModel.AppendLine(s);
+
+                    bootstrapCreateInformationType.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ PID = pid }},");
                 }
                 builderViewModel.AppendLine();
             }
@@ -732,15 +749,27 @@ namespace S100Framework.Applications
                         KnowTypesPrefix = client.KnowTypesPrefix,
                         KnowTypesPostfix = client.KnowTypesPostfix,
                         ComplexTypes = client.ComplexTypes,
-                        BaseClass = "ViewModelBase",
+                        BaseClass = $"FeatureViewModel<{code}>",
+                        LoadPrefix = $"override FeatureViewModel<{code}>",
+                    }, (b) => {
+                        b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
+                        b.AppendLine();
+                        b.AppendLine($"\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => {code}._featureBindingDefinitions;");
                     });
 
                     builderViewModel.AppendLine(s);
+
+                    bootstrapCreateFeatureType.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ PID = pid }},");
                 }
                 builderViewModel.AppendLine();
             }
 
             builderViewModel.AppendLine("}");
+
+            builderViewModel.Insert(indexBootstrap, bootstrapCreateFeatureType.AppendLine("\t\t\t_ or \"\" => throw new InvalidOperationException(),").AppendLine("\t\t};").ToString());
+            builderViewModel.Insert(indexBootstrap, bootstrapCreateInformationType.AppendLine("\t\t\t_ or \"\" => throw new InvalidOperationException(),").AppendLine("\t\t};").AppendLine().ToString());
+            builderViewModel.Insert(indexBootstrap, bootstrapCreateFeatureAssociation.AppendLine("\t\t\t_ or \"\" => throw new InvalidOperationException(),").AppendLine("\t\t};").AppendLine().ToString());
+            builderViewModel.Insert(indexBootstrap, bootstrapCreateInformationAssociation.AppendLine("\t\t\t_ or \"\" => throw new InvalidOperationException(),").AppendLine("\t\t};").AppendLine().ToString());
 
             return builderViewModel.ToString();
         }
@@ -767,6 +796,7 @@ namespace S100Framework.Applications
             var builder = new StringBuilder();
 
             var name = e.Element(XName.Get("name", scope_S100))!.Value;
+            var definition = e.Element(XName.Get("definition", scope_S100))!.Value;
             var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
             var inheritance = e.Name.LocalName switch {
@@ -783,6 +813,10 @@ namespace S100Framework.Applications
             if (superType != null) {
                 inheritance = $"{superType!.Value}";
             }
+
+            builder.AppendLine($"\t/// <summary>");
+            builder.AppendLine($"\t/// {definition}");
+            builder.AppendLine($"\t/// </summary>");
 
             builder.AppendLine("\t\t[System.Serializable()]");
             builder.AppendLine("\t\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006: Naming Styles\", Justification = \"<Pending>\")]");
@@ -911,9 +945,11 @@ namespace S100Framework.Applications
             public required IReadOnlyCollection<string> ComplexTypes { get; init; }
 
             public required string BaseClass { get; init; }
+
+            public required string LoadPrefix { get; init; }
         }
 
-        private static string BuildViewModelClass(XElement e, BuildViewModelClassClient client) {
+        private static string BuildViewModelClass(XElement e, BuildViewModelClassClient client, Action<StringBuilder>? postAction = null) {
             var navigator = client.ProductSpecification.CreateNavigator();
             navigator.MoveToFollowing(XPathNodeType.Element);
             var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
@@ -925,9 +961,14 @@ namespace S100Framework.Applications
             var scope_S100 = scopes["S100FC"];
 
             var name = e.Element(XName.Get("name", scope_S100))!.Value;
+            var definition = e.Element(XName.Get("definition", scope_S100))!.Value;
             var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
             var builder = new StringBuilder();
+
+            builder.AppendLine($"\t/// <summary>");
+            builder.AppendLine($"\t/// {definition}");
+            builder.AppendLine($"\t/// </summary>");
 
             builder.AppendLine($"\t[CategoryOrder(\"{code}\",0)]");
             builder.AppendLine($"\t[CategoryOrder(\"InformationBindings\",100)]");
@@ -1033,7 +1074,7 @@ namespace S100Framework.Applications
 
                     builder.AppendLine();
                     builder.AppendLine("\t\t[Browsable(false)]");
-                    builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List => [{string.Join(',', values.Select(e=>$"({referenceCode}){e}"))}];");
+                    builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List => [{string.Join(',', values.Select(e => $"({referenceCode}){e}"))}];");
                 }
             }
 
@@ -1041,7 +1082,7 @@ namespace S100Framework.Applications
             serializeBuilder.AppendLine("\t\t\treturn System.Text.Json.JsonSerializer.Serialize(instance);");
 
             builder.AppendLine();
-            builder.AppendLine($"\t\tpublic {code}ViewModel Load({code} instance) {{");
+            builder.AppendLine($"\t\tpublic {client.LoadPrefix} Load({code} instance) {{");
             builder.AppendLine(loadBuilder.ToString().TrimEnd([.. Environment.NewLine]));
             builder.AppendLine("\t\t\treturn this;");
             builder.AppendLine("\t\t}");
@@ -1056,10 +1097,12 @@ namespace S100Framework.Applications
             builder.AppendLine(modelBuilder.ToString().TrimEnd([.. Environment.NewLine]));
             builder.AppendLine("\t\t};");
 
+            postAction?.Invoke(builder);
+
             builder.AppendLine();
             builder.AppendLine($"\t\tpublic override string? ToString() => $\"{name}\";");
 
-            if(constructorBuilder.Length > 0) {
+            if (constructorBuilder.Length > 0) {
                 builder.AppendLine();
                 builder.AppendLine($"\t\tpublic {code}ViewModel() : base() {{");
                 builder.AppendLine(constructorBuilder.ToString().TrimEnd([.. Environment.NewLine]));
