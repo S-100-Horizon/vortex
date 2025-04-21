@@ -444,11 +444,28 @@ namespace TestS100Framework
 
             [Fact]
             public void Test_Serialization() {
-                var instance = new SpecialStructureEquipment();
+                //  DateOnly
+                var instance = new S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence {
+                    categoryOfZoneOfConfidenceInData = S100Framework.DomainModel.S101.categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA1,
+                    fixedDateRange = new S100Framework.DomainModel.S101.ComplexAttributes.fixedDateRange {
+                        dateStart = new DateOnly(2025, 1, 1),
+                        dateEnd = new DateOnly(2025, 1, 31)
+                    },
+                    horizontalPositionUncertainty = new S100Framework.DomainModel.S101.ComplexAttributes.horizontalPositionUncertainty {
+                        uncertaintyFixed = 10.0M,
+                        uncertaintyVariableFactor = 1M,
+                    },
+                    verticalUncertainty = new S100Framework.DomainModel.S101.ComplexAttributes.verticalUncertainty {
+                        uncertaintyFixed = 10.0M,
+                        uncertaintyVariableFactor = 1M
+                    }
+                };
 
                 var json = System.Text.Json.JsonSerializer.Serialize(instance);
 
-                System.Diagnostics.Debugger.Break();
+                var deserialized = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence>(json);
+
+                Assert.Equivalent(instance, deserialized);
             }
 
             private bool VerifyProductSpecification(XDocument productSpecification) {

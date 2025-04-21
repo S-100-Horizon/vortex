@@ -49,10 +49,26 @@ namespace S100Framework.Applications
             builderDomainModel.AppendLine();
             builderDomainModel.AppendLine($"namespace S100Framework.DomainModel.{productId} {{");
 
-            builderDomainModel.AppendLine("\tpublic static class Information");
+            builderDomainModel.AppendLine("\tpublic static class Summary");
             builderDomainModel.AppendLine("\t{");
             builderDomainModel.AppendLine($"\t\tpublic static Version Version => new Version(\"{versionNumber}\");");
             var indexInformation = builderDomainModel.Length;
+            {
+                var names = productSpecification.XPathSelectElements("//S100FC:S100_FC_ComplexAttribute", xmlNamespaceManager).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
+                builderDomainModel.AppendLine($"\t\tpublic static string[] ComplexTypes => [{string.Join(',', names.Select(e=>$"\"{e}\""))}];");
+
+                names = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
+                builderDomainModel.AppendLine($"\t\tpublic static string[] InformationAssociationTypes => [{string.Join(',', names.Select(e => $"\"{e}\""))}];");
+
+                names = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
+                builderDomainModel.AppendLine($"\t\tpublic static string[] FeatureAssociationTypes => [{string.Join(',', names.Select(e => $"\"{e}\""))}];");
+
+                names = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
+                builderDomainModel.AppendLine($"\t\tpublic static string[] InformationTypes => [{string.Join(',', names.Select(e => $"\"{e}\""))}];");
+
+                names = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
+                builderDomainModel.AppendLine($"\t\tpublic static string[] FeatureTypes => [{string.Join(',', names.Select(e => $"\"{e}\""))}];");
+            }
             builderDomainModel.AppendLine("\t}");
             builderDomainModel.AppendLine();
 
