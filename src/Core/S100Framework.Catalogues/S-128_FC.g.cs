@@ -857,10 +857,11 @@ namespace S100Framework.DomainModel.S128 {
 			},
 		});
 	}
+
 	namespace ComplexAttributes {
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class contactAddress {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class contactAddress {
 			public String? administrativeDivision {get;set;} = default;
 
 			public String? cityName {get;set;} = default;
@@ -872,9 +873,9 @@ namespace S100Framework.DomainModel.S128 {
 			public String? postalCode {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class customPaperSize {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class customPaperSize {
 			[Required()]
 			public int x {get;set;}
 
@@ -882,9 +883,9 @@ namespace S100Framework.DomainModel.S128 {
 			public int y {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class defaultLocale {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class defaultLocale {
 			public String characterEncoding {get;set;} = string.Empty;
 
 			public String countryName {get;set;} = string.Empty;
@@ -892,9 +893,9 @@ namespace S100Framework.DomainModel.S128 {
 			public String? language {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class featureName {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class featureName {
 			public String? language {get;set;} = default;
 
 			public String name {get;set;} = string.Empty;
@@ -902,9 +903,9 @@ namespace S100Framework.DomainModel.S128 {
 			public nameUsage? nameUsage {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class information {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class information {
 			public String? fileLocator {get;set;} = default;
 
 			public String? fileReference {get;set;} = default;
@@ -916,9 +917,9 @@ namespace S100Framework.DomainModel.S128 {
 			public List<String> text {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class onlineResource {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class onlineResource {
 			public String? applicationProfile {get;set;} = default;
 
 			public String linkage {get;set;} = string.Empty;
@@ -932,9 +933,9 @@ namespace S100Framework.DomainModel.S128 {
 			public String? protocolRequest {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class periodicDateRange {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class periodicDateRange {
 			[Required()]
 			public DateOnly dateEnd {get;set;}
 
@@ -942,9 +943,9 @@ namespace S100Framework.DomainModel.S128 {
 			public DateOnly dateStart {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class pricing {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class pricing {
 			public String? contractPeriod {get;set;} = default;
 
 			public String currency {get;set;} = string.Empty;
@@ -953,25 +954,18 @@ namespace S100Framework.DomainModel.S128 {
 			public decimal price {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class printSize {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class printSize {
+			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public iso216? iso216 {get;set;} = default;
 
 			public customPaperSize? customPaperSize {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class productSpecification {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class productSpecification {
 			[Required()]
 			public DateOnly date {get;set;}
 
@@ -982,9 +976,9 @@ namespace S100Framework.DomainModel.S128 {
 			public String version {get;set;} = string.Empty;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class supportFileSpecification {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class supportFileSpecification {
 			[Required()]
 			public DateOnly date {get;set;}
 
@@ -993,9 +987,9 @@ namespace S100Framework.DomainModel.S128 {
 			public String version {get;set;} = string.Empty;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class serviceSpecification {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class serviceSpecification {
 			[Required()]
 			public DateOnly date {get;set;}
 
@@ -1004,27 +998,10 @@ namespace S100Framework.DomainModel.S128 {
 			public String version {get;set;} = string.Empty;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class sourceIndication {
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class sourceIndication {
+			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19])]
 			public categoryOfAuthority? categoryOfAuthority {get;set;} = default;
 
 			public String? countryName {get;set;} = default;
@@ -1033,56 +1010,36 @@ namespace S100Framework.DomainModel.S128 {
 
 			public String? source {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
+			[EnumerationValue([1,2,7,8,9,10,11,12,13,14,15])]
 			public sourceType? sourceType {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class telecommunications {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class telecommunications {
 			public String contactInstructions {get;set;} = string.Empty;
 
 			public String telecommunicationIdentifier {get;set;} = string.Empty;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public List<telecommunicationService> telecommunicationService {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class timeIntervalOfCycle {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class timeIntervalOfCycle {
+			[EnumerationValue([1,2,3,4])]
 			public List<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit {get;set;} = [];
 
 			[Required()]
 			public int valueOfTime {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class weekOfYear {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class weekOfYear {
 			[Required()]
 			public int weekNumber {get;set;}
 
@@ -1090,17 +1047,17 @@ namespace S100Framework.DomainModel.S128 {
 			public int yearNumber {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class issuanceCycle {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class issuanceCycle {
 			public periodicDateRange? periodicDateRange {get;set;} = default;
 
 			public timeIntervalOfCycle? timeIntervalOfCycle {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class printInformation {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class printInformation {
 			public String? printAgency {get;set;} = default;
 
 			public String? printNation {get;set;} = default;
@@ -1113,12 +1070,12 @@ namespace S100Framework.DomainModel.S128 {
 			public printSize printSize {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class supportFile {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class supportFile {
 			public String? comment {get;set;} = default;
 
-			[EnumerationValue(1)]
+			[EnumerationValue([1])]
 			[Required()]
 			public digitalSignatureReference digitalSignatureReference {get;set;}
 
@@ -1134,22 +1091,11 @@ namespace S100Framework.DomainModel.S128 {
 
 			public String? otherDataTypeDescription {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(100)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,100])]
 			[Required()]
 			public supportFileFormat supportFileFormat {get;set;}
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			[Required()]
 			public supportFilePurpose supportFilePurpose {get;set;}
 
@@ -1160,9 +1106,9 @@ namespace S100Framework.DomainModel.S128 {
 			public supportFileSpecification supportFileSpecification {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class timeIntervalOfProduct {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class timeIntervalOfProduct {
 			[Required()]
 			public DateOnly issueDate {get;set;}
 
@@ -1171,9 +1117,9 @@ namespace S100Framework.DomainModel.S128 {
 			public issuanceCycle? issuanceCycle {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class referenceToNM {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class referenceToNM {
 			[Required()]
 			public DateOnly publicationDate {get;set;}
 
@@ -1213,9 +1159,9 @@ namespace S100Framework.DomainModel.S128 {
 	}
 
 	namespace InformationAssociations {
-	/// <summary>
-	/// carriage requirement.
-	/// </summary>
+		/// <summary>
+		/// carriage requirement.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CarriageRequirement : InformationAssociation {
@@ -1223,9 +1169,9 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(CarriageRequirement);
 		}
 
-	/// <summary>
-	/// Contact information of nautical product suppliers.
-	/// </summary>
+		/// <summary>
+		/// Contact information of nautical product suppliers.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DistributionDetails : InformationAssociation {
@@ -1233,9 +1179,9 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(DistributionDetails);
 		}
 
-	/// <summary>
-	/// Contact information of distributor.
-	/// </summary>
+		/// <summary>
+		/// Contact information of distributor.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DistributorContact : InformationAssociation {
@@ -1243,9 +1189,9 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(DistributorContact);
 		}
 
-	/// <summary>
-	/// price of element.
-	/// </summary>
+		/// <summary>
+		/// price of element.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PriceOfElement : InformationAssociation {
@@ -1253,9 +1199,9 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(PriceOfElement);
 		}
 
-	/// <summary>
-	/// The price of nautical product.
-	/// </summary>
+		/// <summary>
+		/// The price of nautical product.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PriceOfNauticalProduct : InformationAssociation {
@@ -1263,9 +1209,9 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(PriceOfNauticalProduct);
 		}
 
-	/// <summary>
-	/// Contact information of producer.
-	/// </summary>
+		/// <summary>
+		/// Contact information of producer.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ProducerContact : InformationAssociation {
@@ -1273,9 +1219,9 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(ProducerContact);
 		}
 
-	/// <summary>
-	/// Contact information of nautical product publishing organizations.
-	/// </summary>
+		/// <summary>
+		/// Contact information of nautical product publishing organizations.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ProductionDetails : InformationAssociation {
@@ -1283,9 +1229,9 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(ProductionDetails);
 		}
 
-	/// <summary>
-	/// Package of the various substances which are transported, stored or exploited.
-	/// </summary>
+		/// <summary>
+		/// Package of the various substances which are transported, stored or exploited.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ProductPackage : InformationAssociation {
@@ -1295,16 +1241,13 @@ namespace S100Framework.DomainModel.S128 {
 	}
 
 	namespace FeatureAssociations {
-	/// <summary>
-	/// Mapping between traditional products and S-100 Products.
-	/// </summary>
+		/// <summary>
+		/// Mapping between traditional products and S-100 Products.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ProductMapping : FeatureAssociation {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,3,4])]
 			[Required()]
 			public categoryOfProductMapping categoryOfProductMapping {get;set;}
 
@@ -1312,10 +1255,10 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(ProductMapping);
 		}
 
-	/// <summary>
-	/// A supplementary or secondary part of the product, which may appear multiple times, offering control or display functionalities depending on its configuration.
+		/// <summary>
+		/// A supplementary or secondary part of the product, which may appear multiple times, offering control or display functionalities depending on its configuration.
 			
-	/// </summary>
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Correlated : FeatureAssociation {
@@ -1331,9 +1274,9 @@ namespace S100Framework.DomainModel.S128 {
 	using InformationAssociations;
 
 	namespace InformationTypes {
-	/// <summary>
-	/// catalogue section header.
-	/// </summary>
+		/// <summary>
+		/// catalogue section header.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CatalogueSectionHeader : InformationNode, IInformationBindingDefinition {
@@ -1376,9 +1319,9 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 
-	/// <summary>
-	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
-	/// </summary>
+		/// <summary>
+		/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ContactDetails : InformationNode, IInformationBindingDefinition {
@@ -1418,9 +1361,9 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 
-	/// <summary>
-	/// requirements for transportation.
-	/// </summary>
+		/// <summary>
+		/// requirements for transportation.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class IndicationOfCarriageRequirement : InformationNode, IInformationBindingDefinition {
@@ -1438,9 +1381,9 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 
-	/// <summary>
-	/// Pricing information of nautical product.
-	/// </summary>
+		/// <summary>
+		/// Pricing information of nautical product.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PriceInformation : InformationNode, IInformationBindingDefinition {
@@ -1468,9 +1411,9 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 
-	/// <summary>
-	/// Information about the country of production.
-	/// </summary>
+		/// <summary>
+		/// Information about the country of production.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ProducerInformation : InformationNode, IInformationBindingDefinition {
@@ -1502,9 +1445,9 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 
-	/// <summary>
-	/// distributor information.
-	/// </summary>
+		/// <summary>
+		/// distributor information.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DistributorInformation : InformationNode, IInformationBindingDefinition {
@@ -1538,9 +1481,9 @@ namespace S100Framework.DomainModel.S128 {
 		using FeatureAssociations;
 		using InformationTypes;
 
-	/// <summary>
-	/// catalogue of element.
-	/// </summary>
+		/// <summary>
+		/// catalogue of element.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class CatalogueElement : FeatureNode, IFeatureBindingDefinition {
@@ -1613,9 +1556,9 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 
-	/// <summary>
-	/// navigation products.
-	/// </summary>
+		/// <summary>
+		/// navigation products.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class NavigationalProduct : CatalogueElement {
@@ -1623,8 +1566,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public List<int> compilationScale {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
+			[EnumerationValue([1,2])]
 			public distributionStatus? distributionStatus {get;set;} = default;
 
 			public int? editionNumber {get;set;} = default;
@@ -1633,9 +1575,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public int? minimumDisplayScale {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public List<navigationPurpose> navigationPurpose {get;set;} = [];
 
 			public String? optimumDisplayScale {get;set;} = default;
@@ -1646,12 +1586,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public String? productNumber {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public specificUsage? specificUsage {get;set;} = default;
 
 			public DateOnly? updateDate {get;set;} = default;
@@ -1660,51 +1595,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public horizontalDatumEpsg? horizontalDatumEpsg {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(31)]
-			[EnumerationValue(32)]
-			[EnumerationValue(33)]
-			[EnumerationValue(34)]
-			[EnumerationValue(35)]
-			[EnumerationValue(36)]
-			[EnumerationValue(37)]
-			[EnumerationValue(38)]
-			[EnumerationValue(39)]
-			[EnumerationValue(40)]
-			[EnumerationValue(41)]
-			[EnumerationValue(42)]
-			[EnumerationValue(43)]
-			[EnumerationValue(44)]
-			[EnumerationValue(45)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			[JsonIgnore]
@@ -1727,9 +1618,9 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 
-	/// <summary>
-	/// Electronic navigation product.
-	/// </summary>
+		/// <summary>
+		/// Electronic navigation product.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ElectronicProduct : NavigationalProduct {
@@ -1742,18 +1633,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public TimeOnly? issueTime {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
 			[Required()]
 			public typeOfProductFormat typeOfProductFormat {get;set;}
 
@@ -1771,9 +1651,9 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 
-	/// <summary>
-	/// Paper navigation products.
-	/// </summary>
+		/// <summary>
+		/// Paper navigation products.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PhysicalProduct : NavigationalProduct {
@@ -1802,9 +1682,9 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 
-	/// <summary>
-	/// A service that makes use of S-100 based product specifications to support data transfer.
-	/// </summary>
+		/// <summary>
+		/// A service that makes use of S-100 based product specifications to support data transfer.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class S100Service : CatalogueElement {
@@ -1812,24 +1692,10 @@ namespace S100Framework.DomainModel.S128 {
 
 			public String? serviceName {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,3,4])]
 			public serviceStatus? serviceStatus {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
 			[Required()]
 			public typeOfProductFormat typeOfProductFormat {get;set;}
 

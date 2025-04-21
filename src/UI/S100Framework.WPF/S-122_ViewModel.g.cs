@@ -100,6 +100,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _cardinalDirection, value);
 			}
 		}
+
+		[Browsable(false)]
+		public cardinalDirection[] cardinalDirectionList => Enum.GetValues<cardinalDirection>();
 		private decimal? _distance  = default;
 
 		[Category("bearingInformation")]
@@ -718,6 +721,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _onlineFunction, value);
 			}
 		}
+
+		[Browsable(false)]
+		public onlineFunction[] onlineFunctionList => Enum.GetValues<onlineFunction>();
 
 
 		public onlineResourceViewModel Load(onlineResource instance) {
@@ -1354,6 +1360,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase {
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(dayOfWeekList))]
 		[Category("timeIntervalsByDayOfWeek")]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
@@ -1556,6 +1564,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _jurisdiction, value);
 			}
 		}
+
+		[Browsable(false)]
+		public jurisdiction[] jurisdictionList => Enum.GetValues<jurisdiction>();
 		private String? _text  = default;
 
 		[Category("designation")]
@@ -1751,6 +1762,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			}
 		}
 
+		[Browsable(false)]
+		public categoryOfRelationship[] categoryOfRelationshipList => Enum.GetValues<categoryOfRelationship>();
+
 
 		public PermissionTypeViewModel Load(PermissionType instance) {
 			categoryOfRelationship = instance.categoryOfRelationship;
@@ -1789,6 +1803,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _membership, value);
 			}
 		}
+
+		[Browsable(false)]
+		public membership[] membershipList => Enum.GetValues<membership>();
 
 
 		public InclusionTypeViewModel Load(InclusionType instance) {
@@ -2026,11 +2043,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AbstractRxNViewModel : InformationViewModel<AbstractRxN> {
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -2039,13 +2056,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public String? source {
 			get {
 				return _source;
@@ -2056,7 +2073,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private sourceType? _sourceType  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -2070,7 +2087,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 		private DateOnly? _reportedDate  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public DateOnly? reportedDate {
 			get {
 				return _reportedDate;
@@ -2200,11 +2217,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NauticalInformationViewModel : InformationViewModel<NauticalInformation> {
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -2213,13 +2230,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public String? source {
 			get {
 				return _source;
@@ -2230,7 +2247,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private sourceType? _sourceType  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -2244,7 +2261,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 		private DateOnly? _reportedDate  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public DateOnly? reportedDate {
 			get {
 				return _reportedDate;
@@ -2256,7 +2273,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
-		[Category("AbstractRxNAn abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.AbstractRxN330123456789101112131415160100InformationType")]
+		[Category("AbstractRxN")]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -2270,7 +2287,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
 		private textContentViewModel? _textContent  = default;
 
-		[Category("AbstractRxNAn abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.AbstractRxN330123456789101112131415160100InformationType")]
+		[Category("AbstractRxN")]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -2279,7 +2296,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _textContent, value);
 			}
 		}
-		[Category("AbstractRxNAn abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.AbstractRxN330123456789101112131415160100InformationType")]
+		[Category("AbstractRxN")]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
@@ -2375,11 +2392,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RegulationsViewModel : InformationViewModel<Regulations> {
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -2388,13 +2405,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public String? source {
 			get {
 				return _source;
@@ -2405,7 +2422,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private sourceType? _sourceType  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -2419,7 +2436,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 		private DateOnly? _reportedDate  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public DateOnly? reportedDate {
 			get {
 				return _reportedDate;
@@ -2431,7 +2448,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
-		[Category("AbstractRxNAn abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.AbstractRxN330123456789101112131415160100InformationType")]
+		[Category("AbstractRxN")]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -2445,7 +2462,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
 		private textContentViewModel? _textContent  = default;
 
-		[Category("AbstractRxNAn abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.AbstractRxN330123456789101112131415160100InformationType")]
+		[Category("AbstractRxN")]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -2454,7 +2471,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _textContent, value);
 			}
 		}
-		[Category("AbstractRxNAn abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.AbstractRxN330123456789101112131415160100InformationType")]
+		[Category("AbstractRxN")]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
@@ -2550,11 +2567,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RestrictionsViewModel : InformationViewModel<Restrictions> {
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -2563,13 +2580,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public String? source {
 			get {
 				return _source;
@@ -2580,7 +2597,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private sourceType? _sourceType  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -2594,7 +2611,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 		private DateOnly? _reportedDate  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public DateOnly? reportedDate {
 			get {
 				return _reportedDate;
@@ -2606,7 +2623,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
-		[Category("AbstractRxNAn abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.AbstractRxN330123456789101112131415160100InformationType")]
+		[Category("AbstractRxN")]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -2620,7 +2637,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
 		private textContentViewModel? _textContent  = default;
 
-		[Category("AbstractRxNAn abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.AbstractRxN330123456789101112131415160100InformationType")]
+		[Category("AbstractRxN")]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -2629,7 +2646,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _textContent, value);
 			}
 		}
-		[Category("AbstractRxNAn abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.AbstractRxN330123456789101112131415160100InformationType")]
+		[Category("AbstractRxN")]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
@@ -2725,11 +2742,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RecommendationsViewModel : InformationViewModel<Recommendations> {
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -2738,13 +2755,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public String? source {
 			get {
 				return _source;
@@ -2755,7 +2772,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private sourceType? _sourceType  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -2769,7 +2786,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 		private DateOnly? _reportedDate  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public DateOnly? reportedDate {
 			get {
 				return _reportedDate;
@@ -2781,7 +2798,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
-		[Category("AbstractRxNAn abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.AbstractRxN330123456789101112131415160100InformationType")]
+		[Category("AbstractRxN")]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -2795,7 +2812,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
 		private textContentViewModel? _textContent  = default;
 
-		[Category("AbstractRxNAn abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.AbstractRxN330123456789101112131415160100InformationType")]
+		[Category("AbstractRxN")]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -2804,7 +2821,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _textContent, value);
 			}
 		}
-		[Category("AbstractRxNAn abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.AbstractRxN330123456789101112131415160100InformationType")]
+		[Category("AbstractRxN")]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
@@ -2900,11 +2917,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AuthorityViewModel : InformationViewModel<Authority> {
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -2913,13 +2930,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public String? source {
 			get {
 				return _source;
@@ -2930,7 +2947,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private sourceType? _sourceType  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -2944,7 +2961,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 		private DateOnly? _reportedDate  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public DateOnly? reportedDate {
 			get {
 				return _reportedDate;
@@ -3057,11 +3074,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ContactDetailsViewModel : InformationViewModel<ContactDetails> {
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3070,13 +3087,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public String? source {
 			get {
 				return _source;
@@ -3087,7 +3104,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private sourceType? _sourceType  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -3101,7 +3118,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 		private DateOnly? _reportedDate  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public DateOnly? reportedDate {
 			get {
 				return _reportedDate;
@@ -3113,7 +3130,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
-		[Category("AbstractRxNAn abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.AbstractRxN330123456789101112131415160100InformationType")]
+		[Category("AbstractRxN")]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -3127,7 +3144,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
 		private textContentViewModel? _textContent  = default;
 
-		[Category("AbstractRxNAn abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.AbstractRxN330123456789101112131415160100InformationType")]
+		[Category("AbstractRxN")]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -3136,7 +3153,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _textContent, value);
 			}
 		}
-		[Category("AbstractRxNAn abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.AbstractRxN330123456789101112131415160100InformationType")]
+		[Category("AbstractRxN")]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 		private String? _callName  = default;
@@ -3389,11 +3406,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NonStandardWorkingDayViewModel : InformationViewModel<NonStandardWorkingDay> {
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3402,13 +3419,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public String? source {
 			get {
 				return _source;
@@ -3419,7 +3436,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private sourceType? _sourceType  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -3433,7 +3450,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 		private DateOnly? _reportedDate  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public DateOnly? reportedDate {
 			get {
 				return _reportedDate;
@@ -3553,11 +3570,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ServiceHoursViewModel : InformationViewModel<ServiceHours> {
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3566,13 +3583,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public String? source {
 			get {
 				return _source;
@@ -3583,7 +3600,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private sourceType? _sourceType  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -3597,7 +3614,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 		private DateOnly? _reportedDate  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public DateOnly? reportedDate {
 			get {
 				return _reportedDate;
@@ -3710,11 +3727,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ApplicabilityViewModel : InformationViewModel<Applicability> {
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3723,13 +3740,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public String? source {
 			get {
 				return _source;
@@ -3740,7 +3757,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private sourceType? _sourceType  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -3754,7 +3771,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 		private DateOnly? _reportedDate  = default;
 
-		[Category("Information TypeGeneralized information type which carries all the common attributes.InformationType4200100010112789101112131401")]
+		[Category("InformationType")]
 		public DateOnly? reportedDate {
 			get {
 				return _reportedDate;
@@ -3775,11 +3792,15 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _inBallast, value);
 			}
 		}
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfCargoList))]
 		[Category("Applicability")]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1,(categoryOfCargo)2,(categoryOfCargo)3,(categoryOfCargo)4,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)9];
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfDangerousOrHazardousCargoList))]
 		[Category("Applicability")]
 		public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo  { get; set; } = new ();
 
@@ -3985,11 +4006,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RestrictedAreaViewModel : FeatureViewModel<RestrictedArea> {
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3998,13 +4019,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 		private String _interoperabilityIdentifier  = string.Empty;
 
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public String interoperabilityIdentifier {
 			get {
 				return _interoperabilityIdentifier;
@@ -4015,7 +4036,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _source  = default;
 
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public String? source {
 			get {
 				return _source;
@@ -4026,7 +4047,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private sourceType? _sourceType  = default;
 
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -4040,7 +4061,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 		private DateOnly? _reportedDate  = default;
 
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public DateOnly? reportedDate {
 			get {
 				return _reportedDate;
@@ -4050,16 +4071,22 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			}
 		}
 
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfRestrictedAreaList))]
 		[Category("RestrictedArea")]
 		public ObservableCollection<categoryOfRestrictedArea> categoryOfRestrictedArea  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfRestrictedArea[] categoryOfRestrictedAreaList => [(categoryOfRestrictedArea)1,(categoryOfRestrictedArea)4,(categoryOfRestrictedArea)5,(categoryOfRestrictedArea)6,(categoryOfRestrictedArea)7,(categoryOfRestrictedArea)8,(categoryOfRestrictedArea)9,(categoryOfRestrictedArea)10,(categoryOfRestrictedArea)12,(categoryOfRestrictedArea)14,(categoryOfRestrictedArea)18,(categoryOfRestrictedArea)19,(categoryOfRestrictedArea)20,(categoryOfRestrictedArea)21,(categoryOfRestrictedArea)22,(categoryOfRestrictedArea)23,(categoryOfRestrictedArea)24,(categoryOfRestrictedArea)25,(categoryOfRestrictedArea)26,(categoryOfRestrictedArea)27,(categoryOfRestrictedArea)28,(categoryOfRestrictedArea)29,(categoryOfRestrictedArea)30,(categoryOfRestrictedArea)31,(categoryOfRestrictedArea)32,(categoryOfRestrictedArea)33];
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(restrictionList))]
 		[Category("RestrictedArea")]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)7,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)14,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)26,(restriction)27,(restriction)28,(restriction)29,(restriction)30,(restriction)31,(restriction)32,(restriction)33,(restriction)34,(restriction)35,(restriction)36,(restriction)37,(restriction)38,(restriction)39,(restriction)40,(restriction)41];
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(statusList))]
 		[Category("RestrictedArea")]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -4174,11 +4201,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class MarineProtectedAreaViewModel : FeatureViewModel<MarineProtectedArea> {
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -4187,13 +4214,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 		private String _interoperabilityIdentifier  = string.Empty;
 
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public String interoperabilityIdentifier {
 			get {
 				return _interoperabilityIdentifier;
@@ -4204,7 +4231,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _source  = default;
 
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public String? source {
 			get {
 				return _source;
@@ -4215,7 +4242,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private sourceType? _sourceType  = default;
 
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -4229,7 +4256,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 		private DateOnly? _reportedDate  = default;
 
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public DateOnly? reportedDate {
 			get {
 				return _reportedDate;
@@ -4253,6 +4280,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public categoryOfMarineProtectedArea[] categoryOfMarineProtectedAreaList =>  CodeList.categoryOfMarineProtectedAreas.ToArray();
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfRestrictedAreaList))]
 		[Category("MarineProtectedArea")]
 		public ObservableCollection<categoryOfRestrictedArea> categoryOfRestrictedArea  { get; set; } = new ();
 
@@ -4272,11 +4301,15 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public jurisdiction[] jurisdictionList => [(jurisdiction)1,(jurisdiction)2,(jurisdiction)3];
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(restrictionList))]
 		[Category("MarineProtectedArea")]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)7,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)14,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)26,(restriction)27,(restriction)28,(restriction)29,(restriction)30,(restriction)31,(restriction)32,(restriction)33,(restriction)34,(restriction)35,(restriction)36,(restriction)37,(restriction)38,(restriction)39,(restriction)40,(restriction)41];
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(statusList))]
 		[Category("MarineProtectedArea")]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -4409,11 +4442,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class VesselTrafficServiceAreaViewModel : FeatureViewModel<VesselTrafficServiceArea> {
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -4422,13 +4455,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 		private String _interoperabilityIdentifier  = string.Empty;
 
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public String interoperabilityIdentifier {
 			get {
 				return _interoperabilityIdentifier;
@@ -4439,7 +4472,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _source  = default;
 
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public String? source {
 			get {
 				return _source;
@@ -4450,7 +4483,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private sourceType? _sourceType  = default;
 
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -4464,7 +4497,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 		private DateOnly? _reportedDate  = default;
 
-		[Category("Feature TypeGeneralized feature type which carries all the common attributes.FeatureType422001001101011278910111213140100geographicnoGeometry")]
+		[Category("FeatureType")]
 		public DateOnly? reportedDate {
 			get {
 				return _reportedDate;

@@ -952,6 +952,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _warningType, value);
 			}
 		}
+
+		[Browsable(false)]
+		public warningType[] warningTypeList => Enum.GetValues<warningType>();
 		private int _year ;
 
 		[Category("messageSeriesIdentifier")]
@@ -1343,6 +1346,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _referenceCategory, value);
 			}
 		}
+
+		[Browsable(false)]
+		public referenceCategory[] referenceCategoryList => Enum.GetValues<referenceCategory>();
 
 
 		public override InformationViewModel<References> Load(References instance) {

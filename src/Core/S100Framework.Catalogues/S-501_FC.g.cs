@@ -4220,34 +4220,35 @@ namespace S100Framework.DomainModel.S501 {
 	public static class CodeList
 	{
 	}
+
 	namespace ComplexAttributes {
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class qRouteChannelWidth {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class qRouteChannelWidth {
 			[Required()]
 			public decimal rightQRouteWidth {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class detectionDateRange {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class detectionDateRange {
 			public DateOnly? lastDetectionYear {get;set;} = default;
 
 			public DateOnly? firstDetectionYear {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class multiplicityOfFeatures {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class multiplicityOfFeatures {
 			public int? numberOfFeatures {get;set;} = default;
 
 			[Required()]
 			public Boolean multiplicityKnown {get;set;} = false;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class onlineResource {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class onlineResource {
 			public String? headline {get;set;} = default;
 
 			public String linkage {get;set;} = string.Empty;
@@ -4255,11 +4256,10 @@ namespace S100Framework.DomainModel.S501 {
 			public String? nameOfResource {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class featureName {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class featureName {
+			[EnumerationValue([1,2])]
 			public nameUsage? nameUsage {get;set;} = default;
 
 			public String name {get;set;} = string.Empty;
@@ -4267,17 +4267,17 @@ namespace S100Framework.DomainModel.S501 {
 			public String language {get;set;} = string.Empty;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class fixedDateRange {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class fixedDateRange {
 			public DateOnly? dateStart {get;set;} = default;
 
 			public DateOnly? dateEnd {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class altitudeRange {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class altitudeRange {
 			[Required()]
 			public int minimumAltitude {get;set;}
 
@@ -4285,9 +4285,9 @@ namespace S100Framework.DomainModel.S501 {
 			public int maximumAltitude {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class altitude {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class altitude {
 			[Required()]
 			public int minimumAltitude {get;set;}
 
@@ -4295,15 +4295,10 @@ namespace S100Framework.DomainModel.S501 {
 			public int maximumAltitude {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class lastSourceInformation {
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
-			[EnumerationValue(504)]
-			[EnumerationValue(506)]
-			[EnumerationValue(509)]
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class lastSourceInformation {
+			[EnumerationValue([501,502,503,504,506,509])]
 			public lastSensor? lastSensor {get;set;} = default;
 
 			public String? lastSource {get;set;} = default;
@@ -4311,9 +4306,9 @@ namespace S100Framework.DomainModel.S501 {
 			public DateOnly? reportedDate {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class information {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class information {
 			public String? headline {get;set;} = default;
 
 			public String language {get;set;} = string.Empty;
@@ -4325,15 +4320,10 @@ namespace S100Framework.DomainModel.S501 {
 			public String? fileReference {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class firstSourceInformation {
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
-			[EnumerationValue(504)]
-			[EnumerationValue(506)]
-			[EnumerationValue(509)]
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class firstSourceInformation {
+			[EnumerationValue([501,502,503,504,506,509])]
 			[Required()]
 			public firstSensor firstSensor {get;set;}
 
@@ -4342,140 +4332,97 @@ namespace S100Framework.DomainModel.S501 {
 			public DateOnly? reportedDate {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class horizontalClearanceFixed {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class horizontalClearanceFixed {
 			[Required()]
 			public decimal horizontalClearanceValue {get;set;}
 
 			public decimal? horizontalDistanceUncertainty {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class verticalUncertainty {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class verticalUncertainty {
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
 
 			[Required()]
 			public decimal uncertaintyFixed {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class frequencyPair {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class frequencyPair {
 			public int? frequencyShoreStationReceives {get;set;} = default;
 
 			[Required()]
 			public int frequencyShoreStationTransmits {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class vesselMeasurementsSpecification {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class vesselMeasurementsSpecification {
 			[Required()]
 			public decimal vesselsCharacteristicsValue {get;set;}
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,2,3,4,6,10,11])]
 			[Required()]
 			public vesselsCharacteristics vesselsCharacteristics {get;set;}
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
+			[EnumerationValue([1,3,4,5,6,7])]
 			[Required()]
 			public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {get;set;}
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public comparisonOperator? comparisonOperator {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class surfaceCharacteristics {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class surfaceCharacteristics {
 			public int? underlyingLayer {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
 			public List<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTerms {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			[EnumerationValue(14)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,14,17,18])]
 			public natureOfSurface? natureOfSurface {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class magneticInformation {
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
-			[EnumerationValue(504)]
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class magneticInformation {
+			[EnumerationValue([501,502,503,504])]
 			public strengthOfMagneticAnomaly? strengthOfMagneticAnomaly {get;set;} = default;
 
 			public int? magneticIntensity {get;set;} = default;
 
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
-			[EnumerationValue(504)]
+			[EnumerationValue([501,502,503,504])]
 			[Required()]
 			public magneticAnomalyDetectorSignature magneticAnomalyDetectorSignature {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class speed {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class speed {
 			public decimal? speedMinimum {get;set;} = default;
 
 			[Required()]
 			public decimal speedMaximum {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class verticalClearanceFixed {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class verticalClearanceFixed {
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			[Required()]
 			public decimal verticalClearanceValue {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class sourceIdentification {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class sourceIdentification {
 			public String? producerNation {get;set;} = default;
 
 			public String? sourceType {get;set;} = default;
@@ -4485,27 +4432,27 @@ namespace S100Framework.DomainModel.S501 {
 			public String sourceID {get;set;} = string.Empty;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class horizontalPositionUncertainty {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class horizontalPositionUncertainty {
 			[Required()]
 			public decimal uncertaintyFixed {get;set;}
 
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class orientation {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class orientation {
 			[Required()]
 			public decimal orientationValue {get;set;}
 
 			public decimal? orientationUncertainty {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class directionHeading {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class directionHeading {
 			[Required()]
 			public decimal headingDownBearing {get;set;}
 
@@ -4513,9 +4460,9 @@ namespace S100Framework.DomainModel.S501 {
 			public decimal headingUpBearing {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class flightLevel {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class flightLevel {
 			[Required()]
 			public int minimumFlightLevel {get;set;}
 
@@ -4523,12 +4470,10 @@ namespace S100Framework.DomainModel.S501 {
 			public int maximumFlightLevel {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class vesselSpeedLimit {
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class vesselSpeedLimit {
+			[EnumerationValue([2,3,4])]
 			[Required()]
 			public speedUnits speedUnits {get;set;}
 
@@ -4538,9 +4483,9 @@ namespace S100Framework.DomainModel.S501 {
 			public decimal speedLimit {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class periodicDateRange {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class periodicDateRange {
 			[Required()]
 			public DateOnly dateStart {get;set;}
 
@@ -4554,19 +4499,18 @@ namespace S100Framework.DomainModel.S501 {
 			public DateOnly periodicDateStart {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class shapeInformation {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class shapeInformation {
 			public String text {get;set;} = string.Empty;
 
 			public String? language {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class signalSequence {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class signalSequence {
+			[EnumerationValue([1,2])]
 			[Required()]
 			public signalStatus signalStatus {get;set;}
 
@@ -4574,153 +4518,83 @@ namespace S100Framework.DomainModel.S501 {
 			public decimal signalDuration {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class sectorInformation {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class sectorInformation {
 			public String text {get;set;} = string.Empty;
 
 			public String? language {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class directionalCharacter {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class directionalCharacter {
 			[Required()]
 			public orientation orientation {get;set;}
 
 			public Boolean? moireEffect {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class sectorLimitTwo {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class sectorLimitTwo {
 			public decimal? sectorLineLength {get;set;} = default;
 
 			[Required()]
 			public decimal sectorBearing {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class sectorLimitOne {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class sectorLimitOne {
 			public decimal? sectorLineLength {get;set;} = default;
 
 			[Required()]
 			public decimal sectorBearing {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class topmark {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(31)]
-			[EnumerationValue(32)]
-			[EnumerationValue(33)]
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class topmark {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33])]
 			[Required()]
 			public topmarkDaymarkShape topmarkDaymarkShape {get;set;}
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public colour? colour {get;set;} = default;
 
 			public List<shapeInformation> shapeInformation {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class rythmOfLight {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class rythmOfLight {
 			public List<signalSequence> signalSequence {get;set;} = [];
 
 			public decimal? signalPeriod {get;set;} = default;
 
 			public List<String> signalGroup {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,25,26,27,28,29])]
 			[Required()]
 			public lightCharacteristic lightCharacteristic {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class verticalClearanceSafe {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class verticalClearanceSafe {
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			[Required()]
 			public decimal verticalClearanceValue {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class sectorLimit {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class sectorLimit {
 			[Required()]
 			public sectorLimitOne sectorLimitOne {get;set;}
 
@@ -4728,21 +4602,14 @@ namespace S100Framework.DomainModel.S501 {
 			public sectorLimitTwo sectorLimitTwo {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class lightSector {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class lightSector {
 			public sectorLimit? sectorLimit {get;set;} = default;
 
 			public List<sectorInformation> sectorInformation {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
+			[EnumerationValue([1,2,3,4,5,6,8,9])]
 			public List<lightVisibility> lightVisibility {get;set;} = [];
 
 			public decimal? valueOfNominalRange {get;set;} = default;
@@ -4751,48 +4618,20 @@ namespace S100Framework.DomainModel.S501 {
 
 			public directionalCharacter? directionalCharacter {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,3,4,5,6,9,10,11])]
 			public List<colour> colour {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class sectorCharacteristics {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class sectorCharacteristics {
 			public List<signalSequence> signalSequence {get;set;} = [];
 
 			public decimal? signalPeriod {get;set;} = default;
 
 			public List<lightSector> lightSector {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,25,26,27,28,29])]
 			[Required()]
 			public lightCharacteristic lightCharacteristic {get;set;}
 
@@ -4806,9 +4645,9 @@ namespace S100Framework.DomainModel.S501 {
 	using ComplexAttributes;
 
 	namespace InformationTypes {
-	/// <summary>
-	/// ReferenceToAPublication (missing definition)
-	/// </summary>
+		/// <summary>
+		/// ReferenceToAPublication (missing definition)
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ReferenceToAPublication : InformationNode, IInformationBindingDefinition {
@@ -4830,59 +4669,31 @@ namespace S100Framework.DomainModel.S501 {
 	}
 	namespace FeatureTypes {
 
-	/// <summary>
-	/// An installation buoy is a buoy used for loading tankers with gas or oil.
-	/// </summary>
+		/// <summary>
+		/// An installation buoy is a buoy used for loading tankers with gas or oil.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InstallationBuoy : FeatureNode, IFeatureBindingDefinition {
 			public List<featureName> featureName {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
+			[EnumerationValue([1,2,18,19])]
 			public List<product> product {get;set;} = [];
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,4,5,7,8,18])]
 			public List<status> status {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public int? scaleMinimum {get;set;} = default;
@@ -4891,27 +4702,18 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			[Required()]
 			public buoyShape buoyShape {get;set;}
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			[EnumerationValue(7)]
-			[EnumerationValue(11)]
+			[EnumerationValue([7,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
+			[EnumerationValue([1,2])]
 			public categoryOfInstallationBuoy? categoryOfInstallationBuoy {get;set;} = default;
 
 			[JsonIgnore]
@@ -4926,9 +4728,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A water area whose depth is within a defined range of values.
-	/// </summary>
+		/// <summary>
+		/// A water area whose depth is within a defined range of values.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DepthArea : FeatureNode, IFeatureBindingDefinition {
@@ -4956,13 +4758,13 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A designated position at which vessels are required to report to a traffic control centre. Also called reporting point or radio reporting point.
-	/// </summary>
+		/// <summary>
+		/// A designated position at which vessels are required to report to a traffic control centre. Also called reporting point or radio reporting point.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadioCallingInPoint : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(501)]
+			[EnumerationValue([501])]
 			public categoryOfReportingRadioCallingInPoint? categoryOfReportingRadioCallingInPoint {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
@@ -4977,24 +4779,14 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<decimal> orientationValue {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(9)]
-			[EnumerationValue(501)]
+			[EnumerationValue([1,3,4,5,6,7,9,501])]
 			public List<status> status {get;set;} = [];
 
 			public List<featureName> featureName {get;set;} = [];
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,3,4])]
 			[Required()]
 			public trafficFlow trafficFlow {get;set;}
 
@@ -5010,9 +4802,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A defined area on land or over water which is patrolled by a controlling or regulatory authority.
-	/// </summary>
+		/// <summary>
+		/// A defined area on land or over water which is patrolled by a controlling or regulatory authority.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PatrolArea : FeatureNode, IFeatureBindingDefinition {
@@ -5024,8 +4816,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? controllingAuthority {get;set;} = default;
 
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
+			[EnumerationValue([501,502])]
 			[Required()]
 			public categoryOfPatrolArea categoryOfPatrolArea {get;set;}
 
@@ -5035,8 +4826,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(501)]
+			[EnumerationValue([1,501])]
 			public List<status> status {get;set;} = [];
 
 			[JsonIgnore]
@@ -5051,9 +4841,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// An official location at which to register, declare and/or inspect goods and/or people.
-	/// </summary>
+		/// <summary>
+		/// An official location at which to register, declare and/or inspect goods and/or people.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Checkpoint : FeatureNode, IFeatureBindingDefinition {
@@ -5063,12 +4853,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? agencyResponsibleForProduction {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(9)]
-			[EnumerationValue(12)]
+			[EnumerationValue([1,2,5,7,9,12])]
 			public List<status> status {get;set;} = [];
 
 			public List<information> information {get;set;} = [];
@@ -5077,8 +4862,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public int? scaleMinimum {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(501)]
+			[EnumerationValue([1,501])]
 			public categoryOfCheckpoint? categoryOfCheckpoint {get;set;} = default;
 
 			[JsonIgnore]
@@ -5093,72 +4877,29 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// An area which is managed and/or monitored by a controlling authority to protect the marine environment and ensure restrictions applicable to that area, or marine activities carried out within the area conform to current legislation/regulations.
-	/// </summary>
+		/// <summary>
+		/// An area which is managed and/or monitored by a controlling authority to protect the marine environment and ensure restrictions applicable to that area, or marine activities carried out within the area conform to current legislation/regulations.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MarineManagementArea : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
 			public restriction? restriction {get;set;} = default;
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
 
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
-			[EnumerationValue(504)]
-			[EnumerationValue(505)]
-			[EnumerationValue(506)]
-			[EnumerationValue(507)]
-			[EnumerationValue(508)]
-			[EnumerationValue(509)]
-			[EnumerationValue(510)]
+			[EnumerationValue([501,502,503,504,505,506,507,508,509,510])]
 			public List<speciesGrouping> speciesGrouping {get;set;} = [];
 
 			public List<String> nationalMaritimeAuthority {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(2)]
+			[EnumerationValue([1,2,2])]
 			[Required()]
 			public jurisdiction jurisdiction {get;set;}
 
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
+			[EnumerationValue([1,2,3,4,5,6,7])]
 			public categoryofMarineProtectedArea? categoryofMarineProtectedArea {get;set;} = default;
 
 			public DateOnly? reportedDate {get;set;} = default;
@@ -5171,34 +4912,10 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(519)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,13,14,16,17,519])]
 			public status? status {get;set;} = default;
 
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(10)]
-			[EnumerationValue(20)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(31)]
-			[EnumerationValue(32)]
+			[EnumerationValue([4,5,6,7,10,20,22,23,27,28,31,32])]
 			public List<categoryofRestrictions> categoryofRestrictions {get;set;} = [];
 
 			public List<String> species {get;set;} = [];
@@ -5215,9 +4932,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A line connecting points of equal water depth which is sometimes significantly displaced outside of soundings, symbols, and other chart detail for clarity as well as generalization. Depth contours therefore often represent an approximate location of the line of equal depth as related to the surveyed line delineated on the source.
-	/// </summary>
+		/// <summary>
+		/// A line connecting points of equal water depth which is sometimes significantly displaced outside of soundings, symbols, and other chart detail for clarity as well as generalization. Depth contours therefore often represent an approximate location of the line of equal depth as related to the surveyed line delineated on the source.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DepthContour : FeatureNode, IFeatureBindingDefinition {
@@ -5248,9 +4965,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A generic term which may be used to describe a wide range of areas, considered sensitive for a variety of environmental reasons.
-	/// </summary>
+		/// <summary>
+		/// A generic term which may be used to describe a wide range of areas, considered sensitive for a variety of environmental reasons.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class EnvironmentallySensitiveSeaArea : FeatureNode, IFeatureBindingDefinition {
@@ -5272,14 +4989,13 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A route with a specially prepared surface that is intended for use by wheeled vehicles or pedestrians.
-	/// </summary>
+		/// <summary>
+		/// A route with a specially prepared surface that is intended for use by wheeled vehicles or pedestrians.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Road : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
+			[EnumerationValue([4,5])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public List<featureName> featureName {get;set;} = [];
@@ -5288,32 +5004,17 @@ namespace S100Framework.DomainModel.S501 {
 
 			public DateOnly? reportedDate {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public categoryOfRoad? categoryOfRoad {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(501)]
+			[EnumerationValue([1,2,5,501])]
 			public condition? condition {get;set;} = default;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
+			[EnumerationValue([1,4,6,7,8,12,13,14])]
 			public List<status> status {get;set;} = [];
 
 			public int? scaleMinimum {get;set;} = default;
@@ -5330,9 +5031,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A relatively large natural stream of water.
-	/// </summary>
+		/// <summary>
+		/// A relatively large natural stream of water.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class River : FeatureNode, IFeatureBindingDefinition {
@@ -5340,7 +5041,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<featureName> featureName {get;set;} = [];
 
-			[EnumerationValue(5)]
+			[EnumerationValue([5])]
 			public List<status> status {get;set;} = [];
 
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -5359,9 +5060,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// An area within which naval, military or aerial exercises are carried out.
-	/// </summary>
+		/// <summary>
+		/// An area within which naval, military or aerial exercises are carried out.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MilitaryPracticeArea : FeatureNode, IFeatureBindingDefinition {
@@ -5369,95 +5070,21 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String depthRestriction {get;set;} = string.Empty;
 
-			[EnumerationValue(1)]
+			[EnumerationValue([1])]
 			public depthUnits? depthUnits {get;set;} = default;
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public String? nationality {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(39)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public int? scaleMinimum {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
-			[EnumerationValue(504)]
-			[EnumerationValue(505)]
-			[EnumerationValue(506)]
-			[EnumerationValue(507)]
-			[EnumerationValue(508)]
-			[EnumerationValue(509)]
-			[EnumerationValue(510)]
-			[EnumerationValue(511)]
-			[EnumerationValue(512)]
-			[EnumerationValue(513)]
-			[EnumerationValue(514)]
-			[EnumerationValue(515)]
-			[EnumerationValue(516)]
-			[EnumerationValue(517)]
-			[EnumerationValue(518)]
-			[EnumerationValue(519)]
-			[EnumerationValue(520)]
-			[EnumerationValue(521)]
-			[EnumerationValue(522)]
-			[EnumerationValue(523)]
-			[EnumerationValue(524)]
-			[EnumerationValue(525)]
-			[EnumerationValue(526)]
-			[EnumerationValue(527)]
-			[EnumerationValue(528)]
-			[EnumerationValue(529)]
-			[EnumerationValue(530)]
-			[EnumerationValue(531)]
-			[EnumerationValue(532)]
-			[EnumerationValue(533)]
-			[EnumerationValue(534)]
-			[EnumerationValue(535)]
-			[EnumerationValue(536)]
-			[EnumerationValue(537)]
-			[EnumerationValue(538)]
-			[EnumerationValue(539)]
-			[EnumerationValue(540)]
-			[EnumerationValue(541)]
-			[EnumerationValue(542)]
-			[EnumerationValue(543)]
-			[EnumerationValue(544)]
-			[EnumerationValue(545)]
-			[EnumerationValue(546)]
-			[EnumerationValue(547)]
-			[EnumerationValue(598)]
-			[EnumerationValue(599)]
+			[EnumerationValue([501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,598,599])]
 			public List<typeofMilitaryActivity> typeofMilitaryActivity {get;set;} = [];
 
 			public String? activePeriod {get;set;} = default;
@@ -5466,18 +5093,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public int? minimumSafeDepth {get;set;} = default;
 
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
-			[EnumerationValue(506)]
-			[EnumerationValue(507)]
-			[EnumerationValue(508)]
-			[EnumerationValue(510)]
-			[EnumerationValue(599)]
+			[EnumerationValue([2,3,4,5,501,502,503,506,507,508,510,599])]
 			public List<categoryofMilitaryPracticeArea> categoryofMilitaryPracticeArea {get;set;} = [];
 
 			public int? bottomVerticalSafetySeparation {get;set;} = default;
@@ -5486,42 +5102,17 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? agencyResponsibleForProduction {get;set;} = default;
 
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
+			[EnumerationValue([501,502])]
 			public areaCategory? areaCategory {get;set;} = default;
 
-			[EnumerationValue(3)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
-			[EnumerationValue(501)]
+			[EnumerationValue([3,16,17,18,19,20,21,24,25,26,28,29,30,44,501])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public DateOnly? reportedDate {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(501)]
-			[EnumerationValue(503)]
-			[EnumerationValue(517)]
-			[EnumerationValue(520)]
+			[EnumerationValue([1,2,5,6,7,16,17,501,503,517,520])]
 			public List<status> status {get;set;} = [];
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
@@ -5540,9 +5131,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// Unnatural coloured areas in the sea which may or may not indicate the existence of shoals.
-	/// </summary>
+		/// <summary>
+		/// Unnatural coloured areas in the sea which may or may not indicate the existence of shoals.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DiscolouredWater : FeatureNode, IFeatureBindingDefinition {
@@ -5564,16 +5155,13 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A cardinal buoy is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
-	/// </summary>
+		/// <summary>
+		/// A cardinal buoy is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CardinalBuoy : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,3,4])]
 			[Required()]
 			public categoryOfCardinalMark categoryOfCardinalMark {get;set;}
 
@@ -5583,20 +5171,10 @@ namespace S100Framework.DomainModel.S501 {
 
 			public int? scaleMinimum {get;set;} = default;
 
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
+			[EnumerationValue([6,7,8,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			[Required()]
 			public buoyShape buoyShape {get;set;}
 
@@ -5604,12 +5182,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,5,7,8,18])]
 			public List<status> status {get;set;} = [];
 
 			public Boolean? radarConspicuous {get;set;} = default;
@@ -5618,33 +5191,13 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
@@ -5667,36 +5220,17 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A safe water buoy is used to indicate that there is navigable water around the mark.
-	/// </summary>
+		/// <summary>
+		/// A safe water buoy is used to indicate that there is navigable water around the mark.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SafeWaterBuoy : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			[Required()]
 			public buoyShape buoyShape {get;set;}
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public decimal? verticalLength {get;set;} = default;
@@ -5707,18 +5241,10 @@ namespace S100Framework.DomainModel.S501 {
 
 			public topmark? topmark {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,5,7,8,18])]
 			public List<status> status {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
@@ -5727,10 +5253,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public int? scaleMinimum {get;set;} = default;
 
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
+			[EnumerationValue([6,7,8,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public List<featureName> featureName {get;set;} = [];
@@ -5739,12 +5262,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public DateOnly? reportedDate {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public Boolean? radarConspicuous {get;set;} = default;
@@ -5763,9 +5281,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A place equipped to transmit radio waves. Such a station may be either stationary or mobile, and may also be provided with a radio receiver.
-	/// </summary>
+		/// <summary>
+		/// A place equipped to transmit radio waves. Such a station may be either stationary or mobile, and may also be provided with a radio receiver.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadioStation : FeatureNode, IFeatureBindingDefinition {
@@ -5787,20 +5305,10 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? communicationChannel {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+			[EnumerationValue([1,2,4,5,7,8])]
 			public List<status> status {get;set;} = [];
 
-			[EnumerationValue(5)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(14)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
+			[EnumerationValue([5,10,11,14,19,20])]
 			public List<categoryOfRadioStation> categoryOfRadioStation {get;set;} = [];
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
@@ -5821,9 +5329,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// Airspace of defined dimension identified by area on Earth's surface where activities must be confined because of their nature and/or where limitations may be imposed on aircraft.
-	/// </summary>
+		/// <summary>
+		/// Airspace of defined dimension identified by area on Earth's surface where activities must be confined because of their nature and/or where limitations may be imposed on aircraft.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MilitaryExerciseAirspace : FeatureNode, IFeatureBindingDefinition {
@@ -5855,9 +5363,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A zone contiguous to a coastal State's Territorial Sea, which may not extend beyond 24 nautical miles from the baselines from which the breadth of the Territorial Sea is measured. The coastal State may exercise certain control in this zone subject to the provisions of International Law.
-	/// </summary>
+		/// <summary>
+		/// A zone contiguous to a coastal State's Territorial Sea, which may not extend beyond 24 nautical miles from the baselines from which the breadth of the Territorial Sea is measured. The coastal State may exercise certain control in this zone subject to the provisions of International Law.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ContiguousZone : FeatureNode, IFeatureBindingDefinition {
@@ -5871,9 +5379,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public DateOnly? reportedDate {get;set;} = default;
 
-			[EnumerationValue(502)]
-			[EnumerationValue(504)]
-			[EnumerationValue(520)]
+			[EnumerationValue([502,504,520])]
 			public List<status> status {get;set;} = [];
 
 			public Boolean? inDispute {get;set;} = default;
@@ -5896,9 +5402,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// The low-water line along the coast as marked on large-scale charts officially recognized by the coastal State. In the case of islands situated on atolls or of islands having fringing reefs, the baseline for measuring the breadth of the territorial sea is the seaward low-water line of the reef, as shown by the appropriate symbol on charts officially recognized by the coastal State. Where a low-tide elevation is situated wholly or partly at a distance not exceeding the breadth of the territorial sea from the mainland or an island, the low-water line on that elevation may be used as the baseline for measuring the breadth of the territorial sea.
-	/// </summary>
+		/// <summary>
+		/// The low-water line along the coast as marked on large-scale charts officially recognized by the coastal State. In the case of islands situated on atolls or of islands having fringing reefs, the baseline for measuring the breadth of the territorial sea is the seaward low-water line of the reef, as shown by the appropriate symbol on charts officially recognized by the coastal State. Where a low-tide elevation is situated wholly or partly at a distance not exceeding the breadth of the territorial sea from the mainland or an island, the low-water line on that elevation may be used as the baseline for measuring the breadth of the territorial sea.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NormalBaseline : FeatureNode, IFeatureBindingDefinition {
@@ -5912,8 +5418,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? agencyResponsibleForProduction {get;set;} = default;
 
-			[EnumerationValue(502)]
-			[EnumerationValue(504)]
+			[EnumerationValue([502,504])]
 			public status? status {get;set;} = default;
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
@@ -5930,17 +5435,15 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// An area which contains one or more submarine cables.
-	/// </summary>
+		/// <summary>
+		/// An area which contains one or more submarine cables.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CableArea : FeatureNode, IFeatureBindingDefinition {
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(7)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,7,13])]
 			public List<status> status {get;set;} = [];
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -5955,35 +5458,12 @@ namespace S100Framework.DomainModel.S501 {
 
 			public int? scaleMinimum {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(20)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
-			[EnumerationValue(39)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,16,17,18,20,23,24,25,27,39])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(7)]
-			[EnumerationValue(10)]
+			[EnumerationValue([1,7,10])]
 			public List<categoryOfCable> categoryOfCable {get;set;} = [];
 
 			[JsonIgnore]
@@ -5998,15 +5478,13 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// The Continental Shelf of a coastal State comprises the seabed and subsoil of the submarine areas that extend beyond its Territorial Sea throughout the natural prolongation of its land territory to the outer edge of the continental margin, or to a distance of 200 nautical miles from the baselines from which the breadth of the Territorial Sea is measured where the outer edge of the continental margin does not extend up to that distance.
-	/// </summary>
+		/// <summary>
+		/// The Continental Shelf of a coastal State comprises the seabed and subsoil of the submarine areas that extend beyond its Territorial Sea throughout the natural prolongation of its land territory to the outer edge of the continental margin, or to a distance of 200 nautical miles from the baselines from which the breadth of the Territorial Sea is measured where the outer edge of the continental margin does not extend up to that distance.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ContinentalShelfArea : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(502)]
-			[EnumerationValue(504)]
-			[EnumerationValue(520)]
+			[EnumerationValue([502,504,520])]
 			public status? status {get;set;} = default;
 
 			public Boolean? inDispute {get;set;} = default;
@@ -6037,9 +5515,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// Waters on the landward side of the baseline of the territorial sea.
-	/// </summary>
+		/// <summary>
+		/// Waters on the landward side of the baseline of the territorial sea.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InternalWaters : FeatureNode, IFeatureBindingDefinition {
@@ -6059,9 +5537,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public DateOnly? reportedDate {get;set;} = default;
 
-			[EnumerationValue(502)]
-			[EnumerationValue(504)]
-			[EnumerationValue(520)]
+			[EnumerationValue([502,504,520])]
 			public status? status {get;set;} = default;
 
 			[JsonIgnore]
@@ -6076,9 +5552,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A defined area within which a jurisdiction applies. It may or may not be named.
-	/// </summary>
+		/// <summary>
+		/// A defined area within which a jurisdiction applies. It may or may not be named.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AdministrationArea : FeatureNode, IFeatureBindingDefinition {
@@ -6086,9 +5562,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public Boolean? inDispute {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			[Required()]
 			public jurisdiction jurisdiction {get;set;}
 
@@ -6112,9 +5586,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// Small shaped post, mounted on a wharf or dolphin used to secure ship's lines.
-	/// </summary>
+		/// <summary>
+		/// Small shaped post, mounted on a wharf or dolphin used to secure ship's lines.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Bollard : FeatureNode, IFeatureBindingDefinition {
@@ -6132,20 +5606,10 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,3,4,6,7,8,12,14,18])]
 			public List<status> status {get;set;} = [];
 
 			[JsonIgnore]
@@ -6160,9 +5624,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A post or group of posts, used for mooring or warping a vessel, or as an aid to navigation. The dolphin may be in the water, on a wharf or on the beach.
-	/// </summary>
+		/// <summary>
+		/// A post or group of posts, used for mooring or warping a vessel, or as an aid to navigation. The dolphin may be in the water, on a wharf or on the beach.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Dolphin : FeatureNode, IFeatureBindingDefinition {
@@ -6170,58 +5634,26 @@ namespace S100Framework.DomainModel.S501 {
 
 			public decimal? verticalLength {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,3,4])]
 			[Required()]
 			public categoryOfDolphin categoryOfDolphin {get;set;}
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public List<information> information {get;set;} = [];
 
 			public decimal? elevation {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,12,14,18])]
 			public List<status> status {get;set;} = [];
 
 			public List<featureName> featureName {get;set;} = [];
@@ -6230,9 +5662,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public DateOnly? reportedDate {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -6241,10 +5671,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public decimal? height {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
+			[EnumerationValue([1,2,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			[JsonIgnore]
@@ -6259,9 +5686,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// Indicates the coverage of a sea area by a radar surveillance station. Inside this area a vessel may request shore-based radar assistance, particularly in poor visibility.
-	/// </summary>
+		/// <summary>
+		/// Indicates the coverage of a sea area by a radar surveillance station. Inside this area a vessel may request shore-based radar assistance, particularly in poor visibility.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadarRange : FeatureNode, IFeatureBindingDefinition {
@@ -6277,10 +5704,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<String> communicationChannel {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(7)]
+			[EnumerationValue([1,2,4,7])]
 			public List<status> status {get;set;} = [];
 
 			[JsonIgnore]
@@ -6295,49 +5719,29 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// An isolated danger beacon is a beacon erected on an isolated danger of limited extent, which has navigable water all around it.
-	/// </summary>
+		/// <summary>
+		/// An isolated danger beacon is a beacon erected on an isolated danger of limited extent, which has navigable water all around it.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class IsolatedDangerBeacon : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,2,3,5])]
 			public condition? condition {get;set;} = default;
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public DateOnly? reportedDate {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
+			[EnumerationValue([1,2,3,4,5,6,7])]
 			[Required()]
 			public beaconShape beaconShape {get;set;}
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+			[EnumerationValue([1,2,6,7,8])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
 
 			public List<information> information {get;set;} = [];
@@ -6354,34 +5758,17 @@ namespace S100Framework.DomainModel.S501 {
 
 			public topmark? topmark {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public decimal? height {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public decimal? verticalLength {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public List<featureName> featureName {get;set;} = [];
@@ -6390,12 +5777,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[JsonIgnore]
@@ -6410,9 +5792,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// An isolated danger buoy is a buoy moored on or above an isolated danger of limited extent, which has navigable water all around it.
-	/// </summary>
+		/// <summary>
+		/// An isolated danger buoy is a buoy moored on or above an isolated danger of limited extent, which has navigable water all around it.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class IsolatedDangerBuoy : FeatureNode, IFeatureBindingDefinition {
@@ -6426,68 +5808,33 @@ namespace S100Framework.DomainModel.S501 {
 
 			public decimal? verticalLength {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			[Required()]
 			public buoyShape buoyShape {get;set;}
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
+			[EnumerationValue([6,7,8,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,5,7,8,18])]
 			public List<status> status {get;set;} = [];
 
 			[JsonIgnore]
@@ -6502,9 +5849,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A lane where submarines may navigate under water or at the surface.
-	/// </summary>
+		/// <summary>
+		/// A lane where submarines may navigate under water or at the surface.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SubmarineTransitLane : FeatureNode, IFeatureBindingDefinition {
@@ -6522,30 +5869,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public String? agencyResponsibleForProduction {get;set;} = default;
@@ -6566,9 +5890,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// MaritimeSafetyInformationArea (missing definition)
-	/// </summary>
+		/// <summary>
+		/// MaritimeSafetyInformationArea (missing definition)
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MaritimeSafetyInformationArea : FeatureNode, IFeatureBindingDefinition {
@@ -6594,9 +5918,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// The airspace above a designated land or water area through which flight is prohibited or restricted.
-	/// </summary>
+		/// <summary>
+		/// The airspace above a designated land or water area through which flight is prohibited or restricted.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AirspaceRestriction : FeatureNode, IFeatureBindingDefinition {
@@ -6612,32 +5936,17 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(3)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
+			[EnumerationValue([3,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
 
 			public DateOnly? reportedDate {get;set;} = default;
 
-			[EnumerationValue(2)]
+			[EnumerationValue([2])]
 			public heightLengthUnits? heightLengthUnits {get;set;} = default;
 
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
+			[EnumerationValue([501,502,503])]
 			public catagoryOfAirspaceRestriction? catagoryOfAirspaceRestriction {get;set;} = default;
 
 			[JsonIgnore]
@@ -6652,41 +5961,23 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// Measured or charted depth of water (may be a drying height), or the measurement of such a depth, which has been reduced to a vertical datum.
-	/// </summary>
+		/// <summary>
+		/// Measured or charted depth of water (may be a drying height), or the measurement of such a depth, which has been reduced to a vertical datum.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Sounding : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(18)]
+			[EnumerationValue([18])]
 			public status? status {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			public int? scaleMinimum {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
+			[EnumerationValue([1,3,4,8,9])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			public List<featureName> featureName {get;set;} = [];
@@ -6709,18 +6000,15 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// The outer limit of a traffic lane part or a traffic separation scheme roundabout.
-	/// </summary>
+		/// <summary>
+		/// The outer limit of a traffic lane part or a traffic separation scheme roundabout.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TrafficSeparationSchemeBoundary : FeatureNode, IFeatureBindingDefinition {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(9)]
-			[EnumerationValue(28)]
+			[EnumerationValue([1,3,9,28])]
 			public List<status> status {get;set;} = [];
 
 			public DateOnly? reportedDate {get;set;} = default;
@@ -6745,49 +6033,19 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A sea area where dredged material or other potentially more harmful material, for example explosives, chemical waste, is deliberately deposited.
-	/// </summary>
+		/// <summary>
+		/// A sea area where dredged material or other potentially more harmful material, for example explosives, chemical waste, is deliberately deposited.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DumpingGround : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([2,3,4,5,6])]
 			public List<categoryOfDumpingGround> categoryOfDumpingGround {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
+			[EnumerationValue([1,2,4,6,7])]
 			public List<status> status {get;set;} = [];
 
 			public int? scaleMinimum {get;set;} = default;
@@ -6810,35 +6068,25 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A defined area on land (including any buildings, installations and equipment) intended to be used either wholly or in part for the arrival, departure and surface movement of aircraft.
-	/// </summary>
+		/// <summary>
+		/// A defined area on land (including any buildings, installations and equipment) intended to be used either wholly or in part for the arrival, departure and surface movement of aircraft.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AirportAirfield : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
+			[EnumerationValue([1,2,3,4,5,6,8,9])]
 			public List<categoryOfAirportAirfield> categoryOfAirportAirfield {get;set;} = [];
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,2,3,5])]
 			public condition? condition {get;set;} = default;
 
 			public int? runwayLength {get;set;} = default;
 
-			[EnumerationValue(2)]
+			[EnumerationValue([2])]
 			public heightLengthUnits? heightLengthUnits {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
@@ -6847,20 +6095,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public decimal? elevation {get;set;} = default;
 
-			[EnumerationValue(3)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
+			[EnumerationValue([3,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public String? agencyResponsibleForProduction {get;set;} = default;
@@ -6873,15 +6108,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<featureName> featureName {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
+			[EnumerationValue([1,2,4,5,6,7,8,12,14])]
 			public List<status> status {get;set;} = [];
 
 			public DateOnly? reportedDate {get;set;} = default;
@@ -6900,44 +6127,21 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// Areas over which it is safe to navigate but which should be avoided for anchoring, taking the ground or ground fishing.
-	/// </summary>
+		/// <summary>
+		/// Areas over which it is safe to navigate but which should be avoided for anchoring, taking the ground or ground fishing.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FoulGround : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(13)]
-			[EnumerationValue(18)]
-			[EnumerationValue(28)]
+			[EnumerationValue([13,18,28])]
 			public List<status> status {get;set;} = [];
 
 			public decimal? valueOfSounding {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
+			[EnumerationValue([1,2,3,4,6,7,8,9])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			public DateOnly? reportedDate {get;set;} = default;
@@ -6962,9 +6166,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// An air obstruction light is a light marking an obstacle which constitutes a danger to air navigation.
-	/// </summary>
+		/// <summary>
+		/// An air obstruction light is a light marking an obstacle which constitutes a danger to air navigation.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightAirObstruction : FeatureNode, IFeatureBindingDefinition {
@@ -6980,18 +6184,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public rythmOfLight? rythmOfLight {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
+			[EnumerationValue([1,2,4,5,6,7,8,11,14,15,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public int? scaleMinimum {get;set;} = default;
@@ -7002,18 +6195,10 @@ namespace S100Framework.DomainModel.S501 {
 
 			public DateOnly? reportedDate {get;set;} = default;
 
-			[EnumerationValue(1)]
+			[EnumerationValue([1])]
 			public heightLengthUnits? heightLengthUnits {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<lightVisibility> lightVisibility {get;set;} = [];
 
 			public List<featureName> featureName {get;set;} = [];
@@ -7024,40 +6209,17 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			[EnumerationValue(3)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
+			[EnumerationValue([3,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public decimal? relativeVerticalAccuracy {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,3,4])]
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,3,4,5,6,9,10,11])]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -7072,9 +6234,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A buoy secured to the bottom by permanent moorings with means for mooring a vessel by use of its anchor chain or mooring lines.
-	/// </summary>
+		/// <summary>
+		/// A buoy secured to the bottom by permanent moorings with means for mooring a vessel by use of its anchor chain or mooring lines.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MooringBuoy : FeatureNode, IFeatureBindingDefinition {
@@ -7084,55 +6246,23 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
+			[EnumerationValue([7,8,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,4,5,7,8,18])]
 			public List<status> status {get;set;} = [];
 
 			public List<featureName> featureName {get;set;} = [];
 
 			public int? scaleMinimum {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			[Required()]
 			public buoyShape buoyShape {get;set;}
 
@@ -7160,9 +6290,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A concreted mass of stony material or coral which dries, is awash or is below the water surface.
-	/// </summary>
+		/// <summary>
+		/// A concreted mass of stony material or coral which dries, is awash or is below the water surface.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class UnderwaterAwashRock : FeatureNode, IFeatureBindingDefinition {
@@ -7173,9 +6303,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public decimal? horizontalWidth {get;set;} = default;
 
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
+			[EnumerationValue([3,4,5])]
 			[Required()]
 			public waterLevelEffect waterLevelEffect {get;set;}
 
@@ -7183,38 +6311,22 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(14)]
-			[EnumerationValue(18)]
+			[EnumerationValue([14,18])]
 			public natureOfSurface? natureOfSurface {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
 
 			public Boolean? displayUncertainties {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
+			[EnumerationValue([1,2])]
 			public expositionOfSounding? expositionOfSounding {get;set;} = default;
 
 			public decimal? defaultClearanceDepth {get;set;} = default;
 
-			[EnumerationValue(18)]
+			[EnumerationValue([18])]
 			public List<status> status {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			public decimal? verticalLength {get;set;} = default;
@@ -7231,14 +6343,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public lastSourceInformation? lastSourceInformation {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
+			[EnumerationValue([1,2,3,4,6,7,8,9])]
 			public qualityOfVerticalMeasurement? qualityOfVerticalMeasurement {get;set;} = default;
 
 			[JsonIgnore]
@@ -7253,45 +6358,24 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A single continuous rope-like bundle consisting of multiple strands of fiber, plastic, metal, and/or glass, which is supported by structures such as poles or pylons and passing over or nearby navigable waters.
-	/// </summary>
+		/// <summary>
+		/// A single continuous rope-like bundle consisting of multiple strands of fiber, plastic, metal, and/or glass, which is supported by structures such as poles or pylons and passing over or nearby navigable waters.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CableOverhead : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,5])]
 			public condition? condition {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(12)]
-			[EnumerationValue(28)]
+			[EnumerationValue([1,4,5,7,12,28])]
 			public List<status> status {get;set;} = [];
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
-			[EnumerationValue(3)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
+			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,3])]
 			public categoryOfCable? categoryOfCable {get;set;} = default;
 
 			public verticalClearanceSafe? verticalClearanceSafe {get;set;} = default;
@@ -7304,9 +6388,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
@@ -7329,47 +6411,20 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// Designated airspace within which some or all aircraft may be subjected to air traffic control.
-	/// </summary>
+		/// <summary>
+		/// Designated airspace within which some or all aircraft may be subjected to air traffic control.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ControlledAirspace : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
-			[EnumerationValue(504)]
-			[EnumerationValue(505)]
-			[EnumerationValue(506)]
-			[EnumerationValue(507)]
+			[EnumerationValue([501,502,503,504,505,506,507])]
 			public controlledAirspaceClassDesignation? controlledAirspaceClassDesignation {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
 
 			public List<featureName> featureName {get;set;} = [];
 
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
-			[EnumerationValue(504)]
-			[EnumerationValue(505)]
-			[EnumerationValue(506)]
-			[EnumerationValue(507)]
-			[EnumerationValue(508)]
-			[EnumerationValue(509)]
-			[EnumerationValue(510)]
-			[EnumerationValue(511)]
-			[EnumerationValue(512)]
-			[EnumerationValue(513)]
-			[EnumerationValue(514)]
-			[EnumerationValue(515)]
-			[EnumerationValue(516)]
-			[EnumerationValue(517)]
-			[EnumerationValue(518)]
-			[EnumerationValue(519)]
-			[EnumerationValue(520)]
-			[EnumerationValue(521)]
-			[EnumerationValue(522)]
+			[EnumerationValue([501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522])]
 			public categoryOfControlledAirspace? categoryOfControlledAirspace {get;set;} = default;
 
 			public String? controllingAuthority {get;set;} = default;
@@ -7378,23 +6433,10 @@ namespace S100Framework.DomainModel.S501 {
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
 
-			[EnumerationValue(3)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
+			[EnumerationValue([3,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
-			[EnumerationValue(2)]
+			[EnumerationValue([2])]
 			public heightLengthUnits? heightLengthUnits {get;set;} = default;
 
 			public String? agencyResponsibleForProduction {get;set;} = default;
@@ -7415,85 +6457,18 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// In marine navigation, anything that hinders or prevents movement, particularly anything that endangers or prevents passage of a vessel. The term is usually used to refer to an isolated danger to navigation, such as a sunken rock or pinnacle.
-	/// </summary>
+		/// <summary>
+		/// In marine navigation, anything that hinders or prevents movement, particularly anything that endangers or prevents passage of a vessel. The term is usually used to refer to an isolated danger to navigation, such as a sunken rock or pinnacle.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Obstruction : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,11,12])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public String? controllingAuthority {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(25)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
-			[EnumerationValue(505)]
-			[EnumerationValue(506)]
-			[EnumerationValue(507)]
-			[EnumerationValue(508)]
-			[EnumerationValue(509)]
-			[EnumerationValue(510)]
-			[EnumerationValue(511)]
-			[EnumerationValue(513)]
-			[EnumerationValue(514)]
-			[EnumerationValue(515)]
-			[EnumerationValue(516)]
-			[EnumerationValue(517)]
-			[EnumerationValue(519)]
-			[EnumerationValue(520)]
-			[EnumerationValue(521)]
-			[EnumerationValue(522)]
-			[EnumerationValue(523)]
-			[EnumerationValue(524)]
-			[EnumerationValue(525)]
-			[EnumerationValue(526)]
-			[EnumerationValue(527)]
-			[EnumerationValue(528)]
-			[EnumerationValue(529)]
-			[EnumerationValue(530)]
-			[EnumerationValue(531)]
-			[EnumerationValue(532)]
-			[EnumerationValue(533)]
-			[EnumerationValue(534)]
-			[EnumerationValue(535)]
-			[EnumerationValue(536)]
-			[EnumerationValue(537)]
-			[EnumerationValue(540)]
-			[EnumerationValue(541)]
-			[EnumerationValue(542)]
+			[EnumerationValue([1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,25,502,503,505,506,507,508,509,510,511,513,514,515,516,517,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,540,541,542])]
 			public List<product> product {get;set;} = [];
 
 			public Boolean? existenceOfRestrictedArea {get;set;} = default;
@@ -7504,9 +6479,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public int? scaleMinimum {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public expositionOfSounding? expositionOfSounding {get;set;} = default;
 
 			public firstSourceInformation? firstSourceInformation {get;set;} = default;
@@ -7519,30 +6492,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public orientation? orientation {get;set;} = default;
 
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
-			[EnumerationValue(504)]
-			[EnumerationValue(505)]
-			[EnumerationValue(506)]
-			[EnumerationValue(507)]
-			[EnumerationValue(508)]
-			[EnumerationValue(509)]
-			[EnumerationValue(510)]
-			[EnumerationValue(511)]
-			[EnumerationValue(512)]
-			[EnumerationValue(513)]
-			[EnumerationValue(514)]
-			[EnumerationValue(515)]
-			[EnumerationValue(519)]
-			[EnumerationValue(522)]
-			[EnumerationValue(523)]
-			[EnumerationValue(524)]
-			[EnumerationValue(525)]
-			[EnumerationValue(526)]
-			[EnumerationValue(527)]
-			[EnumerationValue(531)]
-			[EnumerationValue(532)]
+			[EnumerationValue([501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,519,522,523,524,525,526,527,531,532])]
 			public soundingDatum? soundingDatum {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
@@ -7551,131 +6501,44 @@ namespace S100Framework.DomainModel.S501 {
 
 			public decimal? horizontalWidth {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(13)]
-			[EnumerationValue(18)]
-			[EnumerationValue(28)]
-			[EnumerationValue(501)]
-			[EnumerationValue(503)]
-			[EnumerationValue(505)]
-			[EnumerationValue(506)]
-			[EnumerationValue(507)]
-			[EnumerationValue(508)]
-			[EnumerationValue(509)]
-			[EnumerationValue(510)]
-			[EnumerationValue(511)]
-			[EnumerationValue(512)]
-			[EnumerationValue(516)]
-			[EnumerationValue(517)]
-			[EnumerationValue(518)]
+			[EnumerationValue([1,4,5,7,8,13,18,28,501,503,505,506,507,508,509,510,511,512,516,517,518])]
 			public List<status> status {get;set;} = [];
 
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public int? generalWaterDepth {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
+			[EnumerationValue([1,2,3,4,6,7,8,9])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			public detectionDateRange? detectionDateRange {get;set;} = default;
 
 			public String? oprtor {get;set;} = default;
 
-			[EnumerationValue(3)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
-			[EnumerationValue(501)]
+			[EnumerationValue([3,16,17,18,19,20,21,24,25,26,28,29,30,44,501])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public decimal? height {get;set;} = default;
 
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
-			[EnumerationValue(504)]
+			[EnumerationValue([501,502,503,504])]
 			public sonarSignalStrength? sonarSignalStrength {get;set;} = default;
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			[EnumerationValue(14)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,14,17,18])]
 			public List<natureOfSurface> natureOfSurface {get;set;} = [];
 
 			public DateOnly? spuddedDate {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
-			[EnumerationValue(504)]
-			[EnumerationValue(506)]
-			[EnumerationValue(508)]
-			[EnumerationValue(509)]
+			[EnumerationValue([1,2,3,4,5,6,8,9,10,12,13,14,15,16,17,18,19,20,21,22,23,501,502,503,504,506,508,509])]
 			public categoryOfObstruction? categoryOfObstruction {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public DateOnly? dateSunk {get;set;} = default;
@@ -7688,39 +6551,17 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? currentScourDimensions {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			public DateOnly? reportedDate {get;set;} = default;
 
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
-			[EnumerationValue(504)]
+			[EnumerationValue([501,502,503,504])]
 			public cardinalPointOrientation? cardinalPointOrientation {get;set;} = default;
 
 			public decimal? valueOfSounding {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
+			[EnumerationValue([1,2,3,4,5,7])]
 			[Required()]
 			public waterLevelEffect waterLevelEffect {get;set;}
 
@@ -7742,21 +6583,13 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A water area in which fishing is frequently carried on.
-	/// </summary>
+		/// <summary>
+		/// A water area in which fishing is frequently carried on.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FishingGround : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(28)]
+			[EnumerationValue([1,5,6,7,8,14,16,17,28])]
 			public List<status> status {get;set;} = [];
 
 			public DateOnly? reportedDate {get;set;} = default;
@@ -7773,30 +6606,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<featureName> featureName {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(39)]
+			[EnumerationValue([1,2,4,5,6,8,9,10,11,12,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public List<information> information {get;set;} = [];
@@ -7813,9 +6623,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A structure for fishing purposes which can be an obstruction to ships in general. The position of these structures may vary frequently over time.
-	/// </summary>
+		/// <summary>
+		/// A structure for fishing purposes which can be an obstruction to ships in general. The position of these structures may vary frequently over time.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FishingFacility : FeatureNode, IFeatureBindingDefinition {
@@ -7823,30 +6633,17 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public decimal? verticalLength {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(18)]
-			[EnumerationValue(28)]
+			[EnumerationValue([1,4,5,6,7,8,12,18,28])]
 			public List<status> status {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,3,4])]
 			public categoryOfFishingFacility? categoryOfFishingFacility {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
@@ -7867,9 +6664,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// Any visual or electronic device which provides point-to-point guidance information or position data 
-	/// </summary>
+		/// <summary>
+		/// Any visual or electronic device which provides point-to-point guidance information or position data 
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NavigationSystem : FeatureNode, IFeatureBindingDefinition {
@@ -7879,28 +6676,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? agencyResponsibleForProduction {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(504)]
-			[EnumerationValue(505)]
-			[EnumerationValue(506)]
-			[EnumerationValue(508)]
-			[EnumerationValue(509)]
-			[EnumerationValue(510)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,19,20,504,505,506,508,509,510])]
 			public categoryOfRadioStation? categoryOfRadioStation {get;set;} = default;
 
 			public DateOnly? reportedDate {get;set;} = default;
@@ -7925,35 +6701,13 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A defined area where traffic lanes cross.
-	/// </summary>
+		/// <summary>
+		/// A defined area where traffic lanes cross.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TrafficSeparationSchemeCrossing : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
+			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
@@ -7964,10 +6718,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
+			[EnumerationValue([1,3,6,9])]
 			public List<status> status {get;set;} = [];
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -7988,9 +6739,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// An area within defined limits in which one-way traffic is established. Natural obstacles, including those forming separation zones, may constitute a boundary.
-	/// </summary>
+		/// <summary>
+		/// An area within defined limits in which one-way traffic is established. Natural obstacles, including those forming separation zones, may constitute a boundary.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TrafficSeparationSchemeLanePart : FeatureNode, IFeatureBindingDefinition {
@@ -8002,39 +6753,14 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
+			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public decimal? orientationValue {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(9)]
-			[EnumerationValue(28)]
+			[EnumerationValue([1,3,9,28])]
 			public List<status> status {get;set;} = [];
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
@@ -8053,9 +6779,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A belt of water of a defined breadth but not exceeding 12 nautical miles measured seaward from the territorial sea baseline.
-	/// </summary>
+		/// <summary>
+		/// A belt of water of a defined breadth but not exceeding 12 nautical miles measured seaward from the territorial sea baseline.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TerritorialSeaArea : FeatureNode, IFeatureBindingDefinition {
@@ -8063,9 +6789,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<featureName> featureName {get;set;} = [];
 
-			[EnumerationValue(502)]
-			[EnumerationValue(504)]
-			[EnumerationValue(520)]
+			[EnumerationValue([502,504,520])]
 			public status? status {get;set;} = default;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -8078,22 +6802,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public DateOnly? reportedDate {get;set;} = default;
 
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(12)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(27)]
+			[EnumerationValue([2,4,6,8,9,10,12,17,18,19,20,21,22,23,24,27])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public int? scaleMinimum {get;set;} = default;
@@ -8114,54 +6823,33 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A lateral beacon is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage.
-	/// </summary>
+		/// <summary>
+		/// A lateral beacon is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LateralBeacon : FeatureNode, IFeatureBindingDefinition {
 			public decimal? elevation {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
+			[EnumerationValue([1,2,3,4,5,6,7])]
 			[Required()]
 			public beaconShape beaconShape {get;set;}
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,3,4])]
 			[Required()]
 			public categoryOfLateralMark categoryOfLateralMark {get;set;}
 
 			public DateOnly? reportedDate {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -8178,12 +6866,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
@@ -8194,31 +6877,13 @@ namespace S100Framework.DomainModel.S501 {
 
 			public decimal? height {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+			[EnumerationValue([1,2,6,7,8])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -8233,17 +6898,13 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A station at which a visual/radio/radar marine watch is kept either continuously or at certain times only.
-	/// </summary>
+		/// <summary>
+		/// A station at which a visual/radio/radar marine watch is kept either continuously or at certain times only.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CoastGuardStation : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
+			[EnumerationValue([1,4,5,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public int? scaleMinimum {get;set;} = default;
@@ -8272,9 +6933,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A zone or line separating the traffic lanes in which ships are proceeding in opposite, or nearly opposite directions; or separating a traffic lane from the adjacent sea area; or separating traffic lanes designated for particular classes of ships proceeding in the same direction.
-	/// </summary>
+		/// <summary>
+		/// A zone or line separating the traffic lanes in which ships are proceeding in opposite, or nearly opposite directions; or separating a traffic lane from the adjacent sea area; or separating traffic lanes designated for particular classes of ships proceeding in the same direction.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SeparationZoneOrLine : FeatureNode, IFeatureBindingDefinition {
@@ -8282,10 +6943,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(9)]
-			[EnumerationValue(28)]
+			[EnumerationValue([1,3,9,28])]
 			public List<status> status {get;set;} = [];
 
 			public List<information> information {get;set;} = [];
@@ -8308,9 +6966,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A significant configuration of underwater topography 
-	/// </summary>
+		/// <summary>
+		/// A significant configuration of underwater topography 
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class BottomFeature : FeatureNode, IFeatureBindingDefinition {
@@ -8322,8 +6980,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public decimal? horizontalLength {get;set;} = default;
 
-			[EnumerationValue(502)]
-			[EnumerationValue(510)]
+			[EnumerationValue([502,510])]
 			public bottomFeatureClassification? bottomFeatureClassification {get;set;} = default;
 
 			public DateOnly? reportedDate {get;set;} = default;
@@ -8342,16 +6999,15 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// Straight baselines joining the outermost points of the outermost islands and drying reefs of the archipelago provided that within such baselines are included the main islands and an area in which the ratio of the area of the water to the area of the land, including atolls, is between 1 to 1 and 9 to 1.
-	/// </summary>
+		/// <summary>
+		/// Straight baselines joining the outermost points of the outermost islands and drying reefs of the archipelago provided that within such baselines are included the main islands and an area in which the ratio of the area of the water to the area of the land, including atolls, is between 1 to 1 and 9 to 1.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ArchipelagicBaseline : FeatureNode, IFeatureBindingDefinition {
 			public DateOnly? reportedDate {get;set;} = default;
 
-			[EnumerationValue(502)]
-			[EnumerationValue(504)]
+			[EnumerationValue([502,504])]
 			public status? status {get;set;} = default;
 
 			public Boolean? inDispute {get;set;} = default;
@@ -8378,15 +7034,15 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// Underwater feature appearing mine-like on a sonar image (AML)
-	/// </summary>
+		/// <summary>
+		/// Underwater feature appearing mine-like on a sonar image (AML)
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SmallBottomObject : FeatureNode, IFeatureBindingDefinition {
 			public String? agencyResponsibleForProduction {get;set;} = default;
 
-			[EnumerationValue(504)]
+			[EnumerationValue([504])]
 			public statusOfSmallBottomObject? statusOfSmallBottomObject {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
@@ -8408,9 +7064,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// An area, not exceeding 200 nautical miles from the baselines from which the breadth of the territorial sea is measured, subject to a specific legal regime established in the United Nations Convention on the Law of the Sea under which the coastal state has certain rights and jurisdiction.
-	/// </summary>
+		/// <summary>
+		/// An area, not exceeding 200 nautical miles from the baselines from which the breadth of the territorial sea is measured, subject to a specific legal regime established in the United Nations Convention on the Law of the Sea under which the coastal state has certain rights and jurisdiction.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ExclusiveEconomicZone : FeatureNode, IFeatureBindingDefinition {
@@ -8444,21 +7100,16 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A station with a transmitter emitting pulses of ultra-high frequency radio waves which are reflected by solid objects and are detected upon their return to the sending station.
-	/// </summary>
+		/// <summary>
+		/// A station with a transmitter emitting pulses of ultra-high frequency radio waves which are reflected by solid objects and are detected upon their return to the sending station.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadarStation : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+			[EnumerationValue([1,2,4,7,8])]
 			public List<status> status {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
+			[EnumerationValue([1,2])]
 			public categoryOfRadarStation? categoryOfRadarStation {get;set;} = default;
 
 			public decimal? height {get;set;} = default;
@@ -8491,9 +7142,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// Location where civilian diving activities take place. 
-	/// </summary>
+		/// <summary>
+		/// Location where civilian diving activities take place. 
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DivingLocation : FeatureNode, IFeatureBindingDefinition {
@@ -8501,9 +7152,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<featureName> featureName {get;set;} = [];
 
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
+			[EnumerationValue([501,502,503])]
 			public divingActivity? divingActivity {get;set;} = default;
 
 			[JsonIgnore]
@@ -8518,9 +7167,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A specified area designated by an appropriate authority within which navigation is restricted in accordance with certain specified conditions.
-	/// </summary>
+		/// <summary>
+		/// A specified area designated by an appropriate authority within which navigation is restricted in accordance with certain specified conditions.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RestrictedArea : FeatureNode, IFeatureBindingDefinition {
@@ -8528,48 +7177,14 @@ namespace S100Framework.DomainModel.S501 {
 
 			public int? scaleMinimum {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(31)]
-			[EnumerationValue(32)]
-			[EnumerationValue(501)]
+			[EnumerationValue([1,4,5,6,7,8,9,10,12,14,18,19,20,21,22,23,24,25,27,28,29,30,31,32,501])]
 			public List<categoryOfRestrictedArea> categoryOfRestrictedArea {get;set;} = [];
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public String? nationality {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(9)]
-			[EnumerationValue(18)]
-			[EnumerationValue(28)]
-			[EnumerationValue(501)]
+			[EnumerationValue([1,2,3,4,5,6,7,9,18,28,501])]
 			public List<status> status {get;set;} = [];
 
 			public List<information> information {get;set;} = [];
@@ -8582,35 +7197,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? controllingAuthority {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(39)]
-			[EnumerationValue(42)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39,42])]
 			public List<restriction> restriction {get;set;} = [];
 
 			[JsonIgnore]
@@ -8625,16 +7212,13 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// An assembly of wires or fibres, or a wire rope or chain, which has been laid underwater or buried beneath the seafloor.
-	/// </summary>
+		/// <summary>
+		/// An assembly of wires or fibres, or a wire rope or chain, which has been laid underwater or buried beneath the seafloor.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CableSubmarine : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(13)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,4,13,18])]
 			public List<status> status {get;set;} = [];
 
 			public decimal? depthRangeMinimumValue {get;set;} = default;
@@ -8647,17 +7231,12 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<featureName> featureName {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
+			[EnumerationValue([1,6,7,9,10])]
 			public categoryOfCable? categoryOfCable {get;set;} = default;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,5])]
 			public condition? condition {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
@@ -8680,36 +7259,20 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// The ruined remains of a stranded or sunken vessel which has been rendered useless.
-	/// </summary>
+		/// <summary>
+		/// The ruined remains of a stranded or sunken vessel which has been rendered useless.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Wreck : FeatureNode, IFeatureBindingDefinition {
 			public decimal? surroundingDepth {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			public horizontalPositionUncertainty? horizontalPositionUncertainty {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public DateOnly? reportedDate {get;set;} = default;
@@ -8720,15 +7283,10 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? currentScourDimensions {get;set;} = default;
 
-			[EnumerationValue(7)]
-			[EnumerationValue(13)]
-			[EnumerationValue(18)]
+			[EnumerationValue([7,13,18])]
 			public List<status> status {get;set;} = [];
 
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
-			[EnumerationValue(504)]
+			[EnumerationValue([501,502,503,504])]
 			public sonarSignalStrength? sonarSignalStrength {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
@@ -8737,51 +7295,28 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? agencyResponsibleForProduction {get;set;} = default;
 
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+			[EnumerationValue([6,7,8])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public decimal? defaultClearanceDepth {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			[EnumerationValue(14)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,14,17,18])]
 			public natureOfSurface? natureOfSurface {get;set;} = default;
 
 			public decimal? orientationValue {get;set;} = default;
 
 			public String? typeOfWreck {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,2,3,4,5])]
 			[Required()]
 			public waterLevelEffect waterLevelEffect {get;set;}
 
 			public decimal? verticalLength {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,2,3,4,5])]
 			public categoryOfWreck? categoryOfWreck {get;set;} = default;
 
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
+			[EnumerationValue([4,5])]
 			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
 
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
@@ -8796,20 +7331,10 @@ namespace S100Framework.DomainModel.S501 {
 
 			public lastSourceInformation? lastSourceInformation {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
+			[EnumerationValue([1,2,3,4,6,7,8,9])]
 			public qualityOfVerticalMeasurement? qualityOfVerticalMeasurement {get;set;} = default;
 
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
-			[EnumerationValue(504)]
+			[EnumerationValue([501,502,503,504])]
 			public cardinalPointOrientation? cardinalPointOrientation {get;set;} = default;
 
 			public List<vesselMeasurementsSpecification> vesselMeasurementsSpecification {get;set;} = [];
@@ -8824,40 +7349,14 @@ namespace S100Framework.DomainModel.S501 {
 
 			public decimal? valueOfSounding {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25])]
 			public List<product> product {get;set;} = [];
 
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public Boolean? displayUncertainties {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public expositionOfSounding? expositionOfSounding {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
@@ -8874,9 +7373,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A pre-planned dormant channel and/or route, surveyed for mine-like contacts during peacetime that can be 'activated' to provide shipping with safe navigable routes.
-	/// </summary>
+		/// <summary>
+		/// A pre-planned dormant channel and/or route, surveyed for mine-like contacts during peacetime that can be 'activated' to provide shipping with safe navigable routes.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class QRoute : FeatureNode, IFeatureBindingDefinition {
@@ -8886,8 +7385,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<featureName> featureName {get;set;} = [];
 
-			[EnumerationValue(2)]
-			[EnumerationValue(503)]
+			[EnumerationValue([2,503])]
 			public List<status> status {get;set;} = [];
 
 			public qRouteChannelWidth? qRouteChannelWidth {get;set;} = default;
@@ -8908,16 +7406,15 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// CompletenessOfProductSpecification (missing definition)
-	/// </summary>
+		/// <summary>
+		/// CompletenessOfProductSpecification (missing definition)
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CompletenessOfProductSpecification : FeatureNode, IFeatureBindingDefinition {
 			public String? agencyResponsibleForProduction {get;set;} = default;
 
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
+			[EnumerationValue([501,502])]
 			[Required()]
 			public categoryOfCompleteness categoryOfCompleteness {get;set;}
 
@@ -8941,21 +7438,13 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A place where equipment for saving life at sea is maintained.
-	/// </summary>
+		/// <summary>
+		/// A place where equipment for saving life at sea is maintained.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RescueStation : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
+			[EnumerationValue([1,2,4,5,7,8,14,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
@@ -8968,13 +7457,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+			[EnumerationValue([1,2,4,5,6,7,8])]
 			public List<categoryOfRescueStation> categoryOfRescueStation {get;set;} = [];
 
 			public int? scaleMinimum {get;set;} = default;
@@ -8993,63 +7476,36 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A cardinal beacon is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
-	/// </summary>
+		/// <summary>
+		/// A cardinal beacon is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CardinalBeacon : FeatureNode, IFeatureBindingDefinition {
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+			[EnumerationValue([1,2,6,7,8])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
+			[EnumerationValue([1,2,3,5,6,7])]
 			[Required()]
 			public beaconShape beaconShape {get;set;}
 
 			public topmark? topmark {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,3,4])]
 			[Required()]
 			public categoryOfCardinalMark categoryOfCardinalMark {get;set;}
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
 
 			public decimal? height {get;set;} = default;
@@ -9066,34 +7522,17 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public decimal? elevation {get;set;} = default;
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,2,3,5])]
 			public condition? condition {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
@@ -9110,26 +7549,16 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A distinctively marked vessel anchored or moored at a charted point, to serve as an aid to navigation. By night, it displays a characteristic light(s) and is usually equipped with other devices, such as fog signal, submarine sound signal, and radio-beacon, to assist navigation.
-	/// </summary>
+		/// <summary>
+		/// A distinctively marked vessel anchored or moored at a charted point, to serve as an aid to navigation. By night, it displays a characteristic light(s) and is usually equipped with other devices, such as fog signal, submarine sound signal, and radio-beacon, to assist navigation.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightVessel : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
+			[EnumerationValue([1,2,4,5,7,8,14,16,17])]
 			public List<status> status {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -9146,33 +7575,15 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
+			[EnumerationValue([6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
@@ -9193,9 +7604,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// The offshore zone in which exclusive fishing rights and management are held by the coastal nation.
-	/// </summary>
+		/// <summary>
+		/// The offshore zone in which exclusive fishing rights and management are held by the coastal nation.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FisheryZone : FeatureNode, IFeatureBindingDefinition {
@@ -9215,15 +7626,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<featureName> featureName {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(504)]
-			[EnumerationValue(519)]
-			[EnumerationValue(521)]
+			[EnumerationValue([1,5,6,7,501,502,504,519,521])]
 			public status? status {get;set;} = default;
 
 			[JsonIgnore]
@@ -9238,9 +7641,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// An area of the bottom of a body of water which has been deepened by dredging.
-	/// </summary>
+		/// <summary>
+		/// An area of the bottom of a body of water which has been deepened by dredging.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DredgedArea : FeatureNode, IFeatureBindingDefinition {
@@ -9254,45 +7657,16 @@ namespace S100Framework.DomainModel.S501 {
 
 			public decimal? depthRangeMaximumValue {get;set;} = default;
 
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
+			[EnumerationValue([10,11])]
 			public qualityOfVerticalMeasurement? qualityOfVerticalMeasurement {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,3,8,9,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			[Required()]
 			public decimal depthRangeMinimumValue {get;set;}
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(23)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
-			[EnumerationValue(39)]
+			[EnumerationValue([1,2,3,4,5,6,8,11,12,13,16,17,18,19,20,21,23,25,27,39])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public List<information> information {get;set;} = [];
@@ -9309,21 +7683,13 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A route in a body of water where a ferry crosses from one shoreline to another.
-	/// </summary>
+		/// <summary>
+		/// A route in a body of water where a ferry crosses from one shoreline to another.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FerryRoute : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(14)]
+			[EnumerationValue([1,2,4,5,6,7,8,9,14])]
 			public List<status> status {get;set;} = [];
 
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -9342,10 +7708,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public DateOnly? reportedDate {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,2,3,5])]
 			public List<categoryOfFerry> categoryOfFerry {get;set;} = [];
 
 			public List<information> information {get;set;} = [];
@@ -9364,47 +7727,26 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A fixed artificial structure in the water and/or adjoining the land. It may also refer to features such as training walls, which are not necessarily connected to, nor form part of the shoreline.
-	/// </summary>
+		/// <summary>
+		/// A fixed artificial structure in the water and/or adjoining the land. It may also refer to features such as training walls, which are not necessarily connected to, nor form part of the shoreline.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ShorelineConstruction : FeatureNode, IFeatureBindingDefinition {
 			public decimal? horizontalLength {get;set;} = default;
 
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
-			[EnumerationValue(504)]
-			[EnumerationValue(505)]
+			[EnumerationValue([501,502,503,504,505])]
 			public gradientOfSlope? gradientOfSlope {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,2,3,5])]
 			public condition? condition {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public decimal? horizontalWidth {get;set;} = default;
@@ -9417,75 +7759,26 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(28)]
+			[EnumerationValue([1,2,3,4,6,7,8,12,13,14,28])]
 			public List<status> status {get;set;} = [];
 
 			public decimal? verticalLength {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
+			[EnumerationValue([1,2,3,4,5,6,7])]
 			[Required()]
 			public waterLevelEffect waterLevelEffect {get;set;}
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(20)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(501)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,20,22,23,501])]
 			public categoryOfShorelineConstruction? categoryOfShorelineConstruction {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public decimal? height {get;set;} = default;
@@ -9504,9 +7797,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// Generally, an area where the mariner has to be made aware of circumstances influencing the safety of navigation.
-	/// </summary>
+		/// <summary>
+		/// Generally, an area where the mariner has to be made aware of circumstances influencing the safety of navigation.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CautionArea : FeatureNode, IFeatureBindingDefinition {
@@ -9516,13 +7809,10 @@ namespace S100Framework.DomainModel.S501 {
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
+			[EnumerationValue([5,7])]
 			public status? status {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,3,5])]
 			public condition? condition {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
@@ -9543,9 +7833,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// An area of a deep water route within which ships proceed in the same direction.
-	/// </summary>
+		/// <summary>
+		/// An area of a deep water route within which ships proceed in the same direction.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DeepWaterRoutePart : FeatureNode, IFeatureBindingDefinition {
@@ -9555,10 +7845,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,3,4])]
 			[Required()]
 			public trafficFlow trafficFlow {get;set;}
 
@@ -9573,61 +7860,21 @@ namespace S100Framework.DomainModel.S501 {
 			[Required()]
 			public decimal depthRangeMinimumValue {get;set;}
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,3,5,8,9,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			public List<featureName> featureName {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
-			[EnumerationValue(28)]
+			[EnumerationValue([1,3,6,9,28])]
 			public List<status> status {get;set;} = [];
 
 			[Required()]
 			public decimal orientationValue {get;set;}
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
+			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
+			[EnumerationValue([1,2,3,4,6,7])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			[JsonIgnore]
@@ -9642,9 +7889,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// Any current that is caused by other than tide producing forces.
-	/// </summary>
+		/// <summary>
+		/// Any current that is caused by other than tide producing forces.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CurrentNonGravitational : FeatureNode, IFeatureBindingDefinition {
@@ -9664,7 +7911,7 @@ namespace S100Framework.DomainModel.S501 {
 			[Required()]
 			public speed speed {get;set;}
 
-			[EnumerationValue(5)]
+			[EnumerationValue([5])]
 			public status? status {get;set;} = default;
 
 			[JsonIgnore]
@@ -9679,9 +7926,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A geographical area that describes the coverage and extent of spatial objects.
-	/// </summary>
+		/// <summary>
+		/// A geographical area that describes the coverage and extent of spatial objects.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
@@ -9689,8 +7936,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
+			[EnumerationValue([1,2])]
 			public categoryOfCoverage? categoryOfCoverage {get;set;} = default;
 
 			[Required()]
@@ -9716,9 +7962,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A region of the seabed including the material of which it is composed and its physical characteristics. Also called nature of bottom, character (or characteristics) of the bottom, or quality of the bottom.
-	/// </summary>
+		/// <summary>
+		/// A region of the seabed including the material of which it is composed and its physical characteristics. Also called nature of bottom, character (or characteristics) of the bottom, or quality of the bottom.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SeabedArea : FeatureNode, IFeatureBindingDefinition {
@@ -9728,9 +7974,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public int? scaleMinimum {get;set;} = default;
 
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
+			[EnumerationValue([3,4,5])]
 			[Required()]
 			public waterLevelEffect waterLevelEffect {get;set;}
 
@@ -9752,22 +7996,15 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A special purpose buoy is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
-	/// </summary>
+		/// <summary>
+		/// A special purpose buoy is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpecialPurposeGeneralBuoy : FeatureNode, IFeatureBindingDefinition {
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			[Required()]
 			public buoyShape buoyShape {get;set;}
 
@@ -9777,83 +8014,15 @@ namespace S100Framework.DomainModel.S501 {
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(31)]
-			[EnumerationValue(32)]
-			[EnumerationValue(33)]
-			[EnumerationValue(34)]
-			[EnumerationValue(35)]
-			[EnumerationValue(36)]
-			[EnumerationValue(37)]
-			[EnumerationValue(39)]
-			[EnumerationValue(40)]
-			[EnumerationValue(42)]
-			[EnumerationValue(43)]
-			[EnumerationValue(45)]
-			[EnumerationValue(46)]
-			[EnumerationValue(47)]
-			[EnumerationValue(48)]
-			[EnumerationValue(49)]
-			[EnumerationValue(50)]
-			[EnumerationValue(51)]
-			[EnumerationValue(52)]
-			[EnumerationValue(53)]
-			[EnumerationValue(54)]
-			[EnumerationValue(55)]
-			[EnumerationValue(56)]
-			[EnumerationValue(57)]
-			[EnumerationValue(58)]
-			[EnumerationValue(59)]
-			[EnumerationValue(60)]
-			[EnumerationValue(61)]
-			[EnumerationValue(62)]
-			[EnumerationValue(63)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,14,15,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,42,43,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63])]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(18)]
-			[EnumerationValue(503)]
+			[EnumerationValue([1,2,5,7,8,18,503])]
 			public List<status> status {get;set;} = [];
 
 			public decimal? verticalLength {get;set;} = default;
@@ -9862,31 +8031,13 @@ namespace S100Framework.DomainModel.S501 {
 
 			public topmark? topmark {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
+			[EnumerationValue([6,7,8,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public List<fixedDateRange> fixedDateRange {get;set;} = [];
@@ -9907,24 +8058,13 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A light presenting different appearances (in particular, different colours) over various parts of the horizon of interest to maritime navigation.
-	/// </summary>
+		/// <summary>
+		/// A light presenting different appearances (in particular, different colours) over various parts of the horizon of interest to maritime navigation.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightSectored : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
+			[EnumerationValue([1,2,4,5,6,7,8,11,14,15,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public decimal? relativeHorizontalAccuracy {get;set;} = default;
@@ -9935,25 +8075,10 @@ namespace S100Framework.DomainModel.S501 {
 
 			public decimal? relativeVerticalAccuracy {get;set;} = default;
 
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
+			[EnumerationValue([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,4])]
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
 			public DateOnly? reportedDate {get;set;} = default;
@@ -9966,39 +8091,22 @@ namespace S100Framework.DomainModel.S501 {
 
 			public decimal? height {get;set;} = default;
 
-			[EnumerationValue(1)]
+			[EnumerationValue([1])]
 			public heightLengthUnits? heightLengthUnits {get;set;} = default;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public List<sectorCharacteristics> sectorCharacteristics {get;set;} = [];
 
-			[EnumerationValue(3)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
+			[EnumerationValue([3,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
 
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
@@ -10015,9 +8123,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// The Ice Line provides a measured, observed or estimated limit of the ice infested waters. (ECDIS Ice Objects Version 3.0)			
-	/// </summary>
+		/// <summary>
+		/// The Ice Line provides a measured, observed or estimated limit of the ice infested waters. (ECDIS Ice Objects Version 3.0)			
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class IceLine : FeatureNode, IFeatureBindingDefinition {
@@ -10037,34 +8145,13 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// An area in which vessels or seaplanes anchor or may anchor.
-	/// </summary>
+		/// <summary>
+		/// An area in which vessels or seaplanes anchor or may anchor.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AnchorageArea : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(27)]
-			[EnumerationValue(39)]
+			[EnumerationValue([2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,23,24,27,39])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -10073,48 +8160,17 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<featureName> featureName {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
+			[EnumerationValue([1,2,3,5,6,7,9,10,14,15])]
 			public List<categoryOfAnchorage> categoryOfAnchorage {get;set;} = [];
 
 			public int? scaleMinimum {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(14)]
+			[EnumerationValue([1,2,3,5,6,7,8,9,14])]
 			public List<status> status {get;set;} = [];
 
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
 
 			[JsonIgnore]
@@ -10129,9 +8185,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A lateral buoy is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well-defined channels and are used in conjunction with a conventional direction of buoyage.
-	/// </summary>
+		/// <summary>
+		/// A lateral buoy is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well-defined channels and are used in conjunction with a conventional direction of buoyage.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LateralBuoy : FeatureNode, IFeatureBindingDefinition {
@@ -10139,19 +8195,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -10162,39 +8206,19 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<featureName> featureName {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,5,7,8,18])]
 			public List<status> status {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,3,4])]
 			[Required()]
 			public categoryOfLateralMark categoryOfLateralMark {get;set;}
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			[Required()]
 			public buoyShape buoyShape {get;set;}
 
@@ -10202,16 +8226,10 @@ namespace S100Framework.DomainModel.S501 {
 
 			public int? scaleMinimum {get;set;} = default;
 
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
+			[EnumerationValue([6,7,8,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
@@ -10230,9 +8248,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A routeing measure comprising a separation point or circular separation zone and a circular traffic lane within defined limits. Traffic within the roundabout is separated by moving in a counter-clockwise direction around the separation point or zone.
-	/// </summary>
+		/// <summary>
+		/// A routeing measure comprising a separation point or circular separation zone and a circular traffic lane within defined limits. Traffic within the roundabout is separated by moving in a counter-clockwise direction around the separation point or zone.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TrafficSeparationSchemeRoundabout : FeatureNode, IFeatureBindingDefinition {
@@ -10248,37 +8266,12 @@ namespace S100Framework.DomainModel.S501 {
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
+			[EnumerationValue([1,3,6,9])]
 			public List<status> status {get;set;} = [];
 
 			public DateOnly? reportedDate {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
+			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
 
 			[JsonIgnore]
@@ -10293,18 +8286,13 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// The Deep Water route centreline indicates the centreline of a route, the width of which is not explicitly defined.
-	/// </summary>
+		/// <summary>
+		/// The Deep Water route centreline indicates the centreline of a route, the width of which is not explicitly defined.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DeepWaterRouteCentreline : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
+			[EnumerationValue([1,2,3,4,6,7])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			[Required()]
@@ -10312,10 +8300,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<featureName> featureName {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,3,4])]
 			[Required()]
 			public trafficFlow trafficFlow {get;set;}
 
@@ -10323,10 +8308,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public int? scaleMinimum {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
+			[EnumerationValue([1,3,6,9])]
 			public List<status> status {get;set;} = [];
 
 			public Boolean? imoAdopted {get;set;} = default;
@@ -10342,16 +8324,7 @@ namespace S100Framework.DomainModel.S501 {
 			[Required()]
 			public Boolean basedOnFixedMarks {get;set;} = false;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,3,5,8,9,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			[JsonIgnore]
@@ -10366,53 +8339,26 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A boat-like structure used instead of a light buoy in waters where strong streams or currents are experienced, or when a greater elevation than that of a light buoy is necessary.
-	/// </summary>
+		/// <summary>
+		/// A boat-like structure used instead of a light buoy in waters where strong streams or currents are experienced, or when a greater elevation than that of a light buoy is necessary.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightFloat : FeatureNode, IFeatureBindingDefinition {
 			public decimal? verticalLength {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
+			[EnumerationValue([1,2,4,5,7,8,14,16,17])]
 			public List<status> status {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(11)]
+			[EnumerationValue([6,7,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public decimal? horizontalWidth {get;set;} = default;
@@ -10421,9 +8367,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public decimal? horizontalLength {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public Boolean? radarConspicuous {get;set;} = default;
@@ -10452,40 +8396,25 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// An all around light is a light that is visible over the whole horizon of interest to marine navigation and having no change in the characteristics of the light.
-	/// </summary>
+		/// <summary>
+		/// An all around light is a light that is visible over the whole horizon of interest to marine navigation and having no change in the characteristics of the light.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightAllAround : FeatureNode, IFeatureBindingDefinition {
 			public decimal? verticalLength {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
 			public decimal? valueOfNominalRange {get;set;} = default;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
+			[EnumerationValue([1,2,4,5,6,7,8,11,14,15,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -10495,72 +8424,35 @@ namespace S100Framework.DomainModel.S501 {
 			[Required()]
 			public multiplicityOfFeatures multiplicityOfFeatures {get;set;}
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,3,4])]
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
 			public decimal? height {get;set;} = default;
 
 			public decimal? relativeHorizontalAccuracy {get;set;} = default;
 
-			[EnumerationValue(3)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
+			[EnumerationValue([3,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
 
 			public Boolean? majorLight {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
+			[EnumerationValue([1,2])]
 			public lightVisibility? lightVisibility {get;set;} = default;
 
 			public int? flareBearing {get;set;} = default;
 
-			[EnumerationValue(1)]
+			[EnumerationValue([1])]
 			public heightLengthUnits? heightLengthUnits {get;set;} = default;
 
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
+			[EnumerationValue([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
 
 			[Required()]
 			public rythmOfLight rythmOfLight {get;set;}
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,3,4,5,6,9,10,11])]
 			public List<colour> colour {get;set;} = [];
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
@@ -10579,31 +8471,18 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// The line where shore and water meet. Shoreline and coastline are generally used synonymously.
-	/// </summary>
+		/// <summary>
+		/// The line where shore and water meet. Shoreline and coastline are generally used synonymously.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Coastline : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,6,7,8,11,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(10)]
+			[EnumerationValue([1,2,6,7,8,10])]
 			public categoryOfCoastline? categoryOfCoastline {get;set;} = default;
 
 			public decimal? elevation {get;set;} = default;
@@ -10612,25 +8491,12 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			[EnumerationValue(14)]
-			[EnumerationValue(17)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,14,17])]
 			public List<natureOfSurface> natureOfSurface {get;set;} = [];
 
 			public List<featureName> featureName {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public String? pictorialRepresentation {get;set;} = default;
@@ -10651,67 +8517,13 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A geographically defined part of the sea or other navigable waters. It may be specified within its limits by its proper name.
-	/// </summary>
+		/// <summary>
+		/// A geographically defined part of the sea or other navigable waters. It may be specified within its limits by its proper name.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SeaAreaNamedWaterArea : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(31)]
-			[EnumerationValue(32)]
-			[EnumerationValue(33)]
-			[EnumerationValue(34)]
-			[EnumerationValue(35)]
-			[EnumerationValue(36)]
-			[EnumerationValue(37)]
-			[EnumerationValue(38)]
-			[EnumerationValue(39)]
-			[EnumerationValue(40)]
-			[EnumerationValue(41)]
-			[EnumerationValue(42)]
-			[EnumerationValue(43)]
-			[EnumerationValue(44)]
-			[EnumerationValue(45)]
-			[EnumerationValue(46)]
-			[EnumerationValue(47)]
-			[EnumerationValue(48)]
-			[EnumerationValue(49)]
-			[EnumerationValue(50)]
-			[EnumerationValue(51)]
-			[EnumerationValue(52)]
-			[EnumerationValue(53)]
-			[EnumerationValue(54)]
-			[EnumerationValue(55)]
-			[EnumerationValue(56)]
+			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56])]
 			public categoryOfSeaArea? categoryOfSeaArea {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
@@ -10720,16 +8532,12 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<featureName> featureName {get;set;} = [];
 
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(503)]
-			[EnumerationValue(504)]
-			[EnumerationValue(505)]
+			[EnumerationValue([501,502,503,504,505])]
 			public gradient? gradient {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
 
-			[EnumerationValue(4)]
+			[EnumerationValue([4])]
 			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
 
 			[JsonIgnore]
@@ -10744,9 +8552,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// Area designated for landing personnel and/or equipment by parachute 
-	/// </summary>
+		/// <summary>
+		/// Area designated for landing personnel and/or equipment by parachute 
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DropZone : FeatureNode, IFeatureBindingDefinition {
@@ -10764,47 +8572,28 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A mechanical device for conveying bulk material or people using an endless moving belt or series of rollers.
-	/// </summary>
+		/// <summary>
+		/// A mechanical device for conveying bulk material or people using an endless moving belt or series of rollers.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Conveyor : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,3,4])]
 			public categoryOfConveyor? categoryOfConveyor {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public DateOnly? reportedDate {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public decimal? height {get;set;} = default;
@@ -10813,58 +8602,26 @@ namespace S100Framework.DomainModel.S501 {
 
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
-			[EnumerationValue(4)]
-			[EnumerationValue(12)]
+			[EnumerationValue([4,12])]
 			public List<status> status {get;set;} = [];
 
 			public decimal? liftingCapacity {get;set;} = default;
 
 			public verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
 
-			[EnumerationValue(3)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
+			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
 
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(22)]
-			[EnumerationValue(25)]
+			[EnumerationValue([4,5,6,10,11,12,13,14,15,16,17,22,25])]
 			public List<product> product {get;set;} = [];
 
 			public decimal? verticalLength {get;set;} = default;
@@ -10881,18 +8638,15 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A line drawn on a map or chart depicting the separation of any type of maritime jurisdiction.
-	/// </summary>
+		/// <summary>
+		/// A line drawn on a map or chart depicting the separation of any type of maritime jurisdiction.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LineOfDelimitation : FeatureNode, IFeatureBindingDefinition {
 			public List<String> nationalMaritimeAuthority {get;set;} = [];
 
-			[EnumerationValue(501)]
-			[EnumerationValue(502)]
-			[EnumerationValue(504)]
-			[EnumerationValue(599)]
+			[EnumerationValue([501,502,504,599])]
 			public boundaryStatusType? boundaryStatusType {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
@@ -10901,15 +8655,10 @@ namespace S100Framework.DomainModel.S501 {
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public jurisdiction? jurisdiction {get;set;} = default;
 
-			[EnumerationValue(501)]
-			[EnumerationValue(506)]
-			[EnumerationValue(511)]
-			[EnumerationValue(599)]
+			[EnumerationValue([501,506,511,599])]
 			public categoryofBoundaryLine? categoryofBoundaryLine {get;set;} = default;
 
 			public Boolean? inDispute {get;set;} = default;
@@ -10926,9 +8675,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// Straight baselines are a system of straight lines joining specified or discrete points on the low-water line, usually known as straight baseline turning points. Straight baselines are used in delimitation.
-	/// </summary>
+		/// <summary>
+		/// Straight baselines are a system of straight lines joining specified or discrete points on the low-water line, usually known as straight baseline turning points. Straight baselines are used in delimitation.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class StraightTerritorialSeaBaseline : FeatureNode, IFeatureBindingDefinition {
@@ -10940,8 +8689,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(502)]
-			[EnumerationValue(504)]
+			[EnumerationValue([502,504])]
 			public status? status {get;set;} = default;
 
 			public Boolean? inDispute {get;set;} = default;
@@ -10962,9 +8710,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A safe water beacon is used to indicate that there is navigable water around the mark.
-	/// </summary>
+		/// <summary>
+		/// A safe water beacon is used to indicate that there is navigable water around the mark.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SafeWaterBeacon : FeatureNode, IFeatureBindingDefinition {
@@ -10980,59 +8728,33 @@ namespace S100Framework.DomainModel.S501 {
 
 			public topmark? topmark {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+			[EnumerationValue([1,2,6,7,8])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public DateOnly? reportedDate {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public decimal? verticalLength {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
+			[EnumerationValue([1,2,3,4,5,6,7])]
 			[Required()]
 			public beaconShape beaconShape {get;set;}
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -11041,24 +8763,10 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			[JsonIgnore]
@@ -11073,9 +8781,9 @@ namespace S100Framework.DomainModel.S501 {
 			];
 		}
 
-	/// <summary>
-	/// A special purpose beacon is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
-	/// </summary>
+		/// <summary>
+		/// A special purpose beacon is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpecialPurposeGeneralBeacon : FeatureNode, IFeatureBindingDefinition {
@@ -11083,21 +8791,10 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<information> information {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(18)]
+			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+			[EnumerationValue([1,2,6,7,8])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -11106,34 +8803,21 @@ namespace S100Framework.DomainModel.S501 {
 
 			public decimal? height {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public decimal? verticalLength {get;set;} = default;
 
 			public decimal? elevation {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
+			[EnumerationValue([1,2,3,4,5,6,7])]
 			[Required()]
 			public beaconShape beaconShape {get;set;}
 
@@ -11141,92 +8825,18 @@ namespace S100Framework.DomainModel.S501 {
 
 			public topmark? topmark {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(31)]
-			[EnumerationValue(32)]
-			[EnumerationValue(33)]
-			[EnumerationValue(34)]
-			[EnumerationValue(35)]
-			[EnumerationValue(36)]
-			[EnumerationValue(37)]
-			[EnumerationValue(39)]
-			[EnumerationValue(40)]
-			[EnumerationValue(41)]
-			[EnumerationValue(42)]
-			[EnumerationValue(43)]
-			[EnumerationValue(44)]
-			[EnumerationValue(45)]
-			[EnumerationValue(46)]
-			[EnumerationValue(47)]
-			[EnumerationValue(48)]
-			[EnumerationValue(49)]
-			[EnumerationValue(50)]
-			[EnumerationValue(51)]
-			[EnumerationValue(52)]
-			[EnumerationValue(53)]
-			[EnumerationValue(54)]
-			[EnumerationValue(55)]
-			[EnumerationValue(56)]
-			[EnumerationValue(57)]
-			[EnumerationValue(58)]
-			[EnumerationValue(60)]
-			[EnumerationValue(61)]
-			[EnumerationValue(62)]
-			[EnumerationValue(63)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,10,11,12,14,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,60,61,62,63])]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public DateOnly? reportedDate {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public List<featureName> featureName {get;set;} = [];

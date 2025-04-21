@@ -333,6 +333,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Browsable(false)]
+		public nameUsage[] nameUsageList => Enum.GetValues<nameUsage>();
+
 
 		public featureNameViewModel Load(featureName instance) {
 			language = instance.language;
@@ -1455,6 +1458,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _telecommunicationIdentifier, value);
 			}
 		}
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(telecommunicationServiceList))]
 		[Category("telecommunications")]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
 
@@ -1572,6 +1577,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalOfCycleViewModel : ViewModelBase {
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(typeOfTimeIntervalUnitList))]
 		[Category("timeIntervalOfCycle")]
 		public ObservableCollection<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit  { get; set; } = new ();
 
@@ -2438,7 +2445,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class ElectronicProductViewModel : FeatureViewModel<ElectronicProduct> {
 		private String? _agencyResponsibleForProduction  = default;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public String? agencyResponsibleForProduction {
 			get {
 				return _agencyResponsibleForProduction;
@@ -2447,11 +2454,16 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _agencyResponsibleForProduction, value);
 			}
 		}
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList))]
+		[Category("CatalogueElement")]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
+
+		[Browsable(false)]
+		public catalogueElementClassification[] catalogueElementClassificationList => Enum.GetValues<catalogueElementClassification>();
 		private String? _catalogueElementIdentifier  = default;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public String? catalogueElementIdentifier {
 			get {
 				return _catalogueElementIdentifier;
@@ -2462,7 +2474,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _classification  = default;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public String? classification {
 			get {
 				return _classification;
@@ -2471,11 +2483,16 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _classification, value);
 			}
 		}
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(IMOMaritimeServiceList))]
+		[Category("CatalogueElement")]
 		public ObservableCollection<IMOMaritimeService> IMOMaritimeService  { get; set; } = new ();
+
+		[Browsable(false)]
+		public IMOMaritimeService[] IMOMaritimeServiceList => Enum.GetValues<IMOMaritimeService>();
 		private Boolean _notForNavigation  = false;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public Boolean notForNavigation {
 			get {
 				return _notForNavigation;
@@ -2484,13 +2501,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _notForNavigation, value);
 			}
 		}
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private onlineResourceViewModel? _onlineResource  = default;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public onlineResourceViewModel? onlineResource {
 			get {
 				return _onlineResource;
@@ -2501,7 +2518,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -2510,11 +2527,11 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _sourceIndication, value);
 			}
 		}
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public ObservableCollection<supportFileViewModel> supportFile  { get; set; } = new ();
 		private timeIntervalOfProductViewModel? _timeIntervalOfProduct  = default;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public timeIntervalOfProductViewModel? timeIntervalOfProduct {
 			get {
 				return _timeIntervalOfProduct;
@@ -2524,13 +2541,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public ObservableCollection<decimal> approximateGridResolution  { get; set; } = new ();
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public ObservableCollection<int> compilationScale  { get; set; } = new ();
 		private distributionStatus? _distributionStatus  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public distributionStatus? distributionStatus {
 			get {
 				return _distributionStatus;
@@ -2544,7 +2561,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public distributionStatus[] distributionStatusList => [(distributionStatus)1,(distributionStatus)2];
 		private int? _editionNumber  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public int? editionNumber {
 			get {
 				return _editionNumber;
@@ -2555,7 +2572,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private int? _maximumDisplayScale  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public int? maximumDisplayScale {
 			get {
 				return _maximumDisplayScale;
@@ -2566,7 +2583,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private int? _minimumDisplayScale  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public int? minimumDisplayScale {
 			get {
 				return _minimumDisplayScale;
@@ -2575,14 +2592,16 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _minimumDisplayScale, value);
 			}
 		}
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(navigationPurposeList))]
+		[Category("NavigationalProduct")]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
 
 		[Browsable(false)]
 		public navigationPurpose[] navigationPurposeList => [(navigationPurpose)1,(navigationPurpose)2,(navigationPurpose)3];
 		private String? _optimumDisplayScale  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public String? optimumDisplayScale {
 			get {
 				return _optimumDisplayScale;
@@ -2593,7 +2612,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _originalProductNumber  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public String? originalProductNumber {
 			get {
 				return _originalProductNumber;
@@ -2604,7 +2623,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _producerNation  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public String? producerNation {
 			get {
 				return _producerNation;
@@ -2615,7 +2634,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _productNumber  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public String? productNumber {
 			get {
 				return _productNumber;
@@ -2626,7 +2645,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private specificUsage? _specificUsage  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public specificUsage? specificUsage {
 			get {
 				return _specificUsage;
@@ -2640,7 +2659,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public specificUsage[] specificUsageList => [(specificUsage)1,(specificUsage)2,(specificUsage)3,(specificUsage)4,(specificUsage)5,(specificUsage)6];
 		private DateOnly? _updateDate  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public DateOnly? updateDate {
 			get {
 				return _updateDate;
@@ -2651,7 +2670,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private int? _updateNumber  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public int? updateNumber {
 			get {
 				return _updateNumber;
@@ -2662,7 +2681,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private horizontalDatumEpsg? _horizontalDatumEpsg  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public horizontalDatumEpsg? horizontalDatumEpsg {
 			get {
 				return _horizontalDatumEpsg;
@@ -2673,7 +2692,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private verticalDatum? _verticalDatum  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public verticalDatum? verticalDatum {
 			get {
 				return _verticalDatum;
@@ -2958,7 +2977,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class PhysicalProductViewModel : FeatureViewModel<PhysicalProduct> {
 		private String? _agencyResponsibleForProduction  = default;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public String? agencyResponsibleForProduction {
 			get {
 				return _agencyResponsibleForProduction;
@@ -2967,11 +2986,16 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _agencyResponsibleForProduction, value);
 			}
 		}
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList))]
+		[Category("CatalogueElement")]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
+
+		[Browsable(false)]
+		public catalogueElementClassification[] catalogueElementClassificationList => Enum.GetValues<catalogueElementClassification>();
 		private String? _catalogueElementIdentifier  = default;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public String? catalogueElementIdentifier {
 			get {
 				return _catalogueElementIdentifier;
@@ -2982,7 +3006,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _classification  = default;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public String? classification {
 			get {
 				return _classification;
@@ -2991,11 +3015,16 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _classification, value);
 			}
 		}
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(IMOMaritimeServiceList))]
+		[Category("CatalogueElement")]
 		public ObservableCollection<IMOMaritimeService> IMOMaritimeService  { get; set; } = new ();
+
+		[Browsable(false)]
+		public IMOMaritimeService[] IMOMaritimeServiceList => Enum.GetValues<IMOMaritimeService>();
 		private Boolean _notForNavigation  = false;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public Boolean notForNavigation {
 			get {
 				return _notForNavigation;
@@ -3004,13 +3033,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _notForNavigation, value);
 			}
 		}
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private onlineResourceViewModel? _onlineResource  = default;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public onlineResourceViewModel? onlineResource {
 			get {
 				return _onlineResource;
@@ -3021,7 +3050,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -3030,11 +3059,11 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _sourceIndication, value);
 			}
 		}
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public ObservableCollection<supportFileViewModel> supportFile  { get; set; } = new ();
 		private timeIntervalOfProductViewModel? _timeIntervalOfProduct  = default;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public timeIntervalOfProductViewModel? timeIntervalOfProduct {
 			get {
 				return _timeIntervalOfProduct;
@@ -3044,13 +3073,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public ObservableCollection<decimal> approximateGridResolution  { get; set; } = new ();
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public ObservableCollection<int> compilationScale  { get; set; } = new ();
 		private distributionStatus? _distributionStatus  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public distributionStatus? distributionStatus {
 			get {
 				return _distributionStatus;
@@ -3064,7 +3093,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public distributionStatus[] distributionStatusList => [(distributionStatus)1,(distributionStatus)2];
 		private int? _editionNumber  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public int? editionNumber {
 			get {
 				return _editionNumber;
@@ -3075,7 +3104,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private int? _maximumDisplayScale  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public int? maximumDisplayScale {
 			get {
 				return _maximumDisplayScale;
@@ -3086,7 +3115,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private int? _minimumDisplayScale  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public int? minimumDisplayScale {
 			get {
 				return _minimumDisplayScale;
@@ -3095,14 +3124,16 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _minimumDisplayScale, value);
 			}
 		}
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(navigationPurposeList))]
+		[Category("NavigationalProduct")]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
 
 		[Browsable(false)]
 		public navigationPurpose[] navigationPurposeList => [(navigationPurpose)1,(navigationPurpose)2,(navigationPurpose)3];
 		private String? _optimumDisplayScale  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public String? optimumDisplayScale {
 			get {
 				return _optimumDisplayScale;
@@ -3113,7 +3144,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _originalProductNumber  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public String? originalProductNumber {
 			get {
 				return _originalProductNumber;
@@ -3124,7 +3155,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _producerNation  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public String? producerNation {
 			get {
 				return _producerNation;
@@ -3135,7 +3166,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _productNumber  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public String? productNumber {
 			get {
 				return _productNumber;
@@ -3146,7 +3177,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private specificUsage? _specificUsage  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public specificUsage? specificUsage {
 			get {
 				return _specificUsage;
@@ -3160,7 +3191,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public specificUsage[] specificUsageList => [(specificUsage)1,(specificUsage)2,(specificUsage)3,(specificUsage)4,(specificUsage)5,(specificUsage)6];
 		private DateOnly? _updateDate  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public DateOnly? updateDate {
 			get {
 				return _updateDate;
@@ -3171,7 +3202,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private int? _updateNumber  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public int? updateNumber {
 			get {
 				return _updateNumber;
@@ -3182,7 +3213,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private horizontalDatumEpsg? _horizontalDatumEpsg  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public horizontalDatumEpsg? horizontalDatumEpsg {
 			get {
 				return _horizontalDatumEpsg;
@@ -3193,7 +3224,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private verticalDatum? _verticalDatum  = default;
 
-		[Category("Navigational Productnavigation products.NavigationalProduct00011201010103123010101010112345601010101123456789101112131415161718192021222324252627282930313233343536373839404142434445CatalogueElementgeographicsurface11")]
+		[Category("NavigationalProduct")]
 		public verticalDatum? verticalDatum {
 			get {
 				return _verticalDatum;
@@ -3478,7 +3509,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class S100ServiceViewModel : FeatureViewModel<S100Service> {
 		private String? _agencyResponsibleForProduction  = default;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public String? agencyResponsibleForProduction {
 			get {
 				return _agencyResponsibleForProduction;
@@ -3487,11 +3518,16 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _agencyResponsibleForProduction, value);
 			}
 		}
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList))]
+		[Category("CatalogueElement")]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
+
+		[Browsable(false)]
+		public catalogueElementClassification[] catalogueElementClassificationList => Enum.GetValues<catalogueElementClassification>();
 		private String? _catalogueElementIdentifier  = default;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public String? catalogueElementIdentifier {
 			get {
 				return _catalogueElementIdentifier;
@@ -3502,7 +3538,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _classification  = default;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public String? classification {
 			get {
 				return _classification;
@@ -3511,11 +3547,16 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _classification, value);
 			}
 		}
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(IMOMaritimeServiceList))]
+		[Category("CatalogueElement")]
 		public ObservableCollection<IMOMaritimeService> IMOMaritimeService  { get; set; } = new ();
+
+		[Browsable(false)]
+		public IMOMaritimeService[] IMOMaritimeServiceList => Enum.GetValues<IMOMaritimeService>();
 		private Boolean _notForNavigation  = false;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public Boolean notForNavigation {
 			get {
 				return _notForNavigation;
@@ -3524,13 +3565,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _notForNavigation, value);
 			}
 		}
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private onlineResourceViewModel? _onlineResource  = default;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public onlineResourceViewModel? onlineResource {
 			get {
 				return _onlineResource;
@@ -3541,7 +3582,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -3550,11 +3591,11 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _sourceIndication, value);
 			}
 		}
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public ObservableCollection<supportFileViewModel> supportFile  { get; set; } = new ();
 		private timeIntervalOfProductViewModel? _timeIntervalOfProduct  = default;
 
-		[Category("Catalogue Elementcatalogue of element.CatalogueElement0110101011000101001001geographic0surface")]
+		[Category("CatalogueElement")]
 		public timeIntervalOfProductViewModel? timeIntervalOfProduct {
 			get {
 				return _timeIntervalOfProduct;

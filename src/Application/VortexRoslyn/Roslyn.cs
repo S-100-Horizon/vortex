@@ -55,7 +55,7 @@ namespace S100Framework.Applications
             var indexInformation = builderDomainModel.Length;
             {
                 var names = productSpecification.XPathSelectElements("//S100FC:S100_FC_ComplexAttribute", xmlNamespaceManager).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
-                builderDomainModel.AppendLine($"\t\tpublic static string[] ComplexTypes => [{string.Join(',', names.Select(e=>$"\"{e}\""))}];");
+                builderDomainModel.AppendLine($"\t\tpublic static string[] ComplexTypes => [{string.Join(',', names.Select(e => $"\"{e}\""))}];");
 
                 names = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
                 builderDomainModel.AppendLine($"\t\tpublic static string[] InformationAssociationTypes => [{string.Join(',', names.Select(e => $"\"{e}\""))}];");
@@ -77,17 +77,15 @@ namespace S100Framework.Applications
             var knowTypesPrefix = new Dictionary<string, string>();
             var knowTypesPostfix = new Dictionary<string, string>();
 
+            var enumTypes = new List<string>();
             var codelistTypes = new List<string>();
 
             var informationAssociationsLookup = new Dictionary<string, ICollection<string>>();
             var featureAssociationsLookup = new Dictionary<string, ICollection<string>>();
 
-
             //  --- S100_FC_SimpleAttributes ----------------------------------------------------
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_SimpleAttribute", xmlNamespaceManager);
-
-                var enumTypes = new List<string>();
 
                 //  Enumerations
                 foreach (var e in elements.Where(e => e.Element(XName.Get("valueType", scope_S100))!.Value.Equals("enumeration"))) {
@@ -96,6 +94,7 @@ namespace S100Framework.Applications
 
                     knownTypes.Add(code);
                     knowTypesPrefix.Add(code, code);
+                    enumTypes.Add(code);
 
                     builderDomainModel.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
                     builderDomainModel.AppendLine("\t[System.Serializable()]");
@@ -103,7 +102,7 @@ namespace S100Framework.Applications
 
                     var isFirst = true;
                     foreach (var listedValue in e.Element(XName.Get("listedValues", scope_S100))!.Elements()) {
-                        if(!isFirst)
+                        if (!isFirst)
                             builderDomainModel.AppendLine();
                         isFirst = false;
 
@@ -184,6 +183,7 @@ namespace S100Framework.Applications
                         builderDomainModel.AppendLine("\t\t});");
                     }
                     builderDomainModel.AppendLine("\t}");
+                    builderDomainModel.AppendLine();
                 }
 
                 //  SimpleAttributes
@@ -263,10 +263,10 @@ namespace S100Framework.Applications
                         knownTypes.Add(code);
                         knowTypesPrefix.Add(code, code);
 
-                        builderDomainModel.AppendLine("\t[System.Serializable()]");
-                        builderDomainModel.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
+                        builderDomainModel.AppendLine("\t\t[System.Serializable()]");
+                        builderDomainModel.AppendLine("\t\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
 
-                        builderDomainModel.AppendLine($"\tpublic class {code} {{");
+                        builderDomainModel.AppendLine($"\t\tpublic class {code} {{");
 
                         var isFirst = true;
                         foreach (var attributeBinding in e.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager)) {
@@ -284,9 +284,7 @@ namespace S100Framework.Applications
                             var postfix = knowTypesPostfix.ContainsKey(referenceCode) ? $" = {knowTypesPostfix[referenceCode]};" : string.Empty;
 
                             if (permittedValues is not null) {
-                                foreach (var permittedValue in permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value).ToList()) {
-                                    builderDomainModel.AppendLine($"\t\t\t[EnumerationValue({permittedValue})]");
-                                }
+                                builderDomainModel.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                             }
 
                             if (lower == 0 && upper.HasValue && upper.Value == 1) {
@@ -568,8 +566,9 @@ namespace S100Framework.Applications
                 KnownTypes = knownTypes,
                 KnowTypesPrefix = knowTypesPrefix,
                 KnowTypesPostfix = knowTypesPostfix,
-                ComplexTypes = complexTypes,
+                EnumerationTypes = enumTypes,
                 CodeListTypes = codelistTypes,
+                ComplexTypes = complexTypes,
                 InformationAssociationsLookup = informationAssociationsLookup,
                 FeatureAssociationsLookup = featureAssociationsLookup,
             });
@@ -583,11 +582,9 @@ namespace S100Framework.Applications
             public required IReadOnlyCollection<string> KnownTypes { get; init; }
             public required IReadOnlyDictionary<string, string> KnowTypesPrefix { get; init; }
             public required IReadOnlyDictionary<string, string> KnowTypesPostfix { get; init; }
-
-            public required IReadOnlyCollection<string> ComplexTypes { get; init; }
-
+            public required IReadOnlyCollection<string> EnumerationTypes { get; init; }
             public required IReadOnlyCollection<string> CodeListTypes { get; init; }
-
+            public required IReadOnlyCollection<string> ComplexTypes { get; init; }
             public required IReadOnlyDictionary<string, ICollection<string>> InformationAssociationsLookup { get; init; }
             public required IReadOnlyDictionary<string, ICollection<string>> FeatureAssociationsLookup { get; init; }
         }
@@ -661,8 +658,9 @@ namespace S100Framework.Applications
                         KnownTypes = client.KnownTypes,
                         KnowTypesPrefix = client.KnowTypesPrefix,
                         KnowTypesPostfix = client.KnowTypesPostfix,
-                        ComplexTypes = client.ComplexTypes,
                         CodeListTypes = client.CodeListTypes,
+                        EnumerationTypes = client.EnumerationTypes,
+                        ComplexTypes = client.ComplexTypes,
                         BaseClass = "ViewModelBase",
                         LoadPrefix = $"{code}ViewModel",
                     });
@@ -693,8 +691,9 @@ namespace S100Framework.Applications
                         KnownTypes = client.KnownTypes,
                         KnowTypesPrefix = client.KnowTypesPrefix,
                         KnowTypesPostfix = client.KnowTypesPostfix,
-                        ComplexTypes = client.ComplexTypes,
+                        EnumerationTypes = client.EnumerationTypes,
                         CodeListTypes = client.CodeListTypes,
+                        ComplexTypes = client.ComplexTypes,
                         BaseClass = "AssociationViewModel",
                         LoadPrefix = $"{code}ViewModel",
                     });
@@ -727,8 +726,9 @@ namespace S100Framework.Applications
                         KnownTypes = client.KnownTypes,
                         KnowTypesPrefix = client.KnowTypesPrefix,
                         KnowTypesPostfix = client.KnowTypesPostfix,
-                        ComplexTypes = client.ComplexTypes,
+                        EnumerationTypes = client.EnumerationTypes,
                         CodeListTypes = client.CodeListTypes,
+                        ComplexTypes = client.ComplexTypes,
                         BaseClass = "AssociationViewModel",
                         LoadPrefix = $"{code}ViewModel",
                     });
@@ -761,8 +761,9 @@ namespace S100Framework.Applications
                         KnownTypes = client.KnownTypes,
                         KnowTypesPrefix = client.KnowTypesPrefix,
                         KnowTypesPostfix = client.KnowTypesPostfix,
-                        ComplexTypes = client.ComplexTypes,
+                        EnumerationTypes = client.EnumerationTypes,
                         CodeListTypes = client.CodeListTypes,
+                        ComplexTypes = client.ComplexTypes,
                         BaseClass = $"InformationViewModel<{code}>",
                         LoadPrefix = $"override InformationViewModel<{code}>",
                     }, (b) => {
@@ -797,8 +798,9 @@ namespace S100Framework.Applications
                         KnownTypes = client.KnownTypes,
                         KnowTypesPrefix = client.KnowTypesPrefix,
                         KnowTypesPostfix = client.KnowTypesPostfix,
-                        ComplexTypes = client.ComplexTypes,
+                        EnumerationTypes = client.EnumerationTypes,
                         CodeListTypes = client.CodeListTypes,
+                        ComplexTypes = client.ComplexTypes,
                         BaseClass = $"FeatureViewModel<{code}>",
                         LoadPrefix = $"override FeatureViewModel<{code}>",
                     }, (b) => {
@@ -886,9 +888,9 @@ namespace S100Framework.Applications
                 inheritance = $"{superType!.Value}";
             }
 
-            builder.AppendLine($"\t/// <summary>");
-            builder.AppendLine($"\t/// {definition}");
-            builder.AppendLine($"\t/// </summary>");
+            builder.AppendLine($"\t\t/// <summary>");
+            builder.AppendLine($"\t\t/// {definition}");
+            builder.AppendLine($"\t\t/// </summary>");
 
             builder.AppendLine("\t\t[System.Serializable()]");
             builder.AppendLine("\t\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006: Naming Styles\", Justification = \"<Pending>\")]");
@@ -910,9 +912,7 @@ namespace S100Framework.Applications
                 var postfix = client.KnowTypesPostfix.ContainsKey(referenceCode) ? $" = {client.KnowTypesPostfix[referenceCode]};" : string.Empty;
 
                 if (permittedValues is not null) {
-                    foreach (var permittedValue in permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value).ToList()) {
-                        builder.AppendLine($"\t\t\t[EnumerationValue({permittedValue})]");
-                    }
+                    builder.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                 }
 
                 if (lower == 0 && upper.HasValue && upper.Value == 1) {
@@ -1028,9 +1028,11 @@ namespace S100Framework.Applications
             public required IReadOnlyDictionary<string, string> KnowTypesPrefix { get; init; }
             public required IReadOnlyDictionary<string, string> KnowTypesPostfix { get; init; }
 
-            public required IReadOnlyCollection<string> ComplexTypes { get; init; }
+            public required IReadOnlyCollection<string> EnumerationTypes { get; init; }
 
             public required IReadOnlyCollection<string> CodeListTypes { get; init; }
+
+            public required IReadOnlyCollection<string> ComplexTypes { get; init; }
 
             public required string BaseClass { get; init; }
 
@@ -1078,106 +1080,6 @@ namespace S100Framework.Applications
                 XmlNamespaceManager = xmlNamespaceManager,
                 XPathNavigator = navigator,
             });
-
-            //var isFirst = true;
-            //var attributeBindings = e.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager).Union(e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager));
-            //foreach (var attributeBinding in attributeBindings) {
-            //    if (!isFirst)
-            //        builder.AppendLine();
-            //    isFirst = false;
-
-            //    var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
-            //    var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
-            //    var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-            //    var _ = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
-            //    int? upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? null : int.Parse(_.Value!);
-
-            //    var prefix = client.KnowTypesPrefix[referenceCode];
-            //    var postfix = client.KnowTypesPostfix.ContainsKey(referenceCode) ? $" = {client.KnowTypesPostfix[referenceCode]};" : ";";
-
-            //    if (client.ComplexTypes.Contains(referenceCode)) {
-            //        prefix += "ViewModel";
-            //    }
-
-            //    var isCollection = false;
-            //    if (lower == 0 && upper.HasValue && upper.Value == 1) {
-            //        prefix += "?";
-            //        postfix = " = default;";
-            //    }
-            //    else if (lower == 1 && upper.HasValue && upper.Value == 1) {
-            //    }
-            //    else {
-            //        isCollection = true;
-            //        prefix = $"ObservableCollection<{prefix}>";
-            //        postfix = " { get; set; } = new ();";
-            //    }
-
-            //    if (!isCollection) {
-            //        builder.AppendLine($"\t\tprivate {prefix} _{referenceCode} {postfix}");
-            //        builder.AppendLine();
-            //        builder.AppendLine($"\t\t[Category(\"{code}\")]");
-            //        builder.AppendLine($"\t\tpublic {prefix} {referenceCode} {{");
-
-            //        builder.AppendLine("\t\t\tget {");
-            //        builder.AppendLine($"\t\t\t\treturn _{referenceCode};");
-            //        builder.AppendLine("\t\t\t}");
-            //        builder.AppendLine("\t\t\tset {");
-            //        builder.AppendLine($"\t\t\t\tSetValue(ref _{referenceCode}, value);");
-            //        builder.AppendLine("\t\t\t}");
-            //        builder.AppendLine("\t\t}");
-
-            //        if (client.ComplexTypes.Contains(referenceCode)) {
-            //            loadBuilder.AppendLine($"\t\t\t{referenceCode} = new ();");
-            //            loadBuilder.AppendLine($"\t\t\tif (instance.{referenceCode} != default) {{");
-            //            loadBuilder.AppendLine($"\t\t\t\t{referenceCode}.Load(instance.{referenceCode});");
-            //            loadBuilder.AppendLine($"\t\t\t}}");
-            //            serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode}?.Model,");
-            //            modelBuilder.AppendLine($"\t\t\t{referenceCode} = this._{referenceCode}?.Model,");
-            //        }
-            //        else {
-            //            loadBuilder.AppendLine($"\t\t\t{referenceCode} = instance.{referenceCode};");
-            //            serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode},");
-            //            modelBuilder.AppendLine($"\t\t\t{referenceCode} = this._{referenceCode},");
-            //        }
-            //    }
-            //    else {
-            //        constructorBuilder.AppendLine($"\t\t\t{referenceCode}.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {{");
-            //        constructorBuilder.AppendLine($"\t\t\t\tOnPropertyChanged(nameof({referenceCode}));");
-            //        constructorBuilder.AppendLine($"\t\t\t}};");
-
-            //        builder.AppendLine($"\t\t[Category(\"{code}\")]");
-            //        builder.AppendLine($"\t\tpublic {prefix} {referenceCode} {postfix}");
-            //        loadBuilder.AppendLine($"\t\t\t{referenceCode}.Clear();");
-            //        loadBuilder.AppendLine($"\t\t\tif (instance.{referenceCode} is not null) {{");
-            //        loadBuilder.AppendLine($"\t\t\t\tforeach(var e in instance.{referenceCode})");
-            //        if (client.ComplexTypes.Contains(referenceCode)) {
-            //            loadBuilder.AppendLine($"\t\t\t\t\t{referenceCode}.Add(new {referenceCode}ViewModel().Load(e));");
-            //            serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode}.Select(e => e.Model).ToList(),");
-            //            modelBuilder.AppendLine($"\t\t\t{referenceCode} = this.{referenceCode}.Select(e => e.Model).ToList(),");
-            //        }
-            //        else {
-            //            loadBuilder.AppendLine($"\t\t\t\t\t{referenceCode}.Add(e);");
-            //            serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode}.ToList(),");
-            //            modelBuilder.AppendLine($"\t\t\t{referenceCode} = this.{referenceCode}.ToList(),");
-            //        }
-            //        loadBuilder.AppendLine($"\t\t\t}}");
-            //    }
-
-            //    if (permittedValues is not null) {
-            //        if (client.CodeListTypes.Contains(referenceCode)) {
-            //            builder.AppendLine();
-            //            builder.AppendLine("\t\t[Browsable(false)]");
-            //            builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List =>  CodeList.{pluralizer.Pluralize(referenceCode)}.ToArray();");
-            //        }
-            //        else {
-            //            var values = permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value);
-
-            //            builder.AppendLine();
-            //            builder.AppendLine("\t\t[Browsable(false)]");
-            //            builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List => [{string.Join(',', values.Select(e => $"({referenceCode}){e}"))}];");
-            //        }
-            //    }
-            //}
 
             serializeBuilder.AppendLine("\t\t\t};");
             serializeBuilder.AppendLine("\t\t\treturn System.Text.Json.JsonSerializer.Serialize(instance);");
@@ -1235,7 +1137,7 @@ namespace S100Framework.Applications
             if (superType != null) {
                 var super = client.BuildViewModelClassClient.ProductSpecification.XPathSelectElement($"//*[S100FC:code = '{superType.Value}']", xmlNamespaceManager)!;
 
-                BuildViewModelClassAttribute(super.Value, super, builder, loadBuilder, serializeBuilder, modelBuilder, constructorBuilder, client);
+                BuildViewModelClassAttribute(super.Element(XName.Get("code", scope_S100))!.Value, super, builder, loadBuilder, serializeBuilder, modelBuilder, constructorBuilder, client);
             }
 
             var attributeBindings = e.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager).Union(e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager));
@@ -1300,6 +1202,10 @@ namespace S100Framework.Applications
                     constructorBuilder.AppendLine($"\t\t\t\tOnPropertyChanged(nameof({referenceCode}));");
                     constructorBuilder.AppendLine($"\t\t\t}};");
 
+                    if (client.BuildViewModelClassClient.EnumerationTypes.Contains(referenceCode)) {
+                        builder.AppendLine($"\t\t[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]");
+                        builder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({referenceCode}List))]");
+                    }
                     builder.AppendLine($"\t\t[Category(\"{code}\")]");
                     builder.AppendLine($"\t\tpublic {prefix} {referenceCode} {postfix}");
                     loadBuilder.AppendLine($"\t\t\t{referenceCode}.Clear();");
@@ -1331,6 +1237,11 @@ namespace S100Framework.Applications
                         builder.AppendLine("\t\t[Browsable(false)]");
                         builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List => [{string.Join(',', values.Select(e => $"({referenceCode}){e}"))}];");
                     }
+                }
+                else if (client.BuildViewModelClassClient.EnumerationTypes.Contains(referenceCode)) {
+                    builder.AppendLine();
+                    builder.AppendLine("\t\t[Browsable(false)]");
+                    builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List => Enum.GetValues<{referenceCode}>();");
                 }
             }
             builder.AppendLine();

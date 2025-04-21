@@ -2043,10 +2043,11 @@ namespace S100Framework.DomainModel.S131 {
 			},
 		});
 	}
+
 	namespace ComplexAttributes {
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class contactAddress {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class contactAddress {
 			public List<String> deliveryPoint {get;set;} = [];
 
 			public String? cityName {get;set;} = default;
@@ -2058,9 +2059,9 @@ namespace S100Framework.DomainModel.S131 {
 			public String? postalCode {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class featureName {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class featureName {
 			public Boolean? displayName {get;set;} = default;
 
 			public String? language {get;set;} = default;
@@ -2068,17 +2069,17 @@ namespace S100Framework.DomainModel.S131 {
 			public String name {get;set;} = string.Empty;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class fixedDateRange {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class fixedDateRange {
 			public DateOnly? dateStart {get;set;} = default;
 
 			public DateOnly? dateEnd {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class frequencyPair {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class frequencyPair {
 			public List<int> frequencyShoreStationTransmits {get;set;} = [];
 
 			public List<int> frequencyShoreStationReceives {get;set;} = [];
@@ -2086,18 +2087,18 @@ namespace S100Framework.DomainModel.S131 {
 			public List<String> contactInstructions {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class horizontalPositionUncertainty {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class horizontalPositionUncertainty {
 			[Required()]
 			public decimal uncertaintyFixed {get;set;}
 
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class information {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class information {
 			public String? fileLocator {get;set;} = default;
 
 			public String? fileReference {get;set;} = default;
@@ -2109,9 +2110,9 @@ namespace S100Framework.DomainModel.S131 {
 			public String? text {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class onlineResource {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class onlineResource {
 			public String onlineResourceLinkageURL {get;set;} = string.Empty;
 
 			public String? protocol {get;set;} = default;
@@ -2122,33 +2123,24 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? onlineResourceDescription {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,3,4,5,6,7,8,9,10,11])]
 			public onlineFunction? onlineFunction {get;set;} = default;
 
 			public String? protocolRequest {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class orientation {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class orientation {
 			public decimal? orientationUncertainty {get;set;} = default;
 
 			[Required()]
 			public decimal orientationValue {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class periodicDateRange {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class periodicDateRange {
 			[Required()]
 			public DateOnly dateStart {get;set;}
 
@@ -2156,60 +2148,31 @@ namespace S100Framework.DomainModel.S131 {
 			public DateOnly dateEnd {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class rxNCode {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class rxNCode {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public categoryOfRxN? categoryOfRxN {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			public actionOrActivity? actionOrActivity {get;set;} = default;
 
 			public List<String> headline {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class surveyDateRange {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class surveyDateRange {
 			public DateOnly? dateStart {get;set;} = default;
 
 			[Required()]
 			public DateOnly dateEnd {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class textContent {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class textContent {
+			[EnumerationValue([1,2,3])]
 			public categoryOfText? categoryOfText {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
@@ -2218,31 +2181,16 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? source {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
+			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
 
 			public DateOnly? reportedDate {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class timeIntervalsByDayOfWeek {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class timeIntervalsByDayOfWeek {
+			[EnumerationValue([1,2,3,4,5,6,7])]
 			public List<dayOfWeek> dayOfWeek {get;set;} = [];
 
 			public Boolean? dayOfWeekIsRange {get;set;} = default;
@@ -2252,95 +2200,55 @@ namespace S100Framework.DomainModel.S131 {
 			public List<TimeOnly> timeOfDayEnd {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class usefulMarkDescription {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class usefulMarkDescription {
 			public List<textContent> textContent {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class verticalUncertainty {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class verticalUncertainty {
 			[Required()]
 			public decimal uncertaintyFixed {get;set;}
 
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class vesselsMeasurements {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class vesselsMeasurements {
+			[EnumerationValue([1,2,3,4,5,6])]
 			[Required()]
 			public comparisonOperator comparisonOperator {get;set;}
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([1,2,3,4,6,7,8,9,10,11,12,13])]
 			[Required()]
 			public vesselsCharacteristics vesselsCharacteristics {get;set;}
 
 			[Required()]
 			public decimal vesselsCharacteristicsValue {get;set;}
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(9)]
+			[EnumerationValue([1,3,4,5,6,7,9])]
 			[Required()]
 			public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {get;set;}
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class weatherResource {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class weatherResource {
 			public onlineResource? onlineResource {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,3,4])]
 			public dynamicResource? dynamicResource {get;set;} = default;
 
 			public textContent? textContent {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class bearingInformation {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class bearingInformation {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			public cardinalDirection? cardinalDirection {get;set;} = default;
 
 			public decimal? distance {get;set;} = default;
@@ -2352,21 +2260,18 @@ namespace S100Framework.DomainModel.S131 {
 			public orientation? orientation {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class cargoServicesDescription {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class cargoServicesDescription {
 			public List<textContent> textContent {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class constructionInformation {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class constructionInformation {
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,2,3,5])]
 			public condition? condition {get;set;} = default;
 
 			public String development {get;set;} = string.Empty;
@@ -2376,33 +2281,31 @@ namespace S100Framework.DomainModel.S131 {
 			public List<textContent> textContent {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class depthsDescription {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class depthsDescription {
+			[EnumerationValue([1,2,3])]
 			[Required()]
 			public categoryOfDepthsDescription categoryOfDepthsDescription {get;set;}
 
 			public List<textContent> textContent {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class facilitiesLayoutDescription {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class facilitiesLayoutDescription {
 			public List<textContent> textContent {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class generalPortDescription {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class generalPortDescription {
 			public List<textContent> textContent {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class graphic {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class graphic {
 			public List<String> pictorialRepresentation {get;set;} = [];
 
 			public String? pictureCaption {get;set;} = default;
@@ -2414,50 +2317,48 @@ namespace S100Framework.DomainModel.S131 {
 			public bearingInformation? bearingInformation {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class landmarkDescription {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class landmarkDescription {
 			public List<textContent> textContent {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class limitsDescription {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class limitsDescription {
 			public List<textContent> textContent {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class majorLightDescription {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class majorLightDescription {
 			public List<textContent> textContent {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class markedBy {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class markedBy {
 			public List<textContent> textContent {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class offshoreMarkDescription {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class offshoreMarkDescription {
 			public List<textContent> textContent {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class scheduleByDayOfWeek {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class scheduleByDayOfWeek {
+			[EnumerationValue([1,2,3])]
 			public categoryOfSchedule? categoryOfSchedule {get;set;} = default;
 
 			public List<timeIntervalsByDayOfWeek> timeIntervalsByDayOfWeek {get;set;} = [];
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class spatialAccuracy {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class spatialAccuracy {
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public horizontalPositionUncertainty? horizontalPositionUncertainty {get;set;} = default;
@@ -2465,13 +2366,10 @@ namespace S100Framework.DomainModel.S131 {
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class telecommunications {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class telecommunications {
+			[EnumerationValue([1,2,3,4])]
 			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
 
 			public String telecommunicationIdentifier {get;set;} = string.Empty;
@@ -2480,22 +2378,15 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? contactInstructions {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public List<telecommunicationService> telecommunicationService {get;set;} = [];
 
 			public scheduleByDayOfWeek? scheduleByDayOfWeek {get;set;} = default;
 		}
 
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class generalHarbourInformation {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class generalHarbourInformation {
 			public generalPortDescription? generalPortDescription {get;set;} = default;
 
 			public facilitiesLayoutDescription? facilitiesLayoutDescription {get;set;} = default;
@@ -2596,9 +2487,9 @@ namespace S100Framework.DomainModel.S131 {
 	}
 
 	namespace InformationAssociations {
-	/// <summary>
-	/// A feature association for the binding between at least one instance of a geo feature and an instance of an information type.
-	/// </summary>
+		/// <summary>
+		/// A feature association for the binding between at least one instance of a geo feature and an instance of an information type.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AdditionalInformation : InformationAssociation {
@@ -2606,9 +2497,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(AdditionalInformation);
 		}
 
-	/// <summary>
-	/// Contact information for an authority
-	/// </summary>
+		/// <summary>
+		/// Contact information for an authority
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AuthorityContact : InformationAssociation {
@@ -2616,9 +2507,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(AuthorityContact);
 		}
 
-	/// <summary>
-	/// Service hours for an authority
-	/// </summary>
+		/// <summary>
+		/// Service hours for an authority
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AuthorityHours : InformationAssociation {
@@ -2626,9 +2517,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(AuthorityHours);
 		}
 
-	/// <summary>
-	/// Association between a geographic location and a regulation, restriction, recommendation, or nautical information
-	/// </summary>
+		/// <summary>
+		/// Association between a geographic location and a regulation, restriction, recommendation, or nautical information
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AssociatedRxN : InformationAssociation {
@@ -2636,9 +2527,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(AssociatedRxN);
 		}
 
-	/// <summary>
-	/// Exception to the usual working day
-	/// </summary>
+		/// <summary>
+		/// Exception to the usual working day
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ExceptionalWorkday : InformationAssociation {
@@ -2646,9 +2537,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(ExceptionalWorkday);
 		}
 
-	/// <summary>
-	/// The controlling authority for a service area
-	/// </summary>
+		/// <summary>
+		/// The controlling authority for a service area
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ServiceControl : InformationAssociation {
@@ -2656,9 +2547,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(ServiceControl);
 		}
 
-	/// <summary>
-	/// Contact details for a service or facility
-	/// </summary>
+		/// <summary>
+		/// Contact details for a service or facility
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ServiceContact : InformationAssociation {
@@ -2666,9 +2557,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(ServiceContact);
 		}
 
-	/// <summary>
-	/// Working hours for a service or facility described by a geographic location
-	/// </summary>
+		/// <summary>
+		/// Working hours for a service or facility described by a geographic location
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LocationHours : InformationAssociation {
@@ -2676,9 +2567,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(LocationHours);
 		}
 
-	/// <summary>
-	/// Related organisation
-	/// </summary>
+		/// <summary>
+		/// Related organisation
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RelatedOrganisation : InformationAssociation {
@@ -2686,14 +2577,13 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(RelatedOrganisation);
 		}
 
-	/// <summary>
-	/// Association class specifying the relationship between the subset of vessels described by an APPLIC data object and a regulation (restriction, recommendation, or nautical information).
-	/// </summary>
+		/// <summary>
+		/// Association class specifying the relationship between the subset of vessels described by an APPLIC data object and a regulation (restriction, recommendation, or nautical information).
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InclusionType : InformationAssociation {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
+			[EnumerationValue([1,2])]
 			[Required()]
 			public membership membership {get;set;}
 
@@ -2701,18 +2591,13 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(InclusionType);
 		}
 
-	/// <summary>
-	/// Association class for associations describing whether the subsets of vessels determined by the ship characteristics specified in APPLIC may (or must, etc.) transit,  enter, or use  a feature.
-	/// </summary>
+		/// <summary>
+		/// Association class for associations describing whether the subsets of vessels determined by the ship characteristics specified in APPLIC may (or must, etc.) transit,  enter, or use  a feature.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PermissionType : InformationAssociation {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			[Required()]
 			public categoryOfRelationship categoryOfRelationship {get;set;}
 
@@ -2720,9 +2605,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(PermissionType);
 		}
 
-	/// <summary>
-	/// Association for linking spatial quality to spatial objects.
-	/// </summary>
+		/// <summary>
+		/// Association for linking spatial quality to spatial objects.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpatialAssociation : InformationAssociation {
@@ -2730,9 +2615,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(SpatialAssociation);
 		}
 
-	/// <summary>
-	/// Association between a limit feature and the entrance for the limit.
-	/// </summary>
+		/// <summary>
+		/// Association between a limit feature and the entrance for the limit.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LimitEntrance : InformationAssociation {
@@ -2740,9 +2625,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(LimitEntrance);
 		}
 
-	/// <summary>
-	/// The services available within a location.
-	/// </summary>
+		/// <summary>
+		/// The services available within a location.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ServiceAvailability : InformationAssociation {
@@ -2752,9 +2637,9 @@ namespace S100Framework.DomainModel.S131 {
 	}
 
 	namespace FeatureAssociations {
-	/// <summary>
-	/// A feature association for the binding between a geo feature and the cartographically positioned location for text.
-	/// </summary>
+		/// <summary>
+		/// A feature association for the binding between a geo feature and the cartographically positioned location for text.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextAssociation : FeatureAssociation {
@@ -2762,9 +2647,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(TextAssociation);
 		}
 
-	/// <summary>
-	/// A division of a feature into parts of the same type as the whole.
-	/// </summary>
+		/// <summary>
+		/// A division of a feature into parts of the same type as the whole.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Subsection : FeatureAssociation {
@@ -2772,9 +2657,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(Subsection);
 		}
 
-	/// <summary>
-	/// The infrastructure facilities in an area.
-	/// </summary>
+		/// <summary>
+		/// The infrastructure facilities in an area.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Infrastructure : FeatureAssociation {
@@ -2782,9 +2667,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(Infrastructure);
 		}
 
-	/// <summary>
-	/// Describes the relationship between a primary feature and a feature that plays a supporting role in the use of the primary facility by a vessel.
-	/// </summary>
+		/// <summary>
+		/// Describes the relationship between a primary feature and a feature that plays a supporting role in the use of the primary facility by a vessel.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PrimaryAuxiliaryFacility : FeatureAssociation {
@@ -2792,9 +2677,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(PrimaryAuxiliaryFacility);
 		}
 
-	/// <summary>
-	/// Demarcation of location(s) within a feature by relation to another feature or features
-	/// </summary>
+		/// <summary>
+		/// Demarcation of location(s) within a feature by relation to another feature or features
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Demarcation : FeatureAssociation {
@@ -2802,9 +2687,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(Demarcation);
 		}
 
-	/// <summary>
-	/// The limit(s) of a jurisdiction claimed by a coastal State.
-	/// </summary>
+		/// <summary>
+		/// The limit(s) of a jurisdiction claimed by a coastal State.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class JurisdictionalLimit : FeatureAssociation {
@@ -2812,9 +2697,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(JurisdictionalLimit);
 		}
 
-	/// <summary>
-	/// A division of a feature into parts of type(s) different from the type of the whole.
-	/// </summary>
+		/// <summary>
+		/// A division of a feature into parts of type(s) different from the type of the whole.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LayoutDivision : FeatureAssociation {
@@ -2830,9 +2715,9 @@ namespace S100Framework.DomainModel.S131 {
 	using InformationAssociations;
 
 	namespace InformationTypes {
-	/// <summary>
-	/// Generalized information type which carries all the common attributes.
-	/// </summary>
+		/// <summary>
+		/// Generalized information type which carries all the common attributes.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class InformationType : InformationNode, IInformationBindingDefinition {
@@ -2846,16 +2731,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? source {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
+			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
 
 			public DateOnly? reportedDate {get;set;} = default;
@@ -2876,27 +2752,13 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// An abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.
-	/// </summary>
+		/// <summary>
+		/// An abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class AbstractRxN : InformationType {
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
+			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			public categoryOfAuthority? categoryOfAuthority {get;set;} = default;
 
 			public List<rxNCode> rxNCode {get;set;} = [];
@@ -2927,75 +2789,27 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// Describes the relationship between vessel characteristics and: (i) the applicability of an associated information object or feature to the vessel; or, (ii) the use of a facility, place, or service by the vessel; or, (iii) passage of the vessel through an area.
-	/// </summary>
+		/// <summary>
+		/// Describes the relationship between vessel characteristics and: (i) the applicability of an associated information object or feature to the vessel; or, (ii) the use of a facility, place, or service by the vessel; or, (iii) passage of the vessel through an area.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Applicability : InformationType {
 			public Boolean? inBallast {get;set;} = default;
 
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
+			[EnumerationValue([2,5,6,7,8,10,11,12,13,14,15])]
 			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])]
 			public List<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])]
 			public categoryOfVessel? categoryOfVessel {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
+			[EnumerationValue([1,2])]
 			public categoryOfVesselRegistry? categoryOfVesselRegistry {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
+			[EnumerationValue([1,2])]
 			public logicalConnectives? logicalConnectives {get;set;} = default;
 
 			public int? thicknessOfIceCapability {get;set;} = default;
@@ -3030,27 +2844,13 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// A person or organisation having political or administrative power and control.
-	/// </summary>
+		/// <summary>
+		/// A person or organisation having political or administrative power and control.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Authority : InformationType {
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
+			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			[Required()]
 			public categoryOfAuthority categoryOfAuthority {get;set;}
 
@@ -3088,119 +2888,43 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// Services that are available for a given port.
-	/// </summary>
+		/// <summary>
+		/// Services that are available for a given port.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AvailablePortServices : InformationType {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public List<firefightingService> firefightingService {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
+			[EnumerationValue([1,2,3,4,5])]
 			public List<medicalService> medicalService {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
 			public List<repairService> repairService {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,3,4])]
 			public List<technicalPortService> technicalPortService {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public List<shipSanitationControl> shipSanitationControl {get;set;} = [];
 
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([2,3,4,5,6,8,9,11,12,13])]
 			public List<transportConnection> transportConnection {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public List<berthingAssistance> berthingAssistance {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,3,4])]
 			public List<cargoService> cargoService {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
+			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public List<securitySafetyEmergencyService> securitySafetyEmergencyService {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24])]
 			public List<wasteDisposalService> wasteDisposalService {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
 			public List<supplyService> supplyService {get;set;} = [];
 
 			public String? tugInformation {get;set;} = default;
@@ -3215,9 +2939,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
-	/// </summary>
+		/// <summary>
+		/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ContactDetails : InformationType {
@@ -3225,10 +2949,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? callSign {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,3,4])]
 			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
 
 			public List<String> communicationChannel {get;set;} = [];
@@ -3265,9 +2986,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// The seaward end of a channel, harbour, dock, etc.
-	/// </summary>
+		/// <summary>
+		/// The seaward end of a channel, harbour, dock, etc.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Entrance : InformationType {
@@ -3299,9 +3020,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// Nautical information about a related area or facility.
-	/// </summary>
+		/// <summary>
+		/// Nautical information about a related area or facility.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NauticalInformation : AbstractRxN {
@@ -3321,9 +3042,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.
-	/// </summary>
+		/// <summary>
+		/// Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NonStandardWorkingDay : InformationType {
@@ -3341,9 +3062,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// Recommendations for a related area or facility.
-	/// </summary>
+		/// <summary>
+		/// Recommendations for a related area or facility.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Recommendations : AbstractRxN {
@@ -3355,9 +3076,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// Regulations for a related area or facility.
-	/// </summary>
+		/// <summary>
+		/// Regulations for a related area or facility.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Regulations : AbstractRxN {
@@ -3369,9 +3090,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// Restrictions for a related area or facility.
-	/// </summary>
+		/// <summary>
+		/// Restrictions for a related area or facility.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Restrictions : AbstractRxN {
@@ -3383,9 +3104,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// The time when a service is available and known exceptions.
-	/// </summary>
+		/// <summary>
+		/// The time when a service is available and known exceptions.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ServiceHours : InformationType {
@@ -3417,23 +3138,13 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// The indication of the quality of the locational information for features in a dataset.
-	/// </summary>
+		/// <summary>
+		/// The indication of the quality of the locational information for features in a dataset.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpatialQuality : InformationNode, IInformationBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
 
 			public List<spatialAccuracy> spatialAccuracy {get;set;} = [];
@@ -3450,9 +3161,9 @@ namespace S100Framework.DomainModel.S131 {
 		using FeatureAssociations;
 		using InformationTypes;
 
-	/// <summary>
-	/// Generalized feature type which carries all the common attributes.
-	/// </summary>
+		/// <summary>
+		/// Generalized feature type which carries all the common attributes.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class FeatureType : FeatureNode, IFeatureBindingDefinition {
@@ -3472,16 +3183,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? source {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
+			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
 
 			public DateOnly? reportedDate {get;set;} = default;
@@ -3532,9 +3234,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// A feature often associated with contact information for an organization that exercises a management role or offers a service in the location.
-	/// </summary>
+		/// <summary>
+		/// A feature often associated with contact information for an organization that exercises a management role or offers a service in the location.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class OrganizationContactArea : FeatureType {
@@ -3558,9 +3260,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// A location which may be supervised by a responsible or controlling authority.
-	/// </summary>
+		/// <summary>
+		/// A location which may be supervised by a responsible or controlling authority.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class SupervisedArea : OrganizationContactArea {
@@ -3584,9 +3286,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// The physical installations and facilities that support operations in a port or harbour.
-	/// </summary>
+		/// <summary>
+		/// The physical installations and facilities that support operations in a port or harbour.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class HarbourPhysicalInfrastructure : SupervisedArea {
@@ -3612,9 +3314,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// The spatial arrangement of areas and other types of locations that are designated for specified purposes or otherwise distinguished from other areas and locations.
-	/// </summary>
+		/// <summary>
+		/// The spatial arrangement of areas and other types of locations that are designated for specified purposes or otherwise distinguished from other areas and locations.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class Layout : SupervisedArea {
@@ -3630,9 +3332,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// A designated area of water where a vessel, sea plane, etc., may anchor.
-	/// </summary>
+		/// <summary>
+		/// A designated area of water where a vessel, sea plane, etc., may anchor.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AnchorBerth : Layout {
@@ -3672,9 +3374,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// An area in which vessels or seaplanes anchor or may anchor.
-	/// </summary>
+		/// <summary>
+		/// An area in which vessels or seaplanes anchor or may anchor.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AnchorageArea : Layout {
@@ -3684,9 +3386,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public markedBy? markedBy {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
 			[JsonIgnore]
@@ -3717,9 +3417,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// A place, generally named or numbered, where a vessel may moor or anchor.
-	/// </summary>
+		/// <summary>
+		/// A place, generally named or numbered, where a vessel may moor or anchor.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Berth : Layout {
@@ -3735,10 +3435,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public Boolean? cathodicProtectionSystem {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
+			[EnumerationValue([1,2,3,4])]
 			public categoryOfBerthLocation? categoryOfBerthLocation {get;set;} = default;
 
 			public String? portFacilityNumber {get;set;} = default;
@@ -3755,16 +3452,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? locationByText {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
 			public methodOfSecuring? methodOfSecuring {get;set;} = default;
 
 			public String uNLocationCode {get;set;} = string.Empty;
@@ -3815,9 +3503,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// A specific position within a berth where a vessel may be moored or anchored.
-	/// </summary>
+		/// <summary>
+		/// A specific position within a berth where a vessel may be moored or anchored.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class BerthPosition : Layout {
@@ -3867,9 +3555,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// An artificially enclosed area within which ships may moor and which may have gates to regulate water level.
-	/// </summary>
+		/// <summary>
+		/// An artificially enclosed area within which ships may moor and which may have gates to regulate water level.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DockArea : Layout {
@@ -3879,9 +3567,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public markedBy? markedBy {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
 			[JsonIgnore]
@@ -3920,9 +3606,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// An artificial basin fitted with a gate or caisson, into which vessels can be floated and the water pumped out to expose the vessel's bottom. Also called graving dock.
-	/// </summary>
+		/// <summary>
+		/// An artificial basin fitted with a gate or caisson, into which vessels can be floated and the water pumped out to expose the vessel's bottom. Also called graving dock.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DryDock : HarbourPhysicalInfrastructure {
@@ -3948,9 +3634,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// A sea area where dredged material or other potentially more harmful material, for example explosives, chemical waste, is deliberately deposited.
-	/// </summary>
+		/// <summary>
+		/// A sea area where dredged material or other potentially more harmful material, for example explosives, chemical waste, is deliberately deposited.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DumpingGround : Layout {
@@ -3960,9 +3646,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public markedBy? markedBy {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
 			[JsonIgnore]
@@ -3993,9 +3677,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// A form of dry dock consisting of a floating structure of one or more sections which can be partly submerged by controlled flooding to receive a vessel, then raised by pumping out the water so that the vessel's bottom can be exposed.
-	/// </summary>
+		/// <summary>
+		/// A form of dry dock consisting of a floating structure of one or more sections which can be partly submerged by controlled flooding to receive a vessel, then raised by pumping out the water so that the vessel's bottom can be exposed.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FloatingDock : HarbourPhysicalInfrastructure {
@@ -4021,9 +3705,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// A structure in the intertidal zone serving as a support for vessels at low stages of the tide to permit work on the exposed portion of the vessel's hull.
-	/// </summary>
+		/// <summary>
+		/// A structure in the intertidal zone serving as a support for vessels at low stages of the tide to permit work on the exposed portion of the vessel's hull.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Gridiron : HarbourPhysicalInfrastructure {
@@ -4049,9 +3733,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// The area over which a harbour authority has jurisdiction.
-	/// </summary>
+		/// <summary>
+		/// The area over which a harbour authority has jurisdiction.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class HarbourAreaAdministrative : Layout {
@@ -4061,25 +3745,10 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? applicableLoadLineZone {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
+			[EnumerationValue([1,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 			public List<categoryOfHarbourFacility> categoryOfHarbourFacility {get;set;} = [];
 
 			public generalHarbourInformation? generalHarbourInformation {get;set;} = default;
@@ -4128,33 +3797,19 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// A distinguishable portion of the area over which a harbour authority has jurisdiction.
-	/// </summary>
+		/// <summary>
+		/// A distinguishable portion of the area over which a harbour authority has jurisdiction.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class HarbourAreaSection : Layout {
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
+			[EnumerationValue([1,3,8,9,11,12])]
 			public categoryOfPortSection? categoryOfPortSection {get;set;} = default;
 
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
+			[EnumerationValue([4,5,6,9,14,15,16,17])]
 			public List<categoryOfHarbourFacility> categoryOfHarbourFacility {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
 			public facilitiesLayoutDescription? facilitiesLayoutDescription {get;set;} = default;
@@ -4227,9 +3882,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// An enclosed area of water surrounded by quay walls constructed to provide means for the transfer of cargos from and to ships.
-	/// </summary>
+		/// <summary>
+		/// An enclosed area of water surrounded by quay walls constructed to provide means for the transfer of cargos from and to ships.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class HarbourBasin : Layout {
@@ -4239,9 +3894,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public markedBy? markedBy {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
 			[JsonIgnore]
@@ -4272,14 +3925,13 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// A harbour installation with a service or commercial operation of public interest.
-	/// </summary>
+		/// <summary>
+		/// A harbour installation with a service or commercial operation of public interest.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class HarbourFacility : HarbourPhysicalInfrastructure {
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
+			[EnumerationValue([12,13])]
 			public List<categoryOfHarbourFacility> categoryOfHarbourFacility {get;set;} = [];
 
 			[JsonIgnore]
@@ -4302,19 +3954,13 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// The equipment or structure used to secure a vessel.
-	/// </summary>
+		/// <summary>
+		/// The equipment or structure used to secure a vessel.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MooringWarpingFacility : Layout {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
+			[EnumerationValue([1,2,3,4,5,6,7])]
 			[Required()]
 			public categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility {get;set;}
 
@@ -4362,9 +4008,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// The extent to which a coastal State claims or may claim a specific jurisdiction in accordance with the provisions of International Law.
-	/// </summary>
+		/// <summary>
+		/// The extent to which a coastal State claims or may claim a specific jurisdiction in accordance with the provisions of International Law.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class OuterLimit : Layout {
@@ -4408,9 +4054,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// A location offshore where a pilot may board a vessel in preparation to piloting it through local waters.
-	/// </summary>
+		/// <summary>
+		/// A location offshore where a pilot may board a vessel in preparation to piloting it through local waters.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PilotBoardingPlace : Layout {
@@ -4420,9 +4066,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public markedBy? markedBy {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
 			[JsonIgnore]
@@ -4453,9 +4097,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// A designated portion of water for the landing and take-off of seaplanes.
-	/// </summary>
+		/// <summary>
+		/// A designated portion of water for the landing and take-off of seaplanes.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SeaplaneLandingArea : Layout {
@@ -4465,9 +4109,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public markedBy? markedBy {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
 			[JsonIgnore]
@@ -4498,56 +4140,21 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// A terminal covers that area on shore which provides buildings and constructions for the transfer of cargo or passengers from and to ships.
-	/// </summary>
+		/// <summary>
+		/// A terminal covers that area on shore which provides buildings and constructions for the transfer of cargo or passengers from and to ships.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Terminal : Layout {
 			public String? portFacilityNumber {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
+			[EnumerationValue([1,3,5,7,8,10,11])]
 			public categoryOfHarbourFacility? categoryOfHarbourFacility {get;set;} = default;
 
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
+			[EnumerationValue([2,5,6,7,8,10,11,12,13,14,15])]
 			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
+			[EnumerationValue([1,2,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,20,21,22])]
 			public List<product> product {get;set;} = [];
 
 			public String? terminalIdentifier {get;set;} = default;
@@ -4608,9 +4215,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// An area of water or enlargement of a channel used for turning vessels.
-	/// </summary>
+		/// <summary>
+		/// An area of water or enlargement of a channel used for turning vessels.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TurningBasin : Layout {
@@ -4620,9 +4227,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public markedBy? markedBy {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
+			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
 			[JsonIgnore]
@@ -4653,18 +4258,13 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// An area in which uniform general information of the waterway exists.
-	/// </summary>
+		/// <summary>
+		/// An area in which uniform general information of the waterway exists.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class WaterwayArea : Layout {
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
+			[EnumerationValue([1,3,8,9,11,12])]
 			[Required()]
 			public categoryOfPortSection categoryOfPortSection {get;set;}
 
@@ -4702,9 +4302,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// A geographical area that describes the coverage and extent of spatial objects.
-	/// </summary>
+		/// <summary>
+		/// A geographical area that describes the coverage and extent of spatial objects.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
@@ -4726,18 +4326,13 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// An area within which a uniform assessment of the quality of the non-bathymetric data exists.
-	/// </summary>
+		/// <summary>
+		/// An area within which a uniform assessment of the quality of the non-bathymetric data exists.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class QualityOfNonBathymetricData : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
+			[EnumerationValue([1,2,3,4,5,6])]
 			public categoryOfTemporalVariation? categoryOfTemporalVariation {get;set;} = default;
 
 			public decimal? horizontalDistanceUncertainty {get;set;} = default;
@@ -4765,35 +4360,13 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// The horizontal plane or tidal datum to which soundings have been reduced. Also called datum for sounding reduction.
-	/// </summary>
+		/// <summary>
+		/// The horizontal plane or tidal datum to which soundings have been reduced. Also called datum for sounding reduction.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SoundingDatum : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(19)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(44)]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,19,22,23,24,25,26,27,44])]
 			[Required()]
 			public verticalDatum verticalDatum {get;set;}
 
@@ -4811,26 +4384,13 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.
-	/// </summary>
+		/// <summary>
+		/// Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class VerticalDatumOfData : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(3)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
+			[EnumerationValue([3,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			[Required()]
 			public verticalDatum verticalDatum {get;set;}
 
@@ -4848,9 +4408,9 @@ namespace S100Framework.DomainModel.S131 {
 			];
 		}
 
-	/// <summary>
-	/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
-	/// </summary>
+		/// <summary>
+		/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
@@ -4862,7 +4422,7 @@ namespace S100Framework.DomainModel.S131 {
 			[Required()]
 			public int textOffsetMm {get;set;}
 
-			[EnumerationValue(1)]
+			[EnumerationValue([1])]
 			public textType? textType {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;

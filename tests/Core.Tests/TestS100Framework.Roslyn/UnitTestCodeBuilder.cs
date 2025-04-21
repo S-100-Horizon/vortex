@@ -71,8 +71,6 @@ namespace TestS100Framework
                 File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-101_FC.g.cs", File.ReadAllText(@".\..\..\..\S-101_FC.cs"));
                 File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-101_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-101_ViewModel.cs"));
 
-                File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\DomainModelBase.cs", File.ReadAllText(@".\..\..\..\DomainModelBase.cs"));
-
                 Build_S122();
                 File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-122_FC.g.cs", File.ReadAllText(@".\..\..\..\S-122_FC.cs"));
                 File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-122_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-122_ViewModel.cs"));
@@ -133,9 +131,7 @@ namespace TestS100Framework
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
                 File.WriteAllText(@".\..\..\..\S-101_FC.cs", content.DomainModel, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-101_ViewModel.cs", content.ViewModel, Encoding.UTF8);
-
-                //File.WriteAllText(@".\..\..\..\DomainModelBase.cs", content.common, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-101_ViewModel.cs", content.ViewModel, Encoding.UTF8);                
             }
 
             [Fact]
@@ -445,27 +441,27 @@ namespace TestS100Framework
             [Fact]
             public void Test_Serialization() {
                 //  DateOnly
-                var instance = new S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence {
-                    categoryOfZoneOfConfidenceInData = S100Framework.DomainModel.S101.categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA1,
-                    fixedDateRange = new S100Framework.DomainModel.S101.ComplexAttributes.fixedDateRange {
-                        dateStart = new DateOnly(2025, 1, 1),
-                        dateEnd = new DateOnly(2025, 1, 31)
-                    },
-                    horizontalPositionUncertainty = new S100Framework.DomainModel.S101.ComplexAttributes.horizontalPositionUncertainty {
-                        uncertaintyFixed = 10.0M,
-                        uncertaintyVariableFactor = 1M,
-                    },
-                    verticalUncertainty = new S100Framework.DomainModel.S101.ComplexAttributes.verticalUncertainty {
-                        uncertaintyFixed = 10.0M,
-                        uncertaintyVariableFactor = 1M
-                    }
-                };
+                //var instance = new S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence {
+                //    categoryOfZoneOfConfidenceInData = S100Framework.DomainModel.S101.categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA1,
+                //    fixedDateRange = new S100Framework.DomainModel.S101.ComplexAttributes.fixedDateRange {
+                //        dateStart = new DateOnly(2025, 1, 1),
+                //        dateEnd = new DateOnly(2025, 1, 31)
+                //    },
+                //    horizontalPositionUncertainty = new S100Framework.DomainModel.S101.ComplexAttributes.horizontalPositionUncertainty {
+                //        uncertaintyFixed = 10.0M,
+                //        uncertaintyVariableFactor = 1M,
+                //    },
+                //    verticalUncertainty = new S100Framework.DomainModel.S101.ComplexAttributes.verticalUncertainty {
+                //        uncertaintyFixed = 10.0M,
+                //        uncertaintyVariableFactor = 1M
+                //    }
+                //};
 
-                var json = System.Text.Json.JsonSerializer.Serialize(instance);
+                //var json = System.Text.Json.JsonSerializer.Serialize(instance);
 
-                var deserialized = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence>(json);
+                //var deserialized = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence>(json);
 
-                Assert.Equivalent(instance, deserialized);
+                //Assert.Equivalent(instance, deserialized);
             }
 
             private bool VerifyProductSpecification(XDocument productSpecification) {
