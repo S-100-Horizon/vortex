@@ -45,18 +45,6 @@ namespace TestS100Framework
             }
 
             [Fact]
-            public void Test_CreateClass() {
-                var type1 = typeof(Test.NullableTest);
-                var type2 = typeof(bool?);
-
-                var s100 = XDocument.Load(@"..\..\..\..\..\..\artifacts\S-101 Electronic Navigational Chart (ENC)\S-101_FC_1.2.3.xml");
-
-                var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
-
-                File.WriteAllText(@"c:\temp\content.cs", content.fc, Encoding.UTF8);
-            }
-
-            [Fact]
             public void Test_Bindings() {
             }
 
@@ -82,8 +70,6 @@ namespace TestS100Framework
                 Build_S101();
                 File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-101_FC.g.cs", File.ReadAllText(@".\..\..\..\S-101_FC.cs"));
                 File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-101_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-101_ViewModel.cs"));
-
-                File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\DomainModelBase.cs", File.ReadAllText(@".\..\..\..\DomainModelBase.cs"));
 
                 Build_S122();
                 File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-122_FC.g.cs", File.ReadAllText(@".\..\..\..\S-122_FC.cs"));
@@ -140,12 +126,12 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
+                var content = S100Framework.Applications.Roslyn.Build(s100);
 
-                File.WriteAllText(@".\..\..\..\S-101_FC.cs", content.fc, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-101_ViewModel.cs", content.view, Encoding.UTF8);
+                //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
-                File.WriteAllText(@".\..\..\..\DomainModelBase.cs", content.common, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-101_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-101_ViewModel.cs", content.ViewModel, Encoding.UTF8);                
             }
 
             [Fact]
@@ -156,12 +142,11 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
+                var content = S100Framework.Applications.Roslyn.Build(s100);
+                //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
-                File.WriteAllText(@".\..\..\..\S-122_FC.cs", content.fc, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-122_ViewModel.cs", content.view, Encoding.UTF8);
-
-                File.WriteAllText(@".\..\..\..\DomainModelBase.cs", content.common, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-122_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-122_ViewModel.cs", content.ViewModel, Encoding.UTF8);                
             }
 
             [Fact]
@@ -175,12 +160,11 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
+                var content = S100Framework.Applications.Roslyn.Build(s100);
+                //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
-                File.WriteAllText(@".\..\..\..\S-124_FC.cs", content.fc, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-124_ViewModel.cs", content.view, Encoding.UTF8);
-
-                File.WriteAllText(@".\..\..\..\DomainModelBase.cs", content.common, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-124_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-124_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
@@ -192,12 +176,12 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S128/2.0");
+                var content = S100Framework.Applications.Roslyn.Build(s100);
 
-                File.WriteAllText(@".\..\..\..\S-128_FC.cs", content.fc, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-128_ViewModel.cs", content.view, Encoding.UTF8);
+                //var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S128/2.0");
 
-                File.WriteAllText(@".\..\..\..\DomainModelBase.cs", content.common, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-128_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-128_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
@@ -206,12 +190,12 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S131/1.0");
+                var content = S100Framework.Applications.Roslyn.Build(s100);
 
-                File.WriteAllText(@".\..\..\..\S-131_FC.cs", content.fc, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-131_ViewModel.cs", content.view, Encoding.UTF8);
+                //var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S131/1.0");
 
-                File.WriteAllText(@".\..\..\..\DomainModelBase.cs", content.common, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-131_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-131_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
@@ -220,12 +204,12 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S100FC/5.0");
+                var content = S100Framework.Applications.Roslyn.Build(s100);
 
-                File.WriteAllText(@".\..\..\..\S-201_FC.cs", content.fc, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-201_ViewModel.cs", content.view, Encoding.UTF8);
+                //var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S100FC/5.0");
 
-                File.WriteAllText(@".\..\..\..\DomainModelBase.cs", content.common, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-201_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-201_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
@@ -235,12 +219,12 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
+                var content = S100Framework.Applications.Roslyn.Build(s100);
 
-                File.WriteAllText(@".\..\..\..\S-501_FC.cs", content.fc, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-501_ViewModel.cs", content.view, Encoding.UTF8);
+                //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
-                File.WriteAllText(@".\..\..\..\DomainModelBase.cs", content.common, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-501_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-501_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
 
@@ -391,41 +375,41 @@ namespace TestS100Framework
 
             [Fact]
             public void Test_Hierarchy() {
-                var productSpecification = XDocument.Load(@".\Artifacts\131_1_0_0_20230315_FC.xml");
+                //var productSpecification = XDocument.Load(@".\Artifacts\131_1_0_0_20230315_FC.xml");
 
-                var navigator = productSpecification.CreateNavigator();
-                navigator.MoveToFollowing(XPathNodeType.Element);
-                var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
+                //var navigator = productSpecification.CreateNavigator();
+                //navigator.MoveToFollowing(XPathNodeType.Element);
+                //var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
 
-                var scope_S100 = scopes["S100FC"];
+                //var scope_S100 = scopes["S100FC"];
 
-                var xmlNamespaceManager = new XmlNamespaceManager(new NameTable());
-                foreach (var e in scopes)
-                    xmlNamespaceManager.AddNamespace(e.Key, e.Value);
+                //var xmlNamespaceManager = new XmlNamespaceManager(new NameTable());
+                //foreach (var e in scopes)
+                //    xmlNamespaceManager.AddNamespace(e.Key, e.Value);
 
-                var productId = productSpecification.XPathSelectElement("//S100FC:productId", xmlNamespaceManager)!.Value.Replace("-", string.Empty).ToUpperInvariant();
-                var versionNumber = productSpecification.XPathSelectElement("//S100FC:versionNumber", xmlNamespaceManager)!.Value;
+                //var productId = productSpecification.XPathSelectElement("//S100FC:productId", xmlNamespaceManager)!.Value.Replace("-", string.Empty).ToUpperInvariant();
+                //var versionNumber = productSpecification.XPathSelectElement("//S100FC:versionNumber", xmlNamespaceManager)!.Value;
 
-                var featureTypes = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager);
+                //var featureTypes = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager);
 
-                var features = new List<S100Framework.ClassBuilder.featureType>();
+                //var features = new List<S100Framework.ClassBuilder.featureType>();
 
-                foreach (var f in featureTypes) {
-                    var name = f.Element(XName.Get("name", scope_S100))!.Value;
-                    var code = f.Element(XName.Get("code", scope_S100))!.Value;
+                //foreach (var f in featureTypes) {
+                //    var name = f.Element(XName.Get("name", scope_S100))!.Value;
+                //    var code = f.Element(XName.Get("code", scope_S100))!.Value;
 
-                    var superType = f.Elements(XName.Get("superType", scope_S100)).FirstOrDefault()?.Value;
+                //    var superType = f.Elements(XName.Get("superType", scope_S100)).FirstOrDefault()?.Value;
 
-                    var isAbstract = f.Attribute("isAbstract") != default && bool.Parse(f.Attribute("isAbstract")!.Value);
+                //    var isAbstract = f.Attribute("isAbstract") != default && bool.Parse(f.Attribute("isAbstract")!.Value);
 
-                    features.Add(new S100Framework.ClassBuilder.featureType(code, superType, isAbstract));
-                }
+                //    features.Add(new S100Framework.ClassBuilder.featureType(code, superType, isAbstract));
+                //}
 
-                features = features.OrderByDescending(e => e.isAbstract ? 1 : 0).ThenByDescending(e => e.superType is null ? 1 : 0).ToList();
+                //features = features.OrderByDescending(e => e.isAbstract ? 1 : 0).ThenByDescending(e => e.superType is null ? 1 : 0).ToList();
 
-                var hierarchyFeatureType = features.Hierarchy("FeatureType").ToList();
+                //var hierarchyFeatureType = features.Hierarchy("FeatureType").ToList();
 
-                System.Diagnostics.Debugger.Break();
+                //System.Diagnostics.Debugger.Break();
             }
 
             [Fact]
@@ -456,11 +440,28 @@ namespace TestS100Framework
 
             [Fact]
             public void Test_Serialization() {
-                var instance = new SpecialStructureEquipment();
+                //  DateOnly
+                //var instance = new S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence {
+                //    categoryOfZoneOfConfidenceInData = S100Framework.DomainModel.S101.categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA1,
+                //    fixedDateRange = new S100Framework.DomainModel.S101.ComplexAttributes.fixedDateRange {
+                //        dateStart = new DateOnly(2025, 1, 1),
+                //        dateEnd = new DateOnly(2025, 1, 31)
+                //    },
+                //    horizontalPositionUncertainty = new S100Framework.DomainModel.S101.ComplexAttributes.horizontalPositionUncertainty {
+                //        uncertaintyFixed = 10.0M,
+                //        uncertaintyVariableFactor = 1M,
+                //    },
+                //    verticalUncertainty = new S100Framework.DomainModel.S101.ComplexAttributes.verticalUncertainty {
+                //        uncertaintyFixed = 10.0M,
+                //        uncertaintyVariableFactor = 1M
+                //    }
+                //};
 
-                var json = System.Text.Json.JsonSerializer.Serialize(instance);
+                //var json = System.Text.Json.JsonSerializer.Serialize(instance);
 
-                System.Diagnostics.Debugger.Break();
+                //var deserialized = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence>(json);
+
+                //Assert.Equivalent(instance, deserialized);
             }
 
             private bool VerifyProductSpecification(XDocument productSpecification) {

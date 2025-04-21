@@ -66,7 +66,7 @@ namespace TestS100Framework
             Assert.NotNull(members);
 
             foreach (var member in gml.Features()) {
-                var featureType = member.FeatureType();
+                //var featureType = member.FeatureType();
 
                 var geometry = member.Geometry();
             }
@@ -88,13 +88,13 @@ namespace TestS100Framework
             yield break;
         }
 
-        public static S100Framework.FeatureTypeId? FeatureType(this XElement element) {
-            var prefix = element.GetPrefixOfNamespace(element.Name.Namespace);
+        //public static S100Framework.FeatureTypeId? FeatureType(this XElement element) {
+        //    var prefix = element.GetPrefixOfNamespace(element.Name.Namespace);
 
-            var type = Assembly.GetExecutingAssembly().GetType($"S100Framework.DomainModel.S131.FeatureTypes.{element.Name.LocalName}")!;
-            var serializer = new XmlSerializer(type);
-            return serializer.Deserialize(element.CreateReader()) as S100Framework.FeatureTypeId;
-        }
+        //    var type = Assembly.GetExecutingAssembly().GetType($"S100Framework.DomainModel.S131.FeatureTypes.{element.Name.LocalName}")!;
+        //    var serializer = new XmlSerializer(type);
+        //    return serializer.Deserialize(element.CreateReader()) as S100Framework.FeatureTypeId;
+        //}
 
         public static Geometry Geometry(this XElement element) {
             var prefix = element.GetPrefixOfNamespace(element.Name.NamespaceName)!;

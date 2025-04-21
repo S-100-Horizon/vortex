@@ -43,7 +43,7 @@ namespace S100Framework.Applications
                                 S100Framework.DomainModel.S128.catalogueElementClassification.Enc,
                             },
                     editionNumber = edtn,
-                    issueDate = isdt,
+                    issueDate = DateOnly.FromDateTime(isdt),
                     notForNavigation = true,
                     typeOfProductFormat = S100Framework.DomainModel.S128.typeOfProductFormat.IsoIec8211,
                     datasetName = dsnm,
