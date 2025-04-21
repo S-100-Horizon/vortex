@@ -70,7 +70,7 @@
             </Button>
         </Grid>
 
-        <s100:S100AttributeEditorControl x:Name="S100AttributeEditor"
+        <s100:S100AttributeEditorControl x:Name="S100AttributeEditor" Host="{Binding Host, Mode=OneTime}"
                                          Visibility="{Binding IsVisible, Mode=OneWay}"
                                          IsEditingEnabled="{Binding IsEditingEnabled, Mode=OneWay}"
                                          SelectedFeatureObject="{Binding SelectedFeatureProperty, Mode=OneWay}"

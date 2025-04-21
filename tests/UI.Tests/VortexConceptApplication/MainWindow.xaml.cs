@@ -84,65 +84,38 @@ namespace VortexConceptApplication
             dataTemplate.Seal();
             editorTemplateDefinition.EditingTemplate = dataTemplate;
 
-            //            this._propertyGrid.EditorDefinitions.Add(editorTemplateDefinition);
-
             var random = new Random();
 
-            Handles.GetFeaturesRefId = (e) => {
-                var featureType = e.FeatureType;
-                var associationTypes = e.AssociationTypes;
+            //Handles.GetFeaturesRefId = (e) => {
+            //    var featureType = e.FeatureType;
+            //    var associationTypes = e.AssociationTypes;
 
-                var objectid = new List<string>();
-                for (int i = 0; i < random.Next(1, 8); i++) {
-                    var prefix = random.Next(0, 99) switch {
-                        < 30 => "P",
-                        < 60 => "C",
-                        _ => "S",
-                    };
+            //    var objectid = new List<string>();
+            //    for (int i = 0; i < random.Next(1, 8); i++) {
+            //        var prefix = random.Next(0, 99) switch {
+            //            < 30 => "P",
+            //            < 60 => "C",
+            //            _ => "S",
+            //        };
 
-                    objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
-                }
-                return Task.FromResult(objectid.ToArray());
-            };
-
-            Handles.GetInformationsRefId = (e) => {
-                var informationType = e.InformationType;
-                var associationTypes = e.AssociationTypes;
-
-                var objectid = new List<string>();
-                for (int i = 0; i < random.Next(1, 8); i++) {
-                    var prefix = "I";
-
-                    objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
-                }
-                return Task.FromResult(objectid.ToArray());
-            };
-
-
-            //this._s100PropertyGrid.OnFeatureAssociationsChanged = (roleType roleType, string association) => {
-            //    var r = new Random(DateTime.Now.Microsecond);
-
-            //    return Task.FromResult<IEnumerable<AssociationId>>([new AssociationId($"B{r.Next(1, 1000):0000}"), new AssociationId($"A{r.Next(1, 1000):0000}")]);
+            //        objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
+            //    }
+            //    return Task.FromResult(objectid.ToArray());
             //};
 
+            //Handles.GetInformationsRefId = (e) => {
+            //    var informationType = e.InformationType;
+            //    var associationTypes = e.AssociationTypes;
 
+            //    var objectid = new List<string>();
+            //    for (int i = 0; i < random.Next(1, 8); i++) {
+            //        var prefix = "I";
 
-            //var viewModel101 = new S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel();
-
-            //var viewModel = viewModel101;
-
-            //var fromJson = new Building.StructureEquipment_theEquipment()!;
-
-            ////  TEST
-            //fromJson.RefIds = [new RefId {
-            //    Role = "theStructure",
-            //    Type = "Daymark",
-            //    Value = "S202600"
-            //}];
-
-            //var json = System.Text.Json.JsonSerializer.Serialize(fromJson);            
-
-            //var viewModel = new S100Framework.WPF.ViewModel.S101.LateralBuoyViewModel();            
+            //        objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
+            //    }
+            //    return Task.FromResult(objectid.ToArray());
+            //};
+                
             var model = new TwoWayRoutePart() { };
 
             var viewModel = new TwoWayRoutePartViewModel() {
