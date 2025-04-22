@@ -3,6 +3,7 @@ using S100Framework.WPF.ViewModel;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -18,7 +19,7 @@ namespace S100Framework.WPF
 
     #region EventArgs
 
-    public class QueryAssociationsEventArgs : RoutedEventArgs
+    public class QueryAssociationsEventArgs
     {
         public enum AssociationsType
         {
@@ -26,58 +27,46 @@ namespace S100Framework.WPF
             FeatureAssociations = 2,
         }
 
-        public QueryAssociationsEventArgs(AssociationsType type, roleType? roleType, string? association, string? role, ICollection<AssociationId> associations, RoutedEvent routedEvent, object source) : base(routedEvent, source) {
+        public QueryAssociationsEventArgs(AssociationsType type, roleType? roleType, string? association, string? role, object source) {
             this.type = type;
             this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
             this.association = association ?? string.Empty;
             this.role = role ?? string.Empty;
-            this.associations = associations;
         }
 
         public AssociationsType type { get; }
         public roleType? roleType { get; }
         public string? association { get; }
         public string? role { get; }
-        public ICollection<AssociationId> associations { get; }
     }
 
-    public class QueryInformationTypesEventArgs : RoutedEventArgs
+    public class QueryInformationTypesEventArgs
     {
-        public QueryInformationTypesEventArgs(roleType? roleType, string? association, string? role, ICollection<InformationTypeId> informations, RoutedEvent routedEvent, object source) : base(routedEvent, source) {
+        public QueryInformationTypesEventArgs(roleType? roleType, string? association, string? role, object source) {
             this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
             this.association = association ?? string.Empty;
             this.role = role ?? string.Empty;
-            this.informations = informations;
         }
 
         public roleType? roleType { get; }
         public string? association { get; }
         public string? role { get; }
-        public ICollection<InformationTypeId> informations { get; }
     }
 
-    public class QueryFeatureTypesEventArgs : RoutedEventArgs
+    public class QueryFeatureTypesEventArgs
     {
-        public QueryFeatureTypesEventArgs(roleType? roleType, string? association, string? role, ICollection<FeatureTypeId> features, RoutedEvent routedEvent, object source) : base(routedEvent, source) {
+        public QueryFeatureTypesEventArgs(roleType? roleType, string? association, string? role, object source) {
             this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
             this.association = association ?? string.Empty;
             this.role = role ?? string.Empty;
-            this.features = features;
         }
 
         public roleType? roleType { get; }
         public string? association { get; }
         public string? role { get; }
-        public ICollection<FeatureTypeId> features { get; }
     }
 
     #endregion
-
-    public delegate void QueryAssociationsEventHandler(object sender, QueryAssociationsEventArgs e);
-
-    public delegate void QueryInformationTypessEventHandler(object sender, QueryInformationTypesEventArgs e);
-
-    public delegate void QueryFeatureTypesEventHandler(object sender, QueryFeatureTypesEventArgs e);
 
     public abstract class SelectedObjectViewModel : INotifyPropertyChanged, INotifyCollectionChanged
     {
@@ -183,6 +172,15 @@ namespace S100Framework.WPF
         public AssociationViewModel AssociationObject { get; private set; }
     }
 
+    public class S100AttributeEditorControlHost
+    {
+        public required Func<QueryAssociationsEventArgs, Task<IEnumerable<AssociationId>>> QueryAssociation { get; set; }
+
+        public required Func<QueryInformationTypesEventArgs, Task<IEnumerable<InformationTypeId>>> QueryInformationTypes { get; set; }
+
+        public required Func<QueryFeatureTypesEventArgs, Task<IEnumerable<FeatureTypeId>>> QueryFeatureTypes { get; set; }
+    }
+
     [TemplatePart(Name = PART_PropertyGrid, Type = typeof(Xceed.Wpf.Toolkit.PropertyGrid.PropertyGrid))]
     [TemplatePart(Name = PART_FeatureBindings, Type = typeof(StackPanel))]
     [TemplatePart(Name = PART_InformationBindings, Type = typeof(StackPanel))]
@@ -200,7 +198,6 @@ namespace S100Framework.WPF
         private const string PART_FeatureBindingDefinitions = "PART_FeatureBindingDefinitions";
         private const string PART_InformationBindingsList = "PART_InformationBindingsList";
         private const string PART_FeatureBindingsList = "PART_FeatureBindingsList";
-
 
         private informationBindingDefinition? InformationBindingDefinitionSelected { get; set; } = default;
         private featureBindingDefinition? FeatureBindingDefinitionSelected { get; set; } = default;
@@ -320,6 +317,19 @@ namespace S100Framework.WPF
         private ICollection<FeatureBindingViewModel>? _selectedFeatureBindings = default;
 
         #region DependencyProperties       
+
+        public static readonly DependencyProperty HostProperty =
+            DependencyProperty.Register("Host", typeof(S100AttributeEditorControlHost), typeof(S100AttributeEditorControl), new UIPropertyMetadata(default, null));
+
+        public S100AttributeEditorControlHost Host {
+            get {
+                return (S100AttributeEditorControlHost)GetValue(HostProperty);
+            }
+            set {
+                SetValue(HostProperty, value);
+            }
+        }
+
 
         public static readonly DependencyProperty IsEditingEnabledProperty =
             DependencyProperty.Register("IsEditingEnabled", typeof(Boolean), typeof(S100AttributeEditorControl), new UIPropertyMetadata(false, IsEditingEnabledChanged));
@@ -553,29 +563,19 @@ namespace S100Framework.WPF
 
         #region Associations
 
-        public static readonly RoutedEvent QueryAssociationsEvent = EventManager.RegisterRoutedEvent("QueryAssociations", RoutingStrategy.Bubble, typeof(QueryAssociationsEventHandler), typeof(S100AttributeEditorControl));
-
-        public event QueryAssociationsEventHandler QueryAssociations {
-            add {
-                this.AddHandler(S100AttributeEditorControl.QueryAssociationsEvent, value);
-            }
-            remove {
-                this.RemoveHandler(S100AttributeEditorControl.QueryAssociationsEvent, value);
-            }
-        }
-
-
         public static RoutedUICommand QueryAssociationsCommand = new("Query association.", "QueryAssociationsCommand", typeof(S100AttributeEditorControl));
 
-        private void QueryAssociationsContent(object sender, ExecutedRoutedEventArgs e) {
-            _associationsDropdown.Clear();
-
+        private async void QueryAssociationsContent(object sender, ExecutedRoutedEventArgs e) {
             var eventArgs = ((ListViewItem)e.Parameter).Content switch {
-                FeatureBindingViewModel model => new QueryAssociationsEventArgs(QueryAssociationsEventArgs.AssociationsType.FeatureAssociations, model.roleType, model.association, model.role, _associationsDropdown, QueryAssociationsEvent, this),
-                InformationBindingViewModel model => new QueryAssociationsEventArgs(QueryAssociationsEventArgs.AssociationsType.InformationAssociations, model.roleType, model.association, model.role, _associationsDropdown, QueryAssociationsEvent, this),
+                FeatureBindingViewModel model => new QueryAssociationsEventArgs(QueryAssociationsEventArgs.AssociationsType.FeatureAssociations, model.roleType, model.association, model.role, this),
+                InformationBindingViewModel model => new QueryAssociationsEventArgs(QueryAssociationsEventArgs.AssociationsType.InformationAssociations, model.roleType, model.association, model.role, this),
                 _ => throw new InvalidOperationException()
             };
-            RaiseEvent(eventArgs);
+
+            _associationsDropdown.Clear();
+            foreach(var id in await Host.QueryAssociation(eventArgs)) {
+                _associationsDropdown.Add(id);
+            }
         }
 
         public static RoutedUICommand AssociationIdLoaded = new("AssociationIdLoaded", "AssociationIdLoadedContent", typeof(S100AttributeEditorControl));
@@ -635,26 +635,17 @@ namespace S100Framework.WPF
         private void InformationAssociationSelectedContent(object sender, ExecutedRoutedEventArgs e) {
         }
 
-        public static readonly RoutedEvent QueryInformationsEvent = EventManager.RegisterRoutedEvent("QueryInformations", RoutingStrategy.Bubble, typeof(QueryInformationTypessEventHandler), typeof(S100AttributeEditorControl));
-
-        public event QueryInformationTypessEventHandler QueryInformations {
-            add {
-                this.AddHandler(S100AttributeEditorControl.QueryInformationsEvent, value);
-            }
-            remove {
-                this.RemoveHandler(S100AttributeEditorControl.QueryInformationsEvent, value);
-            }
-        }
-
         public static RoutedUICommand QueryInformationsCommand = new("Query informations.", "QueryInformationsCommand", typeof(S100AttributeEditorControl));
 
-        private void QueryInformationsContent(object sender, ExecutedRoutedEventArgs e) {
-            _informationsDropdown.Clear();
-
+        private async void QueryInformationsContent(object sender, ExecutedRoutedEventArgs e) {
             var model = (InformationBindingViewModel)((ListViewItem)e.Parameter).Content;
 
-            var eventArgs = new QueryInformationTypesEventArgs(model.roleType, model.association, model.role, _informationsDropdown, QueryInformationsEvent, this);
-            RaiseEvent(eventArgs);
+            var eventArgs = new QueryInformationTypesEventArgs(model.roleType, model.association, model.role, this);
+
+            _informationsDropdown.Clear();
+            foreach (var id in await Host.QueryInformationTypes(eventArgs)) {
+                _informationsDropdown.Add(id);
+            }
         }
 
         public static RoutedUICommand InformationIdLoaded = new("InformationIdLoaded", "InformationIdLoadedContent", typeof(S100AttributeEditorControl));
@@ -714,26 +705,17 @@ namespace S100Framework.WPF
         private void FeatureAssociationSelectedContent(object sender, ExecutedRoutedEventArgs e) {
         }
 
-        public static readonly RoutedEvent QueryFeaturesEvent = EventManager.RegisterRoutedEvent("QueryFeatures", RoutingStrategy.Bubble, typeof(QueryFeatureTypesEventHandler), typeof(S100AttributeEditorControl));
-
-        public event QueryFeatureTypesEventHandler QueryFeatures {
-            add {
-                this.AddHandler(S100AttributeEditorControl.QueryFeaturesEvent, value);
-            }
-            remove {
-                this.RemoveHandler(S100AttributeEditorControl.QueryFeaturesEvent, value);
-            }
-        }
-
         public static RoutedUICommand QueryFeaturesCommand = new("Query features.", "QueryFeaturesCommand", typeof(S100AttributeEditorControl));
 
-        private void QueryFeaturesContent(object sender, ExecutedRoutedEventArgs e) {
-            _featuresDropdown.Clear();
-
+        private async void QueryFeaturesContent(object sender, ExecutedRoutedEventArgs e) {
             var model = (FeatureBindingViewModel)((ListViewItem)e.Parameter).Content;
 
-            var eventArgs = new QueryFeatureTypesEventArgs(model.roleType, model.association, model.role, _featuresDropdown, QueryFeaturesEvent, this);
-            RaiseEvent(eventArgs);
+            var eventArgs = new QueryFeatureTypesEventArgs(model.roleType, model.association, model.role, this);
+
+            _featuresDropdown.Clear();
+            foreach (var id in await Host.QueryFeatureTypes(eventArgs)) {
+                _featuresDropdown.Add(id);
+            }
         }
 
         public static RoutedUICommand FeatureIdLoaded = new("FeatureIdLoaded", "FeatureIdLoadedContent", typeof(S100AttributeEditorControl));

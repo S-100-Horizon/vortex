@@ -3,6 +3,7 @@
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S124;
+using S100Framework.DomainModel.S131.InformationTypes;
 using S100Framework.WPF;
 using S100Framework.WPF.ViewModel;
 using S100Framework.WPF.ViewModel.S101;
@@ -84,65 +85,73 @@ namespace VortexConceptApplication
             dataTemplate.Seal();
             editorTemplateDefinition.EditingTemplate = dataTemplate;
 
-            //            this._propertyGrid.EditorDefinitions.Add(editorTemplateDefinition);
-
             var random = new Random();
 
-            Handles.GetFeaturesRefId = (e) => {
-                var featureType = e.FeatureType;
-                var associationTypes = e.AssociationTypes;
+            //Handles.GetFeaturesRefId = (e) => {
+            //    var featureType = e.FeatureType;
+            //    var associationTypes = e.AssociationTypes;
 
-                var objectid = new List<string>();
-                for (int i = 0; i < random.Next(1, 8); i++) {
-                    var prefix = random.Next(0, 99) switch {
-                        < 30 => "P",
-                        < 60 => "C",
-                        _ => "S",
-                    };
+            //    var objectid = new List<string>();
+            //    for (int i = 0; i < random.Next(1, 8); i++) {
+            //        var prefix = random.Next(0, 99) switch {
+            //            < 30 => "P",
+            //            < 60 => "C",
+            //            _ => "S",
+            //        };
 
-                    objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
-                }
-                return Task.FromResult(objectid.ToArray());
-            };
+            //        objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
+            //    }
+            //    return Task.FromResult(objectid.ToArray());
+            //};
 
-            Handles.GetInformationsRefId = (e) => {
-                var informationType = e.InformationType;
-                var associationTypes = e.AssociationTypes;
+            //Handles.GetInformationsRefId = (e) => {
+            //    var informationType = e.InformationType;
+            //    var associationTypes = e.AssociationTypes;
 
-                var objectid = new List<string>();
-                for (int i = 0; i < random.Next(1, 8); i++) {
-                    var prefix = "I";
+            //    var objectid = new List<string>();
+            //    for (int i = 0; i < random.Next(1, 8); i++) {
+            //        var prefix = "I";
 
-                    objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
-                }
-                return Task.FromResult(objectid.ToArray());
-            };
-
-
-            //this._s100PropertyGrid.OnFeatureAssociationsChanged = (roleType roleType, string association) => {
-            //    var r = new Random(DateTime.Now.Microsecond);
-
-            //    return Task.FromResult<IEnumerable<AssociationId>>([new AssociationId($"B{r.Next(1, 1000):0000}"), new AssociationId($"A{r.Next(1, 1000):0000}")]);
+            //        objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
+            //    }
+            //    return Task.FromResult(objectid.ToArray());
             //};
 
 
+            S100AttributeEditor.Host = new S100AttributeEditorControlHost {
+                QueryAssociation = async (QueryAssociationsEventArgs e) => {
+                    var associations = new List<AssociationId>();
 
-            //var viewModel101 = new S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel();
+                    var r = new Random(DateTime.Now.Microsecond);
+                    foreach (var i in Enumerable.Range(0, r.Next(1, 8))) {
+                        associations.Add(new AssociationId($"A{r.Next(1, 1000):0000}"));
+                    }
+                    return associations;
+                },
+                QueryInformationTypes = async (QueryInformationTypesEventArgs e) => {
+                    var informations = new List<InformationTypeId>();
 
-            //var viewModel = viewModel101;
+                    var r = new Random(DateTime.Now.Microsecond);
+                    foreach (var i in Enumerable.Range(0, r.Next(1, 8))) {
+                        informations.Add(new InformationTypeId("ContactDetails", $"P{r.Next(1, 1000):0000}"));
+                    }
+                    return informations;
+                },
+                QueryFeatureTypes = async (QueryFeatureTypesEventArgs e) => {
+                    var features = new List<FeatureTypeId>();
 
-            //var fromJson = new Building.StructureEquipment_theEquipment()!;
+                    var r = new Random(DateTime.Now.Microsecond);
+                    foreach (var i in Enumerable.Range(0, r.Next(1, 8))) {
+                        features.Add(r.Next(0, 2) switch {
+                            0 => new FeatureTypeId(featureTypes[0][r.Next(0, featureTypes[0].Count() - 1)], $"P{r.Next(1, 1000):0000}"),
+                            1 => new FeatureTypeId(featureTypes[1][r.Next(0, featureTypes[1].Count() - 1)], $"C{r.Next(1, 1000):0000}"),
+                            2 => new FeatureTypeId(featureTypes[2][r.Next(0, featureTypes[2].Count() - 1)], $"S{r.Next(1, 1000):0000}"),
+                        });
+                    }
+                    return features;
+                },
+            };
 
-            ////  TEST
-            //fromJson.RefIds = [new RefId {
-            //    Role = "theStructure",
-            //    Type = "Daymark",
-            //    Value = "S202600"
-            //}];
-
-            //var json = System.Text.Json.JsonSerializer.Serialize(fromJson);            
-
-            //var viewModel = new S100Framework.WPF.ViewModel.S101.LateralBuoyViewModel();            
             var model = new TwoWayRoutePart() { };
 
             var viewModel = new TwoWayRoutePartViewModel() {
@@ -241,29 +250,11 @@ namespace VortexConceptApplication
             System.Diagnostics.Debugger.Break();
         }
 
-        private void S100AttributeEditor_QueryAssociations(object sender, QueryAssociationsEventArgs e) {
-            var r = new Random(DateTime.Now.Microsecond);
-            foreach (var i in Enumerable.Range(0, r.Next(1, 8))) {
-                e.associations.Add(new AssociationId($"A{r.Next(1, 1000):0000}"));
-            }
-        }
-
         static Dictionary<int, string[]> featureTypes = new Dictionary<int, string[]> {
             { 0, ["LandArea", "Sounding"] },
             { 1, ["Coastline"] },
             { 2, ["LandArea", "Lake"] },
         };
-
-        private void S100AttributeEditor_QueryFeatures(object sender, QueryFeatureTypesEventArgs e) {
-            var r = new Random(DateTime.Now.Microsecond);
-            foreach (var i in Enumerable.Range(0, r.Next(1, 8))) {
-                e.features.Add(r.Next(0, 2) switch {
-                    0 => new FeatureTypeId(featureTypes[0][r.Next(0, featureTypes[0].Count() - 1)], $"P{r.Next(1, 1000):0000}"),
-                    1 => new FeatureTypeId(featureTypes[1][r.Next(0, featureTypes[1].Count() - 1)], $"C{r.Next(1, 1000):0000}"),
-                    2 => new FeatureTypeId(featureTypes[2][r.Next(0, featureTypes[2].Count() - 1)], $"S{r.Next(1, 1000):0000}"),
-                });
-            }
-        }
     }
 
     public class CodeListComboEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor

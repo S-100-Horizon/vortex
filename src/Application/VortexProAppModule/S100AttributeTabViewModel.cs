@@ -97,6 +97,8 @@ namespace VortexProAppModule
 
         private SelectedType _selectedModelType = default;
 
+        private S100AttributeEditorControlHost _host;
+
         private ObservableCollection<string> _schemas = new();
 
         private string _selectedSchema = default;
@@ -153,74 +155,168 @@ namespace VortexProAppModule
                 }
             });
 
-            S100Framework.WPF.ViewModel.Handles.GetFeaturesRefId = async (e) => {
-                var featureType = e.FeatureType;
-                var associationTypes = e.AssociationTypes;
 
-                var result = await QueuedTask.Run(() => {
-                    var mapView = MapView.Active?.Map;
-                    if (mapView is null)
-                        return [];
+            Host = new S100AttributeEditorControlHost {
+                QueryAssociation = async (QueryAssociationsEventArgs e) => {
+                    return await QueuedTask.Run(() => {
+                        using var fc = Inspector.MapMember switch {
+                            FeatureLayer l => l.GetFeatureClass(),
+                            StandaloneTable t => t.GetTable(),
+                            _ => throw new InvalidOperationException(),
+                        };
 
-                    var inspector = new ArcGIS.Desktop.Editing.Attributes.Inspector();
+                        using var geodatabase = (Geodatabase)fc.GetDatastore();
 
-                    var selection = mapView.GetSelection();
+                        var syntax = geodatabase.GetSQLSyntax();
+                        var tableNames = syntax.ParseTableName(fc.GetName());
 
-                    var objectid = new List<string>();
+                        var associationName = e.type switch {
+                            QueryAssociationsEventArgs.AssociationsType.InformationAssociations => syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "informationassociation"),
+                            QueryAssociationsEventArgs.AssociationsType.FeatureAssociations => syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "featureassociation"),
+                            _ => throw new InvalidOperationException(),
+                        };
 
-                    foreach (var selectionSet in selection.ToDictionary()) {
-                        if (!(selectionSet.Key is ArcGIS.Desktop.Mapping.FeatureLayer))
-                            continue;
-                        foreach (var i in selectionSet.Value) {
-                            inspector.Load(selectionSet.Key, i);
+                        using var association = geodatabase.OpenDataset<Table>(associationName);
 
-                            var code = Convert.ToString(inspector["code"]);
-                            if (string.IsNullOrEmpty(code) || !featureType.Equals(code, StringComparison.InvariantCultureIgnoreCase))
-                                continue;
+                        var q = new QueryFilter {
+                            WhereClause = $"ps = '{Inspector["ps"]}' AND code = '{e.association}'",
+                        };
 
-                            objectid.Add(Convert.ToString(inspector["name"]));
+                        var ids = new List<AssociationId>();
+
+                        using var cursor = association.Search(q, true);
+                        while (cursor.MoveNext()) {
+                            ids.Add(new AssociationId($"{Convert.ToString(cursor.Current["name"])}"));
                         }
-                    }
 
-                    return objectid.ToArray();
-                }, TaskCreationOptions.None);
-                return result;
-            };
+                        return ids;
+                    }, TaskCreationOptions.None);
+                },
 
-            S100Framework.WPF.ViewModel.Handles.GetInformationsRefId = async (e) => {
-                var informationType = e.InformationType;
-                var associationTypes = e.AssociationTypes;
+                QueryInformationTypes = async (QueryInformationTypesEventArgs e) => {
+                    var informationtypes = S100Framework.WPF.Helper.InformationAssociationBindings(SelectedSchema, e.association!, e.role!);
 
-                var result = await QueuedTask.Run(() => {
-                    var mapView = MapView.Active?.Map;
-                    if (mapView is null)
-                        return [];
+                    if (!informationtypes.Any())
+                        return Enumerable.Empty<InformationTypeId>();
 
-                    var inspector = new ArcGIS.Desktop.Editing.Attributes.Inspector();
+                    return await QueuedTask.Run(() => {
+                        var ids = new List<InformationTypeId>();
 
-                    var selection = mapView.GetSelection();
+                        var mapView = MapView.Active?.Map;
+                        if (mapView is not null) {
+                            var local = new ArcGIS.Desktop.Editing.Attributes.Inspector();
 
-                    var objectid = new List<string>();
+                            var selection = mapView.GetSelection();
 
-                    foreach (var selectionSet in selection.ToDictionary()) {
-                        if (!(selectionSet.Key is ArcGIS.Desktop.Mapping.StandaloneTable))
-                            continue;
+                            foreach (var selectionSet in selection.ToDictionary()) {
+                                if (!(selectionSet.Key is ArcGIS.Desktop.Mapping.StandaloneTable))
+                                    continue;
+                                foreach (var i in selectionSet.Value) {
+                                    local.Load(selectionSet.Key, i);
 
-                        foreach (var i in selectionSet.Value) {
-                            inspector.Load(selectionSet.Key, i);
+                                    var ps = Convert.ToString(local["ps"]);
+                                    var code = Convert.ToString(local["code"]);
+                                    if (string.Compare(Convert.ToString(Inspector["ps"]), ps, true) != 0)
+                                        continue;
+                                    if (string.IsNullOrEmpty(code))
+                                        continue;
 
-                            var code = Convert.ToString(inspector["code"]);
-                            if (string.IsNullOrEmpty(code) || !informationType.Equals(code, StringComparison.InvariantCultureIgnoreCase))
-                                continue;
+                                    if (!informationtypes.Contains(code))
+                                        continue;
 
-                            objectid.Add(Convert.ToString(inspector["name"]));
+                                    ids.Add(new InformationTypeId(code, Convert.ToString(local["name"])));
+                                }
+                            }
+
+                            if (ids.Any())
+                                return ids;
                         }
-                    }
 
-                    return objectid.ToArray();
-                }, TaskCreationOptions.None);
-                return result;
-            };
+                        var values = informationtypes.Select(i => $"'{i}'");
+                        var q = new QueryFilter {
+                            WhereClause = $"ps = '{Inspector["ps"]}' AND code IN ({string.Join(',', values)})",
+                            //PrefixClause = "TOP 10" ONLY MSSQL
+                        };
+
+                        foreach (var primitive in new string[] { "informationtype" }) {
+                            int top = 5;
+
+                            using var r = Inspector.OpenDataset<Table>(primitive);
+
+                            using var cursor = r.Search(q, true);
+                            while (cursor.MoveNext() && top > 0) {
+                                var row = cursor.Current;
+                                ids.Add(new InformationTypeId(Convert.ToString(row["code"]), Convert.ToString(row["name"])));
+
+                                top -= 1;
+                            }
+                        }
+                        return ids;
+                    }, TaskCreationOptions.None);
+                },
+
+                QueryFeatureTypes = async (QueryFeatureTypesEventArgs e) => {
+                    var features = S100Framework.WPF.Helper.FeatureAssociationBindings(SelectedSchema, e.association!, e.role!);
+
+                    if (!features.Any())
+                        return Enumerable.Empty<FeatureTypeId>();
+
+                    return await QueuedTask.Run(() => {
+                        var ids = new List<FeatureTypeId>();
+
+                        var mapView = MapView.Active?.Map;
+                        if (mapView is not null) {
+                            var local = new ArcGIS.Desktop.Editing.Attributes.Inspector();
+
+                            var selection = mapView.GetSelection();
+
+                            foreach (var selectionSet in selection.ToDictionary()) {
+                                if (!(selectionSet.Key is ArcGIS.Desktop.Mapping.FeatureLayer))
+                                    continue;
+                                foreach (var i in selectionSet.Value) {
+                                    local.Load(selectionSet.Key, i);
+
+                                    var ps = Convert.ToString(local["ps"]);
+                                    var code = Convert.ToString(local["code"]);
+                                    if (string.Compare(Convert.ToString(Inspector["ps"]), ps, true) != 0)
+                                        continue;
+                                    if (string.IsNullOrEmpty(code))
+                                        continue;
+
+                                    if (!features.Contains(code))
+                                        continue;
+
+                                    ids.Add(new FeatureTypeId(code, Convert.ToString(local["name"])));
+                                }
+                            }
+
+                            if (ids.Any())
+                                return ids;
+                        }
+
+                        var values = features.Select(i => $"'{i}'");
+                        var q = new QueryFilter {
+                            WhereClause = $"ps = '{Inspector["ps"]}' AND code IN ({string.Join(',', values)})",
+                            //PrefixClause = "TOP 10" ONLY MSSQL
+                        };
+
+                        foreach (var primitive in new string[] { "point", "pointset", "curve", "surface" }) {
+                            int top = 5;
+
+                            using var f = Inspector.OpenDataset<FeatureClass>(primitive);
+
+                            using var cursor = f.Search(q, true);
+                            while (cursor.MoveNext() && top > 0) {
+                                var feature = cursor.Current;
+                                ids.Add(new FeatureTypeId(Convert.ToString(feature["code"]), Convert.ToString(feature["name"])));
+
+                                top -= 1;
+                            }
+                        }
+                        return ids;
+                    }, TaskCreationOptions.None);
+                },
+            };            
         }
 
         private void Current_PropertyChanged(object sender, PropertyChangedEventArgs e) {
@@ -736,6 +832,11 @@ namespace VortexProAppModule
 
         public ICommand CreateInstance { get; set; }
 
+        public S100AttributeEditorControlHost Host {
+            get => _host;
+            set => SetProperty(ref _host, value);
+        }
+
         public ObservableCollection<string> Schemas {
             get => _schemas;
             set => SetProperty(ref _schemas, value);
@@ -798,187 +899,6 @@ namespace VortexProAppModule
 
         public bool IsCreateButtonEnabled => IsSelectedSchemaEnabled && IsSelectedModelTypeEnabled && _selectedTemplate != SelectedTemplate.Empty;
 
-
-        public async void S100AttributeEditor_QueryAssociations(object sender, QueryAssociationsEventArgs e) {
-            var rows = await QueuedTask.Run(() => {
-                using var fc = Inspector.MapMember switch {
-                    FeatureLayer l => l.GetFeatureClass(),
-                    StandaloneTable t => t.GetTable(),
-                    _ => throw new InvalidOperationException(),
-                };
-
-                using var geodatabase = (Geodatabase)fc.GetDatastore();
-
-                var syntax = geodatabase.GetSQLSyntax();
-                var tableNames = syntax.ParseTableName(fc.GetName());
-
-                var associationName = e.type switch {
-                    QueryAssociationsEventArgs.AssociationsType.InformationAssociations => syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "informationassociation"),
-                    QueryAssociationsEventArgs.AssociationsType.FeatureAssociations => syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "featureassociation"),
-                    _ => throw new InvalidOperationException(),
-                };
-
-                using var association = geodatabase.OpenDataset<Table>(associationName);
-
-                var q = new QueryFilter {
-                    WhereClause = $"ps = '{Inspector["ps"]}' AND code = '{e.association}'",
-                };
-
-                var ids = new List<AssociationId>();
-
-                using var cursor = association.Search(q, true);
-                while (cursor.MoveNext()) {
-                    ids.Add(new AssociationId($"{Convert.ToString(cursor.Current["name"])}"));
-                }
-
-                return ids;
-            }, TaskCreationOptions.None);
-
-            if (rows.Any()) {
-                System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                    foreach (var row in rows)
-                        e.associations.Add(row);
-                });
-            }
-        }
-
-        public async void S100AttributeEditor_QueryInformations(object sender, QueryInformationTypesEventArgs e) {
-            var informationtypes = S100Framework.WPF.Helper.InformationAssociationBindings(SelectedSchema, e.association!, e.role!);
-
-            if (!informationtypes.Any())
-                return;
-
-            var rows = await QueuedTask.Run(() => {
-                var ids = new List<InformationTypeId>();
-
-                var mapView = MapView.Active?.Map;
-                if (mapView is not null) {
-                    var local = new ArcGIS.Desktop.Editing.Attributes.Inspector();
-
-                    var selection = mapView.GetSelection();
-
-                    foreach (var selectionSet in selection.ToDictionary()) {
-                        if (!(selectionSet.Key is ArcGIS.Desktop.Mapping.StandaloneTable))
-                            continue;
-                        foreach (var i in selectionSet.Value) {
-                            local.Load(selectionSet.Key, i);
-
-                            var ps = Convert.ToString(local["ps"]);
-                            var code = Convert.ToString(local["code"]);
-                            if (string.Compare(Convert.ToString(Inspector["ps"]), ps, true) != 0)
-                                continue;
-                            if (string.IsNullOrEmpty(code))
-                                continue;
-
-                            if (!informationtypes.Contains(code))
-                                continue;
-
-                            ids.Add(new InformationTypeId(code, Convert.ToString(local["name"])));
-                        }
-                    }
-
-                    if (ids.Any())
-                        return ids;
-                }
-
-                var values = informationtypes.Select(i => $"'{i}'");
-                var q = new QueryFilter {
-                    WhereClause = $"ps = '{Inspector["ps"]}' AND code IN ({string.Join(',', values)})",
-                    //PrefixClause = "TOP 10" ONLY MSSQL
-                };
-
-                foreach (var primitive in new string[] { "informationtype" }) {
-                    int top = 5;
-
-                    using var r = Inspector.OpenDataset<Table>(primitive);
-
-                    using var cursor = r.Search(q, true);
-                    while (cursor.MoveNext() && top > 0) {
-                        var row = cursor.Current;
-                        ids.Add(new InformationTypeId(Convert.ToString(row["code"]), Convert.ToString(row["name"])));
-
-                        top -= 1;
-                    }
-                }
-                return ids;
-            }, TaskCreationOptions.None);
-
-            if (rows.Any()) {
-                System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                    foreach (var row in rows)
-                        e.informations.Add(row);
-                });
-            }
-        }
-
-        public async void S100AttributeEditor_QueryFeatures(object sender, QueryFeatureTypesEventArgs e) {
-            var features = S100Framework.WPF.Helper.FeatureAssociationBindings(SelectedSchema, e.association!, e.role!);
-
-            if (!features.Any())
-                return;
-
-            var rows = await QueuedTask.Run(() => {
-                var ids = new List<FeatureTypeId>();
-
-                var mapView = MapView.Active?.Map;
-                if (mapView is not null) {
-                    var local = new ArcGIS.Desktop.Editing.Attributes.Inspector();
-
-                    var selection = mapView.GetSelection();
-
-                    foreach (var selectionSet in selection.ToDictionary()) {
-                        if (!(selectionSet.Key is ArcGIS.Desktop.Mapping.FeatureLayer))
-                            continue;
-                        foreach (var i in selectionSet.Value) {
-                            local.Load(selectionSet.Key, i);
-
-                            var ps = Convert.ToString(local["ps"]);
-                            var code = Convert.ToString(local["code"]);
-                            if (string.Compare(Convert.ToString(Inspector["ps"]), ps, true) != 0)
-                                continue;
-                            if (string.IsNullOrEmpty(code))
-                                continue;
-
-                            if (!features.Contains(code))
-                                continue;
-
-                            ids.Add(new FeatureTypeId(code, Convert.ToString(local["name"])));
-                        }
-                    }
-
-                    if (ids.Any())
-                        return ids;
-                }
-
-                var values = features.Select(i => $"'{i}'");
-                var q = new QueryFilter {
-                    WhereClause = $"ps = '{Inspector["ps"]}' AND code IN ({string.Join(',', values)})",
-                    //PrefixClause = "TOP 10" ONLY MSSQL
-                };
-
-                foreach (var primitive in new string[] { "point", "pointset", "curve", "surface" }) {
-                    int top = 5;
-
-                    using var f = Inspector.OpenDataset<FeatureClass>(primitive);
-
-                    using var cursor = f.Search(q, true);
-                    while (cursor.MoveNext() && top > 0) {
-                        var feature = cursor.Current;
-                        ids.Add(new FeatureTypeId(Convert.ToString(feature["code"]), Convert.ToString(feature["name"])));
-
-                        top -= 1;
-                    }
-                }
-                return ids;
-            }, TaskCreationOptions.None);
-
-            if (rows.Any()) {
-                System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                    foreach (var row in rows)
-                        e.features.Add(row);
-                });
-            }
-        }
 
         private static JsonNode Unflatten(Dictionary<string, JsonValue> source) {
             var regex = new System.Text.RegularExpressions.Regex(@"(?!\.)([^. ^\[\]]+)|(?!\[)(\d+)(?=\])");
