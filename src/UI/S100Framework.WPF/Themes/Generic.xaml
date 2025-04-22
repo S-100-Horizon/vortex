@@ -59,7 +59,7 @@
                                         </ListView.ItemContainerStyle>
                                         <ListView.View>
                                             <GridView>
-                                                <GridViewColumn Header="roleType" DisplayMemberBinding="{Binding roleType, Mode=OneTime}" Width="80"/>
+                                                <!--<GridViewColumn Header="roleType" DisplayMemberBinding="{Binding roleType, Mode=OneTime}" Width="80"/>-->
                                                 <GridViewColumn Header="association" DisplayMemberBinding="{Binding association, Mode=OneTime}" />
                                                 <GridViewColumn Header="role" DisplayMemberBinding="{Binding role, Mode=OneTime}" Width="80"/>
                                                 <GridViewColumn Header="ID" Width="120">
@@ -204,7 +204,7 @@
                                         </ListView.ItemContainerStyle>
                                         <ListView.View>
                                             <GridView>
-                                                <GridViewColumn Header="roleType" DisplayMemberBinding="{Binding roleType, Mode=OneTime}" Width="80"/>
+                                                <!--<GridViewColumn Header="roleType" DisplayMemberBinding="{Binding roleType, Mode=OneTime}" Width="80"/>-->
                                                 <GridViewColumn Header="association" DisplayMemberBinding="{Binding association, Mode=OneTime}" />
                                                 <GridViewColumn Header="role" DisplayMemberBinding="{Binding role, Mode=OneTime}" Width="80"/>
                                                 <GridViewColumn Header="ID" Width="120">
