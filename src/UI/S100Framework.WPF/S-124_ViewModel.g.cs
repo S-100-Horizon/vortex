@@ -69,7 +69,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class featureNameViewModel : ViewModelBase {
 		private String _language  = string.Empty;
 
-		[Category("featureName")]
 		public String language {
 			get {
 				return _language;
@@ -80,7 +79,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String _name  = string.Empty;
 
-		[Category("featureName")]
 		public String name {
 			get {
 				return _name;
@@ -91,7 +89,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private nameUsage? _nameUsage  = default;
 
-		[Category("featureName")]
 		public nameUsage? nameUsage {
 			get {
 				return _nameUsage;
@@ -121,6 +118,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public featureName Model => new () {
 			language = this._language,
 			name = this._name,
@@ -138,7 +136,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class dateTimeRangeViewModel : ViewModelBase {
 		private DateTime _dateTimeEnd ;
 
-		[Category("dateTimeRange")]
 		public DateTime dateTimeEnd {
 			get {
 				return _dateTimeEnd;
@@ -149,7 +146,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private DateTime _dateTimeStart ;
 
-		[Category("dateTimeRange")]
 		public DateTime dateTimeStart {
 			get {
 				return _dateTimeStart;
@@ -174,6 +170,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public dateTimeRange Model => new () {
 			dateTimeEnd = this._dateTimeEnd,
 			dateTimeStart = this._dateTimeStart,
@@ -190,7 +187,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class eNCFeatureReferenceViewModel : ViewModelBase {
 		private String _editionNumber  = string.Empty;
 
-		[Category("eNCFeatureReference")]
 		public String editionNumber {
 			get {
 				return _editionNumber;
@@ -201,7 +197,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String _eNCName  = string.Empty;
 
-		[Category("eNCFeatureReference")]
 		public String eNCName {
 			get {
 				return _eNCName;
@@ -214,7 +209,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public ObservableCollection<String> featureObjectIdentifier  { get; set; } = new ();
 		private String _updateNumber  = string.Empty;
 
-		[Category("eNCFeatureReference")]
 		public String updateNumber {
 			get {
 				return _updateNumber;
@@ -247,6 +241,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public eNCFeatureReference Model => new () {
 			editionNumber = this._editionNumber,
 			eNCName = this._eNCName,
@@ -274,6 +269,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private dateTimeRangeViewModel _dateTimeRange ;
 
 		[Category("featureReference")]
+		[ExpandableObject]
 		public dateTimeRangeViewModel dateTimeRange {
 			get {
 				return _dateTimeRange;
@@ -321,6 +317,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public featureReference Model => new () {
 			featureIdentifier = this.featureIdentifier.ToList(),
 			dateTimeRange = this._dateTimeRange?.Model,
@@ -351,7 +348,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class fixedDateRangeViewModel : ViewModelBase {
 		private DateOnly? _dateEnd  = default;
 
-		[Category("fixedDateRange")]
 		public DateOnly? dateEnd {
 			get {
 				return _dateEnd;
@@ -362,7 +358,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private DateOnly? _dateStart  = default;
 
-		[Category("fixedDateRange")]
 		public DateOnly? dateStart {
 			get {
 				return _dateStart;
@@ -387,6 +382,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public fixedDateRange Model => new () {
 			dateEnd = this._dateEnd,
 			dateStart = this._dateStart,
@@ -403,7 +399,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class informationViewModel : ViewModelBase {
 		private String? _fileLocator  = default;
 
-		[Category("information")]
 		public String? fileLocator {
 			get {
 				return _fileLocator;
@@ -414,7 +409,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String? _fileReference  = default;
 
-		[Category("information")]
 		public String? fileReference {
 			get {
 				return _fileReference;
@@ -425,7 +419,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String? _headline  = default;
 
-		[Category("information")]
 		public String? headline {
 			get {
 				return _headline;
@@ -436,7 +429,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String? _language  = default;
 
-		[Category("information")]
 		public String? language {
 			get {
 				return _language;
@@ -447,7 +439,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String? _text  = default;
 
-		[Category("information")]
 		public String? text {
 			get {
 				return _text;
@@ -478,6 +469,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public information Model => new () {
 			fileLocator = this._fileLocator,
 			fileReference = this._fileReference,
@@ -498,6 +490,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private informationViewModel? _information  = default;
 
 		[Category("warningInformation")]
+		[ExpandableObject]
 		public informationViewModel? information {
 			get {
 				return _information;
@@ -531,6 +524,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public warningInformation Model => new () {
 			information = this._information?.Model,
 			navwarnTypeDetails = this.navwarnTypeDetails.ToList(),
@@ -553,7 +547,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class chartAffectedViewModel : ViewModelBase {
 		private String _chartNumber  = string.Empty;
 
-		[Category("chartAffected")]
 		public String chartNumber {
 			get {
 				return _chartNumber;
@@ -564,7 +557,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String? _chartPlanNumber  = default;
 
-		[Category("chartAffected")]
 		public String? chartPlanNumber {
 			get {
 				return _chartPlanNumber;
@@ -575,7 +567,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private DateOnly _editionDate ;
 
-		[Category("chartAffected")]
 		public DateOnly editionDate {
 			get {
 				return _editionDate;
@@ -586,7 +577,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private DateOnly? _lastNoticeDate  = default;
 
-		[Category("chartAffected")]
 		public DateOnly? lastNoticeDate {
 			get {
 				return _lastNoticeDate;
@@ -615,6 +605,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public chartAffected Model => new () {
 			chartNumber = this._chartNumber,
 			chartPlanNumber = this._chartPlanNumber,
@@ -634,6 +625,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private chartAffectedViewModel? _chartAffected  = default;
 
 		[Category("affectedChartPublications")]
+		[ExpandableObject]
 		public chartAffectedViewModel? chartAffected {
 			get {
 				return _chartAffected;
@@ -644,7 +636,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String? _chartPublicationIdentifier  = default;
 
-		[Category("affectedChartPublications")]
 		public String? chartPublicationIdentifier {
 			get {
 				return _chartPublicationIdentifier;
@@ -655,7 +646,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String? _internationalChartAffected  = default;
 
-		[Category("affectedChartPublications")]
 		public String? internationalChartAffected {
 			get {
 				return _internationalChartAffected;
@@ -666,7 +656,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String? _language  = default;
 
-		[Category("affectedChartPublications")]
 		public String? language {
 			get {
 				return _language;
@@ -677,7 +666,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String? _publicationAffected  = default;
 
-		[Category("affectedChartPublications")]
 		public String? publicationAffected {
 			get {
 				return _publicationAffected;
@@ -711,6 +699,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public affectedChartPublications Model => new () {
 			chartAffected = this._chartAffected?.Model,
 			chartPublicationIdentifier = this._chartPublicationIdentifier,
@@ -730,7 +719,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class locationNameViewModel : ViewModelBase {
 		private String? _language  = default;
 
-		[Category("locationName")]
 		public String? language {
 			get {
 				return _language;
@@ -741,7 +729,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String _text  = string.Empty;
 
-		[Category("locationName")]
 		public String text {
 			get {
 				return _text;
@@ -766,6 +753,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public locationName Model => new () {
 			language = this._language,
 			text = this._text,
@@ -782,7 +770,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class generalAreaViewModel : ViewModelBase {
 		private String? _localityIdentifier  = default;
 
-		[Category("generalArea")]
 		public String? localityIdentifier {
 			get {
 				return _localityIdentifier;
@@ -813,6 +800,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public generalArea Model => new () {
 			localityIdentifier = this._localityIdentifier,
 			locationName = this.locationName.Select(e => e.Model).ToList(),
@@ -835,7 +823,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class localityViewModel : ViewModelBase {
 		private String? _localityIdentifier  = default;
 
-		[Category("locality")]
 		public String? localityIdentifier {
 			get {
 				return _localityIdentifier;
@@ -866,6 +853,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public locality Model => new () {
 			localityIdentifier = this._localityIdentifier,
 			locationName = this.locationName.Select(e => e.Model).ToList(),
@@ -888,7 +876,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class messageSeriesIdentifierViewModel : ViewModelBase {
 		private String _agencyResponsibleForProduction  = string.Empty;
 
-		[Category("messageSeriesIdentifier")]
 		public String agencyResponsibleForProduction {
 			get {
 				return _agencyResponsibleForProduction;
@@ -899,7 +886,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String? _countryName  = default;
 
-		[Category("messageSeriesIdentifier")]
 		public String? countryName {
 			get {
 				return _countryName;
@@ -910,7 +896,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String _nameOfSeries  = string.Empty;
 
-		[Category("messageSeriesIdentifier")]
 		public String nameOfSeries {
 			get {
 				return _nameOfSeries;
@@ -921,7 +906,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String? _warningIdentifier  = default;
 
-		[Category("messageSeriesIdentifier")]
 		public String? warningIdentifier {
 			get {
 				return _warningIdentifier;
@@ -932,7 +916,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private int _warningNumber ;
 
-		[Category("messageSeriesIdentifier")]
 		public int warningNumber {
 			get {
 				return _warningNumber;
@@ -943,7 +926,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private warningType _warningType ;
 
-		[Category("messageSeriesIdentifier")]
 		public warningType warningType {
 			get {
 				return _warningType;
@@ -957,7 +939,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public warningType[] warningTypeList => Enum.GetValues<warningType>();
 		private int _year ;
 
-		[Category("messageSeriesIdentifier")]
 		public int year {
 			get {
 				return _year;
@@ -992,6 +973,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public messageSeriesIdentifier Model => new () {
 			agencyResponsibleForProduction = this._agencyResponsibleForProduction,
 			countryName = this._countryName,
@@ -1013,7 +995,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class nAVWARNTitleViewModel : ViewModelBase {
 		private String? _language  = default;
 
-		[Category("nAVWARNTitle")]
 		public String? language {
 			get {
 				return _language;
@@ -1024,7 +1005,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String _text  = string.Empty;
 
-		[Category("nAVWARNTitle")]
 		public String text {
 			get {
 				return _text;
@@ -1049,6 +1029,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public nAVWARNTitle Model => new () {
 			language = this._language,
 			text = this._text,
@@ -1077,6 +1058,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public NWPreambleContent Model => new () {
 
 		};
@@ -1104,6 +1086,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public NWReferences Model => new () {
 
 		};
@@ -1131,6 +1114,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public AreaAffected Model => new () {
 
 		};
@@ -1158,6 +1142,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public TextAssociation Model => new () {
 
 		};
@@ -1181,6 +1166,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private messageSeriesIdentifierViewModel _messageSeriesIdentifier ;
 
 		[Category("NAVWARNPreamble")]
+		[ExpandableObject]
 		public messageSeriesIdentifierViewModel messageSeriesIdentifier {
 			get {
 				return _messageSeriesIdentifier;
@@ -1284,6 +1270,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public NAVWARNPreamble Model => new () {
 			affectedChartPublications = this.affectedChartPublications.Select(e => e.Model).ToList(),
 			generalArea = this.generalArea.Select(e => e.Model).ToList(),
@@ -1371,6 +1358,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public References Model => new () {
 			messageSeriesIdentifier = this.messageSeriesIdentifier.Select(e => e.Model).ToList(),
 			noMessageOnHand = this._noMessageOnHand,
@@ -1403,6 +1391,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private warningInformationViewModel _warningInformation ;
 
 		[Category("NAVWARNPart")]
+		[ExpandableObject]
 		public warningInformationViewModel warningInformation {
 			get {
 				return _warningInformation;
@@ -1462,6 +1451,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public NAVWARNPart Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			featureReference = this.featureReference.Select(e => e.Model).ToList(),
@@ -1508,6 +1498,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public NAVWARNAreaAffected Model => new () {
 
 		};
@@ -1618,6 +1609,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public TextPlacement Model => new () {
 			text = this._text,
 			textOffsetBearing = this._textOffsetBearing,

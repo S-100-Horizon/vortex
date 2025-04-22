@@ -1098,6 +1098,7 @@ namespace S100Framework.Applications
             builder.AppendLine("\t\t}");
 
             builder.AppendLine();
+            builder.AppendLine("\t\t[Browsable(false)]");
             builder.AppendLine($"\t\tpublic {code} Model => new () {{");
             builder.AppendLine(modelBuilder.ToString().TrimEnd([.. Environment.NewLine]));
             builder.AppendLine("\t\t};");
@@ -1174,7 +1175,11 @@ namespace S100Framework.Applications
                 if (!isCollection) {
                     builder.AppendLine($"\t\tprivate {prefix} _{referenceCode} {postfix}");
                     builder.AppendLine();
+
+                    if (!(client.BuildViewModelClassClient.ComplexTypes.Contains(code) && !client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode)))
                     builder.AppendLine($"\t\t[Category(\"{code}\")]");
+                    if (client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode))
+                        builder.AppendLine("\t\t[ExpandableObject]");
                     builder.AppendLine($"\t\tpublic {prefix} {referenceCode} {{");
 
                     builder.AppendLine("\t\t\tget {");
