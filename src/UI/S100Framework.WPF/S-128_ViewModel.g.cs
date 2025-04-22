@@ -88,7 +88,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class contactAddressViewModel : ViewModelBase {
 		private String? _administrativeDivision  = default;
 
-		[Category("contactAddress")]
 		public String? administrativeDivision {
 			get {
 				return _administrativeDivision;
@@ -99,7 +98,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _cityName  = default;
 
-		[Category("contactAddress")]
 		public String? cityName {
 			get {
 				return _cityName;
@@ -110,7 +108,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _countryName  = default;
 
-		[Category("contactAddress")]
 		public String? countryName {
 			get {
 				return _countryName;
@@ -123,7 +120,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public ObservableCollection<String> deliveryPoint  { get; set; } = new ();
 		private String? _postalCode  = default;
 
-		[Category("contactAddress")]
 		public String? postalCode {
 			get {
 				return _postalCode;
@@ -158,6 +154,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public contactAddress Model => new () {
 			administrativeDivision = this._administrativeDivision,
 			cityName = this._cityName,
@@ -183,7 +180,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class customPaperSizeViewModel : ViewModelBase {
 		private int _x ;
 
-		[Category("customPaperSize")]
 		public int x {
 			get {
 				return _x;
@@ -194,7 +190,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private int _y ;
 
-		[Category("customPaperSize")]
 		public int y {
 			get {
 				return _y;
@@ -219,6 +214,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public customPaperSize Model => new () {
 			x = this._x,
 			y = this._y,
@@ -235,7 +231,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class defaultLocaleViewModel : ViewModelBase {
 		private String _characterEncoding  = string.Empty;
 
-		[Category("defaultLocale")]
 		public String characterEncoding {
 			get {
 				return _characterEncoding;
@@ -246,7 +241,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _countryName  = string.Empty;
 
-		[Category("defaultLocale")]
 		public String countryName {
 			get {
 				return _countryName;
@@ -257,7 +251,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _language  = default;
 
-		[Category("defaultLocale")]
 		public String? language {
 			get {
 				return _language;
@@ -284,6 +277,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public defaultLocale Model => new () {
 			characterEncoding = this._characterEncoding,
 			countryName = this._countryName,
@@ -301,7 +295,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class featureNameViewModel : ViewModelBase {
 		private String? _language  = default;
 
-		[Category("featureName")]
 		public String? language {
 			get {
 				return _language;
@@ -312,7 +305,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _name  = string.Empty;
 
-		[Category("featureName")]
 		public String name {
 			get {
 				return _name;
@@ -323,7 +315,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private nameUsage? _nameUsage  = default;
 
-		[Category("featureName")]
 		public nameUsage? nameUsage {
 			get {
 				return _nameUsage;
@@ -353,6 +344,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public featureName Model => new () {
 			language = this._language,
 			name = this._name,
@@ -370,7 +362,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class informationViewModel : ViewModelBase {
 		private String? _fileLocator  = default;
 
-		[Category("information")]
 		public String? fileLocator {
 			get {
 				return _fileLocator;
@@ -381,7 +372,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _fileReference  = default;
 
-		[Category("information")]
 		public String? fileReference {
 			get {
 				return _fileReference;
@@ -392,7 +382,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _headline  = default;
 
-		[Category("information")]
 		public String? headline {
 			get {
 				return _headline;
@@ -403,7 +392,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _language  = default;
 
-		[Category("information")]
 		public String? language {
 			get {
 				return _language;
@@ -440,6 +428,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public information Model => new () {
 			fileLocator = this._fileLocator,
 			fileReference = this._fileReference,
@@ -466,6 +455,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("issuanceCycle")]
+		[ExpandableObject]
 		public periodicDateRangeViewModel? periodicDateRange {
 			get {
 				return _periodicDateRange;
@@ -477,6 +467,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private timeIntervalOfCycleViewModel? _timeIntervalOfCycle  = default;
 
 		[Category("issuanceCycle")]
+		[ExpandableObject]
 		public timeIntervalOfCycleViewModel? timeIntervalOfCycle {
 			get {
 				return _timeIntervalOfCycle;
@@ -507,6 +498,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public issuanceCycle Model => new () {
 			periodicDateRange = this._periodicDateRange?.Model,
 			timeIntervalOfCycle = this._timeIntervalOfCycle?.Model,
@@ -523,7 +515,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class onlineResourceViewModel : ViewModelBase {
 		private String? _applicationProfile  = default;
 
-		[Category("onlineResource")]
 		public String? applicationProfile {
 			get {
 				return _applicationProfile;
@@ -534,7 +525,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _linkage  = string.Empty;
 
-		[Category("onlineResource")]
 		public String linkage {
 			get {
 				return _linkage;
@@ -545,7 +535,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _nameOfResource  = default;
 
-		[Category("onlineResource")]
 		public String? nameOfResource {
 			get {
 				return _nameOfResource;
@@ -556,7 +545,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _onlineDescription  = default;
 
-		[Category("onlineResource")]
 		public String? onlineDescription {
 			get {
 				return _onlineDescription;
@@ -567,7 +555,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _protocol  = default;
 
-		[Category("onlineResource")]
 		public String? protocol {
 			get {
 				return _protocol;
@@ -578,7 +565,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _protocolRequest  = default;
 
-		[Category("onlineResource")]
 		public String? protocolRequest {
 			get {
 				return _protocolRequest;
@@ -611,6 +597,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public onlineResource Model => new () {
 			applicationProfile = this._applicationProfile,
 			linkage = this._linkage,
@@ -631,7 +618,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class periodicDateRangeViewModel : ViewModelBase {
 		private DateOnly _dateEnd ;
 
-		[Category("periodicDateRange")]
 		public DateOnly dateEnd {
 			get {
 				return _dateEnd;
@@ -642,7 +628,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private DateOnly _dateStart ;
 
-		[Category("periodicDateRange")]
 		public DateOnly dateStart {
 			get {
 				return _dateStart;
@@ -667,6 +652,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public periodicDateRange Model => new () {
 			dateEnd = this._dateEnd,
 			dateStart = this._dateStart,
@@ -683,7 +669,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class pricingViewModel : ViewModelBase {
 		private String? _contractPeriod  = default;
 
-		[Category("pricing")]
 		public String? contractPeriod {
 			get {
 				return _contractPeriod;
@@ -694,7 +679,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _currency  = string.Empty;
 
-		[Category("pricing")]
 		public String currency {
 			get {
 				return _currency;
@@ -705,7 +689,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private decimal _price ;
 
-		[Category("pricing")]
 		public decimal price {
 			get {
 				return _price;
@@ -732,6 +715,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public pricing Model => new () {
 			contractPeriod = this._contractPeriod,
 			currency = this._currency,
@@ -749,7 +733,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class printInformationViewModel : ViewModelBase {
 		private String? _printAgency  = default;
 
-		[Category("printInformation")]
 		public String? printAgency {
 			get {
 				return _printAgency;
@@ -760,7 +743,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _printNation  = default;
 
-		[Category("printInformation")]
 		public String? printNation {
 			get {
 				return _printNation;
@@ -771,7 +753,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _rePrintEdition  = default;
 
-		[Category("printInformation")]
 		public String? rePrintEdition {
 			get {
 				return _rePrintEdition;
@@ -782,7 +763,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _rePrintNation  = default;
 
-		[Category("printInformation")]
 		public String? rePrintNation {
 			get {
 				return _rePrintNation;
@@ -794,6 +774,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private printSizeViewModel _printSize ;
 
 		[Category("printInformation")]
+		[ExpandableObject]
 		public printSizeViewModel printSize {
 			get {
 				return _printSize;
@@ -827,6 +808,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public printInformation Model => new () {
 			printAgency = this._printAgency,
 			printNation = this._printNation,
@@ -846,7 +828,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class printSizeViewModel : ViewModelBase {
 		private iso216? _iso216  = default;
 
-		[Category("printSize")]
 		public iso216? iso216 {
 			get {
 				return _iso216;
@@ -861,6 +842,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private customPaperSizeViewModel? _customPaperSize  = default;
 
 		[Category("printSize")]
+		[ExpandableObject]
 		public customPaperSizeViewModel? customPaperSize {
 			get {
 				return _customPaperSize;
@@ -888,6 +870,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public printSize Model => new () {
 			iso216 = this._iso216,
 			customPaperSize = this._customPaperSize?.Model,
@@ -904,7 +887,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class productSpecificationViewModel : ViewModelBase {
 		private DateOnly _date ;
 
-		[Category("productSpecification")]
 		public DateOnly date {
 			get {
 				return _date;
@@ -915,7 +897,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _ISSN  = default;
 
-		[Category("productSpecification")]
 		public String? ISSN {
 			get {
 				return _ISSN;
@@ -926,7 +907,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _name  = string.Empty;
 
-		[Category("productSpecification")]
 		public String name {
 			get {
 				return _name;
@@ -937,7 +917,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _version  = string.Empty;
 
-		[Category("productSpecification")]
 		public String version {
 			get {
 				return _version;
@@ -966,6 +945,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public productSpecification Model => new () {
 			date = this._date,
 			ISSN = this._ISSN,
@@ -984,7 +964,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class supportFileViewModel : ViewModelBase {
 		private String? _comment  = default;
 
-		[Category("supportFile")]
 		public String? comment {
 			get {
 				return _comment;
@@ -995,7 +974,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private digitalSignatureReference _digitalSignatureReference ;
 
-		[Category("supportFile")]
 		public digitalSignatureReference digitalSignatureReference {
 			get {
 				return _digitalSignatureReference;
@@ -1009,7 +987,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public digitalSignatureReference[] digitalSignatureReferenceList => [(digitalSignatureReference)1];
 		private String? _digitalSignatureValue  = default;
 
-		[Category("supportFile")]
 		public String? digitalSignatureValue {
 			get {
 				return _digitalSignatureValue;
@@ -1020,7 +997,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private int? _editionNumber  = default;
 
-		[Category("supportFile")]
 		public int? editionNumber {
 			get {
 				return _editionNumber;
@@ -1031,7 +1007,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _fileLocator  = string.Empty;
 
-		[Category("supportFile")]
 		public String fileLocator {
 			get {
 				return _fileLocator;
@@ -1042,7 +1017,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _fileName  = string.Empty;
 
-		[Category("supportFile")]
 		public String fileName {
 			get {
 				return _fileName;
@@ -1053,7 +1027,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private DateOnly? _issueDate  = default;
 
-		[Category("supportFile")]
 		public DateOnly? issueDate {
 			get {
 				return _issueDate;
@@ -1064,7 +1037,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _otherDataTypeDescription  = default;
 
-		[Category("supportFile")]
 		public String? otherDataTypeDescription {
 			get {
 				return _otherDataTypeDescription;
@@ -1075,7 +1047,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private supportFileFormat _supportFileFormat ;
 
-		[Category("supportFile")]
 		public supportFileFormat supportFileFormat {
 			get {
 				return _supportFileFormat;
@@ -1089,7 +1060,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public supportFileFormat[] supportFileFormatList => [(supportFileFormat)1,(supportFileFormat)2,(supportFileFormat)3,(supportFileFormat)4,(supportFileFormat)5,(supportFileFormat)6,(supportFileFormat)7,(supportFileFormat)8,(supportFileFormat)9,(supportFileFormat)100];
 		private supportFilePurpose _supportFilePurpose ;
 
-		[Category("supportFile")]
 		public supportFilePurpose supportFilePurpose {
 			get {
 				return _supportFilePurpose;
@@ -1104,6 +1074,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private defaultLocaleViewModel _defaultLocale ;
 
 		[Category("supportFile")]
+		[ExpandableObject]
 		public defaultLocaleViewModel defaultLocale {
 			get {
 				return _defaultLocale;
@@ -1115,6 +1086,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private supportFileSpecificationViewModel _supportFileSpecification ;
 
 		[Category("supportFile")]
+		[ExpandableObject]
 		public supportFileSpecificationViewModel supportFileSpecification {
 			get {
 				return _supportFileSpecification;
@@ -1165,6 +1137,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public supportFile Model => new () {
 			comment = this._comment,
 			digitalSignatureReference = this._digitalSignatureReference,
@@ -1191,7 +1164,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class supportFileSpecificationViewModel : ViewModelBase {
 		private DateOnly _date ;
 
-		[Category("supportFileSpecification")]
 		public DateOnly date {
 			get {
 				return _date;
@@ -1202,7 +1174,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _name  = string.Empty;
 
-		[Category("supportFileSpecification")]
 		public String name {
 			get {
 				return _name;
@@ -1213,7 +1184,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _version  = string.Empty;
 
-		[Category("supportFileSpecification")]
 		public String version {
 			get {
 				return _version;
@@ -1240,6 +1210,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public supportFileSpecification Model => new () {
 			date = this._date,
 			name = this._name,
@@ -1257,7 +1228,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class serviceSpecificationViewModel : ViewModelBase {
 		private DateOnly _date ;
 
-		[Category("serviceSpecification")]
 		public DateOnly date {
 			get {
 				return _date;
@@ -1268,7 +1238,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _name  = string.Empty;
 
-		[Category("serviceSpecification")]
 		public String name {
 			get {
 				return _name;
@@ -1279,7 +1248,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _version  = string.Empty;
 
-		[Category("serviceSpecification")]
 		public String version {
 			get {
 				return _version;
@@ -1306,6 +1274,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public serviceSpecification Model => new () {
 			date = this._date,
 			name = this._name,
@@ -1323,7 +1292,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class sourceIndicationViewModel : ViewModelBase {
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
-		[Category("sourceIndication")]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -1337,7 +1305,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16,(categoryOfAuthority)17,(categoryOfAuthority)18,(categoryOfAuthority)19];
 		private String? _countryName  = default;
 
-		[Category("sourceIndication")]
 		public String? countryName {
 			get {
 				return _countryName;
@@ -1348,7 +1315,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private DateOnly? _reportedDate  = default;
 
-		[Category("sourceIndication")]
 		public DateOnly? reportedDate {
 			get {
 				return _reportedDate;
@@ -1359,7 +1325,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _source  = default;
 
-		[Category("sourceIndication")]
 		public String? source {
 			get {
 				return _source;
@@ -1370,7 +1335,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private sourceType? _sourceType  = default;
 
-		[Category("sourceIndication")]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -1412,6 +1376,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public sourceIndication Model => new () {
 			categoryOfAuthority = this._categoryOfAuthority,
 			countryName = this._countryName,
@@ -1438,7 +1403,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class telecommunicationsViewModel : ViewModelBase {
 		private String _contactInstructions  = string.Empty;
 
-		[Category("telecommunications")]
 		public String contactInstructions {
 			get {
 				return _contactInstructions;
@@ -1449,7 +1413,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _telecommunicationIdentifier  = string.Empty;
 
-		[Category("telecommunications")]
 		public String telecommunicationIdentifier {
 			get {
 				return _telecommunicationIdentifier;
@@ -1487,6 +1450,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public telecommunications Model => new () {
 			contactInstructions = this._contactInstructions,
 			telecommunicationIdentifier = this._telecommunicationIdentifier,
@@ -1510,7 +1474,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class timeIntervalOfProductViewModel : ViewModelBase {
 		private DateOnly _issueDate ;
 
-		[Category("timeIntervalOfProduct")]
 		public DateOnly issueDate {
 			get {
 				return _issueDate;
@@ -1521,7 +1484,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private DateOnly? _expirationDate  = default;
 
-		[Category("timeIntervalOfProduct")]
 		public DateOnly? expirationDate {
 			get {
 				return _expirationDate;
@@ -1533,6 +1495,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private issuanceCycleViewModel? _issuanceCycle  = default;
 
 		[Category("timeIntervalOfProduct")]
+		[ExpandableObject]
 		public issuanceCycleViewModel? issuanceCycle {
 			get {
 				return _issuanceCycle;
@@ -1562,6 +1525,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public timeIntervalOfProduct Model => new () {
 			issueDate = this._issueDate,
 			expirationDate = this._expirationDate,
@@ -1586,7 +1550,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public typeOfTimeIntervalUnit[] typeOfTimeIntervalUnitList => [(typeOfTimeIntervalUnit)1,(typeOfTimeIntervalUnit)2,(typeOfTimeIntervalUnit)3,(typeOfTimeIntervalUnit)4];
 		private int _valueOfTime ;
 
-		[Category("timeIntervalOfCycle")]
 		public int valueOfTime {
 			get {
 				return _valueOfTime;
@@ -1615,6 +1578,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public timeIntervalOfCycle Model => new () {
 			typeOfTimeIntervalUnit = this.typeOfTimeIntervalUnit.ToList(),
 			valueOfTime = this._valueOfTime,
@@ -1637,7 +1601,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class referenceToNMViewModel : ViewModelBase {
 		private DateOnly _publicationDate ;
 
-		[Category("referenceToNM")]
 		public DateOnly publicationDate {
 			get {
 				return _publicationDate;
@@ -1649,6 +1612,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private weekOfYearViewModel? _weekOfYear  = default;
 
 		[Category("referenceToNM")]
+		[ExpandableObject]
 		public weekOfYearViewModel? weekOfYear {
 			get {
 				return _weekOfYear;
@@ -1676,6 +1640,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public referenceToNM Model => new () {
 			publicationDate = this._publicationDate,
 			weekOfYear = this._weekOfYear?.Model,
@@ -1692,7 +1657,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class weekOfYearViewModel : ViewModelBase {
 		private int _weekNumber ;
 
-		[Category("weekOfYear")]
 		public int weekNumber {
 			get {
 				return _weekNumber;
@@ -1703,7 +1667,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private int _yearNumber ;
 
-		[Category("weekOfYear")]
 		public int yearNumber {
 			get {
 				return _yearNumber;
@@ -1728,6 +1691,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public weekOfYear Model => new () {
 			weekNumber = this._weekNumber,
 			yearNumber = this._yearNumber,
@@ -1756,6 +1720,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public CarriageRequirement Model => new () {
 
 		};
@@ -1783,6 +1748,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public DistributionDetails Model => new () {
 
 		};
@@ -1810,6 +1776,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public DistributorContact Model => new () {
 
 		};
@@ -1837,6 +1804,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public PriceOfElement Model => new () {
 
 		};
@@ -1864,6 +1832,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public PriceOfNauticalProduct Model => new () {
 
 		};
@@ -1891,6 +1860,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ProducerContact Model => new () {
 
 		};
@@ -1918,6 +1888,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ProductionDetails Model => new () {
 
 		};
@@ -1945,6 +1916,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ProductPackage Model => new () {
 
 		};
@@ -1987,6 +1959,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ProductMapping Model => new () {
 			categoryOfProductMapping = this._categoryOfProductMapping,
 		};
@@ -2015,6 +1988,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Correlated Model => new () {
 
 		};
@@ -2054,6 +2028,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private informationViewModel? _information  = default;
 
 		[Category("CatalogueSectionHeader")]
+		[ExpandableObject]
 		public informationViewModel? information {
 			get {
 				return _information;
@@ -2083,6 +2058,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public CatalogueSectionHeader Model => new () {
 			catalogueSectionNumber = this._catalogueSectionNumber,
 			catalogueSectionTitle = this._catalogueSectionTitle,
@@ -2165,6 +2141,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ContactDetails Model => new () {
 			contactInstructions = this._contactInstructions,
 			contactAddress = this.contactAddress.Select(e => e.Model).ToList(),
@@ -2249,6 +2226,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public IndicationOfCarriageRequirement Model => new () {
 			domesticCarriageRequirements = this._domesticCarriageRequirements,
 			internationalCarriageRequirements = this._internationalCarriageRequirements,
@@ -2316,6 +2294,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public PriceInformation Model => new () {
 			information = this.information.Select(e => e.Model).ToList(),
 			onlineResource = this.onlineResource.Select(e => e.Model).ToList(),
@@ -2387,6 +2366,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ProducerInformation Model => new () {
 			agencyResponsibleForProduction = this._agencyResponsibleForProduction,
 			agencyName = this._agencyName,
@@ -2428,6 +2408,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public DistributorInformation Model => new () {
 			distributorName = this._distributorName,
 		};
@@ -2508,6 +2489,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private onlineResourceViewModel? _onlineResource  = default;
 
 		[Category("CatalogueElement")]
+		[ExpandableObject]
 		public onlineResourceViewModel? onlineResource {
 			get {
 				return _onlineResource;
@@ -2519,6 +2501,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("CatalogueElement")]
+		[ExpandableObject]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -2532,6 +2515,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private timeIntervalOfProductViewModel? _timeIntervalOfProduct  = default;
 
 		[Category("CatalogueElement")]
+		[ExpandableObject]
 		public timeIntervalOfProductViewModel? timeIntervalOfProduct {
 			get {
 				return _timeIntervalOfProduct;
@@ -2766,6 +2750,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private productSpecificationViewModel? _productSpecification  = default;
 
 		[Category("ElectronicProduct")]
+		[ExpandableObject]
 		public productSpecificationViewModel? productSpecification {
 			get {
 				return _productSpecification;
@@ -2898,6 +2883,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ElectronicProduct Model => new () {
 			agencyResponsibleForProduction = this._agencyResponsibleForProduction,
 			catalogueElementClassification = this.catalogueElementClassification.ToList(),
@@ -3040,6 +3026,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private onlineResourceViewModel? _onlineResource  = default;
 
 		[Category("CatalogueElement")]
+		[ExpandableObject]
 		public onlineResourceViewModel? onlineResource {
 			get {
 				return _onlineResource;
@@ -3051,6 +3038,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("CatalogueElement")]
+		[ExpandableObject]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -3064,6 +3052,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private timeIntervalOfProductViewModel? _timeIntervalOfProduct  = default;
 
 		[Category("CatalogueElement")]
+		[ExpandableObject]
 		public timeIntervalOfProductViewModel? timeIntervalOfProduct {
 			get {
 				return _timeIntervalOfProduct;
@@ -3284,6 +3273,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private printInformationViewModel? _printInformation  = default;
 
 		[Category("PhysicalProduct")]
+		[ExpandableObject]
 		public printInformationViewModel? printInformation {
 			get {
 				return _printInformation;
@@ -3295,6 +3285,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private referenceToNMViewModel? _referenceToNM  = default;
 
 		[Category("PhysicalProduct")]
+		[ExpandableObject]
 		public referenceToNMViewModel? referenceToNM {
 			get {
 				return _referenceToNM;
@@ -3430,6 +3421,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public PhysicalProduct Model => new () {
 			agencyResponsibleForProduction = this._agencyResponsibleForProduction,
 			catalogueElementClassification = this.catalogueElementClassification.ToList(),
@@ -3572,6 +3564,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private onlineResourceViewModel? _onlineResource  = default;
 
 		[Category("CatalogueElement")]
+		[ExpandableObject]
 		public onlineResourceViewModel? onlineResource {
 			get {
 				return _onlineResource;
@@ -3583,6 +3576,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("CatalogueElement")]
+		[ExpandableObject]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -3596,6 +3590,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private timeIntervalOfProductViewModel? _timeIntervalOfProduct  = default;
 
 		[Category("CatalogueElement")]
+		[ExpandableObject]
 		public timeIntervalOfProductViewModel? timeIntervalOfProduct {
 			get {
 				return _timeIntervalOfProduct;
@@ -3658,6 +3653,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private serviceSpecificationViewModel? _serviceSpecification  = default;
 
 		[Category("S100Service")]
+		[ExpandableObject]
 		public serviceSpecificationViewModel? serviceSpecification {
 			get {
 				return _serviceSpecification;
@@ -3669,6 +3665,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private productSpecificationViewModel? _productSpecification  = default;
 
 		[Category("S100Service")]
+		[ExpandableObject]
 		public productSpecificationViewModel? productSpecification {
 			get {
 				return _productSpecification;
@@ -3760,6 +3757,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public S100Service Model => new () {
 			agencyResponsibleForProduction = this._agencyResponsibleForProduction,
 			catalogueElementClassification = this.catalogueElementClassification.ToList(),

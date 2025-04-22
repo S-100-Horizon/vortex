@@ -91,7 +91,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class bearingInformationViewModel : ViewModelBase {
 		private cardinalDirection? _cardinalDirection  = default;
 
-		[Category("bearingInformation")]
 		public cardinalDirection? cardinalDirection {
 			get {
 				return _cardinalDirection;
@@ -105,7 +104,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public cardinalDirection[] cardinalDirectionList => Enum.GetValues<cardinalDirection>();
 		private decimal? _distance  = default;
 
-		[Category("bearingInformation")]
 		public decimal? distance {
 			get {
 				return _distance;
@@ -121,6 +119,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private orientationViewModel? _orientation  = default;
 
 		[Category("bearingInformation")]
+		[ExpandableObject]
 		public orientationViewModel? orientation {
 			get {
 				return _orientation;
@@ -162,6 +161,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public bearingInformation Model => new () {
 			cardinalDirection = this._cardinalDirection,
 			distance = this._distance,
@@ -190,7 +190,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class contactAddressViewModel : ViewModelBase {
 		private String? _deliveryPoint  = default;
 
-		[Category("contactAddress")]
 		public String? deliveryPoint {
 			get {
 				return _deliveryPoint;
@@ -201,7 +200,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _cityName  = default;
 
-		[Category("contactAddress")]
 		public String? cityName {
 			get {
 				return _cityName;
@@ -212,7 +210,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _administrativeDivision  = default;
 
-		[Category("contactAddress")]
 		public String? administrativeDivision {
 			get {
 				return _administrativeDivision;
@@ -223,7 +220,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _countryName  = default;
 
-		[Category("contactAddress")]
 		public String? countryName {
 			get {
 				return _countryName;
@@ -234,7 +230,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _postalCode  = default;
 
-		[Category("contactAddress")]
 		public String? postalCode {
 			get {
 				return _postalCode;
@@ -265,6 +260,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public contactAddress Model => new () {
 			deliveryPoint = this._deliveryPoint,
 			cityName = this._cityName,
@@ -284,7 +280,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class featureNameViewModel : ViewModelBase {
 		private Boolean? _displayName  = default;
 
-		[Category("featureName")]
 		public Boolean? displayName {
 			get {
 				return _displayName;
@@ -295,7 +290,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String _language  = string.Empty;
 
-		[Category("featureName")]
 		public String language {
 			get {
 				return _language;
@@ -306,7 +300,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String _name  = string.Empty;
 
-		[Category("featureName")]
 		public String name {
 			get {
 				return _name;
@@ -333,6 +326,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public featureName Model => new () {
 			displayName = this._displayName,
 			language = this._language,
@@ -350,7 +344,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class fixedDateRangeViewModel : ViewModelBase {
 		private DateOnly? _dateStart  = default;
 
-		[Category("fixedDateRange")]
 		public DateOnly? dateStart {
 			get {
 				return _dateStart;
@@ -361,7 +354,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private DateOnly? _dateEnd  = default;
 
-		[Category("fixedDateRange")]
 		public DateOnly? dateEnd {
 			get {
 				return _dateEnd;
@@ -386,6 +378,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public fixedDateRange Model => new () {
 			dateStart = this._dateStart,
 			dateEnd = this._dateEnd,
@@ -402,7 +395,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class frequencyPairViewModel : ViewModelBase {
 		private int? _frequencyShoreStationReceives  = default;
 
-		[Category("frequencyPair")]
 		public int? frequencyShoreStationReceives {
 			get {
 				return _frequencyShoreStationReceives;
@@ -413,7 +405,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private int? _frequencyShoreStationTransmits  = default;
 
-		[Category("frequencyPair")]
 		public int? frequencyShoreStationTransmits {
 			get {
 				return _frequencyShoreStationTransmits;
@@ -438,6 +429,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public frequencyPair Model => new () {
 			frequencyShoreStationReceives = this._frequencyShoreStationReceives,
 			frequencyShoreStationTransmits = this._frequencyShoreStationTransmits,
@@ -456,7 +448,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public ObservableCollection<String> pictorialRepresentation  { get; set; } = new ();
 		private String? _pictureCaption  = default;
 
-		[Category("graphic")]
 		public String? pictureCaption {
 			get {
 				return _pictureCaption;
@@ -467,7 +458,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private DateOnly? _sourceDate  = default;
 
-		[Category("graphic")]
 		public DateOnly? sourceDate {
 			get {
 				return _sourceDate;
@@ -478,7 +468,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _pictureInformation  = default;
 
-		[Category("graphic")]
 		public String? pictureInformation {
 			get {
 				return _pictureInformation;
@@ -490,6 +479,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private bearingInformationViewModel? _bearingInformation  = default;
 
 		[Category("graphic")]
+		[ExpandableObject]
 		public bearingInformationViewModel? bearingInformation {
 			get {
 				return _bearingInformation;
@@ -527,6 +517,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public graphic Model => new () {
 			pictorialRepresentation = this.pictorialRepresentation.ToList(),
 			pictureCaption = this._pictureCaption,
@@ -552,7 +543,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class informationViewModel : ViewModelBase {
 		private String? _fileLocator  = default;
 
-		[Category("information")]
 		public String? fileLocator {
 			get {
 				return _fileLocator;
@@ -563,7 +553,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _fileReference  = default;
 
-		[Category("information")]
 		public String? fileReference {
 			get {
 				return _fileReference;
@@ -574,7 +563,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _headline  = default;
 
-		[Category("information")]
 		public String? headline {
 			get {
 				return _headline;
@@ -585,7 +573,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _language  = default;
 
-		[Category("information")]
 		public String? language {
 			get {
 				return _language;
@@ -596,7 +583,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _text  = default;
 
-		[Category("information")]
 		public String? text {
 			get {
 				return _text;
@@ -627,6 +613,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public information Model => new () {
 			fileLocator = this._fileLocator,
 			fileReference = this._fileReference,
@@ -646,7 +633,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class onlineResourceViewModel : ViewModelBase {
 		private String _onlineResourceLinkageURL  = string.Empty;
 
-		[Category("onlineResource")]
 		public String onlineResourceLinkageURL {
 			get {
 				return _onlineResourceLinkageURL;
@@ -657,7 +643,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _protocol  = default;
 
-		[Category("onlineResource")]
 		public String? protocol {
 			get {
 				return _protocol;
@@ -668,7 +653,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _applicationProfile  = default;
 
-		[Category("onlineResource")]
 		public String? applicationProfile {
 			get {
 				return _applicationProfile;
@@ -679,7 +663,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _nameOfResource  = default;
 
-		[Category("onlineResource")]
 		public String? nameOfResource {
 			get {
 				return _nameOfResource;
@@ -690,7 +673,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _onlineResourceDescription  = default;
 
-		[Category("onlineResource")]
 		public String? onlineResourceDescription {
 			get {
 				return _onlineResourceDescription;
@@ -701,7 +683,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _protocolRequest  = default;
 
-		[Category("onlineResource")]
 		public String? protocolRequest {
 			get {
 				return _protocolRequest;
@@ -712,7 +693,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private onlineFunction? _onlineFunction  = default;
 
-		[Category("onlineResource")]
 		public onlineFunction? onlineFunction {
 			get {
 				return _onlineFunction;
@@ -750,6 +730,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public onlineResource Model => new () {
 			onlineResourceLinkageURL = this._onlineResourceLinkageURL,
 			protocol = this._protocol,
@@ -771,7 +752,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class orientationViewModel : ViewModelBase {
 		private decimal? _orientationUncertainty  = default;
 
-		[Category("orientation")]
 		public decimal? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
@@ -782,7 +762,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private decimal _orientationValue ;
 
-		[Category("orientation")]
 		public decimal orientationValue {
 			get {
 				return _orientationValue;
@@ -807,6 +786,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public orientation Model => new () {
 			orientationUncertainty = this._orientationUncertainty,
 			orientationValue = this._orientationValue,
@@ -823,7 +803,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class periodicDateRangeViewModel : ViewModelBase {
 		private DateOnly _dateStart ;
 
-		[Category("periodicDateRange")]
 		public DateOnly dateStart {
 			get {
 				return _dateStart;
@@ -834,7 +813,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private DateOnly _dateEnd ;
 
-		[Category("periodicDateRange")]
 		public DateOnly dateEnd {
 			get {
 				return _dateEnd;
@@ -859,6 +837,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public periodicDateRange Model => new () {
 			dateStart = this._dateStart,
 			dateEnd = this._dateEnd,
@@ -875,7 +854,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class rxNCodeViewModel : ViewModelBase {
 		private categoryOfRxN? _categoryOfRxN  = default;
 
-		[Category("rxNCode")]
 		public categoryOfRxN? categoryOfRxN {
 			get {
 				return _categoryOfRxN;
@@ -886,7 +864,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private actionOrActivity? _actionOrActivity  = default;
 
-		[Category("rxNCode")]
 		public actionOrActivity? actionOrActivity {
 			get {
 				return _actionOrActivity;
@@ -897,7 +874,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _headline  = default;
 
-		[Category("rxNCode")]
 		public String? headline {
 			get {
 				return _headline;
@@ -924,6 +900,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public rxNCode Model => new () {
 			categoryOfRxN = this._categoryOfRxN,
 			actionOrActivity = this._actionOrActivity,
@@ -941,7 +918,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class scheduleByDayOfWeekViewModel : ViewModelBase {
 		private categoryOfSchedule? _categoryOfSchedule  = default;
 
-		[Category("scheduleByDayOfWeek")]
 		public categoryOfSchedule? categoryOfSchedule {
 			get {
 				return _categoryOfSchedule;
@@ -975,6 +951,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public scheduleByDayOfWeek Model => new () {
 			categoryOfSchedule = this._categoryOfSchedule,
 			timeIntervalsByDayOfWeek = this.timeIntervalsByDayOfWeek.Select(e => e.Model).ToList(),
@@ -998,6 +975,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private sectorLimitOneViewModel _sectorLimitOne ;
 
 		[Category("sectorLimit")]
+		[ExpandableObject]
 		public sectorLimitOneViewModel sectorLimitOne {
 			get {
 				return _sectorLimitOne;
@@ -1009,6 +987,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private sectorLimitTwoViewModel _sectorLimitTwo ;
 
 		[Category("sectorLimit")]
+		[ExpandableObject]
 		public sectorLimitTwoViewModel sectorLimitTwo {
 			get {
 				return _sectorLimitTwo;
@@ -1039,6 +1018,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public sectorLimit Model => new () {
 			sectorLimitOne = this._sectorLimitOne?.Model,
 			sectorLimitTwo = this._sectorLimitTwo?.Model,
@@ -1055,7 +1035,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class sectorLimitOneViewModel : ViewModelBase {
 		private decimal _sectorBearing ;
 
-		[Category("sectorLimitOne")]
 		public decimal sectorBearing {
 			get {
 				return _sectorBearing;
@@ -1066,7 +1045,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private int? _sectorLineLength  = default;
 
-		[Category("sectorLimitOne")]
 		public int? sectorLineLength {
 			get {
 				return _sectorLineLength;
@@ -1091,6 +1069,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public sectorLimitOne Model => new () {
 			sectorBearing = this._sectorBearing,
 			sectorLineLength = this._sectorLineLength,
@@ -1107,7 +1086,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class sectorLimitTwoViewModel : ViewModelBase {
 		private decimal _sectorBearing ;
 
-		[Category("sectorLimitTwo")]
 		public decimal sectorBearing {
 			get {
 				return _sectorBearing;
@@ -1118,7 +1096,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private int? _sectorLineLength  = default;
 
-		[Category("sectorLimitTwo")]
 		public int? sectorLineLength {
 			get {
 				return _sectorLineLength;
@@ -1143,6 +1120,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public sectorLimitTwo Model => new () {
 			sectorBearing = this._sectorBearing,
 			sectorLineLength = this._sectorLineLength,
@@ -1159,7 +1137,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class telecommunicationsViewModel : ViewModelBase {
 		private categoryOfCommunicationPreference? _categoryOfCommunicationPreference  = default;
 
-		[Category("telecommunications")]
 		public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
 			get {
 				return _categoryOfCommunicationPreference;
@@ -1173,7 +1150,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public categoryOfCommunicationPreference[] categoryOfCommunicationPreferenceList => [(categoryOfCommunicationPreference)1,(categoryOfCommunicationPreference)2,(categoryOfCommunicationPreference)3,(categoryOfCommunicationPreference)4];
 		private String? _contactInstructions  = default;
 
-		[Category("telecommunications")]
 		public String? contactInstructions {
 			get {
 				return _contactInstructions;
@@ -1184,7 +1160,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _telecomCarrier  = default;
 
-		[Category("telecommunications")]
 		public String? telecomCarrier {
 			get {
 				return _telecomCarrier;
@@ -1195,7 +1170,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String _telecommunicationIdentifier  = string.Empty;
 
-		[Category("telecommunications")]
 		public String telecommunicationIdentifier {
 			get {
 				return _telecommunicationIdentifier;
@@ -1206,7 +1180,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private telecommunicationService? _telecommunicationService  = default;
 
-		[Category("telecommunications")]
 		public telecommunicationService? telecommunicationService {
 			get {
 				return _telecommunicationService;
@@ -1221,6 +1194,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private scheduleByDayOfWeekViewModel? _scheduleByDayOfWeek  = default;
 
 		[Category("telecommunications")]
+		[ExpandableObject]
 		public scheduleByDayOfWeekViewModel? scheduleByDayOfWeek {
 			get {
 				return _scheduleByDayOfWeek;
@@ -1256,6 +1230,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public telecommunications Model => new () {
 			categoryOfCommunicationPreference = this._categoryOfCommunicationPreference,
 			contactInstructions = this._contactInstructions,
@@ -1276,7 +1251,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class textContentViewModel : ViewModelBase {
 		private categoryOfText? _categoryOfText  = default;
 
-		[Category("textContent")]
 		public categoryOfText? categoryOfText {
 			get {
 				return _categoryOfText;
@@ -1290,7 +1264,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public categoryOfText[] categoryOfTextList => [(categoryOfText)1,(categoryOfText)2,(categoryOfText)3];
 		private String? _source  = default;
 
-		[Category("textContent")]
 		public String? source {
 			get {
 				return _source;
@@ -1301,7 +1274,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private sourceType? _sourceType  = default;
 
-		[Category("textContent")]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -1315,7 +1287,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 		private DateOnly? _reportedDate  = default;
 
-		[Category("textContent")]
 		public DateOnly? reportedDate {
 			get {
 				return _reportedDate;
@@ -1344,6 +1315,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public textContent Model => new () {
 			categoryOfText = this._categoryOfText,
 			source = this._source,
@@ -1369,7 +1341,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public dayOfWeek[] dayOfWeekList => [(dayOfWeek)1,(dayOfWeek)2,(dayOfWeek)3,(dayOfWeek)4,(dayOfWeek)5,(dayOfWeek)6,(dayOfWeek)7];
 		private Boolean? _dayOfWeekIsRange  = default;
 
-		[Category("timeIntervalsByDayOfWeek")]
 		public Boolean? dayOfWeekIsRange {
 			get {
 				return _dayOfWeekIsRange;
@@ -1414,6 +1385,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public timeIntervalsByDayOfWeek Model => new () {
 			dayOfWeek = this.dayOfWeek.ToList(),
 			dayOfWeekIsRange = this._dayOfWeekIsRange,
@@ -1444,7 +1416,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class vesselsMeasurementsViewModel : ViewModelBase {
 		private vesselsCharacteristics _vesselsCharacteristics ;
 
-		[Category("vesselsMeasurements")]
 		public vesselsCharacteristics vesselsCharacteristics {
 			get {
 				return _vesselsCharacteristics;
@@ -1458,7 +1429,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public vesselsCharacteristics[] vesselsCharacteristicsList => [(vesselsCharacteristics)1,(vesselsCharacteristics)2,(vesselsCharacteristics)3,(vesselsCharacteristics)4,(vesselsCharacteristics)6,(vesselsCharacteristics)7,(vesselsCharacteristics)8,(vesselsCharacteristics)9,(vesselsCharacteristics)10,(vesselsCharacteristics)11,(vesselsCharacteristics)12,(vesselsCharacteristics)13];
 		private decimal _vesselsCharacteristicsValue ;
 
-		[Category("vesselsMeasurements")]
 		public decimal vesselsCharacteristicsValue {
 			get {
 				return _vesselsCharacteristicsValue;
@@ -1469,7 +1439,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private vesselsCharacteristicsUnit _vesselsCharacteristicsUnit ;
 
-		[Category("vesselsMeasurements")]
 		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {
 			get {
 				return _vesselsCharacteristicsUnit;
@@ -1483,7 +1452,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public vesselsCharacteristicsUnit[] vesselsCharacteristicsUnitList => [(vesselsCharacteristicsUnit)3,(vesselsCharacteristicsUnit)4,(vesselsCharacteristicsUnit)5,(vesselsCharacteristicsUnit)6,(vesselsCharacteristicsUnit)7,(vesselsCharacteristicsUnit)9];
 		private comparisonOperator _comparisonOperator ;
 
-		[Category("vesselsMeasurements")]
 		public comparisonOperator comparisonOperator {
 			get {
 				return _comparisonOperator;
@@ -1515,6 +1483,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public vesselsMeasurements Model => new () {
 			vesselsCharacteristics = this._vesselsCharacteristics,
 			vesselsCharacteristicsValue = this._vesselsCharacteristicsValue,
@@ -1533,7 +1502,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class designationViewModel : ViewModelBase {
 		private String? _designationScheme  = default;
 
-		[Category("designation")]
 		public String? designationScheme {
 			get {
 				return _designationScheme;
@@ -1544,7 +1512,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _designationIdentifier  = default;
 
-		[Category("designation")]
 		public String? designationIdentifier {
 			get {
 				return _designationIdentifier;
@@ -1555,7 +1522,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private jurisdiction? _jurisdiction  = default;
 
-		[Category("designation")]
 		public jurisdiction? jurisdiction {
 			get {
 				return _jurisdiction;
@@ -1569,7 +1535,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public jurisdiction[] jurisdictionList => Enum.GetValues<jurisdiction>();
 		private String? _text  = default;
 
-		[Category("designation")]
 		public String? text {
 			get {
 				return _text;
@@ -1598,6 +1563,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public designation Model => new () {
 			designationScheme = this._designationScheme,
 			designationIdentifier = this._designationIdentifier,
@@ -1628,6 +1594,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public AssociatedRxN Model => new () {
 
 		};
@@ -1655,6 +1622,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ExceptionalWorkday Model => new () {
 
 		};
@@ -1682,6 +1650,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ProtectedAreaAuthority Model => new () {
 
 		};
@@ -1709,6 +1678,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ServiceControl Model => new () {
 
 		};
@@ -1736,6 +1706,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public RelatedOrganisation Model => new () {
 
 		};
@@ -1778,6 +1749,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public PermissionType Model => new () {
 			categoryOfRelationship = this._categoryOfRelationship,
 		};
@@ -1820,6 +1792,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public InclusionType Model => new () {
 			membership = this._membership,
 		};
@@ -1847,6 +1820,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public AuthorityContact Model => new () {
 
 		};
@@ -1874,6 +1848,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public AuthorityHours Model => new () {
 
 		};
@@ -1901,6 +1876,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public additionalInformation Model => new () {
 
 		};
@@ -1921,6 +1897,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -2010,6 +1987,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public InformationType Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -2048,6 +2026,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -2114,6 +2093,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("AbstractRxN")]
+		[ExpandableObject]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -2178,6 +2158,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public AbstractRxN Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -2222,6 +2203,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -2288,6 +2270,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("AbstractRxN")]
+		[ExpandableObject]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -2353,6 +2336,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public NauticalInformation Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -2397,6 +2381,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -2463,6 +2448,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("AbstractRxN")]
+		[ExpandableObject]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -2528,6 +2514,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Regulations Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -2572,6 +2559,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -2638,6 +2626,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("AbstractRxN")]
+		[ExpandableObject]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -2703,6 +2692,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Restrictions Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -2747,6 +2737,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -2813,6 +2804,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("AbstractRxN")]
+		[ExpandableObject]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -2878,6 +2870,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Recommendations Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -2922,6 +2915,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3036,6 +3030,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Authority Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -3079,6 +3074,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3145,6 +3141,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("AbstractRxN")]
+		[ExpandableObject]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -3334,6 +3331,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ContactDetails Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -3411,6 +3409,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3525,6 +3524,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public NonStandardWorkingDay Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -3575,6 +3575,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3629,6 +3630,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private informationViewModel _information ;
 
 		[Category("ServiceHours")]
+		[ExpandableObject]
 		public informationViewModel information {
 			get {
 				return _information;
@@ -3689,6 +3691,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ServiceHours Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -3732,6 +3735,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3951,6 +3955,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Applicability Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -4011,6 +4016,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -4153,6 +4159,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public RestrictedArea Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -4206,6 +4213,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -4388,6 +4396,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public MarineProtectedArea Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -4447,6 +4456,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -4566,6 +4576,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public VesselTrafficServiceArea Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -4616,6 +4627,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public DataCoverage Model => new () {
 
 		};
@@ -4646,6 +4658,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public TextPlacement Model => new () {
 
 		};

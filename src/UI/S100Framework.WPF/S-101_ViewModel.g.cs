@@ -308,7 +308,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class directionalCharacterViewModel : ViewModelBase {
 		private Boolean? _moireEffect  = default;
 
-		[Category("directionalCharacter")]
 		public Boolean? moireEffect {
 			get {
 				return _moireEffect;
@@ -320,6 +319,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private orientationViewModel _orientation ;
 
 		[Category("directionalCharacter")]
+		[ExpandableObject]
 		public orientationViewModel orientation {
 			get {
 				return _orientation;
@@ -347,6 +347,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public directionalCharacter Model => new () {
 			moireEffect = this._moireEffect,
 			orientation = this._orientation?.Model,
@@ -363,7 +364,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class featureNameViewModel : ViewModelBase {
 		private String _language  = string.Empty;
 
-		[Category("featureName")]
 		public String language {
 			get {
 				return _language;
@@ -374,7 +374,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private String _name  = string.Empty;
 
-		[Category("featureName")]
 		public String name {
 			get {
 				return _name;
@@ -385,7 +384,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private nameUsage? _nameUsage  = default;
 
-		[Category("featureName")]
 		public nameUsage? nameUsage {
 			get {
 				return _nameUsage;
@@ -415,6 +413,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public featureName Model => new () {
 			language = this._language,
 			name = this._name,
@@ -432,7 +431,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class featuresDetectedViewModel : ViewModelBase {
 		private Boolean _leastDepthOfDetectedFeaturesMeasured  = false;
 
-		[Category("featuresDetected")]
 		public Boolean leastDepthOfDetectedFeaturesMeasured {
 			get {
 				return _leastDepthOfDetectedFeaturesMeasured;
@@ -443,7 +441,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private Boolean _significantFeaturesDetected  = false;
 
-		[Category("featuresDetected")]
 		public Boolean significantFeaturesDetected {
 			get {
 				return _significantFeaturesDetected;
@@ -454,7 +451,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private decimal? _sizeOfFeaturesDetected  = default;
 
-		[Category("featuresDetected")]
 		public decimal? sizeOfFeaturesDetected {
 			get {
 				return _sizeOfFeaturesDetected;
@@ -481,6 +477,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public featuresDetected Model => new () {
 			leastDepthOfDetectedFeaturesMeasured = this._leastDepthOfDetectedFeaturesMeasured,
 			significantFeaturesDetected = this._significantFeaturesDetected,
@@ -498,7 +495,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class fixedDateRangeViewModel : ViewModelBase {
 		private DateOnly? _dateEnd  = default;
 
-		[Category("fixedDateRange")]
 		public DateOnly? dateEnd {
 			get {
 				return _dateEnd;
@@ -509,7 +505,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private DateOnly? _dateStart  = default;
 
-		[Category("fixedDateRange")]
 		public DateOnly? dateStart {
 			get {
 				return _dateStart;
@@ -534,6 +529,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public fixedDateRange Model => new () {
 			dateEnd = this._dateEnd,
 			dateStart = this._dateStart,
@@ -550,7 +546,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class frequencyPairViewModel : ViewModelBase {
 		private int? _frequencyShoreStationReceives  = default;
 
-		[Category("frequencyPair")]
 		public int? frequencyShoreStationReceives {
 			get {
 				return _frequencyShoreStationReceives;
@@ -561,7 +556,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private int _frequencyShoreStationTransmits ;
 
-		[Category("frequencyPair")]
 		public int frequencyShoreStationTransmits {
 			get {
 				return _frequencyShoreStationTransmits;
@@ -586,6 +580,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public frequencyPair Model => new () {
 			frequencyShoreStationReceives = this._frequencyShoreStationReceives,
 			frequencyShoreStationTransmits = this._frequencyShoreStationTransmits,
@@ -602,7 +597,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class horizontalClearanceFixedViewModel : ViewModelBase {
 		private decimal _horizontalClearanceValue ;
 
-		[Category("horizontalClearanceFixed")]
 		public decimal horizontalClearanceValue {
 			get {
 				return _horizontalClearanceValue;
@@ -613,7 +607,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private decimal? _horizontalDistanceUncertainty  = default;
 
-		[Category("horizontalClearanceFixed")]
 		public decimal? horizontalDistanceUncertainty {
 			get {
 				return _horizontalDistanceUncertainty;
@@ -638,6 +631,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public horizontalClearanceFixed Model => new () {
 			horizontalClearanceValue = this._horizontalClearanceValue,
 			horizontalDistanceUncertainty = this._horizontalDistanceUncertainty,
@@ -654,7 +648,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class horizontalClearanceOpenViewModel : ViewModelBase {
 		private decimal _horizontalClearanceValue ;
 
-		[Category("horizontalClearanceOpen")]
 		public decimal horizontalClearanceValue {
 			get {
 				return _horizontalClearanceValue;
@@ -665,7 +658,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private decimal? _horizontalDistanceUncertainty  = default;
 
-		[Category("horizontalClearanceOpen")]
 		public decimal? horizontalDistanceUncertainty {
 			get {
 				return _horizontalDistanceUncertainty;
@@ -690,6 +682,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public horizontalClearanceOpen Model => new () {
 			horizontalClearanceValue = this._horizontalClearanceValue,
 			horizontalDistanceUncertainty = this._horizontalDistanceUncertainty,
@@ -706,7 +699,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
 		private decimal _uncertaintyFixed ;
 
-		[Category("horizontalPositionUncertainty")]
 		public decimal uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
@@ -717,7 +709,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private decimal? _uncertaintyVariableFactor  = default;
 
-		[Category("horizontalPositionUncertainty")]
 		public decimal? uncertaintyVariableFactor {
 			get {
 				return _uncertaintyVariableFactor;
@@ -742,6 +733,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public horizontalPositionUncertainty Model => new () {
 			uncertaintyFixed = this._uncertaintyFixed,
 			uncertaintyVariableFactor = this._uncertaintyVariableFactor,
@@ -758,7 +750,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class informationViewModel : ViewModelBase {
 		private String? _fileLocator  = default;
 
-		[Category("information")]
 		public String? fileLocator {
 			get {
 				return _fileLocator;
@@ -769,7 +760,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private String? _fileReference  = default;
 
-		[Category("information")]
 		public String? fileReference {
 			get {
 				return _fileReference;
@@ -780,7 +770,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private String? _headline  = default;
 
-		[Category("information")]
 		public String? headline {
 			get {
 				return _headline;
@@ -791,7 +780,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private String _language  = string.Empty;
 
-		[Category("information")]
 		public String language {
 			get {
 				return _language;
@@ -802,7 +790,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private String? _text  = default;
 
-		[Category("information")]
 		public String? text {
 			get {
 				return _text;
@@ -833,6 +820,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public information Model => new () {
 			fileLocator = this._fileLocator,
 			fileReference = this._fileReference,
@@ -860,6 +848,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private directionalCharacterViewModel? _directionalCharacter  = default;
 
 		[Category("lightSector")]
+		[ExpandableObject]
 		public directionalCharacterViewModel? directionalCharacter {
 			get {
 				return _directionalCharacter;
@@ -878,6 +867,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private sectorLimitViewModel? _sectorLimit  = default;
 
 		[Category("lightSector")]
+		[ExpandableObject]
 		public sectorLimitViewModel? sectorLimit {
 			get {
 				return _sectorLimit;
@@ -888,7 +878,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private decimal? _valueOfNominalRange  = default;
 
-		[Category("lightSector")]
 		public decimal? valueOfNominalRange {
 			get {
 				return _valueOfNominalRange;
@@ -901,7 +890,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<sectorInformationViewModel> sectorInformation  { get; set; } = new ();
 		private Boolean? _sectorArcExtension  = default;
 
-		[Category("lightSector")]
 		public Boolean? sectorArcExtension {
 			get {
 				return _sectorArcExtension;
@@ -954,6 +942,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public lightSector Model => new () {
 			colour = this.colour.ToList(),
 			directionalCharacter = this._directionalCharacter?.Model,
@@ -987,7 +976,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class measuredDistanceValueViewModel : ViewModelBase {
 		private distanceUnitOfMeasurement _distanceUnitOfMeasurement ;
 
-		[Category("measuredDistanceValue")]
 		public distanceUnitOfMeasurement distanceUnitOfMeasurement {
 			get {
 				return _distanceUnitOfMeasurement;
@@ -1001,7 +989,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public distanceUnitOfMeasurement[] distanceUnitOfMeasurementList => [(distanceUnitOfMeasurement)1,(distanceUnitOfMeasurement)2,(distanceUnitOfMeasurement)3,(distanceUnitOfMeasurement)4,(distanceUnitOfMeasurement)5];
 		private String? _referenceLocation  = default;
 
-		[Category("measuredDistanceValue")]
 		public String? referenceLocation {
 			get {
 				return _referenceLocation;
@@ -1012,7 +999,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private decimal _waterwayDistance ;
 
-		[Category("measuredDistanceValue")]
 		public decimal waterwayDistance {
 			get {
 				return _waterwayDistance;
@@ -1039,6 +1025,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public measuredDistanceValue Model => new () {
 			distanceUnitOfMeasurement = this._distanceUnitOfMeasurement,
 			referenceLocation = this._referenceLocation,
@@ -1056,7 +1043,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class multiplicityOfFeaturesViewModel : ViewModelBase {
 		private Boolean _multiplicityKnown  = false;
 
-		[Category("multiplicityOfFeatures")]
 		public Boolean multiplicityKnown {
 			get {
 				return _multiplicityKnown;
@@ -1067,7 +1053,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private int? _numberOfFeatures  = default;
 
-		[Category("multiplicityOfFeatures")]
 		public int? numberOfFeatures {
 			get {
 				return _numberOfFeatures;
@@ -1092,6 +1077,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public multiplicityOfFeatures Model => new () {
 			multiplicityKnown = this._multiplicityKnown,
 			numberOfFeatures = this._numberOfFeatures,
@@ -1108,7 +1094,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class onlineResourceViewModel : ViewModelBase {
 		private String? _headline  = default;
 
-		[Category("onlineResource")]
 		public String? headline {
 			get {
 				return _headline;
@@ -1119,7 +1104,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private String _linkage  = string.Empty;
 
-		[Category("onlineResource")]
 		public String linkage {
 			get {
 				return _linkage;
@@ -1130,7 +1114,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private String? _nameOfResource  = default;
 
-		[Category("onlineResource")]
 		public String? nameOfResource {
 			get {
 				return _nameOfResource;
@@ -1157,6 +1140,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public onlineResource Model => new () {
 			headline = this._headline,
 			linkage = this._linkage,
@@ -1174,7 +1158,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class orientationViewModel : ViewModelBase {
 		private decimal? _orientationUncertainty  = default;
 
-		[Category("orientation")]
 		public decimal? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
@@ -1185,7 +1168,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private decimal _orientationValue ;
 
-		[Category("orientation")]
 		public decimal orientationValue {
 			get {
 				return _orientationValue;
@@ -1210,6 +1192,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public orientation Model => new () {
 			orientationUncertainty = this._orientationUncertainty,
 			orientationValue = this._orientationValue,
@@ -1226,7 +1209,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class periodicDateRangeViewModel : ViewModelBase {
 		private DateOnly _dateEnd ;
 
-		[Category("periodicDateRange")]
 		public DateOnly dateEnd {
 			get {
 				return _dateEnd;
@@ -1237,7 +1219,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private DateOnly _dateStart ;
 
-		[Category("periodicDateRange")]
 		public DateOnly dateStart {
 			get {
 				return _dateStart;
@@ -1262,6 +1243,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public periodicDateRange Model => new () {
 			dateEnd = this._dateEnd,
 			dateStart = this._dateStart,
@@ -1278,7 +1260,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class radarWaveLengthViewModel : ViewModelBase {
 		private String _radarBand  = string.Empty;
 
-		[Category("radarWaveLength")]
 		public String radarBand {
 			get {
 				return _radarBand;
@@ -1289,7 +1270,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private decimal _waveLengthValue ;
 
-		[Category("radarWaveLength")]
 		public decimal waveLengthValue {
 			get {
 				return _waveLengthValue;
@@ -1314,6 +1294,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public radarWaveLength Model => new () {
 			radarBand = this._radarBand,
 			waveLengthValue = this._waveLengthValue,
@@ -1330,7 +1311,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class rhythmOfLightViewModel : ViewModelBase {
 		private lightCharacteristic _lightCharacteristic ;
 
-		[Category("rhythmOfLight")]
 		public lightCharacteristic lightCharacteristic {
 			get {
 				return _lightCharacteristic;
@@ -1346,7 +1326,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 		private decimal? _signalPeriod  = default;
 
-		[Category("rhythmOfLight")]
 		public decimal? signalPeriod {
 			get {
 				return _signalPeriod;
@@ -1385,6 +1364,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public rhythmOfLight Model => new () {
 			lightCharacteristic = this._lightCharacteristic,
 			signalGroup = this.signalGroup.ToList(),
@@ -1412,7 +1392,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class scheduleByDayOfWeekViewModel : ViewModelBase {
 		private categoryOfSchedule? _categoryOfSchedule  = default;
 
-		[Category("scheduleByDayOfWeek")]
 		public categoryOfSchedule? categoryOfSchedule {
 			get {
 				return _categoryOfSchedule;
@@ -1446,6 +1425,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public scheduleByDayOfWeek Model => new () {
 			categoryOfSchedule = this._categoryOfSchedule,
 			timeIntervalsByDayOfWeek = this.timeIntervalsByDayOfWeek.Select(e => e.Model).ToList(),
@@ -1468,7 +1448,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class sectorCharacteristicsViewModel : ViewModelBase {
 		private lightCharacteristic _lightCharacteristic ;
 
-		[Category("sectorCharacteristics")]
 		public lightCharacteristic lightCharacteristic {
 			get {
 				return _lightCharacteristic;
@@ -1486,7 +1465,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 		private decimal? _signalPeriod  = default;
 
-		[Category("sectorCharacteristics")]
 		public decimal? signalPeriod {
 			get {
 				return _signalPeriod;
@@ -1531,6 +1509,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public sectorCharacteristics Model => new () {
 			lightCharacteristic = this._lightCharacteristic,
 			lightSector = this.lightSector.Select(e => e.Model).ToList(),
@@ -1562,7 +1541,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class sectorInformationViewModel : ViewModelBase {
 		private String? _language  = default;
 
-		[Category("sectorInformation")]
 		public String? language {
 			get {
 				return _language;
@@ -1573,7 +1551,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private String _text  = string.Empty;
 
-		[Category("sectorInformation")]
 		public String text {
 			get {
 				return _text;
@@ -1598,6 +1575,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public sectorInformation Model => new () {
 			language = this._language,
 			text = this._text,
@@ -1615,6 +1593,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private sectorLimitOneViewModel _sectorLimitOne ;
 
 		[Category("sectorLimit")]
+		[ExpandableObject]
 		public sectorLimitOneViewModel sectorLimitOne {
 			get {
 				return _sectorLimitOne;
@@ -1626,6 +1605,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private sectorLimitTwoViewModel _sectorLimitTwo ;
 
 		[Category("sectorLimit")]
+		[ExpandableObject]
 		public sectorLimitTwoViewModel sectorLimitTwo {
 			get {
 				return _sectorLimitTwo;
@@ -1656,6 +1636,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public sectorLimit Model => new () {
 			sectorLimitOne = this._sectorLimitOne?.Model,
 			sectorLimitTwo = this._sectorLimitTwo?.Model,
@@ -1672,7 +1653,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class sectorLimitOneViewModel : ViewModelBase {
 		private decimal _sectorBearing ;
 
-		[Category("sectorLimitOne")]
 		public decimal sectorBearing {
 			get {
 				return _sectorBearing;
@@ -1683,7 +1663,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private decimal? _sectorLineLength  = default;
 
-		[Category("sectorLimitOne")]
 		public decimal? sectorLineLength {
 			get {
 				return _sectorLineLength;
@@ -1708,6 +1687,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public sectorLimitOne Model => new () {
 			sectorBearing = this._sectorBearing,
 			sectorLineLength = this._sectorLineLength,
@@ -1724,7 +1704,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class sectorLimitTwoViewModel : ViewModelBase {
 		private decimal _sectorBearing ;
 
-		[Category("sectorLimitTwo")]
 		public decimal sectorBearing {
 			get {
 				return _sectorBearing;
@@ -1735,7 +1714,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private decimal? _sectorLineLength  = default;
 
-		[Category("sectorLimitTwo")]
 		public decimal? sectorLineLength {
 			get {
 				return _sectorLineLength;
@@ -1760,6 +1738,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public sectorLimitTwo Model => new () {
 			sectorBearing = this._sectorBearing,
 			sectorLineLength = this._sectorLineLength,
@@ -1776,7 +1755,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class shapeInformationViewModel : ViewModelBase {
 		private String? _language  = default;
 
-		[Category("shapeInformation")]
 		public String? language {
 			get {
 				return _language;
@@ -1787,7 +1765,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private String _text  = string.Empty;
 
-		[Category("shapeInformation")]
 		public String text {
 			get {
 				return _text;
@@ -1812,6 +1789,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public shapeInformation Model => new () {
 			language = this._language,
 			text = this._text,
@@ -1828,7 +1806,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class signalSequenceViewModel : ViewModelBase {
 		private decimal _signalDuration ;
 
-		[Category("signalSequence")]
 		public decimal signalDuration {
 			get {
 				return _signalDuration;
@@ -1839,7 +1816,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private signalStatus _signalStatus ;
 
-		[Category("signalSequence")]
 		public signalStatus signalStatus {
 			get {
 				return _signalStatus;
@@ -1867,6 +1843,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public signalSequence Model => new () {
 			signalDuration = this._signalDuration,
 			signalStatus = this._signalStatus,
@@ -1884,6 +1861,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("spatialAccuracy")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -1895,6 +1873,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
 		[Category("spatialAccuracy")]
+		[ExpandableObject]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
 			get {
 				return _horizontalPositionUncertainty;
@@ -1906,6 +1885,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("spatialAccuracy")]
+		[ExpandableObject]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -1941,6 +1921,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public spatialAccuracy Model => new () {
 			fixedDateRange = this._fixedDateRange?.Model,
 			horizontalPositionUncertainty = this._horizontalPositionUncertainty?.Model,
@@ -1958,7 +1939,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class speedViewModel : ViewModelBase {
 		private decimal _speedMaximum ;
 
-		[Category("speed")]
 		public decimal speedMaximum {
 			get {
 				return _speedMaximum;
@@ -1969,7 +1949,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private decimal? _speedMinimum  = default;
 
-		[Category("speed")]
 		public decimal? speedMinimum {
 			get {
 				return _speedMinimum;
@@ -1994,6 +1973,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public speed Model => new () {
 			speedMaximum = this._speedMaximum,
 			speedMinimum = this._speedMinimum,
@@ -2010,7 +1990,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class surfaceCharacteristicsViewModel : ViewModelBase {
 		private natureOfSurface? _natureOfSurface  = default;
 
-		[Category("surfaceCharacteristics")]
 		public natureOfSurface? natureOfSurface {
 			get {
 				return _natureOfSurface;
@@ -2031,7 +2010,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public natureOfSurfaceQualifyingTerms[] natureOfSurfaceQualifyingTermsList => [(natureOfSurfaceQualifyingTerms)1,(natureOfSurfaceQualifyingTerms)2,(natureOfSurfaceQualifyingTerms)3,(natureOfSurfaceQualifyingTerms)4,(natureOfSurfaceQualifyingTerms)5,(natureOfSurfaceQualifyingTerms)6,(natureOfSurfaceQualifyingTerms)7,(natureOfSurfaceQualifyingTerms)8,(natureOfSurfaceQualifyingTerms)9,(natureOfSurfaceQualifyingTerms)10];
 		private int? _underlyingLayer  = default;
 
-		[Category("surfaceCharacteristics")]
 		public int? underlyingLayer {
 			get {
 				return _underlyingLayer;
@@ -2062,6 +2040,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public surfaceCharacteristics Model => new () {
 			natureOfSurface = this._natureOfSurface,
 			natureOfSurfaceQualifyingTerms = this.natureOfSurfaceQualifyingTerms.ToList(),
@@ -2085,7 +2064,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class surveyDateRangeViewModel : ViewModelBase {
 		private DateOnly _dateEnd ;
 
-		[Category("surveyDateRange")]
 		public DateOnly dateEnd {
 			get {
 				return _dateEnd;
@@ -2096,7 +2074,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private DateOnly? _dateStart  = default;
 
-		[Category("surveyDateRange")]
 		public DateOnly? dateStart {
 			get {
 				return _dateStart;
@@ -2121,6 +2098,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public surveyDateRange Model => new () {
 			dateEnd = this._dateEnd,
 			dateStart = this._dateStart,
@@ -2137,7 +2115,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class telecommunicationsViewModel : ViewModelBase {
 		private String? _contactInstructions  = default;
 
-		[Category("telecommunications")]
 		public String? contactInstructions {
 			get {
 				return _contactInstructions;
@@ -2148,7 +2125,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private String _telecommunicationIdentifier  = string.Empty;
 
-		[Category("telecommunications")]
 		public String telecommunicationIdentifier {
 			get {
 				return _telecommunicationIdentifier;
@@ -2159,7 +2135,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private telecommunicationService? _telecommunicationService  = default;
 
-		[Category("telecommunications")]
 		public telecommunicationService? telecommunicationService {
 			get {
 				return _telecommunicationService;
@@ -2189,6 +2164,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public telecommunications Model => new () {
 			contactInstructions = this._contactInstructions,
 			telecommunicationIdentifier = this._telecommunicationIdentifier,
@@ -2206,7 +2182,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class tidalStreamPanelValuesViewModel : ViewModelBase {
 		private referenceTide _referenceTide ;
 
-		[Category("tidalStreamPanelValues")]
 		public referenceTide referenceTide {
 			get {
 				return _referenceTide;
@@ -2220,7 +2195,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public referenceTide[] referenceTideList => [(referenceTide)1,(referenceTide)2];
 		private referenceTideType _referenceTideType ;
 
-		[Category("tidalStreamPanelValues")]
 		public referenceTideType referenceTideType {
 			get {
 				return _referenceTideType;
@@ -2234,7 +2208,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public referenceTideType[] referenceTideTypeList => [(referenceTideType)1,(referenceTideType)2,(referenceTideType)3];
 		private decimal? _streamDepth  = default;
 
-		[Category("tidalStreamPanelValues")]
 		public decimal? streamDepth {
 			get {
 				return _streamDepth;
@@ -2269,6 +2242,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public tidalStreamPanelValues Model => new () {
 			referenceTide = this._referenceTide,
 			referenceTideType = this._referenceTideType,
@@ -2294,6 +2268,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private orientationViewModel _orientation ;
 
 		[Category("tidalStreamValue")]
+		[ExpandableObject]
 		public orientationViewModel orientation {
 			get {
 				return _orientation;
@@ -2304,7 +2279,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private decimal _speedMaximum ;
 
-		[Category("tidalStreamValue")]
 		public decimal speedMaximum {
 			get {
 				return _speedMaximum;
@@ -2315,7 +2289,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private decimal _timeRelativeToTide ;
 
-		[Category("tidalStreamValue")]
 		public decimal timeRelativeToTide {
 			get {
 				return _timeRelativeToTide;
@@ -2345,6 +2318,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public tidalStreamValue Model => new () {
 			orientation = this._orientation?.Model,
 			speedMaximum = this._speedMaximum,
@@ -2369,7 +2343,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public dayOfWeek[] dayOfWeekList => [(dayOfWeek)1,(dayOfWeek)2,(dayOfWeek)3,(dayOfWeek)4,(dayOfWeek)5,(dayOfWeek)6,(dayOfWeek)7];
 		private Boolean? _dayOfWeekIsRange  = default;
 
-		[Category("timeIntervalsByDayOfWeek")]
 		public Boolean? dayOfWeekIsRange {
 			get {
 				return _dayOfWeekIsRange;
@@ -2414,6 +2387,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public timeIntervalsByDayOfWeek Model => new () {
 			dayOfWeek = this.dayOfWeek.ToList(),
 			dayOfWeekIsRange = this._dayOfWeekIsRange,
@@ -2451,7 +2425,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		private colourPattern? _colourPattern  = default;
 
-		[Category("topmark")]
 		public colourPattern? colourPattern {
 			get {
 				return _colourPattern;
@@ -2465,7 +2438,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
 		private topmarkDaymarkShape _topmarkDaymarkShape ;
 
-		[Category("topmark")]
 		public topmarkDaymarkShape topmarkDaymarkShape {
 			get {
 				return _topmarkDaymarkShape;
@@ -2507,6 +2479,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public topmark Model => new () {
 			colour = this.colour.ToList(),
 			colourPattern = this._colourPattern,
@@ -2534,7 +2507,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class valueOfLocalMagneticAnomalyViewModel : ViewModelBase {
 		private decimal _magneticAnomalyValue ;
 
-		[Category("valueOfLocalMagneticAnomaly")]
 		public decimal magneticAnomalyValue {
 			get {
 				return _magneticAnomalyValue;
@@ -2545,7 +2517,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private referenceDirection? _referenceDirection  = default;
 
-		[Category("valueOfLocalMagneticAnomaly")]
 		public referenceDirection? referenceDirection {
 			get {
 				return _referenceDirection;
@@ -2573,6 +2544,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public valueOfLocalMagneticAnomaly Model => new () {
 			magneticAnomalyValue = this._magneticAnomalyValue,
 			referenceDirection = this._referenceDirection,
@@ -2589,7 +2561,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class verticalClearanceClosedViewModel : ViewModelBase {
 		private decimal _verticalClearanceValue ;
 
-		[Category("verticalClearanceClosed")]
 		public decimal verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
@@ -2601,6 +2572,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("verticalClearanceClosed")]
+		[ExpandableObject]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -2628,6 +2600,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public verticalClearanceClosed Model => new () {
 			verticalClearanceValue = this._verticalClearanceValue,
 			verticalUncertainty = this._verticalUncertainty?.Model,
@@ -2644,7 +2617,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class verticalClearanceFixedViewModel : ViewModelBase {
 		private decimal _verticalClearanceValue ;
 
-		[Category("verticalClearanceFixed")]
 		public decimal verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
@@ -2656,6 +2628,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("verticalClearanceFixed")]
+		[ExpandableObject]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -2683,6 +2656,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public verticalClearanceFixed Model => new () {
 			verticalClearanceValue = this._verticalClearanceValue,
 			verticalUncertainty = this._verticalUncertainty?.Model,
@@ -2699,7 +2673,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class verticalClearanceOpenViewModel : ViewModelBase {
 		private Boolean _verticalClearanceUnlimited  = false;
 
-		[Category("verticalClearanceOpen")]
 		public Boolean verticalClearanceUnlimited {
 			get {
 				return _verticalClearanceUnlimited;
@@ -2710,7 +2683,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private decimal? _verticalClearanceValue  = default;
 
-		[Category("verticalClearanceOpen")]
 		public decimal? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
@@ -2722,6 +2694,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("verticalClearanceOpen")]
+		[ExpandableObject]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -2751,6 +2724,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public verticalClearanceOpen Model => new () {
 			verticalClearanceUnlimited = this._verticalClearanceUnlimited,
 			verticalClearanceValue = this._verticalClearanceValue,
@@ -2768,7 +2742,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class verticalClearanceSafeViewModel : ViewModelBase {
 		private decimal _verticalClearanceValue ;
 
-		[Category("verticalClearanceSafe")]
 		public decimal verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
@@ -2780,6 +2753,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("verticalClearanceSafe")]
+		[ExpandableObject]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -2807,6 +2781,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public verticalClearanceSafe Model => new () {
 			verticalClearanceValue = this._verticalClearanceValue,
 			verticalUncertainty = this._verticalUncertainty?.Model,
@@ -2823,7 +2798,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class verticalUncertaintyViewModel : ViewModelBase {
 		private decimal _uncertaintyFixed ;
 
-		[Category("verticalUncertainty")]
 		public decimal uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
@@ -2834,7 +2808,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private decimal? _uncertaintyVariableFactor  = default;
 
-		[Category("verticalUncertainty")]
 		public decimal? uncertaintyVariableFactor {
 			get {
 				return _uncertaintyVariableFactor;
@@ -2859,6 +2832,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public verticalUncertainty Model => new () {
 			uncertaintyFixed = this._uncertaintyFixed,
 			uncertaintyVariableFactor = this._uncertaintyVariableFactor,
@@ -2875,7 +2849,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class vesselSpeedLimitViewModel : ViewModelBase {
 		private decimal _speedLimit ;
 
-		[Category("vesselSpeedLimit")]
 		public decimal speedLimit {
 			get {
 				return _speedLimit;
@@ -2886,7 +2859,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private speedUnits _speedUnits ;
 
-		[Category("vesselSpeedLimit")]
 		public speedUnits speedUnits {
 			get {
 				return _speedUnits;
@@ -2900,7 +2872,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public speedUnits[] speedUnitsList => [(speedUnits)2,(speedUnits)3,(speedUnits)4];
 		private String? _vesselClass  = default;
 
-		[Category("vesselSpeedLimit")]
 		public String? vesselClass {
 			get {
 				return _vesselClass;
@@ -2927,6 +2898,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public vesselSpeedLimit Model => new () {
 			speedLimit = this._speedLimit,
 			speedUnits = this._speedUnits,
@@ -2944,7 +2916,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class zoneOfConfidenceViewModel : ViewModelBase {
 		private categoryOfZoneOfConfidenceInData _categoryOfZoneOfConfidenceInData ;
 
-		[Category("zoneOfConfidence")]
 		public categoryOfZoneOfConfidenceInData categoryOfZoneOfConfidenceInData {
 			get {
 				return _categoryOfZoneOfConfidenceInData;
@@ -2959,6 +2930,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("zoneOfConfidence")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -2970,6 +2942,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
 		[Category("zoneOfConfidence")]
+		[ExpandableObject]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
 			get {
 				return _horizontalPositionUncertainty;
@@ -2981,6 +2954,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("zoneOfConfidence")]
+		[ExpandableObject]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -3018,6 +2992,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public zoneOfConfidence Model => new () {
 			categoryOfZoneOfConfidenceInData = this._categoryOfZoneOfConfidenceInData,
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -3048,6 +3023,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public AdditionalInformation Model => new () {
 
 		};
@@ -3075,6 +3051,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public QualityOfBathymetricDataComposition Model => new () {
 
 		};
@@ -3102,6 +3079,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SpatialAssociation Model => new () {
 
 		};
@@ -3129,6 +3107,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public AidsToNavigationAssociation Model => new () {
 
 		};
@@ -3156,6 +3135,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ASLAggregation Model => new () {
 
 		};
@@ -3183,6 +3163,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public BridgeAggregation Model => new () {
 
 		};
@@ -3210,6 +3191,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public CautionAreaAssociation Model => new () {
 
 		};
@@ -3237,6 +3219,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public DeepWaterRouteAggregation Model => new () {
 
 		};
@@ -3264,6 +3247,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public FairwayAggregation Model => new () {
 
 		};
@@ -3291,6 +3275,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public FairwayAuxiliary Model => new () {
 
 		};
@@ -3318,6 +3303,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public IslandAggregation Model => new () {
 
 		};
@@ -3345,6 +3331,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public MooringTrotAggregation Model => new () {
 
 		};
@@ -3372,6 +3359,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public PilotageDistrictAssociation Model => new () {
 
 		};
@@ -3399,6 +3387,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public RangeSystemAggregation Model => new () {
 
 		};
@@ -3426,6 +3415,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public RoofedStructureAggregation Model => new () {
 
 		};
@@ -3453,6 +3443,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public StructureEquipment Model => new () {
 
 		};
@@ -3480,6 +3471,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public TextAssociation Model => new () {
 
 		};
@@ -3507,6 +3499,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public TrafficSeparationSchemeAggregation Model => new () {
 
 		};
@@ -3534,6 +3527,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public TwoWayRouteAggregation Model => new () {
 
 		};
@@ -3561,6 +3555,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public UpdateAggregation Model => new () {
 
 		};
@@ -3588,6 +3583,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public UpdatedInformation Model => new () {
 
 		};
@@ -3629,6 +3625,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("ContactDetails")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3701,6 +3698,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ContactDetails Model => new () {
 			callSign = this._callSign,
 			communicationChannel = this.communicationChannel.ToList(),
@@ -3741,6 +3739,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("ServiceHours")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3790,6 +3789,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ServiceHours Model => new () {
 			fixedDateRange = this._fixedDateRange?.Model,
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
@@ -3827,6 +3827,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("NonStandardWorkingDay")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3880,6 +3881,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public NonStandardWorkingDay Model => new () {
 			dateFixed = this.dateFixed.ToList(),
 			dateVariable = this.dateVariable.ToList(),
@@ -3917,6 +3919,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("NauticalInformation")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3971,6 +3974,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public NauticalInformation Model => new () {
 			fixedDateRange = this._fixedDateRange?.Model,
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
@@ -4034,6 +4038,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SpatialQuality Model => new () {
 			qualityOfHorizontalMeasurement = this._qualityOfHorizontalMeasurement,
 			spatialAccuracy = this.spatialAccuracy.Select(e => e.Model).ToList(),
@@ -4084,6 +4089,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private horizontalPositionUncertaintyViewModel _horizontalPositionUncertainty ;
 
 		[Category("QualityOfNonBathymetricData")]
+		[ExpandableObject]
 		public horizontalPositionUncertaintyViewModel horizontalPositionUncertainty {
 			get {
 				return _horizontalPositionUncertainty;
@@ -4117,6 +4123,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private surveyDateRangeViewModel? _surveyDateRange  = default;
 
 		[Category("QualityOfNonBathymetricData")]
+		[ExpandableObject]
 		public surveyDateRangeViewModel? surveyDateRange {
 			get {
 				return _surveyDateRange;
@@ -4128,6 +4135,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
+		[ExpandableObject]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -4179,6 +4187,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public QualityOfNonBathymetricData Model => new () {
 			categoryOfTemporalVariation = this._categoryOfTemporalVariation,
 			horizontalDistanceUncertainty = this._horizontalDistanceUncertainty,
@@ -4294,6 +4303,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public DataCoverage Model => new () {
 			drawingIndex = this._drawingIndex,
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -4371,6 +4381,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public NavigationalSystemOfMarks Model => new () {
 			marksNavigationalSystemOf = this._marksNavigationalSystemOf,
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -4471,6 +4482,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public LocalDirectionOfBuoyage Model => new () {
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			marksNavigationalSystemOf = this._marksNavigationalSystemOf,
@@ -4551,6 +4563,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private featuresDetectedViewModel _featuresDetected ;
 
 		[Category("QualityOfBathymetricData")]
+		[ExpandableObject]
 		public featuresDetectedViewModel featuresDetected {
 			get {
 				return _featuresDetected;
@@ -4584,6 +4597,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private surveyDateRangeViewModel? _surveyDateRange  = default;
 
 		[Category("QualityOfBathymetricData")]
+		[ExpandableObject]
 		public surveyDateRangeViewModel? surveyDateRange {
 			get {
 				return _surveyDateRange;
@@ -4642,6 +4656,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public QualityOfBathymetricData Model => new () {
 			categoryOfTemporalVariation = this._categoryOfTemporalVariation,
 			dataAssessment = this._dataAssessment,
@@ -4726,6 +4741,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SoundingDatum Model => new () {
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			verticalDatum = this._verticalDatum,
@@ -4800,6 +4816,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public VerticalDatumOfData Model => new () {
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			verticalDatum = this._verticalDatum,
@@ -4850,6 +4867,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private featuresDetectedViewModel? _featuresDetected  = default;
 
 		[Category("QualityOfSurvey")]
+		[ExpandableObject]
 		public featuresDetectedViewModel? featuresDetected {
 			get {
 				return _featuresDetected;
@@ -4981,6 +4999,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private surveyDateRangeViewModel _surveyDateRange ;
 
 		[Category("QualityOfSurvey")]
+		[ExpandableObject]
 		public surveyDateRangeViewModel surveyDateRange {
 			get {
 				return _surveyDateRange;
@@ -5075,6 +5094,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public QualityOfSurvey Model => new () {
 			depthRangeMaximumValue = this._depthRangeMaximumValue,
 			depthRangeMinimumValue = this._depthRangeMinimumValue,
@@ -5127,6 +5147,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("UpdateInformation")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -5228,6 +5249,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public UpdateInformation Model => new () {
 			fixedDateRange = this._fixedDateRange?.Model,
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -5342,6 +5364,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public MagneticVariation Model => new () {
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			referenceYearForMagneticVariation = this._referenceYearForMagneticVariation,
@@ -5445,6 +5468,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public LocalMagneticAnomaly Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -5617,6 +5641,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Coastline Model => new () {
 			categoryOfCoastline = this._categoryOfCoastline,
 			colour = this.colour.ToList(),
@@ -5757,6 +5782,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public LandArea Model => new () {
 			condition = this._condition,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -5843,6 +5869,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public IslandGroup Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -5955,6 +5982,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public LandElevation Model => new () {
 			elevation = this._elevation,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -6056,6 +6084,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public River Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -6153,6 +6182,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Rapids Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -6266,6 +6296,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Waterfall Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -6380,6 +6411,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Lake Model => new () {
 			elevation = this._elevation,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -6507,6 +6539,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public LandRegion Model => new () {
 			categoryOfLandRegion = this.categoryOfLandRegion.ToList(),
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -6670,6 +6703,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Vegetation Model => new () {
 			categoryOfVegetation = this._categoryOfVegetation,
 			elevation = this._elevation,
@@ -6863,6 +6897,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public IceArea Model => new () {
 			categoryOfIce = this._categoryOfIce,
 			elevation = this._elevation,
@@ -7031,6 +7066,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SlopingGround Model => new () {
 			categoryOfSlope = this._categoryOfSlope,
 			colour = this.colour.ToList(),
@@ -7209,6 +7245,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SlopeTopline Model => new () {
 			categoryOfSlope = this._categoryOfSlope,
 			colour = this.colour.ToList(),
@@ -7304,6 +7341,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Tideway Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -7500,6 +7538,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public BuiltUpArea Model => new () {
 			categoryOfBuiltUpArea = this._categoryOfBuiltUpArea,
 			condition = this._condition,
@@ -7631,6 +7670,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
 		[Category("Building")]
+		[ExpandableObject]
 		public multiplicityOfFeaturesViewModel? multiplicityOfFeatures {
 			get {
 				return _multiplicityOfFeatures;
@@ -7814,6 +7854,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Building Model => new () {
 			buildingShape = this._buildingShape,
 			colour = this.colour.ToList(),
@@ -7993,6 +8034,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public AirportAirfield Model => new () {
 			categoryOfAirportAirfield = this.categoryOfAirportAirfield.ToList(),
 			condition = this._condition,
@@ -8150,6 +8192,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Runway Model => new () {
 			condition = this._condition,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -8310,6 +8353,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Helipad Model => new () {
 			condition = this._condition,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -8428,6 +8472,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("Bridge")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -8620,6 +8665,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Bridge Model => new () {
 			bridgeConstruction = this._bridgeConstruction,
 			bridgeFunction = this.bridgeFunction.ToList(),
@@ -8679,6 +8725,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("SpanFixed")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -8690,6 +8737,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private horizontalClearanceFixedViewModel? _horizontalClearanceFixed  = default;
 
 		[Category("SpanFixed")]
+		[ExpandableObject]
 		public horizontalClearanceFixedViewModel? horizontalClearanceFixed {
 			get {
 				return _horizontalClearanceFixed;
@@ -8712,6 +8760,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalClearanceFixedViewModel _verticalClearanceFixed ;
 
 		[Category("SpanFixed")]
+		[ExpandableObject]
 		public verticalClearanceFixedViewModel verticalClearanceFixed {
 			get {
 				return _verticalClearanceFixed;
@@ -8799,6 +8848,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SpanFixed Model => new () {
 			fixedDateRange = this._fixedDateRange?.Model,
 			horizontalClearanceFixed = this._horizontalClearanceFixed?.Model,
@@ -8832,6 +8882,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("SpanOpening")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -8843,6 +8894,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private horizontalClearanceFixedViewModel? _horizontalClearanceFixed  = default;
 
 		[Category("SpanOpening")]
+		[ExpandableObject]
 		public horizontalClearanceFixedViewModel? horizontalClearanceFixed {
 			get {
 				return _horizontalClearanceFixed;
@@ -8865,6 +8917,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalClearanceClosedViewModel _verticalClearanceClosed ;
 
 		[Category("SpanOpening")]
+		[ExpandableObject]
 		public verticalClearanceClosedViewModel verticalClearanceClosed {
 			get {
 				return _verticalClearanceClosed;
@@ -8876,6 +8929,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalClearanceOpenViewModel _verticalClearanceOpen ;
 
 		[Category("SpanOpening")]
+		[ExpandableObject]
 		public verticalClearanceOpenViewModel verticalClearanceOpen {
 			get {
 				return _verticalClearanceOpen;
@@ -8968,6 +9022,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SpanOpening Model => new () {
 			fixedDateRange = this._fixedDateRange?.Model,
 			horizontalClearanceFixed = this._horizontalClearanceFixed?.Model,
@@ -9053,6 +9108,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("Conveyor")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -9097,6 +9153,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
 		[Category("Conveyor")]
+		[ExpandableObject]
 		public multiplicityOfFeaturesViewModel? multiplicityOfFeatures {
 			get {
 				return _multiplicityOfFeatures;
@@ -9144,6 +9201,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalClearanceFixedViewModel? _verticalClearanceFixed  = default;
 
 		[Category("Conveyor")]
+		[ExpandableObject]
 		public verticalClearanceFixedViewModel? verticalClearanceFixed {
 			get {
 				return _verticalClearanceFixed;
@@ -9298,6 +9356,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Conveyor Model => new () {
 			categoryOfConveyor = this._categoryOfConveyor,
 			colour = this.colour.ToList(),
@@ -9384,6 +9443,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("CableOverhead")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -9419,6 +9479,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
 		[Category("CableOverhead")]
+		[ExpandableObject]
 		public multiplicityOfFeaturesViewModel? multiplicityOfFeatures {
 			get {
 				return _multiplicityOfFeatures;
@@ -9459,6 +9520,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalClearanceFixedViewModel? _verticalClearanceFixed  = default;
 
 		[Category("CableOverhead")]
+		[ExpandableObject]
 		public verticalClearanceFixedViewModel? verticalClearanceFixed {
 			get {
 				return _verticalClearanceFixed;
@@ -9470,6 +9532,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalClearanceSafeViewModel? _verticalClearanceSafe  = default;
 
 		[Category("CableOverhead")]
+		[ExpandableObject]
 		public verticalClearanceSafeViewModel? verticalClearanceSafe {
 			get {
 				return _verticalClearanceSafe;
@@ -9587,6 +9650,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public CableOverhead Model => new () {
 			categoryOfCable = this._categoryOfCable,
 			condition = this._condition,
@@ -9664,6 +9728,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("PipelineOverhead")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -9686,6 +9751,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
 		[Category("PipelineOverhead")]
+		[ExpandableObject]
 		public multiplicityOfFeaturesViewModel? multiplicityOfFeatures {
 			get {
 				return _multiplicityOfFeatures;
@@ -9733,6 +9799,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalClearanceFixedViewModel? _verticalClearanceFixed  = default;
 
 		[Category("PipelineOverhead")]
+		[ExpandableObject]
 		public verticalClearanceFixedViewModel? verticalClearanceFixed {
 			get {
 				return _verticalClearanceFixed;
@@ -9849,6 +9916,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public PipelineOverhead Model => new () {
 			categoryOfPipelinePipe = this._categoryOfPipelinePipe,
 			condition = this._condition,
@@ -9949,6 +10017,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("PylonBridgeSupport")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -9982,6 +10051,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
 		[Category("PylonBridgeSupport")]
+		[ExpandableObject]
 		public multiplicityOfFeaturesViewModel? multiplicityOfFeatures {
 			get {
 				return _multiplicityOfFeatures;
@@ -10165,6 +10235,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public PylonBridgeSupport Model => new () {
 			categoryOfPylon = this._categoryOfPylon,
 			colour = this.colour.ToList(),
@@ -10440,6 +10511,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public FenceWall Model => new () {
 			categoryOfFence = this._categoryOfFence,
 			colour = this.colour.ToList(),
@@ -10599,6 +10671,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Railway Model => new () {
 			condition = this._condition,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -10760,6 +10833,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Road Model => new () {
 			categoryOfRoad = this._categoryOfRoad,
 			condition = this._condition,
@@ -10819,6 +10893,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private horizontalClearanceFixedViewModel? _horizontalClearanceFixed  = default;
 
 		[Category("Tunnel")]
+		[ExpandableObject]
 		public horizontalClearanceFixedViewModel? horizontalClearanceFixed {
 			get {
 				return _horizontalClearanceFixed;
@@ -10859,6 +10934,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalClearanceFixedViewModel? _verticalClearanceFixed  = default;
 
 		[Category("Tunnel")]
+		[ExpandableObject]
 		public verticalClearanceFixedViewModel? verticalClearanceFixed {
 			get {
 				return _verticalClearanceFixed;
@@ -10957,6 +11033,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Tunnel Model => new () {
 			condition = this._condition,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -11090,6 +11167,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
 		[Category("Landmark")]
+		[ExpandableObject]
 		public multiplicityOfFeaturesViewModel? multiplicityOfFeatures {
 			get {
 				return _multiplicityOfFeatures;
@@ -11283,6 +11361,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Landmark Model => new () {
 			categoryOfLandmark = this.categoryOfLandmark.ToList(),
 			categoryOfSpecialPurposeMark = this.categoryOfSpecialPurposeMark.ToList(),
@@ -11448,6 +11527,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
 		[Category("SiloTank")]
+		[ExpandableObject]
 		public multiplicityOfFeaturesViewModel? multiplicityOfFeatures {
 			get {
 				return _multiplicityOfFeatures;
@@ -11640,6 +11720,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SiloTank Model => new () {
 			buildingShape = this._buildingShape,
 			categoryOfSiloTank = this._categoryOfSiloTank,
@@ -11749,6 +11830,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("WindTurbine")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -11782,6 +11864,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
 		[Category("WindTurbine")]
+		[ExpandableObject]
 		public multiplicityOfFeaturesViewModel? multiplicityOfFeatures {
 			get {
 				return _multiplicityOfFeatures;
@@ -11829,6 +11912,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalClearanceFixedViewModel? _verticalClearanceFixed  = default;
 
 		[Category("WindTurbine")]
+		[ExpandableObject]
 		public verticalClearanceFixedViewModel? verticalClearanceFixed {
 			get {
 				return _verticalClearanceFixed;
@@ -12010,6 +12094,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public WindTurbine Model => new () {
 			colour = this.colour.ToList(),
 			colourPattern = this._colourPattern,
@@ -12272,6 +12357,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public FortifiedStructure Model => new () {
 			categoryOfFortifiedStructure = this._categoryOfFortifiedStructure,
 			condition = this._condition,
@@ -12362,6 +12448,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("ProductionStorageArea")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -12540,6 +12627,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ProductionStorageArea Model => new () {
 			categoryOfProductionArea = this._categoryOfProductionArea,
 			condition = this._condition,
@@ -12670,6 +12758,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Checkpoint Model => new () {
 			categoryOfCheckpoint = this._categoryOfCheckpoint,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -12751,6 +12840,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("Hulk")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -12934,6 +13024,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Hulk Model => new () {
 			categoryOfHulk = this.categoryOfHulk.ToList(),
 			colour = this.colour.ToList(),
@@ -13039,6 +13130,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("Pile")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -13210,6 +13302,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Pile Model => new () {
 			categoryOfPile = this._categoryOfPile,
 			colour = this.colour.ToList(),
@@ -13276,6 +13369,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("Dyke")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -13424,6 +13518,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Dyke Model => new () {
 			condition = this._condition,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -13518,6 +13613,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("ShorelineConstruction")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -13540,6 +13636,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private horizontalClearanceFixedViewModel? _horizontalClearanceFixed  = default;
 
 		[Category("ShorelineConstruction")]
+		[ExpandableObject]
 		public horizontalClearanceFixedViewModel? horizontalClearanceFixed {
 			get {
 				return _horizontalClearanceFixed;
@@ -13747,6 +13844,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ShorelineConstruction Model => new () {
 			categoryOfShorelineConstruction = this._categoryOfShorelineConstruction,
 			colour = this.colour.ToList(),
@@ -13848,6 +13946,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("StructureOverNavigableWater")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -13870,6 +13969,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private horizontalClearanceFixedViewModel _horizontalClearanceFixed ;
 
 		[Category("StructureOverNavigableWater")]
+		[ExpandableObject]
 		public horizontalClearanceFixedViewModel horizontalClearanceFixed {
 			get {
 				return _horizontalClearanceFixed;
@@ -13966,6 +14066,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalClearanceFixedViewModel _verticalClearanceFixed ;
 
 		[Category("StructureOverNavigableWater")]
+		[ExpandableObject]
 		public verticalClearanceFixedViewModel verticalClearanceFixed {
 			get {
 				return _verticalClearanceFixed;
@@ -14134,6 +14235,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public StructureOverNavigableWater Model => new () {
 			categoryOfStructure = this.categoryOfStructure.ToList(),
 			colour = this.colour.ToList(),
@@ -14323,6 +14425,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Causeway Model => new () {
 			condition = this._condition,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -14396,6 +14499,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("Canal")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -14407,6 +14511,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private horizontalClearanceFixedViewModel? _horizontalClearanceFixed  = default;
 
 		[Category("Canal")]
+		[ExpandableObject]
 		public horizontalClearanceFixedViewModel? horizontalClearanceFixed {
 			get {
 				return _horizontalClearanceFixed;
@@ -14520,6 +14625,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Canal Model => new () {
 			categoryOfCanal = this._categoryOfCanal,
 			condition = this._condition,
@@ -14575,6 +14681,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("DistanceMark")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -14597,6 +14704,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private measuredDistanceValueViewModel _measuredDistanceValue ;
 
 		[Category("DistanceMark")]
+		[ExpandableObject]
 		public measuredDistanceValueViewModel measuredDistanceValue {
 			get {
 				return _measuredDistanceValue;
@@ -14658,6 +14766,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public DistanceMark Model => new () {
 			distanceMarkVisible = this._distanceMarkVisible,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -14734,6 +14843,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private horizontalClearanceOpenViewModel? _horizontalClearanceOpen  = default;
 
 		[Category("Gate")]
+		[ExpandableObject]
 		public horizontalClearanceOpenViewModel? horizontalClearanceOpen {
 			get {
 				return _horizontalClearanceOpen;
@@ -14777,6 +14887,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalClearanceOpenViewModel? _verticalClearanceOpen  = default;
 
 		[Category("Gate")]
+		[ExpandableObject]
 		public verticalClearanceOpenViewModel? verticalClearanceOpen {
 			get {
 				return _verticalClearanceOpen;
@@ -14802,6 +14913,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("Gate")]
+		[ExpandableObject]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -14892,6 +15004,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Gate Model => new () {
 			categoryOfGate = this._categoryOfGate,
 			condition = this._condition,
@@ -14994,6 +15107,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("Dam")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -15168,6 +15282,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Dam Model => new () {
 			categoryOfDam = this._categoryOfDam,
 			colour = this.colour.ToList(),
@@ -15305,6 +15420,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private orientationViewModel? _orientation  = default;
 
 		[Category("Crane")]
+		[ExpandableObject]
 		public orientationViewModel? orientation {
 			get {
 				return _orientation;
@@ -15345,6 +15461,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalClearanceFixedViewModel? _verticalClearanceFixed  = default;
 
 		[Category("Crane")]
+		[ExpandableObject]
 		public verticalClearanceFixedViewModel? verticalClearanceFixed {
 			get {
 				return _verticalClearanceFixed;
@@ -15501,6 +15618,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Crane Model => new () {
 			categoryOfCrane = this._categoryOfCrane,
 			colour = this.colour.ToList(),
@@ -15564,6 +15682,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("Berth")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -15646,6 +15765,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("Berth")]
+		[ExpandableObject]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -15737,6 +15857,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Berth Model => new () {
 			categoryOfCargo = this.categoryOfCargo.ToList(),
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -15846,6 +15967,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("Dolphin")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -16044,6 +16166,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Dolphin Model => new () {
 			categoryOfDolphin = this.categoryOfDolphin.ToList(),
 			colour = this.colour.ToList(),
@@ -16122,6 +16245,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("Bollard")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -16236,6 +16360,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Bollard Model => new () {
 			condition = this._condition,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -16318,6 +16443,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("DryDock")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -16409,6 +16535,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("DryDock")]
+		[ExpandableObject]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -16496,6 +16623,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public DryDock Model => new () {
 			condition = this._condition,
 			depthRangeMinimumValue = this._depthRangeMinimumValue,
@@ -16594,6 +16722,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FloatingDock")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -16817,6 +16946,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public FloatingDock Model => new () {
 			colour = this.colour.ToList(),
 			colourPattern = this._colourPattern,
@@ -16887,6 +17017,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("Pontoon")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -17030,6 +17161,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Pontoon Model => new () {
 			condition = this._condition,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -17106,6 +17238,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("DockArea")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -17119,6 +17252,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private horizontalClearanceFixedViewModel? _horizontalClearanceFixed  = default;
 
 		[Category("DockArea")]
+		[ExpandableObject]
 		public horizontalClearanceFixedViewModel? horizontalClearanceFixed {
 			get {
 				return _horizontalClearanceFixed;
@@ -17251,6 +17385,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public DockArea Model => new () {
 			categoryOfDock = this._categoryOfDock,
 			condition = this._condition,
@@ -17430,6 +17565,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Gridiron Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			horizontalLength = this._horizontalLength,
@@ -17476,6 +17612,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("LockBasin")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -17489,6 +17626,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private horizontalClearanceFixedViewModel? _horizontalClearanceFixed  = default;
 
 		[Category("LockBasin")]
+		[ExpandableObject]
 		public horizontalClearanceFixedViewModel? horizontalClearanceFixed {
 			get {
 				return _horizontalClearanceFixed;
@@ -17604,6 +17742,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public LockBasin Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -17650,6 +17789,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("MooringTrot")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -17715,6 +17855,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public MooringTrot Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -17815,6 +17956,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SeaAreaNamedWaterArea Model => new () {
 			categoryOfSeaArea = this._categoryOfSeaArea,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -17864,6 +18006,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("TidalStreamFloodEbb")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -17886,6 +18029,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private orientationViewModel _orientation ;
 
 		[Category("TidalStreamFloodEbb")]
+		[ExpandableObject]
 		public orientationViewModel orientation {
 			get {
 				return _orientation;
@@ -17897,6 +18041,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private speedViewModel _speed ;
 
 		[Category("TidalStreamFloodEbb")]
+		[ExpandableObject]
 		public speedViewModel speed {
 			get {
 				return _speed;
@@ -17963,6 +18108,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public TidalStreamFloodEbb Model => new () {
 			categoryOfTidalStream = this._categoryOfTidalStream,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -18001,6 +18147,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("CurrentNonGravitational")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -18023,6 +18170,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private orientationViewModel _orientation ;
 
 		[Category("CurrentNonGravitational")]
+		[ExpandableObject]
 		public orientationViewModel orientation {
 			get {
 				return _orientation;
@@ -18036,6 +18184,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private speedViewModel _speed ;
 
 		[Category("CurrentNonGravitational")]
+		[ExpandableObject]
 		public speedViewModel speed {
 			get {
 				return _speed;
@@ -18122,6 +18271,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public CurrentNonGravitational Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -18229,6 +18379,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public WaterTurbulence Model => new () {
 			categoryOfWaterTurbulence = this._categoryOfWaterTurbulence,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -18347,6 +18498,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public TidalStreamPanelData Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -18491,6 +18643,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Sounding Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -18618,6 +18771,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("DredgedArea")]
+		[ExpandableObject]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -18689,6 +18843,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public DredgedArea Model => new () {
 			depthRangeMinimumValue = this._depthRangeMinimumValue,
 			depthRangeMaximumValue = this._depthRangeMaximumValue,
@@ -18807,6 +18962,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SweptArea Model => new () {
 			depthRangeMinimumValue = this._depthRangeMinimumValue,
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -18893,6 +19049,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public DepthContour Model => new () {
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			valueOfDepthContour = this._valueOfDepthContour,
@@ -18978,6 +19135,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public DepthArea Model => new () {
 			depthRangeMinimumValue = this._depthRangeMinimumValue,
 			depthRangeMaximumValue = this._depthRangeMaximumValue,
@@ -19063,6 +19221,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public DepthNoBottomFound Model => new () {
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			techniqueOfVerticalMeasurement = this.techniqueOfVerticalMeasurement.ToList(),
@@ -19125,6 +19284,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public UnsurveyedArea Model => new () {
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			information = this.information.Select(e => e.Model).ToList(),
@@ -19227,6 +19387,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SeabedArea Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -19331,6 +19492,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public WeedKelp Model => new () {
 			categoryOfWeedKelp = this._categoryOfWeedKelp,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -19415,6 +19577,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Seagrass Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -19503,6 +19666,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Sandwave Model => new () {
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			verticalLength = this._verticalLength,
@@ -19583,6 +19747,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Spring Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -19808,6 +19973,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public UnderwaterAwashRock Model => new () {
 			expositionOfSounding = this._expositionOfSounding,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -20101,6 +20267,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Wreck Model => new () {
 			categoryOfWreck = this._categoryOfWreck,
 			expositionOfSounding = this._expositionOfSounding,
@@ -20427,6 +20594,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Obstruction Model => new () {
 			categoryOfObstruction = this._categoryOfObstruction,
 			condition = this._condition,
@@ -20546,6 +20714,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("FoulGround")]
+		[ExpandableObject]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -20622,6 +20791,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public FoulGround Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -20725,6 +20895,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public DiscolouredWater Model => new () {
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			reportedDate = this._reportedDate,
@@ -20884,6 +21055,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public FishingFacility Model => new () {
 			categoryOfFishingFacility = this._categoryOfFishingFacility,
 			condition = this._condition,
@@ -20958,6 +21130,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("MarineFarmCulture")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -21036,6 +21209,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("MarineFarmCulture")]
+		[ExpandableObject]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -21153,6 +21327,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public MarineFarmCulture Model => new () {
 			categoryOfMarineFarmCulture = this._categoryOfMarineFarmCulture,
 			expositionOfSounding = this._expositionOfSounding,
@@ -21264,6 +21439,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("OffshorePlatform")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -21461,6 +21637,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public OffshorePlatform Model => new () {
 			categoryOfOffshorePlatform = this._categoryOfOffshorePlatform,
 			colour = this.colour.ToList(),
@@ -21557,6 +21734,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("CableSubmarine")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -21641,6 +21819,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public CableSubmarine Model => new () {
 			buriedDepth = this._buriedDepth,
 			categoryOfCable = this._categoryOfCable,
@@ -21690,6 +21869,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("CableArea")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -21795,6 +21975,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public CableArea Model => new () {
 			categoryOfCable = this.categoryOfCable.ToList(),
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -21900,6 +22081,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("PipelineSubmarineOnLand")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -21922,6 +22104,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
 		[Category("PipelineSubmarineOnLand")]
+		[ExpandableObject]
 		public multiplicityOfFeaturesViewModel? multiplicityOfFeatures {
 			get {
 				return _multiplicityOfFeatures;
@@ -22060,6 +22243,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public PipelineSubmarineOnLand Model => new () {
 			buriedDepth = this._buriedDepth,
 			categoryOfPipelinePipe = this.categoryOfPipelinePipe.ToList(),
@@ -22125,6 +22309,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("SubmarinePipelineArea")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -22243,6 +22428,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SubmarinePipelineArea Model => new () {
 			categoryOfPipelinePipe = this.categoryOfPipelinePipe.ToList(),
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -22326,6 +22512,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("OffshoreProductionArea")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -22526,6 +22713,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public OffshoreProductionArea Model => new () {
 			categoryOfOffshoreProductionArea = this._categoryOfOffshoreProductionArea,
 			condition = this._condition,
@@ -22597,6 +22785,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("NavigationLine")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -22630,6 +22819,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private orientationViewModel _orientation ;
 
 		[Category("NavigationLine")]
+		[ExpandableObject]
 		public orientationViewModel orientation {
 			get {
 				return _orientation;
@@ -22708,6 +22898,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public NavigationLine Model => new () {
 			categoryOfNavigationLine = this._categoryOfNavigationLine,
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -22772,6 +22963,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("RecommendedTrack")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -22853,6 +23045,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("RecommendedTrack")]
+		[ExpandableObject]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -22946,6 +23139,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public RecommendedTrack Model => new () {
 			basedOnFixedMarks = this._basedOnFixedMarks,
 			depthRangeMinimumValue = this._depthRangeMinimumValue,
@@ -23003,6 +23197,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("RangeSystem")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -23081,6 +23276,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public RangeSystem Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -23128,6 +23324,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("Fairway")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -23207,6 +23404,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("Fairway")]
+		[ExpandableObject]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -23300,6 +23498,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Fairway Model => new () {
 			depthRangeMinimumValue = this._depthRangeMinimumValue,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -23356,6 +23555,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FairwaySystem")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -23442,6 +23642,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public FairwaySystem Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -23504,6 +23705,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("RecommendedRouteCentreline")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -23574,6 +23776,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("RecommendedRouteCentreline")]
+		[ExpandableObject]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -23665,6 +23868,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public RecommendedRouteCentreline Model => new () {
 			basedOnFixedMarks = this._basedOnFixedMarks,
 			depthRangeMinimumValue = this._depthRangeMinimumValue,
@@ -23741,6 +23945,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("TwoWayRoutePart")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -23809,6 +24014,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("TwoWayRoutePart")]
+		[ExpandableObject]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -23888,6 +24094,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public TwoWayRoutePart Model => new () {
 			basedOnFixedMarks = this._basedOnFixedMarks,
 			depthRangeMinimumValue = this._depthRangeMinimumValue,
@@ -23936,6 +24143,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("TwoWayRoute")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -24014,6 +24222,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public TwoWayRoute Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -24048,6 +24257,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("RecommendedTrafficLanePart")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -24133,6 +24343,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public RecommendedTrafficLanePart Model => new () {
 			fixedDateRange = this._fixedDateRange?.Model,
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -24191,6 +24402,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("DeepWaterRouteCentreline")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -24270,6 +24482,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("DeepWaterRouteCentreline")]
+		[ExpandableObject]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -24357,6 +24570,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public DeepWaterRouteCentreline Model => new () {
 			basedOnFixedMarks = this._basedOnFixedMarks,
 			depthRangeMinimumValue = this._depthRangeMinimumValue,
@@ -24421,6 +24635,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("DeepWaterRoutePart")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -24507,6 +24722,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("DeepWaterRoutePart")]
+		[ExpandableObject]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -24606,6 +24822,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public DeepWaterRoutePart Model => new () {
 			depthRangeMinimumValue = this._depthRangeMinimumValue,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -24666,6 +24883,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("DeepWaterRoute")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -24744,6 +24962,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public DeepWaterRoute Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -24778,6 +24997,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InshoreTrafficZone")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -24871,6 +25091,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public InshoreTrafficZone Model => new () {
 			fixedDateRange = this._fixedDateRange?.Model,
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -24914,6 +25135,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("PrecautionaryArea")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -25026,6 +25248,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public PrecautionaryArea Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -25072,6 +25295,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("TrafficSeparationSchemeLanePart")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -25178,6 +25402,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public TrafficSeparationSchemeLanePart Model => new () {
 			fixedDateRange = this._fixedDateRange?.Model,
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -25220,6 +25445,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("SeparationZoneOrLine")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -25292,6 +25518,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SeparationZoneOrLine Model => new () {
 			fixedDateRange = this._fixedDateRange?.Model,
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -25325,6 +25552,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("TrafficSeparationSchemeBoundary")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -25397,6 +25625,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public TrafficSeparationSchemeBoundary Model => new () {
 			fixedDateRange = this._fixedDateRange?.Model,
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -25430,6 +25659,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("TrafficSeparationSchemeCrossing")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -25523,6 +25753,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public TrafficSeparationSchemeCrossing Model => new () {
 			fixedDateRange = this._fixedDateRange?.Model,
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -25564,6 +25795,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("TrafficSeparationSchemeRoundabout")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -25657,6 +25889,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public TrafficSeparationSchemeRoundabout Model => new () {
 			fixedDateRange = this._fixedDateRange?.Model,
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -25700,6 +25933,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("TrafficSeparationScheme")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -25791,6 +26025,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public TrafficSeparationScheme Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -25828,6 +26063,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("ArchipelagicSeaLaneArea")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -25906,6 +26142,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ArchipelagicSeaLaneArea Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -25942,6 +26179,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("ArchipelagicSeaLaneAxis")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -26020,6 +26258,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ArchipelagicSeaLaneAxis Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -26056,6 +26295,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("ArchipelagicSeaLane")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -26134,6 +26374,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ArchipelagicSeaLane Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -26172,6 +26413,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("RadioCallingInPoint")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -26288,6 +26530,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public RadioCallingInPoint Model => new () {
 			communicationChannel = this.communicationChannel.ToList(),
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -26347,6 +26590,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FerryRoute")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -26439,6 +26683,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public FerryRoute Model => new () {
 			categoryOfFerry = this.categoryOfFerry.ToList(),
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -26561,6 +26806,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public RadarLine Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -26602,6 +26848,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("RadarRange")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -26686,6 +26933,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public RadarRange Model => new () {
 			communicationChannel = this.communicationChannel.ToList(),
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -26859,6 +27107,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public RadarStation Model => new () {
 			callSign = this._callSign,
 			categoryOfRadarStation = this.categoryOfRadarStation.ToList(),
@@ -26926,6 +27175,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AnchorageArea")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -27045,6 +27295,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public AnchorageArea Model => new () {
 			categoryOfAnchorage = this.categoryOfAnchorage.ToList(),
 			categoryOfCargo = this.categoryOfCargo.ToList(),
@@ -27111,6 +27362,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("MooringArea")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -27250,6 +27502,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public MooringArea Model => new () {
 			categoryOfMooringArea = this.categoryOfMooringArea.ToList(),
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -27321,6 +27574,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AnchorBerth")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -27432,6 +27686,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public AnchorBerth Model => new () {
 			categoryOfAnchorage = this.categoryOfAnchorage.ToList(),
 			categoryOfCargo = this.categoryOfCargo.ToList(),
@@ -27575,6 +27830,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SeaplaneLandingArea Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -27734,6 +27990,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public DumpingGround Model => new () {
 			categoryOfDumpingGround = this.categoryOfDumpingGround.ToList(),
 			dateDisused = this._dateDisused,
@@ -27792,6 +28049,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("MilitaryPracticeArea")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -27918,6 +28176,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public MilitaryPracticeArea Model => new () {
 			categoryOfMilitaryPracticeArea = this.categoryOfMilitaryPracticeArea.ToList(),
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -28073,6 +28332,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public AdministrationArea Model => new () {
 			inDispute = this._inDispute,
 			jurisdiction = this._jurisdiction,
@@ -28114,6 +28374,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("CargoTranshipmentArea")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -28221,6 +28482,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public CargoTranshipmentArea Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -28284,6 +28546,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("CautionArea")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -28395,6 +28658,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public CautionArea Model => new () {
 			condition = this._condition,
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -28434,6 +28698,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationArea")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -28533,6 +28798,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public InformationArea Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -28572,6 +28838,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("ContiguousZone")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -28652,6 +28919,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ContiguousZone Model => new () {
 			fixedDateRange = this._fixedDateRange?.Model,
 			inDispute = this._inDispute,
@@ -28745,6 +29013,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ContinentalShelfArea Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -28837,6 +29106,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public CustomZone Model => new () {
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			nationality = this._nationality,
@@ -28930,6 +29200,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public ExclusiveEconomicZone Model => new () {
 			inDispute = this._inDispute,
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -29040,6 +29311,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public FisheryZone Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -29170,6 +29442,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public FishingGround Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -29282,6 +29555,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public FreePortArea Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -29382,6 +29656,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public HarbourAreaAdministrative Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -29490,6 +29765,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public LogPond Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -29560,6 +29836,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("OilBarrier")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -29655,6 +29932,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public OilBarrier Model => new () {
 			categoryOfOilBarrier = this._categoryOfOilBarrier,
 			condition = this._condition,
@@ -29751,6 +30029,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public StraightTerritorialSeaBaseline Model => new () {
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			nationality = this._nationality,
@@ -29865,6 +30144,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public TerritorialSeaArea Model => new () {
 			inDispute = this._inDispute,
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -29991,6 +30271,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SubmarineTransitLane Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -30091,6 +30372,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public PilotageDistrict Model => new () {
 			communicationChannel = this.communicationChannel.ToList(),
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -30129,6 +30411,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("CollisionRegulationsLimit")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -30215,6 +30498,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public CollisionRegulationsLimit Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -30317,6 +30601,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public MarinePollutionRegulationsArea Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -30359,6 +30644,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("RestrictedArea")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -30472,6 +30758,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public RestrictedArea Model => new () {
 			categoryOfRestrictedArea = this.categoryOfRestrictedArea.ToList(),
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -30555,6 +30842,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("LightAllAround")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -30638,6 +30926,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
 		[Category("LightAllAround")]
+		[ExpandableObject]
 		public multiplicityOfFeaturesViewModel? multiplicityOfFeatures {
 			get {
 				return _multiplicityOfFeatures;
@@ -30651,6 +30940,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private rhythmOfLightViewModel _rhythmOfLight ;
 
 		[Category("LightAllAround")]
+		[ExpandableObject]
 		public rhythmOfLightViewModel rhythmOfLight {
 			get {
 				return _rhythmOfLight;
@@ -30816,6 +31106,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public LightAllAround Model => new () {
 			categoryOfLight = this.categoryOfLight.ToList(),
 			colour = this.colour.ToList(),
@@ -30900,6 +31191,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("LightSectored")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -30947,6 +31239,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
 		[Category("LightSectored")]
+		[ExpandableObject]
 		public multiplicityOfFeaturesViewModel? multiplicityOfFeatures {
 			get {
 				return _multiplicityOfFeatures;
@@ -31079,6 +31372,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public LightSectored Model => new () {
 			categoryOfLight = this.categoryOfLight.ToList(),
 			exhibitionConditionOfLight = this._exhibitionConditionOfLight,
@@ -31143,6 +31437,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("LightFogDetector")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -31189,6 +31484,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private rhythmOfLightViewModel? _rhythmOfLight  = default;
 
 		[Category("LightFogDetector")]
+		[ExpandableObject]
 		public rhythmOfLightViewModel? rhythmOfLight {
 			get {
 				return _rhythmOfLight;
@@ -31322,6 +31618,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public LightFogDetector Model => new () {
 			colour = this.colour.ToList(),
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -31396,6 +31693,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("LightAirObstruction")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -31447,6 +31745,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
 		[Category("LightAirObstruction")]
+		[ExpandableObject]
 		public multiplicityOfFeaturesViewModel? multiplicityOfFeatures {
 			get {
 				return _multiplicityOfFeatures;
@@ -31460,6 +31759,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private rhythmOfLightViewModel? _rhythmOfLight  = default;
 
 		[Category("LightAirObstruction")]
+		[ExpandableObject]
 		public rhythmOfLightViewModel? rhythmOfLight {
 			get {
 				return _rhythmOfLight;
@@ -31590,6 +31890,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public LightAirObstruction Model => new () {
 			colour = this.colour.ToList(),
 			exhibitionConditionOfLight = this._exhibitionConditionOfLight,
@@ -31697,6 +31998,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("LateralBuoy")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -31760,6 +32062,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private topmarkViewModel? _topmark  = default;
 
 		[Category("LateralBuoy")]
+		[ExpandableObject]
 		public topmarkViewModel? topmark {
 			get {
 				return _topmark;
@@ -31879,6 +32182,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public LateralBuoy Model => new () {
 			buoyShape = this._buoyShape,
 			categoryOfLateralMark = this._categoryOfLateralMark,
@@ -31987,6 +32291,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("CardinalBuoy")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -32050,6 +32355,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private topmarkViewModel? _topmark  = default;
 
 		[Category("CardinalBuoy")]
+		[ExpandableObject]
 		public topmarkViewModel? topmark {
 			get {
 				return _topmark;
@@ -32169,6 +32475,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public CardinalBuoy Model => new () {
 			buoyShape = this._buoyShape,
 			categoryOfCardinalMark = this._categoryOfCardinalMark,
@@ -32263,6 +32570,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("IsolatedDangerBuoy")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -32326,6 +32634,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private topmarkViewModel? _topmark  = default;
 
 		[Category("IsolatedDangerBuoy")]
+		[ExpandableObject]
 		public topmarkViewModel? topmark {
 			get {
 				return _topmark;
@@ -32443,6 +32752,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public IsolatedDangerBuoy Model => new () {
 			buoyShape = this._buoyShape,
 			colour = this.colour.ToList(),
@@ -32536,6 +32846,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("SafeWaterBuoy")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -32599,6 +32910,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private topmarkViewModel? _topmark  = default;
 
 		[Category("SafeWaterBuoy")]
+		[ExpandableObject]
 		public topmarkViewModel? topmark {
 			get {
 				return _topmark;
@@ -32716,6 +33028,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SafeWaterBuoy Model => new () {
 			buoyShape = this._buoyShape,
 			colour = this.colour.ToList(),
@@ -32816,6 +33129,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("SpecialPurposeGeneralBuoy")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -32879,6 +33193,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private topmarkViewModel? _topmark  = default;
 
 		[Category("SpecialPurposeGeneralBuoy")]
+		[ExpandableObject]
 		public topmarkViewModel? topmark {
 			get {
 				return _topmark;
@@ -33002,6 +33317,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SpecialPurposeGeneralBuoy Model => new () {
 			buoyShape = this._buoyShape,
 			categoryOfSpecialPurposeMark = this.categoryOfSpecialPurposeMark.ToList(),
@@ -33099,6 +33415,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("EmergencyWreckMarkingBuoy")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -33153,6 +33470,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private topmarkViewModel? _topmark  = default;
 
 		[Category("EmergencyWreckMarkingBuoy")]
+		[ExpandableObject]
 		public topmarkViewModel? topmark {
 			get {
 				return _topmark;
@@ -33258,6 +33576,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public EmergencyWreckMarkingBuoy Model => new () {
 			buoyShape = this._buoyShape,
 			colour = this.colour.ToList(),
@@ -33357,6 +33676,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InstallationBuoy")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -33523,6 +33843,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public InstallationBuoy Model => new () {
 			buoyShape = this._buoyShape,
 			categoryOfInstallationBuoy = this._categoryOfInstallationBuoy,
@@ -33619,6 +33940,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("MooringBuoy")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -33793,6 +34115,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public MooringBuoy Model => new () {
 			buoyShape = this._buoyShape,
 			colour = this.colour.ToList(),
@@ -33925,6 +34248,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("LateralBeacon")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -34010,6 +34334,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private topmarkViewModel? _topmark  = default;
 
 		[Category("LateralBeacon")]
+		[ExpandableObject]
 		public topmarkViewModel? topmark {
 			get {
 				return _topmark;
@@ -34153,6 +34478,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public LateralBeacon Model => new () {
 			beaconShape = this._beaconShape,
 			categoryOfLateralMark = this._categoryOfLateralMark,
@@ -34291,6 +34617,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("CardinalBeacon")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -34376,6 +34703,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private topmarkViewModel? _topmark  = default;
 
 		[Category("CardinalBeacon")]
+		[ExpandableObject]
 		public topmarkViewModel? topmark {
 			get {
 				return _topmark;
@@ -34519,6 +34847,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public CardinalBeacon Model => new () {
 			beaconShape = this._beaconShape,
 			categoryOfCardinalMark = this._categoryOfCardinalMark,
@@ -34643,6 +34972,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("IsolatedDangerBeacon")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -34728,6 +35058,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private topmarkViewModel? _topmark  = default;
 
 		[Category("IsolatedDangerBeacon")]
+		[ExpandableObject]
 		public topmarkViewModel? topmark {
 			get {
 				return _topmark;
@@ -34869,6 +35200,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public IsolatedDangerBeacon Model => new () {
 			beaconShape = this._beaconShape,
 			colour = this.colour.ToList(),
@@ -34992,6 +35324,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("SafeWaterBeacon")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -35077,6 +35410,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private topmarkViewModel? _topmark  = default;
 
 		[Category("SafeWaterBeacon")]
+		[ExpandableObject]
 		public topmarkViewModel? topmark {
 			get {
 				return _topmark;
@@ -35218,6 +35552,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SafeWaterBeacon Model => new () {
 			beaconShape = this._beaconShape,
 			colour = this.colour.ToList(),
@@ -35348,6 +35683,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("SpecialPurposeGeneralBeacon")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -35433,6 +35769,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private topmarkViewModel? _topmark  = default;
 
 		[Category("SpecialPurposeGeneralBeacon")]
+		[ExpandableObject]
 		public topmarkViewModel? topmark {
 			get {
 				return _topmark;
@@ -35580,6 +35917,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SpecialPurposeGeneralBeacon Model => new () {
 			beaconShape = this._beaconShape,
 			categoryOfSpecialPurposeMark = this.categoryOfSpecialPurposeMark.ToList(),
@@ -35686,6 +36024,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("Daymark")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -35877,6 +36216,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Daymark Model => new () {
 			categoryOfSpecialPurposeMark = this.categoryOfSpecialPurposeMark.ToList(),
 			colour = this.colour.ToList(),
@@ -35964,6 +36304,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("LightFloat")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -36035,6 +36376,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private topmarkViewModel? _topmark  = default;
 
 		[Category("LightFloat")]
+		[ExpandableObject]
 		public topmarkViewModel? topmark {
 			get {
 				return _topmark;
@@ -36168,6 +36510,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public LightFloat Model => new () {
 			colour = this.colour.ToList(),
 			colourPattern = this._colourPattern,
@@ -36248,6 +36591,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("LightVessel")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -36436,6 +36780,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public LightVessel Model => new () {
 			colour = this.colour.ToList(),
 			colourPattern = this._colourPattern,
@@ -36513,6 +36858,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("Retroreflector")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -36614,6 +36960,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Retroreflector Model => new () {
 			colour = this.colour.ToList(),
 			colourPattern = this._colourPattern,
@@ -36657,6 +37004,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("RadarReflector")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -36750,6 +37098,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public RadarReflector Model => new () {
 			fixedDateRange = this._fixedDateRange?.Model,
 			height = this._height,
@@ -36804,6 +37153,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FogSignal")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -36968,6 +37318,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public FogSignal Model => new () {
 			categoryOfFogSignal = this._categoryOfFogSignal,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -37032,6 +37383,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("PhysicalAISAidToNavigation")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -37136,6 +37488,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public PhysicalAISAidToNavigation Model => new () {
 			estimatedRangeOfTransmission = this._estimatedRangeOfTransmission,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -37189,6 +37542,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("VirtualAISAidToNavigation")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -37309,6 +37663,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public VirtualAISAidToNavigation Model => new () {
 			estimatedRangeOfTransmission = this._estimatedRangeOfTransmission,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -37383,6 +37738,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("RadioStation")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -37394,6 +37750,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private frequencyPairViewModel? _frequencyPair  = default;
 
 		[Category("RadioStation")]
+		[ExpandableObject]
 		public frequencyPairViewModel? frequencyPair {
 			get {
 				return _frequencyPair;
@@ -37501,6 +37858,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public RadioStation Model => new () {
 			callSign = this._callSign,
 			categoryOfRadioStation = this.categoryOfRadioStation.ToList(),
@@ -37569,6 +37927,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("RadarTransponderBeacon")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -37595,6 +37954,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private sectorLimitViewModel? _sectorLimit  = default;
 
 		[Category("RadarTransponderBeacon")]
+		[ExpandableObject]
 		public sectorLimitViewModel? sectorLimit {
 			get {
 				return _sectorLimit;
@@ -37715,6 +38075,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public RadarTransponderBeacon Model => new () {
 			categoryOfRadarTransponderBeacon = this._categoryOfRadarTransponderBeacon,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -37802,6 +38163,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("PilotBoardingPlace")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -37917,6 +38279,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public PilotBoardingPlace Model => new () {
 			categoryOfPilotBoardingPlace = this._categoryOfPilotBoardingPlace,
 			categoryOfPreference = this._categoryOfPreference,
@@ -38023,6 +38386,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public VesselTrafficServiceArea Model => new () {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			interoperabilityIdentifier = this._interoperabilityIdentifier,
@@ -38059,6 +38423,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("CoastGuardStation")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -38164,6 +38529,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public CoastGuardStation Model => new () {
 			communicationChannel = this.communicationChannel.ToList(),
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -38221,6 +38587,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("SignalStationWarning")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -38319,6 +38686,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SignalStationWarning Model => new () {
 			categoryOfSignalStationWarning = this.categoryOfSignalStationWarning.ToList(),
 			communicationChannel = this.communicationChannel.ToList(),
@@ -38379,6 +38747,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("SignalStationTraffic")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -38477,6 +38846,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SignalStationTraffic Model => new () {
 			categoryOfSignalStationTraffic = this.categoryOfSignalStationTraffic.ToList(),
 			communicationChannel = this.communicationChannel.ToList(),
@@ -38537,6 +38907,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("RescueStation")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -38635,6 +39006,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public RescueStation Model => new () {
 			categoryOfRescueStation = this.categoryOfRescueStation.ToList(),
 			communicationChannel = this.communicationChannel.ToList(),
@@ -38709,6 +39081,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("HarbourFacility")]
+		[ExpandableObject]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -38885,6 +39258,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public HarbourFacility Model => new () {
 			categoryOfHarbourFacility = this.categoryOfHarbourFacility.ToList(),
 			communicationChannel = this.communicationChannel.ToList(),
@@ -39048,6 +39422,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public SmallCraftFacility Model => new () {
 			categoryOfSmallCraftFacility = this.categoryOfSmallCraftFacility.ToList(),
 			featureName = this.featureName.Select(e => e.Model).ToList(),
@@ -39167,6 +39542,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public TextPlacement Model => new () {
 			textOffsetBearing = this._textOffsetBearing,
 			textOffsetDistance = this._textOffsetDistance,
@@ -39222,6 +39598,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
+		[Browsable(false)]
 		public Chart1Feature Model => new () {
 			drawingInstruction = this.drawingInstruction.ToList(),
 			featureName = this.featureName.Select(e => e.Model).ToList(),
