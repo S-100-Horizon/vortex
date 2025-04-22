@@ -766,7 +766,7 @@ namespace S100Framework.Applications
                         ComplexTypes = client.ComplexTypes,
                         BaseClass = $"InformationViewModel<{code}>",
                         LoadPrefix = $"override InformationViewModel<{code}>",
-                    }, (b) => {
+                    }, (b) => {                        
                         b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
                     });
 
@@ -938,6 +938,7 @@ namespace S100Framework.Applications
 
             if (new string[] { "S100_FC_InformationType", "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
                 builder.AppendLine();
+                builder.AppendLine("\t\t\t[JsonIgnore]");
                 builder.AppendLine($"\t\t\tpublic informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
 
                 var informationBindings = new StringBuilder();
@@ -978,6 +979,7 @@ namespace S100Framework.Applications
 
             if (new string[] { "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
                 builder.AppendLine();
+                builder.AppendLine("\t\t\t[JsonIgnore]");
                 builder.AppendLine($"\t\t\tpublic featureBindingDefinition[] featureBindingDefinitions => {code}._featureBindingDefinitions;");
 
                 var featureBindings = new StringBuilder();

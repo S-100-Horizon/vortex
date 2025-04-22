@@ -1986,6 +1986,7 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			public override string Code => nameof(InformationType);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => InformationType._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -2007,6 +2008,7 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			public override string Code => nameof(AbstractRxN);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => AbstractRxN._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -2029,6 +2031,7 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			public override string Code => nameof(NauticalInformation);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => NauticalInformation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -2051,6 +2054,7 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			public override string Code => nameof(Regulations);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => Regulations._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -2065,6 +2069,7 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			public override string Code => nameof(Restrictions);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => Restrictions._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -2079,6 +2084,7 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			public override string Code => nameof(Recommendations);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => Recommendations._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -2099,6 +2105,7 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			public override string Code => nameof(Authority);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => Authority._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -2162,6 +2169,7 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			public override string Code => nameof(ContactDetails);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -2190,6 +2198,7 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			public override string Code => nameof(NonStandardWorkingDay);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -2217,6 +2226,7 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			public override string Code => nameof(ServiceHours);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => ServiceHours._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -2272,6 +2282,7 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			public override string Code => nameof(Applicability);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => Applicability._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -2306,6 +2317,7 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			public override string Code => nameof(FeatureType);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => FeatureType._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -2326,6 +2338,7 @@ namespace S100Framework.DomainModel.S122 {
 				},
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => FeatureType._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -2349,10 +2362,12 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			public override string Code => nameof(RestrictedArea);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => RestrictedArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => RestrictedArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -2386,6 +2401,7 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			public override string Code => nameof(MarineProtectedArea);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => MarineProtectedArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -2398,6 +2414,7 @@ namespace S100Framework.DomainModel.S122 {
 				},
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => MarineProtectedArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -2416,6 +2433,7 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			public override string Code => nameof(VesselTrafficServiceArea);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => VesselTrafficServiceArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -2428,6 +2446,7 @@ namespace S100Framework.DomainModel.S122 {
 				},
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => VesselTrafficServiceArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -2442,10 +2461,12 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			public override string Code => nameof(DataCoverage);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -2460,10 +2481,12 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			public override string Code => nameof(TextPlacement);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];

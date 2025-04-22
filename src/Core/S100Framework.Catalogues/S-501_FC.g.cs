@@ -4662,6 +4662,7 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(ReferenceToAPublication);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => ReferenceToAPublication._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -4719,10 +4720,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(InstallationBuoy);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => InstallationBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => InstallationBuoy._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -4749,10 +4752,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(DepthArea);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => DepthArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => DepthArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -4793,10 +4798,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(RadioCallingInPoint);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => RadioCallingInPoint._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => RadioCallingInPoint._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -4832,10 +4839,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(PatrolArea);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => PatrolArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => PatrolArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -4868,10 +4877,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(Checkpoint);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => Checkpoint._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => Checkpoint._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -4923,10 +4934,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(MarineManagementArea);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => MarineManagementArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => MarineManagementArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -4956,10 +4969,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(DepthContour);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => DepthContour._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => DepthContour._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -4980,10 +4995,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(EnvironmentallySensitiveSeaArea);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => EnvironmentallySensitiveSeaArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => EnvironmentallySensitiveSeaArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5022,10 +5039,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(Road);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => Road._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => Road._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5051,10 +5070,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(River);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => River._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => River._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5122,10 +5143,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(MilitaryPracticeArea);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => MilitaryPracticeArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => MilitaryPracticeArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5146,10 +5169,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(DiscolouredWater);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => DiscolouredWater._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => DiscolouredWater._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5211,10 +5236,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(CardinalBuoy);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => CardinalBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => CardinalBuoy._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5272,10 +5299,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(SafeWaterBuoy);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => SafeWaterBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => SafeWaterBuoy._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5320,10 +5349,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(RadioStation);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => RadioStation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => RadioStation._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5354,10 +5385,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(MilitaryExerciseAirspace);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => MilitaryExerciseAirspace._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => MilitaryExerciseAirspace._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5393,10 +5426,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(ContiguousZone);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => ContiguousZone._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => ContiguousZone._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5426,10 +5461,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(NormalBaseline);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => NormalBaseline._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => NormalBaseline._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5469,10 +5506,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(CableArea);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => CableArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => CableArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5506,10 +5545,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(ContinentalShelfArea);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => ContinentalShelfArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => ContinentalShelfArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5543,10 +5584,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(InternalWaters);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => InternalWaters._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => InternalWaters._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5577,10 +5620,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(AdministrationArea);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => AdministrationArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => AdministrationArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5615,10 +5660,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(Bollard);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => Bollard._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => Bollard._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5677,10 +5724,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(Dolphin);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => Dolphin._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => Dolphin._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5710,10 +5759,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(RadarRange);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => RadarRange._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => RadarRange._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5783,10 +5834,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(IsolatedDangerBeacon);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBeacon._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBeacon._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5840,10 +5893,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(IsolatedDangerBuoy);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBuoy._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5881,10 +5936,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(SubmarineTransitLane);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => SubmarineTransitLane._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => SubmarineTransitLane._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5909,10 +5966,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(MaritimeSafetyInformationArea);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => MaritimeSafetyInformationArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => MaritimeSafetyInformationArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5952,10 +6011,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(AirspaceRestriction);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => AirspaceRestriction._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => AirspaceRestriction._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -5991,10 +6052,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(Sounding);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => Sounding._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => Sounding._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6024,10 +6087,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(TrafficSeparationSchemeBoundary);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeBoundary._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeBoundary._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6059,10 +6124,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(DumpingGround);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => DumpingGround._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => DumpingGround._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6118,10 +6185,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(AirportAirfield);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => AirportAirfield._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => AirportAirfield._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6157,10 +6226,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(FoulGround);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => FoulGround._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => FoulGround._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6225,10 +6296,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(LightAirObstruction);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => LightAirObstruction._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => LightAirObstruction._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6281,10 +6354,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(MooringBuoy);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => MooringBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => MooringBuoy._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6349,10 +6424,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(UnderwaterAwashRock);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => UnderwaterAwashRock._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => UnderwaterAwashRock._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6402,10 +6479,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(CableOverhead);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => CableOverhead._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => CableOverhead._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6448,10 +6527,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(ControlledAirspace);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => ControlledAirspace._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => ControlledAirspace._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6574,10 +6655,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(Obstruction);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => Obstruction._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => Obstruction._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6614,10 +6697,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(FishingGround);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => FishingGround._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => FishingGround._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6655,10 +6740,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(FishingFacility);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => FishingFacility._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => FishingFacility._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6692,10 +6779,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(NavigationSystem);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => NavigationSystem._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => NavigationSystem._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6730,10 +6819,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(TrafficSeparationSchemeCrossing);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeCrossing._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeCrossing._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6770,10 +6861,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(TrafficSeparationSchemeLanePart);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeLanePart._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeLanePart._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6814,10 +6907,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(TerritorialSeaArea);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => TerritorialSeaArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => TerritorialSeaArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6889,10 +6984,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(LateralBeacon);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => LateralBeacon._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => LateralBeacon._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6924,10 +7021,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(CoastGuardStation);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => CoastGuardStation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => CoastGuardStation._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6957,10 +7056,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(SeparationZoneOrLine);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => SeparationZoneOrLine._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => SeparationZoneOrLine._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -6990,10 +7091,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(BottomFeature);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => BottomFeature._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => BottomFeature._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7025,10 +7128,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(ArchipelagicBaseline);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => ArchipelagicBaseline._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => ArchipelagicBaseline._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7055,10 +7160,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(SmallBottomObject);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => SmallBottomObject._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => SmallBottomObject._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7091,10 +7198,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(ExclusiveEconomicZone);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => ExclusiveEconomicZone._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => ExclusiveEconomicZone._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7133,10 +7242,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(RadarStation);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => RadarStation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => RadarStation._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7158,10 +7269,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(DivingLocation);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => DivingLocation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => DivingLocation._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7203,10 +7316,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(RestrictedArea);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => RestrictedArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => RestrictedArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7250,10 +7365,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(CableSubmarine);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => CableSubmarine._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => CableSubmarine._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7364,10 +7481,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(Wreck);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => Wreck._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => Wreck._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7397,10 +7516,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(QRoute);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => QRoute._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => QRoute._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7429,10 +7550,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(CompletenessOfProductSpecification);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => CompletenessOfProductSpecification._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => CompletenessOfProductSpecification._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7467,10 +7590,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(RescueStation);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => RescueStation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => RescueStation._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7540,10 +7665,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(CardinalBeacon);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => CardinalBeacon._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => CardinalBeacon._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7595,10 +7722,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(LightVessel);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => LightVessel._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => LightVessel._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7632,10 +7761,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(FisheryZone);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => FisheryZone._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => FisheryZone._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7674,10 +7805,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(DredgedArea);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => DredgedArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => DredgedArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7718,10 +7851,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(FerryRoute);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => FerryRoute._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => FerryRoute._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7788,10 +7923,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(ShorelineConstruction);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => ShorelineConstruction._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => ShorelineConstruction._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7824,10 +7961,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(CautionArea);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => CautionArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => CautionArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7880,10 +8019,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(DeepWaterRoutePart);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoutePart._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoutePart._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7917,10 +8058,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(CurrentNonGravitational);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => CurrentNonGravitational._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => CurrentNonGravitational._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7953,10 +8096,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(DataCoverage);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -7987,10 +8132,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(SeabedArea);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => SeabedArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => SeabedArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -8049,10 +8196,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(SpecialPurposeGeneralBuoy);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBuoy._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -8114,10 +8263,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(LightSectored);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => LightSectored._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => LightSectored._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -8136,10 +8287,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(IceLine);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => IceLine._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => IceLine._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -8176,10 +8329,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(AnchorageArea);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => AnchorageArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => AnchorageArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -8239,10 +8394,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(LateralBuoy);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => LateralBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => LateralBuoy._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -8277,10 +8434,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(TrafficSeparationSchemeRoundabout);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeRoundabout._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeRoundabout._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -8330,10 +8489,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(DeepWaterRouteCentreline);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => DeepWaterRouteCentreline._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => DeepWaterRouteCentreline._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -8387,10 +8548,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(LightFloat);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => LightFloat._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => LightFloat._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -8462,10 +8625,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(LightAllAround);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => LightAllAround._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => LightAllAround._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -8508,10 +8673,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(Coastline);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => Coastline._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => Coastline._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -8543,10 +8710,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(SeaAreaNamedWaterArea);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => SeaAreaNamedWaterArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => SeaAreaNamedWaterArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -8563,10 +8732,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(DropZone);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => DropZone._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => DropZone._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -8629,10 +8800,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(Conveyor);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => Conveyor._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => Conveyor._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -8666,10 +8839,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(LineOfDelimitation);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => LineOfDelimitation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => LineOfDelimitation._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -8701,10 +8876,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(StraightTerritorialSeaBaseline);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => StraightTerritorialSeaBaseline._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => StraightTerritorialSeaBaseline._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -8772,10 +8949,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(SafeWaterBeacon);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => SafeWaterBeacon._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => SafeWaterBeacon._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -8846,10 +9025,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			public override string Code => nameof(SpecialPurposeGeneralBeacon);
 
+			[JsonIgnore]
 			public informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBeacon._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
 			public featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBeacon._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
