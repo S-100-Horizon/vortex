@@ -110,11 +110,10 @@ namespace S100Framework.Applications
                                 instance.nationality = new() { current.NATION };
                             }
 
-
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
 
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
@@ -164,7 +163,6 @@ namespace S100Framework.Applications
                             if (current.NATION != default) {
                                 instance.nationality = new(){ current.NATION};
                             }
-
 
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -296,6 +294,8 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
                             
+                            
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -538,15 +538,39 @@ namespace S100Framework.Applications
                         break;
                     case 105: { // RESARE_RestrictedArea
                             var instance = new RestrictedArea();
+
+                            if (current.CATREA != default) {
+                                instance.categoryOfRestrictedArea = EnumHelper.GetEnumValues<categoryOfRestrictedArea>(current.CATREA);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            // TODO: InteroperabilityIdentifier
                             
-                            if (current.PLTS_COMP_SCALE.HasValue) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
+                            }
+
+                            if (current.RESTRN != default) {
+                                instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            // TODO: Vesselspeedlimit
+
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                            }
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -598,7 +622,16 @@ namespace S100Framework.Applications
                             if (current.PLTS_COMP_SCALE.HasValue) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
-                            
+
+                            if (current.NATION != default) {
+                                instance.nationality = new() { current.NATION };
+                            }
+
+                            // TODO: interoperability identifier
+
+                            // TODO: Vesselspeedlimit
+
+
                             //instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
