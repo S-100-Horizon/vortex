@@ -4,6 +4,7 @@ using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.Applications.S57.esri;
+using System.Net.Http.Headers;
 
 namespace S100Framework.Applications
 {
@@ -309,9 +310,6 @@ namespace S100Framework.Applications
                     case 40: { // FLODOC_FloatingDock // SKIN OF EARTH
                             var instance = new FloatingDock() {
                             };
-                            if (current.PLTS_COMP_SCALE.HasValue) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
-                            }
 
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
@@ -325,11 +323,66 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
+                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m) {
+                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            // TODO: HorizontalClearanceLength
+
+                            if (current.HORCLR.HasValue) {
+                                instance.horizontalClearanceWidth = current.HORCLR.Value;
+                            }
+
+                            if (current.HORLEN.HasValue) {
+                                instance.horizontalLength = current.HORLEN.Value;
+                            }
+
+                            if (current.HORWID.HasValue) {
+                                instance.horizontalWidth = current.HORWID.Value;
+                            }
+
+                            // TODO: InteroperabilityIdentifier
+
+                            if (current.LIFCAP.HasValue) {
+                                instance.liftingCapacity = current.LIFCAP.Value;
+                            }
+
+                            // TODO: MaximumPermitedDraught - not converted no inform info in GST
+
+                            if (current.CONRAD.HasValue) {
+                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                            }
+
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
+                            }
+
+                            if (current.CONVIS.HasValue) {
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                            }
+
                             AddInformation(instance.information, feature);
+
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
+
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
