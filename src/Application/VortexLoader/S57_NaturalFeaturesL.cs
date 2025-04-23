@@ -34,17 +34,7 @@ namespace S100Framework.Applications
                 var subtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
-                var status = current.STATUS ?? default;
-                var condtn = current.CONDTN ?? default;
-                var natsur = current.NATSUR ?? default;
-                var catslo = current.CATSLO ?? default;
-                var colour = current.COLOUR ?? default;
-                var conrad = current.CONRAD ?? default;
-                var convis = current.CONVIS ?? default;
-                var catveg = current.CATVEG ?? default;
-                var elevat = current.ELEVAT ?? default;
-                var height = current.HEIGHT ?? default;
-                var verlen = current.VERLEN ?? default;
+
 
                 switch (subtype) {
                     case 1: { // LNDARE_LandArea
@@ -66,7 +56,6 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);

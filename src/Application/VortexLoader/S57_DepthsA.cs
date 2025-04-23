@@ -68,8 +68,6 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
-
                         }
                         break;
 
@@ -185,13 +183,13 @@ namespace S100Framework.Applications
                         break;
 
                     case 15: {    // UNSARE  // SKIN OF EARTH
-                            var instance = new UnsurveyedArea {
-                            };
+                            var instance = new UnsurveyedArea();
+
                             AddInformation(instance.information, feature);
 
-
+                            // TODO: InteroperabilityIdentifier
+                            
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
@@ -203,8 +201,6 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
-
 
                         }
                         break;

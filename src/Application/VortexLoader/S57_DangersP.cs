@@ -136,7 +136,12 @@ namespace S100Framework.Applications
                                 if (current.CATOBS.HasValue && current.CATOBS.Value == 7) {
                                     var instance = new FoulGround();
 
-                                    //foulGround.verticalUncertainty = 
+                                    if (current.SOUACC.HasValue) {
+                                        instance.verticalUncertainty = new() {
+                                            uncertaintyFixed = current.SOUACC.Value
+                                        };
+                                    }
+
                                     if (current.STATUS != default) {
                                         instance.status = GetStatus(current.STATUS);
                                     }

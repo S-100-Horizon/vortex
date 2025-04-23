@@ -117,8 +117,6 @@ namespace S100Framework.Applications
                         SpatialRelationshipDescription = "T*****FF*"
                     };
 
-
-
                     using var cursor = fc.Search(filter, true);
                     while (cursor.MoveNext()) {
                         var current = (ArcGIS.Core.Data.Feature)cursor.Current;

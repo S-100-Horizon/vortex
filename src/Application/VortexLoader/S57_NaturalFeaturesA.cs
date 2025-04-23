@@ -107,28 +107,33 @@ namespace S100Framework.Applications
                         break;
 
                     case 5: { //  LNDARE // SKIN OF EARTH
-                            var instance = new LandArea {
-                            };
-                            if (condtn != default) {
-                                instance.condition = condtn switch {
-                                    1 => condition.UnderConstruction,   //  under construction
-                                    2 => condition.Ruined,   //  ruined
-                                    3 => condition.UnderReclamation,   //  under reclamation                                    
-                                    4 => throw new IndexOutOfRangeException(),   //  wingless
-                                    5 => throw new IndexOutOfRangeException(),   //  planned construction
-                                    -32767 =>null,
-                                    _ => throw new IndexOutOfRangeException(),
-                                };
-                            }
-                            //if (plts_comp_scale != default) {
-                            //    //instance.scaleMinimum = plts_comp_scale;
-                            //}
+                            var instance = new LandArea();
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            // TODO: InteroperabilityIdentifier
+
+                            if (current.SORDAT != default) {
+                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                    instance.reportedDate = dateOnly;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetSingleStatus(current.STATUS);
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                            }
+
                             AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = ps101;
@@ -148,25 +153,18 @@ namespace S100Framework.Applications
                         break;
 
                     case 10: {    // LNDRGN
-                            var instance = new LandRegion {
-                                categoryOfLandRegion = null,
-                                natureOfSurface = null,
-                                waterLevelEffect = null,
-                                scaleMinimum = null,
-                            };
-                            if (watlev != default) {
-                                instance.waterLevelEffect = watlev switch {
-                                    1 => waterLevelEffect.PartlySubmergedAtHighWater,  // partly submerged at high water
-                                    2 => waterLevelEffect.AlwaysDry,  // always dry
-                                    3 => throw new IndexOutOfRangeException(),  // always under water/submerged
-                                    4 => throw new IndexOutOfRangeException(),  // covers and uncovers
-                                    5 => throw new IndexOutOfRangeException(),  // awash
-                                    6 => throw new IndexOutOfRangeException(),  // subject to inundation or flooding
-                                    7 => throw new IndexOutOfRangeException(),  // floating
-                                    -32767 => null,
-                                    _ => throw new IndexOutOfRangeException(),
-                                };
+                            var instance = new LandRegion();
+
+
+                            if (current.WATLEV.HasValue) {
+                                if (current.WATLEV.Value == -32767)
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
+                                else {
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                                }
                             }
+
+
                             if (current.PLTS_COMP_SCALE.HasValue) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
@@ -175,6 +173,11 @@ namespace S100Framework.Applications
                                 instance.natureOfSurface = EnumHelper.GetEnumValues<natureOfSurface>(current.NATSUR);
                             }
 
+                            if (current.CATLND != default) {
+                                instance.categoryOfLandRegion = EnumHelper.GetEnumValues<categoryOfLandRegion>(current.CATLND);
+                            }
+
+                            // TODO: Interoperabilityidentifier
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
