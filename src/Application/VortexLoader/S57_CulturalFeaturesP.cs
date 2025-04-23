@@ -383,11 +383,12 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 35: { // LNDMRK_Landmark
-                            var instance = new Landmark() {
-                            };
+                            var instance = new Landmark();
+
                             if (current.PLTS_COMP_SCALE.HasValue) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
                             }
@@ -402,6 +403,13 @@ namespace S100Framework.Applications
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
+                            }
+
+                            if (current.CATLMK != default) {
+                                // TODO: handle landmark CATLMK == 19 WINDTURBINE?
+                                if (current.CATLMK != "19") {
+                                    instance.categoryOfLandmark = EnumHelper.GetEnumValues<categoryOfLandmark>(current.CATLMK);
+                                }
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
