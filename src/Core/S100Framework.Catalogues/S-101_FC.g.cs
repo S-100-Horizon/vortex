@@ -5454,6 +5454,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(QualityOfBathymetricDataComposition);
 		}
 
+		[SpatialAssocation]
 		/// <summary>
 		/// An association for the binding between a spatial type and its spatial quality information.
 		/// </summary>

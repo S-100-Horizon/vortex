@@ -43,6 +43,13 @@ namespace S100Framework.DomainModel
         }
     }
 
+    [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]
+    public class SpatialAssocationAttribute : System.Attribute
+    {
+
+    }
+
+
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
     public class RequiredAttribute : System.Attribute
     {

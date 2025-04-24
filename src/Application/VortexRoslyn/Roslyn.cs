@@ -353,23 +353,23 @@ namespace S100Framework.Applications
 
                     roles = roles.Where(r => productSpecification.XPathSelectElements($"//S100FC:informationBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).Any());
 
-                    //if (!spatialAssociationTypes.Contains(code)) 
-                    {
-                        if (!isFirst)
-                            builderDomainModel.AppendLine();
-                        isFirst = false;
+                    if (!isFirst)
+                        builderDomainModel.AppendLine();
+                    isFirst = false;
 
-                        var s = BuildClass(e, new BuildClassClient {
-                            ProductSpecification = productSpecification,
-                            KnownTypes = knownTypes,
-                            KnowTypesPrefix = knowTypesPrefix,
-                            KnowTypesPostfix = knowTypesPostfix,
-                            InformationAssociationsLookup = informationAssociationsLookup,
-                            FeatureAssociationsLookup = featureAssociationsLookup,
-                        });
+                    if (spatialAssociationTypes.Contains(code))
+                        builderDomainModel.AppendLine("\t\t[SpatialAssocation]");
 
-                        builderDomainModel.AppendLine(s);
-                    }
+                    var s = BuildClass(e, new BuildClassClient {
+                        ProductSpecification = productSpecification,
+                        KnownTypes = knownTypes,
+                        KnowTypesPrefix = knowTypesPrefix,
+                        KnowTypesPostfix = knowTypesPostfix,
+                        InformationAssociationsLookup = informationAssociationsLookup,
+                        FeatureAssociationsLookup = featureAssociationsLookup,
+                    });
+
+                    builderDomainModel.AppendLine(s);
                 }
 
                 if (elements.Any()) {
