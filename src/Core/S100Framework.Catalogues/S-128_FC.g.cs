@@ -1291,7 +1291,7 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(CatalogueSectionHeader);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => CatalogueSectionHeader._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => CatalogueSectionHeader._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -1342,7 +1342,7 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(ContactDetails);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -1379,7 +1379,7 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(IndicationOfCarriageRequirement);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => IndicationOfCarriageRequirement._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => IndicationOfCarriageRequirement._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 		}
@@ -1402,7 +1402,7 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(PriceInformation);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => PriceInformation._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => PriceInformation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -1429,7 +1429,7 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(ProducerInformation);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => ProducerInformation._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => ProducerInformation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -1462,7 +1462,7 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(DistributorInformation);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => DistributorInformation._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => DistributorInformation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -1522,7 +1522,7 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(CatalogueElement);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => CatalogueElement._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => CatalogueElement._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -1551,7 +1551,7 @@ namespace S100Framework.DomainModel.S128 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => CatalogueElement._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => CatalogueElement._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -1610,13 +1610,13 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(NavigationalProduct);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => NavigationalProduct._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public override informationBindingDefinition[] informationBindingDefinitions => [..CatalogueElement._informationBindingDefinitions, ..NavigationalProduct._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => NavigationalProduct._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public override featureBindingDefinition[] featureBindingDefinitions => [..CatalogueElement._featureBindingDefinitions, ..NavigationalProduct._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 1,
@@ -1653,13 +1653,13 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(ElectronicProduct);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => ElectronicProduct._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public override informationBindingDefinition[] informationBindingDefinitions => [..NavigationalProduct._informationBindingDefinitions, ..ElectronicProduct._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => ElectronicProduct._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public override featureBindingDefinition[] featureBindingDefinitions => [..NavigationalProduct._featureBindingDefinitions, ..ElectronicProduct._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
 
@@ -1686,13 +1686,13 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(PhysicalProduct);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => PhysicalProduct._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public override informationBindingDefinition[] informationBindingDefinitions => [..NavigationalProduct._informationBindingDefinitions, ..PhysicalProduct._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => PhysicalProduct._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public override featureBindingDefinition[] featureBindingDefinitions => [..NavigationalProduct._featureBindingDefinitions, ..PhysicalProduct._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
 
@@ -1721,13 +1721,13 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(S100Service);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => S100Service._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public override informationBindingDefinition[] informationBindingDefinitions => [..CatalogueElement._informationBindingDefinitions, ..S100Service._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => S100Service._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public override featureBindingDefinition[] featureBindingDefinitions => [..CatalogueElement._featureBindingDefinitions, ..S100Service._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
 	}

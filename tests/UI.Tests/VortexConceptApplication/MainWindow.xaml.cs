@@ -14,6 +14,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Documents;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
@@ -150,6 +151,18 @@ namespace VortexConceptApplication
                     }
                     return features;
                 },
+                CreateInformationBinding = async (CreateInformationBindingEventArgs e) => {
+                    return Guid.NewGuid();
+                },
+                DeleteInformationBinding = async (DeleteInformationBindingEventArgs e) => {
+                    return true;
+                },
+                CreateFeatureBinding = async (CreateFeatureBindingEventArgs e) => {
+                    return Guid.NewGuid();
+                },
+                DeleteFeatureBinding = async (DeleteFeatureBindingEventArgs e) => {
+                    return true;
+                }
             };
 
             var model = new TwoWayRoutePart() { };
@@ -170,26 +183,6 @@ namespace VortexConceptApplication
 
             selectedFeature!.PropertyChanged += (object? sender, PropertyChangedEventArgs e) => {
                 System.Diagnostics.Debugger.Break();
-            };
-
-            selectedFeature!.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-                System.Diagnostics.Debugger.Break();
-
-                if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add) {
-                    if (e.NewItems != null) {
-                        foreach (var binding in e.NewItems) {
-                            if (sender is ICollection<InformationBindingViewModel>) {
-                                ((InformationBindingViewModel)binding).UID = Guid.NewGuid();
-                            }
-                            else {
-                                ((FeatureBindingViewModel)binding).UID = Guid.NewGuid();
-                            }
-                        }
-                    }
-                }
-                if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove) {
-
-                }
             };
 
             S100AttributeEditor.SelectedFeatureObject = selectedFeature;

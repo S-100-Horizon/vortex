@@ -25,6 +25,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Xml.Linq;
 using IO = System.IO;
@@ -316,7 +317,93 @@ namespace VortexProAppModule
                         return ids;
                     }, TaskCreationOptions.None);
                 },
-            };            
+
+                CreateInformationBinding = async (CreateInformationBindingEventArgs e) => {
+                    return await QueuedTask.Run(async () => {
+                        var editOperation = new EditOperation {
+                            Name = S100AttributesUpdate,
+                        };
+
+                        using var fc = Inspector.MapMember switch {
+                            FeatureLayer l => l.GetFeatureClass(),
+                            StandaloneTable t => t.GetTable(),
+                            _ => throw new InvalidOperationException(),
+                        };
+
+                        using var geodatabase = (Geodatabase)fc.GetDatastore();
+
+                        var syntax = geodatabase.GetSQLSyntax();
+                        var tableNames = syntax.ParseTableName(fc.GetName());
+
+                        using var table = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "associationbinding"));
+
+                        var token = editOperation.Create(table, new Dictionary<string, object> {
+                            { "type", "InformationBinding" },
+                            { "ps", Inspector["ps"] },
+                            { "roleType", Enum.GetName<roleType>(e.roleType.Value) },
+                            { "association", e.association },
+                            { "role", e.role },
+                            { "pid", e.PID },
+                        });
+
+                        if (!editOperation.IsEmpty) {
+                            if (editOperation.Execute()) {
+                                return token.GlobalID;
+                            }
+                            else if (System.Diagnostics.Debugger.IsAttached)
+                                System.Diagnostics.Debugger.Break();                            
+                        }
+                        return null;
+                    }, TaskCreationOptions.None);
+                },
+
+                DeleteInformationBinding = async (DeleteInformationBindingEventArgs e) => {
+                    return false;
+                },
+
+                CreateFeatureBinding = async (CreateFeatureBindingEventArgs e) => {
+                    return await QueuedTask.Run(async () => {
+                        var editOperation = new EditOperation {
+                            Name = S100AttributesUpdate,
+                        };
+
+                        using var fc = Inspector.MapMember switch {
+                            FeatureLayer l => l.GetFeatureClass(),
+                            StandaloneTable t => t.GetTable(),
+                            _ => throw new InvalidOperationException(),
+                        };
+
+                        using var geodatabase = (Geodatabase)fc.GetDatastore();
+
+                        var syntax = geodatabase.GetSQLSyntax();
+                        var tableNames = syntax.ParseTableName(fc.GetName());
+
+                        using var table = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "associationbinding"));
+
+                        var token = editOperation.Create(table, new Dictionary<string, object> {
+                            { "type", "FeatureBinding" },
+                            { "ps", Inspector["ps"] },
+                            { "roleType", Enum.GetName<roleType>(e.roleType.Value) },
+                            { "association", e.association },
+                            { "role", e.role },
+                            { "pid", e.PID },
+                        });
+
+                        if (!editOperation.IsEmpty) {
+                            if (editOperation.Execute()) {
+                                return token.GlobalID;
+                            }
+                            else if (System.Diagnostics.Debugger.IsAttached)
+                                System.Diagnostics.Debugger.Break();
+                        }
+                        return null;
+                    }, TaskCreationOptions.None);
+                },
+
+                DeleteFeatureBinding = async (DeleteFeatureBindingEventArgs e) => {
+                    return false;
+                },
+            };
         }
 
         private void Current_PropertyChanged(object sender, PropertyChangedEventArgs e) {
@@ -569,80 +656,6 @@ namespace VortexProAppModule
                     }
 
                     selectedObjectViewModel.PropertyChanged += this.OnPropertyChanged;
-
-                    selectedObjectViewModel.CollectionChanged += async (object sender, NotifyCollectionChangedEventArgs e) => {
-                        await QueuedTask.Run(async () => {
-                            //if (!Project.Current.IsEditingEnabled) {
-                            //    await Project.Current.SetIsEditingEnabledAsync(true);
-                            //}
-
-                            var editOperation = new EditOperation {
-                                Name = S100AttributesUpdate,
-                            };
-
-                            using var fc = Inspector.MapMember switch {
-                                FeatureLayer l => l.GetFeatureClass(),
-                                StandaloneTable t => t.GetTable(),
-                                _ => throw new InvalidOperationException(),
-                            };
-
-                            using var geodatabase = (Geodatabase)fc.GetDatastore();
-
-                            var syntax = geodatabase.GetSQLSyntax();
-                            var tableNames = syntax.ParseTableName(fc.GetName());
-
-                            if (sender is ICollection<InformationBindingViewModel>) {
-                                using var table = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "associationbinding"));
-
-                                foreach (var b in e.NewItems) {
-                                    var binding = (InformationBindingViewModel)b;
-
-                                    var token = editOperation.Create(table, new Dictionary<string, object> {
-                                        {"type", "InformationBinding" },
-                                        {"ps", inspector["ps"] },
-                                        {"roleType", Enum.GetName<roleType>(binding.roleType.Value)},
-                                        {"association", binding.association},
-                                        {"role", binding.role },
-                                        {"pid", binding.PID },
-                                    });
-
-                                    if (!editOperation.IsEmpty) {
-                                        if (editOperation.Execute()) {
-                                            binding.UID = token.GlobalID;
-                                            //Inspector.Load(table, token.ObjectID.Value);
-                                        }
-                                        else if (System.Diagnostics.Debugger.IsAttached)
-                                            System.Diagnostics.Debugger.Break();
-                                    }
-                                }
-                            }
-                            if (sender is ICollection<FeatureBindingViewModel>) {
-                                using var table = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "associationbinding"));
-
-                                foreach (var b in e.NewItems) {
-                                    var binding = (FeatureBindingViewModel)b;
-
-                                    var token = editOperation.Create(table, new Dictionary<string, object> {
-                                        {"type", "FeatureBinding" },
-                                        {"ps", inspector["ps"] },
-                                        {"roleType", Enum.GetName<roleType>(binding.roleType.Value)},
-                                        {"association", binding.association},
-                                        {"role", binding.role },
-                                        {"pid", binding.PID },
-                                    });
-
-                                    if (!editOperation.IsEmpty) {
-                                        if (editOperation.Execute()) {
-                                            binding.UID = token.GlobalID;
-                                            //Inspector.Load(table, token.ObjectID.Value);
-                                        }
-                                        else if (System.Diagnostics.Debugger.IsAttached)
-                                            System.Diagnostics.Debugger.Break();
-                                    }
-                                }
-                            }
-                        }, TaskCreationOptions.None);
-                    };
 
                     return viewmodel;
                 }), TaskCreationOptions.None);

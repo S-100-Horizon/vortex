@@ -43,17 +43,6 @@ namespace S100Framework.DomainModel
         }
     }
 
-    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
-    public class RoleAttribute : System.Attribute
-    {
-        private string _roleName;
-        public string RoleName => _roleName;
-
-        public RoleAttribute(string roleName) {
-            _roleName = roleName;
-        }
-    }
-
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
     public class RequiredAttribute : System.Attribute
     {
@@ -80,19 +69,14 @@ namespace S100Framework.DomainModel
     [System.SerializableAttribute()]
     public abstract class InformationNode : Node
     {
+        public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
     }
 
     [System.SerializableAttribute()]
     public abstract class FeatureNode : Node
     {
-    }
-
-    [System.SerializableAttribute()]
-    public class RefId
-    {
-        public required string? Value { get; set; }
-        public required string? Type { get; set; }
-        public required string Role { get; set; }
+        public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
+        public abstract featureBindingDefinition[] featureBindingDefinitions { get; }
     }
 
     [System.SerializableAttribute()]

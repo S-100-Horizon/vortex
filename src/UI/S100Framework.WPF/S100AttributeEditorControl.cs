@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -66,21 +67,69 @@ namespace S100Framework.WPF
         public string? role { get; }
     }
 
+    public class CreateInformationBindingEventArgs
+    {
+        public CreateInformationBindingEventArgs(roleType? roleType, string? association, string? role, string? PID, object source) {
+            this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
+            this.association = association ?? string.Empty;
+            this.role = role ?? string.Empty;
+            this.PID = PID;
+        }
+
+        public roleType? roleType { get; }
+        public string? association { get; }
+        public string? role { get; }
+        public string? PID { get; }
+    }
+
+    public class DeleteInformationBindingEventArgs
+    {
+        public DeleteInformationBindingEventArgs(Guid? uuid, object source) {
+            this.Uuid = uuid;
+        }
+
+        public Guid? Uuid { get; } = default;
+    }
+
+    public class CreateFeatureBindingEventArgs
+    {
+        public CreateFeatureBindingEventArgs(roleType? roleType, string? association, string? role, string? PID, object source) {
+            this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
+            this.association = association ?? string.Empty;
+            this.role = role ?? string.Empty;
+            this.PID = PID;
+        }
+
+        public roleType? roleType { get; }
+        public string? association { get; }
+        public string? role { get; }
+        public string? PID { get; }
+    }
+
+    public class DeleteFeatureBindingEventArgs
+    {
+        public DeleteFeatureBindingEventArgs(Guid? uuid, object source) {
+            this.Uuid = uuid;
+        }
+
+        public Guid? Uuid { get; } = default;
+    }
+
     #endregion
 
-    public abstract class SelectedObjectViewModel : INotifyPropertyChanged, INotifyCollectionChanged
+    public abstract class SelectedObjectViewModel : INotifyPropertyChanged//, INotifyCollectionChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public event NotifyCollectionChangedEventHandler? CollectionChanged;
+        //public event NotifyCollectionChangedEventHandler? CollectionChanged;
 
         protected void OnPropertyChanged(object? sender, PropertyChangedEventArgs e) {
             this.PropertyChanged?.Invoke(sender, e);
         }
 
-        protected void OnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
-            this.CollectionChanged?.Invoke(sender, e);
-        }
+        //protected void OnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
+        //    this.CollectionChanged?.Invoke(sender, e);
+        //}
     }
 
     public class SelectedInformationTypeObjectViewModel : SelectedObjectViewModel
@@ -111,7 +160,7 @@ namespace S100Framework.WPF
                     ((InformationBindingViewModel)i).PropertyChanged += OnPropertyChanged;
                 }
             }
-            base.OnCollectionChanged(sender, e);
+            //base.OnCollectionChanged(sender, e);
         }
     }
 
@@ -145,7 +194,7 @@ namespace S100Framework.WPF
                     ((InformationBindingViewModel)i).PropertyChanged += OnPropertyChanged;
                 }
             }
-            base.OnCollectionChanged(sender, e);
+            //base.OnCollectionChanged(sender, e);
         }
 
         protected void OnFeatureBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
@@ -159,7 +208,7 @@ namespace S100Framework.WPF
                     ((FeatureBindingViewModel)i).PropertyChanged += OnPropertyChanged;
                 }
             }
-            base.OnCollectionChanged(sender, e);
+            //base.OnCollectionChanged(sender, e);
         }
     }
 
@@ -179,6 +228,14 @@ namespace S100Framework.WPF
         public required Func<QueryInformationTypesEventArgs, Task<IEnumerable<InformationTypeId>>> QueryInformationTypes { get; set; }
 
         public required Func<QueryFeatureTypesEventArgs, Task<IEnumerable<FeatureTypeId>>> QueryFeatureTypes { get; set; }
+
+        public required Func<CreateInformationBindingEventArgs, Task<Guid?>> CreateInformationBinding { get; set; }
+
+        public required Func<DeleteInformationBindingEventArgs, Task<bool>> DeleteInformationBinding { get; set; }
+
+        public required Func<CreateFeatureBindingEventArgs, Task<Guid?>> CreateFeatureBinding { get; set; }
+
+        public required Func<DeleteFeatureBindingEventArgs, Task<bool>> DeleteFeatureBinding { get; set; }
     }
 
     [TemplatePart(Name = PART_PropertyGrid, Type = typeof(Xceed.Wpf.Toolkit.PropertyGrid.PropertyGrid))]
@@ -232,13 +289,10 @@ namespace S100Framework.WPF
             //  Associations
             binding = new CommandBinding(S100AttributeEditorControl.QueryAssociationsCommand, this.QueryAssociationsContent);
             this.CommandBindings.Add(binding);
-
             binding = new CommandBinding(S100AttributeEditorControl.AssociationIdLoaded, this.AssociationIdLoadedContent);
             this.CommandBindings.Add(binding);
-
             binding = new CommandBinding(S100AttributeEditorControl.InformationAssociationIdDoubleClick, this.InformationAssociationIdDoubleClickContent);
             this.CommandBindings.Add(binding);
-
             binding = new CommandBinding(S100AttributeEditorControl.FeatureAssociationIdDoubleClick, this.FeatureAssociationIdDoubleClickContent);
             this.CommandBindings.Add(binding);
 
@@ -246,34 +300,30 @@ namespace S100Framework.WPF
             //  InformationBindings
             binding = new CommandBinding(S100AttributeEditorControl.InformationAssociationSelectedCommand, this.InformationAssociationSelectedContent);
             this.CommandBindings.Add(binding);
-
             binding = new CommandBinding(S100AttributeEditorControl.QueryInformationsCommand, this.QueryInformationsContent);
             this.CommandBindings.Add(binding);
-
             binding = new CommandBinding(S100AttributeEditorControl.InformationIdLoaded, this.InformationIdLoadedContent);
             this.CommandBindings.Add(binding);
-
             binding = new CommandBinding(S100AttributeEditorControl.InformationIdDoubleClick, this.InformationIdDoubleClickContent);
             this.CommandBindings.Add(binding);
-
             binding = new CommandBinding(S100AttributeEditorControl.AddInformationBindingCommand, this.AddInformationBindingCommandContent);
+            this.CommandBindings.Add(binding);
+            binding = new CommandBinding(S100AttributeEditorControl.DeleteInformationBindingCommand, this.DeleteInformationBindingCommandContent);
             this.CommandBindings.Add(binding);
 
 
             //  FeatureBindings
             binding = new CommandBinding(S100AttributeEditorControl.FeatureAssociationSelectedCommand, this.FeatureAssociationSelectedContent);
             this.CommandBindings.Add(binding);
-
             binding = new CommandBinding(S100AttributeEditorControl.QueryFeaturesCommand, this.QueryFeaturesContent);
             this.CommandBindings.Add(binding);
-
             binding = new CommandBinding(S100AttributeEditorControl.FeatureIdLoaded, this.FeatureIdLoadedContent);
             this.CommandBindings.Add(binding);
-
             binding = new CommandBinding(S100AttributeEditorControl.FeatureIdDoubleClick, this.FeatureIdDoubleClickContent);
             this.CommandBindings.Add(binding);
-
             binding = new CommandBinding(S100AttributeEditorControl.AddFeatureBindingCommand, this.AddFeatureBindingCommandContent);
+            this.CommandBindings.Add(binding);
+            binding = new CommandBinding(S100AttributeEditorControl.DeleteFeatureBindingCommand, this.DeleteFeatureBindingCommandContent);
             this.CommandBindings.Add(binding);
         }
 
@@ -573,7 +623,7 @@ namespace S100Framework.WPF
             };
 
             _associationsDropdown.Clear();
-            foreach(var id in await Host.QueryAssociation(eventArgs)) {
+            foreach (var id in await Host.QueryAssociation(eventArgs)) {
                 _associationsDropdown.Add(id);
             }
         }
@@ -681,8 +731,18 @@ namespace S100Framework.WPF
 
         public static RoutedUICommand AddInformationBindingCommand = new("Add information binding.", "AddInformationBindingCommandContent", typeof(S100AttributeEditorControl));
 
-        private void AddInformationBindingCommandContent(object sender, ExecutedRoutedEventArgs e) {
+        private async void AddInformationBindingCommandContent(object sender, ExecutedRoutedEventArgs e) {
             if (InformationBindingDefinitionSelected != null) {
+                var uuid = await Host.CreateInformationBinding(new CreateInformationBindingEventArgs(
+                    roleType: InformationBindingDefinitionSelected.roleType,
+                    association: InformationBindingDefinitionSelected.association,
+                    role: InformationBindingDefinitionSelected.role,
+                    PID: ((PID?)this._selectedObject)?.PID,
+                    this));
+
+                if (!uuid.HasValue)
+                    return;
+
                 var binding = new informationBinding {
                     roleType = Enum.GetName<roleType>(InformationBindingDefinitionSelected.roleType)!,
                     association = InformationBindingDefinitionSelected.association,
@@ -691,10 +751,21 @@ namespace S100Framework.WPF
                 };
 
                 this._selectedInformationBindings!.Add(new InformationBindingViewModel {
+                    UID = uuid,
                 }.Load(binding));
             }
         }
 
+        public static RoutedUICommand DeleteInformationBindingCommand = new("Delete information binding.", "DeleteInformationBindingCommandContent", typeof(S100AttributeEditorControl));
+
+        private async void DeleteInformationBindingCommandContent(object sender, ExecutedRoutedEventArgs e) {
+            if (InformationBindingDefinitionSelected != null) {
+                var viewModel = ((System.Windows.Controls.ContentControl)e.Parameter).Content as InformationBindingViewModel;
+                if (viewModel != null) {
+                    await Host.DeleteInformationBinding(new DeleteInformationBindingEventArgs(viewModel.UID, this));
+                }
+            }
+        }
         #endregion
 
 
@@ -762,6 +833,17 @@ namespace S100Framework.WPF
 
                 this._selectedFeatureBindings!.Add(new FeatureBindingViewModel {
                 }.Load(binding));
+            }
+        }
+
+        public static RoutedUICommand DeleteFeatureBindingCommand = new("Delete feature binding.", "DeleteFeatureBindingCommandContent", typeof(S100AttributeEditorControl));
+
+        private async void DeleteFeatureBindingCommandContent(object sender, ExecutedRoutedEventArgs e) {
+            if (FeatureBindingDefinitionSelected != null) {
+                var viewModel = ((System.Windows.Controls.ContentControl)e.Parameter).Content as FeatureBindingViewModel;
+                if (viewModel != null) {
+                    await Host.DeleteFeatureBinding(new DeleteFeatureBindingEventArgs(viewModel.UID, this));
+                }
             }
         }
 
