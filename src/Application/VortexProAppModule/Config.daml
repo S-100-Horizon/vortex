@@ -5,7 +5,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd">
 
-  <AddInInfo id="{e88a79e5-f75d-4324-b52a-38eca2a1f9a1}" version="3.4.9.0" desktopVersion="3.4.55405">
+  <AddInInfo id="{e88a79e5-f75d-4324-b52a-38eca2a1f9a1}" version="3.4.9.1" desktopVersion="3.4.55405">
     <Name>VortexProAppModule</Name>   
     <Description>The project aimed to implement the S-100 standard within ArcGIS Pro to improve the creation, management, and dissemination of electronic navigational charts (ENCs) in compliance with the International Hydrographic Organization's (IHO) S-100 framework. The implementation of S-100 standards in ArcGIS Pro facilitates the transition from traditional paper charts to modern digital navigational tools, enhancing safety and efficiency in maritime navigation.</Description>
     <Image>Images\Logo.png</Image>
