@@ -8,26 +8,28 @@
        xmlns:local="clr-namespace:VortexConceptApplication"
        mc:Ignorable="d"
        d:DataContext="{x:Static local:MainWindow.MockValue}"
-       Title="MainWindow" Height="900" Width="800" Loaded="Window_Loaded">
-   <Window.Resources>
-       <ResourceDictionary>
-           <ResourceDictionary.MergedDictionaries>
-               <ResourceDictionary Source="pack://application:,,,/S100Framework.WPF;component/Themes/Generic.xaml"/>
-           </ResourceDictionary.MergedDictionaries>
-       </ResourceDictionary>
-   </Window.Resources>
-   <StackPanel Orientation="Vertical">
-       <StackPanel Orientation="Horizontal" Grid.Row="0">
-           <xctk:CheckComboBox x:Name="_checkListBox"
+       Title="MainWindow" Loaded="Window_Loaded">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/S100Framework.WPF;component/Themes/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <xctk:CheckComboBox x:Name="_checkListBox"
                                IsDropDownOpen="False"
                                IsEditable="False"
                                IsSelectAllActive="True"
                                DisplayMemberPath="label"
                                ItemsSource="{Binding Items}">
-           </xctk:CheckComboBox>
-           <Button x:Name="SAVE" MinWidth="100" Padding="10 0 10 0" Click="SAVE_Click">Save</Button>
-       </StackPanel>
+            </xctk:CheckComboBox>
+            <Button x:Name="SAVE" MinWidth="100" Padding="10 0 10 0" Click="SAVE_Click">Save</Button>
+        </StackPanel>
 
-       <wpf:S100AttributeEditorControl x:Name="S100AttributeEditor" MinHeight="500"/>
-   </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Visible" Height="Auto">
+            <wpf:S100AttributeEditorControl x:Name="S100AttributeEditor" MinHeight="120" />
+        </ScrollViewer>
+    </StackPanel>
 </Window>
