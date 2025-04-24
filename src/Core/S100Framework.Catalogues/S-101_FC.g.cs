@@ -5680,7 +5680,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ContactDetails);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 		}
@@ -5703,7 +5703,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ServiceHours);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => ServiceHours._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => ServiceHours._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 		}
@@ -5728,7 +5728,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(NonStandardWorkingDay);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 		}
@@ -5751,7 +5751,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(NauticalInformation);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => NauticalInformation._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => NauticalInformation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 		}
@@ -5771,7 +5771,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SpatialQuality);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 		}
@@ -5808,12 +5808,12 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(QualityOfNonBathymetricData);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -5851,12 +5851,12 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DataCoverage);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5879,12 +5879,12 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(NavigationalSystemOfMarks);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => NavigationalSystemOfMarks._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => NavigationalSystemOfMarks._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => NavigationalSystemOfMarks._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => NavigationalSystemOfMarks._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -5920,12 +5920,12 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LocalDirectionOfBuoyage);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => LocalDirectionOfBuoyage._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => LocalDirectionOfBuoyage._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => LocalDirectionOfBuoyage._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => LocalDirectionOfBuoyage._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -5974,7 +5974,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(QualityOfBathymetricData);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => QualityOfBathymetricData._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => QualityOfBathymetricData._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -5987,7 +5987,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => QualityOfBathymetricData._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfBathymetricData._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6018,12 +6018,12 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SoundingDatum);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SoundingDatum._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SoundingDatum._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SoundingDatum._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SoundingDatum._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6054,12 +6054,12 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(VerticalDatumOfData);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => VerticalDatumOfData._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => VerticalDatumOfData._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => VerticalDatumOfData._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => VerticalDatumOfData._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6123,12 +6123,12 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(QualityOfSurvey);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => QualityOfSurvey._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => QualityOfSurvey._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => QualityOfSurvey._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfSurvey._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6168,12 +6168,12 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(UpdateInformation);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => UpdateInformation._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => UpdateInformation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => UpdateInformation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => UpdateInformation._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6235,7 +6235,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(MagneticVariation);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => MagneticVariation._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => MagneticVariation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -6248,7 +6248,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => MagneticVariation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => MagneticVariation._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6283,7 +6283,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LocalMagneticAnomaly);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => LocalMagneticAnomaly._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => LocalMagneticAnomaly._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -6296,7 +6296,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => LocalMagneticAnomaly._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => LocalMagneticAnomaly._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6351,7 +6351,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Coastline);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Coastline._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Coastline._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -6364,7 +6364,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Coastline._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Coastline._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6411,7 +6411,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LandArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => LandArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => LandArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -6424,7 +6424,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => LandArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => LandArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -6471,7 +6471,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(IslandGroup);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => IslandGroup._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => IslandGroup._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -6484,7 +6484,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => IslandGroup._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => IslandGroup._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6545,7 +6545,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LandElevation);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => LandElevation._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => LandElevation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -6558,7 +6558,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => LandElevation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => LandElevation._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6600,7 +6600,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(River);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => River._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => River._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -6613,7 +6613,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => River._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => River._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6654,7 +6654,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Rapids);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Rapids._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Rapids._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -6667,7 +6667,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Rapids._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Rapids._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6711,7 +6711,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Waterfall);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Waterfall._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Waterfall._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -6724,7 +6724,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Waterfall._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Waterfall._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6768,7 +6768,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Lake);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Lake._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Lake._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -6781,7 +6781,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Lake._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Lake._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6829,7 +6829,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LandRegion);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => LandRegion._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => LandRegion._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -6842,7 +6842,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => LandRegion._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => LandRegion._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6894,7 +6894,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Vegetation);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Vegetation._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Vegetation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -6907,7 +6907,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Vegetation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Vegetation._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6966,7 +6966,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(IceArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => IceArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => IceArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -6979,7 +6979,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => IceArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => IceArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7032,7 +7032,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SlopingGround);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SlopingGround._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SlopingGround._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -7045,7 +7045,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SlopingGround._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SlopingGround._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7100,7 +7100,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SlopeTopline);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SlopeTopline._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SlopeTopline._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -7113,7 +7113,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SlopeTopline._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SlopeTopline._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7152,7 +7152,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Tideway);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Tideway._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Tideway._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -7165,7 +7165,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Tideway._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Tideway._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7223,7 +7223,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(BuiltUpArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => BuiltUpArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => BuiltUpArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -7236,7 +7236,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => BuiltUpArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => BuiltUpArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7315,7 +7315,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Building);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Building._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Building._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -7328,7 +7328,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Building._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Building._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7404,7 +7404,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(AirportAirfield);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => AirportAirfield._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => AirportAirfield._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -7417,7 +7417,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => AirportAirfield._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => AirportAirfield._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7469,7 +7469,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Runway);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Runway._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Runway._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -7482,7 +7482,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Runway._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Runway._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7534,7 +7534,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Helipad);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Helipad._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Helipad._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -7547,7 +7547,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Helipad._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Helipad._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -7633,7 +7633,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Bridge);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Bridge._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Bridge._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -7646,7 +7646,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Bridge._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Bridge._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7719,7 +7719,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SpanFixed);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SpanFixed._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SpanFixed._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -7732,7 +7732,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SpanFixed._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SpanFixed._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -7808,7 +7808,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SpanOpening);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SpanOpening._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SpanOpening._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -7821,7 +7821,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SpanOpening._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SpanOpening._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -7926,7 +7926,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Conveyor);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Conveyor._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Conveyor._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -7939,7 +7939,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Conveyor._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Conveyor._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -8023,7 +8023,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CableOverhead);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => CableOverhead._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => CableOverhead._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -8036,7 +8036,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => CableOverhead._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => CableOverhead._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -8111,7 +8111,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(PipelineOverhead);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => PipelineOverhead._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => PipelineOverhead._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -8124,7 +8124,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => PipelineOverhead._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => PipelineOverhead._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -8218,7 +8218,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(PylonBridgeSupport);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => PylonBridgeSupport._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => PylonBridgeSupport._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -8231,7 +8231,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => PylonBridgeSupport._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => PylonBridgeSupport._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -8333,7 +8333,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FenceWall);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => FenceWall._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => FenceWall._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -8346,7 +8346,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => FenceWall._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FenceWall._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -8395,7 +8395,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Railway);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Railway._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Railway._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -8408,7 +8408,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Railway._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Railway._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -8461,7 +8461,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Road);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Road._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Road._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -8474,7 +8474,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Road._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Road._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -8530,7 +8530,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Tunnel);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Tunnel._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Tunnel._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -8543,7 +8543,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Tunnel._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Tunnel._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -8626,7 +8626,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Landmark);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Landmark._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Landmark._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -8639,7 +8639,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Landmark._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Landmark._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -8753,7 +8753,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SiloTank);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SiloTank._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SiloTank._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -8766,7 +8766,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SiloTank._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SiloTank._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -8873,7 +8873,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(WindTurbine);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => WindTurbine._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => WindTurbine._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -8886,7 +8886,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => WindTurbine._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => WindTurbine._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -8968,7 +8968,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FortifiedStructure);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => FortifiedStructure._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => FortifiedStructure._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -8981,7 +8981,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => FortifiedStructure._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FortifiedStructure._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -9074,7 +9074,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ProductionStorageArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => ProductionStorageArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => ProductionStorageArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -9087,7 +9087,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => ProductionStorageArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => ProductionStorageArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -9132,7 +9132,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Checkpoint);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Checkpoint._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Checkpoint._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -9145,7 +9145,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Checkpoint._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Checkpoint._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -9215,7 +9215,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Hulk);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Hulk._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Hulk._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -9228,7 +9228,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Hulk._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Hulk._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -9313,7 +9313,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Pile);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Pile._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Pile._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -9326,7 +9326,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Pile._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Pile._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -9416,7 +9416,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Dyke);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Dyke._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Dyke._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -9429,7 +9429,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Dyke._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Dyke._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -9508,7 +9508,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ShorelineConstruction);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => ShorelineConstruction._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => ShorelineConstruction._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -9521,7 +9521,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => ShorelineConstruction._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => ShorelineConstruction._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -9627,7 +9627,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(StructureOverNavigableWater);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => StructureOverNavigableWater._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => StructureOverNavigableWater._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -9640,7 +9640,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => StructureOverNavigableWater._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => StructureOverNavigableWater._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -9717,7 +9717,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Causeway);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Causeway._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Causeway._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -9730,7 +9730,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Causeway._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Causeway._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -9786,7 +9786,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Canal);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Canal._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Canal._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -9799,7 +9799,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Canal._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Canal._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -9846,7 +9846,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DistanceMark);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => DistanceMark._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => DistanceMark._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -9859,7 +9859,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => DistanceMark._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => DistanceMark._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -9932,7 +9932,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Gate);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Gate._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Gate._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -9945,7 +9945,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Gate._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Gate._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -10016,7 +10016,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Dam);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Dam._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Dam._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -10029,7 +10029,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Dam._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Dam._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -10107,7 +10107,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Crane);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Crane._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Crane._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -10120,7 +10120,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Crane._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Crane._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -10198,7 +10198,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Berth);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Berth._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Berth._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -10211,7 +10211,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Berth._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Berth._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -10295,7 +10295,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Dolphin);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Dolphin._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Dolphin._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -10308,7 +10308,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Dolphin._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Dolphin._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -10385,7 +10385,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Bollard);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Bollard._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Bollard._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -10398,7 +10398,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Bollard._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Bollard._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -10472,7 +10472,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DryDock);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => DryDock._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => DryDock._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -10485,7 +10485,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => DryDock._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => DryDock._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -10561,7 +10561,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FloatingDock);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => FloatingDock._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => FloatingDock._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -10574,7 +10574,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => FloatingDock._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FloatingDock._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -10648,7 +10648,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Pontoon);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Pontoon._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Pontoon._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -10661,7 +10661,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Pontoon._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Pontoon._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -10745,7 +10745,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DockArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => DockArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => DockArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -10758,7 +10758,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => DockArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => DockArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -10812,7 +10812,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Gridiron);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Gridiron._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Gridiron._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -10825,7 +10825,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Gridiron._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Gridiron._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -10877,7 +10877,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LockBasin);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => LockBasin._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => LockBasin._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -10890,7 +10890,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => LockBasin._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => LockBasin._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -10931,7 +10931,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(MooringTrot);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => MooringTrot._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => MooringTrot._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -10944,7 +10944,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => MooringTrot._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => MooringTrot._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -10994,7 +10994,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SeaAreaNamedWaterArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SeaAreaNamedWaterArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SeaAreaNamedWaterArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -11007,7 +11007,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SeaAreaNamedWaterArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SeaAreaNamedWaterArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11058,7 +11058,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TidalStreamFloodEbb);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => TidalStreamFloodEbb._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => TidalStreamFloodEbb._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -11071,7 +11071,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => TidalStreamFloodEbb._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => TidalStreamFloodEbb._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11123,7 +11123,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CurrentNonGravitational);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => CurrentNonGravitational._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => CurrentNonGravitational._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -11136,7 +11136,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => CurrentNonGravitational._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => CurrentNonGravitational._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11179,7 +11179,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(WaterTurbulence);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => WaterTurbulence._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => WaterTurbulence._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -11192,7 +11192,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => WaterTurbulence._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => WaterTurbulence._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11237,7 +11237,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TidalStreamPanelData);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => TidalStreamPanelData._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => TidalStreamPanelData._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -11250,7 +11250,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => TidalStreamPanelData._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => TidalStreamPanelData._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11300,7 +11300,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Sounding);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Sounding._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Sounding._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -11313,7 +11313,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Sounding._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Sounding._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11372,7 +11372,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DredgedArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => DredgedArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => DredgedArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -11385,7 +11385,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => DredgedArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => DredgedArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -11435,7 +11435,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SweptArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SweptArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SweptArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -11448,7 +11448,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SweptArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SweptArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -11496,7 +11496,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DepthContour);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => DepthContour._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => DepthContour._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -11509,7 +11509,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => DepthContour._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => DepthContour._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11542,7 +11542,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DepthArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => DepthArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => DepthArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -11555,7 +11555,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => DepthArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => DepthArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11587,7 +11587,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DepthNoBottomFound);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => DepthNoBottomFound._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => DepthNoBottomFound._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -11600,7 +11600,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => DepthNoBottomFound._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => DepthNoBottomFound._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11627,7 +11627,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(UnsurveyedArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => UnsurveyedArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => UnsurveyedArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -11640,7 +11640,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => UnsurveyedArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => UnsurveyedArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11676,7 +11676,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SeabedArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SeabedArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SeabedArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -11689,7 +11689,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SeabedArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SeabedArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11731,7 +11731,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(WeedKelp);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => WeedKelp._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => WeedKelp._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -11744,7 +11744,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => WeedKelp._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => WeedKelp._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11783,7 +11783,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Seagrass);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Seagrass._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Seagrass._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -11796,7 +11796,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Seagrass._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Seagrass._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11835,7 +11835,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Sandwave);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Sandwave._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Sandwave._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -11848,7 +11848,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Sandwave._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Sandwave._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11879,7 +11879,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Spring);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Spring._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Spring._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -11892,7 +11892,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Spring._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Spring._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11960,7 +11960,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(UnderwaterAwashRock);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => UnderwaterAwashRock._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => UnderwaterAwashRock._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -11973,7 +11973,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => UnderwaterAwashRock._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => UnderwaterAwashRock._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12049,7 +12049,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Wreck);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Wreck._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Wreck._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -12062,7 +12062,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Wreck._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Wreck._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12152,7 +12152,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Obstruction);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Obstruction._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Obstruction._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -12165,7 +12165,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Obstruction._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Obstruction._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -12227,7 +12227,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FoulGround);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => FoulGround._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => FoulGround._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -12240,7 +12240,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => FoulGround._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FoulGround._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12279,7 +12279,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DiscolouredWater);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => DiscolouredWater._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => DiscolouredWater._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -12292,7 +12292,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => DiscolouredWater._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => DiscolouredWater._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12338,7 +12338,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FishingFacility);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => FishingFacility._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => FishingFacility._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -12351,7 +12351,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => FishingFacility._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FishingFacility._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12439,7 +12439,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(MarineFarmCulture);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => MarineFarmCulture._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => MarineFarmCulture._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -12452,7 +12452,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => MarineFarmCulture._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => MarineFarmCulture._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12526,7 +12526,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(OffshorePlatform);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => OffshorePlatform._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => OffshorePlatform._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -12539,7 +12539,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => OffshorePlatform._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => OffshorePlatform._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12607,7 +12607,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CableSubmarine);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => CableSubmarine._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => CableSubmarine._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -12620,7 +12620,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => CableSubmarine._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => CableSubmarine._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -12680,7 +12680,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CableArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => CableArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => CableArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -12693,7 +12693,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => CableArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => CableArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12761,7 +12761,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(PipelineSubmarineOnLand);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => PipelineSubmarineOnLand._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => PipelineSubmarineOnLand._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -12774,7 +12774,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => PipelineSubmarineOnLand._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => PipelineSubmarineOnLand._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12829,7 +12829,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SubmarinePipelineArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SubmarinePipelineArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SubmarinePipelineArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -12842,7 +12842,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SubmarinePipelineArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SubmarinePipelineArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12914,7 +12914,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(OffshoreProductionArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => OffshoreProductionArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => OffshoreProductionArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -12927,7 +12927,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => OffshoreProductionArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => OffshoreProductionArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12980,7 +12980,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(NavigationLine);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => NavigationLine._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => NavigationLine._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -12993,7 +12993,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => NavigationLine._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => NavigationLine._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -13061,7 +13061,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RecommendedTrack);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => RecommendedTrack._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => RecommendedTrack._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -13074,7 +13074,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => RecommendedTrack._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => RecommendedTrack._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -13133,7 +13133,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RangeSystem);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => RangeSystem._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => RangeSystem._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -13146,7 +13146,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => RangeSystem._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => RangeSystem._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -13233,7 +13233,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Fairway);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Fairway._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Fairway._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -13246,7 +13246,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Fairway._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Fairway._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -13307,7 +13307,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FairwaySystem);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => FairwaySystem._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => FairwaySystem._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -13320,7 +13320,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => FairwaySystem._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FairwaySystem._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -13400,7 +13400,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RecommendedRouteCentreline);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => RecommendedRouteCentreline._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => RecommendedRouteCentreline._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -13413,7 +13413,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => RecommendedRouteCentreline._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => RecommendedRouteCentreline._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -13490,7 +13490,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TwoWayRoutePart);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => TwoWayRoutePart._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => TwoWayRoutePart._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -13503,7 +13503,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => TwoWayRoutePart._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => TwoWayRoutePart._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -13554,7 +13554,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TwoWayRoute);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => TwoWayRoute._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => TwoWayRoute._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -13567,7 +13567,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => TwoWayRoute._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => TwoWayRoute._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -13636,7 +13636,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RecommendedTrafficLanePart);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => RecommendedTrafficLanePart._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => RecommendedTrafficLanePart._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -13649,7 +13649,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => RecommendedTrafficLanePart._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => RecommendedTrafficLanePart._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -13707,7 +13707,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DeepWaterRouteCentreline);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => DeepWaterRouteCentreline._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => DeepWaterRouteCentreline._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -13720,7 +13720,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => DeepWaterRouteCentreline._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRouteCentreline._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -13805,7 +13805,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DeepWaterRoutePart);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoutePart._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoutePart._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -13818,7 +13818,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoutePart._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoutePart._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -13877,7 +13877,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DeepWaterRoute);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoute._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoute._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -13890,7 +13890,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoute._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoute._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -13961,7 +13961,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(InshoreTrafficZone);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => InshoreTrafficZone._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => InshoreTrafficZone._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -13974,7 +13974,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => InshoreTrafficZone._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => InshoreTrafficZone._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -14025,7 +14025,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(PrecautionaryArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => PrecautionaryArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => PrecautionaryArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -14038,7 +14038,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => PrecautionaryArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => PrecautionaryArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -14095,7 +14095,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TrafficSeparationSchemeLanePart);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeLanePart._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeLanePart._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -14108,7 +14108,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeLanePart._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeLanePart._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -14150,7 +14150,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SeparationZoneOrLine);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SeparationZoneOrLine._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SeparationZoneOrLine._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -14163,7 +14163,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SeparationZoneOrLine._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SeparationZoneOrLine._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -14205,7 +14205,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TrafficSeparationSchemeBoundary);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeBoundary._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeBoundary._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -14218,7 +14218,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeBoundary._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeBoundary._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -14265,7 +14265,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TrafficSeparationSchemeCrossing);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeCrossing._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeCrossing._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -14278,7 +14278,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeCrossing._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeCrossing._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -14325,7 +14325,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TrafficSeparationSchemeRoundabout);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeRoundabout._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeRoundabout._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -14338,7 +14338,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeRoundabout._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeRoundabout._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -14383,7 +14383,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TrafficSeparationScheme);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationScheme._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationScheme._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -14396,7 +14396,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationScheme._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationScheme._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -14471,7 +14471,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ArchipelagicSeaLaneArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLaneArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLaneArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -14484,7 +14484,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -14535,7 +14535,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ArchipelagicSeaLaneAxis);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLaneAxis._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLaneAxis._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -14548,7 +14548,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneAxis._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneAxis._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -14599,7 +14599,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ArchipelagicSeaLane);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLane._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLane._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -14612,7 +14612,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLane._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLane._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -14690,7 +14690,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RadioCallingInPoint);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => RadioCallingInPoint._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => RadioCallingInPoint._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -14703,7 +14703,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => RadioCallingInPoint._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => RadioCallingInPoint._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -14752,7 +14752,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FerryRoute);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => FerryRoute._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => FerryRoute._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -14765,7 +14765,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => FerryRoute._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FerryRoute._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -14810,7 +14810,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RadarLine);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => RadarLine._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => RadarLine._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -14823,7 +14823,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => RadarLine._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => RadarLine._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -14869,7 +14869,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RadarRange);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => RadarRange._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => RadarRange._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -14882,7 +14882,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => RadarRange._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => RadarRange._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -14937,7 +14937,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RadarStation);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => RadarStation._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => RadarStation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -14950,7 +14950,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => RadarStation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => RadarStation._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15007,7 +15007,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(AnchorageArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => AnchorageArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => AnchorageArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -15020,7 +15020,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => AnchorageArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => AnchorageArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15078,7 +15078,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(MooringArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => MooringArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => MooringArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -15091,7 +15091,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => MooringArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => MooringArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15145,7 +15145,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(AnchorBerth);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => AnchorBerth._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => AnchorBerth._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -15158,7 +15158,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => AnchorBerth._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => AnchorBerth._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15207,7 +15207,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SeaplaneLandingArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SeaplaneLandingArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SeaplaneLandingArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -15220,7 +15220,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SeaplaneLandingArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SeaplaneLandingArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15272,7 +15272,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DumpingGround);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => DumpingGround._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => DumpingGround._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -15285,7 +15285,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => DumpingGround._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => DumpingGround._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15341,7 +15341,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(MilitaryPracticeArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => MilitaryPracticeArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => MilitaryPracticeArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -15354,7 +15354,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => MilitaryPracticeArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => MilitaryPracticeArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15403,7 +15403,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(AdministrationArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => AdministrationArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => AdministrationArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -15416,7 +15416,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => AdministrationArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => AdministrationArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15467,7 +15467,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CargoTranshipmentArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => CargoTranshipmentArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => CargoTranshipmentArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -15480,7 +15480,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => CargoTranshipmentArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => CargoTranshipmentArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15531,7 +15531,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CautionArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => CautionArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => CautionArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -15544,7 +15544,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => CautionArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => CautionArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15599,7 +15599,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(InformationArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => InformationArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -15612,7 +15612,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => InformationArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => InformationArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15655,7 +15655,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ContiguousZone);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => ContiguousZone._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => ContiguousZone._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -15668,7 +15668,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => ContiguousZone._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => ContiguousZone._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15701,7 +15701,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ContinentalShelfArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => ContinentalShelfArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => ContinentalShelfArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -15714,7 +15714,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => ContinentalShelfArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => ContinentalShelfArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15753,7 +15753,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CustomZone);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => CustomZone._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => CustomZone._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -15766,7 +15766,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => CustomZone._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => CustomZone._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15799,7 +15799,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ExclusiveEconomicZone);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => ExclusiveEconomicZone._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => ExclusiveEconomicZone._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -15812,7 +15812,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => ExclusiveEconomicZone._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => ExclusiveEconomicZone._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15848,7 +15848,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FisheryZone);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => FisheryZone._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => FisheryZone._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -15861,7 +15861,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => FisheryZone._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FisheryZone._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15910,7 +15910,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FishingGround);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => FishingGround._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => FishingGround._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -15923,7 +15923,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => FishingGround._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FishingGround._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15965,7 +15965,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FreePortArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => FreePortArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => FreePortArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -15978,7 +15978,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => FreePortArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FreePortArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16020,7 +16020,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(HarbourAreaAdministrative);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => HarbourAreaAdministrative._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => HarbourAreaAdministrative._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -16033,7 +16033,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => HarbourAreaAdministrative._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => HarbourAreaAdministrative._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16077,7 +16077,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LogPond);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => LogPond._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => LogPond._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -16090,7 +16090,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => LogPond._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => LogPond._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16142,7 +16142,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(OilBarrier);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => OilBarrier._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => OilBarrier._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -16155,7 +16155,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => OilBarrier._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => OilBarrier._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16194,7 +16194,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(StraightTerritorialSeaBaseline);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => StraightTerritorialSeaBaseline._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => StraightTerritorialSeaBaseline._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -16207,7 +16207,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => StraightTerritorialSeaBaseline._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => StraightTerritorialSeaBaseline._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16245,7 +16245,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TerritorialSeaArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => TerritorialSeaArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => TerritorialSeaArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -16258,7 +16258,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => TerritorialSeaArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => TerritorialSeaArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16296,7 +16296,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SubmarineTransitLane);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SubmarineTransitLane._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SubmarineTransitLane._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -16309,7 +16309,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SubmarineTransitLane._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SubmarineTransitLane._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16350,7 +16350,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(PilotageDistrict);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => PilotageDistrict._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => PilotageDistrict._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -16363,7 +16363,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => PilotageDistrict._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => PilotageDistrict._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16416,7 +16416,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CollisionRegulationsLimit);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => CollisionRegulationsLimit._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => CollisionRegulationsLimit._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -16429,7 +16429,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => CollisionRegulationsLimit._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => CollisionRegulationsLimit._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16470,7 +16470,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(MarinePollutionRegulationsArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => MarinePollutionRegulationsArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => MarinePollutionRegulationsArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -16483,7 +16483,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => MarinePollutionRegulationsArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => MarinePollutionRegulationsArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16537,7 +16537,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RestrictedArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => RestrictedArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => RestrictedArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -16550,7 +16550,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => RestrictedArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => RestrictedArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -16648,7 +16648,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LightAllAround);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => LightAllAround._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => LightAllAround._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -16661,7 +16661,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => LightAllAround._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => LightAllAround._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -16752,7 +16752,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LightSectored);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => LightSectored._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => LightSectored._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -16765,7 +16765,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => LightSectored._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => LightSectored._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16852,7 +16852,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LightFogDetector);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => LightFogDetector._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => LightFogDetector._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -16865,7 +16865,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => LightFogDetector._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => LightFogDetector._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -16941,7 +16941,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LightAirObstruction);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => LightAirObstruction._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => LightAirObstruction._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -16954,7 +16954,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => LightAirObstruction._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => LightAirObstruction._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -17036,7 +17036,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LateralBuoy);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => LateralBuoy._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => LateralBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -17049,7 +17049,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => LateralBuoy._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => LateralBuoy._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -17147,7 +17147,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CardinalBuoy);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => CardinalBuoy._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => CardinalBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -17160,7 +17160,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => CardinalBuoy._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => CardinalBuoy._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -17254,7 +17254,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(IsolatedDangerBuoy);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBuoy._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -17267,7 +17267,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBuoy._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBuoy._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -17361,7 +17361,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SafeWaterBuoy);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SafeWaterBuoy._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SafeWaterBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -17374,7 +17374,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SafeWaterBuoy._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBuoy._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -17471,7 +17471,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SpecialPurposeGeneralBuoy);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBuoy._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -17484,7 +17484,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBuoy._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBuoy._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -17573,7 +17573,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(EmergencyWreckMarkingBuoy);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => EmergencyWreckMarkingBuoy._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => EmergencyWreckMarkingBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -17586,7 +17586,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => EmergencyWreckMarkingBuoy._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => EmergencyWreckMarkingBuoy._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -17674,7 +17674,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(InstallationBuoy);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => InstallationBuoy._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => InstallationBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -17687,7 +17687,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => InstallationBuoy._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => InstallationBuoy._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -17764,7 +17764,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(MooringBuoy);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => MooringBuoy._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => MooringBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -17777,7 +17777,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => MooringBuoy._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => MooringBuoy._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -17887,7 +17887,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LateralBeacon);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => LateralBeacon._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => LateralBeacon._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -17900,7 +17900,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => LateralBeacon._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => LateralBeacon._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -18018,7 +18018,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CardinalBeacon);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => CardinalBeacon._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => CardinalBeacon._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -18031,7 +18031,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => CardinalBeacon._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => CardinalBeacon._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -18145,7 +18145,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(IsolatedDangerBeacon);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBeacon._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBeacon._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -18158,7 +18158,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBeacon._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBeacon._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -18272,7 +18272,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SafeWaterBeacon);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SafeWaterBeacon._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SafeWaterBeacon._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -18285,7 +18285,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SafeWaterBeacon._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBeacon._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -18402,7 +18402,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SpecialPurposeGeneralBeacon);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBeacon._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBeacon._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -18415,7 +18415,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBeacon._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBeacon._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -18521,7 +18521,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Daymark);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Daymark._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Daymark._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -18534,7 +18534,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Daymark._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Daymark._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -18644,7 +18644,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LightFloat);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => LightFloat._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => LightFloat._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -18657,7 +18657,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => LightFloat._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => LightFloat._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -18749,7 +18749,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LightVessel);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => LightVessel._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => LightVessel._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -18762,7 +18762,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => LightVessel._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => LightVessel._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -18838,7 +18838,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Retroreflector);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Retroreflector._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Retroreflector._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -18851,7 +18851,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Retroreflector._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Retroreflector._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -18897,7 +18897,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RadarReflector);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => RadarReflector._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => RadarReflector._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -18910,7 +18910,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => RadarReflector._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => RadarReflector._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -18973,7 +18973,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FogSignal);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => FogSignal._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => FogSignal._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -18986,7 +18986,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => FogSignal._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FogSignal._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -19044,7 +19044,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(PhysicalAISAidToNavigation);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => PhysicalAISAidToNavigation._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => PhysicalAISAidToNavigation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -19057,7 +19057,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => PhysicalAISAidToNavigation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => PhysicalAISAidToNavigation._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -19119,7 +19119,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(VirtualAISAidToNavigation);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => VirtualAISAidToNavigation._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => VirtualAISAidToNavigation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -19132,7 +19132,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => VirtualAISAidToNavigation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => VirtualAISAidToNavigation._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -19189,7 +19189,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RadioStation);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => RadioStation._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => RadioStation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -19202,7 +19202,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => RadioStation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => RadioStation._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -19262,7 +19262,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RadarTransponderBeacon);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => RadarTransponderBeacon._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => RadarTransponderBeacon._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -19275,7 +19275,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => RadarTransponderBeacon._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => RadarTransponderBeacon._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -19350,7 +19350,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(PilotBoardingPlace);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => PilotBoardingPlace._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => PilotBoardingPlace._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -19363,7 +19363,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => PilotBoardingPlace._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => PilotBoardingPlace._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -19410,7 +19410,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(VesselTrafficServiceArea);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => VesselTrafficServiceArea._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => VesselTrafficServiceArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -19423,7 +19423,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => VesselTrafficServiceArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => VesselTrafficServiceArea._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -19473,7 +19473,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CoastGuardStation);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => CoastGuardStation._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => CoastGuardStation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -19486,7 +19486,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => CoastGuardStation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => CoastGuardStation._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -19537,7 +19537,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SignalStationWarning);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SignalStationWarning._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SignalStationWarning._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -19550,7 +19550,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SignalStationWarning._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SignalStationWarning._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -19609,7 +19609,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SignalStationTraffic);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SignalStationTraffic._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SignalStationTraffic._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -19622,7 +19622,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SignalStationTraffic._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SignalStationTraffic._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -19681,7 +19681,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RescueStation);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => RescueStation._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => RescueStation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -19694,7 +19694,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => RescueStation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => RescueStation._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -19763,7 +19763,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(HarbourFacility);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => HarbourFacility._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => HarbourFacility._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -19776,7 +19776,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => HarbourFacility._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => HarbourFacility._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -19825,7 +19825,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SmallCraftFacility);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => SmallCraftFacility._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => SmallCraftFacility._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -19838,7 +19838,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => SmallCraftFacility._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => SmallCraftFacility._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -19882,12 +19882,12 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TextPlacement);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -19914,12 +19914,12 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Chart1Feature);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => Chart1Feature._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => Chart1Feature._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => Chart1Feature._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => Chart1Feature._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,

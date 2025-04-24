@@ -2179,7 +2179,7 @@ namespace S100Framework.DomainModel.S124 {
 			public override string Code => nameof(NAVWARNPreamble);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => NAVWARNPreamble._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => NAVWARNPreamble._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -2210,7 +2210,7 @@ namespace S100Framework.DomainModel.S124 {
 			public override string Code => nameof(References);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => References._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => References._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 		}
@@ -2241,7 +2241,7 @@ namespace S100Framework.DomainModel.S124 {
 			public override string Code => nameof(NAVWARNPart);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => NAVWARNPart._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => NAVWARNPart._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -2254,7 +2254,7 @@ namespace S100Framework.DomainModel.S124 {
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => NAVWARNPart._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => NAVWARNPart._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -2285,12 +2285,12 @@ namespace S100Framework.DomainModel.S124 {
 			public override string Code => nameof(NAVWARNAreaAffected);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => NAVWARNAreaAffected._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => NAVWARNAreaAffected._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => NAVWARNAreaAffected._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => NAVWARNAreaAffected._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -2328,12 +2328,12 @@ namespace S100Framework.DomainModel.S124 {
 			public override string Code => nameof(TextPlacement);
 
 			[JsonIgnore]
-			public informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			public featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
