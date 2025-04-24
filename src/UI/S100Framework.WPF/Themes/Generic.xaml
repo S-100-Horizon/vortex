@@ -159,7 +159,7 @@
                                                 <GridViewColumn Width="32">
                                                     <GridViewColumn.CellTemplate>
                                                         <DataTemplate>
-                                                            <Button>
+                                                            <Button ToolTip="Doubleclick to remove binding!">
                                                                 <Image Height="16" Width="16" Margin="1" Source="./../Images/Delete16.png" />
                                                                 <i:Interaction.Triggers>
                                                                     <i:EventTrigger EventName="MouseDoubleClick">
@@ -309,7 +309,7 @@
                                                 <GridViewColumn Width="32">
                                                     <GridViewColumn.CellTemplate>
                                                         <DataTemplate>
-                                                            <Button>
+                                                            <Button ToolTip="Doubleclick to remove binding!">
                                                                 <Image Height="16" Width="16" Margin="1" Source="./../Images/Delete16.png" />
                                                                 <i:Interaction.Triggers>
                                                                     <i:EventTrigger EventName="MouseDoubleClick">
