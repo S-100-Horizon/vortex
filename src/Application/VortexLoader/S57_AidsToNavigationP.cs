@@ -139,6 +139,8 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
+
+
                             AddInformation(instance.information, feature);
 
                             instance.pictorialRepresentation = current.PICREP;

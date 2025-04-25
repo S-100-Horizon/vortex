@@ -55,6 +55,10 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CATCBL.HasValue) {
+                                if (current.CATCBL.Value == 4) { // TODO: handle cable type == 4
+                                    continue;
+                                }
+
                                 instance.categoryOfCable = EnumHelper.GetEnumValue<categoryOfCable>(current.CATCBL.Value);
                             };
 

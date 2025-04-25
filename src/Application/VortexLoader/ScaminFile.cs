@@ -144,44 +144,57 @@ namespace S100Framework.Applications
         }
 
         private void LoadObjects() {
-            _objects = new List<ObjectData>();
-            foreach (var o in root.Descendants("Object")) {
-                var name = Convert.ToString(o.Attribute("Name"));
-                var ptype = Convert.ToString(o.Attribute("PrimitiveType"));
-                var condition = Convert.ToBoolean(o.Attribute("HasCondition"));
-                var stepValue = Convert.ToString(o.Attribute("DefaultStepValue"));
+            _objects = root.Descendants("Object")
+                              .Select(o => new ObjectData {
+                                  Name = (string)o.Attribute("Name"),
+                                  PrimitiveType = (string)o.Attribute("PrimitiveType"),
+                                  HasCondition = (bool)o.Attribute("HasCondition"),
+                                  DefaultStepValue = (string)o.Attribute("DefaultStepValue"),
+                                  Conditions = o.Descendants("Condition")
+                                                .Select(c => c.Descendants("Rule")
+                                                              .Select(r => (string)r.Attribute("Type"))
+                                                              .ToList())
+                                                .ToList()
+                              })
+                              .ToList();
+            //_objects = new List<ObjectData>();
+            //foreach (var o in root.Descendants("Object")) {
+            //    var name = Convert.ToString(o.Attribute("Name"));
+            //    var ptype = Convert.ToString(o.Attribute("PrimitiveType"));
+            //    var condition = Convert.ToBoolean(o.Attribute("HasCondition"));
+            //    var stepValue = Convert.ToString(o.Attribute("DefaultStepValue"));
 
-                if (name == null) {
-                    throw new ArgumentException("Empty name in scamin file");
-                }
-                if (ptype == null) {
-                    throw new ArgumentException("empty PrimitiveType in scamin file");
-                }
-                if (stepValue == null) {
-                    throw new ArgumentException("empty stepvalue in scamin file");
-                }
+            //    if (name == null) {
+            //        throw new ArgumentException("Empty name in scamin file");
+            //    }
+            //    if (ptype == null) {
+            //        throw new ArgumentException("empty PrimitiveType in scamin file");
+            //    }
+            //    if (stepValue == null) {
+            //        throw new ArgumentException("empty stepvalue in scamin file");
+            //    }
 
-                List<List<string>> conditions = new List<List<string>>();
+            //    List<List<string>> conditions = new List<List<string>>();
 
-                foreach (var c in o.Descendants("Condition")) {
-                    var rules = new List<string>();
-                    foreach (var e in c.Descendants("Rule")) {
-                        var ruleType = Convert.ToString(e.Attribute("Type"));
-                        if (ruleType != null) {
-                            rules.Add(ruleType);
-                        }
-                    }
-                    conditions.Add(rules);
-                }
+            //    foreach (var c in o.Descendants("Condition")) {
+            //        var rules = new List<string>();
+            //        foreach (var e in c.Descendants("Rule")) {
+            //            var ruleType = Convert.ToString(e.Attribute("Type"));
+            //            if (ruleType != null) {
+            //                rules.Add(ruleType);
+            //            }
+            //        }
+            //        conditions.Add(rules);
+            //    }
 
-                _objects.Add(new ObjectData {
-                    Name = name,
-                    PrimitiveType = ptype,
-                    HasCondition = condition,
-                    DefaultStepValue = stepValue,
-                    Conditions = conditions,
-                });
-            }
+            //    _objects.Add(new ObjectData {
+            //        Name = name,
+            //        PrimitiveType = ptype,
+            //        HasCondition = condition,
+            //        DefaultStepValue = stepValue,
+            //        Conditions = conditions,
+            //    });
+            //}
         }
 
         private int? GetDefaultStepValueByName(string name, PrimitiveType primitiveType, bool isRelatedToStructure) {
