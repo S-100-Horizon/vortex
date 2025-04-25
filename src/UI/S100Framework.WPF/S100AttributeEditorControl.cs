@@ -762,7 +762,11 @@ namespace S100Framework.WPF
             if (InformationBindingDefinitionSelected != null) {
                 var viewModel = ((System.Windows.Controls.ContentControl)e.Parameter).Content as InformationBindingViewModel;
                 if (viewModel != null) {
-                    await Host.DeleteInformationBinding(new DeleteInformationBindingEventArgs(viewModel.UID, this));
+                    var result = await Host.DeleteInformationBinding(new DeleteInformationBindingEventArgs(viewModel.UID, this));
+
+                    if (result) {
+                        this._selectedInformationBindings!.Remove(viewModel);
+                    }
                 }
             }
         }
@@ -842,7 +846,11 @@ namespace S100Framework.WPF
             if (FeatureBindingDefinitionSelected != null) {
                 var viewModel = ((System.Windows.Controls.ContentControl)e.Parameter).Content as FeatureBindingViewModel;
                 if (viewModel != null) {
-                    await Host.DeleteFeatureBinding(new DeleteFeatureBindingEventArgs(viewModel.UID, this));
+                    var result = await Host.DeleteFeatureBinding(new DeleteFeatureBindingEventArgs(viewModel.UID, this));
+
+                    if (result) {
+                        this._selectedFeatureBindings!.Remove(viewModel);
+                    }
                 }
             }
         }

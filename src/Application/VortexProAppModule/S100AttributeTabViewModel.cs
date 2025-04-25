@@ -2,6 +2,7 @@
 
 using ActiproSoftware.Windows.Extensions;
 using ArcGIS.Core.Data;
+using ArcGIS.Core.Data.DDL;
 using ArcGIS.Core.Events;
 using ArcGIS.Desktop.Core;
 using ArcGIS.Desktop.Editing;
@@ -324,18 +325,7 @@ namespace VortexProAppModule
                             Name = S100AttributesUpdate,
                         };
 
-                        using var fc = Inspector.MapMember switch {
-                            FeatureLayer l => l.GetFeatureClass(),
-                            StandaloneTable t => t.GetTable(),
-                            _ => throw new InvalidOperationException(),
-                        };
-
-                        using var geodatabase = (Geodatabase)fc.GetDatastore();
-
-                        var syntax = geodatabase.GetSQLSyntax();
-                        var tableNames = syntax.ParseTableName(fc.GetName());
-
-                        using var table = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "associationbinding"));
+                        using var table = Inspector.OpenDataset<Table>("associationbinding");
 
                         var token = editOperation.Create(table, new Dictionary<string, object> {
                             { "type", "InformationBinding" },
@@ -358,7 +348,31 @@ namespace VortexProAppModule
                 },
 
                 DeleteInformationBinding = async (DeleteInformationBindingEventArgs e) => {
-                    return false;
+                    return await QueuedTask.Run(() => {
+                        var editOperation = new EditOperation {
+                            Name = S100AttributesUpdate,
+                        };
+
+                        using var table = Inspector.OpenDataset<Table>("associationbinding");
+
+                        using var cursor = table.Search(new QueryFilter {
+                            WhereClause = $"GLOBALID = '{e.Uuid:B}'"
+                        }, false);
+
+                        if (!cursor.MoveNext())
+                            return false;
+
+                        editOperation.Delete(table, cursor.Current.GetObjectID());
+
+                        if (!editOperation.IsEmpty) {
+                            if (editOperation.Execute()) {
+                                return true;
+                            }
+                            else if (System.Diagnostics.Debugger.IsAttached)
+                                System.Diagnostics.Debugger.Break();
+                        }
+                        return false;
+                    }, TaskCreationOptions.None);                    
                 },
 
                 CreateFeatureBinding = async (CreateFeatureBindingEventArgs e) => {
@@ -366,19 +380,8 @@ namespace VortexProAppModule
                         var editOperation = new EditOperation {
                             Name = S100AttributesUpdate,
                         };
-
-                        using var fc = Inspector.MapMember switch {
-                            FeatureLayer l => l.GetFeatureClass(),
-                            StandaloneTable t => t.GetTable(),
-                            _ => throw new InvalidOperationException(),
-                        };
-
-                        using var geodatabase = (Geodatabase)fc.GetDatastore();
-
-                        var syntax = geodatabase.GetSQLSyntax();
-                        var tableNames = syntax.ParseTableName(fc.GetName());
-
-                        using var table = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "associationbinding"));
+                        
+                        using var table = Inspector.OpenDataset<Table>("associationbinding");
 
                         var token = editOperation.Create(table, new Dictionary<string, object> {
                             { "type", "FeatureBinding" },
@@ -401,7 +404,31 @@ namespace VortexProAppModule
                 },
 
                 DeleteFeatureBinding = async (DeleteFeatureBindingEventArgs e) => {
-                    return false;
+                    return await QueuedTask.Run(() => {
+                        var editOperation = new EditOperation {
+                            Name = S100AttributesUpdate,
+                        };                        
+
+                        using var table = Inspector.OpenDataset<Table>("associationbinding");
+
+                        using var cursor = table.Search(new QueryFilter {
+                            WhereClause = $"GLOBALID = '{e.Uuid:B}'"
+                        }, false);
+
+                        if (!cursor.MoveNext())
+                            return false;
+
+                        editOperation.Delete(table, cursor.Current.GetObjectID());
+
+                        if (!editOperation.IsEmpty) {
+                            if (editOperation.Execute()) {
+                                return true;
+                            }
+                            else if (System.Diagnostics.Debugger.IsAttached)
+                                System.Diagnostics.Debugger.Break();
+                        }
+                        return false;
+                    }, TaskCreationOptions.None);
                 },
             };
         }
