@@ -16,15 +16,21 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:S100AttributeEditorControl}">
 
-                    <StackPanel Margin="{TemplateBinding Padding}" Orientation="Vertical" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                        <xctk:PropertyGrid x:Name="PART_PropertyGrid"
+                    <!--<StackPanel Margin="{TemplateBinding Padding}" Orientation="Vertical" ScrollViewer.VerticalScrollBarVisibility="Auto">-->
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        
+                        <xctk:PropertyGrid x:Name="PART_PropertyGrid" Grid.Row="0"
                                                    AutoGenerateProperties="True"                           
                                                    UpdateTextBoxSourceOnEnterKey="True"
                                                    ShowAdvancedOptions="True"
                                                    ShowSummary="False">
-                            </xctk:PropertyGrid>
+                        </xctk:PropertyGrid>
 
-                        <Border Background="{TemplateBinding Background}"
+                        <Border Grid.Row="1" Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="0">
                             <StackPanel Margin="{TemplateBinding Padding}" Orientation="Vertical">
@@ -329,7 +335,8 @@
                                 </StackPanel>
                             </StackPanel>
                         </Border>
-                    </StackPanel>
+                        <!--</StackPanel>-->
+                    </Grid>
 
                     <ControlTemplate.Triggers>
                         <!--<EventTrigger RoutedEvent="xctk:DropDownButton.ContextMenuOpening" SourceName="associationId"> 
