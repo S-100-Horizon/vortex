@@ -109,7 +109,7 @@ namespace S100Framework.Applications
                             bufferPointset["code"] = sounding.GetType().Name;
 
                             var featureN = featureClass.CreateRow(bufferPointset);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
 
@@ -142,12 +142,12 @@ namespace S100Framework.Applications
 
                             bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
                             var featureN = featureClass.CreateRow(bufferPointset);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
 

@@ -43,10 +43,10 @@ namespace S100Framework.Applications
                     case 1: { // ACHARE_AnchorageArea
                             var instance = new AnchorageArea();
                             
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
-                            
+
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
@@ -58,7 +58,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -71,7 +71,7 @@ namespace S100Framework.Applications
                     case 5: { // ACHBRT_AnchorBerth
                             var instance = new AnchorBerth();
                             
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -86,7 +86,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -99,7 +99,7 @@ namespace S100Framework.Applications
                     case 10: { // ADMARE_AdministrationAreaNamed
                             var instance = new AdministrationArea();
                             
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -118,7 +118,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -131,10 +131,10 @@ namespace S100Framework.Applications
                     case 15: { // ARCSLN_ArchipelagicSeaLane
                             var instance = new ArchipelagicSeaLane();
                             
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
-                            
+
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -143,7 +143,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -156,7 +156,7 @@ namespace S100Framework.Applications
                     case 20: { // CONZNE_ContiguousZone
                             var instance = new ContiguousZone();
                             
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -171,7 +171,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -184,10 +184,10 @@ namespace S100Framework.Applications
                     case 25: { // COSARE_ContinentalShelfArea
                             var instance = new ContinentalShelfArea();
                             
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
-                            
+
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -196,7 +196,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -209,7 +209,7 @@ namespace S100Framework.Applications
                     case 30: { // CTSARE_CargoTranshipmentArea
                             var instance = new CargoTranshipmentArea();
                             
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -224,7 +224,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -237,10 +237,10 @@ namespace S100Framework.Applications
                     case 35: { // CUSZNE_CustomZone
                             var instance = new CustomZone();
                             
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
-                            
+
                             //instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -249,7 +249,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -262,7 +262,7 @@ namespace S100Framework.Applications
                     case 40: { // DMPGRD_DumpingGround
                             var instance = new DumpingGround();
                             
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -277,7 +277,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -290,10 +290,10 @@ namespace S100Framework.Applications
                     case 50: { // EXEZNE_ExclusiveEconomicZone
                             var instance = new ExclusiveEconomicZone();
                             
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
-                            
+
                             
 
                             AddInformation(instance.information, feature);
@@ -303,7 +303,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -316,7 +316,7 @@ namespace S100Framework.Applications
                     case 55: { // FRPARE_FreePortArea
                             var instance = new FreePortArea();
                             
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -331,7 +331,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -344,13 +344,14 @@ namespace S100Framework.Applications
                     case 60: { // FSHGRD_FishingGround
                             var instance = new FishingGround();
                             
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
+
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -359,7 +360,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -372,7 +373,7 @@ namespace S100Framework.Applications
                     case 65: { // FSHZNE_FisheryZone
                             var instance = new FisheryZone();
                             
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -387,7 +388,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -400,7 +401,7 @@ namespace S100Framework.Applications
                     case 70: { // HRBARE_HarbourAreaAdministrative
                             var instance = new HarbourAreaAdministrative();
                             
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -415,7 +416,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -434,7 +435,7 @@ namespace S100Framework.Applications
                     case 85: { // LOGPON_LogPond
                             var instance = new LogPond();
                             
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -449,7 +450,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -514,7 +515,7 @@ namespace S100Framework.Applications
                                 instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -526,7 +527,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -567,7 +568,7 @@ namespace S100Framework.Applications
 
                             // TODO: Vesselspeedlimit
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -578,7 +579,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -591,7 +592,7 @@ namespace S100Framework.Applications
                     case 110: { // SPLARE_SeaPlaneLandingArea
                             var instance = new SeaplaneLandingArea();
                             
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -606,7 +607,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -619,7 +620,7 @@ namespace S100Framework.Applications
                     case 115: { // TESARE_TerritorialSeaArea
                             var instance = new TerritorialSeaArea();
                             
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -640,7 +641,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             

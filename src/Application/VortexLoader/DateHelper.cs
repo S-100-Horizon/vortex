@@ -22,7 +22,7 @@ namespace S100Framework.Applications
     public static class DateHelper
     {
 
-        public static bool TryConvertToDateOnly(string dateString, out DateOnly dateOnly) {
+        public static bool TryConvertToDateOnly(string? dateString, out DateOnly dateOnly) {
             if (dateString == null) {
                 dateOnly = default;
                 return false;
@@ -41,7 +41,7 @@ namespace S100Framework.Applications
         }
 
 
-        internal static bool TryGetPeriodicDateRange(string? start, string? end, out List<periodicDateRange> value) {
+        internal static bool TryGetPeriodicDateRange(string? start, string? end, out List<periodicDateRange>? value) {
             if (start != default) {
                 if (end != default) {
                     if (DateHelper.TryConvertToDateOnly(end, out var dateEnd)) {

@@ -43,7 +43,7 @@ namespace S100Framework.Applications
                     case 1: { // DWRTCL_DeepWaterRouteCenterline
                             var instance = new DeepWaterRouteCentreline() {
                             };
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -65,7 +65,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -78,7 +78,7 @@ namespace S100Framework.Applications
                     case 5: { // FERYRT_FerryRoute
                             var instance = new FerryRoute() {
                             };
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -94,7 +94,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -107,7 +107,7 @@ namespace S100Framework.Applications
                     case 10: { // NAVLNE_NavigationLine
                             var instance = new NavigationLine() {
                             };
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -132,7 +132,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -145,7 +145,7 @@ namespace S100Framework.Applications
                     case 15: { // RADLNE_RadarLine
                             var instance = new RadarLine() {
                             };
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -161,7 +161,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -174,7 +174,7 @@ namespace S100Framework.Applications
                     case 20: { // RCRTCL_RecommendedRouteCenterline
                             var instance = new RecommendedRouteCentreline() {
                             };
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -190,7 +190,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -203,7 +203,7 @@ namespace S100Framework.Applications
                     case 25: { // RDOCAL_RadioCallingInPoint
                             var instance = new RadioCallingInPoint() {
                             };
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -219,7 +219,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -232,7 +232,7 @@ namespace S100Framework.Applications
                     case 30: { // RECTRC_RecommendedTrack
                             var instance = new RecommendedTrack() {
                             };
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -247,7 +247,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -260,7 +260,7 @@ namespace S100Framework.Applications
                     case 40: { // TSELNE_TrafficSeparationLine
                             var instance = new SeparationZoneOrLine() {
                             };
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -276,7 +276,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -289,7 +289,7 @@ namespace S100Framework.Applications
                     case 45: { // TSSBND_TrafficSeparationSchemeBoundary
                             var instance = new TrafficSeparationSchemeBoundary() {
                             };
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -305,7 +305,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             

@@ -71,17 +71,18 @@ namespace S100Framework.Applications
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 ImporterNIS.SetShape(buffer, productCoverage.SHAPE);
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = Convert.ToString(featureN["name"]);
+                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
                                 // TODO: Create relations
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
                             }
 
-                            var dataCoverage = new DataCoverage() { 
-                                maximumDisplayScale = displayScale.MaximumDisplayScale,
-                                optimumDisplayScale = displayScale.OptimumDisplayScale,
-                                minimumDisplayScale = displayScale.MinimumDisplayScale.Value
-                            }; 
-                            
+                            var dataCoverage = new DataCoverage();
+
+                            if (displayScale != null) {
+                                dataCoverage.maximumDisplayScale = displayScale.MaximumDisplayScale;
+                                dataCoverage.minimumDisplayScale = displayScale.MinimumDisplayScale.GetValueOrDefault();
+                                dataCoverage.optimumDisplayScale = displayScale.OptimumDisplayScale;
+                            } 
                             {
                                 var vdat = new VerticalDatumOfData();
 
@@ -94,7 +95,7 @@ namespace S100Framework.Applications
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(vdat);
                                 ImporterNIS.SetShape(buffer, productCoverage.SHAPE);
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = Convert.ToString(featureN["name"]);
+                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                                 // TODO: Create relations
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
@@ -105,7 +106,7 @@ namespace S100Framework.Applications
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage);
                                 ImporterNIS.SetShape(buffer, productCoverage.SHAPE);
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = Convert.ToString(featureN["name"]);
+                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                                 // TODO: Create relations
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);

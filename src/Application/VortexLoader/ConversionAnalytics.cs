@@ -12,7 +12,7 @@ namespace S100Framework.Applications
         IDictionary<Guid,List<string>> _convertedS57Objects;
         IDictionary<string,IDictionary<Guid,List<string>>> _tableNameToConvertedS57Objects;
 
-        private static ConversionAnalytics _instance;
+        private static ConversionAnalytics? _instance;
 
         private ConversionAnalytics() {
             this._convertedS57Objects = new Dictionary<Guid,List<string>>();

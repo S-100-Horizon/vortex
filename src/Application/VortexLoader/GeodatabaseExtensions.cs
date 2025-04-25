@@ -26,7 +26,7 @@ namespace S100Framework.Applications
             set { _layerDefinitions = value; }
         }
 
-        internal static string GetName(this Geodatabase geodatabase, string name) {
+        internal static string? GetName(this Geodatabase geodatabase, string name) {
             if (!_isInitialized) {
                 geodatabase.Initialize();
                 //_isInitialized = true;

@@ -305,8 +305,9 @@ namespace TestNisImporter
             using (StreamWriter file = new StreamWriter(filePath)) {
                 foreach (var dataset in datasets) {
                     if (dataset is FeatureClass) {
-                        var subtypes = (dataset as FeatureClass).GetDefinition().GetSubtypes();
-                        var fields = (dataset as FeatureClass).GetDefinition().GetFields();
+                        var featureclass = (FeatureClass)dataset;
+                        var subtypes = featureclass.GetDefinition().GetSubtypes();
+                        var fields = featureclass.GetDefinition().GetFields();
                         var fieldHasData = new Dictionary<string, bool>();
                         var fieldAlias = new Dictionary<string, string>();
 

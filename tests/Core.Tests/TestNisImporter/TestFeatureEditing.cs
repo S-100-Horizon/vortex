@@ -23,8 +23,6 @@ namespace TestNisImporter
             serviceProps.Version = "B061450 @PROD.Test";
             var geodatabase = new Geodatabase(serviceProps);
 
-
-
             var featureDefs = geodatabase.GetDefinitions<FeatureClassDefinition>();
 
             foreach (var def in featureDefs) {

@@ -29,8 +29,8 @@ namespace S100Framework.Applications
 
         internal static readonly int CompilationScale = 22000; // Used as filter for spatial queries to transfer attributes from other features based on location analysis
 
-        internal static FeatureRelations featureRelations = new FeatureRelations();
-        internal static RelatedEquipment relatedEquipment;
+        internal static FeatureRelations? featureRelations;
+        internal static RelatedEquipment? relatedEquipment;
 
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
             Logger.Current.Information("Starting");
@@ -106,7 +106,9 @@ namespace S100Framework.Applications
                     informationAssociation.DeleteRows(query);
                 });
 
-                featureRelations.Initialize(source);
+                featureRelations = new FeatureRelations(source);
+                featureRelations.Initialize();
+
                 relatedEquipment = new RelatedEquipment(source, featureRelations);
 
                 if (skinOfEarthOnly) {

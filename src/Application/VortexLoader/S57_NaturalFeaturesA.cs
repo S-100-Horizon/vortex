@@ -64,7 +64,7 @@ namespace S100Framework.Applications
                                 instance.elevation = elevat;
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -86,7 +86,7 @@ namespace S100Framework.Applications
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["shape"] = current.SHAPE;
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
 
@@ -122,7 +122,7 @@ namespace S100Framework.Applications
                                     instance.reportedDate = dateOnly;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -130,7 +130,7 @@ namespace S100Framework.Applications
                                 instance.status = GetSingleStatus(current.STATUS);
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -142,7 +142,7 @@ namespace S100Framework.Applications
                             bufferSurface["shape"] = current.SHAPE;
                             
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
 
@@ -165,7 +165,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -187,7 +187,7 @@ namespace S100Framework.Applications
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["shape"] = current.SHAPE;
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
 
@@ -206,7 +206,7 @@ namespace S100Framework.Applications
                                 status = null,
                                 scaleMinimum = null,
                             };
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -228,7 +228,7 @@ namespace S100Framework.Applications
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["shape"] = current.SHAPE;
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
 
@@ -263,7 +263,7 @@ namespace S100Framework.Applications
                                 instance.categoryOfSeaArea = EnumHelper.GetEnumValue<categoryOfSeaArea>(current.CATSEA.Value);
                             }
                             
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -277,7 +277,7 @@ namespace S100Framework.Applications
                             bufferSurface["shape"] = current.SHAPE;
 
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
 
@@ -323,7 +323,7 @@ namespace S100Framework.Applications
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -336,7 +336,7 @@ namespace S100Framework.Applications
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["shape"] = current.SHAPE;
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
 
@@ -380,7 +380,7 @@ namespace S100Framework.Applications
                                 instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -392,7 +392,7 @@ namespace S100Framework.Applications
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["shape"] = current.SHAPE;
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
 

@@ -46,41 +46,40 @@ namespace S100Framework.Applications
                             // these attributes are not relevant for Cable Submarine in S - 101.
 
                             var instance = new CableSubmarine();
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
-
-                            /* S57
-                             * Code	Description
-                                1	power line
-                                3	transmission line
-                                4	telephone
-                                5	telegraph
-                                6	mooring cable/chain
-                                -1	Unknown
-                             */
-
-
-                            if (current.CATCBL != default) {
-                                instance.categoryOfCable = current.CATCBL switch {
-                                    1 => categoryOfCable.PowerLine,
-                                    3 => categoryOfCable.TransmissionLine,
-                                    4 => categoryOfCable.TelecommunicationsCable, //CATCBL value 4 (telephone) will convert to category of cable value 10 (telecommunications cable).
-                                    5 => categoryOfCable.MooringCable,
-                                    -32767 =>null,
-                                    _ => throw new IndexOutOfRangeException(),
-                                };
+                            if (current.BURDEP.HasValue) {
+                                instance.buriedDepth = current.BURDEP.Value;
                             }
+
+                            if (current.CATCBL.HasValue) {
+                                instance.categoryOfCable = EnumHelper.GetEnumValue<categoryOfCable>(current.CATCBL.Value);
+                            };
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                            }
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -88,7 +87,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -100,7 +99,7 @@ namespace S100Framework.Applications
                         break;
                     case 5: { // PIPSOL_PipelineSubmarineOnLand
                             var instance = new PipelineSubmarineOnLand();
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -119,7 +118,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             

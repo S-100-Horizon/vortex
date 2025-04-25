@@ -38,7 +38,7 @@ namespace S100Framework.Applications
             MinimumDisplayScale = minimumDisplayScale;
         }
 
-        public static DisplayScale GetNearestBelowKey(int key) {
+        public static DisplayScale? GetNearestBelowKey(int key) {
             // Find all keys less than or equal to the provided key
             var nearestKey = DisplayScales.Keys
                                           .Where(k => k <= key)

@@ -97,7 +97,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
@@ -113,59 +113,13 @@ namespace S100Framework.Applications
                             // (quay).
 
                             var instance = new ShorelineConstruction();
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
-
-                            /*
-                                NAUTICAL_ENC_CATSLC
-			                    -1: Unknown
-			                    1: breakwater
-			                    2: groyne (groin)
-			                    3: mole
-			                    4: pier (jetty)
-			                    5: promenade pier
-			                    6: wharf (quay)
-			                    7: training wall
-			                    8: rip rap
-			                    9: revetment
-			                    10: sea wall
-			                    11: landing steps
-			                    12: ramp
-			                    13: slipway
-			                    14: fender
-			                    15: solid face wharf
-			                    16: open face wharf
-			                    17: log ramp
-                            */
-
-                            if (catslc != default) {
-                                categoryOfShorelineConstruction? e = catslc switch {
-                                    1 => categoryOfShorelineConstruction.Breakwater,
-                                    2 => categoryOfShorelineConstruction.Groyne,
-                                    3 => categoryOfShorelineConstruction.Mole,
-                                    4 => categoryOfShorelineConstruction.PierJetty, 
-                                    5 => categoryOfShorelineConstruction.PromenadePier, 
-                                    6 => categoryOfShorelineConstruction.Wharf,
-                                    7 => categoryOfShorelineConstruction.TrainingWall,
-                                    8 => categoryOfShorelineConstruction.RipRap,
-                                    9 => categoryOfShorelineConstruction.Revetment, 
-                                    10 => categoryOfShorelineConstruction.SeaWall, 
-                                    11 => categoryOfShorelineConstruction.LandingSteps, 
-                                    12 => categoryOfShorelineConstruction.Ramp, 
-                                    13 => categoryOfShorelineConstruction.Slipway, 
-                                    14 => categoryOfShorelineConstruction.Fender, 
-                                    15 => categoryOfShorelineConstruction.SolidFaceWharf, 
-                                    16 => categoryOfShorelineConstruction.OpenFaceWharf, 
-                                    17 => categoryOfShorelineConstruction.LogRamp, 
-                                    -32767 =>(categoryOfShorelineConstruction)(-1),
-                                    _ => throw new IndexOutOfRangeException($"catslc to categoryOfShorelineConstruction: {catslc}")
-                                };
-                                if (e.HasValue) {
-                                    instance.categoryOfShorelineConstruction = e.Value;
-                                }
-                            }
+                            if (current.CATSLC.HasValue) {
+                                instance.categoryOfShorelineConstruction = EnumHelper.GetEnumValue<categoryOfShorelineConstruction>(current.CATSLC.Value);
+                            };
 
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
@@ -195,7 +149,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             

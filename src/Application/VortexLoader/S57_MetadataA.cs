@@ -88,7 +88,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -100,13 +100,15 @@ namespace S100Framework.Applications
                         break;
 
                     case 20: { // M_CSCL_CompilationScaleOfData
+
+
                             var instance = new DataCoverage();
 
-                            instance.maximumDisplayScale = displayScale.MaximumDisplayScale;
-                            instance.minimumDisplayScale = displayScale.MinimumDisplayScale.Value;
-                            instance.optimumDisplayScale = displayScale.OptimumDisplayScale;
-
-                             
+                            if (displayScale != null) {
+                                instance.maximumDisplayScale = displayScale.MaximumDisplayScale;
+                                instance.minimumDisplayScale = displayScale.MinimumDisplayScale.GetValueOrDefault();
+                                instance.optimumDisplayScale = displayScale.OptimumDisplayScale;
+                            }
 
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -114,7 +116,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -136,7 +138,7 @@ namespace S100Framework.Applications
                         break;
                     case 30: { // M_NPUB_NauticalPublicationInformation
                             var instance = new InformationArea();
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -145,7 +147,7 @@ namespace S100Framework.Applications
                                     instance.reportedDate = dateOnly;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -163,7 +165,7 @@ namespace S100Framework.Applications
                             SetShape(buffer,current.SHAPE);
                             
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -187,7 +189,7 @@ namespace S100Framework.Applications
                             SetShape(buffer,current.SHAPE);
                             
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -229,7 +231,7 @@ namespace S100Framework.Applications
                                 instance.depthRangeMinimumValue = current.DRVAL1;
                             }
 
-                            if (current.DRVAL2.HasValue && current.DRVAL1.Value != -32767m) {
+                            if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767m) {
                                 instance.depthRangeMaximumValue = current.DRVAL2;
                             }
 
@@ -261,7 +263,7 @@ namespace S100Framework.Applications
                             SetShape(buffer,current.SHAPE);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             
@@ -276,7 +278,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                                                         var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -296,7 +298,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                                                         var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -355,7 +357,7 @@ namespace S100Framework.Applications
                                     SetShape(buffer,current.SHAPE);
                                     
                                     var featureN = featureClass.CreateRow(buffer);
-                                    var name = Convert.ToString(featureN["name"]);
+                                    var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                                     // TODO: Create relations
                             
