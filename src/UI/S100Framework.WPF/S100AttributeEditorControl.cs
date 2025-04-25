@@ -826,8 +826,18 @@ namespace S100Framework.WPF
 
         public static RoutedUICommand AddFeatureBindingCommand = new("Add feature binding.", "AddFeatureBindingCommandContent", typeof(S100AttributeEditorControl));
 
-        private void AddFeatureBindingCommandContent(object sender, ExecutedRoutedEventArgs e) {
+        private async void AddFeatureBindingCommandContent(object sender, ExecutedRoutedEventArgs e) {
             if (FeatureBindingDefinitionSelected != null) {
+                var uuid = await Host.CreateFeatureBinding(new CreateFeatureBindingEventArgs(
+                                    roleType: FeatureBindingDefinitionSelected.roleType,
+                                    association: FeatureBindingDefinitionSelected.association,
+                                    role: FeatureBindingDefinitionSelected.role,
+                                    PID: ((PID?)this._selectedObject)?.PID,
+                                    this));
+
+                if (!uuid.HasValue)
+                    return;
+
                 var binding = new featureBinding {
                     roleType = Enum.GetName<roleType>(FeatureBindingDefinitionSelected.roleType)!,
                     association = FeatureBindingDefinitionSelected.association,
@@ -836,6 +846,7 @@ namespace S100Framework.WPF
                 };
 
                 this._selectedFeatureBindings!.Add(new FeatureBindingViewModel {
+                    UID = uuid,
                 }.Load(binding));
             }
         }
