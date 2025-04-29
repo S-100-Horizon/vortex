@@ -4,22 +4,20 @@ using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using System.Linq;
+using S100Framework.DomainModel;
 
 namespace S100Framework.Applications
 {
     internal class RelatedEquipment
     {
-
-        FeatureRelations _featureRelations;
         Geodatabase _source;
 
-        public RelatedEquipment(Geodatabase source, FeatureRelations featureRelations) {
-            this._featureRelations = featureRelations;
+        public RelatedEquipment(Geodatabase source) {
             this._source = source;
         }
 
         internal topmark? GetTopMark(AidsToNavigationP structure) {
-            var topmarks = _featureRelations.GetRelated<AidsToNavigationP>(typeof(topmark), structure.GLOBALID);
+            var topmarks = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(topmark), structure.GLOBALID);
 
             if (topmarks == null || topmarks.Count() == 0) {
                 return null;
@@ -33,7 +31,7 @@ namespace S100Framework.Applications
 
             if (relatedTopmark != null) {
 
-                List<colour> topmarkColours = null;
+                List<colour>? topmarkColours = null;
 
                 colourPattern? topmarkColourPattern = null;
 
@@ -47,7 +45,7 @@ namespace S100Framework.Applications
 
                 var topmark = new topmark() {
                     // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
-                    shapeInformation = default
+                    
                 };
 
                 if (topmarkColours != null) {
@@ -67,11 +65,11 @@ namespace S100Framework.Applications
         }
 
         internal bool HasRelatedSlaves(Guid globalid) {
-            return _featureRelations.GetRelatedCount(globalid) > 0;
+            return FeatureRelations.Instance.GetRelatedCount(globalid) > 0;
         }
 
         internal Daymark? GetDayMark(AidsToNavigationP structure) {
-            var daymarks = _featureRelations.GetRelated<AidsToNavigationP>(typeof(Daymark), structure.GLOBALID);
+            var daymarks = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(Daymark), structure.GLOBALID);
 
             if (daymarks == null || daymarks.Count() == 0) {
                 return null;
@@ -99,7 +97,7 @@ namespace S100Framework.Applications
 
                 var daymark = new Daymark() {
                     // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
-                    shapeInformation = default
+                    
                 };
 
                 if (daymarkColours != null) {
@@ -118,11 +116,14 @@ namespace S100Framework.Applications
             return null;
         }
 
-        internal void CreateRelatedEquipment(S57Object s57Object, string structureId, Geodatabase target) {
+        internal void CreateRelatedEquipment(S57Object s57Object, FeatureNode featurenode,string name, Geodatabase target) {
+
+            var bindingDefinition = featurenode.featureBindingDefinitions;
+
             if (s57Object is AidsToNavigationP) {
                 var sourceTable = "AidsToNavigationP";
                 var structure = (AidsToNavigationP)s57Object;
-                bool hasRelated = _featureRelations.HasRelated(structure.GLOBALID);
+                bool hasRelated = FeatureRelations.Instance.HasRelated(structure.GLOBALID);
                 if (!hasRelated) {
                     return;
                 }
@@ -133,7 +134,12 @@ namespace S100Framework.Applications
 
                 //var types = FeatureRelations.GetS101CatlitTypeFrom(structure);
 
-                var related = _featureRelations.GetRelated<AidsToNavigationP>(typeof(LightSectored), structure.GLOBALID);
+                var related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightSectored), structure.GLOBALID);
+
+                if (related == null) {
+                    throw new NotSupportedException("empty relationships");
+                }
+
                 var hasRelatedSectoredLights = related.Any();
 
                 if (hasRelatedSectoredLights) {
@@ -147,16 +153,27 @@ namespace S100Framework.Applications
                     var featureN = featureClass.CreateRow(buffer);
                     var equipmentName = Convert.ToString(featureN["name"]);
 
+                    if (equipmentName == null) {
+                        throw new NotSupportedException("empty equipment name");
+                    }
+
                     // TODO: Create relation
                     ConversionAnalytics.Instance.AddConverted(sourceTable, related.ToDictionary(obj => obj.GLOBALID, obj => new List<string> { equipmentName }));
+
+                    FeatureRelations.Instance.AddRelation(new($"{featurenode.GetType().Name}", equipmentName), new($"{instance.GetType().Name}", name));
+
                     Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName, System.Text.Json.JsonSerializer.Serialize(instance));
                 }
 
-                related = _featureRelations.GetRelated<AidsToNavigationP>(typeof(LightAllAround), structure.GLOBALID);
+                related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightAllAround), structure.GLOBALID);
+                if (related == null) {
+                    throw new NotSupportedException("empty relationships");
+                }
+
                 var hasRelatedLightsAllAround = related.Any();
                 if (hasRelatedLightsAllAround) {
                     foreach (var light in related) {
-                        //var slave = pltsSlave.Fetch(_source, Direction.Destination);
+                        //var _slave = pltsSlave.Fetch(_source, Direction.Destination);
                         var instance = ImporterNIS.CreateLightAllAround(light);
 
                         buffer["ps"] = ImporterNIS.ps101;
@@ -166,10 +183,21 @@ namespace S100Framework.Applications
 
                         var featureN = featureClass.CreateRow(buffer);
                         var equipmentName = Convert.ToString(featureN["name"]);
+                        if (equipmentName == null) {
+                            throw new NotSupportedException("empty equipment name");
+                        }
+
 
                         // TODO: Create relation
 
                         ConversionAnalytics.Instance.AddConverted(sourceTable, light.GLOBALID, equipmentName ?? "Unknown equipment name");
+
+                        if (equipmentName == null) {
+                            throw new NotSupportedException("empty equipment name");
+                        }
+
+                        FeatureRelations.Instance.AddRelation(new($"{featurenode.GetType().Name}", equipmentName), new($"{instance.GetType().Name}", name));
+
                         Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
                     }
                 }
@@ -177,7 +205,7 @@ namespace S100Framework.Applications
             else if (s57Object is CulturalFeaturesP) {
                 var sourceTable = "CulturalFeaturesP";
                 var structure = (CulturalFeaturesP)s57Object;
-                bool hasRelated = _featureRelations.HasRelated(structure.GLOBALID);
+                bool hasRelated = FeatureRelations.Instance.HasRelated(structure.GLOBALID);
                 if (!hasRelated) {
                     return;
                 }
@@ -188,7 +216,10 @@ namespace S100Framework.Applications
 
                 //var types = FeatureRelations.GetS101CatlitTypeFrom(structure);
 
-                var related = _featureRelations.GetRelated<AidsToNavigationP>(typeof(LightSectored), structure.GLOBALID);
+                var related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightSectored), structure.GLOBALID);
+                if (related == null) {
+                    throw new NotSupportedException("empty relationships");
+                }
                 var hasRelatedSectoredLights = related.Any();
 
                 if (hasRelatedSectoredLights) {
@@ -201,17 +232,20 @@ namespace S100Framework.Applications
 
                     var featureN = featureClass.CreateRow(buffer);
                     var equipmentName = Convert.ToString(featureN["name"]);
+                    if (equipmentName == null) {
+                        throw new NotSupportedException("empty equipment name");
+                    }
 
                     // TODO: Create relation
                     ConversionAnalytics.Instance.AddConverted(sourceTable, related.ToDictionary(obj => obj.GLOBALID, obj => new List<string> { equipmentName }));
-                    Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName, System.Text.Json.JsonSerializer.Serialize(instance));
+                    Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
                 }
 
-                related = _featureRelations.GetRelated<AidsToNavigationP>(typeof(LightAllAround), structure.GLOBALID);
+                related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightAllAround), structure.GLOBALID);
                 var hasRelatedLightsAllAround = related.Any();
                 if (hasRelatedLightsAllAround) {
                     foreach (var light in related) {
-                        //var slave = pltsSlave.Fetch(_source, Direction.Destination);
+                        //var _slave = pltsSlave.Fetch(_source, Direction.Destination);
                         var instance = ImporterNIS.CreateLightAllAround(light);
 
                         buffer["ps"] = ImporterNIS.ps101;
@@ -222,6 +256,9 @@ namespace S100Framework.Applications
                         var featureN = featureClass.CreateRow(buffer);
                         var equipmentName = Convert.ToString(featureN["name"]);
 
+                        if (equipmentName == null) {
+                            throw new NotSupportedException("empty equipment name");
+                        }
                         // TODO: Create relation
 
                         ConversionAnalytics.Instance.AddConverted(sourceTable, light.GLOBALID, equipmentName ?? "Unknown equipment name");
@@ -235,6 +272,5 @@ namespace S100Framework.Applications
             }
 
         }
-
     }
 }

@@ -73,11 +73,11 @@ namespace TestNisImporter
             {
                 var val1 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "FLODOC_FloatingDock", PrimitiveType.Line, 22000); 
                 Assert.False(val1.HasValue);
-                Assert.True(val1.Value == 44999, "Wrong scamin");
+                Assert.True(val1.GetValueOrDefault() == 44999, "Wrong scamin");
 
                 var val2 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "FLODOC_FloatingDock", PrimitiveType.Area, 22000); 
                 Assert.False(val2.HasValue);
-                Assert.True(val2.Value == 44999, "Wrong scamin");
+                Assert.True(val2.GetValueOrDefault() == 44999, "Wrong scamin");
 
                 var val3 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "FLODOC_FloatingDock", PrimitiveType.Point, 22000);
                 Assert.False(val3.HasValue);
@@ -85,7 +85,7 @@ namespace TestNisImporter
             {
                 var val1 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "BRIDGE_Bridge", PrimitiveType.Area, 22000); // step value is null
                 Assert.False(val1.HasValue);
-                Assert.True(val1.Value == 44999, "Wrong scamin");
+                Assert.True(val1.GetValueOrDefault() == 44999, "Wrong scamin");
                 var val2 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "DMPGRD_DumpingGroundXX", PrimitiveType.Area, 22000);
                 Assert.False(val2.HasValue);
             }
@@ -318,7 +318,10 @@ namespace TestNisImporter
 
                         var sortedDict = new SortedDictionary<int, string>();
 
-                        var searchCursor = (dataset as FeatureClass).Search(new QueryFilter() { WhereClause = "1=1" });
+                        var searchCursor = (dataset as FeatureClass)?.Search(new QueryFilter() { WhereClause = "1=1" });
+                        if (searchCursor == null) {
+                            throw new NotSupportedException("dataset is not a featureclass");
+                        }
 
                         var subtypeCount = new Dictionary<int, int>();
 

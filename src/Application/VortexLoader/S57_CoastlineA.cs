@@ -133,8 +133,8 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             AddInformation(instance.information, feature);

@@ -53,7 +53,7 @@ namespace S100Framework.Applications
         }
 
         public static void DataObject(ILogger logger, string fileName, string message) {
-            // Log with custom property that indicates the file name
+            // Log with custom property that indicates the file _s101name
             logger.ForContext("LogFileName", fileName)
                   .Debug(message);
         }

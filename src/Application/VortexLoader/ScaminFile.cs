@@ -133,80 +133,69 @@ namespace S100Framework.Applications
 
         private void LoadRadarScales() {
             _radarScales = root.Descendants("RadarScale")
-                       .Select(r => (int)r.Attribute("Value"))
+                       .Select(r => Convert.ToInt32(r.Attribute("Value")?.Value))
                        .ToList();
         }
 
         private void LoadScaminValues() {
             _scaminValues = root.Descendants("SCAMIN")
-                       .Select(s => (int)s.Attribute("Value"))
+                       .Select(s => Convert.ToInt32(s.Attribute("Value")?.Value))
                        .ToList();
         }
 
         private void LoadObjects() {
-            _objects = root.Descendants("Object")
-                              .Select(o => new ObjectData {
-                                  Name = (string)o.Attribute("Name"),
-                                  PrimitiveType = (string)o.Attribute("PrimitiveType"),
-                                  HasCondition = (bool)o.Attribute("HasCondition"),
-                                  DefaultStepValue = (string)o.Attribute("DefaultStepValue"),
-                                  Conditions = o.Descendants("Condition")
-                                                .Select(c => c.Descendants("Rule")
-                                                              .Select(r => (string)r.Attribute("Type"))
-                                                              .ToList())
-                                                .ToList()
-                              })
-                              .ToList();
-            //_objects = new List<ObjectData>();
-            //foreach (var o in root.Descendants("Object")) {
-            //    var name = Convert.ToString(o.Attribute("Name"));
-            //    var ptype = Convert.ToString(o.Attribute("PrimitiveType"));
-            //    var condition = Convert.ToBoolean(o.Attribute("HasCondition"));
-            //    var stepValue = Convert.ToString(o.Attribute("DefaultStepValue"));
+            _objects = new List<ObjectData>();
+            foreach (var o in root.Descendants("Object")) {
+                var name = Convert.ToString(o.Attribute("Name")?.Value);
+                var ptype = Convert.ToString(o.Attribute("PrimitiveType")?.Value);
+                var condition = Convert.ToBoolean(o.Attribute("HasCondition")?.Value);
+                var stepValue = Convert.ToString(o.Attribute("DefaultStepValue")?.Value);
 
-            //    if (name == null) {
-            //        throw new ArgumentException("Empty name in scamin file");
-            //    }
-            //    if (ptype == null) {
-            //        throw new ArgumentException("empty PrimitiveType in scamin file");
-            //    }
-            //    if (stepValue == null) {
-            //        throw new ArgumentException("empty stepvalue in scamin file");
-            //    }
+                if (name == null) {
+                    throw new ArgumentException("Empty name in scamin file");
+                }
+                if (ptype == null) {
+                    throw new ArgumentException("empty PrimitiveType in scamin file");
+                }
+                if (stepValue == null) {
+                    throw new ArgumentException("empty stepvalue in scamin file");
+                }
 
-            //    List<List<string>> conditions = new List<List<string>>();
+                List<List<string>> conditions = new List<List<string>>();
 
-            //    foreach (var c in o.Descendants("Condition")) {
-            //        var rules = new List<string>();
-            //        foreach (var e in c.Descendants("Rule")) {
-            //            var ruleType = Convert.ToString(e.Attribute("Type"));
-            //            if (ruleType != null) {
-            //                rules.Add(ruleType);
-            //            }
-            //        }
-            //        conditions.Add(rules);
-            //    }
+                foreach (var c in o.Descendants("Condition")) {
+                    var rules = new List<string>();
+                    foreach (var e in c.Descendants("Rule")) {
+                        var ruleType = Convert.ToString(e.Attribute("Type"));
+                        if (ruleType != null) {
+                            rules.Add(ruleType);
+                        }
+                    }
+                    conditions.Add(rules);
+                }
 
-            //    _objects.Add(new ObjectData {
-            //        Name = name,
-            //        PrimitiveType = ptype,
-            //        HasCondition = condition,
-            //        DefaultStepValue = stepValue,
-            //        Conditions = conditions,
-            //    });
-            //}
+                _objects.Add(new ObjectData {
+                    Name = name,
+                    PrimitiveType = ptype,
+                    HasCondition = condition,
+                    DefaultStepValue = stepValue,
+                    Conditions = conditions,
+                });
+            }
         }
 
         private int? GetDefaultStepValueByName(string name, PrimitiveType primitiveType, bool isRelatedToStructure) {
-            var obj = _objects.FirstOrDefault(obj => obj.Name.Equals(name,StringComparison.InvariantCultureIgnoreCase));
+
+            var obj = _objects.FirstOrDefault(o => o.Name != null && o.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
+
             if (obj == null) {
                 return null;
             }
 
             // https://pro.arcgis.com/en/pro-app/latest/help/production/maritime/scale-minimum-radar-range-method.htm
-            // if type = R - Related - Object receives same step as related structure else defaultStepValue (if stand alone)
-            // if type = S - Spatially associated - Operator = "Cover" or operator = "Share" - receives StepValue accordingly
-            // if type = A - Attribute value - 
+            // if _s101type = R - Related - Object receives same step as related structure else defaultStepValue (if stand alone)
+            // if _s101type = S - Spatially associated - Operator = "Cover" or operator = "Share" - receives StepValue accordingly
+            // if _s101type = A - Attribute value - 
             {
                 if (!isRelatedToStructure) {
                     if (int.TryParse(obj.DefaultStepValue, out var defaultStepValue)) {

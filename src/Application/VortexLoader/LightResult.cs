@@ -11,7 +11,7 @@
 //    {
 //        public FeatureNode node { get; set; }
 //        public string TypeName { get; set; }    
-//        public string name { get;set; }
+//        public string _s101name { get;set; }
 
 
 //    }

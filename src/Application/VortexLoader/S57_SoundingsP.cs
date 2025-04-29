@@ -80,7 +80,7 @@ namespace S100Framework.Applications
                             //        sounding.featureName.Add(new featureName {
                             //            language = "eng",
                             //            nameUsage = null,
-                            //            name = objnam.Trim(),
+                            //            _s101name = objnam.Trim(),
                             //        });
                             //    }
                             //}
@@ -90,7 +90,7 @@ namespace S100Framework.Applications
                             //        sounding.featureName.Add(new featureName {
                             //            language = "dk",
                             //            nameUsage = nameUsage.AlternateNameDisplay,
-                            //            name = nobjnm.Trim(),
+                            //            _s101name = nobjnm.Trim(),
                             //        });
                             //    }
                             //}
@@ -98,7 +98,8 @@ namespace S100Framework.Applications
                             
                             sounding.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+
                                 sounding.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -118,7 +119,7 @@ namespace S100Framework.Applications
 
                             // TODO: Handle Spatialquality
                             //if (quapos != default && quapos == 4) {
-                            //    /*  SOUNDG with attribute QUAPOS = 4 (approximate) will also be converted to an instance of the S101 Information type Spatial Quality (see S-101 DCEG clause 24.5), attribute quality of horizontal
+                            //    /*  SOUNDG with attribute QUAPOS = 4 (approximate) will also be converted to an instance of the S101 Information _s101type Spatial Quality (see S-101 DCEG clause 24.5), attribute quality of horizontal
                             //        measurement = 4 (approximate), associated to the geometry of the Sounding feature using the
                             //        association Spatial Association. */
                             //    using var information = informationtype.CreateRowBuffer();
@@ -135,7 +136,7 @@ namespace S100Framework.Applications
                         }
                         else {
                             /*  SOUNDG with attribute QUASOU = 5 (no bottom found at value shown) will be converted to an
-                                instance of the S-101 Feature type Depth – No Bottom Found. Where this is the case, the attributes
+                                instance of the S-101 Feature _s101type Depth – No Bottom Found. Where this is the case, the attributes
                                 EXPSOU, NOBJNM, OBJNAM, SOUACC and STATUS will not be converted. It is considered that
                                 these attributes are not relevant for Depth – No Bottom Found in S-101. */
                             var instance = new DepthNoBottomFound();

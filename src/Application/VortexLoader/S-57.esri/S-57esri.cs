@@ -76,7 +76,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -106,7 +106,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? IS_CONFLATE = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -249,13 +249,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -309,13 +309,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -369,7 +369,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -758,13 +758,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -818,13 +818,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -878,7 +878,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -1114,13 +1114,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -1174,13 +1174,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -1234,7 +1234,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -1650,13 +1650,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -1710,13 +1710,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -1770,7 +1770,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -2006,13 +2006,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -2066,13 +2066,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -2126,7 +2126,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -2398,13 +2398,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -2458,13 +2458,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -2518,7 +2518,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -2763,13 +2763,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -2823,13 +2823,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -2883,7 +2883,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -3281,13 +3281,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -3341,13 +3341,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -3401,7 +3401,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -3844,13 +3844,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -3904,13 +3904,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -3964,7 +3964,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -4380,13 +4380,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -4440,13 +4440,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -4500,7 +4500,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -4736,13 +4736,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -4796,13 +4796,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -4856,7 +4856,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -5155,13 +5155,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -5215,13 +5215,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -5275,7 +5275,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -5628,13 +5628,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -5688,13 +5688,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -5748,7 +5748,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -5957,13 +5957,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -6017,13 +6017,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -6077,7 +6077,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -6430,13 +6430,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -6490,13 +6490,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -6550,7 +6550,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -6894,13 +6894,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -6954,13 +6954,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -7014,7 +7014,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -7304,13 +7304,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -7364,13 +7364,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -7424,7 +7424,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -8103,13 +8103,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -8163,13 +8163,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -8223,7 +8223,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -8495,13 +8495,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -8555,13 +8555,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -8615,7 +8615,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -8860,13 +8860,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -8920,13 +8920,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -8980,7 +8980,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -9252,13 +9252,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -9312,13 +9312,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -9372,7 +9372,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -9698,13 +9698,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -9758,13 +9758,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -9818,7 +9818,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -10171,13 +10171,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -10231,13 +10231,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -10291,7 +10291,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -10617,13 +10617,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -10677,13 +10677,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -10737,7 +10737,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -10982,13 +10982,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -11042,13 +11042,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -11102,7 +11102,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -11383,13 +11383,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -11443,13 +11443,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -11503,7 +11503,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -12108,13 +12108,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -12168,13 +12168,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -12228,7 +12228,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -12671,13 +12671,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -12731,13 +12731,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -12791,7 +12791,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -13342,13 +13342,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -13402,13 +13402,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -13462,7 +13462,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -13995,13 +13995,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -14055,13 +14055,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -14115,7 +14115,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -14630,13 +14630,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -14690,13 +14690,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -14750,7 +14750,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -15301,13 +15301,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -15361,13 +15361,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -15421,7 +15421,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -15792,13 +15792,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -15852,13 +15852,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -15912,7 +15912,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -16229,13 +16229,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -16289,13 +16289,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -16349,7 +16349,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -16693,13 +16693,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -16753,13 +16753,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -16813,7 +16813,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -17184,13 +17184,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -17244,13 +17244,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -17304,7 +17304,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -17684,13 +17684,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -17744,13 +17744,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -17804,7 +17804,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -18157,13 +18157,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -18217,13 +18217,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -18277,7 +18277,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -18603,13 +18603,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -18663,13 +18663,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -18723,7 +18723,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -19103,13 +19103,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -19163,13 +19163,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -19223,7 +19223,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -19594,13 +19594,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -19654,13 +19654,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -19714,7 +19714,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -19780,7 +19780,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? SURSTA = default;
 
         /// <summary>
-        /// Survey type
+        /// Survey _s101type
         /// </summary>
         [Description("Survey type")]
         internal string? SURTYP = default;
@@ -20130,13 +20130,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -20190,13 +20190,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -20250,7 +20250,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -20316,7 +20316,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? SURSTA = default;
 
         /// <summary>
-        /// Survey type
+        /// Survey _s101type
         /// </summary>
         [Description("Survey type")]
         internal string? SURTYP = default;
@@ -20531,13 +20531,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -20591,13 +20591,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -20651,7 +20651,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -21088,7 +21088,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -21231,7 +21231,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -21297,7 +21297,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? IS_CONFLATE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -21754,7 +21754,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -21772,7 +21772,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? INFORM = default;
 
         /// <summary>
-        /// Long name
+        /// Long _s101name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -21784,7 +21784,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? NAME = default;
 
         /// <summary>
-        /// Data set name
+        /// Data set _s101name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
@@ -21802,7 +21802,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? NINFOM = default;
 
         /// <summary>
-        /// Object name in national language
+        /// Object _s101name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -21814,7 +21814,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? NTXTDS = default;
 
         /// <summary>
-        /// Object name
+        /// Object _s101name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
@@ -21844,7 +21844,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? TXTDSC = default;
 
         /// <summary>
-        /// Collection type
+        /// Collection _s101type
         /// </summary>
         [Description("Collection type")]
         internal int? COLLECTION_TYPE = default;
@@ -22023,7 +22023,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? RIND = default;
 
         /// <summary>
-        /// data set name
+        /// data set _s101name
         /// </summary>
         [Description("data set name")]
         internal string? DSNM = default;
@@ -22077,13 +22077,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? DEST_SUB = default;
 
         /// <summary>
-        /// Source long name
+        /// Source long _s101name
         /// </summary>
         [Description("Source long name")]
         internal string? SRC_LNAM = default;
 
         /// <summary>
-        /// Destination long name
+        /// Destination long _s101name
         /// </summary>
         [Description("Destination long name")]
         internal string? DEST_LNAM = default;
@@ -22101,7 +22101,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? IS_CONFLATE = default;
 
         /// <summary>
-        /// NIS product type
+        /// NIS product _s101type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;

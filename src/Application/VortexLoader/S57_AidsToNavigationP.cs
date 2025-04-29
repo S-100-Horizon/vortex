@@ -1,4 +1,5 @@
 ﻿using ArcGIS.Core.Data;
+using Microsoft.AspNetCore.Mvc;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
@@ -17,22 +18,16 @@ namespace S100Framework.Applications
             var subtypes = aidstonavigationp.GetSubtypes();
             var featureType = PrimitiveType.Point;
 
-            using var featureAssociation = target.OpenDataset<Table>(target.GetName("featureassociation"));
-            using var informationAssociation = target.OpenDataset<Table>(target.GetName("informationassociation"));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
-            using var featureAssociationBuffer = featureAssociation.CreateRowBuffer();
-            using var featureAssociationInsert = featureAssociation.CreateInsertCursor();
-            using var informationAssociationBuffer = informationAssociation.CreateRowBuffer();
-            using var informationAssociationInsert = informationAssociation.CreateInsertCursor();
 
             using var cursor = aidstonavigationp.Search(filter, true);
             int recordCount = 0;
-            
+
             while (cursor.MoveNext()) {
                 recordCount += 1;
                 var feature = (Feature)cursor.Current;
@@ -45,7 +40,7 @@ namespace S100Framework.Applications
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
 
-                if (featureRelations.IsSlave(globalid)) {
+                if (FeatureRelations.Instance.IsSlave(globalid)) {
                     continue;
                 }
 
@@ -121,7 +116,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -139,8 +134,6 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
-
-
                             AddInformation(instance.information, feature);
 
                             instance.pictorialRepresentation = current.PICREP;
@@ -153,8 +146,6 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-
-
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(),name);
@@ -164,7 +155,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion related
                         }
@@ -236,7 +227,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -275,7 +266,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion related
                         }
@@ -351,7 +342,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -391,7 +382,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion related
                         }
@@ -463,7 +454,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -503,7 +494,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion related
                         }
@@ -580,7 +571,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -620,7 +611,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion related
                         }
@@ -675,7 +666,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -702,8 +693,6 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             
@@ -711,7 +700,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion related
                         }
@@ -797,7 +786,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion related
                         }
@@ -848,7 +837,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -875,8 +864,6 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             
@@ -884,7 +871,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion related
                         }
@@ -940,7 +927,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -959,7 +946,6 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation = current.PICREP;
                             }
 
-
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
@@ -968,8 +954,6 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(),name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             
@@ -977,7 +961,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion relatedæ
 
@@ -1028,7 +1012,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -1060,12 +1044,14 @@ namespace S100Framework.Applications
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
 
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            if (relatedEquipment != null) {
+                                relatedEquipment.CreateRelatedEquipment(current, instance, name, target);
+                            }
 
                             #endregion related
 
@@ -1126,7 +1112,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength = current.VERLEN.Value;
                             }
 
-                            var topmark = relatedEquipment.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -1158,7 +1144,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion related
 
@@ -1253,7 +1239,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion related
 
@@ -1340,7 +1326,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                                        relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion related
                         }
@@ -1355,25 +1341,25 @@ namespace S100Framework.Applications
                             var lnam = current.LNAM;
                             if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightSectored)) {
                                 var instance = CreateLightSectored(new List<AidsToNavigationP>() { current }); // No related sectors - only the one on the feature.
-                                
+
                                 AddInformation(instance.information, feature);
 
-                                if (current.PLTS_COMP_SCALE.HasValue) {
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                     instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                                 }
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                SetShape(buffer,current.SHAPE);
-                                
+                                SetShape(buffer, current.SHAPE);
+
 
                                 var featureN = featureClass.CreateRow(buffer);
                                 var structureName = Convert.ToString(featureN["name"]);
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                
+
 
 
                             }
@@ -1381,62 +1367,62 @@ namespace S100Framework.Applications
                                 var instance = CreateLightAirObstruction(current);
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
-                            }
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                }
 
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                SetShape(buffer,current.SHAPE);
+                                SetShape(buffer, current.SHAPE);
 
                                 var featureN = featureClass.CreateRow(buffer);
                                 var structureName = Convert.ToString(featureN["name"]);
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                
+
                             }
                             else if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightFogDetector)) {
                                 var instance = CreateLightFogDetector(current);
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
-                            }
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                }
 
                                 AddInformation(instance.information, feature);
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                SetShape(buffer,current.SHAPE);
+                                SetShape(buffer, current.SHAPE);
 
                                 var featureN = featureClass.CreateRow(buffer);
                                 var structureName = Convert.ToString(featureN["name"]);
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                
+
                             }
                             else if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightAllAround)) {
                                 var instance = CreateLightAllAround(current);
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
-                            }
-AddInformation(instance.information, feature);
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                }
+                                AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                SetShape(buffer,current.SHAPE);
+                                SetShape(buffer, current.SHAPE);
 
-                                
+
                                 var featureN = featureClass.CreateRow(buffer);
                                 var structureName = Convert.ToString(featureN["name"]);
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                
+
                             }
 
                             else {
@@ -1490,7 +1476,7 @@ AddInformation(instance.information, feature);
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -1532,7 +1518,7 @@ AddInformation(instance.information, feature);
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion related
 
@@ -1621,7 +1607,7 @@ AddInformation(instance.information, feature);
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion related
                         }
@@ -1675,7 +1661,7 @@ AddInformation(instance.information, feature);
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion related
 
@@ -1744,7 +1730,7 @@ AddInformation(instance.information, feature);
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion related
                         }
@@ -1815,7 +1801,7 @@ AddInformation(instance.information, feature);
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion related
 
@@ -1880,7 +1866,7 @@ AddInformation(instance.information, feature);
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion related
                         }
@@ -1967,7 +1953,7 @@ AddInformation(instance.information, feature);
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion related
                         }
@@ -1988,17 +1974,16 @@ AddInformation(instance.information, feature);
                             */
 
                             //throw new NotImplementedException("Master topmarks");
-                            
+                            ;
 
                         }
                         break;
                     default:
                         // code block
-                        System.Diagnostics.Debugger.Break();
-                        break;
-
+                        throw new Exception($"Missing subtype in S57_AidsToNavigation: {subtype}");
                 }
             }
+
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
 
@@ -2069,7 +2054,7 @@ AddInformation(instance.information, feature);
             }
 
             /*
-                The S-101 Boolean type attribute major light has been introduced in S-101 to aid in improved
+                The S-101 Boolean _s101type attribute major light has been introduced in S-101 to aid in improved
                 portrayal of lights in ECDIS. This attribute will be populated as True during the automated conversion
                 process for all lights having a nominal range of 10 Nautical Miles or greater.
             */
@@ -2323,8 +2308,8 @@ AddInformation(instance.information, feature);
         /// <summary>
         /// Take all sectored lights related to this instance and convert them into one sector characteristics
         /// </summary>
-        /// <param name="current"></param>
-        /// <param name="sectors"></param>
+        /// <param _s101name="current"></param>
+        /// <param _s101name="sectors"></param>
         /// <returns>List of sectorCharacteristics</returns>
         internal static List<sectorCharacteristics> GetSectorCharacteristics(IList<AidsToNavigationP> lights) {
             var sectorCharacteristics = new List<sectorCharacteristics>();

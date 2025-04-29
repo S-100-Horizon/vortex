@@ -248,7 +248,7 @@ namespace S100Framework.Applications
                             /* S-57 guidance recommends the encoding of intermittent lakes using an instance of the S-57 Object
                                class RIVERS. Data Producers are advised to check all instances of RIVERS of geometric primitive
                                area having attribute STATUS = 5 (periodic/intermittent) and if the real-world feature is a lake to
-                               amend to an instance of the S-101 Feature type Lake (see S-101 DCEG clause 5.10). */
+                               amend to an instance of the S-101 Feature _s101type Lake (see S-101 DCEG clause 5.10). */
                             //TODO: River
                         }
                         break;

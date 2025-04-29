@@ -64,9 +64,9 @@ namespace S100Framework.Applications
                             };
 
 
-                            //if (current.PLTS_COMP_SCALE.HasValue) {
-                            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
-                            //}
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -97,9 +97,9 @@ namespace S100Framework.Applications
                     case 10: { // FSHFAC Fishing facilities
                             var instance = new FishingFacility {};
 
-                            //if (current.PLTS_COMP_SCALE.HasValue) {
-                            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
-                            //}
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -150,8 +150,9 @@ namespace S100Framework.Applications
                                         instance.valueOfSounding = current.VALSOU.Value;
                                     }
 
-                                    //if (current.PLTS_COMP_SCALE.HasValue)
-                                        //instance.scaleMinimum = current.PLTS_COMP_SCALE;
+                                    if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                        instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                    }
 
                                     instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
@@ -178,7 +179,7 @@ namespace S100Framework.Applications
 
                                 /*
                                     OBSTRN of geometric primitive area or line with attribute INFORM = Submerged weir will be
-                                    converted to an instance of the S-101 Feature type Dam (see clause 4.8.5). Where this is the case,
+                                    converted to an instance of the S-101 Feature _s101type Dam (see clause 4.8.5). Where this is the case,
                                     the attributes CATOBS, EXPSOU, NATQUA, NATSUR, PRODCT, QUASOU, SOUACC, TECSOU
                                     and VALSOU will not be converted. It is considered that these attributes are not relevant for Dam in
                                     S-101. 
@@ -439,9 +440,9 @@ namespace S100Framework.Applications
                             }
 
 
-                            //if (current.PLTS_COMP_SCALE.HasValue) {
-                            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
-                            //}
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);

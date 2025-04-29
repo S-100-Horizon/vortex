@@ -39,8 +39,8 @@ namespace S100Framework.Applications
                 var displayScale = DisplayScale.GetNearestBelowKey(plts_comp_scale) ?? default;
 
                 if (current.PUBREF != default) {
-                    if (System.Diagnostics.Debugger.IsAttached)
-                        System.Diagnostics.Debugger.Break();
+                    //if (System.Diagnostics.Debugger.IsAttached)
+                        //System.Diagnostics.Debugger.Break();
                 }
 
 
@@ -128,7 +128,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 25: { // M_HOPA_HorizontalDatumShiftParameters
-                            //There is no equivalent Meta Feature type in S - 101 for the S-57 Meta Object M_HOPA.It is considered
+                            //There is no equivalent Meta Feature _s101type in S - 101 for the S-57 Meta Object M_HOPA.It is considered
                             //that this information is not required for S - 101.Data Producers should consider removing instances of
                             //M_HOPA from their S-57 data for consistency.
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, "DEPRECATED");
