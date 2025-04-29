@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "Loader": {
-      "commandName": "Project",
-      "commandLineArgs": "--v --cmd NIS --target \"C:\\Vortex\\s100ed6.gdb\" --source \"c:\\vortex\\replica.gdb\" --query \"PLTS_COMP_SCALE = 22000\" --skinofearthonly false --notespath \"G:\\indigo\\ENC\\NotesAndPictures\" --scaminfiles \"G:\\indigo\\Configuration\""
-    }
-  }
-}

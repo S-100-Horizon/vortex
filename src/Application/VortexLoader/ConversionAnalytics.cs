@@ -12,7 +12,7 @@ namespace S100Framework.Applications
         IDictionary<Guid,List<string>> _convertedS57Objects;
         IDictionary<string,IDictionary<Guid,List<string>>> _tableNameToConvertedS57Objects;
 
-        private static ConversionAnalytics _instance;
+        private static ConversionAnalytics? _instance;
 
         private ConversionAnalytics() {
             this._convertedS57Objects = new Dictionary<Guid,List<string>>();
@@ -31,8 +31,8 @@ namespace S100Framework.Applications
         /// <param name="name">S-101 name</param>
         /// <exception cref="ArgumentException"></exception>
         internal void AddConverted(string tableName, Guid guid, string name) {
-            if (!_tableNameToConvertedS57Objects.ContainsKey(tableName)) {
-                _tableNameToConvertedS57Objects.Add(tableName, new Dictionary<Guid, List<string>>());
+            if (!_tableNameToConvertedS57Objects.ContainsKey(tableName.ToLower())) {
+                _tableNameToConvertedS57Objects.Add(tableName.ToLower(), new Dictionary<Guid, List<string>>());
             }
 
 
@@ -40,11 +40,11 @@ namespace S100Framework.Applications
             //    throw new ArgumentException($"{guid} for {tableName} already converted.");
             //}
 
-            if (_tableNameToConvertedS57Objects[tableName].ContainsKey(guid)) {
-                _tableNameToConvertedS57Objects[tableName][guid].Add(name);
+            if (_tableNameToConvertedS57Objects[tableName.ToLower()].ContainsKey(guid)) {
+                _tableNameToConvertedS57Objects[tableName.ToLower()][guid].Add(name);
             }
             else {
-                _tableNameToConvertedS57Objects[tableName].Add(guid, new List<string> { name }); 
+                _tableNameToConvertedS57Objects[tableName.ToLower()].Add(guid, new List<string> { name }); 
             }
 
             if (!_convertedS57Objects.ContainsKey(guid)) {
@@ -55,20 +55,29 @@ namespace S100Framework.Applications
         }
 
         internal void AddConverted(string tableName, IDictionary<Guid,List<string>> guidName) {
-            if (_tableNameToConvertedS57Objects.ContainsKey(tableName)) {
-                var commonGuids = _tableNameToConvertedS57Objects[tableName].Keys.Intersect(guidName.Keys).ToList();
+            if (_tableNameToConvertedS57Objects.ContainsKey(tableName.ToLower())) {
+                var commonGuids = _tableNameToConvertedS57Objects[tableName.ToLower()].Keys.Intersect(guidName.Keys).ToList();
                 if (commonGuids.Count > 0) {
-                    throw new ArgumentException($"Object already converted {string.Join(",", commonGuids)} in {tableName}.");
+                    throw new ArgumentException($"Object already converted {string.Join(",", commonGuids)} in {tableName.ToLower()}.");
                 }
-                _tableNameToConvertedS57Objects[tableName].Union(guidName);
+                _tableNameToConvertedS57Objects[tableName.ToLower()].Union(guidName);
             }
             else {
                 var guidNames = new Dictionary<Guid,List<string>>();
                 guidNames.Union(guidName);
-                _tableNameToConvertedS57Objects[tableName] = guidNames;
+                _tableNameToConvertedS57Objects[tableName.ToLower()] = guidNames;
 
             }
             _convertedS57Objects.Union(guidName);
+        }
+
+        internal int GetConvertedCount(string tableName) {
+            if (!_tableNameToConvertedS57Objects.ContainsKey(tableName.ToLower())) {
+                return 0;
+            }
+
+
+            return _tableNameToConvertedS57Objects[tableName.ToLower()].Count();
         }
 
         public static ConversionAnalytics Instance {

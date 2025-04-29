@@ -49,6 +49,16 @@ namespace S100Framework.DomainModel {
     public class RequiredAttribute : System.Attribute {
     }
 
+    public interface IInformationBindingDefinition {
+        informationBindingDefinition[] informationBindingDefinitions { get; }
+    }
+
+    public interface IFeatureBindingDefinition {
+        informationBindingDefinition[] informationBindingDefinitions { get; }
+
+        featureBindingDefinition[] featureBindingDefinitions { get; }
+    }
+
     [System.SerializableAttribute()]
     public abstract class Node {
         public virtual string Code { get; set; } = string.Empty;
@@ -71,22 +81,56 @@ namespace S100Framework.DomainModel {
 
     [System.SerializableAttribute()]
     public abstract class Association {
-        public virtual string Code { get; set; } = string.Empty;
-        public virtual roleType? roleType => default;
-        public string AssociationConnectorTypeName { get; set; }
-
-        [JsonIgnore]
-        public virtual string[]? this[string role] => default;
     }
 
     [System.SerializableAttribute()]
-    public class InformationAssociation : Association {
-        public RefId[] RefIds { get; set; } = new RefId[0];
+    public abstract class InformationAssociation : Association {
     }
 
     [System.SerializableAttribute()]
-    public class FeatureAssociation : Association {
-        public RefId[] RefIds { get; set; } = new RefId[0];
+    public abstract class FeatureAssociation : Association {
+    }
+
+    public class informationBinding {
+        public string roleType { get; set; } = string.Empty;
+        public string association { get; set; } = string.Empty;
+        public string role { get; set; } = string.Empty;
+        public string? associationId { get; set; } = null;
+        public string? informationId { get; set; } = null;
+        public string? PID { get; set; } = null;
+    }
+
+    public class informationBindingDefinition {
+        public roleType roleType { get; set; }
+        public int lower { get; set; }
+        public int? upper { get; set; }
+        public bool infinite => !upper.HasValue;
+        public string association { get; set; } = string.Empty;
+        public string role { get; set; } = string.Empty;
+        public string[] informationTypes { get; set; } = [];
+
+        public override string ToString() => $"{association}, {role}";
+    }
+
+    public class featureBinding {
+        public string roleType { get; set; } = string.Empty;
+        public string association { get; set; } = string.Empty;
+        public string role { get; set; } = string.Empty;
+        public string? associationId { get; set; } = null;
+        public string? featureId { get; set; } = null;
+        public string? PID { get; set; } = null;
+    }
+
+    public class featureBindingDefinition {
+        public roleType roleType { get; set; }
+        public int lower { get; set; }
+        public int? upper { get; set; }
+        public bool infinite => !upper.HasValue;
+        public string association { get; set; } = string.Empty;
+        public string role { get; set; } = string.Empty;
+        public string[] featureTypes { get; set; } = [];
+
+        public override string ToString() => $"{association}, {role}";
     }
 
     public enum roleType {

@@ -1,9 +1,8 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using DomainModel = S100Framework.DomainModel;
-
 using S100Framework.DomainModel.S101;
 using S100Framework.Applications.S57.esri;
+using System;
 
 namespace S100Framework.Applications
 {
@@ -16,14 +15,14 @@ namespace S100Framework.Applications
             var subtypes = naturalFeaturesA.GetSubtypes();
             var featureType = PrimitiveType.Area;
 
-            using var surface = target.OpenDataset<FeatureClass>(target.GetName("surface"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
-            using var bufferSurface = surface.CreateRowBuffer();
-            using var insertSurface = surface.CreateInsertCursor();
+            using var bufferSurface = featureClass.CreateRowBuffer();
+            using var insertSurface = featureClass.CreateInsertCursor();
 
             using var cursor = naturalFeaturesA.Search(filter, true);
 
-            var convertedCount = 0;
+            
             var recordCount = 0;
 
 
@@ -65,7 +64,7 @@ namespace S100Framework.Applications
                                 instance.elevation = elevat;
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -86,9 +85,14 @@ namespace S100Framework.Applications
                             bufferSurface["code"] = instance.GetType().Name; 
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["shape"] = current.SHAPE;
-                            var oid = insertSurface.Insert(bufferSurface);
+                            var featureN = featureClass.CreateRow(bufferSurface);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            // TODO: Create relations
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+
 
                             /* S-57 allows for LAKARE to be covered by the Group 1 objects LNDARE or UNSARE, however in
                                S-101 all Lake features must be covered by the Skin of the Earth feature Land Area. During the
@@ -103,74 +107,77 @@ namespace S100Framework.Applications
                         break;
 
                     case 5: { //  LNDARE // SKIN OF EARTH
-                            var instance = new LandArea {
-                            };
-                            if (condtn != default) {
-                                instance.condition = condtn switch {
-                                    1 => condition.UnderConstruction,   //  under construction
-                                    2 => condition.Ruined,   //  ruined
-                                    3 => condition.UnderReclamation,   //  under reclamation                                    
-                                    4 => throw new IndexOutOfRangeException(),   //  wingless
-                                    5 => throw new IndexOutOfRangeException(),   //  planned construction
-                                    -32767 =>null,
-                                    _ => throw new IndexOutOfRangeException(),
-                                };
-                            }
-                            //if (plts_comp_scale != default) {
-                            //    //instance.scaleMinimum = plts_comp_scale;
-                            //}
+                            var instance = new LandArea();
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            // TODO: InteroperabilityIdentifier
+
+                            if (current.SORDAT != default) {
+                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                    instance.reportedDate = dateOnly;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetSingleStatus(current.STATUS);
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                            }
+
                             AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name; 
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["shape"] = current.SHAPE;
-                            insertSurface.Insert(bufferSurface);
+                            
+                            var featureN = featureClass.CreateRow(bufferSurface);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            // TODO: Create relations
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+
                         }
                         break;
 
                     case 10: {    // LNDRGN
-                            var instance = new LandRegion {
-                                categoryOfLandRegion = null,
-                                natureOfSurface = null,
-                                waterLevelEffect = null,
-                                scaleMinimum = null,
-                            };
-                            if (watlev != default) {
-                                instance.waterLevelEffect = watlev switch {
-                                    1 => waterLevelEffect.PartlySubmergedAtHighWater,  // partly submerged at high water
-                                    2 => waterLevelEffect.AlwaysDry,  // always dry
-                                    3 => throw new IndexOutOfRangeException(),  // always under water/submerged
-                                    4 => throw new IndexOutOfRangeException(),  // covers and uncovers
-                                    5 => throw new IndexOutOfRangeException(),  // awash
-                                    6 => throw new IndexOutOfRangeException(),  // subject to inundation or flooding
-                                    7 => throw new IndexOutOfRangeException(),  // floating
-                                    -32767 =>null,
-                                    _ => throw new IndexOutOfRangeException(),
-                                };
+                            var instance = new LandRegion();
+
+
+                            if (current.WATLEV.HasValue) {
+                                if (current.WATLEV.Value == -32767)
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
+                                else {
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                                }
                             }
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
-                            if (status != default) {
-                                if (!string.IsNullOrEmpty(status)) {
-                                    //TODO: CATLND
-                                }
+                            if (current.NATSUR != default) { 
+                                instance.natureOfSurface = EnumHelper.GetEnumValues<natureOfSurface>(current.NATSUR);
                             }
-                            if (natsur != default) {
-                                if (!string.IsNullOrEmpty(natsur)) {
-                                    //TODO: NATSUR
-                                }
+
+                            if (current.CATLND != default) {
+                                instance.categoryOfLandRegion = EnumHelper.GetEnumValues<categoryOfLandRegion>(current.CATLND);
                             }
+
+                            // TODO: Interoperabilityidentifier
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
@@ -179,10 +186,13 @@ namespace S100Framework.Applications
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["shape"] = current.SHAPE;
-                            insertSurface.Insert(bufferSurface);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            var featureN = featureClass.CreateRow(bufferSurface);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
+                            // TODO: Create relations
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
                         break;
 
@@ -196,7 +206,7 @@ namespace S100Framework.Applications
                                 status = null,
                                 scaleMinimum = null,
                             };
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -217,9 +227,14 @@ namespace S100Framework.Applications
                             bufferSurface["code"] = instance.GetType().Name; 
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["shape"] = current.SHAPE;
-                            insertSurface.Insert(bufferSurface);
+                            var featureN = featureClass.CreateRow(bufferSurface);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            // TODO: Create relations
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+
 
                             /* S-57 allows for RIVERS of geometric primitive area to be covered by the Group 1 objects LNDARE
                                or UNSARE, however in S-101 all Rivers of geometric primitive area must be covered by the Skin
@@ -243,80 +258,32 @@ namespace S100Framework.Applications
                                 categoryOfSeaArea = null,
                                 scaleMinimum = null,
                             };
-                            if (catsea != default) {
-                                instance.categoryOfSeaArea = catsea switch {
-                                    2 => categoryOfSeaArea.Gat,  // gat
-                                    3 => categoryOfSeaArea.Bank,  // bank
-                                    4 => categoryOfSeaArea.Deep,  // deep
-                                    5 => categoryOfSeaArea.Bay,  // bay
-                                    6 => categoryOfSeaArea.Trench,  // trench
-                                    7 => categoryOfSeaArea.Basin,  // basin
-                                    8 => categoryOfSeaArea.MudFlats,  // mud flats
-                                    9 => categoryOfSeaArea.Reef,  // reef
-                                    10 => categoryOfSeaArea.Ledge, // ledge
-                                    11 => categoryOfSeaArea.Canyon, // canyon
-                                    12 => categoryOfSeaArea.Narrows, // narrows
-                                    13 => categoryOfSeaArea.Shoal, // shoal
-                                    14 => categoryOfSeaArea.Knoll, // knoll
-                                    15 => categoryOfSeaArea.Ridge, // ridge
-                                    16 => categoryOfSeaArea.Seamount, // seamount
-                                    17 => categoryOfSeaArea.Pinnacle, // pinnacle
-                                    18 => categoryOfSeaArea.AbyssalPlain, // abyssal plain
-                                    19 => categoryOfSeaArea.Plateau, // plateau
-                                    20 => categoryOfSeaArea.Spur, // spur
-                                    21 => categoryOfSeaArea.Shelf, // shelf
-                                    22 => categoryOfSeaArea.Trough, // trough
-                                    23 => categoryOfSeaArea.Saddle, // saddle
-                                    24 => categoryOfSeaArea.AbyssalHill, // abyssal hills
-                                    25 => categoryOfSeaArea.Apron, // apron
-                                    26 => categoryOfSeaArea.ArchipelagicApron, // archipelagic apron
-                                    27 => categoryOfSeaArea.Borderland, // borderland
-                                    28 => categoryOfSeaArea.ContinentalMargin, // continental margin
-                                    29 => categoryOfSeaArea.ContinentalRise, // continental rise
-                                    30 => categoryOfSeaArea.Escarpment, // escarpment
-                                    31 => categoryOfSeaArea.Fan, // fan
-                                    32 => categoryOfSeaArea.FractureZone, // fracture zone
-                                    33 => categoryOfSeaArea.Gap, // gap
-                                    34 => categoryOfSeaArea.Guyot, // guyot
-                                    35 => categoryOfSeaArea.Hill, // hill
-                                    36 => categoryOfSeaArea.Hole, // hole
-                                    37 => categoryOfSeaArea.Levee, // levee
-                                    38 => categoryOfSeaArea.MedianValley, // median valley
-                                    39 => categoryOfSeaArea.Moat, // moat
-                                    40 => categoryOfSeaArea.Mountains, // mountains
-                                    41 => categoryOfSeaArea.Peak, // peak
-                                    42 => categoryOfSeaArea.Province, // province
-                                    43 => categoryOfSeaArea.Rise, // rise
-                                    44 => categoryOfSeaArea.SeaChannel, // sea channel
-                                    45 => categoryOfSeaArea.SeamountChain, // seamount chain
-                                    46 => categoryOfSeaArea.ShelfEdge, // shelf-edge
-                                    47 => categoryOfSeaArea.Sill, // sill
-                                    48 => categoryOfSeaArea.Slope, // slope
-                                    49 => categoryOfSeaArea.Terrace, // terrace
-                                    50 => categoryOfSeaArea.Valley, // valley
-                                    51 => categoryOfSeaArea.Canal, // canal
-                                    52 => categoryOfSeaArea.Lake, // lake
-                                    53 => categoryOfSeaArea.River, // river
-                                    54 => categoryOfSeaArea.Reach,  // reach
-                                    -32767 =>null,
-                                    _ => throw new IndexOutOfRangeException(),
-                                };
+                            
+                            if (current.CATSEA.HasValue) {
+                                instance.categoryOfSeaArea = EnumHelper.GetEnumValue<categoryOfSeaArea>(current.CATSEA.Value);
                             }
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
-
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
                             AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["shape"] = current.SHAPE;
-                            insertSurface.Insert(bufferSurface);
+
+                            var featureN = featureClass.CreateRow(bufferSurface);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            // TODO: Create relations
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+
 
                         }
                         break;
@@ -328,67 +295,26 @@ namespace S100Framework.Applications
                                 visualProminence = null,
                                 scaleMinimum = null,
                             };
-                            if (catslo != default) {
-                                instance.categoryOfSlope = catslo switch {
-                                    1 => categoryOfSlope.Cutting,  // cutting
-                                    2 => categoryOfSlope.Embankment,  // embankment
-                                    3 => categoryOfSlope.Dune,  // dune
-                                    4 => categoryOfSlope.Hill,  // hill
-                                    5 => categoryOfSlope.Pingo,  // pingo
-                                    6 => categoryOfSlope.Cliff,  // cliff
-                                    7 => categoryOfSlope.Scree,  // scree
-                                    -32767 =>null,
-                                    _ => throw new IndexOutOfRangeException(),
-                                };
+                            
+                            if (current.CATSLO.HasValue) {
+                                instance.categoryOfSlope = EnumHelper.GetEnumValue<categoryOfSlope>(current.CATSLO.Value);
                             }
-                            if (color != default) {
-                                if (!string.IsNullOrEmpty(color)) {
-                                    foreach (var c in color.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
-                                        colour? e = c.ToLowerInvariant() switch {
-                                            "white" => colour.White,
-                                            "black" => colour.Black,
-                                            "Red" => colour.Red,
-                                            "green" => colour.Green,
-                                            "blue" => colour.Blue,
-                                            "yellow" => colour.Yellow,
-                                            "grey" => colour.Grey,
-                                            "brown" => colour.Brown,
-                                            "amber" => colour.Grey,
-                                            _ => throw new IndexOutOfRangeException(),
-                                        };
-                                        if (e.HasValue) {
-                                            instance.colour.Add(e.Value);
-                                        }
-                                    }
-                                }
+
+
+                            if (current.COLOUR != default) {
+                                instance.colour = GetColours(current.COLOUR);
                             }
-                            if (natsur != default) {
-                                if (!string.IsNullOrEmpty(natsur)) {
-                                    foreach (var c in natsur.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
-                                        natureOfSurface? e = c.ToLowerInvariant() switch {
-                                            "mud" => natureOfSurface.Mud,
-                                            "clay" => natureOfSurface.Clay,
-                                            "silt" => natureOfSurface.Silt,
-                                            "sand" => natureOfSurface.Sand,
-                                            "stone" => natureOfSurface.Stone,
-                                            "gravel" => natureOfSurface.Gravel,
-                                            _ => throw new IndexOutOfRangeException(),
-                                        };
-                                        if (e.HasValue) {
-                                            instance.natureOfSurface.Add(e.Value);
-                                        }
-                                    }
-                                }
+
+                            if (current.NATSUR != default) {
+                                instance.natureOfSurface = EnumHelper.GetEnumValues<natureOfSurface>(current.NATSUR);
                             }
-                            if (conrad != default) {
-                                instance.radarConspicuous = conrad switch {
-                                    1 => true,  // radar conspicuous
-                                    2 => false, // not radar conspicuous
-                                    3 => true,  // radar conspicuous (has radar reflector)
-                                    -32767 =>null,
-                                    _ => throw new IndexOutOfRangeException(),
-                                };
+
+                            if (current.CONRAD.HasValue) {
+                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
                             }
+
+
+
                             if (convis != default) {
                                 instance.visualProminence = convis switch {
                                     1 => visualProminence.VisuallyConspicuous,  // visually conspicuous
@@ -397,7 +323,7 @@ namespace S100Framework.Applications
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -409,9 +335,14 @@ namespace S100Framework.Applications
                             bufferSurface["code"] = instance.GetType().Name; 
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["shape"] = current.SHAPE;
-                            insertSurface.Insert(bufferSurface);
+                            var featureN = featureClass.CreateRow(bufferSurface);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            // TODO: Create relations
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+
 
                         }
                         break;
@@ -445,18 +376,13 @@ namespace S100Framework.Applications
                                 instance.verticalLength = verlen;
                             }
 
-                            if (convis != default) {
-                                instance.visualProminence = convis switch {
-                                    1 => visualProminence.VisuallyConspicuous,  // visually conspicuous
-                                    2 => visualProminence.NotVisuallyConspicuous,  // not visually conspicuous                                
-                                    -32767 =>null,
-                                    _ => throw new IndexOutOfRangeException(),
-                                };
-                            }
-                            if (current.PLTS_COMP_SCALE.HasValue) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                            if (current.CONVIS.HasValue) {
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                            }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
@@ -465,9 +391,14 @@ namespace S100Framework.Applications
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["shape"] = current.SHAPE;
-                            insertSurface.Insert(bufferSurface);
+                            var featureN = featureClass.CreateRow(bufferSurface);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            // TODO: Create relations
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+
 
                         }
                         break;
@@ -478,7 +409,7 @@ namespace S100Framework.Applications
 
                 }
             }
-            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
+            Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
 
         }
     }

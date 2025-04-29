@@ -22,7 +22,7 @@ namespace S100Framework.Applications
             using var cursor = depthsA.Search(filter, true);
             
             var recordCount = 0;
-            var convertedCount = 0;
+            
 
             while (cursor.MoveNext()) {
                 recordCount += 1;
@@ -61,15 +61,13 @@ namespace S100Framework.Applications
                             SetShape(buffer,current.SHAPE);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-
                         }
                         break;
 
@@ -84,7 +82,7 @@ namespace S100Framework.Applications
                                     instance.dredgedDate = dateOnly;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -130,7 +128,7 @@ namespace S100Framework.Applications
                             SetShape(buffer,current.SHAPE);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
@@ -138,7 +136,7 @@ namespace S100Framework.Applications
 
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
 
@@ -158,57 +156,51 @@ namespace S100Framework.Applications
                                     instance.sweptDate = dateOnly;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
-
-                            // TODO: Create relations
-                            
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                          
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
-
 
                             // TODO: Create relations
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
 
                     case 15: {    // UNSARE  // SKIN OF EARTH
-                            var instance = new UnsurveyedArea {
-                            };
+                            var instance = new UnsurveyedArea();
+
                             AddInformation(instance.information, feature);
 
-
+                            // TODO: InteroperabilityIdentifier
+                            
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-
 
                         }
                         break;
@@ -219,7 +211,7 @@ namespace S100Framework.Applications
 
                 }
             }
-            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
+            Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
     }
 }

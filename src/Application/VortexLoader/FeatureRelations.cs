@@ -25,7 +25,7 @@ namespace S100Framework.Applications
     internal class PltsCollection {
         private List<PltsSlave> _related;
 
-        PLTS_Collections _plts_collections;
+        private PLTS_Collections _plts_collections;
 
         Geodatabase _source;
 
@@ -40,7 +40,8 @@ namespace S100Framework.Applications
         }
     }
 
-    internal class PltsSlave {
+    internal class PltsSlave
+    {
         private S57Object s57Object;
 
         public PLTS_Frel PLTS_Frel { get; internal set; }
@@ -122,7 +123,7 @@ namespace S100Framework.Applications
                         this.S101Type = typeof(topmark);
                     }
                     else {
-                        throw new NotSupportedException($"AtoN subtype: {aton.FCSUBTYPE}");
+                        throw new NotSupportedException($"AtoN subtype: {aton?.FCSUBTYPE}");
                     }
                 }
                 else if (s57Obj is PortsAndServicesP) {
@@ -134,7 +135,7 @@ namespace S100Framework.Applications
                         this.S101Type = typeof(SignalStationWarning);
                     }
                     else {
-                        throw new NotSupportedException($"AtoN subtype: {psp.FCSUBTYPE}");
+                        throw new NotSupportedException($"AtoN subtype: {psp?.FCSUBTYPE}");
                     }
                 }
                 else if (s57Obj is NaturalFeaturesA) {
@@ -165,7 +166,7 @@ namespace S100Framework.Applications
                     }
 
                     else {
-                        throw new NotSupportedException($"AtoN subtype: {psp.FCSUBTYPE}");
+                        throw new NotSupportedException($"AtoN subtype: {psp?.FCSUBTYPE}");
                     }
                 }
                 else if (s57Obj is TracksAndRoutesA) {
@@ -214,7 +215,7 @@ namespace S100Framework.Applications
                     }
 
                     else {
-                        throw new NotSupportedException($"AtoN subtype: {psp.FCSUBTYPE}");
+                        throw new NotSupportedException($"AtoN subtype: {psp?.FCSUBTYPE}");
                     }
                 }
                 else if (s57Obj is TracksAndRoutesL) {
@@ -250,7 +251,7 @@ namespace S100Framework.Applications
                         this.S101Type = typeof(FerryRoute);
                     }
                     else {
-                        throw new NotSupportedException($"AtoN subtype: {psp.FCSUBTYPE}");
+                        throw new NotSupportedException($"AtoN subtype: {psp?.FCSUBTYPE}");
                     }
                 }
                 else if (s57Obj is DangersP) {
@@ -278,7 +279,7 @@ namespace S100Framework.Applications
 
 
                     else {
-                        throw new NotSupportedException($"AtoN subtype: {psp.FCSUBTYPE}");
+                        throw new NotSupportedException($"AtoN subtype: {psp?.FCSUBTYPE}");
                     }
                 }
                 else {
@@ -289,8 +290,6 @@ namespace S100Framework.Applications
         }
 
         public Type S101Type { get; private set; }
-    
-
 
         public Guid GlobalId { get; private set; }
 
@@ -304,74 +303,76 @@ namespace S100Framework.Applications
 
             //Logger.Current.Debug($"Fetching related {plts_Frel.DEST_FC}");
             //this.Fetch(source,Direction.Destination);
-
-
-        }
-
-        private void Fetch(Geodatabase geodatabase, Direction direction) {
-            S57Object result = null;
-
-            var sourceFeatureClass = direction switch {
-                Direction.Source => this.PLTS_Frel.SRC_FC,
-                Direction.Destination => this.PLTS_Frel.DEST_FC
-            };
-
-            var queryDef = new QueryDef();
-            queryDef.Tables = $"{geodatabase.GetName(sourceFeatureClass)}";
-
-            queryDef.WhereClause = $"globalid = '{this.PLTS_Frel.DEST_UID}'";
-
-            using var cursor = geodatabase.Evaluate(queryDef, true);
-
-            while (cursor.MoveNext()) {
-                if (sourceFeatureClass.ToLower().Equals("aidstonavigationp")) {
-                    result = new AidsToNavigationP((Feature)cursor.Current);
-                }
-                else if (sourceFeatureClass.ToLower().Equals("dangersp")) {
-                    result = new DangersP((Feature)cursor.Current);
-                }
-                else if (sourceFeatureClass.ToLower().Equals("naturalfeaturesa")) {
-                    result = new NaturalFeaturesA((Feature)cursor.Current);
-                }
-                else if (sourceFeatureClass.ToLower().Equals("tracksandroutesa")) {
-                    result = new TracksAndRoutesA((Feature)cursor.Current);
-                }
-                else if (sourceFeatureClass.ToLower().Equals("tracksandroutesl")) {
-                    result = new TracksAndRoutesL((Feature)cursor.Current);
-                }
-                else if (sourceFeatureClass.ToLower().Equals("portsandservicesp")) {
-                    result = new PortsAndServicesP((Feature)cursor.Current);
-                }
-                else {
-                    throw new NotSupportedException($"GetRelated: {sourceFeatureClass}");
-                }
-            };
-            this.S57Object = result;
         }
     }
 
+        //    private void Fetch(Geodatabase geodatabase, Direction direction) {
+        //        S57Object result = null;
+
+        //        var sourceFeatureClass = direction switch {
+        //            Direction.Source => this.PLTS_Frel.SRC_FC,
+        //            Direction.Destination => this.PLTS_Frel.DEST_FC
+        //        };
+
+        //        var queryDef = new QueryDef();
+        //        queryDef.Tables = $"{geodatabase.GetName(sourceFeatureClass)}";
+
+        //        queryDef.WhereClause = $"globalid = '{this.PLTS_Frel.DEST_UID}'";
+
+        //        using var cursor = geodatabase.Evaluate(queryDef, true);
+
+        //        while (cursor.MoveNext()) {
+        //            if (sourceFeatureClass.ToLower().Equals("aidstonavigationp")) {
+        //                result = new AidsToNavigationP((Feature)cursor.Current);
+        //            }
+        //            else if (sourceFeatureClass.ToLower().Equals("dangersp")) {
+        //                result = new DangersP((Feature)cursor.Current);
+        //            }
+        //            else if (sourceFeatureClass.ToLower().Equals("naturalfeaturesa")) {
+        //                result = new NaturalFeaturesA((Feature)cursor.Current);
+        //            }
+        //            else if (sourceFeatureClass.ToLower().Equals("tracksandroutesa")) {
+        //                result = new TracksAndRoutesA((Feature)cursor.Current);
+        //            }
+        //            else if (sourceFeatureClass.ToLower().Equals("tracksandroutesl")) {
+        //                result = new TracksAndRoutesL((Feature)cursor.Current);
+        //            }
+        //            else if (sourceFeatureClass.ToLower().Equals("portsandservicesp")) {
+        //                result = new PortsAndServicesP((Feature)cursor.Current);
+        //            }
+        //            else {
+        //                throw new NotSupportedException($"GetRelated: {sourceFeatureClass}");
+        //            }
+        //        };
+        //        this.S57Object = result;
+        //    }
+ 
+
     internal class FeatureRelations
     {
+        private readonly Geodatabase _source;
+
         private Dictionary<Guid, PltsCollection> _pltsCollections = new Dictionary<Guid, PltsCollection>();
 
         private Dictionary<Guid, IList<PltsSlave>> _srcObjectToSlaves = new Dictionary<Guid, IList<PltsSlave>>();
 
         private bool _isInitialized = false;
 
-        private Geodatabase _source;
+        public FeatureRelations(Geodatabase source) {
+            _source = source;                            
+        }
 
-        public void Initialize(Geodatabase source) {
+        public void Initialize() {
             _pltsCollections = new Dictionary<Guid, PltsCollection>();
             _srcObjectToSlaves = new Dictionary<Guid, IList<PltsSlave>>();
-            _source = source;
+            
             LoadPltsCollections();
-            LoadPltsFrels2(source);
+            LoadPltsFrels2(_source);
             _isInitialized = true;
         }
 
-
         private void LoadPltsCollections() {
-
+            
             // Read aggregations
             var pltsCollectionsTable = _source.OpenDataset<Table>(_source.GetName("PLTS_COLLECTIONS"));
             var pltsCollections = new Dictionary<Guid, IList<PLTS_Collections>>();
@@ -430,7 +431,7 @@ namespace S100Framework.Applications
             }
         }
 
-        internal IList<T> GetRelated<T>(Type s101Type, Guid uid) where T : class {
+        internal IList<T>? GetRelated<T>(Type s101Type, Guid uid) where T : class {
             if (!_isInitialized)
                 throw new ArgumentException("Not initalized. Call intialize.");
             if (!_srcObjectToSlaves.ContainsKey(uid))
@@ -440,7 +441,10 @@ namespace S100Framework.Applications
 
             foreach (var elm in _srcObjectToSlaves[uid]) {
                 if (elm.S101Type == s101Type) {
-                    result.Add(elm.S57Object as T);
+                    if (elm.S57Object != null && elm.S57Object is T) {
+                        result.Add(elm.S57Object as T);
+                    }
+                    
                 }
             }
 
@@ -472,7 +476,8 @@ namespace S100Framework.Applications
                     1 => "Master",
                     2 => "Slave",
                     3 => "Peer",
-                    999 => "Rep"
+                    999 => "Rep",
+                    _ => throw new NotImplementedException()
                 };
 
                 Guid srcUid;
@@ -512,15 +517,23 @@ namespace S100Framework.Applications
 
             foreach (var item in _srcObjectToSlaves) {
                 foreach (var frel in item.Value) {
-                    var key = frel.PLTS_Frel.SRC_FC.ToLower();
-                    if (frelSourceFeatureClasses.ContainsKey(key)) {
-                        frelSourceFeatureClasses[key].Add(frel.PLTS_Frel);
-                    }
-                    else {
-                        frelSourceFeatureClasses[key] = new List<PLTS_Frel>() { frel.PLTS_Frel };
+
+                    var key = frel?.PLTS_Frel?.SRC_FC?.ToLower();
+                    if (key != null) {
+                        if (frelSourceFeatureClasses.ContainsKey(key)) {
+                            if (frel != null) {
+                                frelSourceFeatureClasses[key].Add(frel.PLTS_Frel);
+                            }
+                        }
+                        else {
+                            if (frel != null) {
+                                frelSourceFeatureClasses[key] = new List<PLTS_Frel>() { frel.PLTS_Frel };
+                            }
+                        }
                     }
                 }
             }
+
         }
 
         private void LoadPltsFrels2(Geodatabase source) {
@@ -547,10 +560,10 @@ namespace S100Framework.Applications
                 Guid srcUid;
 
                 if (relationshipIndicator == "Peer") {
-                    if (plts_frel.SRC_FC.ToLower() == "plts_collections") {
+                    if (plts_frel?.SRC_FC?.ToLower() == "plts_collections") {
                         Guid.TryParse(Convert.ToString(plts_frel.SRC_UID), out srcUid);
                         if (!_pltsCollections.ContainsKey(srcUid)) {
-                            Logger.Current.DataError(plts_frel.OBJECTID.Value, "plts_frel", plts_frel.DEST_LNAM, $"Missing {plts_frel.SRC_FC}::{plts_frel.SRC_SUB}::{srcUid}");
+                            Logger.Current.DataError(plts_frel.OBJECTID.GetValueOrDefault(), "plts_frel", plts_frel.DEST_LNAM, $"Missing {plts_frel.SRC_FC}::{plts_frel.SRC_SUB}::{srcUid}");
                             continue;
                         }
 

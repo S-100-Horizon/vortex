@@ -22,7 +22,6 @@ namespace S100Framework.Applications
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
 
-
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
@@ -33,7 +32,6 @@ namespace S100Framework.Applications
 
             using var cursor = aidstonavigationp.Search(filter, true);
             int recordCount = 0;
-            int convertedCount = 0;
             
             while (cursor.MoveNext()) {
                 recordCount += 1;
@@ -115,16 +113,13 @@ namespace S100Framework.Applications
                                     instance.reportedDate = dateOnly;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
-
-                            topmarkDaymarkShape? topmarkDaymark = null;
-                            
 
                             var topmark = relatedEquipment.GetTopMark(current);
                             if (topmark != null) {
@@ -140,9 +135,11 @@ namespace S100Framework.Applications
                                 instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE,subtypes[subtype],featureType,current.PLTS_COMP_SCALE.Value);
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
+
 
                             AddInformation(instance.information, feature);
 
@@ -154,13 +151,15 @@ namespace S100Framework.Applications
                             SetShape(buffer,current.SHAPE);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(),name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -229,7 +228,7 @@ namespace S100Framework.Applications
                                     instance.reportedDate = dateOnly;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -251,7 +250,7 @@ namespace S100Framework.Applications
                                 instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -265,13 +264,13 @@ namespace S100Framework.Applications
                             SetShape(buffer,current.SHAPE);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -344,7 +343,7 @@ namespace S100Framework.Applications
                                     instance.reportedDate = dateOnly;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -365,7 +364,7 @@ namespace S100Framework.Applications
                                 instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -381,13 +380,13 @@ namespace S100Framework.Applications
                             SetShape(buffer,current.SHAPE);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -456,7 +455,7 @@ namespace S100Framework.Applications
                                     instance.reportedDate = dateOnly;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -477,7 +476,7 @@ namespace S100Framework.Applications
                                 instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -493,13 +492,13 @@ namespace S100Framework.Applications
                             SetShape(buffer,current.SHAPE);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID() , name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -573,7 +572,7 @@ namespace S100Framework.Applications
                                     instance.reportedDate = dateOnly;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -594,7 +593,7 @@ namespace S100Framework.Applications
                                 instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -610,13 +609,13 @@ namespace S100Framework.Applications
                             SetShape(buffer,current.SHAPE);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -685,7 +684,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength = current.VERLEN.Value;
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -701,13 +700,13 @@ namespace S100Framework.Applications
                             SetShape(buffer,current.SHAPE);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -771,7 +770,7 @@ namespace S100Framework.Applications
                                 instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -787,13 +786,13 @@ namespace S100Framework.Applications
                             SetShape(buffer,current.SHAPE);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -858,7 +857,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength = current.VERLEN.Value;
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -874,13 +873,13 @@ namespace S100Framework.Applications
                             SetShape(buffer,current.SHAPE);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -950,7 +949,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength = current.VERLEN.Value;
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -967,13 +966,13 @@ namespace S100Framework.Applications
                             SetShape(buffer,current.SHAPE);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(),name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -1038,7 +1037,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength = current.VERLEN.Value;
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -1055,13 +1054,13 @@ namespace S100Framework.Applications
                             
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -1132,7 +1131,7 @@ namespace S100Framework.Applications
                                 instance.topmark = topmark;
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -1148,13 +1147,13 @@ namespace S100Framework.Applications
                             
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -1225,7 +1224,7 @@ namespace S100Framework.Applications
 
                             // TODO: shapeInformation
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -1243,13 +1242,13 @@ namespace S100Framework.Applications
                             
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -1316,7 +1315,7 @@ namespace S100Framework.Applications
                                 instance.valueOfMaximumRange = current.VALMXR.Value;
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -1330,13 +1329,13 @@ namespace S100Framework.Applications
 
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -1372,18 +1371,18 @@ namespace S100Framework.Applications
                                 var featureN = featureClass.CreateRow(buffer);
                                 var structureName = Convert.ToString(featureN["name"]);
 
-                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName);
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                convertedCount++;
+                                
 
 
                             }
                             else if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightAirObstruction)) {
                                 var instance = CreateLightAirObstruction(current);
 
-                                if (current.PLTS_COMP_SCALE.HasValue) {
-                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
-                                }
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                            }
 
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
@@ -1394,16 +1393,16 @@ namespace S100Framework.Applications
                                 var featureN = featureClass.CreateRow(buffer);
                                 var structureName = Convert.ToString(featureN["name"]);
 
-                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName);
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                convertedCount++;
+                                
                             }
                             else if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightFogDetector)) {
                                 var instance = CreateLightFogDetector(current);
 
-                                if (current.PLTS_COMP_SCALE.HasValue) {
-                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
-                                }
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                            }
 
                                 AddInformation(instance.information, feature);
 
@@ -1415,17 +1414,17 @@ namespace S100Framework.Applications
                                 var featureN = featureClass.CreateRow(buffer);
                                 var structureName = Convert.ToString(featureN["name"]);
 
-                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName);
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                convertedCount++;
+                                
                             }
                             else if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightAllAround)) {
                                 var instance = CreateLightAllAround(current);
 
-                                if (current.PLTS_COMP_SCALE.HasValue) {
-                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
-                                }
-                                AddInformation(instance.information, feature);
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                            }
+AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
@@ -1435,9 +1434,9 @@ namespace S100Framework.Applications
                                 var featureN = featureClass.CreateRow(buffer);
                                 var structureName = Convert.ToString(featureN["name"]);
 
-                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName);
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                convertedCount++;
+                                
                             }
 
                             else {
@@ -1504,7 +1503,7 @@ namespace S100Framework.Applications
                                 instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -1522,13 +1521,13 @@ namespace S100Framework.Applications
                             
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -1593,7 +1592,7 @@ namespace S100Framework.Applications
                                 instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -1611,13 +1610,13 @@ namespace S100Framework.Applications
                             
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID() , name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -1652,7 +1651,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -1665,13 +1664,13 @@ namespace S100Framework.Applications
                             SetShape(buffer,current.SHAPE);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -1720,7 +1719,7 @@ namespace S100Framework.Applications
                                 instance.valueOfMaximumRange = current.VALMXR.Value;
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -1734,13 +1733,13 @@ namespace S100Framework.Applications
                             
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(),name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -1748,8 +1747,6 @@ namespace S100Framework.Applications
                             relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
-
-
                         }
                         break;
                     case 95: { // RDOSTA_RadioStation // SLAVE RIND: 2
@@ -1795,14 +1792,11 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
-
                             AddInformation(instance.information, feature);
-
-
                             
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -1810,13 +1804,13 @@ namespace S100Framework.Applications
                             SetShape(buffer, current.SHAPE);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -1862,7 +1856,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -1875,13 +1869,13 @@ namespace S100Framework.Applications
                             SetShape(buffer,current.SHAPE);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -1949,7 +1943,7 @@ namespace S100Framework.Applications
                                 instance.valueOfMaximumRange = current.VALMXR.Value;
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
@@ -1962,13 +1956,13 @@ namespace S100Framework.Applications
                             SetShape(buffer,current.SHAPE);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relation
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                             #endregion aidstonavigation
                             #region related
@@ -1993,11 +1987,8 @@ namespace S100Framework.Applications
                                 complex attribute shape information. See also clause 12.6.
                             */
 
-
-
-
                             //throw new NotImplementedException("Master topmarks");
-                            convertedCount++;
+                            
 
                         }
                         break;
@@ -2008,8 +1999,7 @@ namespace S100Framework.Applications
 
                 }
             }
-            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
-
+            Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
 
         internal static bool TryGetRadarWaveLengths(string radwal, out List<radarWaveLength> radarWaveLengths) {
@@ -2377,6 +2367,11 @@ namespace S100Framework.Applications
                             visibility = EnumHelper.GetEnumValues<lightVisibility>(light.LITVIS);
                         }
 
+                        List<colour> colours = new();
+                        if (light.COLOUR != default) {
+                            colours = GetColours(light.COLOUR);
+                        }
+
                         var sectorCharacteristic = new sectorCharacteristics() {
                             lightCharacteristic = rhythmofLight.lightCharacteristic,
                             signalGroup = rhythmofLight.signalGroup,
@@ -2386,7 +2381,7 @@ namespace S100Framework.Applications
                                 new lightSector() {
                                     lightVisibility = visibility,
                                     valueOfNominalRange = light.VALNMR.GetValueOrDefault(),
-                                    colour = EnumHelper.GetEnumValues<colour>(light.COLOUR),
+                                    colour = colours,
                                     sectorLimit = new sectorLimit() {
                                         sectorLimitOne = new sectorLimitOne() {
                                             sectorBearing = light.SECTR1.Value,

@@ -153,8 +153,6 @@ namespace S100Framework.Applications
                         SpatialRelationshipDescription = "T*****FF*"
                     };
 
-
-
                     using var cursor = fc.Search(filter, true);
                     while (cursor.MoveNext()) {
                         var current = (ArcGIS.Core.Data.Feature)cursor.Current;
@@ -288,8 +286,8 @@ namespace S100Framework.YAML
     using System.Linq;
 
     using System.Text.RegularExpressions;
-    using NetTopologySuite.Geometries;
-    using GeoAPI.Geometries;
+    //using NetTopologySuite.Geometries;
+    //using GeoAPI.Geometries;
 
     public static class Extension
     {
@@ -971,47 +969,47 @@ namespace S100Framework.YAML
         }
     }
 
-    public static class NetTopologyEdgeDetector
-    {
-        private static readonly GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.FloatingSingle)); // Or PrecisionModels.Floating
-        public static List<Coordinate[]> FindSharedEdges(List<ArcGIS.Core.Geometry.Polygon> polygons) {
-            var polylines = new Dictionary<string, NetTopologySuite.Geometries.LineString>();
-            var curves = new List<Curve>();
-            var result = new List<Coordinate[]>();
-            int i = 1;
-            foreach (var polygon in polygons) {
-                var coordinates = polygon.GetExteriorRing(0).Parts[0].Select(segment => new GeoAPI.Geometries.Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+    //public static class NetTopologyEdgeDetector
+    //{
+    //    private static readonly GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.FloatingSingle)); // Or PrecisionModels.Floating
+    //    public static List<Coordinate[]> FindSharedEdges(List<ArcGIS.Core.Geometry.Polygon> polygons) {
+    //        var polylines = new Dictionary<string, NetTopologySuite.Geometries.LineString>();
+    //        var curves = new List<Curve>();
+    //        var result = new List<Coordinate[]>();
+    //        int i = 1;
+    //        foreach (var polygon in polygons) {
+    //            var coordinates = polygon.GetExteriorRing(0).Parts[0].Select(segment => new GeoAPI.Geometries.Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
 
-                polylines.Add($"{i}", (NetTopologySuite.Geometries.LineString)factory.CreateLineString([.. coordinates, coordinates[0]]));
-                i++;
-            }
+    //            polylines.Add($"{i}", (NetTopologySuite.Geometries.LineString)factory.CreateLineString([.. coordinates, coordinates[0]]));
+    //            i++;
+    //        }
 
-            foreach (var pair in polylines) {
-                var p = pair.Value;
+    //        foreach (var pair in polylines) {
+    //            var p = pair.Value;
 
-                var overlaps = new List<string>();
-                var linestrings = new List<Coordinate[]>();
+    //            var overlaps = new List<string>();
+    //            var linestrings = new List<Coordinate[]>();
 
-                foreach (var e in polylines.Where(i => i.Value != p)) {
-                    if (p.Overlaps(e.Value)) {
-                        overlaps.Add(e.Key);
+    //            foreach (var e in polylines.Where(i => i.Value != p)) {
+    //                if (p.Overlaps(e.Value)) {
+    //                    overlaps.Add(e.Key);
 
-                        var g = p.Intersection(e.Value);
-                        linestrings.Add([.. g.Coordinates.Select(e => new YAML.Coordinate(e.X, e.Y))]);
-                        //linestrings.Add(g.ToString()!);
-                    }
-                }
+    //                    var g = p.Intersection(e.Value);
+    //                    linestrings.Add([.. g.Coordinates.Select(e => new YAML.Coordinate(e.X, e.Y))]);
+    //                    //linestrings.Add(g.ToString()!);
+    //                }
+    //            }
 
-                if (overlaps.Any()) {
-                    Log.Information("{key} Overlaps: #{count}", pair.Key, overlaps.Count);
-                    Log.Information("\tID IN ({overlaps})", string.Join(',', overlaps));
-                    foreach (var e in linestrings) {
-                        result.Add(e);
-                    }
-                }
-            }
+    //            if (overlaps.Any()) {
+    //                Log.Information("{key} Overlaps: #{count}", pair.Key, overlaps.Count);
+    //                Log.Information("\tID IN ({overlaps})", string.Join(',', overlaps));
+    //                foreach (var e in linestrings) {
+    //                    result.Add(e);
+    //                }
+    //            }
+    //        }
 
-            return result;
-        }
-    }
+    //        return result;
+    //    }
+    //}
 }

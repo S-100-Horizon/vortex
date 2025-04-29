@@ -1,24 +1,21 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Data.UtilityNetwork;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S101.InformationTypes;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
-
+        
         private static void S57_MetadataA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "MetadataA";
 
             using var coastlinea = source.OpenDataset<FeatureClass>(source.GetName(tableName));
             var subtypes = coastlinea.GetSubtypes();
             var featureType = PrimitiveType.Area;
-
+            
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
             using var buffer = featureClass.CreateRowBuffer();
@@ -26,7 +23,7 @@ namespace S100Framework.Applications
 
             using var cursor = coastlinea.Search(filter, true);
             int recordCount = 0;
-            int convertedCount = 0;
+            
             while (cursor.MoveNext()) {
                 recordCount += 1;
                 var feature = (Feature)cursor.Current;
@@ -41,35 +38,77 @@ namespace S100Framework.Applications
 
                 var displayScale = DisplayScale.GetNearestBelowKey(plts_comp_scale) ?? default;
 
+                if (current.PUBREF != default) {
+                    if (System.Diagnostics.Debugger.IsAttached)
+                        System.Diagnostics.Debugger.Break();
+                }
+
+
 
                 switch (subtype) {
-
                     case 1: { // M_ACCY_AccuracyOfData
-                            //var instance = new QualityOfBathymetricData();
+                            var instance = new QualityOfNonBathymetricData();
 
-                            //AddInformation(instance.information, feature);
-                            //buffer["ps"] = ps101;
-                            //buffer["code"] = instance.GetType().Name;
-                            //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            //SetShape(buffer,current.SHAPE);
-                            //                            var featureN = featureClass.CreateRow(buffer);
-                            //var name = Convert.ToString(featureN["name"]);
+                            if (current.CATZOC.HasValue && current.CATZOC.Value != -32767) {
+                                if (current.CATZOC.Value == 6) {
+                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.Unassessed;
+                                }
+                                else {
+                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.UnlikelyToChange;
+                                }
+                            }
 
-                            //// TODO: Create relations
+                            if (current.HORACC.HasValue) {
+                                instance.horizontalDistanceUncertainty = current.HORACC.Value;
+                            }
+                            if (current.POSACC.HasValue) {
+                                instance.horizontalPositionUncertainty = new() {
+                                    uncertaintyFixed = current.POSACC.Value
+                                };
+                            }
+
+                            // TODO: InteroperabilityIdentifier
+
+                            // TODO: OrientationUncertainty
+
+                            if (DateHelper.TryGetSurveyDateRange(current.SURSTA, current.SUREND, out var surveyDateRange)) {
+                                instance.surveyDateRange = surveyDateRange;
+                            }
+
+                            if (current.SOUACC.HasValue) {
+                                instance.verticalUncertainty = new() {
+                                    uncertaintyFixed = current.SOUACC.Value
+                                };
+                            }
+
+                            AddInformation(instance.information, feature);
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            SetShape(buffer,current.SHAPE);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            // TODO: Create relations
                             
-                            //ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
-                            //Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            //convertedCount++;
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            
                         }
                         break;
 
                     case 20: { // M_CSCL_CompilationScaleOfData
+
+
                             var instance = new DataCoverage();
 
-                            instance.maximumDisplayScale = displayScale.MaximumDisplayScale;
-                            instance.minimumDisplayScale = displayScale.MinimumDisplayScale.Value;
-                            instance.optimumDisplayScale = displayScale.OptimumDisplayScale;
+                            if (displayScale != null) {
+                                instance.maximumDisplayScale = displayScale.MaximumDisplayScale;
+                                instance.minimumDisplayScale = displayScale.MinimumDisplayScale.GetValueOrDefault();
+                                instance.optimumDisplayScale = displayScale.OptimumDisplayScale;
+                            }
 
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -77,14 +116,14 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
 
@@ -92,33 +131,48 @@ namespace S100Framework.Applications
                             //There is no equivalent Meta Feature type in S - 101 for the S-57 Meta Object M_HOPA.It is considered
                             //that this information is not required for S - 101.Data Producers should consider removing instances of
                             //M_HOPA from their S-57 data for consistency.
-
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, "DEPRECATED");
                             Logger.Current.DataObject(objectid, tableName, longname, "Not converted");
-                            convertedCount++;
+                            
                         }
                         break;
                     case 30: { // M_NPUB_NauticalPublicationInformation
                             var instance = new InformationArea();
-                            if (current.PLTS_COMP_SCALE.HasValue) {
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
+                            if (current.SORDAT != default) {
+                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                    instance.reportedDate = dateOnly;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
                             AddInformation(instance.information, feature);
+
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                                                        var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 35: { // M_NSYS_NavigationalSystemOfMarks // Navigational System of Marks - region A and B globally
@@ -133,15 +187,15 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                                                        var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
                         }
                         break;
                     case 40: { // M_QUAL_QualityOfData // SKIN OF EARTH
@@ -149,11 +203,59 @@ namespace S100Framework.Applications
                             var instance = new QualityOfBathymetricData();
                             // TODO: categoryOfTemporalVariation
 
-                            //instance.categoryOfTemporalVariation = EnumHelper.GetEnumValue<categoryOfTemporalVariation>(current.
+                            /*
+                                Temporal Variation: The S-101 mandatory attribute category of temporal variation introduces the
+                                ability for the Data Producer to incorporate the temporal impact on bathymetric data quality in areas
+                                where the seabed is likely to change over time, or in the wake of an extreme event such as a hurricane
+                                S-57 ENC to S-101 Conversion Guidance 9
+                                S-65 Annex B April 2024 Edition 1.2.0
+                                or tsunami. During the automated conversion process, for all M_QUAL except those where CATZOC =
+                                6 (zone of confidence U (data not assessed)), the corresponding Quality of Bathymetric Data will
+                                have category of temporal variation populated with value 5 (unlikely to change). For full S-101
+                                functionality, Data Producers will be required to reassess the value of this attribute as required. For
+                                CATZOC = 6 (zone of confidence U (data not assessed)), category of temporal variation will be
+                                populated with value 6 (unassessed).
+                            */
 
-                            //instance.zoneOfConfidence = GetZoneOfConfidence(current.CATZOC);
+                            if (current.CATZOC.HasValue && current.CATZOC.Value != -32767) {
+                                if (current.CATZOC.Value == 6) {
+                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.Unassessed;
+                                    instance.dataAssessment = dataAssessment.Unassessed;
+                                } else {
+                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.UnlikelyToChange;
+                                    instance.dataAssessment = dataAssessment.Unassessed;
+                                }
+                            }
 
-                            //instance.dataAssessment = EnumHelper.GetEnumValue<dataAssessment>(
+                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m) {
+                                instance.depthRangeMinimumValue = current.DRVAL1;
+                            }
+
+                            if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767m) {
+                                instance.depthRangeMaximumValue = current.DRVAL2;
+                            }
+
+                            // TODO: featuresDetected
+                            
+                            // TODO: fillSeafloorCoverageAchieved
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (DateHelper.TryGetSurveyDateRange(current.SURSTA, current.SUREND, out var dateRange)) {
+                                instance.surveyDateRange = dateRange;
+                            }
+
+                            if (current.CATZOC.HasValue && current.CATZOC.Value != -32767m) {
+                                instance.zoneOfConfidence = new() {
+                                    new zoneOfConfidence() {
+                                        categoryOfZoneOfConfidenceInData = EnumHelper.GetEnumValue<categoryOfZoneOfConfidenceInData>(current.CATZOC.Value),
+                                    }
+                                };
+                            }
+
+                            if (DateHelper.TryGetSurveyDateRange(current.SURSTA, current.SUREND, out var surveyDateRange)) {
+                                instance.surveyDateRange = surveyDateRange;
+                            }
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -161,17 +263,14 @@ namespace S100Framework.Applications
                             SetShape(buffer,current.SHAPE);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
-
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 45: { // M_SDAT_SoundingDatum
                             var instance = new SoundingDatum();
-
-
 
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -179,14 +278,14 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                                                         var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 50: { // M_SREL_SurveyReliability
@@ -199,14 +298,14 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                                                         var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
                             
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 55: { // M_VDAT_VerticalDatumOfData
@@ -256,15 +355,16 @@ namespace S100Framework.Applications
                                     buffer["code"] = instance.GetType().Name;
                                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                     SetShape(buffer,current.SHAPE);
-                                                                var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                                    
+                                    var featureN = featureClass.CreateRow(buffer);
+                                    var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
+                                    // TODO: Create relations
                             
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                                    ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                                     Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                    convertedCount++;
+                                    
                                 }
                                 break;
                             }
@@ -279,7 +379,7 @@ namespace S100Framework.Applications
 
 
             }
-            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
+            Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
 
 

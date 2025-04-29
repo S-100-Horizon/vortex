@@ -18,7 +18,7 @@ namespace S100Framework.Applications
             this._source = source;
         }
 
-        internal topmark GetTopMark(AidsToNavigationP structure) {
+        internal topmark? GetTopMark(AidsToNavigationP structure) {
             var topmarks = _featureRelations.GetRelated<AidsToNavigationP>(typeof(topmark), structure.GLOBALID);
 
             if (topmarks == null || topmarks.Count() == 0) {
@@ -70,7 +70,7 @@ namespace S100Framework.Applications
             return _featureRelations.GetRelatedCount(globalid) > 0;
         }
 
-        internal Daymark GetDayMark(AidsToNavigationP structure) {
+        internal Daymark? GetDayMark(AidsToNavigationP structure) {
             var daymarks = _featureRelations.GetRelated<AidsToNavigationP>(typeof(Daymark), structure.GLOBALID);
 
             if (daymarks == null || daymarks.Count() == 0) {
@@ -85,7 +85,7 @@ namespace S100Framework.Applications
 
             if (relatedDaymark != null) {
 
-                List<colour> daymarkColours = null;
+                List<colour>? daymarkColours = null;
 
                 colourPattern? daymarkColourPattern = null;
 
@@ -149,7 +149,7 @@ namespace S100Framework.Applications
 
                     // TODO: Create relation
                     ConversionAnalytics.Instance.AddConverted(sourceTable, related.ToDictionary(obj => obj.GLOBALID, obj => new List<string> { equipmentName }));
-                    Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, equipmentName, System.Text.Json.JsonSerializer.Serialize(instance));
+                    Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName, System.Text.Json.JsonSerializer.Serialize(instance));
                 }
 
                 related = _featureRelations.GetRelated<AidsToNavigationP>(typeof(LightAllAround), structure.GLOBALID);
@@ -169,8 +169,8 @@ namespace S100Framework.Applications
 
                         // TODO: Create relation
 
-                        ConversionAnalytics.Instance.AddConverted(sourceTable, light.GLOBALID, equipmentName);
-                        Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, equipmentName, System.Text.Json.JsonSerializer.Serialize(instance));
+                        ConversionAnalytics.Instance.AddConverted(sourceTable, light.GLOBALID, equipmentName ?? "Unknown equipment name");
+                        Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
                     }
                 }
             }
@@ -204,7 +204,7 @@ namespace S100Framework.Applications
 
                     // TODO: Create relation
                     ConversionAnalytics.Instance.AddConverted(sourceTable, related.ToDictionary(obj => obj.GLOBALID, obj => new List<string> { equipmentName }));
-                    Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, equipmentName, System.Text.Json.JsonSerializer.Serialize(instance));
+                    Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName, System.Text.Json.JsonSerializer.Serialize(instance));
                 }
 
                 related = _featureRelations.GetRelated<AidsToNavigationP>(typeof(LightAllAround), structure.GLOBALID);
@@ -224,8 +224,8 @@ namespace S100Framework.Applications
 
                         // TODO: Create relation
 
-                        ConversionAnalytics.Instance.AddConverted(sourceTable, light.GLOBALID, equipmentName);
-                        Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, equipmentName, System.Text.Json.JsonSerializer.Serialize(instance));
+                        ConversionAnalytics.Instance.AddConverted(sourceTable, light.GLOBALID, equipmentName ?? "Unknown equipment name");
+                        Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
                     }
                 }
             }

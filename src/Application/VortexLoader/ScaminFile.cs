@@ -1,16 +1,15 @@
 ﻿using ArcGIS.Core.Geometry;
 using S100Framework.Applications.S57.esri;
+using System.Formats.Asn1;
 using System.Xml.Linq;
 namespace S100Framework.Applications
 {
-
     public enum PrimitiveType
     {
         Point = 1,
         Line = 2,
         Area = 4
     }
-   
     class NamedPolygon
     {
         public string Name { get; }
@@ -31,6 +30,7 @@ namespace S100Framework.Applications
 
         private Scamin(string pathToScaminFiles) {
             var sr = SpatialReferences.WGS84;
+
 
             // TODO: Get Scamin polygons and corresponding filenames from external datasource. Ie. database, geopackage, shapefiles etc.
             AddPolygon("SCAMIN_GST_Danmark.xml", new List<Coordinate2D>
@@ -89,11 +89,17 @@ namespace S100Framework.Applications
             return _scaminFiles[touched[0]].GetMinimumScale(subtypeName, primitiveType, compilationScale, isRelatedToStructure);
         }
 
-        private static void AddPolygon(string name, IReadOnlyList<Coordinate2D> points, SpatialReference sr) {
-            var builder = new PolygonBuilderEx(sr);
+        /// <summary>
+        /// Adds the polygon
+        /// </summary>
+        /// <param xmlFileName="xmlFileName"></param>
+        /// <param xmlFileName="points">Coordinate2D points</param>
+        /// <param xmlFileName="spatialReference">The spatial reference</param>
+        private static void AddPolygon(string xmlFileName, IReadOnlyList<Coordinate2D> points, SpatialReference spatialReference) {
+            var builder = new PolygonBuilderEx(spatialReference);
             builder.AddPart(points);
             var polygon = builder.ToGeometry();
-            _polygons.Add(new NamedPolygon(name, polygon));
+            _polygons.Add(new NamedPolygon(xmlFileName, polygon));
         }
 
         private static List<string> GetTouchedPolygonNames(Geometry inputGeometry) {
@@ -110,12 +116,12 @@ namespace S100Framework.Applications
             return touchedPolygons;
         }
     }
-    class ScaminFile
+    internal class ScaminFile
     {
         private XElement root;
-        private List<ObjectData> _objects;
-        private List<int> _radarScales;
-        private List<int> _scaminValues;
+        private List<ObjectData> _objects  = new();
+        private List<int> _radarScales = new();
+        private List<int> _scaminValues = new();
 
         internal ScaminFile(string filePath) {
             string xmlData = File.ReadAllText(filePath);
@@ -151,6 +157,44 @@ namespace S100Framework.Applications
                                                 .ToList()
                               })
                               .ToList();
+            //_objects = new List<ObjectData>();
+            //foreach (var o in root.Descendants("Object")) {
+            //    var name = Convert.ToString(o.Attribute("Name"));
+            //    var ptype = Convert.ToString(o.Attribute("PrimitiveType"));
+            //    var condition = Convert.ToBoolean(o.Attribute("HasCondition"));
+            //    var stepValue = Convert.ToString(o.Attribute("DefaultStepValue"));
+
+            //    if (name == null) {
+            //        throw new ArgumentException("Empty name in scamin file");
+            //    }
+            //    if (ptype == null) {
+            //        throw new ArgumentException("empty PrimitiveType in scamin file");
+            //    }
+            //    if (stepValue == null) {
+            //        throw new ArgumentException("empty stepvalue in scamin file");
+            //    }
+
+            //    List<List<string>> conditions = new List<List<string>>();
+
+            //    foreach (var c in o.Descendants("Condition")) {
+            //        var rules = new List<string>();
+            //        foreach (var e in c.Descendants("Rule")) {
+            //            var ruleType = Convert.ToString(e.Attribute("Type"));
+            //            if (ruleType != null) {
+            //                rules.Add(ruleType);
+            //            }
+            //        }
+            //        conditions.Add(rules);
+            //    }
+
+            //    _objects.Add(new ObjectData {
+            //        Name = name,
+            //        PrimitiveType = ptype,
+            //        HasCondition = condition,
+            //        DefaultStepValue = stepValue,
+            //        Conditions = conditions,
+            //    });
+            //}
         }
 
         private int? GetDefaultStepValueByName(string name, PrimitiveType primitiveType, bool isRelatedToStructure) {
@@ -217,12 +261,10 @@ namespace S100Framework.Applications
 
     internal class ObjectData
     {
-        public string Name { get; set; }
-        public string PrimitiveType { get; set; }
+        public string? Name { get; set; }
+        public string? PrimitiveType { get; set; }
         public bool HasCondition { get; set; }
-        public string DefaultStepValue { get; set; }
+        public string? DefaultStepValue { get; set; }
         public List<List<string>> Conditions { get; set; } = new List<List<string>>();
     }
-
-
 }

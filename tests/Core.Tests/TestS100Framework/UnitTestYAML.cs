@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit.Abstractions;
-using YamlDotNet.Serialization.NamingConventions;
-using YamlDotNet.Serialization;
-using ArcGIS.Core.Data;
-using System.Globalization;
-using S100Framework.DomainModel.S101.FeatureTypes;
+﻿using JsonFlatten;
 using Newtonsoft.Json.Linq;
-using JsonFlatten;
-using System.Text.Json;
+using S100Framework.DomainModel.S101.FeatureTypes;
 using System.Collections;
+using System.Text;
+using System.Text.Json;
+using Xunit.Abstractions;
 
 
 namespace TestS100Framework
