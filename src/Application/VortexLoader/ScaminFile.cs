@@ -2,6 +2,7 @@
 using S100Framework.Applications.S57.esri;
 using System.Formats.Asn1;
 using System.Xml.Linq;
+
 namespace S100Framework.Applications
 {
     public enum PrimitiveType
@@ -10,7 +11,8 @@ namespace S100Framework.Applications
         Line = 2,
         Area = 4
     }
-    class NamedPolygon
+
+    internal class NamedPolygon
     {
         public string Name { get; }
         public Polygon Polygon { get; }
@@ -30,7 +32,6 @@ namespace S100Framework.Applications
 
         private Scamin(string pathToScaminFiles) {
             var sr = SpatialReferences.WGS84;
-
 
             // TODO: Get Scamin polygons and corresponding filenames from external datasource. Ie. database, geopackage, shapefiles etc.
             AddPolygon("SCAMIN_GST_Danmark.xml", new List<Coordinate2D>
@@ -78,7 +79,6 @@ namespace S100Framework.Applications
             }
         }
 
-
         public int? GetMinimumScale(Geometry geometry, string subtypeName/*, string relatedStructureName*/, PrimitiveType primitiveType, int compilationScale, bool isRelatedToStructure = false) {
             var touched = GetTouchedPolygonNames(geometry);
             if (touched.Count != 1) {
@@ -116,10 +116,11 @@ namespace S100Framework.Applications
             return touchedPolygons;
         }
     }
+
     internal class ScaminFile
     {
         private XElement root;
-        private List<ObjectData> _objects  = new();
+        private List<ObjectData> _objects = new();
         private List<int> _radarScales = new();
         private List<int> _scaminValues = new();
 
@@ -185,7 +186,6 @@ namespace S100Framework.Applications
         }
 
         private int? GetDefaultStepValueByName(string name, PrimitiveType primitiveType, bool isRelatedToStructure) {
-
             var obj = _objects.FirstOrDefault(o => o.Name != null && o.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
 
             if (obj == null) {
@@ -195,7 +195,7 @@ namespace S100Framework.Applications
             // https://pro.arcgis.com/en/pro-app/latest/help/production/maritime/scale-minimum-radar-range-method.htm
             // if _s101type = R - Related - Object receives same step as related structure else defaultStepValue (if stand alone)
             // if _s101type = S - Spatially associated - Operator = "Cover" or operator = "Share" - receives StepValue accordingly
-            // if _s101type = A - Attribute value - 
+            // if _s101type = A - Attribute value -
             {
                 if (!isRelatedToStructure) {
                     if (int.TryParse(obj.DefaultStepValue, out var defaultStepValue)) {
@@ -207,7 +207,7 @@ namespace S100Framework.Applications
                 }
             }
             {
-                // TODO: implement scamin conditions. For now returning null if 
+                // TODO: implement scamin conditions. For now returning null if
                 if (obj.HasCondition) {
                     return null;
                 }
@@ -217,7 +217,6 @@ namespace S100Framework.Applications
                 }
                 else {
                     return null;
-
                 }
             }
         }
@@ -229,7 +228,7 @@ namespace S100Framework.Applications
             return closestScamin;
         }
 
-        internal protected int? GetMinimumScale(string name, PrimitiveType primitiveType, int compilationScale, bool isRelatedToStructure) {
+        protected internal int? GetMinimumScale(string name, PrimitiveType primitiveType, int compilationScale, bool isRelatedToStructure) {
             var closestScamin = GetClosestScaminValue(compilationScale);
 
             var defaultStepValue = GetDefaultStepValueByName(name, primitiveType, isRelatedToStructure);
@@ -245,7 +244,6 @@ namespace S100Framework.Applications
             }
             return higherScamins[index.Value];
         }
-
     }
 
     internal class ObjectData

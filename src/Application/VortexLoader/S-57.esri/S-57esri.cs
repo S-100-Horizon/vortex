@@ -21410,7 +21410,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? DSNM = default;
 
         /// <summary>
-        /// Export Type
+        /// Export S101Type
         /// </summary>
         [Description("Export Type")]
         internal string? EXPORTTYPE = default;

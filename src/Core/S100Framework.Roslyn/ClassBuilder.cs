@@ -1457,7 +1457,7 @@ namespace S100Framework
             classBuilder.AppendLine("\t\t{");
 
             var first = true;
-            foreach (var p in type.GetProperties()) {
+            foreach (var p in type.Properties()) {
                 if (p.DeclaringType != type)
                     continue;
 

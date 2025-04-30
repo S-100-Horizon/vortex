@@ -21363,9 +21363,9 @@
 //		internal string? DSNM = default;
 
 //		/// <summary>
-//		/// Export Type
+//		/// Export S101Type
 //		/// </summary>
-//		[Description("Export Type")]
+//		[Description("Export S101Type")]
 //		internal string? EXPORTTYPE = default;
 
 //		/// <summary>
