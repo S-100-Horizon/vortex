@@ -2,7 +2,6 @@
 using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.DomainModel;
-using S100Framework.DomainModel.S124.FeatureTypes;
 using S100Framework.YAML;
 using Serilog;
 using System.Diagnostics;
@@ -17,8 +16,8 @@ namespace S100Framework.Applications
         private const string outputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff}| [{Level:u3}] {Message:lj} {NewLine}{Exception}";
         public class Options
         {
-            [Option('d', "dataset", Required = false, HelpText = "")]
-            public string? Dataset { get; set; }
+            [Option('d', "dnsm", Required = false, HelpText = "")]
+            public string? Dataset { get; set; } = default;
 
             [Option('g', "geodatabase", Required = true, HelpText = "Geodatabase.")]
             public string Geodatabase { get; set; } = string.Empty;
@@ -63,8 +62,9 @@ namespace S100Framework.Applications
 
                 Esri.Initialize();
 
+                string? dsnm = default;
+
                 Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
-                ;
 
                 arguments.WithParsed<Options>(o => {
                     var geodatabase = o.Geodatabase.ToLowerInvariant();
@@ -77,21 +77,52 @@ namespace S100Framework.Applications
                     }
                     else
                         throw new System.ArgumentOutOfRangeException(nameof(geodatabase));
+
+                    dsnm = o.Dataset;
                 });
 
                 var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, jsonSurface);
+
                 using Geodatabase source = createGeodatabase();
 
                 var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
 
-                // Create dataset
-                var dataset = new Dataset() {
-                    CellName = "101DK40349E.000",
-                    Comment = "Test Dataset",
-                    Edition = 1,
-                    ENCVer = "INT.IHO.S-101.2.0",
-                    FCVer = "2.0.0",
-                };
+                Dataset dataset;
+                if (string.IsNullOrEmpty(dsnm)) {
+                    dataset = new Dataset {
+                        CellName = "101DK40349E.000",
+                        Comment = "Not for navigation!",
+                        Edition = 1,
+                        ENCVer = "INT.IHO.S-101.2.0",
+                        FCVer = "2.0.0",
+                    };
+                }
+                else {
+                    using var surface = source.OpenDataset<FeatureClass>("surface");
+
+                    using var cursor = surface.Search(new QueryFilter {
+                        WhereClause = $"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"{dsnm.ToUpperInvariant()}\"%'",
+                    }, true);
+
+                    cursor.MoveNext();
+                    var current = (ArcGIS.Core.Data.Feature)cursor.Current;
+
+                    var electricProduct = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(current["json"])!);
+
+                    dataset = new Dataset {
+                        CellName = electricProduct!.datasetName!,
+                        Comment = "Not for navigation!",
+                        Edition = 1,
+                        ENCVer = "INT.IHO.S-101.2.0",
+                        FCVer = "2.0.0",
+                    };
+
+                    var polygon = (ArcGIS.Core.Geometry.Polygon)current.GetShape();
+                    var json = polygon.ToJson();
+
+                    shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
+                }
+
 
                 var geometries = new List<(Geometry geometry, string name)>();
                 var featureAssociations = new Dictionary<string, YAML.Association[]>();
@@ -273,11 +304,57 @@ namespace S100Framework.Applications
 
 namespace S100Framework.YAML
 {
+    using NetTopologySuite.Geometries;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
 
     using System.Text.RegularExpressions;
+
+    public class CurveFeature
+    {
+        public int Id { get; init; }
+
+        public CurveFeature(int id, LineString lineString) {
+            this.Id = id;
+            this.LineString = lineString;
+            this.HashCode = lineString.GetHashCode();
+        }
+
+        public LineString LineString { get; init; }
+
+        public int HashCode { get; init; }
+    }
+
+    public class CompositeCurveFeature
+    {
+        public int Id { get; init; }
+
+        public required int[] Curves { get; init; }
+    }
+
+    public class SurfaceFeature
+    {
+        public int Id { get; init; }
+
+        public int Exterior { get; init; }
+
+        public int[]? Interior { get; init; }
+    }
+
+    public record Polyline(long ObjectId, LineString LineString);
+
+    public record Polygon(long ObjectId, LineString ExteriorRing, LineString[] InteriorRings) : Polyline(ObjectId, ExteriorRing);
+
+    public class Topology
+    {
+        public required ICollection<CurveFeature> Curves { get; set; }
+
+        public required ICollection<CompositeCurveFeature> CompositeCurves { get; set; }
+
+        public required ICollection<SurfaceFeature> Surfaces { get; set; }
+    }
+
 
     public static class Extension
     {
@@ -555,287 +632,219 @@ namespace S100Framework.YAML
             return coordinates.ToArray();
         }
 
-        public static string BuildTopology(this Dataset dataset, Curve polygonCurve) {
-            var polygonStr = polygonCurve.Vertices;
-            var id = Regex.Replace(polygonCurve.Name, @"\D", "");
-
-            var curvesFound = 0;
-
-            foreach (var curve in dataset.Curves) {
-                if (polygonStr.Contains(curve.Vertices)) {
-                    curvesFound++;
-
-                    var curveWithCoord = $"{curve.Name}";
-
-                    //// If entire curve == polygonStr, replace everything and dont add surrounding coordinates
-                    //if (polygonStr == curve.Vertices) {
-                    ////    curveWithCoord = $"{curve.Name}";
-                    //}
-                    //// If start of curveStr, omit coordinate before
-                    //else if (polygonStr.StartsWith(curve.Vertices)) {
-                    //    var last = curve.Coordinate.Last();
-                    //    curveWithCoord = $"{curve.Name},{string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", last.X, last.Y)}";
-                    //}
-                    //// If End of curveStr, omit coordinate before
-                    //else if (polygonStr.EndsWith(curve.Vertices)) {
-                    //    var first = curve.Coordinate.First();
-                    //    curveWithCoord = $"{string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", first.X, first.Y)},{curve.Name}";
-                    //}
-                    //// If middle of str, keep everything
-                    //else if (polygonStr.Contains(curve.Vertices)) {
-                    //    var first = curve.Coordinate.First();
-                    //    var firstStr = string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", first.X, first.Y);
-
-                    //    var last = curve.Coordinate.Last();
-                    //    var lastStr = string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", last.X, last.Y);
-
-                    //    curveWithCoord = $"{firstStr},{curve.Name},{lastStr}";
-                    //}
-                    //else {
-                    //    continue;
-                    //}
-
-                    polygonStr = polygonStr.Replace(curve.Vertices, curveWithCoord);
-                }
-                else if (polygonStr.Contains(curve.ReversedVertices)) {
-                    curvesFound++;
-                    var curveWithCoord = $"R{curve.Name}";
-
-                    //// If entire curve == polygonStr, replace everything and dont add surrounding coordinates
-                    //if (polygonStr == curve.ReversedVertices) {
-                    ////    curveWithCoord = $"R{curve.Name}";
-                    //}
-                    //// If start of curveStr, omit coordinate before
-                    //else if (polygonStr.StartsWith(curve.ReversedVertices)) {
-                    //    var last = curve.Coordinate.First();
-                    //    curveWithCoord = $"R{curve.Name},{string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", last.X, last.Y)}";
-                    //}
-                    //// If End of curveStr, omit coordinate before
-                    //else if (polygonStr.EndsWith(curve.ReversedVertices)) {
-                    //    var first = curve.Coordinate.Last();
-                    //    curveWithCoord = $"{string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", first.X, first.Y)},R{curve.Name}";
-                    //}
-                    //// If middle of str, keep everything
-                    //else if (polygonStr.Contains(curve.ReversedVertices)) {
-                    //    var first = curve.Coordinate.Last();
-                    //    var firstStr = string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", first.X, first.Y);
-
-                    //    var last = curve.Coordinate.First();
-                    //    var lastStr = string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", last.X, last.Y);
-
-                    //    curveWithCoord = $"{firstStr},R{curve.Name},{lastStr}";
-                    //}
-                    //else {
-                    //    continue;
-                    //}
-
-                    polygonStr = polygonStr.Replace(curve.ReversedVertices, curveWithCoord);
-                }
-            }
-
-            // If string contains no curves, create new curve that contains entire coordinate[]
-            if (curvesFound == 0) {
-                //var curve = dataset.GetOrCreateCurve(polygonCurve.Coordinate, id);
-                Log.Information("No shared or existing vertices detected for: {id}", id);
-                var first = dataset?.GetOrCreateStartPoint(polygonCurve.Coordinate, id);
-                var last = dataset.GetOrCreateEndPoint(polygonCurve.Coordinate, id);
-                var curve = new Curve(first!, last!, polygonCurve.Coordinate) {
-                    Name = $"C{id}",
-                };
-
-                dataset!.AddCurve(curve);
-
-                return curve.Name;
-            }
-
-            // If string contains just one curve, reference it directly
-            if (polygonStr.Split(",").Length == 1) {
-                return polygonStr;
-            }
-
-            var compositeCurveArr = polygonStr.Split(",");
-
-            // If coordinate but has references surrounding it, clip it and ship it
-            for (int i = 0; i < compositeCurveArr.Length; i++) {
-                var item = compositeCurveArr[i];
-
-                bool IsReference(string s) => s.StartsWith('C') || s.StartsWith('R');
-                bool IsCoordinate(string s) => double.TryParse(s, out _);
-
-                if (IsReference(item))
-                    continue;
-
-                // It's only half a coordinate
-                if (i == compositeCurveArr.Length - 1 || !IsCoordinate(compositeCurveArr[i + 1])) {
-                    Log.Information("error: single coordinate without a pair");
-                    continue;
-                }
-
-                // Pair exists
-                var x = compositeCurveArr[i];
-                var y = compositeCurveArr[i + 1];
-
-                // Lookahead + lookbehind for context
-                string before = i - 1 >= 0 ? compositeCurveArr[i - 1] : null;
-                string after = i + 2 < compositeCurveArr.Length ? compositeCurveArr[i + 2] : null;
-
-                bool beforeRef = before != null && IsReference(before);
-                bool afterRef = after != null && IsReference(after);
-
-                // If the single coordinate has references surrounding it, remove it
-                if (beforeRef && afterRef) {
-                    // middle test
-                    polygonStr = polygonStr.Replace($"{x},{y}", "").Replace(",,", ",").Trim(',');
-                    i++;
-                    continue;
-
-                    var next = dataset?.Curves?.FirstOrDefault(e => e.Name == after.Replace("R", ""));
-                    var nextCoordinates = after.StartsWith('R') ? next.Coordinate.Last() : next.Coordinate.First();
-
-                    var previous = dataset?.Curves?.FirstOrDefault(e => e.Name == before.Replace("R", ""));
-                    var previousCoordinates = before.StartsWith('R') ? previous.Coordinate.First() : previous.Coordinate.Last();
-
-                    var combined = new string[] {
-                        string.Format(CultureInfo.InvariantCulture, "{0:0.0000000}", previousCoordinates.X),
-                        string.Format(CultureInfo.InvariantCulture, "{0:0.0000000}", previousCoordinates.Y),
-                        x,
-                        y,
-                        string.Format(CultureInfo.InvariantCulture, "{0:0.0000000}", nextCoordinates.X),
-                        string.Format(CultureInfo.InvariantCulture, "{0:0.0000000}", nextCoordinates.Y),
-                    };
-
-                    var combinedCoordinatesArr = BuildCoordinateFromStringArray(combined);
-
-                    var combinedStart = dataset.GetOrCreateStartPoint(combinedCoordinatesArr, $"{id}-555");
-                    var combinedEnd = dataset.GetOrCreateEndPoint(combinedCoordinatesArr, $"{id}-555");
-                    var curve = new Curve(combinedStart, combinedEnd, combinedCoordinatesArr) {
-                        Name = $"C{id}-{i}-555"
-                    };
-
-                    dataset.AddCurve(curve);
-
-                    polygonStr = polygonStr.Replace($"{x},{y}", curve.Name);
-
-                    Log.Information("middle pair between refs: {before}, {after}", before, after);
-                }
-                // If the single coordinate is at the end of array and has reference before it, remove it
-                else if (beforeRef && after == null) {
-                    // middle test
-                    polygonStr = polygonStr.Replace($"{x},{y}", "").Replace(",,", ",").Trim(',');
-                    i++;
-                    continue;
-
-                    var previous = dataset?.Curves?.FirstOrDefault(e => e.Name == before.Replace("R", ""));
-                    var previousCoordinates = before.StartsWith('R') ? previous.Coordinate.First() : previous.Coordinate.Last();
-
-                    var combined = new string[] {
-                        string.Format(CultureInfo.InvariantCulture, "{0:0.0000000}", previousCoordinates.X),
-                        string.Format(CultureInfo.InvariantCulture, "{0:0.0000000}", previousCoordinates.Y),
-                        x,
-                        y,
-                    };
-
-                    var combinedCoordinatesArr = BuildCoordinateFromStringArray(combined);
-                    var combinedStart = dataset.GetOrCreateStartPoint(combinedCoordinatesArr, $"{id}-999");
-                    var combinedEnd = dataset.GetOrCreateEndPoint(combinedCoordinatesArr, $"{id}-999");
-                    var curve = new Curve(combinedStart, combinedEnd, combinedCoordinatesArr) {
-                        Name = $"C{id}-{i}-999"
-                    };
-
-                    dataset.AddCurve(curve);
-                    polygonStr = polygonStr.Replace($"{x},{y}", curve.Name);
-
-                    Log.Information("end pair after ref: {before}", before);
-                }
-                // If the single coordinate is at the start of array and has reference after it, remove it
-                else if (before == null && afterRef) {
-                    // middle test
-                    polygonStr = polygonStr.Replace($"{x},{y}", "").Replace(",,", ",").Trim(',');
-                    i++;
-                    continue;
-
-                    var next = dataset?.Curves?.FirstOrDefault(e => e.Name == after.Replace("R", ""));
-                    var nextCoordinates = after.StartsWith('R') ? next.Coordinate.Last() : next.Coordinate.First();
-
-                    var combined = new string[] {
-                        x,
-                        y,
-                        string.Format(CultureInfo.InvariantCulture, "{0:0.0000000}", nextCoordinates.X),
-                        string.Format(CultureInfo.InvariantCulture, "{0:0.0000000}", nextCoordinates.Y),
-                    };
-
-                    var combinedCoordinatesArr = BuildCoordinateFromStringArray(combined);
-
-                    var combinedStart = dataset.GetOrCreateStartPoint(combinedCoordinatesArr, $"{id}-111");
-                    var combinedEnd = dataset.GetOrCreateEndPoint(combinedCoordinatesArr, $"{id}-111");
-                    var curve = new Curve(combinedStart, combinedEnd, combinedCoordinatesArr) {
-                        Name = $"C{id}-{i}-111"
-                    };
-
-                    dataset.AddCurve(curve);
-
-                    // only replace the first occurence
-                    var target = $"{x},{y}";
-                    var index = polygonStr.IndexOf(target);
-                    if (index != -1) {
-                        polygonStr = polygonStr.Substring(0, index) + curve.Name + polygonStr.Substring(index + target.Length);
-                    }
-
-                    Log.Information("start pair before ref: {after}", after);
-                }
-                // Replace entire curve in polygonStr between two curve references
-                else {
-                    var coords = new List<string> {
-                        x,
-                        y
-                    };
-
-                    // Look ahead until no more coordinate pairs.
-                    for (int j = i + 2; j + 1 < compositeCurveArr.Length; j += 2) {
-                        if (!IsCoordinate(compositeCurveArr[j]) || !IsCoordinate(compositeCurveArr[j + 1])) break;
-
-                        coords.Add(compositeCurveArr[j]);     // x
-                        coords.Add(compositeCurveArr[j + 1]); // y
-                        i += 2;
-                    }
-
-                    var coordinatesArr = BuildCoordinateFromStringArray([.. coords]);
-
-                    var start = dataset.GetOrCreateStartPoint(coordinatesArr, id);
-                    var end = dataset.GetOrCreateEndPoint(coordinatesArr, id);
-                    var curve = new Curve(start, end, coordinatesArr) {
-                        Name = $"C{id}-{i}"
-                    };
-
-                    dataset.AddCurve(curve);
-
-                    // replace both just in case
-                    polygonStr = polygonStr.Replace(curve.Vertices, curve.Name);
-
-                    Log.Information("Creating curve from remaining coordinates");
-                }
-
-                i++; // skip the next one since we handled a pair
-            }
-
-            // If string only consists of curves or reverseCurves, create CompositeCurve from these
-            if (polygonStr.Split(",").All(s => s.StartsWith('C') || s.StartsWith('R'))) {
-                var composite = new CompositeCurve(polygonStr) {
-                    Name = $"CC{id}"
-                };
-
-                // To-Do: Handle duplicate composite curves? unlikely..
-                dataset.AddCompositeCurve(composite);
-                dataset.UpdateFeatureReferences(polygonCurve.Name, composite.Name);
-
-                return composite.Name;
-            }
-
-            // Shouldn't reach here. Means composite curve still has remaining coordinates
-            Log.Error("Surface {surface} still has remaining coordinates when building composite key", polygonCurve.Name);
-            Log.Information("Compsite curve: {comp}", polygonStr);
-            return polygonStr;
-
+        public static List<CurveFeature> AddCurve(this List<CurveFeature> topology, CurveFeature curve) {
+            if (topology.Any(e => e.HashCode == curve.HashCode)) return topology;
+            topology.Add(curve);
+            return topology;
         }
+    }
+}
+
+namespace ArcGIS.Core.Data
+{
+    using GeoAPI.Geometries;
+    using NetTopologySuite.Geometries;
+
+    internal static class Extension
+    {
+        static SpatialReference spatialReference = SpatialReferenceBuilder.CreateSpatialReference(4326);
+
+        public static void PersistTopology(this Geodatabase geodatabase, ICollection<CurveFeature> curves) {
+            using var topology = geodatabase.OpenDataset<FeatureClass>("topology");
+
+            topology.DeleteRows(new QueryFilter {
+                WhereClause = "1=1",
+            });
+
+            using var buffer = topology.CreateRowBuffer();
+            using var cursor = topology.CreateInsertCursor();
+
+            foreach (var c in curves) {
+                buffer["shape"] = PolylineBuilderEx.CreatePolyline(c.LineString.Coordinates.Select(e => MapPointBuilderEx.CreateMapPoint(e.X, e.Y, spatialReference)), spatialReference);
+                cursor.Insert(buffer);
+            }
+            cursor.Flush();
+        }
+
+        public static S100Framework.YAML.Topology? BuildTopology(this Geodatabase geodatabase, QueryFilter? queryFilter = default) {
+            var factory = new GeometryFactory(new PrecisionModel(PrecisionModels.FloatingSingle)); // Or PrecisionModels.Floating
+
+            var polylines = new List<S100Framework.YAML.Polyline>();
+
+            using (var surface = geodatabase.OpenDataset<FeatureClass>("surface")) {
+                if (queryFilter is null) {
+                    queryFilter = new QueryFilter {
+                        WhereClause = "upper(ps) = 'S-101'",
+                    };
+                }
+
+                using var cursor = surface.Search(queryFilter);
+
+                while (cursor.MoveNext()) {
+                    var f = (Feature)cursor.Current;
+
+                    var shape = (ArcGIS.Core.Geometry.Polygon)f.GetShape();
+
+                    var exteriorRing = shape.GetExteriorRing(0);
+                    var coordinates = exteriorRing.Parts[0].Select(segment => new GeoAPI.Geometries.Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+
+                    var ex = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+
+                    if (shape.PartCount > 1) {
+                        var interiorRings = new List<LineString>();
+
+                        foreach (var interiorRing in shape.Parts.Skip(1)) {
+                            coordinates = interiorRing.Select(segment => new GeoAPI.Geometries.Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+
+                            interiorRings.Add((LineString)factory.CreateLineString([.. coordinates, coordinates[0]]));
+                        }
+
+                        polylines.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), ex, interiorRings.ToArray()));
+                    }
+                    else {
+                        polylines.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), ex, []));
+                    }
+                }
+            }
+
+            var curves = new List<CurveFeature>();
+            var compositecurves = new List<CompositeCurveFeature>();
+            var surfaces = new List<SurfaceFeature>();
+
+            int count = polylines.Count();
+
+            int geometryId = 1;
+
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            foreach (var input in polylines) {
+                count -= 1;
+
+                var local = new Dictionary<string, ICollection<int>>();
+
+                var rings = new List<LineString> { input.LineString };
+
+                if (input is S100Framework.YAML.Polygon polygon) {
+                    foreach (var i in polygon.InteriorRings) {
+                        rings.Add(i);
+                    }
+                }
+
+                foreach (var ring in rings) {
+                    var ringString = ring.ToString();
+                    local.Add(ringString, new List<int>());
+
+                    var overlaps = polylines.Where(e => !e.ObjectId.Equals(input.ObjectId)).Where(e => ring.Overlaps(e.LineString)).Select(e => e.LineString).ToArray();
+                    if (!overlaps.Any()) {
+                        var curve = new CurveFeature(geometryId++, ring);
+                        curves.AddCurve(curve);
+
+                        local[ringString].Add(curve.HashCode);
+                        continue;
+                    }
+
+                    var collection = factory.CreateMultiLineString(overlaps);
+
+                    try {
+                        var intersection = input.LineString.Intersection(collection);
+                        if (intersection is GeometryCollection geometryCollection) {
+                            var polylins = geometryCollection.Geometries.Where(e => e is LineString);
+                            if (!polylins.Any()) {
+                                var curve = new CurveFeature(geometryId++, input.LineString);
+                                curves.AddCurve(curve);
+                                local[ringString].Add(curve.HashCode);
+                                continue;
+                            }
+                            intersection = factory.CreateMultiLineString(polylins.Select(e => e as LineString).ToArray());
+                        }
+
+                        if (intersection is MultiLineString multiLineStringIntersection) {
+                            foreach (LineString lineString in multiLineStringIntersection.Geometries) {
+                                var curve = new CurveFeature(geometryId++, input.LineString);
+                                curves.AddCurve(curve);
+                                local[ringString].Add(curve.HashCode);
+                            }
+                        }
+                        else if (intersection is LineString lineStringIntersection) {
+                            var curve = new CurveFeature(geometryId++, lineStringIntersection);
+                            curves.AddCurve(curve);
+                            local[ringString].Add(curve.HashCode);
+                        }
+
+                        var difference = input.LineString.Difference(intersection);
+
+                        if (difference is MultiLineString multiLineStringDifference) {
+                            foreach (LineString lineString in multiLineStringDifference.Geometries) {
+                                var curve = new CurveFeature(geometryId++, lineString);
+                                curves.AddCurve(curve);
+                                local[ringString].Add(curve.HashCode);
+                            }
+                        }
+                        else if (difference is LineString lineStringDifference) {
+                            var curve = new CurveFeature(geometryId++, lineStringDifference);
+                            curves.AddCurve(curve);
+                            local[ringString].Add(curve.HashCode);
+                        }
+                    }
+                    catch (NetTopologySuite.Geometries.TopologyException ex) {
+                        Log.Logger.Error(ex, "no intersections: {ObjectId}", input.ObjectId);
+                        var curve = new CurveFeature(geometryId++, input.LineString);
+                        curves.AddCurve(curve);
+                        local[ringString].Add(curve.HashCode);
+                        continue;
+                    }
+                }
+
+
+                if (local.Any(e => e.Value.Count > 1)) {
+                    var exterior = local.First();
+
+                    var exteriorReferences = curves.Where(e => exterior.Value.Contains(e.HashCode)).Select(e => e.Id);
+
+                    var compositeExterior = new CompositeCurveFeature {
+                        Id = geometryId++,
+                        Curves = exteriorReferences.ToArray(),
+                    };
+                    compositecurves.Add(compositeExterior);
+
+                    var interior = new List<int>();
+
+                    foreach (var i in local.Skip(1)) {
+                        var references = curves.Where(e => i.Value.Contains(e.HashCode)).Select(e => e.Id);
+                        var composite = new CompositeCurveFeature {
+                            Id = geometryId++,
+                            Curves = references.ToArray(),
+                        };
+                        compositecurves.Add(composite);
+                        interior.Add(composite.Id);
+                    }
+
+                    var surface = new SurfaceFeature {
+                        Id = geometryId++,
+                        Exterior = compositeExterior.Id,
+                        Interior = interior.Any() ? interior.ToArray() : default,
+                    };
+                    surfaces.Add(surface);
+                }
+                else {
+                    var reference = curves.Single(e => local.First().Value.Contains(e.HashCode));
+
+                    var surface = new SurfaceFeature {
+                        Id = geometryId++,
+                        Exterior = reference.Id,
+                    };
+                    surfaces.Add(surface);
+                }
+
+            }
+
+            return new S100Framework.YAML.Topology {
+                Curves = curves,
+                CompositeCurves = compositecurves,
+                Surfaces = surfaces,
+            };
+        }
+
     }
 }
