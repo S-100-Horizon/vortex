@@ -438,6 +438,7 @@ namespace S100Framework.WPF
 
             if (control.PropertyGrid != null) {
                 control.PropertyGrid.SelectedObject = control._selectedObject;
+                control.PropertyGrid.SelectedObjectTypeName = control._selectedObject.ToString();
             }
 
             var informationStackPanel = Visibility.Collapsed;
@@ -499,6 +500,7 @@ namespace S100Framework.WPF
 
             if (control.PropertyGrid != null) {
                 control.PropertyGrid.SelectedObject = control._selectedObject;
+                control.PropertyGrid.SelectedObjectTypeName = control._selectedObject.ToString();
             }
 
             var informationStackPanel = Visibility.Collapsed;
@@ -576,6 +578,7 @@ namespace S100Framework.WPF
 
             if (control.PropertyGrid != null) {
                 control.PropertyGrid.SelectedObject = control._selectedObject;
+                control.PropertyGrid.SelectedObjectTypeName = control._selectedObject.ToString();
             }
 
             if (control.SelectedAssociationObject.AssociationObject != null) {
