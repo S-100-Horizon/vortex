@@ -378,8 +378,14 @@ namespace TestS100Framework
                 Role = "theQualityInformation"
             };
 
-            feature.AddAssociation(association);
+            var featureAssociation = new S100Framework.YAML.Association {
+                To = "1810:3:2",
+                Name = "StructureEquipment",
+                Role = "theEquipment"
+            };
 
+            feature.AddAssociation(association);
+            feature.AddFeatureAssociation(featureAssociation);
             dataset.AddInformation(informationType);
             dataset.AddFeature(feature);
 

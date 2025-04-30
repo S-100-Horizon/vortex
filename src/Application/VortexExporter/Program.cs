@@ -28,7 +28,6 @@ namespace S100Framework.Applications
         }
 
         static int Main(string[] args) {
-
             var logpath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Geodatastyrelsen", "VortexExporter", "YAML-developer.log");
 
             // Clears log between each run
@@ -65,14 +64,12 @@ namespace S100Framework.Applications
                 Esri.Initialize();
 
                 Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
-
-                var s100TablePrefix = "";
+                ;
 
                 arguments.WithParsed<Options>(o => {
                     var geodatabase = o.Geodatabase.ToLowerInvariant();
 
                     if (IO.File.Exists(geodatabase) && ".sde".Equals(IO.Path.GetExtension(geodatabase), StringComparison.InvariantCultureIgnoreCase)) {
-                        s100TablePrefix = "s101.";
                         createGeodatabase = () => { return new Geodatabase(new DatabaseConnectionFile(new Uri(IO.Path.GetFullPath(geodatabase)))); };
                     }
                     else if (IO.Directory.Exists(geodatabase) && ".gdb".Equals(IO.Path.GetExtension(geodatabase), StringComparison.InvariantCultureIgnoreCase)) {
@@ -96,15 +93,53 @@ namespace S100Framework.Applications
                     FCVer = "2.0.0",
                 };
 
-                // Informationtypes
-                try {
-                    using var informationType = source.OpenDataset<Table>($"{s100TablePrefix}informationType");
-                    using var informationCursor = informationType.Search(null, false);
+                var geometries = new List<(Geometry geometry, string name)>();
+                var featureAssociations = new Dictionary<string, YAML.Association[]>();
 
+                // FeatureAssociations - skip for now until two-way references sorted
+                {
+                    //try {
+                    //    using var type = source.OpenDataset<Table>("associationbinding");
+                    //    using var cursor = type.Search();
+                    //    while (cursor.MoveNext()) {
+                    //        var current = cursor.Current;
+
+                    //        var name = current["association"].ToString()!;
+                    //        var role = current["role"].ToString()!;
+
+                    //        var id = current["pid"].ToString()!;
+                    //        var to = current["foreignid"].ToString()!;
+
+                    //        var foid = $"110:{to!.Substring(1)}:1";       // Geodatastyrelsen: 110 
+
+                    //        var association = new YAML.Association() {
+                    //            Name = name,
+                    //            Role = role,
+                    //            To = foid,
+                    //        };
+
+                    //        // Add or update
+                    //        if (featureAssociations.TryGetValue(id, out var existingArray))
+                    //            featureAssociations[id] = [.. existingArray, association];
+                    //        else
+                    //            featureAssociations[id] = [association];
+                    //    }
+                    //}
+                    //catch (Exception ex) {
+                    //    Log.Information("Table: associationbinding: {message} ", ex.Message);
+                    //    Logger.Current.Error("Exception: {ex}", ex);
+                    //}
+                }
+
+
+                // InformationTypes
+                try {
+                    using var informationType = source.OpenDataset<Table>("informationtype");
+                    using var informationCursor = informationType.Search();
                     while (informationCursor.MoveNext()) {
                         var current = informationCursor.Current;
 
-                        var name = current["name"];
+                        var name = current["name"].ToString()!;
                         var code = current["code"].ToString()!;
                         var json = current["json"].ToString()!;
 
@@ -114,7 +149,7 @@ namespace S100Framework.Applications
 
                         var information = new YAML.Information {
                             Name = code,
-                            ID = $"{name}",
+                            ID = name,
                             Attributes = (InformationNode)instance!,
                         };
 
@@ -122,11 +157,9 @@ namespace S100Framework.Applications
                     }
                 }
                 catch (Exception ex) {
-                    Log.Information("Table: InformationType: {message} ", ex.Message);
+                    Log.Information("Table: informationtype: {message} ", ex.Message);
                     Logger.Current.Error("Exception: {ex}", ex);
                 }
-
-                var geometries = new List<(Geometry geometry, string name)>();
 
                 // Features
                 foreach (var def in source.GetDefinitions<FeatureClassDefinition>()) {
@@ -188,11 +221,18 @@ namespace S100Framework.Applications
                                 Attributes = (FeatureNode)instance!,
                             };
 
+                            // Associations
+                            var hasAssociations = featureAssociations.TryGetValue(geometry, out var associations);
+
+                            if (hasAssociations) {
+                                foreach (var asso in associations) {
+                                    feature.AddFeatureAssociation(asso);
+                                }
+                            }
 
                             dataset.AddFeature(feature);
 
                             geometries.Add(new(current.GetShape(), geometry!));
-
                         }
                         catch (Exception ex) {
                             Log.Information(ex.Message);
@@ -202,59 +242,13 @@ namespace S100Framework.Applications
                     }
                 }
 
-                var polys = geometries.Where(e => e.geometry.GeometryType == GeometryType.Polygon).Select(e => e.geometry as Polygon).ToList();
-                //var shared = PolygonEdgeDetector.FindSharedEdges(polys!);
-
-                //Log.Information("Shared edges found: {count} ", shared.Count);
-                //if (shared.Count != 0) {
-                //    int i = 0;
-
-                //    foreach (var edge in shared) {
-                //        i++;
-                //        var vertices = edge.Points.Select(p => new Coordinate(p.X, p.Y)).ToArray();
-                //        var start = dataset.GetOrCreateStartPoint(vertices, $"{i}");
-                //        var end = dataset.GetOrCreateEndPoint(vertices, $"{i}");
-                //        dataset.AddCurve(new YAML.Curve(start, end, vertices) { Name = $"C{i}-0" });
-
-                //        Log.Information("Adding curve C{i}-0", i);
-                //    }
-                //}
-
-                //foreach (var p in polys) {
-                //    foreach (var part in p.Parts) {
-                //        int i = 0;
-                //        foreach (var pa in part) {
-                //            var coordinates = new Coordinate[] {
-                //                new(pa.StartCoordinate.X, pa.StartCoordinate.Y),
-                //                new(pa.EndCoordinate.X, pa.EndCoordinate.Y)
-                //            };
-
-                //            _ = dataset.GetOrCreateCurve(coordinates, $"{i}");
-
-                //            i++;
-                //        }
-                //    }
-                //}
-
-                //var sharedNet = NetTopologyEdgeDetector.FindSharedEdges(polys);
-                //int j = 0;
-                //foreach (var edge in sharedNet) {
-                //    j++;
-                //    //var vertices = edge.Item2.Select(p => new Coordinate(p.X, p.Y)).ToArray();
-                //    var start = dataset.GetOrCreateStartPoint(edge, $"{j}");
-                //    var end = dataset.GetOrCreateEndPoint(edge, $"{j}");
-                //    dataset.AddCurve(new YAML.Curve(start, end, edge) { Name = $"C{j}-0" });
-
-                //    Log.Information("Adding curve C{j}-0", j);
-                //}
-
-
+                // Geometries
                 foreach (var (geometry, name) in geometries.OrderBy(e => e.geometry.GeometryType)) {
                     dataset.AddGeometry(geometry, name!);
                     Log.Information("Adding {geometryType} with ID: {name}", geometry.GeometryType, name);
                 }
 
-
+                // Serialize to YAML
                 var yaml = S100Framework.YAML.Converter.Serialize(dataset);
 
                 File.WriteAllText(IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"101DK40349E.yaml"), yaml);
@@ -279,34 +273,29 @@ namespace S100Framework.Applications
 
 namespace S100Framework.YAML
 {
-    using ArcGIS.Core.Geometry;
-    using ArcGIS.Core.Internal.Geometry;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
 
     using System.Text.RegularExpressions;
-    //using NetTopologySuite.Geometries;
-    //using GeoAPI.Geometries;
 
     public static class Extension
     {
         public static void AddGeometry(this Dataset dataset, ArcGIS.Core.Geometry.Geometry geometry, string name) {
             switch (geometry) {
                 case ArcGIS.Core.Geometry.MapPoint point: {                              // Point
-                        var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Coordinate?.X == point.X && e?.Coordinate?.Y == point.Y);
+                        //var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Coordinate?.X == point.X && e?.Coordinate?.Y == point.Y);
+                        //// Create point if not exist
+                        //if (datasetPoint == default) {
+                        var p = new Point(point.X, point.Y) {
+                            Name = $"{name}"
+                        };
 
-                        // Create point if not exist
-                        if (datasetPoint == default) {
-                            var p = new Point(point.X, point.Y) {
-                                Name = $"{name}"
-                            };
-
-                            dataset!.AddPoint(p);
-                        }
-                        else {
-                            dataset!.UpdateFeatureReferences(name, datasetPoint!.Name);
-                        }
+                        dataset!.AddPoint(p);
+                        //}
+                        //else {
+                        //    dataset!.UpdateFeatureReferences(name, datasetPoint!.Name);
+                        //}
                         break;
                     }
                 case ArcGIS.Core.Geometry.Multipoint multiPoint: {   // Depths
@@ -480,6 +469,14 @@ namespace S100Framework.YAML
             foreach (var feature in dataset?.Features?.Where(e => e.Geometry == original) ?? []) {
                 Log.Information("  - Updating feature geometry reference with original {original} and target: {target}", original, target);
                 feature.Geometry = target;
+
+                // Associations
+                foreach (var ass in feature?.FeatureAssociation ?? []) {
+                    if (ass?.To?.Contains(original) ?? false) {
+                        Log.Information("  - Updating feature association reference with original {original} and target: {target}", original, target);
+                        ass.To = ass?.To?.Replace(original, target);
+                    }
+                }
             }
         }
 
@@ -841,175 +838,4 @@ namespace S100Framework.YAML
 
         }
     }
-
-    public static class PolygonEdgeDetector
-    {
-        private readonly struct CanonicalSegment : IEquatable<CanonicalSegment>
-        {
-            public MapPoint P1 { get; }
-            public MapPoint P2 { get; }
-
-            public CanonicalSegment(MapPoint c1, MapPoint c2) {
-                // Ensure consistent order (sort the points by their coordinates)
-                if (c1.X < c2.X || (c1.X == c2.X && c1.Y < c2.Y)) {
-                    P1 = c1;
-                    P2 = c2;
-                }
-                else {
-                    P1 = c2;
-                    P2 = c1;
-                }
-            }
-
-            public bool Equals(CanonicalSegment other) {
-                return AreEqual(P1, other.P1) && AreEqual(P2, other.P2);
-            }
-
-            public override bool Equals(object obj) {
-                if (obj is not CanonicalSegment other) return false;
-
-                // Direct comparison since order is ensured in constructor
-                return AreEqual(P1, other.P1) && AreEqual(P2, other.P2);
-            }
-
-            public override int GetHashCode() {
-                var (a1, a2) = (P1, P2);
-                if (a1.X > a2.X || (a1.X == a2.X && a1.Y > a2.Y))
-                    (a1, a2) = (a2, a1); // sort points for hash code consistency
-
-                return HashCode.Combine(a1.X, a1.Y, a2.X, a2.Y);
-            }
-
-            public static bool operator ==(CanonicalSegment left, CanonicalSegment right) {
-                return left.Equals(right);
-            }
-
-            public static bool operator !=(CanonicalSegment left, CanonicalSegment right) {
-                return !left.Equals(right);
-            }
-
-            public Polyline ToPolyline() {
-                return PolylineBuilder.CreatePolyline([P1, P2]);
-            }
-
-            // Helper method to compare MapPoint equality
-            private bool AreEqual(MapPoint a, MapPoint b) {
-                return a.X == b.X && a.Y == b.Y;
-            }
-        }
-        /// <summary>
-        /// Detects edges shared between polygons in a list.
-        /// Only considers exterior rings for simplicity. Adapt if holes need checking.
-        /// </summary>
-        /// <param name="polygons">The list of polygons to check.</param>
-        /// <returns>A list of Polyline, where each Polyline represents a shared edge segment.</returns>
-        public static List<Polyline> FindSharedEdges(IList<ArcGIS.Core.Geometry.Polygon> polygons) {
-            if (polygons == null || polygons.Count < 2) {
-                return new List<Polyline>(); // Need at least two polygons to share edges
-            }
-
-            // Dictionary to store canonical segments and the indices of polygons they belong to
-            var segmentMap = new Dictionary<CanonicalSegment, List<int>>();
-
-            for (int i = 0; i < polygons.Count; i++) {
-                var poly = polygons[i];
-                if (poly == null || poly.IsEmpty || poly.GetExteriorRing(0) == null) {
-                    continue; // Skip invalid or empty polygons
-                }
-
-                // --- Process Exterior Ring ---
-                var polyline = PolylineBuilder.CreatePolyline(poly.GetExteriorRing(0));
-                AddRingSegmentsToMap(polyline, i, segmentMap);
-
-                // Process Interior Rings (Holes)
-                if (poly.Parts.Count > 1) {
-                    foreach (var interiorRing in poly.Parts.Skip(1)) {
-                        var interiorPolyline = PolylineBuilder.CreatePolyline(interiorRing);
-                        AddRingSegmentsToMap(interiorPolyline, i, segmentMap);
-                    }
-                }
-            }
-
-            // Filter the map to find segments associated with more than one *distinct* polygon index
-            var sharedEdges = new List<Polyline>();
-            foreach (var kvp in segmentMap) {
-                // Check if the segment belongs to at least two different polygons
-                if (kvp.Value.Distinct().Count() > 1) {
-                    sharedEdges.Add(kvp.Key.ToPolyline());
-                }
-            }
-
-            return sharedEdges;
-        }
-
-        /// <summary>
-        /// Helper method to extract segments from a ring and add them to the map.
-        /// </summary>
-        private static void AddRingSegmentsToMap(Polyline ring, int polygonIndex, Dictionary<CanonicalSegment, List<int>> segmentMap) {
-            MapPoint[] coords = ring.Points.Select(e => MapPointBuilder.CreateMapPoint(e.X, e.Y)).ToArray();
-            if (coords == null || coords.Length < 2) // Need at least 2 points for a segment
-                return;
-
-            for (int j = 0; j < coords.Length - 1; j++) {
-                MapPoint c1 = coords[j];
-                MapPoint c2 = coords[j + 1];
-
-                // Skip zero-length segments (though NTS usually cleans these up)
-                if (c1.IsEqual(c2))
-                    continue;
-
-                var segment = new CanonicalSegment(c1, c2);
-
-                if (!segmentMap.TryGetValue(segment, out var polygonIndices)) {
-                    polygonIndices = new List<int>();
-                    segmentMap[segment] = polygonIndices;
-                }
-                polygonIndices.Add(polygonIndex);
-            }
-        }
-    }
-
-    //public static class NetTopologyEdgeDetector
-    //{
-    //    private static readonly GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.FloatingSingle)); // Or PrecisionModels.Floating
-    //    public static List<Coordinate[]> FindSharedEdges(List<ArcGIS.Core.Geometry.Polygon> polygons) {
-    //        var polylines = new Dictionary<string, NetTopologySuite.Geometries.LineString>();
-    //        var curves = new List<Curve>();
-    //        var result = new List<Coordinate[]>();
-    //        int i = 1;
-    //        foreach (var polygon in polygons) {
-    //            var coordinates = polygon.GetExteriorRing(0).Parts[0].Select(segment => new GeoAPI.Geometries.Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
-
-    //            polylines.Add($"{i}", (NetTopologySuite.Geometries.LineString)factory.CreateLineString([.. coordinates, coordinates[0]]));
-    //            i++;
-    //        }
-
-    //        foreach (var pair in polylines) {
-    //            var p = pair.Value;
-
-    //            var overlaps = new List<string>();
-    //            var linestrings = new List<Coordinate[]>();
-
-    //            foreach (var e in polylines.Where(i => i.Value != p)) {
-    //                if (p.Overlaps(e.Value)) {
-    //                    overlaps.Add(e.Key);
-
-    //                    var g = p.Intersection(e.Value);
-    //                    linestrings.Add([.. g.Coordinates.Select(e => new YAML.Coordinate(e.X, e.Y))]);
-    //                    //linestrings.Add(g.ToString()!);
-    //                }
-    //            }
-
-    //            if (overlaps.Any()) {
-    //                Log.Information("{key} Overlaps: #{count}", pair.Key, overlaps.Count);
-    //                Log.Information("\tID IN ({overlaps})", string.Join(',', overlaps));
-    //                foreach (var e in linestrings) {
-    //                    result.Add(e);
-    //                }
-    //            }
-    //        }
-
-    //        return result;
-    //    }
-    //}
 }

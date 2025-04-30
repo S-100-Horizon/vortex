@@ -200,8 +200,17 @@ namespace S100Framework.YAML
 
         public ICollection<Association>? Association => _associations.Any() ? _associations : null;
         private ICollection<Association> _associations = new HashSet<Association>();
+
+        public ICollection<Association>? FeatureAssociation => _featureAssociations.Any() ? _featureAssociations : null;
+        private ICollection<Association> _featureAssociations = new HashSet<Association>();
+        
         public Feature AddAssociation(Association association) {
             _associations.Add(association);
+            return this;
+        }
+
+        public Feature AddFeatureAssociation(Association association) {
+            _featureAssociations.Add(association);
             return this;
         }
     }
