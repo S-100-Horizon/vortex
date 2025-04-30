@@ -1,4 +1,5 @@
-﻿using System;
+﻿using S100Framework.DomainModel;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace S100Framework.Applications
 {
+
     internal class ConversionAnalytics
     {
         IDictionary<Guid,List<string>> _convertedS57Objects;
         IDictionary<string,IDictionary<Guid,List<string>>> _tableNameToConvertedS57Objects;
+
 
         private static ConversionAnalytics? _instance;
 
@@ -26,9 +29,9 @@ namespace S100Framework.Applications
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="tableName"></param>
-        /// <param name="guid">S-57 Globalid</param>
-        /// <param name="name">S-101 name</param>
+        /// <param _s101name="tableName"></param>
+        /// <param _s101name="guid">S-57 Globalid</param>
+        /// <param _s101name="_s101name">S-101 _s101name</param>
         /// <exception cref="ArgumentException"></exception>
         internal void AddConverted(string tableName, Guid guid, string name) {
             if (!_tableNameToConvertedS57Objects.ContainsKey(tableName.ToLower())) {
@@ -76,9 +79,10 @@ namespace S100Framework.Applications
                 return 0;
             }
 
-
-            return _tableNameToConvertedS57Objects[tableName.ToLower()].Count();
+            return _tableNameToConvertedS57Objects[tableName.ToLower()].Count;
         }
+
+
 
         public static ConversionAnalytics Instance {
             get {

@@ -29,7 +29,7 @@ namespace S100Framework.Applications
 
         internal static readonly int CompilationScale = 22000; // Used as filter for spatial queries to transfer attributes from other features based on location analysis
 
-        internal static FeatureRelations? featureRelations;
+        //internal static FeatureRelations featureRelations = null;
         internal static RelatedEquipment? relatedEquipment;
 
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
@@ -95,21 +95,28 @@ namespace S100Framework.Applications
                     using var pointset = destination.OpenDataset<FeatureClass>(destination.GetName("pointset"));
                     using var curve = destination.OpenDataset<FeatureClass>(destination.GetName("curve"));
                     using var surface = destination.OpenDataset<FeatureClass>(destination.GetName("surface"));
-                    using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationType"));
+
+                    using var associationBinding = destination.OpenDataset<Table>(destination.GetName("associationbinding"));
+                    using var attributeBinding = destination.OpenDataset<Table>(destination.GetName("attributebinding"));
+                    using var featureAssociation = destination.OpenDataset<Table>(destination.GetName("featureassociation"));
                     using var informationAssociation = destination.OpenDataset<Table>(destination.GetName("InformationAssociation"));
+                    using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationType"));
 
                     point.DeleteRows(query);
                     pointset.DeleteRows(query);
                     curve.DeleteRows(query);
                     surface.DeleteRows(query);
-                    informationtype.DeleteRows(query);
+                    associationBinding.DeleteRows(query);
+                    attributeBinding.DeleteRows(query);
+                    featureAssociation.DeleteRows(query);
                     informationAssociation.DeleteRows(query);
+                    informationtype.DeleteRows(query);
+
                 });
 
-                featureRelations = new FeatureRelations(source);
-                featureRelations.Initialize();
-
-                relatedEquipment = new RelatedEquipment(source, featureRelations);
+                
+                FeatureRelations.Instance.Initialize(source, destination);
+                relatedEquipment = new RelatedEquipment(source);
 
                 if (skinOfEarthOnly) {
                     // All "SKIN OF EARTH" cases / subtypes are marked with a "skin of earth" comment
@@ -165,6 +172,9 @@ namespace S100Framework.Applications
                     Store(() => S57_TracksAndRoutesP(source, destination, filter));
 
                 }
+
+               FeatureRelations.Instance.CreateRelations();
+
                 Logger.Current.Information("Done");
 
                 return true;
@@ -200,7 +210,7 @@ namespace S100Framework.Applications
             }
 
             if (shape.GeometryType == GeometryType.Point && shape.HasZ == false) {
-                buffer["shape"] = MapPointBuilderEx.CreateMapPoint((shape as MapPoint).X, (shape as MapPoint).Y, 0.00, shape.SpatialReference);
+                buffer["shape"] = MapPointBuilderEx.CreateMapPoint(((MapPoint)shape).X, ((MapPoint)shape).Y, 0.00, shape.SpatialReference);
             } else {
                 buffer["shape"] = shape;
             }
@@ -210,10 +220,10 @@ namespace S100Framework.Applications
         /// <summary>
         /// DCEG p460
         /// </summary>
-        /// <param name="current"></param>
+        /// <param _s101name="current"></param>
         /// <returns></returns>
         private static rhythmOfLight GetRythmOfLight(AidsToNavigationP current) {
-            
+
             /*
                 When populating rhythm of light, the
                 sub-attributes signal group, signal period and signal sequence are only valid for non-fixed lights
@@ -221,7 +231,7 @@ namespace S100Framework.Applications
                 mandatory
              */
 
-            var signalGroupN = current.SIGGRP != default ? new List<string> { current.SIGGRP } : null;
+            var signalGroupN = current.SIGGRP != default ? new List<string> { current.SIGGRP } : new();
             var signalPeriodN = current.SIGPER;
 
             var sigseq = current.SIGSEQ;
@@ -371,7 +381,7 @@ namespace S100Framework.Applications
                 /*
                  * code	status
                 alias	STATUS
-                name	Status
+                _s101name	Status
                 definition	The condition of an object at a given instant in time.
                 valueType	enumeration  listedValues	
 
@@ -438,7 +448,7 @@ namespace S100Framework.Applications
         /*
                 code	condition
                 alias	CONDTN
-                name	Condition
+                _s101name	Condition
                 definition	The various conditions of buildings and other constructions.
                 valueType	enumeration
                 listedValues	

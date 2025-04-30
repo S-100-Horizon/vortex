@@ -13,15 +13,15 @@ namespace S100Framework.Applications
     internal static class GeodatabaseExtensions
     {
         static bool _isInitialized = false;
-        private static IReadOnlyList<FeatureClassDefinition> _layerDefinitions;
-        private static IReadOnlyList<TableDefinition> _tableDefinitions;
+        private static IReadOnlyList<FeatureClassDefinition>? _layerDefinitions;
+        private static IReadOnlyList<TableDefinition>? _tableDefinitions;
 
         private static void Initialize(this Geodatabase geodatabase) {
             _layerDefinitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
             _tableDefinitions = geodatabase.GetDefinitions<TableDefinition>();
         }
 
-        public static IReadOnlyList<FeatureClassDefinition> Layers {
+        public static IReadOnlyList<FeatureClassDefinition>? Layers {
             get { return _layerDefinitions; }
             set { _layerDefinitions = value; }
         }
@@ -32,9 +32,9 @@ namespace S100Framework.Applications
                 //_isInitialized = true;
             }
 
-            var tableName = _layerDefinitions.FirstOrDefault<FeatureClassDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();
+            var tableName = _layerDefinitions?.FirstOrDefault<FeatureClassDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();
             if (tableName == null) {
-                tableName = _tableDefinitions.FirstOrDefault<TableDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();
+                tableName = _tableDefinitions?.FirstOrDefault<TableDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();
             }
             return tableName;
         }
@@ -44,9 +44,9 @@ namespace S100Framework.Applications
                 //_isInitialized = true;
             }
 
-            var tableName = _layerDefinitions.FirstOrDefault<FeatureClassDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase) || e.GetName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();
+            var tableName = _layerDefinitions?.FirstOrDefault<FeatureClassDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase) || e.GetName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();
             if (tableName == null) {
-                tableName = _tableDefinitions.FirstOrDefault<TableDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase) || e.GetName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();
+                tableName = _tableDefinitions?.FirstOrDefault<TableDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase) || e.GetName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();
                 return false;
             }
             return true;

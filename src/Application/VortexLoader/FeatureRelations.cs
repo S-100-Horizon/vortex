@@ -1,8 +1,13 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Internal.CIM;
 using S100Framework.Applications.S57.esri;
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System;
 using System.Data;
+using System.Reflection;
+using System.Xml.Linq;
 
 
 namespace S100Framework.Applications
@@ -42,11 +47,11 @@ namespace S100Framework.Applications
 
     internal class PltsSlave
     {
-        private S57Object s57Object;
+        private S57Object? s57Object = null;
 
         public PLTS_Frel PLTS_Frel { get; internal set; }
 
-        public S57Object S57Object {
+        public S57Object? S57Object {
             get => s57Object;
 
             internal set {
@@ -283,99 +288,97 @@ namespace S100Framework.Applications
                     }
                 }
                 else {
-                    throw new NotSupportedException($"AtoN subtype: {s57Obj.GetType()}");
+                    throw new NotSupportedException($"AtoN subtype: {s57Obj?.GetType()}");
                 }
 
             }
         }
 
-        public Type S101Type { get; private set; }
+        public Type? S101Type { get; private set; }
 
         public Guid GlobalId { get; private set; }
 
         public PltsSlave(PLTS_Frel plts_Frel) {
             this.PLTS_Frel = plts_Frel;
-            Guid uid;
 
-            if (Guid.TryParse(plts_Frel.DEST_UID, out uid)) {
+            if (Guid.TryParse(plts_Frel.DEST_UID, out var uid)) {
                 this.GlobalId = uid;
             }
-
-            //Logger.Current.Debug($"Fetching related {plts_Frel.DEST_FC}");
-            //this.Fetch(source,Direction.Destination);
         }
     }
 
-        //    private void Fetch(Geodatabase geodatabase, Direction direction) {
-        //        S57Object result = null;
-
-        //        var sourceFeatureClass = direction switch {
-        //            Direction.Source => this.PLTS_Frel.SRC_FC,
-        //            Direction.Destination => this.PLTS_Frel.DEST_FC
-        //        };
-
-        //        var queryDef = new QueryDef();
-        //        queryDef.Tables = $"{geodatabase.GetName(sourceFeatureClass)}";
-
-        //        queryDef.WhereClause = $"globalid = '{this.PLTS_Frel.DEST_UID}'";
-
-        //        using var cursor = geodatabase.Evaluate(queryDef, true);
-
-        //        while (cursor.MoveNext()) {
-        //            if (sourceFeatureClass.ToLower().Equals("aidstonavigationp")) {
-        //                result = new AidsToNavigationP((Feature)cursor.Current);
-        //            }
-        //            else if (sourceFeatureClass.ToLower().Equals("dangersp")) {
-        //                result = new DangersP((Feature)cursor.Current);
-        //            }
-        //            else if (sourceFeatureClass.ToLower().Equals("naturalfeaturesa")) {
-        //                result = new NaturalFeaturesA((Feature)cursor.Current);
-        //            }
-        //            else if (sourceFeatureClass.ToLower().Equals("tracksandroutesa")) {
-        //                result = new TracksAndRoutesA((Feature)cursor.Current);
-        //            }
-        //            else if (sourceFeatureClass.ToLower().Equals("tracksandroutesl")) {
-        //                result = new TracksAndRoutesL((Feature)cursor.Current);
-        //            }
-        //            else if (sourceFeatureClass.ToLower().Equals("portsandservicesp")) {
-        //                result = new PortsAndServicesP((Feature)cursor.Current);
-        //            }
-        //            else {
-        //                throw new NotSupportedException($"GetRelated: {sourceFeatureClass}");
-        //            }
-        //        };
-        //        this.S57Object = result;
-        //    }
- 
-
     internal class FeatureRelations
     {
-        private readonly Geodatabase _source;
-
-        private Dictionary<Guid, PltsCollection> _pltsCollections = new Dictionary<Guid, PltsCollection>();
-
-        private Dictionary<Guid, IList<PltsSlave>> _srcObjectToSlaves = new Dictionary<Guid, IList<PltsSlave>>();
+        private static FeatureRelations? _instance;
+        private HashSet<Relation> _relations;
+        private Geodatabase? _source;
+        private Geodatabase? _target;
+        private Dictionary<Guid, PltsCollection> _pltsCollections;
+        private Dictionary<Guid, IList<PltsSlave>> _srcObjectToSlaves;
+        private Dictionary<string, PLTS_Master_Slaves> _pltsMasterSlaves; // featureClass:subtype ; PLTS_Master_Slaves
 
         private bool _isInitialized = false;
 
-        public FeatureRelations(Geodatabase source) {
-            _source = source;                            
+        private FeatureRelations() {
+            this._relations = new HashSet<Relation>();
+            this._pltsCollections = new Dictionary<Guid, PltsCollection>();
+            this._srcObjectToSlaves = new Dictionary<Guid, IList<PltsSlave>>();
+            this._pltsMasterSlaves = new Dictionary<string, PLTS_Master_Slaves>(); // featureClass:subtype ; PLTS_Master_Slaves
         }
 
-        public void Initialize() {
+        public static FeatureRelations Instance {
+            get {
+
+                if (_instance == null) {
+                    _instance = new FeatureRelations();
+                }
+                return _instance;
+            }
+        }
+
+
+        public void Initialize(Geodatabase source, Geodatabase target) {
+            _source = source;
+            _target = target;
             _pltsCollections = new Dictionary<Guid, PltsCollection>();
             _srcObjectToSlaves = new Dictionary<Guid, IList<PltsSlave>>();
-            
+            _pltsMasterSlaves = new Dictionary<string, PLTS_Master_Slaves>();
+
             LoadPltsCollections();
             LoadPltsFrels2(_source);
+            LoadPLTS_Master_Slaves();
             _isInitialized = true;
         }
 
+        private void LoadPLTS_Master_Slaves() {
+            // Read aggregations
+            if (_source == null) {
+                throw new ArgumentException("Source not set");
+            }
+            using var pltsMasterSLavesTable = _source.OpenDataset<Table>(_source.GetName("PLTS_MASTER_SLAVES"));
+
+            using var cursor = pltsMasterSLavesTable.Search(null, true);
+
+            while (cursor.MoveNext()) {
+                var pltsMasterSlave = new PLTS_Master_Slaves(cursor.Current);
+                var key = $"{pltsMasterSlave.FEATURECLASS?.ToLower()};{pltsMasterSlave.FCSUBTYPE}";
+                if (!_pltsMasterSlaves.ContainsKey(key)) {
+                    _pltsMasterSlaves.Add(key, pltsMasterSlave);
+                }
+                else {
+                    throw new IndexOutOfRangeException($"Multiple pltsMasterSlave with same id (tablename,subtype) not allowed {key}");
+                }
+            }
+        }
+
         private void LoadPltsCollections() {
-            
+            if (_source == null) {
+                throw new ArgumentException("Source not set");
+            }
+
             // Read aggregations
             var pltsCollectionsTable = _source.OpenDataset<Table>(_source.GetName("PLTS_COLLECTIONS"));
-            var pltsCollections = new Dictionary<Guid, IList<PLTS_Collections>>();
+            //var pltsCollections = new Dictionary<Guid, IList<PLTS_Collections>>();
 
             var cursor = pltsCollectionsTable.Search(null, true);
             Guid uid;
@@ -385,7 +388,8 @@ namespace S100Framework.Applications
                 Guid.TryParse(Convert.ToString(plts_collection.GLOBALID), out uid);
                 if (!_pltsCollections.ContainsKey(uid)) {
                     _pltsCollections[uid] = new PltsCollection(_source, plts_collection);
-                } else {
+                }
+                else {
                     throw new IndexOutOfRangeException($"Multiple PltsCollections with same id not allowed {uid}");
                 }
             }
@@ -431,25 +435,24 @@ namespace S100Framework.Applications
             }
         }
 
-        internal IList<T>? GetRelated<T>(Type s101Type, Guid uid) where T : class {
-            if (!_isInitialized)
-                throw new ArgumentException("Not initalized. Call intialize.");
-            if (!_srcObjectToSlaves.ContainsKey(uid))
-                return null;
-
+        internal IList<T> GetRelated<T>(Type s101Type, Guid uid) where T : class {
             var result = new List<T>();
 
-            foreach (var elm in _srcObjectToSlaves[uid]) {
-                if (elm.S101Type == s101Type) {
-                    if (elm.S57Object != null && elm.S57Object is T) {
-                        result.Add(elm.S57Object as T);
-                    }
-                    
-                }
-            }
+            if (!_srcObjectToSlaves.ContainsKey(uid))
+                return result;
 
+            foreach (var elm in _srcObjectToSlaves[uid]) {
+                if (elm.S57Object != null) {
+                    if (elm.S101Type == s101Type) {
+                        if (elm.S57Object is T value)
+                            result.Add(value);
+                    }
+                }
+
+            }
             return result;
         }
+
 
         internal bool IsSlave(Guid globalid) {
             if (!_isInitialized)
@@ -457,7 +460,6 @@ namespace S100Framework.Applications
 
             var result = _srcObjectToSlaves.Values.SelectMany(list => list)
                                       .FirstOrDefault(obj => obj.GlobalId.Equals(globalid));
-
 
             return result != null;
         }
@@ -483,7 +485,7 @@ namespace S100Framework.Applications
                 Guid srcUid;
 
                 if (relationshipIndicator == "Peer") {
-                    if (plts_frel.SRC_FC.ToLower() == "plts_collections") {
+                    if (plts_frel?.SRC_FC?.ToLower() == "plts_collections") {
                         Guid.TryParse(Convert.ToString(plts_frel.SRC_UID), out srcUid);
                         _pltsCollections[srcUid].AddRelated(plts_frel);
                     }
@@ -500,11 +502,10 @@ namespace S100Framework.Applications
                     // source: structure - destination: equipment
                     Guid.TryParse(Convert.ToString(plts_frel.SRC_UID), out uid);
                     if (!_srcObjectToSlaves.ContainsKey(uid)) {
-                        _srcObjectToSlaves[uid] = new List<PltsSlave>() { new PltsSlave(plts_frel) };
+                        _srcObjectToSlaves[uid] = new List<PltsSlave>() { new(plts_frel) };
                     }
                     else {
                         var pltsSlave = new PltsSlave(plts_frel);
-
 
                         //pltsSlave.Fetch(_source, Direction.Destination);
                         _srcObjectToSlaves[uid].Add(pltsSlave);
@@ -541,7 +542,7 @@ namespace S100Framework.Applications
             var frelDestFeatureClasses = new Dictionary<string, IList<PLTS_Frel>>();
 
             var frels = new HashSet<PLTS_Frel>();
-            
+
             using var cursor = pltsFrel.Search(null, true);
             Guid uid;
 
@@ -554,7 +555,8 @@ namespace S100Framework.Applications
                     1 => "Master",
                     2 => "Slave",
                     3 => "Peer",
-                    999 => "Rep"
+                    999 => "Rep",
+                    _ => throw new NotImplementedException()
                 };
 
                 Guid srcUid;
@@ -563,7 +565,7 @@ namespace S100Framework.Applications
                     if (plts_frel?.SRC_FC?.ToLower() == "plts_collections") {
                         Guid.TryParse(Convert.ToString(plts_frel.SRC_UID), out srcUid);
                         if (!_pltsCollections.ContainsKey(srcUid)) {
-                            Logger.Current.DataError(plts_frel.OBJECTID.GetValueOrDefault(), "plts_frel", plts_frel.DEST_LNAM, $"Missing {plts_frel.SRC_FC}::{plts_frel.SRC_SUB}::{srcUid}");
+                            Logger.Current.DataError(plts_frel.OBJECTID.GetValueOrDefault(), "plts_frel", plts_frel.DEST_LNAM ?? "Unknown DEST_LNAM", $"Missing {plts_frel.SRC_FC}::{plts_frel.SRC_SUB}::{srcUid}");
                             continue;
                         }
 
@@ -595,17 +597,25 @@ namespace S100Framework.Applications
 
             // for faster lookup
             var idIndex = _srcObjectToSlaves
-                .SelectMany(group => group.Value)                
-                .GroupBy(frel => frel.GlobalId)                   
+                .SelectMany(group => group.Value)
+                .GroupBy(frel => frel.GlobalId)
                 .ToDictionary(group => group.Key, group => group.First());
 
             // foreach featureclass represented in plts_rels, load all destination objects
-            Dictionary<string, List<PLTS_Frel>> destinationFcToFrels = frels.GroupBy(obj => obj.DEST_FC).ToDictionary(group => group.Key, group => group.ToList());
+            Dictionary<string, List<PLTS_Frel>> destinationFcToFrels = frels.GroupBy(obj => obj.DEST_FC ?? "Unknown DEST_FC").ToDictionary(group => group.Key, group => group.ToList());
 
             int loadedRelatedObjectsCount = 0;
 
             foreach (var destFc in destinationFcToFrels.Keys) {
-                var destinationFeatureClassName = _source.GetName(destFc);
+                var destinationFeatureClassName = _source?.GetName(destFc);
+
+                if (destinationFeatureClassName == null) {
+                    throw new NotSupportedException("empty featureclass name");
+                }
+                if (_source == null) {
+                    throw new NotSupportedException("source geodatabase");
+                }
+
 
                 if (!_source.IsFeatureClass(destinationFeatureClassName)) {
                     continue;
@@ -639,19 +649,19 @@ namespace S100Framework.Applications
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("naturalfeaturesp")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new NaturalFeaturesP((Feature)cursorRelated.Current); 
+                            idIndex[currentGlobalId].S57Object = new NaturalFeaturesP((Feature)cursorRelated.Current);
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("culturalfeaturesp")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new CulturalFeaturesP((Feature)cursorRelated.Current); 
+                            idIndex[currentGlobalId].S57Object = new CulturalFeaturesP((Feature)cursorRelated.Current);
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("tracksandroutesa")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new TracksAndRoutesA((Feature)cursorRelated.Current); 
+                            idIndex[currentGlobalId].S57Object = new TracksAndRoutesA((Feature)cursorRelated.Current);
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("tracksandroutesl")) {
@@ -700,8 +710,172 @@ namespace S100Framework.Applications
         }
 
         internal bool HasRelated(Guid globalId) {
-            
+
             return _srcObjectToSlaves.ContainsKey(globalId);
         }
+
+        internal void AddRelation(S57Master master, S57Slave slave) {
+            _relations.Add(new(master, slave));
+        }
+
+        internal void AddAssociation(S57Master master, S57Slave slave) {
+
+        }
+        public class TemplateFactory
+        {
+            public T CreateEmptyInstance<T>() where T : new() {
+                return new T();
+            }
+        }
+
+        internal void CreateRelation(Relation relation, Table featureAssociation, RowBuffer featureAssociationBuffer, Table associationBinding, RowBuffer associationBindingBuffer) {
+            if (relation == null) {
+                throw new ArgumentNullException("relation");
+            }
+
+            string featureAssociationName;
+            featureBindingDefinition? bindingDefinitionForeign;
+            featureBindingDefinition? bindingDefinitionPrimary;
+            {
+                // Create the association
+                bindingDefinitionForeign = LateralBuoy._featureBindingDefinitions.FirstOrDefault(fbd => fbd.featureTypes.Contains(typeof(LightAllAround).Name));
+                if (bindingDefinitionForeign == null) {
+                    throw new NotSupportedException($"no bindingdefinition on {typeof(LateralBuoy).Name} for {typeof(LightAllAround).Name}");
+                }
+                featureAssociationBuffer["ps"] = ImporterNIS.ps101;
+                featureAssociationBuffer["code"] = bindingDefinitionForeign.association;
+                var association = featureAssociation.CreateRow(featureAssociationBuffer);
+                featureAssociationName = (string)association["name"];
+            }
+            {
+                // Create both ends 1
+                bindingDefinitionPrimary = LateralBuoy._featureBindingDefinitions.FirstOrDefault(fbd => fbd.featureTypes.Contains(typeof(LightAllAround).Name));
+                if (bindingDefinitionPrimary == null) {
+                    throw new NotSupportedException($"no bindingdefinition on {typeof(LightAllAround).Name} for {typeof(LateralBuoy).Name}");
+                }
+                associationBindingBuffer["ps"] = ImporterNIS.ps101;
+                associationBindingBuffer["roleType"] = bindingDefinitionPrimary.role.ToString();
+                associationBindingBuffer["associationId"] = featureAssociationName;
+                associationBindingBuffer["association"] = bindingDefinitionPrimary.association;
+                associationBindingBuffer["pid"] = relation?.Master?.Name;
+                associationBindingBuffer["foreignid"] = relation?.Slave?.Name;
+                associationBindingBuffer["role"] = bindingDefinitionPrimary.role;
+                associationBindingBuffer["type"] = bindingDefinitionPrimary.roleType.ToString();
+                var association = associationBinding.CreateRow(associationBindingBuffer);
+
+            }
+            {
+                // Create both ends 2
+                bindingDefinitionForeign = LightAllAround._featureBindingDefinitions.FirstOrDefault(fbd => fbd.featureTypes.Contains(typeof(LateralBuoy).Name));
+                if (bindingDefinitionForeign == null) {
+                    throw new NotSupportedException($"no bindingdefinition on {typeof(LateralBuoy).Name} for {typeof(LightAllAround).Name}");
+                }
+                associationBindingBuffer["ps"] = ImporterNIS.ps101;
+                associationBindingBuffer["roleType"] = bindingDefinitionForeign.role.ToString();
+                associationBindingBuffer["associationId"] = featureAssociationName;
+                associationBindingBuffer["association"] = bindingDefinitionForeign.association;
+                associationBindingBuffer["pid"] = relation.Slave.Name;
+                associationBindingBuffer["foreignid"] = relation.Master.Name;
+                associationBindingBuffer["role"] = bindingDefinitionForeign.role;
+                associationBindingBuffer["type"] = bindingDefinitionForeign.roleType.ToString();
+                var association = associationBinding.CreateRow(associationBindingBuffer);
+            }
+
+
+        }
+
+
+        internal void CreateRelations() {
+            if (_target == default) {
+                throw new NotSupportedException("Target is null");
+            }
+
+            using var featureAssociation = _target.OpenDataset<Table>(_target.GetName("featureassociation"));
+            using var associationBinding = _target.OpenDataset<Table>(_target.GetName("associationbinding"));
+            using var featureAssociationBuffer = featureAssociation.CreateRowBuffer();
+            //using var featureAssociationInsert = featureAssociation.CreateInsertCursor();
+            using var associationBindingBuffer = associationBinding.CreateRowBuffer();
+            //using var associationBindingInsert = associationBinding.CreateInsertCursor();
+
+
+            foreach (var relation in _relations) {
+
+                if (relation?.Master?.Type.ToLower() == typeof(LateralBuoy).Name.ToLower()) {
+                    if (relation?.Slave?.Type.ToLower() == typeof(Daymark).Name.ToLower()) {
+                        
+                    }
+                    else if (relation?.Slave?.Type.ToLower() == typeof(DistanceMark).Name.ToLower()) {
+
+                    }
+                    else if (relation?.Slave?.Type.ToLower() == typeof(FogSignal).Name.ToLower()) {
+
+                    }
+                    else if (relation?.Slave?.Type.ToLower() == typeof(LightAllAround).Name.ToLower()) {
+                        CreateRelation(relation,featureAssociation,featureAssociationBuffer,associationBinding,associationBindingBuffer);
+                    }
+                    else if (relation?.Slave?.Type.ToLower() == typeof(LightFogDetector).Name.ToLower()) {
+
+                    }
+                    else if (relation?.Slave?.Type.ToLower() == typeof(PhysicalAISAidToNavigation).Name.ToLower()) {
+
+                    }
+                    else if (relation?.Slave?.Type.ToLower() == typeof(RadarTransponderBeacon).Name.ToLower()) {
+
+                    }
+                    else if (relation?.Slave?.Type.ToLower() == typeof(Retroreflector).Name.ToLower()) {
+
+                    }
+                    else if (relation?.Slave?.Type.ToLower() == typeof(SignalStationTraffic).Name.ToLower()) {
+
+                    }
+                    else if (relation?.Slave?.Type.ToLower() == typeof(SignalStationWarning).Name.ToLower()) {
+
+                    }
+                }
+            }
+        }
     }
+
+    internal class S57Master
+    {
+        string _s101type;
+        string _s101name;
+
+        public S57Master(string type, string name) {
+            this._s101type = type;
+            this._s101name = name;
+        }
+
+        public string Type { get => this._s101type; set => this._s101type = value; }
+        public string Name { get => this._s101name; set => this._s101name = value; }
+    }
+    internal class S57Slave
+    {
+        string _s101type;
+        string _s101name;
+
+        internal S57Slave(string type, string name) {
+            this._s101type = type;
+            this._s101name = name;
+        }
+
+        public string Type { get => this._s101type; set => this._s101type = value; }
+        public string Name { get => this._s101name; set => this._s101name = value; }
+    }
+
+    internal class Relation
+    {
+        S57Master? _master;
+        S57Slave? _slave;
+
+        public Relation(S57Master master, S57Slave slave) {
+            this.Master = master;
+            this.Slave = slave;
+        }
+
+        internal S57Master? Master { get => this._master; set => this._master = value; }
+        internal S57Slave? Slave { get => this._slave; set => this._slave = value; }
+    }
+
+
 }

@@ -189,7 +189,7 @@ if (current.COLOUR != default) {
 
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+                            relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
 
                             #endregion related
 
