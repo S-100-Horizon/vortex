@@ -438,6 +438,7 @@ namespace S100Framework.WPF
 
             if (control.PropertyGrid != null) {
                 control.PropertyGrid.SelectedObject = control._selectedObject;
+                control.PropertyGrid.SelectedObjectTypeName = control._selectedObject.ToString();
             }
 
             var informationStackPanel = Visibility.Collapsed;
@@ -499,6 +500,7 @@ namespace S100Framework.WPF
 
             if (control.PropertyGrid != null) {
                 control.PropertyGrid.SelectedObject = control._selectedObject;
+                control.PropertyGrid.SelectedObjectTypeName = control._selectedObject.ToString();
             }
 
             var informationStackPanel = Visibility.Collapsed;
@@ -576,6 +578,7 @@ namespace S100Framework.WPF
 
             if (control.PropertyGrid != null) {
                 control.PropertyGrid.SelectedObject = control._selectedObject;
+                control.PropertyGrid.SelectedObjectTypeName = control._selectedObject.ToString();
             }
 
             if (control.SelectedAssociationObject.AssociationObject != null) {
@@ -762,7 +765,11 @@ namespace S100Framework.WPF
             if (InformationBindingDefinitionSelected != null) {
                 var viewModel = ((System.Windows.Controls.ContentControl)e.Parameter).Content as InformationBindingViewModel;
                 if (viewModel != null) {
-                    await Host.DeleteInformationBinding(new DeleteInformationBindingEventArgs(viewModel.UID, this));
+                    var result = await Host.DeleteInformationBinding(new DeleteInformationBindingEventArgs(viewModel.UID, this));
+
+                    if (result) {
+                        this._selectedInformationBindings!.Remove(viewModel);
+                    }
                 }
             }
         }
@@ -822,8 +829,18 @@ namespace S100Framework.WPF
 
         public static RoutedUICommand AddFeatureBindingCommand = new("Add feature binding.", "AddFeatureBindingCommandContent", typeof(S100AttributeEditorControl));
 
-        private void AddFeatureBindingCommandContent(object sender, ExecutedRoutedEventArgs e) {
+        private async void AddFeatureBindingCommandContent(object sender, ExecutedRoutedEventArgs e) {
             if (FeatureBindingDefinitionSelected != null) {
+                var uuid = await Host.CreateFeatureBinding(new CreateFeatureBindingEventArgs(
+                                    roleType: FeatureBindingDefinitionSelected.roleType,
+                                    association: FeatureBindingDefinitionSelected.association,
+                                    role: FeatureBindingDefinitionSelected.role,
+                                    PID: ((PID?)this._selectedObject)?.PID,
+                                    this));
+
+                if (!uuid.HasValue)
+                    return;
+
                 var binding = new featureBinding {
                     roleType = Enum.GetName<roleType>(FeatureBindingDefinitionSelected.roleType)!,
                     association = FeatureBindingDefinitionSelected.association,
@@ -832,6 +849,7 @@ namespace S100Framework.WPF
                 };
 
                 this._selectedFeatureBindings!.Add(new FeatureBindingViewModel {
+                    UID = uuid,
                 }.Load(binding));
             }
         }
@@ -842,7 +860,11 @@ namespace S100Framework.WPF
             if (FeatureBindingDefinitionSelected != null) {
                 var viewModel = ((System.Windows.Controls.ContentControl)e.Parameter).Content as FeatureBindingViewModel;
                 if (viewModel != null) {
-                    await Host.DeleteFeatureBinding(new DeleteFeatureBindingEventArgs(viewModel.UID, this));
+                    var result = await Host.DeleteFeatureBinding(new DeleteFeatureBindingEventArgs(viewModel.UID, this));
+
+                    if (result) {
+                        this._selectedFeatureBindings!.Remove(viewModel);
+                    }
                 }
             }
         }

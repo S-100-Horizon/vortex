@@ -1166,6 +1166,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CarriageRequirement : InformationAssociation {
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(CarriageRequirement);
 		}
 
@@ -1176,6 +1177,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DistributionDetails : InformationAssociation {
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(DistributionDetails);
 		}
 
@@ -1186,6 +1188,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DistributorContact : InformationAssociation {
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(DistributorContact);
 		}
 
@@ -1196,6 +1199,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PriceOfElement : InformationAssociation {
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(PriceOfElement);
 		}
 
@@ -1206,6 +1210,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PriceOfNauticalProduct : InformationAssociation {
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(PriceOfNauticalProduct);
 		}
 
@@ -1216,6 +1221,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ProducerContact : InformationAssociation {
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(ProducerContact);
 		}
 
@@ -1226,6 +1232,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ProductionDetails : InformationAssociation {
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(ProductionDetails);
 		}
 
@@ -1236,6 +1243,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ProductPackage : InformationAssociation {
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(ProductPackage);
 		}
 	}
@@ -1252,6 +1260,7 @@ namespace S100Framework.DomainModel.S128 {
 			public categoryOfProductMapping categoryOfProductMapping {get;set;}
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(ProductMapping);
 		}
 
@@ -1263,6 +1272,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Correlated : FeatureAssociation {
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(Correlated);
 		}
 	}
@@ -1288,9 +1298,11 @@ namespace S100Framework.DomainModel.S128 {
 			public information? information {get;set;} = default;
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(CatalogueSectionHeader);
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => CatalogueSectionHeader._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -1339,9 +1351,11 @@ namespace S100Framework.DomainModel.S128 {
 			public List<sourceIndication> sourceIndication {get;set;} = [];
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(ContactDetails);
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -1376,9 +1390,11 @@ namespace S100Framework.DomainModel.S128 {
 			public List<featureName> featureName {get;set;} = [];
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(IndicationOfCarriageRequirement);
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => IndicationOfCarriageRequirement._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -1399,9 +1415,11 @@ namespace S100Framework.DomainModel.S128 {
 			public List<sourceIndication> sourceIndication {get;set;} = [];
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(PriceInformation);
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => PriceInformation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -1426,9 +1444,11 @@ namespace S100Framework.DomainModel.S128 {
 			public String? agencyName {get;set;} = default;
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(ProducerInformation);
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => ProducerInformation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -1459,9 +1479,11 @@ namespace S100Framework.DomainModel.S128 {
 			public String distributorName {get;set;} = string.Empty;
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(DistributorInformation);
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => DistributorInformation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -1519,9 +1541,11 @@ namespace S100Framework.DomainModel.S128 {
 			public timeIntervalOfProduct? timeIntervalOfProduct {get;set;} = default;
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(CatalogueElement);
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => CatalogueElement._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -1551,6 +1575,7 @@ namespace S100Framework.DomainModel.S128 {
 			];
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CatalogueElement._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
@@ -1607,14 +1632,17 @@ namespace S100Framework.DomainModel.S128 {
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(NavigationalProduct);
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..CatalogueElement._informationBindingDefinitions, ..NavigationalProduct._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..CatalogueElement._featureBindingDefinitions, ..NavigationalProduct._featureBindingDefinitions];
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
@@ -1650,14 +1678,17 @@ namespace S100Framework.DomainModel.S128 {
 			public productSpecification? productSpecification {get;set;} = default;
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(ElectronicProduct);
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..NavigationalProduct._informationBindingDefinitions, ..ElectronicProduct._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..NavigationalProduct._featureBindingDefinitions, ..ElectronicProduct._featureBindingDefinitions];
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -1683,14 +1714,17 @@ namespace S100Framework.DomainModel.S128 {
 			public referenceToNM? referenceToNM {get;set;} = default;
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(PhysicalProduct);
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..NavigationalProduct._informationBindingDefinitions, ..PhysicalProduct._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..NavigationalProduct._featureBindingDefinitions, ..PhysicalProduct._featureBindingDefinitions];
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
@@ -1718,14 +1752,17 @@ namespace S100Framework.DomainModel.S128 {
 			public productSpecification? productSpecification {get;set;} = default;
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override string Code => nameof(S100Service);
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..CatalogueElement._informationBindingDefinitions, ..S100Service._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
+			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..CatalogueElement._featureBindingDefinitions, ..S100Service._featureBindingDefinitions];
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];

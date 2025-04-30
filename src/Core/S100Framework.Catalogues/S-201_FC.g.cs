@@ -1,2505 +1,7184 @@
 using System;
 using System.Collections.Immutable;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
-namespace S100Framework.DomainModel.S201
-{
-    public static class Information
-    {
-        public static Version Version => new Version("1.1.0");
-        public static string[] ComplexTypes => ["changeDetails", "contactAddress", "surveyDateRange", ];
-        public static string[] InformationTypes => ["AtoNStatusInformation", "SpatialUncertainty", ];
-        public static string[] FeatureTypes => ["BeaconSpecialPurposeGeneral", "BeaconLateral", "BeaconCardinal", "BeaconIsolatedDanger", "BeaconSafeWater", "BuoyInstallation", "BuoyLateral", "BuoyCardinal", "BuoySafeWater", "BuoyIsolatedDanger", "BuoySpecialPurposeGeneral", "OffshorePlatform", "LightVessel", "Pile", "SiloTank", "Landmark", "LightFloat", "Lighthouse", "Topmark", "Light", "FogSignal", "RetroReflector", "RadarReflector", "EnvironmentObservationEquipment", "Daymark", "RadarTransponderBeacon", "RecommendedTrack", "NavigationLine", "Aggregation", "Association", "DataCoverage", "LocalDirectionOfBuoyage", "NavigationalSystemOfMarks", "QualityOfNonBathymetricData", "SoundingDatum", "VerticalDatumOfData", "AidsToNavigation", "Equipment", "StructureObject", "GenericBeacon", "GenericBuoy", ];
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum atonRemoval : int
-    {
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        BuoyRemoval = 1,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        BuoyTemporaryRemoval = 2,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        LightRemoval = 3,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        LightTemporaryRemoval = 4,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        BeaconRemoval = 5,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        BeaconTemporaryRemoval = 6,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        FogSignalRemoval = 7,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        FogSignalTemporaryRemoval = 8,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        AudibleSignalRemoval = 9,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        AudibleSignalTemporaryRemoval = 10,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        VAisRemoval = 11,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("12")]
-        VAisTemporaryRemoval = 12,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("13")]
-        RaconSignalRemoval = 13,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("14")]
-        RaconTemporaryRemoval = 14,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("15")]
-        DgpsRemoval = 15,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("16")]
-        DgpsTemporaryRemoval = 16,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("17")]
-        EgnosRemoval = 17,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("18")]
-        EgnosTemporaryRemoval = 18,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("19")]
-        LoranCStationRemoval = 19,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("20")]
-        LoranCStationTemporaryRemoval = 20,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("21")]
-        EloranRemoval = 21,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("22")]
-        EloranTemporaryRemoval = 22,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("23")]
-        ChaykaStationRemoval = 23,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("24")]
-        ChaykaStationTemporaryRemoval = 24,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("25")]
-        EChaykaStationRemoval = 25,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("26")]
-        EChaykaStationTemporaryRemoval = 26,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum changeTypes : int
-    {
-        [System.ComponentModel.Description("Temporary changes")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        TemporaryChanges = 1,
-        [System.ComponentModel.Description("Proposed changes")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        ProposedChanges = 2,
-        [System.ComponentModel.Description("Advance notice of changes")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        AdvanceNoticeOfChanges = 3,
-        [System.ComponentModel.Description("Discrepancy")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        Discrepancy = 4,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum atonReplacement : int
-    {
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        BuoyChange = 1,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        BuoyTemporaryChange = 2,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        LightChange = 3,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        LightTemporaryChange = 4,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        SectorLightChange = 5,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        SectorLightTemporaryChange = 6,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        BeaconChange = 7,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        BeaconTemporaryChange = 8,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        FogSignalChange = 9,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        FogSignalTemporaryChange = 10,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        AudibleSignalChange = 11,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("12")]
-        AudibleSignalTemporaryChange = 12,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("13")]
-        VAisChange = 13,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("14")]
-        VAisTemporaryChange = 14,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("15")]
-        RaconSignalChange = 15,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("16")]
-        RaconTemporaryChange = 16,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum atonCommissioning : int
-    {
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        BuoyEstablishment = 1,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        LightEstablishment = 2,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        BeaconEstablishment = 3,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        AudibleSignalEstablishment = 4,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        FogSignalEstablishment = 5,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        AisTransmitterEstablishment = 6,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        VAisEstablishment = 7,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        RaconEstablishment = 8,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        DgpsStationEstablishment = 9,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        EloranStationEstablishment = 10,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        DglonassStationEstablishment = 11,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("12")]
-        EChaykaStationEstablishment = 12,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("13")]
-        EgnosEstablishment = 13,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum radioAidsChange : int
-    {
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        AisTransmitterOutOfServive = 1,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        AisTransmitterUnrealiable = 2,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        AisTransmitterOperatingProperly = 3,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        VAisOutOfService = 4,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        VAisUnrealiable = 5,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        VAisOperatingProperly = 6,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        RaconOutOfService = 7,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        RaconUnrealiable = 8,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        RaconOperatingProperly = 9,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        DgpsOutOfService = 10,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        DgpsUnrealiable = 11,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("12")]
-        DgpsOperatingProperly = 12,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("13")]
-        LoranCOperatingProperly = 13,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("14")]
-        LoranCUnrealiable = 14,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("15")]
-        LoranCOutOfService = 15,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("16")]
-        EloranOperatingProperly = 16,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("17")]
-        EloranUnrealiable = 17,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("18")]
-        EloranOutOfService = 18,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("19")]
-        DglonassOperatingProperly = 19,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("20")]
-        DglonassUnrealiable = 20,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("21")]
-        DglonassOutOfService = 21,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("22")]
-        ChaykaOperatingProperly = 22,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("23")]
-        ChaykaUnrealiable = 23,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("24")]
-        ChaykaOutOfService = 24,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("25")]
-        EChaykaOperatingProperly = 25,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("26")]
-        EChaykaUnrealiable = 26,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("27")]
-        EChaykaOutOfService = 27,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("28")]
-        EgnosOperatingProperly = 28,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("29")]
-        EgnosUnrealiable = 29,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("30")]
-        EgnosOutOfService = 30,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum fogSignals : int
-    {
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        AudibleSignalOutOfService = 1,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        FogSignalOutOfService = 2,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        AudibleSignalOperatingProperly = 3,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        FogSignalOperatingProperly = 4,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum leadingLightsChange : int
-    {
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        FrontLeadingRangeLightUnlit = 1,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        RearLeadingRangeLightUnlit = 2,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        FrontLeadingRangeLightUnreliable = 3,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        RearLeadingRangeLightUnreliable = 4,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        FrontLeadingRangeLightLightRangeReduced = 5,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        RearLeadingRangeLightLightRangeReduced = 6,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        FrontLeadingRangeLightWithoutRhythm = 7,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        RearLeadingRangeLightWithoutRhythm = 8,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        LeadingRangeLightsOutOfSynchronization = 9,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        FrontLeadingRangeBeaconUnreliable = 10,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        RearLeadingRangeBeaconUnreliable = 11,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("12")]
-        FrontLeadingRangeLightIsOperatingProperly = 12,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("13")]
-        RearLeadingRangeLightIsOperatingProperly = 13,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("14")]
-        FrontLeadingRangeBeaconRestoredToNormal = 14,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("15")]
-        RearLeadingRangeBeaconRestoredToNormal = 15,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum beaconChange : int
-    {
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        BeaconMissing = 1,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        BeaconDamaged = 2,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        LightBeaconUnlit = 3,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        LightBeaconUnreliable = 4,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        LightBeaconNotSymchronized = 5,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        LightDamaged = 6,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        BeaconTopmarkMissing = 7,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        BeaconTopmarkDamaged = 8,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        BeaconDaymarkUnreliable = 9,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        FloodlitBeaconUnlit = 10,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        BeaconRestoredToNormal = 11,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum buoyChange : int
-    {
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        LightBuoyLightUnlit = 1,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        LightBuoyLightUnreliable = 2,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        LightBuoyLightNotSynchronized = 3,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        LightBuoyLightDamaged = 4,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        BuoyMissing = 5,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        BuoyOffPosition = 6,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        BuoyMove = 7,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        BuoyDrift = 8,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        BuoyDamaged = 9,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        BuoyRestoredToNormal = 10,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        BuoyDestroyed = 11,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("12")]
-        BuoyReEstablishment = 12,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("13")]
-        BuoyTopmarkMissing = 13,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("14")]
-        BuoyTopmarkDamaged = 14,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("15")]
-        BuoyDaymarkUnreliable = 15,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("16")]
-        BuoyWillBeWithdrawn = 16,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("17")]
-        BuoyWithdrawn = 17,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("18")]
-        LiftedForWinter = 18,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("19")]
-        ReplacedByWinterSpar = 19,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("20")]
-        DecommissionedForWinter = 20,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("21")]
-        RecommissionedForNavigationSeason = 21,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("22")]
-        MarineAidsToNavigationUnreliable = 22,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("23")]
-        SeasonalDecommissioningComplete = 23,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("24")]
-        SeasonalDecommissioningInProgress = 24,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("25")]
-        SeasonalRecommissioningComplete = 25,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("26")]
-        SeasonalRecommissioningInProgress = 26,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum lightChange : int
-    {
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        LightUnlit = 1,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        LightUnreliable = 2,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        LightReEstablishment = 3,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        LightRangeReduced = 4,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        LightWithoutRhythm = 5,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        LightOutOfSynchronization = 6,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        LightDaymarkUnreliable = 7,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        LightOperatingProperly = 8,
-        [System.ComponentModel.Description(".")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        SectorLightSectorObscured = 9,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum aidAvailabilityCategory : int
-    {
-        [System.ComponentModel.Description("An AtoN or system of AtoN that is considered by the Competent Authority to be of vital navigational significance.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        Category1 = 1,
-        [System.ComponentModel.Description("An AtoN or system of AtoN that is considered by the Competent Authority to be of important navigational significance.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        Category2 = 2,
-        [System.ComponentModel.Description("An AtoN or system of AtoN that is considered by the Competent Authority to be of necessary navigational significance.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        Category3 = 3,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum beaconShape : int
-    {
-        [System.ComponentModel.Description("an elongated wood or metal pole, embedded in the bottom to serve as a navigational aid or a support for a navigational aid.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        StakePolePerchPost = 1,
-        [System.ComponentModel.Description("a tree without roots stuck or spoiled into the bottom of the sea to serve as a navigational aid.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        Withy = 2,
-        [System.ComponentModel.Description("a solid structure of the order of 10 metres in height used as a navigational aid.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        BeaconTower = 3,
-        [System.ComponentModel.Description("a structure consisting of strips of metal or wood crossed or interlaced to form a structure to serve as an aid to navigation or as a support for an aid to navigation.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        LatticeBeacon = 4,
-        [System.ComponentModel.Description("a long heavy timber(s) or section(s) of steel, wood, concrete, etc., forced into the seabed to serve as an aid to navigation or as a support for an aid to navigation.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        PileBeacon = 5,
-        [System.ComponentModel.Description("a mound of stones, usually conical or pyramidal, raised specifically for maritime navigation.")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        Cairn = 6,
-        [System.ComponentModel.Description("a tall spar-like beacon fitted with a permanently submerged buoyancy chamber, the lower end of the body is secured to seabed sinker either by a flexible joint or by a cable under tension.")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        BuoyantBeacon = 7,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum buildingShape : int
-    {
-        [System.ComponentModel.Description("a building having many storeys.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        HighRiseBuilding = 5,
-        [System.ComponentModel.Description("a polyhedron of which one face is a polygon of any number of sides, and the other faces are triangles with a common vertex.")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        Pyramid = 6,
-        [System.ComponentModel.Description("shaped like a cylinder, which is a solid geometrical figure generated by straight lines fixed in direction and describing with one of its points a closed curve, especially a circle.")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        Cylindrical = 7,
-        [System.ComponentModel.Description("shaped like a sphere, which is a body the surface of which is at all points equidistant from the centre.")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        Spherical = 8,
-        [System.ComponentModel.Description("a shape the sides of which are six equal squares a regular hexahedron.")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        Cubic = 9,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum buoyShape : int
-    {
-        [System.ComponentModel.Description("the upper part of the body above the water-line, or the greater part of the superstructure, has approximately the shape or the appearance of a pointed cone with the point upwards.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        ConicalNunOgival = 1,
-        [System.ComponentModel.Description("the upper part of the body above the water-line, or the greater part of the superstructure, has the shape of a cylinder, or a truncated cone that approximates to a cylinder, with a flat end uppermost.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        CanCylindrical = 2,
-        [System.ComponentModel.Description("the upper part of the body above the water-line, or the greater part of the superstructure, has the shape of a part of a sphere.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        Spherical = 3,
-        [System.ComponentModel.Description("the upper part of the body above the water-line, or the greater part of the superstructure is a narrow vertical structure, pillar or lattice tower.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        Pillar = 4,
-        [System.ComponentModel.Description("the upper part of the body above the water-line, or the greater part of the superstructure, has the form of a pole, or of a very long cylinder, floating upright.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        SparSpindle = 5,
-        [System.ComponentModel.Description("the upper part of the body above the water-line, or the greater part of the superstructure, has the form of a barrel or cylinder floating horizontally.")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        BarrelTun = 6,
-        [System.ComponentModel.Description("a very large buoy, generally more than 5m in diameter.")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        SuperBuoy = 7,
-        [System.ComponentModel.Description("a specially constructed shuttle shaped buoy which is used in ice conditions.")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        IceBuoy = 8,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum categoryOfCardinalMark : int
-    {
-        [System.ComponentModel.Description("Quadrant bounded by the true bearing NW-NE taken from the point of interest it should be passed to the north side of the mark.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        NorthCardinalMark = 1,
-        [System.ComponentModel.Description("Quadrant bounded by the true bearing NE-SE taken from the point of interest it should be passed to the east side of the mark.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        EastCardinalMark = 2,
-        [System.ComponentModel.Description("Quadrant bounded by the true bearing SE-SW taken from the point of interest it should be passed to the south side of the mark.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        SouthCardinalMark = 3,
-        [System.ComponentModel.Description("Quadrant bounded by the true bearing SW-NW taken from the point of interest it should be passed to the west side of the mark.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        WestCardinalMark = 4,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum categoryOfFogSignal : int
-    {
-        [System.ComponentModel.Description("a signal produced by the firing of explosive charges.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        Explosive = 1,
-        [System.ComponentModel.Description("a diaphone uses compressed air and generally emits a powerful low-pitched sound, which often concludes with a brief sound of suddenly lowered pitch, termed the 'grunt'.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        Diaphone = 2,
-        [System.ComponentModel.Description("a siren uses compressed air and exists in a variety of types which differ considerably in their sound and power.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        Siren = 3,
-        [System.ComponentModel.Description("a horn having a diaphragm oscillated by electricity")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        Nautophone = 4,
-        [System.ComponentModel.Description("a reed uses compressed air and emits a weak, high pitched sound.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        Reed = 5,
-        [System.ComponentModel.Description("a diaphragm horn which operates under the influence of compressed air or steam")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        Tyfon = 6,
-        [System.ComponentModel.Description("a ringing sound with a short range.")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        Bell = 7,
-        [System.ComponentModel.Description("a distinctive sound made by a jet of air passing through an orifice.")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        Whistle = 8,
-        [System.ComponentModel.Description("a sound produced by vibration of a disc when struck.")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        Gong = 9,
-        [System.ComponentModel.Description("a horn uses compressed air or electricity to vibrate a diaphragm and exists in a variety of types which differ greatly in their sound and power.")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        Horn = 10,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum categoryOfInstallationBuoy : int
-    {
-        [System.ComponentModel.Description("incorporates a large buoy which remains on the surface at all times and is moored by 4 or more anchors. Mooring hawsers and cargo hoses lead from a turntable on top of the buoy, so that the buoy does not turn as the ship swings to wind and stream.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        CatenaryAnchorLegMooringCalm = 1,
-        [System.ComponentModel.Description("a mooring structure used by tankers to load and unload in port approaches or in offshore oil and gas fields. The size of the structure can vary between a large mooring buoy and a manned floating structure. Also known as single point mooring (SPM)")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        SingleBuoyMooringSbm = 2,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum categoryOfLandmark : int
-    {
-        [System.ComponentModel.Description("a mound of stones, usually conical or pyramidal, raised as a landmark or to designate a point of importance in surveying.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        Cairn = 1,
-        [System.ComponentModel.Description("an area of land for burying the dead.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        Cemetery = 2,
-        [System.ComponentModel.Description("a vertical structure containing a passage or flue for discharging smoke and gases.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        Chimney = 3,
-        [System.ComponentModel.Description("a parabolic aerial for the receipt and transmission of high frequency radio signals.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        DishAerial = 4,
-        [System.ComponentModel.Description("a staff or pole on which flags are raised.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        FlagstaffFlagpole = 5,
-        [System.ComponentModel.Description("a tall structure used for burning-off waste oil or gas. Normally showing a flame and located at refineries.")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        FlareStack = 6,
-        [System.ComponentModel.Description("a straight vertical piece of timber or a hollow cylinder.")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        Mast = 7,
-        [System.ComponentModel.Description("a tapered fabric sleeve mounted so as to catch and swing with the wind, thus indicating the wind direction.")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        WindSock = 8,
-        [System.ComponentModel.Description("a structure erected or maintained as a memorial to a person or event.")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        Monument = 9,
-        [System.ComponentModel.Description("a cylindrical or slightly tapering body of considerably greater length than diameter erected vertically.")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        ColumnPillar = 10,
-        [System.ComponentModel.Description("a slab of metal, usually ornamented, erected as a memorial to a person or event.")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        MemorialPlaque = 11,
-        [System.ComponentModel.Description("a tapering shaft usually of stone or concrete, square or rectangular in section, with a pyramidal apex.")]
-        [System.Xml.Serialization.XmlEnum("12")]
-        Obelisk = 12,
-        [System.ComponentModel.Description("a representation of a human, animal or fantasy figure in marble, bronze, etc.")]
-        [System.Xml.Serialization.XmlEnum("13")]
-        Statue = 13,
-        [System.ComponentModel.Description("a monument, or other structure in form of a cross.")]
-        [System.Xml.Serialization.XmlEnum("14")]
-        Cross = 14,
-        [System.ComponentModel.Description("a landmark comprising a hemispherical or spheroidal shaped structure")]
-        [System.Xml.Serialization.XmlEnum("15")]
-        Dome = 15,
-        [System.ComponentModel.Description("a device used for directing a radar beam through a search pattern")]
-        [System.Xml.Serialization.XmlEnum("16")]
-        RadarScanner = 16,
-        [System.ComponentModel.Description("a relatively tall structure which may be used for observation, support, storage or communication etc.")]
-        [System.Xml.Serialization.XmlEnum("17")]
-        Tower = 17,
-        [System.ComponentModel.Description("a wind driven system of vanes attached to a tower like structure (excluding wind-generated power plants).")]
-        [System.Xml.Serialization.XmlEnum("18")]
-        Windmill = 18,
-        [System.ComponentModel.Description("a modern structure for the use of windpower.")]
-        [System.Xml.Serialization.XmlEnum("19")]
-        Windmotor = 19,
-        [System.ComponentModel.Description("a tall conical or pyramid-shaped structure often built on the roof or tower of a building, especially a church or mosque.")]
-        [System.Xml.Serialization.XmlEnum("20")]
-        SpireMinaret = 20,
-        [System.ComponentModel.Description("an isolated rocky formation or a single large stone")]
-        [System.Xml.Serialization.XmlEnum("21")]
-        LargeRockOrBoulderOnLand = 21,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum categoryOfLateralMark : int
-    {
-        [System.ComponentModel.Description("indicates the port boundary of a navigational channel or suggested route when proceeding in the 'conventional direction of buoyage'.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        PortHandLateralMark = 1,
-        [System.ComponentModel.Description("indicates the starboard boundary of a navigational channel or suggested route when proceeding in the 'conventional direction of buoyage'.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        StarboardHandLateralMark = 2,
-        [System.ComponentModel.Description("at a point where a channel divides, when proceeding in the 'conventional direction of buoyage', the preferred channel (or primary route) is indicated by a modified port-hand lateral mark.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        PreferredChannelToStarboardLateralMark = 3,
-        [System.ComponentModel.Description("at a point where a channel divides, when proceeding in the 'conventional direction of buoyage', the preferred channel (or primary route) is indicated by a modified starboard-hand lateral mark.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        PreferredChannelToPortLateralMark = 4,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum categoryOfLight : int
-    {
-        [System.ComponentModel.Description("a light illuminating a sector of very narrow angle and intended to mark a direction to follow.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        DirectionalFunction = 1,
-        [System.ComponentModel.Description("a light associated with other lights so as to form a leading line to be followed.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        LeadingLight = 4,
-        [System.ComponentModel.Description("an aero light is established for aeronautical navigation and may be of higher power than marine lights and visible from well offshore.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        AeroLight = 5,
-        [System.ComponentModel.Description("a light marking an obstacle which constitutes a danger to air navigation.")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        AirObstructionLight = 6,
-        [System.ComponentModel.Description("a light used to automatically determine conditions of visibility which warrant the turning on or off of a sound signal.")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        FogDetectorLight = 7,
-        [System.ComponentModel.Description("a broad beam light used to illuminate a structure or area.")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        FloodLight = 8,
-        [System.ComponentModel.Description("a light whose source has a linear form generally horizontal, which can reach a length of several metres.")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        StripLight = 9,
-        [System.ComponentModel.Description("a light placed on or near the support of a main light and having a special use in navigation.")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        SubsidiaryLight = 10,
-        [System.ComponentModel.Description("a powerful light focused so as to illuminate a small area.")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        Spotlight = 11,
-        [System.ComponentModel.Description("term used with leading lights to describe the position of the light on the lead as viewed from seaward.")]
-        [System.Xml.Serialization.XmlEnum("12")]
-        Front = 12,
-        [System.ComponentModel.Description("term used with leading lights to describe the position of the light on the lead as viewed from seaward.")]
-        [System.Xml.Serialization.XmlEnum("13")]
-        Rear = 13,
-        [System.ComponentModel.Description("term used with leading lights to describe the position of the light on the lead as viewed from seaward.")]
-        [System.Xml.Serialization.XmlEnum("14")]
-        Lower = 14,
-        [System.ComponentModel.Description("term used with leading lights to describe the position of the light on the lead as viewed from seaward.")]
-        [System.Xml.Serialization.XmlEnum("15")]
-        Upper = 15,
-        [System.ComponentModel.Description("a short range (up to 2km) type of directional light. Sodium lighting gives a yellow background to a screen on which a vertical black line will be seen by an observer on the centre line.")]
-        [System.Xml.Serialization.XmlEnum("16")]
-        MoireEffect = 16,
-        [System.ComponentModel.Description("a light available as a backup to a main light which will be illuminated should the main light fail.")]
-        [System.Xml.Serialization.XmlEnum("17")]
-        Emergency = 17,
-        [System.ComponentModel.Description("a light which enables its approximate bearing to be obtained without the use of a compass.")]
-        [System.Xml.Serialization.XmlEnum("18")]
-        BearingLight = 18,
-        [System.ComponentModel.Description("a group of lights of identical character and almost identical position, that are disposed horizontally.")]
-        [System.Xml.Serialization.XmlEnum("19")]
-        HorizontallyDisposed = 19,
-        [System.ComponentModel.Description("a group of lights of identical character and almost identical position, that are disposed vertically.")]
-        [System.Xml.Serialization.XmlEnum("20")]
-        VerticallyDisposed = 20,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum categoryOfNavigationLine : int
-    {
-        [System.ComponentModel.Description("a straight line that marks the boundary between a safe and a dangerous area or that passes clear of a navigational danger.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        ClearingLine = 1,
-        [System.ComponentModel.Description("a line passing through one or more fixed marks.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        TransitLine = 2,
-        [System.ComponentModel.Description("a line passing through one or more clearly defined objects, along the path of which a vessel can approach safely up to a certain distance off.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        LeadingLineBearingARecommendedTrack = 3,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum categoryOfOffshorePlatform : int
-    {
-        [System.ComponentModel.Description("a temporary mobile structure, either fixed or floating, used in the exploration stages of oil and gas fields.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        OilDerrickRig = 1,
-        [System.ComponentModel.Description("a term used to indicate a permanent offshore structure equipped to control the flow of oil or gas. It does not include entirely submarine structures.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        ProductionPlatform = 2,
-        [System.ComponentModel.Description("a platform from which one's surroundings or events can be observed, noted or recorded such as for scientific study.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        ObservationResearchPlatform = 3,
-        [System.ComponentModel.Description("a metal lattice tower, buoyant at one end and attached at the other by a universal joint to a concrete filled base on the sea bed. The platform may be fitted with a helicopter platform, emergency accommodation and hawser/hose retrieval.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        ArticulatedLoadingPlatformAlp = 4,
-        [System.ComponentModel.Description("a rigid frame or tube with a buoyancy device at its upper end , secured at its lower end to a universal joint on a large steel or concrete base resting on the sea bed, and at its upper end to a mooring buoy by a chain or wire.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        SingleAnchorLegMooringSalm = 5,
-        [System.ComponentModel.Description("a platform secured to the sea bed and surmounted by a turntable to which ships moor.")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        MooringTower = 6,
-        [System.ComponentModel.Description("a man-made structure usually built for the exploration or exploitation of marine resources, marine scientific research, tidal observations, etc.")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        ArtificialIsland = 7,
-        [System.ComponentModel.Description("an offshore oil/gas facility consisting of a moored tanker/barge by which the product is extracted, stored and exported.")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        FloatingProductionStorageAndOffloadingVesselFpso = 8,
-        [System.ComponentModel.Description("a platform used primarily for eating, sleeping and recreation purposes.")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        AccommodationPlatform = 9,
-        [System.ComponentModel.Description("a floating structure with control room, power and storage facilities, attached to the sea bed by a flexible pipeline and cables.")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        NavigationCommunicationAndControlBuoyNccb = 10,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum categoryOfPile : int
-    {
-        [System.ComponentModel.Description("an elongated wood or metal pole embedded in the bottom to serve as a marker or support.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        Stake = 1,
-        [System.ComponentModel.Description("a vertical piece of timber, metal or concrete forced into the earth or sea bed.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        Post = 3,
-        [System.ComponentModel.Description("a single structure comprising 3 or more piles held together (sections of heavy timber, steel or concrete), and forced into the earth or sea bed.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        Tripodal = 4,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum categoryOfRadarTransponderBeacon : int
-    {
-        [System.ComponentModel.Description("a radar marker beacon which continuously transmits a signal appearing as a radial line on a radar screen, the line indicating the direction of the beacon. Ramarks are intended primarily for marine use. The name 'ramark' is derived from the words radar marker.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        RamarkRadarBeaconTransmittingContinuously = 1,
-        [System.ComponentModel.Description("a radar beacon which returns a coded signal which provides identification of the beacon, as well as range and bearing. The range and bearing are indicated by the location of the first character received on the radar screen. The name 'racon' is derived from the words radar beacon.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        RaconRadarTransponderBeacon = 2,
-        [System.ComponentModel.Description("a radar beacon that may be used (in conjunction with at least one other radar beacon) to indicate a leading line.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        LeadingRaconRadarTransponderBeacon = 3,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum categoryOfRecommendedTrack : int
-    {
-        [System.ComponentModel.Description("a straight route (known as a recommended track, range or leading line), which comprises at least two structures (usually beacons or daymarks) and/or natural features, which may carry lights and/or top-marks. The structures/features are positioned so that when observed to be in line, a vessel can follow a known bearing with safety.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        BasedOnASystemOfFixedMarks = 1,
-        [System.ComponentModel.Description("a route (known as a recommended track or preferred route) which is not based on a series of structures or features in line.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        NotBasedOnASystemOfFixedMarks = 2,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum categoryOfSiloTank : int
-    {
-        [System.ComponentModel.Description("a generally cylindrical tower used for storing fodder or grain.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        SiloInGeneral = 1,
-        [System.ComponentModel.Description("a fixed structure for storing liquids.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        TankInGeneral = 2,
-        [System.ComponentModel.Description("a storage building for grain. Usually a tall frame, metal or concrete structure with an especially compartmented interior.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        GrainElevator = 3,
-        [System.ComponentModel.Description("a tower with an elevated container used to hold water.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        WaterTower = 4,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum categoryOfSpecialPurposeMark : int
-    {
-        [System.ComponentModel.Description("a mark used to indicate a firing danger area, usually at sea.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        FiringDangerMark = 1,
-        [System.ComponentModel.Description("any object toward which something is directed. The distinctive marking or instrumentation of a ground point to aid its identification on a photograph.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        TargetMark = 2,
-        [System.ComponentModel.Description("a mark marking the position of a ship which is used as a target during some military exercise.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        MarkerShipMark = 3,
-        [System.ComponentModel.Description("a mark used to indicate a degaussing range.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        DegaussingRangeMark = 4,
-        [System.ComponentModel.Description("a mark of relevance to barges.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        BargeMark = 5,
-        [System.ComponentModel.Description("a mark used to indicate the position of submarine cables or the point at which they run on to the land.")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        CableMark = 6,
-        [System.ComponentModel.Description("a mark used to indicate the limit of a spoil ground")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        SpoilGroundMark = 7,
-        [System.ComponentModel.Description("a mark used to indicate the position of an outfall or the point at which it leaves the land.")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        OutfallMark = 8,
-        [System.ComponentModel.Description("Ocean Data Acquisition System")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        Odas = 9,
-        [System.ComponentModel.Description("a mark used to record data for scientific purposes.")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        RecordingMark = 10,
-        [System.ComponentModel.Description("a mark used to indicate a seaplane anchorage.")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        SeaplaneAnchorageMark = 11,
-        [System.ComponentModel.Description("a mark used to indicate a recreation zone.")]
-        [System.Xml.Serialization.XmlEnum("12")]
-        RecreationZoneMark = 12,
-        [System.ComponentModel.Description("a privately maintained mark.")]
-        [System.Xml.Serialization.XmlEnum("13")]
-        PrivateMark = 13,
-        [System.ComponentModel.Description("a mark indicating a mooring or moorings.")]
-        [System.Xml.Serialization.XmlEnum("14")]
-        MooringMark = 14,
-        [System.ComponentModel.Description("a large buoy designed to take the place of a lightship where construction of an offshore light station is not feasible.")]
-        [System.Xml.Serialization.XmlEnum("15")]
-        Lanby = 15,
-        [System.ComponentModel.Description("aids to navigation or other indicators so located as to indicate the path to be followed. Leading marks identify a leading line when they are in transit.")]
-        [System.Xml.Serialization.XmlEnum("16")]
-        LeadingMark = 16,
-        [System.ComponentModel.Description("a mark forming part of a transit indicating one end of a measured distance.")]
-        [System.Xml.Serialization.XmlEnum("17")]
-        MeasuredDistanceMark = 17,
-        [System.ComponentModel.Description("a notice board or sign indicating information to the mariner.")]
-        [System.Xml.Serialization.XmlEnum("18")]
-        NoticeMark = 18,
-        [System.ComponentModel.Description("a mark indicating a traffic separation scheme.")]
-        [System.Xml.Serialization.XmlEnum("19")]
-        TssMark = 19,
-        [System.ComponentModel.Description("a mark indicating an anchoring prohibited area.")]
-        [System.Xml.Serialization.XmlEnum("20")]
-        AnchoringProhibitedMark = 20,
-        [System.ComponentModel.Description("a mark indicating that berthing is prohibited.")]
-        [System.Xml.Serialization.XmlEnum("21")]
-        BerthingProhibitedMark = 21,
-        [System.ComponentModel.Description("a mark indicating that overtaking is prohibited.")]
-        [System.Xml.Serialization.XmlEnum("22")]
-        OvertakingProhibitedMark = 22,
-        [System.ComponentModel.Description("a mark indicating a one-way route.")]
-        [System.Xml.Serialization.XmlEnum("23")]
-        TwoWayTrafficProhibitedMark = 23,
-        [System.ComponentModel.Description("a mark indicating that vessels must not generate excessive wake.")]
-        [System.Xml.Serialization.XmlEnum("24")]
-        ReducedWakeMark = 24,
-        [System.ComponentModel.Description("a mark indicating that a speed limit applies.")]
-        [System.Xml.Serialization.XmlEnum("25")]
-        SpeedLimitMark = 25,
-        [System.ComponentModel.Description("a mark indicating the place where the bow of a ship must stop when traffic lights show red.")]
-        [System.Xml.Serialization.XmlEnum("26")]
-        StopMark = 26,
-        [System.ComponentModel.Description("a mark indicating that special caution must be exercised in the vicinity of the mark.")]
-        [System.Xml.Serialization.XmlEnum("27")]
-        GeneralWarningMark = 27,
-        [System.ComponentModel.Description("a mark indicating that a ship should sound its siren or horn.")]
-        [System.Xml.Serialization.XmlEnum("28")]
-        SoundShipsSirenMark = 28,
-        [System.ComponentModel.Description("a mark indicating the minimum vertical space available for passage.")]
-        [System.Xml.Serialization.XmlEnum("29")]
-        RestrictedVerticalClearanceMark = 29,
-        [System.ComponentModel.Description("a mark indicating the maximum draught of vessel permitted.")]
-        [System.Xml.Serialization.XmlEnum("30")]
-        MaximumVesselSDraughtMark = 30,
-        [System.ComponentModel.Description("a mark indicating the minimum horizontal space available for passage.")]
-        [System.Xml.Serialization.XmlEnum("31")]
-        RestrictedHorizontalClearanceMark = 31,
-        [System.ComponentModel.Description("a mark warning of strong currents.")]
-        [System.Xml.Serialization.XmlEnum("32")]
-        StrongCurrentWarningMark = 32,
-        [System.ComponentModel.Description("a mark indicating that berthing is allowed.")]
-        [System.Xml.Serialization.XmlEnum("33")]
-        BerthingPermittedMark = 33,
-        [System.ComponentModel.Description("a mark indicating an overhead power cable.")]
-        [System.Xml.Serialization.XmlEnum("34")]
-        OverheadPowerCableMark = 34,
-        [System.ComponentModel.Description("a mark indicating the gradient of the slope of a dredge channel edge.")]
-        [System.Xml.Serialization.XmlEnum("35")]
-        ChannelEdgeGradientMark = 35,
-        [System.ComponentModel.Description("a mark indicating the presence of a telephone.")]
-        [System.Xml.Serialization.XmlEnum("36")]
-        TelephoneMark = 36,
-        [System.ComponentModel.Description("a mark indicating that a ferry route crosses the ship route often used with a 'sound ship's siren' mark.")]
-        [System.Xml.Serialization.XmlEnum("37")]
-        FerryCrossingMark = 37,
-        [System.ComponentModel.Description("a mark used to indicate the position of submarine pipelines or the point at which they run on to the land.")]
-        [System.Xml.Serialization.XmlEnum("39")]
-        PipelineMark = 39,
-        [System.ComponentModel.Description("a mark indicating an anchorage area.")]
-        [System.Xml.Serialization.XmlEnum("40")]
-        AnchorageMark = 40,
-        [System.ComponentModel.Description("a mark used to indicate a clearing line.")]
-        [System.Xml.Serialization.XmlEnum("41")]
-        ClearingMark = 41,
-        [System.ComponentModel.Description("a mark indicating the location at which a restriction or requirement exists.")]
-        [System.Xml.Serialization.XmlEnum("42")]
-        ControlMark = 42,
-        [System.ComponentModel.Description("a mark indicating that diving may take place in the vicinity.")]
-        [System.Xml.Serialization.XmlEnum("43")]
-        DivingMark = 43,
-        [System.ComponentModel.Description("a mark providing or indicating a place of safety.")]
-        [System.Xml.Serialization.XmlEnum("44")]
-        RefugeBeacon = 44,
-        [System.ComponentModel.Description("a mark indicating a foul ground.")]
-        [System.Xml.Serialization.XmlEnum("45")]
-        FoulGroundMark = 45,
-        [System.ComponentModel.Description("a mark installed for use by yachtsmen.")]
-        [System.Xml.Serialization.XmlEnum("46")]
-        YachtingMark = 46,
-        [System.ComponentModel.Description("a mark indicating an area where helicopters may land.")]
-        [System.Xml.Serialization.XmlEnum("47")]
-        HeliportMark = 47,
-        [System.ComponentModel.Description("a mark indicating a location at which a GNSS position has been accurately determined.")]
-        [System.Xml.Serialization.XmlEnum("48")]
-        GnssMark = 48,
-        [System.ComponentModel.Description("a mark indicating an area where sea-planes land.")]
-        [System.Xml.Serialization.XmlEnum("49")]
-        SeaplaneLandingMark = 49,
-        [System.ComponentModel.Description("a mark indicating that entry is prohibited.")]
-        [System.Xml.Serialization.XmlEnum("50")]
-        EntryProhibitedMark = 50,
-        [System.ComponentModel.Description("a mark indicating that work (generally construction) is in progress.")]
-        [System.Xml.Serialization.XmlEnum("51")]
-        WorkInProgressMark = 51,
-        [System.ComponentModel.Description("a mark whose detailed characteristics are unknown.")]
-        [System.Xml.Serialization.XmlEnum("52")]
-        MarkWithUnknownPurpose = 52,
-        [System.ComponentModel.Description("a mark indicating a borehole that produces or is capable of producing oil or natural gas.")]
-        [System.Xml.Serialization.XmlEnum("53")]
-        WellheadMark = 53,
-        [System.ComponentModel.Description("a mark indicating the point at which a channel divides separately into two channels.")]
-        [System.Xml.Serialization.XmlEnum("54")]
-        ChannelSeparationMark = 54,
-        [System.ComponentModel.Description("a mark indicating the existence of a fish, mussel, oyster or pearl farm/ culture.")]
-        [System.Xml.Serialization.XmlEnum("55")]
-        MarineFarmMark = 55,
-        [System.ComponentModel.Description("a mark indicating the existence or the extent of an artificial reef.")]
-        [System.Xml.Serialization.XmlEnum("56")]
-        ArtificialReefMark = 56,
-        [System.ComponentModel.Description("A mark indicating a jetski prohibited area")]
-        [System.Xml.Serialization.XmlEnum("64")]
-        JetskiProhibited = 64,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum categoryOfTemporalVariation : int
-    {
-        [System.ComponentModel.Description("Temporal variation not assessed or cannot be determined.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        Unassessed = 1,
-        [System.ComponentModel.Description("No new hydrographic survey conducted after an event (e.g. hurricane, earthquake, volcanic eruption, landslide, etc), which is considered likely to have changed the seafloor significantly.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        Event = 2,
-        [System.ComponentModel.Description("Continuous or frequent change (e.g. river siltation, sand waves, seasonal storms, icebergs, etc).")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        LikelyToChange = 3,
-        [System.ComponentModel.Description("Likely to change but significant shoaling unlikely")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        LikelyToChangeButSignificantShoalingUnlikely = 4,
-        [System.ComponentModel.Description("Significant change to the seafloor is not expected.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        UnlikelyToChange = 5,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+#nullable enable
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-    public enum colour : int
-    {
-#pragma warning restore CS8981
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        White = 1,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        Black = 2,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        Red = 3,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        Green = 4,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        Blue = 5,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        Yellow = 6,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        Grey = 7,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        Brown = 8,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        Amber = 9,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        Violet = 10,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        Orange = 11,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("12")]
-        Magenta = 12,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("13")]
-        Pink = 13,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum colourPattern : int
-    {
-        [System.ComponentModel.Description("straight bands or stripes of differing colours painted horizontally.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        HorizontalStripes = 1,
-        [System.ComponentModel.Description("straight bands or stripes of differing colours painted vertically.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        VerticalStripes = 2,
-        [System.ComponentModel.Description("straight bands or stripes of differing colours painted diagonally (ie not horizontally or vertically).")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        DiagonalStripes = 3,
-        [System.ComponentModel.Description("often referred to as checker plate, where alternate colours are used to create squares similar to a chess or draught board. The pattern may be straight or diagonal.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        Squared = 4,
-        [System.ComponentModel.Description("straight bands or stripes of differing colours painted in an unknown direction.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        StripesDirectionUnknown = 5,
-        [System.ComponentModel.Description("a band or stripe of colour which is displayed around the outer edge of the object, which may also form a border to an inner pattern or plain colour.")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        BorderStripe = 6,
-        [System.ComponentModel.Description("One solid colour of uniform coverage")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        SingleColour = 7,
-        [System.ComponentModel.Description("A four-sided shape that is made up of two pairs of parallel lines and that has four right angles, on a different coloured background")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        Rectangle = 8,
-        [System.ComponentModel.Description("a shape that is made up of three lines and three angles, on a different coloured background")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        Triangle = 9,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
-    public enum condition : int
-    {
-#pragma warning restore CS8981
-        [System.ComponentModel.Description("a structure that is in the process of being built.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        UnderConstruction = 1,
-        [System.ComponentModel.Description("a structure in a decayed or deteriorated condition resulting from neglect or disuse, or a damaged structure in need of repair.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        Ruined = 2,
-        [System.ComponentModel.Description("an area of the sea that is being reclaimed as land, usually by the dumping of earth and other material.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        UnderReclamation = 3,
-        [System.ComponentModel.Description("a windmill or windmotor from which the turbine blades are missing.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        Wingless = 4,
-        [System.ComponentModel.Description("an area where a future construction is planned.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        PlannedConstruction = 5,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum exhibitionConditionOfLight : int
-    {
-        [System.ComponentModel.Description("a light shown throughout the 24 hours without change of character.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        LightShownWithoutChangeOfCharacter = 1,
-        [System.ComponentModel.Description("a light which is only exhibited by day.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        DaytimeLight = 2,
-        [System.ComponentModel.Description("a light which is exhibited in fog or conditions of reduced visibility.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        FogLight = 3,
-        [System.ComponentModel.Description("a light which is only exhibited at night.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        NightLight = 4,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
-    public enum function : int
-    {
-#pragma warning restore CS8981
-        [System.ComponentModel.Description("the office of the local official who has charge of mooring and berthing of vessels, collecting harbour fees, etc.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        HarbourMasterSOffice = 2,
-        [System.ComponentModel.Description("an office which is charged with enforcing customs regulations.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        CustomsOffice = 3,
-        [System.ComponentModel.Description("the office which is charged with the administration of health laws and sanitary inspections.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        HealthOffice = 4,
-        [System.ComponentModel.Description("an institution or establishment providing medical or surgical treatment for the ill or wounded.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        Hospital = 5,
-        [System.ComponentModel.Description("the public department, agency or organisation responsible primarily for the collection, transmission and distribution of mail.")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        PostOffice = 6,
-        [System.ComponentModel.Description("an establishment, especially of a comfortable or luxurious kind, where paying visitors are provided with accommodation, meals and other services.")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        Hotel = 7,
-        [System.ComponentModel.Description("a building with platforms where trains arrive, load, discharge and depart.")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        RailwayStation = 8,
-        [System.ComponentModel.Description("the office of the local police force.")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        PoliceStation = 9,
-        [System.ComponentModel.Description("the headquarters of a local water-police force.")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        WaterPoliceStation = 10,
-        [System.ComponentModel.Description("the office or headquarters of pilots the place where the services of a pilot may be obtained.")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        PilotOffice = 11,
-        [System.ComponentModel.Description("a distinctive structure on shore from which personnel keep watch upon events at sea or along the coast.")]
-        [System.Xml.Serialization.XmlEnum("12")]
-        PilotLookout = 12,
-        [System.ComponentModel.Description("an office for custody, deposit, loan, exchange or issue of money.")]
-        [System.Xml.Serialization.XmlEnum("13")]
-        BankOffice = 13,
-        [System.ComponentModel.Description("the quarters of an executive officer (director, manager, etc.) with responsibility for an administrative area.")]
-        [System.Xml.Serialization.XmlEnum("14")]
-        HeadquartersForDistrictControl = 14,
-        [System.ComponentModel.Description("a building or part of a building for storage of wares or goods.")]
-        [System.Xml.Serialization.XmlEnum("15")]
-        TransitShedWarehouse = 15,
-        [System.ComponentModel.Description("a building or buildings with equipment for manufacturing a workshop.")]
-        [System.Xml.Serialization.XmlEnum("16")]
-        Factory = 16,
-        [System.ComponentModel.Description("a stationary plant containing apparatus for large scale conversion of some form of energy (such as hydraulic, steam, chemical or nuclear energy) into electrical energy.")]
-        [System.Xml.Serialization.XmlEnum("17")]
-        PowerStation = 17,
-        [System.ComponentModel.Description("a building for the management of affairs.")]
-        [System.Xml.Serialization.XmlEnum("18")]
-        Administrative = 18,
-        [System.ComponentModel.Description("a building concerned with education (e.g. school, college, university, etc.)")]
-        [System.Xml.Serialization.XmlEnum("19")]
-        EducationalFacility = 19,
-        [System.ComponentModel.Description("a building for public Christian worship.")]
-        [System.Xml.Serialization.XmlEnum("20")]
-        Church = 20,
-        [System.ComponentModel.Description("a place for Christian worship other than a parish, cathedral or church, especially one attached to a private house or institution.")]
-        [System.Xml.Serialization.XmlEnum("21")]
-        Chapel = 21,
-        [System.ComponentModel.Description("a building for public Jewish worship.")]
-        [System.Xml.Serialization.XmlEnum("22")]
-        Temple = 22,
-        [System.ComponentModel.Description("a Hindu or Buddhist temple or sacred building.")]
-        [System.Xml.Serialization.XmlEnum("23")]
-        Pagoda = 23,
-        [System.ComponentModel.Description("a building for public Shinto worship.")]
-        [System.Xml.Serialization.XmlEnum("24")]
-        ShintoShrine = 24,
-        [System.ComponentModel.Description("see pagoda.")]
-        [System.Xml.Serialization.XmlEnum("25")]
-        BuddhistTemple = 25,
-        [System.ComponentModel.Description("a Muslim place of worship.")]
-        [System.Xml.Serialization.XmlEnum("26")]
-        Mosque = 26,
-        [System.ComponentModel.Description("a shrine marking the burial place of a Muslim holy man.")]
-        [System.Xml.Serialization.XmlEnum("27")]
-        Marabout = 27,
-        [System.ComponentModel.Description("keeping a watch upon events at sea or along the coast.")]
-        [System.Xml.Serialization.XmlEnum("28")]
-        Lookout = 28,
-        [System.ComponentModel.Description("transmitting and/or receiving electronic communication signals.")]
-        [System.Xml.Serialization.XmlEnum("29")]
-        Communication = 29,
-        [System.ComponentModel.Description("broadcast of television signals.")]
-        [System.Xml.Serialization.XmlEnum("30")]
-        Television = 30,
-        [System.ComponentModel.Description("broadcast of radio signals.")]
-        [System.Xml.Serialization.XmlEnum("31")]
-        Radio = 31,
-        [System.ComponentModel.Description("a method, system or technique of using beamed, reflected, and timed radio waves for detecting, locating, or tracking objects, and for measuring altitudes.")]
-        [System.Xml.Serialization.XmlEnum("32")]
-        Radar = 32,
-        [System.ComponentModel.Description("supporting a light")]
-        [System.Xml.Serialization.XmlEnum("33")]
-        LightSupport = 33,
-        [System.ComponentModel.Description("broadcasting and receiving signals using microwaves.")]
-        [System.Xml.Serialization.XmlEnum("34")]
-        Microwave = 34,
-        [System.ComponentModel.Description("dissipating heat.")]
-        [System.Xml.Serialization.XmlEnum("35")]
-        Cooling = 35,
-        [System.ComponentModel.Description("a place from which the surroundings can be observed but at which a watch is not habitually maintained.")]
-        [System.Xml.Serialization.XmlEnum("36")]
-        Observation = 36,
-        [System.ComponentModel.Description("a visual time signal in form of a ball")]
-        [System.Xml.Serialization.XmlEnum("37")]
-        TimeBall = 37,
-        [System.ComponentModel.Description("visual time signal.")]
-        [System.Xml.Serialization.XmlEnum("38")]
-        Clock = 38,
-        [System.ComponentModel.Description("used to control the flow of air, rail, or marine traffic.")]
-        [System.Xml.Serialization.XmlEnum("39")]
-        Control = 39,
-        [System.ComponentModel.Description("a facility to secure an airship.")]
-        [System.Xml.Serialization.XmlEnum("40")]
-        AirshipMooring = 40,
-        [System.ComponentModel.Description("a large usually unroofed building with tiers of seats for spectators")]
-        [System.Xml.Serialization.XmlEnum("41")]
-        Stadium = 41,
-        [System.ComponentModel.Description("a location at which buses arrive and from which they depart.")]
-        [System.Xml.Serialization.XmlEnum("42")]
-        BusStation = 42,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum lightCharacteristic : int
-    {
-        [System.ComponentModel.Description("a signal light that shows continuously, in any given direction, with constant luminous intensity and colour.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        Fixed = 1,
-        [System.ComponentModel.Description("a rhythmic light in which the total duration of light in a period is clearly shorter than the total duration of darkness and all the appearances of light are of equal duration.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        Flashing = 2,
-        [System.ComponentModel.Description("a flashing light in which a single flash of not less than two seconds duration is regularly repeated.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        LongFlashing = 3,
-        [System.ComponentModel.Description("a light exhibiting without interruption very rapid regular alternations of light and darkness.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        QuickFlashing = 4,
-        [System.ComponentModel.Description("a flashing light in which flashes are repeated at a rate of not less than 80 flashes per minute but less than 160 flashes per minute.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        VeryQuickFlashing = 5,
-        [System.ComponentModel.Description("a flashing light in which flashes are repeated at a rate of not less than 160 flashes per minute.")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        UltraQuickFlashing = 6,
-        [System.ComponentModel.Description("a light with all durations of light and darkness equal.")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        Isophased = 7,
-        [System.ComponentModel.Description("a rhythmic light in which the total duration of light in a period is clearly longer than the total duration of darkness and all the eclipses are of equal duration.")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        Occulting = 8,
-        [System.ComponentModel.Description("a quick light in which the sequence of flashes is interrupted by regularly repeated eclipses of constant and long duration.")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        InterruptedQuickFlashing = 9,
-        [System.ComponentModel.Description("a light in which the very rapid alterations of light and darkness are interrupted at regular intervals by eclipses of long duration.")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        InterruptedVeryQuickFlashing = 10,
-        [System.ComponentModel.Description("a light in which the ultra quick flashes (160 or more per minute) are interrupted at regular intervals by eclipses of long duration.")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        InterruptedUltraQuickFlashing = 11,
-        [System.ComponentModel.Description("a rhythmic light in which appearances of light of two clearly different durations are grouped to represent a character or characters in the Morse code.")]
-        [System.Xml.Serialization.XmlEnum("12")]
-        Morse = 12,
-        [System.ComponentModel.Description("a rhythmic light in which a fixed light is combined with a flashing light of higher luminous intensity.")]
-        [System.Xml.Serialization.XmlEnum("13")]
-        FixedFlash = 13,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("14")]
-        FlashLongFlash = 14,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("15")]
-        OccultingFlash = 15,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("16")]
-        FixedLongFlash = 16,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("17")]
-        OccultingAlternating = 17,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("18")]
-        LongFlashAlternating = 18,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("19")]
-        FlashAlternating = 19,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("25")]
-        QuickFlashPlusLongFlash = 25,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("26")]
-        VeryQuickFlashPlusLongFlash = 26,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("27")]
-        UltraQuickFlashPlusLongFlash = 27,
-        [System.ComponentModel.Description("a signal light that shows, in any given direction, two or more colours in a regularly repeated sequence with a regular periodicity.")]
-        [System.Xml.Serialization.XmlEnum("28")]
-        Alternating = 28,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("29")]
-        FixedAndAlternatingFlashing = 29,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum lightVisibility : int
-    {
-        [System.ComponentModel.Description("non-marine lights with a higher power than marine lights and visible from well off shore (often 'Aero' lights).")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        HighIntensity = 1,
-        [System.ComponentModel.Description("non-marine lights with lower power than marine lights.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        LowIntensity = 2,
-        [System.ComponentModel.Description("a decrease in the apparent intensity of a light which may occur in the case of partial obstructions.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        Faint = 3,
-        [System.ComponentModel.Description("a light in a sector is intensified (i.e. has longer range than other sectors).")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        Intensified = 4,
-        [System.ComponentModel.Description("a light in a sector is unintensified (i.e. has shorter range than other sectors).")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        Unintensified = 5,
-        [System.ComponentModel.Description("a light sector is deliberately reduced in intensity, for example to reduce its effect on a built-up area.")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        VisibilityDeliberatelyRestricted = 6,
-        [System.ComponentModel.Description("said of the arc of a light sector designated by its limiting bearings in which the light is not visible from seaward.")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        Obscured = 7,
-        [System.ComponentModel.Description("this value specifies that parts of the sector are obscured.")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        PartiallyObscured = 8,
-        [System.ComponentModel.Description("lights that must be in line to be visible.")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        VisibleInLineOfRange = 9,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum marksNavigationalSystemOf : int
-    {
-        [System.ComponentModel.Description("navigational aids conform to the International Association of Lighthouse Authorities - IALA A system.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        IalaA = 1,
-        [System.ComponentModel.Description("navigational aids conform to the International Association of Lighthouse Authorities - IALA B system.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        IalaB = 2,
-        [System.ComponentModel.Description("navigational aids do not conform to any defined system.")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        NoSystem = 9,
-        [System.ComponentModel.Description("navigational aids conform to a defined system other than International Association of Lighthouse Authorities -IALA.")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        OtherSystem = 10,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum installationType : int
-    {
-        [System.ComponentModel.Description("Fixed Topmark")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        Fixed = 1,
-        [System.ComponentModel.Description("Floating Topmark")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        Floating = 2,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum natureOfConstruction : int
-    {
-        [System.ComponentModel.Description("constructed of brick or stone.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        Masonry = 1,
-        [System.ComponentModel.Description("constructed of concrete, a material made of sand and gravel that is united by cement into a hardened mass used for roads, foundations, etc.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        Concreted = 2,
-        [System.ComponentModel.Description("constructed from large stones or blocks of concrete, often placed loosely for protection against waves or water turbulence.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        LooseBoulders = 3,
-        [System.ComponentModel.Description("constructed with a surface of hard material, usually a term applied to roads surfaced with asphalt or concrete.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        HardSurface = 4,
-        [System.ComponentModel.Description("constructed with no extra protection, usually a term applied to roads not surfaced with a hard material.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        Unsurfaced = 5,
-        [System.ComponentModel.Description("constructed from wood.")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        Wooden = 6,
-        [System.ComponentModel.Description("constructed from metal.")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        Metal = 7,
-        [System.ComponentModel.Description("constructed from a plastic material strengthened with fibres of glass.")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        GlassReinforcedPlasticGrp = 8,
-        [System.ComponentModel.Description("the application of paint to some other construction or natural feature.")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        Painted = 9,
-        [System.ComponentModel.Description("Constructed from fiberglass")]
-        [System.Xml.Serialization.XmlEnum("13")]
-        Fiberglass = 13,
-        [System.ComponentModel.Description("Constructed from plastic")]
-        [System.Xml.Serialization.XmlEnum("14")]
-        Plastic = 14,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
-    public enum product : int
-    {
-#pragma warning restore CS8981
-        [System.ComponentModel.Description("a thick, slippery liquid that will not dissolve in water, usually petroleum based in the context of storage tanks.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        Oil = 1,
-        [System.ComponentModel.Description("a substance with particles that can move freely, usually a fuel substance in the context of storage tanks.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        Gas = 2,
-        [System.ComponentModel.Description("a colourless, odourless, tasteless liquid that is a compound of hydrogen and oxygen.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        Water = 3,
-        [System.ComponentModel.Description("a general term for rock fragments.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        Stone = 4,
-        [System.ComponentModel.Description("a hard black mineral that is burned as fuel.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        Coal = 5,
-        [System.ComponentModel.Description("a solid rock or mineral from which metal is obtained.")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        Ore = 6,
-        [System.ComponentModel.Description("any substance obtained by or used in a chemical process.")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        Chemicals = 7,
-        [System.ComponentModel.Description("water that is suitable for human consumption.")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        DrinkingWater = 8,
-        [System.ComponentModel.Description("a white fluid secreted by female mammals as food for their young.")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        Milk = 9,
-        [System.ComponentModel.Description("a mineral from which aluminum is obtained.")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        Bauxite = 10,
-        [System.ComponentModel.Description("a solid substance obtained after gas and tar have been extracted from coal, used as a fuel.")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        Coke = 11,
-        [System.ComponentModel.Description("an oblong lump of cast iron metal.")]
-        [System.Xml.Serialization.XmlEnum("12")]
-        IronIngots = 12,
-        [System.ComponentModel.Description("sodium chloride obtained from mines or by the evaporation of sea water.")]
-        [System.Xml.Serialization.XmlEnum("13")]
-        Salt = 13,
-        [System.ComponentModel.Description("tiny grains of crushed or worn rock.")]
-        [System.Xml.Serialization.XmlEnum("14")]
-        Sand = 14,
-        [System.ComponentModel.Description("wood prepared for use in building or carpentry.")]
-        [System.Xml.Serialization.XmlEnum("15")]
-        Timber = 15,
-        [System.ComponentModel.Description("powdery fragments of wood made in sawing timber or coarse chips produced for use in manufacturing pressed board.")]
-        [System.Xml.Serialization.XmlEnum("16")]
-        SawdustWoodChips = 16,
-        [System.ComponentModel.Description("discarded metal suitable for being reprocessed.")]
-        [System.Xml.Serialization.XmlEnum("17")]
-        ScrapMetal = 17,
-        [System.ComponentModel.Description("a compressed gas consisting of flammable light hydrocarbons and derived from natural gas.")]
-        [System.Xml.Serialization.XmlEnum("18")]
-        LiquifiedNaturalGasLng = 18,
-        [System.ComponentModel.Description("a compressed gas consisting of flammable light hydrocarbons and derived from petroleum.")]
-        [System.Xml.Serialization.XmlEnum("19")]
-        LiquifiedPetroleumGasLpg = 19,
-        [System.ComponentModel.Description("the fermanted juice of grapes.")]
-        [System.Xml.Serialization.XmlEnum("20")]
-        Wine = 20,
-        [System.ComponentModel.Description("a substance made of powdered lime and clay, mixed with water.")]
-        [System.Xml.Serialization.XmlEnum("21")]
-        Cement = 21,
-        [System.ComponentModel.Description("a small hard seed, especially that of any cereal plant such as wheat, rice, corn, rye etc.")]
-        [System.Xml.Serialization.XmlEnum("22")]
-        Grain = 22,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum qualityOfPosition : int
-    {
-        [System.ComponentModel.Description("the position(s) was(were) determined by the operation of making measurements for determining the relative position of points on, above or beneath the earth's surface. Survey implies a regular, controlled survey of any date.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        Surveyed = 1,
-        [System.ComponentModel.Description("survey data is does not exist or is very poor.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        Unsurveyed = 2,
-        [System.ComponentModel.Description("position data is of a very poor quality.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        InadequatelySurveyed = 3,
-        [System.ComponentModel.Description("a position that is considered to be less than third-order accuracy, but is generally considered to be within 30.5 metres of its correct geographic location. Also may apply to an object whose position does not remain fixed.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        Approximate = 4,
-        [System.ComponentModel.Description("an object whose position has been reported but which is considered to be doubtful.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        PositionDoubtful = 5,
-        [System.ComponentModel.Description("an object's position obtained from questionable or unreliable data.")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        Unreliable = 6,
-        [System.ComponentModel.Description("an object whose position has been reported and its position confirmed by some means other than a formal survey such as an independent report of the same object.")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        ReportedNotSurveyed = 7,
-        [System.ComponentModel.Description("an object whose position has been reported and its position has not been confirmed.")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        ReportedNotConfirmed = 8,
-        [System.ComponentModel.Description("the most probable position of an object determined from incomplete data or data of questionable accuracy.")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        Estimated = 9,
-        [System.ComponentModel.Description("a position that is of a known value, such as the position of an anchor berth or other defined object.")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        PreciselyKnown = 10,
-        [System.ComponentModel.Description("a position that is computed from data.")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        Calculated = 11,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum qualityOfSoundingMeasurement : int
-    {
-        [System.ComponentModel.Description("the depth from chart datum to the bottom is a known value.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        DepthKnown = 1,
-        [System.ComponentModel.Description("the depth from chart datum to the bottom is unknown.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        DepthOrLeastDepthUnknown = 2,
-        [System.ComponentModel.Description("a depth that may be less than indicated.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        DoubtfulSounding = 3,
-        [System.ComponentModel.Description("a depth that is considered to be an unreliable value.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        UnreliableSounding = 4,
-        [System.ComponentModel.Description("upon investigation the bottom was not found at this depth.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        NoBottomFoundAtValueShown = 5,
-        [System.ComponentModel.Description("the shoalest depth over a feature is of known value.")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        LeastDepthKnown = 6,
-        [System.ComponentModel.Description("the least depth over a feature is unknown, but there is considered to be safe clearance at this depth.")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        LeastDepthUnknownSafeClearanceAtDepthShown = 7,
-        [System.ComponentModel.Description("depth value obtained from a report, but not fully surveyed.")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        ValueReportedNotSurveyed = 8,
-        [System.ComponentModel.Description("depth value obtained from a report, which it has not been possible to confirm.")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        ValueReportedNotConfirmed = 9,
-        [System.ComponentModel.Description("the depth at which a channel is kept by human influence, usually by dredging.")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        MaintainedDepth = 10,
-        [System.ComponentModel.Description("depths may be altered by human influence, but will not be routinely maintained.")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        NotRegularlyMaintained = 11,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum radarConspicuous : int
-    {
-        [System.ComponentModel.Description("an object which returns a strong radar echo.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        RadarConspicuous = 1,
-        [System.ComponentModel.Description("an object which does not return a particularly strong radar echo.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        NotRadarConspicuous = 2,
-        [System.ComponentModel.Description("an object which returns a strong radar echo, having a radar reflector.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        RadarConspicuousHasRadarReflector = 3,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum signalGeneration : int
-    {
-        [System.ComponentModel.Description("signal generation is initiated by a self regulating mechanism such as a timer or light sensor.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        Automatically = 1,
-        [System.ComponentModel.Description("the signal is generated by the motion of the sea surface such as a bell in a buoy.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        ByWaveAction = 2,
-        [System.ComponentModel.Description("the signal is generated by a manually operated mechanism such as a hand cranked siren.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        ByHand = 3,
-        [System.ComponentModel.Description("the signal is generated by the motion of air such as a wind driven whistle.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        ByWind = 4,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
-    public enum status : int
-    {
-#pragma warning restore CS8981
-        [System.ComponentModel.Description("intended to last or function indefinitely.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        Permanent = 1,
-        [System.ComponentModel.Description("acting on special occasions happening irregularly.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        Occasional = 2,
-        [System.ComponentModel.Description("presented as worthy of confidence, acceptance, use, etc.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        Recommended = 3,
-        [System.ComponentModel.Description("no longer used for the purpose intended disused.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        NotInUse = 4,
-        [System.ComponentModel.Description("recurring at intervals.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        PeriodicIntermittent = 5,
-        [System.ComponentModel.Description("set apart for some specific use.")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        Reserved = 6,
-        [System.ComponentModel.Description("meant to last only for a time.")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        Temporary = 7,
-        [System.ComponentModel.Description("not in public ownership or operation.")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        Private = 8,
-        [System.ComponentModel.Description("compulsory enforced.")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        Mandatory = 9,
-        [System.ComponentModel.Description("no longer lit")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        Extinguished = 11,
-        [System.ComponentModel.Description("lit by floodlights, strip lights, etc.")]
-        [System.Xml.Serialization.XmlEnum("12")]
-        Illuminated = 12,
-        [System.ComponentModel.Description("famous in history of historical interest.")]
-        [System.Xml.Serialization.XmlEnum("13")]
-        Historic = 13,
-        [System.ComponentModel.Description("belonging to, available to, used or shared by, the community as a whole and not restricted to private use.")]
-        [System.Xml.Serialization.XmlEnum("14")]
-        Public = 14,
-        [System.ComponentModel.Description("occur at a time, coincide in point of time, be contemporary or simultaneous.")]
-        [System.Xml.Serialization.XmlEnum("15")]
-        Synchronized = 15,
-        [System.ComponentModel.Description("looked at or observed over a period of time especially so as to be aware of any movement or change.")]
-        [System.Xml.Serialization.XmlEnum("16")]
-        Watched = 16,
-        [System.ComponentModel.Description("usually automatic in operation, without any permanently-stationed personnel to superintend it.")]
-        [System.Xml.Serialization.XmlEnum("17")]
-        UnWatched = 17,
-        [System.ComponentModel.Description("an object that has been reported but has not been definitely determined to exist.")]
-        [System.Xml.Serialization.XmlEnum("18")]
-        ExistenceDoubtful = 18,
-        [System.ComponentModel.Description("made certain as to truth, accuracy, validity, availability, etc.")]
-        [System.Xml.Serialization.XmlEnum("29")]
-        Confirmed = 29,
-        [System.ComponentModel.Description("Item selected for an action")]
-        [System.Xml.Serialization.XmlEnum("30")]
-        Candidate = 30,
-        [System.ComponentModel.Description("Item that is in the process of being modified")]
-        [System.Xml.Serialization.XmlEnum("31")]
-        UnderModification = 31,
-        [System.ComponentModel.Description("Item selected for modification")]
-        [System.Xml.Serialization.XmlEnum("32")]
-        CandidateForModification = 32,
-        [System.ComponentModel.Description("Item in the process of being removed or deleted")]
-        [System.Xml.Serialization.XmlEnum("33")]
-        UnderRemovalDeletion = 33,
-        [System.ComponentModel.Description("Item that has been removed or deleted")]
-        [System.Xml.Serialization.XmlEnum("34")]
-        RemovedDeleted = 34,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum techniqueOfSoundingMeasurement : int
-    {
-        [System.ComponentModel.Description("the depth was determined by using an instrument that determines depth of water by measuring the time interval between emission of a sonic or ultrasonic signal and return of its echo from the bottom.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        FoundByEchoSounder = 1,
-        [System.ComponentModel.Description("the depth was computed from a record produced by active sonar in which fixed acoustic beams are directed into the water perpendicularly to the direction of travel to scan the bottom and generate a record of the bottom configuration.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        FoundBySideScanSonar = 2,
-        [System.ComponentModel.Description("the depth was determined by using a wide swath echo sounder that uses multiple beams to measure depths directly below and transverse to the ship's track.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        FoundByMultiBeam = 3,
-        [System.ComponentModel.Description("the depth was determined by a person skilled in the practice of diving.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        FoundByDiver = 4,
-        [System.ComponentModel.Description("the depth was determined by using a line, graduated with attached marks and fastened to a sounding lead.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        FoundByLeadLine = 5,
-        [System.ComponentModel.Description("the given area was determined to be free from navigational dangers to a certain depth by towing a buoyed wire at the desired depth by two launches, or a least depth was identified using the same technique.")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        SweptByWireDrag = 6,
-        [System.ComponentModel.Description("the depth was determined by using an instrument that measures distance by emitting timed pulses of laser light and measuring the time between emission and reception of the reflected pulses.")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        FoundByLaser = 7,
-        [System.ComponentModel.Description("the given area has been swept using a system comprised of multiple echo sounder transducers attached to booms deployed from the survey vessel.")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        SweptByVerticalAcousticSystem = 8,
-        [System.ComponentModel.Description("the depth was determined by using an instrument that compares electromagnetic signals.")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        FoundByElectromagneticSensor = 9,
-        [System.ComponentModel.Description("the depth was determined by applying mathematical techniques to photographs.")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        Photogrammetry = 10,
-        [System.ComponentModel.Description("the depth was determined by using instruments placed aboard an artificial satellite.")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        SatelliteImagery = 11,
-        [System.ComponentModel.Description("the depth was determined by using levelling techniques to find the elevation of the point relative to a datum.")]
-        [System.Xml.Serialization.XmlEnum("12")]
-        FoundByLevelling = 12,
-        [System.ComponentModel.Description("the given area was determined to be free from navigational dangers to a certain depth by towing a side-scan-sonar.")]
-        [System.Xml.Serialization.XmlEnum("13")]
-        SweptBySideScanSonar = 13,
-        [System.ComponentModel.Description("the sounding was determined from a bottom model constructed using a computer.")]
-        [System.Xml.Serialization.XmlEnum("14")]
-        ComputerGenerated = 14,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum topmarkDaymarkShape : int
-    {
-        [System.ComponentModel.Description("is where the vertex points up. A cone is a solid figure generated by straight lines drawn from a fixed point (the vertex) to a circle in a plane not containing the vertex. Cones are commonly used as International Association of Lighthouse Authorities - IALA topmarks lateral.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        ConePointUp = 1,
-        [System.ComponentModel.Description("is where the vertex points down. A cone is a solid figure generated by straight lines drawn from a fixed point (the vertex) to a circle in a plane not containing the vertex. Cones are commonly used as International Association of Lighthouse Authorities - IALA topmarks lateral.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        ConePointDown = 2,
-        [System.ComponentModel.Description("a body the surface of which is at all points equidistant from the centre. Spheres are commonly used as International Association of Lighthouse Authorities - IALA topmarks safe water.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        Sphere = 3,
-        [System.ComponentModel.Description("two black spheres are commonly used as an International Association of Lighthouse Authorities - IALA topmark (isolated danger).")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        twoSpheres = 4,
-        [System.ComponentModel.Description("a solid geometrical figure generated by straight lines fixed in direction and describing with one of point a closed curve, especially a circle (in which case the figure is circular cylinder, it's ends being parallel circles). Cylinders are commonly used as International Association of Lighthouse Authorities - IALA topmarks lateral.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        CylinderCan = 5,
-        [System.ComponentModel.Description("usually of rectangular shape, made from timber or metal and used to provide a contrast with the natural background of a daymark. The actual daymark is often painted on to this board.")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        Board = 6,
-        [System.ComponentModel.Description("having a shape or a cross-section like the capital letter X. An x-shape as an International Association of Lighthouse Authorities - IALA topmark should be 3 dimensional in shape. It is made of at least three crossed bars.")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        XShapeStAndrewSCross = 7,
-        [System.ComponentModel.Description("a cross with one vertical member and one horizontal member, i.e. similar in shape to the character '+'.")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        UprightCrossStGeorgeSCross = 8,
-        [System.ComponentModel.Description("a cube standing on one of its vertexes. A cube is a solid contained by six equal squares a regular hexahedron (The New Shorter Oxford English Dictionary. 1993. vol 2)")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        CubePointUp = 9,
-        [System.ComponentModel.Description("2 cones, one above the other, with their vertices together in the centre.")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        twoConesPointToPoint = 10,
-        [System.ComponentModel.Description("2 cones, one above the other, with their bases together in the centre and their vertices pointing up and down.")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        twoConesBaseToBase = 11,
-        [System.ComponentModel.Description("a plane figure having four equal sides and equal opposite angles (two acute and two obtuse) an oblique equilateral parallelogram.")]
-        [System.Xml.Serialization.XmlEnum("12")]
-        Rhombus = 12,
-        [System.ComponentModel.Description("2 cones, one above the other, with their vertices pointing up.")]
-        [System.Xml.Serialization.XmlEnum("13")]
-        twoConesPointsUpward = 13,
-        [System.ComponentModel.Description("2 cones, one above the other, with their vertices pointing down.")]
-        [System.Xml.Serialization.XmlEnum("14")]
-        twoConesPointsDownward = 14,
-        [System.ComponentModel.Description("besom: a bundle of rods or twigs. perch: a staff placed on top of a buoy, rock or shoal as a mark for navigation.")]
-        [System.Xml.Serialization.XmlEnum("15")]
-        BesomPointUpBroomOrPerch = 15,
-        [System.ComponentModel.Description("besom: a bundle of rods or twigs. perch: a staff placed on top of a buoy, rock or shoal as a mark for navigation.")]
-        [System.Xml.Serialization.XmlEnum("16")]
-        BesomPointDownBroomOrPerch = 16,
-        [System.ComponentModel.Description("a flag mounted on a short pole.")]
-        [System.Xml.Serialization.XmlEnum("17")]
-        Flag = 17,
-        [System.ComponentModel.Description("A sphere located above a rhombus.")]
-        [System.Xml.Serialization.XmlEnum("18")]
-        SphereOverRhombus = 18,
-        [System.ComponentModel.Description("a plane figure with four right angles and four equal straight sides")]
-        [System.Xml.Serialization.XmlEnum("19")]
-        Square = 19,
-        [System.ComponentModel.Description("a rectangle is a plane figure with four right angles and four straight sides, opposite sides being parallel and equal in length . A horizontal rectangle is where the two longer opposite sides are standing horizontally.")]
-        [System.Xml.Serialization.XmlEnum("20")]
-        RectangleHorizontal = 20,
-        [System.ComponentModel.Description("a rectangle is a plane figure with four right angles and four straight sides, opposite sides being parallel and equal in length. A vertical rectangle is where the two longer opposite sides are standing vertically.")]
-        [System.Xml.Serialization.XmlEnum("21")]
-        RectangleVertical = 21,
-        [System.ComponentModel.Description("which stands on its longer parallel side. A trapezium is a quadrilateral having one pair of opposite sides parallel.")]
-        [System.Xml.Serialization.XmlEnum("22")]
-        TrapeziumUp = 22,
-        [System.ComponentModel.Description("which stands on its shorter parallel side. A trapezium is a quadrilateral having one pair of opposite sides parallel.")]
-        [System.Xml.Serialization.XmlEnum("23")]
-        TrapeziumDown = 23,
-        [System.ComponentModel.Description("A triangle, point up. A triangle is a figure having three angles and three sides.")]
-        [System.Xml.Serialization.XmlEnum("24")]
-        TrianglePointUp = 24,
-        [System.ComponentModel.Description("A triangle, point down. A triangle is a figure having three angles and three sides.")]
-        [System.Xml.Serialization.XmlEnum("25")]
-        TrianglePointDown = 25,
-        [System.ComponentModel.Description("a perfectly round plane figure whose circumference is everywhere equidistant from its centre.")]
-        [System.Xml.Serialization.XmlEnum("26")]
-        Circle = 26,
-        [System.ComponentModel.Description("two upright crosses, generally vertically disposed one above the other.")]
-        [System.Xml.Serialization.XmlEnum("27")]
-        TwoUprightCrossesOneOverTheOther = 27,
-        [System.ComponentModel.Description("having a shape like the capital letter T.")]
-        [System.Xml.Serialization.XmlEnum("28")]
-        TShape = 28,
-        [System.ComponentModel.Description("a triangle, vertex uppermost, located above a circle.")]
-        [System.Xml.Serialization.XmlEnum("29")]
-        TrianglePointingUpOverACircle = 29,
-        [System.ComponentModel.Description("an upright cross located above a circle.")]
-        [System.Xml.Serialization.XmlEnum("30")]
-        UprightCrossOverACircle = 30,
-        [System.ComponentModel.Description("a rhombus located above a circle.")]
-        [System.Xml.Serialization.XmlEnum("31")]
-        RhombusOverACircle = 31,
-        [System.ComponentModel.Description("a circle located over a triangle, vertex uppermost.")]
-        [System.Xml.Serialization.XmlEnum("32")]
-        CircleOverATrianglePointingUp = 32,
-        [System.ComponentModel.Description("")]
-        [System.Xml.Serialization.XmlEnum("33")]
-        OtherShapeSeeInform = 33,
-        [System.ComponentModel.Description("Having the form of or consisting of a tube.")]
-        [System.Xml.Serialization.XmlEnum("34")]
-        Tubular = 34,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum trafficFlow : int
-    {
-        [System.ComponentModel.Description("traffic flow in a general direction toward a port or similar destination.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        Inbound = 1,
-        [System.ComponentModel.Description("traffic flow in a general direction away from a port or similar point of origin.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        Outbound = 2,
-        [System.ComponentModel.Description("traffic flow in one general direction only.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        OneWay = 3,
-        [System.ComponentModel.Description("traffic flow in two generally opposite directions.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        TwoWay = 4,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum verticalDatum : int
-    {
-        [System.ComponentModel.Description("(MLWS) - the average height of the low waters of spring tides.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        MeanLowWaterSprings = 1,
-        [System.ComponentModel.Description("(MLLWS) - the average height of lower low water springs at a place.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        MeanLowerLowWaterSprings = 2,
-        [System.ComponentModel.Description("(MSL) - the average height of the surface of the sea at a tide station for all stages of the tide over a 19-year period, usually determined from hourly height readings measured from a fixed predetermined reference level.")]
-        [System.Xml.Serialization.XmlEnum("3")]
-        MeanSeaLevel = 3,
-        [System.ComponentModel.Description("an arbitrary level conforming to the lowest tide observed at a place, or some what lower.")]
-        [System.Xml.Serialization.XmlEnum("4")]
-        LowestLowWater = 4,
-        [System.ComponentModel.Description("(MLW) - the average height of all low waters at a place over a 19-year period.")]
-        [System.Xml.Serialization.XmlEnum("5")]
-        MeanLowWater = 5,
-        [System.ComponentModel.Description("an arbitrary level conforming to the lowest water level observed at a place at spring tides during a period of time shorter than 19 years.")]
-        [System.Xml.Serialization.XmlEnum("6")]
-        LowestLowWaterSprings = 6,
-        [System.ComponentModel.Description("an arbitrary level, usually within ' 0.3m from that of mean low water springs (MLWS).")]
-        [System.Xml.Serialization.XmlEnum("7")]
-        ApproximateMeanLowWaterSprings = 7,
-        [System.ComponentModel.Description("(ISLW) - an arbitrary tidal datum approximating the level of the mean of the lower low water at spring tides.")]
-        [System.Xml.Serialization.XmlEnum("8")]
-        IndianSpringLowWater = 8,
-        [System.ComponentModel.Description("an arbitrary level, approximating that of mean low water springs (MLWS).")]
-        [System.Xml.Serialization.XmlEnum("9")]
-        LowWaterSprings = 9,
-        [System.ComponentModel.Description("an arbitrary level, usually within ' 0.3m from that of lowest astronomical tide (LAT).")]
-        [System.Xml.Serialization.XmlEnum("10")]
-        ApproximateLowestAstronomicalTide = 10,
-        [System.ComponentModel.Description("an arbitrary level approximating the lowest water level observed at a place, usually equivalent to the Indian spring low water (ISLW).")]
-        [System.Xml.Serialization.XmlEnum("11")]
-        NearlyLowestLowWater = 11,
-        [System.ComponentModel.Description("(MLLW) - the average height of the lower low waters at a place over a 19-year period.")]
-        [System.Xml.Serialization.XmlEnum("12")]
-        MeanLowerLowWater = 12,
-        [System.ComponentModel.Description("an approximation of mean low water adopted as the reference level for a limited area, irrespective of better determinations at a later date.")]
-        [System.Xml.Serialization.XmlEnum("13")]
-        LowWater = 13,
-        [System.ComponentModel.Description("an arbitrary level, usually within ' 0.3m from that of mean low water (MLW).")]
-        [System.Xml.Serialization.XmlEnum("14")]
-        ApproximateMeanLowWater = 14,
-        [System.ComponentModel.Description("an arbitrary level, usually within ' 0.3m from that of mean lower low water (MLLW).")]
-        [System.Xml.Serialization.XmlEnum("15")]
-        ApproximateMeanLowerLowWater = 15,
-        [System.ComponentModel.Description("(MHW) - the average height of all high waters at a place over a 19-year period.")]
-        [System.Xml.Serialization.XmlEnum("16")]
-        MeanHighWater = 16,
-        [System.ComponentModel.Description("(MHWS) - the average height of the high waters of spring tides.")]
-        [System.Xml.Serialization.XmlEnum("17")]
-        MeanHighWaterSprings = 17,
-        [System.ComponentModel.Description("the highest level reached at a place by the water surface in one tidal cycle.")]
-        [System.Xml.Serialization.XmlEnum("18")]
-        HighWater = 18,
-        [System.ComponentModel.Description("an arbitrary level, usually within ' 0.3m from that of mean sea level (MSL).")]
-        [System.Xml.Serialization.XmlEnum("19")]
-        ApproximateMeanSeaLevel = 19,
-        [System.ComponentModel.Description("an arbitrary level, approximating that of mean high water springs (MHWS).")]
-        [System.Xml.Serialization.XmlEnum("20")]
-        HighWaterSprings = 20,
-        [System.ComponentModel.Description("(MHHW) - the average height of higher high waters at a place over a 19-year period.")]
-        [System.Xml.Serialization.XmlEnum("21")]
-        MeanHigherHighWater = 21,
-        [System.ComponentModel.Description("the level of low water springs near the time of an equinox.")]
-        [System.Xml.Serialization.XmlEnum("22")]
-        EquinoctialSpringLowWater = 22,
-        [System.ComponentModel.Description("(LAT) - the lowest tide level which can be predicted to occur under average meterological conditions and under any combination of astronomical conditions.")]
-        [System.Xml.Serialization.XmlEnum("23")]
-        LowestAstronomicalTide = 23,
-        [System.ComponentModel.Description("an arbitrary datum defined by a local harbour authority, from which levels and tidal heights are measured by this authority.")]
-        [System.Xml.Serialization.XmlEnum("24")]
-        LocalDatum = 24,
-        [System.ComponentModel.Description("(IGLD 1985) - a vertical reference system with its zero based on the mean water level at Rimouski/Pointe-au-P??re, Quebec, over the period 1970 to 1988.")]
-        [System.Xml.Serialization.XmlEnum("25")]
-        InternationalGreatLakesDatum1985 = 25,
-        [System.ComponentModel.Description("the average of all hourly water levels over the available period of record.")]
-        [System.Xml.Serialization.XmlEnum("26")]
-        MeanWaterLevel = 26,
-        [System.ComponentModel.Description("(LLWLT) - the average of the lowest low waters, one from each of 19 years of observations.")]
-        [System.Xml.Serialization.XmlEnum("27")]
-        LowerLowWaterLargeTide = 27,
-        [System.ComponentModel.Description("(HHWLT) - the average of the highest high waters, one from each of 19 years of observations.")]
-        [System.Xml.Serialization.XmlEnum("28")]
-        HigherHighWaterLargeTide = 28,
-        [System.ComponentModel.Description("an arbitrary level approximating the highest water level observed at a place, usually equivalent to the high water springs.")]
-        [System.Xml.Serialization.XmlEnum("29")]
-        NearlyHighestHighWater = 29,
-        [System.ComponentModel.Description("the highest tidal level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.")]
-        [System.Xml.Serialization.XmlEnum("30")]
-        HighestAstronomicalTideHat = 30,
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
-    public enum visuallyConspicuous : int
-    {
-        [System.ComponentModel.Description("term applied to an object either natural or artificial which is distinctly and notably visible from seaward.")]
-        [System.Xml.Serialization.XmlEnum("1")]
-        VisuallyConspicuous = 1,
-        [System.ComponentModel.Description("an object which is visible from seaward, but is not conspicuous.")]
-        [System.Xml.Serialization.XmlEnum("2")]
-        NotVisuallyConspicuous = 2,
-    }
-
-    [System.SerializableAttribute()]
-    public class categoryOfAggregation
-    {
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public string label { get; set; }
-        public string definition { get; set; }
-        public int code { get; set; }
-    }
-
-    [System.SerializableAttribute()]
-    public class categoryOfAssociation
-    {
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public string label { get; set; }
-        public string definition { get; set; }
-        public int code { get; set; }
-    }
-
-    public static class CodeList
-    {
-        public static ImmutableArray<categoryOfAggregation> categoryOfAggregations => ImmutableArray.Create<categoryOfAggregation>(new categoryOfAggregation[] { new() { code = 1, definition = "A line passing through two or more clearly defined charted objects, and along which a vessel can approach safely.", label = "leading line", }, new() { code = 2, definition = "Two or more objects in line. Such objects are said to be in range. An observer having them in range is said to be on the range.", label = "range system", }, new() { code = 3, definition = "A course at sea, whose ends are indicated by ranges ashore, and whose length has been accurately measured for determining the speed of vessels.", label = "measured distance", }, });
-        public static ImmutableArray<categoryOfAssociation> categoryOfAssociations => ImmutableArray.Create<categoryOfAssociation>(new categoryOfAssociation[] { new() { code = 1, definition = "A group of channel marks which indicate channel limits", label = "channel markings", }, new() { code = 2, definition = "One or more aids to navigation and the danger(s) they mark", label = "danger markings", }, });
-    }
-
-    namespace ComplexAttributes
-    {
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S201/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S201/1.0", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class changeDetails
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public buoyChange? buoyChange { get; set; } = default;
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required lightChange lightChange { get; set; }
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required beaconChange beaconChange { get; set; }
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required leadingLightsChange leadingLightsChange { get; set; }
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required fogSignals fogSignals { get; set; }
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required radioAidsChange radioAidsChange { get; set; }
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required atonCommissioning atonCommissioning { get; set; }
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required atonReplacement atonReplacement { get; set; }
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required atonRemoval atonRemoval { get; set; }
-
-            public changeDetails()
-            {
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S201/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S201/1.0", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class contactAddress
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public List<String> deliveryPoint { get; set; } = new();
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public String cityName { get; set; } = string.Empty;
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public String administrativeDivision { get; set; } = string.Empty;
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public String country { get; set; } = string.Empty;
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public String postalCode { get; set; } = string.Empty;
-
-            public contactAddress()
-            {
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S201/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S201/1.0", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class surveyDateRange
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required DateOnly dateEnd { get; set; }
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public DateOnly? dateStart { get; set; } = default;
-
-            public surveyDateRange()
-            {
-            }
-        }
-    }
-
-    namespace InformationTypes
-    {
-        using ComplexAttributes;
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S201/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S201/1.0", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class AtoNStatusInformation
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required changeDetails changeDetails { get; set; }
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public changeTypes? changeTypes { get; set; } = default;
-
-            public AtoNStatusInformation()
-            {
-                changeDetails = new changeDetails()
-                {
-                    lightChange = default(lightChange),
-                    beaconChange = default(beaconChange),
-                    leadingLightsChange = default(leadingLightsChange),
-                    fogSignals = default(fogSignals),
-                    radioAidsChange = default(radioAidsChange),
-                    atonCommissioning = default(atonCommissioning),
-                    atonReplacement = default(atonReplacement),
-                    atonRemoval = default(atonRemoval),
-                };
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S201/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S201/1.0", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SpatialUncertainty
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public qualityOfPosition? qualityOfPosition { get; set; } = default;
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public Decimal? positionalAccuracy { get; set; } = default;
-
-            public SpatialUncertainty()
-            {
-            }
-        }
-    }
-
-    namespace FeatureTypes
-    {
-        using ComplexAttributes;
-        using InformationTypes;
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S201/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S201/1.0", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Aggregation
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required categoryOfAggregation categoryOfAggregation { get; set; }
-
-            public Aggregation()
-            {
-                categoryOfAggregation = new categoryOfAggregation()
-                {
-                };
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S201/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S201/1.0", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Association
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required categoryOfAssociation categoryOfAssociation { get; set; }
-
-            public Association()
-            {
-                categoryOfAssociation = new categoryOfAssociation()
-                {
-                };
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S201/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S201/1.0", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class DataCoverage
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required Int32 maximumDisplayScale { get; set; }
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required Int32 minimumDisplayScale { get; set; }
-
-            public DataCoverage()
-            {
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S201/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S201/1.0", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class LocalDirectionOfBuoyage
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required Decimal orientation { get; set; }
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public Int32? scaleMinimum { get; set; } = default;
-
-            public LocalDirectionOfBuoyage()
-            {
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S201/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S201/1.0", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class NavigationalSystemOfMarks
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required marksNavigationalSystemOf marksNavigationalSystemOf { get; set; }
-
-            public NavigationalSystemOfMarks()
-            {
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S201/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S201/1.0", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class QualityOfNonBathymetricData
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required categoryOfTemporalVariation categoryOfTemporalVariation { get; set; }
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public Decimal? directionUncertainty { get; set; } = default;
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public Decimal? horizontalDistanceUncertainty { get; set; } = default;
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required Decimal horizontalPositionUncertainty { get; set; }
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public String information { get; set; } = string.Empty;
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public String informationInNationalLanguage { get; set; } = string.Empty;
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public String textualDescription { get; set; } = string.Empty;
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public String textualDescriptionInNationalLanguage { get; set; } = string.Empty;
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public Decimal? verticalUncertainty { get; set; } = default;
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public surveyDateRange? surveyDateRange { get; set; }
-
-            public QualityOfNonBathymetricData()
-            {
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S201/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S201/1.0", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SoundingDatum
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required verticalDatum verticalDatum { get; set; }
-
-            public SoundingDatum()
-            {
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S201/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S201/1.0", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class VerticalDatumOfData
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required verticalDatum verticalDatum { get; set; }
-
-            public VerticalDatumOfData()
-            {
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S201/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S201/1.0", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract class AidsToNavigation
-        {
-            public AidsToNavigation()
-            {
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S201/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S201/1.0", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract class Equipment : AidsToNavigation
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public required aidAvailabilityCategory aidAvailabilityCategory { get; set; }
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S201/1.0")]
-            public contactAddress? contactAddress { get; set; }
-
-            public Equipment()
-            {
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S201/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S201/1.0", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract class StructureObject : AidsToNavigation
-        {
-            public StructureObject()
-            {
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S201/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S201/1.0", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract class GenericBeacon : StructureObject
-        {
-            public GenericBeacon()
-            {
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S201/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S201/1.0", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract class GenericBuoy : StructureObject
-        {
-            public GenericBuoy()
-            {
-            }
-        }
-    }
+
+namespace S100Framework.DomainModel.S201 {
+	public static class Summary
+	{
+		public static Version Version => new Version("1.9.0");
+		public static string[] ComplexTypes => ["contactAddress","directionalCharacter","featureName","fixedDateRange","lightSector","multiplicityOfFeatures","orientation","periodicDateRange","radarWaveLength","rhythmOfLight","sectorCharacteristics","sectorInformation","sectorLimit","sectorLimitOne","sectorLimitTwo","shapeInformation","signalSequence","spatialAccuracy","CableDimensions","ChangeDetails","ObscuredSector","sinkerDimensions","PositioningMethod","horizontalPositionUncertainty","information","textualDescription","verticalUncertainty"];
+		public static string[] InformationAssociationTypes => ["Atonstatus","AtonFixingMethodAssociation","AtonPositioningInformationAssociation"];
+		public static string[] FeatureAssociationTypes => ["BuoyTopmark","StructureEquipment","PhysicalAIS","SyntheticAIS","VirtualAIS","BuoyCounterWeight","BridleConnection","ShackleConnection","ShackleConnectionFromCable","SwivelCableConnection","BridleCableConnection","ShackleToBridleConnection","ShackleToSwivelConnection","ShackleToAnchorConnection","SwivelConnection","AtonAggregations","AtonAssociations","RangeSystem","DangerousFeatureAssociation"];
+		public static string[] InformationTypes => ["AtoNFixingMethod","AtonStatusInformation","PositioningInformation","SpatialQuality"];
+		public static string[] FeatureTypes => ["AidsToNavigation","StructureObject","Equipment","ElectronicAton","GenericBeacon","GenericBuoy","GenericLight","Landmark","LateralBeacon","LateralBuoy","NavigationLine","RecommendedTrack","LightSectored","LightAllAround","LightAirObstruction","LightFogDetector","RadarReflector","FogSignal","EnvironmentObservationEquipment","RadioStation","Daymark","Retroreflector","RadarTransponderBeacon","VirtualAISAidToNavigation","PhysicalAISAidToNavigation","SyntheticAISAidToNavigation","PowerSource","IsolatedDangerBeacon","CardinalBeacon","IsolatedDangerBuoy","CardinalBuoy","InstallationBuoy","MooringBuoy","EmergencyWreckMarkingBuoy","Lighthouse","LightFloat","LightVessel","OffshorePlatform","SiloTank","Pile","Building","Bridge","SinkerAnchor","MooringShackle","CableSubmarine","Swivel","Bridle","CounterWeight","Topmark","SafeWaterBeacon","SpecialPurposeGeneralBeacon","SafeWaterBuoy","SpecialPurposeGeneralBuoy","DangerousFeature","AtonAggregation","AtonAssociation","QualityOfNonBathymetricData","DataCoverage","LocalDirectionOfBuoyage","NavigationalSystemOfMarks","SoundingDatum","VerticalDatumOfData"];
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum qualityOfHorizontalMeasurement : int {
+		[System.ComponentModel.Description("ThePositionSWasWereDeterminedByTheOperationOfMakingMeasurementsForDeterminingTheRelativePositionOfPointsOnAboveOrBeneathTheEarthSSurfaceSurveyImpliesARegularControlledSurveyOfAnyDate")]
+		[EnumMember(Value = "Surveyed")] 
+		Surveyed = 1,
+
+		[System.ComponentModel.Description("SurveyDataIsDoesNotExistOrIsVeryPoor")]
+		[EnumMember(Value = "Unsurveyed")] 
+		Unsurveyed = 2,
+
+		[System.ComponentModel.Description("NotSurveyedToModernStandardsOrDueToItsAgeScaleOrPositionalOrVerticalUncertaintiesIsNotSuitableToTheTypeOfNavigationExpectedInTheArea")]
+		[EnumMember(Value = "Inadequately Surveyed")] 
+		InadequatelySurveyed = 3,
+
+		[System.ComponentModel.Description("APositionThatIsConsideredToBeLessThanThirdOrderAccuracyButIsGenerallyConsideredToBeWithin305MetresOfItsCorrectGeographicLocationAlsoMayApplyToAnObjectWhosePositionDoesNotRemainFixed")]
+		[EnumMember(Value = "Approximate")] 
+		Approximate = 4,
+
+		[System.ComponentModel.Description("OfUncertainPositionTheExpressionIsUsedPrincipallyOnChartsToIndicateThatAWreckShoalEtcHasBeenReportedInVariousPositionsAndNotDefinitelyDeterminedInAny")]
+		[EnumMember(Value = "Position Doubtful")] 
+		PositionDoubtful = 5,
+
+		[System.ComponentModel.Description("AFeatureSPositionHasBeenObtainedFromQuestionableOrUnreliableData")]
+		[EnumMember(Value = "Unreliable")] 
+		Unreliable = 6,
+
+		[System.ComponentModel.Description("AnObjectWhosePositionHasBeenReportedAndItsPositionConfirmedBySomeMeansOtherThanAFormalSurveySuchAsAnIndependentReportOfTheSameObject")]
+		[EnumMember(Value = "Reported (Not Surveyed)")] 
+		ReportedNotSurveyed = 7,
+
+		[System.ComponentModel.Description("AnObjectWhosePositionHasBeenReportedAndItsPositionHasNotBeenConfirmed")]
+		[EnumMember(Value = "Reported (Not Confirmed)")] 
+		ReportedNotConfirmed = 8,
+
+		[System.ComponentModel.Description("TheMostProbablePositionOfAnObjectDeterminedFromIncompleteDataOrDataOfQuestionableAccuracy")]
+		[EnumMember(Value = "Estimated")] 
+		Estimated = 9,
+
+		[System.ComponentModel.Description("APositionThatIsOfAKnownValueSuchAsThePositionOfAnAnchorBerthOrOtherDefinedObject")]
+		[EnumMember(Value = "Precisely Known")] 
+		PreciselyKnown = 10,
+
+		[System.ComponentModel.Description("APositionThatIsComputedFromData")]
+		[EnumMember(Value = "Calculated")] 
+		Calculated = 11,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum ChangeTypes : int {
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Advanced notice of changes ")] 
+		AdvancedNoticeOfChanges = 1,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Discrepancy ")] 
+		Discrepancy = 2,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Proposed changes ")] 
+		ProposedChanges = 3,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Temporary changes ")] 
+		TemporaryChanges = 4,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum heightLengthUnits : int {
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Metres")] 
+		Metres = 1,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Feet")] 
+		Feet = 2,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Kilometres")] 
+		Kilometres = 3,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Hectometres")] 
+		Hectometres = 4,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Statute Miles")] 
+		StatuteMiles = 5,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Nautical Miles")] 
+		NauticalMiles = 6,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum horizontalDatum : int {
+		[System.ComponentModel.Description("AStandardForUseInCartographyGeodesyAndSatelliteNavigationIncludingGpsThisStandardIncludesTheDefinitionOfTheCoordinateSystemSFundamentalAndDerivedConstantsTheEllipsoidalNormalEarthGravitationalModelEgmADescriptionOfTheAssociatedWorldMagneticModelWmmAndACurrentListOfLocalDatumTransformationsTheWgs72IsBasedOnSelectedSatelliteSurfaceGravityAndAstrogeodeticDataAvailableThrough1972")]
+		[EnumMember(Value = "WGS 72")] 
+		Wgs72 = 1,
+
+		[System.ComponentModel.Description("AStandardForUseInCartographyGeodesyAndSatelliteNavigationIncludingGpsThisStandardIncludesTheDefinitionOfTheCoordinateSystemSFundamentalAndDerivedConstantsTheEllipsoidalNormalEarthGravitationalModelEgmADescriptionOfTheAssociatedWorldMagneticModelWmmAndACurrentListOfLocalDatumTransformationsWgs84IsTheReferenceCoordinateSystemUsedByTheGlobalPositioningSystem")]
+		[EnumMember(Value = "WGS 84")] 
+		Wgs84 = 2,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1950SuitableForUseInEuropeWestAndorraCyprusDenmarkOnshoreAndOffshoreFaroeIslandsOnshoreFranceOffshoreGermanyOffshoreNorthSeaGibraltarGreeceOffshoreIsraelOffshoreItalyIncludingSanMarinoAndVaticanCityStateIrelandOffshoreMaltaNetherlandsOffshoreNorthSeaNorwayIncludingSvalbardOnshoreAndOffshorePortugalMainlandOffshoreSpainOnshoreTurkeyOnshoreAndOffshoreUnitedKingdomUkcsOffshoreEastOf6wIncludingChannelIslandsGuernseyAndJerseyEgyptWesternDesertIraqOnshoreJordanEuropeanDatum1950ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianEuropeanDatum1950OriginIsFundamentalPointPotsdamHelmertTowerLatitude5222514456NLongitude1303589283EOfGreenwichEuropeanDatum1950IsAGeodeticDatumForTopographicMappingGeodeticSurvey")]
+		[EnumMember(Value = "European 1950")] 
+		European1950 = 3,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1990SuitableForUseInGermanyThuringenPotsdamDatum83ReferencesTheBessel1841EllipsoidAndTheGreenwichPrimeMeridianPotsdamDatum83OriginIsFundamentalPointRauenbergLatitude522712021NLongitude132204928EOfGreenwichThisStationWasDestroyedIn1910AndTheStationAtPotsdamSubstitutedAsTheFundamentalPointPotsdamDatum83IsAGeodeticDatumForGeodeticSurveyCadastreTopographicMappingEngineeringSurveyItWasDefinedByInformationFromBkgViaEurogeographicsHttpCrsBkgBundDePd83IsTheRealisationOfDhdnInThuringenItIsTheResultantOfApplyingATransformationDerivedAt13PointsOnTheBorderBetweenEastAndWestGermanyToPulkovo194283PointsInThuringen")]
+		[EnumMember(Value = "Potsdam Datum")] 
+		PotsdamDatum = 4,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1958SuitableForUseInEritreaEthiopiaSouthSudanSudanAdindanReferencesTheClarke1880RgsEllipsoidAndTheGreenwichPrimeMeridianAdindanOriginIsFundamentalPointStation15AdindanLatitude221007110NLongitude312921608EOfGreenwichAdindanIsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromUsCoastAndGeodeticSurveyViaGeophysicalReasearchVol6711October1962The12thParallelTraverseOf196670Point58DatumCode6620IsConnectedToTheBlueNile1958NetworkInWesternSudanThisHasGivenRiseToMisconceptionsThatTheBlueNileNetworkIsUsedInWestAfrica")]
+		[EnumMember(Value = "Adindan")] 
+		Adindan = 5,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedInAndSuitableForUseInSomaliaOnshoreAfgooyeReferencesTheKrassowsky1940EllipsoidAndTheGreenwichPrimeMeridianAfgooyeIsAGeodeticDatumForTopographicMapping")]
+		[EnumMember(Value = "Afgooye")] 
+		Afgooye = 6,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1970AndSuitableForUseInBahrainKuwaitAndSaudiArabiaOnshoreAinElAbd1970ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianAinElAbd1970OriginIsFundamentalPointAinElAbdLatitude281406171NLongitude481620906EOfGreenwichAinElAbd1970IsAGeodeticDatumForTopographicMapping")]
+		[EnumMember(Value = "Ain el Abd 1970")] 
+		AinElAbd1970 = 7,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1965SuitableForUseInCocosKeelingIslandsOnshoreCocosIslands1965ReferencesTheAustralianNationalSpheroidEllipsoidAndTheGreenwichPrimeMeridianCocosIslands1965OriginIsFundamentalPointAnna1CocosIslands1965IsAGeodeticDatumForMilitaryAndTopographicMappingItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000")]
+		[EnumMember(Value = "Anna 1 Astro 1965")] 
+		Anna1Astro1965 = 8,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1943SuitableForUseInAntiguaIslandOnshoreAntigua1943ReferencesTheClarke1880RgsEllipsoidAndTheGreenwichPrimeMeridianAntigua1943OriginIsFundamentalPointStationA14Antigua1943IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromOrdnanceSurveyOfGreatBritain")]
+		[EnumMember(Value = "Antigua Island Astro 1943")] 
+		AntiguaIslandAstro1943 = 9,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1950SuitableForUseInBotswanaMalawiZambiaZimbabweArc1950ReferencesTheClarke1880ArcEllipsoidAndTheGreenwichPrimeMeridianArc1950OriginIsFundamentalPointBuffelsfonteinLatitude335932000SLongitude253044622EOfGreenwichArc1950IsAGeodeticDatumForTopographicMappingGeodeticSurvey")]
+		[EnumMember(Value = "Arc 1950")] 
+		Arc1950 = 10,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1960SuitableForUseInKenyaTanzaniaUgandaArc1960ReferencesTheClarke1880RgsEllipsoidAndTheGreenwichPrimeMeridianArc1960OriginIsFundamentalPointBuffelsfonteinLatitude335932000SLongitude253044622EOfGreenwichArc1960IsAGeodeticDatumForTopographicMappingGeodeticSurvey")]
+		[EnumMember(Value = "Arc 1960")] 
+		Arc1960 = 11,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1958SuitableForUseInStHelenaAscensionAndTristanDaCunhaAscensionIslandOnshoreAscensionIsland1958ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianAscensionIsland1958IsAGeodeticDatumForMilitaryAndTopographicMappingItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000")]
+		[EnumMember(Value = "Ascension Island 1958")] 
+		AscensionIsland1958 = 12,
+
+		[System.ComponentModel.Description("AstroBeaconE1945")]
+		[EnumMember(Value = "Astro Beacon 'E' 1945")] 
+		AstroBeaconE1945 = 13,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1971SuitableForUseInStHelenaAscensionAndTristanDaCunhaStHelenaIslandOnshoreAstroDos71ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianAstroDos71OriginIsFundamentalPointDos714LadderHillFortLatitude155530SLongitude54325WOfGreenwichAstroDos71IsAGeodeticDatumForGeodeticControlMilitaryAndTopographicMappingItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000AndStHelenaGovernmentEnvironmentAndNaturalResourcesDirectorateEnrd")]
+		[EnumMember(Value = "Astro DOS 71/4")] 
+		AstroDos714 = 14,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1961SuitableForUseInUnitedStatesUsaHawaiiTernIslandAndSorelAtollTernIsland1961ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianTernIsland1961OriginIsFundamentalPointStationFrigOnTernIslandStationB4OnSorolAtollTernIsland1961IsAGeodeticDatumForMilitaryAndTopographicMappingItWasDefinedByInformationFromDmaNimaNgaTr83502Original1987FirstEditionAnd3rdEditionAmendment13January2000TwoIndependentAstronomicDeterminationsConsideredToBeConsistentThroughAdoptionOfCommonTransformationToWgs84SeeTfmCode15795")]
+		[EnumMember(Value = "Astro Tern Island (FRIG) 1961")] 
+		AstroTernIslandFrig1961 = 15,
+
+		[System.ComponentModel.Description("AstronomicalStation1952")]
+		[EnumMember(Value = "Astronomical Station 1952")] 
+		AstronomicalStation1952 = 16,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1966SuitableForUseInAustraliaOnshoreAndOffshorePapuaNewGuineaOnshoreAustralianGeodeticDatum1966ReferencesTheAustralianNationalSpheroidEllipsoidAndTheGreenwichPrimeMeridianAustralianGeodeticDatum1966OriginIsFundamentalPointJohnsonMemorialCairnLatitude2556545515SLongitude13312300771EOfGreenwichAustralianGeodeticDatum1966IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromAustralianMapGridTechnicalManualNationalMappingCouncilOfAustraliaTechnicalPublication71972")]
+		[EnumMember(Value = "Australian Geodetic 1966")] 
+		AustralianGeodetic1966 = 17,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1984SuitableForUseInAustraliaQueenslandSouthAustraliaWesternAustraliaFederalAreasOffshoreWestOf129eAustralianGeodeticDatum1984ReferencesTheAustralianNationalSpheroidEllipsoidAndTheGreenwichPrimeMeridianAustralianGeodeticDatum1984OriginIsFundamentalPointJohnsonMemorialCairnLatitude2556545515SLongitude13312300771EOfGreenwichAustralianGeodeticDatum1984IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromGdaTechnicalManualV2_2IntergovernmentalCommitteeOnSurveyingAndMappingWwwAnzlicOrgAuIcsmGdtmUsesAllDataFrom1966AdjustmentWithAdditionalObservationsImprovedSoftwareAndAGeoidModel")]
+		[EnumMember(Value = "Australian Geodetic 1984")] 
+		AustralianGeodetic1984 = 18,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInDjiboutiOnshoreAndOffshoreAyabelleLighthouseReferencesTheClarke1880RgsEllipsoidAndTheGreenwichPrimeMeridianAyabelleLighthouseOriginIsFundamentalPointAyabelleLighthouseAyabelleLighthouseIsAGeodeticDatumForMilitaryAndTopographicMappingItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000")]
+		[EnumMember(Value = "Ayabelle Lighthouse")] 
+		AyabelleLighthouse = 19,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1960SuitableForUseInVanuatuSouthernIslandsAneityumEfateErromangoAndTannaBellevueReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianBellevueIsAGeodeticDatumForMilitaryAndTopographicMappingItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000DatumCoversAllTheMajorIslandsOfVanuatuInTwoDifferentAdjustmentBlocksButPracticalUsageIsAsGivenInTheAreaOfUse")]
+		[EnumMember(Value = "Bellevue (IGN)")] 
+		BellevueIgn = 20,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1957SuitableForUseInBermudaOnshoreBermuda1957ReferencesTheClarke1866EllipsoidAndTheGreenwichPrimeMeridianBermuda1957OriginIsFundamentalPointFortGeorgeBaseLatitude32224436NLongitude64405811WOfGreenwichBermuda1957IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromVariousOilIndustrySources")]
+		[EnumMember(Value = "Bermuda 1957")] 
+		Bermuda1957 = 21,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedInAndIsSuitableForUseInGuineaBissauOnshoreBissauReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianBissauOriginIsBissauIsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromNimaTr83502Ftp164214265PubGigTr83502ChangesPdf")]
+		[EnumMember(Value = "Bissau")] 
+		Bissau = 22,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1975SuitableForUseInColombiaMainlandAndOffshoreCaribbeanBogota1975ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianBogota1975OriginIsFundamentalPointBogotaObservatoryLatitude43556570NLongitude740451300WOfGreenwichBogota1975IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromInstitutoGeograficoAgustinCodazziIgacSpecialPublicationNo14thEdition1975GeodesiaResultadosDefinitvosDeParteDeLasRedesGeodesicasEstablecidasEnElPaisReplaces1951AdjustmentReplacedByMagnaSirgasDatumCode6685")]
+		[EnumMember(Value = "Bogota Observatory")] 
+		BogotaObservatory = 23,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInIndonesiaBangaAndBelitungIslandsBukitRimpahReferencesTheBessel1841EllipsoidAndTheGreenwichPrimeMeridianBukitRimpahOriginIs2004016S105513976EOfGreenwichBukitRimpahIsAGeodeticDatumForTopographicMapping")]
+		[EnumMember(Value = "Bukit Rimpah")] 
+		BukitRimpah = 24,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInAntarcticaMcmurdoSoundCampMcmurdoAreaCampAreaAstroReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianCampAreaAstroIsAGeodeticDatumForGeodeticAndTopographicSurveyItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000")]
+		[EnumMember(Value = "Camp Area Astro")] 
+		CampAreaAstro = 25,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInArgentinaMainlandOnshoreAndAtlanticOffshoreTierraDelFuegoCampoInchauspeReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianCampoInchauspeOriginIsFundamentalPointCampoInchauspeLatitude35581656SLongitude62101203WOfGreenwichCampoInchauspeIsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromNimaHttpEarthInfoNimaMil")]
+		[EnumMember(Value = "Campo Inchauspe 1969")] 
+		CampoInchauspe1969 = 26,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1966SuitableForUseInKiribatiPhoenixIslandsKantonOronaMckeanAtollBirnieAtollPhoenixSeamountsPhoenixIslands1966ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianPhoenixIslands1966IsAGeodeticDatumForMilitaryAndTopographicMappingItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000")]
+		[EnumMember(Value = "Canton Astro 1966")] 
+		CantonAstro1966 = 27,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInBotswanaLesothoSouthAfricaMainlandSwazilandCapeReferencesTheClarke1880ArcEllipsoidAndTheGreenwichPrimeMeridianCapeOriginIsFundamentalPointBuffelsfonteinLatitude335932000SLongitude253044622EOfGreenwichCapeIsAGeodeticDatumForGeodeticSurveyCadastreTopographicMappingEngineeringSurveyItWasDefinedByInformationFromPrivateCommunicationDirectorateOfSurveysAndLandInformationCapeTown")]
+		[EnumMember(Value = "Cape Datum")] 
+		CapeDatum = 28,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1963SuitableForUseInNorthAmericaOnshoreBahamasAndUsaFloridaEastCapeCanaveralReferencesTheClarke1866EllipsoidAndTheGreenwichPrimeMeridianCapeCanaveralOriginIsFundamentalPointCentral1950Latitude28293236555NLongitude80343877362WOfGreenwichCapeCanaveralIsAGeodeticDatumForUsSpaceAndMilitaryOperationsItWasDefinedByInformationFromUsNgsAndDmaNimaNgaTr835023rdEditionAmendment13January2000")]
+		[EnumMember(Value = "Cape Canaveral")] 
+		CapeCanaveral = 29,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1925SuitableForUseInTunisiaOnshoreAndOffshoreCarthageReferencesTheClarke1880IgnEllipsoidAndTheGreenwichPrimeMeridianCarthageOriginIsFundamentalPointCarthageLatitude409464506g36510650NLongitude88724368gEOfParis10192072EOfGreenwichCarthageIsAGeodeticDatumForTopographicMappingFundamentalPointAstronomicCoordinatesDeterminedIn1878")]
+		[EnumMember(Value = "Carthage")] 
+		Carthage = 30,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1971SuitableForUseInNewZealandChathamIslandsGroupOnshoreChathamIslandsDatum1971ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianChathamIslandsDatum1971IsAGeodeticDatumForGeodeticSurveyTopographicMappingEngineeringSurveyItWasDefinedByInformationFromOfficeOfSurveyorGeneralOsgTechnicalReport14June2001ReplacedByChathamIslandsDatum1979Code6673")]
+		[EnumMember(Value = "Chatam Island Astro 1971")] 
+		ChatamIslandAstro1971 = 31,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInBrazilSouthOf18sAndWestOf54wPlusDistritoFederalParaguayNorthChuaReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianChuaOriginIsFundamentalPointChuaLatitude194541160SLongitude480607560WOfGreenwichChuaIsAGeodeticDatumForGeodeticSurveyItWasDefinedByInformationFromNimaHttpEarthInfoNimaMilTheChuaOriginAndAssociatedNetworkIsInBrazilWithAConnectingTraverseThroughNorthernParaguayItWasUsedInBrazilOnlyAsInputIntoTheCorregoAllegreAdjustmentAndForGovernmentWorkInDistritoFederal")]
+		[EnumMember(Value = "Chua Astro")] 
+		ChuaAstro = 32,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1972SuitableForUseInBrazilOnshoreWestOf54wAndSouthOf18sAlsoSouthOf15sBetween54wAnd42wAlsoEastOf42wCorregoAlegre197072ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianCorregoAlegre197072OriginIsFundamentalPointCorregoAlegreLatitude19501491SLongitude48574198WOfGreenwichCorregoAlegre197072IsAGeodeticDatumForTopographicMappingGeodeticSurveySupersededBySad69ItWasDefinedByInformationFromIbgeReplaces1961AdjustmentDatumCode1074NimaGivesCoordinatesOfOriginAsLatitude19501514SLongitude48574275WTheseMayReferTo1961Adjustment")]
+		[EnumMember(Value = "Corrego Alegre")] 
+		CorregoAlegre = 33,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1981SuitableForUseInGuineaOnshoreDabola1981ReferencesTheClarke1880IgnEllipsoidAndTheGreenwichPrimeMeridianDabola1981IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromIgnParis")]
+		[EnumMember(Value = "Dabola")] 
+		Dabola = 34,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInIndonesiaOnshoreJavaAndBaliBataviaJakartaReferencesTheBessel1841EllipsoidAndTheJakartaPrimeMeridianBataviaJakartaOriginIsFundamentalPointLongitudeAtBataviaAstronomicalStationLatitude60739522SLongitude000000EOfJakartaLatitudeAndAzimuthAtGenukBataviaJakartaIsAGeodeticDatumForTopographicMapping")]
+		[EnumMember(Value = "Djakarta (Batavia)")] 
+		DjakartaBatavia = 35,
+
+		[System.ComponentModel.Description("Dos1968")]
+		[EnumMember(Value = "DOS 1968")] 
+		Dos1968 = 36,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1967SuitableForUseInChileEasterIslandOnshoreEasterIsland1967ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianEasterIsland1967IsAGeodeticDatumForMilitaryAndTopographicMapping25MetersInEachComponentItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000")]
+		[EnumMember(Value = "Easter Island 1967")] 
+		EasterIsland1967 = 37,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1979SuitableForUseInEuropeWestEuropeanDatum1979ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianEuropeanDatum1979OriginIsFundamentalPointPotsdamHelmertTowerLatitude5222514456NLongitude1303589283EOfGreenwichEuropeanDatum1979IsAGeodeticDatumForScientificNetworkReplacedBy1987Adjustment")]
+		[EnumMember(Value = "European 1979")] 
+		European1979 = 38,
+
+		[System.ComponentModel.Description("FortThomas1955Datum")]
+		[EnumMember(Value = "Fort Thomas 1955")] 
+		FortThomas1955 = 39,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1970SuitableForUseInMaldivesOnshoreGan1970ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianGan1970IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromVariousIndustrySourcesInSomeReferencesIncorrectlyNamedGandajika1970")]
+		[EnumMember(Value = "Gan 1970")] 
+		Gan1970 = 40,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1949SuitableForUseInNewZealandNorthIslandSouthIslandStewartIslandOnshoreAndNearshoreNewZealandGeodeticDatum1949ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianNewZealandGeodeticDatum1949OriginIsFundamentalPointPapatahiLatitude41198900SLongitude1750251000EOfGreenwichNewZealandGeodeticDatum1949IsAGeodeticDatumForGeodeticSurveyCadastreTopographicMappingEngineeringSurveyItWasDefinedByInformationFromLandInformationNewZealandHttpWwwLinzGovtNzRcsLinzPubWebRootCoreSurveysystemGeodeticinfoGeodeticdatumsNzgd2000factsheetIndexJspReplacedByNewZealandGeodeticDatum2000Code6167FromMarch2000")]
+		[EnumMember(Value = "Geodetic Datum 1949")] 
+		GeodeticDatum1949 = 41,
+
+		[System.ComponentModel.Description("GraciosaBaseSw1948Datum")]
+		[EnumMember(Value = "Graciosa Base SW 1948")] 
+		GraciosaBaseSw1948 = 42,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1963SuitableForUseInGuamOnshoreGuam1963ReferencesTheClarke1866EllipsoidAndTheGreenwichPrimeMeridianGuam1963OriginIsFundamentalPointTagchaLatitude13223849NLongitude144455156EOfGreenwichGuam1963IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromUsNationalGeospatialIntelligenceAgencyNgaHttpEarthInfoNgaMilReplacedByNad83Harn")]
+		[EnumMember(Value = "Guam 1963")] 
+		Guam1963 = 43,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInIndonesiaKalimantanOnshoreEastCoastalAreaIncludingMahakamDeltaCoastalAndOffshoreShelfAreasGunungSegaraReferencesTheBessel1841EllipsoidAndTheGreenwichPrimeMeridianGunungSegaraOriginIsStationP5GunungSegaraLatitude0321283SLongitude117084847EOfGreenwichGunungSegaraIsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromTotalfinaelf")]
+		[EnumMember(Value = "Gunung Segara")] 
+		GunungSegara = 44,
+
+		[System.ComponentModel.Description("Gux1AstroDatum")]
+		[EnumMember(Value = "GUX 1 Astro")] 
+		Gux1Astro = 45,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInAfghanistanHeratNorthReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianHeratNorthOriginIsFundamentalPointHeratNorthLatitude34230908NLongitude64105894EOfGreenwichHeratNorthIsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromNimaHttpEarthInfoNimaMil")]
+		[EnumMember(Value = "Herat North")] 
+		HeratNorth = 46,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1955SuitableForUseInIcelandOnshoreHjorsey1955ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianHjorsey1955OriginIsFundamentalPointLatitude64312926NLongitude22220584WOfGreenwichHjorsey1955IsAGeodeticDatumFor150000ScaleTopographicMappingItWasDefinedByInformationFromLandmaelingarIslandsNationalSurveyOfIceland")]
+		[EnumMember(Value = "Hjorsey 1955")] 
+		Hjorsey1955 = 47,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1963SuitableForUseInChinaHongKongOnshoreAndOffshoreHongKong1963ReferencesTheClarke1858EllipsoidAndTheGreenwichPrimeMeridianHongKong1963OriginIsFundamentalPointTrigZero384FeetSouthAlongTheTransitCircleOfTheKowloonObservatoryLatitude22181282NLongitude114101875EOfGreenwichHongKong1963IsAGeodeticDatumForTopographicMappingAndHydrographicChartingItWasDefinedByInformationFromSurveyAndMappingOfficeLandsDepartmentHttpWwwInfoGovHkLandsdReplacedByHongKong196367ForMilitaryPurposesOnlyIn1967ReplacedByHongKong1980")]
+		[EnumMember(Value = "Hong Kong 1963")] 
+		HongKong1963 = 48,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1950SuitableForUseInTaiwanRepublicOfChinaOnshoreTaiwanIslandPenghuPescadoresIslandsHuTzuShan1950ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianHuTzuShan1950OriginIsFundamentalPointHuTzuShanLatitude23583234NLongitude1205825975EOfGreenwichHuTzuShan1950IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromNimaUsNgaHttpEarthInfoNgaMilGandgIndexHtml")]
+		[EnumMember(Value = "Hu-Tzu-Shan")] 
+		HuTzuShan = 49,
+
+		[System.ComponentModel.Description("IndianDatum")]
+		[EnumMember(Value = "Indian")] 
+		Indian = 50,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1954SuitableForUseInMyanmarBurmaOnshoreThailandOnshoreIndian1954ReferencesTheEverest18301937AdjustmentEllipsoidAndTheGreenwichPrimeMeridianIndian1954OriginIsExtensionOfKalianpur1937OverMyanmarAndThailandIndian1954IsAGeodeticDatumForTopographicMapping")]
+		[EnumMember(Value = "Indian 1954")] 
+		Indian1954 = 51,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1975SuitableForUseInThailandOnshorePlusOffshoreGulfOfThailandIndian1975ReferencesTheEverest18301937AdjustmentEllipsoidAndTheGreenwichPrimeMeridianIndian1975OriginIsFundamentalPointKhauSakaerangIndian1975IsAGeodeticDatumForTopographicMapping")]
+		[EnumMember(Value = "Indian 1975")] 
+		Indian1975 = 52,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1975SuitableForUseInIrelandOnshoreUnitedKingdomUkNorthernIrelandUlsterOnshoreIreland1965ReferencesTheAiryModified1849EllipsoidAndTheGreenwichPrimeMeridianIreland1965OriginIsAdjustedToBestMeanFit9StationsOfTheOsni1952PrimaryAdjustmentInNorthernIrelandPlusThe1965ValuesOf3StationsInTheRepublicOfIrelandIreland1965IsAGeodeticDatumForGeodeticSurveyTopographicMappingAndEngineeringSurveyItWasDefinedByInformationFromTheIrishGridADescriptionOfTheCoOrdinateReferenceSystemPublishedByOrdnanceSurveyOfIrelandDublinAndOrdnanceSurveyOfNorthernIrelandBelfastDifferencesFromThe1965AdjustmentDatumCode6299AreAverageDifferenceInEastings0092mAverageDifferenceInNorthings0108mMaximumVectorDifference0548m")]
+		[EnumMember(Value = "Ireland 1965")] 
+		Ireland1965 = 53,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1968SuitableForUseInSouthGeorgiaAndTheSouthSandwichIslandsSouthGeorgiaOnshoreIsts061Astro1968ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianIsts061Astro1968OriginIsFundamentalPointIsts061Ists061Astro1968IsAGeodeticDatumForMilitaryAndTopographicMappingItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000")]
+		[EnumMember(Value = "ISTS 061 Astro 1968")] 
+		Ists061Astro1968 = 54,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1969SuitableForUseInBritishIndianOceanTerritoryChagosArchipelagoDiegoGarciaIsts073Astro1969ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianIsts073Astro1969OriginIsFundamentalPointIsts073Ists073Astro1969IsAGeodeticDatumForMilitaryAndTopographicMappingItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000")]
+		[EnumMember(Value = "ISTS 073 Astro 1969")] 
+		Ists073Astro1969 = 55,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1961SuitableForUseInUnitedStatesMinorOutlyingIslandsJohnstonIslandJohnstonIsland1961ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianJohnstonIsland1961IsAGeodeticDatumForMilitaryAndTopographicMappingItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000")]
+		[EnumMember(Value = "Johnston Island 1961")] 
+		JohnstonIsland1961 = 56,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1930SuitableForUseInSriLankaOnshoreKandawalaReferencesTheEverest18301937AdjustmentEllipsoidAndTheGreenwichPrimeMeridianKandawalaOriginIsFundamentalPointKandawalaLatitude71406838NLongitude795236670EKandawalaIsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromAbeyratneFeatherstoneAndTantrigodaInSurveyReviewVol42No317July2010")]
+		[EnumMember(Value = "Kandawala")] 
+		Kandawala = 57,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1949SuitableForUseInFrenchSouthernTerritoriesKerguelenOnshoreReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianOriginIsK01949IsAGeodeticDatumForGeodeticSurveyCadastreTopographicMappingEngineeringSurveyItWasDefinedByInformationFromIgnParis")]
+		[EnumMember(Value = "Kerguelen Island 1949")] 
+		KerguelenIsland1949 = 58,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1968SuitableForUseInMalaysiaWestMalaysiaOnshoreAndOffshoreEastCoastSingaporeOnshoreAndOffshoreKertau1968ReferencesTheEverest1830ModifiedEllipsoidAndTheGreenwichPrimeMeridianKertau1968OriginIsFundamentalPointKertauLatitude32750710NLongitude1023724550EOfGreenwichKertau1968IsAGeodeticDatumForGeodeticSurveyCadastreItWasDefinedByInformationFromDefenceGeographicCentreReplacesMrt48AndEarlierAdjustmentsAdoptsMetricConversionOf39370113InchesPerMetreNotUsedFor1969MetricationOfRsoGridSeeKertauRsoCode6751")]
+		[EnumMember(Value = "Kertau 1968")] 
+		Kertau1968 = 59,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1951SuitableForUseInFederatedStatesOfMicronesiaKosraeKusaieKusaie1951ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianKusaie1951IsAGeodeticDatumForMilitaryAndTopographicMappingItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000")]
+		[EnumMember(Value = "Kusaie Astro 1951")] 
+		KusaieAstro1951 = 60,
+
+		[System.ComponentModel.Description("LC5Astro1961Datum")]
+		[EnumMember(Value = "L. C. 5 Astro 1961")] 
+		LC5Astro1961 = 61,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInGhanaOnshoreAndOffshoreLeigonReferencesTheClarke1880RgsEllipsoidAndTheGreenwichPrimeMeridianLeigonOriginIsFundamentalPointGcsStation121LeigonLatitude5385227NLongitude0114608WOfGreenwichLeigonIsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromOrdnanceSurveyInternationalReplacedAccraDatumCode6168From1978CoordinatesAtLeigonFundamentalPointDefinedAsAccraDatumValuesForThatPoint")]
+		[EnumMember(Value = "Leigon")] 
+		Leigon = 62,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1964SuitableForUseInLiberiaOnshoreLiberia1964ReferencesTheClarke1880RgsEllipsoidAndTheGreenwichPrimeMeridianLiberia1964OriginIsFundamentalPointRobertsfieldLatitude6135302NLongitude10213544WOfGreenwichLiberia1964IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromNimaHttpEarthInfoNimaMil")]
+		[EnumMember(Value = "Liberia 1964")] 
+		Liberia1964 = 63,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1911SuitableForUseInPhilippinesOnshoreLuzonReferencesTheClarke1866EllipsoidAndTheGreenwichPrimeMeridianLuzonOriginIsFundamentalPointBalacanLatitude133341000NLongitude1215203000EOfGreenwichLuzonIsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromCoastAndGeodeticSurveyReplacedByPhilippineReferenceSystemOf1992DatumCode6683")]
+		[EnumMember(Value = "Luzon")] 
+		Luzon = 64,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1971SuitableForUseInSeychellesMaheIslandMahe1971ReferencesTheClarke1880RgsEllipsoidAndTheGreenwichPrimeMeridianMahe1971OriginIsFundamentalPointStationSiteLatitude44014644SLongitude552844488EOfGreenwichMahe1971IsAGeodeticDatumForUsMilitarySurveyItWasDefinedByInformationFromCliffordMugnierSSeptember2007PeRsGridsAndDatumsArticleOnSeychellesWwwAsprsOrgResourcesGridsSouthEastIsland1943DatumCode1138UsedForTopographicMappingCadastralAndHydrographicSurvey")]
+		[EnumMember(Value = "Mahe 1971")] 
+		Mahe1971 = 65,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInEritreaOnshoreAndOffshoreMassawaReferencesTheBessel1841EllipsoidAndTheGreenwichPrimeMeridianMassawaIsAGeodeticDatumForTopographicMapping")]
+		[EnumMember(Value = "Massawa")] 
+		Massawa = 66,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1922SuitableForUseInMoroccoOnshoreMerchichReferencesTheClarke1880IgnEllipsoidAndTheGreenwichPrimeMeridianMerchichOriginIsFundamentalPointMerchichLatitude332659672NLongitude73327295WOfGreenwichMerchichIsAGeodeticDatumForTopographicMapping")]
+		[EnumMember(Value = "Merchich")] 
+		Merchich = 67,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1961SuitableForUseInUnitedStatesMinorOutlyingIslandsMidwayIslandsSandIslandAndEasternIslandMidway1961ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianMidway1961IsAGeodeticDatumForMilitaryAndTopographicMappingItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000")]
+		[EnumMember(Value = "Midway Astro 1961")] 
+		MidwayAstro1961 = 68,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInNigeriaOnshoreAndOffshoreMinnaReferencesTheClarke1880RgsEllipsoidAndTheGreenwichPrimeMeridianMinnaOriginIsFundamentalPointMinnaBaseStationL40Latitude9380887NLongitude6305876EOfGreenwichMinnaIsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromNimaHttpEarthInfoNimaMil")]
+		[EnumMember(Value = "Minna")] 
+		Minna = 69,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1958SuitableForUseInMontserratOnshoreMontserrat1958ReferencesTheClarke1880RgsEllipsoidAndTheGreenwichPrimeMeridianMontserrat1958OriginIsFundamentalPointStationM36Montserrat1958IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromOrdnanceSurveyOfGreatBritain")]
+		[EnumMember(Value = "Montserrat Island Astro 1958")] 
+		MontserratIslandAstro1958 = 70,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInGabonOnshoreAndOffshoreMPoralokoReferencesTheClarke1880IgnEllipsoidAndTheGreenwichPrimeMeridianMPoralokoIsAGeodeticDatumForTopographicMapping")]
+		[EnumMember(Value = "M'poraloko")] 
+		MPoraloko = 71,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1934SuitableForUseInIraqOnshoreIranOnshoreNorthernGulfCoastAndWestBorderingSoutheastIraqNahrwan1934ReferencesTheClarke1880RgsEllipsoidAndTheGreenwichPrimeMeridianNahrwan1934OriginIsFundamentalPointNahrwanSouthBaseLatitude33191087NLongitude44432554EOfGreenwichNahrwan1934IsAGeodeticDatumForOilExplorationAndProductionItWasDefinedByInformationFromVariousIndustrySourcesThisAdjustmentLaterDiscoveredToHaveASignificantOrientationErrorInIranReplacedByFd58InIraqReplacedByKarbala1979")]
+		[EnumMember(Value = "Nahrwan")] 
+		Nahrwan = 72,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1972SuitableForUseInTrinidadAndTobagoTobagoOnshoreNaparima1972ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianNaparima1972OriginIsFundamentalPointNaparimaLatitude101644860NLongitude612734620WOfGreenwichNaparima1972IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromOrdnanceSurveyInternationalNaparima1972IsAnExtensionOfTheNaparima1955NetworkOfTrinidadToIncludeTobago")]
+		[EnumMember(Value = "Naparima, BWI")] 
+		NaparimaBwi = 73,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1927SuitableForUseInNorthAndCentralAmericaAntiguaAndBarbudaBahamasBelizeBritishVirginIslandssUsageShallBeOnshoreOnlyExceptThatOnshoreAndOffshoreShallApplyToCanadaEastCoastNewBrunswickNewfoundlandAndLabradorPrinceEdwardIslandQuebecCubaMexicoGulfOfMexicoAndCaribbeanCoastsOnlyUsaAlaskaUsaGulfOfMexicoAlabamaFloridaLouisianaMississippiTexasUsaEastCoastBahamasOnshorePlusOffshoreOverInternalContinentalShelfOnlyNorthAmericanDatum1927ReferencesTheClarke1866EllipsoidAndTheGreenwichPrimeMeridianNorthAmericanDatum1927OriginIsFundamentalPointMeadeSRanchLatitude391326686NLongitude983230506WOfGreenwichNorthAmericanDatum1927IsAGeodeticDatumForTopographicMappingInUnitedStatesUsaAndCanadaReplacedByNorthAmericanDatum1983Nad83Code6269InMexicoReplacedByMexicanDatumOf1993Code1042")]
+		[EnumMember(Value = "North American 1927")] 
+		NorthAmerican1927 = 74,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1986SuitableForUseInNorthAmericaOnshoreAndOffshoreCanadaPuertoRicoUnitedStatesUsaUsVirginIslandsBritishVirginIslandsNorthAmericanDatum1983ReferencesTheGrs1980EllipsoidAndTheGreenwichPrimeMeridianNorthAmericanDatum1983OriginIsOriginAtGeocentreNorthAmericanDatum1983IsAGeodeticDatumForTopographicMappingAlthoughThe1986AdjustmentIncludedConnectionsToGreenlandAndMexicoItHasNotBeenAdoptedThereInCanadaAndUsReplacedNad27")]
+		[EnumMember(Value = "North American 1983")] 
+		NorthAmerican1983 = 75,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1939SuitableForUseInPortugalWesternAzoresOnshoreFloresCorvoAzoresOccidentalIslands1939ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianAzoresOccidentalIslands1939OriginIsFundamentalPointObservatarioMeteorologicoFloresAzoresOccidentalIslands1939IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromInstitutoGeograficoECadastralLisbonViaEurogeographicsHttpCrsBkgBundDeCrsEu")]
+		[EnumMember(Value = "Observatorio Meteorologico 1939")] 
+		ObservatorioMeteorologico1939 = 76,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1907SuitableForUseInEgyptOnshoreAndOffshoreEgypt1907ReferencesTheHelmert1906EllipsoidAndTheGreenwichPrimeMeridianEgypt1907OriginIsFundamentalPointStationF1VenusLatitude30014286NLongitude31163360EOfGreenwichEgypt1907IsAGeodeticDatumForGeodeticSurveyCadastreTopographicMappingEngineeringSurvey")]
+		[EnumMember(Value = "Old Egyptian 1907")] 
+		OldEgyptian1907 = 77,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInUnitedStatesUsaHawaiiMainIslandsOnshoreOldHawaiianReferencesTheClarke1866EllipsoidAndTheGreenwichPrimeMeridianOldHawaiianOriginIsFundamentalPointOahuWestBaseAstroLatitude21181389NLongitude157505579WOfGreenwichOldHawaiianIsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromHttpWwwNgsNoaaGovNadconReadmeFileHawaiianIslandsWereNeverOnNad27ButRatherOnOldHawaiianDatumNadconConversionProgramProvidesTransformationFromOldHawaiianDatumToNad83Original1986RealizationButMakingTheTransformationAppearToUserAsIfFromNad27")]
+		[EnumMember(Value = "Old Hawaiian")] 
+		OldHawaiian = 78,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn2013SuitableForUseInOmanOnshoreAndOffshoreOmanNationalGeodeticDatum2014ReferencesTheGrs1980EllipsoidAndTheGreenwichPrimeMeridianOmanNationalGeodeticDatum2014OriginIs20StationsOfTheOmanPrimaryNetworkTiedToItrf2008AtEpoch201315OmanNationalGeodeticDatum2014IsAGeodeticDatumForGeodeticSurveyItWasDefinedByInformationFromNationalSurveyAuthoritySultanateOfOmanReplacesWgs84G874")]
+		[EnumMember(Value = "Oman")] 
+		Oman = 79,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1936SuitableForUseInUnitedKingdomUkOffshoreToBoundaryOfUkcsWithin4946NTo6101NAnd733WTo333EOnshoreGreatBritainEnglandWalesAndScotlandIsleOfManOnshoreOsgb1936ReferencesTheAiry1830EllipsoidAndTheGreenwichPrimeMeridianOsgb1936OriginIsPriorTo2002FundamentalPointHerstmonceuxLatitude505155271NLongitude02045882EOfGreenwichFromApril2002TheDatumIsDefinedThroughTheApplicationOfTheOstnTransformationFromEtrs89Osgb1936IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromOrdnanceSurveyOfGreatBritainTheAverageAccuracyOfOstnComparedToTheOldTriangulationNetworkDownTo3rdOrderIs01mWithTheIntroductionOfOstn15TheAreaForOsgb1936HasEffectivelyBeenExtendedFromBritainToCoverTheAdjacentUkContinentalShelf")]
+		[EnumMember(Value = "Ordnance Survey of Great Britain 1936")] 
+		OrdnanceSurveyOfGreatBritain1936 = 80,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInSpainCanaryIslandsOnshorePicoDeLasNieves1984ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianPicoDeLasNieves1984IsAGeodeticDatumForMilitaryAndTopographicMappingItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000ReplacesPicoDeLasNieves1968Pn68ReplacedByRegcan95")]
+		[EnumMember(Value = "Pico de las Nieves")] 
+		PicoDeLasNieves = 81,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1967SuitableForUseInPitcairnPitcairnIslandPitcairn1967ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianPitcairn1967OriginIsFundamentalPointPitcairnAstroLatitude25040687SLongitude130064783WOfGreenwichPitcairn1967IsAGeodeticDatumForMilitaryAndTopographicMappingItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000ReplacedByPitcairn2006")]
+		[EnumMember(Value = "Pitcairn Astro 1967")] 
+		PitcairnAstro1967 = 82,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1969SuitableForUseInSenegalCentralMaliSouthwestBurkinaFasoCentralNigerSouthwestNigeriaNorthChadCentralAllInProximityToTheParallelOfLatitudeOf12nPoint58ReferencesTheClarke1880RgsEllipsoidAndTheGreenwichPrimeMeridianPoint58OriginIsFundamentalPointPoint58Latitude125244045NLongitude35837040EOfGreenwichPoint58IsAGeodeticDatumForGeodeticSurveyItWasDefinedByInformationFromIgnParisUsedAsTheBasisForComputationOfThe12thParallelTraverseConducted196670FromSenegalToChadAndConnectingToTheBlueNile1958AdindanTriangulationInSudan")]
+		[EnumMember(Value = "Point 58")] 
+		Point58 = 83,
+
+		[System.ComponentModel.Description("PointeNoire1948Datum")]
+		[EnumMember(Value = "Pointe Noire 1948")] 
+		PointeNoire1948 = 84,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1936SuitableForUseInPortugalMadeiraPortoSantoAndDesertasIslandsOnshorePortoSanto1936ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianPortoSanto1936OriginIsSeBaseOnPortoSantoIslandPortoSanto1936IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromInstitutoGeograficoECadastralLisbonHttpWwwIgeoPtReplacedBy1995AdjustmentDatumCode6663ForSelvagensSeeSelvagemGrandeCode6616")]
+		[EnumMember(Value = "Porto Santo 1936")] 
+		PortoSanto1936 = 85,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1956SuitableForUseInArubaOnshoreBoliviaBonaireOnshoreBrazilOffshoreAmazonConeShelfChileOnshoreNorthOf4330SCuracaoOnshoreEcuadorMainlandOnshoreGuyanaOnshorePeruOnshoreVenezuelaOnshoreProvisionalSouthAmericanDatum1956ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianProvisionalSouthAmericanDatum1956OriginIsFundamentalPointLaCanoaLatitude83417170NLongitude635134880WOfGreenwichProvisionalSouthAmericanDatum1956IsAGeodeticDatumForTopographicMappingSameOriginAsLaCanoaDatum")]
+		[EnumMember(Value = "Provisional South American 1956")] 
+		ProvisionalSouthAmerican1956 = 86,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1963SuitableForUseInArgentinaAndChileTierraDelFuegoOnshoreHitoXviii1963ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianHitoXviii1963OriginIsChileArgentinaBoundarySurveyHitoXviii1963IsAGeodeticDatumForGeodeticSurveyItWasDefinedByInformationFromVariousOilCompanyRecordsUsedInTierraDelFuego")]
+		[EnumMember(Value = "Provisional South Chilean 1963")] 
+		ProvisionalSouthChilean1963 = 87,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1901SuitableForUseInPuertoRicoUsVirginIslandsAndBritishVirginIslandsOnshorePuertoRicoReferencesTheClarke1866EllipsoidAndTheGreenwichPrimeMeridianPuertoRicoOriginIsFundamentalPointCardonaIslandLighthouseLatitude17573140NLongitude66380753WOfGreenwichPuertoRicoIsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromOrdnanceSurveyOfGreatBritainAndHttpWwwNgsNoaaGovNadconReadmeFileNadconConversionProgramProvidesTransformationFromPuertoRicoDatumToNad83Original1986RealizationButMakingTheTransformationAppearToUserAsIfFromNad27")]
+		[EnumMember(Value = "Puerto Rico")] 
+		PuertoRico = 88,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1995SuitableForUseInQatarOnshoreQatarNationalDatum1995ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianQatarNationalDatum1995OriginIsDefinedByTransformationFromWgs84SeeCoordinateOperationCode1840QatarNationalDatum1995IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromQatarCentreForGeographicInformation")]
+		[EnumMember(Value = "Qatar National")] 
+		QatarNational = 89,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1927SuitableForUseInGreenlandWestCoastOnshoreQornoq1927ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianQornoq1927OriginIsFundamentalPointStation7008Latitude64310627NLongitude51122486WOfGreenwichQornoq1927IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromKortMatrikelstyrelsenCopenhagenOriginCoordinatesFromNimaHttpEarthInfoNimaMil")]
+		[EnumMember(Value = "Qornoq")] 
+		Qornoq = 90,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1947SuitableForUseInReunionOnshoreReunion1947ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianReunion1947OriginIsFundamentalPointPitonDesNeigesBorneLatitude210513119SLongitude552909193EOfGreenwichReunion1947IsAGeodeticDatumForGeodeticSurveyCadastreTopographicMappingEngineeringSurveyItWasDefinedByInformationFromIgnParisReplacedByRgr92DatumCode6627")]
+		[EnumMember(Value = "Reunion")] 
+		Reunion = 91,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedInAndIsSuitableForUseInItalyOnshoreAndOffshoreSanMarinoVaticanCityStateMonteMarioRomeReferencesTheInternational1924EllipsoidAndTheRomePrimeMeridianMonteMarioRomeOriginIsFundamentalPointMonteMarioLatitude41552551NLongitude0000000EOfRomeMonteMarioRomeIsAGeodeticDatumForTopographicMappingReplacedGenovaDatumBessel1841EllipsoidFrom1940")]
+		[EnumMember(Value = "Rome 1940")] 
+		Rome1940 = 92,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1965SuitableForUseInVanuatuNorthernIslandsAeseAmbrymAobaEpiEspirituSantoMaewoMaloMalkulaPaamaPentecostShepherdAndTutubaSanto1965ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianSanto1965IsAGeodeticDatumForMilitaryAndTopographicMappingItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000DatumCoversAllTheMajorIslandsOfVanuatuInTwoDifferentAdjustmentBlocksButPracticalUsageIsAsGivenInTheAreaOfUse")]
+		[EnumMember(Value = "Santo (DOS) 1965")] 
+		SantoDos1965 = 93,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1995SuitableForUseInPortugalEasternAzoresOnshoreSaoMiguelSantaMariaFormigasAzoresOrientalIslands1995ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianAzoresOrientalIslands1995OriginIsFundamentalPointForteDeSoBrasOriginAndOrientationConstrainedToThoseOfThe1940AdjustmentAzoresOrientalIslands1995IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromInstitutoGeograficoECadastralLisbonHttpWwwIgeoPtClassicalAndGpsObservationsReplaces1940AdjustmentDatumCode6184")]
+		[EnumMember(Value = "Sao Braz")] 
+		SaoBraz = 94,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1943SuitableForUseInFalklandIslandsMalvinasOnshoreSapperHill1943ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianSapperHill1943IsAGeodeticDatumForTopographicMapping")]
+		[EnumMember(Value = "Sapper Hill 1943")] 
+		SapperHill1943 = 95,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInNamibiaOnshoreAndOffshoreSchwarzeckReferencesTheBesselNamibiaGlmEllipsoidAndTheGreenwichPrimeMeridianSchwarzeckOriginIsFundamentalPointSchwarzeckLatitude224535820SLongitude184034549EOfGreenwichFixedDuringGermanSouthWestAfricaBritishBechuanalandBoundarySurveyOf18981903SchwarzeckIsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromPrivateCommunicationDirectorateOfSurveysAndLandInformationCapeTown")]
+		[EnumMember(Value = "Schwarzeck")] 
+		Schwarzeck = 96,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInPortugalSelvagensIslandsMadeiraProvinceOnshoreSelvagemGrandeReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianSelvagemGrandeIsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromInstitutoGeograficoECadastralLisbonHttpWwwIgeoPt")]
+		[EnumMember(Value = "Selvagem Grande 1938")] 
+		SelvagemGrande1938 = 97,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1969SuitableForUseInBrazilOnshoreAndOffshoreInRestOfSouthAmericaOnshoreNorthOfApproximately45sAndTierraDelFuegoSouthAmericanDatum1969ReferencesTheGrs1967ModifiedEllipsoidAndTheGreenwichPrimeMeridianSouthAmericanDatum1969OriginIsFundamentalPointChuaGeodeticLatitude1945416527SGeodeticLongitude4806040639WOfGreenwichAstronomicCoordinatesLatitude19454134S005Longitude48060780W008SouthAmericanDatum1969IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromDma1974Sad69UsesGrs1967EllipsoidButWith1FToExactly2DecimalPlacesInBrazilOnlyReplacedBySad6996DatumCode1075")]
+		[EnumMember(Value = "South American 1969")] 
+		SouthAmerican1969 = 98,
+
+		[System.ComponentModel.Description("SouthAsiaDatum")]
+		[EnumMember(Value = "South Asia")] 
+		SouthAsia = 99,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1925SuitableForUseInMadagascarOnshoreAndNearshoreTananarive1925ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianTananarive1925OriginIsFundamentalPointTananariveObservatoryLatitude18550210SLongitude47330675EOfGreenwichTananarive1925IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromIgnParis")]
+		[EnumMember(Value = "Tananarive Observatory 1925")] 
+		TananariveObservatory1925 = 100,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1948SuitableForUseInBruneiOnshoreAndOffshoreMalaysiaEastMalaysiaSabahSarawakOnshoreAndOffshoreTimbalai1948ReferencesTheEverest18301967DefinitionEllipsoidAndTheGreenwichPrimeMeridianTimbalai1948OriginIsFundamentalPointStationP85AtTimbalaiLatitude5173548NLongitude1151056409EOfGreenwichTimbalai1948IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromDefenceGeographicCentreIn1968TheOriginalAdjustmentWasDensifiedInSarawakAndExtendedToSabah")]
+		[EnumMember(Value = "Timbalai 1948")] 
+		Timbalai1948 = 101,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1918SuitableForUseInJapanOnshoreNorthKoreaOnshoreSouthKoreaOnshoreTokyoReferencesTheBessel1841EllipsoidAndTheGreenwichPrimeMeridianTokyoOriginIsFundamentalPointNikonKeidoGentenLatitude3539175148NLongitude13944405020EOfGreenwichLongitudeDerivedIn1918TokyoIsAGeodeticDatumForGeodeticSurveyCadastreTopographicMappingEngineeringSurveyItWasDefinedByInformationFromGeographicSurveyInstituteJapanBulletin40March1994AlsoHttpVldbGsiGoJpSokuchiDatumTokyodatumHtmlInJapanReplacesTokyo1892Code1048AndReplacedByJapaneseGeodeticDatum2000Code6611InKoreaUsedOnlyForGeodeticApplicationsBeforeBeingReplacedByKorean1985Code6162")]
+		[EnumMember(Value = "Tokyo")] 
+		Tokyo = 102,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1968SuitableForUseInStHelenaAscensionAndTristanDaCunhaTristanDaCunhaIslandGroupIncludingTristanInaccessibleNightingaleMiddleAndStoltenhoffIslandsTristan1968ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianTristan1968IsAGeodeticDatumForMilitaryAndTopographicMappingItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000")]
+		[EnumMember(Value = "Tristan Astro 1968")] 
+		TristanAstro1968 = 103,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1912SuitableForUseInFijiVitiLevuIslandVitiLevu1912ReferencesTheClarke1880InternationalFootEllipsoidAndTheGreenwichPrimeMeridianVitiLevu1912LatitudeOriginWasObtainedAstronomicallyAtStationMonavatu175328285SLongitudeOriginWasObtainedAstronomicallyAtStationSuva1782535835EVitiLevu1912IsAGeodeticDatumForGeodeticSurveyCadastreTopographicMappingEngineeringSurveyItWasDefinedByInformationFromCliffordJMugnierInPhotogrammetricEngineeringAndRemoteSensingOctober2000WwwAsprsOrgForTopographicMappingReplacedByFiji1956ForOtherPurposesReplacedByFiji1986")]
+		[EnumMember(Value = "Viti Levu 1916")] 
+		VitiLevu1916 = 104,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1960SuitableForUseInMarshallIslandsOnshoreWakeAtollOnshoreMarshallIslands1960ReferencesTheHough1960EllipsoidAndTheGreenwichPrimeMeridianMarshallIslands1960IsAGeodeticDatumForMilitaryAndTopographicMappingItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000")]
+		[EnumMember(Value = "Wake-Eniwetok 1960")] 
+		WakeEniwetok1960 = 105,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1952SuitableForUseInWakeAtollOnshoreWakeIsland1952ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianWakeIsland1952IsAGeodeticDatumForMilitaryAndTopographicMappingItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000")]
+		[EnumMember(Value = "Wake Island Astro 1952")] 
+		WakeIslandAstro1952 = 106,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInUruguayOnshoreYacareReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianYacareOriginIsFundamentalPointYacareLatitude30355368SLongitude57250130WOfGreenwichYacareIsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromNimaHttpEarthInfoNimaMil")]
+		[EnumMember(Value = "Yacare")] 
+		Yacare = 107,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInSurinameOnshoreAndOffshoreZanderijReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianZanderijIsAGeodeticDatumForTopographicMapping")]
+		[EnumMember(Value = "Zanderij")] 
+		Zanderij = 108,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1962SuitableForUseInAmericanSamoaTutuilaAunuUOfuOlesegaAndTaUIslandsAmericanSamoa1962ReferencesTheClarke1866EllipsoidAndTheGreenwichPrimeMeridianAmericanSamoa1962OriginIsFundamentalPointBetty13EccentricLatitude14200834SLongitude170425225WOfGreenwichAmericanSamoa1962IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromNimaTr83502RevisionOfJanuary2000OilIndustrySourcesForOriginDescriptionDetails")]
+		[EnumMember(Value = "American Samoa 1962")] 
+		AmericanSamoa1962 = 109,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInAntarcticaSouthShetlandIslandsDeceptionIslandDeceptionIslandReferencesTheClarke1880RgsEllipsoidAndTheGreenwichPrimeMeridianDeceptionIslandIsAGeodeticDatumForMilitaryAndScientificMappingItWasDefinedByInformationFromDmaNimaNgaTr835023rdEditionAmendment13January2000")]
+		[EnumMember(Value = "Deception Island")] 
+		DeceptionIsland = 110,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInCambodiaOnshoreVietnamOnshoreAndOffshoreCuuLongBasinIndian1960ReferencesTheEverest18301937AdjustmentEllipsoidAndTheGreenwichPrimeMeridianIndian1960OriginIsDmaExtensionOverIndochinaOfTheIndian1954NetworkAdjustedToBetterFitLocalGeoidIndian1960IsAGeodeticDatumForTopographicMappingAlsoKnownAsIndianDmaReduced")]
+		[EnumMember(Value = "Indian 1960")] 
+		Indian1960 = 111,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1974SuitableForUseInIndonesiaOnshoreIndonesianDatum1974ReferencesTheIndonesianNationalSpheroidEllipsoidAndTheGreenwichPrimeMeridianIndonesianDatum1974OriginIsFundamentalPointPadangLatitude05638414SLongitude100228804EOfGreenwichEllipsoidalHeight3190mGravityRelatedHeight140mAboveMeanSeaLevelIndonesianDatum1974IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromBakosurtanal1979PaperByJacobRaisReplacedByDgn95")]
+		[EnumMember(Value = "Indonesian 1974")] 
+		Indonesian1974 = 112,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1959SuitableForUseInAlgeriaOnshoreAndOffshoreNordSahara1959ReferencesTheClarke1880RgsEllipsoidAndTheGreenwichPrimeMeridianNordSahara1959OriginIsCoordinatesOfPrimaryNetworkReadjustedOnEd50DatumAndThenTransformedConformallyToClarke1880RgsEllipsoidNordSahara1959IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromLeSystemGeodesiqueNordSaharaIgnParisAdjustmentIncludesMoroccoAndTunisiaButUseOnlyInAlgeriaWithinAlgeriaTheAdjustmentIsNorthOf32nButUseHasBeenExtendedSouthwardsInManyDisconnectedProjectsSomeBasedOnIndependentAstroStationsRatherThanTheGeodeticNetwork")]
+		[EnumMember(Value = "North Sahara 1959")] 
+		NorthSahara1959 = 113,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1942SuitableForUseInArmeniaAzerbaijanBelarusEstoniaOnshoreGeorgiaOnshoreKazakhstanKyrgyzstanLatviaOnshoreLithuaniaOnshoreMoldovaRussianFederationOnshoreTajikistanTurkmenistanUkraineOnshoreUzbekistanPulkovo1942ReferencesTheKrassowsky1940EllipsoidAndTheGreenwichPrimeMeridianPulkovo1942OriginIsFundamentalPointPulkovoObservatoryLatitude594618550NLongitude301942090EOfGreenwichPulkovo1942IsAGeodeticDatumForTopographicMapping")]
+		[EnumMember(Value = "Pulkovo 1942")] 
+		Pulkovo1942 = 114,
+
+		[System.ComponentModel.Description("AGeodeticDatumSuitableForUseInCzechRepublicSlovakiaSystemJednotneTrigonometrickeSiteKatastralniReferencesTheBessel1841EllipsoidAndTheGreenwichPrimeMeridianSystemJednotneTrigonometrickeSiteKatastralniOriginIsModificationOfAustrianMgiDatumCode6312SystemJednotneTrigonometrickeSiteKatastralniIsAGeodeticDatumForGeodeticSurveyCadastreTopographicMappingEngineeringSurveyItWasDefinedByInformationFromResearchInstituteForGeodesyTopographyAndCartographyVugtkPragueSJtskSystemOfTheUnifiedTrigonometricalCadastralNetwork")]
+		[EnumMember(Value = "S-JTSK")] 
+		SJtsk = 116,
+
+		[System.ComponentModel.Description("Voirol1950Datum")]
+		[EnumMember(Value = "Voirol 1950")] 
+		Voirol1950 = 117,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1977SuitableForUseInCanadaNewBrunswickNovaScotiaPrinceEdwardIslandAverageTerrestrialSystem1977ReferencesTheAverageTerrestrialSystem1977EllipsoidAndTheGreenwichPrimeMeridianAverageTerrestrialSystem1977IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromNewBrunswickGeographicInformationCorporationLandAndWaterInformationStandardsManualInUseFrom1979")]
+		[EnumMember(Value = "Average Terrestrial System 1977")] 
+		AverageTerrestrialSystem1977 = 118,
+
+		[System.ComponentModel.Description("CompensationGeodesiqueDuQuebec1977")]
+		[EnumMember(Value = "Compensation Geodesique du Quebec 1977")] 
+		CompensationGeodesiqueDuQuebec1977 = 119,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1966SuitableForUseInFinlandOnshoreKartastokoordinaattijarjestelma1966ReferencesTheInternational1924EllipsoidAndTheGreenwichPrimeMeridianKartastokoordinaattijarjestelma1966OriginIsAdjustmentWithFundamentalPointSf31BasedOnEd50TransformedToBestFitTheOlderVvjAdjustmentKartastokoordinaattijarjestelma1966IsAGeodeticDatumForGeodeticSurveyCadastreTopographicMappingEngineeringSurveyItWasDefinedByInformationFromNationalLandSurveyOfFinlandHttpWwwMaanmittauslaitosFiAdoptedIn1970")]
+		[EnumMember(Value = "Finnish (KKJ)")] 
+		FinnishKkj = 120,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1952SuitableForUseInUnitedKingdomUkNorthernIrelandUlsterOnshoreOsni1952ReferencesTheAiry1830EllipsoidAndTheGreenwichPrimeMeridianOsni1952OriginIsPositionFixedToTheCoordinatesFromThe19thCenturyPrincipleTriangulationOfStationDivisScaleAndOrientationControlledByPositionOfPrincipleTriangulationStationsKnocklaydAndTrostanOsni1952IsAGeodeticDatumForGeodeticSurveyAndTopographicMappingItWasDefinedByInformationFromOrdnanceSurveyOfNorthernIrelandReplacedByGeodeticDatumOf1965Alias1975MappingAdjustmentOrTm75DatumCode6300")]
+		[EnumMember(Value = "Ordnance Survey of Ireland")] 
+		OrdnanceSurveyOfIreland = 121,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1969SuitableForUseInMalaysiaWestMalaysiaSingaporeKertauRsoReferencesTheEverest1830Rso1969EllipsoidAndTheGreenwichPrimeMeridianKertauRsoIsAGeodeticDatumForMetricationOfRsoGridItWasDefinedByInformationFromDefenceGeographicCentreAdoptsMetricConversionOf0914398MetresPerYardExactlyThisIsATruncationOfTheSears1922Ratio")]
+		[EnumMember(Value = "Revised Kertau")] 
+		RevisedKertau = 122,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1967SuitableForUseInArabianGulfQatarOffshoreUnitedArabEmiratesUaeAbuDhabiDubaiSharjahAjmanFujairahRasAlKaimahUmmAlQaiwainOnshoreAndOffshoreNahrwan1967ReferencesTheClarke1880RgsEllipsoidAndTheGreenwichPrimeMeridianNahrwan1967OriginIsFundamentalPointNahrwanSouthBaseLatitude33191087NLongitude44432554EOfGreenwichNahrwan1967IsAGeodeticDatumForTopographicMappingInIraqReplacesNahrwan1934")]
+		[EnumMember(Value = "Revised Nahrwan")] 
+		RevisedNahrwan = 123,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1987SuitableForUseInGreeceOnshoreGreekGeodeticReferenceSystem1987ReferencesTheGrs1980EllipsoidAndTheGreenwichPrimeMeridianGreekGeodeticReferenceSystem1987OriginIsFundamentalPointDionysosLatitude3804338NLongitude2355510EOfGreenwichGeoidHeight70MGreekGeodeticReferenceSystem1987IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromLPortokalakisPublicPetroleumCorporationOfGreeceReplacedOldGreekDatumOilIndustryWorkBasedOnEd50")]
+		[EnumMember(Value = "GGRS 76 (Greece)")] 
+		Ggrs76Greece = 124,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1895SuitableForUseInFranceOnshoreMainlandAndCorsicaNouvelleTriangulationFrancaiseReferencesTheClarke1880IgnEllipsoidAndTheGreenwichPrimeMeridianNouvelleTriangulationFrancaiseOriginIsFundamentalPointPantheonLatitude485046522NLongitude22048667EOfGreenwichNouvelleTriangulationFrancaiseIsAGeodeticDatumForTopographicMapping")]
+		[EnumMember(Value = "Nouvelle Triangulation de France")] 
+		NouvelleTriangulationDeFrance = 125,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1982SuitableForUseInSwedenOnshoreAndOffshoreRiketsKoordinatsystem1990ReferencesTheBessel1841EllipsoidAndTheGreenwichPrimeMeridianRiketsKoordinatsystem1990IsAGeodeticDatumForGeodeticSurveyCadastreTopographicMappingEngineeringSurveyItWasDefinedByInformationFromNationalLandSurveyOfSwedenReplacesRt38AdjustmentDatumCode6308")]
+		[EnumMember(Value = "RT 90 (Sweden)")] 
+		Rt90Sweden = 126,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1994SuitableForUseInAustraliaIncludingLordHoweIslandMacquarieIslandsAshmoreAndCartierIslandsChristmasIslandCocosKeelingIslandsNorfolkIslandAllOnshoreAndOffshoreGeocentricDatumOfAustralia1994ReferencesTheGrs1980EllipsoidAndTheGreenwichPrimeMeridianGeocentricDatumOfAustralia1994OriginIsItrf92AtEpoch19940GeocentricDatumOfAustralia1994IsAGeodeticDatumForTopographicMappingGeodeticSurveyItWasDefinedByInformationFromAustralianSurveyingAndLandInformationGroupInternetWwwPageHttpWwwAusligGovAuGeodesyDatumsGdaHtmSpecsCoincidentWithWgs84ToWithin1Metre")]
+		[EnumMember(Value = "Geocentric Datum of Australia")] 
+		GeocentricDatumOfAustralia = 127,
+
+		[System.ComponentModel.Description("AGeodeticDatumFirstDefinedIn1954SuitableForUseInChinaOnshoreBeijing1954ReferencesTheKrassowsky1940EllipsoidAndTheGreenwichPrimeMeridianBeijing1954OriginIsPulkovoTransferredThroughRussianTriangulationBeijing1954IsAGeodeticDatumForTopographicMappingItWasDefinedByInformationFromChineseScienceBulletin20095427142721ScaleDeterminedThroughThreeBaselinesInNortheastChinaDiscontinuitiesAtBoundariesOfAdjustmentBlocksFrom1982ReplacedByXian1980AndNewBeijing")]
+		[EnumMember(Value = "BJZ54 (A954 Beijing Coordinates)")] 
+		Bjz54A954BeijingCoordinates = 128,
+
+		[System.ComponentModel.Description("ModifiedBjz54Datum")]
+		[EnumMember(Value = "Modified BJZ54")] 
+		ModifiedBjz54 = 129,
+
+		[System.ComponentModel.Description("Gdz80Datum")]
+		[EnumMember(Value = "GDZ80")] 
+		Gdz80 = 130,
+
+		[System.ComponentModel.Description("AnArbitraryDatumDefinedByALocalHarbourAuthorityFromWhichLevelsAndTidalHeightsAreMeasuredByThisAuthority")]
+		[EnumMember(Value = "Local Datum")] 
+		LocalDatum = 131,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum signalStatus : int {
+		[System.ComponentModel.Description("TheIndicationOfAnElementOfASignalSequenceBeingAPeriodOfLightOrSound")]
+		[EnumMember(Value = "Lit/Sound")] 
+		LitSound = 1,
+
+		[System.ComponentModel.Description("TheIndicationOfAnElementOfASignalSequenceBeingAPeriodOfEclipseOrSilence")]
+		[EnumMember(Value = "Eclipsed/Silent")] 
+		EclipsedSilent = 2,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfCable : int {
+		[System.ComponentModel.Description("ACableThatTransmitsOrDistributesElectricalPower")]
+		[EnumMember(Value = "Power Line")] 
+		PowerLine = 1,
+
+		[System.ComponentModel.Description("MultipleUnInsulatedCablesUsuallySupportedBySteelLatticeTowersSuchFeaturesAreGenerallyMoreProminentThanNormalPowerLines")]
+		[EnumMember(Value = "Transmission Line")] 
+		TransmissionLine = 3,
+
+		[System.ComponentModel.Description("ACableThatTransmitsTelephoneSignals")]
+		[EnumMember(Value = "Telephone")] 
+		Telephone = 4,
+
+		[System.ComponentModel.Description("AnApparatusSystemOrProcessForCommunicationAtADistanceByElectricTransmissionOverWire")]
+		[EnumMember(Value = "Telegraph")] 
+		Telegraph = 5,
+
+		[System.ComponentModel.Description("AChainOrVeryStrongFibreOrWireRopeUsedToAnchorOrMoorVesselsOrBuoys")]
+		[EnumMember(Value = "Mooring Cable")] 
+		MooringCable = 6,
+
+		[System.ComponentModel.Description("AVesselForTransportingPassengersVehiclesAndOrGoodsAcrossAStretchOfWaterEspeciallyAsARegularService")]
+		[EnumMember(Value = "Ferry")] 
+		Ferry = 7,
+
+		[System.ComponentModel.Description("ACableMadeOfGlassOrPlasticFiberDesignedToGuideLightAlongItsLengthFibreOpticCablesAreWidelyUsedInFiberOpticCommunicationWhichPermitsTransmissionOverLongerDistancesAndAtHigherDataRatesThanOtherFormsOfCommunication")]
+		[EnumMember(Value = "Fibre Optic Cable")] 
+		FibreOpticCable = 8,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum ShackleType : int {
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "forelock shackles ")] 
+		ForelockShackles = 1,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "clenching shackles ")] 
+		ClenchingShackles = 2,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "bolt shackles ")] 
+		BoltShackles = 3,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "screw pin shackles ")] 
+		ScrewPinShackles = 4,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "kenter shackle ")] 
+		KenterShackle = 5,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "quick release link ")] 
+		QuickReleaseLink = 6,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfPile : int {
+		[System.ComponentModel.Description("AnElongatedWoodOrMetalPoleEmbeddedInTheSeabedToServeAsAMarkerOrSupport")]
+		[EnumMember(Value = "Stake")] 
+		Stake = 1,
+
+		[System.ComponentModel.Description("AVerticalPieceOfTimberMetalOrConcreteForcedIntoTheEarthOrSeaBed")]
+		[EnumMember(Value = "Post")] 
+		Post = 3,
+
+		[System.ComponentModel.Description("ASingleStructureComprising3OrMorePilesHeldTogetherSectionsOfHeavyTimberSteelOrConcreteAndForcedIntoTheEarthOrSeaBed")]
+		[EnumMember(Value = "Tripodal")] 
+		Tripodal = 4,
+
+		[System.ComponentModel.Description("ANumberOfPilesUsuallyInAStraightLineAndUsuallyConnectedOrBoltedTogether")]
+		[EnumMember(Value = "Piling")] 
+		Piling = 5,
+
+		[System.ComponentModel.Description("ANumberOfPilesUsuallyInAStraightLineButNotConnectedByStructuralMembers")]
+		[EnumMember(Value = "Area of Piles")] 
+		AreaOfPiles = 6,
+
+		[System.ComponentModel.Description("AVerticalHollowCylinderOfMetalWoodOrOtherMaterialForcedIntoTheEarthOrSeabed")]
+		[EnumMember(Value = "Pipe")] 
+		Pipe = 7,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfSiloTank : int {
+		[System.ComponentModel.Description("ALargeStorageStructureUsedForStoringLooseMaterials")]
+		[EnumMember(Value = "Silo in General")] 
+		SiloInGeneral = 1,
+
+		[System.ComponentModel.Description("AFixedStructureForStoringLiquids")]
+		[EnumMember(Value = "Tank in General")] 
+		TankInGeneral = 2,
+
+		[System.ComponentModel.Description("AStorageBuildingForGrainUsuallyATallFrameMetalOrConcreteStructureWithAnEspeciallyCompartmentedInterior")]
+		[EnumMember(Value = "Grain Elevator")] 
+		GrainElevator = 3,
+
+		[System.ComponentModel.Description("ATowerSupportingAnElevatedStorageTankOfWater")]
+		[EnumMember(Value = "Water Tower")] 
+		WaterTower = 4,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum buildingShape : int {
+		[System.ComponentModel.Description("ABuildingHavingManyStoreys")]
+		[EnumMember(Value = "High-Rise Building")] 
+		HighRiseBuilding = 5,
+
+		[System.ComponentModel.Description("APolyhedronOfWhichOneFaceIsAPolygonOfAnyNumberOfSidesAndTheOtherFacesAreTrianglesWithACommonVertex")]
+		[EnumMember(Value = "Pyramid")] 
+		Pyramid = 6,
+
+		[System.ComponentModel.Description("ShapedLikeACylinderWhichIsASolidGeometricalFigureGeneratedByStraightLinesFixedInDirectionAndDescribingWithOneOfItsPointsAClosedCurveEspeciallyACircle")]
+		[EnumMember(Value = "Cylindrical")] 
+		Cylindrical = 7,
+
+		[System.ComponentModel.Description("ShapedLikeASphereWhichIsABodyTheSurfaceOfWhichIsAtAllPointsEquidistantFromTheCentre")]
+		[EnumMember(Value = "Spherical")] 
+		Spherical = 8,
+
+		[System.ComponentModel.Description("AShapeTheSidesOfWhichAreSixEqualSquaresARegularHexahedron")]
+		[EnumMember(Value = "Cubic")] 
+		Cubic = 9,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum product : int {
+		[System.ComponentModel.Description("AThickSlipperyLiquidThatWillNotDissolveInWaterUsuallyPetroleumBasedInTheContextOfStorageTanks")]
+		[EnumMember(Value = "Oil")] 
+		Oil = 1,
+
+		[System.ComponentModel.Description("ASubstanceWithParticlesThatCanMoveFreelyUsuallyAFuelSubstanceInTheContextOfStorageTanks")]
+		[EnumMember(Value = "Gas")] 
+		Gas = 2,
+
+		[System.ComponentModel.Description("AColourlessOdourlessTastelessLiquidThatIsACompoundOfHydrogenAndOxygen")]
+		[EnumMember(Value = "Water")] 
+		Water = 3,
+
+		[System.ComponentModel.Description("AGeneralTermForRockAndRockFragmentsRangingInSizeFromPebblesAndGravelToBouldersOrLargeRockMasses")]
+		[EnumMember(Value = "Stone")] 
+		Stone = 4,
+
+		[System.ComponentModel.Description("AHardBlackMineralThatIsBurnedAsFuel")]
+		[EnumMember(Value = "Coal")] 
+		Coal = 5,
+
+		[System.ComponentModel.Description("ASolidRockOrMineralFromWhichMetalIsObtained")]
+		[EnumMember(Value = "Ore")] 
+		Ore = 6,
+
+		[System.ComponentModel.Description("AnySubstanceObtainedByOrUsedInAChemicalProcess")]
+		[EnumMember(Value = "Chemicals")] 
+		Chemicals = 7,
+
+		[System.ComponentModel.Description("WaterThatIsSuitableForHumanConsumption")]
+		[EnumMember(Value = "Drinking Water")] 
+		DrinkingWater = 8,
+
+		[System.ComponentModel.Description("AWhiteFluidSecretedByFemaleMammalsAsFoodForTheirYoung")]
+		[EnumMember(Value = "Milk")] 
+		Milk = 9,
+
+		[System.ComponentModel.Description("AMineralFromWhichAluminumIsObtained")]
+		[EnumMember(Value = "Bauxite")] 
+		Bauxite = 10,
+
+		[System.ComponentModel.Description("ASolidSubstanceObtainedAfterGasAndTarHaveBeenExtractedFromCoalUsedAsAFuel")]
+		[EnumMember(Value = "Coke")] 
+		Coke = 11,
+
+		[System.ComponentModel.Description("AnOblongLumpOfCastIronMetal")]
+		[EnumMember(Value = "Iron Ingots")] 
+		IronIngots = 12,
+
+		[System.ComponentModel.Description("SodiumChlorideObtainedFromMinesOrByTheEvaporationOfSeaWater")]
+		[EnumMember(Value = "Salt")] 
+		Salt = 13,
+
+		[System.ComponentModel.Description("LooseMaterialConsistingOfSmallButEasilyDistinguishableSeparateGrainsBetween00625And2000MillimetresInDiameter")]
+		[EnumMember(Value = "Sand")] 
+		Sand = 14,
+
+		[System.ComponentModel.Description("WoodPreparedForUseInBuildingOrCarpentry")]
+		[EnumMember(Value = "Timber")] 
+		Timber = 15,
+
+		[System.ComponentModel.Description("PowderyFragmentsOfWoodMadeInSawingTimberOrCoarseChipsProducedForUseInManufacturingPressedBoard")]
+		[EnumMember(Value = "Sawdust/Wood Chips")] 
+		SawdustWoodChips = 16,
+
+		[System.ComponentModel.Description("DiscardedMetalSuitableForBeingReprocessed")]
+		[EnumMember(Value = "Scrap Metal")] 
+		ScrapMetal = 17,
+
+		[System.ComponentModel.Description("NaturalGasThatHasBeenLiquefiedForEaseOfTransportByCoolingTheGasTo162Celsius")]
+		[EnumMember(Value = "Liquefied Natural Gas")] 
+		LiquefiedNaturalGas = 18,
+
+		[System.ComponentModel.Description("ACompressedGasConsistingOfFlammableLightHydrocarbonsAndDerivedFromPetroleum")]
+		[EnumMember(Value = "Liquefied Petroleum Gas")] 
+		LiquefiedPetroleumGas = 19,
+
+		[System.ComponentModel.Description("TheFermentedJuiceOfGrapes")]
+		[EnumMember(Value = "Wine")] 
+		Wine = 20,
+
+		[System.ComponentModel.Description("ASubstanceMadeOfPowderedLimeAndClayMixedWithWater")]
+		[EnumMember(Value = "Cement")] 
+		Cement = 21,
+
+		[System.ComponentModel.Description("ASmallHardSeedEspeciallyThatOfAnyCerealPlantSuchAsWheatRiceCornRyeEtc")]
+		[EnumMember(Value = "Grain")] 
+		Grain = 22,
+
+		[System.ComponentModel.Description("ElectricChargeOrCurrent")]
+		[EnumMember(Value = "Electricity")] 
+		Electricity = 23,
+
+		[System.ComponentModel.Description("TheSolidFormOfWater")]
+		[EnumMember(Value = "Ice")] 
+		Ice = 24,
+
+		[System.ComponentModel.Description("ParticlesOfLessThan0002mmStiffStickyEarthThatBecomesHardWhenBaked")]
+		[EnumMember(Value = "Clay")] 
+		Clay = 25,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfOffshorePlatform : int {
+		[System.ComponentModel.Description("ATemporaryMobileStructureEitherFixedOrFloatingUsedInTheExplorationStagesOfOilAndGasFields")]
+		[EnumMember(Value = "Oil Rig")] 
+		OilRig = 1,
+
+		[System.ComponentModel.Description("ATermUsedToIndicateAPermanentOffshoreStructureEquippedToControlTheFlowOfOilOrGasItDoesNotIncludeEntirelySubmarineStructures")]
+		[EnumMember(Value = "Production Platform")] 
+		ProductionPlatform = 2,
+
+		[System.ComponentModel.Description("APlatformFromWhichOneSSurroundingsOrEventsCanBeObservedNotedOrRecordedSuchAsForScientificStudy")]
+		[EnumMember(Value = "Observation/Research Platform")] 
+		ObservationResearchPlatform = 3,
+
+		[System.ComponentModel.Description("AMetalLatticeTowerBuoyantAtOneEndAndAttachedAtTheOtherByAUniversalJointToAConcreteFilledBaseOnTheSeaBedThePlatformMayBeFittedWithAHelicopterPlatformEmergencyAccommodationAndHawserHoseRetrieval")]
+		[EnumMember(Value = "Articulated Loading Platform")] 
+		ArticulatedLoadingPlatform = 4,
+
+		[System.ComponentModel.Description("ARigidFrameOrTubeWithABuoyancyDeviceAtItsUpperEndSecuredAtItsLowerEndToAUniversalJointOnALargeSteelOrConcreteBaseRestingOnTheSeaBedAndAtItsUpperEndToAMooringBuoyByAChainOrWire")]
+		[EnumMember(Value = "Single Anchor Leg Mooring")] 
+		SingleAnchorLegMooring = 5,
+
+		[System.ComponentModel.Description("APlatformSecuredToTheSeaBedAndSurmountedByATurntableToWhichShipsMoor")]
+		[EnumMember(Value = "Mooring Tower")] 
+		MooringTower = 6,
+
+		[System.ComponentModel.Description("AManMadeStructureUsuallyBuiltForTheExplorationOrExploitationOfMarineResourcesMarineScientificResearchTidalObservationsEtc")]
+		[EnumMember(Value = "Artificial Island")] 
+		ArtificialIsland = 7,
+
+		[System.ComponentModel.Description("AnOffshoreOilGasFacilityConsistingOfAMooredTankerBargeByWhichTheProductIsExtractedStoredAndExported")]
+		[EnumMember(Value = "Floating Production, Storage and Off-Loading Vessel")] 
+		FloatingProductionStorageAndOffLoadingVessel = 8,
+
+		[System.ComponentModel.Description("APlatformUsedPrimarilyForEatingSleepingAndRecreationPurposes")]
+		[EnumMember(Value = "Accommodation Platform")] 
+		AccommodationPlatform = 9,
+
+		[System.ComponentModel.Description("AFloatingStructureWithControlRoomPowerAndStorageFacilitiesAttachedToTheSeaBedByAFlexiblePipelineAndCables")]
+		[EnumMember(Value = "Navigation, Communication and Control Buoy")] 
+		NavigationCommunicationAndControlBuoy = 10,
+
+		[System.ComponentModel.Description("AFloatingStructureAnchoredToTheSeabedForStoringOil")]
+		[EnumMember(Value = "Floating Oil Tank")] 
+		FloatingOilTank = 11,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfCardinalMark : int {
+		[System.ComponentModel.Description("QuadrantBoundedByTheTrueBearingNwNeTakenFromThePointOfInterestItShouldBePassedToTheNorthSideOfTheMark")]
+		[EnumMember(Value = "North Cardinal Mark")] 
+		NorthCardinalMark = 1,
+
+		[System.ComponentModel.Description("QuadrantBoundedByTheTrueBearingNeSeTakenFromThePointOfInterestItShouldBePassedToTheEastSideOfTheMark")]
+		[EnumMember(Value = "East Cardinal Mark")] 
+		EastCardinalMark = 2,
+
+		[System.ComponentModel.Description("QuadrantBoundedByTheTrueBearingSeSwTakenFromThePointOfInterestItShouldBePassedToTheSouthSideOfTheMark")]
+		[EnumMember(Value = "South Cardinal Mark")] 
+		SouthCardinalMark = 3,
+
+		[System.ComponentModel.Description("QuadrantBoundedByTheTrueBearingSwNwTakenFromThePointOfInterestItShouldBePassedToTheWestSideOfTheMark")]
+		[EnumMember(Value = "West Cardinal Mark")] 
+		WestCardinalMark = 4,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum lightCharacteristic : int {
+		[System.ComponentModel.Description("ASignalLightThatShowsContinuouslyInAnyGivenDirectionWithConstantLuminousIntensityAndColour")]
+		[EnumMember(Value = "Fixed")] 
+		Fixed = 1,
+
+		[System.ComponentModel.Description("ARhythmicLightInWhichTheTotalDurationOfLightInAPeriodIsClearlyShorterThanTheTotalDurationOfDarknessAndAllTheAppearancesOfLightAreOfEqualDuration")]
+		[EnumMember(Value = "Flashing")] 
+		Flashing = 2,
+
+		[System.ComponentModel.Description("ASingleFlashingLightInWhichASingleFlashOfNotLessThanTwoSecondsDurationIsRegularlyRepeated")]
+		[EnumMember(Value = "Long-Flashing")] 
+		LongFlashing = 3,
+
+		[System.ComponentModel.Description("ARhythmicLightInWhichFlashesAreRepeatedAtARateOfNotLessThan50FlashesPerMinutesButLessThan80FlashesPerMinutesItMayBeContinuousQuickFlashingAQuickFlashingLightInWhichAFlashIsRegularlyRepeatedGroupQuickFlashingAQuickFlashingLightInWhichAGroupOfTwoOrMoreFlashesWhichAreSpecifiedInNumberIsRegularlyRepeated")]
+		[EnumMember(Value = "Quick-Flashing")] 
+		QuickFlashing = 4,
+
+		[System.ComponentModel.Description("ARhythmicLightInWhichFlashesAreRepeatedAtARateOfNotLessThan80FlashesPerMinuteButLessThan160FlashesPerMinuteItMayBeContinuousVeryQuickFlashingAVeryQuickFlashingLightInWhichAFlashIsRegularlyRepeatedGroupVeryQuickFlashingAVeryQuickFlashingLightInWhichAGroupOfTwoOrMoreFlashesWhichAreSpecifiedInNumberIsRegularlyRepeated")]
+		[EnumMember(Value = "Very Quick-Flashing")] 
+		VeryQuickFlashing = 5,
+
+		[System.ComponentModel.Description("ARhythmicLightInWhichFlashesAreRegularlyRepeatedAtARateOfNotLessThan160FlashesPerMinute")]
+		[EnumMember(Value = "Continuous Ultra Quick-Flashing")] 
+		ContinuousUltraQuickFlashing = 6,
+
+		[System.ComponentModel.Description("ALightWithAllDurationsOfLightAndDarknessEqual")]
+		[EnumMember(Value = "Isophased")] 
+		Isophased = 7,
+
+		[System.ComponentModel.Description("ARhythmicLightInWhichTheTotalDurationOfLightInAPeriodIsClearlyLongerThanTheTotalDurationOfDarknessAndAllTheEclipsesAreOfEqualDurationItMayBeSingleOccultingAnOccultingLightInWhichAnEclipseIsRegularlyRepeatedGroupOccultingAnOccultingLightInWhichAGroupOfTwoOrMoreEclipsesWhichAreSpecifiedInNumberIsRegularlyRepeatedCompositeGroupOccultingAnOccultingLightInWhichASequenceOfGroupsOfOneOrMoreEclipsesWhichAreSpecifiedInNumberIsRegularlyRepeatedAndTheGroupsCompriseDifferentNumbersOfEclipses")]
+		[EnumMember(Value = "Occulting")] 
+		Occulting = 8,
+
+		[System.ComponentModel.Description("AQuickLightInWhichTheSequenceOfFlashesIsInterruptedByRegularlyRepeatedEclipsesOfConstantAndLongDuration")]
+		[EnumMember(Value = "Interrupted Quick Flashing")] 
+		InterruptedQuickFlashing = 9,
+
+		[System.ComponentModel.Description("ALightInWhichTheVeryRapidAlterationsOfLightAndDarknessAreInterruptedAtRegularIntervalsByEclipsesOfLongDuration")]
+		[EnumMember(Value = "Interrupted Very Quick Flashing")] 
+		InterruptedVeryQuickFlashing = 10,
+
+		[System.ComponentModel.Description("ALightInWhichTheUltraQuickFlashes160OrMorePerMinuteAreInterruptedAtRegularIntervalsByEclipsesOfLongDuration")]
+		[EnumMember(Value = "Interrupted Ultra Quick-Flashing")] 
+		InterruptedUltraQuickFlashing = 11,
+
+		[System.ComponentModel.Description("ARhythmicLightInWhichAppearancesOfLightOfTwoClearlyDifferentDurationsAreGroupedToRepresentACharacterOrCharactersInTheMorseCode")]
+		[EnumMember(Value = "Morse")] 
+		Morse = 12,
+
+		[System.ComponentModel.Description("ARhythmicLightInWhichAFixedLightIsCombinedWithAFlashingLightOfHigherLuminousIntensity")]
+		[EnumMember(Value = "Fixed and Flash")] 
+		FixedAndFlash = 13,
+
+		[System.ComponentModel.Description("ARhythmicLightInWhichAFlashingLightIsCombinedWithALongFlashingLightOfHigherLuminousIntensity")]
+		[EnumMember(Value = "Flash and Long-Flash")] 
+		FlashAndLongFlash = 14,
+
+		[System.ComponentModel.Description("ARhythmicLightInWhichAnOccultingLightIsCombinedWithAFlashingLightOfHigherLuminousIntensity")]
+		[EnumMember(Value = "Occulting and Flash")] 
+		OccultingAndFlash = 15,
+
+		[System.ComponentModel.Description("ARhythmicLightInWhichAFixedLightIsCombinedWithALongFlashingLightOfHigherLuminousIntensity")]
+		[EnumMember(Value = "Fixed and Long-Flash")] 
+		FixedAndLongFlash = 16,
+
+		[System.ComponentModel.Description("AnAlternatingLightInWhichTheTotalDurationOfLightInEachPeriodIsClearlyLongerThanTheTotalDurationOfDarknessAndInWhichTheIntervalsOfDarknessOccultationsAreAllOfEqualDuration")]
+		[EnumMember(Value = "Occulting Alternating")] 
+		OccultingAlternating = 17,
+
+		[System.ComponentModel.Description("AnAlternatingSingleFlashingLightInWhichAnAppearanceOfLightOfNotLessThanTwoSecondsDurationIsRegularlyRepeated")]
+		[EnumMember(Value = "Long-Flash Alternating")] 
+		LongFlashAlternating = 18,
+
+		[System.ComponentModel.Description("AnAlternatingRhythmicLightInWhichTheTotalDurationOfLightInAPeriodIsClearlyShorterThanTheTotalDurationOfDarknessAndAllTheAppearancesOfLightAreOfEqualDuration")]
+		[EnumMember(Value = "Flash Alternating")] 
+		FlashAlternating = 19,
+
+		[System.ComponentModel.Description("OccultingLightInWhichTheOccultationsAreCombinedInGroupsEachGroupIncludingTheSameNumberOfOccultationsAndInWhichTheGroupsAreRepeatedAtRegularIntervals")]
+		[EnumMember(Value = "Group Alternating")] 
+		GroupAlternating = 20,
+
+		[System.ComponentModel.Description("ARhythmicLightInWhichAGroupOfQuickFlashesIsFollowedByOneOrMoreLongFlashesInARegularlyRepeatedSequenceWithARegularPeriodicity")]
+		[EnumMember(Value = "Quick-Flash Plus Long-Flash")] 
+		QuickFlashPlusLongFlash = 25,
+
+		[System.ComponentModel.Description("ARhythmicLightInWhichAGroupOfVeryQuickFlashesIsFollowedByOneOrMoreLongFlashesInARegularlyRepeatedSequenceWithARegularPeriodicity")]
+		[EnumMember(Value = "Very Quick-Flash Plus Long-Flash")] 
+		VeryQuickFlashPlusLongFlash = 26,
+
+		[System.ComponentModel.Description("ARhythmicLightInWhichAGroupOfUltraQuickFlashesIsFollowedByOneOrMoreLongFlashesInARegularlyRepeatedSequenceWithARegularPeriodicity")]
+		[EnumMember(Value = "Ultra Quick-Flash Plus Long-Flash")] 
+		UltraQuickFlashPlusLongFlash = 27,
+
+		[System.ComponentModel.Description("ASignalLightThatShowsInAnyGivenDirectionTwoOrMoreColoursInARegularlyRepeatedSequenceWithARegularPeriodicity")]
+		[EnumMember(Value = "Alternating")] 
+		Alternating = 28,
+
+		[System.ComponentModel.Description("AnOccultingLightInWhichAGroupOfTwoOrMoreEclipsesWhichAreSpecifiedInNumberIsRegularlyRepeated")]
+		[EnumMember(Value = "Group-occulting light")] 
+		GroupOccultingLight = 29,
+
+		[System.ComponentModel.Description("AnOccultingLightInWhichASequenceOfGroupsOfOneOrMoreEclipsesWhichAreSpecifiedInNumberIsRegularlyRepeatedAndTheGroupsCompriseDifferentNumbersOfEclipses")]
+		[EnumMember(Value = "Composite group-occulting light")] 
+		CompositeGroupOccultingLight = 30,
+
+		[System.ComponentModel.Description("AFlashingLightInWhichAGroupOfFlashesSpecifiedInNumberIsRegularlyRepeated")]
+		[EnumMember(Value = "Group flashing light")] 
+		GroupFlashingLight = 31,
+
+		[System.ComponentModel.Description("ALightSimilarToAGroupFlashingLightExceptThatSuccessiveGroupsInAPeriodHaveDifferentNumbersOfFlashes")]
+		[EnumMember(Value = "Composite group-flashing light")] 
+		CompositeGroupFlashingLight = 32,
+
+		[System.ComponentModel.Description("AQuickFlashingLightInWhichAGroupOfTwoOrMoreFlashesWhichAreSpecifiedInNumberIsRegularlyRepeated")]
+		[EnumMember(Value = "Group quick light")] 
+		GroupQuickLight = 33,
+
+		[System.ComponentModel.Description("AVeryQuickFlashingLightInWhichAGroupOfTwoOrMoreFlashesWhichAreSpecifiedInNumberIsRegularlyRepeated")]
+		[EnumMember(Value = "Group very quick light")] 
+		GroupVeryQuickLight = 34,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum CategoryOfPowerSource : int {
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "battery ")] 
+		Battery = 1,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "generator ")] 
+		Generator = 2,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "solar panel ")] 
+		SolarPanel = 3,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "electrical service ")] 
+		ElectricalService = 4,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum CategoryOfSyntheticAISAidtoNavigation : int {
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "predicted")] 
+		Predicted = 1,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "monitored")] 
+		Monitored = 2,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum CategoryOfPhysicalAISAidToNavigation : int {
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Physical AIS Type 1")] 
+		PhysicalAisType1 = 1,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Physical AIS Type 2")] 
+		PhysicalAisType2 = 2,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Physical AIS Type 3")] 
+		PhysicalAisType3 = 3,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum virtualAISAidToNavigationType : int {
+		[System.ComponentModel.Description("IndicatesThatItShouldBePassedToTheNorthSideOfTheAid")]
+		[EnumMember(Value = "North Cardinal")] 
+		NorthCardinal = 1,
+
+		[System.ComponentModel.Description("IndicatesThatItShouldBePassedToTheEastSideOfTheAid")]
+		[EnumMember(Value = "East Cardinal")] 
+		EastCardinal = 2,
+
+		[System.ComponentModel.Description("IndicatesThatItShouldBePassedToTheSouthSideOfTheAid")]
+		[EnumMember(Value = "South Cardinal")] 
+		SouthCardinal = 3,
+
+		[System.ComponentModel.Description("IndicatesThatItShouldBePassedToTheWestSideOfTheAid")]
+		[EnumMember(Value = "West Cardinal")] 
+		WestCardinal = 4,
+
+		[System.ComponentModel.Description("IndicatesThePortBoundaryOfANavigationalChannelOrSuggestedRouteWhenProceedingInTheConventionalDirectionOfBuoyage")]
+		[EnumMember(Value = "Port Lateral")] 
+		PortLateral = 5,
+
+		[System.ComponentModel.Description("IndicatesTheStarboardBoundaryOfANavigationalChannelOrSuggestedRouteWhenProceedingInTheConventionalDirectionOfBuoyage")]
+		[EnumMember(Value = "Starboard Lateral")] 
+		StarboardLateral = 6,
+
+		[System.ComponentModel.Description("AtAPointWhereAChannelDividesWhenProceedingInTheConventionalDirectionOfBuoyageThePreferredChannelOrPrimaryRouteIsIndicatedByAModifiedPortHandLateralMark")]
+		[EnumMember(Value = "Preferred Channel to Port")] 
+		PreferredChannelToPort = 7,
+
+		[System.ComponentModel.Description("AtAPointWhereAChannelDividesWhenProceedingInTheConventionalDirectionOfBuoyageThePreferredChannelOrPrimaryRouteIsIndicatedByAModifiedStarboardHandLateralMark")]
+		[EnumMember(Value = "Preferred Channel to Starboard")] 
+		PreferredChannelToStarboard = 8,
+
+		[System.ComponentModel.Description("AMarkUsedAloneToIndicateADangerousReefOrShoalTheMarkMayBePassedOnEitherHand")]
+		[EnumMember(Value = "Isolated Danger")] 
+		IsolatedDanger = 9,
+
+		[System.ComponentModel.Description("IndicatesThatThereIsNavigableWaterAroundTheMark")]
+		[EnumMember(Value = "Safe Water")] 
+		SafeWater = 10,
+
+		[System.ComponentModel.Description("ASpecialPurposeAidIsPrimarilyUsedToIndicateAnAreaOrFeatureTheNatureOfWhichIsApparentFromReferenceToAChartSailingDirectionsOrNoticeToMariners")]
+		[EnumMember(Value = "Special Purpose")] 
+		SpecialPurpose = 11,
+
+		[System.ComponentModel.Description("AMarkUsedToIndicateTheExistenceOfARecentlyIdentifiedNewDangerSuchAsAWreck")]
+		[EnumMember(Value = "New Danger Marking")] 
+		NewDangerMarking = 12,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfRadarTransponderBeacon : int {
+		[System.ComponentModel.Description("ARadarMarkerBeaconWhichContinuouslyTransmitsASignalAppearingAsARadialLineOnARadarScreenTheLineIndicatingTheDirectionOfTheBeaconRamarksAreIntendedPrimarilyForMarineUseTheNameRamarkIsDerivedFromTheWordsRadarMarker")]
+		[EnumMember(Value = "Ramark, Radar Beacon Transmitting Continuously")] 
+		RamarkRadarBeaconTransmittingContinuously = 1,
+
+		[System.ComponentModel.Description("ARadarBeaconWhichReturnsACodedSignalWhichProvidesIdentificationOfTheBeaconAsWellAsRangeAndBearingTheRangeAndBearingAreIndicatedByTheLocationOfTheFirstCharacterReceivedOnTheRadarScreenTheNameRaconIsDerivedFromTheWordsRadarBeacon")]
+		[EnumMember(Value = "Racon, Radar Transponder Beacon")] 
+		RaconRadarTransponderBeacon = 2,
+
+		[System.ComponentModel.Description("ARadarBeaconThatMayBeUsedInConjunctionWithAtLeastOneOtherRadarBeaconToIndicateALeadingLine")]
+		[EnumMember(Value = "Leading Racon/Radar Transponder Beacon")] 
+		LeadingRaconRadarTransponderBeacon = 3,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum topmarkDaymarkShape : int {
+		[System.ComponentModel.Description("IsWhereTheVertexPointsUpAConeIsASolidFigureGeneratedByStraightLinesDrawnFromAFixedPointTheVertexToACircleInAPlaneNotContainingTheVertexConesAreCommonlyUsedAsInternationalAssociationOfLighthouseAuthoritiesIalaTopmarksLateral")]
+		[EnumMember(Value = "Cone (Point Up)")] 
+		ConePointUp = 1,
+
+		[System.ComponentModel.Description("IsWhereTheVertexPointsDownAConeIsASolidFigureGeneratedByStraightLinesDrawnFromAFixedPointTheVertexToACircleInAPlaneNotContainingTheVertexConesAreCommonlyUsedAsInternationalAssociationOfLighthouseAuthoritiesIalaTopmarksLateral")]
+		[EnumMember(Value = "Cone (Point Down)")] 
+		ConePointDown = 2,
+
+		[System.ComponentModel.Description("ACurvedSurfaceAllPointsOfWhichAreEquidistantFromAFixedPointWithinCalledTheCentre")]
+		[EnumMember(Value = "Sphere")] 
+		Sphere = 3,
+
+		[System.ComponentModel.Description("TwoSpheresOneAboveTheOtherTwoBlackSpheresAreCommonlyUsedAsAnInternationalAssociationOfLighthouseAuthoritiesIalaTopmarkIsolatedDanger")]
+		[EnumMember(Value = "2 Spheres")] 
+		twoSpheres = 4,
+
+		[System.ComponentModel.Description("ASolidGeometricalFigureGeneratedByStraightLinesFixedInDirectionAndDescribingWithOneOfPointAClosedCurveEspeciallyACircleInWhichCaseTheFigureIsCircularCylinderItSEndsBeingParallelCirclesCylindersAreCommonlyUsedAsInternationalAssociationOfLighthouseAuthoritiesIalaTopmarksLateral")]
+		[EnumMember(Value = "Cylinder")] 
+		Cylinder = 5,
+
+		[System.ComponentModel.Description("UsuallyOfRectangularShapeMadeFromTimberOrMetalAndUsedToProvideAContrastWithTheNaturalBackgroundOfADaymarkTheActualDaymarkIsOftenPaintedOnToThisBoard")]
+		[EnumMember(Value = "Board")] 
+		Board = 6,
+
+		[System.ComponentModel.Description("HavingAShapeOrACrossSectionLikeTheCapitalLetterXAnXShapeAsAnInternationalAssociationOfLighthouseAuthoritiesIalaTopmarkShouldBe3DimensionalInShapeItIsMadeOfAtLeastThreeCrossedBars")]
+		[EnumMember(Value = "X-Shaped")] 
+		XShaped = 7,
+
+		[System.ComponentModel.Description("ACrossWithOneVerticalMemberAndOneHorizontalMemberThatIsSimilarInShapeToTheCharacter")]
+		[EnumMember(Value = "Upright Cross")] 
+		UprightCross = 8,
+
+		[System.ComponentModel.Description("ACubeStandingOnOneOfItsVertexesACubeIsASolidContainedBySixEqualSquaresARegularHexahedron")]
+		[EnumMember(Value = "Cube (Point Up)")] 
+		CubePointUp = 9,
+
+		[System.ComponentModel.Description("twoConesOneAboveTheOtherWithTheirVerticesTogetherInTheCentre")]
+		[EnumMember(Value = "2 Cones (Point to Point)")] 
+		twoConesPointToPoint = 10,
+
+		[System.ComponentModel.Description("twoConesOneAboveTheOtherWithTheirBasesTogetherInTheCentreAndTheirVerticesPointingUpAndDown")]
+		[EnumMember(Value = "2 Cones (Base to Base)")] 
+		twoConesBaseToBase = 11,
+
+		[System.ComponentModel.Description("APlaneFigureHavingFourEqualSidesAndEqualOppositeAnglesTwoAcuteAndTwoObtuseAnObliqueEquilateralParallelogram")]
+		[EnumMember(Value = "Rhombus")] 
+		Rhombus = 12,
+
+		[System.ComponentModel.Description("twoConesOneAboveTheOtherWithTheirVerticesPointingUp")]
+		[EnumMember(Value = "2 Cones (Points Upward)")] 
+		twoConesPointsUpward = 13,
+
+		[System.ComponentModel.Description("twoConesOneAboveTheOtherWithTheirVerticesPointingDown")]
+		[EnumMember(Value = "2 Cones (Points Downward)")] 
+		twoConesPointsDownward = 14,
+
+		[System.ComponentModel.Description("BesomABundleOfRodsOrTwigsPerchAStaffPlacedOnTopOfABuoyRockOrShoalAsAMarkForNavigationABesomPointUpIsWhereTheThickerUntiedEndOfTheBesomIsAtTheBottom")]
+		[EnumMember(Value = "Besom (Point Up)")] 
+		BesomPointUp = 15,
+
+		[System.ComponentModel.Description("BesomABundleOfRodsOrTwigsPerchAStaffPlacedOnTopOfABuoyRockOrShoalAsAMarkForNavigationABesomPointDownIsWhereTheThinnerTiedEndOfTheBesomIsAtTheBottom")]
+		[EnumMember(Value = "Besom (Point Down)")] 
+		BesomPointDown = 16,
+
+		[System.ComponentModel.Description("AFlagMountedOnAShortPole")]
+		[EnumMember(Value = "Flag")] 
+		Flag = 17,
+
+		[System.ComponentModel.Description("ASphereLocatedAboveARhombus")]
+		[EnumMember(Value = "Sphere Over a Rhombus")] 
+		SphereOverARhombus = 18,
+
+		[System.ComponentModel.Description("APlaneFigureWithFourRightAnglesAndFourEqualStraightSides")]
+		[EnumMember(Value = "Square")] 
+		Square = 19,
+
+		[System.ComponentModel.Description("WhereTheTwoLongerOppositeSidesAreStandingHorizontallyARectangleIsAPlaneFigureWithFourRightAnglesAndFourStraightSidesOppositeSidesBeingParallelAndEqualInLength")]
+		[EnumMember(Value = "Rectangle (Horizontal)")] 
+		RectangleHorizontal = 20,
+
+		[System.ComponentModel.Description("WhereTheTwoLongerOppositeSidesAreStandingVerticallyARectangleIsAPlaneFigureWithFourRightAnglesAndFourStraightSidesOppositeSidesBeingParallelAndEqualInLength")]
+		[EnumMember(Value = "Rectangle (Vertical)")] 
+		RectangleVertical = 21,
+
+		[System.ComponentModel.Description("AQuadrilateralHavingOnePairOfOppositeSidesParallelAndWhichStandsOnItsLongerParallelSide")]
+		[EnumMember(Value = "Trapezium (Up)")] 
+		TrapeziumUp = 22,
+
+		[System.ComponentModel.Description("AQuadrilateralHavingOnePairOfOppositeSidesParallelAndWhichStandsOnItsShorterParallelSide")]
+		[EnumMember(Value = "Trapezium (Down)")] 
+		TrapeziumDown = 23,
+
+		[System.ComponentModel.Description("AFigureHavingThreeAnglesAndThreeSidesAndWhichHasAVertexAtTheTop")]
+		[EnumMember(Value = "Triangle (Point Up)")] 
+		TrianglePointUp = 24,
+
+		[System.ComponentModel.Description("AFigureHavingThreeAnglesAndThreeSidesAndWhichHasASideAtTheTop")]
+		[EnumMember(Value = "Triangle (Point Down)")] 
+		TrianglePointDown = 25,
+
+		[System.ComponentModel.Description("APerfectlyRoundPlaneFigureWhoseCircumferenceIsEverywhereEquidistantFromItsCentre")]
+		[EnumMember(Value = "Circle")] 
+		Circle = 26,
+
+		[System.ComponentModel.Description("TwoUprightCrossesGenerallyVerticallyDisposedOneAboveTheOther")]
+		[EnumMember(Value = "Two Upright Crosses (One Over the Other)")] 
+		TwoUprightCrossesOneOverTheOther = 27,
+
+		[System.ComponentModel.Description("HavingAShapeLikeTheCapitalLetterT")]
+		[EnumMember(Value = "T-Shape")] 
+		TShape = 28,
+
+		[System.ComponentModel.Description("ATriangleVertexUppermostLocatedAboveACircle")]
+		[EnumMember(Value = "Triangle Pointing Up Over a Circle")] 
+		TrianglePointingUpOverACircle = 29,
+
+		[System.ComponentModel.Description("AnUprightCrossLocatedAboveACircle")]
+		[EnumMember(Value = "Upright Cross Over a Circle")] 
+		UprightCrossOverACircle = 30,
+
+		[System.ComponentModel.Description("ARhombusLocatedAboveACircle")]
+		[EnumMember(Value = "Rhombus Over a Circle")] 
+		RhombusOverACircle = 31,
+
+		[System.ComponentModel.Description("ACircleLocatedOverATriangleVertexUppermost")]
+		[EnumMember(Value = "Circle Over a Triangle Pointing Up")] 
+		CircleOverATrianglePointingUp = 32,
+
+		[System.ComponentModel.Description("AnUncommonAndOrNonStandardizedShapeAsTextuallyDescribedUsingAnAssociatedAttribute")]
+		[EnumMember(Value = "Other Shape (See Shape Information)")] 
+		OtherShapeSeeShapeInformation = 33,
+
+		[System.ComponentModel.Description("HavingTheFormOfOrConsistingOfATube")]
+		[EnumMember(Value = "Tubular")] 
+		Tubular = 34,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfSpecialPurposeMark : int {
+		[System.ComponentModel.Description("AMarkUsedToIndicateAFiringDangerAreaUsuallyAtSea")]
+		[EnumMember(Value = "Firing Danger Mark")] 
+		FiringDangerMark = 1,
+
+		[System.ComponentModel.Description("AnyObjectTowardWhichSomethingIsDirectedTheDistinctiveMarkingOrInstrumentationOfAGroundPointToAidItsIdentificationOnAPhotograph")]
+		[EnumMember(Value = "Target Mark")] 
+		TargetMark = 2,
+
+		[System.ComponentModel.Description("AMarkMarkingThePositionOfAShipWhichIsUsedAsATargetDuringSomeMilitaryExercise")]
+		[EnumMember(Value = "Marker Ship Mark")] 
+		MarkerShipMark = 3,
+
+		[System.ComponentModel.Description("AMarkUsedToIndicateADegaussingRange")]
+		[EnumMember(Value = "Degaussing Range Mark")] 
+		DegaussingRangeMark = 4,
+
+		[System.ComponentModel.Description("AMarkOfRelevanceToBarges")]
+		[EnumMember(Value = "Barge Mark")] 
+		BargeMark = 5,
+
+		[System.ComponentModel.Description("AMarkUsedToIndicateThePositionOfSubmarineCablesOrThePointAtWhichTheyRunOnToTheLand")]
+		[EnumMember(Value = "Cable Mark")] 
+		CableMark = 6,
+
+		[System.ComponentModel.Description("AMarkUsedToIndicateTheLimitOfASpoilGround")]
+		[EnumMember(Value = "Spoil Ground Mark")] 
+		SpoilGroundMark = 7,
+
+		[System.ComponentModel.Description("AMarkUsedToIndicateThePositionOfAnOutfallOrThePointAtWhichItLeavesTheLand")]
+		[EnumMember(Value = "Outfall Mark")] 
+		OutfallMark = 8,
+
+		[System.ComponentModel.Description("OceanDataAcquisitionSystem")]
+		[EnumMember(Value = "ODAS")] 
+		Odas = 9,
+
+		[System.ComponentModel.Description("AMarkUsedToRecordDataForScientificPurposes")]
+		[EnumMember(Value = "Recording Mark")] 
+		RecordingMark = 10,
+
+		[System.ComponentModel.Description("AMarkUsedToIndicateASeaplaneAnchorage")]
+		[EnumMember(Value = "Seaplane Anchorage Mark")] 
+		SeaplaneAnchorageMark = 11,
+
+		[System.ComponentModel.Description("AMarkUsedToIndicateARecreationZone")]
+		[EnumMember(Value = "Recreation Zone Mark")] 
+		RecreationZoneMark = 12,
+
+		[System.ComponentModel.Description("APrivatelyMaintainedMark")]
+		[EnumMember(Value = "Private Mark")] 
+		PrivateMark = 13,
+
+		[System.ComponentModel.Description("AMarkIndicatingAMooringOrMoorings")]
+		[EnumMember(Value = "Mooring Mark")] 
+		MooringMark = 14,
+
+		[System.ComponentModel.Description("ALargeBuoyDesignedToTakeThePlaceOfALightshipWhereConstructionOfAnOffshoreLightStationIsNotFeasible")]
+		[EnumMember(Value = "LANBY")] 
+		Lanby = 15,
+
+		[System.ComponentModel.Description("AidsToNavigationOrOtherIndicatorsSoLocatedAsToIndicateThePathToBeFollowedLeadingMarksIdentifyALeadingLineWhenTheyAreInTransit")]
+		[EnumMember(Value = "Leading Mark")] 
+		LeadingMark = 16,
+
+		[System.ComponentModel.Description("AMarkFormingPartOfATransitIndicatingOneEndOfAMeasuredDistance")]
+		[EnumMember(Value = "Measured Distance Mark")] 
+		MeasuredDistanceMark = 17,
+
+		[System.ComponentModel.Description("ANoticeBoardOrSignIndicatingInformationToTheMariner")]
+		[EnumMember(Value = "Notice Mark")] 
+		NoticeMark = 18,
+
+		[System.ComponentModel.Description("AMarkIndicatingATrafficSeparationScheme")]
+		[EnumMember(Value = "TSS Mark")] 
+		TssMark = 19,
+
+		[System.ComponentModel.Description("AMarkIndicatingAnAnchoringProhibitedArea")]
+		[EnumMember(Value = "Anchoring Prohibited Mark")] 
+		AnchoringProhibitedMark = 20,
+
+		[System.ComponentModel.Description("AMarkIndicatingThatBerthingIsProhibited")]
+		[EnumMember(Value = "Berthing Prohibited Mark")] 
+		BerthingProhibitedMark = 21,
+
+		[System.ComponentModel.Description("AMarkIndicatingThatOvertakingIsProhibited")]
+		[EnumMember(Value = "Overtaking Prohibited Mark")] 
+		OvertakingProhibitedMark = 22,
+
+		[System.ComponentModel.Description("AMarkIndicatingAOneWayRoute")]
+		[EnumMember(Value = "Two-Way Traffic Prohibited Mark")] 
+		TwoWayTrafficProhibitedMark = 23,
+
+		[System.ComponentModel.Description("AMarkIndicatingThatVesselsMustNotGenerateExcessiveWake")]
+		[EnumMember(Value = "Reduced Wake Mark")] 
+		ReducedWakeMark = 24,
+
+		[System.ComponentModel.Description("AMarkIndicatingThatASpeedLimitApplies")]
+		[EnumMember(Value = "Speed Limit Mark")] 
+		SpeedLimitMark = 25,
+
+		[System.ComponentModel.Description("AMarkIndicatingThePlaceWhereTheBowOfAShipMustStopWhenTrafficLightsShowRed")]
+		[EnumMember(Value = "Stop Mark")] 
+		StopMark = 26,
+
+		[System.ComponentModel.Description("AMarkIndicatingThatSpecialCautionMustBeExercisedInTheVicinityOfTheMark")]
+		[EnumMember(Value = "General Warning Mark")] 
+		GeneralWarningMark = 27,
+
+		[System.ComponentModel.Description("AMarkIndicatingThatAShipShouldSoundItsSirenOrHorn")]
+		[EnumMember(Value = "Sound Ship's Siren Mark")] 
+		SoundShipSSirenMark = 28,
+
+		[System.ComponentModel.Description("AMarkIndicatingTheMinimumVerticalSpaceAvailableForPassage")]
+		[EnumMember(Value = "Restricted Vertical Clearance Mark")] 
+		RestrictedVerticalClearanceMark = 29,
+
+		[System.ComponentModel.Description("AMarkIndicatingTheMaximumDraughtOfVesselPermitted")]
+		[EnumMember(Value = "Maximum Vessel's Draught Mark")] 
+		MaximumVesselSDraughtMark = 30,
+
+		[System.ComponentModel.Description("AMarkIndicatingTheMinimumHorizontalSpaceAvailableForPassage")]
+		[EnumMember(Value = "Restricted Horizontal Clearance Mark")] 
+		RestrictedHorizontalClearanceMark = 31,
+
+		[System.ComponentModel.Description("AMarkWarningOfStrongCurrents")]
+		[EnumMember(Value = "Strong Current Warning Mark")] 
+		StrongCurrentWarningMark = 32,
+
+		[System.ComponentModel.Description("AMarkIndicatingThatBerthingIsAllowed")]
+		[EnumMember(Value = "Berthing Permitted Mark")] 
+		BerthingPermittedMark = 33,
+
+		[System.ComponentModel.Description("AMarkIndicatingAnOverheadPowerCable")]
+		[EnumMember(Value = "Overhead Power Cable Mark")] 
+		OverheadPowerCableMark = 34,
+
+		[System.ComponentModel.Description("AMarkIndicatingTheGradientOfTheSlopeOfADredgeChannelEdge")]
+		[EnumMember(Value = "Channel Edge Gradient Mark")] 
+		ChannelEdgeGradientMark = 35,
+
+		[System.ComponentModel.Description("AMarkIndicatingThePresenceOfATelephone")]
+		[EnumMember(Value = "Telephone Mark")] 
+		TelephoneMark = 36,
+
+		[System.ComponentModel.Description("AMarkIndicatingThatAFerryRouteCrossesTheShipRouteOftenUsedWithASoundShipSSirenMark")]
+		[EnumMember(Value = "Ferry Crossing Mark")] 
+		FerryCrossingMark = 37,
+
+		[System.ComponentModel.Description("AMarkUsedToIndicateThePositionOfSubmarinePipelinesOrThePointAtWhichTheyRunOnToTheLand")]
+		[EnumMember(Value = "Pipeline Mark")] 
+		PipelineMark = 39,
+
+		[System.ComponentModel.Description("AMarkIndicatingAnAnchorageArea")]
+		[EnumMember(Value = "Anchorage Mark")] 
+		AnchorageMark = 40,
+
+		[System.ComponentModel.Description("AMarkUsedToIndicateAClearingLine")]
+		[EnumMember(Value = "Clearing Mark")] 
+		ClearingMark = 41,
+
+		[System.ComponentModel.Description("AMarkIndicatingTheLocationAtWhichARestrictionOrRequirementExists")]
+		[EnumMember(Value = "Control Mark")] 
+		ControlMark = 42,
+
+		[System.ComponentModel.Description("AMarkIndicatingThatDivingMayTakePlaceInTheVicinity")]
+		[EnumMember(Value = "Diving Mark")] 
+		DivingMark = 43,
+
+		[System.ComponentModel.Description("AMarkProvidingOrIndicatingAPlaceOfSafety")]
+		[EnumMember(Value = "Refuge Beacon")] 
+		RefugeBeacon = 44,
+
+		[System.ComponentModel.Description("AMarkIndicatingAFoulGround")]
+		[EnumMember(Value = "Foul Ground Mark")] 
+		FoulGroundMark = 45,
+
+		[System.ComponentModel.Description("AMarkInstalledForUseByYachtsmen")]
+		[EnumMember(Value = "Yachting Mark")] 
+		YachtingMark = 46,
+
+		[System.ComponentModel.Description("AMarkIndicatingAnAreaWhereHelicoptersMayLand")]
+		[EnumMember(Value = "Heliport Mark")] 
+		HeliportMark = 47,
+
+		[System.ComponentModel.Description("AMarkIndicatingALocationAtWhichAGnssPositionHasBeenAccuratelyDetermined")]
+		[EnumMember(Value = "GNSS Mark")] 
+		GnssMark = 48,
+
+		[System.ComponentModel.Description("AMarkIndicatingAnAreaWhereSeaPlanesLand")]
+		[EnumMember(Value = "Seaplane Landing Mark")] 
+		SeaplaneLandingMark = 49,
+
+		[System.ComponentModel.Description("AMarkIndicatingThatEntryIsProhibited")]
+		[EnumMember(Value = "Entry Prohibited Mark")] 
+		EntryProhibitedMark = 50,
+
+		[System.ComponentModel.Description("AMarkIndicatingThatWorkGenerallyConstructionIsInProgress")]
+		[EnumMember(Value = "Work in Progress Mark")] 
+		WorkInProgressMark = 51,
+
+		[System.ComponentModel.Description("AMarkWhoseDetailedCharacteristicsAreUnknown")]
+		[EnumMember(Value = "Mark With Unknown Purpose")] 
+		MarkWithUnknownPurpose = 52,
+
+		[System.ComponentModel.Description("AMarkIndicatingABoreholeThatProducesOrIsCapableOfProducingOilOrNaturalGas")]
+		[EnumMember(Value = "Wellhead Mark")] 
+		WellheadMark = 53,
+
+		[System.ComponentModel.Description("AMarkIndicatingThePointAtWhichAChannelDividesSeparatelyIntoTwoChannels")]
+		[EnumMember(Value = "Channel Separation Mark")] 
+		ChannelSeparationMark = 54,
+
+		[System.ComponentModel.Description("AMarkIndicatingTheExistenceOfAFishMusselOysterOrPearlFarmCulture")]
+		[EnumMember(Value = "Marine Farm Mark")] 
+		MarineFarmMark = 55,
+
+		[System.ComponentModel.Description("AMarkIndicatingTheExistenceOrTheExtentOfAnArtificialReef")]
+		[EnumMember(Value = "Artificial Reef Mark")] 
+		ArtificialReefMark = 56,
+
+		[System.ComponentModel.Description("AMarkUsedYearRoundThatMayBeSubmergedWhenIcePassesThroughTheArea")]
+		[EnumMember(Value = "Ice Mark")] 
+		IceMark = 57,
+
+		[System.ComponentModel.Description("AMarkUsedToDefineTheBoundaryOfANatureReserve")]
+		[EnumMember(Value = "Nature Reserve Mark")] 
+		NatureReserveMark = 58,
+
+		[System.ComponentModel.Description("AFishAggregatingOrAggregationDeviceFadIsAManMadeObjectUsedToAttractOceanGoingPelagicFishSuchAsMarlinTunaAndMahiMahiDolphinFishTheyUsuallyConsistOfBuoysOrFloatsTetheredToTheOceanFloorWithConcreteBlocks")]
+		[EnumMember(Value = "Fish Aggregating Device")] 
+		FishAggregatingDevice = 59,
+
+		[System.ComponentModel.Description("AMarkUsedToIndicateTheExistenceOfAWreck")]
+		[EnumMember(Value = "Wreck Mark")] 
+		WreckMark = 60,
+
+		[System.ComponentModel.Description("AMarkUsedToIndicateTheExistenceOfACustomsCheckpoint")]
+		[EnumMember(Value = "Customs Mark")] 
+		CustomsMark = 61,
+
+		[System.ComponentModel.Description("AMarkUsedToIndicateTheExistenceOfACauseway")]
+		[EnumMember(Value = "Causeway Mark")] 
+		CausewayMark = 62,
+
+		[System.ComponentModel.Description("ASurfaceFollowingBuoyUsedToMeasureWaveActivity")]
+		[EnumMember(Value = "Wave Recorder")] 
+		WaveRecorder = 63,
+
+		[System.ComponentModel.Description("AMarkIndicatingAJetskiProhibitedArea")]
+		[EnumMember(Value = "Jetski Prohibited")] 
+		JetskiProhibited = 64,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfRadioStation : int {
+		[System.ComponentModel.Description("ARadioStationWhichNeedNotNecessarilyBeMannedTheEmissionsOfWhichRadiatedAroundTheHorizonEnableItsBearingToBeDeterminedByMeansOfTheRadioDirectionFinderOfAShip")]
+		[EnumMember(Value = "Circular (Non-Directional) Marine or Aero-Marine Radiobeacon")] 
+		CircularNonDirectionalMarineOrAeroMarineRadiobeacon = 1,
+
+		[System.ComponentModel.Description("ASpecialTypeOfRadiobeaconStationTheEmissionsOfWhichAreIntendedToProvideADefiniteTrackForGuidance")]
+		[EnumMember(Value = "Directional Radiobeacon")] 
+		DirectionalRadiobeacon = 2,
+
+		[System.ComponentModel.Description("ASpecialTypeOfRadiobeaconStationEmittingABeamOfWavesToWhichAUniformTurningMovementIsGivenTheBearingOfTheStationBeingDeterminedByMeansOfAnOrdinaryListeningReceiverAndAStopWatchAlsoReferredToAsARotatingLoopRadiobeacon")]
+		[EnumMember(Value = "Rotating Pattern Radiobeacon")] 
+		RotatingPatternRadiobeacon = 3,
+
+		[System.ComponentModel.Description("ATypeOfLongRangePositionFixingBeacon")]
+		[EnumMember(Value = "Consol Beacon")] 
+		ConsolBeacon = 4,
+
+		[System.ComponentModel.Description("ARadioStationIntendedToDetermineOnlyTheDirectionOfOtherStationsByMeansOfTransmissionFromTheLatter")]
+		[EnumMember(Value = "Radio Direction-Finding Station")] 
+		RadioDirectionFindingStation = 5,
+
+		[System.ComponentModel.Description("ARadioStationWhichIsPreparedToProvideQtgServiceThatIsToSayToTransmitUponRequestFromAShipARadioSignalTheBearingOfWhichCanBeTakenByThatShip")]
+		[EnumMember(Value = "Coast Radio Station Providing QTG Service")] 
+		CoastRadioStationProvidingQtgService = 6,
+
+		[System.ComponentModel.Description("ARadioBeaconDesignedForAeronauticalUse")]
+		[EnumMember(Value = "Aeronautical Radiobeacon")] 
+		AeronauticalRadiobeacon = 7,
+
+		[System.ComponentModel.Description("TheDeccaNavigatorSystemIsAHighAccuracyShortToMediumRangeRadioNavigationalAidIntendedForCoastalAndLandfallNavigation")]
+		[EnumMember(Value = "Decca")] 
+		Decca = 8,
+
+		[System.ComponentModel.Description("ALowFrequencyElectronicPositionFixingSystemUsingPulsedTransmissionsAt100Khz")]
+		[EnumMember(Value = "Loran C")] 
+		LoranC = 9,
+
+		[System.ComponentModel.Description("ARadiobeaconTransmittingDgpsCorrectionSignals")]
+		[EnumMember(Value = "Differential GNSS")] 
+		DifferentialGnss = 10,
+
+		[System.ComponentModel.Description("AnElectronicPositionFixingSystemUsedMainlyByAircraft")]
+		[EnumMember(Value = "Toran")] 
+		Toran = 11,
+
+		[System.ComponentModel.Description("ALongRangeRadioNavigationalAidWhichOperatesWithinTheVlfFrequencyBandTheSystemComprisesEightLandBasedStations")]
+		[EnumMember(Value = "Omega")] 
+		Omega = 12,
+
+		[System.ComponentModel.Description("ARangingPositionFixingSystemOperatingAt420450MhzOverARangeOfUpTo400Km")]
+		[EnumMember(Value = "Syledis")] 
+		Syledis = 13,
+
+		[System.ComponentModel.Description("ChaikaIsALowFrequencyElectronicPositionFixingSystemUsingPulsedTransmissionsAt100Khz")]
+		[EnumMember(Value = "Chaika")] 
+		Chaika = 14,
+
+		[System.ComponentModel.Description("TheEquipmentNeededAtOneStationToCarryOnTwoWayVoiceCommunicationByRadioWavesOnly")]
+		[EnumMember(Value = "Radio Telephone Station")] 
+		RadioTelephoneStation = 19,
+
+		[System.ComponentModel.Description("AnOnshoreAisUnitThatMonitorsTrafficInTheWaterways")]
+		[EnumMember(Value = "AIS Base Station")] 
+		AisBaseStation = 20,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfFogSignal : int {
+		[System.ComponentModel.Description("ASignalProducedByTheFiringOfExplosiveCharges")]
+		[EnumMember(Value = "Explosive")] 
+		Explosive = 1,
+
+		[System.ComponentModel.Description("ADiaphoneUsesCompressedAirAndGenerallyEmitsAPowerfulLowPitchedSoundWhichOftenConcludesWithABriefSoundOfSuddenlyLoweredPitchTermedTheGrunt")]
+		[EnumMember(Value = "Diaphone")] 
+		Diaphone = 2,
+
+		[System.ComponentModel.Description("ATypeOfFogSignalApparatusWhichProducesSoundByVirtueOfThePassageOfAirThroughSlotsOrHolesInARevolvingDisk")]
+		[EnumMember(Value = "Siren")] 
+		Siren = 3,
+
+		[System.ComponentModel.Description("AHornHavingADiaphragmOscillatedByElectricity")]
+		[EnumMember(Value = "Nautophone")] 
+		Nautophone = 4,
+
+		[System.ComponentModel.Description("oneAReedUsesCompressedAirAndEmitsAWeakHighPitchedSound2AnyOfVariousWaterOrMarshPlantsWithAFirmStemConciseOxfordEnglishDictionary")]
+		[EnumMember(Value = "Reed")] 
+		Reed = 5,
+
+		[System.ComponentModel.Description("ADiaphragmHornWhichOperatesUnderTheInfluenceOfCompressedAirOrSteam")]
+		[EnumMember(Value = "Tyfon")] 
+		Tyfon = 6,
+
+		[System.ComponentModel.Description("ARingingSoundWithAShortRange")]
+		[EnumMember(Value = "Bell")] 
+		Bell = 7,
+
+		[System.ComponentModel.Description("ADistinctiveSoundMadeByAJetOfAirPassingThroughAnOrificeTheApparatusMayBeOperatedAutomaticallyByHandOrByAirBeingForcedUpATubeByWavesActingOnABuoy")]
+		[EnumMember(Value = "Whistle")] 
+		Whistle = 8,
+
+		[System.ComponentModel.Description("ASoundProducedByVibrationOfADiscWhenStruck")]
+		[EnumMember(Value = "Gong")] 
+		Gong = 9,
+
+		[System.ComponentModel.Description("AHornUsesCompressedAirOrElectricityToVibrateADiaphragmAndExistsInAVarietyOfTypesWhichDifferGreatlyInTheirSoundAndPower")]
+		[EnumMember(Value = "Horn")] 
+		Horn = 10,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum lightVisibility : int {
+		[System.ComponentModel.Description("NonMarineLightsWithAHigherPowerThanMarineLightsAndVisibleFromWellOffShoreOftenAeroLights")]
+		[EnumMember(Value = "High Intensity")] 
+		HighIntensity = 1,
+
+		[System.ComponentModel.Description("NonMarineLightsWithLowerPowerThanMarineLights")]
+		[EnumMember(Value = "Low Intensity")] 
+		LowIntensity = 2,
+
+		[System.ComponentModel.Description("ADecreaseInTheApparentIntensityOfALightWhichMayOccurInTheCaseOfPartialObstructions")]
+		[EnumMember(Value = "Faint")] 
+		Faint = 3,
+
+		[System.ComponentModel.Description("ALightInASectorIsIntensifiedThatIsHasLongerRangeThanOtherSectors")]
+		[EnumMember(Value = "Intensified")] 
+		Intensified = 4,
+
+		[System.ComponentModel.Description("ALightInASectorIsUnintensifiedThatIsHasShorterRangeThanOtherSectors")]
+		[EnumMember(Value = "Unintensified")] 
+		Unintensified = 5,
+
+		[System.ComponentModel.Description("ALightSectorIsDeliberatelyReducedInIntensityForExampleToReduceItsEffectOnABuiltUpArea")]
+		[EnumMember(Value = "Visibility Deliberately Restricted")] 
+		VisibilityDeliberatelyRestricted = 6,
+
+		[System.ComponentModel.Description("SaidOfTheArcOfALightSectorDesignatedByItsLimitingBearingsInWhichTheLightIsNotVisibleFromSeaward")]
+		[EnumMember(Value = "Obscured")] 
+		Obscured = 7,
+
+		[System.ComponentModel.Description("ThisValueSpecifiesThatPartsOfTheSectorAreObscured")]
+		[EnumMember(Value = "Partially Obscured")] 
+		PartiallyObscured = 8,
+
+		[System.ComponentModel.Description("LightsThatMustInLineToBeVisible")]
+		[EnumMember(Value = "Visible in Line of Range")] 
+		VisibleInLineOfRange = 9,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum signalGeneration : int {
+		[System.ComponentModel.Description("SignalGenerationIsInitiatedByASelfRegulatingMechanismSuchAsATimerOrLightSensor")]
+		[EnumMember(Value = "Automatically")] 
+		Automatically = 1,
+
+		[System.ComponentModel.Description("TheSignalIsGeneratedByTheMotionOfTheSeaSurfaceSuchAsABellInABuoy")]
+		[EnumMember(Value = "By Wave Action")] 
+		ByWaveAction = 2,
+
+		[System.ComponentModel.Description("TheSignalIsGeneratedByAManuallyOperatedMechanismSuchAsAHandCrankedSiren")]
+		[EnumMember(Value = "By Hand")] 
+		ByHand = 3,
+
+		[System.ComponentModel.Description("TheSignalIsGeneratedByTheMotionOfAirSuchAsAWindDrivenWhistle")]
+		[EnumMember(Value = "By Wind")] 
+		ByWind = 4,
+
+		[System.ComponentModel.Description("ActivatedByRadioSignal")]
+		[EnumMember(Value = "Radio Activated")] 
+		RadioActivated = 5,
+
+		[System.ComponentModel.Description("ActivatedByMakingACallToAMannedStation")]
+		[EnumMember(Value = "Call Activated")] 
+		CallActivated = 6,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum exhibitionConditionOfLight : int {
+		[System.ComponentModel.Description("ALightShownThroughoutThe24HoursWithoutChangeOfCharacter")]
+		[EnumMember(Value = "Light Shown Without Change of Character")] 
+		LightShownWithoutChangeOfCharacter = 1,
+
+		[System.ComponentModel.Description("ALightWhichIsOnlyExhibitedByDay")]
+		[EnumMember(Value = "Daytime Light")] 
+		DaytimeLight = 2,
+
+		[System.ComponentModel.Description("ALightWhichIsExhibitedInFogOrConditionsOfReducedVisibility")]
+		[EnumMember(Value = "Fog Light")] 
+		FogLight = 3,
+
+		[System.ComponentModel.Description("ALightWhichIsOnlyExhibitedAtNight")]
+		[EnumMember(Value = "Night Light")] 
+		NightLight = 4,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfLight : int {
+		[System.ComponentModel.Description("ALightIlluminatingASectorOfVeryNarrowAngleAndIntendedToMarkADirectionToFollow")]
+		[EnumMember(Value = "Directional Function")] 
+		DirectionalFunction = 1,
+
+		[System.ComponentModel.Description("ALightAssociatedWithOtherLightsSoAsToFormALeadingLineToBeFollowed")]
+		[EnumMember(Value = "Leading Light")] 
+		LeadingLight = 4,
+
+		[System.ComponentModel.Description("AnAeroLightIsEstablishedForAeronauticalNavigationAndMayBeOfHigherPowerThanMarineLightsAndVisibleFromWellOffshore")]
+		[EnumMember(Value = "Aero Light")] 
+		AeroLight = 5,
+
+		[System.ComponentModel.Description("ALightMarkingAnObstacleWhichConstitutesADangerToAirNavigation")]
+		[EnumMember(Value = "Air Obstruction Light")] 
+		AirObstructionLight = 6,
+
+		[System.ComponentModel.Description("ABroadBeamLightUsedToIlluminateAStructureOrArea")]
+		[EnumMember(Value = "Flood Light")] 
+		FloodLight = 8,
+
+		[System.ComponentModel.Description("ALightWhoseSourceHasALinearFormGenerallyHorizontalWhichCanReachALengthOfSeveralMetres")]
+		[EnumMember(Value = "Strip Light")] 
+		StripLight = 9,
+
+		[System.ComponentModel.Description("ALightPlacedOnOrNearTheSupportOfAMainLightAndHavingASpecialUseInNavigation")]
+		[EnumMember(Value = "Subsidiary Light")] 
+		SubsidiaryLight = 10,
+
+		[System.ComponentModel.Description("APowerfulLightFocusedSoAsToIlluminateASmallArea")]
+		[EnumMember(Value = "Spotlight")] 
+		Spotlight = 11,
+
+		[System.ComponentModel.Description("TermUsedWithLeadingLightsToDescribeThePositionOfTheLightOnTheLeadAsViewedFromSeaward")]
+		[EnumMember(Value = "Front")] 
+		Front = 12,
+
+		[System.ComponentModel.Description("TermUsedWithLeadingLightsToDescribeThePositionOfTheLightOnTheLeadAsViewedFromSeaward")]
+		[EnumMember(Value = "Rear")] 
+		Rear = 13,
+
+		[System.ComponentModel.Description("TermUsedWithLeadingLightsToDescribeThePositionOfTheLightOnTheLeadAsViewedFromSeaward")]
+		[EnumMember(Value = "Lower")] 
+		Lower = 14,
+
+		[System.ComponentModel.Description("TermUsedWithLeadingLightsToDescribeThePositionOfTheLightOnTheLeadAsViewedFromSeaward")]
+		[EnumMember(Value = "Upper")] 
+		Upper = 15,
+
+		[System.ComponentModel.Description("ALightAvailableAsABackupToAMainLightWhichWillBeIlluminatedShouldTheMainLightFail")]
+		[EnumMember(Value = "Emergency")] 
+		Emergency = 17,
+
+		[System.ComponentModel.Description("ALightWhichEnablesItsApproximateBearingToBeObtainedWithoutTheUseOfACompass")]
+		[EnumMember(Value = "Bearing Light")] 
+		BearingLight = 18,
+
+		[System.ComponentModel.Description("AGroupOfLightsOfIdenticalCharacterAndAlmostIdenticalPositionThatAreDisposedHorizontally")]
+		[EnumMember(Value = "Horizontally Disposed")] 
+		HorizontallyDisposed = 19,
+
+		[System.ComponentModel.Description("AGroupOfLightsOfIdenticalCharacterAndAlmostIdenticalPositionThatAreDisposedVertically")]
+		[EnumMember(Value = "Vertically Disposed")] 
+		VerticallyDisposed = 20,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum trafficFlow : int {
+		[System.ComponentModel.Description("TrafficFlowInAGeneralDirectionTowardAPortOrSimilarDestination")]
+		[EnumMember(Value = "Inbound")] 
+		Inbound = 1,
+
+		[System.ComponentModel.Description("TrafficFlowInAGeneralDirectionAwayFromAPortOrSimilarPointOfOrigin")]
+		[EnumMember(Value = "Outbound")] 
+		Outbound = 2,
+
+		[System.ComponentModel.Description("TrafficFlowInOneGeneralDirectionOnly")]
+		[EnumMember(Value = "One-Way")] 
+		OneWay = 3,
+
+		[System.ComponentModel.Description("TrafficFlowInTwoGenerallyOppositeDirections")]
+		[EnumMember(Value = "Two-Way")] 
+		TwoWay = 4,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum techniqueOfVerticalMeasurement : int {
+		[System.ComponentModel.Description("TheDepthWasDeterminedByUsingAnInstrumentThatDeterminesDepthOfWaterByMeasuringTheTimeIntervalBetweenEmissionOfASonicOrUltrasonicSignalAndReturnOfItsEchoFromTheBottom")]
+		[EnumMember(Value = "Found by Echo Sounder")] 
+		FoundByEchoSounder = 1,
+
+		[System.ComponentModel.Description("TheDepthWasComputedFromARecordProducedByActiveSonarInWhichFixedAcousticBeamsAreDirectedIntoTheWaterPerpendicularlyToTheDirectionOfTravelToScanTheSeabedAndGenerateARecordOfTheSeabedConfiguration")]
+		[EnumMember(Value = "Found by Side Scan Sonar")] 
+		FoundBySideScanSonar = 2,
+
+		[System.ComponentModel.Description("TheDepthWasDeterminedByUsingAWideSwathEchoSounderThatUsesMultipleBeamsToMeasureDepthsDirectlyBelowAndTransverseToTheShipSTrack")]
+		[EnumMember(Value = "Found by Multi Beam")] 
+		FoundByMultiBeam = 3,
+
+		[System.ComponentModel.Description("TheDepthWasDeterminedByAPersonSkilledInThePracticeOfDiving")]
+		[EnumMember(Value = "Found by Diver")] 
+		FoundByDiver = 4,
+
+		[System.ComponentModel.Description("TheDepthWasDeterminedByUsingALineGraduatedWithAttachedMarksAndFastenedToASoundingLead")]
+		[EnumMember(Value = "Found by Lead Line")] 
+		FoundByLeadLine = 5,
+
+		[System.ComponentModel.Description("TheGivenAreaWasDeterminedToBeFreeFromNavigationalDangersToACertainDepthByTowingABuoyedWireAtTheDesiredDepthByTwoLaunchesOrALeastDepthWasIdentifiedUsingTheSameTechnique")]
+		[EnumMember(Value = "Swept by Wire-Drag")] 
+		SweptByWireDrag = 6,
+
+		[System.ComponentModel.Description("TheDepthWasDeterminedByUsingAnInstrumentThatMeasuresDistanceByEmittingTimedPulsesOfLaserLightAndMeasuringTheTimeBetweenEmissionAndReceptionOfTheReflectedPulses")]
+		[EnumMember(Value = "Found by Laser")] 
+		FoundByLaser = 7,
+
+		[System.ComponentModel.Description("TheGivenAreaHasBeenSweptUsingASystemComprisedOfMultipleEchoSounderTransducersAttachedToBoomsDeployedFromTheSurveyVessel")]
+		[EnumMember(Value = "Swept by Vertical Acoustic System")] 
+		SweptByVerticalAcousticSystem = 8,
+
+		[System.ComponentModel.Description("TheDepthWasDeterminedByUsingAnInstrumentThatComparesElectromagneticSignals")]
+		[EnumMember(Value = "Found by Electromagnetic Sensor")] 
+		FoundByElectromagneticSensor = 9,
+
+		[System.ComponentModel.Description("TheScienceOrArtOfObtainingReliableMeasurementsFromPhotographs")]
+		[EnumMember(Value = "Photogrammetry")] 
+		Photogrammetry = 10,
+
+		[System.ComponentModel.Description("TheDepthWasDeterminedByUsingInstrumentsPlacedAboardAnArtificialSatellite")]
+		[EnumMember(Value = "Satellite Imagery")] 
+		SatelliteImagery = 11,
+
+		[System.ComponentModel.Description("TheDepthWasDeterminedByUsingLevellingTechniquesToFindTheElevationOfThePointRelativeToADatum")]
+		[EnumMember(Value = "Found by Levelling")] 
+		FoundByLevelling = 12,
+
+		[System.ComponentModel.Description("TheGivenAreaWasDeterminedToBeFreeFromNavigationalDangersToACertainDepthByTowingASideScanSonar")]
+		[EnumMember(Value = "Swept by Side Scan Sonar")] 
+		SweptBySideScanSonar = 13,
+
+		[System.ComponentModel.Description("TheSoundingWasDeterminedFromABottomModelConstructedUsingAComputer")]
+		[EnumMember(Value = "Computer Generated")] 
+		ComputerGenerated = 14,
+
+		[System.ComponentModel.Description("TheDepthWasMeasuredByUsingAnInstrumentThatMeasuresDistanceByEmittingTimedPulsesOfLaserLightAndMeasuringTheTimeBetweenEmissionAndReceptionOfTheReflectedPulses")]
+		[EnumMember(Value = "Found by LIDAR")] 
+		FoundByLidar = 15,
+
+		[System.ComponentModel.Description("ARadarWithASyntheticApertureAntennaWhichIsComposedOfALargeNumberOfElementaryTransducingElementsTheSignalsAreElectronicallyCombinedIntoAResultingSignalEquivalentToThatOfASingleAntennaOfAGivenApertureInAGivenDirection")]
+		[EnumMember(Value = "Synthetic Aperture Radar")] 
+		SyntheticApertureRadar = 16,
+
+		[System.ComponentModel.Description("TermUsedToDescribeTheImageryDerivedFromSubdividingTheElectromagneticSpectrumIntoVeryNarrowBandwidthsTheseNarrowBandwidthsMayBeCombinedWithOrSubtractedFromEachOtherInVariousWaysToFormImagesUsefulInPreciseTerrainOrTargetAnalysis")]
+		[EnumMember(Value = "Hyperspectral Imagery")] 
+		HyperspectralImagery = 17,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum qualityOfVerticalMeasurement : int {
+		[System.ComponentModel.Description("TheDepthFromTheChartDatumToTheSeabedOrToTheTopOfADryingFeatureIsKnown")]
+		[EnumMember(Value = "Depth Known")] 
+		DepthKnown = 1,
+
+		[System.ComponentModel.Description("TheDepthFromChartDatumToTheSeabedOrTheShoalestDepthOfTheFeatureIsUnknown")]
+		[EnumMember(Value = "Depth or Least Depth Unknown")] 
+		DepthOrLeastDepthUnknown = 2,
+
+		[System.ComponentModel.Description("ADepthThatMayBeLessThanIndicated")]
+		[EnumMember(Value = "Doubtful Sounding")] 
+		DoubtfulSounding = 3,
+
+		[System.ComponentModel.Description("ADepthThatIsConsideredToBeAnUnreliableValue")]
+		[EnumMember(Value = "Unreliable Sounding")] 
+		UnreliableSounding = 4,
+
+		[System.ComponentModel.Description("UponInvestigationTheBottomWasNotFoundAtThisDepth")]
+		[EnumMember(Value = "No Bottom Found at Value Shown")] 
+		NoBottomFoundAtValueShown = 5,
+
+		[System.ComponentModel.Description("TheShoalestDepthOverAFeatureIsOfKnownValue")]
+		[EnumMember(Value = "Least Depth Known")] 
+		LeastDepthKnown = 6,
+
+		[System.ComponentModel.Description("TheLeastDepthOverAFeatureIsUnknownButThereIsConsideredToBeSafeClearanceAtThisDepth")]
+		[EnumMember(Value = "Least Depth Unknown, Safe Clearance at Value Shown")] 
+		LeastDepthUnknownSafeClearanceAtValueShown = 7,
+
+		[System.ComponentModel.Description("DepthValueObtainedFromAReportButNotFullySurveyed")]
+		[EnumMember(Value = "Value Reported (Not Surveyed)")] 
+		ValueReportedNotSurveyed = 8,
+
+		[System.ComponentModel.Description("DepthValueObtainedFromAReportWhichItHasNotBeenPossibleToConfirm")]
+		[EnumMember(Value = "Value Reported (Not Confirmed)")] 
+		ValueReportedNotConfirmed = 9,
+
+		[System.ComponentModel.Description("TheDepthAtWhichAChannelIsKeptByHumanInfluenceUsuallyByDredging")]
+		[EnumMember(Value = "Maintained Depth")] 
+		MaintainedDepth = 10,
+
+		[System.ComponentModel.Description("DepthsMayBeAlteredByHumanInfluenceButWillNotBeRoutinelyMaintained")]
+		[EnumMember(Value = "Not Regularly Maintained")] 
+		NotRegularlyMaintained = 11,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfNavigationLine : int {
+		[System.ComponentModel.Description("AStraightLineThatMarksTheBoundaryBetweenASafeAndADangerousAreaOrThatPassesClearOfANavigationalDanger")]
+		[EnumMember(Value = "Clearing Line")] 
+		ClearingLine = 1,
+
+		[System.ComponentModel.Description("ALinePassingThroughOneOrMoreFixedMarks")]
+		[EnumMember(Value = "Transit Line")] 
+		TransitLine = 2,
+
+		[System.ComponentModel.Description("ALinePassingThroughOneOrMoreClearlyDefinedObjectsAlongThePathOfWhichAVesselCanApproachSafelyUpToACertainDistanceOff")]
+		[EnumMember(Value = "Leading Line Bearing a Recommended Track")] 
+		LeadingLineBearingARecommendedTrack = 3,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfLateralMark : int {
+		[System.ComponentModel.Description("IndicatesThePortBoundaryOfANavigationalChannelOrSuggestedRouteWhenProceedingInTheConventionalDirectionOfBuoyage")]
+		[EnumMember(Value = "Port-Hand Lateral Mark")] 
+		PortHandLateralMark = 1,
+
+		[System.ComponentModel.Description("IndicatesTheStarboardBoundaryOfANavigationalChannelOrSuggestedRouteWhenProceedingInTheConventionalDirectionOfBuoyage")]
+		[EnumMember(Value = "Starboard-Hand Lateral Mark")] 
+		StarboardHandLateralMark = 2,
+
+		[System.ComponentModel.Description("AtAPointWhereAChannelDividesWhenProceedingInTheConventionalDirectionOfBuoyageThePreferredChannelOrPrimaryRouteIsIndicatedByAModifiedPortHandLateralMark")]
+		[EnumMember(Value = "Preferred Channel to Starboard Lateral Mark")] 
+		PreferredChannelToStarboardLateralMark = 3,
+
+		[System.ComponentModel.Description("AtAPointWhereAChannelDividesWhenProceedingInTheConventionalDirectionOfBuoyageThePreferredChannelOrPrimaryRouteIsIndicatedByAModifiedStarboardHandLateralMark")]
+		[EnumMember(Value = "Preferred Channel to Port Lateral Mark")] 
+		PreferredChannelToPortLateralMark = 4,
+
+		[System.ComponentModel.Description("IndicatesTheRightHandSideOfTheInlandWaterway")]
+		[EnumMember(Value = "Right-Hand Side of the Waterway")] 
+		RightHandSideOfTheWaterway = 5,
+
+		[System.ComponentModel.Description("IndicatesTheLeftHandSideOfTheInlandWaterway")]
+		[EnumMember(Value = "Left-Hand Side of the Waterway")] 
+		LeftHandSideOfTheWaterway = 6,
+
+		[System.ComponentModel.Description("IndicatesTheRightHandSideOfAChannelOfAnInlandWaterway")]
+		[EnumMember(Value = "Right-Hand Side of the Channel")] 
+		RightHandSideOfTheChannel = 7,
+
+		[System.ComponentModel.Description("IndicatesTheLeftHandSideOfAChannelOfAnInlandWaterway")]
+		[EnumMember(Value = "Left-Hand Side of the Channel")] 
+		LeftHandSideOfTheChannel = 8,
+
+		[System.ComponentModel.Description("IndicatesABifurcationOfTheInlandWaterway")]
+		[EnumMember(Value = "Bifurcation of the Waterway")] 
+		BifurcationOfTheWaterway = 9,
+
+		[System.ComponentModel.Description("IndicatesABifurcationOfAChannelOfAnInlandWaterway")]
+		[EnumMember(Value = "Bifurcation of the Channel")] 
+		BifurcationOfTheChannel = 10,
+
+		[System.ComponentModel.Description("IndicatesThatTheChannelIsNearTheRightBank")]
+		[EnumMember(Value = "Channel Near the Right Bank")] 
+		ChannelNearTheRightBank = 11,
+
+		[System.ComponentModel.Description("IndicatesThatTheChannelIsNearTheLeftBank")]
+		[EnumMember(Value = "Channel Near the Left Bank")] 
+		ChannelNearTheLeftBank = 12,
+
+		[System.ComponentModel.Description("IndicatesThatTheChannelCrossesFromTheLeftToTheRightBank")]
+		[EnumMember(Value = "Channel Cross-Over to the Right Bank")] 
+		ChannelCrossOverToTheRightBank = 13,
+
+		[System.ComponentModel.Description("IndicatesThatTheChannelCrossesFromTheRightToTheLeftBank")]
+		[EnumMember(Value = "Channel Cross-Over to the Left Bank")] 
+		ChannelCrossOverToTheLeftBank = 14,
+
+		[System.ComponentModel.Description("IndicatesADangerPointOrObstaclesAtTheRightHandSide")]
+		[EnumMember(Value = "Danger Point or Obstacles at the Right-Hand Side")] 
+		DangerPointOrObstaclesAtTheRightHandSide = 15,
+
+		[System.ComponentModel.Description("IndicatesADangerPointOrObstaclesAtTheLeftHandSide")]
+		[EnumMember(Value = "Danger Point or Obstacles at the Left-Hand Side")] 
+		DangerPointOrObstaclesAtTheLeftHandSide = 16,
+
+		[System.ComponentModel.Description("IndicatesATurnOffAtTheRightHandSide")]
+		[EnumMember(Value = "Turn Off at the Right-Hand Side")] 
+		TurnOffAtTheRightHandSide = 17,
+
+		[System.ComponentModel.Description("IndicatesATurnOffAtTheLeftHandSide")]
+		[EnumMember(Value = "Turn Off at the Left-Hand Side")] 
+		TurnOffAtTheLeftHandSide = 18,
+
+		[System.ComponentModel.Description("IndicatesAJunctionAtTheRightHandSide")]
+		[EnumMember(Value = "Junction at the Right-Hand Side")] 
+		JunctionAtTheRightHandSide = 19,
+
+		[System.ComponentModel.Description("IndicatesAJunctionAtTheLeftHandSide")]
+		[EnumMember(Value = "Junction at the Left-Hand Side")] 
+		JunctionAtTheLeftHandSide = 20,
+
+		[System.ComponentModel.Description("IndicatesAHarbourEntryAtTheRightHandSide")]
+		[EnumMember(Value = "Harbour Entry at the Right-Hand Side")] 
+		HarbourEntryAtTheRightHandSide = 21,
+
+		[System.ComponentModel.Description("IndicatesAHarbourEntryAtTheLeftHandSide")]
+		[EnumMember(Value = "Harbour Entry at the Left-Hand Side")] 
+		HarbourEntryAtTheLeftHandSide = 22,
+
+		[System.ComponentModel.Description("IndicatesABridgePierInAnInlandWaterway")]
+		[EnumMember(Value = "Bridge Pier Mark")] 
+		BridgePierMark = 23,
+
+		[System.ComponentModel.Description("IndicatesTheRightBankOfTheEntryFromALakeOrALakeLikeExpansionToASectionOfTheWaterwayWhichIsNarrower")]
+		[EnumMember(Value = "Entry From a Lake to a Narrower Waterway, Right Bank")] 
+		EntryFromALakeToANarrowerWaterwayRightBank = 24,
+
+		[System.ComponentModel.Description("IndicatesTheLeftBankOfTheEntryFromALakeOrALakeLikeExpansionToASectionOfTheWaterwayWhichIsNarrower")]
+		[EnumMember(Value = "Entry From a Lake to a Narrower Waterway, Left Bank")] 
+		EntryFromALakeToANarrowerWaterwayLeftBank = 25,
+
+		[System.ComponentModel.Description("ChangeBank")]
+		[EnumMember(Value = "Change Bank")] 
+		ChangeBank = 26,
+
+		[System.ComponentModel.Description("ContinueAlongBank")]
+		[EnumMember(Value = "Continue Along Bank")] 
+		ContinueAlongBank = 27,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum verticalDatum : int {
+		[System.ComponentModel.Description("TheAverageHeightOfTheLowWatersOfSpringTidesThisLevelIsUsedAsATidalDatumInSomeAreasAlsoCalledSpringLowWater")]
+		[EnumMember(Value = "Mean Low Water Springs")] 
+		MeanLowWaterSprings = 1,
+
+		[System.ComponentModel.Description("TheAverageHeightOfLowerLowWaterSpringsAtAPlace")]
+		[EnumMember(Value = "Mean Lower Low Water Springs")] 
+		MeanLowerLowWaterSprings = 2,
+
+		[System.ComponentModel.Description("TheAverageHeightOfTheSurfaceOfTheSeaAtATideStationForAllStagesOfTheTideOverA19YearPeriodUsuallyDeterminedFromHourlyHeightReadingsMeasuredFromAFixedPredeterminedReferenceLevel")]
+		[EnumMember(Value = "Mean Sea Level")] 
+		MeanSeaLevel = 3,
+
+		[System.ComponentModel.Description("AnArbitraryLevelConformingToTheLowestTideObservedAtAPlaceOrSomeWhatLower")]
+		[EnumMember(Value = "Lowest Low Water")] 
+		LowestLowWater = 4,
+
+		[System.ComponentModel.Description("TheAverageHeightOfAllLowWatersAtAPlaceOverA19YearPeriod")]
+		[EnumMember(Value = "Mean Low Water")] 
+		MeanLowWater = 5,
+
+		[System.ComponentModel.Description("AnArbitraryLevelConformingToTheLowestWaterLevelObservedAtAPlaceAtSpringTidesDuringAPeriodOfTimeShorterThan19Years")]
+		[EnumMember(Value = "Lowest Low Water Springs")] 
+		LowestLowWaterSprings = 6,
+
+		[System.ComponentModel.Description("AnArbitraryLevelUsuallyWithin03mFromThatOfMeanLowWaterSpringsMlws")]
+		[EnumMember(Value = "Approximate Mean Low Water Springs")] 
+		ApproximateMeanLowWaterSprings = 7,
+
+		[System.ComponentModel.Description("AnArbitraryTidalDatumApproximatingTheLevelOfTheMeanOfTheLowerLowWaterAtSpringTidesItWasFirstUsedInWatersSurroundingIndia")]
+		[EnumMember(Value = "Indian Spring Low Water")] 
+		IndianSpringLowWater = 8,
+
+		[System.ComponentModel.Description("AnArbitraryLevelApproximatingThatOfMeanLowWaterSpringsMlws")]
+		[EnumMember(Value = "Low Water Springs")] 
+		LowWaterSprings = 9,
+
+		[System.ComponentModel.Description("AnArbitraryLevelUsuallyWithin03mFromThatOfLowestAstronomicalTideLat")]
+		[EnumMember(Value = "Approximate Lowest Astronomical Tide")] 
+		ApproximateLowestAstronomicalTide = 10,
+
+		[System.ComponentModel.Description("AnArbitraryLevelApproximatingTheLowestWaterLevelObservedAtAPlaceUsuallyEquivalentToTheIndianSpringLowWaterIslw")]
+		[EnumMember(Value = "Nearly Lowest Low Water")] 
+		NearlyLowestLowWater = 11,
+
+		[System.ComponentModel.Description("TheAverageHeightOfTheLowerLowWatersAtAPlaceOverA19YearPeriod")]
+		[EnumMember(Value = "Mean Lower Low Water")] 
+		MeanLowerLowWater = 12,
+
+		[System.ComponentModel.Description("TheLowestLevelReachedAtAPlaceByTheWaterSurfaceInOneOscillationAlsoCalledLowTide")]
+		[EnumMember(Value = "Low Water")] 
+		LowWater = 13,
+
+		[System.ComponentModel.Description("AnArbitraryLevelUsuallyWithin03mFromThatOfMeanLowWaterMlw")]
+		[EnumMember(Value = "Approximate Mean Low Water")] 
+		ApproximateMeanLowWater = 14,
+
+		[System.ComponentModel.Description("AnArbitraryLevelUsuallyWithin03mFromThatOfMeanLowerLowWaterMllw")]
+		[EnumMember(Value = "Approximate Mean Lower Low Water")] 
+		ApproximateMeanLowerLowWater = 15,
+
+		[System.ComponentModel.Description("TheAverageHeightOfAllHighWatersAtAPlaceOverA19YearPeriod")]
+		[EnumMember(Value = "Mean High Water")] 
+		MeanHighWater = 16,
+
+		[System.ComponentModel.Description("TheAverageHeightOfTheHighWatersOfSpringTidesAlsoCalledSpringHighWater")]
+		[EnumMember(Value = "Mean High Water Springs")] 
+		MeanHighWaterSprings = 17,
+
+		[System.ComponentModel.Description("TheHighestLevelReachedAtAPlaceByTheWaterSurfaceInOneOscillation")]
+		[EnumMember(Value = "High Water")] 
+		HighWater = 18,
+
+		[System.ComponentModel.Description("AnArbitraryLevelUsuallyWithin03mFromThatOfMeanSeaLevelMsl")]
+		[EnumMember(Value = "Approximate Mean Sea Level")] 
+		ApproximateMeanSeaLevel = 19,
+
+		[System.ComponentModel.Description("AnArbitraryLevelApproximatingThatOfMeanHighWaterSpringsMhws")]
+		[EnumMember(Value = "High Water Springs")] 
+		HighWaterSprings = 20,
+
+		[System.ComponentModel.Description("TheAverageHeightOfHigherHighWatersAtAPlaceOverA19YearPeriod")]
+		[EnumMember(Value = "Mean Higher High Water")] 
+		MeanHigherHighWater = 21,
+
+		[System.ComponentModel.Description("TheLevelOfLowWaterSpringsNearTheTimeOfAnEquinox")]
+		[EnumMember(Value = "Equinoctial Spring Low Water")] 
+		EquinoctialSpringLowWater = 22,
+
+		[System.ComponentModel.Description("TheLowestTideLevelWhichCanBePredictedToOccurUnderAverageMeteorologicalConditionsAndUnderAnyCombinationOfAstronomicalConditions")]
+		[EnumMember(Value = "Lowest Astronomical Tide")] 
+		LowestAstronomicalTide = 23,
+
+		[System.ComponentModel.Description("AnArbitraryDatumDefinedByALocalHarbourAuthorityFromWhichLevelsAndTidalHeightsAreMeasuredByThisAuthority")]
+		[EnumMember(Value = "Local Datum")] 
+		LocalDatum = 24,
+
+		[System.ComponentModel.Description("AVerticalReferenceSystemWithItsZeroBasedOnTheMeanWaterLevelAtRimouskiPointeAuPereQuebecOverThePeriod1970To1988")]
+		[EnumMember(Value = "International Great Lakes Datum 1985")] 
+		InternationalGreatLakesDatum1985 = 25,
+
+		[System.ComponentModel.Description("TheAverageOfAllHourlyWaterLevelsOverTheAvailablePeriodOfRecord")]
+		[EnumMember(Value = "Mean Water Level")] 
+		MeanWaterLevel = 26,
+
+		[System.ComponentModel.Description("TheAverageOfTheLowestLowWatersOneFromEachOf19YearsOfObservations")]
+		[EnumMember(Value = "Lower Low Water Large Tide")] 
+		LowerLowWaterLargeTide = 27,
+
+		[System.ComponentModel.Description("TheAverageOfTheHighestHighWatersOneFromEachOf19YearsOfObservations")]
+		[EnumMember(Value = "Higher High Water Large Tide")] 
+		HigherHighWaterLargeTide = 28,
+
+		[System.ComponentModel.Description("AnArbitraryLevelApproximatingTheHighestWaterLevelObservedAtAPlaceUsuallyEquivalentToTheHighWaterSprings")]
+		[EnumMember(Value = "Nearly Highest High Water")] 
+		NearlyHighestHighWater = 29,
+
+		[System.ComponentModel.Description("TheHighestTidalLevelWhichCanBePredictedToOccurUnderAverageMeteorologicalConditionsAndUnderAnyCombinationOfAstronomicalConditions")]
+		[EnumMember(Value = "Highest Astronomical Tide")] 
+		HighestAstronomicalTide = 30,
+
+		[System.ComponentModel.Description("LowWaterReferenceLevelOfTheLocalArea")]
+		[EnumMember(Value = "Local Low Water Reference Level")] 
+		LocalLowWaterReferenceLevel = 31,
+
+		[System.ComponentModel.Description("HighWaterReferenceLevelOfTheLocalArea")]
+		[EnumMember(Value = "Local High Water Reference Level")] 
+		LocalHighWaterReferenceLevel = 32,
+
+		[System.ComponentModel.Description("MeanWaterReferenceLevelOfTheLocalArea")]
+		[EnumMember(Value = "Local Mean Water Reference Level")] 
+		LocalMeanWaterReferenceLevel = 33,
+
+		[System.ComponentModel.Description("ALowWaterLevelWhichIsTheResultOfADefinedLowWaterDischargeCalledEquivalentDischarge")]
+		[EnumMember(Value = "Equivalent Height of Water (German GlW)")] 
+		EquivalentHeightOfWaterGermanGlw = 34,
+
+		[System.ComponentModel.Description("UpperLimitOfWaterLevelsWhereNavigationIsAllowed")]
+		[EnumMember(Value = "Highest Shipping Height of Water (German HSW)")] 
+		HighestShippingHeightOfWaterGermanHsw = 35,
+
+		[System.ComponentModel.Description("TheWaterLevelAtADischargeWhichIsExceeded94OfTheYearWithinAPeriodOf30Years")]
+		[EnumMember(Value = "Reference Low Water Level According to Danube Commission")] 
+		ReferenceLowWaterLevelAccordingToDanubeCommission = 36,
+
+		[System.ComponentModel.Description("TheWaterLevelAtADischargeWhichIsExceeded1OfTheYearWithinAPeriodOf30Years")]
+		[EnumMember(Value = "Highest Shipping Height of Water According to Danube Commission")] 
+		HighestShippingHeightOfWaterAccordingToDanubeCommission = 37,
+
+		[System.ComponentModel.Description("TheWaterLevelAtADischargeWhichIsExceeded95OfTheYearWithinAPeriodOf20Years")]
+		[EnumMember(Value = "Dutch River Low Water Reference Level (OLR)")] 
+		DutchRiverLowWaterReferenceLevelOlr = 38,
+
+		[System.ComponentModel.Description("ConditionalLowWaterLevelWithEstablishedProbability")]
+		[EnumMember(Value = "Russian Project Water Level")] 
+		RussianProjectWaterLevel = 39,
+
+		[System.ComponentModel.Description("HighestWaterLevelDerivedFromTheUpperBackwaterStreamInWatercourseOrReservoirUnderTheNormalOperationalConditions")]
+		[EnumMember(Value = "Russian Normal Backwater Level")] 
+		RussianNormalBackwaterLevel = 40,
+
+		[System.ComponentModel.Description("TheOhioRiverDatum")]
+		[EnumMember(Value = "Ohio River Datum")] 
+		OhioRiverDatum = 41,
+
+		[System.ComponentModel.Description("DutchHighWaterReferenceLevel")]
+		[EnumMember(Value = "Dutch High Water Reference Level")] 
+		DutchHighWaterReferenceLevel = 43,
+
+		[System.ComponentModel.Description("TheDatumRefersToEachBalticCountrySRealizationOfTheEuropeanVerticalReferenceSystemEvrsWithLandUpliftEpoch2000WhichIsConnectedToTheNormaalAmsterdamsPeilNap")]
+		[EnumMember(Value = "Baltic Sea Chart Datum 2000")] 
+		BalticSeaChartDatum2000 = 44,
+
+		[System.ComponentModel.Description("DutchEstuaryLowWaterReferenceLevelOlw")]
+		[EnumMember(Value = "Dutch Estuary Low Water Reference Level (OLW)")] 
+		DutchEstuaryLowWaterReferenceLevelOlw = 45,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum function : int {
+		[System.ComponentModel.Description("ALocalOfficialWhoHasChargeOfMooringAndBerthingOfVesselsCollectingHarbourFeesEtc")]
+		[EnumMember(Value = "Harbour-Masters Office")] 
+		HarbourMastersOffice = 2,
+
+		[System.ComponentModel.Description("ServesAsAGovernmentOfficeWhereCustomsDutiesAreCollectedTheFlowOfGoodsAreRegulatedAndRestrictionsEnforcedAndShipmentsOrVehiclesAreClearedForEnteringOrLeavingACountry")]
+		[EnumMember(Value = "Customs Office")] 
+		CustomsOffice = 3,
+
+		[System.ComponentModel.Description("TheOfficeWhichIsChargedWithTheAdministrationOfHealthLawsAndSanitaryInspections")]
+		[EnumMember(Value = "Health Office")] 
+		HealthOffice = 4,
+
+		[System.ComponentModel.Description("AnInstitutionOrEstablishmentProvidingMedicalOrSurgicalTreatmentForTheIllOrWounded")]
+		[EnumMember(Value = "Hospital")] 
+		Hospital = 5,
+
+		[System.ComponentModel.Description("ThePublicDepartmentAgencyOrOrganisationResponsiblePrimarilyForTheCollectionTransmissionAndDistributionOfMail")]
+		[EnumMember(Value = "Post Office")] 
+		PostOffice = 6,
+
+		[System.ComponentModel.Description("AnEstablishmentEspeciallyOfAComfortableOrLuxuriousKindWherePayingVisitorsAreProvidedWithAccommodationMealsAndOtherServices")]
+		[EnumMember(Value = "Hotel")] 
+		Hotel = 7,
+
+		[System.ComponentModel.Description("ABuildingWithPlatformsWhereTrainsArriveLoadDischargeAndDepart")]
+		[EnumMember(Value = "Railway Station")] 
+		RailwayStation = 8,
+
+		[System.ComponentModel.Description("TheHeadquartersOfALocalPoliceForceAndThatIsWhereThoseUnderArrestAreFirstCharged")]
+		[EnumMember(Value = "Police Station")] 
+		PoliceStation = 9,
+
+		[System.ComponentModel.Description("TheHeadquartersOfALocalWaterPoliceForce")]
+		[EnumMember(Value = "Water-Police Station")] 
+		WaterPoliceStation = 10,
+
+		[System.ComponentModel.Description("TheOfficeOrHeadquartersOfPilotsThePlaceWhereTheServicesOfAPilotMayBeObtained")]
+		[EnumMember(Value = "Pilot Office")] 
+		PilotOffice = 11,
+
+		[System.ComponentModel.Description("ADistinctiveStructureOrPlaceOnShoreFromWhichPersonnelKeepWatchUponEventsAtSeaOrAlongTheCoast")]
+		[EnumMember(Value = "Pilot Lookout")] 
+		PilotLookout = 12,
+
+		[System.ComponentModel.Description("AnOfficeForCustodyDepositLoanExchangeOrIssueOfMoney")]
+		[EnumMember(Value = "Bank Office")] 
+		BankOffice = 13,
+
+		[System.ComponentModel.Description("TheQuartersOfAnExecutiveOfficerDirectorManagerEtcWithResponsibilityForAnAdministrativeArea")]
+		[EnumMember(Value = "Headquarters for District Control")] 
+		HeadquartersForDistrictControl = 14,
+
+		[System.ComponentModel.Description("ABuildingOrPartOfABuildingForStorageOfWaresOrGoods")]
+		[EnumMember(Value = "Transit Shed/Warehouse")] 
+		TransitShedWarehouse = 15,
+
+		[System.ComponentModel.Description("ABuildingOrBuildingsWithEquipmentForManufacturingAWorkshop")]
+		[EnumMember(Value = "Factory")] 
+		Factory = 16,
+
+		[System.ComponentModel.Description("AStationaryPlantContainingApparatusForLargeScaleConversionOfSomeFormOfEnergySuchAsHydraulicSteamChemicalOrNuclearEnergyIntoElectricalEnergy")]
+		[EnumMember(Value = "Power Station")] 
+		PowerStation = 17,
+
+		[System.ComponentModel.Description("ABuildingForTheManagementOfAffairs")]
+		[EnumMember(Value = "Administrative")] 
+		Administrative = 18,
+
+		[System.ComponentModel.Description("ABuildingConcernedWithEducationForExampleSchoolCollegeUniversityEtc")]
+		[EnumMember(Value = "Educational Facility")] 
+		EducationalFacility = 19,
+
+		[System.ComponentModel.Description("ABuildingForPublicChristianWorship")]
+		[EnumMember(Value = "Church")] 
+		Church = 20,
+
+		[System.ComponentModel.Description("APlaceForChristianWorshipOtherThanAParishCathedralOrChurchEspeciallyOneAttachedToAPrivateHouseOrInstitution")]
+		[EnumMember(Value = "Chapel")] 
+		Chapel = 21,
+
+		[System.ComponentModel.Description("ABuildingForPublicJewishWorship")]
+		[EnumMember(Value = "Temple")] 
+		Temple = 22,
+
+		[System.ComponentModel.Description("AHinduOrBuddhistTempleOrSacredBuilding")]
+		[EnumMember(Value = "Pagoda")] 
+		Pagoda = 23,
+
+		[System.ComponentModel.Description("ABuildingForPublicShintoWorship")]
+		[EnumMember(Value = "Shinto Shrine")] 
+		ShintoShrine = 24,
+
+		[System.ComponentModel.Description("ABuildingForPublicBuddhistWorship")]
+		[EnumMember(Value = "Buddhist Temple")] 
+		BuddhistTemple = 25,
+
+		[System.ComponentModel.Description("AMuslimPlaceOfWorship")]
+		[EnumMember(Value = "Mosque")] 
+		Mosque = 26,
+
+		[System.ComponentModel.Description("AShrineMarkingTheBurialPlaceOfAMuslimHolyMan")]
+		[EnumMember(Value = "Marabout")] 
+		Marabout = 27,
+
+		[System.ComponentModel.Description("KeepingAWatchUponEventsAtSeaOrAlongTheCoast")]
+		[EnumMember(Value = "Lookout")] 
+		Lookout = 28,
+
+		[System.ComponentModel.Description("TransmittingAndOrReceivingElectronicCommunicationSignals")]
+		[EnumMember(Value = "Communication")] 
+		Communication = 29,
+
+		[System.ComponentModel.Description("ASystemForReproducingOnAScreenVisualImagesTransmittedUsuallyWithSoundByRadioSignals")]
+		[EnumMember(Value = "Television")] 
+		Television = 30,
+
+		[System.ComponentModel.Description("TransmittingAndOrReceivingRadioFrequencyElectromagneticWavesAsAMeansOfCommunication")]
+		[EnumMember(Value = "Radio")] 
+		Radio = 31,
+
+		[System.ComponentModel.Description("AMethodSystemOrTechniqueOfUsingBeamedReflectedAndTimedRadioWavesForDetectingLocatingOrTrackingObjectsAndForMeasuringAltitudes")]
+		[EnumMember(Value = "Radar")] 
+		Radar = 32,
+
+		[System.ComponentModel.Description("AStructureServingAsASupportForOneOrMoreLights")]
+		[EnumMember(Value = "Light Support")] 
+		LightSupport = 33,
+
+		[System.ComponentModel.Description("BroadcastingAndReceivingSignalsUsingMicrowaves")]
+		[EnumMember(Value = "Microwave")] 
+		Microwave = 34,
+
+		[System.ComponentModel.Description("GenerationOfChilledLiquidAndOrGasForCoolingPurposes")]
+		[EnumMember(Value = "Cooling")] 
+		Cooling = 35,
+
+		[System.ComponentModel.Description("APlaceFromWhichTheSurroundingsCanBeObservedButAtWhichAWatchIsNotHabituallyMaintained")]
+		[EnumMember(Value = "Observation")] 
+		Observation = 36,
+
+		[System.ComponentModel.Description("AVisualTimeSignalInTheFormOfABall")]
+		[EnumMember(Value = "Timeball")] 
+		Timeball = 37,
+
+		[System.ComponentModel.Description("InstrumentForMeasuringTimeAndRecordingHours")]
+		[EnumMember(Value = "Clock")] 
+		Clock = 38,
+
+		[System.ComponentModel.Description("UsedToControlTheFlowOfTrafficWithinASpecifiedRangeOfAnInstallation")]
+		[EnumMember(Value = "Control")] 
+		Control = 39,
+
+		[System.ComponentModel.Description("EquipmentOrStructureToSecureAnAirship")]
+		[EnumMember(Value = "Airship Mooring")] 
+		AirshipMooring = 40,
+
+		[System.ComponentModel.Description("AnArenaForHoldingAndViewingEvents")]
+		[EnumMember(Value = "Stadium")] 
+		Stadium = 41,
+
+		[System.ComponentModel.Description("ABuildingWhereBusesAndCoachesRegularlyStopToTakeOnAndOrLetOffPassengersEspeciallyForLongDistanceTravel")]
+		[EnumMember(Value = "Bus Station")] 
+		BusStation = 42,
+
+		[System.ComponentModel.Description("ABuildingWithinATerminalForTheLoadingAndUnloadingOfPassengers")]
+		[EnumMember(Value = "Passenger Terminal Building")] 
+		PassengerTerminalBuilding = 43,
+
+		[System.ComponentModel.Description("AUnitResponsibleForPromotingEfficientOrganizationOfSearchAndRescueServicesAndForCoordinatingTheConductOfSearchAndRescueOperationsWithinASearchAndRescueRegion")]
+		[EnumMember(Value = "Sea Rescue Control")] 
+		SeaRescueControl = 44,
+
+		[System.ComponentModel.Description("ABuildingDesignedAndEquippedForMakingObservationsOfAstronomicalMeteorologicalOrOtherNaturalPhenomena")]
+		[EnumMember(Value = "Observatory")] 
+		Observatory = 45,
+
+		[System.ComponentModel.Description("ABuildingOrStructureUsedToCrushOre")]
+		[EnumMember(Value = "Ore Crusher")] 
+		OreCrusher = 46,
+
+		[System.ComponentModel.Description("ABuildingOrShedUsuallyBuiltPartlyOverWaterForShelteringABoatOrBoats")]
+		[EnumMember(Value = "Boathouse")] 
+		Boathouse = 47,
+
+		[System.ComponentModel.Description("AFacilityToMoveSolidsLiquidsOrGasesByMeansOfPressureOrSuction")]
+		[EnumMember(Value = "Pumping Station")] 
+		PumpingStation = 48,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfLandmark : int {
+		[System.ComponentModel.Description("AMoundOfStonesUsuallyConicalOrPyramidalRaisedAsALandmarkOrToDesignateAPointOfImportanceInSurveying")]
+		[EnumMember(Value = "Cairn")] 
+		Cairn = 1,
+
+		[System.ComponentModel.Description("ASiteAndAssociatedStructuresDevotedToTheBurialOfTheDead")]
+		[EnumMember(Value = "Cemetery")] 
+		Cemetery = 2,
+
+		[System.ComponentModel.Description("AVerticalStructureContainingAPassageOrFlueForDischargingSmokeAndGasesOfCombustion")]
+		[EnumMember(Value = "Chimney")] 
+		Chimney = 3,
+
+		[System.ComponentModel.Description("AParabolicAerialForTheReceiptAndTransmissionOfHighFrequencyRadioSignals")]
+		[EnumMember(Value = "Dish Aerial")] 
+		DishAerial = 4,
+
+		[System.ComponentModel.Description("AStaffOrPoleOnWhichFlagsAreRaised")]
+		[EnumMember(Value = "Flagstaff")] 
+		Flagstaff = 5,
+
+		[System.ComponentModel.Description("ATallStructureUsedForBurningOffWasteOilOrGas")]
+		[EnumMember(Value = "Flare Stack")] 
+		FlareStack = 6,
+
+		[System.ComponentModel.Description("ARelativelyTallStructureUsuallyHeldVerticalByGuyLines")]
+		[EnumMember(Value = "Mast")] 
+		Mast = 7,
+
+		[System.ComponentModel.Description("ATaperedFabricSleeveMountedSoAsToCatchAndSwingWithTheWindThusIndicatingTheWindDirection")]
+		[EnumMember(Value = "Windsock")] 
+		Windsock = 8,
+
+		[System.ComponentModel.Description("AStructureErectedAndOrMaintainedAsAMemorialToAPersonAndOrEvent")]
+		[EnumMember(Value = "Monument")] 
+		Monument = 9,
+
+		[System.ComponentModel.Description("ACylindricalOrSlightlyTaperingBodyOfConsiderablyGreaterLengthThanDiameterErectedVertically")]
+		[EnumMember(Value = "Column/Pillar")] 
+		ColumnPillar = 10,
+
+		[System.ComponentModel.Description("ASlabOfMetalUsuallyOrnamentedErectedAsAMemorialToAPersonOrEvent")]
+		[EnumMember(Value = "Memorial Plaque")] 
+		MemorialPlaque = 11,
+
+		[System.ComponentModel.Description("ATaperingShaftUsuallyOfStoneOrConcreteSquareOrRectangularInSectionWithAPyramidalApex")]
+		[EnumMember(Value = "Obelisk")] 
+		Obelisk = 12,
+
+		[System.ComponentModel.Description("ARepresentationOfALivingBeingSculpturedMouldedOrCastInAVarietyOfMaterialsForExampleMarbleMetalOrPlaster")]
+		[EnumMember(Value = "Statue")] 
+		Statue = 13,
+
+		[System.ComponentModel.Description("AMonumentOrOtherStructureInFormOfACross")]
+		[EnumMember(Value = "Cross")] 
+		Cross = 14,
+
+		[System.ComponentModel.Description("ALandmarkComprisingAHemisphericalOrSpheroidalShapedStructure")]
+		[EnumMember(Value = "Dome")] 
+		Dome = 15,
+
+		[System.ComponentModel.Description("ADeviceUsedForDirectingARadarBeamThroughASearchPattern")]
+		[EnumMember(Value = "Radar Scanner")] 
+		RadarScanner = 16,
+
+		[System.ComponentModel.Description("ARelativelyTallNarrowStructureThatMayEitherStandAloneOrMayFormPartOfAnotherStructure")]
+		[EnumMember(Value = "Tower")] 
+		Tower = 17,
+
+		[System.ComponentModel.Description("ASystemOfVanesAttachedToATowerAndDrivenByWindExcludingWindTurbines")]
+		[EnumMember(Value = "Windmill")] 
+		Windmill = 18,
+
+		[System.ComponentModel.Description("AModernStructureForTheUseOfWindPower")]
+		[EnumMember(Value = "Windmotor")] 
+		Windmotor = 19,
+
+		[System.ComponentModel.Description("ATallConicalOrPyramidShapedStructureOftenBuiltOnTheRoofOrTowerOfABuildingEspeciallyAChurchOrMosque")]
+		[EnumMember(Value = "Spire/Minaret")] 
+		SpireMinaret = 20,
+
+		[System.ComponentModel.Description("AnIsolatedRockyFormationOrASingleLargeStone")]
+		[EnumMember(Value = "Large Rock or Boulder on Land")] 
+		LargeRockOrBoulderOnLand = 21,
+
+		[System.ComponentModel.Description("ARecoverablePointOnTheEarthWhoseGeographicPositionHasBeenDeterminedByAngularMethodsWithGeodeticInstrumentsATriangulationPointIsASelectedPointWhichHasBeenMarkedWithAStationMarkOrItIsAConspicuousNaturalOrArtificialFeature")]
+		[EnumMember(Value = "Triangulation Mark")] 
+		TriangulationMark = 22,
+
+		[System.ComponentModel.Description("AMarkerIdentifyingTheLocationOfASurveyedBoundaryLine")]
+		[EnumMember(Value = "Boundary Mark")] 
+		BoundaryMark = 23,
+
+		[System.ComponentModel.Description("WheelsWithPassengerCarsMountedExternalToTheRimAndIndependentlyRotatedByElectricMotors")]
+		[EnumMember(Value = "Observation Wheel")] 
+		ObservationWheel = 24,
+
+		[System.ComponentModel.Description("AFormOfDecorativeGatewayOrPortalConsistingOfTwoUprightWoodenPostsConnectedAtTheTopByTwoHorizontalCrosspiecesCommonlyFoundAtTheEntranceToShintoTemples")]
+		[EnumMember(Value = "Torii")] 
+		Torii = 25,
+
+		[System.ComponentModel.Description("oneAnElevatedStructureExtendingAcrossOrOverTheWeatherDeckOfAVesselOrPartOfSuchAStructureTheTermIsSometimesModifiedToIndicateTheIntendedUseSuchAsNavigatingBridgeOrSignalBridge2AStructureErectedOverADepressionOrAnObstacleSuchAsABodyOfWaterRailroadEtcToProvideARoadwayForVehiclesOrPedestrians")]
+		[EnumMember(Value = "Bridge")] 
+		Bridge = 26,
+
+		[System.ComponentModel.Description("ABarrierToCheckOrConfineAnythingInMotionParticularlyOneConstructedToHoldBackWaterAndRaiseItsLevelToFormAReservoirOrToPreventFlooding")]
+		[EnumMember(Value = "Dam")] 
+		Dam = 27,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum buoyShape : int {
+		[System.ComponentModel.Description("TheUpperPartOfTheBodyAboveTheWaterLineOrTheGreaterPartOfTheSuperstructureHasApproximatelyTheShapeOrTheAppearanceOfAPointedConeWithThePointUpwards")]
+		[EnumMember(Value = "Conical")] 
+		Conical = 1,
+
+		[System.ComponentModel.Description("TheUpperPartOfTheBodyAboveTheWaterLineOrTheGreaterPartOfTheSuperstructureHasTheShapeOfACylinderOrATruncatedConeThatApproximatesToACylinderWithAFlatEndUppermost")]
+		[EnumMember(Value = "Can")] 
+		Can = 2,
+
+		[System.ComponentModel.Description("ShapedLikeASphereWhichIsABodyTheSurfaceOfWhichIsAtAllPointsEquidistantFromTheCentre")]
+		[EnumMember(Value = "Spherical")] 
+		Spherical = 3,
+
+		[System.ComponentModel.Description("TheUpperPartOfTheBodyAboveTheWaterLineOrTheGreaterPartOfTheSuperstructureIsANarrowVerticalStructurePillarOrLatticeTower")]
+		[EnumMember(Value = "Pillar")] 
+		Pillar = 4,
+
+		[System.ComponentModel.Description("TheUpperPartOfTheBodyAboveTheWaterLineOrTheGreaterPartOfTheSuperstructureHasTheFormOfAPoleOrOfAVeryLongCylinderFloatingUpright")]
+		[EnumMember(Value = "Spar")] 
+		Spar = 5,
+
+		[System.ComponentModel.Description("TheUpperPartOfTheBodyAboveTheWaterLineOrTheGreaterPartOfTheSuperstructureHasTheFormOfABarrelOrCylinderFloatingHorizontally")]
+		[EnumMember(Value = "Barrel")] 
+		Barrel = 6,
+
+		[System.ComponentModel.Description("AVeryLargeBuoyDesignedToCarryASignalLightOfHighLuminousIntensityAtAHighElevation")]
+		[EnumMember(Value = "Superbuoy")] 
+		Superbuoy = 7,
+
+		[System.ComponentModel.Description("ASpeciallyConstructedShuttleShapedBuoyWhichIsUsedInIceConditions")]
+		[EnumMember(Value = "Ice Buoy")] 
+		IceBuoy = 8,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum visualProminence : int {
+		[System.ComponentModel.Description("TermAppliedToAFeatureEitherNaturalOrArtificialWhichIsDistinctlyAndNotablyVisibleFromSeaward")]
+		[EnumMember(Value = "Visually Conspicuous")] 
+		VisuallyConspicuous = 1,
+
+		[System.ComponentModel.Description("AnObjectThatMayBeVisibleFromSeawardButCannotBeUsedAsAFixingMarkAndIsNotConspicuous")]
+		[EnumMember(Value = "Not Visually Conspicuous")] 
+		NotVisuallyConspicuous = 2,
+
+		[System.ComponentModel.Description("ObjectsWhichAreEasilyIdentifiableButDoNotJustifyBeingClassedAsConspicuous")]
+		[EnumMember(Value = "Prominent")] 
+		Prominent = 3,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum status : int {
+		[System.ComponentModel.Description("IntendedToLastOrFunctionIndefinitely")]
+		[EnumMember(Value = "Permanent")] 
+		Permanent = 1,
+
+		[System.ComponentModel.Description("ActingOnSpecialOccasionsHappeningIrregularly")]
+		[EnumMember(Value = "Occasional")] 
+		Occasional = 2,
+
+		[System.ComponentModel.Description("PresentedAsWorthyOfConfidenceAcceptanceUseEtc")]
+		[EnumMember(Value = "Recommended")] 
+		Recommended = 3,
+
+		[System.ComponentModel.Description("UseHasCeasedButTheFacilityStillExistsIntactDisused")]
+		[EnumMember(Value = "Not in Use")] 
+		NotInUse = 4,
+
+		[System.ComponentModel.Description("RecurringAtIntervals")]
+		[EnumMember(Value = "Periodic/Intermittent")] 
+		PeriodicIntermittent = 5,
+
+		[System.ComponentModel.Description("SetApartForSomeSpecificUse")]
+		[EnumMember(Value = "Reserved")] 
+		Reserved = 6,
+
+		[System.ComponentModel.Description("MeantToLastOnlyForATime")]
+		[EnumMember(Value = "Temporary")] 
+		Temporary = 7,
+
+		[System.ComponentModel.Description("AdministeredByAnIndividualOrCorporationRatherThanAStateOrAPublicBody")]
+		[EnumMember(Value = "Private")] 
+		Private = 8,
+
+		[System.ComponentModel.Description("CompulsoryEnforced")]
+		[EnumMember(Value = "Mandatory")] 
+		Mandatory = 9,
+
+		[System.ComponentModel.Description("NoLongerLit")]
+		[EnumMember(Value = "Extinguished")] 
+		Extinguished = 11,
+
+		[System.ComponentModel.Description("LitByFloodlightsStripLightsEtc")]
+		[EnumMember(Value = "Illuminated")] 
+		Illuminated = 12,
+
+		[System.ComponentModel.Description("FamousInHistoryOfHistoricalInterest")]
+		[EnumMember(Value = "Historic")] 
+		Historic = 13,
+
+		[System.ComponentModel.Description("BelongingToAvailableToUsedOrSharedByTheCommunityAsAWholeAndNotRestrictedToPrivateUse")]
+		[EnumMember(Value = "Public")] 
+		Public = 14,
+
+		[System.ComponentModel.Description("OccurAtATimeCoincideInPointOfTimeBeContemporaryOrSimultaneous")]
+		[EnumMember(Value = "Synchronized")] 
+		Synchronized = 15,
+
+		[System.ComponentModel.Description("LookedAtOrObservedOverAPeriodOfTimeEspeciallySoAsToBeAwareOfAnyMovementOrChange")]
+		[EnumMember(Value = "Watched")] 
+		Watched = 16,
+
+		[System.ComponentModel.Description("UsuallyAutomaticInOperationWithoutAnyPermanentlyStationedPersonnelToSuperintendIt")]
+		[EnumMember(Value = "Unwatched")] 
+		Unwatched = 17,
+
+		[System.ComponentModel.Description("AFeatureThatHasBeenReportedButHasNotBeenDefinitelyDeterminedToExist")]
+		[EnumMember(Value = "Existence Doubtful")] 
+		ExistenceDoubtful = 18,
+
+		[System.ComponentModel.Description("WhenYouAskForIt")]
+		[EnumMember(Value = "On Request")] 
+		OnRequest = 19,
+
+		[System.ComponentModel.Description("ToBecomeLowerInLevel")]
+		[EnumMember(Value = "Drop Away")] 
+		DropAway = 20,
+
+		[System.ComponentModel.Description("ToBecomeHigherInLevel")]
+		[EnumMember(Value = "Rising")] 
+		Rising = 21,
+
+		[System.ComponentModel.Description("BecomingLargerInMagnitude")]
+		[EnumMember(Value = "Increasing")] 
+		Increasing = 22,
+
+		[System.ComponentModel.Description("BecomingSmallerInMagnitude")]
+		[EnumMember(Value = "Decreasing")] 
+		Decreasing = 23,
+
+		[System.ComponentModel.Description("NotEasilyBrokenOrDestroyed")]
+		[EnumMember(Value = "Strong")] 
+		Strong = 24,
+
+		[System.ComponentModel.Description("InASatisfactoryConditionToUse")]
+		[EnumMember(Value = "Good")] 
+		Good = 25,
+
+		[System.ComponentModel.Description("FairlyButNotVery")]
+		[EnumMember(Value = "Moderately")] 
+		Moderately = 26,
+
+		[System.ComponentModel.Description("NotAsGoodAsItCouldBeOrShould")]
+		[EnumMember(Value = "Poor")] 
+		Poor = 27,
+
+		[System.ComponentModel.Description("MarkedByBuoys")]
+		[EnumMember(Value = "Buoyed")] 
+		Buoyed = 28,
+
+		[System.ComponentModel.Description("EntireObservationPlatformIsOperatingInAccordanceWithOrExceedingManufacturerSpecifications")]
+		[EnumMember(Value = "Fully Operational")] 
+		FullyOperational = 29,
+
+		[System.ComponentModel.Description("AtLeastOneInstrumentThatIsPartOfAnObservationPlatformIsNotOperatingToManufacturerSpecification")]
+		[EnumMember(Value = "Partially Operational")] 
+		PartiallyOperational = 30,
+
+		[System.ComponentModel.Description("FloatingPlatformAtTheMercyOfEnvironmentalElementsWhetherIntentionalOrNot")]
+		[EnumMember(Value = "Drifting")] 
+		Drifting = 31,
+
+		[System.ComponentModel.Description("FracturedOrInPieces")]
+		[EnumMember(Value = "Broken")] 
+		Broken = 32,
+
+		[System.ComponentModel.Description("ObservationPlatformIsIntentionallyNotReportingAnEnvironmentalObservation")]
+		[EnumMember(Value = "Offline")] 
+		Offline = 33,
+
+		[System.ComponentModel.Description("ObservationStationSuiteOfInstrumentsOrAnIndividualInstrumentForAParticularLocationHasBeenRemovedAndIsNoLongerAtTheParticularLocation")]
+		[EnumMember(Value = "Discontinued")] 
+		Discontinued = 34,
+
+		[System.ComponentModel.Description("ObservationsMadeByAHumanObserver")]
+		[EnumMember(Value = "Manual Observation")] 
+		ManualObservation = 35,
+
+		[System.ComponentModel.Description("StatusOfAnObservationPlatformSuiteOfInstrumentsOrIndividualInstrumentIsNotKnownOrUnspecified")]
+		[EnumMember(Value = "Unknown Status")] 
+		UnknownStatus = 36,
+
+		[System.ComponentModel.Description("MadeCertainAsToTruthAccuracyValidityAvailabilityEtc")]
+		[EnumMember(Value = "Confirmed")] 
+		Confirmed = 37,
+
+		[System.ComponentModel.Description("ItemSelectedForAnAction")]
+		[EnumMember(Value = "Candidate")] 
+		Candidate = 38,
+
+		[System.ComponentModel.Description("ItemThatIsInTheProcessOfBeingModified")]
+		[EnumMember(Value = "Under Modification")] 
+		UnderModification = 39,
+
+		[System.ComponentModel.Description("ItemInTheProcessOfBeingRemovedOrDeleted")]
+		[EnumMember(Value = "Under Removal / Deletion")] 
+		UnderRemovalDeletion = 41,
+
+		[System.ComponentModel.Description("ItemThatHasBeenRemovedOrDeleted")]
+		[EnumMember(Value = "Removed / Deleted")] 
+		RemovedDeleted = 42,
+
+		[System.ComponentModel.Description("ItemSelectedForModification")]
+		[EnumMember(Value = "Candidate for Modification")] 
+		CandidateForModification = 43,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum natureOfConstruction : int {
+		[System.ComponentModel.Description("ConstructedOfStonesOrBricksUsuallyQuarriedShapedAndMortared")]
+		[EnumMember(Value = "Masonry")] 
+		Masonry = 1,
+
+		[System.ComponentModel.Description("ConstructedOfConcreteAMaterialMadeOfSandAndGravelThatIsUnitedByCementIntoAHardenedMassUsedForRoadsFoundationsEtc")]
+		[EnumMember(Value = "Concreted")] 
+		Concreted = 2,
+
+		[System.ComponentModel.Description("ConstructedFromLargeStonesOrBlocksOfConcreteOftenPlacedLooselyForProtectionAgainstWavesOrWaterTurbulence")]
+		[EnumMember(Value = "Loose Boulders")] 
+		LooseBoulders = 3,
+
+		[System.ComponentModel.Description("ConstructedWithASurfaceOfHardMaterialUsuallyATermAppliedToRoadsSurfacedWithAsphaltOrConcrete")]
+		[EnumMember(Value = "Hard Surfaced")] 
+		HardSurfaced = 4,
+
+		[System.ComponentModel.Description("ConstructedWithNoExtraProtectionUsuallyATermAppliedToRoadsNotSurfacedWithAHardMaterial")]
+		[EnumMember(Value = "Unsurfaced")] 
+		Unsurfaced = 5,
+
+		[System.ComponentModel.Description("ConstructedFromWood")]
+		[EnumMember(Value = "Wooden")] 
+		Wooden = 6,
+
+		[System.ComponentModel.Description("ConstructedFromMetal")]
+		[EnumMember(Value = "Metal")] 
+		Metal = 7,
+
+		[System.ComponentModel.Description("ConstructedFromAPlasticMaterialStrengthenedWithFibresOfGlass")]
+		[EnumMember(Value = "Glass Reinforced Plastic")] 
+		GlassReinforcedPlastic = 8,
+
+		[System.ComponentModel.Description("TheApplicationOfPaintToSomeOtherConstructionOrNaturalFeature")]
+		[EnumMember(Value = "Painted")] 
+		Painted = 9,
+
+		[System.ComponentModel.Description("ConstructedFromALatticeFrameworkOfOftenDiagonalIntersectingStruts")]
+		[EnumMember(Value = "Framework")] 
+		Framework = 10,
+
+		[System.ComponentModel.Description("AStructureOfCrossedWoodenOrMetalStripsUsuallyArrangedToFormADiagonalPatternOfOpenSpacesBetweenTheStrips")]
+		[EnumMember(Value = "Latticed")] 
+		Latticed = 11,
+
+		[System.ComponentModel.Description("oneAnyArtificialOrNaturalSubstanceHavingSimilarPropertiesAndCompositionAsFusedBoraxObsidianOrTheLike2SomethingMadeOfSuchASubstanceAsAWindowpane")]
+		[EnumMember(Value = "Glass")] 
+		Glass = 12,
+
+		[System.ComponentModel.Description("ConstructedFromFiberglass")]
+		[EnumMember(Value = "Fiberglass")] 
+		Fiberglass = 13,
+
+		[System.ComponentModel.Description("ConstructedFromPlastic")]
+		[EnumMember(Value = "Plastic")] 
+		Plastic = 14,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum marksNavigationalSystemOf : int {
+		[System.ComponentModel.Description("NavigationalAidsConformToTheInternationalAssociationOfLighthouseAuthoritiesIalaASystem")]
+		[EnumMember(Value = "IALA A")] 
+		IalaA = 1,
+
+		[System.ComponentModel.Description("NavigationalAidsConformToTheInternationalAssociationOfLighthouseAuthoritiesIalaBSystem")]
+		[EnumMember(Value = "IALA B")] 
+		IalaB = 2,
+
+		[System.ComponentModel.Description("NavigationalAidsDoNotConformToAnyDefinedSystem")]
+		[EnumMember(Value = "No System")] 
+		NoSystem = 9,
+
+		[System.ComponentModel.Description("NavigationalAidsConformToADefinedSystemOtherThanInternationalAssociationOfLighthouseAuthoritiesIala")]
+		[EnumMember(Value = "Other System")] 
+		OtherSystem = 10,
+
+		[System.ComponentModel.Description("CevniEuropeanCodeForNavigationOnInlandWaterwaysIsTheEuropeanCodeForRiversCanalsLandLakesInMostOfEurope")]
+		[EnumMember(Value = "CEVNI")] 
+		Cevni = 11,
+
+		[System.ComponentModel.Description("NavigationalAidsConformToTheRussianInlandWaterwayRegulations")]
+		[EnumMember(Value = "Russian Inland Waterway Regulations")] 
+		RussianInlandWaterwayRegulations = 12,
+
+		[System.ComponentModel.Description("NavigationalAidsConformToTheBrazilianNationalInlandWaterwayRegulationsForTwoSides")]
+		[EnumMember(Value = "Brazilian National Inland Waterway Regulations - Two Sides")] 
+		BrazilianNationalInlandWaterwayRegulationsTwoSides = 13,
+
+		[System.ComponentModel.Description("NavigationalAidsConformToTheBrazilianNationalInlandWaterwayRegulationsSideIndependent")]
+		[EnumMember(Value = "Brazilian National Inland Waterway Regulations - Side Independent")] 
+		BrazilianNationalInlandWaterwayRegulationsSideIndependent = 14,
+
+		[System.ComponentModel.Description("NavigationalAidsConformToTheBrazilianComplementaryAidsOnTheParaguayParanaWaterway")]
+		[EnumMember(Value = "Paraguay-Parana Waterway - Brazilian Complementary Aids")] 
+		ParaguayParanaWaterwayBrazilianComplementaryAids = 15,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum colourPattern : int {
+		[System.ComponentModel.Description("StraightBandsOrStripesOfDifferingColoursOrientedHorizontally")]
+		[EnumMember(Value = "Horizontal Stripes")] 
+		HorizontalStripes = 1,
+
+		[System.ComponentModel.Description("StraightBandsOrStripesOfDifferingColoursOrientedVertically")]
+		[EnumMember(Value = "Vertical Stripes")] 
+		VerticalStripes = 2,
+
+		[System.ComponentModel.Description("StraightBandsOrStripesOfDifferingColoursOrientedDiagonallyThatIsNotHorizontallyOrVertically")]
+		[EnumMember(Value = "Diagonal Stripes")] 
+		DiagonalStripes = 3,
+
+		[System.ComponentModel.Description("OftenReferredToAsCheckerPlateWhereAlternateColoursAreUsedToCreateSquaresSimilarToAChessOrDraughtBoardThePatternMayBeStraightOrDiagonal")]
+		[EnumMember(Value = "Squared")] 
+		Squared = 4,
+
+		[System.ComponentModel.Description("StraightBandsOrStripesOfDifferingColoursOrientedInAnUnknownDirection")]
+		[EnumMember(Value = "Stripes (Direction Unknown)")] 
+		StripesDirectionUnknown = 5,
+
+		[System.ComponentModel.Description("ABandOrStripeOfColourWhichIsDisplayedAroundTheOuterEdgeOfTheObjectWhichMayAlsoFormABorderToAnInnerPatternOrPlainColour")]
+		[EnumMember(Value = "Border Stripe")] 
+		BorderStripe = 6,
+
+		[System.ComponentModel.Description("OneSolidColourOfUniformCoverage")]
+		[EnumMember(Value = "Single Colour")] 
+		SingleColour = 7,
+
+		[System.ComponentModel.Description("AFourSidedShapeThatIsMadeUpOfTwoPairsOfParallelLinesAndThatHasFourRightAnglesOnADifferentColouredBackground")]
+		[EnumMember(Value = "Rectangle")] 
+		Rectangle = 8,
+
+		[System.ComponentModel.Description("AShapeThatIsMadeUpOfThreeLinesAndThreeAnglesOnADifferentColouredBackground")]
+		[EnumMember(Value = "Triangle")] 
+		Triangle = 9,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum colour : int {
+		[System.ComponentModel.Description("TheAchromaticObjectColourOfGreatestLightnessCharacteristicallyPerceivedToBelongToObjectsThatReflectDiffuselyNearlyAllIncidentEnergyThroughoutTheVisibleSpectrum")]
+		[EnumMember(Value = "White")] 
+		White = 1,
+
+		[System.ComponentModel.Description("TheAchromaticColorOfLeastLightnessCharacteristicallyPerceivedToBelongToObjectsThatNeitherReflectNorTransmitLight")]
+		[EnumMember(Value = "Black")] 
+		Black = 2,
+
+		[System.ComponentModel.Description("AColorWhoseHueResemblesThatOfBloodOrOfTheRubyOrIsThatOfTheLongWaveExtremeOfTheVisibleSpectrum")]
+		[EnumMember(Value = "Red")] 
+		Red = 3,
+
+		[System.ComponentModel.Description("OfTheColorGreen")]
+		[EnumMember(Value = "Green")] 
+		Green = 4,
+
+		[System.ComponentModel.Description("AColorWhoseHueIsThatOfTheClearSkyOrThatOfThePortionOfTheColorSpectrumLyingBetweenGreenAndViolet")]
+		[EnumMember(Value = "Blue")] 
+		Blue = 5,
+
+		[System.ComponentModel.Description("AColorWhoseHueResemblesThatOfRipeLemonsOrSunflowersOrIsThatOfThePortionOfTheSpectrumLyingBetweenGreenAndOrange")]
+		[EnumMember(Value = "Yellow")] 
+		Yellow = 6,
+
+		[System.ComponentModel.Description("OfTheColorGrey")]
+		[EnumMember(Value = "Grey")] 
+		Grey = 7,
+
+		[System.ComponentModel.Description("AnyOfAGroupOfColorsBetweenRedAndYellowInHueOfMediumToLowLightnessAndOfModerateToLowSaturation")]
+		[EnumMember(Value = "Brown")] 
+		Brown = 8,
+
+		[System.ComponentModel.Description("AVariableColorAveragingADarkOrangeYellow")]
+		[EnumMember(Value = "Amber")] 
+		Amber = 9,
+
+		[System.ComponentModel.Description("AnyOfAGroupOfColorsOfReddishBlueHueLowLightnessAndMediumSaturation")]
+		[EnumMember(Value = "Violet")] 
+		Violet = 10,
+
+		[System.ComponentModel.Description("AnyOfAGroupOfColorsThatAreBetweenRedAndYellowInHue")]
+		[EnumMember(Value = "Orange")] 
+		Orange = 11,
+
+		[System.ComponentModel.Description("ADeepPurplishRed")]
+		[EnumMember(Value = "Magenta")] 
+		Magenta = 12,
+
+		[System.ComponentModel.Description("AnyOfAGroupOfColorsBluishRedToRedInHueOfMediumToHighLightnessAndOfLowToModerateSaturation")]
+		[EnumMember(Value = "Pink")] 
+		Pink = 13,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum beaconShape : int {
+		[System.ComponentModel.Description("AnElongatedWoodOrMetalPoleDrivenIntoTheGroundOrSeabedWhichServesAsANavigationalAidOrASupportForANavigationalAid")]
+		[EnumMember(Value = "Stake, Pole, Perch, Post")] 
+		StakePolePerchPost = 1,
+
+		[System.ComponentModel.Description("ATreeWithoutRootsStuckOrSpoiledIntoTheBottomOfTheSeaToServeAsANavigationalAid")]
+		[EnumMember(Value = "Withy")] 
+		Withy = 2,
+
+		[System.ComponentModel.Description("ASolidStructureOfTheOrderOf10MetresInHeightUsedAsANavigationalAid")]
+		[EnumMember(Value = "Beacon Tower")] 
+		BeaconTower = 3,
+
+		[System.ComponentModel.Description("AStructureConsistingOfStripsOfMetalOrWoodCrossedOrInterlacedToFormAStructureToServeAsAnAidToNavigationOrAsASupportForAnAidToNavigation")]
+		[EnumMember(Value = "Lattice Beacon")] 
+		LatticeBeacon = 4,
+
+		[System.ComponentModel.Description("ALongHeavyTimberSOrSectionSOfSteelWoodConcreteEtcForcedIntoTheSeabedToServeAsAnAidToNavigationOrAsASupportForAnAidToNavigation")]
+		[EnumMember(Value = "Pile Beacon")] 
+		PileBeacon = 5,
+
+		[System.ComponentModel.Description("AMoundOfStonesUsuallyConicalOrPyramidalRaisedAsALandmarkOrToDesignateAPointOfImportanceInSurveying")]
+		[EnumMember(Value = "Cairn")] 
+		Cairn = 6,
+
+		[System.ComponentModel.Description("ATallSparLikeBeaconFittedWithAPermanentlySubmergedBuoyancyChamberTheLowerEndOfTheBodyIsSecuredToSeabedSinkerEitherByAFlexibleJointOrByACableUnderTension")]
+		[EnumMember(Value = "Buoyant Beacon")] 
+		BuoyantBeacon = 7,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum aidAvailabilityCategory : int {
+		[System.ComponentModel.Description("AnAtonOrSystemOfAtonThatIsConsideredByTheCompetentAuthorityToBeOfVitalNavigationalSignificance")]
+		[EnumMember(Value = "Category 1")] 
+		Category1 = 1,
+
+		[System.ComponentModel.Description("AnAtonOrSystemOfAtonThatIsConsideredByTheCompetentAuthorityToBeOfImportantNavigationalSignificance")]
+		[EnumMember(Value = "Category 2")] 
+		Category2 = 2,
+
+		[System.ComponentModel.Description("AnAtonOrSystemOfAtonThatIsConsideredByTheCompetentAuthorityToBeOfNecessaryNavigationalSignificance")]
+		[EnumMember(Value = "Category 3")] 
+		Category3 = 3,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum condition : int {
+		[System.ComponentModel.Description("BeingBuiltButNotYetCapableOfFunction")]
+		[EnumMember(Value = "Under Construction")] 
+		UnderConstruction = 1,
+
+		[System.ComponentModel.Description("AStructureInADecayedOrDeterioratedConditionResultingFromNeglectOrDisuseOrADamagedStructureInNeedOfRepair")]
+		[EnumMember(Value = "Ruined")] 
+		Ruined = 2,
+
+		[System.ComponentModel.Description("AnAreaOfTheSeaALakeOrTheNavigablePartOfARiverThatIsBeingReclaimedAsLandUsuallyByTheDumpingOfEarthAndOtherMaterial")]
+		[EnumMember(Value = "Under Reclamation")] 
+		UnderReclamation = 3,
+
+		[System.ComponentModel.Description("AWindmillOrWindTurbineFromWhichTheVanesOrTurbineBladesAreMissing")]
+		[EnumMember(Value = "Wingless")] 
+		Wingless = 4,
+
+		[System.ComponentModel.Description("DetailedPlanningHasBeenCompletedButConstructionHasNotBeenInitiated")]
+		[EnumMember(Value = "Planned Construction")] 
+		PlannedConstruction = 5,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfTemporalVariation : int {
+		[System.ComponentModel.Description("IndicationOfThePossibleImpactOfASignificantEventForExampleHurricaneEarthquakeVolcanicEruptionLandslideEtcWhichIsConsideredLikelyToHaveChangedTheSeafloorOrLandscapeSignificantly")]
+		[EnumMember(Value = "Extreme Event")] 
+		ExtremeEvent = 1,
+
+		[System.ComponentModel.Description("ContinuousOrFrequentChangeForExampleRiverSiltationSandWavesSeasonalStormsIcebergsEtcThatIsLikelyToResultInNewSignificantShoaling")]
+		[EnumMember(Value = "Likely to Change and Significant Shoaling Expected")] 
+		LikelyToChangeAndSignificantShoalingExpected = 2,
+
+		[System.ComponentModel.Description("ContinuousOrFrequentChangeForExampleSandWaveShiftSeasonalStormsIcebergsEtcThatIsNotLikelyToResultInNewSignificantShoaling")]
+		[EnumMember(Value = "Likely to Change But Significant Shoaling Not Expected")] 
+		LikelyToChangeButSignificantShoalingNotExpected = 3,
+
+		[System.ComponentModel.Description("ContinuousOrFrequentChangeToNonBathymetricFeaturesForExampleRiverSiltationGlacierCreepRecessionSandDunesBuoysMarineFarmsEtc")]
+		[EnumMember(Value = "Likely to Change")] 
+		LikelyToChange = 4,
+
+		[System.ComponentModel.Description("SignificantChangeToTheSeafloorIsNotExpected")]
+		[EnumMember(Value = "Unlikely to Change")] 
+		UnlikelyToChange = 5,
+
+		[System.ComponentModel.Description("NotHavingBeenAssessed")]
+		[EnumMember(Value = "Unassessed")] 
+		Unassessed = 6,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum atonCommissioning : int {
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy establishment")] 
+		BuoyEstablishment = 1,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light establishment")] 
+		LightEstablishment = 2,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Beacon establishment")] 
+		BeaconEstablishment = 3,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Audible signal establishment")] 
+		AudibleSignalEstablishment = 4,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Fog signal establishment")] 
+		FogSignalEstablishment = 5,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "AIS transmitter establishment")] 
+		AisTransmitterEstablishment = 6,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "V-AIS establishment")] 
+		VAisEstablishment = 7,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "RACON establishment")] 
+		RaconEstablishment = 8,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "DGPS station establishment")] 
+		DgpsStationEstablishment = 9,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "eLORAN station establishment")] 
+		EloranStationEstablishment = 10,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "DGLONASS station establishment")] 
+		DglonassStationEstablishment = 11,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "e-Chayka station establishment")] 
+		EChaykaStationEstablishment = 12,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "EGNOS establishment")] 
+		EgnosEstablishment = 13,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum atonRemoval : int {
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy removal")] 
+		BuoyRemoval = 1,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy temporary removal")] 
+		BuoyTemporaryRemoval = 2,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light removal")] 
+		LightRemoval = 3,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light temporary removal")] 
+		LightTemporaryRemoval = 4,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Beacon removal")] 
+		BeaconRemoval = 5,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Beacon temporary removal")] 
+		BeaconTemporaryRemoval = 6,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Fog signal removal")] 
+		FogSignalRemoval = 7,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Fog signal temporary removal")] 
+		FogSignalTemporaryRemoval = 8,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Audible signal removal")] 
+		AudibleSignalRemoval = 9,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Audible signal temporary removal")] 
+		AudibleSignalTemporaryRemoval = 10,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "V-AIS removal")] 
+		VAisRemoval = 11,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "V-AIS temporary removal")] 
+		VAisTemporaryRemoval = 12,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "RACON signal removal")] 
+		RaconSignalRemoval = 13,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "RACON temporary removal")] 
+		RaconTemporaryRemoval = 14,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "DGPS removal")] 
+		DgpsRemoval = 15,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "DGPS temporary removal")] 
+		DgpsTemporaryRemoval = 16,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "EGNOS removal")] 
+		EgnosRemoval = 17,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "EGNOS temporary removal")] 
+		EgnosTemporaryRemoval = 18,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "LORAN C station removal")] 
+		LoranCStationRemoval = 19,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "LORAN C station temporary removal")] 
+		LoranCStationTemporaryRemoval = 20,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "eLORAN removal")] 
+		EloranRemoval = 21,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "eLORAN temporary removal")] 
+		EloranTemporaryRemoval = 22,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Chayka station removal")] 
+		ChaykaStationRemoval = 23,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Chayka station temporary removal")] 
+		ChaykaStationTemporaryRemoval = 24,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "e-Chayka station removal")] 
+		EChaykaStationRemoval = 25,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "e-Chayka station temporary removal")] 
+		EChaykaStationTemporaryRemoval = 26,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum atonReplacement : int {
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy change")] 
+		BuoyChange = 1,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy temporary change")] 
+		BuoyTemporaryChange = 2,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light change")] 
+		LightChange = 3,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light temporary change")] 
+		LightTemporaryChange = 4,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Sector light change")] 
+		SectorLightChange = 5,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Sector light temporary change")] 
+		SectorLightTemporaryChange = 6,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Beacon change")] 
+		BeaconChange = 7,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Beacon temporary change")] 
+		BeaconTemporaryChange = 8,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Fog signal change")] 
+		FogSignalChange = 9,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Fog signal temporary change")] 
+		FogSignalTemporaryChange = 10,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Audible signal change")] 
+		AudibleSignalChange = 11,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Audible signal temporary change")] 
+		AudibleSignalTemporaryChange = 12,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "V-AIS change")] 
+		VAisChange = 13,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "V-AIS temporary change")] 
+		VAisTemporaryChange = 14,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "RACON signal change")] 
+		RaconSignalChange = 15,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "RACON temporary change")] 
+		RaconTemporaryChange = 16,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum fixedAtonChange : int {
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Beacon missing")] 
+		BeaconMissing = 1,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Beacon damaged")] 
+		BeaconDamaged = 2,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light beacon Unlit")] 
+		LightBeaconUnlit = 3,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light beacon Unreliable")] 
+		LightBeaconUnreliable = 4,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light beacon Not synchronized")] 
+		LightBeaconNotSynchronized = 5,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light beacon damaged")] 
+		LightBeaconDamaged = 6,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Beacon topmark missing")] 
+		BeaconTopmarkMissing = 7,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Beacon topmark damaged")] 
+		BeaconTopmarkDamaged = 8,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Beacon daymark unreliable")] 
+		BeaconDaymarkUnreliable = 9,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Floodlit beacon Unlit")] 
+		FloodlitBeaconUnlit = 10,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Beacon restored to normal")] 
+		BeaconRestoredToNormal = 11,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum floatingAtonChange : int {
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy adrift")] 
+		BuoyAdrift = 1,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy damaged")] 
+		BuoyDamaged = 2,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy daymark unreliable")] 
+		BuoyDaymarkUnreliable = 3,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy destroyed")] 
+		BuoyDestroyed = 4,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy missing")] 
+		BuoyMissing = 5,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy move")] 
+		BuoyMove = 6,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy off position")] 
+		BuoyOffPosition = 7,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy re-establishment")] 
+		BuoyReEstablishment = 8,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy restored to normal")] 
+		BuoyRestoredToNormal = 9,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy topmark damaged")] 
+		BuoyTopmarkDamaged = 10,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy topmark missing")] 
+		BuoyTopmarkMissing = 11,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy will be withdrawn")] 
+		BuoyWillBeWithdrawn = 12,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy withdrawn")] 
+		BuoyWithdrawn = 13,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Decommissioned for winter")] 
+		DecommissionedForWinter = 14,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Lifted for Winter")] 
+		LiftedForWinter = 15,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light buoy Light damaged")] 
+		LightBuoyLightDamaged = 16,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light buoy Light not synchronized")] 
+		LightBuoyLightNotSynchronized = 17,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light buoy Light unlit")] 
+		LightBuoyLightUnlit = 18,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light buoy Light unreliable")] 
+		LightBuoyLightUnreliable = 19,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Marine Aids to Navigation unreliable")] 
+		MarineAidsToNavigationUnreliable = 20,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Recommissioned for navigation season")] 
+		RecommissionedForNavigationSeason = 21,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Replaced by Winter Spar")] 
+		ReplacedByWinterSpar = 22,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Seasonal decommissioning complete")] 
+		SeasonalDecommissioningComplete = 23,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Seasonal decommissioning in progress")] 
+		SeasonalDecommissioningInProgress = 24,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Seasonal recommissioning complete")] 
+		SeasonalRecommissioningComplete = 25,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Seasonal recommissioning in progress")] 
+		SeasonalRecommissioningInProgress = 26,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum audibleSignalAtonChange : int {
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Audible signal out of service")] 
+		AudibleSignalOutOfService = 1,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Fog signal out of service")] 
+		FogSignalOutOfService = 2,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Audible signal operating properly")] 
+		AudibleSignalOperatingProperly = 3,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Fog signal operating properly")] 
+		FogSignalOperatingProperly = 4,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum lightedAtonChange : int {
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light unlit")] 
+		LightUnlit = 1,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light unreliable")] 
+		LightUnreliable = 2,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light re-establishment")] 
+		LightReEstablishment = 3,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light range reduced")] 
+		LightRangeReduced = 4,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light without rhythm")] 
+		LightWithoutRhythm = 5,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light out of synchronization")] 
+		LightOutOfSynchronization = 6,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light daymark unreliable")] 
+		LightDaymarkUnreliable = 7,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light operating properly")] 
+		LightOperatingProperly = 8,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Sector light Sector obscured")] 
+		SectorLightSectorObscured = 9,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Front leading/range light Unlit")] 
+		FrontLeadingRangeLightUnlit = 10,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Rear leading/range light Unlit")] 
+		RearLeadingRangeLightUnlit = 11,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Front leading/range light Unreliable")] 
+		FrontLeadingRangeLightUnreliable = 12,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Rear leading/range light Unreliable")] 
+		RearLeadingRangeLightUnreliable = 13,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Front leading/range light Light range reduced")] 
+		FrontLeadingRangeLightLightRangeReduced = 14,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Rear leading/range light Light range reduced")] 
+		RearLeadingRangeLightLightRangeReduced = 15,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Front leading/range light without rhythm")] 
+		FrontLeadingRangeLightWithoutRhythm = 16,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Rear leading/range light without rhythm")] 
+		RearLeadingRangeLightWithoutRhythm = 17,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Leading/range lights out of synchronization")] 
+		LeadingRangeLightsOutOfSynchronization = 18,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Front leading/range beacon Unreliable")] 
+		FrontLeadingRangeBeaconUnreliable = 19,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Rear leading/range beacon Unreliable")] 
+		RearLeadingRangeBeaconUnreliable = 20,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Front leading/range light is operating properly")] 
+		FrontLeadingRangeLightIsOperatingProperly = 21,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Rear leading/range light is operating properly")] 
+		RearLeadingRangeLightIsOperatingProperly = 22,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Front leading/range beacon restored to normal")] 
+		FrontLeadingRangeBeaconRestoredToNormal = 23,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Rear leading/range beacon restored to normal")] 
+		RearLeadingRangeBeaconRestoredToNormal = 24,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum electronicAtonChange : int {
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "AIS transmitter out of service")] 
+		AisTransmitterOutOfService = 1,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "AIS transmitter unreliable")] 
+		AisTransmitterUnreliable = 2,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "AIS transmitter operating properly")] 
+		AisTransmitterOperatingProperly = 3,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "V-AIS out of service")] 
+		VAisOutOfService = 4,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "V-AIS unreliable")] 
+		VAisUnreliable = 5,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "V-AIS operating properly")] 
+		VAisOperatingProperly = 6,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "RACON out of service")] 
+		RaconOutOfService = 7,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "RACON unreliable")] 
+		RaconUnreliable = 8,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "RACON operating properly")] 
+		RaconOperatingProperly = 9,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "DGPS out of service")] 
+		DgpsOutOfService = 10,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "DGPS operating properly")] 
+		DgpsOperatingProperly = 11,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "DGPS unreliable")] 
+		DgpsUnreliable = 12,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "LORAN C operating properly")] 
+		LoranCOperatingProperly = 13,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "LORAN C unreliable")] 
+		LoranCUnreliable = 14,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "LORAN C out of service")] 
+		LoranCOutOfService = 15,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "eLORAN operating properly")] 
+		EloranOperatingProperly = 16,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "eLORAN unreliable")] 
+		EloranUnreliable = 17,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "eLORAN out of service")] 
+		EloranOutOfService = 18,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "DGLOANSS operating properly")] 
+		DgloanssOperatingProperly = 19,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "DGLOANSS unreliable")] 
+		DgloanssUnreliable = 20,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "DGLOANSS out of service")] 
+		DgloanssOutOfService = 21,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Chayka operating properly")] 
+		ChaykaOperatingProperly = 22,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Chayka unreliable")] 
+		ChaykaUnreliable = 23,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Chayka out of service")] 
+		ChaykaOutOfService = 24,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "e-Chayka operating properly")] 
+		EChaykaOperatingProperly = 25,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "e-Chayka unreliable")] 
+		EChaykaUnreliable = 26,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "e-Chayka out of service")] 
+		EChaykaOutOfService = 27,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "EGNOS operating properly")] 
+		EgnosOperatingProperly = 28,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "EGNOS unreliable")] 
+		EgnosUnreliable = 29,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "EGNOS out of service")] 
+		EgnosOutOfService = 30,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum positioningEquipment : int {
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "DGPS Receiver")] 
+		DgpsReceiver = 1,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "GLONASS Receiver")] 
+		GlonassReceiver = 2,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "GPS Receiver")] 
+		GpsReceiver = 3,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "GPS/WAAS Receiver")] 
+		GpsWaasReceiver = 4,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Serializable()]
+	public class CategoryOfAssociation
+	{
+		public required string label { get; set; }
+		public required string definition { get; set; }
+		public required int code { get; set; }
+	}
+
+	[System.Serializable()]
+	public class CategoryOfAggregation
+	{
+		public required string label { get; set; }
+		public required string definition { get; set; }
+		public required int code { get; set; }
+	}
+
+	public static class CodeList
+	{
+		public static ImmutableArray<CategoryOfAssociation> CategoryOfAssociations => ImmutableArray.Create<CategoryOfAssociation>(new CategoryOfAssociation[]{
+			new() {
+				code = 1,
+				definition = "-",
+				label = "channel markings",
+			},
+			new() {
+				code = 2,
+				definition = "-",
+				label = "danger markings",
+			},
+		});
+
+		public static ImmutableArray<CategoryOfAggregation> CategoryOfAggregations => ImmutableArray.Create<CategoryOfAggregation>(new CategoryOfAggregation[]{
+			new() {
+				code = 1,
+				definition = "-",
+				label = "leading line ",
+			},
+			new() {
+				code = 3,
+				definition = "-",
+				label = "measured distance ",
+			},
+			new() {
+				code = 2,
+				definition = "-",
+				label = "range system ",
+			},
+		});
+	}
+
+	namespace ComplexAttributes {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class contactAddress {
+			public String? deliveryPoint {get;set;} = default;
+
+			public String? cityName {get;set;} = default;
+
+			public String? administrativeDivision {get;set;} = default;
+
+			public String? countryName {get;set;} = default;
+
+			public String? postalCode {get;set;} = default;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class featureName {
+			public Boolean? displayName {get;set;} = default;
+
+			public String? language {get;set;} = default;
+
+			public String name {get;set;} = string.Empty;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class fixedDateRange {
+			public DateOnly? dateEnd {get;set;} = default;
+
+			public DateOnly? dateStart {get;set;} = default;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class multiplicityOfFeatures {
+			[Required()]
+			public Boolean multiplicityKnown {get;set;} = false;
+
+			public int? numberOfFeatures {get;set;} = default;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class orientation {
+			public decimal? orientationUncertainty {get;set;} = default;
+
+			[Required()]
+			public decimal orientationValue {get;set;}
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class periodicDateRange {
+			[Required()]
+			public DateOnly dateEnd {get;set;}
+
+			[Required()]
+			public DateOnly dateStart {get;set;}
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class radarWaveLength {
+			public String radarBand {get;set;} = string.Empty;
+
+			[Required()]
+			public decimal waveLengthValue {get;set;}
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class sectorInformation {
+			public String? language {get;set;} = default;
+
+			public String text {get;set;} = string.Empty;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class sectorLimitOne {
+			[Required()]
+			public decimal sectorBearing {get;set;}
+
+			public int? sectorLineLength {get;set;} = default;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class sectorLimitTwo {
+			[Required()]
+			public decimal sectorBearing {get;set;}
+
+			public int? sectorLineLength {get;set;} = default;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class shapeInformation {
+			public String? language {get;set;} = default;
+
+			public String text {get;set;} = string.Empty;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class signalSequence {
+			[Required()]
+			public decimal signalDuration {get;set;}
+
+			[EnumerationValue([1,2])]
+			[Required()]
+			public signalStatus signalStatus {get;set;}
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class CableDimensions {
+			[Required()]
+			public decimal cableLength {get;set;}
+
+			[EnumerationValue([1,2,3,4,5,6])]
+			[Required()]
+			public heightLengthUnits heightLengthUnits {get;set;}
+
+			[Required()]
+			public decimal diameter {get;set;}
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class ChangeDetails {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			public atonCommissioning? atonCommissioning {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
+			public atonRemoval? atonRemoval {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
+			public atonReplacement? atonReplacement {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
+			public fixedAtonChange? fixedAtonChange {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26])]
+			public floatingAtonChange? floatingAtonChange {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4])]
+			public audibleSignalAtonChange? audibleSignalAtonChange {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24])]
+			public lightedAtonChange? lightedAtonChange {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30])]
+			public electronicAtonChange? electronicAtonChange {get;set;} = default;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class sinkerDimensions {
+			[EnumerationValue([1,2,3,4,5,6])]
+			[Required()]
+			public heightLengthUnits heightLengthUnits {get;set;}
+
+			public decimal? horizontalLength {get;set;} = default;
+
+			public decimal? horizontalWidth {get;set;} = default;
+
+			public decimal? verticalLength {get;set;} = default;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class PositioningMethod {
+			[EnumerationValue([1,2,3,4])]
+			[Required()]
+			public positioningEquipment positioningEquipment {get;set;}
+
+			public String NMEAString {get;set;} = string.Empty;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class horizontalPositionUncertainty {
+			[Required()]
+			public decimal uncertaintyFixed {get;set;}
+
+			public decimal? uncertaintyVariableFactor {get;set;} = default;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class information {
+			public String? fileLocator {get;set;} = default;
+
+			public String? fileReference {get;set;} = default;
+
+			public String? headline {get;set;} = default;
+
+			public String language {get;set;} = string.Empty;
+
+			public String? text {get;set;} = default;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class textualDescription {
+			public String fileReference {get;set;} = string.Empty;
+
+			public String? language {get;set;} = default;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class verticalUncertainty {
+			[Required()]
+			public decimal uncertaintyFixed {get;set;}
+
+			public decimal? uncertaintyVariableFactor {get;set;} = default;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class directionalCharacter {
+			public Boolean? moireEffect {get;set;} = default;
+
+			[Required()]
+			public orientation orientation {get;set;}
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class rhythmOfLight {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,26,27,28,29])]
+			[Required()]
+			public lightCharacteristic lightCharacteristic {get;set;}
+
+			public List<String> signalGroup {get;set;} = [];
+
+			public decimal? signalPeriod {get;set;} = default;
+
+			public List<signalSequence> signalSequence {get;set;} = [];
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class sectorLimit {
+			[Required()]
+			public sectorLimitOne sectorLimitOne {get;set;}
+
+			[Required()]
+			public sectorLimitTwo sectorLimitTwo {get;set;}
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class spatialAccuracy {
+			public fixedDateRange? fixedDateRange {get;set;} = default;
+
+			public horizontalPositionUncertainty? horizontalPositionUncertainty {get;set;} = default;
+
+			public verticalUncertainty? verticalUncertainty {get;set;} = default;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class ObscuredSector {
+			[Required()]
+			public sectorLimit sectorLimit {get;set;}
+
+			public sectorInformation? sectorInformation {get;set;} = default;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class lightSector {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			public List<colour> colour {get;set;} = [];
+
+			public directionalCharacter? directionalCharacter {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			public List<lightVisibility> lightVisibility {get;set;} = [];
+
+			public sectorLimit? sectorLimit {get;set;} = default;
+
+			public decimal? valueOfNominalRange {get;set;} = default;
+
+			public List<sectorInformation> sectorInformation {get;set;} = [];
+
+			public Boolean? sectorExtension {get;set;} = default;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class sectorCharacteristics {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,26,27,28,29])]
+			[Required()]
+			public lightCharacteristic lightCharacteristic {get;set;}
+
+			public List<lightSector> lightSector {get;set;} = [];
+
+			public List<String> signalGroup {get;set;} = [];
+
+			public decimal? signalPeriod {get;set;} = default;
+
+			public List<signalSequence> signalSequence {get;set;} = [];
+		}
+
+	}
+	public enum Role {
+		[System.ComponentModel.Description("-")]
+		Atonpart,
+		[System.ComponentModel.Description("-")]
+		Statuspart,
+		[System.ComponentModel.Description("TBD")]
+		buoyPart,
+		[System.ComponentModel.Description("TBD")]
+		topmarkPart,
+		[System.ComponentModel.Description("-")]
+		parent,
+		[System.ComponentModel.Description("-")]
+		child,
+		[System.ComponentModel.Description("-")]
+		physicalAISbroadcastBy,
+		[System.ComponentModel.Description("-")]
+		physicalAISbroadcasts,
+		[System.ComponentModel.Description("-")]
+		syntheticAISbroadcastBy,
+		[System.ComponentModel.Description("-")]
+		syntheticAISbroadcasts,
+		[System.ComponentModel.Description("-")]
+		virtualAISbroadcastBy,
+		[System.ComponentModel.Description("-")]
+		virtualAISbroadcasts,
+		[System.ComponentModel.Description("-")]
+		buoyattached,
+		[System.ComponentModel.Description("-")]
+		counterWeightholds,
+		[System.ComponentModel.Description("-")]
+		buoyhangs,
+		[System.ComponentModel.Description("-")]
+		bridleholds,
+		[System.ComponentModel.Description("-")]
+		shackleToCableconnectedTo,
+		[System.ComponentModel.Description("-")]
+		shackleToCableconnected,
+		[System.ComponentModel.Description("-")]
+		swivelattached,
+		[System.ComponentModel.Description("-")]
+		bridleattached,
+		[System.ComponentModel.Description("-")]
+		cableholds,
+		[System.ComponentModel.Description("-")]
+		shackleToBridleconnecteda,
+		[System.ComponentModel.Description("-")]
+		shackleToBridleconnectedTo,
+		[System.ComponentModel.Description("-")]
+		shackleToBuoyconnected,
+		[System.ComponentModel.Description("-")]
+		shackleToBuoyconnectedTo,
+		[System.ComponentModel.Description("-")]
+		shackleToSwivelconnected,
+		[System.ComponentModel.Description("-")]
+		shackleToSwivelconnectedTo,
+		[System.ComponentModel.Description("-")]
+		shackleToAnchorconnectedTo,
+		[System.ComponentModel.Description("-")]
+		shackleToAnchorconnected,
+		[System.ComponentModel.Description("-")]
+		bridlehangs,
+		[System.ComponentModel.Description("-")]
+		swivelholds,
+		[System.ComponentModel.Description("TBD")]
+		peerAtonAggregation,
+		[System.ComponentModel.Description("TBD")]
+		atonAggregationBy,
+		[System.ComponentModel.Description("TBD")]
+		peerAtonAssociation,
+		[System.ComponentModel.Description("TBD")]
+		atonAssociationBy,
+		[System.ComponentModel.Description("The role given to the navigable part of the navigation line.")]
+		navigableTrack,
+		[System.ComponentModel.Description("The role given to the navigation line(s) that is generally formed between two or more objects, or by one object and a bearing.")]
+		navigationLine,
+		[System.ComponentModel.Description("-")]
+		fixingMethod,
+		[System.ComponentModel.Description("-")]
+		fixedBy,
+		[System.ComponentModel.Description("-")]
+		positioningMethod,
+		[System.ComponentModel.Description("-")]
+		positionedBy,
+		[System.ComponentModel.Description("-")]
+		danger,
+		[System.ComponentModel.Description("-")]
+		markingAton,
+	}
+
+	namespace InformationAssociations {
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Atonstatus : InformationAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(Atonstatus);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class AtonFixingMethodAssociation : InformationAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(AtonFixingMethodAssociation);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class AtonPositioningInformationAssociation : InformationAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(AtonPositioningInformationAssociation);
+		}
+	}
+
+	namespace FeatureAssociations {
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class BuoyTopmark : FeatureAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(BuoyTopmark);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class StructureEquipment : FeatureAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(StructureEquipment);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class PhysicalAIS : FeatureAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(PhysicalAIS);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class SyntheticAIS : FeatureAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(SyntheticAIS);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class VirtualAIS : FeatureAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(VirtualAIS);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class BuoyCounterWeight : FeatureAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(BuoyCounterWeight);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class BridleConnection : FeatureAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(BridleConnection);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class ShackleConnection : FeatureAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(ShackleConnection);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class ShackleConnectionFromCable : FeatureAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(ShackleConnectionFromCable);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class SwivelCableConnection : FeatureAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(SwivelCableConnection);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class BridleCableConnection : FeatureAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(BridleCableConnection);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class ShackleToBridleConnection : FeatureAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(ShackleToBridleConnection);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class ShackleToSwivelConnection : FeatureAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(ShackleToSwivelConnection);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class ShackleToAnchorConnection : FeatureAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(ShackleToAnchorConnection);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class SwivelConnection : FeatureAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(SwivelConnection);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class AtonAggregations : FeatureAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(AtonAggregations);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class AtonAssociations : FeatureAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(AtonAssociations);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class RangeSystem : FeatureAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(RangeSystem);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class DangerousFeatureAssociation : FeatureAssociation {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(DangerousFeatureAssociation);
+		}
+	}
+
 }
+
+namespace S100Framework.DomainModel.S201 {
+	using ComplexAttributes;
+	using InformationAssociations;
+
+	namespace InformationTypes {
+		/// <summary>
+		/// Method used for fixing the position of an aid to navigation.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class AtoNFixingMethod : InformationNode, IInformationBindingDefinition {
+			public String? referencePoint {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131])]
+			public horizontalDatum? horizontalDatum {get;set;} = default;
+
+			[Required()]
+			public DateOnly sourceDate {get;set;}
+
+			public String positioningProcedure {get;set;} = string.Empty;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(AtoNFixingMethod);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => AtoNFixingMethod._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// -
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class AtonStatusInformation : InformationNode, IInformationBindingDefinition {
+			[Required()]
+			public ChangeDetails ChangeDetails {get;set;}
+
+			[EnumerationValue([1,2,3,4])]
+			public ChangeTypes? ChangeTypes {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(AtonStatusInformation);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => AtonStatusInformation._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// Information about how a position was obtained. (proposed by CCG)
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class PositioningInformation : InformationNode, IInformationBindingDefinition {
+			public String positioningDevice {get;set;} = string.Empty;
+
+			public PositioningMethod? PositioningMethod {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(PositioningInformation);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => PositioningInformation._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// The indication of the quality of the locational information for features in a dataset.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class SpatialQuality : InformationNode, IInformationBindingDefinition {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
+			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
+
+			public spatialAccuracy? spatialAccuracy {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(SpatialQuality);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+	}
+	namespace FeatureTypes {
+		using FeatureAssociations;
+		using InformationTypes;
+
+		/// <summary>
+		/// A visual, acoustical, or radio device, external to a ship, designed to assist in determining a safe course or a vessel's position, or to warn of dangers and/or obstructions. Aids to navigation usually include buoys, beacons, fog signals, lights, radio beacons, leading marks, radio position fixing systems and GNSS which are chart-related and assist safe navigation.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public abstract class AidsToNavigation : FeatureNode, IFeatureBindingDefinition {
+			public String? iDCode {get;set;} = default;
+
+			public List<information> information {get;set;} = [];
+
+			public List<featureName> featureName {get;set;} = [];
+
+			public int? scaleMinimum {get;set;} = default;
+
+			public DateOnly? sourceDate {get;set;} = default;
+
+			public String? source {get;set;} = default;
+
+			public String? pictorialRepresentation {get;set;} = default;
+
+			public String? inspectionFrequency {get;set;} = default;
+
+			public String? inspectionRequirements {get;set;} = default;
+
+			public String? aToNMaintenanceRecord {get;set;} = default;
+
+			public DateOnly? installationDate {get;set;} = default;
+
+			public fixedDateRange? fixedDateRange {get;set;} = default;
+
+			public periodicDateRange? periodicDateRange {get;set;} = default;
+
+			public List<String> SeasonalActionRequired {get;set;} = [];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(AidsToNavigation);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => AidsToNavigation._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(Atonstatus),
+					role = Enum.GetName<Role>(Role.Statuspart)!,
+					informationTypes = [nameof(AtonStatusInformation)],
+				},
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => AidsToNavigation._featureBindingDefinitions;
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AtonAggregations),
+					role = Enum.GetName<Role>(Role.peerAtonAggregation)!,
+					featureTypes = [nameof(AtonAggregation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AtonAssociations),
+					role = Enum.GetName<Role>(Role.peerAtonAssociation)!,
+					featureTypes = [nameof(AtonAssociation)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// Something (such as a house, tower, bridge, etc.) that is built by putting parts together and that usually stands on its own.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public abstract class StructureObject : AidsToNavigation {
+			public String AtoNNumber {get;set;} = string.Empty;
+
+			[EnumerationValue([1,2,3])]
+			public aidAvailabilityCategory? aidAvailabilityCategory {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5])]
+			public condition? condition {get;set;} = default;
+
+			public contactAddress? contactAddress {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(StructureObject);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..StructureObject._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AtonPositioningInformationAssociation),
+					role = Enum.GetName<Role>(Role.positioningMethod)!,
+					informationTypes = [nameof(PositioningInformation)],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AtonFixingMethodAssociation),
+					role = Enum.GetName<Role>(Role.fixingMethod)!,
+					informationTypes = [nameof(AtoNFixingMethod)],
+				},
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..StructureObject._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(StructureEquipment),
+					role = Enum.GetName<Role>(Role.child)!,
+					featureTypes = [nameof(Equipment)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// The implements used in an operation or activity.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public abstract class Equipment : AidsToNavigation {
+			public List<String> remoteMonitoringSystem {get;set;} = [];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(Equipment);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..Equipment._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..Equipment._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(StructureEquipment),
+					role = Enum.GetName<Role>(Role.parent)!,
+					featureTypes = [nameof(StructureObject)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// TBD
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public abstract class ElectronicAton : AidsToNavigation {
+			public String mMSICode {get;set;} = string.Empty;
+
+			public List<status> status {get;set;} = [];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(ElectronicAton);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..ElectronicAton._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..ElectronicAton._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A fixed artificial navigation mark that can be recognized by its shape, colour, pattern, topmark or light character, or a combination of these. It may carry various additional aids to navigation.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public abstract class GenericBeacon : StructureObject {
+			[EnumerationValue([1,2,3,4,5,6,7])]
+			[Required()]
+			public beaconShape beaconShape {get;set;}
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			public List<colour> colour {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			public List<colourPattern> colourPattern {get;set;} = [];
+
+			public decimal? elevation {get;set;} = default;
+
+			public decimal? height {get;set;} = default;
+
+			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
+			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
+			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
+
+			public Boolean? radarConspicuous {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public List<status> status {get;set;} = [];
+
+			public decimal? verticalLength {get;set;} = default;
+
+			[EnumerationValue([1,2,3])]
+			public visualProminence? visualProminence {get;set;} = default;
+
+			public decimal? verticalAccuracy {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(GenericBeacon);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..GenericBeacon._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..GenericBeacon._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A floating object moored to the bottom in a particular (charted) place, as an aid to navigation or for other specific purposes.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public abstract class GenericBuoy : StructureObject {
+			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[Required()]
+			public buoyShape buoyShape {get;set;}
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			public List<colour> colour {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			public List<colourPattern> colourPattern {get;set;} = [];
+
+			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
+			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
+			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
+
+			public Boolean? radarConspicuous {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public List<status> status {get;set;} = [];
+
+			public String? typeOfBuoy {get;set;} = default;
+
+			public decimal? verticalLength {get;set;} = default;
+
+			public decimal? verticalAccuracy {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(GenericBuoy);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..GenericBuoy._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..GenericBuoy._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(BuoyTopmark),
+					role = Enum.GetName<Role>(Role.topmarkPart)!,
+					featureTypes = [nameof(Topmark)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(ShackleConnection),
+					role = Enum.GetName<Role>(Role.shackleToBuoyconnected)!,
+					featureTypes = [nameof(MooringShackle)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(BridleConnection),
+					role = Enum.GetName<Role>(Role.buoyhangs)!,
+					featureTypes = [nameof(Bridle)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(BuoyCounterWeight),
+					role = Enum.GetName<Role>(Role.buoyattached)!,
+					featureTypes = [nameof(CounterWeight)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// -
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public abstract class GenericLight : Equipment {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			public List<colour> colour {get;set;} = [];
+
+			public decimal? height {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public List<status> status {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
+			public verticalDatum? verticalDatum {get;set;} = default;
+
+			public decimal? verticalLength {get;set;} = default;
+
+			[Required()]
+			public rhythmOfLight rhythmOfLight {get;set;}
+
+			public decimal? effectiveIntensity {get;set;} = default;
+
+			public decimal? peakIntensity {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(GenericLight);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..GenericLight._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..GenericLight._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A prominent object at a fixed location on land which can be used in determining a location or a direction.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Landmark : StructureObject {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
+			public List<categoryOfLandmark> categoryOfLandmark {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			public List<colour> colour {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			public List<colourPattern> colourPattern {get;set;} = [];
+
+			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48])]
+			public List<function> function {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
+			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
+
+			public Boolean? radarConspicuous {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public List<status> status {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
+			public verticalDatum? verticalDatum {get;set;} = default;
+
+			[EnumerationValue([1,2,3])]
+			[Required()]
+			public visualProminence visualProminence {get;set;}
+
+			public decimal? elevation {get;set;} = default;
+
+			public decimal? height {get;set;} = default;
+
+			public Boolean? mannedStructure {get;set;} = default;
+
+			public decimal? verticalLength {get;set;} = default;
+
+			public decimal? verticalAccuracy {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(Landmark);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..Landmark._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..Landmark._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A beacon is a prominent specially constructed object forming a conspicuous mark as a fixed aid to navigation or for use in hydrographic survey (IHO Dictionary, S-32, 5th Edition, 420). A lateral beacon is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage. (UKHO NP 735, 5th Edition)
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class LateralBeacon : GenericBeacon {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
+			[Required()]
+			public categoryOfLateralMark categoryOfLateralMark {get;set;}
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(LateralBeacon);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..LateralBeacon._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..LateralBeacon._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A lateral buoy is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage. (UKHO NP 735, 5th Edition)
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class LateralBuoy : GenericBuoy {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
+			[Required()]
+			public categoryOfLateralMark categoryOfLateralMark {get;set;}
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(LateralBuoy);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBuoy._informationBindingDefinitions, ..LateralBuoy._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..LateralBuoy._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A straight line extending towards an area of navigational interest and generally generated by two navigational aids or one navigational aid and a bearing.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class NavigationLine : AidsToNavigation {
+			[EnumerationValue([1,2,3])]
+			[Required()]
+			public categoryOfNavigationLine categoryOfNavigationLine {get;set;}
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public List<status> status {get;set;} = [];
+
+			[Required()]
+			public orientation orientation {get;set;}
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(NavigationLine);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..NavigationLine._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..NavigationLine._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(RangeSystem),
+					role = Enum.GetName<Role>(Role.navigableTrack)!,
+					featureTypes = [nameof(RecommendedTrack)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// A route which has been specially examined to ensure so far as possible that it is free of dangers and along which ships are advised to navigate.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class RecommendedTrack : AidsToNavigation {
+			[Required()]
+			public Boolean basedOnFixedMarks {get;set;} = false;
+
+			public decimal? depthRangeMinimumValue {get;set;} = default;
+
+			public decimal? maximalPermittedDraught {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public List<status> status {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
+			public verticalDatum? verticalDatum {get;set;} = default;
+
+			[Required()]
+			public orientation orientation {get;set;}
+
+			public verticalUncertainty? verticalUncertainty {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
+			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])]
+			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4])]
+			[Required()]
+			public trafficFlow trafficFlow {get;set;}
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(RecommendedTrack);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..RecommendedTrack._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..RecommendedTrack._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  default,
+					association = nameof(RangeSystem),
+					role = Enum.GetName<Role>(Role.navigationLine)!,
+					featureTypes = [nameof(NavigationLine)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// A light presenting different appearances (in particular, different colours) over various parts of the horizon of interest to maritime navigation.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class LightSectored : GenericLight {
+			[EnumerationValue([1,4,5,6,8,9,10,11,12,13,14,15,17,18,19,20])]
+			public List<categoryOfLight> categoryOfLight {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4])]
+			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
+
+			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
+			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6])]
+			public signalGeneration? signalGeneration {get;set;} = default;
+
+			public List<ObscuredSector> ObscuredSector {get;set;} = [];
+
+			public List<sectorCharacteristics> sectorCharacteristics {get;set;} = [];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(LightSectored);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericLight._informationBindingDefinitions, ..LightSectored._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericLight._featureBindingDefinitions, ..LightSectored._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// An all around light is a light that is visible over the whole horizon of interest to marine navigation and having no change in the characteristics of the light.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class LightAllAround : GenericLight {
+			[EnumerationValue([1,4,5,6,8,9,10,11,12,13,14,15,17,18,19,20])]
+			public List<categoryOfLight> categoryOfLight {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4])]
+			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			public lightVisibility? lightVisibility {get;set;} = default;
+
+			public Boolean? majorLight {get;set;} = default;
+
+			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
+			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6])]
+			public signalGeneration? signalGeneration {get;set;} = default;
+
+			public decimal? valueOfGeographicRange {get;set;} = default;
+
+			public decimal? valueOfLuminousRange {get;set;} = default;
+
+			public decimal? valueOfNominalRange {get;set;} = default;
+
+			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(LightAllAround);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericLight._informationBindingDefinitions, ..LightAllAround._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericLight._featureBindingDefinitions, ..LightAllAround._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// An air obstruction light is a light marking an obstacle which constitutes a danger to air navigation.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class LightAirObstruction : GenericLight {
+			[EnumerationValue([1,2,3,4])]
+			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			public List<lightVisibility> lightVisibility {get;set;} = [];
+
+			public decimal? valueOfGeographicRange {get;set;} = default;
+
+			public decimal? valueOfLuminousRange {get;set;} = default;
+
+			public decimal? valueOfNominalRange {get;set;} = default;
+
+			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(LightAirObstruction);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericLight._informationBindingDefinitions, ..LightAirObstruction._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericLight._featureBindingDefinitions, ..LightAirObstruction._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A fog detector light is a light used to automatically determine conditions of visibility which warrant the turning on or off of a sound signal.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class LightFogDetector : GenericLight {
+			[EnumerationValue([1,2,3,4,5,6])]
+			public signalGeneration? signalGeneration {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(LightFogDetector);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericLight._informationBindingDefinitions, ..LightFogDetector._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericLight._featureBindingDefinitions, ..LightFogDetector._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A device capable of, or intended for, reflecting radar signals.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class RadarReflector : Equipment {
+			public decimal? height {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public List<status> status {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
+			public verticalDatum? verticalDatum {get;set;} = default;
+
+			public decimal? verticalAccuracy {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(RadarReflector);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..RadarReflector._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..RadarReflector._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A warning signal transmitted by a vessel, or aid to navigation, during periods of low visibility. Also, the device producing such a signal.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class FogSignal : Equipment {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
+			[Required()]
+			public categoryOfFogSignal categoryOfFogSignal {get;set;}
+
+			public int? signalFrequency {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6])]
+			public signalGeneration? signalGeneration {get;set;} = default;
+
+			public String? signalGroup {get;set;} = default;
+
+			public decimal? signalOutput {get;set;} = default;
+
+			public decimal? signalPeriod {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public List<status> status {get;set;} = [];
+
+			public decimal? valueOfMaximumRange {get;set;} = default;
+
+			public signalSequence? signalSequence {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(FogSignal);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..FogSignal._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..FogSignal._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A sensor used to observe the environment.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class EnvironmentObservationEquipment : Equipment {
+			public decimal? height {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public List<status> status {get;set;} = [];
+
+			public List<String> typeOfEnvironmentalObservationEquipment {get;set;} = [];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(EnvironmentObservationEquipment);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..EnvironmentObservationEquipment._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..EnvironmentObservationEquipment._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A place equipped to transmit radio waves. Such a station may be either stationary or mobile, and may also be provided with a radio receiver.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class RadioStation : Equipment {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,19,20])]
+			[Required()]
+			public categoryOfRadioStation categoryOfRadioStation {get;set;}
+
+			public decimal? estimatedRangeOfTransmission {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public status? status {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(RadioStation);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..RadioStation._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..RadioStation._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(PhysicalAIS),
+					role = Enum.GetName<Role>(Role.physicalAISbroadcastBy)!,
+					featureTypes = [nameof(PhysicalAISAidToNavigation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SyntheticAIS),
+					role = Enum.GetName<Role>(Role.syntheticAISbroadcastBy)!,
+					featureTypes = [nameof(SyntheticAISAidToNavigation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(VirtualAIS),
+					role = Enum.GetName<Role>(Role.virtualAISbroadcastBy)!,
+					featureTypes = [nameof(VirtualAISAidToNavigation)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// (1) The identifying characteristics of an aid to navigation which serve to facilitate its recognition against a daylight viewing background. On those structures that do not by themselves present an adequate viewing area to be seen at the required distance, the aid is made more visible by affixing a daymark to the structure. A daymark so affixed has a distinctive colour and shape depending on the purpose of the aid. (2) An unlighted navigational mark.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Daymark : Equipment {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
+			public categoryOfSpecialPurposeMark? categoryOfSpecialPurposeMark {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			public List<colour> colour {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			public List<colourPattern> colourPattern {get;set;} = [];
+
+			public decimal? elevation {get;set;} = default;
+
+			public decimal? height {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
+			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
+
+			public decimal? orientationValue {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public List<status> status {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
+			[Required()]
+			public topmarkDaymarkShape topmarkDaymarkShape {get;set;}
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
+			public verticalDatum? verticalDatum {get;set;} = default;
+
+			public decimal? verticalLength {get;set;} = default;
+
+			public shapeInformation? shapeInformation {get;set;} = default;
+
+			[Required()]
+			public Boolean isSlatted {get;set;} = false;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(Daymark);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..Daymark._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..Daymark._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A means of distinguishing unlighted marks at night. Retro-reflective material is secured to the mark in a particular pattern to reflect back light.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Retroreflector : Equipment {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			public List<colour> colour {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			public List<colourPattern> colourPattern {get;set;} = [];
+
+			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
+			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public List<status> status {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
+			public verticalDatum? verticalDatum {get;set;} = default;
+
+			public decimal? height {get;set;} = default;
+
+			public decimal? verticalAccuracy {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(Retroreflector);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..Retroreflector._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..Retroreflector._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A transponder beacon transmitting a coded signal on radar frequency, permitting an interrogating craft to determine the bearing and range of the transponder.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class RadarTransponderBeacon : Equipment {
+			[EnumerationValue([1,2,3])]
+			[Required()]
+			public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon {get;set;}
+
+			public radarWaveLength? radarWaveLength {get;set;} = default;
+
+			public String? signalGroup {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public List<status> status {get;set;} = [];
+
+			public decimal? valueOfNominalRange {get;set;} = default;
+
+			public String? manufactorer {get;set;} = default;
+
+			public sectorLimitOne? sectorLimitOne {get;set;} = default;
+
+			public sectorLimitTwo? sectorLimitTwo {get;set;} = default;
+
+			public signalSequence? signalSequence {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(RadarTransponderBeacon);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..RadarTransponderBeacon._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..RadarTransponderBeacon._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// An Automatic Identification System (AIS) message 21 transmitted from an AIS station to simulate on navigation systems an Aid to Navigation which does not physically exist.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class VirtualAISAidToNavigation : ElectronicAton {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
+			[Required()]
+			public virtualAISAidToNavigationType virtualAISAidToNavigationType {get;set;}
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(VirtualAISAidToNavigation);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..ElectronicAton._informationBindingDefinitions, ..VirtualAISAidToNavigation._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..ElectronicAton._featureBindingDefinitions, ..VirtualAISAidToNavigation._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(VirtualAIS),
+					role = Enum.GetName<Role>(Role.virtualAISbroadcasts)!,
+					featureTypes = [nameof(RadioStation)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// An Automatic Identification System (AIS) message 21 transmitted from a physical Aid to Navigation, or transmitted from an AIS station for an Aid to Navigation which physically exists.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class PhysicalAISAidToNavigation : ElectronicAton {
+			[EnumerationValue([1,2,3])]
+			[Required()]
+			public CategoryOfPhysicalAISAidToNavigation CategoryOfPhysicalAISAidToNavigation {get;set;}
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(PhysicalAISAidToNavigation);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..ElectronicAton._informationBindingDefinitions, ..PhysicalAISAidToNavigation._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..ElectronicAton._featureBindingDefinitions, ..PhysicalAISAidToNavigation._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  default,
+					association = nameof(PhysicalAIS),
+					role = Enum.GetName<Role>(Role.physicalAISbroadcasts)!,
+					featureTypes = [nameof(RadioStation)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// -
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class SyntheticAISAidToNavigation : Equipment {
+			[EnumerationValue([1,2])]
+			[Required()]
+			public CategoryOfSyntheticAISAidtoNavigation CategoryOfSyntheticAISAidtoNavigation {get;set;}
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
+			[Required()]
+			public virtualAISAidToNavigationType virtualAISAidToNavigationType {get;set;}
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(SyntheticAISAidToNavigation);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..SyntheticAISAidToNavigation._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..SyntheticAISAidToNavigation._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  default,
+					association = nameof(SyntheticAIS),
+					role = Enum.GetName<Role>(Role.syntheticAISbroadcasts)!,
+					featureTypes = [nameof(RadioStation)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// -
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class PowerSource : Equipment {
+			[EnumerationValue([1,2,3,4])]
+			[Required()]
+			public CategoryOfPowerSource CategoryOfPowerSource {get;set;}
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public List<status> status {get;set;} = [];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(PowerSource);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..PowerSource._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..PowerSource._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A beacon is a prominent specially constructed object forming a conspicuous mark as a fixed aid to navigation or for use in hydrographic survey (IHO Dictionary, S-32, 5th Edition, 420). An isolated danger beacon is a beacon erected on an isolated danger of limited extent, which has navigable water all around it. (UKHO NP735, 5th Edition)
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class IsolatedDangerBeacon : GenericBeacon {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(IsolatedDangerBeacon);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..IsolatedDangerBeacon._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..IsolatedDangerBeacon._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A cardinal beacon is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class CardinalBeacon : GenericBeacon {
+			[EnumerationValue([1,2,3,4])]
+			[Required()]
+			public categoryOfCardinalMark categoryOfCardinalMark {get;set;}
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(CardinalBeacon);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..CardinalBeacon._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..CardinalBeacon._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A isolated danger buoy is a buoy moored on or above an isolated danger of limited extent, which has navigable water all around it. (UKHO NP735, 5th Edition)
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class IsolatedDangerBuoy : GenericBuoy {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(IsolatedDangerBuoy);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBuoy._informationBindingDefinitions, ..IsolatedDangerBuoy._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..IsolatedDangerBuoy._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A cardinal buoy is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class CardinalBuoy : GenericBuoy {
+			[EnumerationValue([1,2,3,4])]
+			[Required()]
+			public categoryOfCardinalMark categoryOfCardinalMark {get;set;}
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(CardinalBuoy);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBuoy._informationBindingDefinitions, ..CardinalBuoy._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..CardinalBuoy._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). An installation buoy is a buoy used for loading tankers with gas or oil. (IHO Chart Specifications, M-4)
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class InstallationBuoy : GenericBuoy {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(InstallationBuoy);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBuoy._informationBindingDefinitions, ..InstallationBuoy._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..InstallationBuoy._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// The equipment or structure used to secure a vessel. (IHO Registry)
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class MooringBuoy : GenericBuoy {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(MooringBuoy);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBuoy._informationBindingDefinitions, ..MooringBuoy._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..MooringBuoy._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// An emergency wreck marking buoy is a buoy moored on or above a new wreck, designed to provide a prominent (both visual and radio) and easily identifiable temporary (24-72 hours) first response. (IHO Registry)
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class EmergencyWreckMarkingBuoy : GenericBuoy {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(EmergencyWreckMarkingBuoy);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBuoy._informationBindingDefinitions, ..EmergencyWreckMarkingBuoy._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..EmergencyWreckMarkingBuoy._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A distinctive structure on or off a coast exhibiting a major light designed to serve as an aid to navigation.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Lighthouse : Landmark {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(Lighthouse);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..Landmark._informationBindingDefinitions, ..Lighthouse._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..Landmark._featureBindingDefinitions, ..Lighthouse._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A boat-like structure used instead of a light buoy in waters where strong streams or currents are experienced, or when a greater elevation than that of a light buoy is necessary.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class LightFloat : StructureObject {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			public List<colour> colour {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			public List<colourPattern> colourPattern {get;set;} = [];
+
+			public decimal? horizontalLength {get;set;} = default;
+
+			public decimal? horizontalWidth {get;set;} = default;
+
+			public Boolean? mannedStructure {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
+			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
+
+			public Boolean? radarConspicuous {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public List<status> status {get;set;} = [];
+
+			public decimal? verticalLength {get;set;} = default;
+
+			[EnumerationValue([1,2,3])]
+			public visualProminence? visualProminence {get;set;} = default;
+
+			public decimal? verticalAccuracy {get;set;} = default;
+
+			public decimal? horizontalAccuracy {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(LightFloat);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..LightFloat._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..LightFloat._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A distinctively marked vessel anchored or moored at a charted point, to serve as an aid to navigation. By night, it displays a characteristic light(s) and is usually equipped with other devices, such as fog signal, submarine sound signal, and radio-beacon, to assist navigation.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class LightVessel : StructureObject {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			public List<colour> colour {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			public List<colourPattern> colourPattern {get;set;} = [];
+
+			public decimal? horizontalLength {get;set;} = default;
+
+			public decimal? horizontalWidth {get;set;} = default;
+
+			public Boolean? mannedStructure {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
+			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
+
+			public Boolean? radarConspicuous {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public List<status> status {get;set;} = [];
+
+			public decimal? verticalLength {get;set;} = default;
+
+			[EnumerationValue([1,2,3])]
+			public visualProminence? visualProminence {get;set;} = default;
+
+			public decimal? verticalAccuracy {get;set;} = default;
+
+			public decimal? horizontalAccuracy {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(LightVessel);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..LightVessel._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..LightVessel._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A permanent offshore structure, either fixed or floating.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class OffshorePlatform : StructureObject {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
+			public List<categoryOfOffshorePlatform> categoryOfOffshorePlatform {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			public List<colour> colour {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			public List<colourPattern> colourPattern {get;set;} = [];
+
+			public decimal? height {get;set;} = default;
+
+			public Boolean? mannedStructure {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
+			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25])]
+			public List<product> product {get;set;} = [];
+
+			public Boolean? radarConspicuous {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public List<status> status {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
+			public verticalDatum? verticalDatum {get;set;} = default;
+
+			public decimal? verticalLength {get;set;} = default;
+
+			[EnumerationValue([1,2,3])]
+			public visualProminence? visualProminence {get;set;} = default;
+
+			public decimal? verticalAccuracy {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(OffshorePlatform);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..OffshorePlatform._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..OffshorePlatform._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A large storage structure used for storing loose materials, liquids and/or gases.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class SiloTank : StructureObject {
+			[EnumerationValue([5,6,7,8,9])]
+			public buildingShape? buildingShape {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4])]
+			public categoryOfSiloTank? categoryOfSiloTank {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			public List<colour> colour {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			public List<colourPattern> colourPattern {get;set;} = [];
+
+			public decimal? elevation {get;set;} = default;
+
+			public decimal? height {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
+			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
+
+			public Boolean? radarConspicuous {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public List<status> status {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
+			public verticalDatum? verticalDatum {get;set;} = default;
+
+			public decimal? verticalLength {get;set;} = default;
+
+			[EnumerationValue([1,2,3])]
+			public visualProminence? visualProminence {get;set;} = default;
+
+			public decimal? verticalAccuracy {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(SiloTank);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..SiloTank._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..SiloTank._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A long heavy timber or section of steel, wood, concrete, etc., forced into the earth or sea floor to serve as a support, as for a pier, or to resist lateral pressure; or as a free standing pole within a marine environment.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Pile : StructureObject {
+			[EnumerationValue([1,3,4,5,6,7])]
+			public categoryOfPile? categoryOfPile {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			public List<colour> colour {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			public List<colourPattern> colourPattern {get;set;} = [];
+
+			public decimal? height {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
+			public verticalDatum? verticalDatum {get;set;} = default;
+
+			public decimal? verticalLength {get;set;} = default;
+
+			[EnumerationValue([1,2,3])]
+			public visualProminence? visualProminence {get;set;} = default;
+
+			public decimal? verticalAccuracy {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(Pile);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..Pile._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..Pile._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A free-standing self-supporting construction that is roofed, usually walled, and is intended for human occupancy (for example: a place of work or recreation) and/or habitation.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Building : StructureObject {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(Building);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..Building._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..Building._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// (1) An elevated structure extending across or over the weather deck of a vessel, or part of such a structure. The term is sometimes modified to indicate the intended use, such as navigating bridge or signal bridge.  (2) A structure erected over a depression or an obstacle such as a body of water, railroad, etc., to provide a roadway for vehicles or pedestrians.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Bridge : StructureObject {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(Bridge);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..Bridge._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..Bridge._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A heavy weight (of concrete, cast-iron, etc..) that rests on the sea bed and to which a mooring line can be attached. (IALA Dictionary, 8-5-025)
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class SinkerAnchor : AidsToNavigation {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
+			public natureOfConstruction? natureOfConstruction {get;set;} = default;
+
+			public sinkerDimensions? sinkerDimensions {get;set;} = default;
+
+			[Required()]
+			public decimal weight {get;set;}
+
+			public String? sinkerType {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(SinkerAnchor);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..SinkerAnchor._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..SinkerAnchor._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(ShackleToAnchorConnection),
+					role = Enum.GetName<Role>(Role.shackleToAnchorconnected)!,
+					featureTypes = [nameof(MooringShackle)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// A shackle at the lower end of a mooring chain, for attachment to an anchor or sinker. (IALA Dictionary, 8-5-150)
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class MooringShackle : AidsToNavigation {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
+			public natureOfConstruction? natureOfConstruction {get;set;} = default;
+
+			[EnumerationValue([1,2,3,4,5,6])]
+			public ShackleType? ShackleType {get;set;} = default;
+
+			public decimal? weight {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(MooringShackle);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..MooringShackle._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..MooringShackle._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(ShackleConnection),
+					role = Enum.GetName<Role>(Role.shackleToBuoyconnectedTo)!,
+					featureTypes = [nameof(GenericBuoy)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(ShackleToBridleConnection),
+					role = Enum.GetName<Role>(Role.shackleToBridleconnectedTo)!,
+					featureTypes = [nameof(Bridle)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(BridleCableConnection),
+					role = Enum.GetName<Role>(Role.bridleattached)!,
+					featureTypes = [nameof(CableSubmarine)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ShackleToSwivelConnection),
+					role = Enum.GetName<Role>(Role.shackleToSwivelconnectedTo)!,
+					featureTypes = [nameof(Swivel)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(ShackleToAnchorConnection),
+					role = Enum.GetName<Role>(Role.shackleToAnchorconnectedTo)!,
+					featureTypes = [nameof(SinkerAnchor)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// An assembly of wires or fibres, or a wire rope or chain, which has been laid underwater or buried beneath the sea floor.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class CableSubmarine : AidsToNavigation {
+			public CableDimensions? CableDimensions {get;set;} = default;
+
+			[EnumerationValue([1,3,4,5,6,7,8])]
+			[Required()]
+			public categoryOfCable categoryOfCable {get;set;}
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public List<status> status {get;set;} = [];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(CableSubmarine);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..CableSubmarine._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..CableSubmarine._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(BridleCableConnection),
+					role = Enum.GetName<Role>(Role.cableholds)!,
+					featureTypes = [nameof(Bridle)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(SwivelCableConnection),
+					role = Enum.GetName<Role>(Role.cableholds)!,
+					featureTypes = [nameof(Swivel)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(ShackleConnectionFromCable),
+					role = Enum.GetName<Role>(Role.shackleToCableconnected)!,
+					featureTypes = [nameof(MooringShackle)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// A chain link that provides for rotary motion between the lengths of chain that it connects. (IALA Dictionary, 8-5-165)
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Swivel : AidsToNavigation {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
+			public natureOfConstruction? natureOfConstruction {get;set;} = default;
+
+			public decimal? weight {get;set;} = default;
+
+			public String? swivelType {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(Swivel);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..Swivel._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..Swivel._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(SwivelConnection),
+					role = Enum.GetName<Role>(Role.swivelholds)!,
+					featureTypes = [nameof(Bridle)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(SwivelCableConnection),
+					role = Enum.GetName<Role>(Role.swivelattached)!,
+					featureTypes = [nameof(CableSubmarine)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(ShackleToSwivelConnection),
+					role = Enum.GetName<Role>(Role.shackleToBridleconnecteda)!,
+					featureTypes = [nameof(MooringShackle)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// Two lengths of chain connected by a central ring and used for lifting wide loads. (IALA Dictionary,8-3-195)
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Bridle : AidsToNavigation {
+			public String? bridleLinkType {get;set;} = default;
+
+			public String? legsDetails {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(Bridle);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..Bridle._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..Bridle._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(BridleConnection),
+					role = Enum.GetName<Role>(Role.bridleholds)!,
+					featureTypes = [nameof(GenericBuoy)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SwivelConnection),
+					role = Enum.GetName<Role>(Role.bridlehangs)!,
+					featureTypes = [nameof(Swivel)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(ShackleToBridleConnection),
+					role = Enum.GetName<Role>(Role.shackleToBridleconnecteda)!,
+					featureTypes = [nameof(MooringShackle)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(BridleCableConnection),
+					role = Enum.GetName<Role>(Role.bridleattached)!,
+					featureTypes = [nameof(CableSubmarine)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// -
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class CounterWeight : AidsToNavigation {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
+			public natureOfConstruction? natureOfConstruction {get;set;} = default;
+
+			[Required()]
+			public decimal weight {get;set;}
+
+			public String? counterWeightType {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(CounterWeight);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..CounterWeight._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..CounterWeight._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(BuoyCounterWeight),
+					role = Enum.GetName<Role>(Role.counterWeightholds)!,
+					featureTypes = [nameof(GenericBuoy)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// A characteristic shape secured at the top of a buoy or beacon to aid in its identification. (IHO Dictionary, S-32, 5th Edition, 5548)
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Topmark : AidsToNavigation {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			public List<colour> colour {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			public List<colourPattern> colourPattern {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			public List<status> status {get;set;} = [];
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
+			[Required()]
+			public topmarkDaymarkShape topmarkDaymarkShape {get;set;}
+
+			public decimal? verticalLength {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(Topmark);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..Topmark._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..Topmark._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(BuoyTopmark),
+					role = Enum.GetName<Role>(Role.buoyPart)!,
+					featureTypes = [nameof(GenericBuoy)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// A safe water beacon is a prominent specially constructed object forming a conspicuous mark as a fixed aid to navigation or for use in hydrographic survey (IHO Dictionary, S-32, 5th Edition, 420). A safe water beacon may be used to indicate that there is navigable water around the mark. (UKHO NP735, 5th Edition)
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class SafeWaterBeacon : GenericBeacon {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(SafeWaterBeacon);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..SafeWaterBeacon._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..SafeWaterBeacon._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A beacon is a prominent specially constructed object forming a conspicuous mark as a fixed aid to navigation or for use in hydrographic survey (IHO Dictionary, S-32, 5th Edition, 420). A special purpose beacon is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners. (UKHO NP 735, 5th Edition) Beacon in general: A beacon whose appearance or purpose is not adequately known.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class SpecialPurposeGeneralBeacon : GenericBeacon {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
+			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(SpecialPurposeGeneralBeacon);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..SpecialPurposeGeneralBeacon._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..SpecialPurposeGeneralBeacon._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A safe water buoy is used to indicate that there is navigable water around the mark. (UKHO NP735, 5th Edition)
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class SafeWaterBuoy : GenericBuoy {
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(SafeWaterBuoy);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBuoy._informationBindingDefinitions, ..SafeWaterBuoy._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..SafeWaterBuoy._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A special purpose buoy is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners. (UKHO NP 735, 5th Edition) Buoy in general: A buoy whose appearance or purpose is not adequately known.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class SpecialPurposeGeneralBuoy : GenericBuoy {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
+			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(SpecialPurposeGeneralBuoy);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBuoy._informationBindingDefinitions, ..SpecialPurposeGeneralBuoy._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..SpecialPurposeGeneralBuoy._featureBindingDefinitions];
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// -
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class DangerousFeature : FeatureNode, IFeatureBindingDefinition {
+			public List<information> information {get;set;} = [];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(DangerousFeature);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => DangerousFeature._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => DangerousFeature._featureBindingDefinitions;
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  default,
+					association = nameof(DangerousFeatureAssociation),
+					role = Enum.GetName<Role>(Role.markingAton)!,
+					featureTypes = [nameof(DangerousFeature)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// Used to identify an aggregation of two or more objects. This aggregation may be named content of categoryOfAggregation should be put in information attribute when converting to S-57.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class AtonAggregation : FeatureNode, IFeatureBindingDefinition {
+			[EnumerationValue([1,3,2])]
+			[Required()]
+			public CategoryOfAggregation CategoryOfAggregation {get;set;}
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(AtonAggregation);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => AtonAggregation._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => AtonAggregation._featureBindingDefinitions;
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AtonAggregations),
+					role = Enum.GetName<Role>(Role.atonAggregationBy)!,
+					featureTypes = [nameof(AidsToNavigation)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// Used to identify an association between two or more objects. The association may be named content of categoryOfAssociation should be put in information attribute when converting to S-57
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class AtonAssociation : FeatureNode, IFeatureBindingDefinition {
+			[EnumerationValue([1,2])]
+			[Required()]
+			public CategoryOfAssociation CategoryOfAssociation {get;set;}
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(AtonAssociation);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => AtonAssociation._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => AtonAssociation._featureBindingDefinitions;
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(DangerousFeatureAssociation),
+					role = Enum.GetName<Role>(Role.danger)!,
+					featureTypes = [nameof(AtonAssociation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AtonAssociations),
+					role = Enum.GetName<Role>(Role.atonAssociationBy)!,
+					featureTypes = [nameof(AidsToNavigation)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// An area within which a uniform assessment of the quality of the non-bathymetric data exists.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class QualityOfNonBathymetricData : FeatureNode, IFeatureBindingDefinition {
+			[EnumerationValue([1,2,3,4,5,6])]
+			[Required()]
+			public categoryOfTemporalVariation categoryOfTemporalVariation {get;set;}
+
+			public decimal? orientationUncertainty {get;set;} = default;
+
+			public decimal? horizontalDistanceUncertainty {get;set;} = default;
+
+			[Required()]
+			public horizontalPositionUncertainty horizontalPositionUncertainty {get;set;}
+
+			public information? information {get;set;} = default;
+
+			public String? informationInNationalLanguage {get;set;} = default;
+
+			public textualDescription? textualDescription {get;set;} = default;
+
+			public verticalUncertainty? verticalUncertainty {get;set;} = default;
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(QualityOfNonBathymetricData);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// A geographical area that describes the coverage and extent of spatial objects.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
+			[Required()]
+			public int maximumDisplayScale {get;set;}
+
+			[Required()]
+			public int minimumDisplayScale {get;set;}
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(DataCoverage);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// An area within which the navigational system of marks has been established in relation to a specific direction.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class LocalDirectionOfBuoyage : FeatureNode, IFeatureBindingDefinition {
+			[Required()]
+			public orientation orientation {get;set;}
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(LocalDirectionOfBuoyage);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => LocalDirectionOfBuoyage._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => LocalDirectionOfBuoyage._featureBindingDefinitions;
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// An area within which the navigational system of marks has been established in relation to a specific direction.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class NavigationalSystemOfMarks : FeatureNode, IFeatureBindingDefinition {
+			[EnumerationValue([1,2,9,10,11,12,13,15])]
+			[Required()]
+			public marksNavigationalSystemOf marksNavigationalSystemOf {get;set;}
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(NavigationalSystemOfMarks);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => NavigationalSystemOfMarks._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => NavigationalSystemOfMarks._featureBindingDefinitions;
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// The horizontal plane or tidal datum to which soundings have been reduced. Also called datum for sounding reduction.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class SoundingDatum : FeatureNode, IFeatureBindingDefinition {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
+			[Required()]
+			public verticalDatum verticalDatum {get;set;}
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(SoundingDatum);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => SoundingDatum._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => SoundingDatum._featureBindingDefinitions;
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		/// <summary>
+		/// Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class VerticalDatumOfData : FeatureNode, IFeatureBindingDefinition {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
+			[Required()]
+			public verticalDatum verticalDatum {get;set;}
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override string Code => nameof(VerticalDatumOfData);
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override informationBindingDefinition[] informationBindingDefinitions => VerticalDatumOfData._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[IgnoreDataMember]
+			public override featureBindingDefinition[] featureBindingDefinitions => VerticalDatumOfData._featureBindingDefinitions;
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+	}
+}
+
+#pragma warning restore CS8981

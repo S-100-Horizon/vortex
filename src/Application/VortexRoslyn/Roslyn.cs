@@ -353,23 +353,23 @@ namespace S100Framework.Applications
 
                     roles = roles.Where(r => productSpecification.XPathSelectElements($"//S100FC:informationBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).Any());
 
-                    //if (!spatialAssociationTypes.Contains(code)) 
-                    {
-                        if (!isFirst)
-                            builderDomainModel.AppendLine();
-                        isFirst = false;
+                    if (!isFirst)
+                        builderDomainModel.AppendLine();
+                    isFirst = false;
 
-                        var s = BuildClass(e, new BuildClassClient {
-                            ProductSpecification = productSpecification,
-                            KnownTypes = knownTypes,
-                            KnowTypesPrefix = knowTypesPrefix,
-                            KnowTypesPostfix = knowTypesPostfix,
-                            InformationAssociationsLookup = informationAssociationsLookup,
-                            FeatureAssociationsLookup = featureAssociationsLookup,
-                        });
+                    if (spatialAssociationTypes.Contains(code))
+                        builderDomainModel.AppendLine("\t\t[SpatialAssocation]");
 
-                        builderDomainModel.AppendLine(s);
-                    }
+                    var s = BuildClass(e, new BuildClassClient {
+                        ProductSpecification = productSpecification,
+                        KnownTypes = knownTypes,
+                        KnowTypesPrefix = knowTypesPrefix,
+                        KnowTypesPostfix = knowTypesPostfix,
+                        InformationAssociationsLookup = informationAssociationsLookup,
+                        FeatureAssociationsLookup = featureAssociationsLookup,
+                    });
+
+                    builderDomainModel.AppendLine(s);
                 }
 
                 if (elements.Any()) {
@@ -934,11 +934,13 @@ namespace S100Framework.Applications
             if (!isFirst)
                 builder.AppendLine();
             builder.AppendLine("\t\t\t[JsonIgnore]");
+            builder.AppendLine("\t\t\t[IgnoreDataMember]");
             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
 
             if (new string[] { "S100_FC_InformationType", "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
                 builder.AppendLine();
                 builder.AppendLine("\t\t\t[JsonIgnore]");
+                builder.AppendLine("\t\t\t[IgnoreDataMember]");
                 if (superType != null)
                     builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => [..{superType!.Value}._informationBindingDefinitions, ..{code}._informationBindingDefinitions];");
                 else
@@ -986,6 +988,7 @@ namespace S100Framework.Applications
             if (new string[] { "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
                 builder.AppendLine();
                 builder.AppendLine("\t\t\t[JsonIgnore]");
+                builder.AppendLine("\t\t\t[IgnoreDataMember]");
                 if (superType != null)
                     builder.AppendLine($"\t\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => [..{superType!.Value}._featureBindingDefinitions, ..{code}._featureBindingDefinitions];");
                 else
