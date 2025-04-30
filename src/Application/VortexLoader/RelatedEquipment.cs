@@ -116,9 +116,9 @@ namespace S100Framework.Applications
             return null;
         }
 
-        internal void CreateRelatedEquipment(S57Object s57Object, FeatureNode featurenode,string name, Geodatabase target) {
+        internal void CreateRelatedEquipment(S57Object s57Object, FeatureNode s101Object,string name, Geodatabase target) {
 
-            var bindingDefinition = featurenode.featureBindingDefinitions;
+            var bindingDefinition = s101Object.featureBindingDefinitions;
 
             if (s57Object is AidsToNavigationP) {
                 var sourceTable = "AidsToNavigationP";
@@ -160,7 +160,7 @@ namespace S100Framework.Applications
                     // TODO: Create relation
                     ConversionAnalytics.Instance.AddConverted(sourceTable, related.ToDictionary(obj => obj.GLOBALID, obj => new List<string> { equipmentName }));
 
-                    FeatureRelations.Instance.AddRelation(new($"{featurenode.GetType().Name}", equipmentName), new($"{instance.GetType().Name}", name));
+                    FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name));
 
                     Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName, System.Text.Json.JsonSerializer.Serialize(instance));
                 }
@@ -196,7 +196,7 @@ namespace S100Framework.Applications
                             throw new NotSupportedException("empty equipment name");
                         }
 
-                        FeatureRelations.Instance.AddRelation(new($"{featurenode.GetType().Name}", equipmentName), new($"{instance.GetType().Name}", name));
+                        FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name));
 
                         Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
                     }
@@ -238,6 +238,9 @@ namespace S100Framework.Applications
 
                     // TODO: Create relation
                     ConversionAnalytics.Instance.AddConverted(sourceTable, related.ToDictionary(obj => obj.GLOBALID, obj => new List<string> { equipmentName }));
+
+                    FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name));
+
                     Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
                 }
 
@@ -259,9 +262,11 @@ namespace S100Framework.Applications
                         if (equipmentName == null) {
                             throw new NotSupportedException("empty equipment name");
                         }
-                        // TODO: Create relation
+                        
+                        FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name));
 
-                        ConversionAnalytics.Instance.AddConverted(sourceTable, light.GLOBALID, equipmentName ?? "Unknown equipment name");
+                        ConversionAnalytics.Instance.AddConverted(sourceTable, light.GLOBALID, equipmentName);
+
                         Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
                     }
                 }

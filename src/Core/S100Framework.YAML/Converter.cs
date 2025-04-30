@@ -13,6 +13,7 @@ namespace S100Framework.YAML
     public static class Converter
     {
         public static string Serialize(object dataset) => Serializer.Serialize(dataset);
+
         private record YamlAttributeItem(string Name, string? Value, int? Id, int? Parent);
 
         private static readonly ISerializer Serializer = new SerializerBuilder()
@@ -23,7 +24,6 @@ namespace S100Framework.YAML
            .WithTypeConverter(new NodeConverter())                  // Custom type converter for objects of Node
            .WithTypeConverter(new BooleanAsNumberConverter())       // Custom type converter for booleans
            .Build();
-
 
         //private static readonly IDeserializer Deserializer = new DeserializerBuilder()
         //   .WithNamingConvention(PascalCaseNamingConvention.Instance)
@@ -201,6 +201,7 @@ namespace S100Framework.YAML
                 emitter.Emit(new SequenceEnd());
             }
         }
+
         public class BooleanAsNumberConverter : IYamlTypeConverter
         {
             public bool Accepts(Type type) => type == typeof(bool) || type == typeof(Boolean);

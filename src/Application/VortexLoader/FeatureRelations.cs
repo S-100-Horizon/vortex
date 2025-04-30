@@ -728,19 +728,22 @@ namespace S100Framework.Applications
             }
         }
 
-        internal void CreateRelation(Relation relation, Table featureAssociation, RowBuffer featureAssociationBuffer, Table associationBinding, RowBuffer associationBindingBuffer) {
+        internal void CreateRelation (Type TPrimary, Type TForeign, Relation relation, Table featureAssociation, RowBuffer featureAssociationBuffer, Table associationBinding, RowBuffer associationBindingBuffer)  {
             if (relation == null) {
                 throw new ArgumentNullException("relation");
             }
+
+            var featureBindingsPrimary = TPrimary?.GetProperty("_featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
+            var featureBindingsForeign = TForeign?.GetProperty("_featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
 
             string featureAssociationName;
             featureBindingDefinition? bindingDefinitionForeign;
             featureBindingDefinition? bindingDefinitionPrimary;
             {
                 // Create the association
-                bindingDefinitionForeign = LateralBuoy._featureBindingDefinitions.FirstOrDefault(fbd => fbd.featureTypes.Contains(typeof(LightAllAround).Name));
+                bindingDefinitionForeign = featureBindingsPrimary?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TForeign?.Name));
                 if (bindingDefinitionForeign == null) {
-                    throw new NotSupportedException($"no bindingdefinition on {typeof(LateralBuoy).Name} for {typeof(LightAllAround).Name}");
+                    throw new NotSupportedException($"no bindingdefinition on {TForeign?.Name} for {TForeign?.Name}");
                 }
                 featureAssociationBuffer["ps"] = ImporterNIS.ps101;
                 featureAssociationBuffer["code"] = bindingDefinitionForeign.association;
@@ -748,10 +751,10 @@ namespace S100Framework.Applications
                 featureAssociationName = (string)association["name"];
             }
             {
-                // Create both ends 1
-                bindingDefinitionPrimary = LateralBuoy._featureBindingDefinitions.FirstOrDefault(fbd => fbd.featureTypes.Contains(typeof(LightAllAround).Name));
+                // Create primary end
+                bindingDefinitionPrimary = featureBindingsPrimary?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TForeign?.Name));
                 if (bindingDefinitionPrimary == null) {
-                    throw new NotSupportedException($"no bindingdefinition on {typeof(LightAllAround).Name} for {typeof(LateralBuoy).Name}");
+                    throw new NotSupportedException($"no bindingdefinition on {TPrimary?.Name} for {TForeign?.Name}");
                 }
                 associationBindingBuffer["ps"] = ImporterNIS.ps101;
                 associationBindingBuffer["roleType"] = bindingDefinitionPrimary.role.ToString();
@@ -765,25 +768,22 @@ namespace S100Framework.Applications
 
             }
             {
-                // Create both ends 2
-                bindingDefinitionForeign = LightAllAround._featureBindingDefinitions.FirstOrDefault(fbd => fbd.featureTypes.Contains(typeof(LateralBuoy).Name));
+                // Create foreign end
+                bindingDefinitionForeign = featureBindingsForeign?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TPrimary?.Name));
                 if (bindingDefinitionForeign == null) {
-                    throw new NotSupportedException($"no bindingdefinition on {typeof(LateralBuoy).Name} for {typeof(LightAllAround).Name}");
+                    throw new NotSupportedException($"no bindingdefinition on {TForeign?.Name} for {TPrimary?.Name}");
                 }
                 associationBindingBuffer["ps"] = ImporterNIS.ps101;
                 associationBindingBuffer["roleType"] = bindingDefinitionForeign.role.ToString();
                 associationBindingBuffer["associationId"] = featureAssociationName;
                 associationBindingBuffer["association"] = bindingDefinitionForeign.association;
-                associationBindingBuffer["pid"] = relation.Slave.Name;
-                associationBindingBuffer["foreignid"] = relation.Master.Name;
+                associationBindingBuffer["pid"] = relation?.Slave?.Name;
+                associationBindingBuffer["foreignid"] = relation?.Master?.Name;
                 associationBindingBuffer["role"] = bindingDefinitionForeign.role;
                 associationBindingBuffer["type"] = bindingDefinitionForeign.roleType.ToString();
                 var association = associationBinding.CreateRow(associationBindingBuffer);
             }
-
-
         }
-
 
         internal void CreateRelations() {
             if (_target == default) {
@@ -797,76 +797,81 @@ namespace S100Framework.Applications
             using var associationBindingBuffer = associationBinding.CreateRowBuffer();
             //using var associationBindingInsert = associationBinding.CreateInsertCursor();
 
-
             foreach (var relation in _relations) {
+                if (relation == null) {
+                    throw new NotSupportedException("null relation");
+                }
 
+                CreateRelation(relation?.Master?.S101Type, relation?.Slave?.S101Type, relation, featureAssociation, featureAssociationBuffer, associationBinding, associationBindingBuffer);
+#if null
                 if (relation?.Master?.Type.ToLower() == typeof(LateralBuoy).Name.ToLower()) {
                     if (relation?.Slave?.Type.ToLower() == typeof(Daymark).Name.ToLower()) {
-                        
+                        CreateRelation<LateralBuoy, Daymark>(relation, featureAssociation, featureAssociationBuffer, associationBinding, associationBindingBuffer);
                     }
                     else if (relation?.Slave?.Type.ToLower() == typeof(DistanceMark).Name.ToLower()) {
-
+                        CreateRelation<LateralBuoy, DistanceMark>(relation, featureAssociation, featureAssociationBuffer, associationBinding, associationBindingBuffer);
                     }
                     else if (relation?.Slave?.Type.ToLower() == typeof(FogSignal).Name.ToLower()) {
-
+                        CreateRelation<LateralBuoy, FogSignal>(relation, featureAssociation, featureAssociationBuffer, associationBinding, associationBindingBuffer);
                     }
                     else if (relation?.Slave?.Type.ToLower() == typeof(LightAllAround).Name.ToLower()) {
-                        CreateRelation(relation,featureAssociation,featureAssociationBuffer,associationBinding,associationBindingBuffer);
+                        CreateRelation<LateralBuoy,LightAllAround>(relation,featureAssociation,featureAssociationBuffer,associationBinding,associationBindingBuffer);
                     }
                     else if (relation?.Slave?.Type.ToLower() == typeof(LightFogDetector).Name.ToLower()) {
-
+                        CreateRelation<LateralBuoy, LightFogDetector>(relation, featureAssociation, featureAssociationBuffer, associationBinding, associationBindingBuffer);
                     }
                     else if (relation?.Slave?.Type.ToLower() == typeof(PhysicalAISAidToNavigation).Name.ToLower()) {
-
+                        CreateRelation<LateralBuoy, PhysicalAISAidToNavigation>(relation, featureAssociation, featureAssociationBuffer, associationBinding, associationBindingBuffer);
                     }
                     else if (relation?.Slave?.Type.ToLower() == typeof(RadarTransponderBeacon).Name.ToLower()) {
-
+                        CreateRelation<LateralBuoy, RadarTransponderBeacon>(relation, featureAssociation, featureAssociationBuffer, associationBinding, associationBindingBuffer);
                     }
                     else if (relation?.Slave?.Type.ToLower() == typeof(Retroreflector).Name.ToLower()) {
-
+                        CreateRelation<LateralBuoy, Retroreflector>(relation, featureAssociation, featureAssociationBuffer, associationBinding, associationBindingBuffer);
                     }
                     else if (relation?.Slave?.Type.ToLower() == typeof(SignalStationTraffic).Name.ToLower()) {
-
+                        CreateRelation<LateralBuoy, SignalStationTraffic>(relation, featureAssociation, featureAssociationBuffer, associationBinding, associationBindingBuffer);
                     }
                     else if (relation?.Slave?.Type.ToLower() == typeof(SignalStationWarning).Name.ToLower()) {
-
+                        CreateRelation<LateralBuoy, SignalStationWarning>(relation, featureAssociation, featureAssociationBuffer, associationBinding, associationBindingBuffer);
                     }
                 }
+#endif
             }
         }
     }
 
     internal class S57Master
     {
-        string _s101type;
+        Type _s101type;
         string _s101name;
 
-        public S57Master(string type, string name) {
+        public S57Master(Type type, string name) {
             this._s101type = type;
             this._s101name = name;
         }
 
-        public string Type { get => this._s101type; set => this._s101type = value; }
+        public Type S101Type { get => this._s101type; set => this._s101type = value; }
         public string Name { get => this._s101name; set => this._s101name = value; }
     }
     internal class S57Slave
     {
-        string _s101type;
+        Type _s101type;
         string _s101name;
 
-        internal S57Slave(string type, string name) {
+        internal S57Slave(Type type, string name) {
             this._s101type = type;
             this._s101name = name;
         }
 
-        public string Type { get => this._s101type; set => this._s101type = value; }
+        public Type S101Type { get => this._s101type; set => this._s101type = value; }
         public string Name { get => this._s101name; set => this._s101name = value; }
     }
 
     internal class Relation
     {
-        S57Master? _master;
-        S57Slave? _slave;
+        S57Master _master;
+        S57Slave _slave;
 
         public Relation(S57Master master, S57Slave slave) {
             this.Master = master;
