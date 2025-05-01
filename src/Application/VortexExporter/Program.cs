@@ -139,10 +139,10 @@ namespace S100Framework.Applications
                     };
 
                     Log.Information("Building topology..");
-                    var topology = source.BuildTopology(filter);
+                    //var topology = source.BuildTopology(filter);
 
-                    Log.Information("Topology finished! Found {curves} Curves, {composites} CompositeCurves, {surfaces} Surfaces", topology!.Curves.Count, topology.CompositeCurves.Count, topology.Surfaces.Count);
-                    dataset.AddTopology(topology);
+                    //Log.Information("Topology finished! Found {curves} Curves, {composites} CompositeCurves, {surfaces} Surfaces", topology!.Curves.Count, topology.CompositeCurves.Count, topology.Surfaces.Count);
+                    //dataset.AddTopology(topology);
                 }
 
 
@@ -268,8 +268,12 @@ namespace S100Framework.Applications
                                 Foid = foid,
                                 Prim = prim,
                                 Geometry = geometry,
-                                Attributes = (FeatureNode)instance!,
+                                // Attributes = (FeatureNode)instance!,
                             };
+
+                            // Only emit attributes if feature contains any non-static properties
+                            if (!S100Framework.YAML.Converter.IsDefault(instance!))
+                                feature.Attributes = (FeatureNode)instance!;
 
                             // FeatureAssociations
                             var hasAssociations = featureAssociations.TryGetValue(geometry, out var associations);
@@ -405,7 +409,7 @@ namespace S100Framework.YAML
                         dataset.AddPointSet(pointSet);
                         break;
                     }
-                case ArcGIS.Core.Geometry.Polyline polyline: {        // Curve
+                case ArcGIS.Core.Geometry.Polyline polyline: {        // Curve will be handled in Topology
                         var vertices = polyline.Points.Select(p => new Coordinate(p.X, p.Y)).ToArray();
 
                         var first = dataset?.GetOrCreateStartPoint(vertices, name);
@@ -422,102 +426,50 @@ namespace S100Framework.YAML
 
                         break;
                     }
-                case ArcGIS.Core.Geometry.Polygon polygon: {         // Surface
+                case ArcGIS.Core.Geometry.Polygon polygon: {         // Surface are handled in Topology
+                        break; // 
                         if (polygon.ExteriorRingCount == 0 || polygon.ExteriorRingCount > 1)
                             throw new ArgumentException("Unsupported exterior ring count");
 
-                        // WITH SURFACE TOPOLOGY
-                        {
-                            //var nameWithoutIdentifier = Regex.Replace(name, @"\D", "");
+                        if (polygon.ExteriorRingCount == 0 || polygon.ExteriorRingCount > 1)
+                            throw new ArgumentException("Unsupported exterior ring count");
 
-                            //var exteriorRing = polygon.GetExteriorRing(0);
+                        var nameWithoutIdentifier = Regex.Replace(name, @"\D", "");
 
-                            //var exteriorCoordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartCoordinate.X, segment.StartCoordinate.Y)).ToArray();
+                        var exteriorRing = polygon.GetExteriorRing(0);
 
-                            //// Insert starting coordinate at the end of coordinate[] to ensure its a closed polygon
-                            //exteriorCoordinates = [.. exteriorCoordinates, exteriorCoordinates[0]];
+                        var exteriorCoordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
 
-                            //var exteriorCurve = new Curve(exteriorCoordinates) {
-                            //    Name = nameWithoutIdentifier
-                            //};
+                        // Insert starting coordinate at the end of coordinate[] to ensure its a closed polygon
+                        exteriorCoordinates = [.. exteriorCoordinates, exteriorCoordinates[0]];
 
-                            //var exterior = dataset.BuildTopology(exteriorCurve);
+                        var exteriorCurve = dataset.GetOrCreateCurve(exteriorCoordinates, nameWithoutIdentifier);
 
-                            //var surface = new Surface(exterior) {
-                            //    Name = name,
-                            //};
+                        var surface = new Surface(exteriorCurve.Name!) {
+                            Name = name
+                        };
 
-                            //// Add interior rings
-                            //int id = 1;
-                            //if (polygon.Parts.Count > 1) {
-                            //    foreach (var interiorRing in polygon.Parts.Skip(1)) {
-                            //        var interiorCoordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+                        // Add interior rings
+                        int id = 1;
+                        if (polygon.Parts.Count > 1) {
+                            foreach (var interiorRing in polygon.Parts.Skip(1)) {
+                                var interiorCoordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
 
-                            //        // Insert starting coordinate at the end of coordinate[] to ensure its a closed polygon
-                            //        interiorCoordinates = [.. interiorCoordinates, interiorCoordinates[0]];
+                                // Insert starting coordinate at the end of coordinate[] to ensure its a closed polygon
+                                interiorCoordinates = [.. interiorCoordinates, interiorCoordinates[0]];
 
-                            //        var interiorCurve = new Curve(interiorCoordinates) {
-                            //            Name = $"{nameWithoutIdentifier}-{id}"
-                            //        };
+                                var interiorCurve = dataset.GetOrCreateCurve(interiorCoordinates, nameWithoutIdentifier, id);
 
-                            //        var interior = dataset.BuildTopology(interiorCurve);
+                                id++;
 
-                            //        id++;
-
-                            //        if (surface.InteriorRings == null) {
-                            //            surface.InteriorRings = [interior];
-                            //        }
-                            //        else {
-                            //            surface.InteriorRings = [.. surface.InteriorRings, interior];
-                            //        }
-                            //    }
-                            //    ;
-                            //}
-                            //dataset.AddSurface(surface);
-                        }
-
-                        // WITHOUT TOPOLOGY
-                        {
-                            if (polygon.ExteriorRingCount == 0 || polygon.ExteriorRingCount > 1)
-                                throw new ArgumentException("Unsupported exterior ring count");
-
-                            var nameWithoutIdentifier = Regex.Replace(name, @"\D", "");
-
-                            var exteriorRing = polygon.GetExteriorRing(0);
-
-                            var exteriorCoordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
-
-                            // Insert starting coordinate at the end of coordinate[] to ensure its a closed polygon
-                            exteriorCoordinates = [.. exteriorCoordinates, exteriorCoordinates[0]];
-
-                            var exteriorCurve = dataset.GetOrCreateCurve(exteriorCoordinates, nameWithoutIdentifier);
-
-                            var surface = new Surface(exteriorCurve.Name!) {
-                                Name = name
-                            };
-
-                            // Add interior rings
-                            int id = 1;
-                            if (polygon.Parts.Count > 1) {
-                                foreach (var interiorRing in polygon.Parts.Skip(1)) {
-                                    var interiorCoordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
-
-                                    // Insert starting coordinate at the end of coordinate[] to ensure its a closed polygon
-                                    interiorCoordinates = [.. interiorCoordinates, interiorCoordinates[0]];
-
-                                    var interiorCurve = dataset.GetOrCreateCurve(interiorCoordinates, nameWithoutIdentifier, id);
-
-                                    id++;
-
-                                    if (surface.InteriorRings == null) {
-                                        surface.InteriorRings = [interiorCurve.Name!];
-                                    }
-                                    else {
-                                        surface.InteriorRings = [.. surface.InteriorRings, interiorCurve.Name!];
-                                    }
+                                if (surface.InteriorRings == null) {
+                                    surface.InteriorRings = [interiorCurve.Name!];
                                 }
-                                ;
+                                else {
+                                    surface.InteriorRings = [.. surface.InteriorRings, interiorCurve.Name!];
+                                }
                             }
+
                             dataset.AddSurface(surface);
                         }
                         break;
@@ -534,7 +486,7 @@ namespace S100Framework.YAML
                     Log.Information("Adding curve C{curve} from topology", curve.Id);
                     var coordinates = curve.LineString.Coordinates.Select(e => new Coordinate(e.X, e.Y)).ToArray();
 
-                    _ = dataset.GetOrCreateCurve(coordinates, $"{curve.Id}", 0);
+                    _ = dataset.GetOrCreateCurve(coordinates, $"{curve.Id}");
 
                 }
                 catch (Exception ex) {
@@ -545,12 +497,12 @@ namespace S100Framework.YAML
             // Composite Curves
             foreach (var composite in topology.CompositeCurves) {
                 Log.Information("Adding composite C{curvecomposite} from topology", composite.Id);
-                var compositecurveIds = composite.Curves.SelectMany(e => topology.Curves.Where(f => f.Id == e)).Select(x => $"C{x.Id}-0");
+                var compositecurveIds = composite.Curves.SelectMany(e => topology.Curves.Where(f => f.Id == e)).Select(x => $"C{x.Id}");
 
                 var components = string.Join(",", compositecurveIds);
 
                 var compositeCurve = new CompositeCurve(components) {
-                    Name = $"C{composite.Id}-0"
+                    Name = $"C{composite.Id}"
                 };
 
                 _ = dataset.AddCompositeCurve(compositeCurve);
@@ -558,8 +510,8 @@ namespace S100Framework.YAML
 
             foreach (var s in topology.Surfaces) {
                 Log.Information("Adding surface S{surface} from topology", s.Id);
-                var exteriorRing = $"C{s.Exterior}-0";
-                var interiorRings = s?.Interior?.Select(e => $"C{e}-0").ToArray();
+                var exteriorRing = $"C{s.Exterior}";
+                var interiorRings = s?.Interior?.Select(e => $"C{e}").ToArray();
 
                 var surface = new Surface(exteriorRing) {
                     InteriorRings = interiorRings,
@@ -631,8 +583,8 @@ namespace S100Framework.YAML
             if (datasetCurve == default) {
                 var first = dataset?.GetOrCreateStartPoint(coordinates, name, identifier);
                 var last = dataset?.GetOrCreateEndPoint(coordinates, name, identifier);
-                //var curveName = identifier == 0 ? $"C{name}" : $"C{name}-{identifier}";
-                var curveName = $"C{name}-{identifier}";
+                var curveName = identifier == 0 ? $"C{name}" : $"C{name}-{identifier}";
+                //var curveName = $"C{name}-{identifier}";
 
                 var curve = new Curve(first!, last!, coordinates) {
                     Name = curveName,
