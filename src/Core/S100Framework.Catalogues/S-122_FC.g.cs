@@ -17,6 +17,15 @@ namespace S100Framework.DomainModel.S122 {
 		public static string[] FeatureAssociationTypes => [];
 		public static string[] InformationTypes => ["InformationType","AbstractRxN","NauticalInformation","Regulations","Restrictions","Recommendations","Authority","ContactDetails","NonStandardWorkingDay","ServiceHours","Applicability"];
 		public static string[] FeatureTypes => ["FeatureType","RestrictedArea","MarineProtectedArea","VesselTrafficServiceArea","DataCoverage","TextPlacement"];
+		public static Primitives[] FeaturePrimitives(string featureType) => featureType switch {
+			"FeatureType" => [Primitives.noGeometry],
+			"RestrictedArea" => [Primitives.surface],
+			"MarineProtectedArea" => [Primitives.curve,Primitives.surface],
+			"VesselTrafficServiceArea" => [Primitives.surface],
+			"DataCoverage" => [Primitives.surface],
+			"TextPlacement" => [Primitives.point],
+			_ or "" => throw new InvalidOperationException(),
+		};
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]

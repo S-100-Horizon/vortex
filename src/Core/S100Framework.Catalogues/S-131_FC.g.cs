@@ -17,6 +17,39 @@ namespace S100Framework.DomainModel.S131 {
 		public static string[] FeatureAssociationTypes => ["TextAssociation","Subsection","Infrastructure","PrimaryAuxiliaryFacility","Demarcation","JurisdictionalLimit","LayoutDivision"];
 		public static string[] InformationTypes => ["InformationType","AbstractRxN","Applicability","Authority","AvailablePortServices","ContactDetails","Entrance","NauticalInformation","NonStandardWorkingDay","Recommendations","Regulations","Restrictions","ServiceHours","SpatialQuality"];
 		public static string[] FeatureTypes => ["FeatureType","OrganizationContactArea","SupervisedArea","HarbourPhysicalInfrastructure","Layout","AnchorBerth","AnchorageArea","Berth","BerthPosition","DockArea","DryDock","DumpingGround","FloatingDock","Gridiron","HarbourAreaAdministrative","HarbourAreaSection","HarbourBasin","HarbourFacility","MooringWarpingFacility","OuterLimit","PilotBoardingPlace","SeaplaneLandingArea","Terminal","TurningBasin","WaterwayArea","DataCoverage","QualityOfNonBathymetricData","SoundingDatum","VerticalDatumOfData","TextPlacement"];
+		public static Primitives[] FeaturePrimitives(string featureType) => featureType switch {
+			"FeatureType" => [Primitives.noGeometry],
+			"OrganizationContactArea" => [Primitives.noGeometry],
+			"SupervisedArea" => [Primitives.noGeometry],
+			"HarbourPhysicalInfrastructure" => [Primitives.point,Primitives.surface],
+			"Layout" => [Primitives.noGeometry],
+			"AnchorBerth" => [Primitives.point,Primitives.surface],
+			"AnchorageArea" => [Primitives.point,Primitives.surface],
+			"Berth" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"BerthPosition" => [Primitives.point],
+			"DockArea" => [Primitives.surface],
+			"DryDock" => [Primitives.point,Primitives.surface],
+			"DumpingGround" => [Primitives.surface,Primitives.point],
+			"FloatingDock" => [Primitives.point,Primitives.surface],
+			"Gridiron" => [Primitives.point,Primitives.surface],
+			"HarbourAreaAdministrative" => [Primitives.point,Primitives.surface],
+			"HarbourAreaSection" => [Primitives.point,Primitives.surface],
+			"HarbourBasin" => [Primitives.surface],
+			"HarbourFacility" => [Primitives.point,Primitives.surface],
+			"MooringWarpingFacility" => [Primitives.point],
+			"OuterLimit" => [Primitives.curve,Primitives.surface],
+			"PilotBoardingPlace" => [Primitives.surface,Primitives.point],
+			"SeaplaneLandingArea" => [Primitives.surface,Primitives.point],
+			"Terminal" => [Primitives.point,Primitives.surface],
+			"TurningBasin" => [Primitives.surface],
+			"WaterwayArea" => [Primitives.surface],
+			"DataCoverage" => [Primitives.surface],
+			"QualityOfNonBathymetricData" => [Primitives.surface],
+			"SoundingDatum" => [Primitives.surface],
+			"VerticalDatumOfData" => [Primitives.surface],
+			"TextPlacement" => [Primitives.point],
+			_ or "" => throw new InvalidOperationException(),
+		};
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]

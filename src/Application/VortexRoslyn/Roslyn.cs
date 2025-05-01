@@ -68,6 +68,16 @@ namespace S100Framework.Applications
 
                 names = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
                 builderDomainModel.AppendLine($"\t\tpublic static string[] FeatureTypes => [{string.Join(',', names.Select(e => $"\"{e}\""))}];");
+
+                builderDomainModel.AppendLine("\t\tpublic static Primitives[] FeaturePrimitives(string featureType) => featureType switch {");
+                var featureTypes = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager);
+                foreach(var e in featureTypes) {
+                    var code = e.Element(XName.Get("code", scope_S100))!.Value;
+                    var primitives = e.Elements(XName.Get("permittedPrimitives", scope_S100)).Select(e=>$"Primitives.{e.Value!}");
+                    builderDomainModel.AppendLine($"\t\t\t\"{code}\" => [{string.Join(',',primitives)}],");
+                }
+                builderDomainModel.AppendLine("\t\t\t_ or \"\" => throw new InvalidOperationException(),");
+                builderDomainModel.AppendLine("\t\t};");
             }
             builderDomainModel.AppendLine("\t}");
             builderDomainModel.AppendLine();

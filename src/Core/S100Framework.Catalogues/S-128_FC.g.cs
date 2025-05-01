@@ -17,6 +17,14 @@ namespace S100Framework.DomainModel.S128 {
 		public static string[] FeatureAssociationTypes => ["ProductMapping","Correlated"];
 		public static string[] InformationTypes => ["CatalogueSectionHeader","ContactDetails","IndicationOfCarriageRequirement","PriceInformation","ProducerInformation","DistributorInformation"];
 		public static string[] FeatureTypes => ["CatalogueElement","NavigationalProduct","ElectronicProduct","PhysicalProduct","S100Service"];
+		public static Primitives[] FeaturePrimitives(string featureType) => featureType switch {
+			"CatalogueElement" => [Primitives.surface],
+			"NavigationalProduct" => [Primitives.surface],
+			"ElectronicProduct" => [Primitives.surface],
+			"PhysicalProduct" => [Primitives.surface],
+			"S100Service" => [Primitives.surface],
+			_ or "" => throw new InvalidOperationException(),
+		};
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
