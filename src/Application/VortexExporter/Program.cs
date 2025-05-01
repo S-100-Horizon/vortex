@@ -139,10 +139,10 @@ namespace S100Framework.Applications
                     };
 
                     Log.Information("Building topology..");
-                    //var topology = source.BuildTopology(filter);
+                    var topology = source.BuildTopology(filter);
 
-                    //Log.Information("Topology finished! Found {curves} Curves, {composites} CompositeCurves, {surfaces} Surfaces", topology!.Curves.Count, topology.CompositeCurves.Count, topology.Surfaces.Count);
-                    //dataset.AddTopology(topology);
+                    Log.Information("Topology finished! Found {curves} Curves, {composites} CompositeCurves, {surfaces} Surfaces", topology!.Curves.Count, topology.CompositeCurves.Count, topology.Surfaces.Count);
+                    dataset.AddTopology(topology);
                 }
 
 
