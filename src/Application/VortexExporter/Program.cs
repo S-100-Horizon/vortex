@@ -124,8 +124,27 @@ namespace S100Framework.Applications
                 }
 
 
+
+
                 var geometries = new List<(Geometry geometry, string name)>();
                 var featureAssociations = new Dictionary<string, YAML.Association[]>();
+
+                // Build Topology
+                {
+                    var filter = new SpatialQueryFilter {
+                        FilterGeometry = shape,
+                        SpatialRelationship = SpatialRelationship.Relation,
+                        SpatialRelationshipDescription = "T*****FF*",
+                        WhereClause = "upper(ps) = 'S-101'",
+                    };
+
+                    Log.Information("Building topology..");
+                    var topology = source.BuildTopology(filter);
+
+                    Log.Information("Topology finished! Found {curves} Curves, {composites} CompositeCurves, {surfaces} Surfaces", topology!.Curves.Count, topology.CompositeCurves.Count, topology.Surfaces.Count);
+                    dataset.AddTopology(topology);
+                }
+
 
                 // FeatureAssociations - skip for now until two-way references sorted
                 {
@@ -252,7 +271,7 @@ namespace S100Framework.Applications
                                 Attributes = (FeatureNode)instance!,
                             };
 
-                            // Associations
+                            // FeatureAssociations
                             var hasAssociations = featureAssociations.TryGetValue(geometry, out var associations);
 
                             if (hasAssociations) {
@@ -275,6 +294,7 @@ namespace S100Framework.Applications
 
                 // Geometries
                 foreach (var (geometry, name) in geometries.OrderBy(e => e.geometry.GeometryType)) {
+                    if (geometry.GeometryType == GeometryType.Polygon) continue;    // Skip polygons after topology
                     dataset.AddGeometry(geometry, name!);
                     Log.Information("Adding {geometryType} with ID: {name}", geometry.GeometryType, name);
                 }
@@ -506,6 +526,50 @@ namespace S100Framework.YAML
                     throw new ArgumentException($"Unsupported geometry type: {geometry.GeometryType}");
             }
         }
+
+        public static void AddTopology(this Dataset dataset, Topology topology) {
+            // Curves
+            foreach (var curve in topology.Curves) {
+                try {
+                    Log.Information("Adding curve C{curve} from topology", curve.Id);
+                    var coordinates = curve.LineString.Coordinates.Select(e => new Coordinate(e.X, e.Y)).ToArray();
+
+                    _ = dataset.GetOrCreateCurve(coordinates, $"{curve.Id}", 0);
+
+                }
+                catch (Exception ex) {
+                    Log.Error("Exception! {ex} on curve: {curve}", ex, curve.Id);
+                }
+            }
+
+            // Composite Curves
+            foreach (var composite in topology.CompositeCurves) {
+                Log.Information("Adding composite C{curvecomposite} from topology", composite.Id);
+                var compositecurveIds = composite.Curves.SelectMany(e => topology.Curves.Where(f => f.Id == e)).Select(x => $"C{x.Id}-0");
+
+                var components = string.Join(",", compositecurveIds);
+
+                var compositeCurve = new CompositeCurve(components) {
+                    Name = $"C{composite.Id}-0"
+                };
+
+                _ = dataset.AddCompositeCurve(compositeCurve);
+            }
+
+            foreach (var s in topology.Surfaces) {
+                Log.Information("Adding surface S{surface} from topology", s.Id);
+                var exteriorRing = $"C{s.Exterior}-0";
+                var interiorRings = s?.Interior?.Select(e => $"C{e}-0").ToArray();
+
+                var surface = new Surface(exteriorRing) {
+                    InteriorRings = interiorRings,
+                    Name = $"S{s!.Id}"
+                };
+
+                _ = dataset.AddSurface(surface);
+            }
+        }
+
         /// <summary>
         /// The NCPS NIS was data loaded by ENCs for Denmark. The ENC only holds depth data to One decimal place and derived from paper chart practices <br />
         /// IHO Rounding rules applied (0-21m = decimeter, 21-31m = half meter 31+ = whole meter).
@@ -567,7 +631,8 @@ namespace S100Framework.YAML
             if (datasetCurve == default) {
                 var first = dataset?.GetOrCreateStartPoint(coordinates, name, identifier);
                 var last = dataset?.GetOrCreateEndPoint(coordinates, name, identifier);
-                var curveName = identifier == 0 ? $"C{name}" : $"C{name}-{identifier}";
+                //var curveName = identifier == 0 ? $"C{name}" : $"C{name}-{identifier}";
+                var curveName = $"C{name}-{identifier}";
 
                 var curve = new Curve(first!, last!, coordinates) {
                     Name = curveName,

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Globalization;
 using System.Reflection;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
@@ -38,7 +39,10 @@ namespace S100Framework.YAML
             var properties = type.GetProperties();
 
             foreach (var property in properties) {
-                if (property.GetCustomAttribute<IgnoreDataMemberAttribute>(true) != null)   // We dont serialize those
+                if (property.GetCustomAttribute<JsonIgnoreAttribute>(true) != null)   // Include JsonIgnore to YAML serialization
+                    continue;
+
+                if (property.GetAccessors(false).Any(x => x.IsStatic))                // Do not serialize static properties
                     continue;
 
                 var propertyValue = property.GetValue(obj, null);
