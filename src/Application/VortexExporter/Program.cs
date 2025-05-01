@@ -704,6 +704,12 @@ namespace S100Framework.YAML
             topology.Add(curve);
             return topology;
         }
+
+        public static CompositeCurveFeature AddCurve(this List<CompositeCurveFeature> topology, CompositeCurveFeature curve) {
+            if (topology.Any(e => e.Curves.SequenceEqual(curve.Curves))) return topology.Single(e => e.Curves.SequenceEqual(curve.Curves));
+            topology.Add(curve);
+            return curve;
+        }
     }
 }
 
@@ -711,6 +717,7 @@ namespace ArcGIS.Core.Data
 {
     using GeoAPI.Geometries;
     using NetTopologySuite.Geometries;
+    using NetTopologySuite.Operation.Polygonize;
 
     internal static class Extension
     {
@@ -761,18 +768,19 @@ namespace ArcGIS.Core.Data
 
                     var ex = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
 
-                    if (shape.PartCount > 1) {
-                        var interiorRings = new List<LineString>();
+                    //if (shape.PartCount > 1) {
+                    //    var interiorRings = new List<LineString>();
 
-                        foreach (var interiorRing in shape.Parts.Skip(1)) {
-                            coordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+                    //    foreach (var interiorRing in shape.Parts.Skip(1)) {
+                    //        coordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
 
-                            interiorRings.Add((LineString)factory.CreateLineString([.. coordinates, coordinates[0]]));
-                        }
+                    //        interiorRings.Add((LineString)factory.CreateLineString([.. coordinates, coordinates[0]]));
+                    //    }
 
-                        polylines.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, interiorRings.ToArray()));
-                    }
-                    else {
+                    //    polylines.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, interiorRings.ToArray()));
+                    //}
+                    //else 
+                    {
                         polylines.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, []));
                     }
                 }
@@ -852,7 +860,7 @@ namespace ArcGIS.Core.Data
                         if (intersection is MultiLineString multiLineStringIntersection) {
                             foreach (LineString lineString in multiLineStringIntersection.Geometries) {
                                 if (!lineString.IsEmpty) {
-                                    var curve = new CurveFeature(geometryId++, input.LineString);
+                                    var curve = new CurveFeature(geometryId++, lineString);
                                     curves.AddCurve(curve);
                                     local[ringString].Add(curve.HashCode);
                                 }
@@ -898,16 +906,10 @@ namespace ArcGIS.Core.Data
                 if (local.Any(e => e.Value.Count > 1)) {
                     var exterior = local.First();
 
-                    var exteriorReferences = curves.Where(e => exterior.Value.Contains(e.HashCode)).Select(e => e.Id);
+                    var exteriorReferences = curves.Where(e => exterior.Value.Contains(e.HashCode));
 
                     if (!exteriorReferences.Any())
                         System.Diagnostics.Debugger.Break();
-
-                    var compositeExterior = new CompositeCurveFeature {
-                        Id = geometryId++,
-                        Curves = exteriorReferences.ToArray(),
-                    };
-                    compositecurves.Add(compositeExterior);
 
                     var interior = new List<int>();
 
@@ -921,9 +923,29 @@ namespace ArcGIS.Core.Data
                             Id = geometryId++,
                             Curves = references.ToArray(),
                         };
-                        compositecurves.Add(composite);
+                        composite = compositecurves.AddCurve(composite);
                         interior.Add(composite.Id);
                     }
+
+                    //if (exteriorReferences.Count() > 1)
+                    //    System.Diagnostics.Debugger.Break();
+
+                    var lineStrings = curves.Where(e => exterior.Value.Contains(e.HashCode)).Select(e => e.LineString);
+
+                    var polygonizer = new Polygonizer();
+                    polygonizer.Add(lineStrings.ToArray());
+
+                    var text = polygonizer.GetGeometry().ToString()!;
+
+                    var compositeExterior = new CompositeCurveFeature {
+                        Id = geometryId++,
+                        Curves = exteriorReferences.OrderBy(e => {
+                            return text.IndexOf(e.LineString.ToString());
+                        }).Select(e => e.Id).ToArray(),
+                    };
+                    compositeExterior = compositecurves.AddCurve(compositeExterior);
+
+                    //var p = factory.CreatePolygon(lineStrings);
 
                     var surface = new SurfaceFeature {
                         Id = geometryId++,
