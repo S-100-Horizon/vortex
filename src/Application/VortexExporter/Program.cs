@@ -801,6 +801,9 @@ namespace ArcGIS.Core.Data
                 if (count % 100 == 0)
                     Log.Verbose("#{count}", count);
 
+                //if (input.ObjectId == 42794)
+                //    System.Diagnostics.Debugger.Break();
+
                 //var local = new List<int>();
                 var local = new Dictionary<string, ICollection<int>>();
 
@@ -816,18 +819,21 @@ namespace ArcGIS.Core.Data
                     var ringString = ring.ToString();
                     local.Add(ringString, new List<int>());
 
+                    //if (ringString.Equals("LINESTRING (12.672781 55.707827, 12.67302 55.70782, 12.673021 55.707816, 12.673071 55.707638, 12.67517 55.70027, 12.67502 55.69838, 12.67489 55.6967, 12.67485 55.69617, 12.67482 55.69586, 12.67468 55.69453, 12.67459 55.69363, 12.6745 55.69276, 12.67443 55.69204, 12.67323 55.6802, 12.67312 55.67913, 12.67275 55.6755, 12.67262 55.67413, 12.6726 55.67396, 12.6725 55.67305, 12.672476 55.672811, 12.672458 55.672629, 12.67242 55.67225, 12.67153 55.67273, 12.67138 55.67281, 12.66918 55.67399, 12.66848 55.67437, 12.66692 55.6752, 12.66538 55.67604, 12.6645 55.67651, 12.66162 55.67806, 12.66102 55.67838, 12.65746 55.68029, 12.65725 55.68041, 12.65725 55.68087, 12.65726 55.68216, 12.65726 55.68316, 12.657305 55.689471, 12.657313 55.69233, 12.65732 55.694926, 12.657324 55.696431, 12.657319 55.6973, 12.657308 55.699362, 12.657291 55.702638, 12.65728 55.70373, 12.65726 55.70747, 12.65726 55.70803, 12.65725 55.70838, 12.657713 55.708363, 12.65887 55.70832, 12.65907 55.70831, 12.659179 55.708307, 12.65981 55.70829, 12.66427 55.70813, 12.665178 55.708098, 12.66764 55.70801, 12.6679 55.708, 12.66919 55.70796, 12.6714 55.70788, 12.67265 55.70783, 12.672781 55.707827)"))
+                    //    System.Diagnostics.Debugger.Break();
+
                     var analyze = polylines.Where(e => !e.ObjectId.Equals(input.ObjectId));
 
                     var equals = polylines.Where(e => !e.ObjectId.Equals(input.ObjectId)).Where(e => ring.EqualsTopologically(e.LineString));
                     if (equals.Any()) {
-                        if (equalsList.Contains(ringString)) {
-                            var curve = new CurveFeature(geometryId++, ring);
+                        //if (equalsList.Contains(ringString)) {
+                        //    var curve = new CurveFeature(geometryId++, ring);
 
-                            local[ringString].Add(curve.HashCode);
-                            continue;
-                        }
+                        //    local[ringString].Add(curve.HashCode);
+                        //    continue;
+                        //}
 
-                        equalsList.Add(ringString);
+                        //equalsList.Add(ringString);
 
                         var ids = equals.Select(e => e.ObjectId);
                         analyze = analyze.Where(e => !ids.Contains(e.ObjectId));
@@ -974,5 +980,6 @@ namespace ArcGIS.Core.Data
                 Surfaces = surfaces,
             };
         }
+
     }
 }
