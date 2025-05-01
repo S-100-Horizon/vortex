@@ -364,9 +364,9 @@ namespace S100Framework.YAML
         public string? Ref { get; init; } = default;
     }
 
-    public record Polyline(long ObjectId, LineString LineString);
+    public record Polyline(long ObjectId, string name, LineString LineString);
 
-    public record Polygon(long ObjectId, LineString ExteriorRing, LineString[] InteriorRings) : Polyline(ObjectId, ExteriorRing);
+    public record Polygon(long ObjectId, string name, LineString ExteriorRing, LineString[] InteriorRings) : Polyline(ObjectId, name, ExteriorRing);
 
     public class Topology
     {
@@ -752,6 +752,10 @@ namespace ArcGIS.Core.Data
 
                     var shape = (ArcGIS.Core.Geometry.Polygon)f.GetShape();
 
+                    var name = Convert.ToString(f["name"]);
+                    if (string.IsNullOrEmpty(name))
+                        name = string.Empty;
+
                     var exteriorRing = shape.GetExteriorRing(0);
                     var coordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
 
@@ -766,10 +770,10 @@ namespace ArcGIS.Core.Data
                             interiorRings.Add((LineString)factory.CreateLineString([.. coordinates, coordinates[0]]));
                         }
 
-                        polylines.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), ex, interiorRings.ToArray()));
+                        polylines.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, interiorRings.ToArray()));
                     }
                     else {
-                        polylines.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), ex, []));
+                        polylines.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, []));
                     }
                 }
             }
@@ -916,7 +920,7 @@ namespace ArcGIS.Core.Data
                         Id = geometryId++,
                         Exterior = compositeExterior.Id,
                         Interior = interior.Any() ? interior.ToArray() : default,
-                        Ref = $"{input.ObjectId}",
+                        Ref = input.name,
                     };
                     surfaces.Add(surface);
                 }
@@ -926,7 +930,7 @@ namespace ArcGIS.Core.Data
                     var surface = new SurfaceFeature {
                         Id = geometryId++,
                         Exterior = reference.Id,
-                        Ref = $"{input.ObjectId}",
+                        Ref = input.name,
                     };
                     surfaces.Add(surface);
                 }
