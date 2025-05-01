@@ -340,6 +340,8 @@ namespace S100Framework.YAML
         public int Exterior { get; init; }
 
         public int[]? Interior { get; init; }
+
+        public string? Ref { get; init; } = default;
     }
 
     public record Polyline(long ObjectId, LineString LineString);
@@ -719,6 +721,8 @@ namespace ArcGIS.Core.Data
 
             foreach (var input in polylines) {
                 count -= 1;
+                if (count % 100 == 0)
+                    Log.Verbose("#{count}", count);
 
                 //var local = new List<int>();
                 var local = new Dictionary<string, ICollection<int>>();
@@ -847,6 +851,7 @@ namespace ArcGIS.Core.Data
                         Id = geometryId++,
                         Exterior = compositeExterior.Id,
                         Interior = interior.Any() ? interior.ToArray() : default,
+                        Ref = $"{input.ObjectId}",
                     };
                     surfaces.Add(surface);
                 }
@@ -856,6 +861,7 @@ namespace ArcGIS.Core.Data
                     var surface = new SurfaceFeature {
                         Id = geometryId++,
                         Exterior = reference.Id,
+                        Ref = $"{input.ObjectId}",
                     };
                     surfaces.Add(surface);
                 }
