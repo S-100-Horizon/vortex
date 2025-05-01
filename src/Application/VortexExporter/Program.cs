@@ -563,7 +563,7 @@ namespace S100Framework.YAML
 
                 var surface = new Surface(exteriorRing) {
                     InteriorRings = interiorRings,
-                    Name = $"S{s!.Id}"
+                    Name = s.Ref
                 };
 
                 _ = dataset.AddSurface(surface);
