@@ -751,7 +751,7 @@ namespace ArcGIS.Core.Data
                     var shape = (ArcGIS.Core.Geometry.Polygon)f.GetShape();
 
                     var exteriorRing = shape.GetExteriorRing(0);
-                    var coordinates = exteriorRing.Parts[0].Select(segment => new GeoAPI.Geometries.Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+                    var coordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
 
                     var ex = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
 
@@ -759,7 +759,7 @@ namespace ArcGIS.Core.Data
                         var interiorRings = new List<LineString>();
 
                         foreach (var interiorRing in shape.Parts.Skip(1)) {
-                            coordinates = interiorRing.Select(segment => new GeoAPI.Geometries.Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+                            coordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
 
                             interiorRings.Add((LineString)factory.CreateLineString([.. coordinates, coordinates[0]]));
                         }
@@ -780,12 +780,12 @@ namespace ArcGIS.Core.Data
 
             int geometryId = 1;
 
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
+            var equalsList = new List<string>();
 
             foreach (var input in polylines) {
                 count -= 1;
 
+                //var local = new List<int>();
                 var local = new Dictionary<string, ICollection<int>>();
 
                 var rings = new List<LineString> { input.LineString };
@@ -800,7 +800,24 @@ namespace ArcGIS.Core.Data
                     var ringString = ring.ToString();
                     local.Add(ringString, new List<int>());
 
-                    var overlaps = polylines.Where(e => !e.ObjectId.Equals(input.ObjectId)).Where(e => ring.Overlaps(e.LineString)).Select(e => e.LineString).ToArray();
+                    var analyze = polylines.Where(e => !e.ObjectId.Equals(input.ObjectId));
+
+                    var equals = polylines.Where(e => !e.ObjectId.Equals(input.ObjectId)).Where(e => ring.EqualsTopologically(e.LineString));
+                    if (equals.Any()) {
+                        if (equalsList.Contains(ringString)) {
+                            var curve = new CurveFeature(geometryId++, ring);
+
+                            local[ringString].Add(curve.HashCode);
+                            continue;
+                        }
+
+                        equalsList.Add(ringString);
+
+                        var ids = equals.Select(e => e.ObjectId);
+                        analyze = analyze.Where(e => !ids.Contains(e.ObjectId));
+                    }
+
+                    var overlaps = analyze.Where(e => ring.Overlaps(e.LineString)).Select(e => e.LineString).ToArray();
                     if (!overlaps.Any()) {
                         var curve = new CurveFeature(geometryId++, ring);
                         curves.AddCurve(curve);
@@ -832,24 +849,30 @@ namespace ArcGIS.Core.Data
                             }
                         }
                         else if (intersection is LineString lineStringIntersection) {
-                            var curve = new CurveFeature(geometryId++, lineStringIntersection);
-                            curves.AddCurve(curve);
-                            local[ringString].Add(curve.HashCode);
+                            if (!lineStringIntersection.IsEmpty) {
+                                var curve = new CurveFeature(geometryId++, lineStringIntersection);
+                                curves.AddCurve(curve);
+                                local[ringString].Add(curve.HashCode);
+                            }
                         }
 
                         var difference = input.LineString.Difference(intersection);
 
                         if (difference is MultiLineString multiLineStringDifference) {
                             foreach (LineString lineString in multiLineStringDifference.Geometries) {
-                                var curve = new CurveFeature(geometryId++, lineString);
-                                curves.AddCurve(curve);
-                                local[ringString].Add(curve.HashCode);
+                                if (!lineString.IsEmpty) {
+                                    var curve = new CurveFeature(geometryId++, lineString);
+                                    curves.AddCurve(curve);
+                                    local[ringString].Add(curve.HashCode);
+                                }
                             }
                         }
                         else if (difference is LineString lineStringDifference) {
-                            var curve = new CurveFeature(geometryId++, lineStringDifference);
-                            curves.AddCurve(curve);
-                            local[ringString].Add(curve.HashCode);
+                            if (!lineStringDifference.IsEmpty) {
+                                var curve = new CurveFeature(geometryId++, lineStringDifference);
+                                curves.AddCurve(curve);
+                                local[ringString].Add(curve.HashCode);
+                            }
                         }
                     }
                     catch (NetTopologySuite.Geometries.TopologyException ex) {
@@ -910,6 +933,7 @@ namespace ArcGIS.Core.Data
                 Surfaces = surfaces,
             };
         }
+
 
     }
 }
