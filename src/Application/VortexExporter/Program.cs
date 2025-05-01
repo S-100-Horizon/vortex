@@ -851,9 +851,11 @@ namespace ArcGIS.Core.Data
 
                         if (intersection is MultiLineString multiLineStringIntersection) {
                             foreach (LineString lineString in multiLineStringIntersection.Geometries) {
-                                var curve = new CurveFeature(geometryId++, input.LineString);
-                                curves.AddCurve(curve);
-                                local[ringString].Add(curve.HashCode);
+                                if (!lineString.IsEmpty) {
+                                    var curve = new CurveFeature(geometryId++, input.LineString);
+                                    curves.AddCurve(curve);
+                                    local[ringString].Add(curve.HashCode);
+                                }
                             }
                         }
                         else if (intersection is LineString lineStringIntersection) {
@@ -898,6 +900,9 @@ namespace ArcGIS.Core.Data
 
                     var exteriorReferences = curves.Where(e => exterior.Value.Contains(e.HashCode)).Select(e => e.Id);
 
+                    if (!exteriorReferences.Any())
+                        System.Diagnostics.Debugger.Break();
+
                     var compositeExterior = new CompositeCurveFeature {
                         Id = geometryId++,
                         Curves = exteriorReferences.ToArray(),
@@ -908,6 +913,10 @@ namespace ArcGIS.Core.Data
 
                     foreach (var i in local.Skip(1)) {
                         var references = curves.Where(e => i.Value.Contains(e.HashCode)).Select(e => e.Id);
+
+                        if (!references.Any())
+                            System.Diagnostics.Debugger.Break();
+
                         var composite = new CompositeCurveFeature {
                             Id = geometryId++,
                             Curves = references.ToArray(),
@@ -943,7 +952,5 @@ namespace ArcGIS.Core.Data
                 Surfaces = surfaces,
             };
         }
-
-
     }
 }
