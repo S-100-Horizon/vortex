@@ -11,8 +11,8 @@ using System.Text.Json.Serialization;
 namespace S100Framework.DomainModel.S201 {
 	public static class Summary
 	{
-		public static Version Version => new Version("1.9.0");
-		public static string[] ComplexTypes => ["contactAddress","directionalCharacter","featureName","fixedDateRange","lightSector","multiplicityOfFeatures","orientation","periodicDateRange","radarWaveLength","rhythmOfLight","sectorCharacteristics","sectorInformation","sectorLimit","sectorLimitOne","sectorLimitTwo","shapeInformation","signalSequence","spatialAccuracy","CableDimensions","ChangeDetails","ObscuredSector","sinkerDimensions","PositioningMethod","horizontalPositionUncertainty","information","textualDescription","verticalUncertainty"];
+		public static Version Version => new Version("2.0.0");
+		public static string[] ComplexTypes => ["contactAddress","directionalCharacter","featureName","fixedDateRange","lightSector","multiplicityOfFeatures","orientation","periodicDateRange","radarWaveLength","rhythmOfLight","sectorCharacteristics","sectorInformation","sectorLimit","sectorLimitOne","sectorLimitTwo","shapeInformation","signalSequence","spatialAccuracy","CableDimensions","ChangeDetails","ObscuredSector","sinkerDimensions","positioningMethod","horizontalPositionUncertainty","information","textualDescription","verticalUncertainty"];
 		public static string[] InformationAssociationTypes => ["Atonstatus","AtonFixingMethodAssociation","AtonPositioningInformationAssociation"];
 		public static string[] FeatureAssociationTypes => ["BuoyTopmark","StructureEquipment","PhysicalAIS","SyntheticAIS","VirtualAIS","BuoyCounterWeight","BridleConnection","ShackleConnection","ShackleConnectionFromCable","SwivelCableConnection","BridleCableConnection","ShackleToBridleConnection","ShackleToSwivelConnection","ShackleToAnchorConnection","SwivelConnection","AtonAggregations","AtonAssociations","RangeSystem","DangerousFeatureAssociation"];
 		public static string[] InformationTypes => ["AtoNFixingMethod","AtonStatusInformation","PositioningInformation","SpatialQuality"];
@@ -74,19 +74,19 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Serializable()]
 	public enum ChangeTypes : int {
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Advanced notice of changes ")] 
+		[EnumMember(Value = "Advanced notice of changes")] 
 		AdvancedNoticeOfChanges = 1,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Discrepancy ")] 
+		[EnumMember(Value = "Discrepancy")] 
 		Discrepancy = 2,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Proposed changes ")] 
+		[EnumMember(Value = "Proposed changes")] 
 		ProposedChanges = 3,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Temporary changes ")] 
+		[EnumMember(Value = "Temporary changes")] 
 		TemporaryChanges = 4,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
@@ -703,29 +703,44 @@ namespace S100Framework.DomainModel.S201 {
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
+	public enum categoryOfInstallationBuoy : int {
+		[System.ComponentModel.Description("IncorporatesALargeBuoyWhichRemainsOnTheSurfaceAtAllTimesAndIsMooredBy4OrMoreAnchorsMooringHawsersAndCargoHosesLeadFromATurntableOnTopOfTheBuoySoThatTheBuoyDoesNotTurnAsTheShipSwingsToWindAndStream")]
+		[EnumMember(Value = "Catenary Anchor Leg Mooring")] 
+		CatenaryAnchorLegMooring = 1,
+
+		[System.ComponentModel.Description("AMooringStructureUsedByTankersToLoadAndUnloadInPortApproachesOrInOffshoreOilAndGasFieldsTheSizeOfTheStructureCanVaryBetweenALargeMooringBuoyAndAMannedFloatingStructureAlsoKnownAsSinglePointMooringSpm")]
+		[EnumMember(Value = "Single Buoy Mooring")] 
+		SingleBuoyMooring = 2,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
 	public enum ShackleType : int {
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "forelock shackles ")] 
+		[EnumMember(Value = "forelock shackles")] 
 		ForelockShackles = 1,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "clenching shackles ")] 
+		[EnumMember(Value = "clenching shackles")] 
 		ClenchingShackles = 2,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "bolt shackles ")] 
+		[EnumMember(Value = "bolt shackles")] 
 		BoltShackles = 3,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "screw pin shackles ")] 
+		[EnumMember(Value = "screw pin shackles")] 
 		ScrewPinShackles = 4,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "kenter shackle ")] 
+		[EnumMember(Value = "kenter shackle")] 
 		KenterShackle = 5,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "quick release link ")] 
+		[EnumMember(Value = "quick release link")] 
 		QuickReleaseLink = 6,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
@@ -1029,18 +1044,6 @@ namespace S100Framework.DomainModel.S201 {
 		[EnumMember(Value = "Occulting")] 
 		Occulting = 8,
 
-		[System.ComponentModel.Description("AQuickLightInWhichTheSequenceOfFlashesIsInterruptedByRegularlyRepeatedEclipsesOfConstantAndLongDuration")]
-		[EnumMember(Value = "Interrupted Quick Flashing")] 
-		InterruptedQuickFlashing = 9,
-
-		[System.ComponentModel.Description("ALightInWhichTheVeryRapidAlterationsOfLightAndDarknessAreInterruptedAtRegularIntervalsByEclipsesOfLongDuration")]
-		[EnumMember(Value = "Interrupted Very Quick Flashing")] 
-		InterruptedVeryQuickFlashing = 10,
-
-		[System.ComponentModel.Description("ALightInWhichTheUltraQuickFlashes160OrMorePerMinuteAreInterruptedAtRegularIntervalsByEclipsesOfLongDuration")]
-		[EnumMember(Value = "Interrupted Ultra Quick-Flashing")] 
-		InterruptedUltraQuickFlashing = 11,
-
 		[System.ComponentModel.Description("ARhythmicLightInWhichAppearancesOfLightOfTwoClearlyDifferentDurationsAreGroupedToRepresentACharacterOrCharactersInTheMorseCode")]
 		[EnumMember(Value = "Morse")] 
 		Morse = 12,
@@ -1093,29 +1096,33 @@ namespace S100Framework.DomainModel.S201 {
 		[EnumMember(Value = "Alternating")] 
 		Alternating = 28,
 
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Fixed and Alternating Flashing")] 
+		FixedAndAlternatingFlashing = 29,
+
 		[System.ComponentModel.Description("AnOccultingLightInWhichAGroupOfTwoOrMoreEclipsesWhichAreSpecifiedInNumberIsRegularlyRepeated")]
 		[EnumMember(Value = "Group-occulting light")] 
-		GroupOccultingLight = 29,
+		GroupOccultingLight = 30,
 
 		[System.ComponentModel.Description("AnOccultingLightInWhichASequenceOfGroupsOfOneOrMoreEclipsesWhichAreSpecifiedInNumberIsRegularlyRepeatedAndTheGroupsCompriseDifferentNumbersOfEclipses")]
 		[EnumMember(Value = "Composite group-occulting light")] 
-		CompositeGroupOccultingLight = 30,
+		CompositeGroupOccultingLight = 31,
 
 		[System.ComponentModel.Description("AFlashingLightInWhichAGroupOfFlashesSpecifiedInNumberIsRegularlyRepeated")]
 		[EnumMember(Value = "Group flashing light")] 
-		GroupFlashingLight = 31,
+		GroupFlashingLight = 32,
 
 		[System.ComponentModel.Description("ALightSimilarToAGroupFlashingLightExceptThatSuccessiveGroupsInAPeriodHaveDifferentNumbersOfFlashes")]
 		[EnumMember(Value = "Composite group-flashing light")] 
-		CompositeGroupFlashingLight = 32,
+		CompositeGroupFlashingLight = 33,
 
 		[System.ComponentModel.Description("AQuickFlashingLightInWhichAGroupOfTwoOrMoreFlashesWhichAreSpecifiedInNumberIsRegularlyRepeated")]
 		[EnumMember(Value = "Group quick light")] 
-		GroupQuickLight = 33,
+		GroupQuickLight = 34,
 
 		[System.ComponentModel.Description("AVeryQuickFlashingLightInWhichAGroupOfTwoOrMoreFlashesWhichAreSpecifiedInNumberIsRegularlyRepeated")]
 		[EnumMember(Value = "Group very quick light")] 
-		GroupVeryQuickLight = 34,
+		GroupVeryQuickLight = 35,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
 		Unknown = -1,
@@ -1125,19 +1132,19 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Serializable()]
 	public enum CategoryOfPowerSource : int {
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "battery ")] 
+		[EnumMember(Value = "battery")] 
 		Battery = 1,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "generator ")] 
+		[EnumMember(Value = "generator")] 
 		Generator = 2,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "solar panel ")] 
+		[EnumMember(Value = "solar panel")] 
 		SolarPanel = 3,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "electrical service ")] 
+		[EnumMember(Value = "electrical service")] 
 		ElectricalService = 4,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
@@ -1162,15 +1169,15 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum CategoryOfPhysicalAISAidToNavigation : int {
-		[System.ComponentModel.Description("")]
+		[System.ComponentModel.Description("SimpleTransmissionOfStaticPreProgrammedInformation")]
 		[EnumMember(Value = "Physical AIS Type 1")] 
 		PhysicalAisType1 = 1,
 
-		[System.ComponentModel.Description("")]
+		[System.ComponentModel.Description("TransmissionOfDynamicRealTimeUpdatedInformationViaConnectedSensors")]
 		[EnumMember(Value = "Physical AIS Type 2")] 
 		PhysicalAisType2 = 2,
 
-		[System.ComponentModel.Description("")]
+		[System.ComponentModel.Description("FullTwoWayCommunicationTransmissionRemoteControlConfiguration")]
 		[EnumMember(Value = "Physical AIS Type 3")] 
 		PhysicalAisType3 = 3,
 		[System.ComponentModel.Description("Unknown value.")]
@@ -3148,6 +3155,34 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("AnyOfAGroupOfColorsBluishRedToRedInHueOfMediumToHighLightnessAndOfLowToModerateSaturation")]
 		[EnumMember(Value = "Pink")] 
 		Pink = 13,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Green A")] 
+		GreenA = 14,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Green B")] 
+		GreenB = 15,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "White Temporary")] 
+		WhiteTemporary = 16,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Red Temporary")] 
+		RedTemporary = 17,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Yellow Temporary")] 
+		YellowTemporary = 18,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Green Preferred")] 
+		GreenPreferred = 19,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Green Temporary")] 
+		GreenTemporary = 20,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
 		Unknown = -1,
@@ -3979,17 +4014,17 @@ namespace S100Framework.DomainModel.S201 {
 			new() {
 				code = 1,
 				definition = "-",
-				label = "leading line ",
+				label = "leading line",
 			},
 			new() {
 				code = 3,
 				definition = "-",
-				label = "measured distance ",
+				label = "measured distance",
 			},
 			new() {
 				code = 2,
 				definition = "-",
-				label = "range system ",
+				label = "range system",
 			},
 		});
 	}
@@ -4167,7 +4202,7 @@ namespace S100Framework.DomainModel.S201 {
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class PositioningMethod {
+		public class positioningMethod {
 			[EnumerationValue([1,2,3,4])]
 			[Required()]
 			public positioningEquipment positioningEquipment {get;set;}
@@ -4227,7 +4262,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class rhythmOfLight {
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,26,27,28,29])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,12,13,14,15,16,17,18,19,20,25,26,27,28,29,30,31,32,33,34,35])]
 			[Required()]
 			public lightCharacteristic lightCharacteristic {get;set;}
 
@@ -4290,7 +4325,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorCharacteristics {
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,26,27,28,29])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,12,13,14,15,16,17,18,19,20,25,26,27,28,29,30,31,32,33,34,35])]
 			[Required()]
 			public lightCharacteristic lightCharacteristic {get;set;}
 
@@ -4301,6 +4336,8 @@ namespace S100Framework.DomainModel.S201 {
 			public decimal? signalPeriod {get;set;} = default;
 
 			public List<signalSequence> signalSequence {get;set;} = [];
+
+			public decimal? candela {get;set;} = default;
 		}
 
 	}
@@ -4348,7 +4385,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("-")]
 		cableholds,
 		[System.ComponentModel.Description("-")]
-		shackleToBridleconnecteda,
+		shackleToBridleconnected,
 		[System.ComponentModel.Description("-")]
 		shackleToBridleconnectedTo,
 		[System.ComponentModel.Description("-")]
@@ -4704,7 +4741,7 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class PositioningInformation : InformationNode, IInformationBindingDefinition {
 			public String positioningDevice {get;set;} = string.Empty;
 
-			public PositioningMethod? PositioningMethod {get;set;} = default;
+			public positioningMethod? positioningMethod {get;set;} = default;
 
 			[JsonIgnore]
 			[IgnoreDataMember]
@@ -4914,6 +4951,8 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class ElectronicAton : AidsToNavigation {
+			public String? AtoNNumber {get;set;} = default;
+
 			public String mMSICode {get;set;} = string.Empty;
 
 			public List<status> status {get;set;} = [];
@@ -5078,7 +5117,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class GenericLight : Equipment {
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])]
 			public List<colour> colour {get;set;} = [];
 
 			public decimal? height {get;set;} = default;
@@ -5090,9 +5129,6 @@ namespace S100Framework.DomainModel.S201 {
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public decimal? verticalLength {get;set;} = default;
-
-			[Required()]
-			public rhythmOfLight rhythmOfLight {get;set;}
 
 			public decimal? effectiveIntensity {get;set;} = default;
 
@@ -5342,7 +5378,7 @@ namespace S100Framework.DomainModel.S201 {
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
 			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
-			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
+			public List<marksNavigationalSystemOf> marksNavigationalSystemOf {get;set;} = [];
 
 			[EnumerationValue([1,2,3,4,5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
@@ -5378,7 +5414,7 @@ namespace S100Framework.DomainModel.S201 {
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
 
 			[EnumerationValue([1,2,3,4])]
-			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
+			public List<exhibitionConditionOfLight> exhibitionConditionOfLight {get;set;} = [];
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public lightVisibility? lightVisibility {get;set;} = default;
@@ -5391,13 +5427,14 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
-			public decimal? valueOfGeographicRange {get;set;} = default;
-
-			public decimal? valueOfLuminousRange {get;set;} = default;
-
 			public decimal? valueOfNominalRange {get;set;} = default;
 
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
+
+			[Required()]
+			public rhythmOfLight rhythmOfLight {get;set;}
+
+			public int? flareBearing {get;set;} = default;
 
 			[JsonIgnore]
 			[IgnoreDataMember]
@@ -5436,6 +5473,11 @@ namespace S100Framework.DomainModel.S201 {
 
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
+			[Required()]
+			public rhythmOfLight rhythmOfLight {get;set;}
+
+			public int? flareBearing {get;set;} = default;
+
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override string Code => nameof(LightAirObstruction);
@@ -5461,6 +5503,9 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class LightFogDetector : GenericLight {
 			[EnumerationValue([1,2,3,4,5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
+
+			[Required()]
+			public rhythmOfLight rhythmOfLight {get;set;}
 
 			[JsonIgnore]
 			[IgnoreDataMember]
@@ -5635,7 +5680,7 @@ namespace S100Framework.DomainModel.S201 {
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
-					upper =  1,
+					upper =  default,
 					association = nameof(VirtualAIS),
 					role = Enum.GetName<Role>(Role.virtualAISbroadcastBy)!,
 					featureTypes = [nameof(VirtualAISAidToNavigation)],
@@ -5707,7 +5752,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Retroreflector : Equipment {
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[EnumerationValue([1,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
@@ -5813,7 +5858,7 @@ namespace S100Framework.DomainModel.S201 {
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
-					lower = 1,
+					lower = 0,
 					upper =  1,
 					association = nameof(VirtualAIS),
 					role = Enum.GetName<Role>(Role.virtualAISbroadcasts)!,
@@ -5862,7 +5907,7 @@ namespace S100Framework.DomainModel.S201 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SyntheticAISAidToNavigation : Equipment {
+		public partial class SyntheticAISAidToNavigation : ElectronicAton {
 			[EnumerationValue([1,2])]
 			[Required()]
 			public CategoryOfSyntheticAISAidtoNavigation CategoryOfSyntheticAISAidtoNavigation {get;set;}
@@ -5877,13 +5922,13 @@ namespace S100Framework.DomainModel.S201 {
 
 			[JsonIgnore]
 			[IgnoreDataMember]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..SyntheticAISAidToNavigation._informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..ElectronicAton._informationBindingDefinitions, ..SyntheticAISAidToNavigation._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
 			[IgnoreDataMember]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..SyntheticAISAidToNavigation._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..ElectronicAton._featureBindingDefinitions, ..SyntheticAISAidToNavigation._featureBindingDefinitions];
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6032,6 +6077,10 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InstallationBuoy : GenericBuoy {
+			[EnumerationValue([1,2])]
+			[Required()]
+			public categoryOfInstallationBuoy categoryOfInstallationBuoy {get;set;}
+
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override string Code => nameof(InstallationBuoy);
@@ -6642,7 +6691,7 @@ namespace S100Framework.DomainModel.S201 {
 					lower = 1,
 					upper =  1,
 					association = nameof(ShackleToSwivelConnection),
-					role = Enum.GetName<Role>(Role.shackleToBridleconnecteda)!,
+					role = Enum.GetName<Role>(Role.shackleToSwivelconnected)!,
 					featureTypes = [nameof(MooringShackle)],
 				},
 			];
@@ -6693,7 +6742,7 @@ namespace S100Framework.DomainModel.S201 {
 					lower = 1,
 					upper =  1,
 					association = nameof(ShackleToBridleConnection),
-					role = Enum.GetName<Role>(Role.shackleToBridleconnecteda)!,
+					role = Enum.GetName<Role>(Role.shackleToBridleconnected)!,
 					featureTypes = [nameof(MooringShackle)],
 				},
 				new featureBindingDefinition {
@@ -6918,7 +6967,7 @@ namespace S100Framework.DomainModel.S201 {
 					upper =  default,
 					association = nameof(DangerousFeatureAssociation),
 					role = Enum.GetName<Role>(Role.markingAton)!,
-					featureTypes = [nameof(DangerousFeature)],
+					featureTypes = [nameof(AtonAssociation)],
 				},
 			];
 		}
@@ -6988,7 +7037,7 @@ namespace S100Framework.DomainModel.S201 {
 					upper =  default,
 					association = nameof(DangerousFeatureAssociation),
 					role = Enum.GetName<Role>(Role.danger)!,
-					featureTypes = [nameof(AtonAssociation)],
+					featureTypes = [nameof(DangerousFeature)],
 				},
 				new featureBindingDefinition {
 					roleType = roleType.association,
