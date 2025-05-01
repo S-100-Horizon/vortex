@@ -1030,6 +1030,23 @@ namespace S100Framework.Applications
                     }
                 }
                 featureBindings.AppendLine("\t\t\t];");
+
+                builder.AppendLine();
+                if (superType != null)
+                    builder.AppendLine($"\t\t\tpublic override Primitives[] primitives => [..{superType!.Value}._primitives, ..{code}._primitives];");
+                else
+                    builder.AppendLine($"\t\t\tpublic override Primitives[] primitives => {code}._primitives;");
+
+                if (superType != null)
+                    builder.AppendLine("\t\t\tpublic new static Primitives[] _primitives => [");
+                else
+                    builder.AppendLine("\t\t\tpublic static Primitives[] _primitives => [");
+
+                var primitives = e.XPathSelectElements("S100FC:permittedPrimitives", xmlNamespaceManager);
+                builder.AppendLine($"\t\t\t\t{string.Join(", ", primitives.Select(e=>$"Primitives.{e.Value!}"))}");
+                builder.AppendLine("\t\t\t];");
+                builder.AppendLine();
+
                 builder.AppendLine(featureBindings.ToString().TrimEnd(Environment.NewLine.ToArray()));
             }
 

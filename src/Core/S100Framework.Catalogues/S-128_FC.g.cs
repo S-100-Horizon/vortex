@@ -1577,6 +1577,12 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CatalogueElement._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CatalogueElement._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -1644,6 +1650,12 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..CatalogueElement._featureBindingDefinitions, ..NavigationalProduct._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..CatalogueElement._primitives, ..NavigationalProduct._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -1690,6 +1702,12 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..NavigationalProduct._featureBindingDefinitions, ..ElectronicProduct._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..NavigationalProduct._primitives, ..ElectronicProduct._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -1726,6 +1744,12 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..NavigationalProduct._featureBindingDefinitions, ..PhysicalProduct._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..NavigationalProduct._primitives, ..PhysicalProduct._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -1764,6 +1788,12 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..CatalogueElement._featureBindingDefinitions, ..S100Service._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..CatalogueElement._primitives, ..S100Service._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
