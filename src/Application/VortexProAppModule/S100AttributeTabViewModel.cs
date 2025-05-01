@@ -632,7 +632,7 @@ namespace VortexProAppModule
                             using var table = inspector.OpenDataset<Table>("associationbinding");
 
                             var q = new QueryFilter {
-                                WhereClause = $"TYPE = 'InformationBinding' AND PID = '{featureViewModel.PID}'",
+                                WhereClause = $"UPPER(TYPE) = 'INFORMATIONBINDING' AND PID = '{featureViewModel.PID}'",
                             };
                             using var cursor = table.Search(q, true);
                             while (cursor.MoveNext()) {
@@ -656,7 +656,7 @@ namespace VortexProAppModule
                             using var table = inspector.OpenDataset<Table>("associationbinding");
 
                             var q = new QueryFilter {
-                                WhereClause = $"TYPE = 'FeatureBinding' AND PID = '{featureViewModel.PID}'",
+                                WhereClause = $"UPPER(TYPE) = 'FEATUREBINDING' AND PID = '{featureViewModel.PID}'",
                             };
                             using var cursor = table.Search(q, true);
                             while (cursor.MoveNext()) {
