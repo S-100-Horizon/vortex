@@ -335,12 +335,14 @@ namespace S100Framework.YAML
 
     using System.Text.RegularExpressions;
 
-    public class CurveFeature
+    public abstract class FeatureType
     {
-        public int Id { get; init; }
+        public Guid Id { get; init; } = Guid.NewGuid();
+    }
 
-        public CurveFeature(int id, LineString lineString) {
-            this.Id = id;
+    public class CurveFeature : FeatureType
+    {
+        public CurveFeature(LineString lineString) {
             this.LineString = lineString;
             this.HashCode = lineString.GetHashCode();
         }
@@ -350,20 +352,16 @@ namespace S100Framework.YAML
         public int HashCode { get; init; }
     }
 
-    public class CompositeCurveFeature
+    public class CompositeCurveFeature : FeatureType
     {
-        public int Id { get; init; }
-
-        public required int[] Curves { get; init; }
+        public Guid[] Curves { get; init; }
     }
 
-    public class SurfaceFeature
+    public class SurfaceFeature : FeatureType
     {
-        public int Id { get; init; }
+        public Guid Exterior { get; init; }
 
-        public int Exterior { get; init; }
-
-        public int[]? Interior { get; init; }
+        public Guid[]? Interior { get; init; }
 
         public string? Ref { get; init; } = default;
     }
@@ -744,9 +742,8 @@ namespace ArcGIS.Core.Data
 
             int count = polylines.Count();
 
-            int geometryId = 1;
-
             var equalsList = new List<string>();
+            var equalsDictionary = new Dictionary<string, ICollection<int>>();
 
             foreach (var input in polylines) {
                 count -= 1;
@@ -778,14 +775,13 @@ namespace ArcGIS.Core.Data
 
                     var equals = polylines.Where(e => !e.ObjectId.Equals(input.ObjectId)).Where(e => ring.EqualsTopologically(e.LineString));
                     if (equals.Any()) {
-                        //if (equalsList.Contains(ringString)) {
-                        //    var curve = new CurveFeature(geometryId++, ring);
+                        if (equalsList.Contains(ringString)) {
+                            var curve = equalsDictionary[ringString];
+                            local[ringString] = curve;
+                            continue;
+                        }
 
-                        //    local[ringString].Add(curve.HashCode);
-                        //    continue;
-                        //}
-
-                        //equalsList.Add(ringString);
+                        equalsList.Add(ringString);
 
                         var ids = equals.Select(e => e.ObjectId);
                         analyze = analyze.Where(e => !ids.Contains(e.ObjectId));
@@ -793,7 +789,7 @@ namespace ArcGIS.Core.Data
 
                     var overlaps = analyze.Where(e => ring.Overlaps(e.LineString)).Select(e => e.LineString).ToArray();
                     if (!overlaps.Any()) {
-                        var curve = new CurveFeature(geometryId++, ring);
+                        var curve = new CurveFeature(ring);
                         curves.AddCurve(curve);
 
                         local[ringString].Add(curve.HashCode);
@@ -807,7 +803,7 @@ namespace ArcGIS.Core.Data
                         if (intersection is GeometryCollection geometryCollection) {
                             var polylins = geometryCollection.Geometries.Where(e => e is LineString);
                             if (!polylins.Any()) {
-                                var curve = new CurveFeature(geometryId++, input.LineString);
+                                var curve = new CurveFeature(input.LineString);
                                 curves.AddCurve(curve);
                                 local[ringString].Add(curve.HashCode);
                                 continue;
@@ -818,7 +814,7 @@ namespace ArcGIS.Core.Data
                         if (intersection is MultiLineString multiLineStringIntersection) {
                             foreach (LineString lineString in multiLineStringIntersection.Geometries) {
                                 if (!lineString.IsEmpty) {
-                                    var curve = new CurveFeature(geometryId++, lineString);
+                                    var curve = new CurveFeature(lineString);
                                     curves.AddCurve(curve);
                                     local[ringString].Add(curve.HashCode);
                                 }
@@ -826,7 +822,7 @@ namespace ArcGIS.Core.Data
                         }
                         else if (intersection is LineString lineStringIntersection) {
                             if (!lineStringIntersection.IsEmpty) {
-                                var curve = new CurveFeature(geometryId++, lineStringIntersection);
+                                var curve = new CurveFeature(lineStringIntersection);
                                 curves.AddCurve(curve);
                                 local[ringString].Add(curve.HashCode);
                             }
@@ -837,7 +833,7 @@ namespace ArcGIS.Core.Data
                         if (difference is MultiLineString multiLineStringDifference) {
                             foreach (LineString lineString in multiLineStringDifference.Geometries) {
                                 if (!lineString.IsEmpty) {
-                                    var curve = new CurveFeature(geometryId++, lineString);
+                                    var curve = new CurveFeature(lineString);
                                     curves.AddCurve(curve);
                                     local[ringString].Add(curve.HashCode);
                                 }
@@ -845,7 +841,7 @@ namespace ArcGIS.Core.Data
                         }
                         else if (difference is LineString lineStringDifference) {
                             if (!lineStringDifference.IsEmpty) {
-                                var curve = new CurveFeature(geometryId++, lineStringDifference);
+                                var curve = new CurveFeature(lineStringDifference);
                                 curves.AddCurve(curve);
                                 local[ringString].Add(curve.HashCode);
                             }
@@ -853,7 +849,7 @@ namespace ArcGIS.Core.Data
                     }
                     catch (NetTopologySuite.Geometries.TopologyException ex) {
                         Log.Logger.Error(ex, "no intersections: {ObjectId}", input.ObjectId);
-                        var curve = new CurveFeature(geometryId++, input.LineString);
+                        var curve = new CurveFeature(input.LineString);
                         curves.AddCurve(curve);
                         local[ringString].Add(curve.HashCode);
                         continue;
@@ -869,7 +865,12 @@ namespace ArcGIS.Core.Data
                     if (!exteriorReferences.Any())
                         System.Diagnostics.Debugger.Break();
 
-                    var interior = new List<int>();
+                    if (equalsList.Contains(exterior.Key)) {
+                        if (!equalsDictionary.ContainsKey(exterior.Key))
+                            equalsDictionary.Add(exterior.Key, exterior.Value);
+                    }
+
+                    var interior = new List<Guid>();
 
                     foreach (var i in local.Skip(1)) {
                         var references = curves.Where(e => i.Value.Contains(e.HashCode)).Select(e => e.Id);
@@ -878,7 +879,6 @@ namespace ArcGIS.Core.Data
                             System.Diagnostics.Debugger.Break();
 
                         var composite = new CompositeCurveFeature {
-                            Id = geometryId++,
                             Curves = references.ToArray(),
                         };
                         composite = compositecurves.AddCurve(composite);
@@ -896,7 +896,6 @@ namespace ArcGIS.Core.Data
                     var text = polygonizer.GetGeometry().ToString()!;
 
                     var compositeExterior = new CompositeCurveFeature {
-                        Id = geometryId++,
                         Curves = exteriorReferences.OrderBy(e => {
                             return text.IndexOf(e.LineString.ToString());
                         }).Select(e => e.Id).ToArray(),
@@ -906,7 +905,6 @@ namespace ArcGIS.Core.Data
                     //var p = factory.CreatePolygon(lineStrings);
 
                     var surface = new SurfaceFeature {
-                        Id = geometryId++,
                         Exterior = compositeExterior.Id,
                         Interior = interior.Any() ? interior.ToArray() : default,
                         Ref = input.name,
@@ -916,8 +914,12 @@ namespace ArcGIS.Core.Data
                 else {
                     var reference = curves.Single(e => local.First().Value.Contains(e.HashCode));
 
+                    if (equalsList.Contains(reference.LineString.ToString())) {
+                        if (!equalsDictionary.ContainsKey(reference.LineString.ToString()))
+                            equalsDictionary.Add(reference.LineString.ToString(), local.First().Value);
+                    }
+
                     var surface = new SurfaceFeature {
-                        Id = geometryId++,
                         Exterior = reference.Id,
                         Ref = input.name,
                     };
@@ -926,6 +928,7 @@ namespace ArcGIS.Core.Data
 
             }
 
+            Log.Verbose("Topology: {curves}, {composites}, {surfaces}", curves.Count, compositecurves.Count, surfaces.Count);
             return new S100Framework.YAML.Topology {
                 Curves = curves,
                 CompositeCurves = compositecurves,
