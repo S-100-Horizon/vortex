@@ -123,6 +123,12 @@ namespace S100Framework.Applications
                     shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
                 }
 
+                var filter = new SpatialQueryFilter {
+                    FilterGeometry = shape,
+                    SpatialRelationship = SpatialRelationship.Relation,
+                    SpatialRelationshipDescription = "T*****FF*",
+                    WhereClause = "upper(ps) = 'S-101'",
+                };
 
 
 
@@ -130,20 +136,11 @@ namespace S100Framework.Applications
                 var featureAssociations = new Dictionary<string, YAML.Association[]>();
 
                 // Build Topology
-                {
-                    var filter = new SpatialQueryFilter {
-                        FilterGeometry = shape,
-                        SpatialRelationship = SpatialRelationship.Relation,
-                        SpatialRelationshipDescription = "T*****FF*",
-                        WhereClause = "upper(ps) = 'S-101'",
-                    };
+                Log.Information("Building topology..");
+                var topology = source.BuildTopology(filter);
 
-                    Log.Information("Building topology..");
-                    var topology = source.BuildTopology(filter);
-
-                    Log.Information("Topology finished! Found {curves} Curves, {composites} CompositeCurves, {surfaces} Surfaces", topology!.Curves.Count, topology.CompositeCurves.Count, topology.Surfaces.Count);
-                    dataset.AddTopology(topology);
-                }
+                Log.Information("Topology finished! Found {curves} Curves, {composites} CompositeCurves, {surfaces} Surfaces", topology!.Curves.Count, topology.CompositeCurves.Count, topology.Surfaces.Count);
+                dataset.AddTopology(topology);
 
 
                 // FeatureAssociations - skip for now until two-way references sorted
@@ -229,12 +226,6 @@ namespace S100Framework.Applications
                     }
 
                     using var fc = source.OpenDataset<FeatureClass>(def.GetName());
-
-                    var filter = new SpatialQueryFilter {
-                        FilterGeometry = shape,
-                        SpatialRelationship = SpatialRelationship.Relation,
-                        SpatialRelationshipDescription = "T*****FF*"
-                    };
 
                     using var cursor = fc.Search(filter, true);
                     while (cursor.MoveNext()) {
