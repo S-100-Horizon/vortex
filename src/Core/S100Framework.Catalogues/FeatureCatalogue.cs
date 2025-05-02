@@ -1,4 +1,5 @@
-﻿using System.Collections.Immutable;
+﻿using S100Framework.DomainModel;
+using System.Collections.Immutable;
 using System.Reflection;
 
 namespace S100Framework
@@ -63,6 +64,8 @@ namespace S100Framework.Catalogues
 
         public ImmutableArray<AssociationType> InformationAssociationTypes { get; set; } = ImmutableArray<AssociationType>.Empty;
 
+        public Func<Primitives, ImmutableArray<FeatureType>> FeatureTypesByPrimivive { get; set; }
+
         public string DefaultNamespace => $"S100Framework.DomainModel.{ProductID.Remove(1, 1)}";
 
         public static string Namespace(string ps, string types) => $"S100Framework.DomainModel.{ps.ToUpperInvariant().Replace("-", string.Empty)}.{types}";
@@ -74,6 +77,7 @@ namespace S100Framework.Catalogues
                 FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S101.Summary.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S101.Summary.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
                 InformationAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S101.Summary.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
+                FeatureTypesByPrimivive = (p) => ImmutableArray.Create<FeatureType>(DomainModel.S101.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
             },
             new("S-122", DomainModel.S122.Summary.Version) {
                 Assembly = typeof(DomainModel.S122.Summary).Assembly,
@@ -81,6 +85,7 @@ namespace S100Framework.Catalogues
                 FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S122.Summary.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S122.Summary.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
                 InformationAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S122.Summary.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
+                FeatureTypesByPrimivive = (p) => ImmutableArray.Create<FeatureType>(DomainModel.S122.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
             },
             new("S-124", DomainModel.S124.Summary.Version) {
                 Assembly = typeof(DomainModel.S124.Summary).Assembly,
@@ -88,6 +93,7 @@ namespace S100Framework.Catalogues
                 FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S124.Summary.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S124.Summary.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
                 InformationAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S124.Summary.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
+                FeatureTypesByPrimivive = (p) => ImmutableArray.Create<FeatureType>(DomainModel.S124.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
             },
             new("S-128", DomainModel.S128.Summary.Version) {
                 Assembly = typeof(DomainModel.S128.Summary).Assembly,
@@ -95,6 +101,7 @@ namespace S100Framework.Catalogues
                 FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S128.Summary.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S128.Summary.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
                 InformationAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S128.Summary.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
+                FeatureTypesByPrimivive = (p) => ImmutableArray.Create<FeatureType>(DomainModel.S128.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
             },
             new("S-131", DomainModel.S131.Summary.Version) {
                 Assembly = typeof(DomainModel.S131.Summary).Assembly,
@@ -102,19 +109,22 @@ namespace S100Framework.Catalogues
                 FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S131.Summary.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S131.Summary.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
                 InformationAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S131.Summary.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
+                FeatureTypesByPrimivive = (p) => ImmutableArray.Create<FeatureType>(DomainModel.S131.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
             },
-            //new("S-201", DomainModel.S201.Summary.Version) {
-            //    Assembly = typeof(DomainModel.S201.Summary).Assembly,
-            //    FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S201.Summary.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
-            //    InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S201.Summary.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
-            //    InformationAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S201.Summary.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
-            //}
+            new("S-201", DomainModel.S201.Summary.Version) {
+                Assembly = typeof(DomainModel.S201.Summary).Assembly,
+                FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S201.Summary.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
+                InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S201.Summary.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
+                InformationAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S201.Summary.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
+                FeatureTypesByPrimivive = (p) => ImmutableArray.Create<FeatureType>(DomainModel.S201.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
+            },
             new("S-501", DomainModel.S501.Summary.Version) {
                 Assembly = typeof(DomainModel.S501.Summary).Assembly,
                 FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S501.Summary.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
                 FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S501.Summary.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S501.Summary.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
                 InformationAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S501.Summary.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
+                FeatureTypesByPrimivive = (p) => ImmutableArray.Create<FeatureType>(DomainModel.S501.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
             },
         });
     }

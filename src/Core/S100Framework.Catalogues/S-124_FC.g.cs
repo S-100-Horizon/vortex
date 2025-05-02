@@ -17,6 +17,19 @@ namespace S100Framework.DomainModel.S124 {
 		public static string[] FeatureAssociationTypes => ["AreaAffected","TextAssociation"];
 		public static string[] InformationTypes => ["NAVWARNPreamble","References"];
 		public static string[] FeatureTypes => ["NAVWARNPart","NAVWARNAreaAffected","TextPlacement"];
+		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
+			Primitives.noGeometry => ["NAVWARNPart"],
+			Primitives.point => ["NAVWARNPart","NAVWARNAreaAffected","TextPlacement"],
+			Primitives.curve => ["NAVWARNPart","NAVWARNAreaAffected"],
+			Primitives.surface => ["NAVWARNPart","NAVWARNAreaAffected"],
+			_ => throw new InvalidOperationException(),
+		};
+		public static Primitives[] FeaturePrimitives(string featureType) => featureType switch {
+			"NAVWARNPart" => [Primitives.noGeometry,Primitives.point,Primitives.curve,Primitives.surface],
+			"NAVWARNAreaAffected" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"TextPlacement" => [Primitives.point],
+			_ or "" => throw new InvalidOperationException(),
+		};
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2266,6 +2279,12 @@ namespace S100Framework.DomainModel.S124 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => NAVWARNPart._featureBindingDefinitions;
+
+			public override Primitives[] primitives => NAVWARNPart._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.noGeometry, Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -2305,6 +2324,12 @@ namespace S100Framework.DomainModel.S124 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => NAVWARNAreaAffected._featureBindingDefinitions;
+
+			public override Primitives[] primitives => NAVWARNAreaAffected._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -2351,6 +2376,12 @@ namespace S100Framework.DomainModel.S124 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
+
+			public override Primitives[] primitives => TextPlacement._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,

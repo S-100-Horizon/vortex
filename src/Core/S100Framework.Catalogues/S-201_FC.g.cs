@@ -11,12 +11,84 @@ using System.Text.Json.Serialization;
 namespace S100Framework.DomainModel.S201 {
 	public static class Summary
 	{
-		public static Version Version => new Version("1.9.0");
-		public static string[] ComplexTypes => ["contactAddress","directionalCharacter","featureName","fixedDateRange","lightSector","multiplicityOfFeatures","orientation","periodicDateRange","radarWaveLength","rhythmOfLight","sectorCharacteristics","sectorInformation","sectorLimit","sectorLimitOne","sectorLimitTwo","shapeInformation","signalSequence","spatialAccuracy","CableDimensions","ChangeDetails","ObscuredSector","sinkerDimensions","PositioningMethod","horizontalPositionUncertainty","information","textualDescription","verticalUncertainty"];
+		public static Version Version => new Version("2.0.0");
+		public static string[] ComplexTypes => ["contactAddress","directionalCharacter","featureName","fixedDateRange","lightSector","multiplicityOfFeatures","orientation","periodicDateRange","radarWaveLength","rhythmOfLight","sectorCharacteristics","sectorInformation","sectorLimit","sectorLimitOne","sectorLimitTwo","shapeInformation","signalSequence","spatialAccuracy","CableDimensions","ChangeDetails","ObscuredSector","sinkerDimensions","positioningMethod","horizontalPositionUncertainty","information","textualDescription","verticalUncertainty"];
 		public static string[] InformationAssociationTypes => ["Atonstatus","AtonFixingMethodAssociation","AtonPositioningInformationAssociation"];
 		public static string[] FeatureAssociationTypes => ["BuoyTopmark","StructureEquipment","PhysicalAIS","SyntheticAIS","VirtualAIS","BuoyCounterWeight","BridleConnection","ShackleConnection","ShackleConnectionFromCable","SwivelCableConnection","BridleCableConnection","ShackleToBridleConnection","ShackleToSwivelConnection","ShackleToAnchorConnection","SwivelConnection","AtonAggregations","AtonAssociations","RangeSystem","DangerousFeatureAssociation"];
 		public static string[] InformationTypes => ["AtoNFixingMethod","AtonStatusInformation","PositioningInformation","SpatialQuality"];
 		public static string[] FeatureTypes => ["AidsToNavigation","StructureObject","Equipment","ElectronicAton","GenericBeacon","GenericBuoy","GenericLight","Landmark","LateralBeacon","LateralBuoy","NavigationLine","RecommendedTrack","LightSectored","LightAllAround","LightAirObstruction","LightFogDetector","RadarReflector","FogSignal","EnvironmentObservationEquipment","RadioStation","Daymark","Retroreflector","RadarTransponderBeacon","VirtualAISAidToNavigation","PhysicalAISAidToNavigation","SyntheticAISAidToNavigation","PowerSource","IsolatedDangerBeacon","CardinalBeacon","IsolatedDangerBuoy","CardinalBuoy","InstallationBuoy","MooringBuoy","EmergencyWreckMarkingBuoy","Lighthouse","LightFloat","LightVessel","OffshorePlatform","SiloTank","Pile","Building","Bridge","SinkerAnchor","MooringShackle","CableSubmarine","Swivel","Bridle","CounterWeight","Topmark","SafeWaterBeacon","SpecialPurposeGeneralBeacon","SafeWaterBuoy","SpecialPurposeGeneralBuoy","DangerousFeature","AtonAggregation","AtonAssociation","QualityOfNonBathymetricData","DataCoverage","LocalDirectionOfBuoyage","NavigationalSystemOfMarks","SoundingDatum","VerticalDatumOfData"];
+		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
+			Primitives.noGeometry => ["AidsToNavigation","StructureObject","Equipment","ElectronicAton","GenericBeacon","GenericBuoy","GenericLight","Bridge","AtonAggregation","AtonAssociation"],
+			Primitives.point => ["Landmark","LateralBeacon","LateralBuoy","LightSectored","LightAllAround","LightAirObstruction","LightFogDetector","RadarReflector","FogSignal","EnvironmentObservationEquipment","RadioStation","Daymark","Retroreflector","RadarTransponderBeacon","VirtualAISAidToNavigation","PhysicalAISAidToNavigation","SyntheticAISAidToNavigation","PowerSource","IsolatedDangerBeacon","CardinalBeacon","IsolatedDangerBuoy","CardinalBuoy","InstallationBuoy","MooringBuoy","EmergencyWreckMarkingBuoy","Lighthouse","LightFloat","LightVessel","OffshorePlatform","SiloTank","Pile","Building","SinkerAnchor","MooringShackle","CableSubmarine","Swivel","Bridle","CounterWeight","Topmark","SafeWaterBeacon","SpecialPurposeGeneralBeacon","SafeWaterBuoy","SpecialPurposeGeneralBuoy","DangerousFeature"],
+			Primitives.curve => ["Landmark","NavigationLine","RecommendedTrack"],
+			Primitives.surface => ["Landmark","Lighthouse","OffshorePlatform","SiloTank","QualityOfNonBathymetricData","DataCoverage","LocalDirectionOfBuoyage","NavigationalSystemOfMarks","SoundingDatum","VerticalDatumOfData"],
+			_ => throw new InvalidOperationException(),
+		};
+		public static Primitives[] FeaturePrimitives(string featureType) => featureType switch {
+			"AidsToNavigation" => [Primitives.noGeometry],
+			"StructureObject" => [Primitives.noGeometry],
+			"Equipment" => [Primitives.noGeometry],
+			"ElectronicAton" => [Primitives.noGeometry],
+			"GenericBeacon" => [Primitives.noGeometry],
+			"GenericBuoy" => [Primitives.noGeometry],
+			"GenericLight" => [Primitives.noGeometry],
+			"Landmark" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"LateralBeacon" => [Primitives.point],
+			"LateralBuoy" => [Primitives.point],
+			"NavigationLine" => [Primitives.curve],
+			"RecommendedTrack" => [Primitives.curve],
+			"LightSectored" => [Primitives.point],
+			"LightAllAround" => [Primitives.point],
+			"LightAirObstruction" => [Primitives.point],
+			"LightFogDetector" => [Primitives.point],
+			"RadarReflector" => [Primitives.point],
+			"FogSignal" => [Primitives.point],
+			"EnvironmentObservationEquipment" => [Primitives.point],
+			"RadioStation" => [Primitives.point],
+			"Daymark" => [Primitives.point],
+			"Retroreflector" => [Primitives.point],
+			"RadarTransponderBeacon" => [Primitives.point],
+			"VirtualAISAidToNavigation" => [Primitives.point],
+			"PhysicalAISAidToNavigation" => [Primitives.point],
+			"SyntheticAISAidToNavigation" => [Primitives.point],
+			"PowerSource" => [Primitives.point],
+			"IsolatedDangerBeacon" => [Primitives.point],
+			"CardinalBeacon" => [Primitives.point],
+			"IsolatedDangerBuoy" => [Primitives.point],
+			"CardinalBuoy" => [Primitives.point],
+			"InstallationBuoy" => [Primitives.point],
+			"MooringBuoy" => [Primitives.point],
+			"EmergencyWreckMarkingBuoy" => [Primitives.point],
+			"Lighthouse" => [Primitives.point,Primitives.surface],
+			"LightFloat" => [Primitives.point],
+			"LightVessel" => [Primitives.point],
+			"OffshorePlatform" => [Primitives.point,Primitives.surface],
+			"SiloTank" => [Primitives.point,Primitives.surface],
+			"Pile" => [Primitives.point],
+			"Building" => [Primitives.point],
+			"Bridge" => [Primitives.noGeometry],
+			"SinkerAnchor" => [Primitives.point],
+			"MooringShackle" => [Primitives.point],
+			"CableSubmarine" => [Primitives.point],
+			"Swivel" => [Primitives.point],
+			"Bridle" => [Primitives.point],
+			"CounterWeight" => [Primitives.point],
+			"Topmark" => [Primitives.point],
+			"SafeWaterBeacon" => [Primitives.point],
+			"SpecialPurposeGeneralBeacon" => [Primitives.point],
+			"SafeWaterBuoy" => [Primitives.point],
+			"SpecialPurposeGeneralBuoy" => [Primitives.point],
+			"DangerousFeature" => [Primitives.point],
+			"AtonAggregation" => [Primitives.noGeometry],
+			"AtonAssociation" => [Primitives.noGeometry],
+			"QualityOfNonBathymetricData" => [Primitives.surface],
+			"DataCoverage" => [Primitives.surface],
+			"LocalDirectionOfBuoyage" => [Primitives.surface],
+			"NavigationalSystemOfMarks" => [Primitives.surface],
+			"SoundingDatum" => [Primitives.surface],
+			"VerticalDatumOfData" => [Primitives.surface],
+			_ or "" => throw new InvalidOperationException(),
+		};
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -74,19 +146,19 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Serializable()]
 	public enum ChangeTypes : int {
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Advanced notice of changes ")] 
+		[EnumMember(Value = "Advanced notice of changes")] 
 		AdvancedNoticeOfChanges = 1,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Discrepancy ")] 
+		[EnumMember(Value = "Discrepancy")] 
 		Discrepancy = 2,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Proposed changes ")] 
+		[EnumMember(Value = "Proposed changes")] 
 		ProposedChanges = 3,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Temporary changes ")] 
+		[EnumMember(Value = "Temporary changes")] 
 		TemporaryChanges = 4,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
@@ -703,29 +775,44 @@ namespace S100Framework.DomainModel.S201 {
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
+	public enum categoryOfInstallationBuoy : int {
+		[System.ComponentModel.Description("IncorporatesALargeBuoyWhichRemainsOnTheSurfaceAtAllTimesAndIsMooredBy4OrMoreAnchorsMooringHawsersAndCargoHosesLeadFromATurntableOnTopOfTheBuoySoThatTheBuoyDoesNotTurnAsTheShipSwingsToWindAndStream")]
+		[EnumMember(Value = "Catenary Anchor Leg Mooring")] 
+		CatenaryAnchorLegMooring = 1,
+
+		[System.ComponentModel.Description("AMooringStructureUsedByTankersToLoadAndUnloadInPortApproachesOrInOffshoreOilAndGasFieldsTheSizeOfTheStructureCanVaryBetweenALargeMooringBuoyAndAMannedFloatingStructureAlsoKnownAsSinglePointMooringSpm")]
+		[EnumMember(Value = "Single Buoy Mooring")] 
+		SingleBuoyMooring = 2,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
 	public enum ShackleType : int {
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "forelock shackles ")] 
+		[EnumMember(Value = "forelock shackles")] 
 		ForelockShackles = 1,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "clenching shackles ")] 
+		[EnumMember(Value = "clenching shackles")] 
 		ClenchingShackles = 2,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "bolt shackles ")] 
+		[EnumMember(Value = "bolt shackles")] 
 		BoltShackles = 3,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "screw pin shackles ")] 
+		[EnumMember(Value = "screw pin shackles")] 
 		ScrewPinShackles = 4,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "kenter shackle ")] 
+		[EnumMember(Value = "kenter shackle")] 
 		KenterShackle = 5,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "quick release link ")] 
+		[EnumMember(Value = "quick release link")] 
 		QuickReleaseLink = 6,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
@@ -1029,18 +1116,6 @@ namespace S100Framework.DomainModel.S201 {
 		[EnumMember(Value = "Occulting")] 
 		Occulting = 8,
 
-		[System.ComponentModel.Description("AQuickLightInWhichTheSequenceOfFlashesIsInterruptedByRegularlyRepeatedEclipsesOfConstantAndLongDuration")]
-		[EnumMember(Value = "Interrupted Quick Flashing")] 
-		InterruptedQuickFlashing = 9,
-
-		[System.ComponentModel.Description("ALightInWhichTheVeryRapidAlterationsOfLightAndDarknessAreInterruptedAtRegularIntervalsByEclipsesOfLongDuration")]
-		[EnumMember(Value = "Interrupted Very Quick Flashing")] 
-		InterruptedVeryQuickFlashing = 10,
-
-		[System.ComponentModel.Description("ALightInWhichTheUltraQuickFlashes160OrMorePerMinuteAreInterruptedAtRegularIntervalsByEclipsesOfLongDuration")]
-		[EnumMember(Value = "Interrupted Ultra Quick-Flashing")] 
-		InterruptedUltraQuickFlashing = 11,
-
 		[System.ComponentModel.Description("ARhythmicLightInWhichAppearancesOfLightOfTwoClearlyDifferentDurationsAreGroupedToRepresentACharacterOrCharactersInTheMorseCode")]
 		[EnumMember(Value = "Morse")] 
 		Morse = 12,
@@ -1093,29 +1168,33 @@ namespace S100Framework.DomainModel.S201 {
 		[EnumMember(Value = "Alternating")] 
 		Alternating = 28,
 
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Fixed and Alternating Flashing")] 
+		FixedAndAlternatingFlashing = 29,
+
 		[System.ComponentModel.Description("AnOccultingLightInWhichAGroupOfTwoOrMoreEclipsesWhichAreSpecifiedInNumberIsRegularlyRepeated")]
 		[EnumMember(Value = "Group-occulting light")] 
-		GroupOccultingLight = 29,
+		GroupOccultingLight = 30,
 
 		[System.ComponentModel.Description("AnOccultingLightInWhichASequenceOfGroupsOfOneOrMoreEclipsesWhichAreSpecifiedInNumberIsRegularlyRepeatedAndTheGroupsCompriseDifferentNumbersOfEclipses")]
 		[EnumMember(Value = "Composite group-occulting light")] 
-		CompositeGroupOccultingLight = 30,
+		CompositeGroupOccultingLight = 31,
 
 		[System.ComponentModel.Description("AFlashingLightInWhichAGroupOfFlashesSpecifiedInNumberIsRegularlyRepeated")]
 		[EnumMember(Value = "Group flashing light")] 
-		GroupFlashingLight = 31,
+		GroupFlashingLight = 32,
 
 		[System.ComponentModel.Description("ALightSimilarToAGroupFlashingLightExceptThatSuccessiveGroupsInAPeriodHaveDifferentNumbersOfFlashes")]
 		[EnumMember(Value = "Composite group-flashing light")] 
-		CompositeGroupFlashingLight = 32,
+		CompositeGroupFlashingLight = 33,
 
 		[System.ComponentModel.Description("AQuickFlashingLightInWhichAGroupOfTwoOrMoreFlashesWhichAreSpecifiedInNumberIsRegularlyRepeated")]
 		[EnumMember(Value = "Group quick light")] 
-		GroupQuickLight = 33,
+		GroupQuickLight = 34,
 
 		[System.ComponentModel.Description("AVeryQuickFlashingLightInWhichAGroupOfTwoOrMoreFlashesWhichAreSpecifiedInNumberIsRegularlyRepeated")]
 		[EnumMember(Value = "Group very quick light")] 
-		GroupVeryQuickLight = 34,
+		GroupVeryQuickLight = 35,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
 		Unknown = -1,
@@ -1125,19 +1204,19 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Serializable()]
 	public enum CategoryOfPowerSource : int {
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "battery ")] 
+		[EnumMember(Value = "battery")] 
 		Battery = 1,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "generator ")] 
+		[EnumMember(Value = "generator")] 
 		Generator = 2,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "solar panel ")] 
+		[EnumMember(Value = "solar panel")] 
 		SolarPanel = 3,
 
 		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "electrical service ")] 
+		[EnumMember(Value = "electrical service")] 
 		ElectricalService = 4,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
@@ -1162,15 +1241,15 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum CategoryOfPhysicalAISAidToNavigation : int {
-		[System.ComponentModel.Description("")]
+		[System.ComponentModel.Description("SimpleTransmissionOfStaticPreProgrammedInformation")]
 		[EnumMember(Value = "Physical AIS Type 1")] 
 		PhysicalAisType1 = 1,
 
-		[System.ComponentModel.Description("")]
+		[System.ComponentModel.Description("TransmissionOfDynamicRealTimeUpdatedInformationViaConnectedSensors")]
 		[EnumMember(Value = "Physical AIS Type 2")] 
 		PhysicalAisType2 = 2,
 
-		[System.ComponentModel.Description("")]
+		[System.ComponentModel.Description("FullTwoWayCommunicationTransmissionRemoteControlConfiguration")]
 		[EnumMember(Value = "Physical AIS Type 3")] 
 		PhysicalAisType3 = 3,
 		[System.ComponentModel.Description("Unknown value.")]
@@ -3148,6 +3227,34 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("AnyOfAGroupOfColorsBluishRedToRedInHueOfMediumToHighLightnessAndOfLowToModerateSaturation")]
 		[EnumMember(Value = "Pink")] 
 		Pink = 13,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Green A")] 
+		GreenA = 14,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Green B")] 
+		GreenB = 15,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "White Temporary")] 
+		WhiteTemporary = 16,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Red Temporary")] 
+		RedTemporary = 17,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Yellow Temporary")] 
+		YellowTemporary = 18,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Green Preferred")] 
+		GreenPreferred = 19,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Green Temporary")] 
+		GreenTemporary = 20,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
 		Unknown = -1,
@@ -3979,17 +4086,17 @@ namespace S100Framework.DomainModel.S201 {
 			new() {
 				code = 1,
 				definition = "-",
-				label = "leading line ",
+				label = "leading line",
 			},
 			new() {
 				code = 3,
 				definition = "-",
-				label = "measured distance ",
+				label = "measured distance",
 			},
 			new() {
 				code = 2,
 				definition = "-",
-				label = "range system ",
+				label = "range system",
 			},
 		});
 	}
@@ -4167,7 +4274,7 @@ namespace S100Framework.DomainModel.S201 {
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class PositioningMethod {
+		public class positioningMethod {
 			[EnumerationValue([1,2,3,4])]
 			[Required()]
 			public positioningEquipment positioningEquipment {get;set;}
@@ -4227,7 +4334,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class rhythmOfLight {
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,26,27,28,29])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,12,13,14,15,16,17,18,19,20,25,26,27,28,29,30,31,32,33,34,35])]
 			[Required()]
 			public lightCharacteristic lightCharacteristic {get;set;}
 
@@ -4290,7 +4397,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorCharacteristics {
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,26,27,28,29])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,12,13,14,15,16,17,18,19,20,25,26,27,28,29,30,31,32,33,34,35])]
 			[Required()]
 			public lightCharacteristic lightCharacteristic {get;set;}
 
@@ -4301,6 +4408,8 @@ namespace S100Framework.DomainModel.S201 {
 			public decimal? signalPeriod {get;set;} = default;
 
 			public List<signalSequence> signalSequence {get;set;} = [];
+
+			public decimal? candela {get;set;} = default;
 		}
 
 	}
@@ -4348,7 +4457,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("-")]
 		cableholds,
 		[System.ComponentModel.Description("-")]
-		shackleToBridleconnecteda,
+		shackleToBridleconnected,
 		[System.ComponentModel.Description("-")]
 		shackleToBridleconnectedTo,
 		[System.ComponentModel.Description("-")]
@@ -4704,7 +4813,7 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class PositioningInformation : InformationNode, IInformationBindingDefinition {
 			public String positioningDevice {get;set;} = string.Empty;
 
-			public PositioningMethod? PositioningMethod {get;set;} = default;
+			public positioningMethod? positioningMethod {get;set;} = default;
 
 			[JsonIgnore]
 			[IgnoreDataMember]
@@ -4798,6 +4907,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => AidsToNavigation._featureBindingDefinitions;
+
+			public override Primitives[] primitives => AidsToNavigation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.noGeometry
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -4863,6 +4978,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..StructureObject._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..StructureObject._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.noGeometry
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -4896,6 +5017,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..Equipment._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..Equipment._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.noGeometry
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -4914,6 +5041,8 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class ElectronicAton : AidsToNavigation {
+			public String? AtoNNumber {get;set;} = default;
+
 			public String mMSICode {get;set;} = string.Empty;
 
 			public List<status> status {get;set;} = [];
@@ -4931,6 +5060,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..ElectronicAton._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..ElectronicAton._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.noGeometry
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -4986,6 +5121,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..GenericBeacon._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..StructureObject._primitives, ..GenericBeacon._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.noGeometry
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5036,6 +5177,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..GenericBuoy._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..StructureObject._primitives, ..GenericBuoy._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.noGeometry
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -5078,7 +5225,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class GenericLight : Equipment {
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])]
 			public List<colour> colour {get;set;} = [];
 
 			public decimal? height {get;set;} = default;
@@ -5090,9 +5237,6 @@ namespace S100Framework.DomainModel.S201 {
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public decimal? verticalLength {get;set;} = default;
-
-			[Required()]
-			public rhythmOfLight rhythmOfLight {get;set;}
 
 			public decimal? effectiveIntensity {get;set;} = default;
 
@@ -5111,6 +5255,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..GenericLight._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..Equipment._primitives, ..GenericLight._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.noGeometry
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5171,6 +5321,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..Landmark._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..StructureObject._primitives, ..Landmark._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5198,6 +5354,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..LateralBeacon._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..GenericBeacon._primitives, ..LateralBeacon._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5225,6 +5387,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..LateralBuoy._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..GenericBuoy._primitives, ..LateralBuoy._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5258,6 +5426,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..NavigationLine._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..NavigationLine._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -5317,6 +5491,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..RecommendedTrack._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..RecommendedTrack._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -5342,7 +5522,7 @@ namespace S100Framework.DomainModel.S201 {
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
 			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
-			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
+			public List<marksNavigationalSystemOf> marksNavigationalSystemOf {get;set;} = [];
 
 			[EnumerationValue([1,2,3,4,5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
@@ -5364,6 +5544,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericLight._featureBindingDefinitions, ..LightSectored._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..GenericLight._primitives, ..LightSectored._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5378,7 +5564,7 @@ namespace S100Framework.DomainModel.S201 {
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
 
 			[EnumerationValue([1,2,3,4])]
-			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
+			public List<exhibitionConditionOfLight> exhibitionConditionOfLight {get;set;} = [];
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public lightVisibility? lightVisibility {get;set;} = default;
@@ -5391,13 +5577,14 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
-			public decimal? valueOfGeographicRange {get;set;} = default;
-
-			public decimal? valueOfLuminousRange {get;set;} = default;
-
 			public decimal? valueOfNominalRange {get;set;} = default;
 
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
+
+			[Required()]
+			public rhythmOfLight rhythmOfLight {get;set;}
+
+			public int? flareBearing {get;set;} = default;
 
 			[JsonIgnore]
 			[IgnoreDataMember]
@@ -5412,6 +5599,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericLight._featureBindingDefinitions, ..LightAllAround._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..GenericLight._primitives, ..LightAllAround._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5436,6 +5629,11 @@ namespace S100Framework.DomainModel.S201 {
 
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
+			[Required()]
+			public rhythmOfLight rhythmOfLight {get;set;}
+
+			public int? flareBearing {get;set;} = default;
+
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override string Code => nameof(LightAirObstruction);
@@ -5449,6 +5647,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericLight._featureBindingDefinitions, ..LightAirObstruction._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..GenericLight._primitives, ..LightAirObstruction._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5461,6 +5665,9 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class LightFogDetector : GenericLight {
 			[EnumerationValue([1,2,3,4,5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
+
+			[Required()]
+			public rhythmOfLight rhythmOfLight {get;set;}
 
 			[JsonIgnore]
 			[IgnoreDataMember]
@@ -5475,6 +5682,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericLight._featureBindingDefinitions, ..LightFogDetector._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..GenericLight._primitives, ..LightFogDetector._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5508,6 +5721,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..RadarReflector._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..Equipment._primitives, ..RadarReflector._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5553,6 +5772,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..FogSignal._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..Equipment._primitives, ..FogSignal._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5583,6 +5808,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..EnvironmentObservationEquipment._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..Equipment._primitives, ..EnvironmentObservationEquipment._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5615,6 +5846,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..RadioStation._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..Equipment._primitives, ..RadioStation._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -5635,7 +5872,7 @@ namespace S100Framework.DomainModel.S201 {
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
-					upper =  1,
+					upper =  default,
 					association = nameof(VirtualAIS),
 					role = Enum.GetName<Role>(Role.virtualAISbroadcastBy)!,
 					featureTypes = [nameof(VirtualAISAidToNavigation)],
@@ -5697,6 +5934,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..Daymark._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..Equipment._primitives, ..Daymark._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5707,7 +5950,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Retroreflector : Equipment {
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[EnumerationValue([1,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
@@ -5739,6 +5982,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..Retroreflector._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..Equipment._primitives, ..Retroreflector._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5783,6 +6032,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..RadarTransponderBeacon._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..Equipment._primitives, ..RadarTransponderBeacon._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5810,10 +6065,16 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..ElectronicAton._featureBindingDefinitions, ..VirtualAISAidToNavigation._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..ElectronicAton._primitives, ..VirtualAISAidToNavigation._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
-					lower = 1,
+					lower = 0,
 					upper =  1,
 					association = nameof(VirtualAIS),
 					role = Enum.GetName<Role>(Role.virtualAISbroadcasts)!,
@@ -5845,6 +6106,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..ElectronicAton._featureBindingDefinitions, ..PhysicalAISAidToNavigation._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..ElectronicAton._primitives, ..PhysicalAISAidToNavigation._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -5862,7 +6129,7 @@ namespace S100Framework.DomainModel.S201 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SyntheticAISAidToNavigation : Equipment {
+		public partial class SyntheticAISAidToNavigation : ElectronicAton {
 			[EnumerationValue([1,2])]
 			[Required()]
 			public CategoryOfSyntheticAISAidtoNavigation CategoryOfSyntheticAISAidtoNavigation {get;set;}
@@ -5877,13 +6144,19 @@ namespace S100Framework.DomainModel.S201 {
 
 			[JsonIgnore]
 			[IgnoreDataMember]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..SyntheticAISAidToNavigation._informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..ElectronicAton._informationBindingDefinitions, ..SyntheticAISAidToNavigation._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
 			[IgnoreDataMember]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..SyntheticAISAidToNavigation._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..ElectronicAton._featureBindingDefinitions, ..SyntheticAISAidToNavigation._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..ElectronicAton._primitives, ..SyntheticAISAidToNavigation._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -5922,6 +6195,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..PowerSource._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..Equipment._primitives, ..PowerSource._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5945,6 +6224,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..IsolatedDangerBeacon._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..GenericBeacon._primitives, ..IsolatedDangerBeacon._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5972,6 +6257,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..CardinalBeacon._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..GenericBeacon._primitives, ..CardinalBeacon._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5995,6 +6286,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..IsolatedDangerBuoy._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..GenericBuoy._primitives, ..IsolatedDangerBuoy._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6022,6 +6319,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..CardinalBuoy._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..GenericBuoy._primitives, ..CardinalBuoy._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6032,6 +6335,10 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InstallationBuoy : GenericBuoy {
+			[EnumerationValue([1,2])]
+			[Required()]
+			public categoryOfInstallationBuoy categoryOfInstallationBuoy {get;set;}
+
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override string Code => nameof(InstallationBuoy);
@@ -6045,6 +6352,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..InstallationBuoy._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..GenericBuoy._primitives, ..InstallationBuoy._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6068,6 +6381,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..MooringBuoy._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..GenericBuoy._primitives, ..MooringBuoy._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6091,6 +6410,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..EmergencyWreckMarkingBuoy._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..GenericBuoy._primitives, ..EmergencyWreckMarkingBuoy._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6114,6 +6439,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Landmark._featureBindingDefinitions, ..Lighthouse._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..Landmark._primitives, ..Lighthouse._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6166,6 +6497,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..LightFloat._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..StructureObject._primitives, ..LightFloat._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6218,6 +6555,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..LightVessel._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..StructureObject._primitives, ..LightVessel._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6275,6 +6618,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..OffshorePlatform._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..StructureObject._primitives, ..OffshorePlatform._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6332,6 +6681,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..SiloTank._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..StructureObject._primitives, ..SiloTank._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6376,6 +6731,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..Pile._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..StructureObject._primitives, ..Pile._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6399,6 +6760,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..Building._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..StructureObject._primitives, ..Building._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6422,6 +6789,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..Bridge._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..StructureObject._primitives, ..Bridge._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.noGeometry
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6455,6 +6828,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..SinkerAnchor._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..SinkerAnchor._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6494,6 +6873,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..MooringShackle._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..MooringShackle._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6566,6 +6951,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..CableSubmarine._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..CableSubmarine._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6620,6 +7011,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..Swivel._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..Swivel._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6642,7 +7039,7 @@ namespace S100Framework.DomainModel.S201 {
 					lower = 1,
 					upper =  1,
 					association = nameof(ShackleToSwivelConnection),
-					role = Enum.GetName<Role>(Role.shackleToBridleconnecteda)!,
+					role = Enum.GetName<Role>(Role.shackleToSwivelconnected)!,
 					featureTypes = [nameof(MooringShackle)],
 				},
 			];
@@ -6671,6 +7068,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..Bridle._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..Bridle._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6693,7 +7096,7 @@ namespace S100Framework.DomainModel.S201 {
 					lower = 1,
 					upper =  1,
 					association = nameof(ShackleToBridleConnection),
-					role = Enum.GetName<Role>(Role.shackleToBridleconnecteda)!,
+					role = Enum.GetName<Role>(Role.shackleToBridleconnected)!,
 					featureTypes = [nameof(MooringShackle)],
 				},
 				new featureBindingDefinition {
@@ -6734,6 +7137,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..CounterWeight._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..CounterWeight._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6780,6 +7189,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..Topmark._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..Topmark._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6811,6 +7226,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..SafeWaterBeacon._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..GenericBeacon._primitives, ..SafeWaterBeacon._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6837,6 +7258,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..SpecialPurposeGeneralBeacon._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..GenericBeacon._primitives, ..SpecialPurposeGeneralBeacon._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6860,6 +7287,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..SafeWaterBuoy._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..GenericBuoy._primitives, ..SafeWaterBuoy._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6886,6 +7319,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..SpecialPurposeGeneralBuoy._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..GenericBuoy._primitives, ..SpecialPurposeGeneralBuoy._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6911,6 +7350,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DangerousFeature._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DangerousFeature._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6918,7 +7363,7 @@ namespace S100Framework.DomainModel.S201 {
 					upper =  default,
 					association = nameof(DangerousFeatureAssociation),
 					role = Enum.GetName<Role>(Role.markingAton)!,
-					featureTypes = [nameof(DangerousFeature)],
+					featureTypes = [nameof(AtonAssociation)],
 				},
 			];
 		}
@@ -6946,6 +7391,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => AtonAggregation._featureBindingDefinitions;
+
+			public override Primitives[] primitives => AtonAggregation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.noGeometry
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6981,6 +7432,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => AtonAssociation._featureBindingDefinitions;
+
+			public override Primitives[] primitives => AtonAssociation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.noGeometry
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6988,7 +7445,7 @@ namespace S100Framework.DomainModel.S201 {
 					upper =  default,
 					association = nameof(DangerousFeatureAssociation),
 					role = Enum.GetName<Role>(Role.danger)!,
-					featureTypes = [nameof(AtonAssociation)],
+					featureTypes = [nameof(DangerousFeature)],
 				},
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7039,6 +7496,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
+
+			public override Primitives[] primitives => QualityOfNonBathymetricData._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7068,6 +7531,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DataCoverage._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7094,6 +7563,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LocalDirectionOfBuoyage._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LocalDirectionOfBuoyage._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7121,6 +7596,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => NavigationalSystemOfMarks._featureBindingDefinitions;
+
+			public override Primitives[] primitives => NavigationalSystemOfMarks._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7148,6 +7629,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SoundingDatum._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SoundingDatum._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7175,6 +7662,12 @@ namespace S100Framework.DomainModel.S201 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => VerticalDatumOfData._featureBindingDefinitions;
+
+			public override Primitives[] primitives => VerticalDatumOfData._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
