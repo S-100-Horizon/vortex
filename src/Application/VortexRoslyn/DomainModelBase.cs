@@ -65,6 +65,8 @@ namespace S100Framework.DomainModel
         informationBindingDefinition[] informationBindingDefinitions { get; }
 
         featureBindingDefinition[] featureBindingDefinitions { get; }
+
+        Primitives[] primitives { get; }
     }
 
     [System.SerializableAttribute()]
@@ -84,6 +86,8 @@ namespace S100Framework.DomainModel
     {
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
         public abstract featureBindingDefinition[] featureBindingDefinitions { get; }
+
+        public abstract Primitives[] primitives { get; }
     }
 
     [System.SerializableAttribute()]
@@ -153,5 +157,14 @@ namespace S100Framework.DomainModel
         association,
         aggregation,
         composition,
+    }
+
+    public enum Primitives
+    {
+        noGeometry,
+        point,
+        pointSet,
+        curve,
+        surface,
     }
 }

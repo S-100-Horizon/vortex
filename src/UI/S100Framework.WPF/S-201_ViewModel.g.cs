@@ -152,15 +152,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			("ShackleConnectionFromCable", "shackleToCableconnected") => ["MooringShackle"],
 			("SwivelConnection", "swivelholds") => ["Bridle"],
 			("SwivelCableConnection", "swivelattached") => ["CableSubmarine"],
-			("ShackleToSwivelConnection", "shackleToBridleconnecteda") => ["MooringShackle"],
+			("ShackleToSwivelConnection", "shackleToSwivelconnected") => ["MooringShackle"],
 			("BridleConnection", "bridleholds") => ["GenericBuoy"],
 			("SwivelConnection", "bridlehangs") => ["Swivel"],
-			("ShackleToBridleConnection", "shackleToBridleconnecteda") => ["MooringShackle"],
+			("ShackleToBridleConnection", "shackleToBridleconnected") => ["MooringShackle"],
 			("BuoyCounterWeight", "counterWeightholds") => ["GenericBuoy"],
 			("BuoyTopmark", "buoyPart") => ["GenericBuoy"],
-			("DangerousFeatureAssociation", "markingAton") => ["DangerousFeature"],
+			("DangerousFeatureAssociation", "markingAton") => ["AtonAssociation"],
 			("AtonAggregations", "atonAggregationBy") => ["AidsToNavigation"],
-			("DangerousFeatureAssociation", "danger") => ["AtonAssociation"],
+			("DangerousFeatureAssociation", "danger") => ["DangerousFeature"],
 			("AtonAssociations", "atonAssociationBy") => ["AidsToNavigation"],
 			_ => throw new InvalidOperationException(),
 		};
@@ -786,7 +786,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Browsable(false)]
-		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)9,(lightCharacteristic)10,(lightCharacteristic)11,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)20,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29];
+		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)20,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29,(lightCharacteristic)30,(lightCharacteristic)31,(lightCharacteristic)32,(lightCharacteristic)33,(lightCharacteristic)34,(lightCharacteristic)35];
 		[Category("rhythmOfLight")]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 		private decimal? _signalPeriod  = default;
@@ -867,7 +867,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Browsable(false)]
-		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)9,(lightCharacteristic)10,(lightCharacteristic)11,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)20,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29];
+		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)20,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29,(lightCharacteristic)30,(lightCharacteristic)31,(lightCharacteristic)32,(lightCharacteristic)33,(lightCharacteristic)34,(lightCharacteristic)35];
 		[Category("sectorCharacteristics")]
 		public ObservableCollection<lightSectorViewModel> lightSector  { get; set; } = new ();
 		[Category("sectorCharacteristics")]
@@ -884,6 +884,16 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 		[Category("sectorCharacteristics")]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
+		private decimal? _candela  = default;
+
+		public decimal? candela {
+			get {
+				return _candela;
+			}
+			set {
+				SetValue(ref _candela, value);
+			}
+		}
 
 
 		public sectorCharacteristicsViewModel Load(sectorCharacteristics instance) {
@@ -904,6 +914,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				foreach(var e in instance.signalSequence)
 					signalSequence.Add(new signalSequenceViewModel().Load(e));
 			}
+			candela = instance.candela;
 			return this;
 		}
 
@@ -914,6 +925,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				signalGroup = this.signalGroup.ToList(),
 				signalPeriod = this.signalPeriod,
 				signalSequence = this.signalSequence.Select(e => e.Model).ToList(),
+				candela = this.candela,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -925,6 +937,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			signalGroup = this.signalGroup.ToList(),
 			signalPeriod = this._signalPeriod,
 			signalSequence = this.signalSequence.Select(e => e.Model).ToList(),
+			candela = this._candela,
 		};
 
 		public override string? ToString() => $"Sector Characteristics";
@@ -1703,10 +1716,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A description of the method used to obtain a position.(proposed by CCG)
 	/// </summary>
-	[CategoryOrder("PositioningMethod",0)]
+	[CategoryOrder("positioningMethod",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class PositioningMethodViewModel : ViewModelBase {
+	public partial class positioningMethodViewModel : ViewModelBase {
 		private positioningEquipment _positioningEquipment ;
 
 		public positioningEquipment positioningEquipment {
@@ -1732,14 +1745,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 
-		public PositioningMethodViewModel Load(PositioningMethod instance) {
+		public positioningMethodViewModel Load(positioningMethod instance) {
 			positioningEquipment = instance.positioningEquipment;
 			NMEAString = instance.NMEAString;
 			return this;
 		}
 
 		public override string Serialize() {
-			var instance = new PositioningMethod {
+			var instance = new positioningMethod {
 				positioningEquipment = this.positioningEquipment,
 				NMEAString = this.NMEAString,
 			};
@@ -1747,7 +1760,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Browsable(false)]
-		public PositioningMethod Model => new () {
+		public positioningMethod Model => new () {
 			positioningEquipment = this._positioningEquipment,
 			NMEAString = this._NMEAString,
 		};
@@ -2780,25 +2793,25 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _positioningDevice, value);
 			}
 		}
-		private PositioningMethodViewModel? _PositioningMethod  = default;
+		private positioningMethodViewModel? _positioningMethod  = default;
 
 		[Category("PositioningInformation")]
 		[ExpandableObject]
-		public PositioningMethodViewModel? PositioningMethod {
+		public positioningMethodViewModel? positioningMethod {
 			get {
-				return _PositioningMethod;
+				return _positioningMethod;
 			}
 			set {
-				SetValue(ref _PositioningMethod, value);
+				SetValue(ref _positioningMethod, value);
 			}
 		}
 
 
 		public override InformationViewModel<PositioningInformation> Load(PositioningInformation instance) {
 			positioningDevice = instance.positioningDevice;
-			PositioningMethod = new ();
-			if (instance.PositioningMethod != default) {
-				PositioningMethod.Load(instance.PositioningMethod);
+			positioningMethod = new ();
+			if (instance.positioningMethod != default) {
+				positioningMethod.Load(instance.positioningMethod);
 			}
 			return this;
 		}
@@ -2806,7 +2819,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string Serialize() {
 			var instance = new PositioningInformation {
 				positioningDevice = this.positioningDevice,
-				PositioningMethod = this.PositioningMethod?.Model,
+				positioningMethod = this.positioningMethod?.Model,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -2814,7 +2827,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public PositioningInformation Model => new () {
 			positioningDevice = this._positioningDevice,
-			PositioningMethod = this._PositioningMethod?.Model,
+			positioningMethod = this._positioningMethod?.Model,
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => PositioningInformation._informationBindingDefinitions;
 
@@ -5203,7 +5216,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
 		private decimal? _height  = default;
 
 		[Category("GenericLight")]
@@ -5245,18 +5258,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 			set {
 				SetValue(ref _verticalLength, value);
-			}
-		}
-		private rhythmOfLightViewModel _rhythmOfLight ;
-
-		[Category("GenericLight")]
-		[ExpandableObject]
-		public rhythmOfLightViewModel rhythmOfLight {
-			get {
-				return _rhythmOfLight;
-			}
-			set {
-				SetValue(ref _rhythmOfLight, value);
 			}
 		}
 		private decimal? _effectiveIntensity  = default;
@@ -5303,17 +5304,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1,(exhibitionConditionOfLight)2,(exhibitionConditionOfLight)3,(exhibitionConditionOfLight)4];
-		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
-
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(marksNavigationalSystemOfList))]
 		[Category("LightSectored")]
-		public marksNavigationalSystemOf? marksNavigationalSystemOf {
-			get {
-				return _marksNavigationalSystemOf;
-			}
-			set {
-				SetValue(ref _marksNavigationalSystemOf, value);
-			}
-		}
+		public ObservableCollection<marksNavigationalSystemOf> marksNavigationalSystemOf  { get; set; } = new ();
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
@@ -5388,10 +5382,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 			verticalDatum = instance.verticalDatum;
 			verticalLength = instance.verticalLength;
-			rhythmOfLight = new ();
-			if (instance.rhythmOfLight != default) {
-				rhythmOfLight.Load(instance.rhythmOfLight);
-			}
 			effectiveIntensity = instance.effectiveIntensity;
 			peakIntensity = instance.peakIntensity;
 			categoryOfLight.Clear();
@@ -5400,7 +5390,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 					categoryOfLight.Add(e);
 			}
 			exhibitionConditionOfLight = instance.exhibitionConditionOfLight;
-			marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
+			marksNavigationalSystemOf.Clear();
+			if (instance.marksNavigationalSystemOf is not null) {
+				foreach(var e in instance.marksNavigationalSystemOf)
+					marksNavigationalSystemOf.Add(e);
+			}
 			signalGeneration = instance.signalGeneration;
 			ObscuredSector.Clear();
 			if (instance.ObscuredSector is not null) {
@@ -5437,12 +5431,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				status = this.status.ToList(),
 				verticalDatum = this.verticalDatum,
 				verticalLength = this.verticalLength,
-				rhythmOfLight = this.rhythmOfLight?.Model,
 				effectiveIntensity = this.effectiveIntensity,
 				peakIntensity = this.peakIntensity,
 				categoryOfLight = this.categoryOfLight.ToList(),
 				exhibitionConditionOfLight = this.exhibitionConditionOfLight,
-				marksNavigationalSystemOf = this.marksNavigationalSystemOf,
+				marksNavigationalSystemOf = this.marksNavigationalSystemOf.ToList(),
 				signalGeneration = this.signalGeneration,
 				ObscuredSector = this.ObscuredSector.Select(e => e.Model).ToList(),
 				sectorCharacteristics = this.sectorCharacteristics.Select(e => e.Model).ToList(),
@@ -5472,12 +5465,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			status = this.status.ToList(),
 			verticalDatum = this._verticalDatum,
 			verticalLength = this._verticalLength,
-			rhythmOfLight = this._rhythmOfLight?.Model,
 			effectiveIntensity = this._effectiveIntensity,
 			peakIntensity = this._peakIntensity,
 			categoryOfLight = this.categoryOfLight.ToList(),
 			exhibitionConditionOfLight = this._exhibitionConditionOfLight,
-			marksNavigationalSystemOf = this._marksNavigationalSystemOf,
+			marksNavigationalSystemOf = this.marksNavigationalSystemOf.ToList(),
 			signalGeneration = this._signalGeneration,
 			ObscuredSector = this.ObscuredSector.Select(e => e.Model).ToList(),
 			sectorCharacteristics = this.sectorCharacteristics.Select(e => e.Model).ToList(),
@@ -5509,6 +5501,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 			categoryOfLight.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfLight));
+			};
+			marksNavigationalSystemOf.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(marksNavigationalSystemOf));
 			};
 			ObscuredSector.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(ObscuredSector));
@@ -5665,7 +5660,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
 		private decimal? _height  = default;
 
 		[Category("GenericLight")]
@@ -5709,18 +5704,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private rhythmOfLightViewModel _rhythmOfLight ;
-
-		[Category("GenericLight")]
-		[ExpandableObject]
-		public rhythmOfLightViewModel rhythmOfLight {
-			get {
-				return _rhythmOfLight;
-			}
-			set {
-				SetValue(ref _rhythmOfLight, value);
-			}
-		}
 		private decimal? _effectiveIntensity  = default;
 
 		[Category("GenericLight")]
@@ -5751,17 +5734,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public categoryOfLight[] categoryOfLightList => [(categoryOfLight)1,(categoryOfLight)4,(categoryOfLight)5,(categoryOfLight)6,(categoryOfLight)8,(categoryOfLight)9,(categoryOfLight)10,(categoryOfLight)11,(categoryOfLight)12,(categoryOfLight)13,(categoryOfLight)14,(categoryOfLight)15,(categoryOfLight)17,(categoryOfLight)18,(categoryOfLight)19,(categoryOfLight)20];
-		private exhibitionConditionOfLight? _exhibitionConditionOfLight  = default;
-
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(exhibitionConditionOfLightList))]
 		[Category("LightAllAround")]
-		public exhibitionConditionOfLight? exhibitionConditionOfLight {
-			get {
-				return _exhibitionConditionOfLight;
-			}
-			set {
-				SetValue(ref _exhibitionConditionOfLight, value);
-			}
-		}
+		public ObservableCollection<exhibitionConditionOfLight> exhibitionConditionOfLight  { get; set; } = new ();
 
 		[Browsable(false)]
 		public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1,(exhibitionConditionOfLight)2,(exhibitionConditionOfLight)3,(exhibitionConditionOfLight)4];
@@ -5818,28 +5794,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public signalGeneration[] signalGenerationList => [(signalGeneration)1,(signalGeneration)2,(signalGeneration)3,(signalGeneration)4,(signalGeneration)5,(signalGeneration)6];
-		private decimal? _valueOfGeographicRange  = default;
-
-		[Category("LightAllAround")]
-		public decimal? valueOfGeographicRange {
-			get {
-				return _valueOfGeographicRange;
-			}
-			set {
-				SetValue(ref _valueOfGeographicRange, value);
-			}
-		}
-		private decimal? _valueOfLuminousRange  = default;
-
-		[Category("LightAllAround")]
-		public decimal? valueOfLuminousRange {
-			get {
-				return _valueOfLuminousRange;
-			}
-			set {
-				SetValue(ref _valueOfLuminousRange, value);
-			}
-		}
 		private decimal? _valueOfNominalRange  = default;
 
 		[Category("LightAllAround")]
@@ -5861,6 +5815,29 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 			set {
 				SetValue(ref _multiplicityOfFeatures, value);
+			}
+		}
+		private rhythmOfLightViewModel _rhythmOfLight ;
+
+		[Category("LightAllAround")]
+		[ExpandableObject]
+		public rhythmOfLightViewModel rhythmOfLight {
+			get {
+				return _rhythmOfLight;
+			}
+			set {
+				SetValue(ref _rhythmOfLight, value);
+			}
+		}
+		private int? _flareBearing  = default;
+
+		[Category("LightAllAround")]
+		public int? flareBearing {
+			get {
+				return _flareBearing;
+			}
+			set {
+				SetValue(ref _flareBearing, value);
 			}
 		}
 
@@ -5916,10 +5893,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 			verticalDatum = instance.verticalDatum;
 			verticalLength = instance.verticalLength;
-			rhythmOfLight = new ();
-			if (instance.rhythmOfLight != default) {
-				rhythmOfLight.Load(instance.rhythmOfLight);
-			}
 			effectiveIntensity = instance.effectiveIntensity;
 			peakIntensity = instance.peakIntensity;
 			categoryOfLight.Clear();
@@ -5927,18 +5900,25 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				foreach(var e in instance.categoryOfLight)
 					categoryOfLight.Add(e);
 			}
-			exhibitionConditionOfLight = instance.exhibitionConditionOfLight;
+			exhibitionConditionOfLight.Clear();
+			if (instance.exhibitionConditionOfLight is not null) {
+				foreach(var e in instance.exhibitionConditionOfLight)
+					exhibitionConditionOfLight.Add(e);
+			}
 			lightVisibility = instance.lightVisibility;
 			majorLight = instance.majorLight;
 			marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
 			signalGeneration = instance.signalGeneration;
-			valueOfGeographicRange = instance.valueOfGeographicRange;
-			valueOfLuminousRange = instance.valueOfLuminousRange;
 			valueOfNominalRange = instance.valueOfNominalRange;
 			multiplicityOfFeatures = new ();
 			if (instance.multiplicityOfFeatures != default) {
 				multiplicityOfFeatures.Load(instance.multiplicityOfFeatures);
 			}
+			rhythmOfLight = new ();
+			if (instance.rhythmOfLight != default) {
+				rhythmOfLight.Load(instance.rhythmOfLight);
+			}
+			flareBearing = instance.flareBearing;
 			return this;
 		}
 
@@ -5964,19 +5944,18 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				status = this.status.ToList(),
 				verticalDatum = this.verticalDatum,
 				verticalLength = this.verticalLength,
-				rhythmOfLight = this.rhythmOfLight?.Model,
 				effectiveIntensity = this.effectiveIntensity,
 				peakIntensity = this.peakIntensity,
 				categoryOfLight = this.categoryOfLight.ToList(),
-				exhibitionConditionOfLight = this.exhibitionConditionOfLight,
+				exhibitionConditionOfLight = this.exhibitionConditionOfLight.ToList(),
 				lightVisibility = this.lightVisibility,
 				majorLight = this.majorLight,
 				marksNavigationalSystemOf = this.marksNavigationalSystemOf,
 				signalGeneration = this.signalGeneration,
-				valueOfGeographicRange = this.valueOfGeographicRange,
-				valueOfLuminousRange = this.valueOfLuminousRange,
 				valueOfNominalRange = this.valueOfNominalRange,
 				multiplicityOfFeatures = this.multiplicityOfFeatures?.Model,
+				rhythmOfLight = this.rhythmOfLight?.Model,
+				flareBearing = this.flareBearing,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -6003,19 +5982,18 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			status = this.status.ToList(),
 			verticalDatum = this._verticalDatum,
 			verticalLength = this._verticalLength,
-			rhythmOfLight = this._rhythmOfLight?.Model,
 			effectiveIntensity = this._effectiveIntensity,
 			peakIntensity = this._peakIntensity,
 			categoryOfLight = this.categoryOfLight.ToList(),
-			exhibitionConditionOfLight = this._exhibitionConditionOfLight,
+			exhibitionConditionOfLight = this.exhibitionConditionOfLight.ToList(),
 			lightVisibility = this._lightVisibility,
 			majorLight = this._majorLight,
 			marksNavigationalSystemOf = this._marksNavigationalSystemOf,
 			signalGeneration = this._signalGeneration,
-			valueOfGeographicRange = this._valueOfGeographicRange,
-			valueOfLuminousRange = this._valueOfLuminousRange,
 			valueOfNominalRange = this._valueOfNominalRange,
 			multiplicityOfFeatures = this._multiplicityOfFeatures?.Model,
+			rhythmOfLight = this._rhythmOfLight?.Model,
+			flareBearing = this._flareBearing,
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => LightAllAround._informationBindingDefinitions;
 
@@ -6044,6 +6022,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 			categoryOfLight.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfLight));
+			};
+			exhibitionConditionOfLight.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(exhibitionConditionOfLight));
 			};
 		}
 	}
@@ -6194,7 +6175,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
 		private decimal? _height  = default;
 
 		[Category("GenericLight")]
@@ -6236,18 +6217,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 			set {
 				SetValue(ref _verticalLength, value);
-			}
-		}
-		private rhythmOfLightViewModel _rhythmOfLight ;
-
-		[Category("GenericLight")]
-		[ExpandableObject]
-		public rhythmOfLightViewModel rhythmOfLight {
-			get {
-				return _rhythmOfLight;
-			}
-			set {
-				SetValue(ref _rhythmOfLight, value);
 			}
 		}
 		private decimal? _effectiveIntensity  = default;
@@ -6339,6 +6308,29 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _multiplicityOfFeatures, value);
 			}
 		}
+		private rhythmOfLightViewModel _rhythmOfLight ;
+
+		[Category("LightAirObstruction")]
+		[ExpandableObject]
+		public rhythmOfLightViewModel rhythmOfLight {
+			get {
+				return _rhythmOfLight;
+			}
+			set {
+				SetValue(ref _rhythmOfLight, value);
+			}
+		}
+		private int? _flareBearing  = default;
+
+		[Category("LightAirObstruction")]
+		public int? flareBearing {
+			get {
+				return _flareBearing;
+			}
+			set {
+				SetValue(ref _flareBearing, value);
+			}
+		}
 
 
 		public override FeatureViewModel<LightAirObstruction> Load(LightAirObstruction instance) {
@@ -6392,10 +6384,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 			verticalDatum = instance.verticalDatum;
 			verticalLength = instance.verticalLength;
-			rhythmOfLight = new ();
-			if (instance.rhythmOfLight != default) {
-				rhythmOfLight.Load(instance.rhythmOfLight);
-			}
 			effectiveIntensity = instance.effectiveIntensity;
 			peakIntensity = instance.peakIntensity;
 			exhibitionConditionOfLight = instance.exhibitionConditionOfLight;
@@ -6411,6 +6399,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			if (instance.multiplicityOfFeatures != default) {
 				multiplicityOfFeatures.Load(instance.multiplicityOfFeatures);
 			}
+			rhythmOfLight = new ();
+			if (instance.rhythmOfLight != default) {
+				rhythmOfLight.Load(instance.rhythmOfLight);
+			}
+			flareBearing = instance.flareBearing;
 			return this;
 		}
 
@@ -6436,7 +6429,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				status = this.status.ToList(),
 				verticalDatum = this.verticalDatum,
 				verticalLength = this.verticalLength,
-				rhythmOfLight = this.rhythmOfLight?.Model,
 				effectiveIntensity = this.effectiveIntensity,
 				peakIntensity = this.peakIntensity,
 				exhibitionConditionOfLight = this.exhibitionConditionOfLight,
@@ -6445,6 +6437,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				valueOfLuminousRange = this.valueOfLuminousRange,
 				valueOfNominalRange = this.valueOfNominalRange,
 				multiplicityOfFeatures = this.multiplicityOfFeatures?.Model,
+				rhythmOfLight = this.rhythmOfLight?.Model,
+				flareBearing = this.flareBearing,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -6471,7 +6465,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			status = this.status.ToList(),
 			verticalDatum = this._verticalDatum,
 			verticalLength = this._verticalLength,
-			rhythmOfLight = this._rhythmOfLight?.Model,
 			effectiveIntensity = this._effectiveIntensity,
 			peakIntensity = this._peakIntensity,
 			exhibitionConditionOfLight = this._exhibitionConditionOfLight,
@@ -6480,6 +6473,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			valueOfLuminousRange = this._valueOfLuminousRange,
 			valueOfNominalRange = this._valueOfNominalRange,
 			multiplicityOfFeatures = this._multiplicityOfFeatures?.Model,
+			rhythmOfLight = this._rhythmOfLight?.Model,
+			flareBearing = this._flareBearing,
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => LightAirObstruction._informationBindingDefinitions;
 
@@ -6658,7 +6653,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
 		private decimal? _height  = default;
 
 		[Category("GenericLight")]
@@ -6702,18 +6697,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private rhythmOfLightViewModel _rhythmOfLight ;
-
-		[Category("GenericLight")]
-		[ExpandableObject]
-		public rhythmOfLightViewModel rhythmOfLight {
-			get {
-				return _rhythmOfLight;
-			}
-			set {
-				SetValue(ref _rhythmOfLight, value);
-			}
-		}
 		private decimal? _effectiveIntensity  = default;
 
 		[Category("GenericLight")]
@@ -6751,6 +6734,18 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public signalGeneration[] signalGenerationList => [(signalGeneration)1,(signalGeneration)2,(signalGeneration)3,(signalGeneration)4,(signalGeneration)5,(signalGeneration)6];
+		private rhythmOfLightViewModel _rhythmOfLight ;
+
+		[Category("LightFogDetector")]
+		[ExpandableObject]
+		public rhythmOfLightViewModel rhythmOfLight {
+			get {
+				return _rhythmOfLight;
+			}
+			set {
+				SetValue(ref _rhythmOfLight, value);
+			}
+		}
 
 
 		public override FeatureViewModel<LightFogDetector> Load(LightFogDetector instance) {
@@ -6804,13 +6799,13 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 			verticalDatum = instance.verticalDatum;
 			verticalLength = instance.verticalLength;
+			effectiveIntensity = instance.effectiveIntensity;
+			peakIntensity = instance.peakIntensity;
+			signalGeneration = instance.signalGeneration;
 			rhythmOfLight = new ();
 			if (instance.rhythmOfLight != default) {
 				rhythmOfLight.Load(instance.rhythmOfLight);
 			}
-			effectiveIntensity = instance.effectiveIntensity;
-			peakIntensity = instance.peakIntensity;
-			signalGeneration = instance.signalGeneration;
 			return this;
 		}
 
@@ -6836,10 +6831,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				status = this.status.ToList(),
 				verticalDatum = this.verticalDatum,
 				verticalLength = this.verticalLength,
-				rhythmOfLight = this.rhythmOfLight?.Model,
 				effectiveIntensity = this.effectiveIntensity,
 				peakIntensity = this.peakIntensity,
 				signalGeneration = this.signalGeneration,
+				rhythmOfLight = this.rhythmOfLight?.Model,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -6866,10 +6861,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			status = this.status.ToList(),
 			verticalDatum = this._verticalDatum,
 			verticalLength = this._verticalLength,
-			rhythmOfLight = this._rhythmOfLight?.Model,
 			effectiveIntensity = this._effectiveIntensity,
 			peakIntensity = this._peakIntensity,
 			signalGeneration = this._signalGeneration,
+			rhythmOfLight = this._rhythmOfLight?.Model,
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => LightFogDetector._informationBindingDefinitions;
 
@@ -8764,7 +8759,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+		public colour[] colourList => [(colour)1,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
 		[DomainModel.EnumerationAttribute(nameof(colourPatternList))]
 		[Category("Retroreflector")]
@@ -9504,6 +9499,17 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("AidsToNavigation")]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
+		private String? _AtoNNumber  = default;
+
+		[Category("ElectronicAton")]
+		public String? AtoNNumber {
+			get {
+				return _AtoNNumber;
+			}
+			set {
+				SetValue(ref _AtoNNumber, value);
+			}
+		}
 		private String _mMSICode  = string.Empty;
 
 		[Category("ElectronicAton")]
@@ -9572,6 +9578,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				foreach(var e in instance.SeasonalActionRequired)
 					SeasonalActionRequired.Add(e);
 			}
+			AtoNNumber = instance.AtoNNumber;
 			mMSICode = instance.mMSICode;
 			status.Clear();
 			if (instance.status is not null) {
@@ -9598,6 +9605,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				fixedDateRange = this.fixedDateRange?.Model,
 				periodicDateRange = this.periodicDateRange?.Model,
 				SeasonalActionRequired = this.SeasonalActionRequired.ToList(),
+				AtoNNumber = this.AtoNNumber,
 				mMSICode = this.mMSICode,
 				status = this.status.ToList(),
 				virtualAISAidToNavigationType = this.virtualAISAidToNavigationType,
@@ -9621,6 +9629,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			fixedDateRange = this._fixedDateRange?.Model,
 			periodicDateRange = this._periodicDateRange?.Model,
 			SeasonalActionRequired = this.SeasonalActionRequired.ToList(),
+			AtoNNumber = this._AtoNNumber,
 			mMSICode = this._mMSICode,
 			status = this.status.ToList(),
 			virtualAISAidToNavigationType = this._virtualAISAidToNavigationType,
@@ -9784,6 +9793,17 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("AidsToNavigation")]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
+		private String? _AtoNNumber  = default;
+
+		[Category("ElectronicAton")]
+		public String? AtoNNumber {
+			get {
+				return _AtoNNumber;
+			}
+			set {
+				SetValue(ref _AtoNNumber, value);
+			}
+		}
 		private String _mMSICode  = string.Empty;
 
 		[Category("ElectronicAton")]
@@ -9852,6 +9872,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				foreach(var e in instance.SeasonalActionRequired)
 					SeasonalActionRequired.Add(e);
 			}
+			AtoNNumber = instance.AtoNNumber;
 			mMSICode = instance.mMSICode;
 			status.Clear();
 			if (instance.status is not null) {
@@ -9878,6 +9899,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				fixedDateRange = this.fixedDateRange?.Model,
 				periodicDateRange = this.periodicDateRange?.Model,
 				SeasonalActionRequired = this.SeasonalActionRequired.ToList(),
+				AtoNNumber = this.AtoNNumber,
 				mMSICode = this.mMSICode,
 				status = this.status.ToList(),
 				CategoryOfPhysicalAISAidToNavigation = this.CategoryOfPhysicalAISAidToNavigation,
@@ -9901,6 +9923,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			fixedDateRange = this._fixedDateRange?.Model,
 			periodicDateRange = this._periodicDateRange?.Model,
 			SeasonalActionRequired = this.SeasonalActionRequired.ToList(),
+			AtoNNumber = this._AtoNNumber,
 			mMSICode = this._mMSICode,
 			status = this.status.ToList(),
 			CategoryOfPhysicalAISAidToNavigation = this._CategoryOfPhysicalAISAidToNavigation,
@@ -10064,8 +10087,35 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("AidsToNavigation")]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
-		[Category("Equipment")]
-		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
+		private String? _AtoNNumber  = default;
+
+		[Category("ElectronicAton")]
+		public String? AtoNNumber {
+			get {
+				return _AtoNNumber;
+			}
+			set {
+				SetValue(ref _AtoNNumber, value);
+			}
+		}
+		private String _mMSICode  = string.Empty;
+
+		[Category("ElectronicAton")]
+		public String mMSICode {
+			get {
+				return _mMSICode;
+			}
+			set {
+				SetValue(ref _mMSICode, value);
+			}
+		}
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+		[DomainModel.EnumerationAttribute(nameof(statusList))]
+		[Category("ElectronicAton")]
+		public ObservableCollection<status> status  { get; set; } = new ();
+
+		[Browsable(false)]
+		public status[] statusList => Enum.GetValues<status>();
 
 		private CategoryOfSyntheticAISAidtoNavigation _CategoryOfSyntheticAISAidtoNavigation ;
 
@@ -10130,10 +10180,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				foreach(var e in instance.SeasonalActionRequired)
 					SeasonalActionRequired.Add(e);
 			}
-			remoteMonitoringSystem.Clear();
-			if (instance.remoteMonitoringSystem is not null) {
-				foreach(var e in instance.remoteMonitoringSystem)
-					remoteMonitoringSystem.Add(e);
+			AtoNNumber = instance.AtoNNumber;
+			mMSICode = instance.mMSICode;
+			status.Clear();
+			if (instance.status is not null) {
+				foreach(var e in instance.status)
+					status.Add(e);
 			}
 			CategoryOfSyntheticAISAidtoNavigation = instance.CategoryOfSyntheticAISAidtoNavigation;
 			virtualAISAidToNavigationType = instance.virtualAISAidToNavigationType;
@@ -10156,7 +10208,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				fixedDateRange = this.fixedDateRange?.Model,
 				periodicDateRange = this.periodicDateRange?.Model,
 				SeasonalActionRequired = this.SeasonalActionRequired.ToList(),
-				remoteMonitoringSystem = this.remoteMonitoringSystem.ToList(),
+				AtoNNumber = this.AtoNNumber,
+				mMSICode = this.mMSICode,
+				status = this.status.ToList(),
 				CategoryOfSyntheticAISAidtoNavigation = this.CategoryOfSyntheticAISAidtoNavigation,
 				virtualAISAidToNavigationType = this.virtualAISAidToNavigationType,
 			};
@@ -10179,7 +10233,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			fixedDateRange = this._fixedDateRange?.Model,
 			periodicDateRange = this._periodicDateRange?.Model,
 			SeasonalActionRequired = this.SeasonalActionRequired.ToList(),
-			remoteMonitoringSystem = this.remoteMonitoringSystem.ToList(),
+			AtoNNumber = this._AtoNNumber,
+			mMSICode = this._mMSICode,
+			status = this.status.ToList(),
 			CategoryOfSyntheticAISAidtoNavigation = this._CategoryOfSyntheticAISAidtoNavigation,
 			virtualAISAidToNavigationType = this._virtualAISAidToNavigationType,
 		};
@@ -10199,8 +10255,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			SeasonalActionRequired.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(SeasonalActionRequired));
 			};
-			remoteMonitoringSystem.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(remoteMonitoringSystem));
+			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(status));
 			};
 		}
 	}
@@ -12697,6 +12753,20 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		private categoryOfInstallationBuoy _categoryOfInstallationBuoy ;
+
+		[Category("InstallationBuoy")]
+		public categoryOfInstallationBuoy categoryOfInstallationBuoy {
+			get {
+				return _categoryOfInstallationBuoy;
+			}
+			set {
+				SetValue(ref _categoryOfInstallationBuoy, value);
+			}
+		}
+
+		[Browsable(false)]
+		public categoryOfInstallationBuoy[] categoryOfInstallationBuoyList => [(categoryOfInstallationBuoy)1,(categoryOfInstallationBuoy)2];
 
 
 		public override FeatureViewModel<InstallationBuoy> Load(InstallationBuoy instance) {
@@ -12765,6 +12835,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			typeOfBuoy = instance.typeOfBuoy;
 			verticalLength = instance.verticalLength;
 			verticalAccuracy = instance.verticalAccuracy;
+			categoryOfInstallationBuoy = instance.categoryOfInstallationBuoy;
 			return this;
 		}
 
@@ -12798,6 +12869,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				typeOfBuoy = this.typeOfBuoy,
 				verticalLength = this.verticalLength,
 				verticalAccuracy = this.verticalAccuracy,
+				categoryOfInstallationBuoy = this.categoryOfInstallationBuoy,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -12832,6 +12904,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			typeOfBuoy = this._typeOfBuoy,
 			verticalLength = this._verticalLength,
 			verticalAccuracy = this._verticalAccuracy,
+			categoryOfInstallationBuoy = this._categoryOfInstallationBuoy,
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => InstallationBuoy._informationBindingDefinitions;
 

@@ -68,6 +68,25 @@ namespace S100Framework.Applications
 
                 names = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
                 builderDomainModel.AppendLine($"\t\tpublic static string[] FeatureTypes => [{string.Join(',', names.Select(e => $"\"{e}\""))}];");
+
+                builderDomainModel.AppendLine("\t\tpublic static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {");
+                var primitives = productSpecification.XPathSelectElements("//S100FC:permittedPrimitives", xmlNamespaceManager);
+                foreach(var p in primitives.GroupBy(e => e.Value!)) {
+                    var featureNames = p.Select(e => $"\"{e.Parent!.Element(XName.Get("code", scope_S100))!.Value}\"");
+                    builderDomainModel.AppendLine($"\t\t\tPrimitives.{p.Key} => [{string.Join(',', featureNames)}],");
+                }
+                builderDomainModel.AppendLine("\t\t\t_ => throw new InvalidOperationException(),");
+                builderDomainModel.AppendLine("\t\t};");
+
+                builderDomainModel.AppendLine("\t\tpublic static Primitives[] FeaturePrimitives(string featureType) => featureType switch {");
+                var featureTypes = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager);
+                foreach(var e in featureTypes) {
+                    var code = e.Element(XName.Get("code", scope_S100))!.Value;
+                    var p = e.Elements(XName.Get("permittedPrimitives", scope_S100)).Select(e=>$"Primitives.{e.Value!}");
+                    builderDomainModel.AppendLine($"\t\t\t\"{code}\" => [{string.Join(',',p)}],");
+                }
+                builderDomainModel.AppendLine("\t\t\t_ or \"\" => throw new InvalidOperationException(),");
+                builderDomainModel.AppendLine("\t\t};");
             }
             builderDomainModel.AppendLine("\t}");
             builderDomainModel.AppendLine();
@@ -1030,6 +1049,23 @@ namespace S100Framework.Applications
                     }
                 }
                 featureBindings.AppendLine("\t\t\t];");
+
+                builder.AppendLine();
+                if (superType != null)
+                    builder.AppendLine($"\t\t\tpublic override Primitives[] primitives => [..{superType!.Value}._primitives, ..{code}._primitives];");
+                else
+                    builder.AppendLine($"\t\t\tpublic override Primitives[] primitives => {code}._primitives;");
+
+                if (superType != null)
+                    builder.AppendLine("\t\t\tpublic new static Primitives[] _primitives => [");
+                else
+                    builder.AppendLine("\t\t\tpublic static Primitives[] _primitives => [");
+
+                var primitives = e.XPathSelectElements("S100FC:permittedPrimitives", xmlNamespaceManager);
+                builder.AppendLine($"\t\t\t\t{string.Join(", ", primitives.Select(e=>$"Primitives.{e.Value!}"))}");
+                builder.AppendLine("\t\t\t];");
+                builder.AppendLine();
+
                 builder.AppendLine(featureBindings.ToString().TrimEnd(Environment.NewLine.ToArray()));
             }
 

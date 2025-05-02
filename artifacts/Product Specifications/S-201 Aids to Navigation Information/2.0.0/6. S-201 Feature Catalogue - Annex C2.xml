@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <S100FC:S100_FC_FeatureCatalogue xmlns:S100FC="http://www.iho.int/S100FC/5.0" xmlns:S100Base="http://www.iho.int/S100Base/5.0" xmlns:S100CI="http://www.iho.int/S100CI/5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:S100CD="http://www.iho.int/S100CD/5.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iho.int/S100FC/5.0 https://schemas.s100dev.net/schemas/S100/5.0.0/S100FC/20220610/S100FC.xsd">
-	<S100FC:name></S100FC:name>
-	<S100FC:scope></S100FC:scope>
-	<S100FC:versionNumber></S100FC:versionNumber>
-	<S100FC:versionDate>2025-03-28</S100FC:versionDate>
-	<S100FC:productId></S100FC:productId>
+	<S100FC:name>Aids to Navigation(AtoN) Information</S100FC:name>
+	<S100FC:scope>Aton</S100FC:scope>
+	<S100FC:versionNumber>2.0.0</S100FC:versionNumber>
+	<S100FC:versionDate>2025-04-28</S100FC:versionDate>
+	<S100FC:productId>S-201</S100FC:productId>
 	<S100FC:producer>
 		<S100CI:role>contributor</S100CI:role>
 		<S100CI:party>
@@ -14,7 +14,7 @@
 					<S100CI:address>
 						<S100CI:administrativeArea>10, rue des Gaudines</S100CI:administrativeArea>
 						<S100CI:country>78100 Saint Germain en Laye, France</S100CI:country>
-						<S100CI:electronicMailAddress>info@iho.int</S100CI:electronicMailAddress>
+						<S100CI:electronicMailAddress>info@iala.int</S100CI:electronicMailAddress>
 					</S100CI:address>
 					<S100CI:onlineResource>
 						<S100CI:linkage>https://iala.int/</S100CI:linkage>
@@ -144,6 +144,22 @@
 			<S100FC:remarks>-</S100FC:remarks>
 			<S100FC:valueType>real</S100FC:valueType>
 		</S100FC:S100_FC_SimpleAttribute>
+		<S100FC:S100_FC_SimpleAttribute>
+			<S100FC:name>Effective Intensity</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>effectiveIntensity</S100FC:code>
+			<S100FC:remarks>-</S100FC:remarks>
+			<S100FC:valueType>real</S100FC:valueType>
+		</S100FC:S100_FC_SimpleAttribute>	
+
+		<S100FC:S100_FC_SimpleAttribute>
+			<S100FC:name>Peak Intensity</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>peakIntensity</S100FC:code>
+			<S100FC:remarks>-</S100FC:remarks>
+			<S100FC:valueType>real</S100FC:valueType>
+		</S100FC:S100_FC_SimpleAttribute>			
+		
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>Vertical Accuracy</S100FC:name>
 			<S100FC:definition>-</S100FC:definition>
@@ -278,22 +294,22 @@
 			<S100FC:valueType>enumeration</S100FC:valueType>
 			<S100FC:listedValues>
 				<S100FC:listedValue>
-					<S100FC:label>Advanced notice of changes </S100FC:label>
+					<S100FC:label>Advanced notice of changes</S100FC:label>
 					<S100FC:definition>-</S100FC:definition>
 					<S100FC:code>1</S100FC:code>
 				</S100FC:listedValue>
 				<S100FC:listedValue>
-					<S100FC:label>Discrepancy </S100FC:label>
+					<S100FC:label>Discrepancy</S100FC:label>
 					<S100FC:definition>-</S100FC:definition>
 					<S100FC:code>2</S100FC:code>
 				</S100FC:listedValue>
 				<S100FC:listedValue>
-					<S100FC:label>Proposed changes </S100FC:label>
+					<S100FC:label>Proposed changes</S100FC:label>
 					<S100FC:definition>-</S100FC:definition>
 					<S100FC:code>3</S100FC:code>
 				</S100FC:listedValue>
 				<S100FC:listedValue>
-					<S100FC:label>Temporary changes </S100FC:label>
+					<S100FC:label>Temporary changes</S100FC:label>
 					<S100FC:definition>-</S100FC:definition>
 					<S100FC:code>4</S100FC:code>
 				</S100FC:listedValue>
@@ -1736,6 +1752,35 @@
 					</S100FC:definitionReference>
 				</S100FC:listedValue>
 			</S100FC:listedValues>
+		</S100FC:S100_FC_SimpleAttribute><S100FC:S100_FC_SimpleAttribute>
+			<S100FC:name>Category of Installation Buoy</S100FC:name>
+			<S100FC:definition>	Classification of fixed installation buoy.</S100FC:definition>
+			<S100FC:code>categoryOfInstallationBuoy</S100FC:code>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>29</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
+			</S100FC:definitionReference>
+			<S100FC:valueType>enumeration</S100FC:valueType>
+			<S100FC:listedValues>
+				<S100FC:listedValue>
+					<S100FC:label>Catenary Anchor Leg Mooring</S100FC:label>
+					<S100FC:definition>incorporates a large buoy which remains on the surface at all times and is moored by 4 or more anchors. Mooring hawsers and cargo hoses lead from a turntable on top of the buoy, so that the buoy does not turn as the ship swings to wind and stream.</S100FC:definition>
+					<S100FC:code>1</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>161</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Single Buoy Mooring</S100FC:label>
+					<S100FC:definition>a mooring structure used by tankers to load and unload in port approaches or in offshore oil and gas fields. The size of the structure can vary between a large mooring buoy and a manned floating structure. Also known as single point mooring (SPM)</S100FC:definition>
+					<S100FC:code>2</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier>162</S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+			</S100FC:listedValues>
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>Shackle Type</S100FC:name>
@@ -1745,32 +1790,32 @@
 			<S100FC:valueType>enumeration</S100FC:valueType>
 			<S100FC:listedValues>
 				<S100FC:listedValue>
-					<S100FC:label>forelock shackles </S100FC:label>
+					<S100FC:label>forelock shackles</S100FC:label>
 					<S100FC:definition>-</S100FC:definition>
 					<S100FC:code>1</S100FC:code>
 				</S100FC:listedValue>
 				<S100FC:listedValue>
-					<S100FC:label>clenching shackles </S100FC:label>
+					<S100FC:label>clenching shackles</S100FC:label>
 					<S100FC:definition>-</S100FC:definition>
 					<S100FC:code>2</S100FC:code>
 				</S100FC:listedValue>
 				<S100FC:listedValue>
-					<S100FC:label>bolt shackles </S100FC:label>
+					<S100FC:label>bolt shackles</S100FC:label>
 					<S100FC:definition>-</S100FC:definition>
 					<S100FC:code>3</S100FC:code>
 				</S100FC:listedValue>
 				<S100FC:listedValue>
-					<S100FC:label>screw pin shackles </S100FC:label>
+					<S100FC:label>screw pin shackles</S100FC:label>
 					<S100FC:definition>-</S100FC:definition>
 					<S100FC:code>4</S100FC:code>
 				</S100FC:listedValue>
 				<S100FC:listedValue>
-					<S100FC:label>kenter shackle </S100FC:label>
+					<S100FC:label>kenter shackle</S100FC:label>
 					<S100FC:definition>-</S100FC:definition>
 					<S100FC:code>5</S100FC:code>
 				</S100FC:listedValue>
 				<S100FC:listedValue>
-					<S100FC:label>quick release link </S100FC:label>
+					<S100FC:label>quick release link</S100FC:label>
 					<S100FC:definition>-</S100FC:definition>
 					<S100FC:code>6</S100FC:code>
 				</S100FC:listedValue>
@@ -2475,33 +2520,6 @@
 					</S100FC:definitionReference>
 				</S100FC:listedValue>
 				<S100FC:listedValue>
-					<S100FC:label>Interrupted Quick Flashing</S100FC:label>
-					<S100FC:definition>A quick light in which the sequence of flashes is interrupted by regularly repeated eclipses of constant and long duration.</S100FC:definition>
-					<S100FC:code>9</S100FC:code>
-					<S100FC:definitionReference>
-						<S100FC:sourceIdentifier>1314</S100FC:sourceIdentifier>
-						<S100FC:definitionSource ref="IHOREG" />
-					</S100FC:definitionReference>
-				</S100FC:listedValue>
-				<S100FC:listedValue>
-					<S100FC:label>Interrupted Very Quick Flashing</S100FC:label>
-					<S100FC:definition>A light in which the very rapid alterations of light and darkness are interrupted at regular intervals by eclipses of long duration.</S100FC:definition>
-					<S100FC:code>10</S100FC:code>
-					<S100FC:definitionReference>
-						<S100FC:sourceIdentifier>1315</S100FC:sourceIdentifier>
-						<S100FC:definitionSource ref="IHOREG" />
-					</S100FC:definitionReference>
-				</S100FC:listedValue>
-				<S100FC:listedValue>
-					<S100FC:label>Interrupted Ultra Quick-Flashing</S100FC:label>
-					<S100FC:definition>A light in which the ultra quick flashes (160 or more per minute) are interrupted at regular intervals by eclipses of long duration.</S100FC:definition>
-					<S100FC:code>11</S100FC:code>
-					<S100FC:definitionReference>
-						<S100FC:sourceIdentifier>914</S100FC:sourceIdentifier>
-						<S100FC:definitionSource ref="IHOREG" />
-					</S100FC:definitionReference>
-				</S100FC:listedValue>
-				<S100FC:listedValue>
 					<S100FC:label>Morse</S100FC:label>
 					<S100FC:definition>A rhythmic light in which appearances of light of two clearly different durations are grouped to represent a character or characters in the Morse code.</S100FC:definition>
 					<S100FC:code>12</S100FC:code>
@@ -2620,13 +2638,67 @@
 				</S100FC:listedValue>
 				<S100FC:listedValue>
 					<S100FC:label>Fixed and Alternating Flashing</S100FC:label>
-					<S100FC:definition>A rhythmic light in which a fixed light is combined with a flashing light of higher luminous intensity and different colour.</S100FC:definition>
+					<S100FC:definition></S100FC:definition>
 					<S100FC:code>29</S100FC:code>
 					<S100FC:definitionReference>
 						<S100FC:sourceIdentifier>927</S100FC:sourceIdentifier>
 						<S100FC:definitionSource ref="IHOREG" />
 					</S100FC:definitionReference>
 				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Group-occulting light</S100FC:label>
+					<S100FC:definition>An occulting light in which a group of two or more eclipses, which are specified in number, is regularly repeated.</S100FC:definition>
+					<S100FC:code>30</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier></S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Composite group-occulting light</S100FC:label>
+					<S100FC:definition>An occulting light in which a sequence of groups of one or more eclipses, which are specified in number, is regularly repeated, and the groups comprise different numbers of eclipses.</S100FC:definition>
+					<S100FC:code>31</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier></S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>				
+				<S100FC:listedValue>
+					<S100FC:label>Group flashing light</S100FC:label>
+					<S100FC:definition>A flashing light in which a group of flashes, specified in number, is regularly repeated.</S100FC:definition>
+					<S100FC:code>32</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier></S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Composite group-flashing light</S100FC:label>
+					<S100FC:definition>A light similar to a group-flashing light except that successive groups in a period have different numbers of flashes.</S100FC:definition>
+					<S100FC:code>33</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier></S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>	
+				<S100FC:listedValue>
+					<S100FC:label>Group quick light</S100FC:label>
+					<S100FC:definition> A quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.</S100FC:definition>
+					<S100FC:code>34</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier></S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Group very quick light</S100FC:label>
+					<S100FC:definition>A very quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.</S100FC:definition>
+					<S100FC:code>35</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier></S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>	
 			</S100FC:listedValues>
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
@@ -2637,22 +2709,22 @@
 			<S100FC:valueType>enumeration</S100FC:valueType>
 			<S100FC:listedValues>
 				<S100FC:listedValue>
-					<S100FC:label>battery </S100FC:label>
+					<S100FC:label>battery</S100FC:label>
 					<S100FC:definition>-</S100FC:definition>
 					<S100FC:code>1</S100FC:code>
 				</S100FC:listedValue>
 				<S100FC:listedValue>
-					<S100FC:label>generator </S100FC:label>
+					<S100FC:label>generator</S100FC:label>
 					<S100FC:definition>-</S100FC:definition>
 					<S100FC:code>2</S100FC:code>
 				</S100FC:listedValue>
 				<S100FC:listedValue>
-					<S100FC:label>solar panel </S100FC:label>
+					<S100FC:label>solar panel</S100FC:label>
 					<S100FC:definition>-</S100FC:definition>
 					<S100FC:code>3</S100FC:code>
 				</S100FC:listedValue>
 				<S100FC:listedValue>
-					<S100FC:label>electrical service </S100FC:label>
+					<S100FC:label>electrical service</S100FC:label>
 					<S100FC:definition>-</S100FC:definition>
 					<S100FC:code>4</S100FC:code>
 				</S100FC:listedValue>
@@ -2679,24 +2751,24 @@
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>Category Of Physical AIS Aid To Navigation</S100FC:name>
-			<S100FC:definition>-</S100FC:definition>
+			<S100FC:definition>A classification of AIS AtoNs that correspond to an actual, physical Aid to Navigation at a real-world location.</S100FC:definition>
 			<S100FC:code>CategoryOfPhysicalAISAidToNavigation</S100FC:code>
 			<S100FC:remarks>-</S100FC:remarks>
 			<S100FC:valueType>enumeration</S100FC:valueType>
 			<S100FC:listedValues>
 				<S100FC:listedValue>
 					<S100FC:label>Physical AIS Type 1</S100FC:label>
-					<S100FC:definition>-</S100FC:definition>
+					<S100FC:definition>Simple transmission of static, pre-programmed information.</S100FC:definition>
 					<S100FC:code>1</S100FC:code>
 				</S100FC:listedValue>
 				<S100FC:listedValue>
 					<S100FC:label>Physical AIS Type 2</S100FC:label>
-					<S100FC:definition>-</S100FC:definition>
+					<S100FC:definition>Transmission of dynamic, real-time updated information via connected sensors.</S100FC:definition>
 					<S100FC:code>2</S100FC:code>
 				</S100FC:listedValue>
 				<S100FC:listedValue>
 					<S100FC:label>Physical AIS Type 3</S100FC:label>
-					<S100FC:definition>-</S100FC:definition>
+					<S100FC:definition>Full two-way communication: transmission + remote control / configuration.</S100FC:definition>
 					<S100FC:code>3</S100FC:code>
 				</S100FC:listedValue>
 			</S100FC:listedValues>
@@ -4013,6 +4085,16 @@
 			<S100FC:alias>SIGFRQ</S100FC:alias>
 			<S100FC:definitionReference>
 				<S100FC:sourceIdentifier>962</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
+			</S100FC:definitionReference>
+			<S100FC:valueType>integer</S100FC:valueType>
+		</S100FC:S100_FC_SimpleAttribute>
+		<S100FC:S100_FC_SimpleAttribute>
+			<S100FC:name>Flare Bearing</S100FC:name>
+			<S100FC:definition>The bearing about which the light flare symbol is rotated to be displayed in ECDIS.</S100FC:definition>
+			<S100FC:code>flareBearing</S100FC:code>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>922</S100FC:sourceIdentifier>
 				<S100FC:definitionSource ref="IHOREG" />
 			</S100FC:definitionReference>
 			<S100FC:valueType>integer</S100FC:valueType>
@@ -7325,6 +7407,69 @@
 						<S100FC:definitionSource ref="IHOREG" />
 					</S100FC:definitionReference>
 				</S100FC:listedValue>
+				<S100FC:listedValue>
+					<S100FC:label>Green A</S100FC:label>
+					<S100FC:definition></S100FC:definition>
+					<S100FC:code>14</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier></S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>				
+				<S100FC:listedValue>
+					<S100FC:label>Green B</S100FC:label>
+					<S100FC:definition></S100FC:definition>
+					<S100FC:code>15</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier></S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>								
+				<S100FC:listedValue>
+					<S100FC:label>White Temporary</S100FC:label>
+					<S100FC:definition></S100FC:definition>
+					<S100FC:code>16</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier></S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>								
+				<S100FC:listedValue>
+					<S100FC:label>Red Temporary</S100FC:label>
+					<S100FC:definition></S100FC:definition>
+					<S100FC:code>17</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier></S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>								
+				<S100FC:listedValue>
+					<S100FC:label>Yellow Temporary</S100FC:label>
+					<S100FC:definition></S100FC:definition>
+					<S100FC:code>18</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier></S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>								
+				<S100FC:listedValue>
+					<S100FC:label>Green Preferred</S100FC:label>
+					<S100FC:definition></S100FC:definition>
+					<S100FC:code>19</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier></S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>								
+				<S100FC:listedValue>
+					<S100FC:label>Green Temporary</S100FC:label>
+					<S100FC:definition></S100FC:definition>
+					<S100FC:code>20</S100FC:code>
+					<S100FC:definitionReference>
+						<S100FC:sourceIdentifier></S100FC:sourceIdentifier>
+						<S100FC:definitionSource ref="IHOREG" />
+					</S100FC:definitionReference>
+				</S100FC:listedValue>								
 			</S100FC:listedValues>
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
@@ -7725,17 +7870,17 @@
 			<S100FC:valueType>S100_CodeList</S100FC:valueType>
 			<S100FC:listedValues>
 				<S100FC:listedValue>
-					<S100FC:label>leading line </S100FC:label>
+					<S100FC:label>leading line</S100FC:label>
 					<S100FC:definition>-</S100FC:definition>
 					<S100FC:code>1</S100FC:code>
 				</S100FC:listedValue>
 				<S100FC:listedValue>
-					<S100FC:label>measured distance </S100FC:label>
+					<S100FC:label>measured distance</S100FC:label>
 					<S100FC:definition>-</S100FC:definition>
 					<S100FC:code>3</S100FC:code>
 				</S100FC:listedValue>
 				<S100FC:listedValue>
-					<S100FC:label>range system </S100FC:label>
+					<S100FC:label>range system</S100FC:label>
 					<S100FC:definition>-</S100FC:definition>
 					<S100FC:code>2</S100FC:code>
 				</S100FC:listedValue>
@@ -9104,9 +9249,6 @@
 					<S100FC:value>6</S100FC:value>
 					<S100FC:value>7</S100FC:value>
 					<S100FC:value>8</S100FC:value>
-					<S100FC:value>9</S100FC:value>
-					<S100FC:value>10</S100FC:value>
-					<S100FC:value>11</S100FC:value>
 					<S100FC:value>12</S100FC:value>
 					<S100FC:value>13</S100FC:value>
 					<S100FC:value>14</S100FC:value>
@@ -9121,6 +9263,12 @@
 					<S100FC:value>27</S100FC:value>
 					<S100FC:value>28</S100FC:value>
 					<S100FC:value>29</S100FC:value>
+					<S100FC:value>30</S100FC:value>
+					<S100FC:value>31</S100FC:value>
+					<S100FC:value>32</S100FC:value>
+					<S100FC:value>33</S100FC:value>
+					<S100FC:value>34</S100FC:value>
+					<S100FC:value>35</S100FC:value>
 				</S100FC:permittedValues>
 				<S100FC:attribute ref="lightCharacteristic" />
 			</S100FC:subAttributeBinding>
@@ -9168,9 +9316,6 @@
 					<S100FC:value>6</S100FC:value>
 					<S100FC:value>7</S100FC:value>
 					<S100FC:value>8</S100FC:value>
-					<S100FC:value>9</S100FC:value>
-					<S100FC:value>10</S100FC:value>
-					<S100FC:value>11</S100FC:value>
 					<S100FC:value>12</S100FC:value>
 					<S100FC:value>13</S100FC:value>
 					<S100FC:value>14</S100FC:value>
@@ -9185,8 +9330,14 @@
 					<S100FC:value>27</S100FC:value>
 					<S100FC:value>28</S100FC:value>
 					<S100FC:value>29</S100FC:value>
+					<S100FC:value>30</S100FC:value>
+					<S100FC:value>31</S100FC:value>
+					<S100FC:value>32</S100FC:value>
+					<S100FC:value>33</S100FC:value>
+					<S100FC:value>34</S100FC:value>
+					<S100FC:value>35</S100FC:value>
 				</S100FC:permittedValues>
-				<S100FC:attribute ref="lightCharacteristic" />
+				<S100FC:attribute ref="lightCharacteristic"/>
 			</S100FC:subAttributeBinding>
 			<S100FC:subAttributeBinding sequential="false">
 				<S100FC:multiplicity>
@@ -9215,6 +9366,13 @@
 					<S100Base:upper xsi:nil="false" infinite="false">10</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="signalSequence" />
+			</S100FC:subAttributeBinding>
+			<S100FC:subAttributeBinding sequential="true">
+				<S100FC:multiplicity>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="candela" />
 			</S100FC:subAttributeBinding>
 		</S100FC:S100_FC_ComplexAttribute>
 		<S100FC:S100_FC_ComplexAttribute>
@@ -9722,7 +9880,7 @@
 		<S100FC:S100_FC_ComplexAttribute>
 			<S100FC:name>Positioning Method</S100FC:name>
 			<S100FC:definition>A description of the method used to obtain a position.(proposed by CCG)</S100FC:definition>
-			<S100FC:code>PositioningMethod</S100FC:code>
+			<S100FC:code>positioningMethod</S100FC:code>
 			<S100FC:remarks>-</S100FC:remarks>
 			<S100FC:subAttributeBinding sequential="false">
 				<S100FC:multiplicity>
@@ -9869,14 +10027,209 @@
 	</S100FC:S100_FC_ComplexAttributes>
 	<S100FC:S100_FC_Roles>
 		<S100FC:S100_FC_Role>
-			<S100FC:name>Structure</S100FC:name>
+			<S100FC:name>Aton Part</S100FC:name>
 			<S100FC:definition>-</S100FC:definition>
-			<S100FC:code>structure</S100FC:code>
+			<S100FC:code>Atonpart</S100FC:code>
 		</S100FC:S100_FC_Role>
 		<S100FC:S100_FC_Role>
-			<S100FC:name>Equipment</S100FC:name>
+			<S100FC:name>Status Part</S100FC:name>
 			<S100FC:definition>-</S100FC:definition>
-			<S100FC:code>equipment</S100FC:code>
+			<S100FC:code>Statuspart</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Buoy Part</S100FC:name>
+			<S100FC:definition>TBD</S100FC:definition>
+			<S100FC:code>buoyPart</S100FC:code>
+		</S100FC:S100_FC_Role>		
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Topmark part</S100FC:name>
+			<S100FC:definition>TBD</S100FC:definition>
+			<S100FC:code>topmarkPart</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Parent</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>parent</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Child</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>child</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Physical AIS Broadcast By</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>physicalAISbroadcastBy</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Physical AIS Broadcasts</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>physicalAISbroadcasts</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Synthetic AIS Broadcast By</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>syntheticAISbroadcastBy</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Synthetic AIS Broadcasts</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>syntheticAISbroadcasts</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Virtual AIS Broadcast By</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>virtualAISbroadcastBy</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Virtual AIS Broadcasts</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>virtualAISbroadcasts</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Buoy Attached</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>buoyattached</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Counter Weightholds</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>counterWeightholds</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Buoy Hangs</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>buoyhangs</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Bridle Holds</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>bridleholds</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Shackle To Cableconnected To</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>shackleToCableconnectedTo</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Shackle To Cableconnected</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>shackleToCableconnected</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Swivel Attached</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>swivelattached</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Bridle Attached</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>bridleattached</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Cable Holds</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>cableholds</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Shackle To Bridle Connecteda</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>shackleToBridleconnected</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Shackle To Bridle Connected To</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>shackleToBridleconnectedTo</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Shackle To Buoy Connected</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>shackleToBuoyconnected</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Shackle To Buoy Connected To</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>shackleToBuoyconnectedTo</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Shackle To Swivel Connected</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>shackleToSwivelconnected</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Shackle To Swivel Connected To</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>shackleToSwivelconnectedTo</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Shackle To Anchor Connected To</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>shackleToAnchorconnectedTo</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Shackle To Anchor Connected</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>shackleToAnchorconnected</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Bridle Hangs</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>bridlehangs</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Swivel Holds</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>swivelholds</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Peer Aton Aggregation</S100FC:name>
+			<S100FC:definition>TBD</S100FC:definition>
+			<S100FC:code>peerAtonAggregation</S100FC:code>
+		</S100FC:S100_FC_Role>	
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Aton Aggregation By</S100FC:name>
+			<S100FC:definition>TBD</S100FC:definition>
+			<S100FC:code>atonAggregationBy</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Peer Aton Association</S100FC:name>
+			<S100FC:definition>TBD</S100FC:definition>
+			<S100FC:code>peerAtonAssociation</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Aton Assoication By</S100FC:name>
+			<S100FC:definition>TBD</S100FC:definition>
+			<S100FC:code>atonAssociationBy</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Navigable Track</S100FC:name>
+			<S100FC:definition>The role given to the navigable part of the navigation line.</S100FC:definition>
+			<S100FC:code>navigableTrack</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Navigation Line</S100FC:name>
+			<S100FC:definition>The role given to the navigation line(s) that is generally formed between two or more objects, or by one object and a bearing.</S100FC:definition>
+			<S100FC:code>navigationLine</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Fixing Method</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>fixingMethod</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Fixed By</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>fixedBy</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Positioning Method</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>positioningMethod</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>Positioned By</S100FC:name>
+			<S100FC:definition>-</S100FC:definition>
+			<S100FC:code>positionedBy</S100FC:code>
 		</S100FC:S100_FC_Role>
 		<S100FC:S100_FC_Role>
 			<S100FC:name>Danger</S100FC:name>
@@ -9888,86 +10241,6 @@
 			<S100FC:definition>-</S100FC:definition>
 			<S100FC:code>markingAton</S100FC:code>
 		</S100FC:S100_FC_Role>
-		<S100FC:S100_FC_Role>
-			<S100FC:name>Peer</S100FC:name>
-			<S100FC:definition>The role given to an object of equal status in the relationship.</S100FC:definition>
-			<S100FC:code>peer</S100FC:code>
-		</S100FC:S100_FC_Role>
-		<S100FC:S100_FC_Role>
-			<S100FC:name>Aton Part</S100FC:name>
-			<S100FC:definition>-</S100FC:definition>
-			<S100FC:code>Atonpart</S100FC:code>
-		</S100FC:S100_FC_Role>
-		<S100FC:S100_FC_Role>
-			<S100FC:name>Hangs</S100FC:name>
-			<S100FC:definition>-</S100FC:definition>
-			<S100FC:code>hangs</S100FC:code>
-		</S100FC:S100_FC_Role>
-		<S100FC:S100_FC_Role>
-			<S100FC:name>Attached</S100FC:name>
-			<S100FC:definition>-</S100FC:definition>
-			<S100FC:code>attached</S100FC:code>
-		</S100FC:S100_FC_Role>
-		<S100FC:S100_FC_Role>
-			<S100FC:name>Connected</S100FC:name>
-			<S100FC:definition>-</S100FC:definition>
-			<S100FC:code>connected</S100FC:code>
-		</S100FC:S100_FC_Role>
-		<S100FC:S100_FC_Role>
-			<S100FC:name>Parent</S100FC:name>
-			<S100FC:definition>-</S100FC:definition>
-			<S100FC:code>parent</S100FC:code>
-		</S100FC:S100_FC_Role>
-		<S100FC:S100_FC_Role>
-			<S100FC:name>Fixing Method</S100FC:name>
-			<S100FC:definition>-</S100FC:definition>
-			<S100FC:code>fixingMethod</S100FC:code>
-		</S100FC:S100_FC_Role>
-		<S100FC:S100_FC_Role>
-			<S100FC:name>Broadcast By</S100FC:name>
-			<S100FC:definition>-</S100FC:definition>
-			<S100FC:code>broadcastBy</S100FC:code>
-		</S100FC:S100_FC_Role>
-		<S100FC:S100_FC_Role>
-			<S100FC:name>Navigable Track</S100FC:name>
-			<S100FC:definition>The role given to the navigable part of the navigation line.</S100FC:definition>
-			<S100FC:code>navigableTrack</S100FC:code>
-		</S100FC:S100_FC_Role>
-		<S100FC:S100_FC_Role>
-			<S100FC:name>Status Part</S100FC:name>
-			<S100FC:definition>-</S100FC:definition>
-			<S100FC:code>Statuspart</S100FC:code>
-		</S100FC:S100_FC_Role>
-		<S100FC:S100_FC_Role>
-			<S100FC:name>Holds</S100FC:name>
-			<S100FC:definition>-</S100FC:definition>
-			<S100FC:code>holds</S100FC:code>
-		</S100FC:S100_FC_Role>
-		<S100FC:S100_FC_Role>
-			<S100FC:name>Connected To</S100FC:name>
-			<S100FC:definition>-</S100FC:definition>
-			<S100FC:code>connectedTo</S100FC:code>
-		</S100FC:S100_FC_Role>
-		<S100FC:S100_FC_Role>
-			<S100FC:name>Child</S100FC:name>
-			<S100FC:definition>-</S100FC:definition>
-			<S100FC:code>child</S100FC:code>
-		</S100FC:S100_FC_Role>
-		<S100FC:S100_FC_Role>
-			<S100FC:name>Fixed By</S100FC:name>
-			<S100FC:definition>-</S100FC:definition>
-			<S100FC:code>fixedBy</S100FC:code>
-		</S100FC:S100_FC_Role>
-		<S100FC:S100_FC_Role>
-			<S100FC:name>Broadcasts</S100FC:name>
-			<S100FC:definition>-</S100FC:definition>
-			<S100FC:code>broadcasts</S100FC:code>
-		</S100FC:S100_FC_Role>
-		<S100FC:S100_FC_Role>
-			<S100FC:name>Navigation Line</S100FC:name>
-			<S100FC:definition>The role given to the navigation line(s) that is generally formed between two or more objects, or by one object and a bearing.</S100FC:definition>
-			<S100FC:code>navigationLine</S100FC:code>
-		</S100FC:S100_FC_Role>
 	</S100FC:S100_FC_Roles>
 	<S100FC:S100_FC_InformationAssociations>
 		<S100FC:S100_FC_InformationAssociation>
@@ -9975,82 +10248,31 @@
 			<S100FC:definition></S100FC:definition>
 			<S100FC:code>Atonstatus</S100FC:code>
 			<S100FC:remarks>-</S100FC:remarks>
-			<S100FC:role ref="Atonpart"/>
 			<S100FC:role ref="Statuspart"/>
 		</S100FC:S100_FC_InformationAssociation>
 		<S100FC:S100_FC_InformationAssociation>
-			<S100FC:name>Fixing Status</S100FC:name>
+			<S100FC:name>Aton Fixing Method Association</S100FC:name>
 			<S100FC:definition></S100FC:definition>
-			<S100FC:code>fixingStatus</S100FC:code>
+			<S100FC:code>AtonFixingMethodAssociation</S100FC:code>
 			<S100FC:remarks>-</S100FC:remarks>
 			<S100FC:role ref="fixingMethod"/>
-			<S100FC:role ref="fixedBy"/>
+		</S100FC:S100_FC_InformationAssociation>
+		<S100FC:S100_FC_InformationAssociation>
+			<S100FC:name>Aton Positioning Information Association</S100FC:name>
+			<S100FC:definition></S100FC:definition>
+			<S100FC:code>AtonPositioningInformationAssociation</S100FC:code>
+			<S100FC:remarks>-</S100FC:remarks>
+			<S100FC:role ref="positioningMethod"/>
 		</S100FC:S100_FC_InformationAssociation>
 	</S100FC:S100_FC_InformationAssociations>
 	<S100FC:S100_FC_FeatureAssociations>
 		<S100FC:S100_FC_FeatureAssociation>
-			<S100FC:name>Aton Status</S100FC:name>
+			<S100FC:name>Buoy Topmark</S100FC:name>
 			<S100FC:definition></S100FC:definition>
-			<S100FC:code>Atonstatus</S100FC:code>
+			<S100FC:code>BuoyTopmark</S100FC:code>
 			<S100FC:remarks>-</S100FC:remarks>
-			<S100FC:role ref="Atonpart"/>
-			<S100FC:role ref="Statuspart"/>
-		</S100FC:S100_FC_FeatureAssociation>
-		<S100FC:S100_FC_FeatureAssociation>
-			<S100FC:name>Dangerous Feature Association</S100FC:name>
-			<S100FC:definition></S100FC:definition>
-			<S100FC:code>DangerousFeatureAssociation</S100FC:code>
-			<S100FC:remarks>-</S100FC:remarks>
-			<S100FC:role ref="danger"/>
-			<S100FC:role ref="markingAton"/>
-		</S100FC:S100_FC_FeatureAssociation>
-		<S100FC:S100_FC_FeatureAssociation>
-			<S100FC:name>Aton Aggregations</S100FC:name>
-			<S100FC:definition></S100FC:definition>
-			<S100FC:code>AtonAggregations</S100FC:code>
-			<S100FC:remarks>-</S100FC:remarks>
-			<S100FC:role ref="peer"/>
-			<S100FC:role ref="peer"/>
-		</S100FC:S100_FC_FeatureAssociation>
-		<S100FC:S100_FC_FeatureAssociation>
-			<S100FC:name>Aton Associations</S100FC:name>
-			<S100FC:definition></S100FC:definition>
-			<S100FC:code>AtonAssociations</S100FC:code>
-			<S100FC:remarks>-</S100FC:remarks>
-			<S100FC:role ref="peer"/>
-			<S100FC:role ref="peer"/>
-		</S100FC:S100_FC_FeatureAssociation>
-		<S100FC:S100_FC_FeatureAssociation>
-			<S100FC:name>Swivel Connection</S100FC:name>
-			<S100FC:definition></S100FC:definition>
-			<S100FC:code>SwivelConnection</S100FC:code>
-			<S100FC:remarks>-</S100FC:remarks>
-			<S100FC:role ref="hangs"/>
-			<S100FC:role ref="holds"/>
-		</S100FC:S100_FC_FeatureAssociation>
-		<S100FC:S100_FC_FeatureAssociation>
-			<S100FC:name>Cable Connection</S100FC:name>
-			<S100FC:definition></S100FC:definition>
-			<S100FC:code>CableConnection</S100FC:code>
-			<S100FC:remarks>-</S100FC:remarks>
-			<S100FC:role ref="attached"/>
-			<S100FC:role ref="holds"/>
-		</S100FC:S100_FC_FeatureAssociation>
-		<S100FC:S100_FC_FeatureAssociation>
-			<S100FC:name>Shackle Connection</S100FC:name>
-			<S100FC:definition></S100FC:definition>
-			<S100FC:code>ShackleConnection</S100FC:code>
-			<S100FC:remarks>-</S100FC:remarks>
-			<S100FC:role ref="connected"/>
-			<S100FC:role ref="connectedTo"/>
-		</S100FC:S100_FC_FeatureAssociation>
-		<S100FC:S100_FC_FeatureAssociation>
-			<S100FC:name>Bridle Connection</S100FC:name>
-			<S100FC:definition></S100FC:definition>
-			<S100FC:code>BridleConnection</S100FC:code>
-			<S100FC:remarks>-</S100FC:remarks>
-			<S100FC:role ref="hangs"/>
-			<S100FC:role ref="holds"/>
+			<S100FC:role ref="topmarkPart"/>
+			<S100FC:role ref="buoyPart"/>
 		</S100FC:S100_FC_FeatureAssociation>
 		<S100FC:S100_FC_FeatureAssociation>
 			<S100FC:name>Structure Equipment</S100FC:name>
@@ -10061,20 +10283,124 @@
 			<S100FC:role ref="child"/>
 		</S100FC:S100_FC_FeatureAssociation>
 		<S100FC:S100_FC_FeatureAssociation>
-			<S100FC:name>Buoy Counter Weight</S100FC:name>
+			<S100FC:name>Physical AIS</S100FC:name>
 			<S100FC:definition></S100FC:definition>
-			<S100FC:code>BuoyCounterWeight</S100FC:code>
+			<S100FC:code>PhysicalAIS</S100FC:code>
 			<S100FC:remarks>-</S100FC:remarks>
-			<S100FC:role ref="attached"/>
-			<S100FC:role ref="holds"/>
+			<S100FC:role ref="physicalAISbroadcastBy"/>
+			<S100FC:role ref="physicalAISbroadcasts"/>
+		</S100FC:S100_FC_FeatureAssociation>
+		<S100FC:S100_FC_FeatureAssociation>
+			<S100FC:name>Synthetic AIS</S100FC:name>
+			<S100FC:definition></S100FC:definition>
+			<S100FC:code>SyntheticAIS</S100FC:code>
+			<S100FC:remarks>-</S100FC:remarks>
+			<S100FC:role ref="syntheticAISbroadcastBy"/>
+			<S100FC:role ref="syntheticAISbroadcasts"/>
 		</S100FC:S100_FC_FeatureAssociation>
 		<S100FC:S100_FC_FeatureAssociation>
 			<S100FC:name>Virtual AIS</S100FC:name>
 			<S100FC:definition></S100FC:definition>
 			<S100FC:code>VirtualAIS</S100FC:code>
 			<S100FC:remarks>-</S100FC:remarks>
-			<S100FC:role ref="broadcastBy"/>
-			<S100FC:role ref="broadcasts"/>
+			<S100FC:role ref="virtualAISbroadcastBy"/>
+			<S100FC:role ref="virtualAISbroadcasts"/>
+		</S100FC:S100_FC_FeatureAssociation>
+		<S100FC:S100_FC_FeatureAssociation>
+			<S100FC:name>Buoy Counter Weight</S100FC:name>
+			<S100FC:definition></S100FC:definition>
+			<S100FC:code>BuoyCounterWeight</S100FC:code>
+			<S100FC:remarks>-</S100FC:remarks>
+			<S100FC:role ref="buoyattached"/>
+			<S100FC:role ref="counterWeightholds"/>
+		</S100FC:S100_FC_FeatureAssociation>
+		<S100FC:S100_FC_FeatureAssociation>
+			<S100FC:name>Bridle Connection</S100FC:name>
+			<S100FC:definition></S100FC:definition>
+			<S100FC:code>BridleConnection</S100FC:code>
+			<S100FC:remarks>-</S100FC:remarks>
+			<S100FC:role ref="buoyhangs"/>
+			<S100FC:role ref="bridleholds"/>
+		</S100FC:S100_FC_FeatureAssociation>
+		<S100FC:S100_FC_FeatureAssociation>
+			<S100FC:name>Shackle Connection</S100FC:name>
+			<S100FC:definition></S100FC:definition>
+			<S100FC:code>ShackleConnection</S100FC:code>
+			<S100FC:remarks>-</S100FC:remarks>
+			<S100FC:role ref="shackleToBuoyconnected"/>
+			<S100FC:role ref="shackleToBuoyconnectedTo"/>
+		</S100FC:S100_FC_FeatureAssociation>
+		<S100FC:S100_FC_FeatureAssociation>
+			<S100FC:name>Shackle Connection From Cable</S100FC:name>
+			<S100FC:definition></S100FC:definition>
+			<S100FC:code>ShackleConnectionFromCable</S100FC:code>
+			<S100FC:remarks>-</S100FC:remarks>
+			<S100FC:role ref="shackleToCableconnected"/>
+			<S100FC:role ref="shackleToCableconnectedTo"/>
+		</S100FC:S100_FC_FeatureAssociation>
+		<S100FC:S100_FC_FeatureAssociation>
+			<S100FC:name>Swivel Cable Connection</S100FC:name>
+			<S100FC:definition></S100FC:definition>
+			<S100FC:code>SwivelCableConnection</S100FC:code>
+			<S100FC:remarks>-</S100FC:remarks>
+			<S100FC:role ref="swivelattached"/>
+			<S100FC:role ref="cableholds"/>
+		</S100FC:S100_FC_FeatureAssociation>	
+		<S100FC:S100_FC_FeatureAssociation>
+			<S100FC:name>Bridle Cable Connection</S100FC:name>
+			<S100FC:definition></S100FC:definition>
+			<S100FC:code>BridleCableConnection</S100FC:code>
+			<S100FC:remarks>-</S100FC:remarks>
+			<S100FC:role ref="bridleattached"/>
+			<S100FC:role ref="cableholds"/>
+		</S100FC:S100_FC_FeatureAssociation>
+		<S100FC:S100_FC_FeatureAssociation>
+			<S100FC:name>Shackle To Bridle Connection</S100FC:name>
+			<S100FC:definition></S100FC:definition>
+			<S100FC:code>ShackleToBridleConnection</S100FC:code>
+			<S100FC:remarks>-</S100FC:remarks>
+			<S100FC:role ref="shackleToBridleconnected"/>
+			<S100FC:role ref="shackleToBridleconnectedTo"/>
+		</S100FC:S100_FC_FeatureAssociation>	
+		<S100FC:S100_FC_FeatureAssociation>
+			<S100FC:name>Shackle To Swivel Connection</S100FC:name>
+			<S100FC:definition></S100FC:definition>
+			<S100FC:code>ShackleToSwivelConnection</S100FC:code>
+			<S100FC:remarks>-</S100FC:remarks>
+			<S100FC:role ref="shackleToSwivelconnected"/>
+			<S100FC:role ref="shackleToSwivelconnectedTo"/>
+		</S100FC:S100_FC_FeatureAssociation>
+		<S100FC:S100_FC_FeatureAssociation>
+			<S100FC:name>ShackleToAnchorConnection</S100FC:name>
+			<S100FC:definition></S100FC:definition>
+			<S100FC:code>ShackleToAnchorConnection</S100FC:code>
+			<S100FC:remarks>-</S100FC:remarks>
+			<S100FC:role ref="shackleToAnchorconnectedTo"/>
+			<S100FC:role ref="shackleToAnchorconnected"/>
+		</S100FC:S100_FC_FeatureAssociation>	
+		<S100FC:S100_FC_FeatureAssociation>
+			<S100FC:name>Swivel Connection</S100FC:name>
+			<S100FC:definition></S100FC:definition>
+			<S100FC:code>SwivelConnection</S100FC:code>
+			<S100FC:remarks>-</S100FC:remarks>
+			<S100FC:role ref="bridlehangs"/>
+			<S100FC:role ref="swivelholds"/>
+		</S100FC:S100_FC_FeatureAssociation>
+		<S100FC:S100_FC_FeatureAssociation>
+			<S100FC:name>Aton Aggregations</S100FC:name>
+			<S100FC:definition></S100FC:definition>
+			<S100FC:code>AtonAggregations</S100FC:code>
+			<S100FC:remarks>-</S100FC:remarks>
+			<S100FC:role ref="peerAtonAggregation"/>
+			<S100FC:role ref="atonAggregationBy"/>
+		</S100FC:S100_FC_FeatureAssociation>
+		<S100FC:S100_FC_FeatureAssociation>
+			<S100FC:name>Aton Associations</S100FC:name>
+			<S100FC:definition></S100FC:definition>
+			<S100FC:code>AtonAssociations</S100FC:code>
+			<S100FC:remarks>-</S100FC:remarks>
+			<S100FC:role ref="peerAtonAssociation"/>
+			<S100FC:role ref="atonAssociationBy"/>
 		</S100FC:S100_FC_FeatureAssociation>
 		<S100FC:S100_FC_FeatureAssociation>
 			<S100FC:name>Range System</S100FC:name>
@@ -10083,6 +10409,14 @@
 			<S100FC:remarks>-</S100FC:remarks>
 			<S100FC:role ref="navigableTrack"/>
 			<S100FC:role ref="navigationLine"/>
+		</S100FC:S100_FC_FeatureAssociation>
+		<S100FC:S100_FC_FeatureAssociation>
+			<S100FC:name>Dangerous Feature Association</S100FC:name>
+			<S100FC:definition></S100FC:definition>
+			<S100FC:code>DangerousFeatureAssociation</S100FC:code>
+			<S100FC:remarks>-</S100FC:remarks>
+			<S100FC:role ref="danger"/>
+			<S100FC:role ref="markingAton"/>
 		</S100FC:S100_FC_FeatureAssociation>
 	</S100FC:S100_FC_FeatureAssociations>
 	<S100FC:S100_FC_InformationTypes>
@@ -10295,9 +10629,9 @@
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:attribute ref="PositioningMethod" />
+				<S100FC:attribute ref="positioningMethod" />
 			</S100FC:attributeBinding>
-		</S100FC:S100_FC_InformationType>
+		</S100FC:S100_FC_InformationType>	
 		<S100FC:S100_FC_InformationType isAbstract="false">
 			<S100FC:name>Spatial Quality</S100FC:name>
 			<S100FC:definition>The indication of the quality of the locational information for features in a dataset.</S100FC:definition>
@@ -10416,13 +10750,6 @@
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
-					<S100Base:lower>1</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="AtoNNumber" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
@@ -10465,7 +10792,7 @@
 					<S100Base:upper infinite="true" xsi:nil="true"/>
 				</S100FC:multiplicity>
 				<S100FC:association ref="AtonAggregations"/>
-				<S100FC:role ref="peer"/>
+				<S100FC:role ref="peerAtonAggregation"/>
 				<S100FC:featureType ref="AtonAggregation"/>
 			</S100FC:featureBinding>
 			<S100FC:featureBinding roleType="association">
@@ -10474,7 +10801,7 @@
 					<S100Base:upper infinite="true" xsi:nil="true"/>
 				</S100FC:multiplicity>
 				<S100FC:association ref="AtonAssociations"/>
-				<S100FC:role ref="peer"/>
+				<S100FC:role ref="peerAtonAssociation"/>
 				<S100FC:featureType ref="AtonAssociation"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>noGeometry</S100FC:permittedPrimitives>
@@ -10487,6 +10814,13 @@
 				<S100FC:sourceIdentifier>577</S100FC:sourceIdentifier>
 				<S100FC:definitionSource ref="IHOREG" />
 			</S100FC:definitionReference>
+			<S100FC:attributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>1</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="AtoNNumber" />
+			</S100FC:attributeBinding>			
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
@@ -10520,6 +10854,24 @@
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="contactAddress" />
 			</S100FC:attributeBinding>
+			<S100FC:informationBinding roleType="association">
+				<S100FC:multiplicity>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper infinite="true" xsi:nil="true"/>
+				</S100FC:multiplicity>
+				<S100FC:association ref="AtonPositioningInformationAssociation"/>
+				<S100FC:role ref="positioningMethod"/>
+				<S100FC:informationType ref="PositioningInformation"/>
+			</S100FC:informationBinding>
+			<S100FC:informationBinding roleType="association">
+				<S100FC:multiplicity>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper infinite="true" xsi:nil="true"/>
+				</S100FC:multiplicity>
+				<S100FC:association ref="AtonFixingMethodAssociation"/>
+				<S100FC:role ref="fixingMethod"/>
+				<S100FC:informationType ref="AtoNFixingMethod"/>
+			</S100FC:informationBinding>
 			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
@@ -10530,7 +10882,7 @@
 				<S100FC:association ref="StructureEquipment"/>
 				<S100FC:role ref="child"/>
 				<S100FC:featureType ref="Equipment"/>
-			</S100FC:featureBinding>
+			</S100FC:featureBinding>			
 			<S100FC:permittedPrimitives>noGeometry</S100FC:permittedPrimitives>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="true">
@@ -10559,6 +10911,39 @@
 				<S100FC:role ref="parent"/>
 				<S100FC:featureType ref="StructureObject"/>
 			</S100FC:featureBinding>
+			<S100FC:permittedPrimitives>noGeometry</S100FC:permittedPrimitives>
+		</S100FC:S100_FC_FeatureType>
+		<S100FC:S100_FC_FeatureType isAbstract="true">
+			<S100FC:name>Electronic Aton</S100FC:name>
+			<S100FC:definition>TBD</S100FC:definition>
+			<S100FC:code>ElectronicAton</S100FC:code>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>TBD</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
+			</S100FC:definitionReference>
+			<S100FC:attributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="AtoNNumber" />
+			</S100FC:attributeBinding>
+			<S100FC:attributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>1</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="mMSICode" />
+			</S100FC:attributeBinding>
+			<S100FC:attributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper xsi:nil="true" infinite="true" />
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="status" />
+			</S100FC:attributeBinding>			
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
+			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:permittedPrimitives>noGeometry</S100FC:permittedPrimitives>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="true">
@@ -10625,20 +11010,6 @@
 					<S100FC:value>9</S100FC:value>
 				</S100FC:permittedValues>
 				<S100FC:attribute ref="colourPattern" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:permittedValues>
-					<S100FC:value>1</S100FC:value>
-					<S100FC:value>2</S100FC:value>
-					<S100FC:value>3</S100FC:value>
-					<S100FC:value>4</S100FC:value>
-					<S100FC:value>5</S100FC:value>
-				</S100FC:permittedValues>
-				<S100FC:attribute ref="condition" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
@@ -10974,8 +11345,8 @@
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper infinite="true" xsi:nil="true"/>
 				</S100FC:multiplicity>
-				<S100FC:association ref="StructureEquipment"/>
-				<S100FC:role ref="equipment"/>
+				<S100FC:association ref="BuoyTopmark"/>
+				<S100FC:role ref="topmarkPart"/>
 				<S100FC:featureType ref="Topmark"/>
 			</S100FC:featureBinding>
 			<S100FC:featureBinding roleType="association">
@@ -10984,7 +11355,7 @@
 					<S100Base:upper infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:association ref="ShackleConnection"/>
-				<S100FC:role ref="connected"/>
+				<S100FC:role ref="shackleToBuoyconnected"/>
 				<S100FC:featureType ref="MooringShackle"/>
 			</S100FC:featureBinding>
 			<S100FC:featureBinding roleType="association">
@@ -10993,7 +11364,7 @@
 					<S100Base:upper infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:association ref="BridleConnection"/>
-				<S100FC:role ref="hangs"/>
+				<S100FC:role ref="buoyhangs"/>
 				<S100FC:featureType ref="Bridle"/>
 			</S100FC:featureBinding>
 			<S100FC:featureBinding roleType="association">
@@ -11002,7 +11373,7 @@
 					<S100Base:upper infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:association ref="BuoyCounterWeight"/>
-				<S100FC:role ref="attached"/>
+				<S100FC:role ref="buoyattached"/>
 				<S100FC:featureType ref="CounterWeight"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>noGeometry</S100FC:permittedPrimitives>
@@ -11031,6 +11402,13 @@
 					<S100FC:value>11</S100FC:value>
 					<S100FC:value>12</S100FC:value>
 					<S100FC:value>13</S100FC:value>
+					<S100FC:value>14</S100FC:value>
+					<S100FC:value>15</S100FC:value>
+					<S100FC:value>16</S100FC:value>
+					<S100FC:value>17</S100FC:value>
+					<S100FC:value>18</S100FC:value>					
+					<S100FC:value>19</S100FC:value>					
+					<S100FC:value>20</S100FC:value>					
 				</S100FC:permittedValues>
 				<S100FC:attribute ref="colour" />
 			</S100FC:attributeBinding>
@@ -11153,18 +11531,18 @@
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
-					<S100Base:lower>1</S100Base:lower>
+					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:attribute ref="rhythmOfLight" />
+				<S100FC:attribute ref="effectiveIntensity" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:attribute ref="candela" />
-			</S100FC:attributeBinding>
+				<S100FC:attribute ref="peakIntensity" />
+			</S100FC:attributeBinding>			
 			<S100FC:superType>Equipment</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:permittedPrimitives>noGeometry</S100FC:permittedPrimitives>
@@ -11253,20 +11631,6 @@
 					<S100FC:value>9</S100FC:value>
 				</S100FC:permittedValues>
 				<S100FC:attribute ref="colourPattern" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:permittedValues>
-					<S100FC:value>1</S100FC:value>
-					<S100FC:value>2</S100FC:value>
-					<S100FC:value>3</S100FC:value>
-					<S100FC:value>4</S100FC:value>
-					<S100FC:value>5</S100FC:value>
-				</S100FC:permittedValues>
-				<S100FC:attribute ref="condition" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
@@ -11963,7 +12327,7 @@
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="true" infinite="true" />
 				</S100FC:multiplicity>
 				<S100FC:permittedValues>
 					<S100FC:value>1</S100FC:value>
@@ -12048,7 +12412,7 @@
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+					<S100Base:upper xsi:nil="true" infinite="true" />
 				</S100FC:multiplicity>
 				<S100FC:permittedValues>
 					<S100FC:value>1</S100FC:value>
@@ -12121,20 +12485,6 @@
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:attribute ref="valueOfGeographicRange" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="valueOfLuminousRange" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
 				<S100FC:attribute ref="valueOfNominalRange" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
@@ -12143,6 +12493,20 @@
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="multiplicityOfFeatures" />
+			</S100FC:attributeBinding>
+			<S100FC:attributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>1</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="rhythmOfLight" />
+			</S100FC:attributeBinding>
+			<S100FC:attributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="flareBearing" />
 			</S100FC:attributeBinding>
 			<S100FC:superType>GenericLight</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
@@ -12216,6 +12580,20 @@
 				</S100FC:multiplicity>
 				<S100FC:attribute ref="multiplicityOfFeatures" />
 			</S100FC:attributeBinding>
+			<S100FC:attributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>1</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="rhythmOfLight" />
+			</S100FC:attributeBinding>
+			<S100FC:attributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="flareBearing" />
+			</S100FC:attributeBinding>
 			<S100FC:superType>GenericLight</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
@@ -12242,6 +12620,13 @@
 					<S100FC:value>6</S100FC:value>
 				</S100FC:permittedValues>
 				<S100FC:attribute ref="signalGeneration" />
+			</S100FC:attributeBinding>
+			<S100FC:attributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>1</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="rhythmOfLight" />
 			</S100FC:attributeBinding>
 			<S100FC:superType>GenericLight</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
@@ -12691,28 +13076,28 @@
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper infinite="true" xsi:nil="true"/>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:association ref="VirtualAIS"/>
-				<S100FC:role ref="broadcastBy"/>
+				<S100FC:association ref="PhysicalAIS"/>
+				<S100FC:role ref="physicalAISbroadcastBy"/>
 				<S100FC:featureType ref="PhysicalAISAidToNavigation"/>
 			</S100FC:featureBinding>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper infinite="true" xsi:nil="true"/>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:association ref="VirtualAIS"/>
-				<S100FC:role ref="broadcastBy"/>
+				<S100FC:association ref="SyntheticAIS"/>
+				<S100FC:role ref="syntheticAISbroadcastBy"/>
 				<S100FC:featureType ref="SyntheticAISAidToNavigation"/>
 			</S100FC:featureBinding>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper infinite="true" xsi:nil="true"/>
+					<S100Base:upper xsi:nil="true" infinite="true"/>
 				</S100FC:multiplicity>
 				<S100FC:association ref="VirtualAIS"/>
-				<S100FC:role ref="broadcastBy"/>
+				<S100FC:role ref="virtualAISbroadcastBy"/>
 				<S100FC:featureType ref="VirtualAISAidToNavigation"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
@@ -13070,7 +13455,6 @@
 				</S100FC:multiplicity>
 				<S100FC:permittedValues>
 					<S100FC:value>1</S100FC:value>
-					<S100FC:value>2</S100FC:value>
 					<S100FC:value>3</S100FC:value>
 					<S100FC:value>4</S100FC:value>
 					<S100FC:value>5</S100FC:value>
@@ -13373,75 +13757,10 @@
 			<S100FC:name>Virtual AIS Aid to Navigation</S100FC:name>
 			<S100FC:definition>An Automatic Identification System (AIS) message 21 transmitted from an AIS station to simulate on navigation systems an Aid to Navigation which does not physically exist.</S100FC:definition>
 			<S100FC:code>VirtualAISAidToNavigation</S100FC:code>
-			<S100FC:alias>NEWOBJ</S100FC:alias>
 			<S100FC:definitionReference>
 				<S100FC:sourceIdentifier>358</S100FC:sourceIdentifier>
 				<S100FC:definitionSource ref="IHOREG" />
 			</S100FC:definitionReference>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="estimatedRangeOfTransmission" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>1</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="mMSICode" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="true" infinite="true" />
-				</S100FC:multiplicity>
-				<S100FC:permittedValues>
-					<S100FC:value>1</S100FC:value>
-					<S100FC:value>2</S100FC:value>
-					<S100FC:value>3</S100FC:value>
-					<S100FC:value>4</S100FC:value>
-					<S100FC:value>5</S100FC:value>
-					<S100FC:value>6</S100FC:value>
-					<S100FC:value>7</S100FC:value>
-					<S100FC:value>8</S100FC:value>
-					<S100FC:value>9</S100FC:value>
-					<S100FC:value>11</S100FC:value>
-					<S100FC:value>12</S100FC:value>
-					<S100FC:value>13</S100FC:value>
-					<S100FC:value>14</S100FC:value>
-					<S100FC:value>15</S100FC:value>
-					<S100FC:value>16</S100FC:value>
-					<S100FC:value>17</S100FC:value>
-					<S100FC:value>18</S100FC:value>
-					<S100FC:value>19</S100FC:value>
-					<S100FC:value>20</S100FC:value>
-					<S100FC:value>21</S100FC:value>
-					<S100FC:value>22</S100FC:value>
-					<S100FC:value>23</S100FC:value>
-					<S100FC:value>24</S100FC:value>
-					<S100FC:value>25</S100FC:value>
-					<S100FC:value>26</S100FC:value>
-					<S100FC:value>27</S100FC:value>
-					<S100FC:value>28</S100FC:value>
-					<S100FC:value>29</S100FC:value>
-					<S100FC:value>30</S100FC:value>
-					<S100FC:value>31</S100FC:value>
-					<S100FC:value>32</S100FC:value>
-					<S100FC:value>33</S100FC:value>
-					<S100FC:value>34</S100FC:value>
-					<S100FC:value>35</S100FC:value>
-					<S100FC:value>36</S100FC:value>
-					<S100FC:value>37</S100FC:value>
-					<S100FC:value>38</S100FC:value>
-					<S100FC:value>39</S100FC:value>
-					<S100FC:value>41</S100FC:value>
-					<S100FC:value>42</S100FC:value>
-					<S100FC:value>43</S100FC:value>
-				</S100FC:permittedValues>
-				<S100FC:attribute ref="status" />
-			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
 					<S100Base:lower>1</S100Base:lower>
@@ -13463,15 +13782,15 @@
 				</S100FC:permittedValues>
 				<S100FC:attribute ref="virtualAISAidToNavigationType" />
 			</S100FC:attributeBinding>
-			<S100FC:superType>Equipment</S100FC:superType>
+			<S100FC:superType>ElectronicAton</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
-					<S100Base:lower>1</S100Base:lower>
-					<S100Base:upper infinite="true" xsi:nil="true"/>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:association ref="VirtualAIS"/>
-				<S100FC:role ref="broadcasts"/>
+				<S100FC:role ref="virtualAISbroadcasts"/>
 				<S100FC:featureType ref="RadioStation"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
@@ -13496,100 +13815,15 @@
 				</S100FC:permittedValues>
 				<S100FC:attribute ref="CategoryOfPhysicalAISAidToNavigation" />
 			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="estimatedRangeOfTransmission" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>1</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="mMSICode" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="true" infinite="true" />
-				</S100FC:multiplicity>
-				<S100FC:permittedValues>
-					<S100FC:value>1</S100FC:value>
-					<S100FC:value>2</S100FC:value>
-					<S100FC:value>3</S100FC:value>
-					<S100FC:value>4</S100FC:value>
-					<S100FC:value>5</S100FC:value>
-					<S100FC:value>6</S100FC:value>
-					<S100FC:value>7</S100FC:value>
-					<S100FC:value>8</S100FC:value>
-					<S100FC:value>9</S100FC:value>
-					<S100FC:value>11</S100FC:value>
-					<S100FC:value>12</S100FC:value>
-					<S100FC:value>13</S100FC:value>
-					<S100FC:value>14</S100FC:value>
-					<S100FC:value>15</S100FC:value>
-					<S100FC:value>16</S100FC:value>
-					<S100FC:value>17</S100FC:value>
-					<S100FC:value>18</S100FC:value>
-					<S100FC:value>19</S100FC:value>
-					<S100FC:value>20</S100FC:value>
-					<S100FC:value>21</S100FC:value>
-					<S100FC:value>22</S100FC:value>
-					<S100FC:value>23</S100FC:value>
-					<S100FC:value>24</S100FC:value>
-					<S100FC:value>25</S100FC:value>
-					<S100FC:value>26</S100FC:value>
-					<S100FC:value>27</S100FC:value>
-					<S100FC:value>28</S100FC:value>
-					<S100FC:value>29</S100FC:value>
-					<S100FC:value>30</S100FC:value>
-					<S100FC:value>31</S100FC:value>
-					<S100FC:value>32</S100FC:value>
-					<S100FC:value>33</S100FC:value>
-					<S100FC:value>34</S100FC:value>
-					<S100FC:value>35</S100FC:value>
-					<S100FC:value>36</S100FC:value>
-					<S100FC:value>37</S100FC:value>
-					<S100FC:value>38</S100FC:value>
-					<S100FC:value>39</S100FC:value>
-					<S100FC:value>41</S100FC:value>
-					<S100FC:value>42</S100FC:value>
-					<S100FC:value>43</S100FC:value>
-				</S100FC:permittedValues>
-				<S100FC:attribute ref="status" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>1</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:permittedValues>
-					<S100FC:value>1</S100FC:value>
-					<S100FC:value>2</S100FC:value>
-					<S100FC:value>3</S100FC:value>
-					<S100FC:value>4</S100FC:value>
-					<S100FC:value>5</S100FC:value>
-					<S100FC:value>6</S100FC:value>
-					<S100FC:value>7</S100FC:value>
-					<S100FC:value>8</S100FC:value>
-					<S100FC:value>9</S100FC:value>
-					<S100FC:value>10</S100FC:value>
-					<S100FC:value>11</S100FC:value>
-					<S100FC:value>12</S100FC:value>
-				</S100FC:permittedValues>
-				<S100FC:attribute ref="virtualAISAidToNavigationType" />
-			</S100FC:attributeBinding>
-			<S100FC:superType>Equipment</S100FC:superType>
+			<S100FC:superType>ElectronicAton</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
 					<S100Base:lower>1</S100Base:lower>
 					<S100Base:upper infinite="true" xsi:nil="true"/>
 				</S100FC:multiplicity>
-				<S100FC:association ref="VirtualAIS"/>
-				<S100FC:role ref="broadcasts"/>
+				<S100FC:association ref="PhysicalAIS"/>
+				<S100FC:role ref="physicalAISbroadcasts"/>
 				<S100FC:featureType ref="RadioStation"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
@@ -13612,70 +13846,6 @@
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="estimatedRangeOfTransmission" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>1</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="mMSICode" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="true" infinite="true" />
-				</S100FC:multiplicity>
-				<S100FC:permittedValues>
-					<S100FC:value>1</S100FC:value>
-					<S100FC:value>2</S100FC:value>
-					<S100FC:value>3</S100FC:value>
-					<S100FC:value>4</S100FC:value>
-					<S100FC:value>5</S100FC:value>
-					<S100FC:value>6</S100FC:value>
-					<S100FC:value>7</S100FC:value>
-					<S100FC:value>8</S100FC:value>
-					<S100FC:value>9</S100FC:value>
-					<S100FC:value>11</S100FC:value>
-					<S100FC:value>12</S100FC:value>
-					<S100FC:value>13</S100FC:value>
-					<S100FC:value>14</S100FC:value>
-					<S100FC:value>15</S100FC:value>
-					<S100FC:value>16</S100FC:value>
-					<S100FC:value>17</S100FC:value>
-					<S100FC:value>18</S100FC:value>
-					<S100FC:value>19</S100FC:value>
-					<S100FC:value>20</S100FC:value>
-					<S100FC:value>21</S100FC:value>
-					<S100FC:value>22</S100FC:value>
-					<S100FC:value>23</S100FC:value>
-					<S100FC:value>24</S100FC:value>
-					<S100FC:value>25</S100FC:value>
-					<S100FC:value>26</S100FC:value>
-					<S100FC:value>27</S100FC:value>
-					<S100FC:value>28</S100FC:value>
-					<S100FC:value>29</S100FC:value>
-					<S100FC:value>30</S100FC:value>
-					<S100FC:value>31</S100FC:value>
-					<S100FC:value>32</S100FC:value>
-					<S100FC:value>33</S100FC:value>
-					<S100FC:value>34</S100FC:value>
-					<S100FC:value>35</S100FC:value>
-					<S100FC:value>36</S100FC:value>
-					<S100FC:value>37</S100FC:value>
-					<S100FC:value>38</S100FC:value>
-					<S100FC:value>39</S100FC:value>
-					<S100FC:value>41</S100FC:value>
-					<S100FC:value>42</S100FC:value>
-					<S100FC:value>43</S100FC:value>
-				</S100FC:permittedValues>
-				<S100FC:attribute ref="status" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
 					<S100Base:lower>1</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
@@ -13695,15 +13865,15 @@
 				</S100FC:permittedValues>
 				<S100FC:attribute ref="virtualAISAidToNavigationType" />
 			</S100FC:attributeBinding>
-			<S100FC:superType>Equipment</S100FC:superType>
+			<S100FC:superType>ElectronicAton</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
 					<S100Base:lower>1</S100Base:lower>
 					<S100Base:upper infinite="true" xsi:nil="true"/>
 				</S100FC:multiplicity>
-				<S100FC:association ref="VirtualAIS"/>
-				<S100FC:role ref="broadcasts"/>
+				<S100FC:association ref="SyntheticAIS"/>
+				<S100FC:role ref="syntheticAISbroadcasts"/>
 				<S100FC:featureType ref="RadioStation"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
@@ -13781,350 +13951,6 @@
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
-			<S100FC:name>Light</S100FC:name>
-			<S100FC:definition>A luminous or lighted aid to navigation.</S100FC:definition>
-			<S100FC:code>Light</S100FC:code>
-			<S100FC:remarks>A light may be fixed on a buoy, beacon, tower, etc. These are separate objects.</S100FC:remarks>
-			<S100FC:definitionReference>
-				<S100FC:sourceIdentifier>371</S100FC:sourceIdentifier>
-				<S100FC:definitionSource ref="IHOREG" />
-			</S100FC:definitionReference>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="true" infinite="true" />
-				</S100FC:multiplicity>
-				<S100FC:permittedValues>
-					<S100FC:value>1</S100FC:value>
-					<S100FC:value>4</S100FC:value>
-					<S100FC:value>5</S100FC:value>
-					<S100FC:value>6</S100FC:value>
-					<S100FC:value>8</S100FC:value>
-					<S100FC:value>9</S100FC:value>
-					<S100FC:value>10</S100FC:value>
-					<S100FC:value>11</S100FC:value>
-					<S100FC:value>12</S100FC:value>
-					<S100FC:value>13</S100FC:value>
-					<S100FC:value>14</S100FC:value>
-					<S100FC:value>15</S100FC:value>
-					<S100FC:value>17</S100FC:value>
-					<S100FC:value>18</S100FC:value>
-					<S100FC:value>19</S100FC:value>
-					<S100FC:value>20</S100FC:value>
-				</S100FC:permittedValues>
-				<S100FC:attribute ref="categoryOfLight" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>1</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:permittedValues>
-					<S100FC:value>1</S100FC:value>
-					<S100FC:value>2</S100FC:value>
-					<S100FC:value>3</S100FC:value>
-					<S100FC:value>4</S100FC:value>
-					<S100FC:value>5</S100FC:value>
-					<S100FC:value>6</S100FC:value>
-					<S100FC:value>7</S100FC:value>
-					<S100FC:value>8</S100FC:value>
-					<S100FC:value>9</S100FC:value>
-					<S100FC:value>10</S100FC:value>
-					<S100FC:value>11</S100FC:value>
-					<S100FC:value>12</S100FC:value>
-					<S100FC:value>13</S100FC:value>
-				</S100FC:permittedValues>
-				<S100FC:attribute ref="colour" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:permittedValues>
-					<S100FC:value>1</S100FC:value>
-					<S100FC:value>2</S100FC:value>
-					<S100FC:value>3</S100FC:value>
-					<S100FC:value>4</S100FC:value>
-				</S100FC:permittedValues>
-				<S100FC:attribute ref="exhibitionConditionOfLight" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="height" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>1</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:permittedValues>
-					<S100FC:value>1</S100FC:value>
-					<S100FC:value>2</S100FC:value>
-					<S100FC:value>3</S100FC:value>
-					<S100FC:value>4</S100FC:value>
-					<S100FC:value>5</S100FC:value>
-					<S100FC:value>6</S100FC:value>
-					<S100FC:value>7</S100FC:value>
-					<S100FC:value>8</S100FC:value>
-					<S100FC:value>9</S100FC:value>
-					<S100FC:value>10</S100FC:value>
-					<S100FC:value>11</S100FC:value>
-					<S100FC:value>12</S100FC:value>
-					<S100FC:value>13</S100FC:value>
-					<S100FC:value>14</S100FC:value>
-					<S100FC:value>15</S100FC:value>
-					<S100FC:value>16</S100FC:value>
-					<S100FC:value>17</S100FC:value>
-					<S100FC:value>18</S100FC:value>
-					<S100FC:value>19</S100FC:value>
-					<S100FC:value>20</S100FC:value>
-					<S100FC:value>25</S100FC:value>
-					<S100FC:value>26</S100FC:value>
-					<S100FC:value>27</S100FC:value>
-					<S100FC:value>28</S100FC:value>
-					<S100FC:value>29</S100FC:value>
-				</S100FC:permittedValues>
-				<S100FC:attribute ref="lightCharacteristic" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="true" infinite="true" />
-				</S100FC:multiplicity>
-				<S100FC:permittedValues>
-					<S100FC:value>1</S100FC:value>
-					<S100FC:value>2</S100FC:value>
-					<S100FC:value>3</S100FC:value>
-					<S100FC:value>4</S100FC:value>
-					<S100FC:value>5</S100FC:value>
-					<S100FC:value>6</S100FC:value>
-					<S100FC:value>7</S100FC:value>
-					<S100FC:value>8</S100FC:value>
-					<S100FC:value>9</S100FC:value>
-				</S100FC:permittedValues>
-				<S100FC:attribute ref="lightVisibility" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:permittedValues>
-					<S100FC:value>1</S100FC:value>
-					<S100FC:value>2</S100FC:value>
-					<S100FC:value>9</S100FC:value>
-					<S100FC:value>10</S100FC:value>
-					<S100FC:value>11</S100FC:value>
-					<S100FC:value>12</S100FC:value>
-					<S100FC:value>13</S100FC:value>
-					<S100FC:value>14</S100FC:value>
-					<S100FC:value>15</S100FC:value>
-				</S100FC:permittedValues>
-				<S100FC:attribute ref="marksNavigationalSystemOf" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="multiplicityOfFeatures" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="sectorLimitOne" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="sectorLimitTwo" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="signalGroup" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="signalPeriod" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="true" infinite="true" />
-				</S100FC:multiplicity>
-				<S100FC:permittedValues>
-					<S100FC:value>1</S100FC:value>
-					<S100FC:value>2</S100FC:value>
-					<S100FC:value>3</S100FC:value>
-					<S100FC:value>4</S100FC:value>
-					<S100FC:value>5</S100FC:value>
-					<S100FC:value>6</S100FC:value>
-					<S100FC:value>7</S100FC:value>
-					<S100FC:value>8</S100FC:value>
-					<S100FC:value>9</S100FC:value>
-					<S100FC:value>11</S100FC:value>
-					<S100FC:value>12</S100FC:value>
-					<S100FC:value>13</S100FC:value>
-					<S100FC:value>14</S100FC:value>
-					<S100FC:value>15</S100FC:value>
-					<S100FC:value>16</S100FC:value>
-					<S100FC:value>17</S100FC:value>
-					<S100FC:value>18</S100FC:value>
-					<S100FC:value>19</S100FC:value>
-					<S100FC:value>20</S100FC:value>
-					<S100FC:value>21</S100FC:value>
-					<S100FC:value>22</S100FC:value>
-					<S100FC:value>23</S100FC:value>
-					<S100FC:value>24</S100FC:value>
-					<S100FC:value>25</S100FC:value>
-					<S100FC:value>26</S100FC:value>
-					<S100FC:value>27</S100FC:value>
-					<S100FC:value>28</S100FC:value>
-					<S100FC:value>29</S100FC:value>
-					<S100FC:value>30</S100FC:value>
-					<S100FC:value>31</S100FC:value>
-					<S100FC:value>32</S100FC:value>
-					<S100FC:value>33</S100FC:value>
-					<S100FC:value>34</S100FC:value>
-					<S100FC:value>35</S100FC:value>
-					<S100FC:value>36</S100FC:value>
-					<S100FC:value>37</S100FC:value>
-					<S100FC:value>38</S100FC:value>
-					<S100FC:value>39</S100FC:value>
-					<S100FC:value>41</S100FC:value>
-					<S100FC:value>42</S100FC:value>
-					<S100FC:value>43</S100FC:value>
-				</S100FC:permittedValues>
-				<S100FC:attribute ref="status" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="typeOfLight" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="valueOfGeographicRange" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="valueOfLuminousRange" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="valueOfNominalRange" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:permittedValues>
-					<S100FC:value>1</S100FC:value>
-					<S100FC:value>2</S100FC:value>
-					<S100FC:value>3</S100FC:value>
-					<S100FC:value>4</S100FC:value>
-					<S100FC:value>5</S100FC:value>
-					<S100FC:value>6</S100FC:value>
-					<S100FC:value>7</S100FC:value>
-					<S100FC:value>8</S100FC:value>
-					<S100FC:value>9</S100FC:value>
-					<S100FC:value>10</S100FC:value>
-					<S100FC:value>11</S100FC:value>
-					<S100FC:value>12</S100FC:value>
-					<S100FC:value>13</S100FC:value>
-					<S100FC:value>14</S100FC:value>
-					<S100FC:value>15</S100FC:value>
-					<S100FC:value>16</S100FC:value>
-					<S100FC:value>17</S100FC:value>
-					<S100FC:value>18</S100FC:value>
-					<S100FC:value>19</S100FC:value>
-					<S100FC:value>20</S100FC:value>
-					<S100FC:value>21</S100FC:value>
-					<S100FC:value>22</S100FC:value>
-					<S100FC:value>23</S100FC:value>
-					<S100FC:value>24</S100FC:value>
-					<S100FC:value>25</S100FC:value>
-					<S100FC:value>26</S100FC:value>
-					<S100FC:value>27</S100FC:value>
-					<S100FC:value>28</S100FC:value>
-					<S100FC:value>29</S100FC:value>
-					<S100FC:value>30</S100FC:value>
-					<S100FC:value>31</S100FC:value>
-					<S100FC:value>32</S100FC:value>
-					<S100FC:value>33</S100FC:value>
-					<S100FC:value>34</S100FC:value>
-					<S100FC:value>35</S100FC:value>
-					<S100FC:value>36</S100FC:value>
-					<S100FC:value>37</S100FC:value>
-					<S100FC:value>38</S100FC:value>
-					<S100FC:value>39</S100FC:value>
-					<S100FC:value>40</S100FC:value>
-					<S100FC:value>41</S100FC:value>
-					<S100FC:value>43</S100FC:value>
-					<S100FC:value>44</S100FC:value>
-					<S100FC:value>45</S100FC:value>
-				</S100FC:permittedValues>
-				<S100FC:attribute ref="verticalDatum" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="verticalAccuracy" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>1</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="candela" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="orientationValue" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:attribute ref="signalSequence" />
-			</S100FC:attributeBinding>
-			<S100FC:superType>Equipment</S100FC:superType>
-			<S100FC:featureUseType>geographic</S100FC:featureUseType>
-			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-		</S100FC:S100_FC_FeatureType>
-		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Isolated Danger Beacon</S100FC:name>
 			<S100FC:definition>A beacon is a prominent specially constructed object forming a conspicuous mark as a fixed aid to navigation or for use in hydrographic survey (IHO Dictionary, S-32, 5th Edition, 420). An isolated danger beacon is a beacon erected on an isolated danger of limited extent, which has navigable water all around it. (UKHO NP735, 5th Edition)</S100FC:definition>
 			<S100FC:code>IsolatedDangerBeacon</S100FC:code>
@@ -14191,6 +14017,17 @@
 			<S100FC:definition>A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). An installation buoy is a buoy used for loading tankers with gas or oil. (IHO Chart Specifications, M-4)</S100FC:definition>
 			<S100FC:code>InstallationBuoy</S100FC:code>
 			<S100FC:remarks>-</S100FC:remarks>
+			<S100FC:attributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>1</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:permittedValues>
+					<S100FC:value>1</S100FC:value>
+					<S100FC:value>2</S100FC:value>
+				</S100FC:permittedValues>
+				<S100FC:attribute ref="categoryOfInstallationBuoy"/>
+			</S100FC:attributeBinding>
 			<S100FC:superType>GenericBuoy</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
@@ -14677,20 +14514,6 @@
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:permittedValues>
-					<S100FC:value>1</S100FC:value>
-					<S100FC:value>2</S100FC:value>
-					<S100FC:value>3</S100FC:value>
-					<S100FC:value>4</S100FC:value>
-					<S100FC:value>5</S100FC:value>
-				</S100FC:permittedValues>
-				<S100FC:attribute ref="condition" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
 				<S100FC:attribute ref="height" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
@@ -14979,20 +14802,6 @@
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:permittedValues>
-					<S100FC:value>1</S100FC:value>
-					<S100FC:value>2</S100FC:value>
-					<S100FC:value>3</S100FC:value>
-					<S100FC:value>4</S100FC:value>
-					<S100FC:value>5</S100FC:value>
-				</S100FC:permittedValues>
-				<S100FC:attribute ref="condition" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
 				<S100FC:attribute ref="elevation" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
@@ -15235,20 +15044,6 @@
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:permittedValues>
-					<S100FC:value>1</S100FC:value>
-					<S100FC:value>2</S100FC:value>
-					<S100FC:value>3</S100FC:value>
-					<S100FC:value>4</S100FC:value>
-					<S100FC:value>5</S100FC:value>
-				</S100FC:permittedValues>
-				<S100FC:attribute ref="condition" />
-			</S100FC:attributeBinding>
-			<S100FC:attributeBinding sequential="false">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
 				<S100FC:attribute ref="height" />
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
@@ -15418,8 +15213,8 @@
 					<S100Base:lower>1</S100Base:lower>
 					<S100Base:upper infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:association ref="ShackleConnection"/>
-				<S100FC:role ref="connected"/>
+				<S100FC:association ref="ShackleToAnchorConnection"/>
+				<S100FC:role ref="shackleToAnchorconnected"/>
 				<S100FC:featureType ref="MooringShackle"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
@@ -15482,7 +15277,7 @@
 					<S100Base:upper infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:association ref="ShackleConnection"/>
-				<S100FC:role ref="connectedTo"/>
+				<S100FC:role ref="shackleToBuoyconnectedTo"/>
 				<S100FC:featureType ref="GenericBuoy"/>
 			</S100FC:featureBinding>
 			<S100FC:featureBinding roleType="association">
@@ -15490,8 +15285,8 @@
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:association ref="ShackleConnection"/>
-				<S100FC:role ref="connectedTo"/>
+				<S100FC:association ref="ShackleToBridleConnection"/>
+				<S100FC:role ref="shackleToBridleconnectedTo"/>
 				<S100FC:featureType ref="Bridle"/>
 			</S100FC:featureBinding>
 			<S100FC:featureBinding roleType="association">
@@ -15499,8 +15294,8 @@
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper infinite="true" xsi:nil="true"/>
 				</S100FC:multiplicity>
-				<S100FC:association ref="ShackleConnection"/>
-				<S100FC:role ref="connectedTo"/>
+				<S100FC:association ref="BridleCableConnection"/>
+				<S100FC:role ref="bridleattached"/>
 				<S100FC:featureType ref="CableSubmarine"/>
 			</S100FC:featureBinding>
 			<S100FC:featureBinding roleType="association">
@@ -15508,8 +15303,8 @@
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper infinite="true" xsi:nil="true"/>
 				</S100FC:multiplicity>
-				<S100FC:association ref="ShackleConnection"/>
-				<S100FC:role ref="connectedTo"/>
+				<S100FC:association ref="ShackleToSwivelConnection"/>
+				<S100FC:role ref="shackleToSwivelconnectedTo"/>
 				<S100FC:featureType ref="Swivel"/>
 			</S100FC:featureBinding>
 			<S100FC:featureBinding roleType="association">
@@ -15517,8 +15312,8 @@
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:association ref="ShackleConnection"/>
-				<S100FC:role ref="connectedTo"/>
+				<S100FC:association ref="ShackleToAnchorConnection"/>
+				<S100FC:role ref="shackleToAnchorconnectedTo"/>
 				<S100FC:featureType ref="SinkerAnchor"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
@@ -15613,8 +15408,8 @@
 					<S100Base:lower>1</S100Base:lower>
 					<S100Base:upper infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:association ref="CableConnection"/>
-				<S100FC:role ref="holds"/>
+				<S100FC:association ref="BridleCableConnection"/>
+				<S100FC:role ref="cableholds"/>
 				<S100FC:featureType ref="Bridle"/>
 			</S100FC:featureBinding>
 			<S100FC:featureBinding roleType="association">
@@ -15622,8 +15417,8 @@
 					<S100Base:lower>1</S100Base:lower>
 					<S100Base:upper infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:association ref="CableConnection"/>
-				<S100FC:role ref="holds"/>
+				<S100FC:association ref="SwivelCableConnection"/>
+				<S100FC:role ref="cableholds"/>
 				<S100FC:featureType ref="Swivel"/>
 			</S100FC:featureBinding>
 			<S100FC:featureBinding roleType="association">
@@ -15631,8 +15426,8 @@
 					<S100Base:lower>1</S100Base:lower>
 					<S100Base:upper infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:association ref="ShackleConnection"/>
-				<S100FC:role ref="connected"/>
+				<S100FC:association ref="ShackleConnectionFromCable"/>
+				<S100FC:role ref="shackleToCableconnected"/>
 				<S100FC:featureType ref="MooringShackle"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
@@ -15687,7 +15482,7 @@
 					<S100Base:upper infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:association ref="SwivelConnection"/>
-				<S100FC:role ref="holds"/>
+				<S100FC:role ref="swivelholds"/>
 				<S100FC:featureType ref="Bridle"/>
 			</S100FC:featureBinding>
 			<S100FC:featureBinding roleType="association">
@@ -15695,8 +15490,8 @@
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper infinite="true" xsi:nil="true"/>
 				</S100FC:multiplicity>
-				<S100FC:association ref="CableConnection"/>
-				<S100FC:role ref="attached"/>
+				<S100FC:association ref="SwivelCableConnection"/>
+				<S100FC:role ref="swivelattached"/>
 				<S100FC:featureType ref="CableSubmarine"/>
 			</S100FC:featureBinding>
 			<S100FC:featureBinding roleType="association">
@@ -15704,8 +15499,8 @@
 					<S100Base:lower>1</S100Base:lower>
 					<S100Base:upper infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:association ref="ShackleConnection"/>
-				<S100FC:role ref="connected"/>
+				<S100FC:association ref="ShackleToSwivelConnection"/>
+				<S100FC:role ref="shackleToSwivelconnected"/>
 				<S100FC:featureType ref="MooringShackle"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
@@ -15737,7 +15532,7 @@
 					<S100Base:upper infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:association ref="BridleConnection"/>
-				<S100FC:role ref="holds"/>
+				<S100FC:role ref="bridleholds"/>
 				<S100FC:featureType ref="GenericBuoy"/>
 			</S100FC:featureBinding>
 			<S100FC:featureBinding roleType="association">
@@ -15746,7 +15541,7 @@
 					<S100Base:upper infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:association ref="SwivelConnection"/>
-				<S100FC:role ref="hangs"/>
+				<S100FC:role ref="bridlehangs"/>
 				<S100FC:featureType ref="Swivel"/>
 			</S100FC:featureBinding>
 			<S100FC:featureBinding roleType="association">
@@ -15754,8 +15549,8 @@
 					<S100Base:lower>1</S100Base:lower>
 					<S100Base:upper infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:association ref="ShackleConnection"/>
-				<S100FC:role ref="connected"/>
+				<S100FC:association ref="ShackleToBridleConnection"/>
+				<S100FC:role ref="shackleToBridleconnected"/>
 				<S100FC:featureType ref="MooringShackle"/>
 			</S100FC:featureBinding>
 			<S100FC:featureBinding roleType="association">
@@ -15763,8 +15558,8 @@
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper infinite="true" xsi:nil="true"/>
 				</S100FC:multiplicity>
-				<S100FC:association ref="CableConnection"/>
-				<S100FC:role ref="attached"/>
+				<S100FC:association ref="BridleCableConnection"/>
+				<S100FC:role ref="bridleattached"/>
 				<S100FC:featureType ref="CableSubmarine"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
@@ -15819,7 +15614,7 @@
 					<S100Base:upper infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
 				<S100FC:association ref="BuoyCounterWeight"/>
-				<S100FC:role ref="holds"/>
+				<S100FC:role ref="counterWeightholds"/>
 				<S100FC:featureType ref="GenericBuoy"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
@@ -15976,8 +15771,8 @@
 					<S100Base:lower>1</S100Base:lower>
 					<S100Base:upper infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:association ref="StructureEquipment"/>
-				<S100FC:role ref="structure"/>
+				<S100FC:association ref="BuoyTopmark"/>
+				<S100FC:role ref="buoyPart"/>
 				<S100FC:featureType ref="GenericBuoy"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
@@ -16210,9 +16005,9 @@
 					<S100Base:upper infinite="true" xsi:nil="true"/>
 				</S100FC:multiplicity>
 				<S100FC:association ref="AtonAggregations"/>
-				<S100FC:role ref="peer"/>
+				<S100FC:role ref="atonAggregationBy"/>
 				<S100FC:featureType ref="AidsToNavigation"/>
-			</S100FC:featureBinding>
+			</S100FC:featureBinding>	
 			<S100FC:permittedPrimitives>noGeometry</S100FC:permittedPrimitives>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
@@ -16247,7 +16042,7 @@
 					<S100Base:upper infinite="true" xsi:nil="true"/>
 				</S100FC:multiplicity>
 				<S100FC:association ref="AtonAssociations"/>
-				<S100FC:role ref="peer"/>
+				<S100FC:role ref="atonAssociationBy"/>
 				<S100FC:featureType ref="AidsToNavigation"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>noGeometry</S100FC:permittedPrimitives>

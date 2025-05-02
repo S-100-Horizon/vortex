@@ -17,6 +17,207 @@ namespace S100Framework.DomainModel.S101 {
 		public static string[] FeatureAssociationTypes => ["AidsToNavigationAssociation","ASLAggregation","BridgeAggregation","CautionAreaAssociation","DeepWaterRouteAggregation","FairwayAggregation","FairwayAuxiliary","IslandAggregation","MooringTrotAggregation","PilotageDistrictAssociation","RangeSystemAggregation","RoofedStructureAggregation","StructureEquipment","TextAssociation","TrafficSeparationSchemeAggregation","TwoWayRouteAggregation","UpdateAggregation","UpdatedInformation"];
 		public static string[] InformationTypes => ["ContactDetails","ServiceHours","NonStandardWorkingDay","NauticalInformation","SpatialQuality"];
 		public static string[] FeatureTypes => ["QualityOfNonBathymetricData","DataCoverage","NavigationalSystemOfMarks","LocalDirectionOfBuoyage","QualityOfBathymetricData","SoundingDatum","VerticalDatumOfData","QualityOfSurvey","UpdateInformation","MagneticVariation","LocalMagneticAnomaly","Coastline","LandArea","IslandGroup","LandElevation","River","Rapids","Waterfall","Lake","LandRegion","Vegetation","IceArea","SlopingGround","SlopeTopline","Tideway","BuiltUpArea","Building","AirportAirfield","Runway","Helipad","Bridge","SpanFixed","SpanOpening","Conveyor","CableOverhead","PipelineOverhead","PylonBridgeSupport","FenceWall","Railway","Road","Tunnel","Landmark","SiloTank","WindTurbine","FortifiedStructure","ProductionStorageArea","Checkpoint","Hulk","Pile","Dyke","ShorelineConstruction","StructureOverNavigableWater","Causeway","Canal","DistanceMark","Gate","Dam","Crane","Berth","Dolphin","Bollard","DryDock","FloatingDock","Pontoon","DockArea","Gridiron","LockBasin","MooringTrot","SeaAreaNamedWaterArea","TidalStreamFloodEbb","CurrentNonGravitational","WaterTurbulence","TidalStreamPanelData","Sounding","DredgedArea","SweptArea","DepthContour","DepthArea","DepthNoBottomFound","UnsurveyedArea","SeabedArea","WeedKelp","Seagrass","Sandwave","Spring","UnderwaterAwashRock","Wreck","Obstruction","FoulGround","DiscolouredWater","FishingFacility","MarineFarmCulture","OffshorePlatform","CableSubmarine","CableArea","PipelineSubmarineOnLand","SubmarinePipelineArea","OffshoreProductionArea","NavigationLine","RecommendedTrack","RangeSystem","Fairway","FairwaySystem","RecommendedRouteCentreline","TwoWayRoutePart","TwoWayRoute","RecommendedTrafficLanePart","DeepWaterRouteCentreline","DeepWaterRoutePart","DeepWaterRoute","InshoreTrafficZone","PrecautionaryArea","TrafficSeparationSchemeLanePart","SeparationZoneOrLine","TrafficSeparationSchemeBoundary","TrafficSeparationSchemeCrossing","TrafficSeparationSchemeRoundabout","TrafficSeparationScheme","ArchipelagicSeaLaneArea","ArchipelagicSeaLaneAxis","ArchipelagicSeaLane","RadioCallingInPoint","FerryRoute","RadarLine","RadarRange","RadarStation","AnchorageArea","MooringArea","AnchorBerth","SeaplaneLandingArea","DumpingGround","MilitaryPracticeArea","AdministrationArea","CargoTranshipmentArea","CautionArea","InformationArea","ContiguousZone","ContinentalShelfArea","CustomZone","ExclusiveEconomicZone","FisheryZone","FishingGround","FreePortArea","HarbourAreaAdministrative","LogPond","OilBarrier","StraightTerritorialSeaBaseline","TerritorialSeaArea","SubmarineTransitLane","PilotageDistrict","CollisionRegulationsLimit","MarinePollutionRegulationsArea","RestrictedArea","LightAllAround","LightSectored","LightFogDetector","LightAirObstruction","LateralBuoy","CardinalBuoy","IsolatedDangerBuoy","SafeWaterBuoy","SpecialPurposeGeneralBuoy","EmergencyWreckMarkingBuoy","InstallationBuoy","MooringBuoy","LateralBeacon","CardinalBeacon","IsolatedDangerBeacon","SafeWaterBeacon","SpecialPurposeGeneralBeacon","Daymark","LightFloat","LightVessel","Retroreflector","RadarReflector","FogSignal","PhysicalAISAidToNavigation","VirtualAISAidToNavigation","RadioStation","RadarTransponderBeacon","PilotBoardingPlace","VesselTrafficServiceArea","CoastGuardStation","SignalStationWarning","SignalStationTraffic","RescueStation","HarbourFacility","SmallCraftFacility","TextPlacement","Chart1Feature"];
+		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
+			Primitives.surface => ["QualityOfNonBathymetricData","DataCoverage","NavigationalSystemOfMarks","LocalDirectionOfBuoyage","QualityOfBathymetricData","SoundingDatum","VerticalDatumOfData","QualityOfSurvey","UpdateInformation","MagneticVariation","LocalMagneticAnomaly","LandArea","IslandGroup","River","Rapids","Lake","LandRegion","Vegetation","IceArea","SlopingGround","Tideway","BuiltUpArea","Building","AirportAirfield","Runway","Bridge","SpanFixed","SpanOpening","Conveyor","PylonBridgeSupport","Road","Tunnel","Landmark","SiloTank","FortifiedStructure","ProductionStorageArea","Checkpoint","Hulk","Pile","Dyke","ShorelineConstruction","StructureOverNavigableWater","Causeway","Canal","Gate","Dam","Crane","Berth","Dolphin","DryDock","FloatingDock","Pontoon","DockArea","Gridiron","LockBasin","MooringTrot","SeaAreaNamedWaterArea","TidalStreamFloodEbb","WaterTurbulence","TidalStreamPanelData","DredgedArea","SweptArea","DepthArea","UnsurveyedArea","SeabedArea","WeedKelp","Seagrass","Sandwave","Wreck","Obstruction","FoulGround","DiscolouredWater","FishingFacility","MarineFarmCulture","OffshorePlatform","CableArea","SubmarinePipelineArea","OffshoreProductionArea","RangeSystem","Fairway","FairwaySystem","TwoWayRoutePart","TwoWayRoute","RecommendedTrafficLanePart","DeepWaterRoutePart","DeepWaterRoute","InshoreTrafficZone","PrecautionaryArea","TrafficSeparationSchemeLanePart","SeparationZoneOrLine","TrafficSeparationSchemeCrossing","TrafficSeparationSchemeRoundabout","TrafficSeparationScheme","ArchipelagicSeaLaneArea","ArchipelagicSeaLane","FerryRoute","RadarRange","AnchorageArea","MooringArea","AnchorBerth","SeaplaneLandingArea","DumpingGround","MilitaryPracticeArea","AdministrationArea","CargoTranshipmentArea","CautionArea","InformationArea","ContiguousZone","ContinentalShelfArea","CustomZone","ExclusiveEconomicZone","FisheryZone","FishingGround","FreePortArea","HarbourAreaAdministrative","LogPond","TerritorialSeaArea","SubmarineTransitLane","PilotageDistrict","MarinePollutionRegulationsArea","RestrictedArea","PilotBoardingPlace","VesselTrafficServiceArea","CoastGuardStation","SignalStationWarning","SignalStationTraffic","RescueStation","HarbourFacility","SmallCraftFacility","Chart1Feature"],
+			Primitives.curve => ["QualityOfSurvey","UpdateInformation","MagneticVariation","LocalMagneticAnomaly","Coastline","LandArea","LandElevation","River","Rapids","Waterfall","LandRegion","Vegetation","SlopeTopline","Tideway","Runway","Bridge","SpanFixed","SpanOpening","Conveyor","CableOverhead","PipelineOverhead","FenceWall","Railway","Road","Tunnel","Landmark","FortifiedStructure","Pile","Dyke","ShorelineConstruction","Causeway","Canal","Gate","Dam","Berth","FloatingDock","Pontoon","WaterTurbulence","DepthContour","SeabedArea","Sandwave","Obstruction","FishingFacility","MarineFarmCulture","CableSubmarine","PipelineSubmarineOnLand","NavigationLine","RecommendedTrack","RangeSystem","RecommendedRouteCentreline","DeepWaterRouteCentreline","SeparationZoneOrLine","TrafficSeparationSchemeBoundary","ArchipelagicSeaLaneAxis","RadioCallingInPoint","FerryRoute","RadarLine","AdministrationArea","ContiguousZone","ContinentalShelfArea","ExclusiveEconomicZone","OilBarrier","StraightTerritorialSeaBaseline","TerritorialSeaArea","CollisionRegulationsLimit","Chart1Feature"],
+			Primitives.point => ["UpdateInformation","MagneticVariation","LocalMagneticAnomaly","LandArea","LandElevation","Waterfall","LandRegion","Vegetation","SlopingGround","BuiltUpArea","Building","AirportAirfield","Helipad","PylonBridgeSupport","Landmark","SiloTank","WindTurbine","FortifiedStructure","ProductionStorageArea","Checkpoint","Hulk","Pile","ShorelineConstruction","DistanceMark","Gate","Crane","Berth","Dolphin","Bollard","SeaAreaNamedWaterArea","TidalStreamFloodEbb","CurrentNonGravitational","WaterTurbulence","TidalStreamPanelData","SeabedArea","WeedKelp","Seagrass","Sandwave","Spring","UnderwaterAwashRock","Wreck","Obstruction","FoulGround","DiscolouredWater","FishingFacility","MarineFarmCulture","OffshorePlatform","SubmarinePipelineArea","RecommendedTrafficLanePart","PrecautionaryArea","RadioCallingInPoint","RadarStation","AnchorageArea","MooringArea","AnchorBerth","SeaplaneLandingArea","DumpingGround","MilitaryPracticeArea","CargoTranshipmentArea","CautionArea","InformationArea","LogPond","LightAllAround","LightSectored","LightFogDetector","LightAirObstruction","LateralBuoy","CardinalBuoy","IsolatedDangerBuoy","SafeWaterBuoy","SpecialPurposeGeneralBuoy","EmergencyWreckMarkingBuoy","InstallationBuoy","MooringBuoy","LateralBeacon","CardinalBeacon","IsolatedDangerBeacon","SafeWaterBeacon","SpecialPurposeGeneralBeacon","Daymark","LightFloat","LightVessel","Retroreflector","RadarReflector","FogSignal","PhysicalAISAidToNavigation","VirtualAISAidToNavigation","RadioStation","RadarTransponderBeacon","PilotBoardingPlace","CoastGuardStation","SignalStationWarning","SignalStationTraffic","RescueStation","HarbourFacility","SmallCraftFacility","TextPlacement","Chart1Feature"],
+			Primitives.noGeometry => ["UpdateInformation","IslandGroup","Bridge","MooringTrot","RangeSystem","FairwaySystem","TwoWayRoute","DeepWaterRoute","TrafficSeparationScheme","ArchipelagicSeaLane"],
+			Primitives.pointSet => ["Sounding","DepthNoBottomFound","Chart1Feature"],
+			_ => throw new InvalidOperationException(),
+		};
+		public static Primitives[] FeaturePrimitives(string featureType) => featureType switch {
+			"QualityOfNonBathymetricData" => [Primitives.surface],
+			"DataCoverage" => [Primitives.surface],
+			"NavigationalSystemOfMarks" => [Primitives.surface],
+			"LocalDirectionOfBuoyage" => [Primitives.surface],
+			"QualityOfBathymetricData" => [Primitives.surface],
+			"SoundingDatum" => [Primitives.surface],
+			"VerticalDatumOfData" => [Primitives.surface],
+			"QualityOfSurvey" => [Primitives.curve,Primitives.surface],
+			"UpdateInformation" => [Primitives.point,Primitives.curve,Primitives.surface,Primitives.noGeometry],
+			"MagneticVariation" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"LocalMagneticAnomaly" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"Coastline" => [Primitives.curve],
+			"LandArea" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"IslandGroup" => [Primitives.surface,Primitives.noGeometry],
+			"LandElevation" => [Primitives.point,Primitives.curve],
+			"River" => [Primitives.curve,Primitives.surface],
+			"Rapids" => [Primitives.curve,Primitives.surface],
+			"Waterfall" => [Primitives.point,Primitives.curve],
+			"Lake" => [Primitives.surface],
+			"LandRegion" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"Vegetation" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"IceArea" => [Primitives.surface],
+			"SlopingGround" => [Primitives.point,Primitives.surface],
+			"SlopeTopline" => [Primitives.curve],
+			"Tideway" => [Primitives.curve,Primitives.surface],
+			"BuiltUpArea" => [Primitives.point,Primitives.surface],
+			"Building" => [Primitives.point,Primitives.surface],
+			"AirportAirfield" => [Primitives.point,Primitives.surface],
+			"Runway" => [Primitives.curve,Primitives.surface],
+			"Helipad" => [Primitives.point],
+			"Bridge" => [Primitives.curve,Primitives.surface,Primitives.noGeometry],
+			"SpanFixed" => [Primitives.curve,Primitives.surface],
+			"SpanOpening" => [Primitives.curve,Primitives.surface],
+			"Conveyor" => [Primitives.curve,Primitives.surface],
+			"CableOverhead" => [Primitives.curve],
+			"PipelineOverhead" => [Primitives.curve],
+			"PylonBridgeSupport" => [Primitives.point,Primitives.surface],
+			"FenceWall" => [Primitives.curve],
+			"Railway" => [Primitives.curve],
+			"Road" => [Primitives.curve,Primitives.surface],
+			"Tunnel" => [Primitives.curve,Primitives.surface],
+			"Landmark" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"SiloTank" => [Primitives.point,Primitives.surface],
+			"WindTurbine" => [Primitives.point],
+			"FortifiedStructure" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"ProductionStorageArea" => [Primitives.point,Primitives.surface],
+			"Checkpoint" => [Primitives.point,Primitives.surface],
+			"Hulk" => [Primitives.point,Primitives.surface],
+			"Pile" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"Dyke" => [Primitives.curve,Primitives.surface],
+			"ShorelineConstruction" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"StructureOverNavigableWater" => [Primitives.surface],
+			"Causeway" => [Primitives.curve,Primitives.surface],
+			"Canal" => [Primitives.curve,Primitives.surface],
+			"DistanceMark" => [Primitives.point],
+			"Gate" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"Dam" => [Primitives.curve,Primitives.surface],
+			"Crane" => [Primitives.point,Primitives.surface],
+			"Berth" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"Dolphin" => [Primitives.point,Primitives.surface],
+			"Bollard" => [Primitives.point],
+			"DryDock" => [Primitives.surface],
+			"FloatingDock" => [Primitives.curve,Primitives.surface],
+			"Pontoon" => [Primitives.curve,Primitives.surface],
+			"DockArea" => [Primitives.surface],
+			"Gridiron" => [Primitives.surface],
+			"LockBasin" => [Primitives.surface],
+			"MooringTrot" => [Primitives.surface,Primitives.noGeometry],
+			"SeaAreaNamedWaterArea" => [Primitives.point,Primitives.surface],
+			"TidalStreamFloodEbb" => [Primitives.point,Primitives.surface],
+			"CurrentNonGravitational" => [Primitives.point],
+			"WaterTurbulence" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"TidalStreamPanelData" => [Primitives.point,Primitives.surface],
+			"Sounding" => [Primitives.pointSet],
+			"DredgedArea" => [Primitives.surface],
+			"SweptArea" => [Primitives.surface],
+			"DepthContour" => [Primitives.curve],
+			"DepthArea" => [Primitives.surface],
+			"DepthNoBottomFound" => [Primitives.pointSet],
+			"UnsurveyedArea" => [Primitives.surface],
+			"SeabedArea" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"WeedKelp" => [Primitives.point,Primitives.surface],
+			"Seagrass" => [Primitives.point,Primitives.surface],
+			"Sandwave" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"Spring" => [Primitives.point],
+			"UnderwaterAwashRock" => [Primitives.point],
+			"Wreck" => [Primitives.point,Primitives.surface],
+			"Obstruction" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"FoulGround" => [Primitives.point,Primitives.surface],
+			"DiscolouredWater" => [Primitives.point,Primitives.surface],
+			"FishingFacility" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"MarineFarmCulture" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"OffshorePlatform" => [Primitives.point,Primitives.surface],
+			"CableSubmarine" => [Primitives.curve],
+			"CableArea" => [Primitives.surface],
+			"PipelineSubmarineOnLand" => [Primitives.curve],
+			"SubmarinePipelineArea" => [Primitives.point,Primitives.surface],
+			"OffshoreProductionArea" => [Primitives.surface],
+			"NavigationLine" => [Primitives.curve],
+			"RecommendedTrack" => [Primitives.curve],
+			"RangeSystem" => [Primitives.curve,Primitives.surface,Primitives.noGeometry],
+			"Fairway" => [Primitives.surface],
+			"FairwaySystem" => [Primitives.surface,Primitives.noGeometry],
+			"RecommendedRouteCentreline" => [Primitives.curve],
+			"TwoWayRoutePart" => [Primitives.surface],
+			"TwoWayRoute" => [Primitives.surface,Primitives.noGeometry],
+			"RecommendedTrafficLanePart" => [Primitives.point,Primitives.surface],
+			"DeepWaterRouteCentreline" => [Primitives.curve],
+			"DeepWaterRoutePart" => [Primitives.surface],
+			"DeepWaterRoute" => [Primitives.surface,Primitives.noGeometry],
+			"InshoreTrafficZone" => [Primitives.surface],
+			"PrecautionaryArea" => [Primitives.point,Primitives.surface],
+			"TrafficSeparationSchemeLanePart" => [Primitives.surface],
+			"SeparationZoneOrLine" => [Primitives.curve,Primitives.surface],
+			"TrafficSeparationSchemeBoundary" => [Primitives.curve],
+			"TrafficSeparationSchemeCrossing" => [Primitives.surface],
+			"TrafficSeparationSchemeRoundabout" => [Primitives.surface],
+			"TrafficSeparationScheme" => [Primitives.surface,Primitives.noGeometry],
+			"ArchipelagicSeaLaneArea" => [Primitives.surface],
+			"ArchipelagicSeaLaneAxis" => [Primitives.curve],
+			"ArchipelagicSeaLane" => [Primitives.surface,Primitives.noGeometry],
+			"RadioCallingInPoint" => [Primitives.point,Primitives.curve],
+			"FerryRoute" => [Primitives.curve,Primitives.surface],
+			"RadarLine" => [Primitives.curve],
+			"RadarRange" => [Primitives.surface],
+			"RadarStation" => [Primitives.point],
+			"AnchorageArea" => [Primitives.point,Primitives.surface],
+			"MooringArea" => [Primitives.point,Primitives.surface],
+			"AnchorBerth" => [Primitives.point,Primitives.surface],
+			"SeaplaneLandingArea" => [Primitives.point,Primitives.surface],
+			"DumpingGround" => [Primitives.point,Primitives.surface],
+			"MilitaryPracticeArea" => [Primitives.point,Primitives.surface],
+			"AdministrationArea" => [Primitives.curve,Primitives.surface],
+			"CargoTranshipmentArea" => [Primitives.point,Primitives.surface],
+			"CautionArea" => [Primitives.point,Primitives.surface],
+			"InformationArea" => [Primitives.point,Primitives.surface],
+			"ContiguousZone" => [Primitives.curve,Primitives.surface],
+			"ContinentalShelfArea" => [Primitives.curve,Primitives.surface],
+			"CustomZone" => [Primitives.surface],
+			"ExclusiveEconomicZone" => [Primitives.curve,Primitives.surface],
+			"FisheryZone" => [Primitives.surface],
+			"FishingGround" => [Primitives.surface],
+			"FreePortArea" => [Primitives.surface],
+			"HarbourAreaAdministrative" => [Primitives.surface],
+			"LogPond" => [Primitives.point,Primitives.surface],
+			"OilBarrier" => [Primitives.curve],
+			"StraightTerritorialSeaBaseline" => [Primitives.curve],
+			"TerritorialSeaArea" => [Primitives.curve,Primitives.surface],
+			"SubmarineTransitLane" => [Primitives.surface],
+			"PilotageDistrict" => [Primitives.surface],
+			"CollisionRegulationsLimit" => [Primitives.curve],
+			"MarinePollutionRegulationsArea" => [Primitives.surface],
+			"RestrictedArea" => [Primitives.surface],
+			"LightAllAround" => [Primitives.point],
+			"LightSectored" => [Primitives.point],
+			"LightFogDetector" => [Primitives.point],
+			"LightAirObstruction" => [Primitives.point],
+			"LateralBuoy" => [Primitives.point],
+			"CardinalBuoy" => [Primitives.point],
+			"IsolatedDangerBuoy" => [Primitives.point],
+			"SafeWaterBuoy" => [Primitives.point],
+			"SpecialPurposeGeneralBuoy" => [Primitives.point],
+			"EmergencyWreckMarkingBuoy" => [Primitives.point],
+			"InstallationBuoy" => [Primitives.point],
+			"MooringBuoy" => [Primitives.point],
+			"LateralBeacon" => [Primitives.point],
+			"CardinalBeacon" => [Primitives.point],
+			"IsolatedDangerBeacon" => [Primitives.point],
+			"SafeWaterBeacon" => [Primitives.point],
+			"SpecialPurposeGeneralBeacon" => [Primitives.point],
+			"Daymark" => [Primitives.point],
+			"LightFloat" => [Primitives.point],
+			"LightVessel" => [Primitives.point],
+			"Retroreflector" => [Primitives.point],
+			"RadarReflector" => [Primitives.point],
+			"FogSignal" => [Primitives.point],
+			"PhysicalAISAidToNavigation" => [Primitives.point],
+			"VirtualAISAidToNavigation" => [Primitives.point],
+			"RadioStation" => [Primitives.point],
+			"RadarTransponderBeacon" => [Primitives.point],
+			"PilotBoardingPlace" => [Primitives.point,Primitives.surface],
+			"VesselTrafficServiceArea" => [Primitives.surface],
+			"CoastGuardStation" => [Primitives.point,Primitives.surface],
+			"SignalStationWarning" => [Primitives.point,Primitives.surface],
+			"SignalStationTraffic" => [Primitives.point,Primitives.surface],
+			"RescueStation" => [Primitives.point,Primitives.surface],
+			"HarbourFacility" => [Primitives.point,Primitives.surface],
+			"SmallCraftFacility" => [Primitives.point,Primitives.surface],
+			"TextPlacement" => [Primitives.point],
+			"Chart1Feature" => [Primitives.point,Primitives.pointSet,Primitives.curve,Primitives.surface],
+			_ or "" => throw new InvalidOperationException(),
+		};
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -5849,6 +6050,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
+
+			public override Primitives[] primitives => QualityOfNonBathymetricData._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -5895,6 +6102,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DataCoverage._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5926,6 +6139,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => NavigationalSystemOfMarks._featureBindingDefinitions;
+
+			public override Primitives[] primitives => NavigationalSystemOfMarks._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -5970,6 +6189,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LocalDirectionOfBuoyage._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LocalDirectionOfBuoyage._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6035,6 +6260,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfBathymetricData._featureBindingDefinitions;
+
+			public override Primitives[] primitives => QualityOfBathymetricData._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6074,6 +6305,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SoundingDatum._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SoundingDatum._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6113,6 +6350,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => VerticalDatumOfData._featureBindingDefinitions;
+
+			public override Primitives[] primitives => VerticalDatumOfData._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6185,6 +6428,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfSurvey._featureBindingDefinitions;
+
+			public override Primitives[] primitives => QualityOfSurvey._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6233,6 +6482,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => UpdateInformation._featureBindingDefinitions;
+
+			public override Primitives[] primitives => UpdateInformation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface, Primitives.noGeometry
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6311,6 +6566,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => MagneticVariation._featureBindingDefinitions;
+
+			public override Primitives[] primitives => MagneticVariation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6362,6 +6623,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LocalMagneticAnomaly._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LocalMagneticAnomaly._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6433,6 +6700,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Coastline._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Coastline._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6496,6 +6769,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LandArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LandArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -6559,6 +6838,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => IslandGroup._featureBindingDefinitions;
+
+			public override Primitives[] primitives => IslandGroup._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface, Primitives.noGeometry
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6636,6 +6921,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LandElevation._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LandElevation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6694,6 +6985,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => River._featureBindingDefinitions;
+
+			public override Primitives[] primitives => River._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6751,6 +7048,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Rapids._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Rapids._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6811,6 +7114,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Waterfall._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Waterfall._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6871,6 +7180,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Lake._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Lake._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -6935,6 +7250,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LandRegion._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LandRegion._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7003,6 +7324,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Vegetation._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Vegetation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7078,6 +7405,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => IceArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => IceArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7147,6 +7480,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SlopingGround._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SlopingGround._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7218,6 +7557,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SlopeTopline._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SlopeTopline._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7273,6 +7618,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Tideway._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Tideway._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7347,6 +7698,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => BuiltUpArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => BuiltUpArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7442,6 +7799,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Building._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Building._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7534,6 +7897,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => AirportAirfield._featureBindingDefinitions;
+
+			public override Primitives[] primitives => AirportAirfield._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7602,6 +7971,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Runway._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Runway._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7670,6 +8045,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Helipad._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Helipad._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -7772,6 +8153,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Bridge._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Bridge._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface, Primitives.noGeometry
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -7861,6 +8248,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SpanFixed._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SpanFixed._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -7953,6 +8346,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SpanOpening._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SpanOpening._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -8074,6 +8473,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Conveyor._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Conveyor._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -8174,6 +8579,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CableOverhead._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CableOverhead._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -8265,6 +8676,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => PipelineOverhead._featureBindingDefinitions;
+
+			public override Primitives[] primitives => PipelineOverhead._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -8375,6 +8792,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => PylonBridgeSupport._featureBindingDefinitions;
+
+			public override Primitives[] primitives => PylonBridgeSupport._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -8493,6 +8916,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FenceWall._featureBindingDefinitions;
+
+			public override Primitives[] primitives => FenceWall._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -8558,6 +8987,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Railway._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Railway._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -8627,6 +9062,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Road._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Road._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -8699,6 +9140,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Tunnel._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Tunnel._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -8798,6 +9245,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Landmark._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Landmark._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -8928,6 +9381,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SiloTank._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SiloTank._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -9051,6 +9510,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => WindTurbine._featureBindingDefinitions;
+
+			public override Primitives[] primitives => WindTurbine._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -9149,6 +9614,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FortifiedStructure._featureBindingDefinitions;
+
+			public override Primitives[] primitives => FortifiedStructure._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -9258,6 +9729,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ProductionStorageArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => ProductionStorageArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -9319,6 +9796,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Checkpoint._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Checkpoint._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -9405,6 +9888,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Hulk._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Hulk._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -9506,6 +9995,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Pile._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Pile._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -9612,6 +10107,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Dyke._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Dyke._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -9707,6 +10208,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ShorelineConstruction._featureBindingDefinitions;
+
+			public override Primitives[] primitives => ShorelineConstruction._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -9829,6 +10336,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => StructureOverNavigableWater._featureBindingDefinitions;
+
+			public override Primitives[] primitives => StructureOverNavigableWater._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -9922,6 +10435,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Causeway._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Causeway._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -9994,6 +10513,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Canal._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Canal._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -10057,6 +10582,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DistanceMark._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DistanceMark._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -10146,6 +10677,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Gate._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Gate._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -10233,6 +10770,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Dam._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Dam._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -10327,6 +10870,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Crane._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Crane._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -10421,6 +10970,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Berth._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Berth._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -10521,6 +11076,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Dolphin._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Dolphin._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -10614,6 +11175,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Bollard._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Bollard._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -10704,6 +11271,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DryDock._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DryDock._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -10796,6 +11369,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FloatingDock._featureBindingDefinitions;
+
+			public override Primitives[] primitives => FloatingDock._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -10886,6 +11465,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Pontoon._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Pontoon._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -10986,6 +11571,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DockArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DockArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11056,6 +11647,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Gridiron._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Gridiron._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11124,6 +11721,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LockBasin._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LockBasin._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11181,6 +11784,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => MooringTrot._featureBindingDefinitions;
+
+			public override Primitives[] primitives => MooringTrot._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface, Primitives.noGeometry
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11247,6 +11856,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SeaAreaNamedWaterArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SeaAreaNamedWaterArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11314,6 +11929,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TidalStreamFloodEbb._featureBindingDefinitions;
+
+			public override Primitives[] primitives => TidalStreamFloodEbb._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11382,6 +12003,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CurrentNonGravitational._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CurrentNonGravitational._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11441,6 +12068,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => WaterTurbulence._featureBindingDefinitions;
+
+			public override Primitives[] primitives => WaterTurbulence._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11502,6 +12135,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TidalStreamPanelData._featureBindingDefinitions;
+
+			public override Primitives[] primitives => TidalStreamPanelData._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11568,6 +12207,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Sounding._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Sounding._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.pointSet
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11643,6 +12288,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DredgedArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DredgedArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -11709,6 +12360,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SweptArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SweptArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -11773,6 +12430,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DepthContour._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DepthContour._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11822,6 +12485,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DepthArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DepthArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11870,6 +12539,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DepthNoBottomFound._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DepthNoBottomFound._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.pointSet
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11913,6 +12588,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => UnsurveyedArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => UnsurveyedArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -11965,6 +12646,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SeabedArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SeabedArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12023,6 +12710,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => WeedKelp._featureBindingDefinitions;
+
+			public override Primitives[] primitives => WeedKelp._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12078,6 +12771,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Seagrass._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Seagrass._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12133,6 +12832,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Sandwave._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Sandwave._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12180,6 +12885,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Spring._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Spring._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12264,6 +12975,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => UnderwaterAwashRock._featureBindingDefinitions;
+
+			public override Primitives[] primitives => UnderwaterAwashRock._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12356,6 +13073,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Wreck._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Wreck._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12462,6 +13185,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Obstruction._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Obstruction._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -12540,6 +13269,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FoulGround._featureBindingDefinitions;
+
+			public override Primitives[] primitives => FoulGround._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12595,6 +13330,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DiscolouredWater._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DiscolouredWater._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12657,6 +13398,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FishingFacility._featureBindingDefinitions;
+
+			public override Primitives[] primitives => FishingFacility._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12761,6 +13508,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => MarineFarmCulture._featureBindingDefinitions;
+
+			public override Primitives[] primitives => MarineFarmCulture._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12851,6 +13604,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => OffshorePlatform._featureBindingDefinitions;
+
+			public override Primitives[] primitives => OffshorePlatform._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -12935,6 +13694,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CableSubmarine._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CableSubmarine._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -13011,6 +13776,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CableArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CableArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -13095,6 +13866,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => PipelineSubmarineOnLand._featureBindingDefinitions;
+
+			public override Primitives[] primitives => PipelineSubmarineOnLand._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -13166,6 +13943,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SubmarinePipelineArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SubmarinePipelineArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -13254,6 +14037,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => OffshoreProductionArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => OffshoreProductionArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -13323,6 +14112,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => NavigationLine._featureBindingDefinitions;
+
+			public override Primitives[] primitives => NavigationLine._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -13407,6 +14202,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RecommendedTrack._featureBindingDefinitions;
+
+			public override Primitives[] primitives => RecommendedTrack._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -13482,6 +14283,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RangeSystem._featureBindingDefinitions;
+
+			public override Primitives[] primitives => RangeSystem._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface, Primitives.noGeometry
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -13585,6 +14392,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Fairway._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Fairway._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -13662,6 +14475,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FairwaySystem._featureBindingDefinitions;
+
+			public override Primitives[] primitives => FairwaySystem._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface, Primitives.noGeometry
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -13758,6 +14577,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RecommendedRouteCentreline._featureBindingDefinitions;
+
+			public override Primitives[] primitives => RecommendedRouteCentreline._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -13851,6 +14676,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TwoWayRoutePart._featureBindingDefinitions;
+
+			public override Primitives[] primitives => TwoWayRoutePart._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -13918,6 +14749,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TwoWayRoute._featureBindingDefinitions;
+
+			public override Primitives[] primitives => TwoWayRoute._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface, Primitives.noGeometry
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -14003,6 +14840,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RecommendedTrafficLanePart._featureBindingDefinitions;
+
+			public override Primitives[] primitives => RecommendedTrafficLanePart._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -14077,6 +14920,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRouteCentreline._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DeepWaterRouteCentreline._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -14178,6 +15027,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoutePart._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DeepWaterRoutePart._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -14253,6 +15108,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoute._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DeepWaterRoute._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface, Primitives.noGeometry
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -14340,6 +15201,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => InshoreTrafficZone._featureBindingDefinitions;
+
+			public override Primitives[] primitives => InshoreTrafficZone._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -14407,6 +15274,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => PrecautionaryArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => PrecautionaryArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -14480,6 +15353,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeLanePart._featureBindingDefinitions;
+
+			public override Primitives[] primitives => TrafficSeparationSchemeLanePart._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -14538,6 +15417,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SeparationZoneOrLine._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SeparationZoneOrLine._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -14596,6 +15481,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeBoundary._featureBindingDefinitions;
+
+			public override Primitives[] primitives => TrafficSeparationSchemeBoundary._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -14659,6 +15550,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeCrossing._featureBindingDefinitions;
+
+			public override Primitives[] primitives => TrafficSeparationSchemeCrossing._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -14722,6 +15619,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeRoundabout._featureBindingDefinitions;
+
+			public override Primitives[] primitives => TrafficSeparationSchemeRoundabout._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -14783,6 +15686,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationScheme._featureBindingDefinitions;
+
+			public override Primitives[] primitives => TrafficSeparationScheme._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface, Primitives.noGeometry
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -14874,6 +15783,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => ArchipelagicSeaLaneArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -14941,6 +15856,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneAxis._featureBindingDefinitions;
+
+			public override Primitives[] primitives => ArchipelagicSeaLaneAxis._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -15008,6 +15929,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLane._featureBindingDefinitions;
+
+			public override Primitives[] primitives => ArchipelagicSeaLane._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface, Primitives.noGeometry
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15102,6 +16029,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RadioCallingInPoint._featureBindingDefinitions;
+
+			public override Primitives[] primitives => RadioCallingInPoint._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15167,6 +16100,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FerryRoute._featureBindingDefinitions;
+
+			public override Primitives[] primitives => FerryRoute._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15228,6 +16167,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RadarLine._featureBindingDefinitions;
+
+			public override Primitives[] primitives => RadarLine._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15290,6 +16235,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RadarRange._featureBindingDefinitions;
+
+			public override Primitives[] primitives => RadarRange._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15361,6 +16312,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RadarStation._featureBindingDefinitions;
+
+			public override Primitives[] primitives => RadarStation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15434,6 +16391,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => AnchorageArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => AnchorageArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15508,6 +16471,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => MooringArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => MooringArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15578,6 +16547,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => AnchorBerth._featureBindingDefinitions;
+
+			public override Primitives[] primitives => AnchorBerth._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15643,6 +16618,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SeaplaneLandingArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SeaplaneLandingArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15711,6 +16692,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DumpingGround._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DumpingGround._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15783,6 +16770,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => MilitaryPracticeArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => MilitaryPracticeArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15848,6 +16841,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => AdministrationArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => AdministrationArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15915,6 +16914,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CargoTranshipmentArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CargoTranshipmentArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -15982,6 +16987,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CautionArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CautionArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16053,6 +17064,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => InformationArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => InformationArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16112,6 +17129,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ContiguousZone._featureBindingDefinitions;
+
+			public override Primitives[] primitives => ContiguousZone._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16161,6 +17184,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ContinentalShelfArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => ContinentalShelfArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16216,6 +17245,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CustomZone._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CustomZone._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16265,6 +17300,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ExclusiveEconomicZone._featureBindingDefinitions;
+
+			public override Primitives[] primitives => ExclusiveEconomicZone._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16317,6 +17358,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FisheryZone._featureBindingDefinitions;
+
+			public override Primitives[] primitives => FisheryZone._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16382,6 +17429,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FishingGround._featureBindingDefinitions;
+
+			public override Primitives[] primitives => FishingGround._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16440,6 +17493,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FreePortArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => FreePortArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16498,6 +17557,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => HarbourAreaAdministrative._featureBindingDefinitions;
+
+			public override Primitives[] primitives => HarbourAreaAdministrative._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16558,6 +17623,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LogPond._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LogPond._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16626,6 +17697,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => OilBarrier._featureBindingDefinitions;
+
+			public override Primitives[] primitives => OilBarrier._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16681,6 +17758,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => StraightTerritorialSeaBaseline._featureBindingDefinitions;
+
+			public override Primitives[] primitives => StraightTerritorialSeaBaseline._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16735,6 +17818,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TerritorialSeaArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => TerritorialSeaArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16789,6 +17878,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SubmarineTransitLane._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SubmarineTransitLane._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16846,6 +17941,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => PilotageDistrict._featureBindingDefinitions;
+
+			public override Primitives[] primitives => PilotageDistrict._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16915,6 +18016,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CollisionRegulationsLimit._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CollisionRegulationsLimit._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -16972,6 +18079,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => MarinePollutionRegulationsArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => MarinePollutionRegulationsArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -17042,6 +18155,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RestrictedArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => RestrictedArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -17156,6 +18275,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LightAllAround._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LightAllAround._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -17263,6 +18388,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LightSectored._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LightSectored._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -17366,6 +18497,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LightFogDetector._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LightFogDetector._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -17458,6 +18595,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LightAirObstruction._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LightAirObstruction._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -17556,6 +18699,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LateralBuoy._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LateralBuoy._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -17670,6 +18819,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CardinalBuoy._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CardinalBuoy._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -17780,6 +18935,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBuoy._featureBindingDefinitions;
+
+			public override Primitives[] primitives => IsolatedDangerBuoy._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -17890,6 +19051,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBuoy._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SafeWaterBuoy._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -18003,6 +19170,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBuoy._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SpecialPurposeGeneralBuoy._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -18108,6 +19281,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => EmergencyWreckMarkingBuoy._featureBindingDefinitions;
+
+			public override Primitives[] primitives => EmergencyWreckMarkingBuoy._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -18212,6 +19391,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => InstallationBuoy._featureBindingDefinitions;
+
+			public override Primitives[] primitives => InstallationBuoy._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -18305,6 +19490,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => MooringBuoy._featureBindingDefinitions;
+
+			public override Primitives[] primitives => MooringBuoy._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -18431,6 +19622,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LateralBeacon._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LateralBeacon._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -18565,6 +19762,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CardinalBeacon._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CardinalBeacon._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -18695,6 +19898,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBeacon._featureBindingDefinitions;
+
+			public override Primitives[] primitives => IsolatedDangerBeacon._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -18825,6 +20034,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBeacon._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SafeWaterBeacon._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -18958,6 +20173,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBeacon._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SpecialPurposeGeneralBeacon._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -19080,6 +20301,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Daymark._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Daymark._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -19206,6 +20433,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LightFloat._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LightFloat._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -19314,6 +20547,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LightVessel._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LightVessel._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -19406,6 +20645,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Retroreflector._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Retroreflector._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -19468,6 +20713,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RadarReflector._featureBindingDefinitions;
+
+			public override Primitives[] primitives => RadarReflector._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -19547,6 +20798,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FogSignal._featureBindingDefinitions;
+
+			public override Primitives[] primitives => FogSignal._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -19621,6 +20878,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => PhysicalAISAidToNavigation._featureBindingDefinitions;
+
+			public override Primitives[] primitives => PhysicalAISAidToNavigation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -19699,6 +20962,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => VirtualAISAidToNavigation._featureBindingDefinitions;
+
+			public override Primitives[] primitives => VirtualAISAidToNavigation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -19772,6 +21041,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RadioStation._featureBindingDefinitions;
+
+			public override Primitives[] primitives => RadioStation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -19848,6 +21123,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RadarTransponderBeacon._featureBindingDefinitions;
+
+			public override Primitives[] primitives => RadarTransponderBeacon._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -19939,6 +21220,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => PilotBoardingPlace._featureBindingDefinitions;
+
+			public override Primitives[] primitives => PilotBoardingPlace._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
@@ -20002,6 +21289,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => VesselTrafficServiceArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => VesselTrafficServiceArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -20068,6 +21361,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CoastGuardStation._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CoastGuardStation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -20135,6 +21434,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SignalStationWarning._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SignalStationWarning._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -20210,6 +21515,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SignalStationTraffic._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SignalStationTraffic._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -20285,6 +21596,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RescueStation._featureBindingDefinitions;
+
+			public override Primitives[] primitives => RescueStation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -20370,6 +21687,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => HarbourFacility._featureBindingDefinitions;
+
+			public override Primitives[] primitives => HarbourFacility._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -20435,6 +21758,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SmallCraftFacility._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SmallCraftFacility._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -20487,6 +21816,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
+
+			public override Primitives[] primitives => TextPlacement._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
@@ -20522,6 +21857,12 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Chart1Feature._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Chart1Feature._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.pointSet, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
