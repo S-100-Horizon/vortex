@@ -127,7 +127,8 @@ namespace S100Framework.Applications
                     FilterGeometry = shape,
                     SpatialRelationship = SpatialRelationship.Relation,
                     SpatialRelationshipDescription = "T*****FF*",
-                    WhereClause = "upper(ps) = 'S-101'",
+                    //WhereClause = "upper(ps) = 'S-101'",
+                    WhereClause = "upper(ps) = 'S-101' and upper(code) IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA')",
                 };
 
 
@@ -697,7 +698,7 @@ namespace ArcGIS.Core.Data
             using (var surface = geodatabase.OpenDataset<FeatureClass>("surface")) {
                 if (queryFilter is null) {
                     queryFilter = new QueryFilter {
-                        WhereClause = "upper(ps) = 'S-101'",
+                        WhereClause = "upper(ps) = 'S-101' and upper(code) IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA')",
                     };
                 }
 
@@ -744,7 +745,7 @@ namespace ArcGIS.Core.Data
             var equalsList = new List<string>();
             var equalsDictionary = new Dictionary<string, ICollection<int>>();
 
-            foreach (var input in polylines) {
+            foreach (var input in polylines/*.Where(e=>e.ObjectId== 42344)*/) {
                 count -= 1;
                 if (count % 100 == 0)
                     Log.Verbose("#{count}", count);
@@ -787,6 +788,15 @@ namespace ArcGIS.Core.Data
                     }
 
                     var overlaps = analyze.Where(e => ring.Overlaps(e.LineString)).Select(e => e.LineString).ToArray();
+
+
+                    //using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@".\..\..\..\..\..\artifacts\s100ed6.gdb")}")))) {
+                    //    var t = overlaps.Select(e => new CurveFeature(e)).ToList();
+                    //    target.PersistTopology(t);
+                    //    return null;
+                    //}
+
+
                     if (!overlaps.Any()) {
                         var curve = new CurveFeature(ring);
                         curves.AddCurve(curve);
@@ -827,24 +837,29 @@ namespace ArcGIS.Core.Data
                             }
                         }
 
-                        var difference = input.LineString.Difference(intersection);
+                        //using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@".\..\..\..\..\..\artifacts\s100ed6.gdb")}")))) {
+                        //    target.PersistTopology(curves);
+                        //    return null;
+                        //}
 
-                        if (difference is MultiLineString multiLineStringDifference) {
-                            foreach (LineString lineString in multiLineStringDifference.Geometries) {
-                                if (!lineString.IsEmpty) {
-                                    var curve = new CurveFeature(lineString);
-                                    curves.AddCurve(curve);
-                                    local[ringString].Add(curve.HashCode);
-                                }
-                            }
-                        }
-                        else if (difference is LineString lineStringDifference) {
-                            if (!lineStringDifference.IsEmpty) {
-                                var curve = new CurveFeature(lineStringDifference);
-                                curves.AddCurve(curve);
-                                local[ringString].Add(curve.HashCode);
-                            }
-                        }
+                        //var difference = input.LineString.Difference(intersection);
+
+                        //if (difference is MultiLineString multiLineStringDifference) {
+                        //    foreach (LineString lineString in multiLineStringDifference.Geometries) {
+                        //        if (!lineString.IsEmpty) {
+                        //            var curve = new CurveFeature(lineString);
+                        //            curves.AddCurve(curve);
+                        //            local[ringString].Add(curve.HashCode);
+                        //        }
+                        //    }
+                        //}
+                        //else if (difference is LineString lineStringDifference) {
+                        //    if (!lineStringDifference.IsEmpty) {
+                        //        var curve = new CurveFeature(lineStringDifference);
+                        //        curves.AddCurve(curve);
+                        //        local[ringString].Add(curve.HashCode);
+                        //    }
+                        //}
                     }
                     catch (NetTopologySuite.Geometries.TopologyException ex) {
                         Log.Logger.Error(ex, "no intersections: {ObjectId}", input.ObjectId);
@@ -934,6 +949,9 @@ namespace ArcGIS.Core.Data
                 Surfaces = surfaces,
             };
         }
+
+
+
 
     }
 }
