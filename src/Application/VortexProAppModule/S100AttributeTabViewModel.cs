@@ -45,7 +45,7 @@ namespace VortexProAppModule
         {
             public Func<Inspector, string, Type> TypeSelector { get; set; }
 
-            public Func<FeatureCatalogue, IEnumerable<string>> Types { get; set; }
+            public Func<FeatureCatalogue, Primitives?, IEnumerable<string>> Types { get; set; }
 
             public Func<string, string, string, string?, S100Framework.WPF.ViewModel.ViewModelBase> CreateViewModel { get; set; }
         }
@@ -63,7 +63,7 @@ namespace VortexProAppModule
 
         private InspectorHandle _inspectorHandleInformationAssociation => new() {
             TypeSelector = this.InformationAssociationTypeSelector,
-            Types = (e) => e.InformationAssociationTypes.Select(e => e.Code),
+            Types = (fc, p) => fc.InformationAssociationTypes.Select(e => e.Code),
             CreateViewModel = (schema, code, type, pid) => {
                 return S100Framework.WPF.Helper.CreateInformationAssociationViewModel(schema, code, pid);
             },
@@ -71,7 +71,7 @@ namespace VortexProAppModule
 
         private InspectorHandle _inspectorHandleFeatureAssociation => new() {
             TypeSelector = this.FeatureAssociationTypeSelector,
-            Types = (e) => e.FeatureAssociationTypes.Select(e => e.Code),
+            Types = (fc, p) => fc.FeatureAssociationTypes.Select(e => e.Code),
             CreateViewModel = (schema, code, type, pid) => {
                 return S100Framework.WPF.Helper.CreateFeatureAssociationViewModel(schema, code, pid);
             },
@@ -79,7 +79,7 @@ namespace VortexProAppModule
 
         private InspectorHandle _inspectorHandleInformation => new() {
             TypeSelector = this.InformationTypeSelector,
-            Types = (e) => e.InformationTypes.Select(e => e.Code),
+            Types = (fc, p) => fc.InformationTypes.Select(e => e.Code),
             CreateViewModel = (schema, code, type, pid) => {
                 return S100Framework.WPF.Helper.CreateInformationTypeViewModel(schema, type, pid);
             },
@@ -87,7 +87,7 @@ namespace VortexProAppModule
 
         private InspectorHandle _inspectorHandleFeature => new() {
             TypeSelector = this.FeatureTypeSelector,
-            Types = (e) => e.FeatureTypes.Select(e => e.Code),
+            Types = (fc, p) => fc.FeatureTypesByPrimivive(p.Value).Select(e => e.Code),
             CreateViewModel = (schema, code, type, pid) => {
                 return S100Framework.WPF.Helper.CreateFeatureTypeViewModel(schema, type, pid);
             },
@@ -161,7 +161,9 @@ namespace VortexProAppModule
             Host = new S100AttributeEditorControlHost {
                 QueryAssociation = async (QueryAssociationsEventArgs e) => {
                     return await QueuedTask.Run(() => {
-                        using var fc = Inspector.MapMember switch {
+                        var inspector = base.Inspector;
+
+                        using var fc = inspector.MapMember switch {
                             FeatureLayer l => l.GetFeatureClass(),
                             StandaloneTable t => t.GetTable(),
                             _ => throw new InvalidOperationException(),
@@ -181,7 +183,7 @@ namespace VortexProAppModule
                         using var association = geodatabase.OpenDataset<Table>(associationName);
 
                         var q = new QueryFilter {
-                            WhereClause = $"ps = '{Inspector["ps"]}' AND code = '{e.association}'",
+                            WhereClause = $"ps = '{inspector["ps"]}' AND code = '{e.association}'",
                         };
 
                         var ids = new List<AssociationId>();
@@ -202,6 +204,8 @@ namespace VortexProAppModule
                         return Enumerable.Empty<InformationTypeId>();
 
                     return await QueuedTask.Run(() => {
+                        var inspector = base.Inspector;
+
                         var ids = new List<InformationTypeId>();
 
                         var mapView = MapView.Active?.Map;
@@ -218,7 +222,7 @@ namespace VortexProAppModule
 
                                     var ps = Convert.ToString(local["ps"]);
                                     var code = Convert.ToString(local["code"]);
-                                    if (string.Compare(Convert.ToString(Inspector["ps"]), ps, true) != 0)
+                                    if (string.Compare(Convert.ToString(inspector["ps"]), ps, true) != 0)
                                         continue;
                                     if (string.IsNullOrEmpty(code))
                                         continue;
@@ -236,14 +240,14 @@ namespace VortexProAppModule
 
                         var values = informationtypes.Select(i => $"'{i}'");
                         var q = new QueryFilter {
-                            WhereClause = $"ps = '{Inspector["ps"]}' AND code IN ({string.Join(',', values)})",
+                            WhereClause = $"ps = '{inspector["ps"]}' AND code IN ({string.Join(',', values)})",
                             //PrefixClause = "TOP 10" ONLY MSSQL
                         };
 
                         foreach (var primitive in new string[] { "informationtype" }) {
                             int top = 5;
 
-                            using var r = Inspector.OpenDataset<Table>(primitive);
+                            using var r = inspector.OpenDataset<Table>(primitive);
 
                             using var cursor = r.Search(q, true);
                             while (cursor.MoveNext() && top > 0) {
@@ -264,6 +268,8 @@ namespace VortexProAppModule
                         return Enumerable.Empty<FeatureTypeId>();
 
                     return await QueuedTask.Run(() => {
+                        var inspector = base.Inspector;
+
                         var ids = new List<FeatureTypeId>();
 
                         var mapView = MapView.Active?.Map;
@@ -280,7 +286,7 @@ namespace VortexProAppModule
 
                                     var ps = Convert.ToString(local["ps"]);
                                     var code = Convert.ToString(local["code"]);
-                                    if (string.Compare(Convert.ToString(Inspector["ps"]), ps, true) != 0)
+                                    if (string.Compare(Convert.ToString(inspector["ps"]), ps, true) != 0)
                                         continue;
                                     if (string.IsNullOrEmpty(code))
                                         continue;
@@ -298,14 +304,14 @@ namespace VortexProAppModule
 
                         var values = features.Select(i => $"'{i}'");
                         var q = new QueryFilter {
-                            WhereClause = $"ps = '{Inspector["ps"]}' AND code IN ({string.Join(',', values)})",
+                            WhereClause = $"ps = '{inspector["ps"]}' AND code IN ({string.Join(',', values)})",
                             //PrefixClause = "TOP 10" ONLY MSSQL
                         };
 
                         foreach (var primitive in new string[] { "point", "pointset", "curve", "surface" }) {
                             int top = 5;
 
-                            using var f = Inspector.OpenDataset<FeatureClass>(primitive);
+                            using var f = inspector.OpenDataset<FeatureClass>(primitive);
 
                             using var cursor = f.Search(q, true);
                             while (cursor.MoveNext() && top > 0) {
@@ -321,15 +327,17 @@ namespace VortexProAppModule
 
                 CreateInformationBinding = async (CreateInformationBindingEventArgs e) => {
                     return await QueuedTask.Run(async () => {
+                        var inspector = base.Inspector;
+
                         var editOperation = new EditOperation {
                             Name = S100AttributesUpdate,
                         };
 
-                        using var table = Inspector.OpenDataset<Table>("associationbinding");
+                        using var table = inspector.OpenDataset<Table>("associationbinding");
 
                         var token = editOperation.Create(table, new Dictionary<string, object> {
                             { "type", "InformationBinding" },
-                            { "ps", Inspector["ps"] },
+                            { "ps", inspector["ps"] },
                             { "roleType", Enum.GetName<roleType>(e.roleType.Value) },
                             { "association", e.association },
                             { "role", e.role },
@@ -341,7 +349,7 @@ namespace VortexProAppModule
                                 return token.GlobalID;
                             }
                             else if (System.Diagnostics.Debugger.IsAttached)
-                                System.Diagnostics.Debugger.Break();                            
+                                System.Diagnostics.Debugger.Break();
                         }
                         return null;
                     }, TaskCreationOptions.None);
@@ -349,11 +357,13 @@ namespace VortexProAppModule
 
                 DeleteInformationBinding = async (DeleteInformationBindingEventArgs e) => {
                     return await QueuedTask.Run(() => {
+                        var inspector = base.Inspector;
+
                         var editOperation = new EditOperation {
                             Name = S100AttributesUpdate,
                         };
 
-                        using var table = Inspector.OpenDataset<Table>("associationbinding");
+                        using var table = inspector.OpenDataset<Table>("associationbinding");
 
                         using var cursor = table.Search(new QueryFilter {
                             WhereClause = $"GLOBALID = '{e.Uuid:B}'"
@@ -372,20 +382,22 @@ namespace VortexProAppModule
                                 System.Diagnostics.Debugger.Break();
                         }
                         return false;
-                    }, TaskCreationOptions.None);                    
+                    }, TaskCreationOptions.None);
                 },
 
                 CreateFeatureBinding = async (CreateFeatureBindingEventArgs e) => {
                     return await QueuedTask.Run(async () => {
+                        var inspector = base.Inspector;
+
                         var editOperation = new EditOperation {
                             Name = S100AttributesUpdate,
                         };
-                        
-                        using var table = Inspector.OpenDataset<Table>("associationbinding");
+
+                        using var table = inspector.OpenDataset<Table>("associationbinding");
 
                         var token = editOperation.Create(table, new Dictionary<string, object> {
                             { "type", "FeatureBinding" },
-                            { "ps", Inspector["ps"] },
+                            { "ps", inspector["ps"] },
                             { "roleType", Enum.GetName<roleType>(e.roleType.Value) },
                             { "association", e.association },
                             { "role", e.role },
@@ -405,11 +417,13 @@ namespace VortexProAppModule
 
                 DeleteFeatureBinding = async (DeleteFeatureBindingEventArgs e) => {
                     return await QueuedTask.Run(() => {
+                        var inspector = base.Inspector;
+
                         var editOperation = new EditOperation {
                             Name = S100AttributesUpdate,
-                        };                        
+                        };
 
-                        using var table = Inspector.OpenDataset<Table>("associationbinding");
+                        using var table = inspector.OpenDataset<Table>("associationbinding");
 
                         using var cursor = table.Search(new QueryFilter {
                             WhereClause = $"GLOBALID = '{e.Uuid:B}'"
@@ -440,6 +454,8 @@ namespace VortexProAppModule
         }
 
         protected override void NotifyPropertyChanged([CallerMemberName] string name = "") {
+            var inspector = base.Inspector;
+
             base.NotifyPropertyChanged(name);
 
             switch (name) {
@@ -453,7 +469,26 @@ namespace VortexProAppModule
                             if (!string.IsNullOrEmpty(schema)) {
                                 var featureCatalogue = _module.GetFeatureCatalogue(schema);
 
-                                var types = _inspectorHandle.Types(featureCatalogue);
+                                IEnumerable<string> types;
+                                if (inspector.HasGeometry) {
+                                    var geometryType = inspector.MapMember switch {
+                                        FeatureLayer l => l.ShapeType             ,
+                                        _ => throw new InvalidOperationException(),
+                                    };
+
+                                    var primitive = geometryType switch {
+                                        ArcGIS.Core.CIM.esriGeometryType.esriGeometryPolygon => Primitives.surface,
+                                        ArcGIS.Core.CIM.esriGeometryType.esriGeometryPolyline => Primitives.curve,
+                                        ArcGIS.Core.CIM.esriGeometryType.esriGeometryPoint => Primitives.point,
+                                        ArcGIS.Core.CIM.esriGeometryType.esriGeometryMultipoint => Primitives.pointSet,
+                                        _ => throw new InvalidOperationException(),
+                                    };                           
+
+                                    types = _inspectorHandle.Types(featureCatalogue, primitive);
+                                }
+                                else {
+                                    types = _inspectorHandle.Types(featureCatalogue, default);
+                                }
 
                                 System.Windows.Application.Current.Dispatcher.Invoke(() => {
                                     ModelTypes.Clear();
@@ -498,6 +533,9 @@ namespace VortexProAppModule
             var inspector = base.Inspector;
 
             var model = base.Model;
+            
+            if (!inspector.HasAttributes)
+                return;
 
             try {
                 var uuid = Convert.ToString(inspector["GlobalID"]).ToUpperInvariant();
@@ -810,7 +848,7 @@ namespace VortexProAppModule
                 SelectedModelType = ModelTypes.Single(e => e.Code == code);
             }
 
-            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "Associations.FeatureAssociations")}.{code}", true);
+            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "FeatureAssociations")}.{code}", true);
 
             return type;
         }
@@ -864,7 +902,7 @@ namespace VortexProAppModule
                 SelectedModelType = ModelTypes.Single(e => e.Code == code);
             }
 
-            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "Associations.InfromationAssociations")}.{code}", true);
+            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "InfromationAssociations")}.{code}", true);
 
             return type;
 

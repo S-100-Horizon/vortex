@@ -17,6 +17,13 @@ namespace S100Framework.DomainModel.S122 {
 		public static string[] FeatureAssociationTypes => [];
 		public static string[] InformationTypes => ["InformationType","AbstractRxN","NauticalInformation","Regulations","Restrictions","Recommendations","Authority","ContactDetails","NonStandardWorkingDay","ServiceHours","Applicability"];
 		public static string[] FeatureTypes => ["FeatureType","RestrictedArea","MarineProtectedArea","VesselTrafficServiceArea","DataCoverage","TextPlacement"];
+		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
+			Primitives.noGeometry => ["FeatureType"],
+			Primitives.surface => ["RestrictedArea","MarineProtectedArea","VesselTrafficServiceArea","DataCoverage"],
+			Primitives.curve => ["MarineProtectedArea"],
+			Primitives.point => ["TextPlacement"],
+			_ => throw new InvalidOperationException(),
+		};
 		public static Primitives[] FeaturePrimitives(string featureType) => featureType switch {
 			"FeatureType" => [Primitives.noGeometry],
 			"RestrictedArea" => [Primitives.surface],

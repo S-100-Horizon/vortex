@@ -17,6 +17,13 @@ namespace S100Framework.DomainModel.S124 {
 		public static string[] FeatureAssociationTypes => ["AreaAffected","TextAssociation"];
 		public static string[] InformationTypes => ["NAVWARNPreamble","References"];
 		public static string[] FeatureTypes => ["NAVWARNPart","NAVWARNAreaAffected","TextPlacement"];
+		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
+			Primitives.noGeometry => ["NAVWARNPart"],
+			Primitives.point => ["NAVWARNPart","NAVWARNAreaAffected","TextPlacement"],
+			Primitives.curve => ["NAVWARNPart","NAVWARNAreaAffected"],
+			Primitives.surface => ["NAVWARNPart","NAVWARNAreaAffected"],
+			_ => throw new InvalidOperationException(),
+		};
 		public static Primitives[] FeaturePrimitives(string featureType) => featureType switch {
 			"NAVWARNPart" => [Primitives.noGeometry,Primitives.point,Primitives.curve,Primitives.surface],
 			"NAVWARNAreaAffected" => [Primitives.point,Primitives.curve,Primitives.surface],
