@@ -3,6 +3,7 @@ using System.Collections;
 using System.Globalization;
 using System.Reflection;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
@@ -13,12 +14,39 @@ namespace S100Framework.YAML
     public static class Converter
     {
         public static string Serialize(object dataset) => Serializer.Serialize(dataset);
+        public static bool IsDefault(object? node) {
+            if (node is not Node) return true;
 
+            //var type = node.GetType();
+            //var properties = type.GetProperties();
+
+            //foreach (var property in properties) {
+            //    if (property.GetCustomAttribute<JsonIgnoreAttribute>(true) != null)   // Include JsonIgnore to YAML serialization
+            //        continue;
+
+            //    if ((property.GetGetMethod(true)?.IsStatic ?? property.GetSetMethod(true)?.IsStatic) == true)
+            //        continue;
+
+            //    //if (property.GetValue(node) == null)
+            //    //    continue;
+
+
+            //    return false;
+            //}
+
+            //return true;
+
+            var propertyId = 1;
+
+            var flattenedAttributes = FlattenAttributesRecursively(node, ref propertyId);
+
+            return flattenedAttributes.Count == 0;
+        }
         private record YamlAttributeItem(string Name, string? Value, int? Id, int? Parent);
 
         private static readonly ISerializer Serializer = new SerializerBuilder()
            .WithNamingConvention(PascalCaseNamingConvention.Instance)
-           .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
+           .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitNull)
            .WithIndentedSequences()
            .DisableAliases()
            .WithTypeConverter(new NodeConverter())                  // Custom type converter for objects of Node
@@ -38,7 +66,13 @@ namespace S100Framework.YAML
             var properties = type.GetProperties();
 
             foreach (var property in properties) {
-                if (property.GetCustomAttribute<IgnoreDataMemberAttribute>(true) != null)   // We dont serialize those
+                if (property.GetCustomAttribute<JsonIgnoreAttribute>(true) != null)   // Include JsonIgnore to YAML serialization
+                    continue;
+
+                //if (property.GetAccessors(false).Any(x => x.IsStatic))                // Do not serialize static properties
+                //    continue;
+
+                if ((property.GetGetMethod(true)?.IsStatic ?? property.GetSetMethod(true)?.IsStatic) == true)
                     continue;
 
                 var propertyValue = property.GetValue(obj, null);
@@ -171,6 +205,12 @@ namespace S100Framework.YAML
                 var propertyId = 1;
 
                 var flattenedAttributes = FlattenAttributesRecursively(value, ref propertyId);
+
+                if (flattenedAttributes.Count == 0) {
+                    emitter.Emit(new Scalar(""));
+                    return;
+                }
+
 
                 emitter.Emit(new SequenceStart(null, null, true, SequenceStyle.Block));     // YAML List
 

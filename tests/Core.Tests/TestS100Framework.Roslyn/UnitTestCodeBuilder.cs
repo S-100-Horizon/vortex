@@ -200,7 +200,7 @@ namespace TestS100Framework
 
             [Fact]
             public void Build_S201() {
-                var s100 = XDocument.Load(@".\Artifacts\S-201_(0423 valid).xml");
+                var s100 = XDocument.Load(@".\Artifacts\6. S-201 Feature Catalogue - Annex C2.xml");
 
                 Assert.True(VerifyProductSpecification(s100));
 

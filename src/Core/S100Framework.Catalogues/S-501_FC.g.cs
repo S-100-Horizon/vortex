@@ -17,6 +17,106 @@ namespace S100Framework.DomainModel.S501 {
 		public static string[] FeatureAssociationTypes => [];
 		public static string[] InformationTypes => ["ReferenceToAPublication"];
 		public static string[] FeatureTypes => ["InstallationBuoy","DepthArea","RadioCallingInPoint","PatrolArea","Checkpoint","MarineManagementArea","DepthContour","EnvironmentallySensitiveSeaArea","Road","River","MilitaryPracticeArea","DiscolouredWater","CardinalBuoy","SafeWaterBuoy","RadioStation","MilitaryExerciseAirspace","ContiguousZone","NormalBaseline","CableArea","ContinentalShelfArea","InternalWaters","AdministrationArea","Bollard","Dolphin","RadarRange","IsolatedDangerBeacon","IsolatedDangerBuoy","SubmarineTransitLane","MaritimeSafetyInformationArea","AirspaceRestriction","Sounding","TrafficSeparationSchemeBoundary","DumpingGround","AirportAirfield","FoulGround","LightAirObstruction","MooringBuoy","UnderwaterAwashRock","CableOverhead","ControlledAirspace","Obstruction","FishingGround","FishingFacility","NavigationSystem","TrafficSeparationSchemeCrossing","TrafficSeparationSchemeLanePart","TerritorialSeaArea","LateralBeacon","CoastGuardStation","SeparationZoneOrLine","BottomFeature","ArchipelagicBaseline","SmallBottomObject","ExclusiveEconomicZone","RadarStation","DivingLocation","RestrictedArea","CableSubmarine","Wreck","QRoute","CompletenessOfProductSpecification","RescueStation","CardinalBeacon","LightVessel","FisheryZone","DredgedArea","FerryRoute","ShorelineConstruction","CautionArea","DeepWaterRoutePart","CurrentNonGravitational","DataCoverage","SeabedArea","SpecialPurposeGeneralBuoy","LightSectored","IceLine","AnchorageArea","LateralBuoy","TrafficSeparationSchemeRoundabout","DeepWaterRouteCentreline","LightFloat","LightAllAround","Coastline","SeaAreaNamedWaterArea","DropZone","Conveyor","LineOfDelimitation","StraightTerritorialSeaBaseline","SafeWaterBeacon","SpecialPurposeGeneralBeacon"];
+		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
+			Primitives.point => ["InstallationBuoy","RadioCallingInPoint","Checkpoint","DiscolouredWater","CardinalBuoy","SafeWaterBuoy","RadioStation","Bollard","Dolphin","IsolatedDangerBeacon","IsolatedDangerBuoy","DumpingGround","AirportAirfield","LightAirObstruction","MooringBuoy","UnderwaterAwashRock","Obstruction","FishingFacility","NavigationSystem","LateralBeacon","CoastGuardStation","SmallBottomObject","RadarStation","DivingLocation","Wreck","RescueStation","CardinalBeacon","LightVessel","ShorelineConstruction","CautionArea","CurrentNonGravitational","SeabedArea","SpecialPurposeGeneralBuoy","LightSectored","AnchorageArea","LateralBuoy","LightFloat","LightAllAround","SeaAreaNamedWaterArea","SafeWaterBeacon","SpecialPurposeGeneralBeacon"],
+			Primitives.surface => ["DepthArea","PatrolArea","Checkpoint","MarineManagementArea","EnvironmentallySensitiveSeaArea","River","MilitaryPracticeArea","DiscolouredWater","MilitaryExerciseAirspace","ContiguousZone","CableArea","ContinentalShelfArea","InternalWaters","AdministrationArea","Dolphin","RadarRange","SubmarineTransitLane","MaritimeSafetyInformationArea","AirspaceRestriction","DumpingGround","AirportAirfield","FoulGround","ControlledAirspace","Obstruction","FishingGround","FishingFacility","TrafficSeparationSchemeCrossing","TrafficSeparationSchemeLanePart","TerritorialSeaArea","CoastGuardStation","SeparationZoneOrLine","BottomFeature","ExclusiveEconomicZone","RestrictedArea","QRoute","CompletenessOfProductSpecification","FisheryZone","DredgedArea","FerryRoute","ShorelineConstruction","CautionArea","DeepWaterRoutePart","DataCoverage","SeabedArea","AnchorageArea","TrafficSeparationSchemeRoundabout","SeaAreaNamedWaterArea","DropZone","Conveyor"],
+			Primitives.curve => ["RadioCallingInPoint","DepthContour","Road","ContiguousZone","NormalBaseline","ContinentalShelfArea","AdministrationArea","TrafficSeparationSchemeBoundary","CableOverhead","FishingFacility","TerritorialSeaArea","SeparationZoneOrLine","ArchipelagicBaseline","ExclusiveEconomicZone","CableSubmarine","QRoute","FerryRoute","ShorelineConstruction","SeabedArea","IceLine","DeepWaterRouteCentreline","Coastline","Conveyor","LineOfDelimitation","StraightTerritorialSeaBaseline"],
+			Primitives.pointSet => ["Sounding"],
+			_ => throw new InvalidOperationException(),
+		};
+		public static Primitives[] FeaturePrimitives(string featureType) => featureType switch {
+			"InstallationBuoy" => [Primitives.point],
+			"DepthArea" => [Primitives.surface],
+			"RadioCallingInPoint" => [Primitives.point,Primitives.curve],
+			"PatrolArea" => [Primitives.surface],
+			"Checkpoint" => [Primitives.point,Primitives.surface],
+			"MarineManagementArea" => [Primitives.surface],
+			"DepthContour" => [Primitives.curve],
+			"EnvironmentallySensitiveSeaArea" => [Primitives.surface],
+			"Road" => [Primitives.curve],
+			"River" => [Primitives.surface],
+			"MilitaryPracticeArea" => [Primitives.surface],
+			"DiscolouredWater" => [Primitives.point,Primitives.surface],
+			"CardinalBuoy" => [Primitives.point],
+			"SafeWaterBuoy" => [Primitives.point],
+			"RadioStation" => [Primitives.point],
+			"MilitaryExerciseAirspace" => [Primitives.surface],
+			"ContiguousZone" => [Primitives.curve,Primitives.surface],
+			"NormalBaseline" => [Primitives.curve],
+			"CableArea" => [Primitives.surface],
+			"ContinentalShelfArea" => [Primitives.curve,Primitives.surface],
+			"InternalWaters" => [Primitives.surface],
+			"AdministrationArea" => [Primitives.curve,Primitives.surface],
+			"Bollard" => [Primitives.point],
+			"Dolphin" => [Primitives.point,Primitives.surface],
+			"RadarRange" => [Primitives.surface],
+			"IsolatedDangerBeacon" => [Primitives.point],
+			"IsolatedDangerBuoy" => [Primitives.point],
+			"SubmarineTransitLane" => [Primitives.surface],
+			"MaritimeSafetyInformationArea" => [Primitives.surface],
+			"AirspaceRestriction" => [Primitives.surface],
+			"Sounding" => [Primitives.pointSet],
+			"TrafficSeparationSchemeBoundary" => [Primitives.curve],
+			"DumpingGround" => [Primitives.point,Primitives.surface],
+			"AirportAirfield" => [Primitives.point,Primitives.surface],
+			"FoulGround" => [Primitives.surface],
+			"LightAirObstruction" => [Primitives.point],
+			"MooringBuoy" => [Primitives.point],
+			"UnderwaterAwashRock" => [Primitives.point],
+			"CableOverhead" => [Primitives.curve],
+			"ControlledAirspace" => [Primitives.surface],
+			"Obstruction" => [Primitives.point,Primitives.surface],
+			"FishingGround" => [Primitives.surface],
+			"FishingFacility" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"NavigationSystem" => [Primitives.point],
+			"TrafficSeparationSchemeCrossing" => [Primitives.surface],
+			"TrafficSeparationSchemeLanePart" => [Primitives.surface],
+			"TerritorialSeaArea" => [Primitives.curve,Primitives.surface],
+			"LateralBeacon" => [Primitives.point],
+			"CoastGuardStation" => [Primitives.point,Primitives.surface],
+			"SeparationZoneOrLine" => [Primitives.curve,Primitives.surface],
+			"BottomFeature" => [Primitives.surface],
+			"ArchipelagicBaseline" => [Primitives.curve],
+			"SmallBottomObject" => [Primitives.point],
+			"ExclusiveEconomicZone" => [Primitives.curve,Primitives.surface],
+			"RadarStation" => [Primitives.point],
+			"DivingLocation" => [Primitives.point],
+			"RestrictedArea" => [Primitives.surface],
+			"CableSubmarine" => [Primitives.curve],
+			"Wreck" => [Primitives.point],
+			"QRoute" => [Primitives.curve,Primitives.surface],
+			"CompletenessOfProductSpecification" => [Primitives.surface],
+			"RescueStation" => [Primitives.point],
+			"CardinalBeacon" => [Primitives.point],
+			"LightVessel" => [Primitives.point],
+			"FisheryZone" => [Primitives.surface],
+			"DredgedArea" => [Primitives.surface],
+			"FerryRoute" => [Primitives.curve,Primitives.surface],
+			"ShorelineConstruction" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"CautionArea" => [Primitives.point,Primitives.surface],
+			"DeepWaterRoutePart" => [Primitives.surface],
+			"CurrentNonGravitational" => [Primitives.point],
+			"DataCoverage" => [Primitives.surface],
+			"SeabedArea" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"SpecialPurposeGeneralBuoy" => [Primitives.point],
+			"LightSectored" => [Primitives.point],
+			"IceLine" => [Primitives.curve],
+			"AnchorageArea" => [Primitives.point,Primitives.surface],
+			"LateralBuoy" => [Primitives.point],
+			"TrafficSeparationSchemeRoundabout" => [Primitives.surface],
+			"DeepWaterRouteCentreline" => [Primitives.curve],
+			"LightFloat" => [Primitives.point],
+			"LightAllAround" => [Primitives.point],
+			"Coastline" => [Primitives.curve],
+			"SeaAreaNamedWaterArea" => [Primitives.point,Primitives.surface],
+			"DropZone" => [Primitives.surface],
+			"Conveyor" => [Primitives.curve,Primitives.surface],
+			"LineOfDelimitation" => [Primitives.curve],
+			"StraightTerritorialSeaBaseline" => [Primitives.curve],
+			"SafeWaterBeacon" => [Primitives.point],
+			"SpecialPurposeGeneralBeacon" => [Primitives.point],
+			_ or "" => throw new InvalidOperationException(),
+		};
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4732,6 +4832,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => InstallationBuoy._featureBindingDefinitions;
+
+			public override Primitives[] primitives => InstallationBuoy._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -4767,6 +4873,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DepthArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DepthArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -4816,6 +4928,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RadioCallingInPoint._featureBindingDefinitions;
+
+			public override Primitives[] primitives => RadioCallingInPoint._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -4860,6 +4978,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => PatrolArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => PatrolArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -4901,6 +5025,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Checkpoint._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Checkpoint._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -4961,6 +5091,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => MarineManagementArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => MarineManagementArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -4999,6 +5135,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DepthContour._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DepthContour._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5028,6 +5170,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => EnvironmentallySensitiveSeaArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => EnvironmentallySensitiveSeaArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5075,6 +5223,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Road._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Road._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5109,6 +5263,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => River._featureBindingDefinitions;
+
+			public override Primitives[] primitives => River._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5185,6 +5345,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => MilitaryPracticeArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => MilitaryPracticeArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5214,6 +5380,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DiscolouredWater._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DiscolouredWater._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5284,6 +5456,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CardinalBuoy._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CardinalBuoy._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5350,6 +5528,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBuoy._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SafeWaterBuoy._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5403,6 +5587,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RadioStation._featureBindingDefinitions;
+
+			public override Primitives[] primitives => RadioStation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5442,6 +5632,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => MilitaryExerciseAirspace._featureBindingDefinitions;
+
+			public override Primitives[] primitives => MilitaryExerciseAirspace._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5486,6 +5682,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ContiguousZone._featureBindingDefinitions;
+
+			public override Primitives[] primitives => ContiguousZone._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5524,6 +5726,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => NormalBaseline._featureBindingDefinitions;
+
+			public override Primitives[] primitives => NormalBaseline._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5572,6 +5780,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CableArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CableArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5614,6 +5828,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ContinentalShelfArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => ContinentalShelfArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5656,6 +5876,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => InternalWaters._featureBindingDefinitions;
+
+			public override Primitives[] primitives => InternalWaters._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5695,6 +5921,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => AdministrationArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => AdministrationArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5738,6 +5970,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Bollard._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Bollard._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5805,6 +6043,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Dolphin._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Dolphin._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5843,6 +6087,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RadarRange._featureBindingDefinitions;
+
+			public override Primitives[] primitives => RadarRange._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5921,6 +6171,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBeacon._featureBindingDefinitions;
+
+			public override Primitives[] primitives => IsolatedDangerBeacon._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -5983,6 +6239,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBuoy._featureBindingDefinitions;
+
+			public override Primitives[] primitives => IsolatedDangerBuoy._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6029,6 +6291,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SubmarineTransitLane._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SubmarineTransitLane._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6062,6 +6330,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => MaritimeSafetyInformationArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => MaritimeSafetyInformationArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6110,6 +6384,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => AirspaceRestriction._featureBindingDefinitions;
+
+			public override Primitives[] primitives => AirspaceRestriction._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6154,6 +6434,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Sounding._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Sounding._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.pointSet
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6192,6 +6478,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeBoundary._featureBindingDefinitions;
+
+			public override Primitives[] primitives => TrafficSeparationSchemeBoundary._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6232,6 +6524,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DumpingGround._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DumpingGround._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6296,6 +6594,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => AirportAirfield._featureBindingDefinitions;
+
+			public override Primitives[] primitives => AirportAirfield._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6340,6 +6644,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FoulGround._featureBindingDefinitions;
+
+			public override Primitives[] primitives => FoulGround._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6413,6 +6723,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LightAirObstruction._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LightAirObstruction._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6474,6 +6790,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => MooringBuoy._featureBindingDefinitions;
+
+			public override Primitives[] primitives => MooringBuoy._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6547,6 +6869,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => UnderwaterAwashRock._featureBindingDefinitions;
+
+			public override Primitives[] primitives => UnderwaterAwashRock._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6605,6 +6933,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CableOverhead._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CableOverhead._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6656,6 +6990,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ControlledAirspace._featureBindingDefinitions;
+
+			public override Primitives[] primitives => ControlledAirspace._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6787,6 +7127,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Obstruction._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Obstruction._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6832,6 +7178,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FishingGround._featureBindingDefinitions;
+
+			public override Primitives[] primitives => FishingGround._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6878,6 +7230,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FishingFacility._featureBindingDefinitions;
+
+			public override Primitives[] primitives => FishingFacility._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6920,6 +7278,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => NavigationSystem._featureBindingDefinitions;
+
+			public override Primitives[] primitives => NavigationSystem._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -6963,6 +7327,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeCrossing._featureBindingDefinitions;
+
+			public override Primitives[] primitives => TrafficSeparationSchemeCrossing._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7008,6 +7378,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeLanePart._featureBindingDefinitions;
+
+			public override Primitives[] primitives => TrafficSeparationSchemeLanePart._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7057,6 +7433,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TerritorialSeaArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => TerritorialSeaArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7137,6 +7519,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LateralBeacon._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LateralBeacon._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7177,6 +7565,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CoastGuardStation._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CoastGuardStation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7215,6 +7609,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SeparationZoneOrLine._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SeparationZoneOrLine._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7253,6 +7653,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => BottomFeature._featureBindingDefinitions;
+
+			public override Primitives[] primitives => BottomFeature._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7293,6 +7699,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicBaseline._featureBindingDefinitions;
+
+			public override Primitives[] primitives => ArchipelagicBaseline._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7328,6 +7740,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SmallBottomObject._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SmallBottomObject._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7369,6 +7787,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ExclusiveEconomicZone._featureBindingDefinitions;
+
+			public override Primitives[] primitives => ExclusiveEconomicZone._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7416,6 +7840,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RadarStation._featureBindingDefinitions;
+
+			public override Primitives[] primitives => RadarStation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7446,6 +7876,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DivingLocation._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DivingLocation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7496,6 +7932,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RestrictedArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => RestrictedArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7548,6 +7990,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CableSubmarine._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CableSubmarine._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7667,6 +8115,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Wreck._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Wreck._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7705,6 +8159,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => QRoute._featureBindingDefinitions;
+
+			public override Primitives[] primitives => QRoute._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7742,6 +8202,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CompletenessOfProductSpecification._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CompletenessOfProductSpecification._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7785,6 +8251,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RescueStation._featureBindingDefinitions;
+
+			public override Primitives[] primitives => RescueStation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7863,6 +8335,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CardinalBeacon._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CardinalBeacon._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7923,6 +8401,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LightVessel._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LightVessel._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -7965,6 +8449,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FisheryZone._featureBindingDefinitions;
+
+			public override Primitives[] primitives => FisheryZone._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8012,6 +8502,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DredgedArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DredgedArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8061,6 +8557,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FerryRoute._featureBindingDefinitions;
+
+			public override Primitives[] primitives => FerryRoute._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8136,6 +8638,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ShorelineConstruction._featureBindingDefinitions;
+
+			public override Primitives[] primitives => ShorelineConstruction._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8177,6 +8685,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CautionArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CautionArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8238,6 +8752,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoutePart._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DeepWaterRoutePart._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8280,6 +8800,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CurrentNonGravitational._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CurrentNonGravitational._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8321,6 +8847,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DataCoverage._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8360,6 +8892,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SeabedArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SeabedArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8427,6 +8965,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBuoy._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SpecialPurposeGeneralBuoy._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8497,6 +9041,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LightSectored._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LightSectored._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8524,6 +9074,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => IceLine._featureBindingDefinitions;
+
+			public override Primitives[] primitives => IceLine._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8569,6 +9125,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => AnchorageArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => AnchorageArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8637,6 +9199,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LateralBuoy._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LateralBuoy._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8680,6 +9248,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeRoundabout._featureBindingDefinitions;
+
+			public override Primitives[] primitives => TrafficSeparationSchemeRoundabout._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8738,6 +9312,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRouteCentreline._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DeepWaterRouteCentreline._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8800,6 +9380,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LightFloat._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LightFloat._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8880,6 +9466,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LightAllAround._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LightAllAround._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8931,6 +9523,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Coastline._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Coastline._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8971,6 +9569,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SeaAreaNamedWaterArea._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SeaAreaNamedWaterArea._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -8996,6 +9600,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DropZone._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DropZone._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -9067,6 +9677,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Conveyor._featureBindingDefinitions;
+
+			public override Primitives[] primitives => Conveyor._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -9109,6 +9725,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LineOfDelimitation._featureBindingDefinitions;
+
+			public override Primitives[] primitives => LineOfDelimitation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -9149,6 +9771,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => StraightTerritorialSeaBaseline._featureBindingDefinitions;
+
+			public override Primitives[] primitives => StraightTerritorialSeaBaseline._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -9225,6 +9853,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBeacon._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SafeWaterBeacon._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -9304,6 +9938,12 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBeacon._featureBindingDefinitions;
+
+			public override Primitives[] primitives => SpecialPurposeGeneralBeacon._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}

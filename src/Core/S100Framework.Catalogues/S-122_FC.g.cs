@@ -17,6 +17,22 @@ namespace S100Framework.DomainModel.S122 {
 		public static string[] FeatureAssociationTypes => [];
 		public static string[] InformationTypes => ["InformationType","AbstractRxN","NauticalInformation","Regulations","Restrictions","Recommendations","Authority","ContactDetails","NonStandardWorkingDay","ServiceHours","Applicability"];
 		public static string[] FeatureTypes => ["FeatureType","RestrictedArea","MarineProtectedArea","VesselTrafficServiceArea","DataCoverage","TextPlacement"];
+		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
+			Primitives.noGeometry => ["FeatureType"],
+			Primitives.surface => ["RestrictedArea","MarineProtectedArea","VesselTrafficServiceArea","DataCoverage"],
+			Primitives.curve => ["MarineProtectedArea"],
+			Primitives.point => ["TextPlacement"],
+			_ => throw new InvalidOperationException(),
+		};
+		public static Primitives[] FeaturePrimitives(string featureType) => featureType switch {
+			"FeatureType" => [Primitives.noGeometry],
+			"RestrictedArea" => [Primitives.surface],
+			"MarineProtectedArea" => [Primitives.curve,Primitives.surface],
+			"VesselTrafficServiceArea" => [Primitives.surface],
+			"DataCoverage" => [Primitives.surface],
+			"TextPlacement" => [Primitives.point],
+			_ or "" => throw new InvalidOperationException(),
+		};
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2375,6 +2391,12 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FeatureType._featureBindingDefinitions;
+
+			public override Primitives[] primitives => FeatureType._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.noGeometry
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -2407,6 +2429,12 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..RestrictedArea._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..FeatureType._primitives, ..RestrictedArea._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -2457,6 +2485,12 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..MarineProtectedArea._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..FeatureType._primitives, ..MarineProtectedArea._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.curve, Primitives.surface
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -2492,6 +2526,12 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..VesselTrafficServiceArea._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..FeatureType._primitives, ..VesselTrafficServiceArea._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -2515,6 +2555,12 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
+
+			public override Primitives[] primitives => DataCoverage._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -2538,6 +2584,12 @@ namespace S100Framework.DomainModel.S122 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
+
+			public override Primitives[] primitives => TextPlacement._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}

@@ -329,6 +329,43 @@ namespace TestS100Framework
         }
 
         [Fact]
+        public void Test_FeatureWIthStaticProperties() {
+            var dataset = new S100Framework.YAML.Dataset {
+                CellName = "101AA00DS0031.000",
+                Comment = "S-101 Test Dataset 031",
+                Edition = 1,
+                FCVer = "2.0",
+            };
+
+            var feature = new S100Framework.YAML.Feature() {
+                Name = "Coastline",
+                Foid = "1810:3:2",
+                Prim = S100Framework.YAML.Primitive.Surface,
+                Attributes = new Coastline {
+                    colour = new List<S100Framework.DomainModel.S101.colour> {
+                        S100Framework.DomainModel.S101.colour.Red,
+                        S100Framework.DomainModel.S101.colour.White,
+                    },
+                    featureName = new List<S100Framework.DomainModel.S101.ComplexAttributes.featureName> {
+                        new S100Framework.DomainModel.S101.ComplexAttributes.featureName {
+                            language = "eng",
+                            name = "Light E",
+                        },
+                    },
+                }
+            };
+
+            dataset.AddFeature(feature);
+
+
+            var yaml = S100Framework.YAML.Converter.Serialize(dataset);
+
+            System.Diagnostics.Debugger.Break();
+        }
+
+
+
+        [Fact]
         public void Test_DatasetFeatureAssociation() {
             var dataset = new S100Framework.YAML.Dataset {
                 CellName = "101AA00DS0031.000",

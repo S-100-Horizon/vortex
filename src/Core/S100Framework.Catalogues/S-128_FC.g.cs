@@ -17,6 +17,18 @@ namespace S100Framework.DomainModel.S128 {
 		public static string[] FeatureAssociationTypes => ["ProductMapping","Correlated"];
 		public static string[] InformationTypes => ["CatalogueSectionHeader","ContactDetails","IndicationOfCarriageRequirement","PriceInformation","ProducerInformation","DistributorInformation"];
 		public static string[] FeatureTypes => ["CatalogueElement","NavigationalProduct","ElectronicProduct","PhysicalProduct","S100Service"];
+		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
+			Primitives.surface => ["CatalogueElement","NavigationalProduct","ElectronicProduct","PhysicalProduct","S100Service"],
+			_ => throw new InvalidOperationException(),
+		};
+		public static Primitives[] FeaturePrimitives(string featureType) => featureType switch {
+			"CatalogueElement" => [Primitives.surface],
+			"NavigationalProduct" => [Primitives.surface],
+			"ElectronicProduct" => [Primitives.surface],
+			"PhysicalProduct" => [Primitives.surface],
+			"S100Service" => [Primitives.surface],
+			_ or "" => throw new InvalidOperationException(),
+		};
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1577,6 +1589,12 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CatalogueElement._featureBindingDefinitions;
+
+			public override Primitives[] primitives => CatalogueElement._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -1644,6 +1662,12 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..CatalogueElement._featureBindingDefinitions, ..NavigationalProduct._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..CatalogueElement._primitives, ..NavigationalProduct._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
@@ -1690,6 +1714,12 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..NavigationalProduct._featureBindingDefinitions, ..ElectronicProduct._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..NavigationalProduct._primitives, ..ElectronicProduct._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -1726,6 +1756,12 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..NavigationalProduct._featureBindingDefinitions, ..PhysicalProduct._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..NavigationalProduct._primitives, ..PhysicalProduct._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
@@ -1764,6 +1800,12 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..CatalogueElement._featureBindingDefinitions, ..S100Service._featureBindingDefinitions];
+
+			public override Primitives[] primitives => [..CatalogueElement._primitives, ..S100Service._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.surface
+			];
+
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
