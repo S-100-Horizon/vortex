@@ -328,6 +328,8 @@ namespace S100Framework.Applications
 
 namespace S100Framework.YAML
 {
+    using ArcGIS.Core.Internal.CIM;
+    using NetTopologySuite.Densify;
     using NetTopologySuite.Geometries;
     using System.Collections.Generic;
     using System.Globalization;
@@ -481,16 +483,22 @@ namespace S100Framework.YAML
 
         public static void AddTopology(this Dataset dataset, Topology topology) {
             // Curves
-            foreach (var curve in topology.Curves) {
+            foreach (var c in topology.Curves) {    // todo: use ref instead of id
                 try {
-                    Log.Information("Adding curve C{curve} from topology", curve.Id);
-                    var coordinates = curve.LineString.Coordinates.Select(e => new Coordinate(e.X, e.Y)).ToArray();
+                    Log.Information("Adding curve C{curve} from topology", c.Id);
+                    var coordinates = c.LineString.Coordinates.Select(e => new Coordinate(e.X, e.Y)).ToArray();
 
-                    _ = dataset.GetOrCreateCurve(coordinates, $"{curve.Id}");
+                    var first = dataset?.GetOrCreateStartPoint(coordinates, $"{c.Id}");
+                    var last = dataset?.GetOrCreateEndPoint(coordinates, $"{c.Id}");
 
+                    var curve = new Curve(first!, last!, coordinates) {
+                        Name = $"C{c.Id}",
+                    };
+
+                    dataset!.AddCurve(curve);
                 }
                 catch (Exception ex) {
-                    Log.Error("Exception! {ex} on curve: {curve}", ex, curve.Id);
+                    Log.Error("Exception! {ex} on curve: {curve}", ex, c.Id);
                 }
             }
 
