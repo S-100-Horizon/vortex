@@ -134,25 +134,25 @@ namespace S100Framework.Applications
                 }
                 else {
 
+                    Store(() => S57_CulturalFeaturesP(source, destination, filter));
+                    Store(() => S57_NaturalFeaturesP(source, destination, filter));
                     Store(() => S57_AidsToNavigationP(source, destination, filter));
                     Store(() => S57_CoastlineA(source, destination, filter));
                     Store(() => S57_CoastlineL(source, destination, filter));
                     Store(() => S57_CoastlineP(source, destination, filter));
                     Store(() => S57_CulturalFeaturesA(source, destination, filter));
                     Store(() => S57_CulturalFeaturesL(source, destination, filter));
-                    Store(() => S57_CulturalFeaturesP(source, destination, filter));
                     Store(() => S57_DangersA(source, destination, filter));
                     Store(() => S57_DangersL(source, destination, filter));
                     Store(() => S57_DangersP(source, destination, filter));
                     Store(() => S57_DepthsA(source, destination, filter));
                     Store(() => S57_DepthsL(source, destination, filter));
                     Store(() => S57_IcefeaturesA(source, destination, filter));
-                    Store(() => S57_MetadataA(source, destination, filter)); // TODO: metadataP
+                    Store(() => S57_MetadataA(source, destination, filter)); 
                     Store(() => S57_MilitaryFeatureA(source, destination, filter));
                     Store(() => S57_MilitaryFeaturesP(source, destination, filter));
                     Store(() => S57_NaturalFeaturesA(source, destination, filter));
                     Store(() => S57_NaturalFeaturesL(source, destination, filter));
-                    Store(() => S57_NaturalFeaturesP(source, destination, filter));
                     Store(() => S57_OffshoreInstallationsA(source, destination, filter));
                     Store(() => S57_OffshoreInstallationsL(source, destination, filter));
                     Store(() => S57_OffshoreInstallationsP(source, destination, filter));

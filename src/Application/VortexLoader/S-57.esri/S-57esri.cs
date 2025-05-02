@@ -160,7 +160,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["EDITOR"] && feature["EDITOR"] is not null) {
                 EDITOR = Convert.ToString(feature["EDITOR"]);
@@ -573,7 +575,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -980,7 +984,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -1456,7 +1462,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -1872,7 +1880,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -2252,7 +2262,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -2626,7 +2638,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -3093,7 +3107,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -3641,7 +3657,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -4186,7 +4204,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -4602,7 +4622,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -5000,7 +5022,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -5455,7 +5479,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -5832,7 +5858,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -6257,7 +6285,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -6724,7 +6754,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -7152,7 +7184,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -7820,7 +7854,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -8349,7 +8385,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -8723,7 +8761,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -9106,7 +9146,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -9534,7 +9576,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -9998,7 +10042,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -10453,7 +10499,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -10845,7 +10893,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -11234,7 +11284,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -11851,7 +11903,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -12468,7 +12522,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -13103,7 +13159,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -13762,7 +13820,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -14403,7 +14463,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -15062,7 +15124,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -15613,7 +15677,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -16068,7 +16134,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -16523,7 +16591,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -17005,7 +17075,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -17502,7 +17574,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -17984,7 +18058,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -18439,7 +18515,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -18921,7 +18999,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -19415,7 +19495,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -19936,7 +20018,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -20382,7 +20466,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -20855,7 +20941,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -21148,7 +21236,9 @@ namespace S100Framework.Applications.S57.esri
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["EDITOR"] && feature["EDITOR"] is not null) {
                 EDITOR = Convert.ToString(feature["EDITOR"]);
@@ -21321,7 +21411,9 @@ namespace S100Framework.Applications.S57.esri
                 SHAPE = (Geometry?)(feature["SHAPE"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
+                    base.GlobalId = GLOBALID;
+                }
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);

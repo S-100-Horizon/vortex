@@ -3,7 +3,6 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
-
 namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
@@ -16,14 +15,13 @@ namespace S100Framework.Applications
             var featureType = PrimitiveType.Area;
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
-            
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = culturalFeaturesA.Search(filter, true);
             int recordCount = 0;
-            
+
             while (cursor.MoveNext()) {
                 recordCount += 1;
 
@@ -38,7 +36,6 @@ namespace S100Framework.Applications
                 var longname = current.LNAM ?? Strings.UNKNOWN;
                 var status = current.STATUS ?? default;
 
-
                 switch (subtype) {
                     case 1: { // AIRARE_AirportAirfield
                             var instance = new AirportAirfield() {
@@ -46,7 +43,6 @@ namespace S100Framework.Applications
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
-
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -62,25 +58,25 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
                         }
                         break;
+
                     case 5: { // BRIDGE_Bridge
                             var instance = new Bridge() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
-if (current.COLOUR != default) {
+                            if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
                             }
 
@@ -95,7 +91,7 @@ if (current.COLOUR != default) {
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
-                            
+
                             if (current.CATBRG != default && current.CATBRG == "1") {
                                 instance.openingBridge = false;
                             }
@@ -157,18 +153,18 @@ if (current.COLOUR != default) {
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
                         }
                         break;
+
                     case 10: { // BUAARE_BuiltUpArea
                             var instance = new BuiltUpArea() {
                             };
@@ -186,18 +182,20 @@ if (current.COLOUR != default) {
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
                             
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                            }
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
                         }
                         break;
+
                     case 15: { // BUISGL_BuildingSingle
                             var instance = new Building() {
                             };
@@ -230,25 +228,27 @@ if (current.COLOUR != default) {
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
                         }
                         break;
+
                     case 20: { // CONVYR_Conveyor
                             var instance = new Conveyor() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
-if (current.COLOUR != default) {
+                            if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
                             }
 
@@ -270,25 +270,27 @@ if (current.COLOUR != default) {
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
                         }
                         break;
+
                     case 25: { // DAMCON_Dam
                             var instance = new Dam() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
-if (current.COLOUR != default) {
+                            if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
                             }
 
@@ -311,18 +313,20 @@ if (current.COLOUR != default) {
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
                         }
                         break;
+
                     case 30: { // FORSTC_FortifiedStructure
                             var instance = new FortifiedStructure() {
                             };
@@ -344,18 +348,20 @@ if (current.COLOUR != default) {
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
                         }
                         break;
+
                     case 35: { // LNDMRK_Landmark
                             var instance = new Landmark() {
                             };
@@ -389,18 +395,20 @@ if (current.COLOUR != default) {
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
                         }
                         break;
+
                     case 40: { // PRDARE_ProductionStorageArea
                             var instance = new ProductionStorageArea() {
                             };
@@ -422,25 +430,27 @@ if (current.COLOUR != default) {
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
                         }
                         break;
+
                     case 45: { // PYLONS_PylonBridgeSupport
                             var instance = new PylonBridgeSupport() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
-if (current.COLOUR != default) {
+                            if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
                             }
 
@@ -462,18 +472,20 @@ if (current.COLOUR != default) {
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
                         }
                         break;
+
                     case 50: { // ROADWY_Road
                             var instance = new Road() {
                             };
@@ -495,25 +507,27 @@ if (current.COLOUR != default) {
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
                         }
                         break;
+
                     case 55: { // RUNWAY_Runway
                             var instance = new Runway() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
-if (current.CONDTN.HasValue) {
+                            if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
@@ -527,25 +541,27 @@ if (current.CONDTN.HasValue) {
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
                         }
                         break;
+
                     case 60: { // SILTNK_SiloTank
                             var instance = new SiloTank() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
-if (current.COLOUR != default) {
+                            if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
                             }
 
@@ -567,18 +583,20 @@ if (current.COLOUR != default) {
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
                         }
                         break;
+
                     case 65: { // TUNNEL_Tunnel
                             var instance = new Tunnel() {
                             };
@@ -601,30 +619,27 @@ if (current.COLOUR != default) {
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
                         }
                         break;
+
                     default:
                         // code block
                         System.Diagnostics.Debugger.Break();
                         break;
                 }
-
-
-
             }
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
-
-
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace S100Framework.Applications.S57.esri
 {
-    internal class S57Object
+    internal abstract class S57Object
     {
-
+        public Guid GlobalId { get; set; }
 
 
     }

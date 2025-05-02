@@ -1,4 +1,5 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Data.UtilityNetwork.Trace;
 using ArcGIS.Core.Internal.CIM;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel;
@@ -12,7 +13,7 @@ using System.Xml.Linq;
 
 namespace S100Framework.Applications
 {
-
+    
     internal enum Direction {
         Source = 0,
         Destination = 1
@@ -280,9 +281,6 @@ namespace S100Framework.Applications
                         this.S101Type = typeof(FishingFacility);
                     }
 
-
-
-
                     else {
                         throw new NotSupportedException($"AtoN subtype: {psp?.FCSUBTYPE}");
                     }
@@ -319,6 +317,9 @@ namespace S100Framework.Applications
 
         private bool _isInitialized = false;
 
+        private int _relationCount = 0;
+
+
         private FeatureRelations() {
             this._relations = new HashSet<Relation>();
             this._pltsCollections = new Dictionary<Guid, PltsCollection>();
@@ -335,7 +336,6 @@ namespace S100Framework.Applications
                 return _instance;
             }
         }
-
 
         public void Initialize(Geodatabase source, Geodatabase target) {
             _source = source;
@@ -435,6 +435,15 @@ namespace S100Framework.Applications
             }
         }
 
+        internal IList<PltsSlave> GetRelated(Guid uid) {
+            var result = new List<PltsSlave>();
+            if (_srcObjectToSlaves.ContainsKey(uid))
+                return _srcObjectToSlaves[uid];
+
+            return result;
+        }
+
+
         internal IList<T> GetRelated<T>(Type s101Type, Guid uid) where T : class {
             var result = new List<T>();
 
@@ -452,7 +461,6 @@ namespace S100Framework.Applications
             }
             return result;
         }
-
 
         internal bool IsSlave(Guid globalid) {
             if (!_isInitialized)
@@ -710,11 +718,16 @@ namespace S100Framework.Applications
         }
 
         internal bool HasRelated(Guid globalId) {
-
             return _srcObjectToSlaves.ContainsKey(globalId);
         }
 
         internal void AddRelation(S57Master master, S57Slave slave) {
+            //if (_relationCount > 0) {
+            //    return;
+            //}
+
+            //_relationCount++;
+            
             _relations.Add(new(master, slave));
         }
 
@@ -757,13 +770,13 @@ namespace S100Framework.Applications
                     throw new NotSupportedException($"no bindingdefinition on {TPrimary?.Name} for {TForeign?.Name}");
                 }
                 associationBindingBuffer["ps"] = ImporterNIS.ps101;
-                associationBindingBuffer["roleType"] = bindingDefinitionPrimary.role.ToString();
+                associationBindingBuffer["roleType"] = bindingDefinitionPrimary.roleType.ToString();
                 associationBindingBuffer["associationId"] = featureAssociationName;
                 associationBindingBuffer["association"] = bindingDefinitionPrimary.association;
                 associationBindingBuffer["pid"] = relation?.Master?.Name;
                 associationBindingBuffer["foreignid"] = relation?.Slave?.Name;
                 associationBindingBuffer["role"] = bindingDefinitionPrimary.role;
-                associationBindingBuffer["type"] = bindingDefinitionPrimary.roleType.ToString();
+                associationBindingBuffer["type"] = "FeatureBinding";
                 var association = associationBinding.CreateRow(associationBindingBuffer);
 
             }
@@ -774,13 +787,13 @@ namespace S100Framework.Applications
                     throw new NotSupportedException($"no bindingdefinition on {TForeign?.Name} for {TPrimary?.Name}");
                 }
                 associationBindingBuffer["ps"] = ImporterNIS.ps101;
-                associationBindingBuffer["roleType"] = bindingDefinitionForeign.role.ToString();
+                associationBindingBuffer["roleType"] = bindingDefinitionForeign.roleType.ToString();
                 associationBindingBuffer["associationId"] = featureAssociationName;
                 associationBindingBuffer["association"] = bindingDefinitionForeign.association;
                 associationBindingBuffer["pid"] = relation?.Slave?.Name;
                 associationBindingBuffer["foreignid"] = relation?.Master?.Name;
                 associationBindingBuffer["role"] = bindingDefinitionForeign.role;
-                associationBindingBuffer["type"] = bindingDefinitionForeign.roleType.ToString();
+                associationBindingBuffer["type"] = "FeatureBinding";
                 var association = associationBinding.CreateRow(associationBindingBuffer);
             }
         }
@@ -839,6 +852,7 @@ namespace S100Framework.Applications
 #endif
             }
         }
+
     }
 
     internal class S57Master
@@ -870,8 +884,8 @@ namespace S100Framework.Applications
 
     internal class Relation
     {
-        S57Master _master;
-        S57Slave _slave;
+        S57Master? _master;
+        S57Slave? _slave;
 
         public Relation(S57Master master, S57Slave slave) {
             this.Master = master;

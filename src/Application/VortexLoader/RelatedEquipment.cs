@@ -5,6 +5,9 @@ using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using System.Linq;
 using S100Framework.DomainModel;
+using ArcGIS.Core.Internal.CIM;
+using ArcGIS.Desktop.Editing.Attributes;
+using System.Text;
 
 namespace S100Framework.Applications
 {
@@ -45,7 +48,7 @@ namespace S100Framework.Applications
 
                 var topmark = new topmark() {
                     // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
-                    
+
                 };
 
                 if (topmarkColours != null) {
@@ -59,6 +62,10 @@ namespace S100Framework.Applications
                 if (relatedTopmark.TOPSHP.HasValue) {
                     topmark.topmarkDaymarkShape = EnumHelper.GetEnumValue<topmarkDaymarkShape>(relatedTopmark.TOPSHP.Value);
                 }
+
+                ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", relatedTopmark.GLOBALID, "ATTRIBUTE. NO NAME AVAILABLE");
+
+
                 return topmark;
             }
             return null;
@@ -97,7 +104,7 @@ namespace S100Framework.Applications
 
                 var daymark = new Daymark() {
                     // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
-                    
+
                 };
 
                 if (daymarkColours != null) {
@@ -111,14 +118,25 @@ namespace S100Framework.Applications
                 if (relatedDaymark.TOPSHP.HasValue) {
                     daymark.topmarkDaymarkShape = EnumHelper.GetEnumValue<topmarkDaymarkShape>(relatedDaymark.TOPSHP.Value);
                 }
+
+                ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", relatedDaymark.GLOBALID, "ATTRIBUTE. NO NAME AVAILABLE");
+
                 return daymark;
             }
             return null;
         }
 
-        internal void CreateRelatedEquipment(S57Object s57Object, FeatureNode s101Object,string name, Geodatabase target) {
+        internal void CreateRelatedEquipment(S57Object s57Object, FeatureNode s101Object, string name, Geodatabase target) {
+            var aidsToNavigationConverted = false;
+            var culturalFeaturesPConverted = false;
 
-            var bindingDefinition = s101Object.featureBindingDefinitions;
+            // if all related equipment are topmarks - return
+            if (!FeatureRelations.Instance.GetRelated(s57Object.GlobalId).Any(e => e?.PLTS_Frel?.DEST_SUB?.ToLower() != "topmar_topmark"))
+                return;
+
+            var totalRelated = FeatureRelations.Instance.GetRelated(s57Object.GlobalId);
+
+
 
             if (s57Object is AidsToNavigationP) {
                 var sourceTable = "AidsToNavigationP";
@@ -145,6 +163,10 @@ namespace S100Framework.Applications
                 if (hasRelatedSectoredLights) {
                     var instance = ImporterNIS.CreateLightSectored(related);
 
+                    if (structure.PLTS_COMP_SCALE.HasValue && structure.SHAPE != null) {
+                        instance.scaleMinimum = Scamin.Instance.GetMinimumScale(structure.SHAPE, "LIGHTS_Light", PrimitiveType.Point, structure.PLTS_COMP_SCALE.Value);
+                    }
+
                     buffer["ps"] = ImporterNIS.ps101;
                     buffer["code"] = instance.GetType().Name;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
@@ -157,12 +179,14 @@ namespace S100Framework.Applications
                         throw new NotSupportedException("empty equipment name");
                     }
 
-                    // TODO: Create relation
                     ConversionAnalytics.Instance.AddConverted(sourceTable, related.ToDictionary(obj => obj.GLOBALID, obj => new List<string> { equipmentName }));
+                    aidsToNavigationConverted = true;
 
                     FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name));
 
                     Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName, System.Text.Json.JsonSerializer.Serialize(instance));
+
+                    return;
                 }
 
                 related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightAllAround), structure.GLOBALID);
@@ -176,6 +200,11 @@ namespace S100Framework.Applications
                         //var _slave = pltsSlave.Fetch(_source, Direction.Destination);
                         var instance = ImporterNIS.CreateLightAllAround(light);
 
+                        if (structure.PLTS_COMP_SCALE.HasValue && structure.SHAPE != null) {
+                            instance.scaleMinimum = Scamin.Instance.GetMinimumScale(structure.SHAPE, "LIGHTS_Light", PrimitiveType.Point, structure.PLTS_COMP_SCALE.Value);
+                        }
+
+
                         buffer["ps"] = ImporterNIS.ps101;
                         buffer["code"] = instance.GetType().Name;
                         buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
@@ -187,10 +216,8 @@ namespace S100Framework.Applications
                             throw new NotSupportedException("empty equipment name");
                         }
 
-
-                        // TODO: Create relation
-
                         ConversionAnalytics.Instance.AddConverted(sourceTable, light.GLOBALID, equipmentName ?? "Unknown equipment name");
+                        aidsToNavigationConverted = true;
 
                         if (equipmentName == null) {
                             throw new NotSupportedException("empty equipment name");
@@ -200,10 +227,20 @@ namespace S100Framework.Applications
 
                         Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
                     }
+                    return;
+                }
+
+                if (!aidsToNavigationConverted) {
+                    var relatedObjects = FeatureRelations.Instance.GetRelated(s57Object.GlobalId);
+                    StringBuilder info = new();
+                    foreach (var relatedObject in relatedObjects) {
+                        info.Append($"{relatedObject.PLTS_Frel.SRC_SUB}::{relatedObject.PLTS_Frel.DEST_SUB}");
+                    }
+                    throw new NotSupportedException($"{structure.GetType().Name}: {info.ToString()}");
                 }
             }
+
             else if (s57Object is CulturalFeaturesP) {
-                var sourceTable = "CulturalFeaturesP";
                 var structure = (CulturalFeaturesP)s57Object;
                 bool hasRelated = FeatureRelations.Instance.HasRelated(structure.GLOBALID);
                 if (!hasRelated) {
@@ -221,9 +258,12 @@ namespace S100Framework.Applications
                     throw new NotSupportedException("empty relationships");
                 }
                 var hasRelatedSectoredLights = related.Any();
-
                 if (hasRelatedSectoredLights) {
                     var instance = ImporterNIS.CreateLightSectored(related);
+
+                    if (structure.PLTS_COMP_SCALE.HasValue && structure.SHAPE != null) {
+                        instance.scaleMinimum = Scamin.Instance.GetMinimumScale(structure.SHAPE, "LIGHTS_Light", PrimitiveType.Point, structure.PLTS_COMP_SCALE.Value);
+                    }
 
                     buffer["ps"] = ImporterNIS.ps101;
                     buffer["code"] = instance.GetType().Name;
@@ -235,9 +275,10 @@ namespace S100Framework.Applications
                     if (equipmentName == null) {
                         throw new NotSupportedException("empty equipment name");
                     }
-
-                    // TODO: Create relation
-                    ConversionAnalytics.Instance.AddConverted(sourceTable, related.ToDictionary(obj => obj.GLOBALID, obj => new List<string> { equipmentName }));
+                    culturalFeaturesPConverted = true;
+                    foreach (var rel in related) {
+                        ConversionAnalytics.Instance.AddConverted(rel.GetType().Name, rel.GLOBALID, equipmentName);
+                    }
 
                     FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name));
 
@@ -251,10 +292,16 @@ namespace S100Framework.Applications
                         //var _slave = pltsSlave.Fetch(_source, Direction.Destination);
                         var instance = ImporterNIS.CreateLightAllAround(light);
 
+                        if (light.PLTS_COMP_SCALE.HasValue && light.SHAPE != null) {
+                            instance.scaleMinimum = Scamin.Instance.GetMinimumScale(light.SHAPE, "LIGHTS_Light", PrimitiveType.Point, light.PLTS_COMP_SCALE.Value);
+                        }
+
                         buffer["ps"] = ImporterNIS.ps101;
                         buffer["code"] = instance.GetType().Name;
                         buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                         ImporterNIS.SetShape(buffer, light.SHAPE);
+
+                        culturalFeaturesPConverted = true;
 
                         var featureN = featureClass.CreateRow(buffer);
                         var equipmentName = Convert.ToString(featureN["name"]);
@@ -262,19 +309,151 @@ namespace S100Framework.Applications
                         if (equipmentName == null) {
                             throw new NotSupportedException("empty equipment name");
                         }
-                        
+
                         FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name));
 
-                        ConversionAnalytics.Instance.AddConverted(sourceTable, light.GLOBALID, equipmentName);
+
+                        ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", light.GLOBALID, equipmentName);
+
 
                         Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
                     }
+                    return;
                 }
+
+                related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightAirObstruction), structure.GLOBALID);
+                var hasRelatedLightsAirObstruction = related.Any();
+                if (hasRelatedLightsAirObstruction) {
+                    foreach (var light in related) {
+                        //var _slave = pltsSlave.Fetch(_source, Direction.Destination);
+                        var instance = ImporterNIS.CreateLightAirObstruction(light);
+
+                        if (light.PLTS_COMP_SCALE.HasValue && light.SHAPE != null) {
+                            instance.scaleMinimum = Scamin.Instance.GetMinimumScale(light.SHAPE, "LIGHTS_Light", PrimitiveType.Point, light.PLTS_COMP_SCALE.Value);
+                        }
+
+                        buffer["ps"] = ImporterNIS.ps101;
+                        buffer["code"] = instance.GetType().Name;
+                        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+                        ImporterNIS.SetShape(buffer, light.SHAPE);
+
+                        culturalFeaturesPConverted = true;
+
+                        var featureN = featureClass.CreateRow(buffer);
+                        var equipmentName = Convert.ToString(featureN["name"]);
+
+                        if (equipmentName == null) {
+                            throw new NotSupportedException("empty equipment name");
+                        }
+
+                        FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name));
+
+
+                        ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", light.GLOBALID, equipmentName);
+
+
+                        Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
+                    }
+                    return;
+                }
+
+                related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(RadarTransponderBeacon), structure.GLOBALID);
+                var hasRelatedRadarTransponder = related.Any();
+                if (hasRelatedRadarTransponder) {
+                    foreach (var radarTransponder in related) {
+                        var instance = ImporterNIS.CreateRadarTransponderBeacon(radarTransponder);
+
+                        if (radarTransponder.PLTS_COMP_SCALE.HasValue && radarTransponder.SHAPE != null) {
+                            instance.scaleMinimum = Scamin.Instance.GetMinimumScale(radarTransponder.SHAPE, "LIGHTS_Light", PrimitiveType.Point, radarTransponder.PLTS_COMP_SCALE.Value);
+                        }
+
+                        buffer["ps"] = ImporterNIS.ps101;
+                        buffer["code"] = instance.GetType().Name;
+                        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+                        ImporterNIS.SetShape(buffer, radarTransponder.SHAPE);
+
+                        culturalFeaturesPConverted = true;
+
+                        var featureN = featureClass.CreateRow(buffer);
+                        var equipmentName = Convert.ToString(featureN["name"]);
+
+                        if (equipmentName == null) {
+                            throw new NotSupportedException("empty equipment name");
+                        }
+
+                        FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name));
+
+                        ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", radarTransponder.GLOBALID, equipmentName);
+
+                        Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
+
+                        ;
+                    }
+                }
+
+                related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(Daymark), structure.GLOBALID);
+                var hasRelatedDaymark = related.Any();
+                if (hasRelatedDaymark) {
+                    foreach (var daymark in related) {
+                        var instance = ImporterNIS.CreateDaymark(daymark);
+
+                        if (daymark.PLTS_COMP_SCALE.HasValue && daymark.SHAPE != null) {
+                            instance.scaleMinimum = Scamin.Instance.GetMinimumScale(daymark.SHAPE, "LIGHTS_Light", PrimitiveType.Point, daymark.PLTS_COMP_SCALE.Value);
+                        }
+
+                        buffer["ps"] = ImporterNIS.ps101;
+                        buffer["code"] = instance.GetType().Name;
+                        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+                        ImporterNIS.SetShape(buffer, daymark.SHAPE);
+
+                        culturalFeaturesPConverted = true;
+
+                        var featureN = featureClass.CreateRow(buffer);
+                        var equipmentName = Convert.ToString(featureN["name"]);
+
+                        if (equipmentName == null) {
+                            throw new NotSupportedException("empty equipment name");
+                        }
+
+                        FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name));
+
+                        ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", daymark.GLOBALID, equipmentName);
+
+                        Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
+
+                        ;
+                    }
+                }
+
+
+                var relatedLandmarks = FeatureRelations.Instance.GetRelated<CulturalFeaturesP>(typeof(Landmark), structure.GLOBALID);
+                var hasRelatedLandmarks = relatedLandmarks.Any();
+                if (hasRelatedLandmarks) {
+                    throw new NotSupportedException("related landmark");
+                }
+
+                if (!culturalFeaturesPConverted) {
+                    var relatedObjects = FeatureRelations.Instance.GetRelated(s57Object.GlobalId);
+                    StringBuilder info = new();
+                    foreach (var relatedObject in relatedObjects) {
+                        info.Append($"{relatedObject.PLTS_Frel.SRC_SUB}::{relatedObject.PLTS_Frel.DEST_SUB}");
+                    }
+                    throw new NotSupportedException($"{structure.GetType().Name}: {info.ToString()}");
+                }
+
             }
 
             else {
                 throw new NotSupportedException($"{s57Object.GetType()}");
             }
+
+            foreach  (var plts in totalRelated) {
+                if (!ConversionAnalytics.Instance.IsConverted(plts.S57Object.GlobalId)) {
+                    // TODO: handle missing related - TOMOREDO: REFACTURE!!!
+                }
+            }
+
+
 
         }
     }
