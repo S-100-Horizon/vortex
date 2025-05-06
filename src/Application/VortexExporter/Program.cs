@@ -330,10 +330,13 @@ namespace S100Framework.YAML
     using System.Linq;
 
     using System.Text.RegularExpressions;
+    using System.Xml.Linq;
 
     public abstract class FeatureType
     {
-        public Guid Id { get; init; } = Guid.NewGuid();
+        static int counter = 1;
+
+        public int Id { get; init; } = counter++;
     }
 
     public class CurveFeature : FeatureType
@@ -359,26 +362,26 @@ namespace S100Framework.YAML
         public bool Equals(CurveFeature lineString) {
             if (lineString.Forward.Equals(this.Forward))
                 return true;
-            if (lineString.Reverse.Equals(this.Reverse))
-                return true;
-            var reverse = lineString.Reverse;
-            if (reverse.Equals(this.Forward))
-                return true;
-            if (reverse.Equals(this.Reverse))
-                return true;
+            //if (lineString.Reverse.Equals(this.Reverse))
+            //    return true;
+            //var reverse = lineString.Reverse;
+            //if (reverse.Equals(this.Forward))
+            //    return true;
+            //if (reverse.Equals(this.Reverse))
+            //    return true;
             return false;
         }
 
         public bool Equals(LineString lineString) {
             if (lineString.ToString().Equals(this.Forward))
                 return true;
-            if (lineString.ToString().Equals(this.Reverse))
-                return true;
-            var reverse = (LineString)lineString.Reverse();
-            if (reverse.ToString().Equals(this.Forward))
-                return true;
-            if (reverse.ToString().Equals(this.Reverse))
-                return true;
+            //if (lineString.ToString().Equals(this.Reverse))
+            //    return true;
+            //var reverse = (LineString)lineString.Reverse();
+            //if (reverse.ToString().Equals(this.Forward))
+            //    return true;
+            //if (reverse.ToString().Equals(this.Reverse))
+            //    return true;
             return false;
         }
 
@@ -393,14 +396,14 @@ namespace S100Framework.YAML
 
     public class CompositeCurveFeature : FeatureType
     {
-        public Guid[] Curves { get; init; }
+        public int[] Curves { get; init; }
     }
 
     public class SurfaceFeature : FeatureType
     {
-        public Guid Exterior { get; init; }
+        public int Exterior { get; init; }
 
-        public Guid[]? Interior { get; init; }
+        public int[]? Interior { get; init; }
 
         public string? Ref { get; init; } = default;
 
@@ -520,7 +523,7 @@ namespace S100Framework.YAML
 
         public static void AddTopology(this Dataset dataset, Topology topology) {
             var options = new ParallelOptions {
-                MaxDegreeOfParallelism = 16,
+                MaxDegreeOfParallelism = 8,
             };
 
             // Curves
@@ -528,7 +531,7 @@ namespace S100Framework.YAML
             try {
                 Log.Information("Adding curve #{count}", topology.Curves.Count());
 
-                //var concurrent = new ConcurrentBag<Curve>();
+                var concurrent = new ConcurrentBag<Curve>();
 
                 //Parallel.ForEach(topology.Curves, options, (c) => {
                 //    curveFeature = c;
@@ -537,18 +540,14 @@ namespace S100Framework.YAML
                 //    var coordinates = c.LineString.Coordinates.Select(e => new Coordinate(e.X, e.Y)).ToArray();
 
                 //    var first = dataset?.GetOrCreateStartPoint(coordinates, $"{c.Id}");
-                //    var last = dataset?.GetOrCreateEndPoint(coordinates, $"{c.Id}");
+                //    //var last = dataset?.GetOrCreateEndPoint(coordinates, $"{c.Id}");
 
-                //    var curve = new Curve(first!, last!, coordinates) {
+                //    var curve = new Curve(coordinates) {
                 //        Name = $"C{c.Id}",
                 //    };
 
                 //    concurrent.Add(curve);
                 //});
-
-                //foreach(var curve in concurrent) {
-                //    dataset!.AddCurve(curve);
-                //}
 
                 foreach (var c in topology.Curves) {    // todo: use ref instead of id
                     curveFeature = c;
@@ -559,7 +558,7 @@ namespace S100Framework.YAML
                     var first = dataset?.GetOrCreateStartPoint(coordinates, $"{c.Id}");
                     var last = dataset?.GetOrCreateEndPoint(coordinates, $"{c.Id}");
 
-                    var curve = new Curve(first!, last!, coordinates) {
+                    var curve = new Curve(first!, last!, coordinates) {                    
                         Name = $"C{c.Id}",
                     };
 
@@ -700,8 +699,10 @@ namespace S100Framework.YAML
         }
 
         public static Point GetOrCreateStartPoint(this Dataset dataset, Coordinate[] curve, string name, int identifier = 0) {
-            var tempPoint = new Point(curve[0].X, curve[0].Y);
-            var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Location == tempPoint.Location);
+            //var tempPoint = new Point(curve[0].X, curve[0].Y);
+            //var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Location == tempPoint.Location);
+
+            var datasetPoint = dataset?.Points?.SingleOrDefault(e => e.Coordinate!.X == curve[0].X && e.Coordinate!.Y == curve[0].Y);
 
             if (datasetPoint == default) {
                 var point = new Point(curve[0].X, curve[0].Y) {
@@ -718,8 +719,10 @@ namespace S100Framework.YAML
         }
 
         public static Point GetOrCreateEndPoint(this Dataset dataset, Coordinate[] curve, string name, int identifier = 1) {
-            var tempPoint = new Point(curve[^1].X, curve[^1].Y);
-            var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Location == tempPoint.Location);
+            //var tempPoint = new Point(curve[^1].X, curve[^1].Y);
+            //var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Location == tempPoint.Location);
+
+            var datasetPoint = dataset?.Points?.SingleOrDefault(e => e.Coordinate!.X == curve[^1].X && e.Coordinate!.Y == curve[^1].Y);
 
             if (datasetPoint == default) {
                 var pointName = $"P{name}-{identifier}";
@@ -747,6 +750,15 @@ namespace S100Framework.YAML
             }
 
             return coordinates.ToArray();
+        }
+
+        public static CurveFeature GetOrAdd(this IList<CurveFeature> topology, LineString lineString) {
+            var e = topology.SingleOrDefault(e => e.LineString.EqualsExact(lineString));
+            if (e is not null)
+                return e;
+            e = new CurveFeature(lineString);
+            topology.Add(e);
+            return e;
         }
 
         public static IList<CurveFeature> AddCurve(this IList<CurveFeature> topology, CurveFeature curve) {
@@ -902,7 +914,7 @@ namespace ArcGIS.Core.Data
                             Surfaces = new List<SurfaceFeature>(),
                         };
 
-                        AppendSurface(polylines, t);
+                        AppendSurface2(polylines.ToArray(), t);
 
                         if (t.Curves.Any())
                             topology.Curves = topology.Curves.Union(t.Curves).ToList();
@@ -918,6 +930,7 @@ namespace ArcGIS.Core.Data
             //  Skin of Earth
             {
                 var polylines = new List<S100Framework.YAML.Polyline>();
+                var polygons = new List<IPolygon>();
 
                 using (var surface = geodatabase.OpenDataset<FeatureClass>("surface")) {
                     queryFilter.WhereClause = $"{whereClause} AND (upper(code) IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))";
@@ -938,19 +951,27 @@ namespace ArcGIS.Core.Data
 
                         var ex = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
 
-                        if (shape.PartCount > 1) {
-                            var interiorRings = new List<LineString>();
+                        //if (shape.PartCount > 1) {
+                        //    var interiorRings = new List<LineString>();
 
-                            foreach (var interiorRing in shape.Parts.Skip(1)) {
-                                coordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+                        //    foreach (var interiorRing in shape.Parts.Skip(1)) {
+                        //        coordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
 
-                                interiorRings.Add((LineString)factory.CreateLineString([.. coordinates, coordinates[0]]));
-                            }
+                        //        interiorRings.Add((LineString)factory.CreateLineString([.. coordinates, coordinates[0]]));
+                        //    }
 
-                            polylines.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, interiorRings.ToArray()));
-                        }
-                        else {
+                        //    polylines.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, interiorRings.ToArray()));
+
+                        //    var polygon = factory.CreatePolygon(factory.CreateLinearRing(ex.Coordinates), interiorRings.Select(e => factory.CreateLinearRing(e.Coordinates)).ToArray());
+                        //    polygons.Add(polygon);
+
+                        //}
+                        //else 
+                        {
                             polylines.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, []));
+
+                            var polygon = factory.CreatePolygon(factory.CreateLinearRing(ex.Coordinates));
+                            polygons.Add(polygon);
                         }
                     }
                 }
@@ -964,7 +985,7 @@ namespace ArcGIS.Core.Data
                     Surfaces = new List<SurfaceFeature>(),
                 };
 
-                AppendSurface(polylines, t);
+                AppendSurface2(polylines.ToArray(), t);
 
                 if (t.Curves.Any())
                     topology.Curves = topology.Curves.Union(t.Curves).ToList();
@@ -978,10 +999,12 @@ namespace ArcGIS.Core.Data
             return topology;
         }
 
-        private static void AppendSurface(ICollection<S100Framework.YAML.Polyline> polylines, S100Framework.YAML.Topology topology) {
+        private static void AppendSurface2(S100Framework.YAML.Polyline[] polylines, S100Framework.YAML.Topology topology) {
             var factory = new GeometryFactory(new PrecisionModel(PrecisionModels.FloatingSingle)); // Or PrecisionModels.Floating
 
             int count = polylines.Count();
+
+            //polylines = polylines.Take(4).ToArray();
 
             var curves = topology.Curves;
             var compositecurves = topology.CompositeCurves;
@@ -993,244 +1016,147 @@ namespace ArcGIS.Core.Data
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            foreach (var input in polylines/*.Where(e => e.ObjectId == 43950)*/) {
-                var startTime = stopwatch.Elapsed;
+            var sharedGeometries = new List<LineString>();
 
-                count -= 1;
-                if (System.Diagnostics.Debugger.IsAttached) {
-                    if (count > 0 && count % 20 == 0)
-                        Log.Verbose("#{count}", count);
-                }
+            var match = new Dictionary<string, List<LineString>>();
 
-                var local = new Dictionary<LineString, List<CurveFeature>>();
+            for (int i = 0; i < polylines.Length; i++) {
+                //match.Add(polylines[i].name, new List<LineString>());
+            }
 
-                var rings = new List<LineString> { input.LineString };
+            for (int i = 0; i < polylines.Length; i++) {
+                //if (polylines[i].ObjectId != 43255)
+                //    continue;
 
-                if (input is S100Framework.YAML.Polygon polygon) {
-                    foreach (var i in polygon.InteriorRings) {
-                        rings.Add(i);
-                    }
-                }
+                match.Add(polylines[i].name, new List<LineString>());
 
-                foreach (var ring in rings) {
-                    var ringString = ring.ToString();
-                    local.Add(ring, new List<CurveFeature>());
+                var boundary1 = polylines[i].LineString;
 
-                    var analyze = polylines.Where(e => !e.ObjectId.Equals(input.ObjectId));
-
-                    var equals = polylines.Where(e => !e.ObjectId.Equals(input.ObjectId)).Where(e => ring.EqualsTopologically(e.LineString));
-                    if (equals.Any()) {
-                        if (equalsList.Contains(ringString)) {
-                            var curve = equalsDictionary[ringString];
-                            local[ring] = curve;
-                            continue;
-                        }
-
-                        equalsList.Add(ringString);
-
-                        var ids = equals.Select(e => e.ObjectId);
-                        analyze = analyze.Where(e => !ids.Contains(e.ObjectId));
-                    }
-
-                    var overlaps = analyze.Where(e => ring.Intersects(e.LineString)).Select(e => e.LineString).ToArray();
-
-                    //using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@".\..\..\..\..\..\artifacts\s100ed6.gdb")}")))) {
-                    //    var t = overlaps.Select(e => new CurveFeature(e)).ToList();
-                    //    target.PersistTopology(t);
-                    //    return null;
-                    //}
-
-                    if (!overlaps.Any()) {
-                        var curve = new CurveFeature(ring);
-                        curves.AddCurve(curve);
-
-                        local[ring].Add(curve);
+                //for (int j = i + 1; j < polylines.Length; j++) {
+                for (int j = 0; j < polylines.Length; j++) {
+                    if (j == i)
                         continue;
-                    }
+                    var boundary2 = polylines[j].LineString;
 
-                    var collection = factory.CreateMultiLineString(overlaps);
+                    var intersection = boundary1.Intersection(boundary2);
 
-                    try {
-                        var intersection = input.LineString.Intersection(collection);
+                    if (intersection == null || intersection.IsEmpty) continue;
 
-                        if (intersection.IsEmpty) {
-                            var curve = new CurveFeature(ring);
-                            curves.AddCurve(curve);
-                            local[ring].Add(curve);
-                            continue;
-                        }
+                    AddLineStringsFromGeometry(intersection, match[polylines[i].name]);
+                    AddLineStringsFromGeometry(intersection, sharedGeometries);
 
-                        if (intersection is GeometryCollection geometryCollection) {
-                            var polylins = geometryCollection.Geometries.Where(e => e is LineString);
-                            if (!polylins.Any()) {
-                                var curve = new CurveFeature(input.LineString);
-                                curves.AddCurve(curve);
-                                local[ring].Add(curve);
-                                continue;
-                            }
-                            intersection = factory.CreateMultiLineString(polylins.Select(e => e as LineString).ToArray());
-                        }
-
-                        if (intersection is MultiLineString multiLineStringIntersection) {
-                            foreach (LineString lineString in multiLineStringIntersection.Geometries) {
-                                if (!lineString.IsEmpty) {
-                                    if (lineString.Coordinates.All(e => ring.Coordinates.Contains(e))) {
-                                        var curve = new CurveFeature(lineString);
-                                        curves.AddCurve(curve);
-                                        local[ring].Add(curve);
-                                    }
-                                }
-                            }
-                        }
-                        else if (intersection is LineString lineStringIntersection) {
-                            if (!lineStringIntersection.IsEmpty) {
-                                if (lineStringIntersection.Coordinates.All(e => ring.Coordinates.Contains(e))) {
-                                    var curve = new CurveFeature(lineStringIntersection);
-                                    curves.AddCurve(curve);
-                                    local[ring].Add(curve);
-                                }
-                            }
-                        }
-
-                        var difference = input.LineString.Difference(intersection);
-
-                        if (difference is MultiLineString multiLineStringDifference) {
-                            foreach (LineString lineString in multiLineStringDifference.Geometries) {
-                                if (!lineString.IsEmpty) {
-                                    var curve = new CurveFeature(lineString);
-                                    curves.AddCurve(curve);
-                                    local[ring].Add(curve);
-
-                                }
-                            }
-                        }
-                        else if (difference is LineString lineStringDifference) {
-                            if (!lineStringDifference.IsEmpty) {
-                                var curve = new CurveFeature(lineStringDifference);
-                                curves.AddCurve(curve);
-                                local[ring].Add(curve);
-                            }
-                        }
-                    }
-                    catch (NetTopologySuite.Geometries.TopologyException ex) {
-                        Log.Logger.Error(ex, "no intersections: {ObjectId}", input.ObjectId);
-                        var curve = new CurveFeature(ring);
-                        curves.AddCurve(curve);
-                        local[ring].Add(curve);
-                        continue;
-                    }
-                }
-
-                int loop = 0;
-                foreach (var l in local) {
-                    //using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@".\..\..\..\..\..\artifacts\s100ed6.gdb")}")))) {
-                    //    target.PersistTopology(l.Value.Select(e => new CurveFeature(e)).ToList());
-                    //    return null;
-                    //}
-
-                    var start = l.Value.Single(e => e.LineString.StartPoint.EqualsNormalized(l.Key.StartPoint));
-                    var end = l.Value.Single(e => e.LineString.EndPoint.EqualsNormalized(l.Key.EndPoint));
-
-                    var sorted = new List<CurveFeature> { start };
-
-                    int countSegment = 1;
-                    var c = start;
-                    do {
-                        countSegment += 1;
-                        var next = l.Value.Single(e => e.LineString.StartPoint.EqualsNormalized(c.LineString.EndPoint));
-                        sorted.Add(next);
-                        c = next;
-                    } while (c != end);
-
-                    local[l.Key] = sorted;
-
-                    //using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@".\..\..\..\..\..\artifacts\s100ed6.gdb")}")))) {
-                    //    target.PersistTopology(sorted.Select(e => new CurveFeature(e)).ToList());
-                    //    return null;
-                    //}
-
-                    loop += 1;
-                }
-
-                if (local.Any(e => e.Value.Count > 1)) {
-                    var exterior = local.First();
-
-                    CurveFeature[] exteriorReferences = new CurveFeature[exterior.Value.Count];
-                    for (int i = 0; i < exteriorReferences.Length; i++) {
-                        exteriorReferences[i] = curves.Single(e => e.Equals(exterior.Value[i]));
-                    }
-
-                    if (!exteriorReferences.Any())
-                        System.Diagnostics.Debugger.Break();
-
-                    if (equalsList.Contains(exterior.Key.ToString())) {
-                        if (!equalsDictionary.ContainsKey(exterior.Key.ToString()))
-                            equalsDictionary.Add(exterior.Key.ToString(), exterior.Value);
-                    }
-
-                    var interior = new List<Guid>();
-
-                    foreach (var i in local.Skip(1)) {
-                        CurveFeature[] interiorReferences = new CurveFeature[i.Value.Count];
-                        for (int j = 0; j < interiorReferences.Length; j++) {
-                            interiorReferences[j] = curves.Single(e => e.Equals(i.Value[j]));
-                        }
-
-                        if (!interiorReferences.Any())
-                            System.Diagnostics.Debugger.Break();
-
-                        if (equalsList.Contains(i.Key.ToString())) {
-                            if (!equalsDictionary.ContainsKey(i.Key.ToString()))
-                                equalsDictionary.Add(i.Key.ToString(), i.Value);
-                        }
-
-
-                        //var references = curves.Where(e => i.Value.Contains(e.LineString) || i.Value.Contains(e.LineStringReverse)).Select(e => e.Id).Distinct();
-
-                        //if (!references.Any())
-                        //    System.Diagnostics.Debugger.Break();
-
-                        var composite = new CompositeCurveFeature {
-                            Curves = interiorReferences.Select(e => e.Id).ToArray(),
-                        };
-                        composite = compositecurves.AddCurve(composite);
-                        interior.Add(composite.Id);
-                    }
-
-                    var compositeExterior = new CompositeCurveFeature {
-                        //Curves = sorted.Select(e => e.Id).ToArray(),
-                        Curves = exteriorReferences.Select(e => e.Id).ToArray(),
-                    };
-                    compositeExterior = compositecurves.AddCurve(compositeExterior);
-
-                    var surface = new SurfaceFeature {
-                        Exterior = compositeExterior.Id,
-                        Interior = interior.Any() ? interior.ToArray() : default,
-                        Ref = input.name,
-                        //LineString = (LineString)((NetTopologySuite.Geometries.Polygon)polygonizer.GetPolygons().First()).ExteriorRing,
-                    };
-                    surfaces.Add(surface);
-                }
-                else {
-                    var reference = curves.Single(e => local.First().Value.Contains(e));
-
-                    if (equalsList.Contains(reference.LineString.ToString())) {
-                        if (!equalsDictionary.ContainsKey(reference.LineString.ToString()))
-                            equalsDictionary.Add(reference.LineString.ToString(), local.First().Value);
-                    }
-
-                    var surface = new SurfaceFeature {
-                        Exterior = reference.Id,
-                        Ref = input.name,
-                    };
-                    surfaces.Add(surface);
-                }
-
-                var elapsed = stopwatch.Elapsed - startTime;
-                if (System.Diagnostics.Debugger.IsAttached) {
-                    Log.Verbose("objectid: {objectid} {elapsed}", input.ObjectId, elapsed);
+                    //intersection = boundary2.Intersection(boundary1);
+                    //if (intersection == null || intersection.IsEmpty) continue;
+                    //AddLineStringsFromGeometry(intersection, match[polylines[j].name]);
                 }
             }
+
+            var uniqueGeometries = new List<LineString>();
+
+
+            foreach (var m in match) {
+                var origin = polylines.Single(e => e.name == m.Key);
+
+                if (!m.Value.Any()) {
+                    var curveExterior = curves.GetOrAdd(origin.LineString);
+                    surfaces.Add(new SurfaceFeature() {
+                        Ref = m.Key,
+                        Exterior = curveExterior.Id,
+                    });
+                }
+                else {
+                    var g = factory.CreateMultiLineString(m.Value.ToArray());
+
+                    var diff = origin.LineString.Difference(g);
+
+                    var polygon = new List<LineString>(m.Value);
+
+                    AddLineStringsFromGeometry(diff, polygon);
+
+                    var start = origin.LineString.StartPoint;
+
+
+                    Log.Verbose("");
+                    Log.Verbose("{linestring}", origin.LineString);
+
+                    Log.Verbose("start: {start}", start);
+
+                    int countSegment = 1;
+                    var c = polygon.Single(e => e.StartPoint.EqualsExact(start));
+
+                    var sorted = new List<CurveFeature> { curves.GetOrAdd(c) };
+
+                    Log.Verbose("\t{id}: {linestring}", countSegment, c);
+                    do {
+                        countSegment += 1;
+
+                        var next = polygon.Single(e => e != c && e.StartPoint.EqualsExact(c.EndPoint));
+                        sorted.Add(curves.GetOrAdd(next));
+                        c = next;
+
+                        Log.Verbose("\t{id}: {linestring}", countSegment, c);
+                    } while (!c.EndPoint.EqualsExact(origin.LineString.EndPoint));
+
+                    if (countSegment != polygon.Count())
+                        System.Diagnostics.Debugger.Break();
+
+                    //if(!sorted.Select(e=>e.LineString).SequenceEqual(polygon))
+                    //    System.Diagnostics.Debugger.Break();
+
+                    //curves.Add(new CurveFeature(origin.LineString));
+
+                    var s = sorted.Select(e => e.LineString).ToArray();
+
+                    var compositeExterior = new CompositeCurveFeature {
+                        Curves = sorted.Select(e => e.Id).ToArray(),
+                    };
+                    compositecurves.Add(compositeExterior);
+
+                    Log.Verbose("");
+                    for (int i = 0; i < compositeExterior.Curves.Length; i++) {
+                        var curve = curves.Single(e => e.Id == compositeExterior.Curves[i]);
+                        Log.Verbose("\t{id}: {linestring} ({ref})", i + 1, curve.LineString, curve.Id);
+                    }
+
+
+                    surfaces.Add(new SurfaceFeature() {
+                        Ref = m.Key,
+                        Exterior = compositeExterior.Id,
+                    });
+                }
+            }
+
+            //var geometries = sharedGeometries.Union(uniqueGeometries);
+
+            //using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@".\..\..\..\..\..\artifacts\s100ed6.gdb")}")))) {
+            //    //var t = geometries.Select(e => new CurveFeature(e)).ToList();
+            //    target.PersistTopology(curves);
+            //}
+        }
+
+        private static void AddLineStringsFromGeometry(IGeometry geometry, List<LineString> targetList) {
+            if (geometry is LineString line) {
+                if (!line.IsEmpty) {
+                    if (!targetList.Contains(line))
+                        targetList.Add(line);
+                }
+            }
+            else if (geometry is MultiLineString multiLine) {
+                foreach (var subLine in multiLine.Geometries.OfType<LineString>()) {
+                    if (!subLine.IsEmpty) {
+                        if (!targetList.Contains(subLine))
+                            targetList.Add(subLine);
+                    }
+                }
+            }
+            else if (geometry is GeometryCollection collection) // Recursively handle collections if needed
+            {
+                foreach (var geom in collection.Geometries) {
+                    AddLineStringsFromGeometry(geom, targetList);
+                }
+            }
+            // We primarily care about LineString results for shared *edges*.
+            // Point/MultiPoint intersections mean polygons touch only at vertices.
         }
 
     }
