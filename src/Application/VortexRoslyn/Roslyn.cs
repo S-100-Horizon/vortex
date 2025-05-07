@@ -953,13 +953,11 @@ namespace S100Framework.Applications
             if (!isFirst)
                 builder.AppendLine();
             builder.AppendLine("\t\t\t[JsonIgnore]");
-            builder.AppendLine("\t\t\t[IgnoreDataMember]");
             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
 
             if (new string[] { "S100_FC_InformationType", "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
                 builder.AppendLine();
                 builder.AppendLine("\t\t\t[JsonIgnore]");
-                builder.AppendLine("\t\t\t[IgnoreDataMember]");
                 if (superType != null)
                     builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => [..{superType!.Value}._informationBindingDefinitions, ..{code}._informationBindingDefinitions];");
                 else
@@ -1007,7 +1005,6 @@ namespace S100Framework.Applications
             if (new string[] { "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
                 builder.AppendLine();
                 builder.AppendLine("\t\t\t[JsonIgnore]");
-                builder.AppendLine("\t\t\t[IgnoreDataMember]");
                 if (superType != null)
                     builder.AppendLine($"\t\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => [..{superType!.Value}._featureBindingDefinitions, ..{code}._featureBindingDefinitions];");
                 else
@@ -1051,6 +1048,7 @@ namespace S100Framework.Applications
                 featureBindings.AppendLine("\t\t\t];");
 
                 builder.AppendLine();
+                builder.AppendLine("\t\t\t[JsonIgnore]");
                 if (superType != null)
                     builder.AppendLine($"\t\t\tpublic override Primitives[] primitives => [..{superType!.Value}._primitives, ..{code}._primitives];");
                 else

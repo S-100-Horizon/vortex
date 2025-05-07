@@ -1,12 +1,45 @@
 ﻿using S100Framework.WPF.ViewModel;
+using System.Collections;
+using System.ComponentModel;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Xceed.Wpf.Toolkit;
 using Xceed.Wpf.Toolkit.PropertyGrid;
+using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
 namespace S100Framework.WPF.Editors
 {
+    public class MyEnumComboBoxEditor : ComboBoxEditor
+    {
+        protected override IEnumerable CreateItemsSource(PropertyItem propertyItem) {
+            return GetValues(propertyItem.PropertyType);
+        }
+
+        private static object[] GetValues(Type enumType) {
+            List<object> values = new List<object>();
+
+            if (enumType != null) {
+                var fields = enumType.GetFields().Where(x => x.IsLiteral);
+                foreach (FieldInfo field in fields) {
+                    // Get array of BrowsableAttribute attributes
+                    object[] attrs = field.GetCustomAttributes(typeof(BrowsableAttribute), false);
+                    if (attrs.Length == 1) {
+                        // If attribute exists and its value is false continue to the next field...
+                        BrowsableAttribute brAttr = (BrowsableAttribute)attrs[0];
+                        if (brAttr.Browsable == false)
+                            continue;
+                    }
+
+                    values.Add(field.GetValue(enumType));
+                }
+            }
+
+            return values.ToArray();
+        }
+    }
+
     public sealed class EnumCheckComboEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
@@ -20,14 +53,21 @@ namespace S100Framework.WPF.Editors
             var attribute = (S100Framework.DomainModel.EnumerationAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.EnumerationAttribute), true)[0];
 
             var bindingItemsSourceProperty = new Binding(attribute.PropertyName) { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
-            BindingOperations.SetBinding(checkComboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+            BindingOperations.SetBinding(checkComboBox, CheckComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
-            BindingOperations.SetBinding(checkComboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+            BindingOperations.SetBinding(checkComboBox, CheckComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+
+            var value = checkComboBox.SelectedValue;
+
+            //if (!string.IsNullOrEmpty(viewModel.RefId)) {
+            //    checkComboBox.SelectedValue = viewModel.RefId;
+            //}
 
             return checkComboBox;
-        }
+        }        
     }
+
 
     public sealed class CodeListComboEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {

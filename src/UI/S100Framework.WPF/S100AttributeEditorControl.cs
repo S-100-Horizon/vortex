@@ -331,7 +331,7 @@ namespace S100Framework.WPF
             base.OnApplyTemplate();
 
             PropertyGrid = (PropertyGrid)GetTemplateChild(PART_PropertyGrid);
-            PropertyGrid.IsEnabled = this.IsEditingEnabled;
+            PropertyGrid.IsReadOnly = !this.IsEditingEnabled;
 
             InformationBindingsStackPanel = (StackPanel)GetTemplateChild(PART_InformationBindings);
             InformationBindingsStackPanel.IsEnabled = this.IsEditingEnabled;
@@ -399,7 +399,7 @@ namespace S100Framework.WPF
                 return;
 
             if (control.PropertyGrid != null) {
-                control.PropertyGrid.IsEnabled = (Boolean)args.NewValue;
+                control.PropertyGrid.IsReadOnly = !(Boolean)args.NewValue;
             }
             if (control.InformationBindingsStackPanel != null) {
                 control.InformationBindingsStackPanel.IsEnabled = (Boolean)args.NewValue;
