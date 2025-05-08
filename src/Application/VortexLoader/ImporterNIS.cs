@@ -9,6 +9,11 @@ using System.Text.Json;
 using S100Framework.Applications.S57.esri;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using S100Framework.DomainModel;
+using VortexLoader;
+using Microsoft.Win32;
+using ArcGIS.Desktop.Internal.Core.Conda;
+using S100Framework.DomainModel.S101.FeatureTypes;
 
 
 namespace S100Framework.Applications
@@ -32,7 +37,11 @@ namespace S100Framework.Applications
         //internal static FeatureRelations featureRelations = null;
         internal static RelatedEquipment? relatedEquipment;
 
+        internal static ConverterRegistry  _converterRegistry = new ConverterRegistry();
+
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
+            
+
             Logger.Current.Information("Starting");
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
@@ -71,6 +80,9 @@ namespace S100Framework.Applications
                 }
             });
 
+            
+
+
             Func<Action, bool> Store = (a) => {
                 a.Invoke();
                 return true;
@@ -84,6 +96,18 @@ namespace S100Framework.Applications
                     return true;
                 };
             }
+
+            _converterRegistry.Register<AidsToNavigationP, CardinalBeacon>(Converters.CreateCardinalBeacon);
+            _converterRegistry.Register<AidsToNavigationP, RadarTransponderBeacon>(Converters.CreateRadarTransponderBeacon);
+            _converterRegistry.Register<AidsToNavigationP, LightAllAround>(Converters.CreateLightAllAround);
+            _converterRegistry.Register<CulturalFeaturesP, LightSectored>(Converters.CreateLightSectored);
+            _converterRegistry.Register<AidsToNavigationP, LightSectored>(Converters.CreateLightSectored);
+            _converterRegistry.Register<AidsToNavigationP, LightAirObstruction>(Converters.CreateLightAirObstruction);
+            _converterRegistry.Register<AidsToNavigationP, LightFogDetector>(Converters.CreateLightFogDetector);
+            _converterRegistry.Register<DangersP, Obstruction>(Converters.CreateObstruction);
+            _converterRegistry.Register<CulturalFeaturesA, LightSectored>(Converters.CreateLightSectored);
+            _converterRegistry.Register<PortsAndServicesP, LightSectored>(Converters.CreateLightSectored);
+
 
             using (Geodatabase source = createGeodatabase()) {
 
@@ -136,7 +160,6 @@ namespace S100Framework.Applications
 
                     Store(() => S57_CulturalFeaturesP(source, destination, filter));
                     Store(() => S57_NaturalFeaturesP(source, destination, filter));
-                    Store(() => S57_AidsToNavigationP(source, destination, filter));
                     Store(() => S57_CoastlineA(source, destination, filter));
                     Store(() => S57_CoastlineL(source, destination, filter));
                     Store(() => S57_CoastlineP(source, destination, filter));
@@ -170,10 +193,11 @@ namespace S100Framework.Applications
                     Store(() => S57_TracksAndRoutesA(source, destination, filter));
                     Store(() => S57_TracksAndRoutesL(source, destination, filter));
                     Store(() => S57_TracksAndRoutesP(source, destination, filter));
+                    Store(() => S57_AidsToNavigationP(source, destination, filter));
 
                 }
 
-               FeatureRelations.Instance.CreateRelations();
+                FeatureRelations.Instance.CreateRelations();
 
                 Logger.Current.Information("Done");
 
@@ -222,7 +246,7 @@ namespace S100Framework.Applications
         /// </summary>
         /// <param _s101name="current"></param>
         /// <returns></returns>
-        private static rhythmOfLight GetRythmOfLight(AidsToNavigationP current) {
+        internal static rhythmOfLight GetRythmOfLight(AidsToNavigationP current) {
 
             /*
                 When populating rhythm of light, the

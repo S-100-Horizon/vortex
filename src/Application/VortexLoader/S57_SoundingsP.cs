@@ -39,6 +39,11 @@ namespace S100Framework.Applications
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
+
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                    continue;
+                }
+
                 var longname = current.LNAM ?? Strings.UNKNOWN;
                 var subtype = current.FCSUBTYPE ?? default;
                 var depth = current.DEPTH ?? default;
@@ -100,7 +105,7 @@ namespace S100Framework.Applications
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
 
-                                sounding.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                sounding.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                             }
 
                             AddInformation(sounding.information, feature);
@@ -144,7 +149,7 @@ namespace S100Framework.Applications
                             bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                             }
 
                             var featureN = featureClass.CreateRow(bufferPointset);

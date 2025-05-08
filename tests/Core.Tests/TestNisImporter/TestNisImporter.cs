@@ -63,30 +63,30 @@ namespace TestNisImporter
         public void TestScaleMinimum() {
             ImporterNIS._scaminFilesPath = @"G:\indigo\Configuration";
             {
-                var val1 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84),"DMPGRD_DumpingGround", PrimitiveType.Area, 22000);
+                var val1 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84),"DMPGRD_DumpingGround", 22000);
                 Assert.True(val1.HasValue);
                 Assert.True(val1.Value == 89999, "Wrong scamin");
                 
-                var val2 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "DMPGRD_DumpingGroundXX", PrimitiveType.Area, 22000);
+                var val2 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "DMPGRD_DumpingGroundXX", 22000);
                 Assert.False(val2.HasValue);
             }
             {
-                var val1 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "FLODOC_FloatingDock", PrimitiveType.Line, 22000); 
+                var val1 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "FLODOC_FloatingDock", 22000); 
                 Assert.False(val1.HasValue);
                 Assert.True(val1.GetValueOrDefault() == 44999, "Wrong scamin");
 
-                var val2 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "FLODOC_FloatingDock", PrimitiveType.Area, 22000); 
+                var val2 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "FLODOC_FloatingDock", 22000); 
                 Assert.False(val2.HasValue);
                 Assert.True(val2.GetValueOrDefault() == 44999, "Wrong scamin");
 
-                var val3 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "FLODOC_FloatingDock", PrimitiveType.Point, 22000);
+                var val3 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "FLODOC_FloatingDock", 22000);
                 Assert.False(val3.HasValue);
             }
             {
-                var val1 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "BRIDGE_Bridge", PrimitiveType.Area, 22000); // step value is null
+                var val1 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "BRIDGE_Bridge", 22000); // step value is null
                 Assert.False(val1.HasValue);
                 Assert.True(val1.GetValueOrDefault() == 44999, "Wrong scamin");
-                var val2 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "DMPGRD_DumpingGroundXX", PrimitiveType.Area, 22000);
+                var val2 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "DMPGRD_DumpingGroundXX", 22000);
                 Assert.False(val2.HasValue);
             }
         }
@@ -457,7 +457,7 @@ namespace TestNisImporter
                 csFile.AppendLine("{");
 
                 foreach (var dataset in datasets) {
-
+                    var datasetName = dataset.GetName();
                     StringBuilder fields = new StringBuilder();
                     StringBuilder ctor = new StringBuilder();
                     StringBuilder objectClass = new StringBuilder();
@@ -475,6 +475,8 @@ namespace TestNisImporter
                         datasetfields = ((Table)dataset).GetDefinition().GetFields();
                         ctor.AppendLine($"\t\tpublic {dataset.GetName()} (Row row) {{");
                     }
+
+                    ctor.AppendLine($"\t\t\tbase.TableName = \"{datasetName}\";");
 
                     var fieldInfo = (Type: "Int32", Conversion: "Convert.ToInt32", DefaultValue: "default", Alias: string.Empty);
 
@@ -512,6 +514,7 @@ namespace TestNisImporter
                             }
                             if (fieldInfo.Type.ToLower().Contains("guid")) {
                                 fieldValue = $@"Guid.TryParse(Convert.ToString(feature[""{field.Name.ToUpper()}""]), out {field.Name.ToUpper()})";
+
                             }
 
                         }
@@ -534,7 +537,7 @@ namespace TestNisImporter
                         fields.AppendLine($"\t\t[Description(\"{fieldInfo.Alias}\")]");
                         fields.AppendLine($"\t\t{fieldInfo.Type} {field.Name.ToUpper()} = {fieldInfo.DefaultValue};");
 
-
+                        
 
                         if (dataset is FeatureClass) {
                             if (field.Name.ToUpper() == "VALIDATIONSTATUS") {
@@ -551,11 +554,20 @@ namespace TestNisImporter
 
                         if (fieldInfo.Type.ToLower().Contains("guid")) {
                             ctor.AppendLine($"\t\t\t\t{fieldValue};");
+                            if (field.Name.ToUpper() == "GLOBALID") {
+                                ctor.AppendLine($"\t\t\t\tbase.GlobalId = this.GLOBALID;");
+                            }
                         }
                         else {
                             ctor.AppendLine($"\t\t\t\t{field.Name.ToUpper()} = {fieldValue};");
                             if (field.Name.ToUpper() == "VALIDATIONSTATUS") {
                                 ctor.AppendLine($"\t\t\t\t}}");
+                            }
+                            if (field.Name.ToUpper() == "SHAPE") {
+                                ctor.AppendLine($"\t\t\t\tbase.Shape = this.SHAPE;");
+                            }
+                            if (field.Name.ToUpper() == "PLTS_COMP_SCALE") {
+                                ctor.AppendLine($"\t\t\t\tbase.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;");
                             }
                         }
                         ctor.AppendLine($"\t\t\t}}");
@@ -573,10 +585,7 @@ namespace TestNisImporter
                 csFile.AppendLine(@"}");
                 file.WriteLine(csFile.ToString());
             }
-
-
         }
-
 
         [Fact]
         public void BuildImportS57ToGeodatabaseScripts() {

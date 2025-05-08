@@ -76,7 +76,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -106,13 +106,13 @@ namespace S100Framework.Applications.S57.esri
         internal int? IS_CONFLATE = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -153,16 +153,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public PLTS_SpatialAttributeL(Feature feature) {
+            base.TableName = "PLTS_SpatialAttributeL";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["EDITOR"] && feature["EDITOR"] is not null) {
                 EDITOR = Convert.ToString(feature["EDITOR"]);
@@ -187,6 +188,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -251,13 +253,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -311,13 +313,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -371,7 +373,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -527,7 +529,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? TS_TSV = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -568,16 +570,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public TidesAndVariationsA(Feature feature) {
+            base.TableName = "TidesAndVariationsA";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -638,6 +641,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -762,13 +766,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -822,13 +826,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -882,7 +886,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -936,7 +940,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? FCSUBTYPE = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -977,16 +981,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public TidesAndVariationsL(Feature feature) {
+            base.TableName = "TidesAndVariationsL";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -1047,6 +1052,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -1120,13 +1126,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -1180,13 +1186,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -1240,7 +1246,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -1396,7 +1402,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? TS_TSV = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -1455,16 +1461,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public TidesAndVariationsP(Feature feature) {
+            base.TableName = "TidesAndVariationsP";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -1525,6 +1532,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -1658,13 +1666,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -1718,13 +1726,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -1778,7 +1786,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -1832,7 +1840,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? FCSUBTYPE = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -1873,16 +1881,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public SeabedL(Feature feature) {
+            base.TableName = "SeabedL";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -1943,6 +1952,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -2016,13 +2026,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -2076,13 +2086,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -2136,7 +2146,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -2196,7 +2206,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? CATWED = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -2255,16 +2265,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public SeabedP(Feature feature) {
+            base.TableName = "SeabedP";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -2325,6 +2336,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -2410,13 +2422,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -2470,13 +2482,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -2530,7 +2542,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -2590,7 +2602,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? CATWED = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -2631,16 +2643,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public SeabedA(Feature feature) {
+            base.TableName = "SeabedA";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -2701,6 +2714,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -2777,13 +2791,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -2837,13 +2851,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -2897,7 +2911,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -3059,7 +3073,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? CATOLB = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -3100,16 +3114,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public DangersL(Feature feature) {
+            base.TableName = "DangersL";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -3170,6 +3185,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -3297,13 +3313,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -3357,13 +3373,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -3417,7 +3433,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -3591,7 +3607,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? CONVIS = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -3650,16 +3666,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public DangersP(Feature feature) {
+            base.TableName = "DangersP";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -3720,6 +3737,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -3862,13 +3880,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -3922,13 +3940,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -3982,7 +4000,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -4156,7 +4174,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? CONVIS = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -4197,16 +4215,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public DangersA(Feature feature) {
+            base.TableName = "DangersA";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -4267,6 +4286,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -4400,13 +4420,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -4460,13 +4480,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -4520,7 +4540,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -4574,7 +4594,7 @@ namespace S100Framework.Applications.S57.esri
         internal decimal? VALDCO = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -4615,16 +4635,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public DepthsL(Feature feature) {
+            base.TableName = "DepthsL";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -4685,6 +4706,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -4758,13 +4780,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -4818,13 +4840,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -4878,7 +4900,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -4974,7 +4996,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? CATCBL = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -5015,16 +5037,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public OffshoreInstallationsL(Feature feature) {
+            base.TableName = "OffshoreInstallationsL";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -5085,6 +5108,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -5179,13 +5203,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -5239,13 +5263,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -5299,7 +5323,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -5431,7 +5455,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? RESTRN = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -5472,16 +5496,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public OffshoreInstallationsA(Feature feature) {
+            base.TableName = "OffshoreInstallationsA";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -5542,6 +5567,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -5654,13 +5680,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -5714,13 +5740,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -5774,7 +5800,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -5798,7 +5824,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? PUBREF = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -5851,16 +5877,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS_LAST_MOD")]
         internal DateTime? NIS_LAST_MOD = default;
         public MetaDataP(Feature feature) {
+            base.TableName = "MetaDataP";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -5921,6 +5948,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -5985,13 +6013,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -6045,13 +6073,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -6105,7 +6133,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -6237,7 +6265,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? RESTRN = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -6278,16 +6306,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public TracksAndRoutesA(Feature feature) {
+            base.TableName = "TracksAndRoutesA";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -6348,6 +6377,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -6460,13 +6490,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -6520,13 +6550,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -6580,7 +6610,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -6706,7 +6736,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? FCSUBTYPE = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -6747,16 +6777,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public TracksAndRoutesL(Feature feature) {
+            base.TableName = "TracksAndRoutesL";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -6817,6 +6848,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -6926,13 +6958,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -6986,13 +7018,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -7046,7 +7078,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -7118,7 +7150,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? RESTRN = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -7177,16 +7209,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public TracksAndRoutesP(Feature feature) {
+            base.TableName = "TracksAndRoutesP";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -7247,6 +7280,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -7338,13 +7372,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -7398,13 +7432,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -7458,7 +7492,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -7782,7 +7816,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? FCSUBTYPE = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -7847,16 +7881,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("Validation status")]
         internal int? VALIDATIONSTATUS = default;
         public AidsToNavigationP(Feature feature) {
+            base.TableName = "AidsToNavigationP";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -7917,6 +7952,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -8139,13 +8175,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -8199,13 +8235,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -8259,7 +8295,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -8337,7 +8373,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? FCSUBTYPE = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -8378,16 +8414,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public IceFeaturesA(Feature feature) {
+            base.TableName = "IceFeaturesA";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -8448,6 +8485,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -8533,13 +8571,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -8593,13 +8631,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -8653,7 +8691,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -8713,7 +8751,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? FCSUBTYPE = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -8754,16 +8792,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public MilitaryFeaturesA(Feature feature) {
+            base.TableName = "MilitaryFeaturesA";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -8824,6 +8863,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -8900,13 +8940,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -8960,13 +9000,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -9020,7 +9060,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -9080,7 +9120,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? FCSUBTYPE = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -9139,16 +9179,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public MilitaryFeaturesP(Feature feature) {
+            base.TableName = "MilitaryFeaturesP";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -9209,6 +9250,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -9294,13 +9336,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -9354,13 +9396,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -9414,7 +9456,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -9528,7 +9570,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? FCSUBTYPE = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -9569,16 +9611,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public UserDefinedFeaturesA(Feature feature) {
+            base.TableName = "UserDefinedFeaturesA";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -9639,6 +9682,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -9742,13 +9786,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -9802,13 +9846,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -9862,7 +9906,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -9976,7 +10020,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? FCSUBTYPE = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -10035,16 +10079,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public UserDefinedFeaturesP(Feature feature) {
+            base.TableName = "UserDefinedFeaturesP";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -10105,6 +10150,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -10217,13 +10263,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -10277,13 +10323,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -10337,7 +10383,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -10451,7 +10497,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? FCSUBTYPE = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -10492,16 +10538,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public UserDefinedFeaturesL(Feature feature) {
+            base.TableName = "UserDefinedFeaturesL";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -10562,6 +10609,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -10665,13 +10713,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -10725,13 +10773,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -10785,7 +10833,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -10845,7 +10893,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? TECSOU = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -10886,16 +10934,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public DepthsA(Feature feature) {
+            base.TableName = "DepthsA";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -10956,6 +11005,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -11032,13 +11082,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -11092,13 +11142,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -11152,7 +11202,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -11224,7 +11274,7 @@ namespace S100Framework.Applications.S57.esri
         internal decimal? ENTRY_DATE = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -11277,16 +11327,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("Horizontal Datum")]
         internal int? P_HORDAT = default;
         public SoundingsP(Feature feature) {
+            base.TableName = "SoundingsP";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -11347,6 +11398,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -11435,13 +11487,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -11495,13 +11547,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -11555,7 +11607,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -11837,7 +11889,7 @@ namespace S100Framework.Applications.S57.esri
         internal decimal? RADIUS = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -11896,16 +11948,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public PortsAndServicesP(Feature feature) {
+            base.TableName = "PortsAndServicesP";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -11966,6 +12019,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -12162,13 +12216,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -12222,13 +12276,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -12282,7 +12336,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -12474,7 +12528,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? CATCAN = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -12515,16 +12569,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public PortsAndServicesL(Feature feature) {
+            base.TableName = "PortsAndServicesL";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -12585,6 +12640,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -12727,13 +12783,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -12787,13 +12843,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -12847,7 +12903,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -13111,7 +13167,7 @@ namespace S100Framework.Applications.S57.esri
         internal decimal? RADIUS = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -13152,16 +13208,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public PortsAndServicesA(Feature feature) {
+            base.TableName = "PortsAndServicesA";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -13222,6 +13279,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -13400,13 +13458,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -13460,13 +13518,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -13520,7 +13578,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -13772,7 +13830,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? WATLEV = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -13813,16 +13871,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public CulturalFeaturesA(Feature feature) {
+            base.TableName = "CulturalFeaturesA";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -13883,6 +13942,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -14055,13 +14115,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -14115,13 +14175,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -14175,7 +14235,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -14415,7 +14475,7 @@ namespace S100Framework.Applications.S57.esri
         internal decimal? VERCSA = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -14456,16 +14516,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public CulturalFeaturesL(Feature feature) {
+            base.TableName = "CulturalFeaturesL";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -14526,6 +14587,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -14692,13 +14754,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -14752,13 +14814,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -14812,7 +14874,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -15058,7 +15120,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? WATLEV = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -15117,16 +15179,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public CulturalFeaturesP(Feature feature) {
+            base.TableName = "CulturalFeaturesP";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -15187,6 +15250,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -15365,13 +15429,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -15425,13 +15489,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -15485,7 +15549,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -15611,7 +15675,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? WATLEV = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -15670,16 +15734,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public NaturalFeaturesP(Feature feature) {
+            base.TableName = "NaturalFeaturesP";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -15740,6 +15805,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -15858,13 +15924,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -15918,13 +15984,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -15978,7 +16044,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -16086,7 +16152,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? FCSUBTYPE = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -16127,16 +16193,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public NaturalFeaturesL(Feature feature) {
+            base.TableName = "NaturalFeaturesL";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -16197,6 +16264,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -16297,13 +16365,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -16357,13 +16425,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -16417,7 +16485,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -16543,7 +16611,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? WATLEV = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -16584,16 +16652,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public NaturalFeaturesA(Feature feature) {
+            base.TableName = "NaturalFeaturesA";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -16654,6 +16723,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -16763,13 +16833,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -16823,13 +16893,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -16883,7 +16953,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -17027,7 +17097,7 @@ namespace S100Framework.Applications.S57.esri
         internal decimal? ELEVAT = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -17068,16 +17138,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public CoastlineL(Feature feature) {
+            base.TableName = "CoastlineL";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -17138,6 +17209,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -17256,13 +17328,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -17316,13 +17388,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -17376,7 +17448,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -17508,7 +17580,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? FCSUBTYPE = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -17567,16 +17639,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public CoastlineP(Feature feature) {
+            base.TableName = "CoastlineP";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -17637,6 +17710,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -17758,13 +17832,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -17818,13 +17892,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -17878,7 +17952,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -18010,7 +18084,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? FCSUBTYPE = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -18051,16 +18125,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public CoastlineA(Feature feature) {
+            base.TableName = "CoastlineA";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -18121,6 +18196,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -18233,13 +18309,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -18293,13 +18369,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -18353,7 +18429,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -18467,7 +18543,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? FCSUBTYPE = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -18508,16 +18584,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public RegulatedAreasAndLimitsL(Feature feature) {
+            base.TableName = "RegulatedAreasAndLimitsL";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -18578,6 +18655,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -18681,13 +18759,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -18741,13 +18819,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -18801,7 +18879,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -18933,7 +19011,7 @@ namespace S100Framework.Applications.S57.esri
         internal decimal? RADIUS = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -18992,16 +19070,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public RegulatedAreasAndLimitsP(Feature feature) {
+            base.TableName = "RegulatedAreasAndLimitsP";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -19062,6 +19141,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -19183,13 +19263,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -19243,13 +19323,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -19303,7 +19383,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -19447,7 +19527,7 @@ namespace S100Framework.Applications.S57.esri
         internal decimal? RADIUS = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -19488,16 +19568,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public RegulatedAreasAndLimitsA(Feature feature) {
+            base.TableName = "RegulatedAreasAndLimitsA";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -19558,6 +19639,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -19676,13 +19758,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -19736,13 +19818,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -19796,7 +19878,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -19862,7 +19944,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? SURSTA = default;
 
         /// <summary>
-        /// Survey _s101type
+        /// Survey type
         /// </summary>
         [Description("Survey type")]
         internal string? SURTYP = default;
@@ -19970,7 +20052,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? VERDAT = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -20011,16 +20093,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public MetaDataA(Feature feature) {
+            base.TableName = "MetaDataA";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -20081,6 +20164,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -20214,13 +20298,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -20274,13 +20358,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -20334,7 +20418,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -20400,7 +20484,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? SURSTA = default;
 
         /// <summary>
-        /// Survey _s101type
+        /// Survey type
         /// </summary>
         [Description("Survey type")]
         internal string? SURTYP = default;
@@ -20418,7 +20502,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? FCSUBTYPE = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -20459,16 +20543,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public MetaDataL(Feature feature) {
+            base.TableName = "MetaDataL";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -20529,6 +20614,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -20617,13 +20703,13 @@ namespace S100Framework.Applications.S57.esri
         internal Guid GLOBALID = Guid.Empty;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -20677,13 +20763,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? SORIND = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -20737,7 +20823,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -20875,7 +20961,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? RESTRN = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -20934,16 +21020,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public OffshoreInstallationsP(Feature feature) {
+            base.TableName = "OffshoreInstallationsP";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -21004,6 +21091,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -21176,7 +21264,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -21188,7 +21276,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? IS_CONFLATE = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -21229,16 +21317,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public ClosingLinesL(Feature feature) {
+            base.TableName = "ClosingLinesL";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["EDITOR"] && feature["EDITOR"] is not null) {
                 EDITOR = Convert.ToString(feature["EDITOR"]);
@@ -21263,6 +21352,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["NIS_PRODUCTS"] && feature["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(feature["NIS_PRODUCTS"]);
@@ -21321,7 +21411,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? DSNM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -21387,7 +21477,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? IS_CONFLATE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -21404,16 +21494,17 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS_LAST_MOD")]
         internal DateTime? NIS_LAST_MOD = default;
         public ProductCoverage(Feature feature) {
+            base.TableName = "ProductCoverage";
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
             }
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
+                base.Shape = this.SHAPE;
             }
             if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                if (Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID)) {
-                    base.GlobalId = GLOBALID;
-                }
+                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
                 DSNM = Convert.ToString(feature["DSNM"]);
@@ -21447,6 +21538,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["PLTS_COMP_SCALE"] && feature["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(feature["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != feature["IS_CONFLATE"] && feature["IS_CONFLATE"] is not null) {
                 IS_CONFLATE = Convert.ToInt32(feature["IS_CONFLATE"]);
@@ -21502,7 +21594,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? DSNM = default;
 
         /// <summary>
-        /// Export S101Type
+        /// Export Type
         /// </summary>
         [Description("Export Type")]
         internal string? EXPORTTYPE = default;
@@ -21675,11 +21767,13 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS_LAST_MOD")]
         internal DateTime? NIS_LAST_MOD = default;
         public ProductDefinitions(Row row) {
+            base.TableName = "ProductDefinitions";
             if (DBNull.Value != row["OBJECTID"] && row["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(row["OBJECTID"]);
             }
             if (DBNull.Value != row["GLOBALID"] && row["GLOBALID"] is not null) {
                 Guid.TryParse(Convert.ToString(row["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != row["EDITOR"] && row["EDITOR"] is not null) {
                 EDITOR = Convert.ToString(row["EDITOR"]);
@@ -21846,7 +21940,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -21864,7 +21958,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? INFORM = default;
 
         /// <summary>
-        /// Long _s101name
+        /// Long name
         /// </summary>
         [Description("Long name")]
         internal string? LNAM = default;
@@ -21876,7 +21970,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? NAME = default;
 
         /// <summary>
-        /// Data set _s101name
+        /// Data set name
         /// </summary>
         [Description("Data set name")]
         internal string? DSNM = default;
@@ -21894,7 +21988,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? NINFOM = default;
 
         /// <summary>
-        /// Object _s101name in national language
+        /// Object name in national language
         /// </summary>
         [Description("Object name in national language")]
         internal string? NOBJNM = default;
@@ -21906,7 +22000,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? NTXTDS = default;
 
         /// <summary>
-        /// Object _s101name
+        /// Object name
         /// </summary>
         [Description("Object name")]
         internal string? OBJNAM = default;
@@ -21936,7 +22030,7 @@ namespace S100Framework.Applications.S57.esri
         internal string? TXTDSC = default;
 
         /// <summary>
-        /// Collection _s101type
+        /// Collection type
         /// </summary>
         [Description("Collection type")]
         internal int? COLLECTION_TYPE = default;
@@ -21948,7 +22042,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? IS_CONFLATE = default;
 
         /// <summary>
-        /// Scamin step
+        /// SCAMIN step
         /// </summary>
         [Description("SCAMIN step")]
         internal int? SCAMIN_STEP = default;
@@ -21989,11 +22083,13 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public PLTS_Collections(Row row) {
+            base.TableName = "PLTS_Collections";
             if (DBNull.Value != row["OBJECTID"] && row["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(row["OBJECTID"]);
             }
             if (DBNull.Value != row["GLOBALID"] && row["GLOBALID"] is not null) {
                 Guid.TryParse(Convert.ToString(row["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != row["EDITOR"] && row["EDITOR"] is not null) {
                 EDITOR = Convert.ToString(row["EDITOR"]);
@@ -22018,6 +22114,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != row["PLTS_COMP_SCALE"] && row["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(row["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != row["NIS_PRODUCTS"] && row["NIS_PRODUCTS"] is not null) {
                 NIS_PRODUCTS = Convert.ToInt32(row["NIS_PRODUCTS"]);
@@ -22115,7 +22212,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? RIND = default;
 
         /// <summary>
-        /// data set _s101name
+        /// data set name
         /// </summary>
         [Description("data set name")]
         internal string? DSNM = default;
@@ -22169,13 +22266,13 @@ namespace S100Framework.Applications.S57.esri
         internal string? DEST_SUB = default;
 
         /// <summary>
-        /// Source long _s101name
+        /// Source long name
         /// </summary>
         [Description("Source long name")]
         internal string? SRC_LNAM = default;
 
         /// <summary>
-        /// Destination long _s101name
+        /// Destination long name
         /// </summary>
         [Description("Destination long name")]
         internal string? DEST_LNAM = default;
@@ -22193,7 +22290,7 @@ namespace S100Framework.Applications.S57.esri
         internal int? IS_CONFLATE = default;
 
         /// <summary>
-        /// NIS product _s101type
+        /// NIS product type
         /// </summary>
         [Description("NIS product type")]
         internal int? NIS_PRODUCTS = default;
@@ -22222,11 +22319,13 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS_LAST_MOD")]
         internal DateTime? NIS_LAST_MOD = default;
         public PLTS_Frel(Row row) {
+            base.TableName = "PLTS_Frel";
             if (DBNull.Value != row["OBJECTID"] && row["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(row["OBJECTID"]);
             }
             if (DBNull.Value != row["GLOBALID"] && row["GLOBALID"] is not null) {
                 Guid.TryParse(Convert.ToString(row["GLOBALID"]), out GLOBALID);
+                base.GlobalId = this.GLOBALID;
             }
             if (DBNull.Value != row["RIND"] && row["RIND"] is not null) {
                 RIND = Convert.ToInt32(row["RIND"]);
@@ -22266,6 +22365,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != row["PLTS_COMP_SCALE"] && row["PLTS_COMP_SCALE"] is not null) {
                 PLTS_COMP_SCALE = Convert.ToInt32(row["PLTS_COMP_SCALE"]);
+                base.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;
             }
             if (DBNull.Value != row["IS_CONFLATE"] && row["IS_CONFLATE"] is not null) {
                 IS_CONFLATE = Convert.ToInt32(row["IS_CONFLATE"]);
@@ -22332,6 +22432,7 @@ namespace S100Framework.Applications.S57.esri
         [Description("PRIM")]
         internal int? PRIM = default;
         public PLTS_Master_Slaves(Row row) {
+            base.TableName = "PLTS_Master_Slaves";
             if (DBNull.Value != row["OBJECTID"] && row["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(row["OBJECTID"]);
             }

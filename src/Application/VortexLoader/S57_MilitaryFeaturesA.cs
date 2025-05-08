@@ -7,7 +7,6 @@ namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
-
         private static void S57_MilitaryFeatureA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             
             var tableName = "MilitaryFeaturesA";
@@ -34,6 +33,11 @@ namespace S100Framework.Applications
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
+
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                    continue;
+                }
+
                 var subtype = current.FCSUBTYPE ?? default;
                 
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
@@ -45,7 +49,7 @@ namespace S100Framework.Applications
                             var instance = new MilitaryPracticeArea() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                             }
 
 

@@ -756,7 +756,8 @@ namespace S100Framework.Applications
                 // Create the association
                 bindingDefinitionForeign = featureBindingsPrimary?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TForeign?.Name));
                 if (bindingDefinitionForeign == null) {
-                    throw new NotSupportedException($"no bindingdefinition on {TForeign?.Name} for {TForeign?.Name}");
+                    Logger.Current.DataError(-1, "", $"{relation.Master.Name}::{relation.Slave.Name}", $"Cannot relate {relation.Master.GetType().Name} with {relation.Slave.GetType().Name}");
+                    return; // throw new NotSupportedException($"no bindingdefinition on {TForeign?.Name} for {TForeign?.Name}");
                 }
                 featureAssociationBuffer["ps"] = ImporterNIS.ps101;
                 featureAssociationBuffer["code"] = bindingDefinitionForeign.association;

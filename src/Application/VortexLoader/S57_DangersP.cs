@@ -37,8 +37,10 @@ namespace S100Framework.Applications
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
 
-                if (ConversionAnalytics.Instance.IsConverted(globalid))
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
                     continue;
+                }
+
 
                 var subtype = current.FCSUBTYPE ?? default;
 
@@ -58,7 +60,7 @@ namespace S100Framework.Applications
                             };
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -78,7 +80,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -91,7 +93,7 @@ namespace S100Framework.Applications
                             var instance = new FishingFacility { };
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -114,7 +116,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -144,7 +146,7 @@ namespace S100Framework.Applications
                                     }
 
                                     if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                        instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                        instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                                     }
 
                                     instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -158,9 +160,10 @@ namespace S100Framework.Applications
                                     var featureN = featureClass.CreateRow(buffer);
                                     var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                                    // TODO: Create relations
-
                                     ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+                                    if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                        relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                                    }
 
                                     Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
 
@@ -180,79 +183,14 @@ namespace S100Framework.Applications
 
                                 var instance = new Obstruction();
 
-                                if (current.CATOBS.HasValue) {
-                                    instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(current.CATOBS.Value);
-                                }
-
-                                if (current.CONDTN.HasValue) {
-                                    instance.condition = GetCondition(current.CONDTN.Value);
-                                }
-
-                                if (current.EXPSOU.HasValue) {
-                                    instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
-                                }
-
-                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                                if (current.HEIGHT.HasValue) {
-                                    instance.height = current.HEIGHT.Value;
-                                }
-
-                                // DODO: Interoperability identifier
-
-                                // TODO: Maximum permitted draught
-
-                                if (current.NATSUR != default) {
-                                    instance.natureOfSurface = EnumHelper.GetEnumValues<natureOfSurface>(current.NATSUR);
-                                }
-
-                                if (current.PRODCT != default) {
-                                    instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
-                                }
-
-                                // TODO: QualityOfVerticalMeasurement
-
-                                if (current.SORDAT != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                        instance.reportedDate = dateOnly;
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
-                                    }
-                                }
-
-                                if (current.STATUS != default) {
-                                    instance.status = GetStatus(current.STATUS);
-                                }
-
-                                // TODO: techniqueOfVerticalMeasurement
-
-                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
-                                    instance.valueOfSounding = current.VALSOU.Value;
-                                }
-
-                                if (current.VERLEN.HasValue) {
-                                    instance.verticalLength = current.VERLEN.Value;
-                                }
-
-                                if (current.WATLEV.HasValue) {
-                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
-                                }
-
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                                 }
 
                                 AddInformation(instance.information, feature);
 
                                 // TODO: defaultClearanceDepth
 
-                                if (current.SHAPE != null) {
-                                    foreach (var depthArea in SelectIn<DepthsA>(current.SHAPE, depthsA, SpatialRelationship.Intersects, ImporterNIS.CompilationScale)) {
-                                        var drval1 = depthArea.DRVAL1 ?? default;
-                                        instance.surroundingDepth = drval1;
-                                    }
-                                }
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
@@ -261,7 +199,9 @@ namespace S100Framework.Applications
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                                // TODO: Create relations
+                                if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                    relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                                }
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
@@ -339,7 +279,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                             }
 
                             // TODO: defaultClearanceDepth
@@ -357,7 +297,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -377,7 +317,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -392,7 +332,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -424,7 +364,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             if (current.STATUS != default) {
@@ -442,7 +382,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
