@@ -2117,7 +2117,6 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NWPreambleContent : InformationAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(NWPreambleContent);
 		}
 
@@ -2128,7 +2127,6 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NWReferences : InformationAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(NWReferences);
 		}
 	}
@@ -2141,7 +2139,6 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AreaAffected : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(AreaAffected);
 		}
 
@@ -2152,7 +2149,6 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextAssociation : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(TextAssociation);
 		}
 	}
@@ -2193,11 +2189,9 @@ namespace S100Framework.DomainModel.S124 {
 			public DateTime publicationTime {get;set;}
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(NAVWARNPreamble);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => NAVWARNPreamble._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -2226,11 +2220,9 @@ namespace S100Framework.DomainModel.S124 {
 			public referenceCategory referenceCategory {get;set;}
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(References);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => References._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -2259,11 +2251,9 @@ namespace S100Framework.DomainModel.S124 {
 			public restriction? restriction {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(NAVWARNPart);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => NAVWARNPart._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -2277,9 +2267,9 @@ namespace S100Framework.DomainModel.S124 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => NAVWARNPart._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => NAVWARNPart._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.noGeometry, Primitives.point, Primitives.curve, Primitives.surface
@@ -2312,19 +2302,17 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NAVWARNAreaAffected : FeatureNode, IFeatureBindingDefinition {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(NAVWARNAreaAffected);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => NAVWARNAreaAffected._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => NAVWARNAreaAffected._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => NAVWARNAreaAffected._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface
@@ -2364,19 +2352,17 @@ namespace S100Framework.DomainModel.S124 {
 			public int? scaleMinimum {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(TextPlacement);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => TextPlacement._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
