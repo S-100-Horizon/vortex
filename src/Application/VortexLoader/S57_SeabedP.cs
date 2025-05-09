@@ -34,6 +34,11 @@ namespace S100Framework.Applications
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
+
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                    continue;
+                }
+
                 var subtype = current.FCSUBTYPE ?? default;
                 var watlev = current.WATLEV ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
@@ -44,7 +49,7 @@ namespace S100Framework.Applications
                             var instance = new SeabedArea() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -69,7 +74,7 @@ namespace S100Framework.Applications
                             var instance = new Sandwave() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                             }
 
                             AddInformation(instance.information, feature);
@@ -93,7 +98,7 @@ namespace S100Framework.Applications
                             var instance = new Spring() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                             }
 
 
@@ -119,7 +124,7 @@ namespace S100Framework.Applications
                             var instance = new WeedKelp() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);

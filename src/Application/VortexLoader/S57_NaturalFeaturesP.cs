@@ -33,6 +33,11 @@ namespace S100Framework.Applications
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
+
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                    continue;
+                }
+
                 var subtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
@@ -52,7 +57,7 @@ namespace S100Framework.Applications
                     case 1: { // LNDARE_LandArea
                             var instance = new LandArea();
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -74,7 +79,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]);
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -87,7 +92,7 @@ namespace S100Framework.Applications
                             var instance = new LandElevation();
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                             }
 
 
@@ -105,7 +110,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -118,7 +123,7 @@ namespace S100Framework.Applications
                             var instance = new LandRegion() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                             }
 
 
@@ -132,7 +137,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
                             }
 
 
@@ -146,7 +151,7 @@ namespace S100Framework.Applications
                             var instance = new Rapids() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                             }
 
 
@@ -160,7 +165,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
                             }
 
 
@@ -174,7 +179,7 @@ namespace S100Framework.Applications
                             var instance = new SeaAreaNamedWaterArea() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                             }
 
                             if (current.CATSEA.HasValue) {
@@ -191,7 +196,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
@@ -203,7 +208,7 @@ namespace S100Framework.Applications
                             var instance = new SlopingGround() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                             }
 
                             if (current.CATSLO.HasValue) {
@@ -222,7 +227,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
@@ -235,7 +240,7 @@ namespace S100Framework.Applications
                             var instance = new Vegetation() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                             }
 
                             if (current.CATVEG != default) {
@@ -268,7 +273,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
@@ -281,7 +286,7 @@ namespace S100Framework.Applications
                             var instance = new Waterfall() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                             }
 
                             if (current.CONVIS.HasValue) {
@@ -302,7 +307,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);

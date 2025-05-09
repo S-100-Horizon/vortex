@@ -2,6 +2,8 @@
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.DomainModel.S124.ComplexAttributes;
+using System.ComponentModel;
 
 namespace S100Framework.Applications
 {
@@ -32,6 +34,11 @@ namespace S100Framework.Applications
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
+
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                    continue;
+                }
+
                 var subtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
@@ -44,10 +51,11 @@ namespace S100Framework.Applications
 
                             // The S-57 attributes DRVAL1 and DRVAL2 for CBLSUB will not be converted. It is considered that
                             // these attributes are not relevant for Cable Submarine in S - 101.
-
+                            
                             var instance = new CableSubmarine();
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[current.FCSUBTYPE ?? default], current.PLTS_COMP_SCALE.Value);
                             }
 
                             if (current.BURDEP.HasValue) {
@@ -56,10 +64,12 @@ namespace S100Framework.Applications
 
                             if (current.CATCBL.HasValue) {
                                 if (current.CATCBL.Value == 4) { // TODO: handle cable _s101type == 4
-                                    continue;
+                                    Logger.Current.DataError(objectid, tableName, longname, "CATCBL 4 cannot be converted. Set to unknown.");
+                                    instance.categoryOfCable = categoryOfCable.Unknown;
                                 }
-
-                                instance.categoryOfCable = EnumHelper.GetEnumValue<categoryOfCable>(current.CATCBL.Value);
+                                else {
+                                    instance.categoryOfCable = EnumHelper.GetEnumValue<categoryOfCable>(current.CATCBL.Value);
+                                }
                             };
 
                             if (current.CONDTN.HasValue) {
@@ -81,7 +91,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                             }
 
                             AddInformation(instance.information, feature);
@@ -104,7 +114,7 @@ namespace S100Framework.Applications
                     case 5: { // PIPSOL_PipelineSubmarineOnLand
                             var instance = new PipelineSubmarineOnLand();
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -129,14 +139,13 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
-
                         }
                         break;
+                    default:
+                        // code block
+                        System.Diagnostics.Debugger.Break();
+                        break;
                 }
-
-
-
             }
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }

@@ -79,11 +79,37 @@ namespace S100Framework.Applications
             }
         }
 
-        public int? GetMinimumScale(Geometry geometry, string subtypeName/*, string relatedStructureName*/, PrimitiveType primitiveType, int compilationScale, bool isRelatedToStructure = false) {
+        public int? GetMinimumScale(Geometry geometry, string subtypeName/*, string relatedStructureName*/, int compilationScale, bool isRelatedToStructure = false) {
             var touched = GetTouchedPolygonNames(geometry);
             if (touched.Count != 1) {
                 throw new ArgumentException("Cannot determine scamin");
                 //return null;
+            }
+
+            var primitiveType = PrimitiveType.Line;
+            
+            switch (geometry.GeometryType) {
+                case GeometryType.Unknown:
+                    throw new NotSupportedException("Unknown geometry type");
+                case GeometryType.Point:
+                    primitiveType = PrimitiveType.Point;
+                    break;
+                case GeometryType.Envelope:
+                    throw new NotSupportedException("Unknown geometry type");
+                case GeometryType.Multipoint:
+                    throw new NotSupportedException("Unknown geometry type");
+                case GeometryType.Polyline:
+                    primitiveType = PrimitiveType.Line;
+                    break;
+                case GeometryType.Polygon:
+                    primitiveType = PrimitiveType.Area;
+                    break;
+                case GeometryType.Multipatch:
+                    throw new NotSupportedException("Unknown geometry type");
+                case GeometryType.GeometryBag:
+                    throw new NotSupportedException("Unknown geometry type");
+                default:
+                    throw new NotSupportedException("Unknown geometry type");
             }
 
             return _scaminFiles[touched[0]].GetMinimumScale(subtypeName, primitiveType, compilationScale, isRelatedToStructure);
