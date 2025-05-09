@@ -179,6 +179,8 @@ namespace S100Framework.YAML
             if (enumValue == null) return null;
             if (enumValue.ToString() == "0") return null;
 
+            return $"{(int)enumValue!}";
+
             var enumType = enumValue.GetType();
 
             if (!enumType.IsEnum) throw new ArgumentException($"Provided value is not an enum: {enumValue}");
@@ -186,7 +188,7 @@ namespace S100Framework.YAML
             var name = Enum.GetName(enumType, enumValue!);
 
             if (name == null) throw new ArgumentException($"Invalid enum value: {enumValue}");
-
+            return name;
             var field = enumType.GetField(name);
             var enumMemberAttribute = field?.GetCustomAttribute<EnumMemberAttribute>();
 
