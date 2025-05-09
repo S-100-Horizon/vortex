@@ -12,7 +12,6 @@ namespace S100Framework.Applications
 
             using var depthsA = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
             var subtypes = depthsA.GetSubtypes();
-            var featureType = PrimitiveType.Area;
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
@@ -37,7 +36,7 @@ namespace S100Framework.Applications
                 }
 
 
-                var subtype = current.FCSUBTYPE ?? default;
+                var fcSubtype = current.FCSUBTYPE ?? default;
                 
                 var drval1 = current.DRVAL1 ?? default;
                 var drval2 = current.DRVAL2 ?? default(decimal?);
@@ -48,7 +47,7 @@ namespace S100Framework.Applications
                 var quasou = current.QUASOU ?? default;
                 var tecsou = current.TECSOU ?? default;
 
-                switch (subtype) {
+                switch (fcSubtype) {
                     case 1: {     // DEPARE // SKIN OF EARTH
                             var instance = new DepthArea {
                                 depthRangeMinimumValue = drval1,
@@ -167,8 +166,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             AddInformation(instance.information, feature);
 

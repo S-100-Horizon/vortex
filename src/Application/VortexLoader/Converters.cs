@@ -12,6 +12,10 @@ namespace VortexLoader
         //private readonly Dictionary<(Type from, Type to), Func<IList<object>, object>> _listConverters = new();
 
         public void Register<TFrom, TTo>(Func<TFrom, TTo> converter) {
+            if (converter == null) {
+                throw new ArgumentNullException(nameof(converter));
+            }
+
             _converters[(typeof(TFrom), typeof(TTo))] = input => converter((TFrom)input);
         }
 

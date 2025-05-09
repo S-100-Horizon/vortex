@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VortexLoader;
 
 namespace S100Framework.Applications
 {
@@ -19,7 +20,11 @@ namespace S100Framework.Applications
             var lights = new List<AidsToNavigationP>();
             foreach (var slave in slaves) {
                 if (slave.S101Type == typeof(LightSectored)) {
-                    lights.Add(slave.S57Object as AidsToNavigationP);
+                    var obj = slave.S57Object as AidsToNavigationP;
+                    if (obj == null) {
+                        throw new NotSupportedException($"{slave.S57Object} is not an AidsToNavigationP");
+                    }
+                    lights.Add(obj);
                 }
             }
 
@@ -86,8 +91,21 @@ namespace S100Framework.Applications
                 instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
             }
 
+
+            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                string subtype = "";
+
+                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+            }
+
+
             return instance;
         }
+
+
 
 
         internal static LightSectored CreateLightSectored(S57Object structure) {

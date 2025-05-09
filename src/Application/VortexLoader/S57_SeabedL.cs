@@ -14,8 +14,8 @@ namespace S100Framework.Applications
             var ps101 = "S-101";
 
             var seabedL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
-            var subtypes = seabedL.GetSubtypes();
-            var featureType = PrimitiveType.Line;
+            Subtypes.Instance.RegisterSubtypes(seabedL);
+            
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
 
@@ -37,16 +37,22 @@ namespace S100Framework.Applications
                     continue;
                 }
 
-                var subtype = current.FCSUBTYPE ?? default;
+                var fcSubtype = current.FCSUBTYPE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
 
-                switch (subtype) {
+                switch (fcSubtype) {
                     case 10: { // SBDARE_SeabedArea
                             var instance = new SeabedArea() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             if (current.WATLEV.HasValue) {
                                 instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
@@ -71,9 +77,16 @@ namespace S100Framework.Applications
                     case 15: { // SNDWAV_SandWaves
                             var instance = new Sandwave() {
                             };
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             if (current.VERLEN.HasValue) {
                                 instance.verticalLength = current.VERLEN.Value;
@@ -95,7 +108,7 @@ namespace S100Framework.Applications
                         }
                         break;
                     default:
-                        throw new NotSupportedException($"SeabedL subtype:{subtype}");
+                        throw new NotSupportedException($"SeabedL subtype:{fcSubtype}");
                 }
             }
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));

@@ -1,6 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Data.UtilityNetwork.Trace;
 using ArcGIS.Core.Internal.CIM;
+using ArcGIS.Desktop.Internal.Core.Assistant.EnterpriseClient.ChatRequest.SqlWhereClauseGeneration;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101.ComplexAttributes;
@@ -317,9 +318,6 @@ namespace S100Framework.Applications
 
         private bool _isInitialized = false;
 
-        private int _relationCount = 0;
-
-
         private FeatureRelations() {
             this._relations = new HashSet<Relation>();
             this._pltsCollections = new Dictionary<Guid, PltsCollection>();
@@ -424,6 +422,7 @@ namespace S100Framework.Applications
                 throw new NotSupportedException($"LIGHT catlit: {aton.CATLIT} : {aton.LNAM}");
             }
         }
+
 
         internal int GetRelatedCount(Guid uid) {
             if (!_isInitialized)
@@ -756,8 +755,10 @@ namespace S100Framework.Applications
                 // Create the association
                 bindingDefinitionForeign = featureBindingsPrimary?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TForeign?.Name));
                 if (bindingDefinitionForeign == null) {
-                    Logger.Current.DataError(-1, "", $"{relation.Master.Name}::{relation.Slave.Name}", $"Cannot relate {relation.Master.GetType().Name} with {relation.Slave.GetType().Name}");
-                    return; // throw new NotSupportedException($"no bindingdefinition on {TForeign?.Name} for {TForeign?.Name}");
+                    var msg = $"Cannot relate {relation.Master.GetType().Name} {relation.Master.S101Type.Name} with {relation.Slave.GetType().Name} {relation.Slave.S101Type.Name} - where name in ('{relation.Master.Name}','{relation.Slave.Name}')";
+                    Logger.Current.DataError(-1, "", "relate", msg);
+                    return;
+                    //throw new NotSupportedException(msg);
                 }
                 featureAssociationBuffer["ps"] = ImporterNIS.ps101;
                 featureAssociationBuffer["code"] = bindingDefinitionForeign.association;

@@ -37,7 +37,7 @@ namespace S100Framework.Applications
         //internal static FeatureRelations featureRelations = null;
         internal static RelatedEquipment? relatedEquipment;
 
-        internal static ConverterRegistry  _converterRegistry = new ConverterRegistry();
+        internal static ConverterRegistry _converterRegistry = new ConverterRegistry();
 
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
             
@@ -80,8 +80,6 @@ namespace S100Framework.Applications
                 }
             });
 
-            
-
 
             Func<Action, bool> Store = (a) => {
                 a.Invoke();
@@ -104,10 +102,10 @@ namespace S100Framework.Applications
             _converterRegistry.Register<AidsToNavigationP, LightSectored>(Converters.CreateLightSectored);
             _converterRegistry.Register<AidsToNavigationP, LightAirObstruction>(Converters.CreateLightAirObstruction);
             _converterRegistry.Register<AidsToNavigationP, LightFogDetector>(Converters.CreateLightFogDetector);
+            _converterRegistry.Register<AidsToNavigationP, Daymark>(Converters.CreateDaymark);
             _converterRegistry.Register<DangersP, Obstruction>(Converters.CreateObstruction);
             _converterRegistry.Register<CulturalFeaturesA, LightSectored>(Converters.CreateLightSectored);
             _converterRegistry.Register<PortsAndServicesP, LightSectored>(Converters.CreateLightSectored);
-
 
             using (Geodatabase source = createGeodatabase()) {
 
@@ -138,7 +136,12 @@ namespace S100Framework.Applications
 
                 });
 
-                
+                var tableName = "aidstonavigationp";
+                using var aidstonavigationp = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+                Subtypes.Instance.RegisterSubtypes(aidstonavigationp);
+
+
+
                 FeatureRelations.Instance.Initialize(source, destination);
                 relatedEquipment = new RelatedEquipment(source);
 
@@ -253,7 +256,7 @@ namespace S100Framework.Applications
                 sub-attributes signal group, signal period and signal sequence are only valid for non-fixed lights
                 (that is, sub-attribute light characteristic ≠ 1 (fixed)), with signal group and signal period being
                 mandatory
-             */
+            */
 
             var signalGroupN = current.SIGGRP != default ? new List<string> { current.SIGGRP } : new();
             var signalPeriodN = current.SIGPER;
@@ -281,7 +284,7 @@ namespace S100Framework.Applications
             return rhythmOfLight;
         }
 
-        private static List<signalSequence> GetSignalSequences(string? sigseq) {
+        internal static List<signalSequence> GetSignalSequences(string? sigseq) {
             var signalSequences = new List<signalSequence>();
 
             string pattern = @"(\d+\.\d+)|\((\d+\.\d+)\)";

@@ -15,9 +15,7 @@ namespace S100Framework.Applications
 
             using var soundingsP = source.OpenDataset<FeatureClass>(source.GetName("SoundingsP"));
 
-            var subtypes = soundingsP.GetSubtypes();
-            var featureType = PrimitiveType.Point;
-
+            Subtypes.Instance.RegisterSubtypes(soundingsP);
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("pointset"));
             using var informationtype = target.OpenDataset<Table>(target.GetName("informationType"));
@@ -45,7 +43,7 @@ namespace S100Framework.Applications
                 }
 
                 var longname = current.LNAM ?? Strings.UNKNOWN;
-                var subtype = current.FCSUBTYPE ?? default;
+                var fcSubtype = current.FCSUBTYPE ?? default;
                 var depth = current.DEPTH ?? default;
                 var quasou = current.QUASOU ?? default;
                 var quapos = current.P_QUAPOS ?? default;
@@ -55,7 +53,7 @@ namespace S100Framework.Applications
 
 
 
-                switch (subtype) {
+                switch (fcSubtype) {
                     case 1:
                         var shape = current.SHAPE as MapPoint;
                         if (shape == default) {
@@ -104,9 +102,14 @@ namespace S100Framework.Applications
                             sounding.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
 
-                                sounding.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                sounding.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             AddInformation(sounding.information, feature);
 
@@ -119,7 +122,8 @@ namespace S100Framework.Applications
 
                             // TODO: Create relations
 
-                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(sounding));
+                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); 
+                            
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(sounding));
 
                             // TODO: Handle Spatialquality
@@ -149,8 +153,14 @@ namespace S100Framework.Applications
                             bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             var featureN = featureClass.CreateRow(bufferPointset);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";

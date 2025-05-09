@@ -7,22 +7,29 @@ using System.Text;
 using System.Threading.Tasks;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.ComplexAttributes;
 
 namespace S100Framework.Applications
 {
     internal static partial class Converters
     {
-        
-        internal static LightAirObstruction CreateLightAirObstruction(AidsToNavigationP current) {
-            var instance = new LightAirObstruction();
 
-            if (current.COLOUR != default) {
-                instance.colour = ImporterNIS.GetColours(current.COLOUR);
+        internal static Daymark CreateDaymark(AidsToNavigationP current) {
+            var instance = new Daymark();
+
+            if (current.CATSPM != default) {
+                instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
             }
 
-            if (current.EXCLIT.HasValue) {
-                instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<exhibitionConditionOfLight>(current.EXCLIT.Value);
+            if (current.COLOUR != default) {
+                instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
+            }
+
+            if (current.COLPAT != default) {
+                instance.colourPattern = ImporterNIS.GetColourPattern(current.COLPAT);
+            }
+
+            if (current.ELEVAT.HasValue) {
+                instance.elevation = current.ELEVAT.Value;
             }
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -32,23 +39,14 @@ namespace S100Framework.Applications
                 instance.fixedDateRange = dateRange;
             }
 
-            // flareBearing is not populated. New field.
-
-            // DODO: Interoperability identifier
-
             if (current.HEIGHT.HasValue) {
                 instance.height = current.HEIGHT.Value;
             }
 
-            if (current.LITVIS != null) {
-                instance.lightVisibility = EnumHelper.GetEnumValues<lightVisibility>(current.LITVIS);
-            }
+            // TODO: interoperabilityidentifier
 
-            if (current.MLTYLT.HasValue) {
-                instance.multiplicityOfFeatures = new multiplicityOfFeatures() {
-                    multiplicityKnown = true,
-                    numberOfFeatures = current.MLTYLT
-                };
+            if (current.NATCON != default) {
+                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
             }
 
             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -56,18 +54,26 @@ namespace S100Framework.Applications
                 instance.periodicDateRange = periodicDateRange;
             }
 
-            instance.rhythmOfLight = ImporterNIS.GetRythmOfLight(current);
+            if (current.CONRAD.HasValue) {
+                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+            }
 
             if (current.STATUS != default) {
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
             }
 
-            if (current.VALNMR.HasValue) {
-                instance.valueOfNominalRange = current.VALNMR.Value;
+            if (current.TOPSHP.HasValue) {
+                instance.topmarkDaymarkShape = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
             }
 
-            if (current.VERDAT.HasValue) {
-                instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
+            if (current.VERLEN.HasValue) {
+                instance.verticalLength = current.VERLEN.Value;
+            }
+
+            // TODO: shapeInformation
+
+            if (current.PICREP != default) {
+                instance.pictorialRepresentation = current.PICREP;
             }
 
             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -81,6 +87,7 @@ namespace S100Framework.Applications
 
             return instance;
         }
+
 
 
     }
