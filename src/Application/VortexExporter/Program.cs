@@ -155,37 +155,42 @@ namespace S100Framework.Applications
 
                 // FeatureAssociations - skip for now until two-way references sorted
                 {
-                    //try {
-                    //    using var type = source.OpenDataset<Table>("associationbinding");
-                    //    using var cursor = type.Search();
-                    //    while (cursor.MoveNext()) {
-                    //        var current = cursor.Current;
+                    try {
+                        using var type = source.OpenDataset<Table>("associationbinding");
+                        using var cursor = type.Search();
+                        while (cursor.MoveNext()) {
+                            var current = cursor.Current;
 
-                    //        var name = current["association"].ToString()!;
-                    //        var role = current["role"].ToString()!;
+                            // Only associations. Skip composition/aggregation
+                            var assoType = current["roleType"].ToString()!;
+                            if (assoType != "association")
+                                continue;
 
-                    //        var id = current["pid"].ToString()!;
-                    //        var to = current["foreignid"].ToString()!;
+                            var name = current["association"].ToString()!;
+                            var role = current["role"].ToString()!;
 
-                    //        var foid = $"110:{to!.Substring(1)}:1";       // Geodatastyrelsen: 110 
+                            var id = current["pid"].ToString()!;
+                            var to = current["foreignid"].ToString()!;
 
-                    //        var association = new YAML.Association() {
-                    //            Name = name,
-                    //            Role = role,
-                    //            To = foid,
-                    //        };
+                            var foid = $"110:{to!.Substring(1)}:1";       // Geodatastyrelsen: 110 
 
-                    //        // Add or update
-                    //        if (featureAssociations.TryGetValue(id, out var existingArray))
-                    //            featureAssociations[id] = [.. existingArray, association];
-                    //        else
-                    //            featureAssociations[id] = [association];
-                    //    }
-                    //}
-                    //catch (Exception ex) {
-                    //    Log.Information("Table: associationbinding: {message} ", ex.Message);
-                    //    Logger.Current.Error("Exception: {ex}", ex);
-                    //}
+                            var association = new YAML.Association() {
+                                Name = name,
+                                Role = role,
+                                To = foid,
+                            };
+
+                            // Add or update
+                            if (featureAssociations.TryGetValue(id, out var existingArray))
+                                featureAssociations[id] = [.. existingArray, association];
+                            else
+                                featureAssociations[id] = [association];
+                        }
+                    }
+                    catch (Exception ex) {
+                        Log.Information("Table: associationbinding: {message} ", ex.Message);
+                        Logger.Current.Error("Exception: {ex}", ex);
+                    }
                 }
 
 
