@@ -224,7 +224,7 @@ namespace S100Framework.Applications
 
                     var supported = tableName switch {
                         "surface" => true,
-                        "curve" => true,
+                        //"curve" => true,
                         "point" => true,
                         "pointset" => true,
                         _ => false
@@ -933,8 +933,8 @@ namespace ArcGIS.Core.Data
                         var boundary = polygons[i].InteriorRings[k];
                         var interiorLineStrings = new List<LineString>();
 
-                        foreach (var j in joint) {
-                            //for (int j = 0; j < polygons.Length; j++) {
+                        //foreach (var j in joint) {
+                        for (int j = 0; j < polygons.Length; j++) {
                             if (j == i)
                                 continue;
 
