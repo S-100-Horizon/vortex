@@ -134,7 +134,7 @@ namespace S100Framework.Applications
             return null;
         }
 
-        internal void CreateRelatedLineEquipment(S57Object current, FeatureNode s101Object, string name, Geodatabase target) {
+        internal void CreateRelatedLineEquipment(S57Object structure, FeatureNode s101Object, string name, Geodatabase target, Geodatabase source) {
             throw new NotImplementedException();
         }
 

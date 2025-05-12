@@ -70,6 +70,11 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                            }
+
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -102,6 +107,11 @@ namespace S100Framework.Applications
                             SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                            }
+
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 

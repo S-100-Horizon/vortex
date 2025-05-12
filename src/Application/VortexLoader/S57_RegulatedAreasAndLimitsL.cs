@@ -12,16 +12,13 @@ namespace S100Framework.Applications
     {
         private static void S57_RegulatedAreasAndLimitsL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "RegulatedAreasAndLimitsL";
-            
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
 
             using var regulatedAreasAndLimitsL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
             Subtypes.Instance.RegisterSubtypes(regulatedAreasAndLimitsL);
 
-
             int recordCount = 0;
-            
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
@@ -58,20 +55,19 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-
-
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                            }
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -80,6 +76,7 @@ namespace S100Framework.Applications
                         break;
                     case 25: { // MARCUL_MarineFarmCulture
                             var instance = new MarineFarmCulture();
+
                             if (current.CATMFA != null) {
                                 instance.categoryOfMarineFarmCulture = EnumHelper.GetEnumValue<categoryOfMarineFarmCulture>(current.CATMFA);
                             }
@@ -125,12 +122,6 @@ namespace S100Framework.Applications
                             }
 
                             // TODO: VerticalUncertainty
-                            //if (current.SOUACC.HasValue) {
-                            //    instance.verticalUncertainty = new DomainModel.S101.ComplexAttributes.verticalUncertainty() {
-                            //        uncertaintyFixed = "",
-                            //        uncertaintyVariableFactor = ""
-                            //    }
-                            //}
 
                             // TODO: VesselSpeedLimit
 
@@ -138,30 +129,6 @@ namespace S100Framework.Applications
                                 instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
                             }
 
-                            //if (plts_comp_scale != default) {
-                            //  instance.scaleMinimum = plts_comp_scale;
-                            //}
-
-                            AddInformation(instance.information, feature);
-
-                            buffer["ps"] = ps101;
-
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
-                            // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
-
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
-                        }
-                        break;
-                    case 30: { // STSLNE_StraightTerritorialSeaBaseline
-                            var instance = new StraightTerritorialSeaBaseline();
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -171,7 +138,36 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
+                            AddInformation(instance.information, feature);
 
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            SetShape(buffer, current.SHAPE);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            
+                        }
+                        break;
+                    case 30: { // STSLNE_StraightTerritorialSeaBaseline
+                            var instance = new StraightTerritorialSeaBaseline();
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
 
                             if (current.NATION != default) 
                             { 
@@ -188,8 +184,10 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                            }
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));

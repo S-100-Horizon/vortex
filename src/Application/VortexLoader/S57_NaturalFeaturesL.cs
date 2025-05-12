@@ -74,8 +74,11 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                            }
+
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             
@@ -114,8 +117,11 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name" ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                            }
+
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             
@@ -149,8 +155,11 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                            }
+
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
 
@@ -184,8 +193,11 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                            }
+
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
 
@@ -219,8 +231,11 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                            }
+
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
 
@@ -254,8 +269,11 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                            }
+
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
 
@@ -290,8 +308,11 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                            }
+
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
 

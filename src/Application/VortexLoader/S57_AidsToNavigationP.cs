@@ -1721,9 +1721,6 @@ namespace S100Framework.Applications
                         break;
 
                     case 110: { // TOPMAR_Topmark // SLAVE RIND: 2
-                            // TODO: TOPMAR
-                            //System.Diagnostics.Debugger.Break();
-                            //GetCorrespondingAidsToNav
                             /*
 
                                 The S-101 complex attribute topmark has been introduced in S-101 to encode topmarks on aids to
@@ -1735,7 +1732,7 @@ namespace S100Framework.Applications
                                 complex attribute shape information. See also clause 12.6.
                             */
 
-                            throw new NotImplementedException("Master topmarks");
+                            throw new NotImplementedException("Impossible! No stand alone topmarks alloved.");
                             
                         }
                     default:

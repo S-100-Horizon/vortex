@@ -77,7 +77,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
@@ -113,7 +113,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                                 if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                    relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                                    relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
                                 }
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
@@ -250,7 +250,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
@@ -278,7 +278,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
