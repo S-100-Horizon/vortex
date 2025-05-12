@@ -2,6 +2,7 @@
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -11,7 +12,7 @@ namespace S100Framework.Applications
             var tableName = "CoastlineA";
 
             using var coastlinea = source.OpenDataset<FeatureClass>(source.GetName(tableName));
-            Subtypes.Instance.RegisterSubtypes(coastlinea);
+
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 

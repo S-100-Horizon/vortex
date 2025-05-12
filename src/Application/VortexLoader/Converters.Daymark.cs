@@ -1,5 +1,4 @@
 ﻿using S100Framework.Applications.S57.esri;
-using S100Framework.Applications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S101;
+using ArcGIS.Core.Data;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
     internal static partial class Converters
     {
 
-        internal static Daymark CreateDaymark(AidsToNavigationP current) {
+        internal static Daymark CreateDaymark(AidsToNavigationP current, Geodatabase source) {
             var instance = new Daymark();
 
             if (current.CATSPM != default) {

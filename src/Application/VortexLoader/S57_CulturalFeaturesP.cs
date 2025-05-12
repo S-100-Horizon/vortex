@@ -3,6 +3,7 @@ using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using ArcGIS.Core.CIM;
 using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -479,7 +480,9 @@ namespace S100Framework.Applications
                                 // TODO: handle landmark CATLMK == 19 WINDTURBINE?
                                 if (current.CATLMK != "19") {
                                     instance.categoryOfLandmark = EnumHelper.GetEnumValues<categoryOfLandmark>(current.CATLMK);
-                                } 
+                                } else {
+                                   // throw new NotImplementedException("WINDTURBINE");
+                                }
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);

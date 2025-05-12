@@ -8,6 +8,7 @@ using Serilog;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {

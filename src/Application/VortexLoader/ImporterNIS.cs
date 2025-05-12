@@ -14,6 +14,8 @@ using VortexLoader;
 using Microsoft.Win32;
 using ArcGIS.Desktop.Internal.Core.Conda;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System.Runtime.CompilerServices;
+using S100Framework.Applications.Singletons;
 
 
 namespace S100Framework.Applications
@@ -31,6 +33,7 @@ namespace S100Framework.Applications
         internal static string _scaminFilesPath = "";
         internal static string ps101 = "S-101";
         internal static string ps128 = "S-128";
+        internal static Geodatabase _geodatabase;
 
         internal static readonly int CompilationScale = 22000; // Used as filter for spatial queries to transfer attributes from other features based on location analysis
 
@@ -106,9 +109,10 @@ namespace S100Framework.Applications
             _converterRegistry.Register<DangersP, Obstruction>(Converters.CreateObstruction);
             _converterRegistry.Register<CulturalFeaturesA, LightSectored>(Converters.CreateLightSectored);
             _converterRegistry.Register<PortsAndServicesP, LightSectored>(Converters.CreateLightSectored);
+            _converterRegistry.Register<PortsAndServicesP, SignalStationWarning>(Converters.CreateSignalStationWarning);
+
 
             using (Geodatabase source = createGeodatabase()) {
-
                 Store(() => {
                     var query = new QueryFilter {
                         WhereClause = $"1=1",
@@ -136,13 +140,12 @@ namespace S100Framework.Applications
 
                 });
 
-                var tableName = "aidstonavigationp";
-                using var aidstonavigationp = source.OpenDataset<FeatureClass>(source.GetName(tableName));
-                Subtypes.Instance.RegisterSubtypes(aidstonavigationp);
+                Subtypes.Initialize(source);
+
+                FeatureRelations.Initialize(source, destination);
 
 
 
-                FeatureRelations.Instance.Initialize(source, destination);
                 relatedEquipment = new RelatedEquipment(source);
 
                 if (skinOfEarthOnly) {
@@ -206,30 +209,9 @@ namespace S100Framework.Applications
 
                 return true;
             }
+
         }
 
-        public static IEnumerable<T> SelectIn<T>(Geometry geometry, FeatureClass in_featureclass, SpatialRelationship spatialRelationship, int compilationScale) where T : class {
-            SpatialQueryFilter spatialQueryFilter = new SpatialQueryFilter {
-                FilterGeometry = geometry,
-                SpatialRelationship = spatialRelationship,
-                WhereClause = $"plts_comp_scale = {compilationScale}"
-            };
-
-            using (RowCursor spatialSearch = in_featureclass.Search(spatialQueryFilter, true)) {
-                var shape = spatialSearch.FindField("SHAPE");
-                while (spatialSearch.MoveNext()) {
-                    using (Row row = spatialSearch.Current) {
-                        Feature feature = (Feature)row;
-                        if (feature != null) {
-                            var val = Activator.CreateInstance(typeof(T), feature) as T;
-                            if (val != null) {
-                                yield return val;
-                            }
-                        }
-                    }
-                }
-            }
-        }
 
         internal static void SetShape(RowBuffer buffer, Geometry? shape) {
             if (shape == null) {

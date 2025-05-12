@@ -1,4 +1,5 @@
-﻿using S100Framework.Applications.S57.esri;
+﻿using ArcGIS.Core.Data;
+using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
@@ -8,13 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VortexLoader;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
     internal static partial class Converters
     {
 
-        internal static LightSectored CreateLightSectored(IList<PltsSlave> slaves) {
+        internal static LightSectored CreateLightSectored(IList<PltsSlave> slaves, Geodatabase source) {
             var instance = new LightSectored();
 
             var lights = new List<AidsToNavigationP>();
@@ -108,7 +110,7 @@ namespace S100Framework.Applications
 
 
 
-        internal static LightSectored CreateLightSectored(S57Object structure) {
+        internal static LightSectored CreateLightSectored(S57Object structure, Geodatabase source) {
             var instance = new LightSectored();
 
             var lights = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightSectored), structure.GlobalId);

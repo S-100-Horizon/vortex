@@ -2,7 +2,7 @@
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -201,12 +201,11 @@ namespace S100Framework.Applications
 
                                 // TODO: defaultClearanceDepth
 
-                                if (current.SHAPE != null) {
-                                    foreach (var depthArea in SelectIn<DepthsA>(current.SHAPE, depthsA, SpatialRelationship.Intersects, ImporterNIS.CompilationScale)) {
-                                        var drval1 = depthArea.DRVAL1 ?? default;
-                                        instance.surroundingDepth = drval1;
-                                    }
+                                foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
+                                    var drval1 = depthArea.DRVAL1 ?? default;
+                                    instance.surroundingDepth = drval1;
                                 }
+
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;

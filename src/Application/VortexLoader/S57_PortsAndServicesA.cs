@@ -2,6 +2,7 @@
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -82,7 +83,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
 
 
@@ -123,7 +124,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
 
 
@@ -164,7 +165,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
 
 
@@ -202,7 +203,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
 
 
@@ -252,7 +253,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
 
 
@@ -294,7 +295,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
 
 
@@ -336,7 +337,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
 
 
@@ -370,7 +371,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
 
 
@@ -471,7 +472,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
 
 
@@ -512,7 +513,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
 
 
@@ -549,7 +550,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
 
 
@@ -590,7 +591,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
 
 
@@ -694,7 +695,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
 
 
@@ -731,7 +732,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
 
 
@@ -840,7 +841,7 @@ namespace S100Framework.Applications
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                                 if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                    relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                    relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                                 }
 
 
@@ -913,7 +914,7 @@ namespace S100Framework.Applications
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                                 if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                    relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                    relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                                 }
 
 
@@ -1027,7 +1028,7 @@ namespace S100Framework.Applications
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                                 if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                    relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                    relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                                 }
 
 
@@ -1117,7 +1118,7 @@ namespace S100Framework.Applications
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                                 if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                    relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                    relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                                 }
 
 
@@ -1213,7 +1214,7 @@ namespace S100Framework.Applications
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                                 if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                    relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                    relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                                 }
 
 
@@ -1252,7 +1253,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
 
 
@@ -1323,7 +1324,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
 
 
@@ -1363,7 +1364,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
 
 

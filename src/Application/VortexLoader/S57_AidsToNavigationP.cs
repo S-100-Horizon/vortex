@@ -6,6 +6,7 @@ using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using System.Globalization;
 using VortexLoader;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -1224,19 +1225,19 @@ namespace S100Framework.Applications
                             //var related = featureRelations.GetRelated(current.GLOBALID);
 
                             var lnam = current.LNAM;
-                            if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightSectored)) {
-                                var instance =  ImporterNIS._converterRegistry.Convert<LightSectored>(current); // No related sectors - only the one on the feature.
+                            if (FeatureRelations.Instance.GetS101CatlitTypeFrom(current) == typeof(LightSectored)) {
+                                var instance = ImporterNIS._converterRegistry.Convert<LightSectored>(current); // No related sectors - only the one on the feature.
 
                                 AddInformation(instance.information, feature);
 
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                    string subtype = "";
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
-                            }
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                }
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
@@ -1253,17 +1254,17 @@ namespace S100Framework.Applications
 
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             }
-                            else if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightAirObstruction)) {
+                            else if (FeatureRelations.Instance.GetS101CatlitTypeFrom(current) == typeof(LightAirObstruction)) {
                                 var instance = ImporterNIS._converterRegistry.Convert<LightAirObstruction>(current); //CreateLightAirObstruction(current);
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
+                                    string subtype = "";
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
-                            }
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                }
 
 
                                 AddInformation(instance.information, feature);
@@ -1278,17 +1279,17 @@ namespace S100Framework.Applications
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             }
-                            else if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightFogDetector)) {
+                            else if (FeatureRelations.Instance.GetS101CatlitTypeFrom(current) == typeof(LightFogDetector)) {
                                 var instance = ImporterNIS._converterRegistry.Convert<LightFogDetector>(new List<AidsToNavigationP>() { current }); // var instance = CreateLightFogDetector(current);
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
+                                    string subtype = "";
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
-                            }
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                }
 
 
                                 AddInformation(instance.information, feature);
@@ -1304,17 +1305,17 @@ namespace S100Framework.Applications
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             }
-                            else if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightAllAround)) {
+                            else if (FeatureRelations.Instance.GetS101CatlitTypeFrom(current) == typeof(LightAllAround)) {
                                 var instance = ImporterNIS._converterRegistry.Convert<LightAllAround>(current);
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
+                                    string subtype = "";
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
-                            }
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                }
 
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;

@@ -2,6 +2,7 @@
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {

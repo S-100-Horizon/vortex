@@ -4,6 +4,7 @@ using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S124.ComplexAttributes;
 using System.ComponentModel;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {

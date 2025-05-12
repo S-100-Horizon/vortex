@@ -2,6 +2,7 @@
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S101;
 using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -1043,7 +1044,7 @@ namespace S100Framework.Applications
 
                         }
                         break;
-                    case 65: { // SISTAT_SignalStationTraffic // SLAVE RIND: 2
+                    case 65: { // SISTAT_SignalStationTraffic // SLAVE RIND: 2  
                             var instance = new SignalStationTraffic();
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -1053,7 +1054,6 @@ namespace S100Framework.Applications
 
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
-
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);

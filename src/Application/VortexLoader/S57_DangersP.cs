@@ -4,6 +4,7 @@ using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using System.ComponentModel;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -238,7 +239,7 @@ namespace S100Framework.Applications
                             };
 
                             if (current.SHAPE != null) {
-                                foreach (var depthArea in SelectIn<DepthsA>(current.SHAPE, depthsA, SpatialRelationship.Intersects, 22000)) {
+                                foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
                                     var drval1 = depthArea.DRVAL1 ?? default;
                                     instance.surroundingDepth = drval1;
                                 }
@@ -377,7 +378,7 @@ namespace S100Framework.Applications
                             var instance = new Wreck();
 
                             if (current.SHAPE != null) {
-                                foreach (var depthArea in SelectIn<DepthsA>(current.SHAPE, depthsA, SpatialRelationship.Intersects, ImporterNIS.CompilationScale)) {
+                                foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
                                     var drval1 = depthArea.DRVAL1 ?? default;
                                     instance.surroundingDepth = drval1;
                                 }

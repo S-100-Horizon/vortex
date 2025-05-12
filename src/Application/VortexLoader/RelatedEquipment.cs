@@ -8,13 +8,13 @@ using S100Framework.DomainModel;
 using ArcGIS.Core.Internal.CIM;
 using ArcGIS.Desktop.Editing.Attributes;
 using System.Text;
-using S100Framework.Applications;
 using System.Data;
 using System.ComponentModel;
 using VortexLoader;
 using System;
 using ArcGIS.Core.Geometry;
 using Microsoft.AspNetCore.Http.HttpResults;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -138,7 +138,7 @@ namespace S100Framework.Applications
             throw new NotImplementedException();
         }
 
-        internal void CreateRelatedAreaEquipment(S57Object structure, FeatureNode s101Object, string name, Geodatabase target) {
+        internal void CreateRelatedAreaEquipment(S57Object structure, FeatureNode s101Object, string name, Geodatabase target, Geodatabase source) {
             var areaRelated = FeatureRelations.Instance.GetRelated(structure.GlobalId);
 
             var tableName = target.GetName("point");
@@ -164,7 +164,7 @@ namespace S100Framework.Applications
 
                 // Sectoredlights
                 if (relatedLightSectored.Count > 0) {
-                    var lightSectored = Converters.CreateLightSectored(relatedLightSectored);
+                    var lightSectored = Converters.CreateLightSectored(relatedLightSectored, source);
 
                     buffer["ps"] = ImporterNIS.ps101;
                     buffer["code"] = lightSectored.GetType().Name;
@@ -173,6 +173,7 @@ namespace S100Framework.Applications
 
                     var featureN = featureClass.CreateRow(buffer);
                     var equipmentName = Convert.ToString(featureN["name"]);
+
                     if (equipmentName == null) {
                         throw new NotSupportedException("empty equipment name");
                     }
@@ -181,7 +182,7 @@ namespace S100Framework.Applications
                         if (relatedObject.PLTS_Frel.DEST_FC == null) {
                             throw new NotSupportedException($"Empty PLTS_Frel.DEST_FC");
                         }
-                        ConversionAnalytics.Instance.AddConverted(relatedObject.PLTS_Frel.DEST_FC, relatedObject.GlobalId, equipmentName);
+                        ConversionAnalytics.Instance.AddConverted(relatedObject.PLTS_Frel.DEST_FC, relatedObject.GlobalId, equipmentName ?? "Unknown equipment");
                         Logger.Current.DataObject(-1, relatedObject.PLTS_Frel.DEST_FC, equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(lightSectored));
                     }
                 }

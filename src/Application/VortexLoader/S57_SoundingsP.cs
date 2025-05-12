@@ -5,6 +5,7 @@ using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S101.InformationTypes;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
