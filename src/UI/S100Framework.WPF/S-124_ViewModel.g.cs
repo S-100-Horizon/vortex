@@ -21,52 +21,85 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 namespace S100Framework.WPF.ViewModel.S124 {
 	internal static class Bootstrap {
 		public static AssociationViewModel CreateInformationAssociation(string type, string? pid = default) => type switch {
-			"NWPreambleContent" => new NWPreambleContentViewModel { PID = pid },
-			"NWReferences" => new NWReferencesViewModel { PID = pid },
+			"navwarnPreambleContent" => new navwarnPreambleContentViewModel { PID = pid },
+			"navwarnReferences" => new navwarnReferencesViewModel { PID = pid },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
 		public static AssociationViewModel CreateFeatureAssociation(string type, string? pid = default) => type switch {
-			"AreaAffected" => new AreaAffectedViewModel { PID = pid },
 			"TextAssociation" => new TextAssociationViewModel { PID = pid },
+			"areaAffected" => new areaAffectedViewModel { PID = pid },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
 		public static InformationViewModel CreateInformationType(string type, string? pid = default) => type switch {
-			"NAVWARNPreamble" => new NAVWARNPreambleViewModel { PID = pid },
 			"References" => new ReferencesViewModel { PID = pid },
+			"NavwarnPreamble" => new NavwarnPreambleViewModel { PID = pid },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
 		public static FeatureViewModel CreateFeatureType(string type, string? pid = default) => type switch {
-			"NAVWARNPart" => new NAVWARNPartViewModel { PID = pid },
-			"NAVWARNAreaAffected" => new NAVWARNAreaAffectedViewModel { PID = pid },
+			"NavwarnPart" => new NavwarnPartViewModel { PID = pid },
+			"NavwarnAreaAffected" => new NavwarnAreaAffectedViewModel { PID = pid },
 			"TextPlacement" => new TextPlacementViewModel { PID = pid },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
 		public static ICollection<string> InformationAssociationBindings(string association, string role) => (association, role) switch {
-			("NWReferences", "theReferences") => ["References"],
-			("NWPreambleContent", "header") => ["NAVWARNPreamble"],
+			("navwarnReferences", "theWarning") => ["NavwarnPreamble"],
+			("navwarnReferences", "theReferences") => ["References"],
+			("navwarnPreambleContent", "header") => ["NavwarnPreamble"],
 			_ => throw new InvalidOperationException(),
 		};
 
 		public static ICollection<string> FeatureAssociationBindings(string association, string role) => (association, role) switch {
-			("AreaAffected", "affects") => ["NAVWARNAreaAffected"],
-			("TextAssociation", "positions") => ["TextPlacement"],
-			("AreaAffected", "impacts") => ["NAVWARNPart"],
-			("TextAssociation", "identifies") => ["NAVWARNPart"],
+			("areaAffected", "affects") => ["NavwarnAreaAffected"],
+			("TextAssociation", "thePositionProvider") => ["TextPlacement"],
+			("areaAffected", "impacts") => ["NavwarnPart"],
+			("TextAssociation", "theCartographicText") => ["NavwarnPart"],
 			_ => throw new InvalidOperationException(),
 		};
 	}
 
 	/// <summary>
-	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
+	/// Identifies paper charts, ENCs or publications that are affected by the information.
 	/// </summary>
-	[CategoryOrder("featureName",0)]
+	[CategoryOrder("affectedChartPublications",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class featureNameViewModel : ViewModelBase {
+	public partial class affectedChartPublicationsViewModel : ViewModelBase {
+		private chartAffectedViewModel? _chartAffected  = default;
+
+		[Category("affectedChartPublications")]
+		[ExpandableObject]
+		public chartAffectedViewModel? chartAffected {
+			get {
+				return _chartAffected;
+			}
+			set {
+				SetValue(ref _chartAffected, value);
+			}
+		}
+		private String? _chartPublicationIdentifier  = default;
+
+		public String? chartPublicationIdentifier {
+			get {
+				return _chartPublicationIdentifier;
+			}
+			set {
+				SetValue(ref _chartPublicationIdentifier, value);
+			}
+		}
+		private String? _internationalChartAffected  = default;
+
+		public String? internationalChartAffected {
+			get {
+				return _internationalChartAffected;
+			}
+			set {
+				SetValue(ref _internationalChartAffected, value);
+			}
+		}
 		private String _language  = string.Empty;
 
 		public String language {
@@ -77,466 +110,51 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _language, value);
 			}
 		}
-		private String _name  = string.Empty;
+		private String? _publicationAffected  = default;
 
-		public String name {
+		public String? publicationAffected {
 			get {
-				return _name;
+				return _publicationAffected;
 			}
 			set {
-				SetValue(ref _name, value);
-			}
-		}
-		private nameUsage? _nameUsage  = default;
-
-		public nameUsage? nameUsage {
-			get {
-				return _nameUsage;
-			}
-			set {
-				SetValue(ref _nameUsage, value);
+				SetValue(ref _publicationAffected, value);
 			}
 		}
 
-		[Browsable(false)]
-		public nameUsage[] nameUsageList => [(nameUsage)1,(nameUsage)2,(nameUsage)3];
 
-
-		public featureNameViewModel Load(featureName instance) {
+		public affectedChartPublicationsViewModel Load(affectedChartPublications instance) {
+			chartAffected = new ();
+			if (instance.chartAffected != default) {
+				chartAffected.Load(instance.chartAffected);
+			}
+			chartPublicationIdentifier = instance.chartPublicationIdentifier;
+			internationalChartAffected = instance.internationalChartAffected;
 			language = instance.language;
-			name = instance.name;
-			nameUsage = instance.nameUsage;
+			publicationAffected = instance.publicationAffected;
 			return this;
 		}
 
 		public override string Serialize() {
-			var instance = new featureName {
+			var instance = new affectedChartPublications {
+				chartAffected = this.chartAffected?.Model,
+				chartPublicationIdentifier = this.chartPublicationIdentifier,
+				internationalChartAffected = this.internationalChartAffected,
 				language = this.language,
-				name = this.name,
-				nameUsage = this.nameUsage,
+				publicationAffected = this.publicationAffected,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
 		[Browsable(false)]
-		public featureName Model => new () {
+		public affectedChartPublications Model => new () {
+			chartAffected = this._chartAffected?.Model,
+			chartPublicationIdentifier = this._chartPublicationIdentifier,
+			internationalChartAffected = this._internationalChartAffected,
 			language = this._language,
-			name = this._name,
-			nameUsage = this._nameUsage,
+			publicationAffected = this._publicationAffected,
 		};
 
-		public override string? ToString() => $"Feature Name";
-	}
-	/// <summary>
-	/// The range of time a feature is valid for.
-	/// </summary>
-	[CategoryOrder("dateTimeRange",0)]
-	[CategoryOrder("InformationBindings",100)]
-	[CategoryOrder("FeatureBindings",200)]
-	public partial class dateTimeRangeViewModel : ViewModelBase {
-		private DateTime _dateTimeEnd ;
-
-		public DateTime dateTimeEnd {
-			get {
-				return _dateTimeEnd;
-			}
-			set {
-				SetValue(ref _dateTimeEnd, value);
-			}
-		}
-		private DateTime _dateTimeStart ;
-
-		public DateTime dateTimeStart {
-			get {
-				return _dateTimeStart;
-			}
-			set {
-				SetValue(ref _dateTimeStart, value);
-			}
-		}
-
-
-		public dateTimeRangeViewModel Load(dateTimeRange instance) {
-			dateTimeEnd = instance.dateTimeEnd;
-			dateTimeStart = instance.dateTimeStart;
-			return this;
-		}
-
-		public override string Serialize() {
-			var instance = new dateTimeRange {
-				dateTimeEnd = this.dateTimeEnd,
-				dateTimeStart = this.dateTimeStart,
-			};
-			return System.Text.Json.JsonSerializer.Serialize(instance);
-		}
-
-		[Browsable(false)]
-		public dateTimeRange Model => new () {
-			dateTimeEnd = this._dateTimeEnd,
-			dateTimeStart = this._dateTimeStart,
-		};
-
-		public override string? ToString() => $"Date Time Range";
-	}
-	/// <summary>
-	/// Reference to feature(s) in an ENC dataset.
-	/// </summary>
-	[CategoryOrder("eNCFeatureReference",0)]
-	[CategoryOrder("InformationBindings",100)]
-	[CategoryOrder("FeatureBindings",200)]
-	public partial class eNCFeatureReferenceViewModel : ViewModelBase {
-		private String _editionNumber  = string.Empty;
-
-		public String editionNumber {
-			get {
-				return _editionNumber;
-			}
-			set {
-				SetValue(ref _editionNumber, value);
-			}
-		}
-		private String _eNCName  = string.Empty;
-
-		public String eNCName {
-			get {
-				return _eNCName;
-			}
-			set {
-				SetValue(ref _eNCName, value);
-			}
-		}
-		[Category("eNCFeatureReference")]
-		public ObservableCollection<String> featureObjectIdentifier  { get; set; } = new ();
-		private String _updateNumber  = string.Empty;
-
-		public String updateNumber {
-			get {
-				return _updateNumber;
-			}
-			set {
-				SetValue(ref _updateNumber, value);
-			}
-		}
-
-
-		public eNCFeatureReferenceViewModel Load(eNCFeatureReference instance) {
-			editionNumber = instance.editionNumber;
-			eNCName = instance.eNCName;
-			featureObjectIdentifier.Clear();
-			if (instance.featureObjectIdentifier is not null) {
-				foreach(var e in instance.featureObjectIdentifier)
-					featureObjectIdentifier.Add(e);
-			}
-			updateNumber = instance.updateNumber;
-			return this;
-		}
-
-		public override string Serialize() {
-			var instance = new eNCFeatureReference {
-				editionNumber = this.editionNumber,
-				eNCName = this.eNCName,
-				featureObjectIdentifier = this.featureObjectIdentifier.ToList(),
-				updateNumber = this.updateNumber,
-			};
-			return System.Text.Json.JsonSerializer.Serialize(instance);
-		}
-
-		[Browsable(false)]
-		public eNCFeatureReference Model => new () {
-			editionNumber = this._editionNumber,
-			eNCName = this._eNCName,
-			featureObjectIdentifier = this.featureObjectIdentifier.ToList(),
-			updateNumber = this._updateNumber,
-		};
-
-		public override string? ToString() => $"ENC Feature Reference";
-
-		public eNCFeatureReferenceViewModel() : base() {
-			featureObjectIdentifier.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(featureObjectIdentifier));
-			};
-		}
-	}
-	/// <summary>
-	/// Reference to an object or feature that is external to the dataset.
-	/// </summary>
-	[CategoryOrder("featureReference",0)]
-	[CategoryOrder("InformationBindings",100)]
-	[CategoryOrder("FeatureBindings",200)]
-	public partial class featureReferenceViewModel : ViewModelBase {
-		[Category("featureReference")]
-		public ObservableCollection<String> featureIdentifier  { get; set; } = new ();
-		private dateTimeRangeViewModel _dateTimeRange ;
-
-		[Category("featureReference")]
-		[ExpandableObject]
-		public dateTimeRangeViewModel dateTimeRange {
-			get {
-				return _dateTimeRange;
-			}
-			set {
-				SetValue(ref _dateTimeRange, value);
-			}
-		}
-		[Category("featureReference")]
-		public ObservableCollection<String> atoNNumber  { get; set; } = new ();
-		[Category("featureReference")]
-		public ObservableCollection<eNCFeatureReferenceViewModel> eNCFeatureReference  { get; set; } = new ();
-
-
-		public featureReferenceViewModel Load(featureReference instance) {
-			featureIdentifier.Clear();
-			if (instance.featureIdentifier is not null) {
-				foreach(var e in instance.featureIdentifier)
-					featureIdentifier.Add(e);
-			}
-			dateTimeRange = new ();
-			if (instance.dateTimeRange != default) {
-				dateTimeRange.Load(instance.dateTimeRange);
-			}
-			atoNNumber.Clear();
-			if (instance.atoNNumber is not null) {
-				foreach(var e in instance.atoNNumber)
-					atoNNumber.Add(e);
-			}
-			eNCFeatureReference.Clear();
-			if (instance.eNCFeatureReference is not null) {
-				foreach(var e in instance.eNCFeatureReference)
-					eNCFeatureReference.Add(new eNCFeatureReferenceViewModel().Load(e));
-			}
-			return this;
-		}
-
-		public override string Serialize() {
-			var instance = new featureReference {
-				featureIdentifier = this.featureIdentifier.ToList(),
-				dateTimeRange = this.dateTimeRange?.Model,
-				atoNNumber = this.atoNNumber.ToList(),
-				eNCFeatureReference = this.eNCFeatureReference.Select(e => e.Model).ToList(),
-			};
-			return System.Text.Json.JsonSerializer.Serialize(instance);
-		}
-
-		[Browsable(false)]
-		public featureReference Model => new () {
-			featureIdentifier = this.featureIdentifier.ToList(),
-			dateTimeRange = this._dateTimeRange?.Model,
-			atoNNumber = this.atoNNumber.ToList(),
-			eNCFeatureReference = this.eNCFeatureReference.Select(e => e.Model).ToList(),
-		};
-
-		public override string? ToString() => $"Feature Reference";
-
-		public featureReferenceViewModel() : base() {
-			featureIdentifier.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(featureIdentifier));
-			};
-			atoNNumber.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(atoNNumber));
-			};
-			eNCFeatureReference.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(eNCFeatureReference));
-			};
-		}
-	}
-	/// <summary>
-	/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
-	/// </summary>
-	[CategoryOrder("fixedDateRange",0)]
-	[CategoryOrder("InformationBindings",100)]
-	[CategoryOrder("FeatureBindings",200)]
-	public partial class fixedDateRangeViewModel : ViewModelBase {
-		private DateOnly? _dateEnd  = default;
-
-		public DateOnly? dateEnd {
-			get {
-				return _dateEnd;
-			}
-			set {
-				SetValue(ref _dateEnd, value);
-			}
-		}
-		private DateOnly? _dateStart  = default;
-
-		public DateOnly? dateStart {
-			get {
-				return _dateStart;
-			}
-			set {
-				SetValue(ref _dateStart, value);
-			}
-		}
-
-
-		public fixedDateRangeViewModel Load(fixedDateRange instance) {
-			dateEnd = instance.dateEnd;
-			dateStart = instance.dateStart;
-			return this;
-		}
-
-		public override string Serialize() {
-			var instance = new fixedDateRange {
-				dateEnd = this.dateEnd,
-				dateStart = this.dateStart,
-			};
-			return System.Text.Json.JsonSerializer.Serialize(instance);
-		}
-
-		[Browsable(false)]
-		public fixedDateRange Model => new () {
-			dateEnd = this._dateEnd,
-			dateStart = this._dateStart,
-		};
-
-		public override string? ToString() => $"Fixed Date Range";
-	}
-	/// <summary>
-	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
-	/// </summary>
-	[CategoryOrder("information",0)]
-	[CategoryOrder("InformationBindings",100)]
-	[CategoryOrder("FeatureBindings",200)]
-	public partial class informationViewModel : ViewModelBase {
-		private String? _fileLocator  = default;
-
-		public String? fileLocator {
-			get {
-				return _fileLocator;
-			}
-			set {
-				SetValue(ref _fileLocator, value);
-			}
-		}
-		private String? _fileReference  = default;
-
-		public String? fileReference {
-			get {
-				return _fileReference;
-			}
-			set {
-				SetValue(ref _fileReference, value);
-			}
-		}
-		private String? _headline  = default;
-
-		public String? headline {
-			get {
-				return _headline;
-			}
-			set {
-				SetValue(ref _headline, value);
-			}
-		}
-		private String? _language  = default;
-
-		public String? language {
-			get {
-				return _language;
-			}
-			set {
-				SetValue(ref _language, value);
-			}
-		}
-		private String? _text  = default;
-
-		public String? text {
-			get {
-				return _text;
-			}
-			set {
-				SetValue(ref _text, value);
-			}
-		}
-
-
-		public informationViewModel Load(information instance) {
-			fileLocator = instance.fileLocator;
-			fileReference = instance.fileReference;
-			headline = instance.headline;
-			language = instance.language;
-			text = instance.text;
-			return this;
-		}
-
-		public override string Serialize() {
-			var instance = new information {
-				fileLocator = this.fileLocator,
-				fileReference = this.fileReference,
-				headline = this.headline,
-				language = this.language,
-				text = this.text,
-			};
-			return System.Text.Json.JsonSerializer.Serialize(instance);
-		}
-
-		[Browsable(false)]
-		public information Model => new () {
-			fileLocator = this._fileLocator,
-			fileReference = this._fileReference,
-			headline = this._headline,
-			language = this._language,
-			text = this._text,
-		};
-
-		public override string? ToString() => $"Information";
-	}
-	/// <summary>
-	/// Detailed information about a warning.
-	/// </summary>
-	[CategoryOrder("warningInformation",0)]
-	[CategoryOrder("InformationBindings",100)]
-	[CategoryOrder("FeatureBindings",200)]
-	public partial class warningInformationViewModel : ViewModelBase {
-		private informationViewModel? _information  = default;
-
-		[Category("warningInformation")]
-		[ExpandableObject]
-		public informationViewModel? information {
-			get {
-				return _information;
-			}
-			set {
-				SetValue(ref _information, value);
-			}
-		}
-		[Category("warningInformation")]
-		public ObservableCollection<navwarnTypeDetails> navwarnTypeDetails  { get; set; } = new ();
-
-
-		public warningInformationViewModel Load(warningInformation instance) {
-			information = new ();
-			if (instance.information != default) {
-				information.Load(instance.information);
-			}
-			navwarnTypeDetails.Clear();
-			if (instance.navwarnTypeDetails is not null) {
-				foreach(var e in instance.navwarnTypeDetails)
-					navwarnTypeDetails.Add(e);
-			}
-			return this;
-		}
-
-		public override string Serialize() {
-			var instance = new warningInformation {
-				information = this.information?.Model,
-				navwarnTypeDetails = this.navwarnTypeDetails.ToList(),
-			};
-			return System.Text.Json.JsonSerializer.Serialize(instance);
-		}
-
-		[Browsable(false)]
-		public warningInformation Model => new () {
-			information = this._information?.Model,
-			navwarnTypeDetails = this.navwarnTypeDetails.ToList(),
-		};
-
-		public override string? ToString() => $"Warning Information";
-
-		public warningInformationViewModel() : base() {
-			navwarnTypeDetails.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(navwarnTypeDetails));
-			};
-		}
+		public override string? ToString() => $"Affected Chart Publications";
 	}
 	/// <summary>
 	/// Name or number of affected national paper chart or ENC.
@@ -616,150 +234,81 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public override string? ToString() => $"Chart Affected";
 	}
 	/// <summary>
-	/// Identifies paper charts, ENCs or publications that are affected by the information.
+	/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
 	/// </summary>
-	[CategoryOrder("affectedChartPublications",0)]
+	[CategoryOrder("fixedDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class affectedChartPublicationsViewModel : ViewModelBase {
-		private chartAffectedViewModel? _chartAffected  = default;
+	public partial class fixedDateRangeViewModel : ViewModelBase {
+		private DateOnly? _dateEnd  = default;
 
-		[Category("affectedChartPublications")]
-		[ExpandableObject]
-		public chartAffectedViewModel? chartAffected {
+		public DateOnly? dateEnd {
 			get {
-				return _chartAffected;
+				return _dateEnd;
 			}
 			set {
-				SetValue(ref _chartAffected, value);
+				SetValue(ref _dateEnd, value);
 			}
 		}
-		private String? _chartPublicationIdentifier  = default;
+		private DateOnly? _dateStart  = default;
 
-		public String? chartPublicationIdentifier {
+		public DateOnly? dateStart {
 			get {
-				return _chartPublicationIdentifier;
+				return _dateStart;
 			}
 			set {
-				SetValue(ref _chartPublicationIdentifier, value);
+				SetValue(ref _dateStart, value);
 			}
 		}
-		private String? _internationalChartAffected  = default;
+		private TimeOnly? _timeOfDayEnd  = default;
 
-		public String? internationalChartAffected {
+		public TimeOnly? timeOfDayEnd {
 			get {
-				return _internationalChartAffected;
+				return _timeOfDayEnd;
 			}
 			set {
-				SetValue(ref _internationalChartAffected, value);
+				SetValue(ref _timeOfDayEnd, value);
 			}
 		}
-		private String? _language  = default;
+		private TimeOnly? _timeOfDayStart  = default;
 
-		public String? language {
+		public TimeOnly? timeOfDayStart {
 			get {
-				return _language;
+				return _timeOfDayStart;
 			}
 			set {
-				SetValue(ref _language, value);
-			}
-		}
-		private String? _publicationAffected  = default;
-
-		public String? publicationAffected {
-			get {
-				return _publicationAffected;
-			}
-			set {
-				SetValue(ref _publicationAffected, value);
+				SetValue(ref _timeOfDayStart, value);
 			}
 		}
 
 
-		public affectedChartPublicationsViewModel Load(affectedChartPublications instance) {
-			chartAffected = new ();
-			if (instance.chartAffected != default) {
-				chartAffected.Load(instance.chartAffected);
-			}
-			chartPublicationIdentifier = instance.chartPublicationIdentifier;
-			internationalChartAffected = instance.internationalChartAffected;
-			language = instance.language;
-			publicationAffected = instance.publicationAffected;
+		public fixedDateRangeViewModel Load(fixedDateRange instance) {
+			dateEnd = instance.dateEnd;
+			dateStart = instance.dateStart;
+			timeOfDayEnd = instance.timeOfDayEnd;
+			timeOfDayStart = instance.timeOfDayStart;
 			return this;
 		}
 
 		public override string Serialize() {
-			var instance = new affectedChartPublications {
-				chartAffected = this.chartAffected?.Model,
-				chartPublicationIdentifier = this.chartPublicationIdentifier,
-				internationalChartAffected = this.internationalChartAffected,
-				language = this.language,
-				publicationAffected = this.publicationAffected,
+			var instance = new fixedDateRange {
+				dateEnd = this.dateEnd,
+				dateStart = this.dateStart,
+				timeOfDayEnd = this.timeOfDayEnd,
+				timeOfDayStart = this.timeOfDayStart,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
 		[Browsable(false)]
-		public affectedChartPublications Model => new () {
-			chartAffected = this._chartAffected?.Model,
-			chartPublicationIdentifier = this._chartPublicationIdentifier,
-			internationalChartAffected = this._internationalChartAffected,
-			language = this._language,
-			publicationAffected = this._publicationAffected,
+		public fixedDateRange Model => new () {
+			dateEnd = this._dateEnd,
+			dateStart = this._dateStart,
+			timeOfDayEnd = this._timeOfDayEnd,
+			timeOfDayStart = this._timeOfDayStart,
 		};
 
-		public override string? ToString() => $"Affected Chart Publications";
-	}
-	/// <summary>
-	/// Name of an area locality as defined by a competent authority.
-	/// </summary>
-	[CategoryOrder("locationName",0)]
-	[CategoryOrder("InformationBindings",100)]
-	[CategoryOrder("FeatureBindings",200)]
-	public partial class locationNameViewModel : ViewModelBase {
-		private String? _language  = default;
-
-		public String? language {
-			get {
-				return _language;
-			}
-			set {
-				SetValue(ref _language, value);
-			}
-		}
-		private String _text  = string.Empty;
-
-		public String text {
-			get {
-				return _text;
-			}
-			set {
-				SetValue(ref _text, value);
-			}
-		}
-
-
-		public locationNameViewModel Load(locationName instance) {
-			language = instance.language;
-			text = instance.text;
-			return this;
-		}
-
-		public override string Serialize() {
-			var instance = new locationName {
-				language = this.language,
-				text = this.text,
-			};
-			return System.Text.Json.JsonSerializer.Serialize(instance);
-		}
-
-		[Browsable(false)]
-		public locationName Model => new () {
-			language = this._language,
-			text = this._text,
-		};
-
-		public override string? ToString() => $"Location Name";
+		public override string? ToString() => $"Fixed Date Range";
 	}
 	/// <summary>
 	/// The general area used to identify which broad geographic region the message affects. The geographical name which is selected for the general area should be one that can be found on charts and in nautical publications. (S-53, 6).
@@ -815,6 +364,57 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 	}
 	/// <summary>
+	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
+	/// </summary>
+	[CategoryOrder("information",0)]
+	[CategoryOrder("InformationBindings",100)]
+	[CategoryOrder("FeatureBindings",200)]
+	public partial class informationViewModel : ViewModelBase {
+		private String _language  = string.Empty;
+
+		public String language {
+			get {
+				return _language;
+			}
+			set {
+				SetValue(ref _language, value);
+			}
+		}
+		private String _text  = string.Empty;
+
+		public String text {
+			get {
+				return _text;
+			}
+			set {
+				SetValue(ref _text, value);
+			}
+		}
+
+
+		public informationViewModel Load(information instance) {
+			language = instance.language;
+			text = instance.text;
+			return this;
+		}
+
+		public override string Serialize() {
+			var instance = new information {
+				language = this.language,
+				text = this.text,
+			};
+			return System.Text.Json.JsonSerializer.Serialize(instance);
+		}
+
+		[Browsable(false)]
+		public information Model => new () {
+			language = this._language,
+			text = this._text,
+		};
+
+		public override string? ToString() => $"Information";
+	}
+	/// <summary>
 	/// Name and/or identifier of an area locality.
 	/// </summary>
 	[CategoryOrder("locality",0)]
@@ -868,6 +468,57 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 	}
 	/// <summary>
+	/// Name of an area locality as defined by a competent authority.
+	/// </summary>
+	[CategoryOrder("locationName",0)]
+	[CategoryOrder("InformationBindings",100)]
+	[CategoryOrder("FeatureBindings",200)]
+	public partial class locationNameViewModel : ViewModelBase {
+		private String _language  = string.Empty;
+
+		public String language {
+			get {
+				return _language;
+			}
+			set {
+				SetValue(ref _language, value);
+			}
+		}
+		private String _text  = string.Empty;
+
+		public String text {
+			get {
+				return _text;
+			}
+			set {
+				SetValue(ref _text, value);
+			}
+		}
+
+
+		public locationNameViewModel Load(locationName instance) {
+			language = instance.language;
+			text = instance.text;
+			return this;
+		}
+
+		public override string Serialize() {
+			var instance = new locationName {
+				language = this.language,
+				text = this.text,
+			};
+			return System.Text.Json.JsonSerializer.Serialize(instance);
+		}
+
+		[Browsable(false)]
+		public locationName Model => new () {
+			language = this._language,
+			text = this._text,
+		};
+
+		public override string? ToString() => $"Location Name";
+	}
+	/// <summary>
 	/// Message series identification of the warning or notice.
 	/// </summary>
 	[CategoryOrder("messageSeriesIdentifier",0)]
@@ -884,14 +535,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _agencyResponsibleForProduction, value);
 			}
 		}
-		private String? _countryName  = default;
+		private String? _interoperabilityIdentifier  = default;
 
-		public String? countryName {
+		public String? interoperabilityIdentifier {
 			get {
-				return _countryName;
+				return _interoperabilityIdentifier;
 			}
 			set {
-				SetValue(ref _countryName, value);
+				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
 		private String _nameOfSeries  = string.Empty;
@@ -904,14 +555,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _nameOfSeries, value);
 			}
 		}
-		private String? _warningIdentifier  = default;
+		private String? _nationality  = default;
 
-		public String? warningIdentifier {
+		public String? nationality {
 			get {
-				return _warningIdentifier;
+				return _nationality;
 			}
 			set {
-				SetValue(ref _warningIdentifier, value);
+				SetValue(ref _nationality, value);
 			}
 		}
 		private int _warningNumber ;
@@ -936,7 +587,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 		[Browsable(false)]
-		public warningType[] warningTypeList => Enum.GetValues<warningType>();
+		public warningType[] warningTypeList => [(warningType)1,(warningType)2,(warningType)3,(warningType)4,(warningType)5,(warningType)6,(warningType)7,(warningType)8,(warningType)9,(warningType)10,(warningType)11,(warningType)12];
 		private int _year ;
 
 		public int year {
@@ -951,9 +602,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public messageSeriesIdentifierViewModel Load(messageSeriesIdentifier instance) {
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
-			countryName = instance.countryName;
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			nameOfSeries = instance.nameOfSeries;
-			warningIdentifier = instance.warningIdentifier;
+			nationality = instance.nationality;
 			warningNumber = instance.warningNumber;
 			warningType = instance.warningType;
 			year = instance.year;
@@ -963,9 +614,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public override string Serialize() {
 			var instance = new messageSeriesIdentifier {
 				agencyResponsibleForProduction = this.agencyResponsibleForProduction,
-				countryName = this.countryName,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				nameOfSeries = this.nameOfSeries,
-				warningIdentifier = this.warningIdentifier,
+				nationality = this.nationality,
 				warningNumber = this.warningNumber,
 				warningType = this.warningType,
 				year = this.year,
@@ -976,9 +627,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Browsable(false)]
 		public messageSeriesIdentifier Model => new () {
 			agencyResponsibleForProduction = this._agencyResponsibleForProduction,
-			countryName = this._countryName,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			nameOfSeries = this._nameOfSeries,
-			warningIdentifier = this._warningIdentifier,
+			nationality = this._nationality,
 			warningNumber = this._warningNumber,
 			warningType = this._warningType,
 			year = this._year,
@@ -989,13 +640,13 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// Title of the navigational warning.
 	/// </summary>
-	[CategoryOrder("nAVWARNTitle",0)]
+	[CategoryOrder("navwarnTitle",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class nAVWARNTitleViewModel : ViewModelBase {
-		private String? _language  = default;
+	public partial class navwarnTitleViewModel : ViewModelBase {
+		private String _language  = string.Empty;
 
-		public String? language {
+		public String language {
 			get {
 				return _language;
 			}
@@ -1015,14 +666,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public nAVWARNTitleViewModel Load(nAVWARNTitle instance) {
+		public navwarnTitleViewModel Load(navwarnTitle instance) {
 			language = instance.language;
 			text = instance.text;
 			return this;
 		}
 
 		public override string Serialize() {
-			var instance = new nAVWARNTitle {
+			var instance = new navwarnTitle {
 				language = this.language,
 				text = this.text,
 			};
@@ -1030,100 +681,243 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 		[Browsable(false)]
-		public nAVWARNTitle Model => new () {
+		public navwarnTitle Model => new () {
 			language = this._language,
 			text = this._text,
 		};
 
 		public override string? ToString() => $"NAVWARN Title";
 	}
-
 	/// <summary>
-	/// TBD
+	/// Detailed information about a warning.
 	/// </summary>
-	[CategoryOrder("NWPreambleContent",0)]
+	[CategoryOrder("warningInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class NWPreambleContentViewModel : AssociationViewModel {
+	public partial class warningInformationViewModel : ViewModelBase {
+		[Category("warningInformation")]
+		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+		[Category("warningInformation")]
+		public ObservableCollection<navwarnTypeDetails> navwarnTypeDetails  { get; set; } = new ();
 
 
-		public NWPreambleContentViewModel Load(NWPreambleContent instance) {
-
+		public warningInformationViewModel Load(warningInformation instance) {
+			information.Clear();
+			if (instance.information is not null) {
+				foreach(var e in instance.information)
+					information.Add(new informationViewModel().Load(e));
+			}
+			navwarnTypeDetails.Clear();
+			if (instance.navwarnTypeDetails is not null) {
+				foreach(var e in instance.navwarnTypeDetails)
+					navwarnTypeDetails.Add(e);
+			}
 			return this;
 		}
 
 		public override string Serialize() {
-			var instance = new NWPreambleContent {
+			var instance = new warningInformation {
+				information = this.information.Select(e => e.Model).ToList(),
+				navwarnTypeDetails = this.navwarnTypeDetails.ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
 		[Browsable(false)]
-		public NWPreambleContent Model => new () {
-
+		public warningInformation Model => new () {
+			information = this.information.Select(e => e.Model).ToList(),
+			navwarnTypeDetails = this.navwarnTypeDetails.ToList(),
 		};
 
-		public override string? ToString() => $"NW Preamble Content";
-	}
+		public override string? ToString() => $"Warning Information";
 
+		public warningInformationViewModel() : base() {
+			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(information));
+			};
+			navwarnTypeDetails.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(navwarnTypeDetails));
+			};
+		}
+	}
 	/// <summary>
-	/// TBD
+	/// Reference to an object or feature that is external to the dataset.
 	/// </summary>
-	[CategoryOrder("NWReferences",0)]
+	[CategoryOrder("FeatureReference",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class NWReferencesViewModel : AssociationViewModel {
+	public partial class FeatureReferenceViewModel : ViewModelBase {
+		[Category("FeatureReference")]
+		public ObservableCollection<String> atoNNumber  { get; set; } = new ();
+		[Category("FeatureReference")]
+		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
 
-		public NWReferencesViewModel Load(NWReferences instance) {
-
+		public FeatureReferenceViewModel Load(FeatureReference instance) {
+			atoNNumber.Clear();
+			if (instance.atoNNumber is not null) {
+				foreach(var e in instance.atoNNumber)
+					atoNNumber.Add(e);
+			}
+			interoperabilityIdentifier.Clear();
+			if (instance.interoperabilityIdentifier is not null) {
+				foreach(var e in instance.interoperabilityIdentifier)
+					interoperabilityIdentifier.Add(e);
+			}
 			return this;
 		}
 
 		public override string Serialize() {
-			var instance = new NWReferences {
+			var instance = new FeatureReference {
+				atoNNumber = this.atoNNumber.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier.ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
 		[Browsable(false)]
-		public NWReferences Model => new () {
-
+		public FeatureReference Model => new () {
+			atoNNumber = this.atoNNumber.ToList(),
+			interoperabilityIdentifier = this.interoperabilityIdentifier.ToList(),
 		};
 
-		public override string? ToString() => $"NW References";
-	}
+		public override string? ToString() => $"Feature Reference";
 
+		public FeatureReferenceViewModel() : base() {
+			atoNNumber.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(atoNNumber));
+			};
+			interoperabilityIdentifier.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(interoperabilityIdentifier));
+			};
+		}
+	}
 	/// <summary>
-	/// Used to indicate an area outside of the geographic area of the associated feature that can nonetheless be influenced by that feature.
+	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
 	/// </summary>
-	[CategoryOrder("AreaAffected",0)]
+	[CategoryOrder("FeatureName",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class AreaAffectedViewModel : AssociationViewModel {
+	public partial class FeatureNameViewModel : ViewModelBase {
+		private String _language  = string.Empty;
+
+		public String language {
+			get {
+				return _language;
+			}
+			set {
+				SetValue(ref _language, value);
+			}
+		}
+		private String _Name  = string.Empty;
+
+		public String Name {
+			get {
+				return _Name;
+			}
+			set {
+				SetValue(ref _Name, value);
+			}
+		}
+		private nameUsage? _nameUsage  = default;
+
+		public nameUsage? nameUsage {
+			get {
+				return _nameUsage;
+			}
+			set {
+				SetValue(ref _nameUsage, value);
+			}
+		}
+
+		[Browsable(false)]
+		public nameUsage[] nameUsageList => [(nameUsage)1,(nameUsage)2,(nameUsage)3];
 
 
-		public AreaAffectedViewModel Load(AreaAffected instance) {
-
+		public FeatureNameViewModel Load(FeatureName instance) {
+			language = instance.language;
+			Name = instance.Name;
+			nameUsage = instance.nameUsage;
 			return this;
 		}
 
 		public override string Serialize() {
-			var instance = new AreaAffected {
+			var instance = new FeatureName {
+				language = this.language,
+				Name = this.Name,
+				nameUsage = this.nameUsage,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
 		[Browsable(false)]
-		public AreaAffected Model => new () {
-
+		public FeatureName Model => new () {
+			language = this._language,
+			Name = this._Name,
+			nameUsage = this._nameUsage,
 		};
 
-		public override string? ToString() => $"Area Affected Association";
+		public override string? ToString() => $"Feature Name";
 	}
 
 	/// <summary>
-	/// A feature association for the binding between a geo feature and the cartographically positioned location for text.
+	/// The binding between a navigational warning preamble and the body.
+	/// </summary>
+	[CategoryOrder("navwarnPreambleContent",0)]
+	[CategoryOrder("InformationBindings",100)]
+	[CategoryOrder("FeatureBindings",200)]
+	public partial class navwarnPreambleContentViewModel : AssociationViewModel {
+
+
+		public navwarnPreambleContentViewModel Load(navwarnPreambleContent instance) {
+
+			return this;
+		}
+
+		public override string Serialize() {
+			var instance = new navwarnPreambleContent {
+			};
+			return System.Text.Json.JsonSerializer.Serialize(instance);
+		}
+
+		[Browsable(false)]
+		public navwarnPreambleContent Model => new () {
+
+		};
+
+		public override string? ToString() => $"navwarnPreambleContent";
+	}
+
+	/// <summary>
+	/// The relationship between a navigational warning and previous information relevant to its purpose.
+	/// </summary>
+	[CategoryOrder("navwarnReferences",0)]
+	[CategoryOrder("InformationBindings",100)]
+	[CategoryOrder("FeatureBindings",200)]
+	public partial class navwarnReferencesViewModel : AssociationViewModel {
+
+
+		public navwarnReferencesViewModel Load(navwarnReferences instance) {
+
+			return this;
+		}
+
+		public override string Serialize() {
+			var instance = new navwarnReferences {
+			};
+			return System.Text.Json.JsonSerializer.Serialize(instance);
+		}
+
+		[Browsable(false)]
+		public navwarnReferences Model => new () {
+
+		};
+
+		public override string? ToString() => $"navwarnReferences";
+	}
+
+	/// <summary>
+	/// a feature association for the binding between a geo feature and the cartographically positioned location for text.
 	/// </summary>
 	[CategoryOrder("TextAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -1151,155 +945,31 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	}
 
 	/// <summary>
-	/// Preamble information for warnings, notices and other types of messages in a navigational warning scheme.
+	/// Association between a warning and the area impacted.
 	/// </summary>
-	[CategoryOrder("NAVWARNPreamble",0)]
+	[CategoryOrder("areaAffected",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class NAVWARNPreambleViewModel : InformationViewModel<NAVWARNPreamble> {
-		[Category("NAVWARNPreamble")]
-		public ObservableCollection<affectedChartPublicationsViewModel> affectedChartPublications  { get; set; } = new ();
-		[Category("NAVWARNPreamble")]
-		public ObservableCollection<generalAreaViewModel> generalArea  { get; set; } = new ();
-		[Category("NAVWARNPreamble")]
-		public ObservableCollection<localityViewModel> locality  { get; set; } = new ();
-		private messageSeriesIdentifierViewModel _messageSeriesIdentifier ;
-
-		[Category("NAVWARNPreamble")]
-		[ExpandableObject]
-		public messageSeriesIdentifierViewModel messageSeriesIdentifier {
-			get {
-				return _messageSeriesIdentifier;
-			}
-			set {
-				SetValue(ref _messageSeriesIdentifier, value);
-			}
-		}
-		[Category("NAVWARNPreamble")]
-		public ObservableCollection<nAVWARNTitleViewModel> nAVWARNTitle  { get; set; } = new ();
-		private DateTime? _cancellationDate  = default;
-
-		[Category("NAVWARNPreamble")]
-		public DateTime? cancellationDate {
-			get {
-				return _cancellationDate;
-			}
-			set {
-				SetValue(ref _cancellationDate, value);
-			}
-		}
-		private Boolean _intService  = false;
-
-		[Category("NAVWARNPreamble")]
-		public Boolean intService {
-			get {
-				return _intService;
-			}
-			set {
-				SetValue(ref _intService, value);
-			}
-		}
-		private navwarnTypeGeneral _navwarnTypeGeneral ;
-
-		[Category("NAVWARNPreamble")]
-		public navwarnTypeGeneral navwarnTypeGeneral {
-			get {
-				return _navwarnTypeGeneral;
-			}
-			set {
-				SetValue(ref _navwarnTypeGeneral, value);
-			}
-		}
-		private DateTime _publicationTime ;
-
-		[Category("NAVWARNPreamble")]
-		public DateTime publicationTime {
-			get {
-				return _publicationTime;
-			}
-			set {
-				SetValue(ref _publicationTime, value);
-			}
-		}
+	public partial class areaAffectedViewModel : AssociationViewModel {
 
 
-		public override InformationViewModel<NAVWARNPreamble> Load(NAVWARNPreamble instance) {
-			affectedChartPublications.Clear();
-			if (instance.affectedChartPublications is not null) {
-				foreach(var e in instance.affectedChartPublications)
-					affectedChartPublications.Add(new affectedChartPublicationsViewModel().Load(e));
-			}
-			generalArea.Clear();
-			if (instance.generalArea is not null) {
-				foreach(var e in instance.generalArea)
-					generalArea.Add(new generalAreaViewModel().Load(e));
-			}
-			locality.Clear();
-			if (instance.locality is not null) {
-				foreach(var e in instance.locality)
-					locality.Add(new localityViewModel().Load(e));
-			}
-			messageSeriesIdentifier = new ();
-			if (instance.messageSeriesIdentifier != default) {
-				messageSeriesIdentifier.Load(instance.messageSeriesIdentifier);
-			}
-			nAVWARNTitle.Clear();
-			if (instance.nAVWARNTitle is not null) {
-				foreach(var e in instance.nAVWARNTitle)
-					nAVWARNTitle.Add(new nAVWARNTitleViewModel().Load(e));
-			}
-			cancellationDate = instance.cancellationDate;
-			intService = instance.intService;
-			navwarnTypeGeneral = instance.navwarnTypeGeneral;
-			publicationTime = instance.publicationTime;
+		public areaAffectedViewModel Load(areaAffected instance) {
+
 			return this;
 		}
 
 		public override string Serialize() {
-			var instance = new NAVWARNPreamble {
-				affectedChartPublications = this.affectedChartPublications.Select(e => e.Model).ToList(),
-				generalArea = this.generalArea.Select(e => e.Model).ToList(),
-				locality = this.locality.Select(e => e.Model).ToList(),
-				messageSeriesIdentifier = this.messageSeriesIdentifier?.Model,
-				nAVWARNTitle = this.nAVWARNTitle.Select(e => e.Model).ToList(),
-				cancellationDate = this.cancellationDate,
-				intService = this.intService,
-				navwarnTypeGeneral = this.navwarnTypeGeneral,
-				publicationTime = this.publicationTime,
+			var instance = new areaAffected {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
 		[Browsable(false)]
-		public NAVWARNPreamble Model => new () {
-			affectedChartPublications = this.affectedChartPublications.Select(e => e.Model).ToList(),
-			generalArea = this.generalArea.Select(e => e.Model).ToList(),
-			locality = this.locality.Select(e => e.Model).ToList(),
-			messageSeriesIdentifier = this._messageSeriesIdentifier?.Model,
-			nAVWARNTitle = this.nAVWARNTitle.Select(e => e.Model).ToList(),
-			cancellationDate = this._cancellationDate,
-			intService = this._intService,
-			navwarnTypeGeneral = this._navwarnTypeGeneral,
-			publicationTime = this._publicationTime,
+		public areaAffected Model => new () {
+
 		};
-		public override informationBindingDefinition[] informationBindingDefinitions => NAVWARNPreamble._informationBindingDefinitions;
 
-		public override string? ToString() => $"NAVWARN Preamble";
-
-		public NAVWARNPreambleViewModel() : base() {
-			affectedChartPublications.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(affectedChartPublications));
-			};
-			generalArea.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(generalArea));
-			};
-			locality.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(locality));
-			};
-			nAVWARNTitle.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(nAVWARNTitle));
-			};
-		}
+		public override string? ToString() => $"Area Affected";
 	}
 
 	/// <summary>
@@ -1335,7 +1005,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 		[Browsable(false)]
-		public referenceCategory[] referenceCategoryList => Enum.GetValues<referenceCategory>();
+		public referenceCategory[] referenceCategoryList => [(referenceCategory)1,(referenceCategory)2,(referenceCategory)3];
 
 
 		public override InformationViewModel<References> Load(References instance) {
@@ -1376,33 +1046,170 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	}
 
 	/// <summary>
-	/// Navigational warning information that may be geo-located.
+	/// Preamble information for warnings, notices and other types of messages in a navigational warning scheme.
 	/// </summary>
-	[CategoryOrder("NAVWARNPart",0)]
+	[CategoryOrder("NavwarnPreamble",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class NAVWARNPartViewModel : FeatureViewModel<NAVWARNPart> {
-		[Category("NAVWARNPart")]
-		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		[Category("NAVWARNPart")]
-		public ObservableCollection<featureReferenceViewModel> featureReference  { get; set; } = new ();
-		[Category("NAVWARNPart")]
-		public ObservableCollection<fixedDateRangeViewModel> fixedDateRange  { get; set; } = new ();
-		private warningInformationViewModel _warningInformation ;
+	public partial class NavwarnPreambleViewModel : InformationViewModel<NavwarnPreamble> {
+		[Category("NavwarnPreamble")]
+		public ObservableCollection<affectedChartPublicationsViewModel> affectedChartPublications  { get; set; } = new ();
+		[Category("NavwarnPreamble")]
+		public ObservableCollection<generalAreaViewModel> generalArea  { get; set; } = new ();
+		[Category("NavwarnPreamble")]
+		public ObservableCollection<localityViewModel> locality  { get; set; } = new ();
+		private messageSeriesIdentifierViewModel _messageSeriesIdentifier ;
 
-		[Category("NAVWARNPart")]
+		[Category("NavwarnPreamble")]
 		[ExpandableObject]
-		public warningInformationViewModel warningInformation {
+		public messageSeriesIdentifierViewModel messageSeriesIdentifier {
 			get {
-				return _warningInformation;
+				return _messageSeriesIdentifier;
 			}
 			set {
-				SetValue(ref _warningInformation, value);
+				SetValue(ref _messageSeriesIdentifier, value);
 			}
 		}
+		[Category("NavwarnPreamble")]
+		public ObservableCollection<navwarnTitleViewModel> navwarnTitle  { get; set; } = new ();
+		private DateTime? _cancellationDate  = default;
+
+		[Category("NavwarnPreamble")]
+		public DateTime? cancellationDate {
+			get {
+				return _cancellationDate;
+			}
+			set {
+				SetValue(ref _cancellationDate, value);
+			}
+		}
+		private Boolean _intService  = false;
+
+		[Category("NavwarnPreamble")]
+		public Boolean intService {
+			get {
+				return _intService;
+			}
+			set {
+				SetValue(ref _intService, value);
+			}
+		}
+		private navwarnTypeGeneral _navwarnTypeGeneral ;
+
+		[Category("NavwarnPreamble")]
+		public navwarnTypeGeneral navwarnTypeGeneral {
+			get {
+				return _navwarnTypeGeneral;
+			}
+			set {
+				SetValue(ref _navwarnTypeGeneral, value);
+			}
+		}
+
+		[Browsable(false)]
+		public navwarnTypeGeneral[] navwarnTypeGeneralList =>  CodeList.navwarnTypeGenerals.ToArray();
+		private DateTime _publicationTime ;
+
+		[Category("NavwarnPreamble")]
+		public DateTime publicationTime {
+			get {
+				return _publicationTime;
+			}
+			set {
+				SetValue(ref _publicationTime, value);
+			}
+		}
+
+
+		public override InformationViewModel<NavwarnPreamble> Load(NavwarnPreamble instance) {
+			affectedChartPublications.Clear();
+			if (instance.affectedChartPublications is not null) {
+				foreach(var e in instance.affectedChartPublications)
+					affectedChartPublications.Add(new affectedChartPublicationsViewModel().Load(e));
+			}
+			generalArea.Clear();
+			if (instance.generalArea is not null) {
+				foreach(var e in instance.generalArea)
+					generalArea.Add(new generalAreaViewModel().Load(e));
+			}
+			locality.Clear();
+			if (instance.locality is not null) {
+				foreach(var e in instance.locality)
+					locality.Add(new localityViewModel().Load(e));
+			}
+			messageSeriesIdentifier = new ();
+			if (instance.messageSeriesIdentifier != default) {
+				messageSeriesIdentifier.Load(instance.messageSeriesIdentifier);
+			}
+			navwarnTitle.Clear();
+			if (instance.navwarnTitle is not null) {
+				foreach(var e in instance.navwarnTitle)
+					navwarnTitle.Add(new navwarnTitleViewModel().Load(e));
+			}
+			cancellationDate = instance.cancellationDate;
+			intService = instance.intService;
+			navwarnTypeGeneral = instance.navwarnTypeGeneral;
+			publicationTime = instance.publicationTime;
+			return this;
+		}
+
+		public override string Serialize() {
+			var instance = new NavwarnPreamble {
+				affectedChartPublications = this.affectedChartPublications.Select(e => e.Model).ToList(),
+				generalArea = this.generalArea.Select(e => e.Model).ToList(),
+				locality = this.locality.Select(e => e.Model).ToList(),
+				messageSeriesIdentifier = this.messageSeriesIdentifier?.Model,
+				navwarnTitle = this.navwarnTitle.Select(e => e.Model).ToList(),
+				cancellationDate = this.cancellationDate,
+				intService = this.intService,
+				navwarnTypeGeneral = this.navwarnTypeGeneral,
+				publicationTime = this.publicationTime,
+			};
+			return System.Text.Json.JsonSerializer.Serialize(instance);
+		}
+
+		[Browsable(false)]
+		public NavwarnPreamble Model => new () {
+			affectedChartPublications = this.affectedChartPublications.Select(e => e.Model).ToList(),
+			generalArea = this.generalArea.Select(e => e.Model).ToList(),
+			locality = this.locality.Select(e => e.Model).ToList(),
+			messageSeriesIdentifier = this._messageSeriesIdentifier?.Model,
+			navwarnTitle = this.navwarnTitle.Select(e => e.Model).ToList(),
+			cancellationDate = this._cancellationDate,
+			intService = this._intService,
+			navwarnTypeGeneral = this._navwarnTypeGeneral,
+			publicationTime = this._publicationTime,
+		};
+		public override informationBindingDefinition[] informationBindingDefinitions => NavwarnPreamble._informationBindingDefinitions;
+
+		public override string? ToString() => $"NAVWARN Preamble";
+
+		public NavwarnPreambleViewModel() : base() {
+			affectedChartPublications.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(affectedChartPublications));
+			};
+			generalArea.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(generalArea));
+			};
+			locality.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(locality));
+			};
+			navwarnTitle.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(navwarnTitle));
+			};
+		}
+	}
+
+	/// <summary>
+	/// Navigational warning information that may be geo-located.
+	/// </summary>
+	[CategoryOrder("NavwarnPart",0)]
+	[CategoryOrder("InformationBindings",100)]
+	[CategoryOrder("FeatureBindings",200)]
+	public partial class NavwarnPartViewModel : FeatureViewModel<NavwarnPart> {
 		private restriction? _restriction  = default;
 
-		[Category("NAVWARNPart")]
+		[Category("NavwarnPart")]
 		public restriction? restriction {
 			get {
 				return _restriction;
@@ -1413,20 +1220,29 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 		[Browsable(false)]
-		public restriction[] restrictionList => [(restriction)8,(restriction)7,(restriction)14,(restriction)25,(restriction)27];
+		public restriction[] restrictionList => [(restriction)7,(restriction)8,(restriction)14,(restriction)25,(restriction)27];
+		[Category("NavwarnPart")]
+		public ObservableCollection<fixedDateRangeViewModel> fixedDateRange  { get; set; } = new ();
+		private warningInformationViewModel _warningInformation ;
+
+		[Category("NavwarnPart")]
+		[ExpandableObject]
+		public warningInformationViewModel warningInformation {
+			get {
+				return _warningInformation;
+			}
+			set {
+				SetValue(ref _warningInformation, value);
+			}
+		}
+		[Category("NavwarnPart")]
+		public ObservableCollection<FeatureNameViewModel> FeatureName  { get; set; } = new ();
+		[Category("NavwarnPart")]
+		public ObservableCollection<FeatureReferenceViewModel> FeatureReference  { get; set; } = new ();
 
 
-		public override FeatureViewModel<NAVWARNPart> Load(NAVWARNPart instance) {
-			featureName.Clear();
-			if (instance.featureName is not null) {
-				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
-			}
-			featureReference.Clear();
-			if (instance.featureReference is not null) {
-				foreach(var e in instance.featureReference)
-					featureReference.Add(new featureReferenceViewModel().Load(e));
-			}
+		public override FeatureViewModel<NavwarnPart> Load(NavwarnPart instance) {
+			restriction = instance.restriction;
 			fixedDateRange.Clear();
 			if (instance.fixedDateRange is not null) {
 				foreach(var e in instance.fixedDateRange)
@@ -1436,75 +1252,84 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			if (instance.warningInformation != default) {
 				warningInformation.Load(instance.warningInformation);
 			}
-			restriction = instance.restriction;
+			FeatureName.Clear();
+			if (instance.FeatureName is not null) {
+				foreach(var e in instance.FeatureName)
+					FeatureName.Add(new FeatureNameViewModel().Load(e));
+			}
+			FeatureReference.Clear();
+			if (instance.FeatureReference is not null) {
+				foreach(var e in instance.FeatureReference)
+					FeatureReference.Add(new FeatureReferenceViewModel().Load(e));
+			}
 			return this;
 		}
 
 		public override string Serialize() {
-			var instance = new NAVWARNPart {
-				featureName = this.featureName.Select(e => e.Model).ToList(),
-				featureReference = this.featureReference.Select(e => e.Model).ToList(),
+			var instance = new NavwarnPart {
+				restriction = this.restriction,
 				fixedDateRange = this.fixedDateRange.Select(e => e.Model).ToList(),
 				warningInformation = this.warningInformation?.Model,
-				restriction = this.restriction,
+				FeatureName = this.FeatureName.Select(e => e.Model).ToList(),
+				FeatureReference = this.FeatureReference.Select(e => e.Model).ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
 		[Browsable(false)]
-		public NAVWARNPart Model => new () {
-			featureName = this.featureName.Select(e => e.Model).ToList(),
-			featureReference = this.featureReference.Select(e => e.Model).ToList(),
+		public NavwarnPart Model => new () {
+			restriction = this._restriction,
 			fixedDateRange = this.fixedDateRange.Select(e => e.Model).ToList(),
 			warningInformation = this._warningInformation?.Model,
-			restriction = this._restriction,
+			FeatureName = this.FeatureName.Select(e => e.Model).ToList(),
+			FeatureReference = this.FeatureReference.Select(e => e.Model).ToList(),
 		};
-		public override informationBindingDefinition[] informationBindingDefinitions => NAVWARNPart._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => NavwarnPart._informationBindingDefinitions;
 
-		public override featureBindingDefinition[] featureBindingDefinitions => NAVWARNPart._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => NavwarnPart._featureBindingDefinitions;
 
 		public override string? ToString() => $"NAVWARN Part";
 
-		public NAVWARNPartViewModel() : base() {
-			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(featureName));
-			};
-			featureReference.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(featureReference));
-			};
+		public NavwarnPartViewModel() : base() {
 			fixedDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(fixedDateRange));
+			};
+			FeatureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(FeatureName));
+			};
+			FeatureReference.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(FeatureReference));
 			};
 		}
 	}
 
 	/// <summary>
-	/// Used to enhance the user’s awareness of an affected area following some incident.
+	/// An area affected by some event marked by a navigational warning.
 	/// </summary>
-	[CategoryOrder("NAVWARNAreaAffected",0)]
+	[CategoryOrder("NavwarnAreaAffected",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class NAVWARNAreaAffectedViewModel : FeatureViewModel<NAVWARNAreaAffected> {
+	public partial class NavwarnAreaAffectedViewModel : FeatureViewModel<NavwarnAreaAffected> {
 
 
-		public override FeatureViewModel<NAVWARNAreaAffected> Load(NAVWARNAreaAffected instance) {
+		public override FeatureViewModel<NavwarnAreaAffected> Load(NavwarnAreaAffected instance) {
 
 			return this;
 		}
 
 		public override string Serialize() {
-			var instance = new NAVWARNAreaAffected {
+			var instance = new NavwarnAreaAffected {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
 		[Browsable(false)]
-		public NAVWARNAreaAffected Model => new () {
+		public NavwarnAreaAffected Model => new () {
 
 		};
-		public override informationBindingDefinition[] informationBindingDefinitions => NAVWARNAreaAffected._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => NavwarnAreaAffected._informationBindingDefinitions;
 
-		public override featureBindingDefinition[] featureBindingDefinitions => NAVWARNAreaAffected._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => NavwarnAreaAffected._featureBindingDefinitions;
 
 		public override string? ToString() => $"NAVWARN Area Affected";
 	}
@@ -1516,10 +1341,21 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TextPlacementViewModel : FeatureViewModel<TextPlacement> {
-		private String? _text  = default;
+		private int? _scaleMinimum  = default;
 
 		[Category("TextPlacement")]
-		public String? text {
+		public int? scaleMinimum {
+			get {
+				return _scaleMinimum;
+			}
+			set {
+				SetValue(ref _scaleMinimum, value);
+			}
+		}
+		private String _text  = string.Empty;
+
+		[Category("TextPlacement")]
+		public String text {
 			get {
 				return _text;
 			}
@@ -1549,10 +1385,10 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _textOffsetDistance, value);
 			}
 		}
-		private Boolean? _textRotation  = default;
+		private Boolean _textRotation  = false;
 
 		[Category("TextPlacement")]
-		public Boolean? textRotation {
+		public Boolean textRotation {
 			get {
 				return _textRotation;
 			}
@@ -1560,63 +1396,35 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _textRotation, value);
 			}
 		}
-		private textType? _textType  = default;
-
-		[Category("TextPlacement")]
-		public textType? textType {
-			get {
-				return _textType;
-			}
-			set {
-				SetValue(ref _textType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public textType[] textTypeList => [(textType)1,(textType)2];
-		private int? _scaleMinimum  = default;
-
-		[Category("TextPlacement")]
-		public int? scaleMinimum {
-			get {
-				return _scaleMinimum;
-			}
-			set {
-				SetValue(ref _scaleMinimum, value);
-			}
-		}
 
 
 		public override FeatureViewModel<TextPlacement> Load(TextPlacement instance) {
+			scaleMinimum = instance.scaleMinimum;
 			text = instance.text;
 			textOffsetBearing = instance.textOffsetBearing;
 			textOffsetDistance = instance.textOffsetDistance;
 			textRotation = instance.textRotation;
-			textType = instance.textType;
-			scaleMinimum = instance.scaleMinimum;
 			return this;
 		}
 
 		public override string Serialize() {
 			var instance = new TextPlacement {
+				scaleMinimum = this.scaleMinimum,
 				text = this.text,
 				textOffsetBearing = this.textOffsetBearing,
 				textOffsetDistance = this.textOffsetDistance,
 				textRotation = this.textRotation,
-				textType = this.textType,
-				scaleMinimum = this.scaleMinimum,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
 		[Browsable(false)]
 		public TextPlacement Model => new () {
+			scaleMinimum = this._scaleMinimum,
 			text = this._text,
 			textOffsetBearing = this._textOffsetBearing,
 			textOffsetDistance = this._textOffsetDistance,
 			textRotation = this._textRotation,
-			textType = this._textType,
-			scaleMinimum = this._scaleMinimum,
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
 
