@@ -669,6 +669,13 @@ namespace S100Framework.Applications
 
                             // TODO: Vesselspeedlimit
 
+
+
+
+
+
+
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 

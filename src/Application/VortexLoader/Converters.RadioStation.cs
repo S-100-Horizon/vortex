@@ -1,29 +1,36 @@
-﻿using ArcGIS.Core.Data;
-using S100Framework.Applications.S57.esri;
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.FeatureTypes;
+﻿using S100Framework.Applications.S57.esri;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.ComplexAttributes;
+using ArcGIS.Core.Data;
 using S100Framework.Applications.Singletons;
+
 
 namespace S100Framework.Applications
 {
     internal static partial class Converters {
-        internal static FogSignal CreateFogSignal(S57Object structure, Geodatabase source) {
+            internal static RadioStation CreateRadioStation(AidsToNavigationP current, Geodatabase source) {
+            var instance = new RadioStation();
 
-            var instance = new FogSignal();
-
-            var current = structure as AidsToNavigationP;
-
-            if (current == null) {
-                throw new NotSupportedException("structure is not an AidsToNavigation");
+            if (current.CALSGN != default) {
+                instance.callSign = current.CALSGN;
             }
 
-            if (current.CATFOG.HasValue != default) {
-                instance.categoryOfFogSignal = EnumHelper.GetEnumValue<categoryOfFogSignal>(current.CATFOG.Value);
+            if (current.CATROS != null) {
+                instance.categoryOfRadioStation = EnumHelper.GetEnumValues<categoryOfRadioStation>(current.CATROS);
+            }
+
+            if (current.COMCHA != default) {
+                instance.communicationChannel = current.COMCHA.Split(',').ToList<string>();
+            }
+
+            if (current.ESTRNG.HasValue) {
+                instance.estimatedRangeOfTransmission = current.ESTRNG.Value;
             }
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -33,6 +40,10 @@ namespace S100Framework.Applications
                 instance.fixedDateRange = dateRange;
             }
 
+            if (current.SIGFRQ.HasValue) {
+                instance.frequencyPair = ImporterNIS.GetFrequencyPair(current.SIGFRQ.Value);
+            }
+
             // TODO: interoperabilityidentifier
 
             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -40,33 +51,8 @@ namespace S100Framework.Applications
                 instance.periodicDateRange = periodicDateRange;
             }
 
-            if (current.SIGFRQ.HasValue) {
-                instance.signalFrequency = current.SIGFRQ.Value;
-            }
-            if (current.SIGGEN.HasValue) {
-                instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
-            }
-            if (current.SIGGRP != default) {
-                instance.signalGroup = current.SIGGRP;
-            }
-            if (current.SIGPER != default) {
-                instance.signalPeriod = current.SIGPER;
-            }
-
-            if (current.SIGSEQ != default) {
-                instance.signalSequence = ImporterNIS.GetSignalSequences(current.SIGSEQ);
-            }
-
             if (current.STATUS != default) {
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
-            }
-
-            instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-            // TODO: interoperabilityidentifier
-
-            if (current.VALMXR.HasValue) {
-                instance.valueOfMaximumRange = current.VALMXR.Value;
             }
 
             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -78,9 +64,11 @@ namespace S100Framework.Applications
                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
             }
 
+
             return instance;
         }
+
+
+
     }
 }
-
-

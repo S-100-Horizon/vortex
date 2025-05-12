@@ -110,7 +110,7 @@ namespace S100Framework.Applications
             _converterRegistry.Register<CulturalFeaturesA, LightSectored>(Converters.CreateLightSectored);
             _converterRegistry.Register<PortsAndServicesP, LightSectored>(Converters.CreateLightSectored);
             _converterRegistry.Register<PortsAndServicesP, SignalStationWarning>(Converters.CreateSignalStationWarning);
-
+            _converterRegistry.Register<AidsToNavigationP, FogSignal>(Converters.CreateFogSignal);
 
             using (Geodatabase source = createGeodatabase()) {
                 Store(() => {
@@ -144,9 +144,11 @@ namespace S100Framework.Applications
 
                 FeatureRelations.Initialize(source, destination);
 
-
+                SpatialRelationResolver.Initialize(source);
 
                 relatedEquipment = new RelatedEquipment(source);
+
+
 
                 if (skinOfEarthOnly) {
                     // All "SKIN OF EARTH" cases / subtypes are marked with a "skin of earth" comment
