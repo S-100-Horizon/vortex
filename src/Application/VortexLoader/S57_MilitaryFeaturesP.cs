@@ -8,6 +8,7 @@ using Serilog;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -17,8 +18,7 @@ namespace S100Framework.Applications
             var tableName = "MilitaryFeaturesP";
 
             using var militaryFeaturesP = source.OpenDataset<FeatureClass>(source.GetName(tableName));
-            var subtypes = militaryFeaturesP.GetSubtypes();
-            var featureType = PrimitiveType.Point;
+            Subtypes.Instance.RegisterSubtypes(militaryFeaturesP);
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
 
@@ -44,19 +44,25 @@ namespace S100Framework.Applications
                 }
 
 
-                var subtype = current.FCSUBTYPE ?? default;
+                var fcSubtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
                 var status = current.STATUS ?? default;
 
-                switch (subtype) {
+                switch (fcSubtype) {
 
                     case 30: { // MIPARE_MilitaryPracticeArea
                             var instance = new MilitaryPracticeArea() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
 
                             if (current.STATUS != default) {

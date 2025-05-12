@@ -4,6 +4,7 @@ using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S124.ComplexAttributes;
 using System.ComponentModel;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -16,8 +17,7 @@ namespace S100Framework.Applications
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
 
             using var offshoreinstallations = source.OpenDataset<FeatureClass>(source.GetName(tableName));
-            var subtypes = offshoreinstallations.GetSubtypes();
-            var featureType = PrimitiveType.Line;
+            Subtypes.Instance.RegisterSubtypes(offshoreinstallations);
 
             int recordCount = 0;
             
@@ -39,14 +39,14 @@ namespace S100Framework.Applications
                     continue;
                 }
 
-                var subtype = current.FCSUBTYPE ?? default;
+                var fcSubtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
                 var status = current.STATUS ?? default;
                 var condtn = current.CONDTN ?? default;
                 var verlen = current.VERLEN ?? default;
 
-                switch (subtype) {
+                switch (fcSubtype) {
                     case 1: { // CBLSUB_CableSubmarine
 
                             // The S-57 attributes DRVAL1 and DRVAL2 for CBLSUB will not be converted. It is considered that
@@ -54,8 +54,13 @@ namespace S100Framework.Applications
                             
                             var instance = new CableSubmarine();
 
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[current.FCSUBTYPE ?? default], current.PLTS_COMP_SCALE.Value);
+                                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             if (current.BURDEP.HasValue) {
@@ -63,9 +68,15 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CATCBL.HasValue) {
-                                if (current.CATCBL.Value == 4) { // TODO: handle cable _s101type == 4
-                                    Logger.Current.DataError(objectid, tableName, longname, "CATCBL 4 cannot be converted. Set to unknown.");
-                                    instance.categoryOfCable = categoryOfCable.Unknown;
+                                if (current.CATCBL.Value == 4) {
+                                    /*
+                                        S-65 Annex B
+                                        Amended guidance for conversion of CATCBL value 4 (telephone) to convert
+                                        to new value category of cable = 10 (telecommunications cable).
+                                        11.5.1, 11.5.3, A-2
+                                     */
+
+                                    instance.categoryOfCable = categoryOfCable.TelecommunicationsCable;
                                 }
                                 else {
                                     instance.categoryOfCable = EnumHelper.GetEnumValue<categoryOfCable>(current.CATCBL.Value);
@@ -91,8 +102,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -103,8 +120,11 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                            }
+
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -114,8 +134,14 @@ namespace S100Framework.Applications
                     case 5: { // PIPSOL_PipelineSubmarineOnLand
                             var instance = new PipelineSubmarineOnLand();
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -134,8 +160,11 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                            }
+
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));

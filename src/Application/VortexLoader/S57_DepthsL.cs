@@ -4,6 +4,7 @@ using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.InformationTypes;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 
 
 namespace S100Framework.Applications
@@ -22,8 +23,7 @@ namespace S100Framework.Applications
             var tableName = "DepthsL";
 
             using var depthsl = source.OpenDataset<FeatureClass>(source.GetName("DepthsL"));
-            var subtypes = depthsl.GetSubtypes();
-            var featureType = PrimitiveType.Line;
+            Subtypes.Instance.RegisterSubtypes(depthsl);
 
             using var plts_spatialattributel = source.OpenDataset<FeatureClass>(source.GetName("PLTS_SpatialAttributeL"));
             using var informationtype = target.OpenDataset<Table>(target.GetName("informationType"));
@@ -52,7 +52,7 @@ namespace S100Framework.Applications
                     continue;
                 }
 
-                var subtype = current.FCSUBTYPE ?? default;
+                var fcSubtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
                 var drval1 = current.DRVAL1 ?? default;
@@ -64,15 +64,21 @@ namespace S100Framework.Applications
                 var sorind = current.SORIND ?? default;
                 var souacc = current.SOUACC ?? default;
 
-                switch (subtype) {
+                switch (fcSubtype) {
                     case 5: { // DEPCNT_DepthContour
                             var instance = new DepthContour() {
                                 valueOfDepthContour = valco
                             };
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
 
                             /*
@@ -132,8 +138,11 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                            }
+
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
 

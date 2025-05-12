@@ -6,20 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace S100Framework.Applications
+namespace S100Framework.Applications.Singletons
 {
 
     internal class ConversionAnalytics
     {
-        IDictionary<Guid,List<string>> _convertedS57Objects;
-        IDictionary<string,IDictionary<Guid,List<string>>> _tableNameToConvertedS57Objects;
+        IDictionary<Guid, List<string>> _convertedS57Objects;
+        IDictionary<string, IDictionary<Guid, List<string>>> _tableNameToConvertedS57Objects;
 
 
         private static ConversionAnalytics? _instance;
 
         private ConversionAnalytics() {
-            this._convertedS57Objects = new Dictionary<Guid,List<string>>();
-            this._tableNameToConvertedS57Objects = new Dictionary<string,IDictionary<Guid,List<string>>>();
+            this._convertedS57Objects = new Dictionary<Guid, List<string>>();
+            this._tableNameToConvertedS57Objects = new Dictionary<string, IDictionary<Guid, List<string>>>();
         }
 
         internal bool IsConverted(Guid globalid) {
@@ -47,17 +47,18 @@ namespace S100Framework.Applications
                 _tableNameToConvertedS57Objects[tableName.ToLower()][guid].Add(name);
             }
             else {
-                _tableNameToConvertedS57Objects[tableName.ToLower()].Add(guid, new List<string> { name }); 
+                _tableNameToConvertedS57Objects[tableName.ToLower()].Add(guid, new List<string> { name });
             }
 
             if (!_convertedS57Objects.ContainsKey(guid)) {
                 _convertedS57Objects[guid] = new List<string> { name };
-            } else {
+            }
+            else {
                 _convertedS57Objects[guid].Add(name);
             }
         }
 
-        internal void AddConverted(string tableName, IDictionary<Guid,List<string>> guidName) {
+        internal void AddConverted(string tableName, IDictionary<Guid, List<string>> guidName) {
             if (_tableNameToConvertedS57Objects.ContainsKey(tableName.ToLower())) {
                 var commonGuids = _tableNameToConvertedS57Objects[tableName.ToLower()].Keys.Intersect(guidName.Keys).ToList();
                 if (commonGuids.Count > 0) {
@@ -66,7 +67,7 @@ namespace S100Framework.Applications
                 _tableNameToConvertedS57Objects[tableName.ToLower()].Union(guidName);
             }
             else {
-                var guidNames = new Dictionary<Guid,List<string>>();
+                var guidNames = new Dictionary<Guid, List<string>>();
                 guidNames.Union(guidName);
                 _tableNameToConvertedS57Objects[tableName.ToLower()] = guidNames;
 

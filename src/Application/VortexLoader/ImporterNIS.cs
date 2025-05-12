@@ -14,6 +14,8 @@ using VortexLoader;
 using Microsoft.Win32;
 using ArcGIS.Desktop.Internal.Core.Conda;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System.Runtime.CompilerServices;
+using S100Framework.Applications.Singletons;
 
 
 namespace S100Framework.Applications
@@ -31,13 +33,14 @@ namespace S100Framework.Applications
         internal static string _scaminFilesPath = "";
         internal static string ps101 = "S-101";
         internal static string ps128 = "S-128";
+        internal static Geodatabase _geodatabase;
 
         internal static readonly int CompilationScale = 22000; // Used as filter for spatial queries to transfer attributes from other features based on location analysis
 
         //internal static FeatureRelations featureRelations = null;
         internal static RelatedEquipment? relatedEquipment;
 
-        internal static ConverterRegistry  _converterRegistry = new ConverterRegistry();
+        internal static ConverterRegistry _converterRegistry = new ConverterRegistry();
 
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
             
@@ -80,8 +83,6 @@ namespace S100Framework.Applications
                 }
             });
 
-            
-
 
             Func<Action, bool> Store = (a) => {
                 a.Invoke();
@@ -104,13 +105,14 @@ namespace S100Framework.Applications
             _converterRegistry.Register<AidsToNavigationP, LightSectored>(Converters.CreateLightSectored);
             _converterRegistry.Register<AidsToNavigationP, LightAirObstruction>(Converters.CreateLightAirObstruction);
             _converterRegistry.Register<AidsToNavigationP, LightFogDetector>(Converters.CreateLightFogDetector);
+            _converterRegistry.Register<AidsToNavigationP, Daymark>(Converters.CreateDaymark);
             _converterRegistry.Register<DangersP, Obstruction>(Converters.CreateObstruction);
             _converterRegistry.Register<CulturalFeaturesA, LightSectored>(Converters.CreateLightSectored);
             _converterRegistry.Register<PortsAndServicesP, LightSectored>(Converters.CreateLightSectored);
-
+            _converterRegistry.Register<PortsAndServicesP, SignalStationWarning>(Converters.CreateSignalStationWarning);
+            _converterRegistry.Register<AidsToNavigationP, FogSignal>(Converters.CreateFogSignal);
 
             using (Geodatabase source = createGeodatabase()) {
-
                 Store(() => {
                     var query = new QueryFilter {
                         WhereClause = $"1=1",
@@ -138,9 +140,15 @@ namespace S100Framework.Applications
 
                 });
 
-                
-                FeatureRelations.Instance.Initialize(source, destination);
+                Subtypes.Initialize(source);
+
+                FeatureRelations.Initialize(source, destination);
+
+                SpatialRelationResolver.Initialize(source);
+
                 relatedEquipment = new RelatedEquipment(source);
+
+
 
                 if (skinOfEarthOnly) {
                     // All "SKIN OF EARTH" cases / subtypes are marked with a "skin of earth" comment
@@ -203,30 +211,9 @@ namespace S100Framework.Applications
 
                 return true;
             }
+
         }
 
-        public static IEnumerable<T> SelectIn<T>(Geometry geometry, FeatureClass in_featureclass, SpatialRelationship spatialRelationship, int compilationScale) where T : class {
-            SpatialQueryFilter spatialQueryFilter = new SpatialQueryFilter {
-                FilterGeometry = geometry,
-                SpatialRelationship = spatialRelationship,
-                WhereClause = $"plts_comp_scale = {compilationScale}"
-            };
-
-            using (RowCursor spatialSearch = in_featureclass.Search(spatialQueryFilter, true)) {
-                var shape = spatialSearch.FindField("SHAPE");
-                while (spatialSearch.MoveNext()) {
-                    using (Row row = spatialSearch.Current) {
-                        Feature feature = (Feature)row;
-                        if (feature != null) {
-                            var val = Activator.CreateInstance(typeof(T), feature) as T;
-                            if (val != null) {
-                                yield return val;
-                            }
-                        }
-                    }
-                }
-            }
-        }
 
         internal static void SetShape(RowBuffer buffer, Geometry? shape) {
             if (shape == null) {
@@ -253,7 +240,7 @@ namespace S100Framework.Applications
                 sub-attributes signal group, signal period and signal sequence are only valid for non-fixed lights
                 (that is, sub-attribute light characteristic ≠ 1 (fixed)), with signal group and signal period being
                 mandatory
-             */
+            */
 
             var signalGroupN = current.SIGGRP != default ? new List<string> { current.SIGGRP } : new();
             var signalPeriodN = current.SIGPER;
@@ -281,7 +268,7 @@ namespace S100Framework.Applications
             return rhythmOfLight;
         }
 
-        private static List<signalSequence> GetSignalSequences(string? sigseq) {
+        internal static List<signalSequence> GetSignalSequences(string? sigseq) {
             var signalSequences = new List<signalSequence>();
 
             string pattern = @"(\d+\.\d+)|\((\d+\.\d+)\)";

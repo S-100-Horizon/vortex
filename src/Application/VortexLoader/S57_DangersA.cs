@@ -1,7 +1,9 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Geometry;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -12,8 +14,7 @@ namespace S100Framework.Applications
 
             using var dangersa = source.OpenDataset<FeatureClass>(source.GetName(tableName));
             using var depthsA = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
-            var subtypes = dangersa.GetSubtypes();
-            var featureType = PrimitiveType.Area;
+            Subtypes.Instance.RegisterSubtypes(dangersa);
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
@@ -38,7 +39,7 @@ namespace S100Framework.Applications
                 }
 
 
-                var subtype = current.FCSUBTYPE ?? default;
+                var fcSubtype = current.FCSUBTYPE ?? default;
 
                 var valsou = current.VALSOU ?? default;
                 var watlev = current.WATLEV ?? default;
@@ -54,14 +55,20 @@ namespace S100Framework.Applications
                 // S-101 Annex A_DCEG Edition 1.5.0_Draft for Edition 2.0.0.pdf: p.771
                 //Decimal defaultClearanceDepth = -1;
 
-                switch (subtype) {
+                switch (fcSubtype) {
                     case 1: { // CTNARE_CautionArea
                             var instance = new CautionArea {
 
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -81,8 +88,10 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
+                            }
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
 
@@ -97,8 +106,14 @@ namespace S100Framework.Applications
 
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -140,8 +155,14 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
-                            }
+                                    string subtype = "";
+
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                }
+
 
                                 instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
@@ -152,16 +173,16 @@ namespace S100Framework.Applications
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                                 ImporterNIS.SetShape(buffer, current.SHAPE);
                                 var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                                 if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
                                     relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
                                 }
 
-                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                
+
                                 break;
                             }
                             else if (current.CATOBS == 7) {
@@ -174,8 +195,14 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
-                            }
+                                    string subtype = "";
+
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                }
+
 
                                 instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
@@ -186,16 +213,16 @@ namespace S100Framework.Applications
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                                 ImporterNIS.SetShape(buffer, current.SHAPE);
                                 var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                                 if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
                                     relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
                                 }
 
-                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                
+
                                 break;
                             }
                             else {
@@ -272,38 +299,43 @@ namespace S100Framework.Applications
                                     instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
                                 }
 
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
-                            }
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                    string subtype = "";
+
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                }
+
 
 
                                 AddInformation(instance.information, feature);
 
                                 // TODO: defaultClearanceDepth
 
-                                if (current.SHAPE != null) {
-                                    foreach (var depthArea in SelectIn<DepthsA>(current.SHAPE, depthsA, SpatialRelationship.Intersects, ImporterNIS.CompilationScale)) {
-                                        var drval1 = depthArea.DRVAL1 ?? default;
-                                        instance.surroundingDepth = drval1;
-                                    }
+
+                                foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
+                                    var drval1 = depthArea.DRVAL1 ?? default;
+                                    instance.surroundingDepth = drval1;
                                 }
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                                SetShape(buffer,current.SHAPE);
+                                SetShape(buffer, current.SHAPE);
                                 var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                                 if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
                                     relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
                                 }
 
-                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                
-                            
+
+
                             }
                         }
                         break;
@@ -312,8 +344,14 @@ namespace S100Framework.Applications
 
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
 
                             if (current.CATWAT.HasValue) {
@@ -347,8 +385,14 @@ namespace S100Framework.Applications
 
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
 
                             if (current.CATWRK.HasValue) {
@@ -403,7 +447,6 @@ namespace S100Framework.Applications
             }
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
-
 
     }
 }

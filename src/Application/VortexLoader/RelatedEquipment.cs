@@ -8,13 +8,13 @@ using S100Framework.DomainModel;
 using ArcGIS.Core.Internal.CIM;
 using ArcGIS.Desktop.Editing.Attributes;
 using System.Text;
-using S100Framework.Applications;
 using System.Data;
 using System.ComponentModel;
 using VortexLoader;
 using System;
 using ArcGIS.Core.Geometry;
 using Microsoft.AspNetCore.Http.HttpResults;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -134,33 +134,37 @@ namespace S100Framework.Applications
             return null;
         }
 
-        internal void CreateRelatedLineEquipment(CulturalFeaturesA current, Bridge instance, string name, Geodatabase target) {
+        internal void CreateRelatedLineEquipment(S57Object structure, FeatureNode s101Object, string name, Geodatabase target, Geodatabase source) {
             throw new NotImplementedException();
         }
 
-
-        internal void CreateRelatedAreaEquipment(CulturalFeaturesA structure, Bridge instance, string name, Geodatabase target) {
+        internal void CreateRelatedAreaEquipment(S57Object structure, FeatureNode s101Object, string name, Geodatabase target, Geodatabase source) {
             var areaRelated = FeatureRelations.Instance.GetRelated(structure.GlobalId);
 
             var tableName = target.GetName("point");
             using var featureClass = target.OpenDataset<FeatureClass>(tableName);
             using var buffer = featureClass.CreateRowBuffer();
 
-
-            // get groups of structures a
+            // group structures per location
             var relatedPerLocation = areaRelated
-                    .GroupBy(obj => (((MapPoint)obj.S57Object.Shape).X, ((MapPoint)obj.S57Object.Shape).Y, ((MapPoint)obj.S57Object.Shape).Z, obj.S57Object.Shape.SpatialReference) )
+                    .GroupBy(obj => (X:Math.Round(((MapPoint)obj.S57Object.Shape).X,7), Y:Math.Round(((MapPoint)obj.S57Object.Shape).Y,7), obj.S57Object.Shape.SpatialReference))
                     .ToDictionary(
                         group => group.Key,  
                         group => group.ToList() 
                     );
 
+            // light sectored
             foreach (var location in relatedPerLocation.Keys) {
-                var relatedEquipment = relatedPerLocation[location].Where(e => e.S101Type == typeof(LightSectored)).ToList();
-                var shape = MapPointBuilderEx.CreateMapPoint(location.X, location.Y, location.Z, location.SpatialReference);
+                var allRelatedLocationEquipment = relatedPerLocation[location];
+                var relatedLightSectored = relatedPerLocation[location].Where(e => e.S101Type == typeof(LightSectored)).ToList();
 
-                if (relatedEquipment.Count > 0) {
-                    var lightSectored = Converters.CreateLightSectored(relatedEquipment);
+                var relatedNonSectoredEquipment = relatedPerLocation[location].Where(e => e.S101Type != typeof(LightSectored)).ToList();
+
+                var shape = MapPointBuilderEx.CreateMapPoint(location.X, location.Y, location.SpatialReference);
+
+                // Sectoredlights
+                if (relatedLightSectored.Count > 0) {
+                    var lightSectored = Converters.CreateLightSectored(relatedLightSectored, source);
 
                     buffer["ps"] = ImporterNIS.ps101;
                     buffer["code"] = lightSectored.GetType().Name;
@@ -169,27 +173,55 @@ namespace S100Framework.Applications
 
                     var featureN = featureClass.CreateRow(buffer);
                     var equipmentName = Convert.ToString(featureN["name"]);
+
                     if (equipmentName == null) {
                         throw new NotSupportedException("empty equipment name");
                     }
 
-                    foreach (var relatedObject in relatedEquipment) {
-                        ConversionAnalytics.Instance.AddConverted(relatedObject.PLTS_Frel.DEST_FC, relatedObject.GlobalId, equipmentName);
-                        Logger.Current.DataObject(-1, relatedObject.PLTS_Frel.DEST_FC, equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
-                    }
-
-                    if (equipmentName == null) {
-                        throw new NotSupportedException("empty equipment name");
+                    foreach (var relatedObject in relatedLightSectored) {
+                        if (relatedObject.PLTS_Frel.DEST_FC == null) {
+                            throw new NotSupportedException($"Empty PLTS_Frel.DEST_FC");
+                        }
+                        ConversionAnalytics.Instance.AddConverted(relatedObject.PLTS_Frel.DEST_FC, relatedObject.GlobalId, equipmentName ?? "Unknown equipment");
+                        Logger.Current.DataObject(-1, relatedObject.PLTS_Frel.DEST_FC, equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(lightSectored));
                     }
                 }
+                // 
+                foreach (var relatedObject in relatedNonSectoredEquipment) {
+                    if (relatedObject.S101Type == typeof(topmark))
+                        continue;
+
+
+                    if (relatedObject.S57Object != null && relatedObject.S101Type != null) {
+                        var instance = ImporterNIS._converterRegistry.Convert(relatedObject.S57Object, relatedObject.S101Type);
+
+                        buffer["ps"] = ImporterNIS.ps101;
+                        buffer["code"] = instance.GetType().Name;
+                        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+                        ImporterNIS.SetShape(buffer, shape);
+
+                        var featureN = featureClass.CreateRow(buffer);
+                        var equipmentName = Convert.ToString(featureN["name"]);
+                        if (equipmentName == null) {
+                            throw new NotSupportedException("empty equipment name");
+                        }
+
+                        if (relatedObject.S57Object.TableName != null) {
+                            ConversionAnalytics.Instance.AddConverted(relatedObject.S57Object.TableName, relatedObject.GlobalId, equipmentName ?? "Unknown equipment name");
+                        }
+
+                        if (equipmentName == null) {
+                            throw new NotSupportedException("empty equipment name");
+                        }
+
+                        FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name));
+
+                        Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.S57Object.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
+
+                    }
+                }
+            
             }
-
-            // Create relations
-
-
-            // Register in analytics
-            ;
-
         }
 
         internal void CreateRelatedPointEquipment(S57Object structure, FeatureNode s101Object, string name, Geodatabase target) {
@@ -198,6 +230,16 @@ namespace S100Framework.Applications
                 return;
 
             var totalRelated = FeatureRelations.Instance.GetRelated(structure.GlobalId);
+            
+            var relatedLightSectored = totalRelated.Where(e => e.S101Type == typeof(LightSectored)).ToList();
+
+            var relatedNonSectoredEquipment = totalRelated.Where(e => e.S101Type != typeof(LightSectored)).ToList();
+
+
+
+
+
+            
 
             var tableName = target.GetName("point");
             using var featureClass = target.OpenDataset<FeatureClass>(tableName);
@@ -230,11 +272,11 @@ namespace S100Framework.Applications
                 }
 
                 FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name));
-                return;
+               // return;
             }
             
             // IF NOT SECTORED LIGHTS
-            foreach (PltsSlave relatedObject in totalRelated) {
+            foreach (PltsSlave relatedObject in relatedNonSectoredEquipment) {
                 if (relatedObject.S101Type == typeof(topmark))
                     continue;
 
@@ -253,7 +295,9 @@ namespace S100Framework.Applications
                         throw new NotSupportedException("empty equipment name");
                     }
 
-                    ConversionAnalytics.Instance.AddConverted(relatedObject.S57Object.TableName, relatedObject.GlobalId, equipmentName ?? "Unknown equipment name");
+                    if (relatedObject.S57Object.TableName != null) {
+                        ConversionAnalytics.Instance.AddConverted(relatedObject.S57Object.TableName, relatedObject.GlobalId, equipmentName ?? "Unknown equipment name");
+                    }
 
                     if (equipmentName == null) {
                         throw new NotSupportedException("empty equipment name");

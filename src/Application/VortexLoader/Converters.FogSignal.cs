@@ -1,23 +1,29 @@
-﻿using S100Framework.Applications.S57.esri;
+﻿using ArcGIS.Core.Data;
+using S100Framework.Applications.S57.esri;
+using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.FeatureTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S101;
-using ArcGIS.Core.Data;
 using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
-    internal static partial class Converters
-    {
-        internal static LightFogDetector CreateLightFogDetector(AidsToNavigationP current, Geodatabase source) {
-            var instance = new LightFogDetector();
+    internal static partial class Converters {
+        internal static FogSignal CreateFogSignal(S57Object structure, Geodatabase source) {
 
-            if (current.COLOUR != default) {
-                instance.colour = ImporterNIS.GetColours(current.COLOUR);
+            var instance = new FogSignal();
+
+            var current = structure as AidsToNavigationP;
+
+            if (current == null) {
+                throw new NotSupportedException("structure is not an AidsToNavigation");
+            }
+
+            if (current.CATFOG.HasValue != default) {
+                instance.categoryOfFogSignal = EnumHelper.GetEnumValue<categoryOfFogSignal>(current.CATFOG.Value);
             }
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -27,39 +33,40 @@ namespace S100Framework.Applications
                 instance.fixedDateRange = dateRange;
             }
 
-            // flareBearing is not populated. New field.
-
-            if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value;
-            }
-
-            // DODO: Interoperability identifier
+            // TODO: interoperabilityidentifier
 
             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
             if (periodicDateRange != default) {
                 instance.periodicDateRange = periodicDateRange;
             }
 
-            instance.rhythmOfLight = ImporterNIS.GetRythmOfLight(current);
-
-            if (current.SIGGEN != null) {
+            if (current.SIGFRQ.HasValue) {
+                instance.signalFrequency = current.SIGFRQ.Value;
+            }
+            if (current.SIGGEN.HasValue) {
                 instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
+            }
+            if (current.SIGGRP != default) {
+                instance.signalGroup = current.SIGGRP;
+            }
+            if (current.SIGPER != default) {
+                instance.signalPeriod = current.SIGPER;
+            }
+
+            if (current.SIGSEQ != default) {
+                instance.signalSequence = ImporterNIS.GetSignalSequences(current.SIGSEQ);
             }
 
             if (current.STATUS != default) {
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
             }
 
-            if (current.VERDAT.HasValue) {
-                instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
-            }
+            instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-            if (current.VERLEN.HasValue) {
-                instance.verticalLength = current.VERLEN.Value;
-            }
+            // TODO: interoperabilityidentifier
 
-            if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value;
+            if (current.VALMXR.HasValue) {
+                instance.valueOfMaximumRange = current.VALMXR.Value;
             }
 
             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -71,12 +78,9 @@ namespace S100Framework.Applications
                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
             }
 
-
-
-
             return instance;
         }
-
-
     }
 }
+
+

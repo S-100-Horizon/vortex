@@ -76,6 +76,8 @@ namespace S100Framework.YAML
 
         public string? Location => Coordinate is null ? string.Empty : string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", Coordinate.X, Coordinate.Y);
 
+        public Association? Association { get; set; }
+
         [YamlIgnore]
         public Coordinate? Coordinate { get; private set; } = new Coordinate(x, y);
     }
@@ -85,6 +87,8 @@ namespace S100Framework.YAML
         public string? Name { get; set; }
         public string? Location => Points is null ? string.Empty : string.Join(",", Points.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.X, e.Y)));
         public string? Z => Depths is null ? string.Empty : string.Join(",", Depths.Select(e => e.ToString(CultureInfo.InvariantCulture)));
+
+        public Association? Association { get; set; }
 
         [YamlIgnore]
         public double[] Depths { get; private set; } = depths;
@@ -118,6 +122,7 @@ namespace S100Framework.YAML
         public string? Start => _start?.Name ?? null;
 
         public string? End => _end?.Name ?? null;
+        public Association? Association { get; set; }
 
         public string? Vertices => Coordinate is null ? string.Empty : string.Join(",", Coordinate.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.X, e.Y)));
         [YamlIgnore]
@@ -151,6 +156,7 @@ namespace S100Framework.YAML
             Curves = curves;
         }
         public string? Name { get; set; }
+        public Association? Association { get; set; }
 
         //public string? Components => Curves is null ? null : string.Join(',', Curves.Select(e => e.Name));
         public string Components => string.Join(",", Curves);
@@ -167,6 +173,8 @@ namespace S100Framework.YAML
 
         [YamlIgnore]
         public string[]? InteriorRings { get; set; }
+
+
 
         public dynamic[]? Interior => InteriorRings?.Length == 0 ? null : InteriorRings?.Select(e => new { Hole = e }).ToArray();
 

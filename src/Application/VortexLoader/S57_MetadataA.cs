@@ -3,6 +3,7 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -12,16 +13,15 @@ namespace S100Framework.Applications
         private static void S57_MetadataA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "MetadataA";
 
-            using var coastlinea = source.OpenDataset<FeatureClass>(source.GetName(tableName));
-            var subtypes = coastlinea.GetSubtypes();
-            var featureType = PrimitiveType.Area;
+            using var metadataa = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            Subtypes.Instance.RegisterSubtypes(metadataa);
             
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
-            using var cursor = coastlinea.Search(filter, true);
+            using var cursor = metadataa.Search(filter, true);
             int recordCount = 0;
             
             while (cursor.MoveNext()) {
@@ -37,7 +37,7 @@ namespace S100Framework.Applications
                     continue;
                 }
 
-                var subtype = current.FCSUBTYPE ?? default;
+                var fcSubtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
 
@@ -50,7 +50,7 @@ namespace S100Framework.Applications
 
 
 
-                switch (subtype) {
+                switch (fcSubtype) {
                     case 1: { // M_ACCY_AccuracyOfData
                             var instance = new QualityOfNonBathymetricData();
 
@@ -95,8 +95,10 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
+                            }
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -123,8 +125,10 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
+                            }
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -144,8 +148,14 @@ namespace S100Framework.Applications
                     case 30: { // M_NPUB_NauticalPublicationInformation
                             var instance = new InformationArea();
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             if (current.SORDAT != default) {
                                 if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
@@ -172,8 +182,10 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
+                            }
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -186,6 +198,9 @@ namespace S100Framework.Applications
                             if (current.MARSYS.HasValue) {
                                 instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
+                            else {
+                                Logger.Current.DataError(current.OBJECTID ?? default,current.TableName ?? "Unknown tablename",current.LNAM ?? "Unknown LNAM",$"Missing MARSYS value for M_NSYS where globalid = '{{{current.GLOBALID}}}'");
+                            }
 
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -196,8 +211,10 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
+                            }
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -285,8 +302,10 @@ namespace S100Framework.Applications
                                                         var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
+                            }
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -305,8 +324,10 @@ namespace S100Framework.Applications
                                                         var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
+                            }
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -364,8 +385,10 @@ namespace S100Framework.Applications
                                     var featureN = featureClass.CreateRow(buffer);
                                     var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                                    // TODO: Create relations
-                            
+                                    if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                        relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
+                                    }
+
                                     ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                                     Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));

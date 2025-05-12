@@ -6,60 +6,48 @@ using System.Text;
 using System.Threading.Tasks;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.ComplexAttributes;
 using ArcGIS.Core.Data;
 using S100Framework.Applications.Singletons;
 
+
 namespace S100Framework.Applications
 {
-    internal static partial class Converters
-    {
-        internal static LightFogDetector CreateLightFogDetector(AidsToNavigationP current, Geodatabase source) {
-            var instance = new LightFogDetector();
+    internal static partial class Converters {
+            internal static RadarStation CreateRadarStation(AidsToNavigationP current, Geodatabase source) {
+            var instance = new RadarStation();
 
-            if (current.COLOUR != default) {
-                instance.colour = ImporterNIS.GetColours(current.COLOUR);
+            if (current.CALSGN != default) {
+                instance.callSign = current.CALSGN;
+            }
+
+            if (current.CATRAS != null) {
+                instance.categoryOfRadarStation = EnumHelper.GetEnumValues<categoryOfRadarStation>(current.CATRAS);
+            }
+
+            if (current.COMCHA != default) {
+                instance.communicationChannel = current.COMCHA.Split(',').ToList<string>();
             }
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
-            if (dateRange != default) {
-                instance.fixedDateRange = dateRange;
-            }
-
-            // flareBearing is not populated. New field.
 
             if (current.HEIGHT.HasValue) {
                 instance.height = current.HEIGHT.Value;
             }
 
-            // DODO: Interoperability identifier
+            // TODO: interoperabilityidentifier
 
             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
             if (periodicDateRange != default) {
                 instance.periodicDateRange = periodicDateRange;
             }
 
-            instance.rhythmOfLight = ImporterNIS.GetRythmOfLight(current);
-
-            if (current.SIGGEN != null) {
-                instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
-            }
-
             if (current.STATUS != default) {
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
             }
 
-            if (current.VERDAT.HasValue) {
-                instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
-            }
-
-            if (current.VERLEN.HasValue) {
-                instance.verticalLength = current.VERLEN.Value;
-            }
-
-            if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value;
+            if (current.VALMXR.HasValue) {
+                instance.valueOfMaximumRange = current.VALMXR.Value;
             }
 
             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -71,11 +59,9 @@ namespace S100Framework.Applications
                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
             }
 
-
-
-
             return instance;
         }
+
 
 
     }

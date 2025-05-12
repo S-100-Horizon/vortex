@@ -1,15 +1,16 @@
 ﻿using S100Framework.Applications.S57.esri;
-using S100Framework.Applications;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
+using ArcGIS.Core.Data;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
     internal static partial class Converters
     {
 
-        internal static LightAllAround CreateLightAllAround(AidsToNavigationP current) {
+        internal static LightAllAround CreateLightAllAround(AidsToNavigationP current, Geodatabase source) {
             var instance = new LightAllAround();
 
             if (current.CATLIT != null) {
@@ -103,6 +104,18 @@ namespace S100Framework.Applications
             //if (plts_comp_scale != default) {
             //  instance.scaleMinimum = plts_comp_scale;
             //}
+
+            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                string subtype = "";
+
+                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+            }
+
+
+
 
             return instance;
         }

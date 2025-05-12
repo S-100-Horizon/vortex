@@ -1,20 +1,16 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Data.UtilityNetwork.Trace;
-using ArcGIS.Core.Internal.CIM;
+using S100Framework.Applications;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using System;
 using System.Data;
-using System.Reflection;
-using System.Xml.Linq;
 
-
-namespace S100Framework.Applications
+namespace S100Framework.Applications.Singletons
 {
-    
-    internal enum Direction {
+
+    internal enum Direction
+    {
         Source = 0,
         Destination = 1
     }
@@ -28,7 +24,8 @@ namespace S100Framework.Applications
         999	Rep
      */
 
-    internal class PltsCollection {
+    internal class PltsCollection
+    {
         private List<PltsSlave> _related;
 
         private PLTS_Collections _plts_collections;
@@ -111,7 +108,7 @@ namespace S100Framework.Applications
                         this.S101Type = typeof(FogSignal);
                     }
                     else if (aton != null && aton.FCSUBTYPE == 65) {
-                        this.S101Type = FeatureRelations.GetS101CatlitTypeFrom(aton);
+                        this.S101Type = FeatureRelations.Instance.GetS101CatlitTypeFrom(aton);
                     }
                     else if (aton != null && aton.FCSUBTYPE == 90) {
                         this.S101Type = typeof(RadarStation);
@@ -308,23 +305,16 @@ namespace S100Framework.Applications
     internal class FeatureRelations
     {
         private static FeatureRelations? _instance;
-        private HashSet<Relation> _relations;
-        private Geodatabase? _source;
-        private Geodatabase? _target;
-        private Dictionary<Guid, PltsCollection> _pltsCollections;
-        private Dictionary<Guid, IList<PltsSlave>> _srcObjectToSlaves;
-        private Dictionary<string, PLTS_Master_Slaves> _pltsMasterSlaves; // featureClass:subtype ; PLTS_Master_Slaves
+        private static Geodatabase? _source;
+        private static Geodatabase? _target;
+        private static HashSet<Relation> _relations = new HashSet<Relation>();
+        private static Dictionary<Guid, PltsCollection> _pltsCollections = new Dictionary<Guid, PltsCollection>();
+        private static Dictionary<Guid, IList<PltsSlave>> _srcObjectToSlaves = new Dictionary<Guid, IList<PltsSlave>>();
+        private static Dictionary<string, PLTS_Master_Slaves> _pltsMasterSlaves = new Dictionary<string, PLTS_Master_Slaves>();
 
-        private bool _isInitialized = false;
-
-        private int _relationCount = 0;
-
+        private static bool _isInitialized = false;
 
         private FeatureRelations() {
-            this._relations = new HashSet<Relation>();
-            this._pltsCollections = new Dictionary<Guid, PltsCollection>();
-            this._srcObjectToSlaves = new Dictionary<Guid, IList<PltsSlave>>();
-            this._pltsMasterSlaves = new Dictionary<string, PLTS_Master_Slaves>(); // featureClass:subtype ; PLTS_Master_Slaves
         }
 
         public static FeatureRelations Instance {
@@ -337,7 +327,7 @@ namespace S100Framework.Applications
             }
         }
 
-        public void Initialize(Geodatabase source, Geodatabase target) {
+        internal static void Initialize(Geodatabase source, Geodatabase target) {
             _source = source;
             _target = target;
             _pltsCollections = new Dictionary<Guid, PltsCollection>();
@@ -350,7 +340,7 @@ namespace S100Framework.Applications
             _isInitialized = true;
         }
 
-        private void LoadPLTS_Master_Slaves() {
+        private static void LoadPLTS_Master_Slaves() {
             // Read aggregations
             if (_source == null) {
                 throw new ArgumentException("Source not set");
@@ -371,7 +361,7 @@ namespace S100Framework.Applications
             }
         }
 
-        private void LoadPltsCollections() {
+        private static void LoadPltsCollections() {
             if (_source == null) {
                 throw new ArgumentException("Source not set");
             }
@@ -395,7 +385,7 @@ namespace S100Framework.Applications
             }
         }
 
-        internal static Type GetS101CatlitTypeFrom(AidsToNavigationP aton) {
+        internal Type GetS101CatlitTypeFrom(AidsToNavigationP aton) {
             if (aton.FCSUBTYPE != 65) {
                 throw new NotImplementedException("Only light types are supported");
             }
@@ -411,7 +401,7 @@ namespace S100Framework.Applications
             if ((aton.SECTR1 == default || aton.SECTR2 == default) && !(catlits.Contains(1) || catlits.Contains(6) || catlits.Contains(7) || catlits.Contains(16))) {
                 return typeof(LightAllAround);
             }
-            else if ((aton.SECTR1 != default && aton.SECTR2 != default) || (catlits.Contains(1) || catlits.Contains(16))) {
+            else if (aton.SECTR1 != default && aton.SECTR2 != default || catlits.Contains(1) || catlits.Contains(16)) {
                 return typeof(LightSectored);
             }
             else if (catlits.Contains(6)) {
@@ -424,6 +414,7 @@ namespace S100Framework.Applications
                 throw new NotSupportedException($"LIGHT catlit: {aton.CATLIT} : {aton.LNAM}");
             }
         }
+
 
         internal int GetRelatedCount(Guid uid) {
             if (!_isInitialized)
@@ -472,7 +463,7 @@ namespace S100Framework.Applications
             return result != null;
         }
 
-        private void LoadPltsFrels(Geodatabase source) {
+        private static void LoadPltsFrels(Geodatabase source) {
             var pltsFrel = source.OpenDataset<Table>(source.GetName("PLTS_Frel"));
             var frelSourceFeatureClasses = new Dictionary<string, IList<PLTS_Frel>>();
 
@@ -545,7 +536,7 @@ namespace S100Framework.Applications
 
         }
 
-        private void LoadPltsFrels2(Geodatabase source) {
+        private static void LoadPltsFrels2(Geodatabase source) {
             using var pltsFrel = source.OpenDataset<Table>(source.GetName("PLTS_Frel"));
             var frelDestFeatureClasses = new Dictionary<string, IList<PLTS_Frel>>();
 
@@ -610,9 +601,9 @@ namespace S100Framework.Applications
                 .ToDictionary(group => group.Key, group => group.First());
 
             // foreach featureclass represented in plts_rels, load all destination objects
-            Dictionary<string, List<PLTS_Frel>> destinationFcToFrels = frels.GroupBy(obj => obj.DEST_FC ?? "Unknown DEST_FC").ToDictionary(group => group.Key, group => group.ToList());
+            var destinationFcToFrels = frels.GroupBy(obj => obj.DEST_FC ?? "Unknown DEST_FC").ToDictionary(group => group.Key, group => group.ToList());
 
-            int loadedRelatedObjectsCount = 0;
+            var loadedRelatedObjectsCount = 0;
 
             foreach (var destFc in destinationFcToFrels.Keys) {
                 var destinationFeatureClassName = _source?.GetName(destFc);
@@ -727,7 +718,7 @@ namespace S100Framework.Applications
             //}
 
             //_relationCount++;
-            
+
             _relations.Add(new(master, slave));
         }
 
@@ -741,7 +732,7 @@ namespace S100Framework.Applications
             }
         }
 
-        internal void CreateRelation (Type TPrimary, Type TForeign, Relation relation, Table featureAssociation, RowBuffer featureAssociationBuffer, Table associationBinding, RowBuffer associationBindingBuffer)  {
+        internal void CreateRelation(Type TPrimary, Type TForeign, Relation relation, Table featureAssociation, RowBuffer featureAssociationBuffer, Table associationBinding, RowBuffer associationBindingBuffer) {
             if (relation == null) {
                 throw new ArgumentNullException("relation");
             }
@@ -756,8 +747,10 @@ namespace S100Framework.Applications
                 // Create the association
                 bindingDefinitionForeign = featureBindingsPrimary?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TForeign?.Name));
                 if (bindingDefinitionForeign == null) {
-                    Logger.Current.DataError(-1, "", $"{relation.Master.Name}::{relation.Slave.Name}", $"Cannot relate {relation.Master.GetType().Name} with {relation.Slave.GetType().Name}");
-                    return; // throw new NotSupportedException($"no bindingdefinition on {TForeign?.Name} for {TForeign?.Name}");
+                    var msg = $"Cannot relate {relation.Master.GetType().Name} {relation.Master.S101Type.Name} with {relation.Slave.GetType().Name} {relation.Slave.S101Type.Name} - where name in ('{relation.Master.Name}','{relation.Slave.Name}')";
+                    Logger.Current.DataError(-1, "", "relate", msg);
+                    return;
+                    //throw new NotSupportedException(msg);
                 }
                 featureAssociationBuffer["ps"] = ImporterNIS.ps101;
                 featureAssociationBuffer["code"] = bindingDefinitionForeign.association;

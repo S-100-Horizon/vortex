@@ -1,16 +1,13 @@
 using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
-using ArcGIS.Core.Data.Exceptions;
 using ArcGIS.Core.Geometry;
 using ArcGIS.Core.Internal.Geometry;
 using S100Framework.Applications;
-using Serilog;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
+using S100Framework.Applications.Singletons;
 using Xunit.Abstractions;
-using Xunit.Sdk;
 using IO = System.IO;
 
 namespace TestNisImporter

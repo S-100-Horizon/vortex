@@ -73,7 +73,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -370,7 +370,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -883,7 +883,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -1243,7 +1243,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -1783,7 +1783,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -2143,7 +2143,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -2539,7 +2539,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -2908,7 +2908,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -3430,7 +3430,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -3997,7 +3997,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -4537,7 +4537,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -4897,7 +4897,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -5320,7 +5320,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -5797,7 +5797,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -6130,7 +6130,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -6607,7 +6607,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -7075,7 +7075,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -7489,7 +7489,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -8292,7 +8292,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -8688,7 +8688,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -9057,7 +9057,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -9453,7 +9453,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -9903,7 +9903,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -10380,7 +10380,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -10830,7 +10830,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -11199,7 +11199,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -11604,7 +11604,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -12333,7 +12333,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -12900,7 +12900,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -13575,7 +13575,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -14232,7 +14232,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -14871,7 +14871,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -15546,7 +15546,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -16041,7 +16041,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -16482,7 +16482,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -16950,7 +16950,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -17445,7 +17445,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -17949,7 +17949,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -18426,7 +18426,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -18876,7 +18876,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -19380,7 +19380,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -19875,7 +19875,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -20415,7 +20415,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -20820,7 +20820,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -21261,7 +21261,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -21468,7 +21468,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// Is Conflate
@@ -21937,7 +21937,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -22281,7 +22281,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal int? PLTS_COMP_SCALE = default;
+        private new int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// Is Conflate

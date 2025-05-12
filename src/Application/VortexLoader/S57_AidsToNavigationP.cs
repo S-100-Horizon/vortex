@@ -6,6 +6,7 @@ using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using System.Globalization;
 using VortexLoader;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -15,8 +16,7 @@ namespace S100Framework.Applications
             var tableName = "AidsToNavigationP";
 
             using var aidstonavigationp = source.OpenDataset<FeatureClass>(source.GetName(tableName));
-            var subtypes = aidstonavigationp.GetSubtypes();
-            var featureType = PrimitiveType.Point;
+            
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
 
@@ -34,6 +34,7 @@ namespace S100Framework.Applications
 
             int recordCount = 0;
             var _slaves = new List<Guid>();
+
             while (cursor.MoveNext()) {
                 recordCount += 1;
                 var feature = (Feature)cursor.Current; 
@@ -41,7 +42,7 @@ namespace S100Framework.Applications
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
-                var subtype = current.FCSUBTYPE ?? default;
+                var fcSubtype = current.FCSUBTYPE ?? default;
 
                 if (ConversionAnalytics.Instance.IsConverted(globalid)) {
                     continue;
@@ -56,14 +57,20 @@ namespace S100Framework.Applications
                     continue;
                 }
 
-                switch (subtype) {
+                switch (fcSubtype) {
                     case 1: { // BCNCAR_BeaconCardinal
 
                             var instance = _converterRegistry.Convert<CardinalBeacon>(current);
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             AddInformation(instance.information, feature);
 
@@ -172,8 +179,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             AddInformation(instance.information, feature);
 
@@ -290,8 +303,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             AddInformation(instance.information, feature);
 
@@ -404,8 +423,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             AddInformation(instance.information, feature);
 
@@ -522,8 +547,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             AddInformation(instance.information, feature);
 
@@ -615,8 +646,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             AddInformation(instance.information, feature);
 
@@ -703,8 +740,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             AddInformation(instance.information, feature);
 
@@ -792,8 +835,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             AddInformation(instance.information, feature);
 
@@ -885,8 +934,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             AddInformation(instance.information, feature);
 
@@ -974,8 +1029,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             AddInformation(instance.information, feature);
 
@@ -1067,8 +1128,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             AddInformation(instance.information, feature);
 
@@ -1099,19 +1166,12 @@ namespace S100Framework.Applications
                         break;
 
                     case 55: { // DAYMAR_Daymark // SLAVE RIND: 2
-                            var instance = ImporterNIS.CreateDaymark(current);
-
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
-                            }
-
+                            var instance = ImporterNIS._converterRegistry.Convert<Daymark>(current);
                             AddInformation(instance.information, feature);
-
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -1124,7 +1184,6 @@ namespace S100Framework.Applications
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
                             }
-
                             #endregion related
                         }
                         break;
@@ -1133,61 +1192,7 @@ namespace S100Framework.Applications
                             //https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
                             //We have one TOPMAR at the same location as a FOGSIG(in three scale bands).We need to add topmark shape in fog signal INFORM.
                             //We do not have in the database information regarding “Radio Activated” nor “Call Activated”. We do have one instance of “On request”. What does this refer to??
-
-                            var instance = new FogSignal();
-
-                            #region aidstonavigation
-
-                            if (current.CATFOG.HasValue != default) {
-                                instance.categoryOfFogSignal = EnumHelper.GetEnumValue<categoryOfFogSignal>(current.CATFOG.Value);
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
-                            if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
-                            }
-
-                            // TODO: interoperabilityidentifier
-
-                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
-                            if (periodicDateRange != default) {
-                                instance.periodicDateRange = periodicDateRange;
-                            }
-
-                            if (current.SIGFRQ.HasValue) {
-                                instance.signalFrequency = current.SIGFRQ.Value;
-                            }
-                            if (current.SIGGEN.HasValue) {
-                                instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
-                            }
-                            if (current.SIGGRP != default) {
-                                instance.signalGroup = current.SIGGRP;
-                            }
-                            if (current.SIGPER != default) {
-                                instance.signalPeriod = current.SIGPER;
-                            }
-
-                            if (current.SIGSEQ != default) {
-                                instance.signalSequence = GetSignalSequences(current.SIGSEQ);
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                            // TODO: interoperabilityidentifier
-
-                            if (current.VALMXR.HasValue) {
-                                instance.valueOfMaximumRange = current.VALMXR.Value;
-                            }
-
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
-                            }
+                            var instance = _converterRegistry.Convert<FogSignal>(current);
 
                             AddInformation(instance.information, feature);
 
@@ -1201,8 +1206,6 @@ namespace S100Framework.Applications
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-
-                            #endregion aidstonavigation
 
                             #region related
 
@@ -1222,13 +1225,18 @@ namespace S100Framework.Applications
                             //var related = featureRelations.GetRelated(current.GLOBALID);
 
                             var lnam = current.LNAM;
-                            if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightSectored)) {
-                                var instance =  ImporterNIS._converterRegistry.Convert<LightSectored>(current); // No related sectors - only the one on the feature.
+                            if (FeatureRelations.Instance.GetS101CatlitTypeFrom(current) == typeof(LightSectored)) {
+                                var instance = ImporterNIS._converterRegistry.Convert<LightSectored>(current); // No related sectors - only the one on the feature.
 
                                 AddInformation(instance.information, feature);
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                    string subtype = "";
+
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                                 }
 
                                 buffer["ps"] = ps101;
@@ -1246,12 +1254,18 @@ namespace S100Framework.Applications
 
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             }
-                            else if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightAirObstruction)) {
+                            else if (FeatureRelations.Instance.GetS101CatlitTypeFrom(current) == typeof(LightAirObstruction)) {
                                 var instance = ImporterNIS._converterRegistry.Convert<LightAirObstruction>(current); //CreateLightAirObstruction(current);
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                    string subtype = "";
+
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                                 }
+
 
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
@@ -1265,12 +1279,18 @@ namespace S100Framework.Applications
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             }
-                            else if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightFogDetector)) {
+                            else if (FeatureRelations.Instance.GetS101CatlitTypeFrom(current) == typeof(LightFogDetector)) {
                                 var instance = ImporterNIS._converterRegistry.Convert<LightFogDetector>(new List<AidsToNavigationP>() { current }); // var instance = CreateLightFogDetector(current);
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                    string subtype = "";
+
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                                 }
+
 
                                 AddInformation(instance.information, feature);
 
@@ -1285,12 +1305,18 @@ namespace S100Framework.Applications
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             }
-                            else if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightAllAround)) {
+                            else if (FeatureRelations.Instance.GetS101CatlitTypeFrom(current) == typeof(LightAllAround)) {
                                 var instance = ImporterNIS._converterRegistry.Convert<LightAllAround>(current);
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                    string subtype = "";
+
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                                 }
+
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
@@ -1370,8 +1396,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             AddInformation(instance.information, feature);
 
@@ -1458,8 +1490,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             AddInformation(instance.information, feature);
 
@@ -1516,8 +1554,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             AddInformation(instance.information, feature);
 
@@ -1545,46 +1589,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 90: { // RADSTA_RadarStation  // SLAVE RIND: 2
-                            var instance = new RadarStation();
-
-                            #region aidstonavigation
-
-                            if (current.CALSGN != default) {
-                                instance.callSign = current.CALSGN;
-                            }
-
-                            if (current.CATRAS != null) {
-                                instance.categoryOfRadarStation = EnumHelper.GetEnumValues<categoryOfRadarStation>(current.CATRAS);
-                            }
-
-                            if (current.COMCHA != default) {
-                                instance.communicationChannel = current.COMCHA.Split(',').ToList<string>();
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                            if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value;
-                            }
-
-                            // TODO: interoperabilityidentifier
-
-                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
-                            if (periodicDateRange != default) {
-                                instance.periodicDateRange = periodicDateRange;
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            if (current.VALMXR.HasValue) {
-                                instance.valueOfMaximumRange = current.VALMXR.Value;
-                            }
-
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
-                            }
+                            var instance = _converterRegistry.Convert<RadarStation>(current);
 
                             AddInformation(instance.information, feature);
 
@@ -1599,65 +1604,16 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
-                            #endregion aidstonavigation
-
                             #region related
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
                             }
-
-                            #endregion related
                         }
                         break;
 
                     case 95: { // RDOSTA_RadioStation // SLAVE RIND: 2
-                            var instance = new RadioStation();
-
-                            #region aidstonavigation
-
-                            if (current.CALSGN != default) {
-                                instance.callSign = current.CALSGN;
-                            }
-
-                            if (current.CATROS != null) {
-                                instance.categoryOfRadioStation = EnumHelper.GetEnumValues<categoryOfRadioStation>(current.CATROS);
-                            }
-
-                            if (current.COMCHA != default) {
-                                instance.communicationChannel = current.COMCHA.Split(',').ToList<string>();
-                            }
-
-                            if (current.ESTRNG.HasValue) {
-                                instance.estimatedRangeOfTransmission = current.ESTRNG.Value;
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
-                            if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
-                            }
-
-                            if (current.SIGFRQ.HasValue) {
-                                instance.frequencyPair = GetFrequencyPair(current.SIGFRQ.Value);
-                            }
-
-                            // TODO: interoperabilityidentifier
-
-                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
-                            if (periodicDateRange != default) {
-                                instance.periodicDateRange = periodicDateRange;
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
-                            }
-
+                            var instance = _converterRegistry.Convert<RadioStation>(current);
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
@@ -1684,41 +1640,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 100: { // RETRFL_RetroReflector // SLAVE RIND: 2
-                            var instance = new Retroreflector();
-
-                            #region aidstonavigation
-
-                            if (current.COLOUR != default) {
-                                instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
-                            }
-
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
-                            }
-
-                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
-                            if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
-                            }
-
-                            if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value;
-                            }
-
-                            // TODO: interoperabilityidentifier
-
-                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
-                            if (periodicDateRange != default) {
-                                instance.periodicDateRange = periodicDateRange;
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
-                            }
+                            var instance = _converterRegistry.Convert<Retroreflector>(current);
 
                             AddInformation(instance.information, feature);
 
@@ -1733,7 +1655,6 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
-                            #endregion aidstonavigation
 
                             #region related
 
@@ -1768,8 +1689,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -1794,9 +1721,6 @@ namespace S100Framework.Applications
                         break;
 
                     case 110: { // TOPMAR_Topmark // SLAVE RIND: 2
-                            // TODO: TOPMAR
-                            //System.Diagnostics.Debugger.Break();
-                            //GetCorrespondingAidsToNav
                             /*
 
                                 The S-101 complex attribute topmark has been introduced in S-101 to encode topmarks on aids to
@@ -1808,14 +1732,12 @@ namespace S100Framework.Applications
                                 complex attribute shape information. See also clause 12.6.
                             */
 
-                            throw new NotImplementedException("Master topmarks");
+                            throw new NotImplementedException("Impossible! No stand alone topmarks alloved.");
                             
                         }
-                        break;
-
                     default:
                         // code block
-                        throw new Exception($"Missing subtype in S57_AidsToNavigation: {subtype}");
+                        throw new Exception($"Missing subtype in S57_AidsToNavigation: {fcSubtype}");
                 }
             }
 
@@ -1829,7 +1751,7 @@ namespace S100Framework.Applications
                 }
             }
 
-            ; 
+            ;
         }
 
         internal static bool TryGetRadarWaveLengths(string radwal, out List<radarWaveLength> radarWaveLengths) {
@@ -1863,72 +1785,6 @@ namespace S100Framework.Applications
             };
         }
 
-
-        internal static Daymark CreateDaymark(AidsToNavigationP current) {
-            var instance = new Daymark();
-
-            if (current.CATSPM != default) {
-                instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
-            }
-
-            if (current.COLOUR != default) {
-                instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
-            }
-
-            if (current.COLPAT != default) {
-                instance.colourPattern = GetColourPattern(current.COLPAT);
-            }
-
-            if (current.ELEVAT.HasValue) {
-                instance.elevation = current.ELEVAT.Value;
-            }
-
-            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
-            if (dateRange != default) {
-                instance.fixedDateRange = dateRange;
-            }
-
-            if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value;
-            }
-
-            // TODO: interoperabilityidentifier
-
-            if (current.NATCON != default) {
-                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
-            }
-
-            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
-            if (periodicDateRange != default) {
-                instance.periodicDateRange = periodicDateRange;
-            }
-
-            if (current.CONRAD.HasValue) {
-                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
-            }
-
-            if (current.STATUS != default) {
-                instance.status = GetStatus(current.STATUS);
-            }
-
-            if (current.TOPSHP.HasValue) {
-                instance.topmarkDaymarkShape = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
-            }
-
-            if (current.VERLEN.HasValue) {
-                instance.verticalLength = current.VERLEN.Value;
-            }
-
-            // TODO: shapeInformation
-
-            if (current.PICREP != default) {
-                instance.pictorialRepresentation = current.PICREP;
-            }
-
-            return instance;
-        }
 
 
 
