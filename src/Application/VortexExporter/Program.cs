@@ -156,6 +156,7 @@ namespace S100Framework.Applications
                 // FeatureAssociations - skip for now until two-way references sorted
                 {
                     try {
+#if null
                         using var type = source.OpenDataset<Table>("associationbinding");
                         using var cursor = type.Search();
                         while (cursor.MoveNext()) {
@@ -186,6 +187,7 @@ namespace S100Framework.Applications
                             else
                                 featureAssociations[id] = [association];
                         }
+#endif
                     }
                     catch (Exception ex) {
                         Log.Information("Table: associationbinding: {message} ", ex.Message);
@@ -229,7 +231,7 @@ namespace S100Framework.Applications
 
                     var supported = tableName switch {
                         "surface" => true,
-                        //"curve" => true,
+                        "curve" => true,
                         "point" => true,
                         "pointset" => true,
                         _ => false
@@ -246,6 +248,9 @@ namespace S100Framework.Applications
                     while (cursor.MoveNext()) {
                         var current = (ArcGIS.Core.Data.Feature)cursor.Current;
                         var geometry = Convert.ToString(current["name"]);
+
+                        if (topology.Mapping.ContainsKey(geometry!))
+                            geometry = topology.Mapping[geometry!];
 
                         var shapetype = def.GetShapeType();
 
@@ -313,6 +318,7 @@ namespace S100Framework.Applications
                 var yaml = S100Framework.YAML.Converter.Serialize(dataset);
 
                 File.WriteAllText(IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"101DK40349E.yaml"), yaml);
+                File.WriteAllText(IO.Path.Combine(@"c:\temp", $"101DK40349E.yaml"), yaml);
 
                 sw.Stop();
                 Log.Information("Elapsed: {elapsed}", sw.Elapsed);
@@ -428,6 +434,8 @@ namespace S100Framework.YAML
         public required IList<CompositeCurveFeature> CompositeCurves { get; set; }
 
         public required IList<SurfaceFeature> Surfaces { get; set; }
+
+        public required IDictionary<string, string> Mapping { get; set; }
     }
 
 
@@ -459,6 +467,7 @@ namespace S100Framework.YAML
                         break;
                     }
                 case ArcGIS.Core.Geometry.Polyline polyline: {        // Curve will be handled in Topology
+                        break;
                         var vertices = polyline.Points.Select(p => new Coordinate(p.X, p.Y)).ToArray();
 
                         var first = dataset?.GetOrCreateStartPoint(vertices, name);
@@ -539,6 +548,8 @@ namespace S100Framework.YAML
                 foreach (var c in topology.Curves) {
                     curveFeature = c;
 
+                    if (c.Id == 11053918727594573033) System.Diagnostics.Debugger.Break();
+
                     var coordinates = c.LineString.Coordinates.Select(e => new Coordinate(e.X, e.Y)).ToArray();
 
                     var first = dataset?.GetOrCreateStartPoint(coordinates, $"{c.Id}");
@@ -595,7 +606,8 @@ namespace S100Framework.YAML
 
                     var surface = new Surface(exteriorRing) {
                         InteriorRings = interiorRings,
-                        Name = s.Ref
+                        //Name = s.Ref
+                        Name = $"S{s.Id}",
                     };
 
                     _ = dataset.AddSurface(surface);
@@ -752,9 +764,9 @@ namespace ArcGIS.Core.Data
     {
         static SpatialReference spatialReference = SpatialReferenceBuilder.CreateSpatialReference(4326);
 
-        public static S100Framework.YAML.Topology? BuildTopology(this Geodatabase geodatabase, QueryFilter? queryFilter = default) {
-            var factory = new GeometryFactory(new PrecisionModel(PrecisionModels.FloatingSingle)); // Or PrecisionModels.Floating            
+        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(10000000/*PrecisionModels.Floating*/)); // Or PrecisionModels.Floating
 
+        public static S100Framework.YAML.Topology? BuildTopology(this Geodatabase geodatabase, QueryFilter? queryFilter = default) {
             queryFilter = queryFilter switch {
                 SpatialQueryFilter spatial => new SpatialQueryFilter {
                     FilterGeometry = spatial.FilterGeometry,
@@ -792,6 +804,7 @@ namespace ArcGIS.Core.Data
                 Curves = new List<CurveFeature>(),
                 CompositeCurves = new List<CompositeCurveFeature>(),
                 Surfaces = new List<SurfaceFeature>(),
+                Mapping = new Dictionary<string, string>(),
             };
 
             var curves = new List<S100Framework.YAML.Polyline>();
@@ -812,7 +825,7 @@ namespace ArcGIS.Core.Data
 
                     var coordinates = shape.Points.Select(segment => new Coordinate(segment.X, segment.Y)).ToArray();
 
-                    var linestring = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+                    var linestring = (LineString)factory.CreateLineString([.. coordinates]);
 
                     curves.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, linestring));
                 }
@@ -864,10 +877,10 @@ namespace ArcGIS.Core.Data
                 Curves = new List<CurveFeature>(),
                 CompositeCurves = new List<CompositeCurveFeature>(),
                 Surfaces = new List<SurfaceFeature>(),
+                Mapping = new Dictionary<string, string>(),
             };
 
-            curves.Clear();
-            AppendSurface(curves.ToArray(), polygons.ToArray(), t);
+            AppendTopology(curves.ToArray(), polygons.ToArray(), t);
 
             if (t.Curves.Any())
                 topology.Curves = topology.Curves.Union(t.Curves).ToList();
@@ -875,15 +888,14 @@ namespace ArcGIS.Core.Data
                 topology.CompositeCurves = topology.CompositeCurves.Union(t.CompositeCurves).ToList();
             if (t.Surfaces.Any())
                 topology.Surfaces = topology.Surfaces.Union(t.Surfaces).ToList();
-
+            if (t.Mapping.Any())
+                topology.Mapping = topology.Mapping.Union(t.Mapping).ToDictionary(e => e.Key, e => e.Value);
 
             Log.Verbose("Topology: #{curves}, #{composites}, #{surfaces}", topology.Curves.Count, topology.CompositeCurves.Count, topology.Surfaces.Count);
             return topology;
         }
 
-        private static void AppendSurface(S100Framework.YAML.Polyline[] polylines, S100Framework.YAML.Polygon[] polygons, S100Framework.YAML.Topology topology) {
-            var factory = new GeometryFactory(new PrecisionModel(PrecisionModels.FloatingSingle)); // Or PrecisionModels.Floating
-
+        private static void AppendTopology(S100Framework.YAML.Polyline[] polylines, S100Framework.YAML.Polygon[] polygons, S100Framework.YAML.Topology topology) {
             int count = polygons.Count();
 
             var equalsList = new List<string>();
@@ -910,26 +922,20 @@ namespace ArcGIS.Core.Data
                 MaxDegreeOfParallelism = 8,
             };
 
-            var curves = new Dictionary<UInt64, LineString>();
+            var curvePolygons = new Dictionary<UInt64, LineString>();
 
             Log.Verbose("Loading...");
-            foreach (var e in polylines) {
-                var hash = IO.Hashing.XxHash64.HashToUInt64(e.LineString.ToBinary());
-                var reverse = IO.Hashing.XxHash64.HashToUInt64(((LineString)e.LineString.Reverse()).ToBinary());
 
-                if (!(curves.ContainsKey(hash) || curves.ContainsKey(reverse)))
-                    curves.Add(hash, e.LineString);
-            }
             foreach (var e in polygons) {
                 var hash = IO.Hashing.XxHash64.HashToUInt64(e.ExteriorRing.ToBinary());
                 var reverse = IO.Hashing.XxHash64.HashToUInt64(((LineString)e.ExteriorRing.Reverse()).ToBinary());
-                if (!(curves.ContainsKey(hash) || curves.ContainsKey(reverse)))
-                    curves.Add(hash, e.LineString);
+                if (!(curvePolygons.ContainsKey(hash) || curvePolygons.ContainsKey(reverse)))
+                    curvePolygons.Add(hash, e.LineString);
                 foreach (var i in e.InteriorRings) {
                     hash = IO.Hashing.XxHash64.HashToUInt64(i.ToBinary());
                     reverse = IO.Hashing.XxHash64.HashToUInt64(((LineString)i.Reverse()).ToBinary());
-                    if (!(curves.ContainsKey(hash) || curves.ContainsKey(reverse)))
-                        curves.Add(hash, i);
+                    if (!(curvePolygons.ContainsKey(hash) || curvePolygons.ContainsKey(reverse)))
+                        curvePolygons.Add(hash, i);
                 }
             }
 
@@ -940,19 +946,26 @@ namespace ArcGIS.Core.Data
             //};
 
             Parallel.For(0, polygons.Length, options, (i) => {
-                //var m = matchPolygons[polygons[i].name];
-
-                //if ("S688877".Equals(polygons[i].name)) System.Diagnostics.Debugger.Break();
-                //if ("S687305".Equals(polygons[i].name)) System.Diagnostics.Debugger.Break();
-
                 {
                     var boundary1 = polygons[i].ExteriorRing;
 
                     var hash = IO.Hashing.XxHash64.HashToUInt64(boundary1.ToBinary());
 
-                    foreach (var e in curves.Where(e => e.Key != hash)) {
+                    foreach (var e in curvePolygons.Where(e => e.Key != hash)) {
                         var boundary2 = e.Value;
                         if (boundary1.Disjoint(boundary2))
+                            continue;
+
+                        var contains = boundary1.Contains(boundary2);
+                        var coveredby = boundary1.CoveredBy(boundary2);
+                        var covers = boundary1.Covers(boundary2);
+                        var crosses = boundary1.Crosses(boundary2);
+                        var intersects = boundary1.Intersects(boundary2);
+                        var overlaps = boundary1.Overlaps(boundary2);
+                        var touches = boundary1.Touches(boundary2);
+                        var within = boundary1.Within(boundary2);
+
+                        if ((crosses && intersects) && !(contains | overlaps | coveredby))
                             continue;
 
                         var intersection = boundary1.Intersection(boundary2);
@@ -985,8 +998,23 @@ namespace ArcGIS.Core.Data
 
                         var interiorLineStrings = new List<LineString>();
 
-                        foreach (var e in curves.Where(e => e.Key != hash)) {
+                        foreach (var e in curvePolygons.Where(e => e.Key != hash)) {
                             var boundary2 = e.Value;
+
+                            if (boundary.Disjoint(boundary2))
+                                continue;
+
+                            var contains = boundary.Contains(boundary2);
+                            var coveredby = boundary.CoveredBy(boundary2);
+                            var covers = boundary.Covers(boundary2);
+                            var crosses = boundary.Crosses(boundary2);
+                            var intersects = boundary.Intersects(boundary2);
+                            var overlaps = boundary.Overlaps(boundary2);
+                            var touches = boundary.Touches(boundary2);
+                            var within = boundary.Within(boundary2);
+
+                            if ((crosses && intersects) && !(contains | overlaps | coveredby))
+                                continue;
 
                             var intersection = boundary.Intersection(boundary2);
 
@@ -1008,6 +1036,76 @@ namespace ArcGIS.Core.Data
                 }
             });
 
+            //options = new ParallelOptions {
+            //    MaxDegreeOfParallelism = 1,
+            //};
+
+            Parallel.For(0, polylines.Length, options, (i) => {
+                var m = matchPolylines[polylines[i].name];
+
+                var boundary1 = polylines[i].LineString;
+
+                var hash = IO.Hashing.XxHash3.HashToUInt64(boundary1.ToBinary());
+
+                foreach (var e in curvePolygons.Where(e => e.Key != hash)) {
+                    var boundary2 = e.Value;
+                    if (boundary1.Disjoint(boundary2))
+                        continue;
+                    if (boundary1.Equals(boundary2))
+                        continue;
+
+                    var contains = boundary1.Contains(boundary2);
+                    var coveredby = boundary1.CoveredBy(boundary2);
+                    var covers = boundary1.Covers(boundary2);
+                    var crosses = boundary1.Crosses(boundary2);
+                    var intersects = boundary1.Intersects(boundary2);
+                    var overlaps = boundary1.Overlaps(boundary2);
+                    var touches = boundary1.Touches(boundary2);
+                    var within = boundary1.Within(boundary2);
+
+                    if ((crosses && intersects) && !(contains | overlaps | coveredby))
+                        continue;
+
+                    if (!(boundary1.Overlaps(boundary2) || boundary1.Contains(boundary2))) continue;
+
+                    var intersection = boundary1.Intersection(boundary2);
+
+                    if (intersection == null || intersection.IsEmpty) continue;
+
+                    AddLineStringsFromGeometry(intersection, m);
+                }
+                if (!m.Any()) {
+                    m.Add(boundary1);
+                }
+                else {
+                    //if (polylines[i].ObjectId == 154302) {
+                    //    using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@".\..\..\..\..\..\artifacts\s100ed6.gdb")}")))) {
+                    //        ulong id = 0;
+                    //        target.PersistTopology(m.Select(e => new CurveFeature(e) { Id = id++ }).ToArray());
+                    //    }
+                    //}
+
+                    //var distinct = m.GroupBy(e => IO.Hashing.XxHash64.HashToUInt64(e.ToBinary()));
+
+                    //if (distinct.Count() != m.Count)
+                    //    System.Diagnostics.Debugger.Break();
+
+                    //if (polylines[i].ObjectId == 153278) System.Diagnostics.Debugger.Break();
+                    var g = factory.CreateMultiLineString(m.ToArray());
+
+                    var diff = boundary1.Difference(g);
+                    AddLineStringsFromGeometry(diff, m);
+
+                    //if (polylines[i].ObjectId == 154302) {
+                    //    using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@".\..\..\..\..\..\artifacts\s100ed6.gdb")}")))) {
+                    //        ulong id = 0;
+                    //        target.PersistTopology(m.Select(e => new CurveFeature(e) { Id = id++ }).ToArray());
+                    //    }
+                    //}
+                }
+            });
+
+            var mapping = new ConcurrentDictionary<string, string>();
 
             Log.Verbose("Hashing...");
 
@@ -1022,7 +1120,8 @@ namespace ArcGIS.Core.Data
 
                     var hash = System.IO.Hashing.XxHash3.HashToUInt64(origin.LineString.AsBinary());
                     var f = new CurveFeature(origin.LineString) {
-                        Id = hash,
+                        //Id = hash,
+                        Id = Interlocked.Increment(ref FeatureType.counter),
                     };
                     if (!hashing.ContainsKey(hash)) {
                         hashing.Add(hash, (new FeatureRef {
@@ -1040,7 +1139,10 @@ namespace ArcGIS.Core.Data
                 else {
                     foreach (var l in m.Value.exterior) {
                         var hash = System.IO.Hashing.XxHash3.HashToUInt64(l.AsBinary());
-                        var f = new CurveFeature(l) { Id = hash, };
+                        var f = new CurveFeature(l) {
+                            //Id = hash,
+                            Id = Interlocked.Increment(ref FeatureType.counter),
+                        };
                         if (!hashing.ContainsKey(hash)) {
                             hashing.Add(hash, (new FeatureRef {
                                 Id = f.Id,
@@ -1059,7 +1161,10 @@ namespace ArcGIS.Core.Data
                     for (int i = 0; i < m.Value.interior.Length; i++) {
                         foreach (var l in m.Value.interior[i]) {
                             var hash = System.IO.Hashing.XxHash3.HashToUInt64(l.AsBinary());
-                            var f = new CurveFeature(l) { Id = hash, };
+                            var f = new CurveFeature(l) {
+                                //Id = hash,
+                                Id = Interlocked.Increment(ref FeatureType.counter),
+                            };
 
                             if (!hashing.ContainsKey(hash)) {
                                 hashing.Add(hash, (new FeatureRef {
@@ -1078,6 +1183,53 @@ namespace ArcGIS.Core.Data
                 }
             }
 
+            foreach (var m in matchPolylines) {
+                var origin = polylines.Single(e => e.name == m.Key);
+
+                if (m.Value.Count < 2) {
+                    var hash = System.IO.Hashing.XxHash3.HashToUInt64(origin.LineString.AsBinary());
+                    var f = new CurveFeature(origin.LineString) {
+                        //Id = hash,
+                        Id = Interlocked.Increment(ref FeatureType.counter),
+                    };
+                    if (!hashing.ContainsKey(hash)) {
+                        hashing.Add(hash, (new FeatureRef {
+                            Id = f.Id,
+                            Reverse = false,
+                        }, f));
+                    }
+                    hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
+                    if (!hashing.ContainsKey(hash)) {
+                        hashing.Add(hash, (new FeatureRef {
+                            Id = f.Id,
+                            Reverse = true,
+                        }, f));
+                    }
+                }
+                else {
+                    foreach (var l in m.Value) {
+                        var hash = System.IO.Hashing.XxHash3.HashToUInt64(l.AsBinary());
+                        var f = new CurveFeature(l) {
+                            //Id = hash,
+                            Id = Interlocked.Increment(ref FeatureType.counter),
+                        };
+                        if (!hashing.ContainsKey(hash)) {
+                            hashing.Add(hash, (new FeatureRef {
+                                Id = f.Id,
+                                Reverse = false,
+                            }, f));
+                        }
+                        hash = System.IO.Hashing.XxHash3.HashToUInt64(l.Reverse().AsBinary());
+                        if (!hashing.ContainsKey(hash)) {
+                            hashing.Add(hash, (new FeatureRef {
+                                Id = f.Id,
+                                Reverse = true,
+                            }, f));
+                        }
+                    }
+                }
+            }
+
             Log.Verbose("Matching...");
 
             var bagCurves = new ConcurrentBag<CurveFeature>();
@@ -1090,8 +1242,6 @@ namespace ArcGIS.Core.Data
 
                 var origin = polygons.Single(e => e.name == m.Key);
 
-                //if (origin.ObjectId == 124471) System.Diagnostics.Debugger.Break();
-
                 FeatureRef exteriorId;
 
                 if (m.Value.exterior.Count < 2) {
@@ -1102,6 +1252,14 @@ namespace ArcGIS.Core.Data
                 else {
                     var polygon = new List<LineString>(m.Value.exterior);
 
+                    //if (origin.ObjectId == 154302) {
+                    //    using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@".\..\..\..\..\..\artifacts\s100ed6.gdb")}")))) {
+                    //        ulong id = 0;
+                    //        target.PersistTopology(polygon.Select(e => new CurveFeature(e) { Id = id++ }).ToArray());
+                    //    }                        
+                    //}
+                    //return;
+
                     var startPoint = origin.ExteriorRing.StartPoint;
                     var endPoint = startPoint;
 
@@ -1111,31 +1269,31 @@ namespace ArcGIS.Core.Data
                     var tuple = hashing[IO.Hashing.XxHash3.HashToUInt64(c.AsBinary())];
                     bagCurves.Add(tuple.curve);
 
-                    var sorted = new List<FeatureRef> { tuple.fetureRef };
+                    var sorted = new FeatureRef[polygon.Count];
+                    sorted[0] = tuple.fetureRef;
 
-                    var key = tuple.fetureRef.Reverse ? $"RC{tuple.fetureRef.Id}" : $"C{tuple.fetureRef.Id}";
                     do {
-                        countSegment += 1;
-
                         var next = polygon.Single(e => e != c && e.StartPoint.EqualsExact(c.EndPoint));
 
                         tuple = hashing[IO.Hashing.XxHash3.HashToUInt64(next.AsBinary())];
                         bagCurves.Add(tuple.curve);
 
-                        sorted.Add(tuple.fetureRef);
-                        key += tuple.fetureRef.Reverse ? $",RC{tuple.fetureRef.Id}" : $",C{tuple.fetureRef.Id}";
+                        sorted[countSegment] = tuple.fetureRef;
                         c = next;
+
+                        countSegment += 1;
                     } while (!c.EndPoint.EqualsExact(endPoint));
 
                     if (countSegment != polygon.Count)
                         System.Diagnostics.Debugger.Break();
 
-
-
                     var compositeExterior = new CompositeCurveFeature {
                         Id = Interlocked.Increment(ref FeatureType.counter),
                         Curves = [.. sorted],
                     };
+
+                    var key = string.Join(',', sorted.Select(e => e.Reverse ? $"RC{e.Id}" : $"{e.Id}"));
+
                     compositeExterior = bagCompositeCurves.GetOrAdd(key, (key) => {
                         return compositeExterior;
                     });
@@ -1147,11 +1305,13 @@ namespace ArcGIS.Core.Data
                 }
 
                 if (!m.Value.interior.Any()) {
-                    bagSurfaces.Add(new SurfaceFeature() {
+                    var surface = new SurfaceFeature() {
                         Id = Interlocked.Increment(ref FeatureType.counter),
                         Ref = m.Key,
                         Exterior = exteriorId,
-                    });
+                    };
+                    bagSurfaces.Add(surface);
+                    mapping.GetOrAdd(m.Key, $"S{surface.Id}");
                 }
                 else {
                     FeatureRef[]? interiorRings = new FeatureRef[m.Value.interior.Length];
@@ -1175,19 +1335,18 @@ namespace ArcGIS.Core.Data
                             var tuple = hashing[IO.Hashing.XxHash3.HashToUInt64(c.AsBinary())];
                             bagCurves.Add(tuple.curve);
 
-                            var sorted = new List<FeatureRef> { tuple.fetureRef };
+                            var sorted = new FeatureRef[polygon.Count];
+                            sorted[0] = tuple.fetureRef;
 
-                            var key = tuple.fetureRef.Reverse ? $"RC{tuple.fetureRef.Id}" : $"C{tuple.fetureRef.Id}";
                             do {
-                                countSegment += 1;
-
                                 var next = polygon.Single(e => e != c && e.StartPoint.EqualsExact(c.EndPoint));
                                 tuple = hashing[IO.Hashing.XxHash3.HashToUInt64(next.AsBinary())];
                                 bagCurves.Add(tuple.curve);
 
-                                sorted.Add(tuple.fetureRef);
-                                key += tuple.fetureRef.Reverse ? $",RC{tuple.fetureRef.Id}" : $",C{tuple.fetureRef.Id}";
+                                sorted[countSegment] = tuple.fetureRef;
                                 c = next;
+
+                                countSegment += 1;
                             } while (!c.EndPoint.EqualsExact(endPoint));
 
                             if (countSegment != polygon.Count)
@@ -1197,6 +1356,9 @@ namespace ArcGIS.Core.Data
                                 Id = Interlocked.Increment(ref FeatureType.counter),
                                 Curves = [.. sorted],
                             };
+
+                            var key = string.Join(',', sorted.Select(e => e.Reverse ? $"RC{e.Id}" : $"{e.Id}"));
+
                             compositeExterior = bagCompositeCurves.GetOrAdd(key, (key) => {
                                 return compositeExterior;
                             });
@@ -1207,62 +1369,83 @@ namespace ArcGIS.Core.Data
                             };
                         }
                     }
-                    bagSurfaces.Add(new SurfaceFeature() {
+
+                    var surface = new SurfaceFeature() {
                         Id = Interlocked.Increment(ref FeatureType.counter),
                         Ref = m.Key,
                         Exterior = exteriorId,
                         Interior = interiorRings,
+                    };
+                    bagSurfaces.Add(surface);
+
+                    mapping.GetOrAdd(m.Key, $"S{surface.Id}");
+                }
+            });
+
+            Parallel.ForEach(matchPolylines, options, (m) => {
+                var origin = polylines.Single(e => e.name == m.Key);
+
+                FeatureRef featureRef;
+
+                if (m.Value.Count < 2) {
+                    var tuple = hashing[IO.Hashing.XxHash3.HashToUInt64(origin.LineString.AsBinary())];
+                    bagCurves.Add(tuple.curve);
+                    featureRef = tuple.fetureRef;
+                }
+                else {
+                    var polyline = new List<LineString>(m.Value);
+
+                    var startPoint = origin.LineString.StartPoint;
+                    var endPoint = origin.LineString.EndPoint;
+
+                    int countSegment = 1;
+                    var c = polyline.Single(e => e.StartPoint.EqualsExact(startPoint));
+
+                    var tuple = hashing[IO.Hashing.XxHash3.HashToUInt64(c.AsBinary())];
+                    bagCurves.Add(tuple.curve);
+
+                    var sorted = new FeatureRef[polyline.Count];
+                    sorted[0] = tuple.fetureRef;
+
+                    do {
+                        var next = polyline.Single(e => e != c && e.StartPoint.EqualsExact(c.EndPoint));
+
+                        tuple = hashing[IO.Hashing.XxHash3.HashToUInt64(next.AsBinary())];
+                        bagCurves.Add(tuple.curve);
+
+                        sorted[countSegment] = tuple.fetureRef;
+                        c = next;
+
+                        countSegment += 1;
+                    } while (!c.EndPoint.EqualsExact(endPoint));
+
+                    if (countSegment != polyline.Count)
+                        System.Diagnostics.Debugger.Break();
+
+                    var compositeExterior = new CompositeCurveFeature {
+                        Id = Interlocked.Increment(ref FeatureType.counter),
+                        Curves = [.. sorted],
+                    };
+
+                    var key = string.Join(',', sorted.Select(e => e.Reverse ? $"RC{e.Id}" : $"{e.Id}"));
+
+                    compositeExterior = bagCompositeCurves.GetOrAdd(key, (key) => {
+                        return compositeExterior;
                     });
-                }
-            });
 
-
-            Parallel.For(0, polylines.Length, options, (i) => {
-                return;
-                var m = matchPolylines[polylines[i].name];
-
-                var boundary1 = polylines[i].LineString;
-
-                var hash = IO.Hashing.XxHash3.HashToUInt64(boundary1.ToBinary());
-
-                foreach (var e in bagCurves) {
-                    if (e.Id == hash) continue;
-
-                    var boundary2 = e.LineString;
-                    if (boundary1.Disjoint(boundary2))
-                        continue;
-
-                    if (!(boundary1.Overlaps(boundary2) || boundary1.Contains(boundary2))) continue;
-
-                    var intersection = boundary1.Intersection(boundary2);
-
-                    if (intersection == null || intersection.IsEmpty) continue;
-
-                    AddLineStringsFromGeometry(intersection, m);
+                    featureRef = new FeatureRef {
+                        Id = compositeExterior.Id,
+                        Reverse = false,
+                    };
                 }
 
-                var g = factory.CreateMultiLineString(m.ToArray());
-
-                var diff = boundary1.Difference(g);
-
-                AddLineStringsFromGeometry(diff, m);
+                mapping.GetOrAdd(m.Key, $"C{featureRef.Id}");
             });
 
+            topology.Mapping = mapping;
 
             topology.CompositeCurves = [.. bagCompositeCurves.Values];
             topology.Surfaces = [.. bagSurfaces];
-
-            //foreach (var s in surfaces) {
-            //    var composite = compositecurves.SingleOrDefault(e => e.Id == s.Exterior.Id);
-            //    if (composite != default) {
-            //        foreach (var c in composite.Curves) {
-            //            var b = bagCurves.First(e => e.Id == c.Id);
-            //        }
-            //    }
-            //    else {
-            //        var b = bagCurves.First(e => e.Id == s.Exterior.Id);
-            //    }
-            //}
 
             var ids = new List<UInt64>();
             foreach (var e in bagCurves) {
@@ -1272,6 +1455,8 @@ namespace ArcGIS.Core.Data
                 topology.Curves.Add(e);
             }
         }
+
+
 
         private static void AddLineStringsFromGeometry(IGeometry geometry, List<LineString> targetList) {
             if (geometry is LineString line) {
