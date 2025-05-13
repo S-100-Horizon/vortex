@@ -26,6 +26,7 @@ namespace S100Framework.Applications.Singletons
             return _convertedS57Objects.ContainsKey(globalid);
         }
 
+
         /// <summary>
         /// 
         /// </summary>
@@ -74,6 +75,19 @@ namespace S100Framework.Applications.Singletons
             }
             _convertedS57Objects.Union(guidName);
         }
+
+        internal List<(Guid GlobalId, string tableName)> GetTraceBack(string name) {
+
+            var result = _tableNameToConvertedS57Objects
+                .SelectMany(table => table.Value, (table, inner) => new { TableName = table.Key, Guid = inner.Key, Strings = inner.Value }) // Flatten the dictionary
+                .Where(x => x.Strings.Contains(name)) // Filter for name in the list
+                .Select(x => (x.Guid, x.TableName)) // Project to (string, Guid)
+                .ToList(); // Convert to List
+
+            return result;
+
+        }
+
 
         internal int GetConvertedCount(string tableName) {
             if (!_tableNameToConvertedS57Objects.ContainsKey(tableName.ToLower())) {

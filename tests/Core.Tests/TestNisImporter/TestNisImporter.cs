@@ -566,6 +566,9 @@ namespace TestNisImporter
                             if (field.Name.ToUpper() == "PLTS_COMP_SCALE") {
                                 ctor.AppendLine($"\t\t\t\tbase.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;");
                             }
+                            if (field.Name.ToUpper() == "FCSUBTYPE") {
+                                ctor.AppendLine($"\t\t\t\tbase.FcSubtype = this.FCSUBTYPE.Value;");
+                            }
                         }
                         ctor.AppendLine($"\t\t\t}}");
                     }

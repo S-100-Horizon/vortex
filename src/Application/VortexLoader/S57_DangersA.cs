@@ -308,12 +308,9 @@ namespace S100Framework.Applications
                                     instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                                 }
 
-
-
                                 AddInformation(instance.information, feature);
 
                                 // TODO: defaultClearanceDepth
-
 
                                 foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
                                     var drval1 = depthArea.DRVAL1 ?? default;
@@ -432,8 +429,6 @@ namespace S100Framework.Applications
 
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
-
                         }
                         break;
                     default:

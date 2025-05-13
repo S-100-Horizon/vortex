@@ -165,6 +165,9 @@ namespace S100Framework.Applications
                     Store(() => S57_ProductCoverage(source, destination, filter));
                 }
                 else {
+                    //var whereClause = filter.WhereClause.Clone();
+                    //filter.WhereClause = $"{whereClause} and globalid = '{{547BA6F0-9999-4350-8BCE-3A4DBE9C44E4}}'";
+                    //filter.WhereClause = $"{whereClause}";
 
                     Store(() => S57_CulturalFeaturesP(source, destination, filter));
                     Store(() => S57_NaturalFeaturesP(source, destination, filter));

@@ -4,6 +4,7 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System.Collections.Generic;
 using System.Data;
 
 namespace S100Framework.Applications.Singletons
@@ -732,10 +733,16 @@ namespace S100Framework.Applications.Singletons
             }
         }
 
-        internal void CreateRelation(Type TPrimary, Type TForeign, Relation relation, Table featureAssociation, RowBuffer featureAssociationBuffer, Table associationBinding, RowBuffer associationBindingBuffer) {
-            if (relation == null) {
-                throw new ArgumentNullException("relation");
+        internal void CreateRelation(Relation relation, Table featureAssociation, RowBuffer featureAssociationBuffer, Table associationBinding, RowBuffer associationBindingBuffer) {
+            if (relation.Master == null) {
+                throw new ArgumentNullException("relation master");
             }
+            if (relation.Slave == null) {
+                throw new ArgumentNullException("relation slave");
+            }
+
+            Type TPrimary = relation.Master.S101Type;
+            Type TForeign = relation.Slave.S101Type;
 
             var featureBindingsPrimary = TPrimary?.GetProperty("_featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
             var featureBindingsForeign = TForeign?.GetProperty("_featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
@@ -747,7 +754,12 @@ namespace S100Framework.Applications.Singletons
                 // Create the association
                 bindingDefinitionForeign = featureBindingsPrimary?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TForeign?.Name));
                 if (bindingDefinitionForeign == null) {
-                    var msg = $"Cannot relate {relation.Master.GetType().Name} {relation.Master.S101Type.Name} with {relation.Slave.GetType().Name} {relation.Slave.S101Type.Name} - where name in ('{relation.Master.Name}','{relation.Slave.Name}')";
+
+                    var tracebackMaster = ConversionAnalytics.Instance.GetTraceBack(relation.Master.Name);
+                    var tracebackMasterString = string.Join(", ", tracebackMaster.Select(tuple => $"{tuple.Item1} - {tuple.Item2}"));
+                    var tracebackSlave = ConversionAnalytics.Instance.GetTraceBack(relation.Slave.Name);
+                    var tracebackSlaveString = string.Join(", ", tracebackSlave.Select(tuple => $"{tuple.Item1} - {tuple.Item2}"));
+                    var msg = $"Cannot relate {relation.Master.GetType().Name} {relation.Master.S101Type.Name} with {relation.Slave.GetType().Name} {relation.Slave.S101Type.Name} - where name in ('{relation.Master.Name}','{relation.Slave.Name}') MASTERS:{tracebackMasterString} SLAVES:{tracebackSlaveString}";
                     Logger.Current.DataError(-1, "", "relate", msg);
                     return;
                     //throw new NotSupportedException(msg);
@@ -809,7 +821,7 @@ namespace S100Framework.Applications.Singletons
                     throw new NotSupportedException("null relation");
                 }
 
-                CreateRelation(relation?.Master?.S101Type, relation?.Slave?.S101Type, relation, featureAssociation, featureAssociationBuffer, associationBinding, associationBindingBuffer);
+                CreateRelation(relation, featureAssociation, featureAssociationBuffer, associationBinding, associationBindingBuffer);
 #if null
                 if (relation?.Master?.Type.ToLower() == typeof(LateralBuoy).Name.ToLower()) {
                     if (relation?.Slave?.Type.ToLower() == typeof(Daymark).Name.ToLower()) {

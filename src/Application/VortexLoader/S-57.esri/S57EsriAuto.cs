@@ -72,7 +72,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -368,7 +368,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -667,6 +667,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CAT_TS"] && feature["CAT_TS"] is not null) {
 //				CAT_TS = Convert.ToInt32(feature["CAT_TS"]);
@@ -880,7 +881,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -1077,6 +1078,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -1239,7 +1241,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -1556,6 +1558,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CAT_TS"] && feature["CAT_TS"] is not null) {
 //				CAT_TS = Convert.ToInt32(feature["CAT_TS"]);
@@ -1778,7 +1781,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -1975,6 +1978,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -2137,7 +2141,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -2358,6 +2362,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CATWED"] && feature["CATWED"] is not null) {
 //				CATWED = Convert.ToInt32(feature["CATWED"]);
@@ -2532,7 +2537,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -2735,6 +2740,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CATWED"] && feature["CATWED"] is not null) {
 //				CATWED = Convert.ToInt32(feature["CATWED"]);
@@ -2900,7 +2906,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -3256,6 +3262,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CATOLB"] && feature["CATOLB"] is not null) {
 //				CATOLB = Convert.ToInt32(feature["CATOLB"]);
@@ -3421,7 +3428,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -3807,6 +3814,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CATWRK"] && feature["CATWRK"] is not null) {
 //				CATWRK = Convert.ToInt32(feature["CATWRK"]);
@@ -3987,7 +3995,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -4355,6 +4363,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CATWRK"] && feature["CATWRK"] is not null) {
 //				CATWRK = Convert.ToInt32(feature["CATWRK"]);
@@ -4526,7 +4535,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -4720,6 +4729,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["VALDCO"] && feature["VALDCO"] is not null) {
 //				VALDCO = Convert.ToDecimal(feature["VALDCO"]);
@@ -4885,7 +4895,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -5142,6 +5152,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CATCBL"] && feature["CATCBL"] is not null) {
 //				CATCBL = Convert.ToInt32(feature["CATCBL"]);
@@ -5307,7 +5318,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -5591,6 +5602,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CATCBL"] && feature["CATCBL"] is not null) {
 //				CATCBL = Convert.ToInt32(feature["CATCBL"]);
@@ -5783,7 +5795,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -5944,6 +5956,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["PUBREF"] && feature["PUBREF"] is not null) {
 //				PUBREF = Convert.ToString(feature["PUBREF"]);
@@ -6115,7 +6128,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -6426,6 +6439,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["RESTRN"] && feature["RESTRN"] is not null) {
 //				RESTRN = Convert.ToString(feature["RESTRN"]);
@@ -6591,7 +6605,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -6896,6 +6910,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -7058,7 +7073,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -7297,6 +7312,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["RESTRN"] && feature["RESTRN"] is not null) {
 //				RESTRN = Convert.ToString(feature["RESTRN"]);
@@ -7471,7 +7487,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -8097,6 +8113,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -8273,7 +8290,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -8506,6 +8523,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -8668,7 +8686,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -8874,6 +8892,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -9036,7 +9055,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -9260,6 +9279,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -9431,7 +9451,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -9718,6 +9738,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -9880,7 +9901,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -10185,6 +10206,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -10356,7 +10378,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -10643,6 +10665,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -10805,7 +10828,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -11005,6 +11028,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["RESTRN"] && feature["RESTRN"] is not null) {
 //				RESTRN = Convert.ToString(feature["RESTRN"]);
@@ -11173,7 +11197,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -11391,6 +11415,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["DEPTH"] && feature["DEPTH"] is not null) {
 //				DEPTH = Convert.ToDecimal(feature["DEPTH"]);
@@ -11577,7 +11602,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -12086,6 +12111,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CATCHP"] && feature["CATCHP"] is not null) {
 //				CATCHP = Convert.ToInt32(feature["CATCHP"]);
@@ -12305,7 +12331,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -12706,6 +12732,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CATCAN"] && feature["CATCAN"] is not null) {
 //				CATCAN = Convert.ToInt32(feature["CATCAN"]);
@@ -12871,7 +12898,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -13344,6 +13371,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CATCAN"] && feature["CATCAN"] is not null) {
 //				CATCAN = Convert.ToInt32(feature["CATCAN"]);
@@ -13545,7 +13573,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -14012,6 +14040,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["BUISHP"] && feature["BUISHP"] is not null) {
 //				BUISHP = Convert.ToInt32(feature["BUISHP"]);
@@ -14201,7 +14230,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -14656,6 +14685,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CATCBL"] && feature["CATCBL"] is not null) {
 //				CATCBL = Convert.ToInt32(feature["CATCBL"]);
@@ -14839,7 +14869,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -15318,6 +15348,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["BUISHP"] && feature["BUISHP"] is not null) {
 //				BUISHP = Convert.ToInt32(feature["BUISHP"]);
@@ -15513,7 +15544,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -15827,6 +15858,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CATLND"] && feature["CATLND"] is not null) {
 //				CATLND = Convert.ToString(feature["CATLND"]);
@@ -16007,7 +16039,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -16285,6 +16317,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -16447,7 +16480,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -16743,6 +16776,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CATLND"] && feature["CATLND"] is not null) {
 //				CATLND = Convert.ToString(feature["CATLND"]);
@@ -16914,7 +16948,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -17240,6 +17274,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CATCOA"] && feature["CATCOA"] is not null) {
 //				CATCOA = Convert.ToInt32(feature["CATCOA"]);
@@ -17408,7 +17443,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -17740,6 +17775,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -17911,7 +17947,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -18225,6 +18261,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -18387,7 +18424,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -18674,6 +18711,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -18836,7 +18874,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -19159,6 +19197,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CATACH"] && feature["CATACH"] is not null) {
 //				CATACH = Convert.ToString(feature["CATACH"]);
@@ -19339,7 +19378,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -19656,6 +19695,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CATACH"] && feature["CATACH"] is not null) {
 //				CATACH = Convert.ToString(feature["CATACH"]);
@@ -19833,7 +19873,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -20165,6 +20205,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CATQUA"] && feature["CATQUA"] is not null) {
 //				CATQUA = Convert.ToInt32(feature["CATQUA"]);
@@ -20372,7 +20413,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -20614,6 +20655,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -20776,7 +20818,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -21093,6 +21135,7 @@
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["CATOFP"] && feature["CATOFP"] is not null) {
 //				CATOFP = Convert.ToString(feature["CATOFP"]);
@@ -21216,7 +21259,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -21422,7 +21465,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// Is Conflate
@@ -21889,7 +21932,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -22073,6 +22116,7 @@
 //			}
 //			if (DBNull.Value != row["FCSUBTYPE"] && row["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(row["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != row["INFORM"] && row["INFORM"] is not null) {
 //				INFORM = Convert.ToString(row["INFORM"]);
@@ -22232,7 +22276,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		private new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// Is Conflate
@@ -22388,6 +22432,7 @@
 //			}
 //			if (DBNull.Value != row["FCSUBTYPE"] && row["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(row["FCSUBTYPE"]);
+//				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != row["OBJECTCLASS"] && row["OBJECTCLASS"] is not null) {
 //				OBJECTCLASS = Convert.ToString(row["OBJECTCLASS"]);

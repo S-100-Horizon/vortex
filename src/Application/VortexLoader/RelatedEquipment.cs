@@ -15,11 +15,14 @@ using System;
 using ArcGIS.Core.Geometry;
 using Microsoft.AspNetCore.Http.HttpResults;
 using S100Framework.Applications.Singletons;
+using ArcGIS.Core.CIM;
 
 namespace S100Framework.Applications
 {
     internal class RelatedEquipment {
         Geodatabase _source;
+
+        HashSet<(string TableName,int Subtype, Guid globalid)> _converted = new();
 
         public RelatedEquipment(Geodatabase source) {
             this._source = source;
@@ -70,7 +73,6 @@ namespace S100Framework.Applications
                 }
 
                 ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", relatedTopmark.GLOBALID, "ATTRIBUTE. NO NAME AVAILABLE");
-
 
                 return topmark;
             }
@@ -220,11 +222,18 @@ namespace S100Framework.Applications
 
                     }
                 }
-            
             }
         }
 
         internal void CreateRelatedPointEquipment(S57Object structure, FeatureNode s101Object, string name, Geodatabase target) {
+
+            var key = (structure.TableName.ToLower(), structure.FcSubtype.Value, structure.GlobalId);
+            if (_converted.Contains(key)) {
+                throw new DuplicateNameException($"Related equipment already converted for {key}");
+            }
+
+            _converted.Add(key);
+
             // if all related equipments are topmarks - return. Topmarks have become attributes
             if (!FeatureRelations.Instance.GetRelated(structure.GlobalId).Any(e => e?.PLTS_Frel?.DEST_SUB?.ToLower() != "topmar_topmark"))
                 return;
@@ -234,12 +243,6 @@ namespace S100Framework.Applications
             var relatedLightSectored = totalRelated.Where(e => e.S101Type == typeof(LightSectored)).ToList();
 
             var relatedNonSectoredEquipment = totalRelated.Where(e => e.S101Type != typeof(LightSectored)).ToList();
-
-
-
-
-
-            
 
             var tableName = target.GetName("point");
             using var featureClass = target.OpenDataset<FeatureClass>(tableName);

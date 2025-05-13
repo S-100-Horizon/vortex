@@ -13,6 +13,7 @@ namespace S100Framework.Applications.S57.esri
         public Geometry? Shape { get; set; }
         public string? TableName { get; set; }
         public int? PLTS_COMP_SCALE { get; set; }
+        public int? FcSubtype { get; set; }
 
     }
 }
