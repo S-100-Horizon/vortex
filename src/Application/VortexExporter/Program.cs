@@ -1485,3 +1485,46 @@ namespace ArcGIS.Core.Data
 
     }
 }
+
+namespace GeoAPI.Geometries
+{
+    using NetTopologySuite.Geometries;
+
+    public static class Extension
+    {
+        public static IGeometry Combine(this IGeometry geometry) {
+            if (geometry is MultiLineString multiLineString) {
+                var last = ((LineString)multiLineString[0]);
+
+                var geometries = new List<LineString>();
+
+                var coordinates = new Coordinate[0];
+                coordinates = [.. last.Coordinates];
+
+                for (int i = 1; i < multiLineString.Count; i++) {
+                    var next = ((LineString)multiLineString[i]);
+
+                    if (next.StartPoint.EqualsTopologically(last.EndPoint))
+                        coordinates = [.. coordinates, .. next.Coordinates];
+                    else {
+                        geometries.Add((LineString)geometry.Factory.CreateLineString(coordinates));
+                        coordinates = next.Coordinates.ToArray();
+                    }
+
+                    last = next;
+                }
+
+                if (!geometries.Any()) {
+                    geometry = geometry.Factory.CreateLineString(coordinates);
+                }
+                else {
+                    geometries.Add((LineString)geometry.Factory.CreateLineString(coordinates));
+
+                    geometry = geometry.Factory.CreateMultiLineString(geometries.ToArray());
+                }
+            }
+
+            return geometry;
+        }
+    }
+}
