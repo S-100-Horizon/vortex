@@ -1,5 +1,7 @@
-﻿using JsonFlatten;
+﻿using ArcGIS.Core.Internal.CIM;
+using JsonFlatten;
 using Newtonsoft.Json.Linq;
+using S100Framework.Catalogues;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using System.Collections;
 using System.Text;
@@ -322,6 +324,44 @@ namespace TestS100Framework
             };
 
             dataset.AddInformation(informationType);
+
+            var yaml = S100Framework.YAML.Converter.Serialize(dataset);
+
+            System.Diagnostics.Debugger.Break();
+        }
+
+
+        [Fact]
+        public void Test_SerializeBridge() {
+            var dataset = new S100Framework.YAML.Dataset {
+                CellName = "101AA00DS0031.000",
+                Comment = "S-101 Test Dataset 031",
+                Edition = 1,
+                FCVer = "2.0",
+            };
+
+            var json = @"{""bridgeConstruction"":null,""bridgeFunction"":[],""categoryOfOpeningBridge"":null,""colour"":[],""colourPattern"":null,""condition"":null,""featureName"":[{""language"":""eng"",""name"":""Dronning Alexandrines Bro"",""nameUsage"":1}],""fixedDateRange"":null,""height"":null,""interoperabilityIdentifier"":null,""natureOfConstruction"":[],""openingBridge"":false,""radarConspicuous"":null,""reportedDate"":null,""status"":[],""visualProminence"":null,""scaleMinimum"":null,""information"":[],""pictorialRepresentation"":null}";
+
+            var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
+            var name = "Bridge";
+            var geometry = "S874953";
+            var foid = "110:874953:1";
+
+            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{name}", true) ?? default;
+            
+
+            var instance = System.Text.Json.JsonSerializer.Deserialize(json!, type!);
+
+            var feature = new S100Framework.YAML.Feature {
+                Name = name,
+                Foid = foid,
+                Prim = S100Framework.YAML.Primitive.Surface,
+                Geometry = geometry,
+                Attributes = (S100Framework.DomainModel.FeatureNode)instance!,
+            };
+
+            dataset.AddFeature(feature);
+
 
             var yaml = S100Framework.YAML.Converter.Serialize(dataset);
 
