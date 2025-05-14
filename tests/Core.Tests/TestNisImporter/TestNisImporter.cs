@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using S100Framework.Applications.Singletons;
 using Xunit.Abstractions;
 using IO = System.IO;
+using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace TestNisImporter
 {
@@ -370,6 +371,18 @@ namespace TestNisImporter
                 file.WriteLine(content.ToString());
             }
         }
+
+        [Fact]
+        public void TestRelation() {
+            var relation1 = new Relation(new(typeof(SpecialPurposeGeneralBeacon), "S1"), new(typeof(LightAirObstruction), "S2"));
+            var relation2 = new Relation(new(typeof(SpecialPurposeGeneralBeacon), "S1"), new(typeof(LightAirObstruction), "S2"));
+
+            var relations = new HashSet<Relation>();
+
+            Assert.True (relation1.Equals(relation2));
+
+        }
+
 
 
         [Fact]

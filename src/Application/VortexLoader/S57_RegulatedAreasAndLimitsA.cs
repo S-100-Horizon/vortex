@@ -204,7 +204,7 @@ namespace S100Framework.Applications
 
 
                             if (current.NATION != default) {
-                                instance.nationality = new(){ current.NATION};
+                                instance.nationality = new(){ current.NATION };
                             }
 
                             AddInformation(instance.information, feature);

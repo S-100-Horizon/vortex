@@ -153,7 +153,7 @@ namespace S100Framework.Applications
                 if (skinOfEarthOnly) {
                     // All "SKIN OF EARTH" cases / subtypes are marked with a "skin of earth" comment
                     var whereClause = filter.WhereClause.Clone();
-                    filter.WhereClause = $"{whereClause} and fcsubtype in (1,5,15,45)";
+                    filter.WhereClause = $"{whereClause} and fcsubtype in (1,5,15)";
                     Store(() => S57_DepthsA(source, destination, filter));
                     filter.WhereClause = $"{whereClause} and fcsubtype in (5)";
                     Store(() => S57_NaturalFeaturesA(source, destination, filter));
@@ -169,13 +169,13 @@ namespace S100Framework.Applications
                     //filter.WhereClause = $"{whereClause} and globalid = '{{547BA6F0-9999-4350-8BCE-3A4DBE9C44E4}}'";
                     //filter.WhereClause = $"{whereClause}";
 
+                    Store(() => S57_CulturalFeaturesL(source, destination, filter));
+                    Store(() => S57_CulturalFeaturesA(source, destination, filter));
                     Store(() => S57_CulturalFeaturesP(source, destination, filter));
                     Store(() => S57_NaturalFeaturesP(source, destination, filter));
                     Store(() => S57_CoastlineA(source, destination, filter));
                     Store(() => S57_CoastlineL(source, destination, filter));
                     Store(() => S57_CoastlineP(source, destination, filter));
-                    Store(() => S57_CulturalFeaturesA(source, destination, filter));
-                    Store(() => S57_CulturalFeaturesL(source, destination, filter));
                     Store(() => S57_DangersA(source, destination, filter));
                     Store(() => S57_DangersL(source, destination, filter));
                     Store(() => S57_DangersP(source, destination, filter));

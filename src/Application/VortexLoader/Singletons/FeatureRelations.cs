@@ -1,4 +1,5 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Internal.CIM;
 using S100Framework.Applications;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel;
@@ -718,9 +719,12 @@ namespace S100Framework.Applications.Singletons
             //    return;
             //}
 
+            Relation relation = new(master, slave);
             //_relationCount++;
-
-            _relations.Add(new(master, slave));
+            if (_relations.Contains(relation)) {
+                throw new NotSupportedException($"{relation} relation´already added");
+            }
+            _relations.Add(relation);
         }
 
         internal void AddAssociation(S57Master master, S57Slave slave) {
@@ -861,7 +865,7 @@ namespace S100Framework.Applications.Singletons
 
     }
 
-    internal class S57Master
+    internal class S57Master : IEquatable<S57Master>
     {
         Type _s101type;
         string _s101name;
@@ -873,8 +877,28 @@ namespace S100Framework.Applications.Singletons
 
         public Type S101Type { get => this._s101type; set => this._s101type = value; }
         public string Name { get => this._s101name; set => this._s101name = value; }
+
+        // Implement IEquatable<MyObject>
+        public bool Equals(S57Master other) {
+            if (other == null) {
+                return false;
+            }
+            return this._s101type.Equals(other._s101type) && this._s101name.Equals(other._s101name);
+        }
+
+        // Override Equals (for compatibility with collections like HashSet)
+        public override bool Equals(object obj) {
+            if (obj is Relation other) {
+                return Equals(other); // Use the correct Equals method
+            }
+            return false;
+        }
+
+        public override int GetHashCode() {
+            return HashCode.Combine(_s101type, _s101name);
+        }
     }
-    internal class S57Slave
+    internal class S57Slave : IEquatable<S57Slave>
     {
         Type _s101type;
         string _s101name;
@@ -886,10 +910,30 @@ namespace S100Framework.Applications.Singletons
 
         public Type S101Type { get => this._s101type; set => this._s101type = value; }
         public string Name { get => this._s101name; set => this._s101name = value; }
+
+        // Implement IEquatable<MyObject>
+        public bool Equals(S57Slave other) {
+            if (other == null) {
+                return false;
+            }
+            return this._s101type.Equals(other._s101type)  && this._s101name.Equals(other._s101name);
+        }
+
+        // Override Equals (for compatibility with collections like HashSet)
+        public override bool Equals(object obj) {
+            if (obj is Relation other) {
+                return Equals(other); // Use the correct Equals method
+            }
+            return false;
+        }
+
+        public override int GetHashCode() {
+            return HashCode.Combine(_s101type, _s101name);
+        }
     }
 
-    internal class Relation
-    {
+    internal class Relation : IEquatable<Relation> {
+    
         S57Master? _master;
         S57Slave? _slave;
 
@@ -900,7 +944,26 @@ namespace S100Framework.Applications.Singletons
 
         internal S57Master? Master { get => this._master; set => this._master = value; }
         internal S57Slave? Slave { get => this._slave; set => this._slave = value; }
+
+        // Implement IEquatable<MyObject>
+        public bool Equals(Relation other) {
+            if (other == null) {
+                return false;
+            }
+            return this._master.Equals(other._master) && this._slave.Equals(other._slave);
+        }
+
+        // Override Equals (for compatibility with collections like HashSet)
+        public override bool Equals(object obj) {
+            if (obj is Relation other) {
+                return Equals(other); // Use the correct Equals method
+            }
+            return false;
+        }
+
+        public override int GetHashCode() {
+            return HashCode.Combine(_master, _slave);
+            Console.WriteLine($"{Master.S101Type.Name} -> {_slave.S101Type.Name}");
+        }
     }
-
-
 }

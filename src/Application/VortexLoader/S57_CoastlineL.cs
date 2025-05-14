@@ -109,12 +109,12 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            if (current.CONVIS.HasValue) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
-                            }
-
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                            }
+
+                            if (current.CONVIS.HasValue) {
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
                             AddInformation(instance.information, feature);
@@ -255,8 +255,6 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-
-
                         }
                         break;
                     default:
