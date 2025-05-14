@@ -42,8 +42,33 @@ namespace S100Framework.Applications
 
                 switch (fcSubtype) {
                     case 1: { // AIRARE_AirportAirfield
-                            var instance = new AirportAirfield() {
-                            };
+                            var instance = new AirportAirfield();
+
+                            if (current.CATAIR != default) {
+                                instance.categoryOfAirportAirfield = EnumHelper.GetEnumValues<categoryOfAirportAirfield>(current.CATAIR);
+                            }
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.SORDAT != default) {
+                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                    instance.reportedDate = dateOnly;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -53,19 +78,13 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-
-                            if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
 
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
+
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
@@ -73,9 +92,8 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
-
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
@@ -176,14 +194,9 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-
-
-
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
-
-
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
@@ -192,8 +205,41 @@ namespace S100Framework.Applications
                         break;
 
                     case 10: { // BUAARE_BuiltUpArea
-                            var instance = new BuiltUpArea() {
-                            };
+                            var instance = new BuiltUpArea();
+
+                            if (current.CATBUA.HasValue) {
+                                instance.categoryOfBuiltUpArea = EnumHelper.GetEnumValue<categoryOfBuiltUpArea>(current.CATBUA.Value);
+                            }
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.CONRAD.HasValue) {
+                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                            }
+
+                            if (current.SORDAT != default) {
+                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                    instance.reportedDate = dateOnly;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
+                            if (current.CONVIS.HasValue) {
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                            }
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -203,13 +249,24 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
+                            AddInformation(instance.information, feature);
 
-                            if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
+
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            AddInformation(instance.information, feature);
+                            /*
+                                S - 101 includes the system attribute in the water to indicate that a building that is located offshore is to
+                                be included in ECDIS Base display.This attribute is populated automatically during the conversion
+                                process based on the underlying Skin of the Earth feature.As such, there is no requirement to include
+                                an ECDIS Base display feature coincident with the S - 101 Building feature so as to ensure display of a
+                                feature at the position of the building in ECDIS Base display.Data Producers should consider removing
+                                these features from their S-101 data during the conversion process.
+                            */
+                            // TODO: InTheWater
+
+
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
@@ -571,7 +628,6 @@ namespace S100Framework.Applications
 
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
-
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);

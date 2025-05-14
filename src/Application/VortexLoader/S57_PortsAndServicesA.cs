@@ -648,7 +648,6 @@ namespace S100Framework.Applications
                                 instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
                             }
 
-
                             if (current.SORDAT != default) {
                                 if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
                                     instance.reportedDate = dateOnly;
@@ -658,17 +657,13 @@ namespace S100Framework.Applications
                                 }
                             }
 
-
                             if (current.VERLEN.HasValue) {
                                 instance.verticalLength = current.VERLEN.Value;
                             }
 
-
-
                             if (current.CONVIS.HasValue) {
                                 instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
-
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -679,7 +674,6 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-
                             AddInformation(instance.information, feature);
 
                             if (current.PICREP != default) {
@@ -687,7 +681,6 @@ namespace S100Framework.Applications
                             }
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
@@ -697,7 +690,6 @@ namespace S100Framework.Applications
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
-
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
@@ -735,11 +727,9 @@ namespace S100Framework.Applications
                                 relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
 
-
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-
                         }
                         break;
                     case 70: { // MORFAC_MooringWarpingFacility

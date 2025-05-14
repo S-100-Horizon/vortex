@@ -181,12 +181,17 @@ namespace S100Framework.Applications
                     }
 
                     foreach (var relatedObject in relatedLightSectored) {
+
                         if (relatedObject.PLTS_Frel.DEST_FC == null) {
                             throw new NotSupportedException($"Empty PLTS_Frel.DEST_FC");
                         }
                         ConversionAnalytics.Instance.AddConverted(relatedObject.PLTS_Frel.DEST_FC, relatedObject.GlobalId, equipmentName ?? "Unknown equipment");
                         Logger.Current.DataObject(-1, relatedObject.PLTS_Frel.DEST_FC, equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(lightSectored));
                     }
+
+                    // Add relation between master polygon and slave equipment
+                    FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), name), new(lightSectored.GetType(), equipmentName));
+
                 }
                 // 
                 foreach (var relatedObject in relatedNonSectoredEquipment) {
@@ -208,6 +213,8 @@ namespace S100Framework.Applications
                             throw new NotSupportedException("empty equipment name");
                         }
 
+                        FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), name), new(relatedObject.S101Type, equipmentName));
+
                         if (relatedObject.S57Object.TableName != null) {
                             ConversionAnalytics.Instance.AddConverted(relatedObject.S57Object.TableName, relatedObject.GlobalId, equipmentName ?? "Unknown equipment name");
                         }
@@ -219,7 +226,6 @@ namespace S100Framework.Applications
                         FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name));
 
                         Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.S57Object.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
-
                     }
                 }
             }
