@@ -153,48 +153,47 @@ namespace S100Framework.Applications
                 dataset.AddTopology(topology);
 
 
-                // FeatureAssociations - skip for now until two-way references sorted
-                {
-                    try {
-#if null
-                        using var type = source.OpenDataset<Table>("associationbinding");
-                        using var cursor = type.Search();
-                        while (cursor.MoveNext()) {
-                            var current = cursor.Current;
+                // FeatureAssociations - Only typeof associations. Skip composition/aggregation roleTypes for now
+                try {
+                    using var type = source.OpenDataset<Table>("associationbinding");
 
-                            // Only associations. Skip composition/aggregation
-                            var assoType = current["roleType"].ToString()!;
-                            if (assoType != "association")
-                                continue;
+                    using var cursor = type.Search(new QueryFilter {
+                        WhereClause = "UPPER(type) = 'FEATUREBINDING' AND UPPER(roleType) = 'ASSOCIATION'"
+                    });
 
-                            var name = current["association"].ToString()!;
-                            var role = current["role"].ToString()!;
+                    while (cursor.MoveNext()) {
+                        var current = cursor.Current;
 
-                            var id = current["pid"].ToString()!;
-                            var to = current["foreignid"].ToString()!;
+                        var name = current["association"].ToString()!;
+                        var role = current["role"].ToString()!;
 
-                            var foid = $"110:{to!.Substring(1)}:1";       // Geodatastyrelsen: 110 
+                        var id = current["pid"].ToString()!;
+                        var to = current["foreignid"].ToString()!;
 
-                            var association = new YAML.Association() {
-                                Name = name,
-                                Role = role,
-                                To = foid,
-                            };
+                        if (topology.Mapping.TryGetValue(to, out var value))
+                            to = value;
 
-                            // Add or update
-                            if (featureAssociations.TryGetValue(id, out var existingArray))
-                                featureAssociations[id] = [.. existingArray, association];
-                            else
-                                featureAssociations[id] = [association];
-                        }
-#endif
-                    }
-                    catch (Exception ex) {
-                        Log.Information("Table: associationbinding: {message} ", ex.Message);
-                        Logger.Current.Error("Exception: {ex}", ex);
+                        var foid = $"110:{to![1..]}:1";       // Geodatastyrelsen: 110 
+
+                        var association = new YAML.Association() {
+                            Name = name,
+                            Role = role,
+                            To = foid,
+                        };
+
+                        // Add or update
+                        if (featureAssociations.TryGetValue(id, out var existingArray))
+                            featureAssociations[id] = [.. existingArray, association];
+                        else
+                            featureAssociations[id] = [association];
                     }
                 }
+                catch (Exception ex) {
+                    Log.Information("Table: associationbinding: {message} ", ex.Message);
+                    Logger.Current.Error("Exception: {ex}", ex);
+                }
 
+                Log.Information("FeatureAssociations found: #{count}", featureAssociations.Count);
 
                 // InformationTypes
                 try {
@@ -225,6 +224,8 @@ namespace S100Framework.Applications
                     Logger.Current.Error("Exception: {ex}", ex);
                 }
 
+                Log.Information("InformationTypes found: #{count}", dataset.InformationTypes?.Count ?? 0);
+
                 // Features
                 foreach (var def in source.GetDefinitions<FeatureClassDefinition>()) {
                     var tableName = def.GetName();
@@ -249,8 +250,8 @@ namespace S100Framework.Applications
                         var current = (ArcGIS.Core.Data.Feature)cursor.Current;
                         var geometry = Convert.ToString(current["name"]);
 
-                        if (topology.Mapping.ContainsKey(geometry!))
-                            geometry = topology.Mapping[geometry!];
+                        if (topology.Mapping.TryGetValue(geometry!, out var value))
+                            geometry = value;
 
                         var shapetype = def.GetShapeType();
 
@@ -279,7 +280,6 @@ namespace S100Framework.Applications
                                 Foid = foid,
                                 Prim = prim,
                                 Geometry = geometry,
-                                // Attributes = (FeatureNode)instance!,
                             };
 
                             // Only emit attributes if feature contains any non-static properties
@@ -290,7 +290,7 @@ namespace S100Framework.Applications
                             var hasAssociations = featureAssociations.TryGetValue(geometry, out var associations);
 
                             if (hasAssociations) {
-                                foreach (var asso in associations) {
+                                foreach (var asso in associations!) {
                                     feature.AddFeatureAssociation(asso);
                                 }
                             }
@@ -332,9 +332,6 @@ namespace S100Framework.Applications
         }
 
         private const string jsonSurface = "{\"rings\":[[[12.5,54.7015465],[12.4732885,54.694891],[12.4421088,54.6871107],[12.4323619,54.6790339],[12.4167304,54.6660724],[12.4093265,54.6599296],[12.4021195,54.6539479],[12.3978169,54.6503758],[12.3895268,54.6434911],[12.3772575,54.6332961],[12.3758783,54.6321497],[12.3700522,54.6273061],[12.3649871,54.623094],[12.3626519,54.6211517],[12.3590146,54.6181259],[12.3549381,54.6147341],[12.3494461,54.6101634],[12.3414574,54.6035126],[12.339328,54.6017394],[12.3362479,54.5991741],[12.3332861,54.596707],[12.3244586,54.5893516],[12.3170332,54.583162],[12.3015427,54.5702419],[12.2733278,54.5466828],[12.2612285,54.5365694],[12.2413132,54.5199097],[12.24082,54.5194969],[12.2396746,54.5185383],[12.2359635,54.5154316],[12.2285345,54.509211],[12.217541,54.5],[12.0,54.5],[12.0,55.0],[12.5,55.0],[12.5,54.7015465]]],\"spatialReference\":{\"wkid\":4326,\"latestWkid\":4326,\"xyTolerance\":3.5355339e-08,\"zTolerance\":0.001,\"mTolerance\":0.001,\"falseX\":-400,\"falseY\":-400,\"xyUnits\":99999999.99999999,\"falseZ\":-100000,\"zUnits\":10000,\"falseM\":-100000,\"mUnits\":10000}}";
-
-        // Small surface
-        //private const string jsonSurface = "{\"rings\":[[[12.114831503446396,54.91362416884908],[12.065786844335435,54.91362416884908],[12.065786844335435,54.894064996042914],[12.114831503446396,54.894064996042914],[12.114831503446396,54.91362416884908]]],\"spatialReference\":{\"wkid\":4326,\"latestWkid\":4326,\"xyTolerance\":3.5355339e-08,\"zTolerance\":0.001,\"mTolerance\":0.001,\"falseX\":-400,\"falseY\":-400,\"xyUnits\":99999999.99999999,\"falseZ\":-100000,\"zUnits\":10000,\"falseM\":-100000,\"mUnits\":10000}}";
     }
 }
 
@@ -698,9 +695,6 @@ namespace S100Framework.YAML
         }
 
         public static Point GetOrCreateStartPoint(this Dataset dataset, Coordinate[] curve, string name, int identifier = 0) {
-            //var tempPoint = new Point(curve[0].X, curve[0].Y);
-            //var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Location == tempPoint.Location);
-
             var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Coordinate!.X == curve[0].X && e.Coordinate!.Y == curve[0].Y);
 
             if (datasetPoint == default) {
@@ -718,9 +712,6 @@ namespace S100Framework.YAML
         }
 
         public static Point GetOrCreateEndPoint(this Dataset dataset, Coordinate[] curve, string name, int identifier = 1) {
-            //var tempPoint = new Point(curve[^1].X, curve[^1].Y);
-            //var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Location == tempPoint.Location);
-
             var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Coordinate!.X == curve[^1].X && e.Coordinate!.Y == curve[^1].Y);
 
             if (datasetPoint == default) {
