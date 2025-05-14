@@ -755,7 +755,8 @@ namespace ArcGIS.Core.Data
     {
         static SpatialReference spatialReference = SpatialReferenceBuilder.CreateSpatialReference(4326);
 
-        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(10000000/*PrecisionModels.Floating*/)); // Or PrecisionModels.Floating
+        //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(10000000)); // Or PrecisionModels.Floating
+        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating)); // Or PrecisionModels.Floating
 
         public static S100Framework.YAML.Topology? BuildTopology(this Geodatabase geodatabase, QueryFilter? queryFilter = default) {
             queryFilter = queryFilter switch {
@@ -907,28 +908,69 @@ namespace ArcGIS.Core.Data
                 matchPolygons.GetOrAdd(polygons[i].name, ([], []));
             }
 
-            //var exteriorRings = factory.CreateGeometryCollection([.. polygons.Select(e => e.LineString)]);
-
             var options = new ParallelOptions {
                 MaxDegreeOfParallelism = 8,
             };
 
             var curvePolygons = new Dictionary<UInt64, LineString>();
 
+            var curvePolygonsToObjectId = new Dictionary<UInt64, string>();
+
             Log.Verbose("Loading...");
 
             foreach (var e in polygons) {
                 var hash = IO.Hashing.XxHash64.HashToUInt64(e.ExteriorRing.ToBinary());
                 var reverse = IO.Hashing.XxHash64.HashToUInt64(((LineString)e.ExteriorRing.Reverse()).ToBinary());
-                if (!(curvePolygons.ContainsKey(hash) || curvePolygons.ContainsKey(reverse)))
+                if (!(curvePolygons.ContainsKey(hash) || curvePolygons.ContainsKey(reverse))) {
                     curvePolygons.Add(hash, e.LineString);
+                    curvePolygonsToObjectId.Add(hash, $"e:{e.ObjectId}");
+                }
+                int index = 0;
                 foreach (var i in e.InteriorRings) {
                     hash = IO.Hashing.XxHash64.HashToUInt64(i.ToBinary());
                     reverse = IO.Hashing.XxHash64.HashToUInt64(((LineString)i.Reverse()).ToBinary());
-                    if (!(curvePolygons.ContainsKey(hash) || curvePolygons.ContainsKey(reverse)))
+                    if (!(curvePolygons.ContainsKey(hash) || curvePolygons.ContainsKey(reverse))) {
                         curvePolygons.Add(hash, i);
+                        curvePolygonsToObjectId.Add(hash, $"i{++index}{e.ObjectId}");
+                    }
                 }
             }
+
+            //  --- TEST --------------------------------------------------------------
+            {
+                //var graph = new EdgeGraphBuilder();
+                //graph.Add(curvePolygons.Values);
+
+                //var edge = graph.GetGraph();
+
+                //var boundary1 = polygons.Single(e => e.ObjectId == 159569).ExteriorRing;
+
+                //var boundary2 = polygons.Single(e => e.ObjectId == 159577).ExteriorRing;
+
+                //var intersection = boundary1.Intersection(boundary2);
+
+                //var list = new List<LineString> {
+                //    //boundary1,
+                //    //boundary2
+                //};
+
+                //intersection = intersection.Combine();
+
+                //AddLineStringsFromGeometry(intersection, list);
+
+                //var difference = boundary1.SymmetricDifference(intersection);
+
+                //AddLineStringsFromGeometry(difference, list);
+
+                //using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@".\..\..\..\..\..\artifacts\s100ed6.gdb")}")))) {
+                //    ulong id = 0;
+                //    target.PersistTopology(list.Select(e => new CurveFeature(e) { Id = id++ }).ToArray());
+                //}
+
+                //throw new NotImplementedException();
+            }
+
+
 
             Log.Verbose("Intersection...");
 
@@ -937,13 +979,19 @@ namespace ArcGIS.Core.Data
             //};
 
             Parallel.For(0, polygons.Length, options, (i) => {
+                //if (polygons[i].ObjectId != 160361) return;
+                //if (polygons[i].ObjectId == 160361) System.Diagnostics.Debugger.Break();
+
                 {
-                    var boundary1 = polygons[i].ExteriorRing;
+                    IGeometry boundary1 = polygons[i].ExteriorRing;
 
-                    var hash = IO.Hashing.XxHash64.HashToUInt64(boundary1.ToBinary());
+                    var geometries = new List<LineString>();
 
-                    foreach (var e in curvePolygons.Where(e => e.Key != hash)) {
-                        var boundary2 = e.Value;
+                    for (var j = 0; j < polygons.Length; j++) {
+                        if (j == i) continue;
+
+                        var boundary2 = polygons[j].ExteriorRing;
+
                         if (boundary1.Disjoint(boundary2))
                             continue;
 
@@ -953,43 +1001,57 @@ namespace ArcGIS.Core.Data
                         var crosses = boundary1.Crosses(boundary2);
                         var intersects = boundary1.Intersects(boundary2);
                         var overlaps = boundary1.Overlaps(boundary2);
-                        var touches = boundary1.Touches(boundary2);
-                        var within = boundary1.Within(boundary2);
+                        //var touches = boundary1.Touches(boundary2);
+                        //var within = boundary1.Within(boundary2);
+                        //var equalsTopologically = boundary1.EqualsTopologically(boundary2);
+                        //var relate = boundary1.Relate(boundary2, "1********");
+
+                        //if (!(contains || equalsTopologically || overlaps))
+                        //    continue;
 
                         if ((crosses && intersects) && !(contains | overlaps | coveredby))
                             continue;
 
                         var intersection = boundary1.Intersection(boundary2);
 
+                        if (intersection is GeometryCollection geometryCollection) {
+                            intersection = intersection.Factory.CreateMultiLineString(geometryCollection.OfType<LineString>().ToArray());
+                        }
+
                         if (intersection == null || intersection.IsEmpty) continue;
 
+                        intersection = intersection.Combine();
+
                         AddLineStringsFromGeometry(intersection, matchPolygons[polygons[i].name].exterior);
+
+                        boundary1 = boundary1.SymmetricDifference(intersection);
                     }
 
                     var g = factory.CreateMultiLineString(matchPolygons[polygons[i].name].exterior.ToArray());
 
-                    var diff = boundary1.Difference(g);
-
-                    AddLineStringsFromGeometry(diff, matchPolygons[polygons[i].name].exterior);
+                    var diff = boundary1.SymmetricDifference(g);
+                    if (!(diff == null || diff.IsEmpty))
+                        AddLineStringsFromGeometry(diff, matchPolygons[polygons[i].name].exterior);
                 }
 
                 if (polygons[i].InteriorRings.Any()) {
-                    //var exteriorRing = polygons[i].ExteriorRing;
-
                     var indexOf = polygons[i].name;
 
                     matchPolygons[polygons[i].name] = matchPolygons[polygons[i].name] with {
                         interior = new List<LineString>[polygons[i].InteriorRings.Length],
                     };
 
-                    for (int k = 0; k < polygons[i].InteriorRings.Length; k++) {
-                        var boundary = (LineString)polygons[i].InteriorRings[k].Reverse();
+                    UInt64[] exclude = [IO.Hashing.XxHash64.HashToUInt64(polygons[i].ExteriorRing.ToBinary())];
+                    exclude = [.. exclude, .. polygons[i].InteriorRings.Select(e => IO.Hashing.XxHash64.HashToUInt64(e.ToBinary()))];
 
-                        var hash = IO.Hashing.XxHash64.HashToUInt64(boundary.ToBinary());
+                    for (int k = 0; k < polygons[i].InteriorRings.Length; k++) {
+                        IGeometry boundary = (LineString)polygons[i].InteriorRings[k];//.Reverse();
+
+                        //var hash = IO.Hashing.XxHash64.HashToUInt64(((LineString)polygons[i].InteriorRings[k]).ToBinary());
 
                         var interiorLineStrings = new List<LineString>();
 
-                        foreach (var e in curvePolygons.Where(e => e.Key != hash)) {
+                        foreach (var e in curvePolygons.Where(e => !exclude.Contains(e.Key))) {
                             var boundary2 = e.Value;
 
                             if (boundary.Disjoint(boundary2))
@@ -1001,26 +1063,35 @@ namespace ArcGIS.Core.Data
                             var crosses = boundary.Crosses(boundary2);
                             var intersects = boundary.Intersects(boundary2);
                             var overlaps = boundary.Overlaps(boundary2);
-                            var touches = boundary.Touches(boundary2);
-                            var within = boundary.Within(boundary2);
+                            //var touches = boundary.Touches(boundary2);
+                            //var within = boundary.Within(boundary2);
 
                             if ((crosses && intersects) && !(contains | overlaps | coveredby))
                                 continue;
 
                             var intersection = boundary.Intersection(boundary2);
 
+                            if (intersection is GeometryCollection geometryCollection) {
+                                intersection = intersection.Factory.CreateMultiLineString(geometryCollection.OfType<LineString>().ToArray());
+                            }
+
                             if (intersection == null || intersection.IsEmpty) continue;
 
+                            intersection = intersection.Combine();
+
                             AddLineStringsFromGeometry(intersection, interiorLineStrings);
+
+                            boundary = boundary.SymmetricDifference(intersection);
                         }
                         if (!interiorLineStrings.Any())
-                            interiorLineStrings.Add(boundary);
+                            interiorLineStrings.Add((LineString)polygons[i].InteriorRings[k]);
                         else {
                             var g = factory.CreateMultiLineString(interiorLineStrings.ToArray());
 
-                            var diff = boundary.Difference(g);
+                            var diff = boundary.SymmetricDifference(g);
 
-                            AddLineStringsFromGeometry(diff, interiorLineStrings);
+                            if (!(diff == null || diff.IsEmpty))
+                                AddLineStringsFromGeometry(diff, interiorLineStrings);
                         }
                         matchPolygons[polygons[i].name].interior[k] = interiorLineStrings;
                     }
@@ -1034,16 +1105,16 @@ namespace ArcGIS.Core.Data
             Parallel.For(0, polylines.Length, options, (i) => {
                 var m = matchPolylines[polylines[i].name];
 
-                var boundary1 = polylines[i].LineString;
+                IGeometry boundary1 = polylines[i].LineString;
 
-                var hash = IO.Hashing.XxHash3.HashToUInt64(boundary1.ToBinary());
+                var hash = IO.Hashing.XxHash3.HashToUInt64(polylines[i].LineString.ToBinary());
 
                 foreach (var e in curvePolygons.Where(e => e.Key != hash)) {
                     var boundary2 = e.Value;
                     if (boundary1.Disjoint(boundary2))
                         continue;
-                    if (boundary1.Equals(boundary2))
-                        continue;
+                    //if (boundary1.Equals(boundary2))
+                    //    continue;
 
                     var contains = boundary1.Contains(boundary2);
                     var coveredby = boundary1.CoveredBy(boundary2);
@@ -1051,8 +1122,8 @@ namespace ArcGIS.Core.Data
                     var crosses = boundary1.Crosses(boundary2);
                     var intersects = boundary1.Intersects(boundary2);
                     var overlaps = boundary1.Overlaps(boundary2);
-                    var touches = boundary1.Touches(boundary2);
-                    var within = boundary1.Within(boundary2);
+                    //var touches = boundary1.Touches(boundary2);
+                    //var within = boundary1.Within(boundary2);
 
                     if ((crosses && intersects) && !(contains | overlaps | coveredby))
                         continue;
@@ -1061,38 +1132,27 @@ namespace ArcGIS.Core.Data
 
                     var intersection = boundary1.Intersection(boundary2);
 
+                    if (intersection is GeometryCollection geometryCollection) {
+                        intersection = intersection.Factory.CreateMultiLineString(geometryCollection.OfType<LineString>().ToArray());
+                    }
+
                     if (intersection == null || intersection.IsEmpty) continue;
 
+                    intersection = intersection.Combine();
+
                     AddLineStringsFromGeometry(intersection, m);
+
+                    boundary1 = boundary1.SymmetricDifference(intersection);
                 }
                 if (!m.Any()) {
-                    m.Add(boundary1);
+                    m.Add(polylines[i].LineString);
                 }
                 else {
-                    //if (polylines[i].ObjectId == 154302) {
-                    //    using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@".\..\..\..\..\..\artifacts\s100ed6.gdb")}")))) {
-                    //        ulong id = 0;
-                    //        target.PersistTopology(m.Select(e => new CurveFeature(e) { Id = id++ }).ToArray());
-                    //    }
-                    //}
-
-                    //var distinct = m.GroupBy(e => IO.Hashing.XxHash64.HashToUInt64(e.ToBinary()));
-
-                    //if (distinct.Count() != m.Count)
-                    //    System.Diagnostics.Debugger.Break();
-
-                    //if (polylines[i].ObjectId == 153278) System.Diagnostics.Debugger.Break();
                     var g = factory.CreateMultiLineString(m.ToArray());
 
-                    var diff = boundary1.Difference(g);
-                    AddLineStringsFromGeometry(diff, m);
-
-                    //if (polylines[i].ObjectId == 154302) {
-                    //    using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@".\..\..\..\..\..\artifacts\s100ed6.gdb")}")))) {
-                    //        ulong id = 0;
-                    //        target.PersistTopology(m.Select(e => new CurveFeature(e) { Id = id++ }).ToArray());
-                    //    }
-                    //}
+                    var diff = boundary1.SymmetricDifference(g);
+                    if (!(diff == null || diff.IsEmpty))
+                        AddLineStringsFromGeometry(diff, m);
                 }
             });
 
@@ -1228,9 +1288,8 @@ namespace ArcGIS.Core.Data
             var bagCompositeCurves = new ConcurrentDictionary<string, CompositeCurveFeature>();
             var bagSurfaces = new ConcurrentBag<SurfaceFeature>();
 
-            Parallel.ForEach(matchPolygons, options, (m) => {
-                //if (m.Key.Equals("S238034")) System.Diagnostics.Debugger.Break();
 
+            Parallel.ForEach(matchPolygons, options, (m) => {
                 var origin = polygons.Single(e => e.name == m.Key);
 
                 FeatureRef exteriorId;
@@ -1447,19 +1506,17 @@ namespace ArcGIS.Core.Data
             }
         }
 
-
-
         private static void AddLineStringsFromGeometry(IGeometry geometry, List<LineString> targetList) {
             if (geometry is LineString line) {
                 if (!line.IsEmpty) {
-                    if (!targetList.Contains(line))
+                    if (!targetList.Any(e => e.EqualsTopologically(line)))
                         targetList.Add(line);
                 }
             }
             else if (geometry is MultiLineString multiLine) {
                 foreach (var subLine in multiLine.Geometries.OfType<LineString>()) {
                     if (!subLine.IsEmpty) {
-                        if (!targetList.Contains(subLine))
+                        if (!targetList.Any(e => e.EqualsTopologically(subLine)))
                             targetList.Add(subLine);
                     }
                 }
@@ -1473,7 +1530,6 @@ namespace ArcGIS.Core.Data
             // We primarily care about LineString results for shared *edges*.
             // Point/MultiPoint intersections mean polygons touch only at vertices.
         }
-
     }
 }
 
