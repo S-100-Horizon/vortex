@@ -314,6 +314,8 @@ namespace S100Framework.Applications.Singletons
         private static Dictionary<Guid, IList<PltsSlave>> _srcObjectToSlaves = new Dictionary<Guid, IList<PltsSlave>>();
         private static Dictionary<string, PLTS_Master_Slaves> _pltsMasterSlaves = new Dictionary<string, PLTS_Master_Slaves>();
 
+        private static Dictionary<(string, string),Relation> _createdRelations = new Dictionary<(string, string),Relation>();
+
         private static bool _isInitialized = false;
 
         private FeatureRelations() {
@@ -465,78 +467,78 @@ namespace S100Framework.Applications.Singletons
             return result != null;
         }
 
-        private static void LoadPltsFrels(Geodatabase source) {
-            var pltsFrel = source.OpenDataset<Table>(source.GetName("PLTS_Frel"));
-            var frelSourceFeatureClasses = new Dictionary<string, IList<PLTS_Frel>>();
+        //private static void LoadPltsFrels(Geodatabase source) {
+        //    var pltsFrel = source.OpenDataset<Table>(source.GetName("PLTS_Frel"));
+        //    var frelSourceFeatureClasses = new Dictionary<string, IList<PLTS_Frel>>();
 
-            var cursor = pltsFrel.Search(null, true);
-            Guid uid;
+        //    var cursor = pltsFrel.Search(null, true);
+        //    Guid uid;
 
-            while (cursor.MoveNext()) {
-                var plts_frel = new PLTS_Frel(cursor.Current);
+        //    while (cursor.MoveNext()) {
+        //        var plts_frel = new PLTS_Frel(cursor.Current);
 
-                var relationshipIndicator = plts_frel.RIND switch {
-                    1 => "Master",
-                    2 => "Slave",
-                    3 => "Peer",
-                    999 => "Rep",
-                    _ => throw new NotImplementedException()
-                };
+        //        var relationshipIndicator = plts_frel.RIND switch {
+        //            1 => "Master",
+        //            2 => "Slave",
+        //            3 => "Peer",
+        //            999 => "Rep",
+        //            _ => throw new NotImplementedException()
+        //        };
 
-                Guid srcUid;
+        //        Guid srcUid;
 
-                if (relationshipIndicator == "Peer") {
-                    if (plts_frel?.SRC_FC?.ToLower() == "plts_collections") {
-                        Guid.TryParse(Convert.ToString(plts_frel.SRC_UID), out srcUid);
-                        _pltsCollections[srcUid].AddRelated(plts_frel);
-                    }
-                    else {
-                        throw new DataException("PLTS frel where relationship indicator is Peer and source feature class is plts_collections is not allowed ");
-                    }
-                }
-                else if (relationshipIndicator == "Master") {
-                    // source: equipment - destination: structure (??)
-                    throw new NotImplementedException("Master plts relationships");
+        //        if (relationshipIndicator == "Peer") {
+        //            if (plts_frel?.SRC_FC?.ToLower() == "plts_collections") {
+        //                Guid.TryParse(Convert.ToString(plts_frel.SRC_UID), out srcUid);
+        //                _pltsCollections[srcUid].AddRelated(plts_frel);
+        //            }
+        //            else {
+        //                throw new DataException("PLTS frel where relationship indicator is Peer and source feature class is plts_collections is not allowed ");
+        //            }
+        //        }
+        //        else if (relationshipIndicator == "Master") {
+        //            // source: equipment - destination: structure (??)
+        //            throw new NotImplementedException("Master plts relationships");
 
-                }
-                else if (relationshipIndicator == "Slave") {
-                    // source: structure - destination: equipment
-                    Guid.TryParse(Convert.ToString(plts_frel.SRC_UID), out uid);
-                    if (!_srcObjectToSlaves.ContainsKey(uid)) {
-                        _srcObjectToSlaves[uid] = new List<PltsSlave>() { new(plts_frel) };
-                    }
-                    else {
-                        var pltsSlave = new PltsSlave(plts_frel);
+        //        }
+        //        else if (relationshipIndicator == "Slave") {
+        //            // source: structure - destination: equipment
+        //            Guid.TryParse(Convert.ToString(plts_frel.SRC_UID), out uid);
+        //            if (!_srcObjectToSlaves.ContainsKey(uid)) {
+        //                _srcObjectToSlaves[uid] = new List<PltsSlave>() { new(plts_frel) };
+        //            }
+        //            else {
+        //                var pltsSlave = new PltsSlave(plts_frel);
 
-                        //pltsSlave.Fetch(_source, Direction.Destination);
-                        _srcObjectToSlaves[uid].Add(pltsSlave);
-                    }
-                }
-                else if (relationshipIndicator == "Rep") {
-                    throw new NotImplementedException("PLTS feature relations RelationshipIndicator = Rep");
-                }
-            }
+        //                //pltsSlave.Fetch(_source, Direction.Destination);
+        //                _srcObjectToSlaves[uid].Add(pltsSlave);
+        //            }
+        //        }
+        //        else if (relationshipIndicator == "Rep") {
+        //            throw new NotImplementedException("PLTS feature relations RelationshipIndicator = Rep");
+        //        }
+        //    }
 
-            foreach (var item in _srcObjectToSlaves) {
-                foreach (var frel in item.Value) {
+        //    foreach (var item in _srcObjectToSlaves) {
+        //        foreach (var frel in item.Value) {
 
-                    var key = frel?.PLTS_Frel?.SRC_FC?.ToLower();
-                    if (key != null) {
-                        if (frelSourceFeatureClasses.ContainsKey(key)) {
-                            if (frel != null) {
-                                frelSourceFeatureClasses[key].Add(frel.PLTS_Frel);
-                            }
-                        }
-                        else {
-                            if (frel != null) {
-                                frelSourceFeatureClasses[key] = new List<PLTS_Frel>() { frel.PLTS_Frel };
-                            }
-                        }
-                    }
-                }
-            }
+        //            var key = frel?.PLTS_Frel?.SRC_FC?.ToLower();
+        //            if (key != null) {
+        //                if (frelSourceFeatureClasses.ContainsKey(key)) {
+        //                    if (frel != null) {
+        //                        frelSourceFeatureClasses[key].Add(frel.PLTS_Frel);
+        //                    }
+        //                }
+        //                else {
+        //                    if (frel != null) {
+        //                        frelSourceFeatureClasses[key] = new List<PLTS_Frel>() { frel.PLTS_Frel };
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
 
-        }
+        //}
 
         private static void LoadPltsFrels2(Geodatabase source) {
             using var pltsFrel = source.OpenDataset<Table>(source.GetName("PLTS_Frel"));
@@ -744,7 +746,7 @@ namespace S100Framework.Applications.Singletons
             if (relation.Slave == null) {
                 throw new ArgumentNullException("relation slave");
             }
-
+            
             Type TPrimary = relation.Master.S101Type;
             Type TForeign = relation.Slave.S101Type;
 
@@ -754,6 +756,9 @@ namespace S100Framework.Applications.Singletons
             string featureAssociationName;
             featureBindingDefinition? bindingDefinitionForeign;
             featureBindingDefinition? bindingDefinitionPrimary;
+
+            
+
             {
                 // Create the association
                 bindingDefinitionForeign = featureBindingsPrimary?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TForeign?.Name));
@@ -772,6 +777,7 @@ namespace S100Framework.Applications.Singletons
                 featureAssociationBuffer["code"] = bindingDefinitionForeign.association;
                 var association = featureAssociation.CreateRow(featureAssociationBuffer);
                 featureAssociationName = (string)association["name"];
+                
             }
             {
                 // Create primary end
@@ -788,7 +794,7 @@ namespace S100Framework.Applications.Singletons
                 associationBindingBuffer["role"] = bindingDefinitionPrimary.role;
                 associationBindingBuffer["type"] = "FeatureBinding";
                 var association = associationBinding.CreateRow(associationBindingBuffer);
-
+                //_createdRelations.Add((relation?.Master?.Name, relation?.Slave?.Name), relation);
             }
             {
                 // Create foreign end
@@ -805,6 +811,8 @@ namespace S100Framework.Applications.Singletons
                 associationBindingBuffer["role"] = bindingDefinitionForeign.role;
                 associationBindingBuffer["type"] = "FeatureBinding";
                 var association = associationBinding.CreateRow(associationBindingBuffer);
+                //_createdRelations.Add((relation?.Slave?.Name, relation?.Master?.Name), relation);
+
             }
         }
 
@@ -819,6 +827,12 @@ namespace S100Framework.Applications.Singletons
             //using var featureAssociationInsert = featureAssociation.CreateInsertCursor();
             using var associationBindingBuffer = associationBinding.CreateRowBuffer();
             //using var associationBindingInsert = associationBinding.CreateInsertCursor();
+
+            var duplicates = _relations
+                .GroupBy(p => new { p = p.Master.Name, s = p.Slave.Name})
+                .Where(g => g.Count() > 1)
+                .SelectMany(g => g)
+                .ToList();
 
             foreach (var relation in _relations) {
                 if (relation == null) {

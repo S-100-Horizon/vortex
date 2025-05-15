@@ -397,7 +397,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
                             if (current.WATLEV.HasValue) {
