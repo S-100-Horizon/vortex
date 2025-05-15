@@ -1,7 +1,5 @@
-﻿using ArcGIS.Core.Internal.CIM;
-using JsonFlatten;
+﻿using JsonFlatten;
 using Newtonsoft.Json.Linq;
-using S100Framework.Catalogues;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using System.Collections;
 using System.Text;
@@ -35,7 +33,7 @@ namespace TestS100Framework
                     S100Framework.DomainModel.S101.colour.White,
                 },
                 featureName = new List<S100Framework.DomainModel.S101.ComplexAttributes.featureName> {
-                    new S100Framework.DomainModel.S101.ComplexAttributes.featureName {
+                    new() {
                         language = "eng",
                         name = "Light E",
                     },
@@ -95,11 +93,11 @@ namespace TestS100Framework
             };
 
             var c1201 = new S100Framework.YAML.Curve(p1101, new S100Framework.YAML.Coordinate[]{
-                        new S100Framework.YAML.Coordinate(-32.1333332,62.5),
-                        new S100Framework.YAML.Coordinate(-31.9666666,62.5),
-                        new S100Framework.YAML.Coordinate(-31.9666666,62.6666666),
-                        new S100Framework.YAML.Coordinate(-32.1333332,62.6666666),
-                        new S100Framework.YAML.Coordinate(-32.1333332,62.5),
+                        new(-32.1333332,62.5),
+                        new(-31.9666666,62.5),
+                        new(-31.9666666,62.6666666),
+                        new(-32.1333332,62.6666666),
+                        new(-32.1333332,62.5),
                     }) {
                 Name = "C1201",
             };
@@ -188,7 +186,7 @@ namespace TestS100Framework
                     S100Framework.DomainModel.S101.colour.White,
                 },
                 featureName = new List<S100Framework.DomainModel.S101.ComplexAttributes.featureName> {
-                    new S100Framework.DomainModel.S101.ComplexAttributes.featureName {
+                    new() {
                         language = "eng",
                         name = "Light E",
                     },
@@ -256,7 +254,7 @@ namespace TestS100Framework
                     },
                     exhibitionConditionOfLight = S100Framework.DomainModel.S101.exhibitionConditionOfLight.LightShownWithoutChangeOfCharacter,
                     featureName = new List<S100Framework.DomainModel.S101.ComplexAttributes.featureName> {
-                        new S100Framework.DomainModel.S101.ComplexAttributes.featureName {
+                        new() {
                             language = "eng",
                             name = "Light E",
                         },
@@ -348,7 +346,7 @@ namespace TestS100Framework
             var foid = "110:874953:1";
 
             var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{name}", true) ?? default;
-            
+
 
             var instance = System.Text.Json.JsonSerializer.Deserialize(json!, type!);
 
@@ -387,7 +385,7 @@ namespace TestS100Framework
                         S100Framework.DomainModel.S101.colour.White,
                     },
                     featureName = new List<S100Framework.DomainModel.S101.ComplexAttributes.featureName> {
-                        new S100Framework.DomainModel.S101.ComplexAttributes.featureName {
+                        new() {
                             language = "eng",
                             name = "Light E",
                         },
@@ -432,7 +430,7 @@ namespace TestS100Framework
                     S100Framework.DomainModel.S101.colour.White,
                 },
                     featureName = new List<S100Framework.DomainModel.S101.ComplexAttributes.featureName> {
-                    new S100Framework.DomainModel.S101.ComplexAttributes.featureName {
+                    new() {
                         language = "eng",
                         name = "Light E",
                     },

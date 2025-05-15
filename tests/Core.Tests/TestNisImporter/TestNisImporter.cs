@@ -3,18 +3,20 @@ using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using ArcGIS.Core.Internal.Geometry;
 using S100Framework.Applications;
+using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101.FeatureTypes;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
-using S100Framework.Applications.Singletons;
 using Xunit.Abstractions;
 using IO = System.IO;
-using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace TestNisImporter
 {
-    public class TestNisImporter {
-        internal struct Sequence {
+    public class TestNisImporter
+    {
+        internal struct Sequence
+        {
             public decimal Duration { get; set; }
             public int Status { get; set; }
 
@@ -61,19 +63,19 @@ namespace TestNisImporter
         public void TestScaleMinimum() {
             ImporterNIS._scaminFilesPath = @"G:\indigo\Configuration";
             {
-                var val1 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84),"DMPGRD_DumpingGround", 22000);
+                var val1 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "DMPGRD_DumpingGround", 22000);
                 Assert.True(val1.HasValue);
                 Assert.True(val1.Value == 89999, "Wrong scamin");
-                
+
                 var val2 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "DMPGRD_DumpingGroundXX", 22000);
                 Assert.False(val2.HasValue);
             }
             {
-                var val1 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "FLODOC_FloatingDock", 22000); 
+                var val1 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "FLODOC_FloatingDock", 22000);
                 Assert.False(val1.HasValue);
                 Assert.True(val1.GetValueOrDefault() == 44999, "Wrong scamin");
 
-                var val2 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "FLODOC_FloatingDock", 22000); 
+                var val2 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "FLODOC_FloatingDock", 22000);
                 Assert.False(val2.HasValue);
                 Assert.True(val2.GetValueOrDefault() == 44999, "Wrong scamin");
 
@@ -290,7 +292,7 @@ namespace TestNisImporter
             var prefix = "NIS.";
 
             string filePath = IO.Path.GetFullPath(IO.Path.Combine(@".\..\..\..\..\..\..\src\Application\VortexLoader\S-57.esri\status.txt"));
-            
+
             StringBuilder content = new StringBuilder();
 
             List<Dataset> datasets = new List<Dataset>();
@@ -333,7 +335,7 @@ namespace TestNisImporter
 
                             foreach (var fieldName in fieldHasData.Keys) {
                                 if (DBNull.Value != current[fieldName]) {
-                                    fieldHasData[fieldName] = true; 
+                                    fieldHasData[fieldName] = true;
                                 }
                             }
 
@@ -342,7 +344,8 @@ namespace TestNisImporter
                                 int subtype = Convert.ToInt32(subtypeValue);
                                 if (subtypeCount.ContainsKey(subtype)) {
                                     subtypeCount[subtype] += 1;
-                                } else {
+                                }
+                                else {
                                     subtypeCount[subtype] = 1;
                                 }
                             }
@@ -379,7 +382,7 @@ namespace TestNisImporter
 
             var relations = new HashSet<Relation>();
 
-            Assert.True (relation1.Equals(relation2));
+            Assert.True(relation1.Equals(relation2));
 
         }
 
@@ -547,7 +550,7 @@ namespace TestNisImporter
                         fields.AppendLine($"\t\t[Description(\"{fieldInfo.Alias}\")]");
                         fields.AppendLine($"\t\t{fieldInfo.Type} {field.Name.ToUpper()} = {fieldInfo.DefaultValue};");
 
-                        
+
 
                         if (dataset is FeatureClass) {
                             if (field.Name.ToUpper() == "VALIDATIONSTATUS") {
