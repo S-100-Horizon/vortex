@@ -177,6 +177,8 @@ namespace S100Framework.Applications
                             }
                             else if (current.CATBRG != default && current.CATBRG == "-32767") {
                                 instance.bridgeConstruction = bridgeConstruction.Unknown;
+                                instance.openingBridge = false;
+                                Logger.Current.DataError(objectid, tableName, longname, $"CATBRG is unknown hence OpeningBridge unknown - OpeningBridge set to false");
                             }
 
                             if (current.NATCON != default) {
@@ -224,7 +226,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
                             if (current.SORDAT != default) {

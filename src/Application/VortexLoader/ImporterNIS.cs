@@ -111,6 +111,7 @@ namespace S100Framework.Applications
             _converterRegistry.Register<PortsAndServicesP, LightSectored>(Converters.CreateLightSectored);
             _converterRegistry.Register<PortsAndServicesP, SignalStationWarning>(Converters.CreateSignalStationWarning);
             _converterRegistry.Register<AidsToNavigationP, FogSignal>(Converters.CreateFogSignal);
+            _converterRegistry.Register<AidsToNavigationP, RadarStation>(Converters.CreateRadarStation);
 
             using (Geodatabase source = createGeodatabase()) {
                 Store(() => {
@@ -137,7 +138,6 @@ namespace S100Framework.Applications
                     featureAssociation.DeleteRows(query);
                     informationAssociation.DeleteRows(query);
                     informationtype.DeleteRows(query);
-
                 });
 
                 Subtypes.Initialize(source);

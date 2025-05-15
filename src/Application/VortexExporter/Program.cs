@@ -248,16 +248,16 @@ namespace S100Framework.Applications
                     using var cursor = fc.Search(filter, true);
                     while (cursor.MoveNext()) {
                         var current = (ArcGIS.Core.Data.Feature)cursor.Current;
-                        var geometry = Convert.ToString(current["name"]);
+                        var name = Convert.ToString(current["name"])!;
 
-                        if (topology.Mapping.TryGetValue(geometry!, out var value))
-                            geometry = value;
+                        if (topology.Mapping.TryGetValue(name!, out var value))
+                            name = value;
 
                         var shapetype = def.GetShapeType();
 
-                        var name = Convert.ToString(current["code"]);
+                        var code = Convert.ToString(current["code"]);
 
-                        var foid = $"110:{geometry!.Substring(1)}:1";       // Geodatastyrelsen: 110 
+                        var foid = $"110:{name[1..]}:1";       // Geodatastyrelsen: 110 
 
                         var prim = shapetype switch {
                             GeometryType.Point => Primitive.Point,
@@ -268,18 +268,20 @@ namespace S100Framework.Applications
                         };
 
                         try {
-                            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{name}", true) ?? default;
+                            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true) ?? default;
 
-                            if (type == default)
+                            if (type == default) {
+                                Log.Error("Could not get type: {type} for feature: {name}", code, name);
                                 continue;
+                            }
 
                             var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
 
                             var feature = new YAML.Feature {
-                                Name = name,
+                                Name = code,
                                 Foid = foid,
                                 Prim = prim,
-                                Geometry = geometry,
+                                Geometry = name,
                             };
 
                             // Only emit attributes if feature contains any non-static properties
@@ -287,7 +289,7 @@ namespace S100Framework.Applications
                                 feature.Attributes = (FeatureNode)instance!;
 
                             // FeatureAssociations
-                            var hasAssociations = featureAssociations.TryGetValue(geometry, out var associations);
+                            var hasAssociations = featureAssociations.TryGetValue(name, out var associations);
 
                             if (hasAssociations) {
                                 foreach (var asso in associations!) {
@@ -297,7 +299,7 @@ namespace S100Framework.Applications
 
                             dataset.AddFeature(feature);
 
-                            geometries.Add(new(current.GetShape(), geometry!));
+                            geometries.Add(new(current.GetShape(), name!));
                         }
                         catch (Exception ex) {
                             Log.Information(ex.Message);

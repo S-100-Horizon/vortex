@@ -432,7 +432,7 @@ namespace S100Framework.Applications
                             // TODO: MaximumPermitedDraught - not converted no inform info in GST
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
                             if (current.STATUS != default) {
@@ -645,7 +645,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
                             if (current.SORDAT != default) {
@@ -783,7 +783,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.CONRAD.HasValue) {
-                                    instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                    instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                                 }
 
                                 if (current.SORDAT != default) {
@@ -968,7 +968,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.CONRAD.HasValue) {
-                                    instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                    instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                                 }
 
 
@@ -1059,7 +1059,7 @@ namespace S100Framework.Applications
                                 // TODO: interoperabilityIdentifier
 
                                 if (current.CONRAD.HasValue) {
-                                    instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                    instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                                 }
 
                                 if (current.SORDAT != default) {
@@ -1275,7 +1275,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
                             if (current.STATUS != default) {
