@@ -2,7 +2,6 @@
 
 using ActiproSoftware.Windows.Extensions;
 using ArcGIS.Core.Data;
-using ArcGIS.Core.Data.DDL;
 using ArcGIS.Core.Events;
 using ArcGIS.Desktop.Core;
 using ArcGIS.Desktop.Editing;
@@ -17,7 +16,6 @@ using S100Framework.WPF.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
@@ -26,7 +24,6 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Xml.Linq;
 using IO = System.IO;
@@ -565,12 +562,13 @@ namespace VortexProAppModule
                         _ => throw new NotImplementedException(),
                     };
 
+                    var ps = Convert.ToString(inspector["ps"]);
+                    if (!string.IsNullOrEmpty(ps)) {
+                        return ps.ToUpperInvariant();
+                    }
 
                     if (!string.IsNullOrEmpty(tableNames.Item2)) {
-                        var catalogue = _catalogues.SingleOrDefault(e => e.Equals(tableNames.Item2, StringComparison.InvariantCultureIgnoreCase) || e.Replace("-", string.Empty).Equals(tableNames.Item2, StringComparison.InvariantCultureIgnoreCase));
-
-                        return catalogue;
-
+                        return _catalogues.SingleOrDefault(e => e.Equals(tableNames.Item2, StringComparison.InvariantCultureIgnoreCase) || e.Replace("-", string.Empty).Equals(tableNames.Item2, StringComparison.InvariantCultureIgnoreCase));
                     }
 
                     return geodatabase.GetConnector() switch {

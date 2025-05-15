@@ -16,7 +16,7 @@ namespace S100Framework.DomainModel.S128 {
 		public static string[] InformationAssociationTypes => ["CarriageRequirement","DistributionDetails","DistributorContact","PriceOfElement","PriceOfNauticalProduct","ProducerContact","ProductionDetails","ProductPackage"];
 		public static string[] FeatureAssociationTypes => ["ProductMapping","Correlated"];
 		public static string[] InformationTypes => ["CatalogueSectionHeader","ContactDetails","IndicationOfCarriageRequirement","PriceInformation","ProducerInformation","DistributorInformation"];
-		public static string[] FeatureTypes => ["CatalogueElement","NavigationalProduct","ElectronicProduct","PhysicalProduct","S100Service"];
+		public static string[] FeatureTypes => ["ElectronicProduct","PhysicalProduct","S100Service"];
 		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
 			Primitives.surface => ["CatalogueElement","NavigationalProduct","ElectronicProduct","PhysicalProduct","S100Service"],
 			_ => throw new InvalidOperationException(),

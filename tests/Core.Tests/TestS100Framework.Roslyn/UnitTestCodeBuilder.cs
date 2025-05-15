@@ -172,7 +172,7 @@ namespace TestS100Framework
                 var type1 = typeof(Test.NullableTest);
                 var type2 = typeof(bool?);
 
-                var s100 = XDocument.Load(@".\Artifacts\S-128_FC_Ed2.0.0.xml");
+                var s100 = XDocument.Load(@".\Artifacts\S-128_FC.xml");
 
                 Assert.True(VerifyProductSpecification(s100));
 

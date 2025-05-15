@@ -63,15 +63,15 @@ namespace S100Framework.Applications
                 names = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
                 builderDomainModel.AppendLine($"\t\tpublic static string[] FeatureAssociationTypes => [{string.Join(',', names.Select(e => $"\"{e}\""))}];");
 
-                names = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
+                names = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.InvariantCultureIgnoreCase)).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
                 builderDomainModel.AppendLine($"\t\tpublic static string[] InformationTypes => [{string.Join(',', names.Select(e => $"\"{e}\""))}];");
 
-                names = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
+                names = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.InvariantCultureIgnoreCase)).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
                 builderDomainModel.AppendLine($"\t\tpublic static string[] FeatureTypes => [{string.Join(',', names.Select(e => $"\"{e}\""))}];");
 
                 builderDomainModel.AppendLine("\t\tpublic static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {");
                 var primitives = productSpecification.XPathSelectElements("//S100FC:permittedPrimitives", xmlNamespaceManager);
-                foreach(var p in primitives.GroupBy(e => e.Value!)) {
+                foreach (var p in primitives.GroupBy(e => e.Value!)) {
                     var featureNames = p.Select(e => $"\"{e.Parent!.Element(XName.Get("code", scope_S100))!.Value}\"");
                     builderDomainModel.AppendLine($"\t\t\tPrimitives.{p.Key} => [{string.Join(',', featureNames)}],");
                 }
@@ -80,10 +80,10 @@ namespace S100Framework.Applications
 
                 builderDomainModel.AppendLine("\t\tpublic static Primitives[] FeaturePrimitives(string featureType) => featureType switch {");
                 var featureTypes = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager);
-                foreach(var e in featureTypes) {
+                foreach (var e in featureTypes) {
                     var code = e.Element(XName.Get("code", scope_S100))!.Value;
-                    var p = e.Elements(XName.Get("permittedPrimitives", scope_S100)).Select(e=>$"Primitives.{e.Value!}");
-                    builderDomainModel.AppendLine($"\t\t\t\"{code}\" => [{string.Join(',',p)}],");
+                    var p = e.Elements(XName.Get("permittedPrimitives", scope_S100)).Select(e => $"Primitives.{e.Value!}");
+                    builderDomainModel.AppendLine($"\t\t\t\"{code}\" => [{string.Join(',', p)}],");
                 }
                 builderDomainModel.AppendLine("\t\t\t_ or \"\" => throw new InvalidOperationException(),");
                 builderDomainModel.AppendLine("\t\t};");
@@ -1060,7 +1060,7 @@ namespace S100Framework.Applications
                     builder.AppendLine("\t\t\tpublic static Primitives[] _primitives => [");
 
                 var primitives = e.XPathSelectElements("S100FC:permittedPrimitives", xmlNamespaceManager);
-                builder.AppendLine($"\t\t\t\t{string.Join(", ", primitives.Select(e=>$"Primitives.{e.Value!}"))}");
+                builder.AppendLine($"\t\t\t\t{string.Join(", ", primitives.Select(e => $"Primitives.{e.Value!}"))}");
                 builder.AppendLine("\t\t\t];");
                 builder.AppendLine();
 
