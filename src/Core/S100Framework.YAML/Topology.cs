@@ -14,9 +14,9 @@ namespace S100Framework.YAML
 
     public abstract class FeatureType
     {
-        public static UInt64 counter = 1;
+        private static UInt64 counter = 1;
 
-        public required UInt64 Id { get; init; }
+        public UInt64 Id { get; init; } = Interlocked.Increment(ref FeatureType.counter);
     }
 
     public class CurveFeature : FeatureType
@@ -184,8 +184,10 @@ namespace S100Framework.YAML
             //    MaxDegreeOfParallelism = 1,
             //};
 
+            var filterPolygons = new List<long> { 175805, 175751 };
+
             Parallel.For(0, polygons.Length, options, (i) => {
-                //if (polygons[i].ObjectId != 160361) return;
+                //if (!filterPolygons.Contains(polygons[i].ObjectId)) return;
                 //if (polygons[i].ObjectId == 160361) System.Diagnostics.Debugger.Break();
 
                 {
@@ -271,6 +273,9 @@ namespace S100Framework.YAML
                             var overlaps = boundary.Overlaps(boundary2);
                             //var touches = boundary.Touches(boundary2);
                             //var within = boundary.Within(boundary2);
+                            var equalsTopologically = boundary.EqualsTopologically(boundary2);
+
+                            if (equalsTopologically) continue;
 
                             if ((crosses && intersects) && !(contains | overlaps | coveredby))
                                 continue;
@@ -309,9 +314,14 @@ namespace S100Framework.YAML
             //};
 
             Parallel.For(0, polylines.Length, options, (i) => {
+                //if (polylines[i].ObjectId != 169521) return;
+                //if (polylines[i].name.Equals("C974754")) System.Diagnostics.Debugger.Break();
                 var m = matchPolylines[polylines[i].name];
 
                 IGeometry boundary1 = polylines[i].LineString;
+
+                //Log.Verbose("contour:   {linestring}", boundary1.ToString());
+                //Log.Verbose("  reverse: {linestring}", boundary1.Reverse().ToString());
 
                 var hash = IO.Hashing.XxHash3.HashToUInt64(polylines[i].LineString.ToBinary());
 
@@ -330,6 +340,11 @@ namespace S100Framework.YAML
                     var overlaps = boundary1.Overlaps(boundary2);
                     //var touches = boundary1.Touches(boundary2);
                     //var within = boundary1.Within(boundary2);
+                    var equalsTopologically = boundary1.EqualsTopologically(boundary2);
+
+                    var origin = curvePolygonsToObjectId[e.Key];
+
+                    if (equalsTopologically) continue;
 
                     if ((crosses && intersects) && !(contains | overlaps | coveredby))
                         continue;
@@ -351,6 +366,8 @@ namespace S100Framework.YAML
                     boundary1 = boundary1.SymmetricDifference(intersection);
                 }
                 if (!m.Any()) {
+                    if (polylines[i].LineString.Equals("LINESTRING (12.0509449 54.9132077, 12.0509559 54.9131943, 12.0509559 54.9131943, 12.0509677 54.9131801, 12.0509677 54.9131801, 12.0512467 54.9132507, 12.0512467 54.9132507, 12.0511904 54.9131001)")) System.Diagnostics.Debugger.Break();
+
                     m.Add(polylines[i].LineString);
                 }
                 else {
@@ -376,79 +393,10 @@ namespace S100Framework.YAML
                     var origin = polygons.Single(e => e.name == m.Key);
 
                     var hash = System.IO.Hashing.XxHash3.HashToUInt64(origin.LineString.AsBinary());
-                    var f = new CurveFeature(origin.LineString) {
-                        //Id = hash,
-                        Id = Interlocked.Increment(ref FeatureType.counter),
-                    };
-                    if (!hashing.ContainsKey(hash)) {
-                        hashing.Add(hash, (new FeatureRef {
-                            Id = f.Id,
-                            Reverse = false,
-                        }, f));
 
-                        hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
-                        hashing.Add(hash, (new FeatureRef {
-                            Id = f.Id,
-                            Reverse = true,
-                        }, f));
-                    }
-                }
-                else {
-                    foreach (var l in m.Value.exterior) {
-                        var hash = System.IO.Hashing.XxHash3.HashToUInt64(l.AsBinary());
-                        var f = new CurveFeature(l) {
-                            //Id = hash,
-                            Id = Interlocked.Increment(ref FeatureType.counter),
-                        };
-                        if (!hashing.ContainsKey(hash)) {
-                            hashing.Add(hash, (new FeatureRef {
-                                Id = f.Id,
-                                Reverse = false,
-                            }, f));
+                    //if (hash == 11711010312253300681) System.Diagnostics.Debugger.Break();
 
-                            hash = System.IO.Hashing.XxHash3.HashToUInt64(l.Reverse().AsBinary());
-                            hashing.Add(hash, (new FeatureRef {
-                                Id = f.Id,
-                                Reverse = true,
-                            }, f));
-                        }
-                    }
-                }
-                if (m.Value.interior.Any()) {
-                    for (int i = 0; i < m.Value.interior.Length; i++) {
-                        foreach (var l in m.Value.interior[i]) {
-                            var hash = System.IO.Hashing.XxHash3.HashToUInt64(l.AsBinary());
-                            var f = new CurveFeature(l) {
-                                //Id = hash,
-                                Id = Interlocked.Increment(ref FeatureType.counter),
-                            };
-
-                            if (!hashing.ContainsKey(hash)) {
-                                hashing.Add(hash, (new FeatureRef {
-                                    Id = f.Id,
-                                    Reverse = false,
-                                }, f));
-
-                                hash = System.IO.Hashing.XxHash3.HashToUInt64(l.Reverse().AsBinary());
-                                hashing.Add(hash, (new FeatureRef {
-                                    Id = f.Id,
-                                    Reverse = true,
-                                }, f));
-                            }
-                        }
-                    }
-                }
-            }
-
-            foreach (var m in matchPolylines) {
-                var origin = polylines.Single(e => e.name == m.Key);
-
-                if (m.Value.Count < 2) {
-                    var hash = System.IO.Hashing.XxHash3.HashToUInt64(origin.LineString.AsBinary());
-                    var f = new CurveFeature(origin.LineString) {
-                        //Id = hash,
-                        Id = Interlocked.Increment(ref FeatureType.counter),
-                    };
+                    var f = new CurveFeature(origin.LineString);
                     if (!hashing.ContainsKey(hash)) {
                         hashing.Add(hash, (new FeatureRef {
                             Id = f.Id,
@@ -464,19 +412,81 @@ namespace S100Framework.YAML
                     }
                 }
                 else {
-                    foreach (var l in m.Value) {
-                        var hash = System.IO.Hashing.XxHash3.HashToUInt64(l.AsBinary());
-                        var f = new CurveFeature(l) {
-                            //Id = hash,
-                            Id = Interlocked.Increment(ref FeatureType.counter),
-                        };
+                    foreach (var l in m.Value.exterior) {
+                        var hash = IO.Hashing.XxHash3.HashToUInt64(l.AsBinary());
+                        var f = new CurveFeature(l);
                         if (!hashing.ContainsKey(hash)) {
                             hashing.Add(hash, (new FeatureRef {
                                 Id = f.Id,
                                 Reverse = false,
                             }, f));
                         }
-                        hash = System.IO.Hashing.XxHash3.HashToUInt64(l.Reverse().AsBinary());
+                        hash = IO.Hashing.XxHash3.HashToUInt64(l.Reverse().AsBinary());
+                        if (!hashing.ContainsKey(hash)) {
+                            hashing.Add(hash, (new FeatureRef {
+                                Id = f.Id,
+                                Reverse = true,
+                            }, f));
+                        }
+                    }
+                }
+                if (m.Value.interior.Any()) {
+                    for (int i = 0; i < m.Value.interior.Length; i++) {
+                        foreach (var l in m.Value.interior[i]) {
+                            var hash = IO.Hashing.XxHash3.HashToUInt64(l.AsBinary());
+                            var f = new CurveFeature(l);
+                            if (!hashing.ContainsKey(hash)) {
+                                hashing.Add(hash, (new FeatureRef {
+                                    Id = f.Id,
+                                    Reverse = false,
+                                }, f));
+                            }
+                            hash = IO.Hashing.XxHash3.HashToUInt64(l.Reverse().AsBinary());
+                            if (!hashing.ContainsKey(hash)) {
+                                hashing.Add(hash, (new FeatureRef {
+                                    Id = f.Id,
+                                    Reverse = true,
+                                }, f));
+                            }
+                        }
+                    }
+                }
+            }
+
+            foreach (var m in matchPolylines) {
+                var origin = polylines.Single(e => e.name == m.Key);
+
+                //if (origin.ObjectId != 169521) continue;
+
+                if (m.Value.Count < 2) {
+                    var hash = IO.Hashing.XxHash3.HashToUInt64(origin.LineString.AsBinary());
+                    var f = new CurveFeature(origin.LineString);
+                    if (!hashing.ContainsKey(hash)) {
+                        hashing.Add(hash, (new FeatureRef {
+                            Id = f.Id,
+                            Reverse = false,
+                        }, f));
+                    }
+                    hash = IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
+                    if (!hashing.ContainsKey(hash)) {
+                        hashing.Add(hash, (new FeatureRef {
+                            Id = f.Id,
+                            Reverse = true,
+                        }, f));
+                    }
+                }
+                else {
+                    foreach (var l in m.Value) {
+                        var simplified = l;
+                        var hash = IO.Hashing.XxHash3.HashToUInt64(simplified.AsBinary());
+                        var f = new CurveFeature(simplified);
+                        if (!hashing.ContainsKey(hash)) {
+                            hashing.Add(hash, (new FeatureRef {
+                                Id = f.Id,
+                                Reverse = false,
+                            }, f));
+                        }
+                        hash = IO.Hashing.XxHash3.HashToUInt64(simplified.Reverse().AsBinary());
                         if (!hashing.ContainsKey(hash)) {
                             hashing.Add(hash, (new FeatureRef {
                                 Id = f.Id,
@@ -497,6 +507,8 @@ namespace S100Framework.YAML
 
             Parallel.ForEach(matchPolygons, options, (m) => {
                 var origin = polygons.Single(e => e.name == m.Key);
+
+                //if (!filterPolygons.Contains(origin.ObjectId)) return;
 
                 FeatureRef exteriorId;
 
@@ -544,7 +556,6 @@ namespace S100Framework.YAML
                         System.Diagnostics.Debugger.Break();
 
                     var compositeExterior = new CompositeCurveFeature {
-                        Id = Interlocked.Increment(ref FeatureType.counter),
                         Curves = [.. sorted],
                     };
 
@@ -562,7 +573,6 @@ namespace S100Framework.YAML
 
                 if (!m.Value.interior.Any()) {
                     var surface = new SurfaceFeature() {
-                        Id = Interlocked.Increment(ref FeatureType.counter),
                         Ref = m.Key,
                         Exterior = exteriorId,
                     };
@@ -575,6 +585,8 @@ namespace S100Framework.YAML
                         var interiorRing = m.Value.interior[i];
 
                         if (interiorRing.Count == 1) {
+                            //Log.Verbose("interiorRing{i}: {linestring}", i, interiorRing[0].ToString());
+
                             var tuple = hashing[IO.Hashing.XxHash3.HashToUInt64(interiorRing[0].AsBinary())];
                             interiorRings[i] = tuple.fetureRef;
                             bagCurves.Add(tuple.curve);
@@ -609,7 +621,6 @@ namespace S100Framework.YAML
                                 System.Diagnostics.Debugger.Break();
 
                             var compositeExterior = new CompositeCurveFeature {
-                                Id = Interlocked.Increment(ref FeatureType.counter),
                                 Curves = [.. sorted],
                             };
 
@@ -627,7 +638,6 @@ namespace S100Framework.YAML
                     }
 
                     var surface = new SurfaceFeature() {
-                        Id = Interlocked.Increment(ref FeatureType.counter),
                         Ref = m.Key,
                         Exterior = exteriorId,
                         Interior = interiorRings,
@@ -640,6 +650,8 @@ namespace S100Framework.YAML
 
             Parallel.ForEach(matchPolylines, options, (m) => {
                 var origin = polylines.Single(e => e.name == m.Key);
+
+                //if (origin.ObjectId != 169521) return;
 
                 FeatureRef featureRef;
 
@@ -679,7 +691,6 @@ namespace S100Framework.YAML
                         System.Diagnostics.Debugger.Break();
 
                     var compositeExterior = new CompositeCurveFeature {
-                        Id = Interlocked.Increment(ref FeatureType.counter),
                         Curves = [.. sorted],
                     };
 
@@ -716,14 +727,14 @@ namespace S100Framework.YAML
             if (geometry is LineString line) {
                 if (!line.IsEmpty) {
                     if (!targetList.Any(e => e.EqualsTopologically(line)))
-                        targetList.Add(line);
+                        targetList.Add(line.RemoveRepeatedVertices());
                 }
             }
             else if (geometry is MultiLineString multiLine) {
                 foreach (var subLine in multiLine.Geometries.OfType<LineString>()) {
                     if (!subLine.IsEmpty) {
                         if (!targetList.Any(e => e.EqualsTopologically(subLine)))
-                            targetList.Add(subLine);
+                            targetList.Add(subLine.RemoveRepeatedVertices());
                     }
                 }
             }
@@ -736,6 +747,7 @@ namespace S100Framework.YAML
             // We primarily care about LineString results for shared *edges*.
             // Point/MultiPoint intersections mean polygons touch only at vertices.
         }
+
     }
 }
 
@@ -760,7 +772,9 @@ namespace GeoAPI.Geometries
                     if (next.StartPoint.EqualsTopologically(last.EndPoint))
                         coordinates = [.. coordinates, .. next.Coordinates];
                     else {
-                        geometries.Add((LineString)geometry.Factory.CreateLineString(coordinates));
+                        var linestring = (LineString)geometry.Factory.CreateLineString(coordinates);
+                        linestring = linestring.RemoveRepeatedVertices();
+                        geometries.Add(linestring);
                         coordinates = next.Coordinates.ToArray();
                     }
 
@@ -772,12 +786,28 @@ namespace GeoAPI.Geometries
                 }
                 else {
                     geometries.Add((LineString)geometry.Factory.CreateLineString(coordinates));
-
                     geometry = geometry.Factory.CreateMultiLineString(geometries.ToArray());
                 }
             }
 
             return geometry;
+        }
+
+        public static LineString RemoveRepeatedVertices(this LineString lineString) {
+            var coordinates = lineString.Coordinates.RemoveRepeatedVertices();
+            if (coordinates.Length != lineString.Count)
+                return (LineString)lineString.Factory.CreateLineString(coordinates.ToArray());
+            return lineString;
+        }
+
+        public static Coordinate[] RemoveRepeatedVertices(this Coordinate[] coordinates) {
+            var _ = new List<Coordinate> { coordinates[0] };
+
+            for (int i = 1; i < coordinates.Length; i++) {
+                if (coordinates[i - 1].Equals(coordinates[i])) continue;
+                _.Add(coordinates[i]);
+            }
+            return _.ToArray();
         }
     }
 }

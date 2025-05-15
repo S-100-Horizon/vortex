@@ -663,8 +663,8 @@ namespace ArcGIS.Core.Data
     {
         static SpatialReference spatialReference = SpatialReferenceBuilder.CreateSpatialReference(4326);
 
-        //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(10000000)); // Or PrecisionModels.Floating
-        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating)); // Or PrecisionModels.Floating
+        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(10000000)); // Or PrecisionModels.Floating
+        //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating)); // Or PrecisionModels.Floating
 
         public static S100Framework.YAML.Topology? BuildTopology(this Geodatabase geodatabase, QueryFilter? queryFilter = default) {
             queryFilter = queryFilter switch {
@@ -726,8 +726,15 @@ namespace ArcGIS.Core.Data
                     var coordinates = shape.Points.Select(segment => new Coordinate(segment.X, segment.Y)).ToArray();
 
                     var linestring = (LineString)factory.CreateLineString([.. coordinates]);
+                    linestring = linestring.RemoveRepeatedVertices();
 
                     curves.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, linestring));
+                }
+            }
+
+            foreach (var c in curves) {
+                for (int i = 0; i < c.LineString.Coordinates.Length - 1; i++) {
+                    if (c.LineString.Coordinates[i].Equals(c.LineString.Coordinates[i + 1])) System.Diagnostics.Debugger.Break();
                 }
             }
 
@@ -752,6 +759,7 @@ namespace ArcGIS.Core.Data
                     var coordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
 
                     var ex = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+                    ex = ex.RemoveRepeatedVertices();
 
                     if (shape.PartCount > 1) {
                         var interiorRings = new List<LineString>();
@@ -759,13 +767,31 @@ namespace ArcGIS.Core.Data
                         foreach (var interiorRing in shape.Parts.Skip(1)) {
                             coordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
 
-                            interiorRings.Add((LineString)factory.CreateLineString([.. coordinates, coordinates[0]]));
+                            var linestring = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+                            linestring = linestring.RemoveRepeatedVertices();
+                            interiorRings.Add(linestring);
                         }
 
                         polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, interiorRings.ToArray()));
                     }
                     else {
                         polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, []));
+                    }
+                }
+            }
+
+            foreach (var c in polygons) {
+                var coordinates = c.ExteriorRing.Coordinates;
+
+                for (int i = 0; i < coordinates.Length - 1; i++) {
+                    if (coordinates[i].Equals(coordinates[i + 1])) System.Diagnostics.Debugger.Break();
+                }
+
+                foreach (var r in c.InteriorRings) {
+                    coordinates = r.Coordinates;
+
+                    for (int i = 0; i < coordinates.Length - 1; i++) {
+                        if (coordinates[i].Equals(coordinates[i + 1])) System.Diagnostics.Debugger.Break();
                     }
                 }
             }
