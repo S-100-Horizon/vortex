@@ -562,12 +562,13 @@ namespace VortexProAppModule
                         _ => throw new NotImplementedException(),
                     };
 
+                    var ps = Convert.ToString(inspector["ps"]);
+                    if (!string.IsNullOrEmpty(ps)) {
+                        return ps.ToUpperInvariant();
+                    }
 
                     if (!string.IsNullOrEmpty(tableNames.Item2)) {
-                        var catalogue = _catalogues.SingleOrDefault(e => e.Equals(tableNames.Item2, StringComparison.InvariantCultureIgnoreCase) || e.Replace("-", string.Empty).Equals(tableNames.Item2, StringComparison.InvariantCultureIgnoreCase));
-
-                        return catalogue;
-
+                        return _catalogues.SingleOrDefault(e => e.Equals(tableNames.Item2, StringComparison.InvariantCultureIgnoreCase) || e.Replace("-", string.Empty).Equals(tableNames.Item2, StringComparison.InvariantCultureIgnoreCase));
                     }
 
                     return geodatabase.GetConnector() switch {
