@@ -158,7 +158,7 @@ namespace S100Framework.Applications
                     using var type = source.OpenDataset<Table>("associationbinding");
 
                     using var cursor = type.Search(new QueryFilter {
-                        WhereClause = "UPPER(type) = 'FEATUREBINDING' AND UPPER(roleType) = 'ASSOCIATION'"
+                        WhereClause = "UPPER(type) = 'FEATUREBINDING' AND UPPER(roleType) = 'AGGREGATION'"
                     });
 
                     while (cursor.MoveNext()) {
@@ -351,18 +351,18 @@ namespace S100Framework.YAML
         public static void AddGeometry(this Dataset dataset, ArcGIS.Core.Geometry.Geometry geometry, string name) {
             switch (geometry) {
                 case ArcGIS.Core.Geometry.MapPoint point: {                              // Point
-                        //var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Coordinate?.X == point.X && e?.Coordinate?.Y == point.Y);
-                        //// Create point if not exist
-                        //if (datasetPoint == default) {
-                        var p = new Point(point.X, point.Y) {
-                            Name = $"{name}"
-                        };
+                        var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Coordinate?.X == point.X && e?.Coordinate?.Y == point.Y);
+                        // Create point if not exist
+                        if (datasetPoint == default) {
+                            var p = new Point(point.X, point.Y) {
+                                Name = $"{name}"
+                            };
 
-                        dataset!.AddPoint(p);
-                        //}
-                        //else {
-                        //    dataset!.UpdateFeatureReferences(name, datasetPoint!.Name);
-                        //}
+                            dataset!.AddPoint(p);
+                        }
+                        else {
+                            dataset!.UpdateFeatureReferences(name, datasetPoint!.Name);
+                        }
                         break;
                     }
                 case ArcGIS.Core.Geometry.Multipoint multiPoint: {   // Depths
