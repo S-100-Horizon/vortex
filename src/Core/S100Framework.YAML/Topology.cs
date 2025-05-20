@@ -1,5 +1,6 @@
 ﻿using GeoAPI.Geometries;
 using NetTopologySuite.Geometries;
+using NetTopologySuite.Operation.Union;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using IO = System.IO;
@@ -105,13 +106,13 @@ namespace S100Framework.YAML
             var matchPolylines = new ConcurrentDictionary<string, List<LineString>>();
 
             for (int i = 0; i < polylines.Length; i++) {
-                matchPolylines.GetOrAdd(polylines[i].name, []);
+                //matchPolylines.GetOrAdd(polylines[i].name, []);
             }
 
             var matchPolygons = new ConcurrentDictionary<string, (List<LineString> exterior, List<LineString>[] interior)>();
 
             for (int i = 0; i < polygons.Length; i++) {
-                matchPolygons.GetOrAdd(polygons[i].name, ([], []));
+                //matchPolygons.GetOrAdd(polygons[i].name, ([], []));
             }
 
             var options = new ParallelOptions {
@@ -142,41 +143,14 @@ namespace S100Framework.YAML
                 }
             }
 
-            //  --- TEST --------------------------------------------------------------
-            {
-                //var graph = new EdgeGraphBuilder();
-                //graph.Add(curvePolygons.Values);
-
-                //var edge = graph.GetGraph();
-
-                //var boundary1 = polygons.Single(e => e.ObjectId == 159569).ExteriorRing;
-
-                //var boundary2 = polygons.Single(e => e.ObjectId == 159577).ExteriorRing;
-
-                //var intersection = boundary1.Intersection(boundary2);
-
-                //var list = new List<LineString> {
-                //    //boundary1,
-                //    //boundary2
-                //};
-
-                //intersection = intersection.Combine();
-
-                //AddLineStringsFromGeometry(intersection, list);
-
-                //var difference = boundary1.SymmetricDifference(intersection);
-
-                //AddLineStringsFromGeometry(difference, list);
-
-                //using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@".\..\..\..\..\..\artifacts\s100ed6.gdb")}")))) {
-                //    ulong id = 0;
-                //    target.PersistTopology(list.Select(e => new CurveFeature(e) { Id = id++ }).ToArray());
-                //}
-
-                //throw new NotImplementedException();
-            }
-
-
+            //foreach (var e in polylines) {
+            //    var hash = IO.Hashing.XxHash64.HashToUInt64(e.LineString.ToBinary());
+            //    var reverse = IO.Hashing.XxHash64.HashToUInt64(((LineString)e.LineString.Reverse()).ToBinary());
+            //    if (!(curvePolygons.ContainsKey(hash) || curvePolygons.ContainsKey(reverse))) {
+            //        curvePolygons.Add(hash, e.LineString);
+            //        curvePolygonsToObjectId.Add(hash, $"e:{e.ObjectId}");
+            //    }
+            //}
 
             //Log.Verbose("Intersection...");
 
@@ -184,14 +158,15 @@ namespace S100Framework.YAML
             //    MaxDegreeOfParallelism = 1,
             //};
 
-            var filterPolygons = new List<long> { 175805, 175751 };
+            //var filterPolygons = new List<long> { 175805, 175751 };
 
             Parallel.For(0, polygons.Length, options, (i) => {
+                matchPolygons.GetOrAdd(polygons[i].name, ([], []));
                 //if (!filterPolygons.Contains(polygons[i].ObjectId)) return;
                 //if (polygons[i].ObjectId == 160361) System.Diagnostics.Debugger.Break();
 
                 {
-                    IGeometry boundary1 = polygons[i].ExteriorRing;
+                    NetTopologySuite.Geometries.Geometry boundary1 = polygons[i].ExteriorRing;
 
                     var geometries = new List<LineString>();
 
@@ -234,12 +209,13 @@ namespace S100Framework.YAML
 
                         boundary1 = boundary1.SymmetricDifference(intersection);
                     }
+                    if (!(boundary1 == null || boundary1.IsEmpty)) {
+                        var g = topology.Factory.CreateMultiLineString(matchPolygons[polygons[i].name].exterior.ToArray());
 
-                    var g = topology.Factory.CreateMultiLineString(matchPolygons[polygons[i].name].exterior.ToArray());
-
-                    var diff = boundary1.SymmetricDifference(g);
-                    if (!(diff == null || diff.IsEmpty))
-                        AddLineStringsFromGeometry(diff, matchPolygons[polygons[i].name].exterior);
+                        var diff = boundary1.SymmetricDifference(g);
+                        if (!(diff == null || diff.IsEmpty))
+                            AddLineStringsFromGeometry(diff, matchPolygons[polygons[i].name].exterior);
+                    }
                 }
 
                 if (polygons[i].InteriorRings.Any()) {
@@ -253,7 +229,7 @@ namespace S100Framework.YAML
                     exclude = [.. exclude, .. polygons[i].InteriorRings.Select(e => IO.Hashing.XxHash64.HashToUInt64(e.ToBinary()))];
 
                     for (int k = 0; k < polygons[i].InteriorRings.Length; k++) {
-                        IGeometry boundary = (LineString)polygons[i].InteriorRings[k];//.Reverse();
+                        NetTopologySuite.Geometries.Geometry boundary = (LineString)polygons[i].InteriorRings[k];//.Reverse();
 
                         //var hash = IO.Hashing.XxHash64.HashToUInt64(((LineString)polygons[i].InteriorRings[k]).ToBinary());
 
@@ -296,7 +272,7 @@ namespace S100Framework.YAML
                         }
                         if (!interiorLineStrings.Any())
                             interiorLineStrings.Add((LineString)polygons[i].InteriorRings[k]);
-                        else {
+                        else if (!(boundary == null || boundary.IsEmpty)) {
                             var g = topology.Factory.CreateMultiLineString(interiorLineStrings.ToArray());
 
                             var diff = boundary.SymmetricDifference(g);
@@ -314,14 +290,13 @@ namespace S100Framework.YAML
             //};
 
             Parallel.For(0, polylines.Length, options, (i) => {
+                matchPolylines.GetOrAdd(polylines[i].name, []);
+
                 //if (polylines[i].ObjectId != 169521) return;
-                //if (polylines[i].name.Equals("C974754")) System.Diagnostics.Debugger.Break();
+                //if (polylines[i].ObjectId == 169631) System.Diagnostics.Debugger.Break();
                 var m = matchPolylines[polylines[i].name];
 
-                IGeometry boundary1 = polylines[i].LineString;
-
-                //Log.Verbose("contour:   {linestring}", boundary1.ToString());
-                //Log.Verbose("  reverse: {linestring}", boundary1.Reverse().ToString());
+                NetTopologySuite.Geometries.Geometry boundary1 = polylines[i].LineString;
 
                 var hash = IO.Hashing.XxHash3.HashToUInt64(polylines[i].LineString.ToBinary());
 
@@ -366,11 +341,9 @@ namespace S100Framework.YAML
                     boundary1 = boundary1.SymmetricDifference(intersection);
                 }
                 if (!m.Any()) {
-                    if (polylines[i].LineString.Equals("LINESTRING (12.0509449 54.9132077, 12.0509559 54.9131943, 12.0509559 54.9131943, 12.0509677 54.9131801, 12.0509677 54.9131801, 12.0512467 54.9132507, 12.0512467 54.9132507, 12.0511904 54.9131001)")) System.Diagnostics.Debugger.Break();
-
                     m.Add(polylines[i].LineString);
                 }
-                else {
+                else if (!(boundary1 == null || boundary1.IsEmpty)) {
                     var g = topology.Factory.CreateMultiLineString(m.ToArray());
 
                     var diff = boundary1.SymmetricDifference(g);
@@ -393,8 +366,6 @@ namespace S100Framework.YAML
                     var origin = polygons.Single(e => e.name == m.Key);
 
                     var hash = System.IO.Hashing.XxHash3.HashToUInt64(origin.LineString.AsBinary());
-
-                    //if (hash == 11711010312253300681) System.Diagnostics.Debugger.Break();
 
                     var f = new CurveFeature(origin.LineString);
                     if (!hashing.ContainsKey(hash)) {
@@ -723,7 +694,7 @@ namespace S100Framework.YAML
             }
         }
 
-        private static void AddLineStringsFromGeometry(IGeometry geometry, List<LineString> targetList) {
+        private static void AddLineStringsFromGeometry(Geometry geometry, List<LineString> targetList) {
             if (geometry is LineString line) {
                 if (!line.IsEmpty) {
                     if (!targetList.Any(e => e.EqualsTopologically(line)))
@@ -747,7 +718,6 @@ namespace S100Framework.YAML
             // We primarily care about LineString results for shared *edges*.
             // Point/MultiPoint intersections mean polygons touch only at vertices.
         }
-
     }
 }
 
@@ -757,7 +727,7 @@ namespace GeoAPI.Geometries
 
     public static class Extension
     {
-        public static IGeometry Combine(this IGeometry geometry) {
+        public static Geometry Combine(this Geometry geometry) {
             if (geometry is MultiLineString multiLineString) {
                 var last = ((LineString)multiLineString[0]);
 
@@ -786,11 +756,64 @@ namespace GeoAPI.Geometries
                 }
                 else {
                     geometries.Add((LineString)geometry.Factory.CreateLineString(coordinates));
+
+                    //var finished = true;
+                    //do {
+                    //    finished = true;
+
+                    //    for (int i = 0; i < geometries.Count - 1; i++) {
+                    //        var l = geometries[i];
+
+                    //        var lookup = geometries.SingleOrDefault(e => e.StartPoint.EqualsExact(l.EndPoint));
+                    //        if (lookup != null) {
+                    //            geometries.RemoveAll(e => e.EqualsTopologically(l) || e.EqualsTopologically(lookup));
+                    //            geometries.Insert(0, (LineString)l.Factory.CreateLineString([.. l.Coordinates, .. lookup.Coordinates]));
+                    //            finished = false;
+                    //        }
+                    //        else {
+                    //            lookup = geometries.SingleOrDefault(e => e.EndPoint.EqualsExact(l.StartPoint));
+                    //            if (lookup != null) {
+                    //                geometries.RemoveAll(e => e.EqualsTopologically(l) || e.EqualsTopologically(lookup));
+                    //                geometries.Insert(0, (LineString)l.Factory.CreateLineString([.. lookup.Coordinates, .. l.Coordinates]));
+                    //                finished = false;
+                    //            }
+                    //        }
+                    //    }
+
+                    //} while (!finished);
                     geometry = geometry.Factory.CreateMultiLineString(geometries.ToArray());
                 }
             }
 
             return geometry;
+        }
+
+        public static bool Contains(this Coordinate[] coordinates, Coordinate[] match) {
+            for (int i = 0; i <= coordinates.Length - match.Length; i++) {
+                var found = true;
+                for (int j = 0; j < match.Length; j++) {
+                    if (!coordinates[i + j].Equals(match[j])) {
+                        found = false;
+                        break;
+                    }
+                }
+                if (found) return true;
+            }
+            return false;
+        }
+
+        public static bool ContainsReverse(this Coordinate[] coordinates, Coordinate[] match) {
+            for (int i = coordinates.Length - 1; i >= match.Length; i--) {
+                var found = true;
+                for (int j = 0; j < match.Length; j++) {
+                    if (!coordinates[i - j].Equals(match[j])) {
+                        found = false;
+                        break;
+                    }
+                }
+                if (found) return true;
+            }
+            return false;
         }
 
         public static LineString RemoveRepeatedVertices(this LineString lineString) {

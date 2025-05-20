@@ -809,7 +809,7 @@ namespace ArcGIS.Core.Data
                 Mapping = new Dictionary<string, string>(),
             };
 
-            S100Framework.YAML.Topology.Build(curves.ToArray(), polygons.ToArray(), t);
+            S100Framework.YAML.Topology.Build(curves.ToArray(), polygons.ToArray(), t);            
 
             if (t.Curves.Any())
                 topology.Curves = topology.Curves.Union(t.Curves).ToList();
