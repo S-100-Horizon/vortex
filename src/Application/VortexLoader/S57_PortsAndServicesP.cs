@@ -18,12 +18,13 @@ namespace S100Framework.Applications
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
 
-
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = portsAndServicesP.Search(filter, true);
             int recordCount = 0;
+
+            var _ids = new List<Guid>();
 
             while (cursor.MoveNext()) {
                 recordCount += 1;
@@ -35,6 +36,8 @@ namespace S100Framework.Applications
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
 
+                _ids.Add(globalid);
+
                 if (ConversionAnalytics.Instance.IsConverted(globalid)) {
                     continue;
                 }
@@ -44,8 +47,6 @@ namespace S100Framework.Applications
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
                 var status = current.STATUS ?? default;
-
-
 
                 // The attribute default clearance depth must be populated with a value, which must not be an empty(null)
                 // value, only if the attribute value of sounding for the feature instance is populated with an empty(null) value
@@ -82,6 +83,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 5: { // CGUSTA_CoastguardStation
+                            throw new NotImplementedException($"No CGUSTA_CoastguardStation in DK or GL. {tableName}");
+
                             var instance = new CoastGuardStation();
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -118,6 +121,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 10: { // CHKPNT_CheckPoint
+                            throw new NotImplementedException($"No CHKPNT_CheckPoint in DK or GL. {tableName}");
+
                             var instance = new Checkpoint();
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -204,6 +209,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 20: { // DISMAR_DistanceMark
+                            throw new NotImplementedException($"No DISMAR_DistanceMark in DK or GL. {tableName}");
+
                             var instance = new DistanceMark();
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -276,6 +283,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 30: { // GRIDRN_Gridiron
+                            throw new NotImplementedException($"No GRIDRN_Gridiron in DK or GL. {tableName}");
+
                             var instance = new Gridiron();
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -406,7 +415,6 @@ namespace S100Framework.Applications
                                 }
                             }
 
-
                             if (current.VERLEN.HasValue) {
                                 instance.verticalLength = current.VERLEN.Value;
                             }
@@ -451,6 +459,9 @@ namespace S100Framework.Applications
                     case 45: { // MORFAC_MooringWarpingFacility
                             // https://iho.int/uploads/user/pubs/standards/s-65/S-65%20Annex%20B_Ed%201.2.0_Final.pdf p25
                             var catmor = current.CATMOR ?? default;
+                            if (catmor == default || catmor == -32767) {
+                                Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Unknown CATMOR for MORFAC. Cannot convert.");
+                            }
 
                             // DOLPHIN
                             if (catmor == 1 || catmor == 2) {
@@ -525,13 +536,13 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
+                                    string subtype = "";
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
-                            }
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                }
 
 
                                 AddInformation(instance.information, feature);
@@ -832,7 +843,7 @@ namespace S100Framework.Applications
 
                             // CABLESUBMARINE
                             if (catmor == 6) {
-                                throw new NotImplementedException("CATMOR = 6 (chain/wire/cable) ");
+                                throw new NotImplementedException($"CATMOR = 6 (chain/wire/cable). {tableName}");
                             }
 
                             // MOORING BUOY
@@ -859,7 +870,6 @@ namespace S100Framework.Applications
                                 if (dateRange != default) {
                                     instance.fixedDateRange = dateRange;
                                 }
-
 
                                 // TODO: interoperabilityIdentifier
 
@@ -1156,6 +1166,15 @@ namespace S100Framework.Applications
                         break;
                 }
             }
+
+            var _nonConvertedSlaves = new List<Guid>();
+
+            foreach (var id in _ids) {
+                if (!ConversionAnalytics.Instance.IsConverted(id)) {
+                    _nonConvertedSlaves.Add(id);
+                }
+            }
+
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
     }

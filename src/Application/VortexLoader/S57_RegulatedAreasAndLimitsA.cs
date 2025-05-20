@@ -158,6 +158,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 15: { // ARCSLN_ArchipelagicSeaLane
+                            throw new NotImplementedException($"No ARCSLN_ArchipelagicSeaLane in DK or GL. {tableName}");
+
                             var instance = new ArchipelagicSeaLane();
                             
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -227,6 +229,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 25: { // COSARE_ContinentalShelfArea
+                            throw new NotImplementedException($"No COSARE_ContinentalShelfArea in DK or GL. {tableName}");    
+
                             var instance = new ContinentalShelfArea();
                             
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -296,6 +300,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 35: { // CUSZNE_CustomZone
+                            throw new NotImplementedException($"No CUSZNE_CustomZone in DK or GL. {tableName}");    
+
                             var instance = new CustomZone();
                             
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -399,6 +405,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 55: { // FRPARE_FreePortArea
+                            throw new NotImplementedException($"No FRPARE_FreePortArea in DK or GL. {tableName}");
+
                             var instance = new FreePortArea();
                             
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -435,6 +443,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 60: { // FSHGRD_FishingGround
+                            throw new NotImplementedException($"No FSHGRD_FishingGround in DK or GL. {tableName}");    
+
                             var instance = new FishingGround();
                             
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -544,12 +554,17 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 75: { // ICNARE_IncinerationArea
+                            throw new NotImplementedException($"No ICNARE_IncinerationArea in DK or GL. {tableName}");
+
                             //The S-57 Object class ICNARE will not be converted. 
                             //https://iho.int/uploads/user/pubs/standards/s-65/S-65%20Annex%20B_Ed%201.2.0_Final.pdf
                             
                         }
                         break;
                     case 85: { // LOGPON_LogPond
+
+                            throw new NotImplementedException($"No LOGPON_LogPond in DK or GL. {tableName}");
+
                             var instance = new LogPond();
                             
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {

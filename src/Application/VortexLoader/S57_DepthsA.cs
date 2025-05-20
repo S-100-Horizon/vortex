@@ -150,7 +150,9 @@ namespace S100Framework.Applications
                         }
                         break;
 
-                    case 10: {    //SWPARE
+                    case 10: {    // SWPARE_SweptArea
+                            throw new NotImplementedException($"No SWPARE_SweptArea in DK or GL. {tableName}");
+
                             var instance = new SweptArea {
                                 depthRangeMinimumValue = drval1,
                                 scaleMinimum = null,

@@ -130,6 +130,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 10: { // RAPIDS_Rapids
+                            throw new NotImplementedException($"No RAPIDS_Rapids in DK or GL. {tableName}");
+
                             var instance = new Rapids {
                                 
                             };
@@ -244,6 +246,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 25: { // VEGATN_Vegetation
+                            throw new NotImplementedException($"No VEGATN_Vegetation in DK or GL. {tableName}");
+
                             var instance = new Vegetation {
 
                             };
@@ -282,6 +286,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 30: { // WATFAL_Waterfall
+                            throw new NotImplementedException($"No WATFAL_Waterfall in DK or GL. {tableName}");
+
                             var instance = new Waterfall {
 
                             };

@@ -51,6 +51,8 @@ namespace S100Framework.Applications
 
                 switch (fcSubtype) {
                     case 15: { // SBDARE_SeabedArea
+                            throw new NotImplementedException($"No SBDARE_SeabedArea in DK or GL. {tableName}");
+
                             var instance = new SeabedArea() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -154,6 +156,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 30: { // SNDWAV_SandWaves
+
+                            throw new NotImplementedException($"No SNDWAV_SandWaves in DK or GL. {tableName}");
+
                             var instance = new Sandwave() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -184,18 +189,20 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 40: { // WEDKLP_WeedKelp
+                            throw new NotImplementedException($"No M_HOPA_HorizontalDatumShiftParameters in DK or GL. {tableName}");
+
                             if (catweed == 3) {
                                 var instance = new Seagrass();
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
+                                    string subtype = "";
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
-                            }
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                }
 
-instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;

@@ -97,6 +97,18 @@ namespace S100Framework.Applications
                     case 5: { // LNDELV_LandElevation
                             var instance = new LandElevation();
 
+                            if (current.ELEVAT != default) {
+                                instance.elevation = current.ELEVAT ?? default;
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.CONVIS.HasValue) {
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                            }
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -106,14 +118,8 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-
-
-                            if (current.ELEVAT != default) {
-                                instance.elevation = current.ELEVAT ?? default;
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
+
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
@@ -166,6 +172,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 15: { // RAPIDS_Rapids
+                            throw new NotImplementedException($"No RAPIDS_Rapids in DK or GL. {tableName}");
+
                             var instance = new Rapids() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -235,6 +243,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 25: { // SLOGRD_SlopingGround
+                            throw new NotImplementedException($"No SLOGRD_SlopingGround in DK or GL. {tableName}");
+
                             var instance = new SlopingGround() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -325,6 +335,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 35: { // WATFAL_Waterfall
+                            throw new NotImplementedException($"No WATFAL_Waterfall in DK or GL. {tableName}");
+
                             var instance = new Waterfall() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {

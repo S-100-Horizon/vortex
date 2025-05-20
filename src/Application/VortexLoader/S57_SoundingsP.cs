@@ -23,10 +23,8 @@ namespace S100Framework.Applications
             using var insertPointset = featureClass.CreateInsertCursor();
 
             using var cursor = soundingsP.Search(filter, true);
-
             
             var recordCount = 0;
-
 
             while (cursor.MoveNext()) {
                 recordCount += 1;
@@ -49,8 +47,6 @@ namespace S100Framework.Applications
                 var tecsou = current.TECSOU ?? default;
                 var objnam = current.OBJNAM ?? default;
                 var nobjnm = current.NOBJNM ?? default;
-
-
 
                 switch (fcSubtype) {
                     case 1:
@@ -76,6 +72,7 @@ namespace S100Framework.Applications
                                             (techniqueOfVerticalMeasurement)Enum.Parse(typeof(techniqueOfVerticalMeasurement), tecsou)
                                         };
                             }
+
                             //if (objnam != default) {
 
                             //    if (!string.IsNullOrEmpty(objnam.Trim())) {
@@ -97,8 +94,38 @@ namespace S100Framework.Applications
                             //    }
                             //}
 
-                            
+                           
                             sounding.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+
+                            // TODO: interoperabilityIdentifier
+
+
+                            if (current.QUASOU != default) {
+                                if (current.QUASOU == "-32767")
+                                    sounding.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>("-1");
+                                else {
+                                    sounding.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                }
+                            }
+
+
+                            if (current.SORDAT != default) {
+                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                    sounding.reportedDate = dateOnly;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
+                            if (current.STATUS != default) {
+                                sounding.status = ImporterNIS.GetSingleStatus(current.STATUS);
+                            }
+
+                            if (current.TECSOU != null) {
+                                sounding.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                            }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -109,13 +136,11 @@ namespace S100Framework.Applications
                                 sounding.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-
                             AddInformation(sounding.information, feature);
 
                             bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(sounding);
                             bufferPointset["ps"] = ps101;
                             bufferPointset["code"] = sounding.GetType().Name;
-
                             var featureN = featureClass.CreateRow(bufferPointset);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -151,7 +176,14 @@ namespace S100Framework.Applications
                                 these attributes are not relevant for Depth – No Bottom Found in S-101. */
                             var instance = new DepthNoBottomFound();
 
-                            bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.TECSOU != null) {
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                            }
+
+                                
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -162,6 +194,9 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
+                            AddInformation(instance.information, feature);
+
+                            bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
 
                             var featureN = featureClass.CreateRow(bufferPointset);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";

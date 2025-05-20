@@ -391,7 +391,7 @@ namespace S100Framework.Applications.Singletons
 
         internal Type GetS101CatlitTypeFrom(AidsToNavigationP aton) {
             if (aton.FCSUBTYPE != 65) {
-                throw new NotImplementedException("Only light types are supported");
+                throw new NotImplementedException($"Only light types are supported.");
             }
 
             List<int> catlits = new();

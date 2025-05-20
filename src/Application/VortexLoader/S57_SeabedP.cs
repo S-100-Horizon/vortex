@@ -77,6 +77,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 25: { // SNDWAV_SandWaves
+                            throw new NotImplementedException($"No SNDWAV_SandWaves in DK or GL. {tableName}");
+
                             var instance = new Sandwave() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -107,6 +109,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 30: { // SPRING_Spring
+                            throw new NotImplementedException($"No SPRING_Spring in DK or GL. {tableName}");    
+
                             var instance = new Spring() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {

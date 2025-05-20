@@ -112,6 +112,7 @@ namespace S100Framework.Applications
             _converterRegistry.Register<PortsAndServicesP, SignalStationWarning>(Converters.CreateSignalStationWarning);
             _converterRegistry.Register<AidsToNavigationP, FogSignal>(Converters.CreateFogSignal);
             _converterRegistry.Register<AidsToNavigationP, RadarStation>(Converters.CreateRadarStation);
+            _converterRegistry.Register<CulturalFeaturesP, WindTurbine>(Converters.CreateWindturbine);
 
             using (Geodatabase source = createGeodatabase()) {
                 Store(() => {
@@ -165,10 +166,11 @@ namespace S100Framework.Applications
                     Store(() => S57_ProductCoverage(source, destination, filter));
                 }
                 else {
-                    //var whereClause = filter.WhereClause.Clone();
-                    //filter.WhereClause = $"{whereClause} and globalid = '{{547BA6F0-9999-4350-8BCE-3A4DBE9C44E4}}'";
-                    //filter.WhereClause = $"{whereClause}";
-
+                    /*var whereClause = filter.WhereClause.Clone();
+                    filter.WhereClause = $"{whereClause} and globalid = '{{CA71EEFC-AF9F-4DB0-A55E-FD9D394FF58D}}'";
+                    filter.WhereClause = $"{whereClause}";
+                    */
+                    Store(() => S57_PortsAndServicesP(source, destination, filter)); 
                     Store(() => S57_CulturalFeaturesL(source, destination, filter));
                     Store(() => S57_CulturalFeaturesA(source, destination, filter));
                     Store(() => S57_CulturalFeaturesP(source, destination, filter));
@@ -192,7 +194,6 @@ namespace S100Framework.Applications
                     Store(() => S57_OffshoreInstallationsP(source, destination, filter));
                     Store(() => S57_PortsAndServicesA(source, destination, filter));
                     Store(() => S57_PortsAndServicesL(source, destination, filter));
-                    Store(() => S57_PortsAndServicesP(source, destination, filter));
                     Store(() => S57_ProductCoverage(source, destination, filter));
                     Store(() => S57_RegulatedAreasAndLimitsA(source, destination, filter));
                     Store(() => S57_RegulatedAreasAndLimitsL(source, destination, filter));

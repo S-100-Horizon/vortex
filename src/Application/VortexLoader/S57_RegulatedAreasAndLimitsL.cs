@@ -45,6 +45,8 @@ namespace S100Framework.Applications
 
                 switch (fcSubtype) {
                     case 1: { // ASLXIS_ArchipelagicSeaLaneAxis
+                            throw new NotImplementedException($"No ASLXIS_ArchipelagicSeaLaneAxis in DK or GL. {tableName}");
+
                             var instance = new ArchipelagicSeaLaneAxis();
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";

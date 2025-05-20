@@ -101,6 +101,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 5: { // FAIRWY_Fairway
+
+                            throw new NotImplementedException($"No FAIRWY_Fairway in DK or GL. {tableName}");
+
                             var instance = new Fairway() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -136,6 +139,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 10: { // FERYRT_FerryRoute
+
+                            throw new NotImplementedException($"No FERYRT_FerryRoute in DK or GL. {tableName}");
+
                             var instance = new FerryRoute() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -241,6 +247,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 25: { // RADRNG_RadarRange
+
+                            throw new NotImplementedException($"No RADRNG_RadarRange in DK or GL. {tableName}");
+
                             var instance = new RadarRange() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -251,9 +260,6 @@ namespace S100Framework.Applications
 
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
-
-
-
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
@@ -347,6 +353,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 45: { // SUBTLN_SubmarineTransitLane
+
+                            throw new NotImplementedException($"No SUBTLN_SubmarineTransitLane in DK or GL. {tableName}");
+
                             var instance = new SubmarineTransitLane() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -414,6 +423,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 55: { // TSSCRS_TrafficSeparationSchemeCrossing
+                            throw new NotImplementedException($"No TSSCRS_TrafficSeparationSchemeCrossing in DK or GL. {tableName}");        
+
                             var instance = new TrafficSeparationSchemeCrossing() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -517,6 +528,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 70: { // TWRTPT_TwoWayRoutePart
+                            throw new NotImplementedException($"No TWRTPT_TwoWayRoutePart in DK or GL. {tableName}");    
+
                             var instance = new TwoWayRoutePart() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {

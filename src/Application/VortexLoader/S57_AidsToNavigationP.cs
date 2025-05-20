@@ -1664,15 +1664,13 @@ namespace S100Framework.Applications
 
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
 
-            var _nonConvertedSlaves = new List<Guid>();
+            //var _nonConvertedSlaves = new List<Guid>();
 
-            foreach (var slaveId in _slaves) {
-                if (!ConversionAnalytics.Instance.IsConverted(slaveId)) {
-                    _nonConvertedSlaves.Add(slaveId);
-                }
-            }
-
-            ;
+            //foreach (var slaveId in _slaves) {
+            //    if (!ConversionAnalytics.Instance.IsConverted(slaveId)) {
+            //        _nonConvertedSlaves.Add(slaveId);
+            //    }
+            //}
         }
 
         internal static bool TryGetRadarWaveLengths(string radwal, out List<radarWaveLength> radarWaveLengths) {

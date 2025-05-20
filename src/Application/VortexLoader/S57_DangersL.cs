@@ -227,6 +227,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 10: { // OILBAR_OilBarrier
+                            throw new NotImplementedException($"No OILBAR_OilBarrier in DK or GL. {tableName}");
+                            
                             var instance = new OilBarrier {
 
                             };
@@ -262,6 +264,7 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 15: { // WATTUR_WaterTurbulence
+                            throw new NotImplementedException($"No WATTUR_WaterTurbulence in DK or GL. {tableName}");
                             var instance = new WaterTurbulence {
 
                             };
