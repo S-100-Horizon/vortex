@@ -158,7 +158,7 @@ namespace S100Framework.Applications
                     using var type = source.OpenDataset<Table>("associationbinding");
 
                     using var cursor = type.Search(new QueryFilter {
-                        WhereClause = "UPPER(type) = 'FEATUREBINDING' AND UPPER(roleType) = 'AGGREGATION'"
+                        WhereClause = "UPPER(type) = 'FEATUREBINDING' AND (UPPER(roleType) = 'AGGREGATION' OR UPPER(roleType) = 'COMPOSITION')"
                     });
 
                     while (cursor.MoveNext()) {
