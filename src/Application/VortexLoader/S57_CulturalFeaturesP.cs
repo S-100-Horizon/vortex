@@ -307,7 +307,6 @@ namespace S100Framework.Applications
                                     instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                                 }
 
-
                                 instance.categoryOfLandmark = [categoryOfLandmark.BoundaryMark];
 
                                 if (current.COLOUR != default) {
@@ -353,15 +352,14 @@ namespace S100Framework.Applications
                         break;
 
                     case 25: { // DAMCON_Dam
-                            var instance = new Dam() {
-                            };
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
+                            /*  S-65 Annex B
+                                Point is not an allowable geometric primitive for Dam, therefore DAMCON of geometric primitive
+                                point will convert to an instance of the S-101 Feature type Landmark (see S-101 DCEG clause 7.2).
+                            */
+                            var instance = new Landmark();
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            if (current.CATDAM.HasValue) {
+                                instance.categoryOfLandmark = new() { categoryOfLandmark.Dam };
                             }
 
                             if (current.COLOUR != default) {
@@ -376,12 +374,50 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.NATCON != default) {
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                            }
+
+                            if (current.CONRAD.HasValue) {
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
+                            }
+
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
+                            }
+
+                            /*  S-65 Annex B
+                                When converting the S-57 DAMCON Object class of geometric primitive point the S-101 mandatory
+                                attribute visual prominence on the converted Landmark feature will be populated during the
+                                automated conversion process with value 2 (not visually conspicuous). Data Producers will be
+                                required to evaluate their converted datasets and amend this value as appropriate.
+                            */
+                            instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(2);
+
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
+
                             AddInformation(instance.information, feature);
+
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
@@ -474,7 +510,7 @@ namespace S100Framework.Applications
                                 if (current.CATLMK != "19") {
                                     instance.categoryOfLandmark = EnumHelper.GetEnumValues<categoryOfLandmark>(current.CATLMK);
                                 } else {
-                                   // throw new NotImplementedException("WINDTURBINE");
+                                   throw new NotImplementedException("WINDTURBINE");
                                 }
                             }
 

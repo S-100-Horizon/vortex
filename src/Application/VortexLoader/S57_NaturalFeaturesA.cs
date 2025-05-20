@@ -170,7 +170,6 @@ namespace S100Framework.Applications
                     case 10: {    // LNDRGN
                             var instance = new LandRegion();
 
-
                             if (current.WATLEV.HasValue) {
                                 if (current.WATLEV.Value == -32767)
                                     instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
@@ -178,7 +177,6 @@ namespace S100Framework.Applications
                                     instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
                                 }
                             }
-
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -188,7 +186,6 @@ namespace S100Framework.Applications
 
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
-
 
                             if (current.NATSUR != default) { 
                                 instance.natureOfSurface = EnumHelper.GetEnumValues<natureOfSurface>(current.NATSUR);
@@ -332,7 +329,6 @@ namespace S100Framework.Applications
                                 instance.categoryOfSlope = EnumHelper.GetEnumValue<categoryOfSlope>(current.CATSLO.Value);
                             }
 
-
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
                             }
@@ -344,8 +340,6 @@ namespace S100Framework.Applications
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
-
-
 
                             if (convis != default) {
                                 instance.visualProminence = convis switch {
@@ -364,8 +358,6 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-
-
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 
@@ -380,8 +372,6 @@ namespace S100Framework.Applications
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-
-
                         }
                         break;
 
