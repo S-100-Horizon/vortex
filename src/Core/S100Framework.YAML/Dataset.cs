@@ -27,7 +27,7 @@ namespace S100Framework.YAML
         public ICollection<CompositeCurve>? CompositeCurves => _compositeCurves.Any() ? _compositeCurves : null;
         public ICollection<PointSet>? Depths => _pointSets.Any() ? _pointSets : null;
         public ICollection<Surface>? Surfaces => _surfaces.Any() ? _surfaces : null;
-        public ICollection<Feature>? Features => _features.Any() ? _features : null;
+        public ICollection<Feature>? Features => _features.Any() ? SortedFeatures() : null;
 
         private ICollection<Information> _informationTypes = new HashSet<Information>();
         private ICollection<Point> _points = new HashSet<Point>();
@@ -67,6 +67,63 @@ namespace S100Framework.YAML
         public Dataset AddInformation(Information information) {
             _informationTypes.Add(information);
             return this;
+        }
+        /// <summary>
+        /// Returns the features in dependency-safe order.
+        /// </summary>
+        /// <remarks>
+        /// A feature can declare associations that point to other features (via
+        /// <c>Association.To</c>).  
+        /// This method performs a depth-first <em>topological sort</em> so that
+        /// every feature is placed <strong>after</strong> all the features it
+        /// references.  
+        /// If it encounters a cycle (i.e., feature A → B → … → A) it throws
+        /// <see cref="InvalidOperationException"/> because such a reference chain
+        /// makes a valid ordering impossible.
+        /// </remarks>
+        /// <returns>
+        /// A new <see cref="List{Feature}"/> where:
+        /// <list type="bullet">
+        ///   <item>
+        ///     <description>Features appear only once.</description>
+        ///   </item>
+        ///   <item>
+        ///     <description>For every association <c>f → g</c>,
+        ///                  <paramref name="g"/> precedes <paramref name="f"/>.</description>
+        ///   </item>
+        /// </list>
+        /// </returns>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown when a circular reference between features is detected.
+        /// </exception>
+        private List<Feature> SortedFeatures() {
+            var foidToFeature = _features.ToDictionary(f => f.Foid);
+            var visited = new HashSet<string>();
+            var temp = new HashSet<string>();
+            var sorted = new List<Feature>();
+
+            void Visit(Feature f) {
+                if (visited.Contains(f.Foid))
+                    return;
+                if (temp.Contains(f.Foid))
+                    throw new InvalidOperationException("Circular reference detected");
+
+                temp.Add(f.Foid);
+
+                foreach (var assoc in f.FeatureAssociation ?? []) {
+                    if (foidToFeature.TryGetValue(assoc.To, out var target))
+                        Visit(target);
+                }
+
+                temp.Remove(f.Foid);
+                visited.Add(f.Foid);
+                sorted.Add(f);
+            }
+
+            foreach (var f in _features)
+                Visit(f);
+
+            return sorted;
         }
     }
 
@@ -202,7 +259,7 @@ namespace S100Framework.YAML
     {
         public string? Name { get; set; }
         public Primitive Prim { get; set; }
-        public string? Foid { get; set; }
+        public string Foid { get; set; } = default!;
         public FeatureNode? Attributes { get; set; }
         public string? Geometry { get; set; }
 
@@ -223,10 +280,10 @@ namespace S100Framework.YAML
         }
     }
 
-    public class Association()
+    public class Association
     {
-        public string? To { get; set; }
-        public string? Name { get; set; }
-        public string? Role { get; set; }
+        public string To { get; set; } = default!;
+        public string Name { get; set; } = default!;
+        public string Role { get; set; } = default!;
     }
 }

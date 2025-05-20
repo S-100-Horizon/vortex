@@ -158,7 +158,7 @@ namespace S100Framework.Applications
                     using var type = source.OpenDataset<Table>("associationbinding");
 
                     using var cursor = type.Search(new QueryFilter {
-                        WhereClause = "UPPER(type) = 'FEATUREBINDING' AND UPPER(roleType) = 'AGGREGATION'"
+                        WhereClause = "UPPER(type) = 'FEATUREBINDING' AND (UPPER(roleType) = 'AGGREGATION' OR UPPER(roleType) = 'COMPOSITION')"
                     });
 
                     while (cursor.MoveNext()) {
@@ -809,7 +809,7 @@ namespace ArcGIS.Core.Data
                 Mapping = new Dictionary<string, string>(),
             };
 
-            S100Framework.YAML.Topology.Build(curves.ToArray(), polygons.ToArray(), t);
+            S100Framework.YAML.Topology.Build(curves.ToArray(), polygons.ToArray(), t);            
 
             if (t.Curves.Any())
                 topology.Curves = topology.Curves.Union(t.Curves).ToList();
