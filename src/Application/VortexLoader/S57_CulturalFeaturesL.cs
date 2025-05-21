@@ -486,8 +486,38 @@ namespace S100Framework.Applications
                         break;
 
                     case 45: { // ROADWY_Road
-                            var instance = new Road() {
-                            };
+                            var instance = new Road();
+
+                            if (current.CATROD.HasValue) {
+                                instance.categoryOfRoad = EnumHelper.GetEnumValue<categoryOfRoad>(current.CATROD.Value);
+                            }
+
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.NATCON != default) {
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                            }
+
+                            if (current.SORDAT != default) {
+                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                    instance.reportedDate = dateOnly;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -498,18 +528,8 @@ namespace S100Framework.Applications
                             }
 
 
-                            if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);

@@ -189,7 +189,7 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 40: { // WEDKLP_WeedKelp
-                            throw new NotImplementedException($"No M_HOPA_HorizontalDatumShiftParameters in DK or GL. {tableName}");
+                            throw new NotImplementedException($"No WEDKLP_WeedKelp in DK or GL. {tableName}");
 
                             if (catweed == 3) {
                                 var instance = new Seagrass();
@@ -230,7 +230,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;

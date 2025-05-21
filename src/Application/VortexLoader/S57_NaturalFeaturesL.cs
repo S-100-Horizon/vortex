@@ -170,9 +170,16 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 15: { // RIVERS_River
-                            var instance = new River {
-                                
-                            };
+                            var instance = new River();
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.STATUS != default) {
+                                instance.status = ImporterNIS.GetSingleStatus(current.STATUS);
+                            }
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -181,14 +188,10 @@ namespace S100Framework.Applications
 
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
-
-
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
@@ -199,12 +202,9 @@ namespace S100Framework.Applications
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
                             }
 
-
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
-
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                             
                         }
                         break;
                     case 20: { // SLOTOP_SlopeTopline
