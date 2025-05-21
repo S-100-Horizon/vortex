@@ -58,6 +58,8 @@ namespace S100Framework.Applications
 
                 switch (fcSubtype) {
                     case 1: { // BERTHS_Berth
+                            throw new NotImplementedException($"No BERTHS_Berth in DK or GL. {tableName}");
+
                             var instance = new Berth() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {

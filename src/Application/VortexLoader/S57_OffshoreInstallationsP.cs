@@ -96,6 +96,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 5: { // PIPARE_PipelineArea
+                            throw new NotImplementedException($"No PIPARE_PipelineArea in DK or GL. {tableName}");
+
+
                             var instance = new SubmarinePipelineArea();
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -131,6 +134,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 10: { // PIPSOL_PipelineSubmarineOnLand
+                            throw new NotImplementedException($"No PIPSOL_PipelineSubmarineOnLand in DK or GL. {tableName}");
+
                             var instance = new PipelineSubmarineOnLand();
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";

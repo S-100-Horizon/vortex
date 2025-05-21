@@ -55,20 +55,17 @@ namespace S100Framework.Applications
                 var fcSubtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
-                var drval1 = current.DRVAL1 ?? default;
-                var drval2 = current.DRVAL2 ?? default;
-                var valco = current.VALDCO ?? default;
-                var quasou = current.QUASOU ?? default;
-                var scamin_step = current.SCAMIN_STEP ?? default;
-                var sordat = current.SORDAT ?? default;
-                var sorind = current.SORIND ?? default;
-                var souacc = current.SOUACC ?? default;
+
 
                 switch (fcSubtype) {
                     case 5: { // DEPCNT_DepthContour
-                            var instance = new DepthContour() {
-                                valueOfDepthContour = valco
-                            };
+                            var instance = new DepthContour();
+
+                            if (current.VALDCO.HasValue) {
+                                instance.valueOfDepthContour = current.VALDCO.Value;
+                            }
+
+                            // TODO: interoperabilityIdentifier
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -79,6 +76,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
+                            
 
 
                             /*
@@ -130,6 +128,7 @@ namespace S100Framework.Applications
                             //}
 
                             AddInformation(instance.information, feature);
+
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;

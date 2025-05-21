@@ -55,6 +55,8 @@ namespace S100Framework.Applications
 
                 switch (fcSubtype) {
                     case 1: { // BERTHS_Berth
+                            throw new NotImplementedException($"No BERTHS_Berth in DK or GL. {tableName}");
+
                             var instance = new Berth() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -176,6 +178,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 15: { // CHKPNT_CheckPoint
+                            throw new NotImplementedException($"No M_HOPA_HorizontalDatumShiftParameters in DK or GL. {tableName}");
+                                
                             var instance = new Checkpoint() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -524,6 +528,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 50: { // GRIDRN_Gridiron
+                            throw new NotImplementedException($"No GRIDRN_Gridiron in DK or GL. {tableName}");
+
                             var instance = new Gridiron() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -1120,7 +1126,7 @@ namespace S100Framework.Applications
 
                             // CABLESUBMARINE
                             if (catmor == 6) {
-                                throw new NotImplementedException("CATMOR = 6 (chain/wire/cable) ");
+                                throw new NotImplementedException($"CATMOR = 6 (chain/wire/cable). {tableName}");
                             }
 
                             // MOORING BUOY
@@ -1216,6 +1222,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 75: { // PILBOP_PilotBoardingPlace
+                            throw new NotImplementedException($"No PILBOP_PilotBoardingPlace in DK or GL. {tableName}");
+
                             var instance = new PilotBoardingPlace() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -1325,6 +1333,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 85: { // SMCFAC_SmallCraftFacility
+                            throw new NotImplementedException($"No SMCFAC_SmallCraftFacility in DK or GL. {tableName}");
+
                             var instance = new SmallCraftFacility() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {

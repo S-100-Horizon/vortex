@@ -77,6 +77,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 5: { // ACHBRT_AnchorBerth
+                            throw new NotImplementedException($"No ACHBRT_AnchorBerth in DK or GL. {tableName}");
+
                             var instance = new AnchorBerth() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -110,6 +112,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 10: { // CTSARE_CargoTranshipmentArea
+                            throw new NotImplementedException($"No CTSARE_CargoTranshipmentArea in DK or GL. {tableName}");
+
                             var instance = new CargoTranshipmentArea() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -176,12 +180,16 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 25: { // ICNARE_IncinerationArea
+                            throw new NotImplementedException($"No ICNARE_IncinerationArea in DK or GL. {tableName}");
+
                             //The S-57 Object class ICNARE will not be converted. 
                             //https://iho.int/uploads/user/pubs/standards/s-65/S-65%20Annex%20B_Ed%201.2.0_Final.pdf
                             
                         }
                         break;
                     case 30: { // LOGPON_LogPond
+                            throw new NotImplementedException($"No LOGPON_LogPond in DK or GL. {tableName}");
+
                             var instance = new LogPond() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -293,6 +301,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 40: { // SPLARE_SeaPlaneLandingArea
+                            throw new NotImplementedException($"No SPLARE_SeaPlaneLandingArea in DK or GL. {tableName}");
+
                             var instance = new SeaplaneLandingArea() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {

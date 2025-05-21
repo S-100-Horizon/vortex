@@ -43,6 +43,8 @@ namespace S100Framework.Applications
 
                 switch (fcSubtype) {
                     case 1: { // PRCARE_PrecautionaryArea
+                            throw new NotImplementedException($"No PRCARE_PrecautionaryArea in DK or GL. {tableName}");
+
                             var instance = new PrecautionaryArea() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {

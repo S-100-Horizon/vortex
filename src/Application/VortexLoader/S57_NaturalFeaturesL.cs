@@ -130,6 +130,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 10: { // RAPIDS_Rapids
+                            throw new NotImplementedException($"No RAPIDS_Rapids in DK or GL. {tableName}");
+
                             var instance = new Rapids {
                                 
                             };
@@ -168,9 +170,16 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 15: { // RIVERS_River
-                            var instance = new River {
-                                
-                            };
+                            var instance = new River();
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.STATUS != default) {
+                                instance.status = ImporterNIS.GetSingleStatus(current.STATUS);
+                            }
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -179,14 +188,10 @@ namespace S100Framework.Applications
 
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
-
-
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
@@ -197,12 +202,9 @@ namespace S100Framework.Applications
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
                             }
 
-
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
-
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                             
                         }
                         break;
                     case 20: { // SLOTOP_SlopeTopline
@@ -244,6 +246,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 25: { // VEGATN_Vegetation
+                            throw new NotImplementedException($"No VEGATN_Vegetation in DK or GL. {tableName}");
+
                             var instance = new Vegetation {
 
                             };
@@ -282,6 +286,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 30: { // WATFAL_Waterfall
+                            throw new NotImplementedException($"No WATFAL_Waterfall in DK or GL. {tableName}");
+
                             var instance = new Waterfall {
 
                             };

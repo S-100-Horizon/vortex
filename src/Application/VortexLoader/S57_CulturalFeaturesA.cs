@@ -501,90 +501,91 @@ namespace S100Framework.Applications
                         break;
 
                     case 25: { // DAMCON_Dam
-                            var instance = new Dam();
+                            throw new NotImplementedException("DAMCON_Dam - CulturalFeaturesA");
+                            //var instance = new Dam();
 
-                            if (current.CATDAM.HasValue) {
-                                instance.categoryOfDam = EnumHelper.GetEnumValue<categoryOfDam>(current.CATDAM.Value);
-                            }
+                            //if (current.CATDAM.HasValue) {
+                            //    instance.categoryOfDam = EnumHelper.GetEnumValue<categoryOfDam>(current.CATDAM.Value);
+                            //}
 
-                            if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
-                            }
+                            //if (current.COLOUR != default) {
+                            //    instance.colour = GetColours(current.COLOUR);
+                            //}
 
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
-                            }
+                            //if (current.COLPAT != default) {
+                            //    instance.colourPattern = GetColourPattern(current.COLPAT);
+                            //}
 
-                            if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
-                            }
+                            //if (current.CONDTN.HasValue) {
+                            //    instance.condition = GetCondition(current.CONDTN.Value);
+                            //}
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            //instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
-                            if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
-                            }
+                            //DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            //if (dateRange != default) {
+                            //    instance.fixedDateRange = dateRange;
+                            //}
 
-                            if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value;
-                            }
+                            //if (current.HEIGHT.HasValue) {
+                            //    instance.height = current.HEIGHT.Value;
+                            //}
 
-                            // TODO: interoperabilityIdentifier
+                            //// TODO: interoperabilityIdentifier
 
-                            if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
-                            }
+                            //if (current.NATCON != default) {
+                            //    instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                            //}
 
-                            if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
-                            }
+                            //if (current.CONRAD.HasValue) {
+                            //    instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
+                            //}
 
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
+                            //if (current.STATUS != default) {
+                            //    instance.status = GetStatus(current.STATUS);
+                            //}
 
-                            if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value;
-                            }
+                            //if (current.VERLEN.HasValue) {
+                            //    instance.verticalLength = current.VERLEN.Value;
+                            //}
 
-                            if (current.CONVIS.HasValue) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
-                            }
+                            //if (current.CONVIS.HasValue) {
+                            //    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                            //}
 
-                            if (current.WATLEV.HasValue) {
-                                if (current.WATLEV.Value == -32767)
-                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
-                                else {
-                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
-                                }
-                            }
+                            //if (current.WATLEV.HasValue) {
+                            //    if (current.WATLEV.Value == -32767)
+                            //        instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
+                            //    else {
+                            //        instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                            //    }
+                            //}
 
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
+                            //if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                            //    string subtype = "";
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                            //    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                            //        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
-                            }
+                            //    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            //}
 
-                            AddInformation(instance.information, feature);
+                            //AddInformation(instance.information, feature);
 
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            //buffer["ps"] = ps101;
+                            //buffer["code"] = instance.GetType().Name;
+                            //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            //SetShape(buffer, current.SHAPE);
+                            //var featureN = featureClass.CreateRow(buffer);
+                            //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
-                            }
+                            //if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                            //    relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            //}
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+                            //ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            //Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
                         break;
 
@@ -656,7 +657,6 @@ namespace S100Framework.Applications
                             }
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);

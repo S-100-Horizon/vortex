@@ -52,6 +52,8 @@ namespace S100Framework.Applications
 
                 switch (fcSubtype) {
                     case 1: { // M_ACCY_AccuracyOfData
+                            throw new NotImplementedException($"No M_ACCY_AccuracyOfData in DK or GL. {tableName}");
+
                             var instance = new QualityOfNonBathymetricData();
 
                             if (current.CATZOC.HasValue && current.CATZOC.Value != -32767) {
@@ -137,12 +139,13 @@ namespace S100Framework.Applications
                         break;
 
                     case 25: { // M_HOPA_HorizontalDatumShiftParameters
+                            throw new NotImplementedException($"No M_HOPA_HorizontalDatumShiftParameters in DK or GL. {tableName}");
+
                             //There is no equivalent Meta Feature _s101type in S - 101 for the S-57 Meta Object M_HOPA.It is considered
                             //that this information is not required for S - 101.Data Producers should consider removing instances of
                             //M_HOPA from their S-57 data for consistency.
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, "DEPRECATED");
                             Logger.Current.DataObject(objectid, tableName, longname, "Not converted");
-                            
                         }
                         break;
                     case 30: { // M_NPUB_NauticalPublicationInformation
@@ -313,6 +316,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 50: { // M_SREL_SurveyReliability
+                            throw new NotImplementedException($"No M_SREL_SurveyReliability in DK or GL. {tableName}");
+
                             var instance = new QualityOfSurvey();
 
                             AddInformation(instance.information, feature);

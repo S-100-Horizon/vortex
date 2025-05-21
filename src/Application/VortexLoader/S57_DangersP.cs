@@ -56,6 +56,8 @@ namespace S100Framework.Applications
 
                 switch (fcSubtype) {
                     case 1: { // CTNARE
+                            throw new NotImplementedException($"No CTNARE in DK or GL. {tableName}");
+
                             var instance = new CautionArea {
                             };
 
@@ -95,6 +97,8 @@ namespace S100Framework.Applications
                         break;
 
                     case 10: { // FSHFAC Fishing facilities
+                            throw new NotImplementedException($"No FSHFAC in DK or GL. {tableName}");
+
                             var instance = new FishingFacility { };
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -232,31 +236,20 @@ namespace S100Framework.Applications
                         break;
 
                     case 35: { // UWTROC
-                            // TODO: surrounding depth, valueofsounding
-
-                            var instance = new UnderwaterAwashRock {
-                                waterLevelEffect = waterLevelEffect.CoversAndUncovers
-                            };
-
-                            if (current.SHAPE != null) {
-                                foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
-                                    var drval1 = depthArea.DRVAL1 ?? default;
-                                    instance.surroundingDepth = drval1;
-                                }
-                            }
+                            var instance = new UnderwaterAwashRock();
 
                             if (current.EXPSOU.HasValue) {
                                 instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
                             }
 
+                            AddInformation(instance.information, feature);
+
+                            // TODO: interoperabilityIdentifier
+
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            // TODO: interoperabilityidentifier
-
-                            if (current.NATSUR != default) {
-                                if (int.TryParse(current.NATSUR, out var value)) {
-                                    instance.natureOfSurface = EnumHelper.GetEnumValue<natureOfSurface>(value);
-                                }
+                            if (current.NATSUR != null) {
+                                instance.natureOfSurface = EnumHelper.GetEnumValue<natureOfSurface>(current.NATSUR);
                             }
 
                             if (current.QUASOU != default) {
@@ -284,6 +277,7 @@ namespace S100Framework.Applications
                                 instance.valueOfSounding = current.VALSOU.Value;
                             }
 
+
                             //      S57
                             //    Code Description
                             // 1   partly submerged at high water
@@ -296,7 +290,7 @@ namespace S100Framework.Applications
                             // -1  Unknown
 
                             if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -308,15 +302,20 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
+                            AddInformation(instance.information, feature);
 
                             // TODO: defaultClearanceDepth
 
                             //instance.defaultClearanceDepth = current.
 
-                            AddInformation(instance.information, feature);
+                            if (current.SHAPE != null) {
+                                foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
+                                    var drval1 = depthArea.DRVAL1 ?? default;
+                                    instance.surroundingDepth = drval1;
+                                }
+                            }
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             SetShape(buffer, current.SHAPE);

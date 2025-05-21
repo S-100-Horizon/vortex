@@ -52,6 +52,8 @@ namespace S100Framework.Applications
                 switch (fcSubtype) {
 
                     case 30: { // MIPARE_MilitaryPracticeArea
+                            throw new NotImplementedException($"No MIPARE_MilitaryPracticeArea in DK or GL. {tableName}");
+
                             var instance = new MilitaryPracticeArea() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {

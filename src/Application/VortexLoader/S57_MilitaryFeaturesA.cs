@@ -46,8 +46,10 @@ namespace S100Framework.Applications
 
                 switch (fcSubtype) {
                     case 60: { // MIPARE_MilitaryPracticeArea
-                            var instance = new MilitaryPracticeArea() {
-                            };
+                           
+
+
+                           var instance = new MilitaryPracticeArea();
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 

@@ -47,6 +47,8 @@ namespace S100Framework.Applications
 
                 switch (fcSubtype) {
                     case 1: { // DWRTCL_DeepWaterRouteCenterline
+                            throw new NotImplementedException($"No DWRTCL_DeepWaterRouteCenterline in DK or GL. {tableName}");
+
                             var instance = new DeepWaterRouteCentreline() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -176,6 +178,10 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 15: { // RADLNE_RadarLine
+
+                            throw new NotImplementedException($"No RADLNE_RadarLine in DK or GL. {tableName}");
+
+
                             var instance = new RadarLine() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {

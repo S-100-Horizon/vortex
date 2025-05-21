@@ -43,6 +43,9 @@ namespace S100Framework.Applications
 
                 switch (fcSubtype) {
                     case 10: { // SBDARE_SeabedArea
+
+                            throw new NotImplementedException($"No SBDARE_SeabedArea in DK or GL. {tableName}");
+
                             var instance = new SeabedArea() {
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -81,6 +84,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 15: { // SNDWAV_SandWaves
+
+                            throw new NotImplementedException($"No SNDWAV_SandWaves in DK or GL. {tableName}");
+
                             var instance = new Sandwave() {
                             };
 
