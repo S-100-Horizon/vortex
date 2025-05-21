@@ -54,21 +54,64 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
+                            var natureOfSurfaceQualifyingTermsCount = 0;
+                            var naturOfSurfaceCount = 0;
+
+                            string[] natsurValues = default;
+                            string[] natquaValues = default;
+
+                            List<natureOfSurfaceQualifyingTerms>? natureOfSurfaceQualifyingTermsList = null;
+
+                            if (current.NATSUR != default && current.NATSUR.Trim().Length > 0) {
+                                natsurValues = current.NATSUR.Trim().Trim(',').Split(',');
+                                naturOfSurfaceCount = natsurValues.Count();
+                            }
+                            if (current.NATQUA != default && current.NATQUA.Trim().Length > 0) {
+                                natquaValues = current.NATQUA.Trim().Trim(',').Split(',');
+                                natureOfSurfaceQualifyingTermsCount = natquaValues.Count();
+                                natureOfSurfaceQualifyingTermsList = EnumHelper.GetEnumValues<natureOfSurfaceQualifyingTerms>(current.NATQUA);
+                            }
+
+                            // TODO: Verify this against action point 48
+
                             surfaceCharacteristics surfaceChars = new();
 
-                            if (current.NATQUA != null) {
-                                var natureOfSurfaceQualifyingTermsList = EnumHelper.GetEnumValues<natureOfSurfaceQualifyingTerms>(current.NATQUA);
-                                surfaceChars.natureOfSurfaceQualifyingTerms = natureOfSurfaceQualifyingTermsList;
+                            instance.surfaceCharacteristics = new List<DomainModel.S101.ComplexAttributes.surfaceCharacteristics>();
+
+                            var list1 = string.IsNullOrWhiteSpace(current.NATSUR) || string.IsNullOrEmpty(current.NATSUR.Trim().Trim(',')) ? new List<string> { "" } : current.NATSUR.Trim().Trim(',').Split(',').ToList();
+                            var list2 = string.IsNullOrWhiteSpace(current.NATQUA) || string.IsNullOrEmpty(current.NATQUA.Trim().Trim(',')) ? new List<string> { "" } : current.NATQUA.Trim().Trim(',').Split(',').ToList();
+
+                            var result = new List<(string, string)>();
+
+                            foreach (var natsur in list1) {
+                                foreach (var natqua in list2) {
+                                    if (natureOfSurfaceQualifyingTermsList != null && !string.IsNullOrEmpty(natsur)) {
+                                        instance.surfaceCharacteristics.Add(new() {
+                                            natureOfSurface = EnumHelper.GetEnumValue<natureOfSurface>(natsur),
+                                            natureOfSurfaceQualifyingTerms = natureOfSurfaceQualifyingTermsList
+                                        });
+                                    }
+
+                                    if (natureOfSurfaceQualifyingTermsList != null && string.IsNullOrEmpty(natsur)) {
+                                        instance.surfaceCharacteristics.Add(new() {
+                                            natureOfSurfaceQualifyingTerms = natureOfSurfaceQualifyingTermsList
+                                        });
+                                    }
+
+                                    if (natureOfSurfaceQualifyingTermsList == null && !string.IsNullOrEmpty(natsur)) {
+                                        instance.surfaceCharacteristics.Add(new() {
+                                            natureOfSurface = EnumHelper.GetEnumValue<natureOfSurface>(natsur),
+                                        });
+                                    }
+
+                                    if (natureOfSurfaceQualifyingTermsList == null && string.IsNullOrEmpty(natsur)) {
+
+                                    }
+                                }
                             }
 
-                            if (current.NATSUR != null) {
-                                var natureOfSurface = EnumHelper.GetEnumValue<natureOfSurface>(current.NATSUR);
-                                surfaceChars.natureOfSurface = natureOfSurface;
-                            }
 
-                            instance.surfaceCharacteristics = new List<DomainModel.S101.ComplexAttributes.surfaceCharacteristics> {
-                                surfaceChars
-                            };
+
 
                             if (current.WATLEV.HasValue) {
                                 instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
@@ -76,10 +119,8 @@ namespace S100Framework.Applications
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
-
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 

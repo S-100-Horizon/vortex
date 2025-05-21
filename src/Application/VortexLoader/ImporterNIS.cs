@@ -170,7 +170,9 @@ namespace S100Framework.Applications
                     filter.WhereClause = $"{whereClause} and globalid = '{{CA71EEFC-AF9F-4DB0-A55E-FD9D394FF58D}}'";
                     filter.WhereClause = $"{whereClause}";
                     */
-                    Store(() => S57_PortsAndServicesP(source, destination, filter)); 
+                    Store(() => S57_SeabedA(source, destination, filter));
+                    Store(() => S57_SeabedL(source, destination, filter));
+                    Store(() => S57_SeabedP(source, destination, filter));
                     Store(() => S57_CulturalFeaturesL(source, destination, filter));
                     Store(() => S57_CulturalFeaturesA(source, destination, filter));
                     Store(() => S57_CulturalFeaturesP(source, destination, filter));
@@ -194,13 +196,11 @@ namespace S100Framework.Applications
                     Store(() => S57_OffshoreInstallationsP(source, destination, filter));
                     Store(() => S57_PortsAndServicesA(source, destination, filter));
                     Store(() => S57_PortsAndServicesL(source, destination, filter));
+                    Store(() => S57_PortsAndServicesP(source, destination, filter));
                     Store(() => S57_ProductCoverage(source, destination, filter));
                     Store(() => S57_RegulatedAreasAndLimitsA(source, destination, filter));
                     Store(() => S57_RegulatedAreasAndLimitsL(source, destination, filter));
                     Store(() => S57_RegulatedAreasAndLimitsP(source, destination, filter));
-                    Store(() => S57_SeabedA(source, destination, filter));
-                    Store(() => S57_SeabedL(source, destination, filter));
-                    Store(() => S57_SeabedP(source, destination, filter));
                     Store(() => S57_SoundingsP(source, destination, filter));
                     Store(() => S57_TracksAndRoutesA(source, destination, filter));
                     Store(() => S57_TracksAndRoutesL(source, destination, filter));
