@@ -167,7 +167,7 @@ namespace S100Framework.Applications
                         var name = current["association"].ToString()!;
                         var role = current["role"].ToString()!;
 
-                        var id = current["pid"].ToString()!;
+                        var id = current["primaryid"].ToString()!;
                         var to = current["foreignid"].ToString()!;
 
                         if (topology.Mapping.TryGetValue(to, out var value))
