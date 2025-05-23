@@ -32,6 +32,8 @@ namespace S100Framework.Applications
 
         //  --geodatabase "\\nas.gst.dk\ncps\modeloffice\vortex\connections\s100ed6_traditional(s101).sde" -d DK40351E
 
+        //  --geodatabase \\nas.gst.dk\ncps\modeloffice\vortex\connections\s100ed6_traditional(s101).sde -d DK40543E
+
         //  --geodatabase "\\nas.gst.dk\public\projektdata\projekter\S-101_Conversion\20250522-s100ed6_traditional(s101).sde" -d DKLALAL
 
 
