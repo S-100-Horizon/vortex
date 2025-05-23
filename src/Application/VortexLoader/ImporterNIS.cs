@@ -172,8 +172,6 @@ namespace S100Framework.Applications
                     filter.WhereClause = $"{whereClause}";
                     */
 
-                    Store(() => S57_MetadataA(source, destination, filter));
-
                     Store(() => S57_SeabedA(source, destination, filter));
                     Store(() => S57_SeabedL(source, destination, filter));
                     Store(() => S57_SeabedP(source, destination, filter));
@@ -280,6 +278,9 @@ namespace S100Framework.Applications
                 instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
             }
             */
+            if (value != 23) {
+                return EnumHelper.GetEnumValue<verticalDatum>(value);
+            }
 
             return verticalDatum.BalticSeaChartDatum2000;
         }
