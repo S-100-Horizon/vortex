@@ -343,6 +343,9 @@ namespace VortexProAppModule
 
                         if (!editOperation.IsEmpty) {
                             if (editOperation.Execute()) {
+                                var insp = new Inspector();
+                                insp.Load(table, token.ObjectID.Value);
+
                                 return token.GlobalID;
                             }
                             else if (System.Diagnostics.Debugger.IsAttached)
@@ -403,6 +406,13 @@ namespace VortexProAppModule
 
                         if (!editOperation.IsEmpty) {
                             if (editOperation.Execute()) {
+                                //var selection = table.Select(new QueryFilter {
+                                //    WhereClause = $"WHERE OBJECTID = {token.ObjectID.Value}"
+                                //}, SelectionType.ObjectID, SelectionOption.OnlyOne);
+
+
+                                //MapView.Active.Map.SetSelection(SelectionSet.FromSelection(selection), SelectionCombinationMethod.Add);
+                                
                                 return token.GlobalID;
                             }
                             else if (System.Diagnostics.Debugger.IsAttached)
@@ -469,7 +479,7 @@ namespace VortexProAppModule
                                 IEnumerable<string> types;
                                 if (inspector.HasGeometry) {
                                     var geometryType = inspector.MapMember switch {
-                                        FeatureLayer l => l.ShapeType             ,
+                                        FeatureLayer l => l.ShapeType,
                                         _ => throw new InvalidOperationException(),
                                     };
 
@@ -479,7 +489,7 @@ namespace VortexProAppModule
                                         ArcGIS.Core.CIM.esriGeometryType.esriGeometryPoint => Primitives.point,
                                         ArcGIS.Core.CIM.esriGeometryType.esriGeometryMultipoint => Primitives.pointSet,
                                         _ => throw new InvalidOperationException(),
-                                    };                           
+                                    };
 
                                     types = _inspectorHandle.Types(featureCatalogue, primitive);
                                 }
@@ -530,7 +540,7 @@ namespace VortexProAppModule
             var inspector = base.Inspector;
 
             var model = base.Model;
-            
+
             if (!inspector.HasAttributes)
                 return;
 
