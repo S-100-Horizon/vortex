@@ -266,8 +266,11 @@ namespace S100Framework.Applications
                         var current = (ArcGIS.Core.Data.Feature)cursor.Current;
                         var name = Convert.ToString(current["name"])!;
 
+                        // Only map geometry, and keep name seperate so foids remain unique
+                        var geometry = name;
+
                         if (topology.Mapping.TryGetValue(name!, out var value))
-                            name = value;
+                            geometry = value;
 
                         var shapetype = def.GetShapeType();
 
@@ -297,7 +300,7 @@ namespace S100Framework.Applications
                                 Name = code,
                                 Foid = foid,
                                 Prim = prim,
-                                Geometry = name,
+                                Geometry = geometry,
                             };
 
                             // Only emit attributes if feature contains any non-static properties
