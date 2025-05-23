@@ -87,13 +87,8 @@ namespace S100Framework.Applications
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
             }
 
-            // TODO: verticalDatum
-
-            if (current.VERDAT.HasValue) {
-                instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
-            }
-
-
+            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
+            
             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                 string subtype = "";
 
@@ -176,17 +171,10 @@ namespace S100Framework.Applications
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
             }
 
-            // TODO: verticalDatum
-
-            if (current.VERDAT.HasValue) {
-                instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
-            }
-
+            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
+            
             return instance;
         }
-
-
-
 
     }
 }

@@ -307,8 +307,8 @@ namespace S100Framework.Applications.Singletons
     internal class FeatureRelations
     {
         private static FeatureRelations? _instance;
-        private static Geodatabase? _source;
-        private static Geodatabase? _target;
+//        private static Geodatabase? _source;
+//        private static Geodatabase? _target;
         private static HashSet<Relation> _relations = new HashSet<Relation>();
         private static Dictionary<Guid, PltsCollection> _pltsCollections = new Dictionary<Guid, PltsCollection>();
         private static Dictionary<Guid, IList<PltsSlave>> _srcObjectToSlaves = new Dictionary<Guid, IList<PltsSlave>>();
@@ -332,24 +332,19 @@ namespace S100Framework.Applications.Singletons
         }
 
         internal static void Initialize(Geodatabase source, Geodatabase target) {
-            _source = source;
-            _target = target;
             _pltsCollections = new Dictionary<Guid, PltsCollection>();
             _srcObjectToSlaves = new Dictionary<Guid, IList<PltsSlave>>();
             _pltsMasterSlaves = new Dictionary<string, PLTS_Master_Slaves>();
 
-            LoadPltsCollections();
-            LoadPltsFrels2(_source);
-            LoadPLTS_Master_Slaves();
+            LoadPltsCollections(source);
+            LoadPltsFrels2(source);
+            LoadPLTS_Master_Slaves(source);
             _isInitialized = true;
         }
 
-        private static void LoadPLTS_Master_Slaves() {
+        private static void LoadPLTS_Master_Slaves(Geodatabase source) {
             // Read aggregations
-            if (_source == null) {
-                throw new ArgumentException("Source not set");
-            }
-            using var pltsMasterSLavesTable = _source.OpenDataset<Table>(_source.GetName("PLTS_MASTER_SLAVES"));
+            using var pltsMasterSLavesTable = source.OpenDataset<Table>(source.GetName("PLTS_MASTER_SLAVES"));
 
             using var cursor = pltsMasterSLavesTable.Search(null, true);
 
@@ -365,13 +360,13 @@ namespace S100Framework.Applications.Singletons
             }
         }
 
-        private static void LoadPltsCollections() {
-            if (_source == null) {
+        private static void LoadPltsCollections(Geodatabase source) {
+            if (source == null) {
                 throw new ArgumentException("Source not set");
             }
 
             // Read aggregations
-            var pltsCollectionsTable = _source.OpenDataset<Table>(_source.GetName("PLTS_COLLECTIONS"));
+            var pltsCollectionsTable = source.OpenDataset<Table>(source.GetName("PLTS_COLLECTIONS"));
             //var pltsCollections = new Dictionary<Guid, IList<PLTS_Collections>>();
 
             var cursor = pltsCollectionsTable.Search(null, true);
@@ -381,7 +376,7 @@ namespace S100Framework.Applications.Singletons
                 var plts_collection = new PLTS_Collections(cursor.Current);
                 Guid.TryParse(Convert.ToString(plts_collection.GLOBALID), out uid);
                 if (!_pltsCollections.ContainsKey(uid)) {
-                    _pltsCollections[uid] = new PltsCollection(_source, plts_collection);
+                    _pltsCollections[uid] = new PltsCollection(source, plts_collection);
                 }
                 else {
                     throw new IndexOutOfRangeException($"Multiple PltsCollections with same id not allowed {uid}");
@@ -540,7 +535,7 @@ namespace S100Framework.Applications.Singletons
 
         //}
 
-        private static void LoadPltsFrels2(Geodatabase source) {
+        private static void  LoadPltsFrels2(Geodatabase source) {
             using var pltsFrel = source.OpenDataset<Table>(source.GetName("PLTS_Frel"));
             var frelDestFeatureClasses = new Dictionary<string, IList<PLTS_Frel>>();
 
@@ -610,21 +605,21 @@ namespace S100Framework.Applications.Singletons
             var loadedRelatedObjectsCount = 0;
 
             foreach (var destFc in destinationFcToFrels.Keys) {
-                var destinationFeatureClassName = _source?.GetName(destFc);
+                var destinationFeatureClassName = source?.GetName(destFc);
 
                 if (destinationFeatureClassName == null) {
                     throw new NotSupportedException("empty featureclass name");
                 }
-                if (_source == null) {
+                if (source == null) {
                     throw new NotSupportedException("source geodatabase");
                 }
 
 
-                if (!_source.IsFeatureClass(destinationFeatureClassName)) {
+                if (!source.IsFeatureClass(destinationFeatureClassName)) {
                     continue;
                 }
 
-                using var relatedFeatureClass = _source.OpenDataset<FeatureClass>(destinationFeatureClassName);
+                using var relatedFeatureClass = source.OpenDataset<FeatureClass>(destinationFeatureClassName);
 
                 using var cursorRelated = relatedFeatureClass.Search(null, true);
 
@@ -789,7 +784,7 @@ namespace S100Framework.Applications.Singletons
                 associationBindingBuffer["roleType"] = bindingDefinitionPrimary.roleType.ToString();
                 associationBindingBuffer["associationId"] = featureAssociationName;
                 associationBindingBuffer["association"] = bindingDefinitionPrimary.association;
-                associationBindingBuffer["pid"] = relation?.Master?.Name;
+                associationBindingBuffer["primaryid"] = relation?.Master?.Name;
                 associationBindingBuffer["foreignid"] = relation?.Slave?.Name;
                 associationBindingBuffer["role"] = bindingDefinitionPrimary.role;
                 associationBindingBuffer["type"] = "FeatureBinding";
@@ -806,7 +801,7 @@ namespace S100Framework.Applications.Singletons
                 associationBindingBuffer["roleType"] = bindingDefinitionForeign.roleType.ToString();
                 associationBindingBuffer["associationId"] = featureAssociationName;
                 associationBindingBuffer["association"] = bindingDefinitionForeign.association;
-                associationBindingBuffer["pid"] = relation?.Slave?.Name;
+                associationBindingBuffer["primaryid"] = relation?.Slave?.Name;
                 associationBindingBuffer["foreignid"] = relation?.Master?.Name;
                 associationBindingBuffer["role"] = bindingDefinitionForeign.role;
                 associationBindingBuffer["type"] = "FeatureBinding";
@@ -816,13 +811,13 @@ namespace S100Framework.Applications.Singletons
             }
         }
 
-        internal void CreateRelations() {
-            if (_target == default) {
+        internal void CreateRelations(Geodatabase target) {
+            if (target == default) {
                 throw new NotSupportedException("Target is null");
             }
 
-            using var featureAssociation = _target.OpenDataset<Table>(_target.GetName("featureassociation"));
-            using var associationBinding = _target.OpenDataset<Table>(_target.GetName("associationbinding"));
+            using var featureAssociation = target.OpenDataset<Table>(target.GetName("featureassociation"));
+            using var associationBinding = target.OpenDataset<Table>(target.GetName("associationbinding"));
             using var featureAssociationBuffer = featureAssociation.CreateRowBuffer();
             //using var featureAssociationInsert = featureAssociation.CreateInsertCursor();
             using var associationBindingBuffer = associationBinding.CreateRowBuffer();

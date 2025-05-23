@@ -16,6 +16,7 @@ using ArcGIS.Desktop.Internal.Core.Conda;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using System.Runtime.CompilerServices;
 using S100Framework.Applications.Singletons;
+using Microsoft.AspNetCore.StaticFiles;
 
 
 namespace S100Framework.Applications
@@ -149,8 +150,6 @@ namespace S100Framework.Applications
 
                 relatedEquipment = new RelatedEquipment(source);
 
-
-
                 if (skinOfEarthOnly) {
                     // All "SKIN OF EARTH" cases / subtypes are marked with a "skin of earth" comment
                     var whereClause = filter.WhereClause.Clone();
@@ -164,12 +163,17 @@ namespace S100Framework.Applications
                     Store(() => S57_MetadataA(source, destination, filter));
                     filter.WhereClause = $"{whereClause} and fcsubtype in (1)";
                     Store(() => S57_ProductCoverage(source, destination, filter));
+                    Store(() => FeatureRelations.Instance.CreateRelations(destination));
+
                 }
                 else {
                     /*var whereClause = filter.WhereClause.Clone();
                     filter.WhereClause = $"{whereClause} and globalid = '{{CA71EEFC-AF9F-4DB0-A55E-FD9D394FF58D}}'";
                     filter.WhereClause = $"{whereClause}";
                     */
+
+                    Store(() => S57_MetadataA(source, destination, filter));
+
                     Store(() => S57_SeabedA(source, destination, filter));
                     Store(() => S57_SeabedL(source, destination, filter));
                     Store(() => S57_SeabedP(source, destination, filter));
@@ -186,7 +190,7 @@ namespace S100Framework.Applications
                     Store(() => S57_DepthsA(source, destination, filter));
                     Store(() => S57_DepthsL(source, destination, filter));
                     Store(() => S57_IcefeaturesA(source, destination, filter));
-                    Store(() => S57_MetadataA(source, destination, filter)); 
+                    Store(() => S57_MetadataA(source, destination, filter));
                     Store(() => S57_MilitaryFeatureA(source, destination, filter));
                     Store(() => S57_MilitaryFeaturesP(source, destination, filter));
                     Store(() => S57_NaturalFeaturesA(source, destination, filter));
@@ -206,10 +210,8 @@ namespace S100Framework.Applications
                     Store(() => S57_TracksAndRoutesL(source, destination, filter));
                     Store(() => S57_TracksAndRoutesP(source, destination, filter));
                     Store(() => S57_AidsToNavigationP(source, destination, filter));
-
+                    Store(() => FeatureRelations.Instance.CreateRelations(destination));
                 }
-
-                FeatureRelations.Instance.CreateRelations();
 
                 Logger.Current.Information("Done");
 
@@ -271,6 +273,17 @@ namespace S100Framework.Applications
             };
             return rhythmOfLight;
         }
+
+        internal static verticalDatum GetVerticalDatum(int value) {
+            /*
+            if (current.VERDAT.HasValue) {
+                instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
+            }
+            */
+
+            return verticalDatum.BalticSeaChartDatum2000;
+        }
+
 
         internal static List<signalSequence> GetSignalSequences(string? sigseq) {
             var signalSequences = new List<signalSequence>();

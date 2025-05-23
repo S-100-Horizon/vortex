@@ -48,12 +48,10 @@ namespace S100Framework.Applications
 
             if (current.STATUS != default) {
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
-            }
-
-            if (current.VERDAT.HasValue) {
-                instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
-            }
-
+            }		
+            
+            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
+            
             if (current.VERLEN.HasValue) {
                 instance.verticalLength = current.VERLEN.Value;
             }

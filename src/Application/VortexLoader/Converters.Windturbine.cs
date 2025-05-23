@@ -71,16 +71,13 @@ namespace S100Framework.Applications
             }
 
             // TODO: verticalClearanceFixed		
-
-            if (current.VERDAT.HasValue) {
-                instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
-            }
-
+            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
+            
             if (current.VERLEN.HasValue) {
                 instance.verticalLength = current.VERLEN.Value;
             }
 
-            if (current.CONVIS.HasValue) {
+            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
                 instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
             }
 

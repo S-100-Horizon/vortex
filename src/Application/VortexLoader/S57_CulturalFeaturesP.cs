@@ -482,11 +482,100 @@ namespace S100Framework.Applications
                         }
                         break;
 
-                    case 35: { // LNDMRK_Landmark
+                        case 35: { // LNDMRK_Landmark
                             if (current.CATLMK == "19") {
                                 var windturbine = ImporterNIS._converterRegistry.Convert<WindTurbine>(current);
 
+                                if (current.COLOUR != default) {
+                                    windturbine.colour = GetColours(current.COLOUR);
+                                }
+
+                                if (current.COLPAT != default) {
+                                    windturbine.colourPattern = GetColourPattern(current.COLPAT);
+                                }
+
+                                if (current.CONDTN.HasValue) {
+                                    windturbine.condition = GetCondition(current.CONDTN.Value);
+                                }
+
+                                if (current.ELEVAT.HasValue) {
+                                    windturbine.elevation = current.ELEVAT.Value;
+                                }
+
+                                windturbine.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                                DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                                if (dateRange != default) {
+                                    windturbine.fixedDateRange = dateRange;
+                                }
+
+                                if (current.HEIGHT.HasValue) {
+                                    windturbine.height = current.HEIGHT.Value;
+                                }
+
+                                // TODO: interoperabilityIdentifier
+
+                                // TODO: multiplicityOfFeatures
+
+                                if (current.NATCON != default) {
+                                    windturbine.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                }
+
+                                if (current.CONRAD.HasValue) {
+                                    windturbine.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
+                                }
+
+                                if (current.SORDAT != default) {
+                                    if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                        windturbine.reportedDate = dateOnly;
+                                    }
+                                    else {
+                                        Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    }
+                                }
+
+                                if (current.STATUS != default) {
+                                    windturbine.status = GetStatus(current.STATUS);
+                                }
+
+                                // TODO: verticalClearanceFixed		
+
+                                if (current.VERDAT.HasValue) {
+                                    windturbine.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
+                                }
+
+                                if (current.VERLEN.HasValue) {
+                                    windturbine.verticalLength = current.VERLEN.Value;
+                                }
+
+
+                                if (current.CONVIS.HasValue) {
+                                    windturbine.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                }
+
+                                if (current.WATLEV.HasValue) {
+                                    windturbine.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                                }
+
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                    string subtype = "";
+
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                    windturbine.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                }
+
+
                                 AddInformation(windturbine.information, feature);
+
+
+                                if (current.PICREP != default) {
+                                    windturbine.pictorialRepresentation = current.PICREP;
+                                }
+
+                                //TODO: inTheWater
+
                                 buffer["ps"] = ps101;
                                 buffer["code"] = windturbine.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(windturbine, jsonSerializerOptions);

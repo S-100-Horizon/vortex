@@ -4,6 +4,7 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.Applications.Singletons;
+using ArcGIS.Desktop.Internal.Mapping.Views.PropertyPages.Map;
 
 namespace S100Framework.Applications
 {
@@ -194,6 +195,34 @@ namespace S100Framework.Applications
                                     instance.status = GetStatus(current.STATUS);
                                 }
 
+
+                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
+                                    instance.valueOfSounding = current.VALSOU.Value;
+                                }
+
+
+                                if (current.TECSOU != null) {
+                                    instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                                }
+
+
+                                if (current.SOUACC.HasValue) {
+                                    instance.verticalUncertainty = new() {
+                                        uncertaintyFixed = current.SOUACC.Value
+                                    };
+                                }
+
+
+                                if (current.SORDAT != default) {
+                                    if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                        instance.reportedDate = dateOnly;
+                                    }
+                                    else {
+                                        Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    }
+                                }
+
+
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                     string subtype = "";
 
@@ -270,7 +299,14 @@ namespace S100Framework.Applications
                                     instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
                                 }
 
-                                // TODO: QualityOfVerticalMeasurement
+                                if (current.QUASOU != default) {
+                                    if (current.QUASOU == "-32767")
+                                        instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>("-1");
+                                    else {
+                                        instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                    }
+                                }
+
 
                                 if (current.SORDAT != default) {
                                     if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
@@ -298,6 +334,8 @@ namespace S100Framework.Applications
                                 if (current.WATLEV.HasValue) {
                                     instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
                                 }
+
+
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                     string subtype = "";
@@ -380,9 +418,32 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 25: { // WRECKS_Wreck
-                            var instance = new Wreck {
+                            var instance = new Wreck();
 
-                            };
+                            if (current.CATWRK.HasValue) {
+                                instance.categoryOfWreck = EnumHelper.GetEnumValue<categoryOfWreck>(current.CATWRK.Value);
+                            }
+
+                            if (current.EXPSOU.HasValue) {
+                                instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
+                            }
+                            
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.QUASOU != default) {
+                                if (current.QUASOU == "-32767")
+                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>("-1");
+                                else {
+                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                }
+                            }
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -390,10 +451,6 @@ namespace S100Framework.Applications
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
-                            }
-
-                            if (current.CATWRK.HasValue) {
-                                instance.categoryOfWreck = EnumHelper.GetEnumValue<categoryOfWreck>(current.CATWRK.Value);
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -404,17 +461,13 @@ namespace S100Framework.Applications
                                 instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
                             }
 
-
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
@@ -426,7 +479,6 @@ namespace S100Framework.Applications
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
-
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }

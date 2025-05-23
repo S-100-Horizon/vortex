@@ -86,7 +86,7 @@ namespace S100Framework.Applications
                 instance.verticalLength = current.VERLEN.Value;
             }
 
-            if (current.CONVIS.HasValue) {
+            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
                 instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
             }
 
@@ -106,8 +106,5 @@ namespace S100Framework.Applications
 
             return instance;
         }
-
-
-
     }
 }

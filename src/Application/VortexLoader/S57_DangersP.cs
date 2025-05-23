@@ -277,7 +277,6 @@ namespace S100Framework.Applications
                                 instance.valueOfSounding = current.VALSOU.Value;
                             }
 
-
                             //      S57
                             //    Code Description
                             // 1   partly submerged at high water
@@ -288,7 +287,6 @@ namespace S100Framework.Applications
                             // 6   subject to inundation or flooding
                             // 7   floating
                             // -1  Unknown
-
                             if (current.WATLEV.HasValue) {
                                 instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV.Value);
                             }

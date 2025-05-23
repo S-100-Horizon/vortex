@@ -387,7 +387,7 @@ namespace S100Framework.Applications
                             }
                                 
 
-                            if (current.CONVIS.HasValue) {
+                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
                                 instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 

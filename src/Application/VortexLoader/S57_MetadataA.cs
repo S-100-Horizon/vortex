@@ -297,12 +297,17 @@ namespace S100Framework.Applications
                     case 45: { // M_SDAT_SoundingDatum
                             var instance = new SoundingDatum();
 
+                            // TODO: interoperabilityIdentifier
+
+                            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                                                        var featureN = featureClass.CreateRow(buffer);
+                            
+                            var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
@@ -342,65 +347,70 @@ namespace S100Framework.Applications
                     case 55: { // M_VDAT_VerticalDatumOfData
                             var instance = new VerticalDatumOfData();
 
-                            if (current.VERDAT.HasValue) {
-                                var verdat = Convert.ToInt32(current.VERDAT);
-                                if (verdat != default) {
-                                    instance.verticalDatum = verdat switch {
-                                        1 => verticalDatum.MeanLowWaterSprings,
-                                        2 => verticalDatum.MeanLowerLowWaterSprings,
-                                        3 => verticalDatum.MeanSeaLevel,
-                                        4 => verticalDatum.LowestLowWater,
-                                        5 => verticalDatum.MeanLowWater,
-                                        6 => verticalDatum.LowestLowWaterSprings,
-                                        7 => verticalDatum.ApproximateMeanLowWaterSprings,
-                                        8 => verticalDatum.IndianSpringLowWater,
-                                        9 => verticalDatum.LowWaterSprings,
-                                        10 => verticalDatum.ApproximateLowestAstronomicalTide,
-                                        11 => verticalDatum.NearlyLowestLowWater,
-                                        12 => verticalDatum.MeanLowerLowWater,
-                                        13 => verticalDatum.LowWater,
-                                        14 => verticalDatum.ApproximateMeanLowWater,
-                                        15 => verticalDatum.ApproximateMeanLowerLowWater,
-                                        16 => verticalDatum.MeanHighWater,
-                                        17 => verticalDatum.MeanHighWaterSprings,
-                                        18 => verticalDatum.HighWater,
-                                        19 => verticalDatum.ApproximateMeanSeaLevel,
-                                        20 => verticalDatum.HighWaterSprings,
-                                        21 => verticalDatum.MeanHigherHighWater,
-                                        22 => verticalDatum.EquinoctialSpringLowWater,
-                                        23 => verticalDatum.LowestAstronomicalTide,
-                                        24 => verticalDatum.LocalDatum,
-                                        25 => verticalDatum.InternationalGreatLakesDatum1985,
-                                        26 => verticalDatum.MeanWaterLevel,
-                                        27 => verticalDatum.LowerLowWaterLargeTide,
-                                        28 => verticalDatum.HigherHighWaterLargeTide,
-                                        29 => verticalDatum.NearlyHighestHighWater,
-                                        30 => verticalDatum.HighestAstronomicalTide,
-                                        44 => verticalDatum.BalticSeaChartDatum2000,
-                                        -1 => verticalDatum.Unknown,
-                                        _ => throw new ArgumentOutOfRangeException(nameof(verdat), "Invalid value for vertical datum.")
-                                    };
+                            // TODO: interoperabilityIdentifier
 
-                                    AddInformation(instance.information, feature);
-                                    buffer["ps"] = ps101;
-                                    buffer["code"] = instance.GetType().Name;
-                                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                    SetShape(buffer,current.SHAPE);
-                                    
-                                    var featureN = featureClass.CreateRow(buffer);
-                                    var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
+                            
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            SetShape(buffer, current.SHAPE);
 
-                                    if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                        relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
-                                    }
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                                    ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
-
-                                    Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                    
-                                }
-                                break;
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+
+
+                            // if (current.VERDAT.HasValue) {
+                            //var verdat = Convert.ToInt32(current.VERDAT);
+                            //if (verdat != default) {
+                            //    instance.verticalDatum = verdat switch {
+                            //        1 => verticalDatum.MeanLowWaterSprings,
+                            //        2 => verticalDatum.MeanLowerLowWaterSprings,
+                            //        3 => verticalDatum.MeanSeaLevel,
+                            //        4 => verticalDatum.LowestLowWater,
+                            //        5 => verticalDatum.MeanLowWater,
+                            //        6 => verticalDatum.LowestLowWaterSprings,
+                            //        7 => verticalDatum.ApproximateMeanLowWaterSprings,
+                            //        8 => verticalDatum.IndianSpringLowWater,
+                            //        9 => verticalDatum.LowWaterSprings,
+                            //        10 => verticalDatum.ApproximateLowestAstronomicalTide,
+                            //        11 => verticalDatum.NearlyLowestLowWater,
+                            //        12 => verticalDatum.MeanLowerLowWater,
+                            //        13 => verticalDatum.LowWater,
+                            //        14 => verticalDatum.ApproximateMeanLowWater,
+                            //        15 => verticalDatum.ApproximateMeanLowerLowWater,
+                            //        16 => verticalDatum.MeanHighWater,
+                            //        17 => verticalDatum.MeanHighWaterSprings,
+                            //        18 => verticalDatum.HighWater,
+                            //        19 => verticalDatum.ApproximateMeanSeaLevel,
+                            //        20 => verticalDatum.HighWaterSprings,
+                            //        21 => verticalDatum.MeanHigherHighWater,
+                            //        22 => verticalDatum.EquinoctialSpringLowWater,
+                            //        23 => verticalDatum.LowestAstronomicalTide,
+                            //        24 => verticalDatum.LocalDatum,
+                            //        25 => verticalDatum.InternationalGreatLakesDatum1985,
+                            //        26 => verticalDatum.MeanWaterLevel,
+                            //        27 => verticalDatum.LowerLowWaterLargeTide,
+                            //        28 => verticalDatum.HigherHighWaterLargeTide,
+                            //        29 => verticalDatum.NearlyHighestHighWater,
+                            //        30 => verticalDatum.HighestAstronomicalTide,
+                            //        44 => verticalDatum.BalticSeaChartDatum2000,
+                            //        -1 => verticalDatum.Unknown,
+                            //        _ => throw new ArgumentOutOfRangeException(nameof(verdat), "Invalid value for vertical datum.")
+                            //    };
+
+                            //}
+                            //break;
+                            //}
                         }
                         break;
                     default:
