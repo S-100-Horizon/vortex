@@ -26,6 +26,20 @@ namespace S100Framework.Applications
             public bool Verbose { get; set; }
         }
 
+        //  --geodatabase "\\nas.gst.dk\public\projektdata\projekter\S-101_Conversion\All\s100ed6.gdb"
+
+        //  --geodatabase "\\nas.gst.dk\ncps\modeloffice\vortex\connections\s100ed6_traditional(s101).sde" -d DK40349E
+
+        //  --geodatabase "\\nas.gst.dk\ncps\modeloffice\vortex\connections\s100ed6_traditional(s101).sde" -d DK40351E
+
+        //  --geodatabase \\nas.gst.dk\ncps\modeloffice\vortex\connections\s100ed6_traditional(s101).sde -d DK40543E
+
+        //  --geodatabase "\\nas.gst.dk\public\projektdata\projekter\S-101_Conversion\20250522-s100ed6_traditional(s101).sde" -d DKLALAL
+
+
+        //  "C:\Program Files\s100compiler\s100compiler.exe" -C 101DK40349E -d C:\Temp\s100\results -f C:\Temp\101DK40349E.yaml -c C:\Temp\s100\FeatureCatalogue.xml
+        //  "C:\Program Files\s100compiler\s100compiler.exe" -C 101DK40545E -d C:\Temp\s100\results -f C:\Temp\101DK40545E.yaml -c C:\Temp\s100\FeatureCatalogue.xml
+
         static int Main(string[] args) {
             var logpath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Geodatastyrelsen", "VortexExporter", "YAML-developer.log");
 
@@ -94,6 +108,9 @@ namespace S100Framework.Applications
 
                 using Geodatabase source = createGeodatabase();
 
+                var definitionTables = source.GetDefinitions<TableDefinition>();
+                var definitionFeatures = source.GetDefinitions<FeatureClassDefinition>();
+
                 var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
 
                 Dataset dataset;
@@ -107,7 +124,7 @@ namespace S100Framework.Applications
                     };
                 }
                 else {
-                    using var surface = source.OpenDataset<FeatureClass>("surface");
+                    using var surface = source.OpenDataset<FeatureClass>(definitionFeatures.Single(e => e.GetAliasName().Equals("surface")).GetName());
 
                     using var cursor = surface.Search(new QueryFilter {
                         WhereClause = $"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"{dsnm.ToUpperInvariant()}\"%'",
@@ -119,7 +136,7 @@ namespace S100Framework.Applications
                     var electricProduct = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(current["json"])!);
 
                     dataset = new Dataset {
-                        CellName = electricProduct!.datasetName!,
+                        CellName = $"101{electricProduct!.datasetName!}.000",
                         Comment = "Not for navigation!",
                         Edition = 1,
                         ENCVer = "INT.IHO.S-101.2.0",
@@ -152,10 +169,9 @@ namespace S100Framework.Applications
                 Log.Information("Topology finished! Found {curves} Curves, {composites} CompositeCurves, {surfaces} Surfaces", topology!.Curves.Count, topology.CompositeCurves.Count, topology.Surfaces.Count);
                 dataset.AddTopology(topology);
 
-
                 // FeatureAssociations - Only typeof associations. Skip composition/aggregation roleTypes for now
                 try {
-                    using var type = source.OpenDataset<Table>("associationbinding");
+                    using var type = source.OpenDataset<Table>(definitionTables.Single(e => e.GetAliasName().Equals("associationbinding")).GetName());
 
                     using var cursor = type.Search(new QueryFilter {
                         WhereClause = "UPPER(type) = 'FEATUREBINDING' AND (UPPER(roleType) = 'AGGREGATION' OR UPPER(roleType) = 'COMPOSITION')"
@@ -167,7 +183,7 @@ namespace S100Framework.Applications
                         var name = current["association"].ToString()!;
                         var role = current["role"].ToString()!;
 
-                        var id = current["pid"].ToString()!;
+                        var id = current["primaryid"].ToString()!;
                         var to = current["foreignid"].ToString()!;
 
                         if (topology.Mapping.TryGetValue(to, out var value))
@@ -197,7 +213,7 @@ namespace S100Framework.Applications
 
                 // InformationTypes
                 try {
-                    using var informationType = source.OpenDataset<Table>("informationtype");
+                    using var informationType = source.OpenDataset<Table>(definitionTables.Single(e => e.GetAliasName().Equals("informationtype")).GetName());
                     using var informationCursor = informationType.Search();
                     while (informationCursor.MoveNext()) {
                         var current = informationCursor.Current;
@@ -228,7 +244,7 @@ namespace S100Framework.Applications
 
                 // Features
                 foreach (var def in source.GetDefinitions<FeatureClassDefinition>()) {
-                    var tableName = def.GetName();
+                    var tableName = def.GetAliasName();
 
                     var supported = tableName switch {
                         "surface" => true,
@@ -319,8 +335,12 @@ namespace S100Framework.Applications
                 // Serialize to YAML
                 var yaml = S100Framework.YAML.Converter.Serialize(dataset);
 
-                File.WriteAllText(IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"101DK40349E.yaml"), yaml);
-                File.WriteAllText(IO.Path.Combine(@"c:\temp", $"101DK40349E.yaml"), yaml);
+                var datasetName = dataset.CellName.Split('.')[0];
+
+                Log.Information("exporting: {dataset}.000", datasetName);
+
+                File.WriteAllText(IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"{datasetName}.yaml"), yaml);
+                File.WriteAllText(IO.Path.Combine(@"c:\temp", $"{datasetName}.yaml"), yaml);
 
                 sw.Stop();
                 Log.Information("Elapsed: {elapsed}", sw.Elapsed);
@@ -709,9 +729,11 @@ namespace ArcGIS.Core.Data
                 Mapping = new Dictionary<string, string>(),
             };
 
+            var definitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
+
             var curves = new List<S100Framework.YAML.Polyline>();
 
-            using (var curve = geodatabase.OpenDataset<FeatureClass>("curve")) {
+            using (var curve = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("curve")).GetName())) {
                 queryFilter.WhereClause = $"{whereClause}";
 
                 using var cursor = curve.Search(queryFilter);
@@ -742,7 +764,7 @@ namespace ArcGIS.Core.Data
 
             var polygons = new List<S100Framework.YAML.Polygon>();
 
-            using (var surface = geodatabase.OpenDataset<FeatureClass>("surface")) {
+            using (var surface = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("surface")).GetName())) {
                 //queryFilter.WhereClause = $"{whereClause} AND (upper(code) IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))";
                 queryFilter.WhereClause = $"{whereClause}";
 
@@ -809,7 +831,7 @@ namespace ArcGIS.Core.Data
                 Mapping = new Dictionary<string, string>(),
             };
 
-            S100Framework.YAML.Topology.Build(curves.ToArray(), polygons.ToArray(), t);            
+            S100Framework.YAML.Topology.Build(curves.ToArray(), polygons.ToArray(), t);
 
             if (t.Curves.Any())
                 topology.Curves = topology.Curves.Union(t.Curves).ToList();

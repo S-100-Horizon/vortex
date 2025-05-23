@@ -338,7 +338,7 @@ namespace VortexProAppModule
                             { "roleType", Enum.GetName<roleType>(e.roleType.Value) },
                             { "association", e.association },
                             { "role", e.role },
-                            { "pid", e.PID },
+                            { "primaryid", e.PID },
                         });
 
                         if (!editOperation.IsEmpty) {
@@ -398,7 +398,7 @@ namespace VortexProAppModule
                             { "roleType", Enum.GetName<roleType>(e.roleType.Value) },
                             { "association", e.association },
                             { "role", e.role },
-                            { "pid", e.PID },
+                            { "primaryid", e.PID },
                         });
 
                         if (!editOperation.IsEmpty) {
@@ -638,7 +638,7 @@ namespace VortexProAppModule
                         using var table = inspector.OpenDataset<Table>("associationbinding");
 
                         var q = new QueryFilter {
-                            WhereClause = $"TYPE = 'InformationBinding' AND PID = '{informationViewModel.PID}'",
+                            WhereClause = $"TYPE = 'InformationBinding' AND PRIMARYID = '{informationViewModel.PID}'",
                         };
                         using var cursor = table.Search(q, true);
                         while (cursor.MoveNext()) {
@@ -668,7 +668,7 @@ namespace VortexProAppModule
                             using var table = inspector.OpenDataset<Table>("associationbinding");
 
                             var q = new QueryFilter {
-                                WhereClause = $"UPPER(TYPE) = 'INFORMATIONBINDING' AND PID = '{featureViewModel.PID}'",
+                                WhereClause = $"UPPER(TYPE) = 'INFORMATIONBINDING' AND PRIMARYID = '{featureViewModel.PID}'",
                             };
                             using var cursor = table.Search(q, true);
                             while (cursor.MoveNext()) {
@@ -680,7 +680,7 @@ namespace VortexProAppModule
                                     association = Convert.ToString(row["association"]),
                                     role = Convert.ToString(row["role"]),
                                     associationId = Convert.ToString(row["associationId"]),
-                                    informationId = Convert.ToString(row["fid"]),
+                                    informationId = Convert.ToString(row["foreignid"]),
                                     PID = featureViewModel.PID,
                                 });
                                 this.SelectedFeatureProperty.InformationBindings.Add(binding);
@@ -692,7 +692,7 @@ namespace VortexProAppModule
                             using var table = inspector.OpenDataset<Table>("associationbinding");
 
                             var q = new QueryFilter {
-                                WhereClause = $"UPPER(TYPE) = 'FEATUREBINDING' AND PID = '{featureViewModel.PID}'",
+                                WhereClause = $"UPPER(TYPE) = 'FEATUREBINDING' AND PRIMARYID = '{featureViewModel.PID}'",
                             };
                             using var cursor = table.Search(q, true);
                             while (cursor.MoveNext()) {
@@ -704,7 +704,7 @@ namespace VortexProAppModule
                                     association = Convert.ToString(row["association"]),
                                     role = Convert.ToString(row["role"]),
                                     associationId = Convert.ToString(row["associationId"]),
-                                    featureId = Convert.ToString(row["fid"]),
+                                    featureId = Convert.ToString(row["foreignid"]),
                                     PID = featureViewModel.PID,
                                 });
                                 this.SelectedFeatureProperty.FeatureBindings.Add(binding);
@@ -773,7 +773,7 @@ namespace VortexProAppModule
                     if (cursor.MoveNext()) {
                         editOperation.Modify(cursor.Current, new Dictionary<string, object> {
                                         { "associationid", informationBinding.associationId },
-                                        { "fid", informationBinding.informationId },
+                                        { "foreignid", informationBinding.informationId },
                                     });
                     }
                 }
@@ -787,7 +787,7 @@ namespace VortexProAppModule
                     if (cursor.MoveNext()) {
                         editOperation.Modify(cursor.Current, new Dictionary<string, object> {
                                         { "associationid", featureBinding.associationId },
-                                        { "fid", featureBinding.featureId },
+                                        { "foreignid", featureBinding.featureId },
                                     });
                     }
                 }

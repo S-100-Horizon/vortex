@@ -138,7 +138,7 @@ namespace S100Framework.YAML
                         var type = item.GetType();
                         type = Nullable.GetUnderlyingType(type) ?? type;
 
-                        attributes.BuildAttributeItem(item, type.Name, type, ref propertyId, parentId);
+                        attributes.BuildAttributeItem(item, propertyName, type, ref propertyId, parentId);
                     }
 
                     break;
