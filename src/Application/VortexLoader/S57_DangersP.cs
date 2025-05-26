@@ -5,6 +5,7 @@ using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using System.ComponentModel;
 using S100Framework.Applications.Singletons;
+using Microsoft.VisualBasic;
 
 namespace S100Framework.Applications
 {
@@ -385,13 +386,15 @@ namespace S100Framework.Applications
                                 instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
                             }
 
-                            if (current.CATWRK.HasValue) {
-                                instance.categoryOfWreck = EnumHelper.GetEnumValue<categoryOfWreck>(current.CATWRK.Value);
-                            }
-
                             if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
                                 instance.valueOfSounding = current.VALSOU.Value;
                             }
+
+                            // action point #42 Attributes converted correctly but the combination of both is prohibited in S-101 (DCEG 13.5). Ignore/ drop CATWRK when VALSOU is populated on conversion.
+                            if (current.CATWRK.HasValue && !instance.valueOfSounding.HasValue) {
+                                instance.categoryOfWreck = EnumHelper.GetEnumValue<categoryOfWreck>(current.CATWRK.Value);
+                            }
+
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
