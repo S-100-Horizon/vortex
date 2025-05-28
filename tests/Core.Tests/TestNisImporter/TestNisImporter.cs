@@ -5,6 +5,7 @@ using ArcGIS.Core.Internal.Geometry;
 using S100Framework.Applications;
 using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -148,7 +149,8 @@ namespace TestNisImporter
 
             StringBuilder csSubtypes = new StringBuilder();
 
-            var featureClass = source.OpenDataset<FeatureClass>("SeabedL");
+            var featureClass = source.OpenDataset<FeatureClass>("TidesAndVariationsP");
+            string shapeType = "Point"; // Area | Point | Line
 
             var subtypes = featureClass.GetDefinition().GetSubtypes();
 
@@ -164,21 +166,44 @@ namespace TestNisImporter
                 csSubtypes.AppendLine($"\t\tvar instance = new XXX(){{");
                 csSubtypes.AppendLine($"\t\t}};");
 
+                csSubtypes.AppendLine($"\t\t\tif (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {{");
+                csSubtypes.AppendLine($"\t\t\tstring subtype = \"\";");
+
+                csSubtypes.AppendLine($"\t\t\tif (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))");
+                csSubtypes.AppendLine($"\t\t\tthrow new NotSupportedException($\"Unknown subtype for {{current.TableName}}, {{current.FCSUBTYPE.Value}}\");");
+
+                csSubtypes.AppendLine($"\t\t\tinstance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);");
+                csSubtypes.AppendLine($"\t\t\t}}");
+
                 csSubtypes.AppendLine($"\t\t\tif (plts_comp_scale != default) {{");
                 csSubtypes.AppendLine($"\t\t\t\t\t//instance.scaleMinimum = plts_comp_scale;");
                 csSubtypes.AppendLine($"\t\t\t}}");
                 csSubtypes.AppendLine($"");
-                csSubtypes.AppendLine($"\t\t\tAddCondition(instance.condition, feature);");
-                csSubtypes.AppendLine($"\t\t\tAddStatus(instance.status, feature);");
+                //csSubtypes.AppendLine($"\t\t\tAddCondition(instance.condition, feature);");
+                //csSubtypes.AppendLine($"\t\t\tAddStatus(instance.status, feature);");
                 csSubtypes.AppendLine($"\t\t\tinstance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);");
                 csSubtypes.AppendLine($"\t\t\tAddInformation(instance.information, feature);");
                 csSubtypes.AppendLine($"\t\t\tbuffer[\"ps\"] = ps101;");
                 csSubtypes.AppendLine($"\t\t\tbuffer[\"code\"] = instance.GetType().Name;");
                 csSubtypes.AppendLine($"\t\t\tbuffer[\"json\"] = System.Text.Json.JsonSerializer.Serialize(instance);");
-                csSubtypes.AppendLine($"\t\t\tbuffer[\"shape\"] = current.SHAPE;");
-                csSubtypes.AppendLine($"\t\t\tinsert.Insert(buffer);");
-                csSubtypes.AppendLine($"\t\t\tLogger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));");
-                csSubtypes.AppendLine($"\t\t\tconvertedCount++;");
+
+                //csSubtypes.AppendLine($"\t\t\tbuffer[\"shape\"] = current.SHAPE;");
+                //csSubtypes.AppendLine($"\t\t\tinsert.Insert(buffer);");
+                //csSubtypes.AppendLine($"\t\t\tLogger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));");
+                csSubtypes.AppendLine($"\t\t\tSetShape(buffer, current.SHAPE);");
+
+                csSubtypes.AppendLine($"\t\t\tvar featureN = featureClass.CreateRow(buffer);");
+                csSubtypes.AppendLine($"\t\t\tvar name = Convert.ToString(featureN[\"name\"]) ?? \"Unknown name\";");
+
+                csSubtypes.AppendLine($"\t\t\tif (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {{");
+                csSubtypes.AppendLine($"\t\t\t\trelatedEquipment?.CreateRelated{shapeType}Equipment(current, instance, name, target, source);");
+                csSubtypes.AppendLine($"\t\t\t}}");
+
+                csSubtypes.AppendLine($"\t\t\tConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); ");
+
+                csSubtypes.AppendLine($"\t\t\tLogger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance)); ");
+
+                //csSubtypes.AppendLine($"\t\t\tconvertedCount++;");
 
 
                 csSubtypes.AppendLine($"\t\t}}");

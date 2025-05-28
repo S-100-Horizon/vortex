@@ -260,7 +260,11 @@ namespace S100Framework.Applications
                             if (current.CATSEA.HasValue) {
                                 instance.categoryOfSeaArea = EnumHelper.GetEnumValue<categoryOfSeaArea>(current.CATSEA.Value);
                             }
-                            
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            // TODO: interoperabilityIdentifier
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -269,9 +273,6 @@ namespace S100Framework.Applications
 
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
-
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             AddInformation(instance.information, feature);
 

@@ -33,7 +33,7 @@ namespace S100Framework.Applications
             //filter.WhereClause = orgWhereClause;
 
             int recordCount = 0;
-            var _slaves = new List<Guid>();
+            var _slaves = new Dictionary<Guid,string>();
 
             while (cursor.MoveNext()) {
                 recordCount += 1;
@@ -48,12 +48,12 @@ namespace S100Framework.Applications
                     continue;
                 }
 
-
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
 
                 if (FeatureRelations.Instance.IsSlave(globalid)) {
-                    _slaves.Add(globalid);
+                    Subtypes.Instance.TryGetSubtype(tableName, current.FCSUBTYPE.Value, out var subtype);
+                    _slaves.Add(globalid,$"{tableName}::{globalid}::{subtype}");
                     continue;
                 }
 
@@ -1601,12 +1601,12 @@ namespace S100Framework.Applications
                                 instance.signalGroup = current.SIGGRP;
                              }
 
-
                             if (current.RADWAL != default) {
                                 if (TryGetRadarWaveLengths(current.RADWAL, out var lengths)) {
                                     instance.radarWaveLength = lengths;
                                 }
                             }
+
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
                             if (periodicDateRange != default) {
                                 instance.periodicDateRange = periodicDateRange;
@@ -1614,13 +1614,10 @@ namespace S100Framework.Applications
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
-
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
-
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -1664,13 +1661,14 @@ namespace S100Framework.Applications
 
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
 
-            //var _nonConvertedSlaves = new List<Guid>();
+            var _nonConvertedSlaves = new List<Guid>();
 
-            //foreach (var slaveId in _slaves) {
-            //    if (!ConversionAnalytics.Instance.IsConverted(slaveId)) {
-            //        _nonConvertedSlaves.Add(slaveId);
-            //    }
-            //}
+            foreach (var slaveId in _slaves.Keys) {
+                if (!ConversionAnalytics.Instance.IsConverted(slaveId)) {
+                    _nonConvertedSlaves.Add(slaveId);
+                    Logger.Current.DataError(-1, tableName, "These slaves are missing the structure", $"{_slaves[slaveId]}");
+                }
+            }
         }
 
         internal static bool TryGetRadarWaveLengths(string radwal, out List<radarWaveLength> radarWaveLengths) {
