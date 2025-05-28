@@ -1,6 +1,11 @@
-﻿using JsonFlatten;
+﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Internal.CIM;
+using JsonFlatten;
+using NetTopologySuite.Index.HPRtree;
 using Newtonsoft.Json.Linq;
+using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.YAML;
 using System.Collections;
 using System.Text;
 using System.Text.Json;
@@ -53,6 +58,150 @@ namespace TestS100Framework
 
             System.Diagnostics.Debugger.Break();
         }
+
+        [Fact]
+        public void Test_Deserialize_Feature() {
+            var dataset = new S100Framework.YAML.Dataset() {
+                CellName = "101DK40349E.000",
+                Edition = 1,
+                Comment = "Not for navigation!",
+                ENCVer = "INT.IHO.S-101.2.0",
+                FCVer = "2.0.0",
+            };
+
+            var bridge = new S100Framework.YAML.Feature() {
+                Name = "Bridge",
+                Prim = Primitive.Surface,
+                Foid = "110:5163:1",
+                Attributes = new Bridge {
+                    featureName = [new() {
+                        language = "eng",
+                        name = "Dronning Alexandrines Bro",
+                        nameUsage = S100Framework.DomainModel.S101.nameUsage.DefaultNameDisplay,
+                    }],
+                    openingBridge = false
+                },
+                Geometry = "S5163"
+            };
+            var sounding = new S100Framework.YAML.Feature() {
+                Name = "Sounding",
+                Prim = Primitive.Point,
+                Foid = "110:1057970:1",
+                Attributes = new Sounding {
+                    scaleMinimum = 89999
+                },
+                Geometry = "P1057970"
+            };
+            var restrictedArea = new S100Framework.YAML.Feature() {
+                Name = "RestrictedArea",
+                Prim = Primitive.Surface,
+                Foid = "110:5207:1",
+                Attributes = new RestrictedArea {
+                    categoryOfRestrictedArea = [
+                        categoryOfRestrictedArea.NatureReserve,
+                        categoryOfRestrictedArea.BirdSanctuary
+                    ],
+                    featureName = [
+                        new() {
+                            language = "eng",
+                            name = "Uvlshale Nyord",
+                            nameUsage = S100Framework.DomainModel.S101.nameUsage.DefaultNameDisplay,
+                        }
+                    ],
+                    restriction = [
+                        restriction.SpeedRestricted
+                    ],
+                    scaleMinimum = 89999,
+                    information = [
+                        new() {
+                            language = "eng",
+                            text = "Speed limit is 8 knots outside the channel"
+                        }
+                    ]
+                },
+                Geometry = "S5207"
+            };
+
+            dataset.AddFeature(bridge);
+            dataset.AddFeature(sounding);
+            dataset.AddFeature(restrictedArea);
+
+            var yamlDataset = @"CellName: 101DK40349E.000
+Comment: Not for navigation!
+Edition: 1
+encver: INT.IHO.S-101.2.0
+FCVer: 2.0.0
+Features:
+  - Name: Bridge
+    Prim: Surface
+    Foid: 110:5163:1
+    Attributes:
+      - Name: featureName
+        id: 1
+      - Name: language
+        Value: eng
+        parent: 1
+      - Name: name
+        Value: Dronning Alexandrines Bro
+        parent: 1
+      - Name: nameUsage
+        Value: 1
+        parent: 1
+      - Name: openingBridge
+        Value: 0
+    Geometry: S5163
+  - Name: Sounding
+    Prim: Point
+    Foid: 110:1057970:1
+    Attributes:
+      - Name: scaleMinimum
+        Value: 89999
+    Geometry: P1057970
+  - Name: RestrictedArea
+    Prim: Surface
+    Foid: 110:5207:1
+    Attributes:
+      - Name: categoryOfRestrictedArea
+        Value: 4
+      - Name: categoryOfRestrictedArea
+        Value: 5
+      - Name: featureName
+        id: 1
+      - Name: language
+        Value: eng
+        parent: 1
+      - Name: name
+        Value: Uvlshale Nyord
+        parent: 1
+      - Name: nameUsage
+        Value: 1
+        parent: 1
+      - Name: restriction
+        Value: 27
+      - Name: scaleMinimum
+        Value: 89999
+      - Name: information
+        id: 2
+      - Name: language
+        Value: eng
+        parent: 2
+      - Name: text
+        Value: Speed limit is 8 knots outside the channel
+        parent: 2
+    Geometry: S5207";
+
+
+            var serialized = S100Framework.YAML.Converter.Deserialize<S100Framework.YAML.Dataset>(yamlDataset);
+
+            // Does not compare properly
+            //var jsonSerialized = JsonSerializer.Serialize(serialized);
+            //var jsonDataset = JsonSerializer.Serialize(dataset);
+
+            //Assert.Equal(jsonSerialized, jsonDataset);
+
+            System.Diagnostics.Debugger.Break();
+        }
+
 
         [Fact]
         public void Test_Dataset() {

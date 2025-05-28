@@ -1,5 +1,8 @@
-﻿using S100Framework.DomainModel;
+﻿using S100Framework.Catalogues;
+using S100Framework.DomainModel;
+using System;
 using System.Collections;
+using System.ComponentModel;
 using System.Globalization;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -9,11 +12,15 @@ using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
+using Scalar = YamlDotNet.Core.Events.Scalar;
+
 namespace S100Framework.YAML
 {
     public static class Converter
     {
         public static string Serialize(object dataset) => Serializer.Serialize(dataset);
+        public static T Deserialize<T>(string yaml) => Deserializer.Deserialize<T>(yaml);
+
         public static bool IsDefault(object? node) {
             if (node is not Node) return true;
 
@@ -43,6 +50,7 @@ namespace S100Framework.YAML
             return flattenedAttributes.Count == 0;
         }
         private record YamlAttributeItem(string Name, string? Value, int? Id, int? Parent);
+        private readonly static FeatureCatalogue featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
 
         private static readonly ISerializer Serializer = new SerializerBuilder()
            .WithNamingConvention(PascalCaseNamingConvention.Instance)
@@ -53,11 +61,10 @@ namespace S100Framework.YAML
            .WithTypeConverter(new BooleanAsNumberConverter())       // Custom type converter for booleans
            .Build();
 
-        //private static readonly IDeserializer Deserializer = new DeserializerBuilder()
-        //   .WithNamingConvention(PascalCaseNamingConvention.Instance)
-        //   .WithTypeConverter(new FeatureNodeConverter())           // Custom type converter for objects of FeatureNode
-        //   .WithTypeConverter(new InformationNodeConverter())       // Custom type converter for objects of InformationNode
-        //   .Build();
+        private static readonly IDeserializer Deserializer = new DeserializerBuilder()
+           .WithNamingConvention(PascalCaseNamingConvention.Instance)
+           .WithTypeConverter(new FeatureNodeDeserializer())
+           .Build();
 
         private static List<YamlAttributeItem> FlattenAttributesRecursively(object obj, ref int propertyId, int? parentId = null) {
             var attributes = new List<YamlAttributeItem>();
@@ -193,6 +200,405 @@ namespace S100Framework.YAML
             var enumMemberAttribute = field?.GetCustomAttribute<EnumMemberAttribute>();
 
             return enumMemberAttribute?.Value ?? name; // Fallback to the enum name
+        }
+
+        private class FeatureNodeDeserializer : IYamlTypeConverter
+        {
+            public bool Accepts(Type type) => type == typeof(Dataset);
+            
+            public object ReadYaml(IParser parser, Type type, ObjectDeserializer rootDeserializer) {
+                var dataset = new Dataset();
+
+                if (parser.Current is not MappingStart)
+                    throw new InvalidDataException("Invalid YAML content.");
+
+                parser.MoveNext(); // move on from the map start
+
+                do {
+                    //... Nessecary?
+                    if (parser.Current is not Scalar) {
+                        parser.MoveNext();
+                        continue;
+                    }
+
+                    GetKeyValueScalar(parser, out string key, out string? value);
+
+                    // if this is null, its the beginning of a list
+                    if (string.IsNullOrEmpty(value)) {
+                        ReadFeatureCollection(parser, key, ref dataset);
+                    }
+                    else {
+                        AddRootAttributes(key, value, ref dataset);
+                    }
+
+
+                    // always move at the end
+                    parser.MoveNext();
+                } while (parser.Current is not DocumentEnd);
+
+
+                return dataset;
+            }
+            
+            public void WriteYaml(IEmitter emitter, object? value, Type type, ObjectSerializer serializer) => throw new NotImplementedException();
+
+            private void GetKeyValueScalar(IParser parser, out string key, out string? value) {
+                parser.Accept(out Scalar scalarKey);
+                key = scalarKey!.Value;
+
+                parser.MoveNext();
+
+                if (parser.Accept(out Scalar scalarValue))
+                    value = scalarValue.Value;
+                else
+                    value = null;
+            }
+
+            // To-do: handle all types of collections based on collectionName
+            private void ReadFeatureCollection(IParser parser, string collectionName, ref Dataset dataset) {
+                if (parser.Current is not SequenceStart) {
+                    throw new InvalidDataException("Invalid YAML content.");
+                }
+
+                parser.MoveNext(); // skip the sequence start
+
+                do {
+                    var item = new Feature();
+
+                    AddFeatureAttribute(parser, ref item);
+                    dataset.AddFeature(item);
+                    //collection.Add(item);
+                    parser.MoveNext();
+                } while (parser.Current is not SequenceEnd);
+            }
+
+            private static void AddRootAttributes(string key, string value, ref Dataset dataset) {
+                switch (key) {
+                    case "CellName":
+                        dataset.CellName = value;
+                        break;
+                    case "Comment":
+                        dataset.Comment = value;
+                        break;
+                    case "Edition":
+                        dataset.Edition = uint.Parse(value);
+                        break;
+                    case "encver":
+                        dataset.ENCVer = value;
+                        break;
+                    case "FCVer":
+                        dataset.FCVer = value;
+                        break;
+                }
+            }
+
+            private void AddFeatureAttribute(IParser parser, ref Feature feature) {
+                while (parser.Current is not MappingEnd or SequenceStart) {
+                    if (parser.Current is Scalar scalarKey) {
+                        var key = scalarKey.Value;
+
+                        // Check next element
+                        parser.MoveNext();
+
+                        parser.Accept(out Scalar scalarValue);
+
+                        var value = scalarValue?.Value;
+                        switch (key) {
+                            case "Name":
+                                feature.Name = value;
+                                break;
+                            case "Prim":
+                                feature.Prim = Enum.Parse<Primitive>(value);
+                                break;
+                            case "Foid":
+                                feature.Foid = value;
+                                break;
+                            case "Geometry":
+                                feature.Geometry = value;
+                                break;
+                            case "Attributes":
+                                // Keep on parsing 
+                                parser.MoveNext();  // SequenceStart
+                                parser.MoveNext();  // MappingStart
+
+                                var attributeList = BuildAttributeList(parser);
+
+                                var featureNode = BuildObject(attributeList, feature.Name);
+
+                                feature.Attributes = featureNode;
+
+                                break;
+                            case "FeatureAssociation":
+                                // To-do
+                                break;
+                            case "Association":
+                                // To-do
+                                break;
+                        }
+                    }
+
+                    parser.MoveNext();
+                }
+            }
+
+            private List<YamlAttributeItem> BuildAttributeList(IParser parser) {
+                var attributes = new List<YamlAttributeItem>();
+
+                string itemName = "";
+                string? itemValue = null;
+                int? itemId = null;
+                int? itemParent = null;
+
+                while (parser.Current is not SequenceEnd) {
+                    if (parser.Current is Scalar) {
+                        GetKeyValueScalar(parser, out var key, out var value);
+
+                        if (key == "Name")
+                            itemName = value;
+                        else if (key == "Value")
+                            itemValue = value;
+                        else if (key == "id")
+                            itemId = Int32.Parse(value);
+                        else if (key == "parent")
+                            itemParent = Int32.Parse(value);
+
+                    }
+                    else if (parser.Current is MappingStart) {
+                        // Probably do nothing? - Keep on keeping on
+                    }
+                    else if (parser.Current is MappingEnd) {
+                        attributes.Add(new(itemName, itemValue, itemId, itemParent));
+                        itemName = "";
+                        itemValue = null;
+                        itemId = null;
+                        itemParent = null;
+                    }
+
+                    parser.MoveNext();
+                }
+
+                return attributes;
+
+            }
+
+            private static FeatureNode BuildObject(List<YamlAttributeItem> attributes, string type) {
+                var featureType = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{type}", true) ?? default;
+                var featureNode = Activator.CreateInstance(featureType);
+
+                foreach (var item in attributes) {
+                    Type? typed = null;
+
+                    // Determine propetyName
+                    if (item.Parent.HasValue) {
+                        // Get parent attribute item
+                        var parentName = item.Parent.HasValue ? attributes.First(e => e.Id == item.Parent).Name : item.Name;
+
+                        // Determine PropertyType of parent
+                        var propertyType = featureType.GetProperty(parentName).PropertyType;
+
+                        // Get type of parent. Example List<string>
+                        var elementType = propertyType.IsGenericType ? propertyType.GetGenericArguments()[0] : typeof(object);
+
+                        // Get the string property - string
+                        var attributeType = elementType.GetProperty(item.Name)?.PropertyType;
+
+                        // Handle nullable
+                        typed = Nullable.GetUnderlyingType(attributeType!) ?? attributeType;
+                    }
+                    else {
+                        // Determine type
+                        var propertyType = featureType.GetProperty(item.Name)?.PropertyType;
+
+                        if (propertyType == null)
+                            continue;
+
+                        typed = Nullable.GetUnderlyingType(propertyType!) ?? propertyType;
+                    }
+
+
+                    switch (typed) {
+                        // Strings need no conversion
+                        case Type t when t == typeof(string): {
+
+                                if (item.Parent.HasValue) {
+                                    var parent = attributes.First(e => e.Parent == item.Id);
+
+                                    var parentProp = featureType.GetProperty(parent.Name);
+                                    var list = (IList)parentProp.GetValue(featureNode);
+
+                                    if (list != null && item.Parent - 1 < list.Count) // item.ParentIndex = index you want
+                                    {
+                                        var element = list[item.Parent.Value - 1];
+                                        var subProp = element.GetType().GetProperty(item.Name);
+
+                                        subProp?.SetValue(element, Convert.ChangeType(item.Value, subProp.PropertyType));
+                                    }
+                                }
+                                else {
+                                    featureType.GetProperty(item.Name)?.SetValue(featureNode, item.Value);
+                                }
+
+                                break;
+                            }
+
+                        // Convert to bool
+                        case Type t when t == typeof(bool): {
+                                var booleanValue = Convert.ToInt32(item.Value) == 1;
+
+                                featureType.GetProperty(item.Name)?.SetValue(featureNode, booleanValue);
+                            }
+                            break;
+
+                        // Convert to decimal value
+                        case Type t when t == typeof(decimal): {
+                                var decimalValue = Convert.ChangeType(item.Value, typeof(decimal));
+                                featureType.GetProperty(item.Name)?.SetValue(featureNode, decimalValue);
+
+                                break;
+                            }
+
+                        // Ensure enum value comes 'EnumMemberAttribute' and no enums are sat to 0, -1 or "unknown".
+                        case Type t when t.IsEnum: {
+                                if (item.Parent.HasValue) {
+                                    var parent = attributes.First(e => e.Id.HasValue && e.Id == item.Parent);
+
+                                    var parentProp = featureType.GetProperty(parent.Name);
+                                    var list = (IList)parentProp.GetValue(featureNode);
+
+                                    var element = list[item.Parent.Value - 1];
+
+                                    var subProp = element.GetType().GetProperty(item.Name);
+
+                                    var enumValue = Enum.Parse(t, item.Value);
+
+                                    //list.Add(enumValue);
+                                    subProp?.SetValue(element, enumValue);
+                                }
+                                else {
+                                    var enumValue = Enum.Parse(t, item.Value);
+                                    featureType.GetProperty(item.Name)?.SetValue(featureNode, enumValue);
+                                }
+
+                                break;
+                            }
+
+                        case Type t when t.IsPrimitive: {
+                                // Handle parentId??
+                                var primValue = Convert.ChangeType(item.Value, t);
+                                featureType.GetProperty(item.Name)?.SetValue(featureNode, primValue);
+                                break;
+                            }
+
+                        case Type t when typeof(IEnumerable).IsAssignableFrom(t): {
+                                var elementType = t.IsGenericType ? t.GetGenericArguments()[0] : typeof(object);
+
+                                // Ensure we dont create new list each time!
+                                var list = GetOrCreateListInstance(featureNode, featureType.GetProperty(item.Name));
+
+                                // Yet another switch. Ensure we add correct type of value to the list.
+                                switch (elementType) {
+                                    case Type et when et == typeof(string): {
+                                            list.Add(item.Value);
+
+                                            break;
+                                        }
+
+                                    // Convert to bool
+                                    case Type et when et == typeof(bool): {
+                                            var booleanValue = Convert.ToInt32(item.Value) == 1;
+
+                                            list.Add(booleanValue);
+                                        }
+                                        break;
+
+                                    // Convert to decimal value
+                                    case Type et when et == typeof(decimal): {
+                                            var decimalValue = Convert.ChangeType(item.Value, typeof(decimal));
+
+                                            list.Add(decimalValue);
+                                            break;
+                                        }
+                                    case Type et when et.IsEnum: {
+                                            var enumValue = Enum.Parse(et, item.Value);
+
+                                            list.Add(enumValue);
+                                            break;
+                                        }
+
+                                    case Type et when et.IsPrimitive: {
+                                            var primValue = Convert.ChangeType(item.Value, et);
+
+                                            list.Add(primValue);
+                                            break;
+                                        }
+
+                                    // List of list not supported!
+                                    case Type et when typeof(IEnumerable).IsAssignableFrom(et): {
+                                            throw new NotImplementedException("List of list not supported!");
+                                        }
+
+                                    case Type et when et.IsClass: {
+                                            // Create new instance of et
+                                            var itemObj = Activator.CreateInstance(et)!;
+
+                                            // Create null object and add it to list. update it alter with parentId?
+                                            et.GetProperty(item.Name)?.SetValue(itemObj, item.Value);
+
+                                            // add item to list
+                                            list.Add(itemObj);
+
+                                            break;
+                                        }
+
+                                    case Type et when et.IsValueType: {
+                                            var valueType = Convert.ChangeType(item.Value, et);
+                                            list.Add(valueType);
+                                            break;
+                                        }
+
+                                    default:
+                                        break;
+                                }
+                                featureType.GetProperty(item.Name)?.SetValue(featureNode, list);
+
+                                break;
+                            }
+
+                        case Type t when t.IsClass: {
+                                Console.WriteLine("");
+                                break;
+                            }
+
+                        case Type t when t.IsValueType: {
+                                var valueType = Convert.ChangeType(item.Value, t);
+                                featureType.GetProperty(item.Name)?.SetValue(featureNode, valueType);
+                                break;
+                            }
+
+                        default:
+                            throw new ArgumentException("Invalid property type provided: {propertyType}", "propertyType");
+                    }
+                }
+
+                return featureNode as FeatureNode;
+            }
+
+            // Gemini magic
+            private static IList GetOrCreateListInstance(object obj, PropertyInfo propertyInfo) {
+                var currentValue = propertyInfo.GetValue(obj);
+
+                if (currentValue != null && currentValue is IList existingList) {
+                    return existingList;
+                }
+                else {
+                    var propertyType = propertyInfo.PropertyType;
+
+                    var elementType = propertyType.IsGenericType ? propertyType.GetGenericArguments()[0] : typeof(object);
+                    var newList = (IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(elementType))!;
+                    propertyInfo.SetValue(obj, newList); // Set the new list back to the object
+                    return newList;
+                }
+            }
         }
 
         private class NodeConverter : IYamlTypeConverter
