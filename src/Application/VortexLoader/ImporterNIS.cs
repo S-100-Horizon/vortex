@@ -171,6 +171,7 @@ namespace S100Framework.Applications
                     filter.WhereClause = $"{whereClause} and globalid = '{{CA71EEFC-AF9F-4DB0-A55E-FD9D394FF58D}}'";
                     filter.WhereClause = $"{whereClause}";
                     */
+                    Store(() => S57_AidsToNavigationP(source, destination, filter));
 
                     Store(() => S57_TidesAndVariationsA(source, destination, filter));
                     Store(() => S57_TidesAndVariationsL(source, destination, filter));
@@ -210,7 +211,7 @@ namespace S100Framework.Applications
                     Store(() => S57_TracksAndRoutesA(source, destination, filter));
                     Store(() => S57_TracksAndRoutesL(source, destination, filter));
                     Store(() => S57_TracksAndRoutesP(source, destination, filter));
-                    Store(() => S57_AidsToNavigationP(source, destination, filter));
+                    
                     Store(() => FeatureRelations.Instance.CreateRelations(destination));
                 }
 
@@ -249,7 +250,24 @@ namespace S100Framework.Applications
                 mandatory
             */
 
-            var signalGroupN = current.SIGGRP != default ? new List<string> { current.SIGGRP } : new();
+            //current.SIGGRP != default ? new List<string> { current.SIGGRP } : new();
+            List<string> parenthesisParts = new List<string>();
+
+            if (!String.IsNullOrEmpty(current.SIGGRP)) {
+                var match = Regex.Match(current.SIGGRP, @"(.*)");
+                if (match.Success) {
+                    string rightSide = match.Groups[1].Value;
+                    var matches = Regex.Matches(rightSide, @"\((.*?)\)");
+
+                    foreach (Match m in matches) {
+                        parenthesisParts.Add(m.Groups[1].Value);
+                    }
+                }
+            }
+
+
+
+
             var signalPeriodN = current.SIGPER;
 
             var sigseq = current.SIGSEQ;
@@ -268,7 +286,7 @@ namespace S100Framework.Applications
 
             var rhythmOfLight = new rhythmOfLight() {
                 lightCharacteristic = lightCharacteristicsValue,
-                signalGroup = signalGroupN,
+                signalGroup = parenthesisParts,
                 signalPeriod = signalPeriodN,
                 signalSequence = signalSequences
             };

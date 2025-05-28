@@ -28,7 +28,7 @@ namespace S100Framework.Applications
 
                 var feature = (Feature)cursor.Current;
 
-                var current = new TracksAndRoutesA(feature);
+                var current = new TidesAndVariationsA(feature);
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
@@ -48,8 +48,12 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 10: { // MAGVAR_MagneticVariation
-                            var instance = new MagneticVariation() {
-                            };
+                            var instance = new MagneticVariation();
+
+                            // TODO: interoperabilityIdentifier
+
+                           // if (current.)
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))

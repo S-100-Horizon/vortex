@@ -28,7 +28,7 @@ namespace S100Framework.Applications
 
                 var feature = (Feature)cursor.Current;
 
-                var current = new TracksAndRoutesA(feature);
+                var current = new TidesAndVariationsP(feature);
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
