@@ -769,7 +769,8 @@ namespace ArcGIS.Core.Data
 
             using (var surface = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("surface")).GetName())) {
                 //queryFilter.WhereClause = $"{whereClause} AND (upper(code) IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))";
-                queryFilter.WhereClause = $"{whereClause}";
+                queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))";
+                //queryFilter.WhereClause = $"{whereClause}";
 
                 using var cursor = surface.Search(queryFilter);
 
@@ -835,6 +836,9 @@ namespace ArcGIS.Core.Data
             };
 
             S100Framework.YAML.Topology.Build(curves.ToArray(), polygons.ToArray(), t);
+
+
+            //S100Framework.YAML.Topology.Build3(curves.ToArray(), polygons.ToArray(), t);
 
             if (t.Curves.Any())
                 topology.Curves = topology.Curves.Union(t.Curves).ToList();
