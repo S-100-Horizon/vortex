@@ -465,8 +465,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 35: { // PIPOHD_PipelineOverhead
-                            var instance = new PipelineOverhead() {
-                            };
+                            var instance = new PipelineOverhead();
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
