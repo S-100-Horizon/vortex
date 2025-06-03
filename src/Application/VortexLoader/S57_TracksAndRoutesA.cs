@@ -62,11 +62,9 @@ namespace S100Framework.Applications
 
                             // TODO: InteroperabilityIdentifier
 
-                            if (current.TRAFIC.HasValue && current.TRAFIC != -31767) {
+                            if (current.TRAFIC.HasValue) {
                                 instance.trafficFlow = EnumHelper.GetEnumValue<trafficFlow>(current.TRAFIC.Value);
                             }
-
-
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -319,6 +317,12 @@ namespace S100Framework.Applications
                     case 40: { // RECTRC_RecommendedTrack
                             var instance = new RecommendedTrack() {
                             };
+
+
+                            if (current.TRAFIC.HasValue) {
+                                instance.trafficFlow = EnumHelper.GetEnumValue<trafficFlow>(current.TRAFIC.Value);
+                            }
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -328,7 +332,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-
+                            
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
