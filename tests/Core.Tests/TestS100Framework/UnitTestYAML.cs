@@ -134,15 +134,6 @@ namespace TestS100Framework
                 ProducerCode = "DK00"
             };
 
-
-        // Metadata:
-        //OrganisationName: Geodatastyrelsen
-        //City: Aalborg
-        //AdministrativeArea: Denmark
-        //ElectronicMailAddress: jesoe @gst.dk
-        //Country: Denmark
-        //Producer: GST
-        //ProducerCode: DK00
                   var yamlDataset = @"CellName: 101DK40349E.000
 Comment: Not for navigation!
 Edition: 1
@@ -184,6 +175,18 @@ Depths:
   - Name: P1293975
     Location: 12.0002172,54.5004301
     Z: 10.7
+Surfaces:
+  - Name: S4965
+    Exterior: C2913
+    Interior:
+      - Hole: C2914
+  - Name: S4651
+    Exterior: C4647
+    Interior:
+      - Hole: RC1552
+      - Hole: RC1925
+  - Name: S4964
+    Exterior: C2912
 Features:
   - Name: Bridge
     Prim: Surface
@@ -242,6 +245,8 @@ Features:
         Value: Speed limit is 8 knots outside the channel
         parent: 2
     Geometry: S5207";
+
+            yamlDataset = System.IO.File.ReadAllText(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"101DK40349E.yaml"));
 
 
             var serialized = S100Framework.YAML.Converter.Deserialize<S100Framework.YAML.Dataset>(yamlDataset);
