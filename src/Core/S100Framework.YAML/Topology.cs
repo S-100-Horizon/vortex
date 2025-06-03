@@ -482,7 +482,7 @@ namespace S100Framework.YAML
             var bagCompositeCurves = new ConcurrentDictionary<string, CompositeCurveFeature>();
             var bagSurfaces = new ConcurrentBag<SurfaceFeature>();
 
-            options = new ParallelOptions { MaxDegreeOfParallelism = 1 };
+            //options = new ParallelOptions { MaxDegreeOfParallelism = 1 };
 
             Func<List<LineString>, LinearRingOrientation, FeatureRef> action = (lineStrings, orientation) => {
                 FeatureRef featureRef;
