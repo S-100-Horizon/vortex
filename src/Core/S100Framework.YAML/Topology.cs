@@ -108,7 +108,7 @@ namespace S100Framework.YAML
             };
 
             var hashing = new ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
-            foreach(var f in topology.Curves) {
+            foreach (var f in topology.Curves) {
                 var hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.AsBinary());
                 if (!hashing.ContainsKey(hash)) {
                     hashing.TryAdd(hash, (new FeatureRef {
@@ -143,7 +143,7 @@ namespace S100Framework.YAML
                         Reverse = false,
                     }, f);
                 });
-                
+
                 bagCurves.Add(e.curve);
 
                 mapping.GetOrAdd(p.name, $"C{e.curve.Id}");
@@ -482,13 +482,24 @@ namespace S100Framework.YAML
             var bagCompositeCurves = new ConcurrentDictionary<string, CompositeCurveFeature>();
             var bagSurfaces = new ConcurrentBag<SurfaceFeature>();
 
-            //options = new ParallelOptions { MaxDegreeOfParallelism = 1 };
+            options = new ParallelOptions { MaxDegreeOfParallelism = 1 };
 
-            Func<List<LineString>, FeatureRef> action = (lineStrings) => {
+            Func<List<LineString>, LinearRingOrientation, FeatureRef> action = (lineStrings, orientation) => {
                 FeatureRef featureRef;
 
                 if (lineStrings.Count == 1) {
-                    var hash = hashing[IO.Hashing.XxHash3.HashToUInt64(lineStrings[0].AsBinary())];
+                    var l = lineStrings[0];
+
+                    if (l.IsRing && orientation != LinearRingOrientation.DontCare) {
+                        var ring = l.Factory.CreateLinearRing(l.Coordinates);
+
+                        l = ring.IsCCW switch {
+                            true => orientation == LinearRingOrientation.CCW ? l : (LineString)l.Reverse(),
+                            false => orientation == LinearRingOrientation.CW ? l : (LineString)l.Reverse(),
+                        };
+                    }
+
+                    var hash = hashing[IO.Hashing.XxHash3.HashToUInt64(l.AsBinary())];
                     featureRef = hash.fetureRef;
                 }
                 else {
@@ -497,7 +508,16 @@ namespace S100Framework.YAML
 
                     var merged = (LineString)lineMerger.GetMergedLineStrings()[0];
 
-                    var ring = merged.ToText();
+                    if (merged.IsRing && orientation != LinearRingOrientation.DontCare) {
+                        var ring = merged.Factory.CreateLinearRing(merged.Coordinates);
+
+                        merged = ring.IsCCW switch {
+                            true => orientation == LinearRingOrientation.CCW ? merged : (LineString)merged.Reverse(),
+                            false => orientation == LinearRingOrientation.CW ? merged : (LineString)merged.Reverse(),
+                        };
+                    }
+
+                    var lineStringText = merged.ToText();
 
                     //var ring = origin.ExteriorRing.Factory.CreateLinearRing(((LineString)lineMerger.GetMergedLineStrings()[0]).Coordinates).ToString();
 
@@ -508,10 +528,10 @@ namespace S100Framework.YAML
                     for (int i = 0; i < lineStrings.Count; i++) {
 
                         var text = lineStrings[i].ToText().Substring("LINESTRING (".Length).TrimEnd(')');
-                        if (ring.Contains(text)) {
+                        if (lineStringText.Contains(text)) {
                             var hash = hashing[IO.Hashing.XxHash3.HashToUInt64(lineStrings[i].AsBinary())];
 
-                            sortedList.Add(ring.IndexOf(text), hash.fetureRef);
+                            sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
                         }
                         else {
                             var reverse = lineStrings[i].Reverse();
@@ -520,7 +540,7 @@ namespace S100Framework.YAML
 
                             text = reverse.ToText().Substring("LINESTRING (".Length).TrimEnd(')');
 
-                            sortedList.Add(ring.IndexOf(text), hash.fetureRef);
+                            sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
                         }
                     }
 
@@ -549,9 +569,9 @@ namespace S100Framework.YAML
 
                 var origin = polygons.Single(e => e.name == m.Name);
 
-                //if (origin.name.Equals("S1287501")) System.Diagnostics.Debugger.Break();
+                //if (origin.name.Equals("S1287791")) System.Diagnostics.Debugger.Break();
 
-                FeatureRef exteriorId = action(m.LineStringsExterior);
+                FeatureRef exteriorId = action(m.LineStringsExterior, LinearRingOrientation.Clockwise);
 
                 var surface = new SurfaceFeature() {
                     Ref = m.Name,
@@ -562,7 +582,7 @@ namespace S100Framework.YAML
                     var interiorRefs = new List<FeatureRef>();
 
                     foreach (var interior in m.LineStringInterior) {
-                        var interiorRef = action(interior);
+                        var interiorRef = action(interior, LinearRingOrientation.CounterClockwise);
                         interiorRefs.Add(interiorRef);
                     }
 
@@ -580,7 +600,7 @@ namespace S100Framework.YAML
 
                 var origin = polylines.Single(e => e.name == m.Name);
 
-                FeatureRef curveId = action(m.LineStrings);
+                FeatureRef curveId = action(m.LineStrings, LinearRingOrientation.DontCare);
 
                 mapping.GetOrAdd(m.Name, $"C{curveId.Id}");
             });

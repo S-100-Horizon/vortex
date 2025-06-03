@@ -915,8 +915,6 @@ namespace ArcGIS.Core.Data
 
                 S100Framework.YAML.Topology.Build(curves.ToArray(), polygons.ToArray(), topology);
 
-                var ss1 = topology.Curves.Single(e => e.Id == 3415);
-
                 //if (t.Curves.Any())
                 //    topology.Curves = topology.Curves.Union(t.Curves).ToList();
                 //if (t.CompositeCurves.Any())
