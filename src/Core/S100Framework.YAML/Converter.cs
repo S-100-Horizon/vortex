@@ -205,7 +205,7 @@ namespace S100Framework.YAML
         private class FeatureNodeDeserializer : IYamlTypeConverter
         {
             public bool Accepts(Type type) => type == typeof(Dataset);
-            
+
             public object ReadYaml(IParser parser, Type type, ObjectDeserializer rootDeserializer) {
                 var dataset = new Dataset();
 
@@ -214,6 +214,7 @@ namespace S100Framework.YAML
 
                 parser.MoveNext(); // move on from the map start
 
+                // Should only iterate through the root level
                 do {
                     //... Nessecary?
                     if (parser.Current is not Scalar) {
@@ -224,22 +225,30 @@ namespace S100Framework.YAML
                     GetKeyValueScalar(parser, out string key, out string? value);
 
                     // if this is null, its the beginning of a list
-                    if (string.IsNullOrEmpty(value)) {
-                        ReadFeatureCollection(parser, key, ref dataset);
-                    }
-                    else {
+                    if (!string.IsNullOrEmpty(value)) {
                         AddRootAttributes(key, value, ref dataset);
                     }
+                    else if (key == "Metadata") {
+                        AddMetadata(parser, dataset);
+                    }
+                    else {
+                        AddCollection(parser, key, ref dataset);
+                    }
 
-
-                    // always move at the end
+                    // always move at the end. Should only reach this after each root collection or root attribute
                     parser.MoveNext();
                 } while (parser.Current is not DocumentEnd);
 
 
                 return dataset;
             }
-            
+
+            public void AddMetadata(IParser parser, Dataset dataset) {
+                var metadata = new Metadata();
+                AddMetadataAttribute(parser, metadata);
+                dataset.Metadata = metadata;
+            }
+
             public void WriteYaml(IEmitter emitter, object? value, Type type, ObjectSerializer serializer) => throw new NotImplementedException();
 
             private void GetKeyValueScalar(IParser parser, out string key, out string? value) {
@@ -255,21 +264,41 @@ namespace S100Framework.YAML
             }
 
             // To-do: handle all types of collections based on collectionName
-            private void ReadFeatureCollection(IParser parser, string collectionName, ref Dataset dataset) {
-                if (parser.Current is not SequenceStart) {
-                    throw new InvalidDataException("Invalid YAML content.");
-                }
-
-                parser.MoveNext(); // skip the sequence start
+            private void AddCollection(IParser parser, string collectionName, ref Dataset dataset) {
+                if (parser.Current is SequenceStart or MappingStart)
+                    parser.MoveNext(); // skip the sequence/mapping start
 
                 do {
-                    var item = new Feature();
+                    switch (collectionName) {
+                        case "Points":
+                            //ReadPointCollection(parser, key, ref dataset);
+                            break;
+                        case "Curves":
+                            //ReadCurveCollection(parser, key, ref dataset);
+                            break;
+                        case "CompositeCurves":
+                            //ReadCompositeCurveCollection(parser, key, ref dataset);
+                            break;
+                        case "Depths":
+                            //ReadDepthCollection(parser, key, ref dataset);
+                            break;
+                        case "Surfaces":
+                            //ReadSurfaceCollection(parser, key, ref dataset);
+                            break;
+                        case "Features":
+                            var item = new Feature();
 
-                    AddFeatureAttribute(parser, ref item);
-                    dataset.AddFeature(item);
-                    //collection.Add(item);
+                            AddFeatureAttribute(parser, ref item);
+                            dataset.AddFeature(item);
+                            break;
+                        default:
+                            break;
+                            //throw new Exception("Invalid or unknown collection detected!" + collectionName);
+                    }
+
                     parser.MoveNext();
-                } while (parser.Current is not SequenceEnd);
+                } while (parser.Current is not SequenceEnd or SequenceStart);
+
             }
 
             private static void AddRootAttributes(string key, string value, ref Dataset dataset) {
@@ -292,8 +321,49 @@ namespace S100Framework.YAML
                 }
             }
 
+            private void AddMetadataAttribute(IParser parser, Metadata metadata) {
+                // Only iterate on the Metadata object at root level
+                while (parser.Current is not MappingEnd) {
+                    if (parser.Current is Scalar scalarKey) {
+
+                        GetKeyValueScalar(parser, out string key, out string? value);
+                        switch (key) {
+                            case "OrganisationName":
+                                metadata.OrganisationName = value;
+                                break;
+                            case "City":
+                                metadata.City = value;
+                                break;
+                            case "AdministrativeArea":
+                                metadata.AdministrativeArea = value;
+                                break;
+                            case "ElectronicMailAddress":
+                                metadata.ElectronicMailAddress = value;
+                                break;
+                            case "Country":
+                                metadata.Country = value;
+                                break;
+                            case "PrivateKey":
+                                metadata.PrivateKey = value;
+                                break;
+                            case "Certificate":
+                                metadata.Certificate = value;
+                                break;
+                            case "Producer":
+                                metadata.Producer = value;
+                                break;
+                            case "ProducerCode":
+                                metadata.ProducerCode = value;
+                                break;
+                        }
+                    }
+
+                    parser.MoveNext();
+                }
+            }
+
             private void AddFeatureAttribute(IParser parser, ref Feature feature) {
-                while (parser.Current is not MappingEnd or SequenceStart) {
+                while (parser.Current is not MappingEnd) {
                     if (parser.Current is Scalar scalarKey) {
                         var key = scalarKey.Value;
 

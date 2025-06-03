@@ -1,5 +1,4 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Internal.CIM;
 using JsonFlatten;
 using NetTopologySuite.Index.HPRtree;
 using Newtonsoft.Json.Linq;
@@ -125,12 +124,38 @@ namespace TestS100Framework
             dataset.AddFeature(bridge);
             dataset.AddFeature(sounding);
             dataset.AddFeature(restrictedArea);
+            dataset.Metadata = new Metadata {
+                OrganisationName = "Geodatastyrelsen",
+                City = "Aalborg",
+                AdministrativeArea = "Denmark",
+                ElectronicMailAddress = "jesoe@gst.dk",
+                Country = "Denmark",
+                Producer = "GST",
+                ProducerCode = "DK00"
+            };
 
-            var yamlDataset = @"CellName: 101DK40349E.000
+
+        // Metadata:
+        //OrganisationName: Geodatastyrelsen
+        //City: Aalborg
+        //AdministrativeArea: Denmark
+        //ElectronicMailAddress: jesoe @gst.dk
+        //Country: Denmark
+        //Producer: GST
+        //ProducerCode: DK00
+                  var yamlDataset = @"CellName: 101DK40349E.000
 Comment: Not for navigation!
 Edition: 1
 encver: INT.IHO.S-101.2.0
 FCVer: 2.0.0
+Metadata:
+    OrganisationName: Geodatastyrelsen
+    City: Aalborg
+    AdministrativeArea: Denmark
+    ElectronicMailAddress: jesoe @gst.dk
+    Country: Denmark
+    Producer: GST
+    ProducerCode: DK00
 Features:
   - Name: Bridge
     Prim: Surface
