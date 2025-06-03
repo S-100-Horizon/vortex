@@ -115,6 +115,17 @@ namespace S100Framework.YAML
                     attributes.Add(new(propertyName, booleanValue, null, parentId));
                     break;
 
+                // Ensure valid DateOnly objects
+                case Type t when t == typeof(DateOnly):
+                    var dateString = propertyValue.ToString();
+
+                    if (!DateOnly.TryParse(propertyValue.ToString(), out _))
+                        throw new InvalidOperationException($"String could not be parsed into DateOnly: {dateString} for property: {propertyName}");
+
+                    attributes.Add(new(propertyName, dateString, null, parentId));
+
+                    break;
+
                 // Ensure decimals with point 2.0
                 case Type t when t == typeof(decimal):
                     var parsed = (decimal?)propertyValue!;
@@ -271,24 +282,28 @@ namespace S100Framework.YAML
                 do {
                     switch (collectionName) {
                         case "Points":
-                            //ReadPointCollection(parser, key, dataset);
+                            var point = AddPoint(parser);
+                            dataset.AddPoint(point);
                             break;
                         case "Curves":
-                            //ReadCurveCollection(parser, key, dataset);
+                            var curve = AddCurve(parser);
+                            dataset.AddCurve(curve);
                             break;
                         case "CompositeCurves":
-                            //ReadCompositeCurveCollection(parser, key, dataset);
+                            var compCurve = AddCompositeCurve(parser);
+                            dataset.AddCompositeCurve(compCurve);
                             break;
                         case "Depths":
-                            //ReadDepthCollection(parser, key, dataset);
+                            var depth = AddDepth(parser);
+                            dataset.AddPointSet(depth);
                             break;
                         case "Surfaces":
                             //ReadSurfaceCollection(parser, key, dataset);
                             break;
                         case "Features":
-                            var item = new Feature();
+                            //var item = new Feature();
 
-                            AddFeatureAttribute(parser, item);
+                            var item = AddFeatureAttribute(parser);
                             dataset.AddFeature(item);
                             break;
                         default:
@@ -362,7 +377,185 @@ namespace S100Framework.YAML
                 }
             }
 
-            private void AddFeatureAttribute(IParser parser, Feature feature) {
+            private static Point AddPoint(IParser parser) {
+                string? name = null;
+                double? x = null, y = null;
+
+                while (parser.Current is not MappingEnd) {
+                    if (parser.Current is Scalar scalarKey) {
+                        var key = scalarKey.Value;
+
+                        // Check next element
+                        parser.MoveNext();
+
+                        parser.Accept(out Scalar scalarValue);
+
+                        var value = scalarValue?.Value!;
+                        switch (key) {
+                            case "Name":
+                                name = value;
+                                break;
+                            case "Location":
+                                var coords = value.Split(",").Select(e => double.Parse(e, CultureInfo.InvariantCulture)).ToArray();
+                                x = coords[0];
+                                y = coords[1];
+                                break;
+                        }
+                    }
+
+                    parser.MoveNext();
+                }
+
+                if (x == null || y == null)
+                    throw new InvalidOperationException("Missing coordinates for Point");
+
+                return new Point(x.Value, y.Value) {
+                    Name = name
+                };
+            }
+
+            private static PointSet AddDepth(IParser parser) {
+                string? name = null;
+                List<Coordinate> coordinates = [];
+                double[] depths = [];
+
+                while (parser.Current is not MappingEnd) {
+                    if (parser.Current is Scalar scalarKey) {
+                        var key = scalarKey.Value;
+
+                        // Check next element
+                        parser.MoveNext();
+
+                        parser.Accept(out Scalar scalarValue);
+
+                        var value = scalarValue?.Value!;
+                        switch (key) {
+                            case "Name":
+                                name = value;
+                                break;
+                            case "Location":
+                                var coords = value.Split(",");
+
+                                for (int i = 0; i < coords.Length; i += 2) {
+                                    _ = Double.TryParse(coords[i], CultureInfo.InvariantCulture, out double x);
+                                    _ = Double.TryParse(coords[i + 1], CultureInfo.InvariantCulture, out double y);
+
+                                    coordinates.Add(new(x, y));
+                                }
+
+                                break;
+                            case "Z":
+                                var depthsArr = value.Split(",").Select(e => Double.Parse(e, CultureInfo.InvariantCulture));
+
+
+                                depths = [.. depthsArr];
+
+
+                                break;
+                        }
+                    }
+
+                    parser.MoveNext();
+                }
+
+                if (name == null || coordinates.Count == 0 || depths.Length == 0)
+                    throw new InvalidOperationException("Missing name, coordinates or depth for CompositeCurve");
+
+                return new PointSet([.. coordinates], depths) {
+                    Name = name
+                };
+            }
+
+            private static CompositeCurve AddCompositeCurve(IParser parser) {
+                string? name = null;
+                string? components = null;
+
+                while (parser.Current is not MappingEnd) {
+                    if (parser.Current is Scalar scalarKey) {
+                        var key = scalarKey.Value;
+
+                        // Check next element
+                        parser.MoveNext();
+
+                        parser.Accept(out Scalar scalarValue);
+
+                        var value = scalarValue?.Value!;
+                        switch (key) {
+                            case "Name":
+                                name = value;
+                                break;
+                            case "Components":
+                                components = value;
+
+                                break;
+                        }
+                    }
+
+                    parser.MoveNext();
+                }
+
+                if (name == null || components == null)
+                    throw new InvalidOperationException("Missing name or components for CompositeCurve");
+
+                return new CompositeCurve(components) {
+                    Name = name
+                };
+            }
+
+            private static Curve AddCurve(IParser parser) {
+                string? name = null;
+                string? start = null;
+                string? end = null;
+                List<Coordinate> vertices = [];
+
+                while (parser.Current is not MappingEnd) {
+                    if (parser.Current is Scalar scalarKey) {
+                        var key = scalarKey.Value;
+
+                        // Check next element
+                        parser.MoveNext();
+
+                        parser.Accept(out Scalar scalarValue);
+
+                        var value = scalarValue?.Value!;
+                        switch (key) {
+                            case "Name":
+                                name = value;
+                                break;
+                            case "Start":
+                                start = value;
+                                break;
+                            case "End":
+                                end = value;
+                                break;
+                            case "Vertices":
+                                var coords = value.Split(",");
+
+                                for (int i = 0; i < coords.Length; i += 2) {
+                                    _ = Double.TryParse(coords[i], CultureInfo.InvariantCulture, out double x);
+                                    _ = Double.TryParse(coords[i + 1], CultureInfo.InvariantCulture, out double y);
+
+                                    vertices.Add(new(x, y));
+                                }
+                                break;
+                        }
+                    }
+
+                    parser.MoveNext();
+                }
+
+                if (name == null || vertices.Count == 0)
+                    throw new InvalidOperationException("Missing name or vertices for Curve");
+
+                // Add start and endpoint?
+                return new Curve([.. vertices]) {
+                    Name = name
+                };
+
+            }
+
+            private Feature AddFeatureAttribute(IParser parser) {
+                var feature = new Feature();
                 while (parser.Current is not MappingEnd) {
                     if (parser.Current is Scalar scalarKey) {
                         var key = scalarKey.Value;
@@ -409,6 +602,7 @@ namespace S100Framework.YAML
 
                     parser.MoveNext();
                 }
+                return feature;
             }
 
             private List<YamlAttributeItem> BuildAttributeList(IParser parser) {
@@ -635,7 +829,7 @@ namespace S100Framework.YAML
                             }
 
                         case Type t when t.IsClass: {
-                                Console.WriteLine("");
+                                throw new NotImplementedException("List of object not implemented");
                                 break;
                             }
 
