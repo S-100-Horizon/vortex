@@ -226,13 +226,13 @@ namespace S100Framework.YAML
 
                     // if this is null, its the beginning of a list
                     if (!string.IsNullOrEmpty(value)) {
-                        AddRootAttributes(key, value, ref dataset);
+                        AddRootAttributes(key, value, dataset);
                     }
                     else if (key == "Metadata") {
                         AddMetadata(parser, dataset);
                     }
                     else {
-                        AddCollection(parser, key, ref dataset);
+                        AddCollection(parser, key, dataset);
                     }
 
                     // always move at the end. Should only reach this after each root collection or root attribute
@@ -264,31 +264,31 @@ namespace S100Framework.YAML
             }
 
             // To-do: handle all types of collections based on collectionName
-            private void AddCollection(IParser parser, string collectionName, ref Dataset dataset) {
+            private void AddCollection(IParser parser, string collectionName, Dataset dataset) {
                 if (parser.Current is SequenceStart or MappingStart)
                     parser.MoveNext(); // skip the sequence/mapping start
 
                 do {
                     switch (collectionName) {
                         case "Points":
-                            //ReadPointCollection(parser, key, ref dataset);
+                            //ReadPointCollection(parser, key, dataset);
                             break;
                         case "Curves":
-                            //ReadCurveCollection(parser, key, ref dataset);
+                            //ReadCurveCollection(parser, key, dataset);
                             break;
                         case "CompositeCurves":
-                            //ReadCompositeCurveCollection(parser, key, ref dataset);
+                            //ReadCompositeCurveCollection(parser, key, dataset);
                             break;
                         case "Depths":
-                            //ReadDepthCollection(parser, key, ref dataset);
+                            //ReadDepthCollection(parser, key, dataset);
                             break;
                         case "Surfaces":
-                            //ReadSurfaceCollection(parser, key, ref dataset);
+                            //ReadSurfaceCollection(parser, key, dataset);
                             break;
                         case "Features":
                             var item = new Feature();
 
-                            AddFeatureAttribute(parser, ref item);
+                            AddFeatureAttribute(parser, item);
                             dataset.AddFeature(item);
                             break;
                         default:
@@ -301,7 +301,7 @@ namespace S100Framework.YAML
 
             }
 
-            private static void AddRootAttributes(string key, string value, ref Dataset dataset) {
+            private static void AddRootAttributes(string key, string value, Dataset dataset) {
                 switch (key) {
                     case "CellName":
                         dataset.CellName = value;
@@ -362,7 +362,7 @@ namespace S100Framework.YAML
                 }
             }
 
-            private void AddFeatureAttribute(IParser parser, ref Feature feature) {
+            private void AddFeatureAttribute(IParser parser, Feature feature) {
                 while (parser.Current is not MappingEnd) {
                     if (parser.Current is Scalar scalarKey) {
                         var key = scalarKey.Value;
