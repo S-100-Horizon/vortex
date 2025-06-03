@@ -3,6 +3,7 @@ using S100Framework.DomainModel;
 using System;
 using System.Collections;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -255,8 +256,7 @@ namespace S100Framework.YAML
             }
 
             public void AddMetadata(IParser parser, Dataset dataset) {
-                var metadata = new Metadata();
-                AddMetadataAttribute(parser, metadata);
+                var metadata = AddMetadataAttribute(parser);
                 dataset.Metadata = metadata;
             }
 
@@ -281,6 +281,11 @@ namespace S100Framework.YAML
 
                 do {
                     switch (collectionName) {
+                        case "InformationTypes":
+                            // To-do Not implemented yet
+                            //var feature = AddFeatureAttribute(parser);
+                            //dataset.AddFeature(feature);
+                            break;
                         case "Points":
                             var point = AddPoint(parser);
                             dataset.AddPoint(point);
@@ -298,13 +303,12 @@ namespace S100Framework.YAML
                             dataset.AddPointSet(depth);
                             break;
                         case "Surfaces":
-                            //ReadSurfaceCollection(parser, key, dataset);
+                            var surface = AddSurface(parser);
+                            dataset.AddSurface(surface);
                             break;
                         case "Features":
-                            //var item = new Feature();
-
-                            var item = AddFeatureAttribute(parser);
-                            dataset.AddFeature(item);
+                            var feature = AddFeatureAttribute(parser);
+                            dataset.AddFeature(feature);
                             break;
                         default:
                             break;
@@ -336,11 +340,11 @@ namespace S100Framework.YAML
                 }
             }
 
-            private void AddMetadataAttribute(IParser parser, Metadata metadata) {
+            private Metadata AddMetadataAttribute(IParser parser) {
+                var metadata = new Metadata();
                 // Only iterate on the Metadata object at root level
                 while (parser.Current is not MappingEnd) {
                     if (parser.Current is Scalar scalarKey) {
-
                         GetKeyValueScalar(parser, out string key, out string? value);
                         switch (key) {
                             case "OrganisationName":
@@ -372,9 +376,9 @@ namespace S100Framework.YAML
                                 break;
                         }
                     }
-
                     parser.MoveNext();
                 }
+                return metadata;
             }
 
             private static Point AddPoint(IParser parser) {
@@ -499,6 +503,62 @@ namespace S100Framework.YAML
 
                 return new CompositeCurve(components) {
                     Name = name
+                };
+            }
+
+            private static Surface AddSurface(IParser parser) {
+                string? name = null;
+                string? exterior = null;
+                List<string> interior = [];
+
+                while (parser.Current is not MappingEnd) {
+                    if (parser.Current is Scalar scalarKey) {
+                        var key = scalarKey.Value;
+
+                        // Check next element
+                        parser.MoveNext();
+
+                        parser.Accept(out Scalar scalarValue);
+
+                        var value = scalarValue?.Value!;
+                        switch (key) {
+                            case "Name":
+                                name = value;
+                                break;
+                            case "Exterior":
+                                exterior = value;
+                                break;
+                            case "Interior":
+                                parser.MoveNext(); // parse.movenext() since Interior's value is always null. 
+
+                                while (parser.Current is not SequenceEnd) {
+                                    parser.MoveNext(); // Another parse.movenext() since MappingStart
+                                    parser.MoveNext(); // Skip value (we know its "Hole")
+
+                                    var interiorValue = parser.Current as Scalar;
+                                    interior.Add(interiorValue.Value);
+
+                                    parser.MoveNext(); // Go next and skip current Scalar value
+                                    parser.MoveNext(); // Go next and skip MappingEnd. Exits the loop if end of sequence
+                                }
+
+                                break;
+                            case "Hole":
+                                // Should never reach ideally
+                                var f = "exists?";
+                                break;
+                        }
+                    }
+
+                    parser.MoveNext();
+                }
+
+                if (name == null || exterior == null)
+                    throw new InvalidOperationException("Missing name or exterior for CompositeCurve");
+
+                return new Surface(exterior) {
+                    Name = name,
+                    InteriorRings = interior.Count != 0 ? [.. interior] : null
                 };
             }
 
@@ -649,25 +709,36 @@ namespace S100Framework.YAML
                 var featureType = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{type}", true) ?? default;
                 var featureNode = Activator.CreateInstance(featureType);
 
+                var indexOfAttrList = new Dictionary<string, int>();
                 foreach (var item in attributes) {
                     Type? typed = null;
 
                     // Determine propetyName
                     if (item.Parent.HasValue) {
-                        // Get parent attribute item
-                        var parentName = item.Parent.HasValue ? attributes.First(e => e.Id == item.Parent).Name : item.Name;
+                        // To-Do fix propertyType is null..? If object of an object of a attribute, it wont go to root. Recursively check the parent if it also has a parent!
+                        // Example. LightSectored>lightSector>sector....
+                        try {
+                            if (attributes.FirstOrDefault(e => e.Id.HasValue && e.Id == item.Parent).Parent.HasValue)// No support for grandparents just yet - Skip
+                                continue;
+                            // Get parent attribute item
+                            var parentName = item.Parent.HasValue ? attributes.First(e => e.Id == item.Parent).Name : item.Name;
 
-                        // Determine PropertyType of parent
-                        var propertyType = featureType.GetProperty(parentName).PropertyType;
+                            // Determine PropertyType of parent
+                            var propertyType = featureType.GetProperty(parentName).PropertyType;
 
-                        // Get type of parent. Example List<string>
-                        var elementType = propertyType.IsGenericType ? propertyType.GetGenericArguments()[0] : typeof(object);
+                            // Get type of parent. Example List<string>
+                            var elementType = propertyType.IsGenericType ? propertyType.GetGenericArguments()[0] : propertyType;
 
-                        // Get the string property - string
-                        var attributeType = elementType.GetProperty(item.Name)?.PropertyType;
+                            // Get the string property - string
+                            var attributeType = elementType.GetProperty(item.Name)?.PropertyType;
 
-                        // Handle nullable
-                        typed = Nullable.GetUnderlyingType(attributeType!) ?? attributeType;
+                            // Handle nullable
+                            typed = Nullable.GetUnderlyingType(attributeType!) ?? attributeType;
+                        }
+                        catch (Exception ex) {
+                            continue;
+                        }
+
                     }
                     else {
                         // Determine type
@@ -684,18 +755,37 @@ namespace S100Framework.YAML
                         // Strings need no conversion
                         case Type t when t == typeof(string): {
 
+                                // If item has parent, update the list/complex object.
                                 if (item.Parent.HasValue) {
-                                    var parent = attributes.First(e => e.Parent == item.Id);
-
+                                    var parent = attributes.First(e => e.Id.HasValue && e.Id == item.Parent);
                                     var parentProp = featureType.GetProperty(parent.Name);
-                                    var list = (IList)parentProp.GetValue(featureNode);
 
-                                    if (list != null && item.Parent - 1 < list.Count) // item.ParentIndex = index you want
-                                    {
-                                        var element = list[item.Parent.Value - 1];
-                                        var subProp = element.GetType().GetProperty(item.Name);
+                                    // Parent is List
+                                    if (parentProp.PropertyType.IsAssignableTo(typeof(IList))) {
+                                        var list = (IList)parentProp.GetValue(featureNode);
 
-                                        subProp?.SetValue(element, Convert.ChangeType(item.Value, subProp.PropertyType));
+                                        if (list != null) {
+                                            var test = parentProp.ToString();
+                                            var index = indexOfAttrList.ContainsKey(item.Name) ? indexOfAttrList[item.Name] : 0;
+                                            var element = list[index];
+                                            var subProp = element.GetType().GetProperty(item.Name);
+
+                                            subProp?.SetValue(element, Convert.ChangeType(item.Value, subProp.PropertyType));
+
+                                            if (indexOfAttrList.ContainsKey(item.Name))
+                                                indexOfAttrList[item.Name]++;
+                                            else
+                                                indexOfAttrList[item.Name] = index++;   // always 1?
+                                        }
+                                        else {
+                                            var val = parentProp.GetValue(featureNode);
+                                            var pt = Nullable.GetUnderlyingType(parentProp.PropertyType!) ?? parentProp.PropertyType;
+                                            parentProp?.SetValue(val, Convert.ChangeType(item.Value, pt));
+                                        }
+                                    }
+                                    // Parent is Object. No occurences so far
+                                    else {
+                                        Console.WriteLine();
                                     }
                                 }
                                 else {
@@ -729,14 +819,22 @@ namespace S100Framework.YAML
                                     var parentProp = featureType.GetProperty(parent.Name);
                                     var list = (IList)parentProp.GetValue(featureNode);
 
-                                    var element = list[item.Parent.Value - 1];
+                                    if (list != null) {
+                                        var test = parentProp.ToString();
+                                        var index = indexOfAttrList.ContainsKey(item.Name) ? indexOfAttrList[item.Name] : 0;
+                                        var element = list[index];
+                                        var subProp = element.GetType().GetProperty(item.Name);
 
-                                    var subProp = element.GetType().GetProperty(item.Name);
+                                        var enumValue = Enum.Parse(t, item.Value);
 
-                                    var enumValue = Enum.Parse(t, item.Value);
+                                        subProp?.SetValue(element, enumValue);
 
-                                    //list.Add(enumValue);
-                                    subProp?.SetValue(element, enumValue);
+                                        if (indexOfAttrList.ContainsKey(item.Name))
+                                            indexOfAttrList[item.Name]++;
+                                        else
+                                            indexOfAttrList[item.Name] = index++;   // always 1?
+                                    }
+
                                 }
                                 else {
                                     var enumValue = Enum.Parse(t, item.Value);
@@ -756,10 +854,11 @@ namespace S100Framework.YAML
                         case Type t when typeof(IEnumerable).IsAssignableFrom(t): {
                                 var elementType = t.IsGenericType ? t.GetGenericArguments()[0] : typeof(object);
 
-                                // Ensure we dont create new list each time!
+                                var prop = featureType.GetProperty(item.Name);
+
                                 var list = GetOrCreateListInstance(featureNode, featureType.GetProperty(item.Name));
 
-                                // Yet another switch. Ensure we add correct type of value to the list.
+                                // Ensure we add correct type of value to the list.
                                 switch (elementType) {
                                     case Type et when et == typeof(string): {
                                             list.Add(item.Value);
@@ -796,6 +895,17 @@ namespace S100Framework.YAML
                                             break;
                                         }
 
+                                    case Type et when et == typeof(DateOnly): {
+                                            var parsed = DateOnly.TryParse(item.Value, out DateOnly date);
+
+                                            if (!parsed)
+                                                throw new InvalidOperationException("Failed to parse DateOnly");
+
+                                            list.Add(date);
+
+                                            break;
+                                        }
+
                                     // List of list not supported!
                                     case Type et when typeof(IEnumerable).IsAssignableFrom(et): {
                                             throw new NotImplementedException("List of list not supported!");
@@ -827,9 +937,20 @@ namespace S100Framework.YAML
 
                                 break;
                             }
-
                         case Type t when t.IsClass: {
-                                throw new NotImplementedException("List of object not implemented");
+                                // To-do
+                                //throw new NotImplementedException("List of object not implemented");
+                                break;
+                            }
+
+                        case Type t when t == typeof(DateOnly): {
+                                var parsed = DateOnly.TryParse(item.Value, out DateOnly date);
+
+                                if (!parsed)
+                                    throw new InvalidOperationException("Failed to parse DateOnly");
+
+                                featureType.GetProperty(item.Name)?.SetValue(featureNode, date);
+
                                 break;
                             }
 
