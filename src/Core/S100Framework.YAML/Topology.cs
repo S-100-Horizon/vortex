@@ -1,9 +1,11 @@
 ﻿using GeoAPI.Geometries;
+using NetTopologySuite.Algorithm.Match;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Operation.Linemerge;
 using NetTopologySuite.Operation.Union;
 using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.Threading.Tasks.Dataflow;
 using IO = System.IO;
 
 namespace S100Framework.YAML
@@ -72,7 +74,7 @@ namespace S100Framework.YAML
     {
         public required FeatureRef Exterior { get; init; }
 
-        public FeatureRef[]? Interior { get; init; } = default;
+        public FeatureRef[]? Interior { get; set; } = default;
 
         public string? Ref { get; init; } = default;
 
@@ -98,277 +100,276 @@ namespace S100Framework.YAML
         public static S100Framework.YAML.Topology Build(S100Framework.YAML.Polyline[] polylines, S100Framework.YAML.Polygon[] polygons, S100Framework.YAML.Topology topology) {
             int count = polygons.Count();
 
-            var equalsList = new List<string>();
-            var equalsDictionary = new Dictionary<string, List<CurveFeature>>();
-
             var stopwatch = new Stopwatch();
             stopwatch.Start();
-
-            var matchPolylines = new ConcurrentDictionary<string, List<LineString>>();
-
-            for (int i = 0; i < polylines.Length; i++) {
-                //matchPolylines.GetOrAdd(polylines[i].name, []);
-            }
-
-            var matchPolygons = new ConcurrentDictionary<string, (List<LineString> exterior, List<LineString>[] interior)>();
-
-            for (int i = 0; i < polygons.Length; i++) {
-                //matchPolygons.GetOrAdd(polygons[i].name, ([], []));
-            }
 
             var options = new ParallelOptions {
                 MaxDegreeOfParallelism = 8,
             };
 
-            var curvePolygons = new Dictionary<UInt64, LineString>();
-
-            var curvePolygonsToObjectId = new Dictionary<UInt64, string>();
-
-            //Log.Verbose("Loading...");
-
-            foreach (var e in polygons) {
-                var hash = IO.Hashing.XxHash64.HashToUInt64(e.ExteriorRing.ToBinary());
-                var reverse = IO.Hashing.XxHash64.HashToUInt64(((LineString)e.ExteriorRing.Reverse()).ToBinary());
-                if (!(curvePolygons.ContainsKey(hash) || curvePolygons.ContainsKey(reverse))) {
-                    curvePolygons.Add(hash, e.LineString);
-                    curvePolygonsToObjectId.Add(hash, $"e:{e.ObjectId}");
+            var hashing = new ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
+            foreach(var f in topology.Curves) {
+                var hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.AsBinary());
+                if (!hashing.ContainsKey(hash)) {
+                    hashing.TryAdd(hash, (new FeatureRef {
+                        Id = f.Id,
+                        Reverse = false,
+                    }, f));
                 }
-                int index = 0;
-                foreach (var i in e.InteriorRings) {
-                    hash = IO.Hashing.XxHash64.HashToUInt64(i.ToBinary());
-                    reverse = IO.Hashing.XxHash64.HashToUInt64(((LineString)i.Reverse()).ToBinary());
-                    if (!(curvePolygons.ContainsKey(hash) || curvePolygons.ContainsKey(reverse))) {
-                        curvePolygons.Add(hash, i);
-                        curvePolygonsToObjectId.Add(hash, $"i{++index}{e.ObjectId}");
-                    }
+                hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
+                if (!hashing.ContainsKey(hash)) {
+                    hashing.TryAdd(hash, (new FeatureRef {
+                        Id = f.Id,
+                        Reverse = true,
+                    }, f));
                 }
             }
 
-            //foreach (var e in polylines) {
-            //    var hash = IO.Hashing.XxHash64.HashToUInt64(e.LineString.ToBinary());
-            //    var reverse = IO.Hashing.XxHash64.HashToUInt64(((LineString)e.LineString.Reverse()).ToBinary());
-            //    if (!(curvePolygons.ContainsKey(hash) || curvePolygons.ContainsKey(reverse))) {
-            //        curvePolygons.Add(hash, e.LineString);
-            //        curvePolygonsToObjectId.Add(hash, $"e:{e.ObjectId}");
-            //    }
-            //}
+            var bagCurves = new ConcurrentBag<CurveFeature>();
+            var bagSurfaces = new ConcurrentBag<SurfaceFeature>();
 
-            //Log.Verbose("Intersection...");
+            var mapping = new ConcurrentDictionary<string, string>();
 
-            //options = new ParallelOptions {
-            //    MaxDegreeOfParallelism = 1,
-            //};
+            Parallel.For(0, polylines.Length, options, (i) => {
+                var p = polylines[i];
 
-            //var filterPolygons = new List<long> { 175805, 175751 };
+                var hash = System.IO.Hashing.XxHash3.HashToUInt64(p.LineString.AsBinary());
+
+                var e = hashing.GetOrAdd(hash, (h) => {
+                    var f = new CurveFeature(p.LineString);
+
+                    return (new FeatureRef {
+                        Id = f.Id,
+                        Reverse = false,
+                    }, f);
+                });
+                
+                bagCurves.Add(e.curve);
+
+                mapping.GetOrAdd(p.name, $"C{e.curve.Id}");
+            });
+
+            //options = new ParallelOptions { MaxDegreeOfParallelism = 1 };
 
             Parallel.For(0, polygons.Length, options, (i) => {
-                matchPolygons.GetOrAdd(polygons[i].name, ([], []));
-                //if (!filterPolygons.Contains(polygons[i].ObjectId)) return;
-                //if (polygons[i].ObjectId == 160361) System.Diagnostics.Debugger.Break();
+                var p = polygons[i];
 
-                {
-                    NetTopologySuite.Geometries.Geometry boundary1 = polygons[i].ExteriorRing;
+                //if (p.name.Equals("S1292699")) System.Diagnostics.Debugger.Break();
 
-                    var geometries = new List<LineString>();
+                var hash = System.IO.Hashing.XxHash3.HashToUInt64(p.ExteriorRing.AsBinary());
 
-                    for (var j = 0; j < polygons.Length; j++) {
-                        if (j == i) continue;
+                var e = hashing.GetOrAdd(hash, (h) => {
+                    var f = new CurveFeature(p.ExteriorRing);
 
-                        var boundary2 = polygons[j].ExteriorRing;
+                    return (new FeatureRef {
+                        Id = f.Id,
+                        Reverse = false,
+                    }, f);
+                });
+                bagCurves.Add(e.curve);
 
-                        if (boundary1.Disjoint(boundary2))
-                            continue;
+                var surface = new SurfaceFeature() {
+                    Ref = p.name,
+                    Exterior = e.fetureRef,
+                };
 
+                if (p.InteriorRings.Any()) {
+                    var interiorRefs = new List<FeatureRef>();
+
+                    foreach (var interior in p.InteriorRings) {
+                        hash = System.IO.Hashing.XxHash3.HashToUInt64(interior.AsBinary());
+
+                        e = hashing.GetOrAdd(hash, (h) => {
+                            var f = new CurveFeature(interior);
+
+                            return (new FeatureRef {
+                                Id = f.Id,
+                                Reverse = false,
+                            }, f);
+                        });
+                        bagCurves.Add(e.curve);
+
+                        interiorRefs.Add(e.fetureRef);
+                    }
+
+                    surface.Interior = [.. interiorRefs];
+                }
+                bagSurfaces.Add(surface);
+                mapping.GetOrAdd(p.name, $"S{surface.Id}");
+            });
+
+            topology.Mapping = topology.Mapping.Union(mapping).ToDictionary(e => e.Key, e => e.Value);
+
+            topology.Surfaces = [.. topology.Surfaces, .. bagSurfaces];
+            topology.Curves = [.. topology.Curves, .. bagCurves];
+
+            return topology;
+        }
+
+        public static S100Framework.YAML.Topology BuildTopology(S100Framework.YAML.Polyline[] polylines, S100Framework.YAML.Polygon[] polygons, S100Framework.YAML.Topology topology) {
+            int count = polygons.Count();
+
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            var options = new ParallelOptions {
+                MaxDegreeOfParallelism = 8,
+            };
+
+            (string Name, NetTopologySuite.Geometries.Geometry Curve, List<LineString> LineStrings)[] matrixCurves = polylines.Select(e => (e.name, (NetTopologySuite.Geometries.Geometry)e.LineString, new List<LineString>())).ToArray();
+
+            (string Name, NetTopologySuite.Geometries.Geometry ExterioRing, NetTopologySuite.Geometries.Geometry[] InteriorRings, List<LineString> LineStringsExterior, List<LineString>[] LineStringInterior)[] matrixPolygons = polygons.Select(e => (e.name, (NetTopologySuite.Geometries.Geometry)e.ExteriorRing, e.InteriorRings.Select(r => (NetTopologySuite.Geometries.Geometry)r).ToArray(), new List<LineString>(), Array.Empty<List<LineString>>())).ToArray();
+
+
+            for (int i = 0; i < polygons.Length; i++) {
+                if (matrixPolygons[i].ExterioRing.IsEmpty) continue;
+
+                NetTopologySuite.Geometries.Geometry boundary1 = matrixPolygons[i].ExterioRing;
+
+                for (var j = i + 1; j < polygons.Length; j++) {
+                    var boundary2 = matrixPolygons[j].ExterioRing;
+
+                    if (!boundary1.Disjoint(boundary2)) {
                         var contains = boundary1.Contains(boundary2);
                         var coveredby = boundary1.CoveredBy(boundary2);
                         var covers = boundary1.Covers(boundary2);
                         var crosses = boundary1.Crosses(boundary2);
                         var intersects = boundary1.Intersects(boundary2);
                         var overlaps = boundary1.Overlaps(boundary2);
-                        //var touches = boundary1.Touches(boundary2);
-                        //var within = boundary1.Within(boundary2);
-                        //var equalsTopologically = boundary1.EqualsTopologically(boundary2);
-                        //var relate = boundary1.Relate(boundary2, "1********");
-
-                        //if (!(contains || equalsTopologically || overlaps))
-                        //    continue;
 
                         if ((crosses && intersects) && !(contains | overlaps | coveredby))
                             continue;
 
-                        var intersection = boundary1.Intersection(boundary2);
+                        var sharedEdgesGeometry = boundary1.Intersection(boundary2);
 
-                        if (intersection is GeometryCollection geometryCollection) {
-                            intersection = intersection.Factory.CreateMultiLineString(geometryCollection.OfType<LineString>().ToArray());
-                        }
+                        if (sharedEdgesGeometry == null || sharedEdgesGeometry.IsEmpty) continue;
 
-                        if (intersection == null || intersection.IsEmpty) continue;
+                        var lineMerger = new LineMerger();
 
-                        intersection = intersection.Combine();
+                        lineMerger.Add(sharedEdgesGeometry);
 
-                        AddLineStringsFromGeometry(intersection, matchPolygons[polygons[i].name].exterior);
+                        var sharedEdgesLineString = lineMerger.GetMergedLineStrings().Select(e => (LineString)e).ToList();
 
-                        boundary1 = boundary1.SymmetricDifference(intersection);
+                        boundary1 = boundary1.SymmetricDifference(sharedEdgesGeometry);
+                        matrixPolygons[i].LineStringsExterior.AddRange(sharedEdgesLineString);
+
+                        matrixPolygons[j].ExterioRing = boundary2.SymmetricDifference(sharedEdgesGeometry);
+                        matrixPolygons[j].LineStringsExterior.AddRange(sharedEdgesLineString);
+
+                        //boundary1 = matrixPolygons[i].ExterioRing;
                     }
-                    if (!(boundary1 == null || boundary1.IsEmpty)) {
-                        var g = topology.Factory.CreateMultiLineString(matchPolygons[polygons[i].name].exterior.ToArray());
+                    if (matrixPolygons[j].InteriorRings.Any()) {
+                        for (int ring = 0; ring < matrixPolygons[j].InteriorRings.Length; ring++) {
+                            boundary2 = matrixPolygons[j].InteriorRings[ring];
 
-                        var diff = boundary1.SymmetricDifference(g);
-                        if (!(diff == null || diff.IsEmpty))
-                            AddLineStringsFromGeometry(diff, matchPolygons[polygons[i].name].exterior);
-                    }
-                }
-
-                if (polygons[i].InteriorRings.Any()) {
-                    var indexOf = polygons[i].name;
-
-                    matchPolygons[polygons[i].name] = matchPolygons[polygons[i].name] with {
-                        interior = new List<LineString>[polygons[i].InteriorRings.Length],
-                    };
-
-                    UInt64[] exclude = [IO.Hashing.XxHash64.HashToUInt64(polygons[i].ExteriorRing.ToBinary())];
-                    exclude = [.. exclude, .. polygons[i].InteriorRings.Select(e => IO.Hashing.XxHash64.HashToUInt64(e.ToBinary()))];
-
-                    for (int k = 0; k < polygons[i].InteriorRings.Length; k++) {
-                        NetTopologySuite.Geometries.Geometry boundary = (LineString)polygons[i].InteriorRings[k];//.Reverse();
-
-                        //var hash = IO.Hashing.XxHash64.HashToUInt64(((LineString)polygons[i].InteriorRings[k]).ToBinary());
-
-                        var interiorLineStrings = new List<LineString>();
-
-                        foreach (var e in curvePolygons.Where(e => !exclude.Contains(e.Key))) {
-                            var boundary2 = e.Value;
-
-                            if (boundary.Disjoint(boundary2))
+                            if (boundary1.Disjoint(boundary2))
                                 continue;
 
-                            var contains = boundary.Contains(boundary2);
-                            var coveredby = boundary.CoveredBy(boundary2);
-                            var covers = boundary.Covers(boundary2);
-                            var crosses = boundary.Crosses(boundary2);
-                            var intersects = boundary.Intersects(boundary2);
-                            var overlaps = boundary.Overlaps(boundary2);
-                            //var touches = boundary.Touches(boundary2);
-                            //var within = boundary.Within(boundary2);
-                            var equalsTopologically = boundary.EqualsTopologically(boundary2);
-
-                            if (equalsTopologically) continue;
+                            var contains = boundary1.Contains(boundary2);
+                            var coveredby = boundary1.CoveredBy(boundary2);
+                            var covers = boundary1.Covers(boundary2);
+                            var crosses = boundary1.Crosses(boundary2);
+                            var intersects = boundary1.Intersects(boundary2);
+                            var overlaps = boundary1.Overlaps(boundary2);
 
                             if ((crosses && intersects) && !(contains | overlaps | coveredby))
                                 continue;
 
-                            var intersection = boundary.Intersection(boundary2);
+                            var sharedEdgesGeometry = boundary1.Intersection(boundary2);
 
-                            if (intersection is GeometryCollection geometryCollection) {
-                                intersection = intersection.Factory.CreateMultiLineString(geometryCollection.OfType<LineString>().ToArray());
-                            }
+                            if (sharedEdgesGeometry == null || sharedEdgesGeometry.IsEmpty) continue;
 
-                            if (intersection == null || intersection.IsEmpty) continue;
+                            var lineMerger = new LineMerger();
 
-                            intersection = intersection.Combine();
+                            lineMerger.Add(sharedEdgesGeometry);
 
-                            AddLineStringsFromGeometry(intersection, interiorLineStrings);
+                            var sharedEdgesLineString = lineMerger.GetMergedLineStrings().Select(e => (LineString)e).ToList();
 
-                            boundary = boundary.SymmetricDifference(intersection);
+                            boundary1 = boundary1.SymmetricDifference(sharedEdgesGeometry);
+                            matrixPolygons[i].LineStringsExterior.AddRange(sharedEdgesLineString);
+
+                            if (matrixPolygons[j].LineStringInterior.Length == 0)
+                                matrixPolygons[j].LineStringInterior = new List<LineString>[polygons[j].InteriorRings.Length];
+                            if (matrixPolygons[j].LineStringInterior[ring] is null)
+                                matrixPolygons[j].LineStringInterior[ring] = new List<LineString>();
+
+                            matrixPolygons[j].InteriorRings[ring] = boundary2.SymmetricDifference(sharedEdgesGeometry);
+                            matrixPolygons[j].LineStringInterior[ring].AddRange(sharedEdgesLineString);
                         }
-                        if (!interiorLineStrings.Any())
-                            interiorLineStrings.Add((LineString)polygons[i].InteriorRings[k]);
-                        else if (!(boundary == null || boundary.IsEmpty)) {
-                            var g = topology.Factory.CreateMultiLineString(interiorLineStrings.ToArray());
+                    }
+                    if (boundary1.IsEmpty)
+                        break;
+                }
 
-                            var diff = boundary.SymmetricDifference(g);
+                if (!boundary1.IsEmpty) {
+                    AddLineStringsFromGeometry(boundary1, matrixPolygons[i].LineStringsExterior);
+                }
 
-                            if (!(diff == null || diff.IsEmpty))
-                                AddLineStringsFromGeometry(diff, interiorLineStrings);
+                if (polygons[i].InteriorRings.Any()) {
+                    if (matrixPolygons[i].LineStringInterior.Length == 0)
+                        matrixPolygons[i].LineStringInterior = new List<LineString>[polygons[i].InteriorRings.Length];
+
+                    for (int ring = 0; ring < polygons[i].InteriorRings.Length; ring++) {
+                        if (matrixPolygons[i].LineStringInterior[ring] is null)
+                            matrixPolygons[i].LineStringInterior[ring] = new List<LineString>();
+
+                        NetTopologySuite.Geometries.Geometry interior1 = polygons[i].InteriorRings[ring];
+
+                        for (var j = i + 1; j < polygons.Length; j++) {
+                            var boundary2 = matrixPolygons[j].ExterioRing;
+
+                            if (interior1.Disjoint(boundary2))
+                                continue;
+
+                            var contains = interior1.Contains(boundary2);
+                            var coveredby = interior1.CoveredBy(boundary2);
+                            var covers = interior1.Covers(boundary2);
+                            var crosses = interior1.Crosses(boundary2);
+                            var intersects = interior1.Intersects(boundary2);
+                            var overlaps = interior1.Overlaps(boundary2);
+
+                            if ((crosses && intersects) && !(contains | overlaps | coveredby))
+                                continue;
+
+                            var sharedEdgesGeometry = interior1.Intersection(boundary2);
+
+                            if (sharedEdgesGeometry == null || sharedEdgesGeometry.IsEmpty) continue;
+
+                            var lineMerger = new LineMerger();
+
+                            lineMerger.Add(sharedEdgesGeometry);
+
+                            var sharedEdgesLineString = lineMerger.GetMergedLineStrings().Select(e => (LineString)e).ToList();
+
+                            interior1 = interior1.SymmetricDifference(sharedEdgesGeometry);
+
+                            matrixPolygons[i].LineStringInterior[ring].AddRange(sharedEdgesLineString);
+
+                            matrixPolygons[j].ExterioRing = boundary2.SymmetricDifference(sharedEdgesGeometry);
+                            matrixPolygons[j].LineStringsExterior.AddRange(sharedEdgesLineString);
+
+                            if (interior1.IsEmpty)
+                                break;
                         }
-                        matchPolygons[polygons[i].name].interior[k] = interiorLineStrings;
+
+                        if (!interior1.IsEmpty) {
+                            AddLineStringsFromGeometry(interior1, matrixPolygons[i].LineStringInterior[ring]);
+                        }
                     }
                 }
-            });
 
-            //options = new ParallelOptions {
-            //    MaxDegreeOfParallelism = 1,
-            //};
-
-            Parallel.For(0, polylines.Length, options, (i) => {
-                matchPolylines.GetOrAdd(polylines[i].name, []);
-
-                //if (polylines[i].ObjectId != 169521) return;
-                //if (polylines[i].ObjectId == 169631) System.Diagnostics.Debugger.Break();
-                var m = matchPolylines[polylines[i].name];
-
-                NetTopologySuite.Geometries.Geometry boundary1 = polylines[i].LineString;
-
-                var hash = IO.Hashing.XxHash3.HashToUInt64(polylines[i].LineString.ToBinary());
-
-                foreach (var e in curvePolygons.Where(e => e.Key != hash)) {
-                    var boundary2 = e.Value;
-                    if (boundary1.Disjoint(boundary2))
-                        continue;
-                    //if (boundary1.Equals(boundary2))
-                    //    continue;
-
-                    var contains = boundary1.Contains(boundary2);
-                    var coveredby = boundary1.CoveredBy(boundary2);
-                    var covers = boundary1.Covers(boundary2);
-                    var crosses = boundary1.Crosses(boundary2);
-                    var intersects = boundary1.Intersects(boundary2);
-                    var overlaps = boundary1.Overlaps(boundary2);
-                    //var touches = boundary1.Touches(boundary2);
-                    //var within = boundary1.Within(boundary2);
-                    var equalsTopologically = boundary1.EqualsTopologically(boundary2);
-
-                    var origin = curvePolygonsToObjectId[e.Key];
-
-                    if (equalsTopologically) continue;
-
-                    if ((crosses && intersects) && !(contains | overlaps | coveredby))
-                        continue;
-
-                    if (!(boundary1.Overlaps(boundary2) || boundary1.Contains(boundary2))) continue;
-
-                    var intersection = boundary1.Intersection(boundary2);
-
-                    if (intersection is GeometryCollection geometryCollection) {
-                        intersection = intersection.Factory.CreateMultiLineString(geometryCollection.OfType<LineString>().ToArray());
-                    }
-
-                    if (intersection == null || intersection.IsEmpty) continue;
-
-                    intersection = intersection.Combine();
-
-                    AddLineStringsFromGeometry(intersection, m);
-
-                    boundary1 = boundary1.SymmetricDifference(intersection);
-                }
-                if (!m.Any()) {
-                    m.Add(polylines[i].LineString);
-                }
-                else if (!(boundary1 == null || boundary1.IsEmpty)) {
-                    var g = topology.Factory.CreateMultiLineString(m.ToArray());
-
-                    var diff = boundary1.SymmetricDifference(g);
-                    if (!(diff == null || diff.IsEmpty))
-                        AddLineStringsFromGeometry(diff, m);
-                }
-            });
+            }
 
             var mapping = new ConcurrentDictionary<string, string>();
 
-            //Log.Verbose("Hashing...");
-
             var hashing = new Dictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
 
-            foreach (var m in matchPolygons) {
-                //if("S688985".Equals(m.Key)) System.Diagnostics.Debugger.Break();
-                //if (m.Key.Equals("S238034")) System.Diagnostics.Debugger.Break();
+            foreach (var m in matrixPolygons) {
+                foreach (var lineString in m.LineStringsExterior) {
+                    var hash = System.IO.Hashing.XxHash3.HashToUInt64(lineString.AsBinary());
 
-                if (m.Value.exterior.Count < 2) {
-                    var origin = polygons.Single(e => e.name == m.Key);
+                    var f = new CurveFeature(lineString);
 
-                    var hash = System.IO.Hashing.XxHash3.HashToUInt64(origin.LineString.AsBinary());
-
-                    var f = new CurveFeature(origin.LineString);
                     if (!hashing.ContainsKey(hash)) {
                         hashing.Add(hash, (new FeatureRef {
                             Id = f.Id,
@@ -383,37 +384,20 @@ namespace S100Framework.YAML
                         }, f));
                     }
                 }
-                else {
-                    foreach (var l in m.Value.exterior) {
-                        var hash = IO.Hashing.XxHash3.HashToUInt64(l.AsBinary());
-                        var f = new CurveFeature(l);
-                        if (!hashing.ContainsKey(hash)) {
-                            hashing.Add(hash, (new FeatureRef {
-                                Id = f.Id,
-                                Reverse = false,
-                            }, f));
-                        }
-                        hash = IO.Hashing.XxHash3.HashToUInt64(l.Reverse().AsBinary());
-                        if (!hashing.ContainsKey(hash)) {
-                            hashing.Add(hash, (new FeatureRef {
-                                Id = f.Id,
-                                Reverse = true,
-                            }, f));
-                        }
-                    }
-                }
-                if (m.Value.interior.Any()) {
-                    for (int i = 0; i < m.Value.interior.Length; i++) {
-                        foreach (var l in m.Value.interior[i]) {
-                            var hash = IO.Hashing.XxHash3.HashToUInt64(l.AsBinary());
-                            var f = new CurveFeature(l);
+                if (m.LineStringInterior.Any()) {
+                    foreach (var interior in m.LineStringInterior) {
+                        foreach (var lineString in interior) {
+                            var hash = System.IO.Hashing.XxHash3.HashToUInt64(lineString.AsBinary());
+
+                            var f = new CurveFeature(lineString);
+
                             if (!hashing.ContainsKey(hash)) {
                                 hashing.Add(hash, (new FeatureRef {
                                     Id = f.Id,
                                     Reverse = false,
                                 }, f));
                             }
-                            hash = IO.Hashing.XxHash3.HashToUInt64(l.Reverse().AsBinary());
+                            hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
                             if (!hashing.ContainsKey(hash)) {
                                 hashing.Add(hash, (new FeatureRef {
                                     Id = f.Id,
@@ -421,328 +405,37 @@ namespace S100Framework.YAML
                                 }, f));
                             }
                         }
+
                     }
                 }
             }
 
-            foreach (var m in matchPolylines) {
-                var origin = polylines.Single(e => e.name == m.Key);
+            topology.Curves = [.. hashing.Select(e => e.Value).DistinctBy(e => e.fetureRef.Id).Select(e => e.curve)];
 
-                //if (origin.ObjectId != 169521) continue;
+            Parallel.For(0, polylines.Length, (i) => {
+                NetTopologySuite.Geometries.Geometry boundary1 = matrixCurves[i].Curve;
 
-                if (m.Value.Count < 2) {
-                    var hash = IO.Hashing.XxHash3.HashToUInt64(origin.LineString.AsBinary());
-                    var f = new CurveFeature(origin.LineString);
-                    if (!hashing.ContainsKey(hash)) {
-                        hashing.Add(hash, (new FeatureRef {
-                            Id = f.Id,
-                            Reverse = false,
-                        }, f));
-                    }
-                    hash = IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
-                    if (!hashing.ContainsKey(hash)) {
-                        hashing.Add(hash, (new FeatureRef {
-                            Id = f.Id,
-                            Reverse = true,
-                        }, f));
-                    }
-                }
-                else {
-                    foreach (var l in m.Value) {
-                        var simplified = l;
-                        var hash = IO.Hashing.XxHash3.HashToUInt64(simplified.AsBinary());
-                        var f = new CurveFeature(simplified);
-                        if (!hashing.ContainsKey(hash)) {
-                            hashing.Add(hash, (new FeatureRef {
-                                Id = f.Id,
-                                Reverse = false,
-                            }, f));
-                        }
-                        hash = IO.Hashing.XxHash3.HashToUInt64(simplified.Reverse().AsBinary());
-                        if (!hashing.ContainsKey(hash)) {
-                            hashing.Add(hash, (new FeatureRef {
-                                Id = f.Id,
-                                Reverse = true,
-                            }, f));
-                        }
-                    }
-                }
-            }
-
-            //Log.Verbose("Matching...");
-
-            var bagCurves = new ConcurrentBag<CurveFeature>();
-            //var bagCompositeCurves = new ConcurrentBag<CompositeCurveFeature>();
-            var bagCompositeCurves = new ConcurrentDictionary<string, CompositeCurveFeature>();
-            var bagSurfaces = new ConcurrentBag<SurfaceFeature>();
-
-
-            Parallel.ForEach(matchPolygons, options, (m) => {
-                var origin = polygons.Single(e => e.name == m.Key);
-
-                //if (!filterPolygons.Contains(origin.ObjectId)) return;
-
-                FeatureRef exteriorId;
-
-                if (m.Value.exterior.Count < 2) {
-                    var tuple = hashing[IO.Hashing.XxHash3.HashToUInt64(origin.LineString.AsBinary())];
-                    bagCurves.Add(tuple.curve);
-                    exteriorId = tuple.fetureRef;
-                }
-                else {
-                    var polygon = new List<LineString>(m.Value.exterior);
-
-                    //if (origin.ObjectId == 154302) {
-                    //    using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@".\..\..\..\..\..\artifacts\s100ed6.gdb")}")))) {
-                    //        ulong id = 0;
-                    //        target.PersistTopology(polygon.Select(e => new CurveFeature(e) { Id = id++ }).ToArray());
-                    //    }                        
-                    //}
-                    //return;
-
-                    var startPoint = origin.ExteriorRing.StartPoint;
-                    var endPoint = startPoint;
-
-                    int countSegment = 1;
-                    var c = polygon.Single(e => e.StartPoint.EqualsExact(startPoint));
-
-                    var tuple = hashing[IO.Hashing.XxHash3.HashToUInt64(c.AsBinary())];
-                    bagCurves.Add(tuple.curve);
-
-                    var sorted = new FeatureRef[polygon.Count];
-                    sorted[0] = tuple.fetureRef;
-
-                    do {
-                        var next = polygon.Single(e => e != c && e.StartPoint.EqualsExact(c.EndPoint));
-
-                        tuple = hashing[IO.Hashing.XxHash3.HashToUInt64(next.AsBinary())];
-                        bagCurves.Add(tuple.curve);
-
-                        sorted[countSegment] = tuple.fetureRef;
-                        c = next;
-
-                        countSegment += 1;
-                    } while (!c.EndPoint.EqualsExact(endPoint));
-
-                    if (countSegment != polygon.Count)
-                        System.Diagnostics.Debugger.Break();
-
-                    var compositeExterior = new CompositeCurveFeature {
-                        Curves = [.. sorted],
-                    };
-
-                    var key = string.Join(',', sorted.Select(e => e.Reverse ? $"RC{e.Id}" : $"{e.Id}"));
-
-                    compositeExterior = bagCompositeCurves.GetOrAdd(key, (key) => {
-                        return compositeExterior;
-                    });
-
-                    exteriorId = new FeatureRef {
-                        Id = compositeExterior.Id,
-                        Reverse = false,
-                    };
-                }
-
-                if (!m.Value.interior.Any()) {
-                    var surface = new SurfaceFeature() {
-                        Ref = m.Key,
-                        Exterior = exteriorId,
-                    };
-                    bagSurfaces.Add(surface);
-                    mapping.GetOrAdd(m.Key, $"S{surface.Id}");
-                }
-                else {
-                    FeatureRef[]? interiorRings = new FeatureRef[m.Value.interior.Length];
-                    for (int i = 0; i < m.Value.interior.Length; i++) {
-                        var interiorRing = m.Value.interior[i];
-
-                        if (interiorRing.Count == 1) {
-                            //Log.Verbose("interiorRing{i}: {linestring}", i, interiorRing[0].ToString());
-
-                            var tuple = hashing[IO.Hashing.XxHash3.HashToUInt64(interiorRing[0].AsBinary())];
-                            interiorRings[i] = tuple.fetureRef;
-                            bagCurves.Add(tuple.curve);
-                        }
-                        else {
-                            var polygon = new List<LineString>(interiorRing);
-
-                            var startPoint = origin.InteriorRings[i].StartPoint;
-                            var endPoint = startPoint;
-
-                            int countSegment = 1;
-                            var c = polygon.First(e => e.StartPoint.EqualsExact(startPoint));
-
-                            var tuple = hashing[IO.Hashing.XxHash3.HashToUInt64(c.AsBinary())];
-                            bagCurves.Add(tuple.curve);
-
-                            var sorted = new FeatureRef[polygon.Count];
-                            sorted[0] = tuple.fetureRef;
-
-                            do {
-                                var next = polygon.Single(e => e != c && e.StartPoint.EqualsExact(c.EndPoint));
-                                tuple = hashing[IO.Hashing.XxHash3.HashToUInt64(next.AsBinary())];
-                                bagCurves.Add(tuple.curve);
-
-                                sorted[countSegment] = tuple.fetureRef;
-                                c = next;
-
-                                countSegment += 1;
-                            } while (!c.EndPoint.EqualsExact(endPoint));
-
-                            if (countSegment != polygon.Count)
-                                System.Diagnostics.Debugger.Break();
-
-                            var compositeExterior = new CompositeCurveFeature {
-                                Curves = [.. sorted],
-                            };
-
-                            var key = string.Join(',', sorted.Select(e => e.Reverse ? $"RC{e.Id}" : $"{e.Id}"));
-
-                            compositeExterior = bagCompositeCurves.GetOrAdd(key, (key) => {
-                                return compositeExterior;
-                            });
-
-                            interiorRings[i] = new FeatureRef {
-                                Id = compositeExterior.Id,
-                                Reverse = false,
-                            };
-                        }
-                    }
-
-                    var surface = new SurfaceFeature() {
-                        Ref = m.Key,
-                        Exterior = exteriorId,
-                        Interior = interiorRings,
-                    };
-                    bagSurfaces.Add(surface);
-
-                    mapping.GetOrAdd(m.Key, $"S{surface.Id}");
-                }
-            });
-
-            Parallel.ForEach(matchPolylines, options, (m) => {
-                var origin = polylines.Single(e => e.name == m.Key);
-
-                //if (origin.ObjectId != 169521) return;
-
-                FeatureRef featureRef;
-
-                if (m.Value.Count < 2) {
-                    var tuple = hashing[IO.Hashing.XxHash3.HashToUInt64(origin.LineString.AsBinary())];
-                    bagCurves.Add(tuple.curve);
-                    featureRef = tuple.fetureRef;
-                }
-                else {
-                    var polyline = new List<LineString>(m.Value);
-
-                    var startPoint = origin.LineString.StartPoint;
-                    var endPoint = origin.LineString.EndPoint;
-
-                    int countSegment = 1;
-                    var c = polyline.Single(e => e.StartPoint.EqualsExact(startPoint));
-
-                    var tuple = hashing[IO.Hashing.XxHash3.HashToUInt64(c.AsBinary())];
-                    bagCurves.Add(tuple.curve);
-
-                    var sorted = new FeatureRef[polyline.Count];
-                    sorted[0] = tuple.fetureRef;
-
-                    do {
-                        var next = polyline.Single(e => e != c && e.StartPoint.EqualsExact(c.EndPoint));
-
-                        tuple = hashing[IO.Hashing.XxHash3.HashToUInt64(next.AsBinary())];
-                        bagCurves.Add(tuple.curve);
-
-                        sorted[countSegment] = tuple.fetureRef;
-                        c = next;
-
-                        countSegment += 1;
-                    } while (!c.EndPoint.EqualsExact(endPoint));
-
-                    if (countSegment != polyline.Count)
-                        System.Diagnostics.Debugger.Break();
-
-                    var compositeExterior = new CompositeCurveFeature {
-                        Curves = [.. sorted],
-                    };
-
-                    var key = string.Join(',', sorted.Select(e => e.Reverse ? $"RC{e.Id}" : $"{e.Id}"));
-
-                    compositeExterior = bagCompositeCurves.GetOrAdd(key, (key) => {
-                        return compositeExterior;
-                    });
-
-                    featureRef = new FeatureRef {
-                        Id = compositeExterior.Id,
-                        Reverse = false,
-                    };
-                }
-
-                mapping.GetOrAdd(m.Key, $"C{featureRef.Id}");
-            });
-
-            topology.Mapping = mapping;
-
-            topology.CompositeCurves = [.. bagCompositeCurves.Values];
-            topology.Surfaces = [.. bagSurfaces];
-
-            var ids = new List<UInt64>();
-            foreach (var e in bagCurves) {
-                if (ids.Contains(e.Id))
-                    continue;
-                ids.Add(e.Id);
-                topology.Curves.Add(e);
-            }
-
-            return topology;
-        }
-
-
-        public static S100Framework.YAML.Topology Build3(S100Framework.YAML.Polyline[] polylines, S100Framework.YAML.Polygon[] polygons, S100Framework.YAML.Topology topology) {
-            int count = polygons.Count();
-
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-
-            var options = new ParallelOptions {
-                MaxDegreeOfParallelism = 8,
-            };
-
-            (string Name, NetTopologySuite.Geometries.Geometry ExterioRing, List<LineString> LineStrings)[] matrix = polygons.Select(e => (e.name, (NetTopologySuite.Geometries.Geometry)e.ExteriorRing, new List<LineString>())).ToArray();
-
-            for (int i = 0; i < polygons.Length; i++) {
-                //if (polygons[i].ObjectId == 195943) System.Diagnostics.Debugger.Break();
-                //if (polygons[i].ObjectId == 196198) System.Diagnostics.Debugger.Break();
-
-
-                if (matrix[i].ExterioRing.IsEmpty) continue;
-
-                NetTopologySuite.Geometries.Geometry boundary1 = matrix[i].ExterioRing;
-
-                for (var j = i + 1; j < polygons.Length; j++) {
-                    var lineMerger = new LineMerger();
-
-                    //var boundary2 = polygons[j].ExteriorRing;
-                    var boundary2 = matrix[j].ExterioRing;
-
-                    if (boundary1.Disjoint(boundary2))
+                foreach (var c in topology.Curves) {
+                    if (boundary1.Disjoint(c.LineString))
                         continue;
 
-                    var contains = boundary1.Contains(boundary2);
-                    var coveredby = boundary1.CoveredBy(boundary2);
-                    var covers = boundary1.Covers(boundary2);
-                    var crosses = boundary1.Crosses(boundary2);
-                    var intersects = boundary1.Intersects(boundary2);
-                    var overlaps = boundary1.Overlaps(boundary2);
-                    //var touches = boundary1.Touches(boundary2);
-                    //var within = boundary1.Within(boundary2);
-                    //var equalsTopologically = boundary1.EqualsTopologically(boundary2);
-                    //var relate = boundary1.Relate(boundary2, "1********");
+                    var contains = boundary1.Contains(c.LineString);
+                    var coveredby = boundary1.CoveredBy(c.LineString);
+                    var covers = boundary1.Covers(c.LineString);
+                    var crosses = boundary1.Crosses(c.LineString);
+                    var intersects = boundary1.Intersects(c.LineString);
+                    var overlaps = boundary1.Overlaps(c.LineString);
 
                     if ((crosses && intersects) && !(contains | overlaps | coveredby))
                         continue;
 
-                    var sharedEdgesGeometry = boundary1.Intersection(boundary2);
+                    var lineMerger = new LineMerger();
+
+                    var sharedEdgesGeometry = boundary1.Intersection(c.LineString);
+
+                    if (sharedEdgesGeometry is GeometryCollection collection) {
+                        sharedEdgesGeometry = sharedEdgesGeometry.Factory.CreateMultiLineString(collection.OfType<LineString>().ToArray());
+                    }
 
                     if (sharedEdgesGeometry == null || sharedEdgesGeometry.IsEmpty) continue;
 
@@ -750,28 +443,21 @@ namespace S100Framework.YAML
 
                     var sharedEdgesLineString = lineMerger.GetMergedLineStrings().Select(e => (LineString)e).ToList();
 
-                    matrix[i].ExterioRing = boundary1.SymmetricDifference(sharedEdgesGeometry);
-                    matrix[i].LineStrings.AddRange(sharedEdgesLineString);
+                    matrixCurves[i].Curve = boundary1.SymmetricDifference(sharedEdgesGeometry);
+                    matrixCurves[i].LineStrings.AddRange(sharedEdgesLineString);
 
-                    matrix[j].ExterioRing = boundary2.SymmetricDifference(sharedEdgesGeometry);
-                    matrix[j].LineStrings.AddRange(sharedEdgesLineString);
-
-                    boundary1 = matrix[i].ExterioRing;
+                    boundary1 = matrixCurves[i].Curve;
 
                     if (boundary1.IsEmpty)
                         break;
                 }
 
-                if (!matrix[i].ExterioRing.IsEmpty) {
-                    AddLineStringsFromGeometry(matrix[i].ExterioRing, matrix[i].LineStrings);
+                if (!matrixCurves[i].Curve.IsEmpty) {
+                    AddLineStringsFromGeometry(matrixCurves[i].Curve, matrixCurves[i].LineStrings);
                 }
-            }
+            });
 
-            var mapping = new ConcurrentDictionary<string, string>();
-
-            var hashing = new Dictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
-
-            foreach (var m in matrix) {
+            foreach (var m in matrixCurves) {
                 foreach (var lineString in m.LineStrings) {
                     var hash = System.IO.Hashing.XxHash3.HashToUInt64(lineString.AsBinary());
 
@@ -793,85 +479,130 @@ namespace S100Framework.YAML
                 }
             }
 
-            topology.Curves = [.. hashing.Select(e => e.Value).DistinctBy(e => e.fetureRef.Id).Select(e => e.curve)];
-
             var bagCompositeCurves = new ConcurrentDictionary<string, CompositeCurveFeature>();
             var bagSurfaces = new ConcurrentBag<SurfaceFeature>();
 
             //options = new ParallelOptions { MaxDegreeOfParallelism = 1 };
 
-            Parallel.ForEach(matrix, options, (m) => {
-                var origin = polygons.Single(e => e.name == m.Name);
+            Func<List<LineString>, FeatureRef> action = (lineStrings) => {
+                FeatureRef featureRef;
 
-                FeatureRef exteriorId;
-
-                if (m.LineStrings.Count == 1) {
-                    var hash = hashing[IO.Hashing.XxHash3.HashToUInt64(m.LineStrings[0].AsBinary())];
-                    exteriorId = hash.fetureRef;
+                if (lineStrings.Count == 1) {
+                    var hash = hashing[IO.Hashing.XxHash3.HashToUInt64(lineStrings[0].AsBinary())];
+                    featureRef = hash.fetureRef;
                 }
                 else {
                     var lineMerger = new LineMerger();
-                    lineMerger.Add(m.LineStrings);
+                    lineMerger.Add(lineStrings);
 
                     var merged = (LineString)lineMerger.GetMergedLineStrings()[0];
 
-                    var ring = origin.ExteriorRing.Factory.CreateLinearRing(((LineString)lineMerger.GetMergedLineStrings()[0]).Coordinates).ToString();
+                    var ring = merged.ToText();
 
+                    //var ring = origin.ExteriorRing.Factory.CreateLinearRing(((LineString)lineMerger.GetMergedLineStrings()[0]).Coordinates).ToString();
 
-                    var sorted = new FeatureRef[m.LineStrings.Count];
+                    //var sorted = new FeatureRef[lineStrings.Count];
 
-                    var ordered = new Dictionary<int, int>();
+                    var sortedList = new SortedList<int, FeatureRef>();
 
-                    for (int i = 0; i < m.LineStrings.Count; i++) {
+                    for (int i = 0; i < lineStrings.Count; i++) {
 
-                        var text = m.LineStrings[i].ToString().Substring("LINESTRING (".Length).TrimEnd(')');
-                        if (ring.Contains(text))
-                            ordered.Add(i, ring.IndexOf(text));
+                        var text = lineStrings[i].ToText().Substring("LINESTRING (".Length).TrimEnd(')');
+                        if (ring.Contains(text)) {
+                            var hash = hashing[IO.Hashing.XxHash3.HashToUInt64(lineStrings[i].AsBinary())];
+
+                            sortedList.Add(ring.IndexOf(text), hash.fetureRef);
+                        }
                         else {
-                            text = m.LineStrings[i].Reverse().ToString().Substring("LINESTRING (".Length).TrimEnd(')');
+                            var reverse = lineStrings[i].Reverse();
 
-                            ordered.Add(i, ring.IndexOf(text));
+                            var hash = hashing[IO.Hashing.XxHash3.HashToUInt64(reverse.AsBinary())];
+
+                            text = reverse.ToText().Substring("LINESTRING (".Length).TrimEnd(')');
+
+                            sortedList.Add(ring.IndexOf(text), hash.fetureRef);
                         }
                     }
 
-                    foreach (var e in ordered.OrderBy(e => e.Value)) {
-                        var hash = hashing[IO.Hashing.XxHash3.HashToUInt64(m.LineStrings[e.Key].AsBinary())];
-                        sorted[e.Key] = hash.fetureRef;
-                    }
-
                     var compositeExterior = new CompositeCurveFeature {
-                        Curves = [.. sorted],
+                        Curves = [.. sortedList.Values],
                     };
 
-                    var key = string.Join(',', sorted.Select(e => e.Reverse ? $"RC{e.Id}" : $"{e.Id}"));
+                    var key = string.Join(',', sortedList.Select(e => e.Value.Reverse ? $"RC{e.Value.Id}" : $"C{e.Value.Id}"));
 
                     compositeExterior = bagCompositeCurves.GetOrAdd(key, (key) => {
                         return compositeExterior;
                     });
 
-                    exteriorId = new FeatureRef {
+                    featureRef = new FeatureRef {
                         Id = compositeExterior.Id,
                         Reverse = false,
                     };
                 }
+
+                return featureRef;
+            };
+
+            Parallel.ForEach(matrixPolygons, options, (m) => {
+                if (m.LineStringsExterior.Count == 0)
+                    return;
+
+                var origin = polygons.Single(e => e.name == m.Name);
+
+                //if (origin.name.Equals("S1287501")) System.Diagnostics.Debugger.Break();
+
+                FeatureRef exteriorId = action(m.LineStringsExterior);
 
                 var surface = new SurfaceFeature() {
                     Ref = m.Name,
                     Exterior = exteriorId,
                 };
 
+                if (m.LineStringInterior.Any()) {
+                    var interiorRefs = new List<FeatureRef>();
+
+                    foreach (var interior in m.LineStringInterior) {
+                        var interiorRef = action(interior);
+                        interiorRefs.Add(interiorRef);
+                    }
+
+                    surface.Interior = [.. interiorRefs];
+                }
+
                 bagSurfaces.Add(surface);
                 mapping.GetOrAdd(m.Name, $"S{surface.Id}");
 
             });
+
+            Parallel.ForEach(matrixCurves, options, (m) => {
+                if (m.LineStrings.Count == 0)
+                    return;
+
+                var origin = polylines.Single(e => e.name == m.Name);
+
+                FeatureRef curveId = action(m.LineStrings);
+
+                mapping.GetOrAdd(m.Name, $"C{curveId.Id}");
+            });
+
 
             topology.Mapping = mapping;
 
             topology.CompositeCurves = [.. bagCompositeCurves.Values];
             topology.Surfaces = [.. bagSurfaces];
 
+            topology.Curves = [.. hashing.Select(e => e.Value).DistinctBy(e => e.fetureRef.Id).Select(e => e.curve)];
+
+            //using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@".\..\..\..\..\..\artifacts\s100ed6.gdb")}")))) {
+            //    var curves = hashing.Select(e => e.Value).DistinctBy(e => e.fetureRef.Id).Select(e => e.curve);
+            //    target.PersistTopology(curves);
+            //}
+
+            //System.Diagnostics.Debugger.Break();
+
             return topology;
         }
+
 
 
         private static void AddLineStringsFromGeometry(Geometry geometry, List<LineString> targetList) {

@@ -36,6 +36,8 @@ namespace S100Framework.Applications
 
         //  --geodatabase "\\nas.gst.dk\public\projektdata\projekter\S-101_Conversion\20250522-s100ed6_traditional(s101).sde" -d DKLALAL
 
+        //  --geodatabase \\nas.gst.dk\ncps\modeloffice\vortex\connections\s100ed6_traditional(s101).sde -d DK40543E
+
 
         //  "C:\Program Files\s100compiler\s100compiler.exe" -C 101DK40349E -d C:\Temp\s100\results -f C:\Temp\101DK40349E.yaml -c C:\Temp\s100\FeatureCatalogue.xml
         //  "C:\Program Files\s100compiler\s100compiler.exe" -C 101DK40545E -d C:\Temp\s100\results -f C:\Temp\101DK40545E.yaml -c C:\Temp\s100\FeatureCatalogue.xml
@@ -475,8 +477,6 @@ namespace S100Framework.YAML
                 foreach (var c in topology.Curves) {
                     curveFeature = c;
 
-                    if (c.Id == 11053918727594573033) System.Diagnostics.Debugger.Break();
-
                     var coordinates = c.LineString.Coordinates.Select(e => new Coordinate(e.X, e.Y)).ToArray();
 
                     var first = dataset?.GetOrCreateStartPoint(coordinates, $"{c.Id}");
@@ -731,120 +731,203 @@ namespace ArcGIS.Core.Data
 
             var definitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
 
-            var curves = new List<S100Framework.YAML.Polyline>();
+            //  Skin of Earth
+            {
+                var curves = new List<S100Framework.YAML.Polyline>();
 
-            using (var curve = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("curve")).GetName())) {
-                queryFilter.WhereClause = $"{whereClause}";
+                using (var curve = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("curve")).GetName())) {
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('COASTLINE','DEPTHCONTOUR','SHORELINECONSTRUCTION'))";
 
-                using var cursor = curve.Search(queryFilter);
+                    using var cursor = curve.Search(queryFilter);
 
-                while (cursor.MoveNext()) {
-                    var f = (Feature)cursor.Current;
+                    while (cursor.MoveNext()) {
+                        var f = (Feature)cursor.Current;
 
-                    var shape = (ArcGIS.Core.Geometry.Polyline)f.GetShape();
+                        var shape = (ArcGIS.Core.Geometry.Polyline)f.GetShape();
 
-                    var name = Convert.ToString(f["name"]);
-                    if (string.IsNullOrEmpty(name))
-                        name = string.Empty;
+                        var name = Convert.ToString(f["name"]);
+                        if (string.IsNullOrEmpty(name))
+                            name = string.Empty;
 
-                    var coordinates = shape.Points.Select(segment => new Coordinate(segment.X, segment.Y)).ToArray();
+                        var coordinates = shape.Points.Select(segment => new Coordinate(segment.X, segment.Y)).ToArray();
 
-                    var linestring = (LineString)factory.CreateLineString([.. coordinates]);
-                    linestring = linestring.RemoveRepeatedVertices();
+                        var linestring = (LineString)factory.CreateLineString([.. coordinates]);
+                        linestring = linestring.RemoveRepeatedVertices();
 
-                    curves.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, linestring));
+                        curves.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, linestring));
+                    }
                 }
-            }
 
-            foreach (var c in curves) {
-                for (int i = 0; i < c.LineString.Coordinates.Length - 1; i++) {
-                    if (c.LineString.Coordinates[i].Equals(c.LineString.Coordinates[i + 1])) System.Diagnostics.Debugger.Break();
-                }
-            }
+                //foreach (var c in curves) {
+                //    for (int i = 0; i < c.LineString.Coordinates.Length - 1; i++) {
+                //        if (c.LineString.Coordinates[i].Equals(c.LineString.Coordinates[i + 1])) System.Diagnostics.Debugger.Break();
+                //    }
+                //}
 
-            var polygons = new List<S100Framework.YAML.Polygon>();
+                var polygons = new List<S100Framework.YAML.Polygon>();
 
-            using (var surface = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("surface")).GetName())) {
-                //queryFilter.WhereClause = $"{whereClause} AND (upper(code) IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))";
-                //queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))";
-                queryFilter.WhereClause = $"{whereClause}";
+                using (var surface = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("surface")).GetName())) {
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))";
 
-                using var cursor = surface.Search(queryFilter);
+                    using var cursor = surface.Search(queryFilter);
 
-                while (cursor.MoveNext()) {
-                    var f = (Feature)cursor.Current;
+                    while (cursor.MoveNext()) {
+                        var f = (Feature)cursor.Current;
 
-                    var shape = (ArcGIS.Core.Geometry.Polygon)f.GetShape();
+                        var shape = (ArcGIS.Core.Geometry.Polygon)f.GetShape();
 
-                    var name = Convert.ToString(f["name"]);
-                    if (string.IsNullOrEmpty(name))
-                        name = string.Empty;
+                        var name = Convert.ToString(f["name"]);
+                        if (string.IsNullOrEmpty(name))
+                            name = string.Empty;
 
-                    var exteriorRing = shape.GetExteriorRing(0);
-                    var coordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+                        var exteriorRing = shape.GetExteriorRing(0);
+                        var coordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
 
-                    var ex = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
-                    ex = ex.RemoveRepeatedVertices();
+                        var ex = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+                        ex = ex.RemoveRepeatedVertices();
 
-                    if (shape.PartCount > 1) {
-                        var interiorRings = new List<LineString>();
+                        if (shape.PartCount > 1) {
+                            var interiorRings = new List<LineString>();
 
-                        foreach (var interiorRing in shape.Parts.Skip(1)) {
-                            coordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+                            foreach (var interiorRing in shape.Parts.Skip(1)) {
+                                coordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
 
-                            var linestring = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
-                            linestring = linestring.RemoveRepeatedVertices();
-                            interiorRings.Add(linestring);
+                                var linestring = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+                                linestring = linestring.RemoveRepeatedVertices();
+                                interiorRings.Add(linestring);
+                            }
+
+                            polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, interiorRings.ToArray()));
                         }
-
-                        polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, interiorRings.ToArray()));
-                    }
-                    else {
-                        polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, []));
+                        else {
+                            polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, []));
+                        }
                     }
                 }
+
+                //foreach (var c in polygons) {
+                //    var coordinates = c.ExteriorRing.Coordinates;
+
+                //    for (int i = 0; i < coordinates.Length - 1; i++) {
+                //        if (coordinates[i].Equals(coordinates[i + 1])) System.Diagnostics.Debugger.Break();
+                //    }
+
+                //    foreach (var r in c.InteriorRings) {
+                //        coordinates = r.Coordinates;
+
+                //        for (int i = 0; i < coordinates.Length - 1; i++) {
+                //            if (coordinates[i].Equals(coordinates[i + 1])) System.Diagnostics.Debugger.Break();
+                //        }
+                //    }
+                //}
+
+                int count = polygons.Count();                
+
+                var t = new S100Framework.YAML.Topology {
+                    Factory = factory,
+                    Curves = new List<CurveFeature>(),
+                    CompositeCurves = new List<CompositeCurveFeature>(),
+                    Surfaces = new List<SurfaceFeature>(),
+                    Mapping = new Dictionary<string, string>(),
+                };
+
+                S100Framework.YAML.Topology.BuildTopology(curves.ToArray(), polygons.ToArray(), t);
+
+                if (t.Curves.Any())
+                    topology.Curves = topology.Curves.Union(t.Curves).ToList();
+                if (t.CompositeCurves.Any())
+                    topology.CompositeCurves = topology.CompositeCurves.Union(t.CompositeCurves).ToList();
+                if (t.Surfaces.Any())
+                    topology.Surfaces = topology.Surfaces.Union(t.Surfaces).ToList();
+                if (t.Mapping.Any())
+                    topology.Mapping = topology.Mapping.Union(t.Mapping).ToDictionary(e => e.Key, e => e.Value);
             }
 
-            foreach (var c in polygons) {
-                var coordinates = c.ExteriorRing.Coordinates;
+            //  Non skin of Earth
+            {
+                var curves = new List<S100Framework.YAML.Polyline>();
 
-                for (int i = 0; i < coordinates.Length - 1; i++) {
-                    if (coordinates[i].Equals(coordinates[i + 1])) System.Diagnostics.Debugger.Break();
-                }
+                using (var curve = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("curve")).GetName())) {
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) NOT IN ('COASTLINE','DEPTHCONTOUR','SHORELINECONSTRUCTION'))";
 
-                foreach (var r in c.InteriorRings) {
-                    coordinates = r.Coordinates;
+                    using var cursor = curve.Search(queryFilter);
 
-                    for (int i = 0; i < coordinates.Length - 1; i++) {
-                        if (coordinates[i].Equals(coordinates[i + 1])) System.Diagnostics.Debugger.Break();
+                    while (cursor.MoveNext()) {
+                        var f = (Feature)cursor.Current;
+
+                        var shape = (ArcGIS.Core.Geometry.Polyline)f.GetShape();
+
+                        var name = Convert.ToString(f["name"]);
+                        if (string.IsNullOrEmpty(name))
+                            name = string.Empty;
+
+                        var coordinates = shape.Points.Select(segment => new Coordinate(segment.X, segment.Y)).ToArray();
+
+                        var linestring = (LineString)factory.CreateLineString([.. coordinates]);
+                        linestring = linestring.RemoveRepeatedVertices();
+
+                        curves.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, linestring));
                     }
                 }
-            }
 
-            int count = polygons.Count();
-            Log.Information("Total #{polylines}, #{polygons}", curves.Count, polygons.Count);
+                var polygons = new List<S100Framework.YAML.Polygon>();
 
-            var t = new S100Framework.YAML.Topology {
-                Factory = factory,
-                Curves = new List<CurveFeature>(),
-                CompositeCurves = new List<CompositeCurveFeature>(),
-                Surfaces = new List<SurfaceFeature>(),
-                Mapping = new Dictionary<string, string>(),
-            };
+                using (var surface = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("surface")).GetName())) {
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) NOT IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))";
 
-            S100Framework.YAML.Topology.Build(curves.ToArray(), polygons.ToArray(), t);
+                    using var cursor = surface.Search(queryFilter);
 
+                    while (cursor.MoveNext()) {
+                        var f = (Feature)cursor.Current;
 
-            //S100Framework.YAML.Topology.Build3(curves.ToArray(), polygons.ToArray(), t);
+                        var shape = (ArcGIS.Core.Geometry.Polygon)f.GetShape();
 
-            if (t.Curves.Any())
-                topology.Curves = topology.Curves.Union(t.Curves).ToList();
-            if (t.CompositeCurves.Any())
-                topology.CompositeCurves = topology.CompositeCurves.Union(t.CompositeCurves).ToList();
-            if (t.Surfaces.Any())
-                topology.Surfaces = topology.Surfaces.Union(t.Surfaces).ToList();
-            if (t.Mapping.Any())
-                topology.Mapping = topology.Mapping.Union(t.Mapping).ToDictionary(e => e.Key, e => e.Value);
+                        var name = Convert.ToString(f["name"]);
+                        if (string.IsNullOrEmpty(name))
+                            name = string.Empty;
+
+                        var exteriorRing = shape.GetExteriorRing(0);
+                        var coordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+
+                        var ex = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+                        ex = ex.RemoveRepeatedVertices();
+
+                        if (shape.PartCount > 1) {
+                            var interiorRings = new List<LineString>();
+
+                            foreach (var interiorRing in shape.Parts.Skip(1)) {
+                                coordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+
+                                var linestring = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+                                linestring = linestring.RemoveRepeatedVertices();
+                                interiorRings.Add(linestring);
+                            }
+
+                            polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, interiorRings.ToArray()));
+                        }
+                        else {
+                            polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, []));
+                        }
+                    }
+                }
+
+                int count = polygons.Count();
+
+                S100Framework.YAML.Topology.Build(curves.ToArray(), polygons.ToArray(), topology);
+
+                var ss1 = topology.Curves.Single(e => e.Id == 3415);
+
+                //if (t.Curves.Any())
+                //    topology.Curves = topology.Curves.Union(t.Curves).ToList();
+                //if (t.CompositeCurves.Any())
+                //    topology.CompositeCurves = topology.CompositeCurves.Union(t.CompositeCurves).ToList();
+                //if (t.Surfaces.Any())
+                //    topology.Surfaces = topology.Surfaces.Union(t.Surfaces).ToList();
+                //if (t.Mapping.Any())
+                //    topology.Mapping = topology.Mapping.Union(t.Mapping).ToDictionary(e => e.Key, e => e.Value);
+
+                //var ss2 = topology.Curves.Single(e => e.Id == 3415);
+            }            
 
             Log.Verbose("Topology: #{curves}, #{composites}, #{surfaces}", topology.Curves.Count, topology.CompositeCurves.Count, topology.Surfaces.Count);
             return topology;
