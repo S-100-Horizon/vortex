@@ -186,9 +186,6 @@ namespace S100Framework.Applications
                         var id = current["primaryid"].ToString()!;
                         var to = current["foreignid"].ToString()!;
 
-                        if (topology.Mapping.TryGetValue(to, out var value))
-                            to = value;
-
                         var foid = $"110:{to![1..]}:1";       // Geodatastyrelsen: 110 
 
                         var association = new YAML.Association() {
