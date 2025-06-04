@@ -71,7 +71,6 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;

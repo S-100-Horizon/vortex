@@ -1031,6 +1031,10 @@ namespace S100Framework.Applications
                         break;
                     case 60: { // RSCSTA_RescueStation
                             var instance = new RescueStation();
+
+
+
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 

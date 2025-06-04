@@ -52,16 +52,11 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                           // if (current.)
-
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
-                            }
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             AddInformation(instance.information, feature);

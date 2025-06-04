@@ -171,7 +171,8 @@ namespace S100Framework.Applications
                     filter.WhereClause = $"{whereClause} and globalid = '{{CA71EEFC-AF9F-4DB0-A55E-FD9D394FF58D}}'";
                     filter.WhereClause = $"{whereClause}";
                     */
-                    Store(() => S57_AidsToNavigationP(source, destination, filter));
+                    Store(() => S57_PortsAndServicesA(source, destination, filter));
+
 
                     Store(() => S57_TidesAndVariationsA(source, destination, filter));
                     Store(() => S57_TidesAndVariationsL(source, destination, filter));
@@ -200,7 +201,8 @@ namespace S100Framework.Applications
                     Store(() => S57_OffshoreInstallationsA(source, destination, filter));
                     Store(() => S57_OffshoreInstallationsL(source, destination, filter));
                     Store(() => S57_OffshoreInstallationsP(source, destination, filter));
-                    Store(() => S57_PortsAndServicesA(source, destination, filter));
+
+
                     Store(() => S57_PortsAndServicesL(source, destination, filter));
                     Store(() => S57_PortsAndServicesP(source, destination, filter));
                     Store(() => S57_ProductCoverage(source, destination, filter));
@@ -211,7 +213,8 @@ namespace S100Framework.Applications
                     Store(() => S57_TracksAndRoutesA(source, destination, filter));
                     Store(() => S57_TracksAndRoutesL(source, destination, filter));
                     Store(() => S57_TracksAndRoutesP(source, destination, filter));
-                    
+                    Store(() => S57_AidsToNavigationP(source, destination, filter));
+
                     Store(() => FeatureRelations.Instance.CreateRelations(destination));
                 }
 
@@ -254,20 +257,12 @@ namespace S100Framework.Applications
             List<string> parenthesisParts = new List<string>();
 
             if (!String.IsNullOrEmpty(current.SIGGRP)) {
-                var match = Regex.Match(current.SIGGRP, @"(.*)");
-                if (match.Success) {
-                    string rightSide = match.Groups[1].Value;
-                    var matches = Regex.Matches(rightSide, @"\((.*?)\)");
+                string pattern = @"\([^()]*\)";
 
-                    foreach (Match m in matches) {
-                        parenthesisParts.Add(m.Groups[1].Value);
-                    }
+                foreach (Match m in Regex.Matches(current.SIGGRP, pattern)) {
+                    parenthesisParts.Add(m.Value);
                 }
             }
-
-
-
-
             var signalPeriodN = current.SIGPER;
 
             var sigseq = current.SIGSEQ;
@@ -275,11 +270,7 @@ namespace S100Framework.Applications
             lightCharacteristic lightCharacteristicsValue = default;
 
             if (current.LITCHR.HasValue) {
-                //if (current.LITCHR.Value == -32767) {
-                //    lightCharacteristicsValue = EnumHelper.GetEnumValue<lightCharacteristic>(-1);
-                //} else {
-                    lightCharacteristicsValue = EnumHelper.GetEnumValue<lightCharacteristic>(current.LITCHR.Value);
-                //}
+                lightCharacteristicsValue = EnumHelper.GetEnumValue<lightCharacteristic>(current.LITCHR.Value);
             }
 
             var signalSequences = GetSignalSequences(current.SIGSEQ);

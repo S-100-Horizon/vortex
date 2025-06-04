@@ -141,99 +141,100 @@ namespace S100Framework.Applications
                         break;
 
                     case 20: { // OBSTRN
-                            {
-                                // Foul ground
-                                if (current.CATOBS.HasValue && current.CATOBS.Value == 7) {
-                                    var instance = new FoulGround();
 
-                                    if (current.SOUACC.HasValue) {
-                                        instance.verticalUncertainty = new() {
-                                            uncertaintyFixed = current.SOUACC.Value
-                                        };
-                                    }
+                            // Foul ground
+                            if (current.CATOBS.HasValue && current.CATOBS.Value == 7) {
+                                var foulground = new FoulGround();
 
-                                    if (current.STATUS != default) {
-                                        instance.status = GetStatus(current.STATUS);
-                                    }
-
-                                    if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
-                                        instance.valueOfSounding = current.VALSOU.Value;
-                                    }
-
-                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
-
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
-                            }
-
-                                    instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                                    AddInformation(instance.information, feature);
-                                    buffer["ps"] = ps101;
-
-                                    buffer["code"] = instance.GetType().Name;
-                                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                                    ImporterNIS.SetShape(buffer, current.SHAPE);
-                                    var featureN = featureClass.CreateRow(buffer);
-                                    var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
-                                    ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
-                                    if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                        relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
-                                    }
-
-                                    Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-
-                                    break;
+                                if (current.SOUACC.HasValue) {
+                                    foulground.verticalUncertainty = new() {
+                                        uncertaintyFixed = current.SOUACC.Value
+                                    };
                                 }
-                            }
-                            {
-                                //CONDTN, EXPSOU, NATCON, NATQUA, NATSUR, PRODCT, VERLEN, WATLEV
 
-                                /*
-                                    OBSTRN of geometric primitive area or line with attribute INFORM = Submerged weir will be
-                                    converted to an instance of the S-101 Feature _s101type Dam (see clause 4.8.5). Where this is the case,
-                                    the attributes CATOBS, EXPSOU, NATQUA, NATSUR, PRODCT, QUASOU, SOUACC, TECSOU
-                                    and VALSOU will not be converted. It is considered that these attributes are not relevant for Dam in
-                                    S-101.
-                                */
+                                if (current.STATUS != default) {
+                                    foulground.status = GetStatus(current.STATUS);
+                                }
 
-                                var instance = new Obstruction();
+                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
+                                    foulground.valueOfSounding = current.VALSOU.Value;
+                                }
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
+                                    string subtype = "";
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
-                            }
+                                    foulground.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                }
 
+                                foulground.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                                AddInformation(instance.information, feature);
-
-                                // TODO: defaultClearanceDepth
-
-
+                                AddInformation(foulground.information, feature);
                                 buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                                SetShape(buffer, current.SHAPE);
-                                var featureN = featureClass.CreateRow(buffer);
-                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
+                                buffer["code"] = foulground.GetType().Name;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(foulground);
+                                ImporterNIS.SetShape(buffer, current.SHAPE);
+                                
+                                var featureN = featureClass.CreateRow(buffer);
+                                var nameN = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, nameN);
                                 if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                    relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                                    relatedEquipment?.CreateRelatedPointEquipment(current, foulground, nameN, target);
                                 }
 
-                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(foulground));
 
-                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                                break;
                             }
+
+
+                            //CONDTN, EXPSOU, NATCON, NATQUA, NATSUR, PRODCT, VERLEN, WATLEV
+
+                            /*
+                                OBSTRN of geometric primitive area or line with attribute INFORM = Submerged weir will be
+                                converted to an instance of the S-101 Feature _s101type Dam (see clause 4.8.5). Where this is the case,
+                                the attributes CATOBS, EXPSOU, NATQUA, NATSUR, PRODCT, QUASOU, SOUACC, TECSOU
+                                and VALSOU will not be converted. It is considered that these attributes are not relevant for Dam in
+                                S-101.
+                            */
+
+                            var obstruction = new Obstruction();
+
+                            //if (current.CATOBS categoryOfObstruction
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                obstruction.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
+
+                            AddInformation(obstruction.information, feature);
+
+                            // TODO: defaultClearanceDepth
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = obstruction.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(obstruction);
+                            SetShape(buffer, current.SHAPE);
+                            var featureObs = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureObs["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, obstruction, name, target);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(obstruction));
                         }
+                        
                         break;
 
                     case 35: { // UWTROC
