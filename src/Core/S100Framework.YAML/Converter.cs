@@ -1,4 +1,5 @@
-﻿using S100Framework.Catalogues;
+﻿using NetTopologySuite.Index.HPRtree;
+using S100Framework.Catalogues;
 using S100Framework.DomainModel;
 using System;
 using System.Collections;
@@ -274,7 +275,6 @@ namespace S100Framework.YAML
                     value = null;
             }
 
-            // To-do: handle all types of collections based on collectionName
             private void AddCollection(IParser parser, string collectionName, Dataset dataset) {
                 if (parser.Current is SequenceStart or MappingStart)
                     parser.MoveNext(); // skip the sequence/mapping start
@@ -283,8 +283,8 @@ namespace S100Framework.YAML
                     switch (collectionName) {
                         case "InformationTypes":
                             // To-do Not implemented yet
-                            //var feature = AddFeatureAttribute(parser);
-                            //dataset.AddFeature(feature);
+                            //var information = AddInformationType(parser);
+                            //dataset.AddInformation(information);
                             break;
                         case "Points":
                             var point = AddPoint(parser);
@@ -640,22 +640,30 @@ namespace S100Framework.YAML
                                 feature.Geometry = value;
                                 break;
                             case "Attributes":
-                                // Keep on parsing 
+                                // Keep on parsing.. 
                                 parser.MoveNext();  // SequenceStart
                                 parser.MoveNext();  // MappingStart
 
                                 var attributeList = BuildAttributeList(parser);
 
-                                var featureNode = BuildObject(attributeList, feature.Name);
+                                var featureNode = BuildFeatureNodeObject(attributeList, feature.Name);
 
                                 feature.Attributes = featureNode;
 
                                 break;
                             case "FeatureAssociation":
-                                // To-do
+                                var featureAssociations = BuildAssociations(parser);
+
+                                foreach (var fa in featureAssociations) {
+                                    feature.AddFeatureAssociation(fa);
+                                }
                                 break;
                             case "Association":
-                                // To-do
+                                var associations = BuildAssociations(parser);
+
+                                foreach (var a in associations) {
+                                    feature.AddAssociation(a);
+                                }
                                 break;
                         }
                     }
@@ -665,6 +673,45 @@ namespace S100Framework.YAML
                 return feature;
             }
 
+            private List<Association> BuildAssociations(IParser parser) {
+                var associations = new List<Association>();
+
+                string? to = null;
+                string? name = null;
+                string? role = null;
+
+                while (parser.Current is not SequenceEnd) {
+                    if (parser.Current is Scalar) {
+
+                        GetKeyValueScalar(parser, out var key, out var value);
+
+                        if (key == "To")
+                            to = value;
+                        else if (key == "Name")
+                            name = value;
+                        else if (key == "Role")
+                            role = value;
+
+                    }
+                    else if (parser.Current is MappingEnd) {
+                        // Add to list and clear
+                        associations.Add(new() {
+                            To = to,
+                            Name = name,
+                            Role = role
+                        });
+
+                        to = "";
+                        name = null;
+                        role = null;
+                    }
+
+
+                    parser.MoveNext();
+                }
+
+                return associations;
+            }
             private List<YamlAttributeItem> BuildAttributeList(IParser parser) {
                 var attributes = new List<YamlAttributeItem>();
 
@@ -687,9 +734,6 @@ namespace S100Framework.YAML
                             itemParent = Int32.Parse(value);
 
                     }
-                    else if (parser.Current is MappingStart) {
-                        // Probably do nothing? - Keep on keeping on
-                    }
                     else if (parser.Current is MappingEnd) {
                         attributes.Add(new(itemName, itemValue, itemId, itemParent));
                         itemName = "";
@@ -702,287 +746,114 @@ namespace S100Framework.YAML
                 }
 
                 return attributes;
-
             }
-
-            private static FeatureNode BuildObject(List<YamlAttributeItem> attributes, string type) {
+            private static FeatureNode BuildFeatureNodeObject(List<YamlAttributeItem> attributes, string type) {
                 var featureType = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{type}", true) ?? default;
                 var featureNode = Activator.CreateInstance(featureType);
+                var typeInstances = new Dictionary<int, object> { { 0, featureNode } };
 
-                var indexOfAttrList = new Dictionary<string, int>();
-                foreach (var item in attributes) {
-                    Type? typed = null;
+                foreach (var attr in attributes) {
+                    var parentId = attr.Parent ?? 0;
+                    var parentInstance = typeInstances[parentId];
+                    var parentType = parentInstance.GetType();
+                    var prop = parentType.GetProperty(attr.Name);
 
-                    // Determine propetyName
-                    if (item.Parent.HasValue) {
-                        // To-Do fix propertyType is null..? If object of an object of a attribute, it wont go to root. Recursively check the parent if it also has a parent!
-                        // Example. LightSectored>lightSector>sector....
-                        try {
-                            if (attributes.FirstOrDefault(e => e.Id.HasValue && e.Id == item.Parent).Parent.HasValue)// No support for grandparents just yet - Skip
-                                continue;
-                            // Get parent attribute item
-                            var parentName = item.Parent.HasValue ? attributes.First(e => e.Id == item.Parent).Name : item.Name;
+                    if (prop == null)
+                        continue;
 
-                            // Determine PropertyType of parent
-                            var propertyType = featureType.GetProperty(parentName).PropertyType;
+                    // Unwrap nullable type
+                    var typed = Nullable.GetUnderlyingType(prop.PropertyType!) ?? prop.PropertyType;
 
-                            // Get type of parent. Example List<string>
-                            var elementType = propertyType.IsGenericType ? propertyType.GetGenericArguments()[0] : propertyType;
-
-                            // Get the string property - string
-                            var attributeType = elementType.GetProperty(item.Name)?.PropertyType;
-
-                            // Handle nullable
-                            typed = Nullable.GetUnderlyingType(attributeType!) ?? attributeType;
-                        }
-                        catch (Exception ex) {
-                            continue;
-                        }
-
-                    }
-                    else {
-                        // Determine type
-                        var propertyType = featureType.GetProperty(item.Name)?.PropertyType;
-
-                        if (propertyType == null)
-                            continue;
-
-                        typed = Nullable.GetUnderlyingType(propertyType!) ?? propertyType;
-                    }
-
+                    object? newInstance;
 
                     switch (typed) {
-                        // Strings need no conversion
                         case Type t when t == typeof(string): {
-
-                                // If item has parent, update the list/complex object.
-                                if (item.Parent.HasValue) {
-                                    var parent = attributes.First(e => e.Id.HasValue && e.Id == item.Parent);
-                                    var parentProp = featureType.GetProperty(parent.Name);
-
-                                    // Parent is List
-                                    if (parentProp.PropertyType.IsAssignableTo(typeof(IList))) {
-                                        var list = (IList)parentProp.GetValue(featureNode);
-
-                                        if (list != null) {
-                                            var test = parentProp.ToString();
-                                            var index = indexOfAttrList.ContainsKey(item.Name) ? indexOfAttrList[item.Name] : 0;
-                                            var element = list[index];
-                                            var subProp = element.GetType().GetProperty(item.Name);
-
-                                            subProp?.SetValue(element, Convert.ChangeType(item.Value, subProp.PropertyType));
-
-                                            if (indexOfAttrList.ContainsKey(item.Name))
-                                                indexOfAttrList[item.Name]++;
-                                            else
-                                                indexOfAttrList[item.Name] = index++;   // always 1?
-                                        }
-                                        else {
-                                            var val = parentProp.GetValue(featureNode);
-                                            var pt = Nullable.GetUnderlyingType(parentProp.PropertyType!) ?? parentProp.PropertyType;
-                                            parentProp?.SetValue(val, Convert.ChangeType(item.Value, pt));
-                                        }
-                                    }
-                                    // Parent is Object. No occurences so far
-                                    else {
-                                        Console.WriteLine();
-                                    }
-                                }
-                                else {
-                                    featureType.GetProperty(item.Name)?.SetValue(featureNode, item.Value);
-                                }
-
+                                if (attr.Value == null) continue;
+                                var convertedValue = attr.Value;
+                                prop.SetValue(parentInstance, convertedValue);
                                 break;
                             }
 
-                        // Convert to bool
                         case Type t when t == typeof(bool): {
-                                var booleanValue = Convert.ToInt32(item.Value) == 1;
-
-                                featureType.GetProperty(item.Name)?.SetValue(featureNode, booleanValue);
-                            }
-                            break;
-
-                        // Convert to decimal value
-                        case Type t when t == typeof(decimal): {
-                                var decimalValue = Convert.ChangeType(item.Value, typeof(decimal));
-                                featureType.GetProperty(item.Name)?.SetValue(featureNode, decimalValue);
-
+                                if (attr.Value == null) continue;
+                                var booleanValue = Convert.ToInt32(attr.Value) == 1;
+                                prop.SetValue(parentInstance, booleanValue);
                                 break;
                             }
 
-                        // Ensure enum value comes 'EnumMemberAttribute' and no enums are sat to 0, -1 or "unknown".
+                        case Type t when t == typeof(decimal): {
+                                if (attr.Value == null) continue;
+                                var decimalValue = decimal.Parse(attr.Value, CultureInfo.InvariantCulture);
+                                prop.SetValue(parentInstance, decimalValue);
+                                break;
+                            }
+
                         case Type t when t.IsEnum: {
-                                if (item.Parent.HasValue) {
-                                    var parent = attributes.First(e => e.Id.HasValue && e.Id == item.Parent);
-
-                                    var parentProp = featureType.GetProperty(parent.Name);
-                                    var list = (IList)parentProp.GetValue(featureNode);
-
-                                    if (list != null) {
-                                        var test = parentProp.ToString();
-                                        var index = indexOfAttrList.ContainsKey(item.Name) ? indexOfAttrList[item.Name] : 0;
-                                        var element = list[index];
-                                        var subProp = element.GetType().GetProperty(item.Name);
-
-                                        var enumValue = Enum.Parse(t, item.Value);
-
-                                        subProp?.SetValue(element, enumValue);
-
-                                        if (indexOfAttrList.ContainsKey(item.Name))
-                                            indexOfAttrList[item.Name]++;
-                                        else
-                                            indexOfAttrList[item.Name] = index++;   // always 1?
-                                    }
-
-                                }
-                                else {
-                                    var enumValue = Enum.Parse(t, item.Value);
-                                    featureType.GetProperty(item.Name)?.SetValue(featureNode, enumValue);
-                                }
-
+                                if (attr.Value == null) continue;
+                                var enumValue = Enum.Parse(typed, attr.Value);
+                                prop.SetValue(parentInstance, enumValue);
                                 break;
                             }
 
                         case Type t when t.IsPrimitive: {
-                                // Handle parentId??
-                                var primValue = Convert.ChangeType(item.Value, t);
-                                featureType.GetProperty(item.Name)?.SetValue(featureNode, primValue);
+                                if (attr.Value == null) continue;
+                                var convertedValue = Convert.ChangeType(attr.Value, typed);
+                                prop.SetValue(parentInstance, convertedValue);
                                 break;
                             }
 
                         case Type t when typeof(IEnumerable).IsAssignableFrom(t): {
-                                var elementType = t.IsGenericType ? t.GetGenericArguments()[0] : typeof(object);
+                                var list = (System.Collections.IList?)prop.GetValue(parentInstance);
+                                var elementType = typed.GetGenericArguments()[0];
 
-                                var prop = featureType.GetProperty(item.Name);
+                                if (elementType == typeof(string) || elementType.IsPrimitive || elementType.IsEnum || elementType == typeof(decimal)) {
+                                    if (attr.Value == null) continue;
 
-                                var list = GetOrCreateListInstance(featureNode, featureType.GetProperty(item.Name));
+                                    var convertedItem = elementType.IsEnum
+                                        ? Enum.Parse(elementType, attr.Value)
+                                        : Convert.ChangeType(attr.Value, elementType, CultureInfo.InvariantCulture);
 
-                                // Ensure we add correct type of value to the list.
-                                switch (elementType) {
-                                    case Type et when et == typeof(string): {
-                                            list.Add(item.Value);
-
-                                            break;
-                                        }
-
-                                    // Convert to bool
-                                    case Type et when et == typeof(bool): {
-                                            var booleanValue = Convert.ToInt32(item.Value) == 1;
-
-                                            list.Add(booleanValue);
-                                        }
-                                        break;
-
-                                    // Convert to decimal value
-                                    case Type et when et == typeof(decimal): {
-                                            var decimalValue = Convert.ChangeType(item.Value, typeof(decimal));
-
-                                            list.Add(decimalValue);
-                                            break;
-                                        }
-                                    case Type et when et.IsEnum: {
-                                            var enumValue = Enum.Parse(et, item.Value);
-
-                                            list.Add(enumValue);
-                                            break;
-                                        }
-
-                                    case Type et when et.IsPrimitive: {
-                                            var primValue = Convert.ChangeType(item.Value, et);
-
-                                            list.Add(primValue);
-                                            break;
-                                        }
-
-                                    case Type et when et == typeof(DateOnly): {
-                                            var parsed = DateOnly.TryParse(item.Value, out DateOnly date);
-
-                                            if (!parsed)
-                                                throw new InvalidOperationException("Failed to parse DateOnly");
-
-                                            list.Add(date);
-
-                                            break;
-                                        }
-
-                                    // List of list not supported!
-                                    case Type et when typeof(IEnumerable).IsAssignableFrom(et): {
-                                            throw new NotImplementedException("List of list not supported!");
-                                        }
-
-                                    case Type et when et.IsClass: {
-                                            // Create new instance of et
-                                            var itemObj = Activator.CreateInstance(et)!;
-
-                                            // Create null object and add it to list. update it alter with parentId?
-                                            et.GetProperty(item.Name)?.SetValue(itemObj, item.Value);
-
-                                            // add item to list
-                                            list.Add(itemObj);
-
-                                            break;
-                                        }
-
-                                    case Type et when et.IsValueType: {
-                                            var valueType = Convert.ChangeType(item.Value, et);
-                                            list.Add(valueType);
-                                            break;
-                                        }
-
-                                    default:
-                                        break;
+                                    list!.Add(convertedItem);
                                 }
-                                featureType.GetProperty(item.Name)?.SetValue(featureNode, list);
+                                else {
+                                    newInstance = Activator.CreateInstance(elementType)!;
+                                    list!.Add(newInstance);
 
+                                    if (attr.Id.HasValue)
+                                        typeInstances[attr.Id.Value] = newInstance;
+                                }
                                 break;
                             }
+
                         case Type t when t.IsClass: {
-                                // To-do
-                                //throw new NotImplementedException("List of object not implemented");
+                                newInstance = Activator.CreateInstance(typed)!;
+                                prop.SetValue(parentInstance, newInstance);
+
+                                if (attr.Id.HasValue)
+                                    typeInstances[attr.Id.Value] = newInstance;
                                 break;
                             }
 
                         case Type t when t == typeof(DateOnly): {
-                                var parsed = DateOnly.TryParse(item.Value, out DateOnly date);
-
-                                if (!parsed)
-                                    throw new InvalidOperationException("Failed to parse DateOnly");
-
-                                featureType.GetProperty(item.Name)?.SetValue(featureNode, date);
-
+                                if (attr.Value == null) continue;
+                                var dateOnly = DateOnly.Parse(attr.Value, CultureInfo.InvariantCulture);
+                                prop.SetValue(parentInstance, dateOnly);
                                 break;
                             }
 
                         case Type t when t.IsValueType: {
-                                var valueType = Convert.ChangeType(item.Value, t);
-                                featureType.GetProperty(item.Name)?.SetValue(featureNode, valueType);
+                                if (attr.Value == null) continue;
+                                var convertedValue = Convert.ChangeType(attr.Value, typed);
+                                prop.SetValue(parentInstance, convertedValue);
                                 break;
                             }
 
                         default:
-                            throw new ArgumentException("Invalid property type provided: {propertyType}", "propertyType");
+                            break;
                     }
                 }
 
                 return featureNode as FeatureNode;
-            }
-
-            // Gemini magic
-            private static IList GetOrCreateListInstance(object obj, PropertyInfo propertyInfo) {
-                var currentValue = propertyInfo.GetValue(obj);
-
-                if (currentValue != null && currentValue is IList existingList) {
-                    return existingList;
-                }
-                else {
-                    var propertyType = propertyInfo.PropertyType;
-
-                    var elementType = propertyType.IsGenericType ? propertyType.GetGenericArguments()[0] : typeof(object);
-                    var newList = (IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(elementType))!;
-                    propertyInfo.SetValue(obj, newList); // Set the new list back to the object
-                    return newList;
-                }
             }
         }
 
