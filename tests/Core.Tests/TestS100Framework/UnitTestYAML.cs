@@ -60,81 +60,7 @@ namespace TestS100Framework
 
         [Fact]
         public void Test_Deserialize_Feature() {
-            var dataset = new S100Framework.YAML.Dataset() {
-                CellName = "101DK40349E.000",
-                Edition = 1,
-                Comment = "Not for navigation!",
-                ENCVer = "INT.IHO.S-101.2.0",
-                FCVer = "2.0.0",
-            };
-
-            var bridge = new S100Framework.YAML.Feature() {
-                Name = "Bridge",
-                Prim = Primitive.Surface,
-                Foid = "110:5163:1",
-                Attributes = new Bridge {
-                    featureName = [new() {
-                        language = "eng",
-                        name = "Dronning Alexandrines Bro",
-                        nameUsage = S100Framework.DomainModel.S101.nameUsage.DefaultNameDisplay,
-                    }],
-                    openingBridge = false
-                },
-                Geometry = "S5163"
-            };
-            var sounding = new S100Framework.YAML.Feature() {
-                Name = "Sounding",
-                Prim = Primitive.Point,
-                Foid = "110:1057970:1",
-                Attributes = new Sounding {
-                    scaleMinimum = 89999
-                },
-                Geometry = "P1057970"
-            };
-            var restrictedArea = new S100Framework.YAML.Feature() {
-                Name = "RestrictedArea",
-                Prim = Primitive.Surface,
-                Foid = "110:5207:1",
-                Attributes = new RestrictedArea {
-                    categoryOfRestrictedArea = [
-                        categoryOfRestrictedArea.NatureReserve,
-                        categoryOfRestrictedArea.BirdSanctuary
-                    ],
-                    featureName = [
-                        new() {
-                            language = "eng",
-                            name = "Uvlshale Nyord",
-                            nameUsage = S100Framework.DomainModel.S101.nameUsage.DefaultNameDisplay,
-                        }
-                    ],
-                    restriction = [
-                        restriction.SpeedRestricted
-                    ],
-                    scaleMinimum = 89999,
-                    information = [
-                        new() {
-                            language = "eng",
-                            text = "Speed limit is 8 knots outside the channel"
-                        }
-                    ]
-                },
-                Geometry = "S5207"
-            };
-
-            dataset.AddFeature(bridge);
-            dataset.AddFeature(sounding);
-            dataset.AddFeature(restrictedArea);
-            dataset.Metadata = new Metadata {
-                OrganisationName = "Geodatastyrelsen",
-                City = "Aalborg",
-                AdministrativeArea = "Denmark",
-                ElectronicMailAddress = "jesoe@gst.dk",
-                Country = "Denmark",
-                Producer = "GST",
-                ProducerCode = "DK00"
-            };
-
-                  var yamlDataset = @"CellName: 101DK40349E.000
+            var yamlDataset = @"CellName: 101DK40349E.000
 Comment: Not for navigation!
 Edition: 1
 encver: INT.IHO.S-101.2.0
@@ -246,16 +172,12 @@ Features:
         parent: 2
     Geometry: S5207";
 
-            yamlDataset = System.IO.File.ReadAllText(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"101DK40349E.yaml"));
+            // overwrite with full yaml dataset
+            var fullDatasetPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"101DK40349E.yaml");
+            if (System.IO.File.Exists(fullDatasetPath))
+                yamlDataset = System.IO.File.ReadAllText(fullDatasetPath);
 
-
-            var serialized = S100Framework.YAML.Converter.Deserialize<S100Framework.YAML.Dataset>(yamlDataset);
-
-            // Does not compare properly
-            //var jsonSerialized = JsonSerializer.Serialize(serialized);
-            //var jsonDataset = JsonSerializer.Serialize(dataset);
-
-            //Assert.Equal(jsonSerialized, jsonDataset);
+            var deserialized = S100Framework.YAML.Converter.Deserialize<S100Framework.YAML.Dataset>(yamlDataset);
 
             System.Diagnostics.Debugger.Break();
         }
