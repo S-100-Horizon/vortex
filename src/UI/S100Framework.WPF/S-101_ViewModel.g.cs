@@ -13,7 +13,6 @@ using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S101.InformationAssociations;
 using S100Framework.DomainModel.S101.FeatureAssociations;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
-using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
 #nullable enable
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -31973,8 +31972,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public categoryOfLateralMark[] categoryOfLateralMarkList => [(categoryOfLateralMark)1,(categoryOfLateralMark)2,(categoryOfLateralMark)3,(categoryOfLateralMark)4];
-        [Editor(typeof(Editors.MyEnumComboBoxEditor), typeof(Editors.MyEnumComboBoxEditor))]
-        //[Editor(typeof(EnumComboBoxEditor),typeof(EnumComboBoxEditor))]
+		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
 		[DomainModel.EnumerationAttribute(nameof(colourList))]
 		[Category("LateralBuoy")]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
