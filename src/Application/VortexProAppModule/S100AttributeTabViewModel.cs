@@ -8,6 +8,7 @@ using ArcGIS.Desktop.Editing;
 using ArcGIS.Desktop.Editing.Attributes;
 using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
+using ArcGIS.Desktop.Internal.Mapping;
 using ArcGIS.Desktop.Mapping;
 using S100Framework.Catalogues;
 using S100Framework.DomainModel;
@@ -726,6 +727,33 @@ namespace VortexProAppModule
 
                         this.SelectedAssociationProperty = new SelectedAssociationObjectViewModel(association);
                         selectedObjectViewModel = this.SelectedAssociationProperty;
+                    }
+                    if(instance is FeatureAssociation) {
+                        var associationViewModel = (AssociationViewModel)viewmodel;
+
+                        //  featureBinding
+                        {
+                            using var table = inspector.OpenDataset<Table>("associationbinding");
+
+                            var q = new QueryFilter {
+                                WhereClause = $"UPPER(TYPE) = 'FEATUREBINDING' AND ASSOCIATIONID = '{associationViewModel.PID}'",
+                            };
+                            using var cursor = table.Search(q, true);
+                            while (cursor.MoveNext()) {
+                                var row = cursor.Current;
+                                var binding = new FeatureBindingViewModel {
+                                    UID = row.GetGlobalID(),
+                                }.Load(new featureBinding {
+                                    roleType = Convert.ToString(row["roleType"]),
+                                    association = Convert.ToString(row["association"]),
+                                    role = Convert.ToString(row["role"]),
+                                    associationId = Convert.ToString(row["associationId"]),
+                                    featureId = Convert.ToString(row["foreignid"]),
+                                    PID = associationViewModel.PID,
+                                });
+                                this.SelectedAssociationProperty.FeatureBindings.Add(binding);
+                            }
+                        }
                     }
 
                     selectedObjectViewModel.PropertyChanged += this.OnPropertyChanged;
