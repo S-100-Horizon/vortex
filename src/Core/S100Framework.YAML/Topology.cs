@@ -107,7 +107,7 @@ namespace S100Framework.YAML
                 MaxDegreeOfParallelism = 8,
             };
 
-            options = new ParallelOptions { MaxDegreeOfParallelism = 1 };
+            //options = new ParallelOptions { MaxDegreeOfParallelism = 1 };
 
             var hashing = new ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
             foreach (var f in topology.Curves) {
@@ -156,7 +156,7 @@ namespace S100Framework.YAML
             Parallel.For(0, polygons.Length, options, (i) => {
                 var p = polygons[i];
 
-                if (p.name.Equals("S1305975")) System.Diagnostics.Debugger.Break();
+                //if (p.name.Equals("S1305975")) System.Diagnostics.Debugger.Break();
 
                 var exteriorRing = (LineString)p.ExteriorRing.Normalized();
                 if (exteriorRing.IsRing) {
