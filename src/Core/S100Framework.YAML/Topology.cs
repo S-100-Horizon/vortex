@@ -147,8 +147,15 @@ namespace S100Framework.YAML
                 });
 
                 bagCurves.Add(e.curve);
-
                 mapping.GetOrAdd(p.name, $"C{e.curve.Id}");
+
+                hash = System.IO.Hashing.XxHash3.HashToUInt64(p.LineString.Reverse().AsBinary());
+                hashing.GetOrAdd(hash, (h) => {
+                    return (new FeatureRef {
+                        Id = e.fetureRef.Id,
+                        Reverse = true,
+                    }, e.curve);
+                });
             });
 
             //options = new ParallelOptions { MaxDegreeOfParallelism = 1 };
@@ -181,6 +188,15 @@ namespace S100Framework.YAML
 
                 bagCurves.Add(e.curve);
 
+                hash = System.IO.Hashing.XxHash3.HashToUInt64(exteriorRing.Reverse().AsBinary());
+                hashing.GetOrAdd(hash, (h) => {
+                    return (new FeatureRef {
+                        Id = e.fetureRef.Id,
+                        Reverse = true,
+                    }, e.curve);
+                });
+
+
                 var surface = new SurfaceFeature() {
                     Ref = p.name,
                     Exterior = e.fetureRef,
@@ -202,8 +218,6 @@ namespace S100Framework.YAML
 
                         hash = System.IO.Hashing.XxHash3.HashToUInt64(interiorRing.AsBinary());
 
-                        var lookup = hashing.SingleOrDefault(e => e.Value.curve.LineStringText.Equals(interiorRing.ToText()));
-
                         e = hashing.GetOrAdd(hash, (h) => {
                             var f = new CurveFeature(interiorRing);
 
@@ -212,10 +226,17 @@ namespace S100Framework.YAML
                                 Reverse = false,
                             }, f);
                         });
-
                         bagCurves.Add(e.curve);
-
                         interiorRefs.Add(e.fetureRef);
+
+                        hash = System.IO.Hashing.XxHash3.HashToUInt64(interiorRing.Reverse().AsBinary());
+                        hashing.GetOrAdd(hash, (h) => {
+                            return (new FeatureRef {
+                                Id = e.fetureRef.Id,
+                                Reverse = true,
+                            }, e.curve);
+                        });
+
                     }
 
                     surface.Interior = [.. interiorRefs];
