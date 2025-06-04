@@ -22,7 +22,9 @@ namespace S100Framework.Applications
     internal class RelatedEquipment {
         Geodatabase _source;
 
-        HashSet<(string TableName,int Subtype, Guid globalid)> _converted = new();
+        HashSet<(string TableName, int Subtype, Guid globalid)> _converted = new();
+
+        HashSet<string> _relations = new();
 
         public RelatedEquipment(Geodatabase source) {
             this._source = source;
@@ -190,6 +192,8 @@ namespace S100Framework.Applications
                     }
 
                     // Add relation between master polygon and slave equipment
+
+
                     FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), name), new(lightSectored.GetType(), equipmentName));
 
                 }
@@ -223,7 +227,7 @@ namespace S100Framework.Applications
                             throw new NotSupportedException("empty equipment name");
                         }
 
-                        FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name));
+                        //FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name));
 
                         Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.S57Object.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
                     }

@@ -717,11 +717,35 @@ namespace S100Framework.Applications.Singletons
             //}
 
             Relation relation = new(master, slave);
+
+            if (IsCircular(master, slave)) {
+                throw new NotSupportedException($"{relation} is circular. Not permitted.");
+
+            }
+
             //_relationCount++;
             if (_relations.Contains(relation)) {
                 throw new NotSupportedException($"{relation} relation´already added");
             }
+
+
             _relations.Add(relation);
+        }
+
+        internal bool IsCircular(S57Master master, S57Slave slave) {
+            //if (_relationCount > 0) {
+            //    return;
+            //}
+
+            S57Master master_ = new(master.S101Type, slave.Name);
+            S57Slave slave_ = new(slave.S101Type, master.Name);
+
+            Relation relation = new(master_, slave_);
+            //_relationCount++;
+            if (_relations.Contains(relation)) {
+                return true; 
+            }
+            return false;
         }
 
         internal void AddAssociation(S57Master master, S57Slave slave) {
