@@ -338,11 +338,14 @@ namespace VortexProAppModule
                             { "roleType", Enum.GetName<roleType>(e.roleType.Value) },
                             { "association", e.association },
                             { "role", e.role },
-                            { "pid", e.PID },
+                            { "primaryid", e.PID },
                         });
 
                         if (!editOperation.IsEmpty) {
                             if (editOperation.Execute()) {
+                                var insp = new Inspector();
+                                insp.Load(table, token.ObjectID.Value);
+
                                 return token.GlobalID;
                             }
                             else if (System.Diagnostics.Debugger.IsAttached)
@@ -398,11 +401,18 @@ namespace VortexProAppModule
                             { "roleType", Enum.GetName<roleType>(e.roleType.Value) },
                             { "association", e.association },
                             { "role", e.role },
-                            { "pid", e.PID },
+                            { "primaryid", e.PID },
                         });
 
                         if (!editOperation.IsEmpty) {
                             if (editOperation.Execute()) {
+                                //var selection = table.Select(new QueryFilter {
+                                //    WhereClause = $"WHERE OBJECTID = {token.ObjectID.Value}"
+                                //}, SelectionType.ObjectID, SelectionOption.OnlyOne);
+
+
+                                //MapView.Active.Map.SetSelection(SelectionSet.FromSelection(selection), SelectionCombinationMethod.Add);
+                                
                                 return token.GlobalID;
                             }
                             else if (System.Diagnostics.Debugger.IsAttached)
@@ -469,7 +479,7 @@ namespace VortexProAppModule
                                 IEnumerable<string> types;
                                 if (inspector.HasGeometry) {
                                     var geometryType = inspector.MapMember switch {
-                                        FeatureLayer l => l.ShapeType             ,
+                                        FeatureLayer l => l.ShapeType,
                                         _ => throw new InvalidOperationException(),
                                     };
 
@@ -479,7 +489,7 @@ namespace VortexProAppModule
                                         ArcGIS.Core.CIM.esriGeometryType.esriGeometryPoint => Primitives.point,
                                         ArcGIS.Core.CIM.esriGeometryType.esriGeometryMultipoint => Primitives.pointSet,
                                         _ => throw new InvalidOperationException(),
-                                    };                           
+                                    };
 
                                     types = _inspectorHandle.Types(featureCatalogue, primitive);
                                 }
@@ -530,7 +540,7 @@ namespace VortexProAppModule
             var inspector = base.Inspector;
 
             var model = base.Model;
-            
+
             if (!inspector.HasAttributes)
                 return;
 
@@ -562,12 +572,13 @@ namespace VortexProAppModule
                         _ => throw new NotImplementedException(),
                     };
 
+                    var ps = Convert.ToString(inspector["ps"]);
+                    if (!string.IsNullOrEmpty(ps)) {
+                        return ps.ToUpperInvariant();
+                    }
 
                     if (!string.IsNullOrEmpty(tableNames.Item2)) {
-                        var catalogue = _catalogues.SingleOrDefault(e => e.Equals(tableNames.Item2, StringComparison.InvariantCultureIgnoreCase) || e.Replace("-", string.Empty).Equals(tableNames.Item2, StringComparison.InvariantCultureIgnoreCase));
-
-                        return catalogue;
-
+                        return _catalogues.SingleOrDefault(e => e.Equals(tableNames.Item2, StringComparison.InvariantCultureIgnoreCase) || e.Replace("-", string.Empty).Equals(tableNames.Item2, StringComparison.InvariantCultureIgnoreCase));
                     }
 
                     return geodatabase.GetConnector() switch {
@@ -637,7 +648,7 @@ namespace VortexProAppModule
                         using var table = inspector.OpenDataset<Table>("associationbinding");
 
                         var q = new QueryFilter {
-                            WhereClause = $"TYPE = 'InformationBinding' AND PID = '{informationViewModel.PID}'",
+                            WhereClause = $"TYPE = 'InformationBinding' AND PRIMARYID = '{informationViewModel.PID}'",
                         };
                         using var cursor = table.Search(q, true);
                         while (cursor.MoveNext()) {
@@ -667,7 +678,7 @@ namespace VortexProAppModule
                             using var table = inspector.OpenDataset<Table>("associationbinding");
 
                             var q = new QueryFilter {
-                                WhereClause = $"UPPER(TYPE) = 'INFORMATIONBINDING' AND PID = '{featureViewModel.PID}'",
+                                WhereClause = $"UPPER(TYPE) = 'INFORMATIONBINDING' AND PRIMARYID = '{featureViewModel.PID}'",
                             };
                             using var cursor = table.Search(q, true);
                             while (cursor.MoveNext()) {
@@ -679,7 +690,7 @@ namespace VortexProAppModule
                                     association = Convert.ToString(row["association"]),
                                     role = Convert.ToString(row["role"]),
                                     associationId = Convert.ToString(row["associationId"]),
-                                    informationId = Convert.ToString(row["fid"]),
+                                    informationId = Convert.ToString(row["foreignid"]),
                                     PID = featureViewModel.PID,
                                 });
                                 this.SelectedFeatureProperty.InformationBindings.Add(binding);
@@ -691,7 +702,7 @@ namespace VortexProAppModule
                             using var table = inspector.OpenDataset<Table>("associationbinding");
 
                             var q = new QueryFilter {
-                                WhereClause = $"UPPER(TYPE) = 'FEATUREBINDING' AND PID = '{featureViewModel.PID}'",
+                                WhereClause = $"UPPER(TYPE) = 'FEATUREBINDING' AND PRIMARYID = '{featureViewModel.PID}'",
                             };
                             using var cursor = table.Search(q, true);
                             while (cursor.MoveNext()) {
@@ -703,7 +714,7 @@ namespace VortexProAppModule
                                     association = Convert.ToString(row["association"]),
                                     role = Convert.ToString(row["role"]),
                                     associationId = Convert.ToString(row["associationId"]),
-                                    featureId = Convert.ToString(row["fid"]),
+                                    featureId = Convert.ToString(row["foreignid"]),
                                     PID = featureViewModel.PID,
                                 });
                                 this.SelectedFeatureProperty.FeatureBindings.Add(binding);
@@ -772,7 +783,7 @@ namespace VortexProAppModule
                     if (cursor.MoveNext()) {
                         editOperation.Modify(cursor.Current, new Dictionary<string, object> {
                                         { "associationid", informationBinding.associationId },
-                                        { "fid", informationBinding.informationId },
+                                        { "foreignid", informationBinding.informationId },
                                     });
                     }
                 }
@@ -786,7 +797,7 @@ namespace VortexProAppModule
                     if (cursor.MoveNext()) {
                         editOperation.Modify(cursor.Current, new Dictionary<string, object> {
                                         { "associationid", featureBinding.associationId },
-                                        { "fid", featureBinding.featureId },
+                                        { "foreignid", featureBinding.featureId },
                                     });
                     }
                 }
