@@ -1,12 +1,13 @@
-﻿using ArcGIS.Core.Geometry;
+﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Geometry;
 using System.Collections.Concurrent;
 using System.Globalization;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace S100Framework.ArcGIS.Core
+namespace ArcGIS.Core.Geometry
 {
-    public static class Extension
+    public static class GeometryExtension
     {
         private static ConcurrentDictionary<int, SpatialReference> _spatialReferences = new();
 
@@ -147,5 +148,6 @@ namespace S100Framework.ArcGIS.Core
             }
             throw new NotImplementedException();
         }
+
     }
 }

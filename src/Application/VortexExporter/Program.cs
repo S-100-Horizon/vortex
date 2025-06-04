@@ -291,9 +291,9 @@ namespace S100Framework.Applications
                             if (type == default) {
                                 Log.Error("Could not get type: {type} for feature: {name}", code, name);
                                 continue;
-                            }
+                            }                           
 
-                            var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+                            var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
 
                             var feature = new YAML.Feature {
                                 Name = code,

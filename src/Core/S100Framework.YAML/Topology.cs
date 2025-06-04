@@ -107,16 +107,18 @@ namespace S100Framework.YAML
                 MaxDegreeOfParallelism = 8,
             };
 
+            options = new ParallelOptions { MaxDegreeOfParallelism = 1 };
+
             var hashing = new ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
             foreach (var f in topology.Curves) {
-                var hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.AsBinary());
+                var hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Normalized().AsBinary());
                 if (!hashing.ContainsKey(hash)) {
                     hashing.TryAdd(hash, (new FeatureRef {
                         Id = f.Id,
                         Reverse = false,
                     }, f));
                 }
-                hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
+                hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().Normalized().AsBinary());
                 if (!hashing.ContainsKey(hash)) {
                     hashing.TryAdd(hash, (new FeatureRef {
                         Id = f.Id,
@@ -125,7 +127,7 @@ namespace S100Framework.YAML
                 }
             }
 
-            var bagCurves = new ConcurrentBag<CurveFeature>();
+            var bagCurves = new ConcurrentBag<CurveFeature>(topology.Curves);
             var bagSurfaces = new ConcurrentBag<SurfaceFeature>();
 
             var mapping = new ConcurrentDictionary<string, string>();
@@ -133,10 +135,10 @@ namespace S100Framework.YAML
             Parallel.For(0, polylines.Length, options, (i) => {
                 var p = polylines[i];
 
-                var hash = System.IO.Hashing.XxHash3.HashToUInt64(p.LineString.AsBinary());
+                var hash = System.IO.Hashing.XxHash3.HashToUInt64(p.LineString.Normalized().AsBinary());
 
                 var e = hashing.GetOrAdd(hash, (h) => {
-                    var f = new CurveFeature(p.LineString);
+                    var f = new CurveFeature((LineString)p.LineString.Normalized());
 
                     return (new FeatureRef {
                         Id = f.Id,
@@ -154,18 +156,29 @@ namespace S100Framework.YAML
             Parallel.For(0, polygons.Length, options, (i) => {
                 var p = polygons[i];
 
-                //if (p.name.Equals("S1292699")) System.Diagnostics.Debugger.Break();
+                if (p.name.Equals("S1305975")) System.Diagnostics.Debugger.Break();
 
-                var hash = System.IO.Hashing.XxHash3.HashToUInt64(p.ExteriorRing.AsBinary());
+                var exteriorRing = (LineString)p.ExteriorRing.Normalized();
+                if (exteriorRing.IsRing) {
+                    var ring = exteriorRing.Factory.CreateLinearRing(exteriorRing.Coordinates);
+
+                    exteriorRing = ring.IsCCW switch {
+                        true => (LineString)exteriorRing.Reverse(),
+                        false => exteriorRing,
+                    };
+                }
+
+                var hash = System.IO.Hashing.XxHash3.HashToUInt64(exteriorRing.AsBinary());
 
                 var e = hashing.GetOrAdd(hash, (h) => {
-                    var f = new CurveFeature(p.ExteriorRing);
+                    var f = new CurveFeature(exteriorRing);
 
                     return (new FeatureRef {
                         Id = f.Id,
                         Reverse = false,
                     }, f);
                 });
+
                 bagCurves.Add(e.curve);
 
                 var surface = new SurfaceFeature() {
@@ -177,16 +190,29 @@ namespace S100Framework.YAML
                     var interiorRefs = new List<FeatureRef>();
 
                     foreach (var interior in p.InteriorRings) {
-                        hash = System.IO.Hashing.XxHash3.HashToUInt64(interior.AsBinary());
+                        var interiorRing = (LineString)interior.Normalized();
+                        if (interiorRing.IsRing) {
+                            var ring = interiorRing.Factory.CreateLinearRing(interiorRing.Coordinates);
+
+                            interiorRing = ring.IsCCW switch {
+                                true => interiorRing,
+                                false => (LineString)interiorRing.Reverse(),
+                            };
+                        }
+
+                        hash = System.IO.Hashing.XxHash3.HashToUInt64(interiorRing.AsBinary());
+
+                        var lookup = hashing.SingleOrDefault(e => e.Value.curve.LineStringText.Equals(interiorRing.ToText()));
 
                         e = hashing.GetOrAdd(hash, (h) => {
-                            var f = new CurveFeature(interior);
+                            var f = new CurveFeature(interiorRing);
 
                             return (new FeatureRef {
                                 Id = f.Id,
                                 Reverse = false,
                             }, f);
                         });
+
                         bagCurves.Add(e.curve);
 
                         interiorRefs.Add(e.fetureRef);
@@ -201,7 +227,7 @@ namespace S100Framework.YAML
             topology.Mapping = topology.Mapping.Union(mapping).ToDictionary(e => e.Key, e => e.Value);
 
             topology.Surfaces = [.. topology.Surfaces, .. bagSurfaces];
-            topology.Curves = [.. topology.Curves, .. bagCurves];
+            topology.Curves = [.. bagCurves.DistinctBy(e => e.Id)];
 
             return topology;
         }
