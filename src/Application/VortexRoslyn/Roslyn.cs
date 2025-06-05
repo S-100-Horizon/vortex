@@ -1260,7 +1260,7 @@ namespace S100Framework.Applications
 
                     if (client.BuildViewModelClassClient.EnumerationTypes.Contains(referenceCode)) {
                         builder.AppendLine($"\t\t[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]");
-                        builder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({referenceCode}List))]");
+                        builder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({referenceCode}List), typeof({referenceCode}))]");
                     }
                     builder.AppendLine($"\t\t[Category(\"{code}\")]");
                     builder.AppendLine($"\t\tpublic {prefix} {referenceCode} {postfix}");

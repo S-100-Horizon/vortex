@@ -38,7 +38,7 @@ namespace S100Framework.DomainModel.S128 {
 		[EnumMember(Value = "ENC")] 
 		Enc = 1,
 
-		[System.ComponentModel.Description("BathymetricSurface")]
+		[System.ComponentModel.Description("ATopographicChartOfTheBedOfABodyOfWaterOrAPartOfItGenerallyBathymetricChartsShowDepthsByContourLinesAndGradientTints")]
 		[EnumMember(Value = "Bathymetric Chart")] 
 		BathymetricChart = 2,
 
@@ -46,43 +46,43 @@ namespace S100Framework.DomainModel.S128 {
 		[EnumMember(Value = "Water Level Product")] 
 		WaterLevelProduct = 3,
 
-		[System.ComponentModel.Description("SurfaceCurrents")]
+		[System.ComponentModel.Description("AProductRepresentingTheWaterVelocityAtOneOrMoreGeographicLocationsDownToAGivenDepth")]
 		[EnumMember(Value = "Surface Current Product")] 
 		SurfaceCurrentProduct = 4,
 
-		[System.ComponentModel.Description("MsiMaritimeSafetyInformationService")]
+		[System.ComponentModel.Description("AnOutageOfAMaritimeSafetyInformationBroadcastServiceSatelliteOrTerrestrialSystem")]
 		[EnumMember(Value = "MSI Service")] 
 		MsiService = 5,
 
-		[System.ComponentModel.Description("MarineAidsToNavigational")]
+		[System.ComponentModel.Description("AServiceProvidingInformationRelatedToMarineAidsToNavigation")]
 		[EnumMember(Value = "AtoN Information")] 
 		AtonInformation = 6,
 
-		[System.ComponentModel.Description("CatalogueService")]
+		[System.ComponentModel.Description("AServiceProvidingStructuredRecordsOfItems")]
 		[EnumMember(Value = "Catalogue Service")] 
 		CatalogueService = 7,
 
-		[System.ComponentModel.Description("TheServicesAssociatedWithTheRoute")]
-		[EnumMember(Value = "Routing Service")] 
-		RoutingService = 8,
+		[System.ComponentModel.Description("ServicesAssociatedWithShipsRouteing")]
+		[EnumMember(Value = "Routeing Service")] 
+		RouteingService = 8,
 
-		[System.ComponentModel.Description("IceInformation")]
+		[System.ComponentModel.Description("NewlyDiscoveredIcebergsChangesToIceConditionsAndIceRelatedInformationLikelyToImpactNavigation")]
 		[EnumMember(Value = "Ice Information")] 
 		IceInformation = 9,
 
-		[System.ComponentModel.Description("TheInformationAssociatedWithTheRoute")]
-		[EnumMember(Value = "Routing Information")] 
-		RoutingInformation = 10,
+		[System.ComponentModel.Description("InformationAssociatedWithShipsRouteing")]
+		[EnumMember(Value = "Routeing Information")] 
+		RouteingInformation = 10,
 
-		[System.ComponentModel.Description("ASpecialPurposeChart")]
+		[System.ComponentModel.Description("AnyChartDesignedPrimarilyToMeetSpecificRequirements")]
 		[EnumMember(Value = "Special Purpose Chart")] 
 		SpecialPurposeChart = 11,
 
-		[System.ComponentModel.Description("CatalogueOfNauticalProducts")]
+		[System.ComponentModel.Description("ANauticalChartOrNauticalPublicationIsAASpecialPurposeMapOrBookOrASpeciallyCompiledDatabaseFromWhichSuchAMapOrBookIsDerivedThatIsIssuedOfficiallyByOrOnTheAuthorityOfAGovernmentAuthorizedHydrographicOfficeOrOtherRelevantGovernmentInstitutionAndIsDesignedToMeetTheRequirementsOfMarineNavigation")]
 		[EnumMember(Value = "Nautical Publication")] 
 		NauticalPublication = 12,
 
-		[System.ComponentModel.Description("PrintedNauticalChart")]
+		[System.ComponentModel.Description("APrintedNauticalChartIsAASpecialPurposeMapThatIsIssuedOfficiallyByOrOnTheAuthorityOfAGovernmentAuthorizedHydrographicOfficeOrOtherRelevantGovernmentInstitutionAndIsDesignedToMeetTheRequirementsOfMarineNavigation")]
 		[EnumMember(Value = "Printed Nautical Chart")] 
 		PrintedNauticalChart = 13,
 		[System.ComponentModel.Description("Unknown value.")]
@@ -94,70 +94,70 @@ namespace S100Framework.DomainModel.S128 {
 	[System.Serializable()]
 	public enum categoryOfAuthority : int {
 		[System.ComponentModel.Description("TheAdministrationToPreventOrDetectAndProsecuteViolationsOfRulesAndRegulationsAtInternationalBoundaries")]
-		[EnumMember(Value = "border control")] 
+		[EnumMember(Value = "Border Control")] 
 		BorderControl = 2,
 
 		[System.ComponentModel.Description("TheDepartmentOfGovernmentOrCivilForceChargedWithMaintainingPublicOrder")]
-		[EnumMember(Value = "police")] 
+		[EnumMember(Value = "Police")] 
 		Police = 3,
 
 		[System.ComponentModel.Description("PersonOrCorporationOwnersOfOrEntrustedWithOrInvestedWithThePowerOfManagingAPortMayBeCalledAHarbourBoardPortTrustPortCommissionHarbourCommissionMarineDepartment")]
-		[EnumMember(Value = "port")] 
+		[EnumMember(Value = "Port")] 
 		Port = 4,
 
 		[System.ComponentModel.Description("TheAuthorityControllingPeopleEnteringACountry")]
-		[EnumMember(Value = "immigration")] 
+		[EnumMember(Value = "Immigration")] 
 		Immigration = 5,
 
 		[System.ComponentModel.Description("TheAuthorityWithResponsibilityForCheckingTheValidityOfTheHealthDeclarationOfAVesselAndForDeclaringFreePratique")]
-		[EnumMember(Value = "health")] 
+		[EnumMember(Value = "Health")] 
 		Health = 6,
 
 		[System.ComponentModel.Description("OrganizationKeepingWatchOnShippingAndCoastalWatersAccordingToGovernmentalLawNormallyTheAuthorityWithResponsibilityForSearchAndRescue")]
-		[EnumMember(Value = "coast guard")] 
+		[EnumMember(Value = "Coast Guard")] 
 		CoastGuard = 7,
 
 		[System.ComponentModel.Description("TheAuthorityWithResponsibilityForPreventingInfectionOfTheAgricultureOfACountryAndForTheProtectionOfTheAgriculturalInterestsOfACountry")]
-		[EnumMember(Value = "agricultural")] 
+		[EnumMember(Value = "Agricultural")] 
 		Agricultural = 8,
 
 		[System.ComponentModel.Description("AMilitaryAuthorityWhichProvidesControlOfAccessToOrApprovalForTransitThroughDesignatedAreasOrAirspace")]
-		[EnumMember(Value = "military")] 
+		[EnumMember(Value = "Military")] 
 		Military = 9,
 
 		[System.ComponentModel.Description("APrivateOrPubliclyOwnedCompanyOrCommercialEnterpriseWhichExercisesControlOfFacilitiesForExampleACalibrationArea")]
-		[EnumMember(Value = "private company")] 
+		[EnumMember(Value = "Private Company")] 
 		PrivateCompany = 10,
 
 		[System.ComponentModel.Description("AGovernmentalOrMilitaryForceWithJurisdictionInTerritorialWatersExamplesCouldIncludeGendarmerieMaritimeCarabinierieAndGuardiaCivil")]
-		[EnumMember(Value = "maritime police")] 
+		[EnumMember(Value = "Maritime Police")] 
 		MaritimePolice = 11,
 
 		[System.ComponentModel.Description("AnAuthorityWithResponsibilityForTheProtectionOfTheEnvironment")]
-		[EnumMember(Value = "environmental")] 
+		[EnumMember(Value = "Environmental")] 
 		Environmental = 12,
 
 		[System.ComponentModel.Description("AnAuthorityWithResponsibilityForTheControlOfFisheries")]
-		[EnumMember(Value = "fishery")] 
+		[EnumMember(Value = "Fishery")] 
 		Fishery = 13,
 
 		[System.ComponentModel.Description("AnAuthorityWithResponsibilityForTheControlAndMovementOfMoney")]
-		[EnumMember(Value = "finance")] 
+		[EnumMember(Value = "Finance")] 
 		Finance = 14,
 
 		[System.ComponentModel.Description("ANationalOrRegionalAuthorityChargedWithAdministrationOfMaritimeAffairs")]
-		[EnumMember(Value = "maritime")] 
+		[EnumMember(Value = "Maritime")] 
 		Maritime = 15,
 
 		[System.ComponentModel.Description("TheAgencyOrEstablishmentForCollectingDutiesTolls")]
-		[EnumMember(Value = "customs")] 
+		[EnumMember(Value = "Customs")] 
 		Customs = 16,
 
-		[System.ComponentModel.Description("StateAgencyInChargeOfMarineSurveys")]
-		[EnumMember(Value = "hydrographic office")] 
+		[System.ComponentModel.Description("StateAgencyInChargeOfMarineSurveysAndHydrography")]
+		[EnumMember(Value = "Hydrographic Office")] 
 		HydrographicOffice = 17,
 
-		[System.ComponentModel.Description("RegionalEncCoordinationCentreEntitiesSetUpByTheIho")]
+		[System.ComponentModel.Description("RegionalEncCoordinationCentre")]
 		[EnumMember(Value = "RENC")] 
 		Renc = 18,
 
@@ -171,17 +171,32 @@ namespace S100Framework.DomainModel.S128 {
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
+	public enum digitalSignatureValue : int {
+		[System.ComponentModel.Description("MetaDataRecordIdentifierForQualityofbathymetricCoverage")]
+		[EnumMember(Value = "ID")] 
+		Id = 1,
+
+		[System.ComponentModel.Description("SpecifiesTheAlgorithmUsedToComputeDigitalSignatureValue")]
+		[EnumMember(Value = "Digital Signature Reference")] 
+		DigitalSignatureReference = 2,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
 	public enum nameUsage : int {
 		[System.ComponentModel.Description("TheNameIsIntendedToBeDisplayedWhenTheEndUserSystemIsSetToTheDefaultNameTextDisplaySetting")]
-		[EnumMember(Value = "default name display")] 
+		[EnumMember(Value = "Default Name Display")] 
 		DefaultNameDisplay = 1,
 
 		[System.ComponentModel.Description("TheNameIsIntendedToBeDisplayedWhenTheEndUserSystemIsSetToAnAlternateNameTextDisplaySettingForExampleAnAlternateLanguage")]
-		[EnumMember(Value = "alternate name display")] 
+		[EnumMember(Value = "Alternate Name Display")] 
 		AlternateNameDisplay = 2,
 
 		[System.ComponentModel.Description("TheNameOrTextIsNotIntendedToBeDisplayed")]
-		[EnumMember(Value = "no chart display")] 
+		[EnumMember(Value = "No Chart Display")] 
 		NoChartDisplay = 3,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
@@ -191,12 +206,12 @@ namespace S100Framework.DomainModel.S128 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum distributionStatus : int {
-		[System.ComponentModel.Description("TheActOrProcessOfProducingSomething")]
-		[EnumMember(Value = "production")] 
+		[System.ComponentModel.Description("AProductOrServiceThatIsCurrentlyInProduction")]
+		[EnumMember(Value = "Production")] 
 		Production = 1,
 
-		[System.ComponentModel.Description("TheActionToWithdrawATimeStampUsedWhenATimeStampHasBeenReportedIncorrectly")]
-		[EnumMember(Value = "withdrawn")] 
+		[System.ComponentModel.Description("AProductOrServiceThatHasBeenWithdrawn")]
+		[EnumMember(Value = "Withdrawn")] 
 		Withdrawn = 2,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
@@ -205,69 +220,69 @@ namespace S100Framework.DomainModel.S128 {
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
-	public enum IMOMaritimeService : int {
-		[System.ComponentModel.Description("VtsInformationServiceIs")]
-		[EnumMember(Value = "Vessel traffic service")] 
+	public enum iMOMaritimeService : int {
+		[System.ComponentModel.Description("AnyServiceImplementedByARelevantAuthorityPrimarilyDesignedToImproveSafetyAndEfficiencyOfTrafficFlowAndTheProtectionOfTheEnvironmentItMayRangeFromSimpleInformationMessagesToExtensiveOrganizationOfTheTrafficInvolvingNationalOrRegionalSchemes")]
+		[EnumMember(Value = "Vessel Traffic Service")] 
 		VesselTrafficService = 1,
 
-		[System.ComponentModel.Description("NavigationalAssistanceServiceNas")]
-		[EnumMember(Value = "Aids to navigation service")] 
+		[System.ComponentModel.Description("AServiceProvidingUpToDateInformationOfAidsToNavigation")]
+		[EnumMember(Value = "Aids to Navigation Service")] 
 		AidsToNavigationService = 2,
 
-		[System.ComponentModel.Description("TrafficOrganizationServiceTos")]
-		[EnumMember(Value = "Reserved for future use")] 
+		[System.ComponentModel.Description("AnOptionThatIsReservedForFutureUse")]
+		[EnumMember(Value = "Reserved for Future Use")] 
 		ReservedForFutureUse = 3,
 
-		[System.ComponentModel.Description("LocalPortService")]
-		[EnumMember(Value = "Port support service")] 
+		[System.ComponentModel.Description("AServiceThatProvidesInformationNecessaryToOrganizeAndSupportPortCallsAndVariesDependingOnTheLocalNeeds")]
+		[EnumMember(Value = "Port Support Service")] 
 		PortSupportService = 4,
 
-		[System.ComponentModel.Description("MaritimeSafetyInformationServiceMsi")]
-		[EnumMember(Value = "Maritime safety information service")] 
+		[System.ComponentModel.Description("AServiceProvidingNavigationalAndMeteorologicalWarningsMeteorologicalForecastsAndOtherUrgentSafetyRelatedMessagesBroadcastToShips")]
+		[EnumMember(Value = "Maritime Safety Information Service")] 
 		MaritimeSafetyInformationService = 5,
 
-		[System.ComponentModel.Description("PilotageService")]
-		[EnumMember(Value = "Pilotage service")] 
+		[System.ComponentModel.Description("TheServicesOfAPersonWhoDirectsTheMovementsOfAVesselThroughPilotWatersUsuallyAPersonWhoHasDemonstratedExtensiveKnowledgeOfChannelsAidsToNavigationDangersToNavigationEtcInAParticularAreaAndIsLicensedForThatAreaAreAvailable")]
+		[EnumMember(Value = "Pilotage Service")] 
 		PilotageService = 6,
 
-		[System.ComponentModel.Description("TugService")]
-		[EnumMember(Value = "Tug service")] 
+		[System.ComponentModel.Description("AServiceThatContributesToTheSafetyOfNavigationProtectionOfTheMarineEnvironmentAndEfficiencyOfMarineTransportationByConductingDifferentTypesOfOperationsIncludingTugboatsSuchAsShipAssistanceSalvalgeTowageEscortEtc")]
+		[EnumMember(Value = "Tug Service")] 
 		TugService = 7,
 
-		[System.ComponentModel.Description("VesselShoreReporting")]
-		[EnumMember(Value = "Vessel shore reporting")] 
+		[System.ComponentModel.Description("AServiceProvidingInformationRelatedToVesselShoreReportingAndShipReportingSystems")]
+		[EnumMember(Value = "Vessel Shore Reporting")] 
 		VesselShoreReporting = 8,
 
-		[System.ComponentModel.Description("TelemedicalAssistanceServiceTmas")]
-		[EnumMember(Value = "Telemedical assistance service")] 
+		[System.ComponentModel.Description("AServiceToProvideDecisionSupportAndAdviceToTheSeafarerOnBoardResponsibleForMedicalCare")]
+		[EnumMember(Value = "Telemedical Assistance Service")] 
 		TelemedicalAssistanceService = 9,
 
-		[System.ComponentModel.Description("MaritimeAssistnaceServiceMas")]
-		[EnumMember(Value = "Maritime assistance service")] 
+		[System.ComponentModel.Description("AServiceToManageCommunicationsBetweenTheCoastalStateShipsOfficersRequiringAssistanceAndOtherResponsibleMaritimeOrganizationsFleetOwnersSalvageCompaniesPortAuthoritiesBrokersEtc")]
+		[EnumMember(Value = "Maritime Assistance Service")] 
 		MaritimeAssistanceService = 10,
 
-		[System.ComponentModel.Description("NauticalChartService")]
-		[EnumMember(Value = "Nautical chart service")] 
+		[System.ComponentModel.Description("AServiceThatProvidesGeospatialInformationInDigitalAndOrPrintedFormatToSupportSafeMaritimeNavigationWithTheAimToFulfillSolasRegulationV19214RequirementsForShipsToCarryNauticalChartsAndNauticalPublicationsToPlanAndDisplayTheShipSRouteForTheIntendedVoyageAndToPlotAndMonitorPositionsThroughoutTheVoyage")]
+		[EnumMember(Value = "Nautical Chart Service")] 
 		NauticalChartService = 11,
 
-		[System.ComponentModel.Description("NauticalPublicationsService")]
-		[EnumMember(Value = "Nautical publications service")] 
+		[System.ComponentModel.Description("AServiceToProvideInformationAsASupportToTheNavigationProcessThisComprisesInformationToComplementNauticalChartsSuchAsInformationOnPortsAndSeaAreasAsWellAsTheContactInformationOfAuthoritiesAndServicesForASeaAreaOrPortItFurtherDescribesRegulationsRestrictionsRecommendationsAndOtherNauticalInformationApplicableInTheseAreasAndAimToFulfillSolasRegulationV19214RequirementsForShipsToCarryNauticalChartsAndNauticalPublicationsToPlanAndDisplayTheShipSRouteForTheIntendedVoyageAndToPlotAndMonitorPositionsThroughoutTheVoyage")]
+		[EnumMember(Value = "Nautical Publications Service")] 
 		NauticalPublicationsService = 12,
 
-		[System.ComponentModel.Description("IceNavigationService")]
-		[EnumMember(Value = "Ice navigation service")] 
+		[System.ComponentModel.Description("AServiceToProvideIceNavigationInformationToShipsInAndInTheVicinityOfPossibleIceInfestedRegions")]
+		[EnumMember(Value = "Ice Navigation Service")] 
 		IceNavigationService = 13,
 
-		[System.ComponentModel.Description("MeteorologicalInformationService")]
-		[EnumMember(Value = "Meteorological information service")] 
+		[System.ComponentModel.Description("AServiceToProvideMeteorologicalInformationDigitallyToShips")]
+		[EnumMember(Value = "Meteorological Information Service")] 
 		MeteorologicalInformationService = 14,
 
-		[System.ComponentModel.Description("RealTimeHydrographicAndEnvironmentalInformationService")]
-		[EnumMember(Value = "Real-time hydrographic and environmental information services")] 
-		RealTimeHydrographicAndEnvironmentalInformationServices = 15,
+		[System.ComponentModel.Description("AServiceProvidingHydrographicAndEnvironmentalObservationsAndForecastsSuchAsWaterLevelAndSurfaceCurrentInformation")]
+		[EnumMember(Value = "Real-Time Hydrographic and Environmental Information Service")] 
+		RealTimeHydrographicAndEnvironmentalInformationService = 15,
 
-		[System.ComponentModel.Description("SearchAndRescueService")]
-		[EnumMember(Value = "Search and rescue service")] 
+		[System.ComponentModel.Description("AServiceAimedAtProvidingInformationAboutAndAssistWithSearchAndRescueFunctions")]
+		[EnumMember(Value = "Search and Rescue Service")] 
 		SearchAndRescueService = 16,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
@@ -276,36 +291,36 @@ namespace S100Framework.DomainModel.S128 {
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
-	public enum iso216 : int {
-		[System.ComponentModel.Description("TheFirstSizeAsOutputSizeOnNauticalPaperChart")]
+	public enum iSO216 : int {
+		[System.ComponentModel.Description("ThePaperSizeA0AsDefinedInIso216")]
 		[EnumMember(Value = "A0")] 
 		A0 = 1,
 
-		[System.ComponentModel.Description("TheSecondSizeAsOutputSizeOnNauticalPaperChart")]
+		[System.ComponentModel.Description("TheFirstSizeAsOutputSizeOnNauticalPaperChartReferringToIso216")]
 		[EnumMember(Value = "A1")] 
 		A1 = 2,
 
-		[System.ComponentModel.Description("TheThirdSizeAsOutputSizeOnNauticalPaperChart")]
+		[System.ComponentModel.Description("ThePaperSizeA2AsDefinedInIso216")]
 		[EnumMember(Value = "A2")] 
 		A2 = 3,
 
-		[System.ComponentModel.Description("TheFourthSizeAsOutputSizeOnNauticalPaperChart")]
+		[System.ComponentModel.Description("TheFourthSizeAsOutputSizeOnNauticalPaperChartReferringToIso216")]
 		[EnumMember(Value = "A3")] 
 		A3 = 4,
 
-		[System.ComponentModel.Description("TheFifthSizeAsOutputSizeOnNauticalPaperChart")]
+		[System.ComponentModel.Description("TheFifthSizeAsOutputSizeOnNauticalPaperChartReferringToIso216")]
 		[EnumMember(Value = "A4")] 
 		A4 = 5,
 
-		[System.ComponentModel.Description("TheSixthSizeAsOutputSizeOnNauticalPaperChart")]
+		[System.ComponentModel.Description("TheSixthSizeAsOutputSizeOnNauticalPaperChartReferringToIso216")]
 		[EnumMember(Value = "A5")] 
 		A5 = 6,
 
-		[System.ComponentModel.Description("TheSeventhSizeAsOutputSizeOnNauticalPaperChart")]
+		[System.ComponentModel.Description("TheSeventhSizeAsOutputSizeOnNauticalPaperChartReferringToIso216")]
 		[EnumMember(Value = "A6")] 
 		A6 = 7,
 
-		[System.ComponentModel.Description("TheEighthSizeAsOutputSizeOnNauticalPaperChart")]
+		[System.ComponentModel.Description("TheEighthSizeAsOutputSizeOnNauticalPaperChartReferringToIso216")]
 		[EnumMember(Value = "A7")] 
 		A7 = 8,
 		[System.ComponentModel.Description("Unknown value.")]
@@ -317,20 +332,20 @@ namespace S100Framework.DomainModel.S128 {
 	[System.Serializable()]
 	public enum categoryOfProductMapping : int {
 		[System.ComponentModel.Description("AHigherPrioritizedOrRecommendedAlternativeProductOrServiceThatCanFullyReplaceAnother")]
-		[EnumMember(Value = "higherPriorityAlternative")] 
-		Higherpriorityalternative = 1,
+		[EnumMember(Value = "Higher Priority Alternative")] 
+		HigherPriorityAlternative = 1,
 
 		[System.ComponentModel.Description("ALowerPrioritizedOrNotRecommendedAlternativeProductOrServiceThatCanFullyReplaceAnother")]
-		[EnumMember(Value = "lowerPriorityAlternative")] 
-		Lowerpriorityalternative = 2,
+		[EnumMember(Value = "Lower Priority Alternative")] 
+		LowerPriorityAlternative = 2,
 
 		[System.ComponentModel.Description("ARecommendedAdditionalProductOrServiceThatProvidesAddedValueToAnother")]
-		[EnumMember(Value = "recommendedEnhancementProvider")] 
-		Recommendedenhancementprovider = 3,
+		[EnumMember(Value = "Recommended Enhancement Provider")] 
+		RecommendedEnhancementProvider = 3,
 
 		[System.ComponentModel.Description("AProductOrServiceThatIsRecommendedToMakeUseOfAddedValueProvidedByAnotherProductOrService")]
-		[EnumMember(Value = "recommendedEnhancementUser")] 
-		Recommendedenhancementuser = 4,
+		[EnumMember(Value = "Recommended Enhancement User")] 
+		RecommendedEnhancementUser = 4,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
 		Unknown = -1,
@@ -339,7 +354,7 @@ namespace S100Framework.DomainModel.S128 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum digitalSignatureReference : int {
-		[System.ComponentModel.Description("EllipticCurveDigitalSignatureAlgorithmEcdsaThatBasedUponTheIssuingCertificateItSSignedWithTheIssuerSKeyP384")]
+		[System.ComponentModel.Description("EllipticCurveDigitalSignatureAlgorithmEcdsaThatUsesSignaturesBasedOnTheIssuingCertificateAndGeneratedUsingTheIssuerSP384EllipticCurveKey")]
 		[EnumMember(Value = "ECDSA-384-SHA2")] 
 		Ecdsa384Sha2 = 8,
 		[System.ComponentModel.Description("Unknown value.")]
@@ -350,16 +365,16 @@ namespace S100Framework.DomainModel.S128 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum navigationPurpose : int {
-		[System.ComponentModel.Description("ForPortAndNearShoreOperations")]
-		[EnumMember(Value = "port")] 
+		[System.ComponentModel.Description("PersonOrCorporationOwnersOfOrEntrustedWithOrInvestedWithThePowerOfManagingAPortMayBeCalledAHarbourBoardPortTrustPortCommissionHarbourCommissionMarineDepartment")]
+		[EnumMember(Value = "Port")] 
 		Port = 1,
 
-		[System.ComponentModel.Description("ForCoastAndPlanningPurposes")]
-		[EnumMember(Value = "transit")] 
+		[System.ComponentModel.Description("oneInAstronomyTheApparentPassageOfAStarOrOtherCelestialBodyAcrossADefinedLineOfTheCelestialSphereAsAMeridianPrimeVerticalOrAlmucantarWhenNoLineIsSpecifiedATransitAcrossTheMeridianIsUsuallyIntendedSeeMeridianTransit2TheApparentPassageOfAStarOrOtherCelestialBodyAcrossALineInTheReticleOfATelescopeOrSomeLineOfSight3TheApparentPassageOfASmallerCelestialBodyAcrossTheDiskOfALargerCelestialBody4ASurveyingInstrumentComposedOfAHorizontalCircleGraduatedInCircularMeasureAndAnAlidadeWithATelescopeWhichCanBeReversedInItsSupportsWithoutBeingLiftedTherefromAlsoTheActOfMakingSuchAReversal5ATheodoliteHavingATelescopeThatCanBeTransitedInItsSupportsIsATransitAndIsSometimesTermedATransitTheodoliteAllModernTheodolitesAreTransits6AnAstronomicalInstrumentHavingATelescopeWhichCanBeSoAdjustedInPositionThatTheLineOfSightMayBeMadeToDefineAVerticalCircleATransitUsedInAstronomicalWorkIsUsuallyTermedEitherAnAstronomicAlTransitOrATransitInstrument7InNavigationThePositionOfTwoDistantFixedObjectsWhenTheyAreInLineToAnObserverTheLinePassingThroughThemAndTheObserverBeingALineOfPositionSeeAlsoRange")]
+		[EnumMember(Value = "Transit")] 
 		Transit = 2,
 
 		[System.ComponentModel.Description("ForOceanCrossingAndPlanningPurposes")]
-		[EnumMember(Value = "overview")] 
+		[EnumMember(Value = "Overview")] 
 		Overview = 3,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
@@ -389,24 +404,24 @@ namespace S100Framework.DomainModel.S128 {
 		[EnumMember(Value = "XSLT")] 
 		Xslt = 5,
 
-		[System.ComponentModel.Description("RepresentationOfMovingImagesInUnspecifiedFormat")]
-		[EnumMember(Value = "VIDEO")] 
+		[System.ComponentModel.Description("ADigitalRecordingOfAnImageOrSetOfImagesSuchAsAMovieOrAnimation")]
+		[EnumMember(Value = "Video")] 
 		Video = 6,
 
-		[System.ComponentModel.Description("TaggedImageFileFormat")]
+		[System.ComponentModel.Description("TaggedImageFileFormatTiff")]
 		[EnumMember(Value = "TIFF")] 
 		Tiff = 7,
 
 		[System.ComponentModel.Description("PortableDocumentFormat")]
-		[EnumMember(Value = "PDF/A or U/A")] 
+		[EnumMember(Value = "PDF/A Or U/A")] 
 		PdfAOrUA = 8,
 
 		[System.ComponentModel.Description("LuaProgrammingLanguage")]
 		[EnumMember(Value = "LUA")] 
 		Lua = 9,
 
-		[System.ComponentModel.Description("OtherFormat")]
-		[EnumMember(Value = "other")] 
+		[System.ComponentModel.Description("BeingTheOneOrOnesDistinctFromThatOrThoseFirstMentionedOrImplied")]
+		[EnumMember(Value = "Other")] 
 		Other = 100,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
@@ -417,15 +432,15 @@ namespace S100Framework.DomainModel.S128 {
 	[System.Serializable()]
 	public enum supportFilePurpose : int {
 		[System.ComponentModel.Description("AFileWhichIsNew")]
-		[EnumMember(Value = "new")] 
+		[EnumMember(Value = "New")] 
 		New = 1,
 
 		[System.ComponentModel.Description("AFileWhichReplacesAnExistingFile")]
-		[EnumMember(Value = "replacement")] 
+		[EnumMember(Value = "Replacement")] 
 		Replacement = 2,
 
 		[System.ComponentModel.Description("DeletesAnExistingFile")]
-		[EnumMember(Value = "deletion")] 
+		[EnumMember(Value = "Deletion")] 
 		Deletion = 3,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
@@ -435,20 +450,20 @@ namespace S100Framework.DomainModel.S128 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum serviceStatus : int {
-		[System.ComponentModel.Description("UnderTermsNotFinalOrFullyWorkedOutOrAgreedUpon")]
-		[EnumMember(Value = "provisional")] 
+		[System.ComponentModel.Description("IndicatesATemporaryPreliminaryOrInterimStatusAProvisionalItemIsNotYetFinalizedOrFullyApproved")]
+		[EnumMember(Value = "Provisional")] 
 		Provisional = 1,
 
-		[System.ComponentModel.Description("MerchandiseIssuedForSaleOrPublicShowing")]
-		[EnumMember(Value = "released")] 
+		[System.ComponentModel.Description("IndicatesAFinalizedOfficiallyApprovedOrPubliclyAvailableStatusAReleasedItemIsReadyForGeneralUseOrDistribution")]
+		[EnumMember(Value = "Released")] 
 		Released = 2,
 
-		[System.ComponentModel.Description("DataThatIsDeprecatedInImportanceAndIsNoLongerUsedAndWillDisappearInTheFuture")]
-		[EnumMember(Value = "deprecated")] 
+		[System.ComponentModel.Description("IndicatesThatAFeatureMethodProductOrComponentIsNoLongerRecommendedForUseButIsStillAvailable")]
+		[EnumMember(Value = "Deprecated")] 
 		Deprecated = 3,
 
-		[System.ComponentModel.Description("ItemThatHasBeenRemovedOrDeleted")]
-		[EnumMember(Value = "deleted")] 
+		[System.ComponentModel.Description("IndicatesThatAFeatureMethodProductOrComponentIsNoLongerAvailableOrHasBeenPermanentlyRemoved")]
+		[EnumMember(Value = "Deleted")] 
 		Deleted = 4,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
@@ -459,47 +474,47 @@ namespace S100Framework.DomainModel.S128 {
 	[System.Serializable()]
 	public enum sourceType : int {
 		[System.ComponentModel.Description("TreatyConventionOrInternationalAgreementLawOrRegulationIssuedByANationalOrOtherAuthority")]
-		[EnumMember(Value = "law or regulation")] 
+		[EnumMember(Value = "Law or Regulation")] 
 		LawOrRegulation = 1,
 
 		[System.ComponentModel.Description("PublicationNotHavingTheForceOfLawIssuedByAnInternationalOrganisationOrANationalOrLocalAdministration")]
-		[EnumMember(Value = "official publication")] 
+		[EnumMember(Value = "Official Publication")] 
 		OfficialPublication = 2,
 
 		[System.ComponentModel.Description("ReportedByMarinerSAndConfirmedByAnotherSource")]
-		[EnumMember(Value = "mariner report, confirmed")] 
+		[EnumMember(Value = "Mariner Report, Confirmed")] 
 		MarinerReportConfirmed = 7,
 
 		[System.ComponentModel.Description("ReportedByMarinerSButNotConfirmed")]
-		[EnumMember(Value = "mariner report, not confirmed")] 
+		[EnumMember(Value = "Mariner Report, Not Confirmed")] 
 		MarinerReportNotConfirmed = 8,
 
 		[System.ComponentModel.Description("ShippingAndOtherIndustryPublicationsIncludingGraphicsChartsAndWebSites")]
-		[EnumMember(Value = "industry publications and reports")] 
+		[EnumMember(Value = "Industry Publications and Reports")] 
 		IndustryPublicationsAndReports = 9,
 
 		[System.ComponentModel.Description("InformationObtainedFromSatelliteImages")]
-		[EnumMember(Value = "remotely sensed images")] 
+		[EnumMember(Value = "Remotely Sensed Images")] 
 		RemotelySensedImages = 10,
 
 		[System.ComponentModel.Description("InformationObtainedFromPhotographs")]
-		[EnumMember(Value = "photographs")] 
+		[EnumMember(Value = "Photographs")] 
 		Photographs = 11,
 
 		[System.ComponentModel.Description("InformationObtainedFromProductsIssuedByHydrographicOffices")]
-		[EnumMember(Value = "products issued by HO service")] 
-		ProductsIssuedByHoService = 12,
+		[EnumMember(Value = "Products Issued by HO Services")] 
+		ProductsIssuedByHoServices = 12,
 
 		[System.ComponentModel.Description("InformationObtainedFromNewsMedia")]
-		[EnumMember(Value = "news media")] 
+		[EnumMember(Value = "News Media")] 
 		NewsMedia = 13,
 
 		[System.ComponentModel.Description("InformationObtainedFromTheAnalysisOfTrafficData")]
-		[EnumMember(Value = "traffic data")] 
+		[EnumMember(Value = "Traffic Data")] 
 		TrafficData = 14,
 
 		[System.ComponentModel.Description("ANationalOrRegionalAuthorityChargedWithAdministrationOfMaritimeAffairs")]
-		[EnumMember(Value = "maritime")] 
+		[EnumMember(Value = "Maritime")] 
 		Maritime = 15,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
@@ -509,27 +524,27 @@ namespace S100Framework.DomainModel.S128 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum specificUsage : int {
-		[System.ComponentModel.Description("ForUseInTheStudyOfTheCharacteristicsOfMaritimeZonesInTheFormulationOfPlansInTheSelectionOfRoutesEtcShowingOnlyRelevantElementsOfTheCoastlineHarboursIslandsPrincipalNavigationalMarksAndObstructionsAndSubmarineLandforms11499999Scale")]
+		[System.ComponentModel.Description("ForUseInTheStudyOfTheCharacteristicsOfMaritimeZonesInTheFormulationOfPlansInTheSelectionOfRoutesEtcShowingOnlyRelevantElementsOfTheCoastlineHarboursIslandsPrincipalNavigationalMarksAndObstructionsAndSubmarineLandforms")]
 		[EnumMember(Value = "Navigational Purpose Overview")] 
 		NavigationalPurposeOverview = 1,
 
-		[System.ComponentModel.Description("ANauticalChartWithUniversalityIEGeneralityInUseCharacterizedByTheRequirementThatTheChartMustComprehensivelyDescribeVariousNaturalElementsAndSocioeconomicElementsAndThatEachElementOfTheSubjectMatterExpressedIsUniversalTheScaleIsBetween135000011499999")]
+		[System.ComponentModel.Description("ANauticalChartWithUniversalityIEGeneralityInUseCharacterizedByTheRequirementThatTheChartMustComprehensivelyDescribeVariousNaturalElementsAndSocioeconomicElementsAndThatEachElementOfTheSubjectMatterExpressedIsUniversal")]
 		[EnumMember(Value = "Navigational Purpose General")] 
 		NavigationalPurposeGeneral = 2,
 
-		[System.ComponentModel.Description("UsedForMarineNavigationMainlyDisplayingSubmarineLandformsNavigationalMarksNavigationalObstaclesAndOtherElementsRelatedToNavigationTheScaleIsBetween1900001349999")]
+		[System.ComponentModel.Description("UsedForMarineNavigationMainlyDisplayingSubmarineLandformsNavigationalMarksNavigationalObstaclesAndOtherElementsRelatedToNavigation")]
 		[EnumMember(Value = "Navigational Purpose Coastal")] 
 		NavigationalPurposeCoastal = 3,
 
-		[System.ComponentModel.Description("UsedForNearShoreNavigationMainlyShowingTheMarineElementsCloseToCoastalAreasTheScaleIsBetween122000189999")]
+		[System.ComponentModel.Description("UsedForNearShoreNavigationMainlyShowingTheMarineElementsCloseToCoastalAreas")]
 		[EnumMember(Value = "Navigational Purpose Approach")] 
 		NavigationalPurposeApproach = 4,
 
-		[System.ComponentModel.Description("UsedForEnteringAndLeavingHarboursSelectingAnchorageStudyingHarbourTopographyAndCarryingOutTheConstructionOfHarboursTheScaleIsBetween14000121999")]
+		[System.ComponentModel.Description("UsedForEnteringAndLeavingHarboursSelectingAnchorageStudyingHarbourTopographyAndCarryingOutTheConstructionOfHarbours")]
 		[EnumMember(Value = "Navigational Purpose Harbour")] 
 		NavigationalPurposeHarbour = 5,
 
-		[System.ComponentModel.Description("ForShipsBerthingScale14000")]
+		[System.ComponentModel.Description("ForShipsBerthing")]
 		[EnumMember(Value = "Navigational Purpose Berthing")] 
 		NavigationalPurposeBerthing = 6,
 		[System.ComponentModel.Description("Unknown value.")]
@@ -541,35 +556,35 @@ namespace S100Framework.DomainModel.S128 {
 	[System.Serializable()]
 	public enum telecommunicationService : int {
 		[System.ComponentModel.Description("TheTransferOrExchangeOfInformationByUsingSoundsThatAreBeingMadeByMouthAndThroatWhenSpeaking")]
-		[EnumMember(Value = "voice")] 
+		[EnumMember(Value = "Voice")] 
 		Voice = 1,
 
 		[System.ComponentModel.Description("ASystemOfTransmittingAndReproducingGraphicMatterAsPrintingOrStillPicturesByMeansOfSignalsSentOverTelephoneLines")]
-		[EnumMember(Value = "facsimile")] 
+		[EnumMember(Value = "Facsimile")] 
 		Facsimile = 2,
 
 		[System.ComponentModel.Description("ShortMessageServiceIsAFormOfTextMessagingCommunicationOnPhonesAndMobilePhones")]
-		[EnumMember(Value = "sms")] 
+		[EnumMember(Value = "SMS")] 
 		Sms = 3,
 
 		[System.ComponentModel.Description("ARepresentationOfFactsConceptsOrInstructionsInAFormalisedMannerSuitableForCommunicationInterpretationOrProcessing")]
-		[EnumMember(Value = "data")] 
+		[EnumMember(Value = "Data")] 
 		Data = 4,
 
 		[System.ComponentModel.Description("DataThatIsConstantlyReceivedByAndPresentedToAnEndUserWhileBeingDeliveredByAProvider")]
-		[EnumMember(Value = "streamedData")] 
-		Streameddata = 5,
+		[EnumMember(Value = "Streamed Data")] 
+		StreamedData = 5,
 
 		[System.ComponentModel.Description("ASystemOfCommunicationInWhichMessagesAreSentOverLongDistancesByUsingATelephoneSystemAndArePrintedByUsingASpecialMachineCalledATeletypewriter")]
-		[EnumMember(Value = "telex")] 
+		[EnumMember(Value = "Telex")] 
 		Telex = 6,
 
 		[System.ComponentModel.Description("AnApparatusSystemOrProcessForCommunicationAtADistanceByElectricTransmissionOverWire")]
-		[EnumMember(Value = "telegraph")] 
+		[EnumMember(Value = "Telegraph")] 
 		Telegraph = 7,
 
 		[System.ComponentModel.Description("MessagesAndOtherDataExchangedBetweenIndividualsUsingComputersInANetwork")]
-		[EnumMember(Value = "email")] 
+		[EnumMember(Value = "Email")] 
 		Email = 8,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
@@ -591,7 +606,7 @@ namespace S100Framework.DomainModel.S128 {
 		[EnumMember(Value = "PDF")] 
 		Pdf = 3,
 
-		[System.ComponentModel.Description("HypertextMarkupLanguageATypeOfBasicWebLanguageUsedToCreateWebDocuments")]
+		[System.ComponentModel.Description("HypertextMarkupLanguage")]
 		[EnumMember(Value = "HTML")] 
 		Html = 4,
 
@@ -600,14 +615,14 @@ namespace S100Framework.DomainModel.S128 {
 		Epub = 5,
 
 		[System.ComponentModel.Description("ForPrintingHydrographicChartsHeavyweightSingleLayerPaperIsUsedSuchPaperIsGenerallyMadeWhollyOrPartlyFromRagsAndSimulatesHandMadePaperItIsStrongMoistureResistantAndManufacturedToWithstandSurfaceErasure")]
-		[EnumMember(Value = "paper")] 
+		[EnumMember(Value = "Paper")] 
 		Paper = 6,
 
-		[System.ComponentModel.Description("GridFileFormat")]
+		[System.ComponentModel.Description("HierarchicalDataFormatVersion5IsAFileFormatAndDataModelDesignedForStoringAndOrganizingLargeAmountsOfNumericalDataEfficiently")]
 		[EnumMember(Value = "HDF-5")] 
 		Hdf5 = 7,
 
-		[System.ComponentModel.Description("RasterDataFormatUsedByUsaAndCanadaAndOthers")]
+		[System.ComponentModel.Description("AFileFormatUsedPrimarilyForStoringNauticalChartsInRasterForm")]
 		[EnumMember(Value = "BSB")] 
 		Bsb = 8,
 
@@ -615,7 +630,7 @@ namespace S100Framework.DomainModel.S128 {
 		[EnumMember(Value = "GeoTiff")] 
 		Geotiff = 9,
 
-		[System.ComponentModel.Description("")]
+		[System.ComponentModel.Description("ProvisionOfDataInAFormatIncludingOperationalFunctionalitySuchAsASoftwareProgramDesignedToPerformSpecificTasksOrFunctionsForTheUser")]
 		[EnumMember(Value = "Application")] 
 		Application = 10,
 
@@ -634,20 +649,20 @@ namespace S100Framework.DomainModel.S128 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum typeOfTimeIntervalUnit : int {
-		[System.ComponentModel.Description("six0MinutesOr3six00Seconds")]
-		[EnumMember(Value = "hour")] 
+		[System.ComponentModel.Description("AUnitOfTimeEqualTo60MinutesOr3600Seconds")]
+		[EnumMember(Value = "Hour")] 
 		Hour = 1,
 
-		[System.ComponentModel.Description("ForADay")]
-		[EnumMember(Value = "day")] 
+		[System.ComponentModel.Description("oneTheDurationOfOneRotationOfTheEarthOrOccasionallyAnotherCelestialBodyOnItsAxisItIsMeasuredBySuccessiveTransitsOfAReferencePointOnTheCelestialSphereOverTheMeridianAndEachTypeTakesItsNameFromTheReferenceUsed2ThePeriodOfDaylightAsDistinguishedFromNight")]
+		[EnumMember(Value = "Day")] 
 		Day = 2,
 
-		[System.ComponentModel.Description("ForAMonth")]
-		[EnumMember(Value = "month")] 
+		[System.ComponentModel.Description("AMeasureOfTimeBasedOnTheMotionOfTheMoonInItsOrbit")]
+		[EnumMember(Value = "Month")] 
 		Month = 3,
 
-		[System.ComponentModel.Description("APeriodOfOneYear")]
-		[EnumMember(Value = "year")] 
+		[System.ComponentModel.Description("APeriodOfOneRevolutionOfTheEarthAroundTheSun")]
+		[EnumMember(Value = "Year")] 
 		Year = 4,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
@@ -753,7 +768,7 @@ namespace S100Framework.DomainModel.S128 {
 		[EnumMember(Value = "Local Datum")] 
 		LocalDatum = 24,
 
-		[System.ComponentModel.Description("AVerticalReferenceSystemWithItsZeroBasedOnTheMeanWaterLevelAtRimouskiPointeAuPereQuebecOverThePeriod1970To1988")]
+		[System.ComponentModel.Description("AVerticalReferenceSystemWithItsZeroBasedOnTheMeanWaterLevelAtRimouskiPointeAuPReQuebecOverThePeriod1970To1988")]
 		[EnumMember(Value = "International Great Lakes Datum 1985")] 
 		InternationalGreatLakesDatum1985 = 25,
 
@@ -823,26 +838,38 @@ namespace S100Framework.DomainModel.S128 {
 
 		[System.ComponentModel.Description("DutchHighWaterReferenceLevel")]
 		[EnumMember(Value = "Dutch High Water Reference Level")] 
-		DutchHighWaterReferenceLevel = 42,
+		DutchHighWaterReferenceLevel = 43,
 
 		[System.ComponentModel.Description("TheDatumRefersToEachBalticCountrySRealizationOfTheEuropeanVerticalReferenceSystemEvrsWithLandUpliftEpoch2000WhichIsConnectedToTheNormaalAmsterdamsPeilNap")]
 		[EnumMember(Value = "Baltic Sea Chart Datum 2000")] 
-		BalticSeaChartDatum2000 = 43,
+		BalticSeaChartDatum2000 = 44,
 
 		[System.ComponentModel.Description("DutchEstuaryLowWaterReferenceLevelOlw")]
 		[EnumMember(Value = "Dutch Estuary Low Water Reference Level (OLW)")] 
-		DutchEstuaryLowWaterReferenceLevelOlw = 44,
+		DutchEstuaryLowWaterReferenceLevelOlw = 45,
+
+		[System.ComponentModel.Description("The2020UpdateToTheInternationalGreatLakesDatumTheOfficialReferenceSystemUsedToMeasureWaterLevelHeightsInTheGreatLakesConnectingChannelsAndTheStLawrenceRiverSystem")]
+		[EnumMember(Value = "International Great Lakes Datum 2020")] 
+		InternationalGreatLakesDatum2020 = 46,
 
 		[System.ComponentModel.Description("TheBottomOfTheOceanAndSeasWhereThereIsAGenerallySmoothGentleGradientAlsoReferredToAsSeaBedSometimesSeabedOrSeaBedAndSeaBottom")]
 		[EnumMember(Value = "Sea Floor")] 
-		SeaFloor = 45,
+		SeaFloor = 47,
+
+		[System.ComponentModel.Description("ATwoDimensionalInTheHorizontalPlaneFieldRepresentingTheAirSeaInterfaceWithHighFrequencyFluctuationsSuchAsWindWavesAndSwellButNotAstronomicalTidesFilteredOut")]
+		[EnumMember(Value = "Sea Surface")] 
+		SeaSurface = 48,
+
+		[System.ComponentModel.Description("AVerticalReferenceNearTheLowestAstronomicalTideLatBelowWhichTheSeaLevelFallsOnlyVeryExceptionally")]
+		[EnumMember(Value = "Hydrographic Zero")] 
+		HydrographicZero = 49,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
 		Unknown = -1,
 	}
 
 	[System.Serializable()]
-	public class horizontalDatumEpsg
+	public class horizontalDatumEPSGCode
 	{
 		public required string label { get; set; }
 		public required string definition { get; set; }
@@ -851,21 +878,21 @@ namespace S100Framework.DomainModel.S128 {
 
 	public static class CodeList
 	{
-		public static ImmutableArray<horizontalDatumEpsg> horizontalDatumEpsgs => ImmutableArray.Create<horizontalDatumEpsg>(new horizontalDatumEpsg[]{
+		public static ImmutableArray<horizontalDatumEPSGCode> horizontalDatumEPSGCodes => ImmutableArray.Create<horizontalDatumEPSGCode>(new horizontalDatumEPSGCode[]{
 			new() {
-				code = 4326,
-				definition = "World Geodetic System 1984, used globally for GPS and geographic coordinates. Specifies coordinates in latitude and longitude degrees.",
-				label = "WGS 84 (EPSG:4326)",
+				code = 3395,
+				definition = "A global Mercator projection commonly used for mapping applications requiring accurate distance measurements near the equator.",
+				label = "EPSG3395 (World Mercator)",
 			},
 			new() {
 				code = 3857,
 				definition = "A popular web mapping projection used by Google Maps, OpenStreetMap, and Bing Maps. Distorts at the poles but is widely used in online maps.",
-				label = "WGS 84 / Pseudo-Mercator (EPSG:3857)",
+				label = "EPSG3857 (Pseudo-Mercator)",
 			},
 			new() {
-				code = 3395,
-				definition = "A global Mercator projection commonly used for mapping applications requiring accurate distance measurements near the equator.",
-				label = "WGS 84 / World Mercator (EPSG:3395)",
+				code = 4326,
+				definition = "World Geodetic System 1984, used globally for GPS and geographic coordinates. Specifies coordinates in latitude and longitude degrees.",
+				label = "EPSG4326 (WGS84)",
 			},
 		});
 	}
@@ -889,10 +916,10 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class customPaperSize {
 			[Required()]
-			public int x {get;set;}
+			public decimal paperWidth {get;set;}
 
 			[Required()]
-			public int y {get;set;}
+			public decimal paperLength {get;set;}
 		}
 
 		[System.Serializable()]
@@ -970,7 +997,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class printSize {
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
-			public iso216? iso216 {get;set;} = default;
+			public iSO216? iSO216 {get;set;} = default;
 
 			public customPaperSize? customPaperSize {get;set;} = default;
 		}
@@ -979,9 +1006,9 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class productSpecification {
 			[Required()]
-			public DateOnly date {get;set;}
+			public DateOnly editionDate {get;set;}
 
-			public String? ISSN {get;set;} = default;
+			public String? iSSN {get;set;} = default;
 
 			public String name {get;set;} = string.Empty;
 
@@ -992,7 +1019,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class supportFileSpecification {
 			[Required()]
-			public DateOnly date {get;set;}
+			public DateOnly editionDate {get;set;}
 
 			public String name {get;set;} = string.Empty;
 
@@ -1003,7 +1030,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class serviceSpecification {
 			[Required()]
-			public DateOnly date {get;set;}
+			public DateOnly editionDate {get;set;}
 
 			public String name {get;set;} = string.Empty;
 
@@ -1074,9 +1101,9 @@ namespace S100Framework.DomainModel.S128 {
 
 			public String? printNation {get;set;} = default;
 
-			public String? rePrintEdition {get;set;} = default;
+			public String? reprintEdition {get;set;} = default;
 
-			public String? rePrintNation {get;set;} = default;
+			public String? reprintNation {get;set;} = default;
 
 			[Required()]
 			public printSize printSize {get;set;}
@@ -1087,11 +1114,12 @@ namespace S100Framework.DomainModel.S128 {
 		public class supportFile {
 			public String? comment {get;set;} = default;
 
-			[EnumerationValue([1])]
+			[EnumerationValue([8])]
 			[Required()]
 			public digitalSignatureReference digitalSignatureReference {get;set;}
 
-			public String? digitalSignatureValue {get;set;} = default;
+			[EnumerationValue([1,2])]
+			public digitalSignatureValue? digitalSignatureValue {get;set;} = default;
 
 			public int? editionNumber {get;set;} = default;
 
@@ -1121,10 +1149,10 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class timeIntervalOfProduct {
+			public DateOnly? expirationDate {get;set;} = default;
+
 			[Required()]
 			public DateOnly issueDate {get;set;}
-
-			public DateOnly? expirationDate {get;set;} = default;
 
 			public issuanceCycle? issuanceCycle {get;set;} = default;
 		}
@@ -1140,39 +1168,39 @@ namespace S100Framework.DomainModel.S128 {
 
 	}
 	public enum Role {
-		[System.ComponentModel.Description("the top section of a catalogue")]
+		[System.ComponentModel.Description("The top section of a catalogue.")]
 		catalogueHeader,
-		[System.ComponentModel.Description("Container of element.")]
+		[System.ComponentModel.Description("A container of elements.")]
 		elementContainer,
-		[System.ComponentModel.Description("Catalogue of Elements.")]
+		[System.ComponentModel.Description("Reference to an element within a catalogue.")]
 		theCatalogueElement,
-		[System.ComponentModel.Description("Types of nautical products")]
+		[System.ComponentModel.Description("Reference to a Catalogue of Nautical product.")]
 		theCatalogueOfNauticalProduct,
-		[System.ComponentModel.Description("Information on how to reach a person or organization by postal, internet, telephone, telex and radio systems.")]
+		[System.ComponentModel.Description("Reference to Contact details.")]
 		theContactDetails,
-		[System.ComponentModel.Description("One that distributes.")]
+		[System.ComponentModel.Description("Reference to the distributor.")]
 		theDistributor,
-		[System.ComponentModel.Description("a component or part within the context of maritime information and charts.")]
+		[System.ComponentModel.Description("Reference to an element.")]
 		theElement,
-		[System.ComponentModel.Description("Information of price.")]
+		[System.ComponentModel.Description("Reference to price information.")]
 		thePriceInformation,
-		[System.ComponentModel.Description("information about the producer or creator of chart")]
+		[System.ComponentModel.Description("Reference to a producer.")]
 		theProducer,
-		[System.ComponentModel.Description("indicates supporting material or information related to a specific element or data.")]
+		[System.ComponentModel.Description("Reference to  supporting material or information related to a specific element or data.")]
 		theReference,
-		[System.ComponentModel.Description("essential conditions or functionalities for a specific system or process.")]
+		[System.ComponentModel.Description("Reference to a requirement for a specific system or process.")]
 		theRequirement,
-		[System.ComponentModel.Description("Source of information or data.")]
+		[System.ComponentModel.Description("Reference to the source of information or data.")]
 		theSource,
-		[System.ComponentModel.Description("")]
-		main,
-		[System.ComponentModel.Description("")]
-		panel,
+		[System.ComponentModel.Description("Reference to the main product containg panel(s).")]
+		theMain,
+		[System.ComponentModel.Description("Reference to the panel of a main product.")]
+		thePanel,
 	}
 
 	namespace InformationAssociations {
 		/// <summary>
-		/// carriage requirement.
+		/// A carriage requirement required by SOLAS or other regulation.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -1182,7 +1210,7 @@ namespace S100Framework.DomainModel.S128 {
 		}
 
 		/// <summary>
-		/// Contact information of nautical product suppliers.
+		/// Details related to distribution.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -1202,7 +1230,7 @@ namespace S100Framework.DomainModel.S128 {
 		}
 
 		/// <summary>
-		/// price of element.
+		/// An association of price information to a catalogue element.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -1212,7 +1240,7 @@ namespace S100Framework.DomainModel.S128 {
 		}
 
 		/// <summary>
-		/// The price of nautical product.
+		/// The price of a nautical product.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -1232,7 +1260,7 @@ namespace S100Framework.DomainModel.S128 {
 		}
 
 		/// <summary>
-		/// Contact information of nautical product publishing organizations.
+		/// Contact information of a producing organization.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -1242,7 +1270,7 @@ namespace S100Framework.DomainModel.S128 {
 		}
 
 		/// <summary>
-		/// Package of the various substances which are transported, stored or exploited.
+		/// A package or distinct set of products.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -1287,7 +1315,7 @@ namespace S100Framework.DomainModel.S128 {
 
 	namespace InformationTypes {
 		/// <summary>
-		/// catalogue section header.
+		/// A header identifying a section within a catalogue.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -1376,7 +1404,7 @@ namespace S100Framework.DomainModel.S128 {
 		}
 
 		/// <summary>
-		/// requirements for transportation.
+		/// An indication of the type or justification of a carriage requirement.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -1397,7 +1425,7 @@ namespace S100Framework.DomainModel.S128 {
 		}
 
 		/// <summary>
-		/// Pricing information of nautical product.
+		/// Pricing information of nautical products.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -1428,7 +1456,7 @@ namespace S100Framework.DomainModel.S128 {
 		}
 
 		/// <summary>
-		/// Information about the country of production.
+		/// Information about the authority responsible for production.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -1463,7 +1491,7 @@ namespace S100Framework.DomainModel.S128 {
 		}
 
 		/// <summary>
-		/// distributor information.
+		/// Information related to a distributor.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -1500,7 +1528,7 @@ namespace S100Framework.DomainModel.S128 {
 		using InformationTypes;
 
 		/// <summary>
-		/// catalogue of element.
+		/// An element within a catalogue of elements.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -1513,7 +1541,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public String? classification {get;set;} = default;
 
-			public List<IMOMaritimeService> IMOMaritimeService {get;set;} = [];
+			public List<iMOMaritimeService> iMOMaritimeService {get;set;} = [];
 
 			[Required()]
 			public Boolean notForNavigation {get;set;} = false;
@@ -1584,7 +1612,7 @@ namespace S100Framework.DomainModel.S128 {
 		}
 
 		/// <summary>
-		/// navigation products.
+		/// A physical or electronic product, that is primarily intended for navigation.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -1620,7 +1648,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public int? updateNumber {get;set;} = default;
 
-			public horizontalDatumEpsg? horizontalDatumEpsg {get;set;} = default;
+			public horizontalDatumEPSGCode? horizontalDatumEPSGCode {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
@@ -1645,10 +1673,18 @@ namespace S100Framework.DomainModel.S128 {
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
-					lower = 1,
-					upper =  1,
+					lower = 0,
+					upper =  default,
 					association = nameof(Correlated),
-					role = Enum.GetName<Role>(Role.main)!,
+					role = Enum.GetName<Role>(Role.theMain)!,
+					featureTypes = [nameof(NavigationalProduct)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(Correlated),
+					role = Enum.GetName<Role>(Role.thePanel)!,
 					featureTypes = [nameof(NavigationalProduct)],
 				},
 			];
@@ -1697,7 +1733,7 @@ namespace S100Framework.DomainModel.S128 {
 		}
 
 		/// <summary>
-		/// Paper navigation products.
+		/// A product printed on paper.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -1705,11 +1741,11 @@ namespace S100Framework.DomainModel.S128 {
 			[Required()]
 			public DateOnly editionDate {get;set;}
 
-			public String? isbn {get;set;} = default;
+			public String? iSBN {get;set;} = default;
 
 			public String? publicationNumber {get;set;} = default;
 
-			public String? typeOfPaper {get;set;} = default;
+			public String? typeOfPhysicalProduct {get;set;} = default;
 
 			public printInformation? printInformation {get;set;} = default;
 

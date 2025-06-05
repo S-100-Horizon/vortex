@@ -1882,7 +1882,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(telecommunicationServiceList))]
+		[DomainModel.EnumerationAttribute(nameof(telecommunicationServiceList), typeof(telecommunicationService))]
 		[Category("telecommunications")]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
 
@@ -2073,7 +2073,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase {
 		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(dayOfWeekList))]
+		[DomainModel.EnumerationAttribute(nameof(dayOfWeekList), typeof(dayOfWeek))]
 		[Category("timeIntervalsByDayOfWeek")]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
@@ -3094,14 +3094,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfCargoList))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfCargoList), typeof(categoryOfCargo))]
 		[Category("Applicability")]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)2,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)10,(categoryOfCargo)11,(categoryOfCargo)12,(categoryOfCargo)13,(categoryOfCargo)14,(categoryOfCargo)15];
 		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfDangerousOrHazardousCargoList))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfDangerousOrHazardousCargoList), typeof(categoryOfDangerousOrHazardousCargo))]
 		[Category("Applicability")]
 		public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo  { get; set; } = new ();
 
@@ -3529,35 +3529,35 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 
 		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(firefightingServiceList))]
+		[DomainModel.EnumerationAttribute(nameof(firefightingServiceList), typeof(firefightingService))]
 		[Category("AvailablePortServices")]
 		public ObservableCollection<firefightingService> firefightingService  { get; set; } = new ();
 
 		[Browsable(false)]
 		public firefightingService[] firefightingServiceList => [(firefightingService)1,(firefightingService)2,(firefightingService)3];
 		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(medicalServiceList))]
+		[DomainModel.EnumerationAttribute(nameof(medicalServiceList), typeof(medicalService))]
 		[Category("AvailablePortServices")]
 		public ObservableCollection<medicalService> medicalService  { get; set; } = new ();
 
 		[Browsable(false)]
 		public medicalService[] medicalServiceList => [(medicalService)1,(medicalService)2,(medicalService)3,(medicalService)4,(medicalService)5];
 		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(repairServiceList))]
+		[DomainModel.EnumerationAttribute(nameof(repairServiceList), typeof(repairService))]
 		[Category("AvailablePortServices")]
 		public ObservableCollection<repairService> repairService  { get; set; } = new ();
 
 		[Browsable(false)]
 		public repairService[] repairServiceList => [(repairService)1,(repairService)2,(repairService)3,(repairService)4,(repairService)5,(repairService)6,(repairService)7,(repairService)8,(repairService)9,(repairService)10];
 		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(technicalPortServiceList))]
+		[DomainModel.EnumerationAttribute(nameof(technicalPortServiceList), typeof(technicalPortService))]
 		[Category("AvailablePortServices")]
 		public ObservableCollection<technicalPortService> technicalPortService  { get; set; } = new ();
 
 		[Browsable(false)]
 		public technicalPortService[] technicalPortServiceList => [(technicalPortService)1,(technicalPortService)2,(technicalPortService)3,(technicalPortService)4];
 		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(shipSanitationControlList))]
+		[DomainModel.EnumerationAttribute(nameof(shipSanitationControlList), typeof(shipSanitationControl))]
 		[Category("AvailablePortServices")]
 		public ObservableCollection<shipSanitationControl> shipSanitationControl  { get; set; } = new ();
 
@@ -3569,14 +3569,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public transportConnection[] transportConnectionList =>  CodeList.transportConnections.ToArray();
 		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(berthingAssistanceList))]
+		[DomainModel.EnumerationAttribute(nameof(berthingAssistanceList), typeof(berthingAssistance))]
 		[Category("AvailablePortServices")]
 		public ObservableCollection<berthingAssistance> berthingAssistance  { get; set; } = new ();
 
 		[Browsable(false)]
 		public berthingAssistance[] berthingAssistanceList => [(berthingAssistance)1,(berthingAssistance)2,(berthingAssistance)3,(berthingAssistance)4,(berthingAssistance)5,(berthingAssistance)6];
 		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(cargoServiceList))]
+		[DomainModel.EnumerationAttribute(nameof(cargoServiceList), typeof(cargoService))]
 		[Category("AvailablePortServices")]
 		public ObservableCollection<cargoService> cargoService  { get; set; } = new ();
 
@@ -3588,14 +3588,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public securitySafetyEmergencyService[] securitySafetyEmergencyServiceList =>  CodeList.securitySafetyEmergencyServices.ToArray();
 		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(wasteDisposalServiceList))]
+		[DomainModel.EnumerationAttribute(nameof(wasteDisposalServiceList), typeof(wasteDisposalService))]
 		[Category("AvailablePortServices")]
 		public ObservableCollection<wasteDisposalService> wasteDisposalService  { get; set; } = new ();
 
 		[Browsable(false)]
 		public wasteDisposalService[] wasteDisposalServiceList => [(wasteDisposalService)1,(wasteDisposalService)2,(wasteDisposalService)3,(wasteDisposalService)4,(wasteDisposalService)5,(wasteDisposalService)6,(wasteDisposalService)7,(wasteDisposalService)8,(wasteDisposalService)9,(wasteDisposalService)10,(wasteDisposalService)11,(wasteDisposalService)12,(wasteDisposalService)13,(wasteDisposalService)14,(wasteDisposalService)15,(wasteDisposalService)16,(wasteDisposalService)17,(wasteDisposalService)18,(wasteDisposalService)19,(wasteDisposalService)20,(wasteDisposalService)21,(wasteDisposalService)22,(wasteDisposalService)23,(wasteDisposalService)24];
 		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(supplyServiceList))]
+		[DomainModel.EnumerationAttribute(nameof(supplyServiceList), typeof(supplyService))]
 		[Category("AvailablePortServices")]
 		public ObservableCollection<supplyService> supplyService  { get; set; } = new ();
 
@@ -7880,7 +7880,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
 		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList), typeof(categoryOfHarbourFacility))]
 		[Category("HarbourAreaAdministrative")]
 		public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility  { get; set; } = new ();
 
@@ -8128,7 +8128,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfPortSection[] categoryOfPortSectionList => [(categoryOfPortSection)1,(categoryOfPortSection)3,(categoryOfPortSection)8,(categoryOfPortSection)9,(categoryOfPortSection)11,(categoryOfPortSection)12];
 		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList), typeof(categoryOfHarbourFacility))]
 		[Category("HarbourAreaSection")]
 		public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility  { get; set; } = new ();
 
@@ -8635,7 +8635,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 
 		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList), typeof(categoryOfHarbourFacility))]
 		[Category("HarbourFacility")]
 		public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility  { get; set; } = new ();
 
@@ -9900,14 +9900,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfHarbourFacility[] categoryOfHarbourFacilityList => [(categoryOfHarbourFacility)1,(categoryOfHarbourFacility)3,(categoryOfHarbourFacility)5,(categoryOfHarbourFacility)7,(categoryOfHarbourFacility)8,(categoryOfHarbourFacility)10,(categoryOfHarbourFacility)11];
 		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfCargoList))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfCargoList), typeof(categoryOfCargo))]
 		[Category("Terminal")]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)2,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)10,(categoryOfCargo)11,(categoryOfCargo)12,(categoryOfCargo)13,(categoryOfCargo)14,(categoryOfCargo)15];
 		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(productList))]
+		[DomainModel.EnumerationAttribute(nameof(productList), typeof(product))]
 		[Category("Terminal")]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
