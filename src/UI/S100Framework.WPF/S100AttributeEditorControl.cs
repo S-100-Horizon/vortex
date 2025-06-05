@@ -117,19 +117,27 @@ namespace S100Framework.WPF
 
     #endregion
 
-    public abstract class SelectedObjectViewModel : INotifyPropertyChanged//, INotifyCollectionChanged
+    public delegate void NotifyCollectionItemEventHandler(object? sender, object? item, PropertyChangedEventArgs e);
+
+    public abstract class SelectedObjectViewModel : INotifyPropertyChanged, INotifyCollectionChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        //public event NotifyCollectionChangedEventHandler? CollectionChanged;
+        public event NotifyCollectionChangedEventHandler? CollectionChanged;
 
+        public event NotifyCollectionItemEventHandler? CollectionItemChanged;
+        
         protected void OnPropertyChanged(object? sender, PropertyChangedEventArgs e) {
             this.PropertyChanged?.Invoke(sender, e);
         }
 
-        //protected void OnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
-        //    this.CollectionChanged?.Invoke(sender, e);
-        //}
+        protected void OnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
+            this.CollectionChanged?.Invoke(sender, e);
+        }
+
+        protected void OnCollectionItemChanged(object? sender, object? item, PropertyChangedEventArgs e) {
+            this.CollectionItemChanged?.Invoke(sender, item, e);
+        }
     }
 
     public class SelectedInformationTypeObjectViewModel : SelectedObjectViewModel
@@ -152,15 +160,19 @@ namespace S100Framework.WPF
         protected void OnInformationBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
             if (e.OldItems != null) {
                 foreach (var i in e.OldItems) {
-                    ((InformationBindingViewModel)i).PropertyChanged -= OnPropertyChanged;
+                    ((InformationBindingViewModel)i).PropertyChanged -= OnInformationBindings_CollectionItemChanged;
                 }
             }
             if (e.NewItems != null) {
                 foreach (var i in e.NewItems) {
-                    ((InformationBindingViewModel)i).PropertyChanged += OnPropertyChanged;
+                    ((InformationBindingViewModel)i).PropertyChanged += OnInformationBindings_CollectionItemChanged;
                 }
             }
-            //base.OnCollectionChanged(sender, e);
+            base.OnCollectionChanged(InformationBindings, e);
+        }
+
+        protected void OnInformationBindings_CollectionItemChanged(object? sender, PropertyChangedEventArgs e) {
+            base.OnCollectionItemChanged(InformationBindings, sender, e);
         }
     }
 
@@ -179,36 +191,44 @@ namespace S100Framework.WPF
 
         public IFeatureBindingDefinition FeatureBinding { get; private set; }
 
-        public ObservableCollection<FeatureBindingViewModel> FeatureBindings = new ObservableCollection<FeatureBindingViewModel>();
-
         public ObservableCollection<InformationBindingViewModel> InformationBindings = new ObservableCollection<InformationBindingViewModel>();
+
+        public ObservableCollection<FeatureBindingViewModel> FeatureBindings = new ObservableCollection<FeatureBindingViewModel>();        
 
         protected void OnInformationBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
             if (e.OldItems != null) {
                 foreach (var i in e.OldItems) {
-                    ((InformationBindingViewModel)i).PropertyChanged -= OnPropertyChanged;
+                    ((InformationBindingViewModel)i).PropertyChanged -= OnInformationBindings_CollectionItemChanged;
                 }
             }
             if (e.NewItems != null) {
                 foreach (var i in e.NewItems) {
-                    ((InformationBindingViewModel)i).PropertyChanged += OnPropertyChanged;
+                    ((InformationBindingViewModel)i).PropertyChanged += OnInformationBindings_CollectionItemChanged;
                 }
             }
-            //base.OnCollectionChanged(sender, e);
+            base.OnCollectionChanged(InformationBindings, e);
+        }
+
+        protected void OnInformationBindings_CollectionItemChanged(object? sender, PropertyChangedEventArgs e) {
+            base.OnCollectionItemChanged(InformationBindings, sender, e);
         }
 
         protected void OnFeatureBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
             if (e.OldItems != null) {
                 foreach (var i in e.OldItems) {
-                    ((FeatureBindingViewModel)i).PropertyChanged -= OnPropertyChanged;
+                    ((FeatureBindingViewModel)i).PropertyChanged -= OnFeatureBindings_CollectionItemChanged;
                 }
             }
             if (e.NewItems != null) {
                 foreach (var i in e.NewItems) {
-                    ((FeatureBindingViewModel)i).PropertyChanged += OnPropertyChanged;
+                    ((FeatureBindingViewModel)i).PropertyChanged += OnFeatureBindings_CollectionItemChanged;
                 }
             }
-            //base.OnCollectionChanged(sender, e);
+            base.OnCollectionChanged(FeatureBindings, e);
+        }
+
+        protected void OnFeatureBindings_CollectionItemChanged(object? sender, PropertyChangedEventArgs e) {
+            base.OnCollectionItemChanged(FeatureBindings, sender, e);
         }
     }
 
@@ -265,11 +285,11 @@ namespace S100Framework.WPF
 
         public required Func<QueryFeatureTypesEventArgs, Task<IEnumerable<FeatureTypeId>>> QueryFeatureTypes { get; set; }
 
-        public required Func<CreateInformationBindingEventArgs, Task<Guid?>> CreateInformationBinding { get; set; }
+        public required Func<CreateInformationBindingEventArgs, Task<informationBinding?>> CreateInformationBinding { get; set; }
 
         public required Func<DeleteInformationBindingEventArgs, Task<bool>> DeleteInformationBinding { get; set; }
 
-        public required Func<CreateFeatureBindingEventArgs, Task<Guid?>> CreateFeatureBinding { get; set; }
+        public required Func<CreateFeatureBindingEventArgs, Task<featureBinding?>> CreateFeatureBinding { get; set; }
 
         public required Func<DeleteFeatureBindingEventArgs, Task<bool>> DeleteFeatureBinding { get; set; }
     }
@@ -840,25 +860,17 @@ namespace S100Framework.WPF
 
         private async void AddInformationBindingCommandContent(object sender, ExecutedRoutedEventArgs e) {
             if (InformationBindingDefinitionSelected != null) {
-                var uuid = await Host.CreateInformationBinding(new CreateInformationBindingEventArgs(
-                    roleType: InformationBindingDefinitionSelected.roleType,
-                    association: InformationBindingDefinitionSelected.association,
-                    role: InformationBindingDefinitionSelected.role,
-                    PID: ((PID?)this._selectedObject)?.PID,
-                    this));
-
-                if (!uuid.HasValue)
-                    return;
-
-                var binding = new informationBinding {
-                    roleType = Enum.GetName<roleType>(InformationBindingDefinitionSelected.roleType)!,
-                    association = InformationBindingDefinitionSelected.association,
-                    role = InformationBindingDefinitionSelected.role,
-                    PID = ((PID?)this._selectedObject)?.PID,
-                };
+                var binding = await Host.CreateInformationBinding(new CreateInformationBindingEventArgs(
+                                    roleType: InformationBindingDefinitionSelected.roleType,
+                                    association: InformationBindingDefinitionSelected.association,
+                                    role: InformationBindingDefinitionSelected.role,
+                                    PID: ((PID?)this._selectedObject)?.PID,
+                                    this));
+                if (binding is null)
+                    return;                
 
                 this._selectedInformationBindings!.Add(new InformationBindingViewModel {
-                    UID = uuid,
+                    //UID = uuid,
                 }.Load(binding));
             }
         }
@@ -960,25 +972,27 @@ namespace S100Framework.WPF
 
         private async void AddFeatureBindingCommandContent(object sender, ExecutedRoutedEventArgs e) {
             if (FeatureBindingDefinitionSelected != null) {
-                var uuid = await Host.CreateFeatureBinding(new CreateFeatureBindingEventArgs(
+                var binding = await Host.CreateFeatureBinding(new CreateFeatureBindingEventArgs(
                                     roleType: FeatureBindingDefinitionSelected.roleType,
                                     association: FeatureBindingDefinitionSelected.association,
                                     role: FeatureBindingDefinitionSelected.role,
                                     PID: ((PID?)this._selectedObject)?.PID,
                                     this));
-
-                if (!uuid.HasValue)
+                if (binding is null)
                     return;
 
-                var binding = new featureBinding {
-                    roleType = Enum.GetName<roleType>(FeatureBindingDefinitionSelected.roleType)!,
-                    association = FeatureBindingDefinitionSelected.association,
-                    role = FeatureBindingDefinitionSelected.role,
-                    PID = ((PID?)this._selectedObject)?.PID,
-                };
+                //if (!uuid.HasValue)
+                //    return;
+
+                //var binding = new featureBinding {
+                //    roleType = Enum.GetName<roleType>(FeatureBindingDefinitionSelected.roleType)!,
+                //    association = FeatureBindingDefinitionSelected.association,
+                //    role = FeatureBindingDefinitionSelected.role,
+                //    PID = ((PID?)this._selectedObject)?.PID,
+                //};
 
                 this._selectedFeatureBindings!.Add(new FeatureBindingViewModel {
-                    UID = uuid,
+                    //UID = uuid,
                 }.Load(binding));
             }
         }
