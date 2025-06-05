@@ -165,9 +165,12 @@ namespace VortexConceptApplication
                 }
             };
 
-            var model = new TwoWayRoutePart() { };
+            var model = new LightAllAround() { };
 
-            var viewModel = new TwoWayRoutePartViewModel() {
+            model.colour.Add(S100Framework.DomainModel.S101.colour.Red);
+            model.colour.Add(S100Framework.DomainModel.S101.colour.Green);
+
+            var viewModel = new LightAllAroundViewModel() {
                 PID = "S202600",
             }.Load(model);
 

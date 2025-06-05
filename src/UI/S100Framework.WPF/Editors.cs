@@ -11,9 +11,100 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
 namespace S100Framework.WPF.Editors
 {
-    //public sealed class EnumCheckComboEditor : EnumCheckComboBoxEditor {
+    public sealed class TestEnumCheckComboEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.EnumCheckComboBoxEditor {
 
-    //}
+    }
+
+    public class EnumArrayEditor : ITypeEditor
+    {
+        public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+            
+            // Create a stack panel to hold our controls
+            var stackPanel = new StackPanel { Orientation = Orientation.Vertical };
+
+            var attribute = (S100Framework.DomainModel.EnumerationAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.EnumerationAttribute), true)[0];
+
+            // Get the enum type from the property
+            //var enumType = propertyItem.PropertyType.GetElementType();
+
+            // Create a combo box for selecting new values
+            var comboBox = new ComboBox {
+                Name = $"_comboBox{Guid.NewGuid():N}",
+                //ItemsSource = Enum.GetValues(enumType).Cast<Enum>(),
+                Margin = new Thickness(0, 0, 0, 5)
+            };
+
+            var bindingItemsSourceProperty = new Binding(attribute.PropertyName) { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
+            BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+            //var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            //BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+
+
+            // Create a button to add the selected value
+            var addButton = new Button {
+                Content = "Add",
+                Margin = new Thickness(0, 0, 0, 10)
+            };
+
+            // Create a list box to display current values
+            var listBox = new ListBox();
+
+
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            BindingOperations.SetBinding(listBox, ListBox.ItemsSourceProperty, bindingSelectedItemProperty);
+
+            // Initialize with current values if they exist
+            //if (propertyItem.Value is Array currentArray) {
+            //    foreach (var item in currentArray) {
+            //        listBox.Items.Add(item);
+            //    }
+            //}
+
+
+
+            // Handle add button click
+            addButton.Click += (sender, args) =>
+            {
+                if (comboBox.SelectedItem != null) {                    
+                    listBox.Items.Add(comboBox.SelectedItem);
+                    //UpdatePropertyValue(propertyItem, listBox);
+                }
+            };
+
+            // Handle item removal
+            listBox.KeyDown += (sender, args) =>
+            {
+                if (args.Key == System.Windows.Input.Key.Delete && listBox.SelectedItem != null) {
+                    listBox.Items.Remove(listBox.SelectedItem);
+                    UpdatePropertyValue(propertyItem, listBox);
+                }
+            };
+
+            // Add controls to the stack panel
+            stackPanel.Children.Add(comboBox);
+            stackPanel.Children.Add(addButton);
+            stackPanel.Children.Add(listBox);
+
+            return stackPanel;
+        }
+
+        private void UpdatePropertyValue(PropertyItem propertyItem, ListBox listBox) {
+            var attribute = (S100Framework.DomainModel.EnumerationAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.EnumerationAttribute), true)[0];
+
+            // Convert the ListBox items back to an array
+            var enumType = attribute.EnumType!;// propertyItem.PropertyType.GetElementType();
+            var array = Array.CreateInstance(enumType, listBox.Items.Count);
+
+            for (int i = 0; i < listBox.Items.Count; i++) {
+                array.SetValue(listBox.Items[i], i);
+            }
+
+            
+
+            propertyItem.Value = array;
+        }
+    }
 
     public sealed class EnumCheckComboEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {

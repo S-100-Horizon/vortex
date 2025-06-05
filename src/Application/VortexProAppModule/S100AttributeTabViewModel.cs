@@ -413,6 +413,11 @@ namespace VortexProAppModule
 
 
                                 //MapView.Active.Map.SetSelection(SelectionSet.FromSelection(selection), SelectionCombinationMethod.Add);
+
+                                var t = MapView.Active.Map.StandaloneTables.FirstOrDefault(e => e.Name.Equals(table.GetName()));
+                                t.Select(new QueryFilter {
+                                    WhereClause = $"OBJECTID = {token.ObjectID.Value}"
+                                }, SelectionCombinationMethod.Add);
                                 
                                 return token.GlobalID;
                             }

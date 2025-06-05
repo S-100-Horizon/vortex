@@ -6,14 +6,29 @@ using System.Text.Json.Serialization;
 
 namespace S100Framework.DomainModel
 {
+    //[System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    //public class EnumerationAttribute : System.Attribute
+    //{
+    //    private string _propertyName;
+    //    public string PropertyName => _propertyName;
+
+    //    public EnumerationAttribute(string propertyName) {
+    //        _propertyName = propertyName;
+    //    }
+    //}
+
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
     public class EnumerationAttribute : System.Attribute
     {
         private string _propertyName;
         public string PropertyName => _propertyName;
 
-        public EnumerationAttribute(string propertyName) {
+        private Type? _enumType;
+        public Type? EnumType => _enumType;
+
+        public EnumerationAttribute(string propertyName, Type? type = default) {
             _propertyName = propertyName;
+            _enumType = type;
         }
     }
 
