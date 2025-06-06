@@ -2,6 +2,7 @@
 using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -32,6 +33,11 @@ namespace S100Framework.Applications
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
+
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                    continue;
+                }
+
 
                 var dsnm = current.DSNM ?? default;
                 var edtn = current.EDTN ?? default;
@@ -86,8 +92,10 @@ namespace S100Framework.Applications
                             {
                                 var vdat = new VerticalDatumOfData();
 
+
+                                //    TODO: Fix hardcoded vertical datum of dataset -> EnumHelper.GetEnumValue<DomainModel.S101.verticalDatum>(current.VDAT.Value);
                                 if (current.VDAT.HasValue) {
-                                    vdat.verticalDatum = EnumHelper.GetEnumValue<DomainModel.S101.verticalDatum>(current.VDAT.Value);
+                                    vdat.verticalDatum = DomainModel.S101.verticalDatum.BalticSeaChartDatum2000; 
                                 }
 
                                 buffer["ps"] = ps101;
@@ -114,17 +122,8 @@ namespace S100Framework.Applications
                             break;
                     }
                 }
-
                 Logger.Current.DataObject(objectid, tableName, dsnm, System.Text.Json.JsonSerializer.Serialize(instance));
-                
-
-
-
-
-
-
             }
-
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
     }

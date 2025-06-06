@@ -1,9 +1,10 @@
 ﻿using ArcGIS.Core.Geometry;
+using S100Framework.Applications;
 using S100Framework.Applications.S57.esri;
 using System.Formats.Asn1;
 using System.Xml.Linq;
 
-namespace S100Framework.Applications
+namespace S100Framework.Applications.Singletons
 {
     public enum PrimitiveType
     {
@@ -61,8 +62,8 @@ namespace S100Framework.Applications
             }, sr);
 
             foreach (var filePath in Directory.GetFiles(pathToScaminFiles, "*.xml")) {
-                var fileName = System.IO.Path.GetFileName(filePath);
-                _scaminFiles.Add(System.IO.Path.GetFileName(fileName), new ScaminFile(System.IO.Path.Combine(pathToScaminFiles, fileName)));
+                var fileName = Path.GetFileName(filePath);
+                _scaminFiles.Add(Path.GetFileName(fileName), new ScaminFile(Path.Combine(pathToScaminFiles, fileName)));
             }
         }
 
@@ -79,11 +80,37 @@ namespace S100Framework.Applications
             }
         }
 
-        public int? GetMinimumScale(Geometry geometry, string subtypeName/*, string relatedStructureName*/, PrimitiveType primitiveType, int compilationScale, bool isRelatedToStructure = false) {
+        public int? GetMinimumScale(Geometry geometry, string subtypeName/*, string relatedStructureName*/, int compilationScale, bool isRelatedToStructure = false) {
             var touched = GetTouchedPolygonNames(geometry);
             if (touched.Count != 1) {
                 throw new ArgumentException("Cannot determine scamin");
                 //return null;
+            }
+
+            var primitiveType = PrimitiveType.Line;
+
+            switch (geometry.GeometryType) {
+                case GeometryType.Unknown:
+                    throw new NotSupportedException("Unknown geometry type");
+                case GeometryType.Point:
+                    primitiveType = PrimitiveType.Point;
+                    break;
+                case GeometryType.Envelope:
+                    throw new NotSupportedException("Unknown geometry type");
+                case GeometryType.Multipoint:
+                    throw new NotSupportedException("Unknown geometry type");
+                case GeometryType.Polyline:
+                    primitiveType = PrimitiveType.Line;
+                    break;
+                case GeometryType.Polygon:
+                    primitiveType = PrimitiveType.Area;
+                    break;
+                case GeometryType.Multipatch:
+                    throw new NotSupportedException("Unknown geometry type");
+                case GeometryType.GeometryBag:
+                    throw new NotSupportedException("Unknown geometry type");
+                default:
+                    throw new NotSupportedException("Unknown geometry type");
             }
 
             return _scaminFiles[touched[0]].GetMinimumScale(subtypeName, primitiveType, compilationScale, isRelatedToStructure);
@@ -125,7 +152,7 @@ namespace S100Framework.Applications
         private List<int> _scaminValues = new();
 
         internal ScaminFile(string filePath) {
-            string xmlData = File.ReadAllText(filePath);
+            var xmlData = File.ReadAllText(filePath);
             root = XElement.Parse(xmlData);
             LoadObjects();
             LoadRadarScales();
@@ -162,7 +189,7 @@ namespace S100Framework.Applications
                     throw new ArgumentException("empty stepvalue in scamin file");
                 }
 
-                List<List<string>> conditions = new List<List<string>>();
+                var conditions = new List<List<string>>();
 
                 foreach (var c in o.Descendants("Condition")) {
                     var rules = new List<string>();
@@ -233,7 +260,7 @@ namespace S100Framework.Applications
 
             var defaultStepValue = GetDefaultStepValueByName(name, primitiveType, isRelatedToStructure);
 
-            var higherScamins = _scaminValues.Where(v => v >= closestScamin).Order<int>().ToArray<int>();
+            var higherScamins = _scaminValues.Where(v => v >= closestScamin).Order().ToArray();
 
             int? index = null;
 

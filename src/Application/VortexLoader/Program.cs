@@ -3,7 +3,6 @@ using ArcGIS.Core.Geometry;
 using ArcGIS.Desktop.Mapping;
 
 using CommandLine;
-using S100Framework.ArcGIS.Core;
 using System.Data.Common;
 using System.Text.Json;
 using System.Text.RegularExpressions;

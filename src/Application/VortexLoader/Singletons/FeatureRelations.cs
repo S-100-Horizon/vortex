@@ -1,19 +1,18 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Internal.CIM;
+using S100Framework.Applications;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using System;
+using System.Collections.Generic;
 using System.Data;
-using System.Reflection;
-using System.Xml.Linq;
 
-
-namespace S100Framework.Applications
+namespace S100Framework.Applications.Singletons
 {
 
-    internal enum Direction {
+    internal enum Direction
+    {
         Source = 0,
         Destination = 1
     }
@@ -27,7 +26,8 @@ namespace S100Framework.Applications
         999	Rep
      */
 
-    internal class PltsCollection {
+    internal class PltsCollection
+    {
         private List<PltsSlave> _related;
 
         private PLTS_Collections _plts_collections;
@@ -110,7 +110,7 @@ namespace S100Framework.Applications
                         this.S101Type = typeof(FogSignal);
                     }
                     else if (aton != null && aton.FCSUBTYPE == 65) {
-                        this.S101Type = FeatureRelations.GetS101CatlitTypeFrom(aton);
+                        this.S101Type = FeatureRelations.Instance.GetS101CatlitTypeFrom(aton);
                     }
                     else if (aton != null && aton.FCSUBTYPE == 90) {
                         this.S101Type = typeof(RadarStation);
@@ -280,9 +280,6 @@ namespace S100Framework.Applications
                         this.S101Type = typeof(FishingFacility);
                     }
 
-
-
-
                     else {
                         throw new NotSupportedException($"AtoN subtype: {psp?.FCSUBTYPE}");
                     }
@@ -310,20 +307,18 @@ namespace S100Framework.Applications
     internal class FeatureRelations
     {
         private static FeatureRelations? _instance;
-        private HashSet<Relation> _relations;
-        private Geodatabase? _source;
-        private Geodatabase? _target;
-        private Dictionary<Guid, PltsCollection> _pltsCollections;
-        private Dictionary<Guid, IList<PltsSlave>> _srcObjectToSlaves;
-        private Dictionary<string, PLTS_Master_Slaves> _pltsMasterSlaves; // featureClass:subtype ; PLTS_Master_Slaves
+//        private static Geodatabase? _source;
+//        private static Geodatabase? _target;
+        private static HashSet<Relation> _relations = new HashSet<Relation>();
+        private static Dictionary<Guid, PltsCollection> _pltsCollections = new Dictionary<Guid, PltsCollection>();
+        private static Dictionary<Guid, IList<PltsSlave>> _srcObjectToSlaves = new Dictionary<Guid, IList<PltsSlave>>();
+        private static Dictionary<string, PLTS_Master_Slaves> _pltsMasterSlaves = new Dictionary<string, PLTS_Master_Slaves>();
 
-        private bool _isInitialized = false;
+        private static Dictionary<(string, string),Relation> _createdRelations = new Dictionary<(string, string),Relation>();
+
+        private static bool _isInitialized = false;
 
         private FeatureRelations() {
-            this._relations = new HashSet<Relation>();
-            this._pltsCollections = new Dictionary<Guid, PltsCollection>();
-            this._srcObjectToSlaves = new Dictionary<Guid, IList<PltsSlave>>();
-            this._pltsMasterSlaves = new Dictionary<string, PLTS_Master_Slaves>(); // featureClass:subtype ; PLTS_Master_Slaves
         }
 
         public static FeatureRelations Instance {
@@ -336,26 +331,20 @@ namespace S100Framework.Applications
             }
         }
 
-
-        public void Initialize(Geodatabase source, Geodatabase target) {
-            _source = source;
-            _target = target;
+        internal static void Initialize(Geodatabase source, Geodatabase target) {
             _pltsCollections = new Dictionary<Guid, PltsCollection>();
             _srcObjectToSlaves = new Dictionary<Guid, IList<PltsSlave>>();
             _pltsMasterSlaves = new Dictionary<string, PLTS_Master_Slaves>();
 
-            LoadPltsCollections();
-            LoadPltsFrels2(_source);
-            LoadPLTS_Master_Slaves();
+            LoadPltsCollections(source);
+            LoadPltsFrels2(source);
+            LoadPLTS_Master_Slaves(source);
             _isInitialized = true;
         }
 
-        private void LoadPLTS_Master_Slaves() {
+        private static void LoadPLTS_Master_Slaves(Geodatabase source) {
             // Read aggregations
-            if (_source == null) {
-                throw new ArgumentException("Source not set");
-            }
-            using var pltsMasterSLavesTable = _source.OpenDataset<Table>(_source.GetName("PLTS_MASTER_SLAVES"));
+            using var pltsMasterSLavesTable = source.OpenDataset<Table>(source.GetName("PLTS_MASTER_SLAVES"));
 
             using var cursor = pltsMasterSLavesTable.Search(null, true);
 
@@ -371,13 +360,13 @@ namespace S100Framework.Applications
             }
         }
 
-        private void LoadPltsCollections() {
-            if (_source == null) {
+        private static void LoadPltsCollections(Geodatabase source) {
+            if (source == null) {
                 throw new ArgumentException("Source not set");
             }
 
             // Read aggregations
-            var pltsCollectionsTable = _source.OpenDataset<Table>(_source.GetName("PLTS_COLLECTIONS"));
+            var pltsCollectionsTable = source.OpenDataset<Table>(source.GetName("PLTS_COLLECTIONS"));
             //var pltsCollections = new Dictionary<Guid, IList<PLTS_Collections>>();
 
             var cursor = pltsCollectionsTable.Search(null, true);
@@ -387,7 +376,7 @@ namespace S100Framework.Applications
                 var plts_collection = new PLTS_Collections(cursor.Current);
                 Guid.TryParse(Convert.ToString(plts_collection.GLOBALID), out uid);
                 if (!_pltsCollections.ContainsKey(uid)) {
-                    _pltsCollections[uid] = new PltsCollection(_source, plts_collection);
+                    _pltsCollections[uid] = new PltsCollection(source, plts_collection);
                 }
                 else {
                     throw new IndexOutOfRangeException($"Multiple PltsCollections with same id not allowed {uid}");
@@ -395,9 +384,9 @@ namespace S100Framework.Applications
             }
         }
 
-        internal static Type GetS101CatlitTypeFrom(AidsToNavigationP aton) {
+        internal Type GetS101CatlitTypeFrom(AidsToNavigationP aton) {
             if (aton.FCSUBTYPE != 65) {
-                throw new NotImplementedException("Only light types are supported");
+                throw new NotImplementedException($"Only light types are supported.");
             }
 
             List<int> catlits = new();
@@ -411,7 +400,7 @@ namespace S100Framework.Applications
             if ((aton.SECTR1 == default || aton.SECTR2 == default) && !(catlits.Contains(1) || catlits.Contains(6) || catlits.Contains(7) || catlits.Contains(16))) {
                 return typeof(LightAllAround);
             }
-            else if ((aton.SECTR1 != default && aton.SECTR2 != default) || (catlits.Contains(1) || catlits.Contains(16))) {
+            else if (aton.SECTR1 != default && aton.SECTR2 != default || catlits.Contains(1) || catlits.Contains(16)) {
                 return typeof(LightSectored);
             }
             else if (catlits.Contains(6)) {
@@ -425,6 +414,7 @@ namespace S100Framework.Applications
             }
         }
 
+
         internal int GetRelatedCount(Guid uid) {
             if (!_isInitialized)
                 throw new ArgumentException("Not initalized. Call intialize.");
@@ -434,6 +424,15 @@ namespace S100Framework.Applications
                 return 0;
             }
         }
+
+        internal IList<PltsSlave> GetRelated(Guid uid) {
+            var result = new List<PltsSlave>();
+            if (_srcObjectToSlaves.ContainsKey(uid))
+                return _srcObjectToSlaves[uid];
+
+            return result;
+        }
+
 
         internal IList<T> GetRelated<T>(Type s101Type, Guid uid) where T : class {
             var result = new List<T>();
@@ -453,7 +452,6 @@ namespace S100Framework.Applications
             return result;
         }
 
-
         internal bool IsSlave(Guid globalid) {
             if (!_isInitialized)
                 throw new ArgumentException("Not initalized. Call intialize.");
@@ -464,80 +462,80 @@ namespace S100Framework.Applications
             return result != null;
         }
 
-        private void LoadPltsFrels(Geodatabase source) {
-            var pltsFrel = source.OpenDataset<Table>(source.GetName("PLTS_Frel"));
-            var frelSourceFeatureClasses = new Dictionary<string, IList<PLTS_Frel>>();
+        //private static void LoadPltsFrels(Geodatabase source) {
+        //    var pltsFrel = source.OpenDataset<Table>(source.GetName("PLTS_Frel"));
+        //    var frelSourceFeatureClasses = new Dictionary<string, IList<PLTS_Frel>>();
 
-            var cursor = pltsFrel.Search(null, true);
-            Guid uid;
+        //    var cursor = pltsFrel.Search(null, true);
+        //    Guid uid;
 
-            while (cursor.MoveNext()) {
-                var plts_frel = new PLTS_Frel(cursor.Current);
+        //    while (cursor.MoveNext()) {
+        //        var plts_frel = new PLTS_Frel(cursor.Current);
 
-                var relationshipIndicator = plts_frel.RIND switch {
-                    1 => "Master",
-                    2 => "Slave",
-                    3 => "Peer",
-                    999 => "Rep",
-                    _ => throw new NotImplementedException()
-                };
+        //        var relationshipIndicator = plts_frel.RIND switch {
+        //            1 => "Master",
+        //            2 => "Slave",
+        //            3 => "Peer",
+        //            999 => "Rep",
+        //            _ => throw new NotImplementedException()
+        //        };
 
-                Guid srcUid;
+        //        Guid srcUid;
 
-                if (relationshipIndicator == "Peer") {
-                    if (plts_frel?.SRC_FC?.ToLower() == "plts_collections") {
-                        Guid.TryParse(Convert.ToString(plts_frel.SRC_UID), out srcUid);
-                        _pltsCollections[srcUid].AddRelated(plts_frel);
-                    }
-                    else {
-                        throw new DataException("PLTS frel where relationship indicator is Peer and source feature class is plts_collections is not allowed ");
-                    }
-                }
-                else if (relationshipIndicator == "Master") {
-                    // source: equipment - destination: structure (??)
-                    throw new NotImplementedException("Master plts relationships");
+        //        if (relationshipIndicator == "Peer") {
+        //            if (plts_frel?.SRC_FC?.ToLower() == "plts_collections") {
+        //                Guid.TryParse(Convert.ToString(plts_frel.SRC_UID), out srcUid);
+        //                _pltsCollections[srcUid].AddRelated(plts_frel);
+        //            }
+        //            else {
+        //                throw new DataException("PLTS frel where relationship indicator is Peer and source feature class is plts_collections is not allowed ");
+        //            }
+        //        }
+        //        else if (relationshipIndicator == "Master") {
+        //            // source: equipment - destination: structure (??)
+        //            throw new NotImplementedException("Master plts relationships");
 
-                }
-                else if (relationshipIndicator == "Slave") {
-                    // source: structure - destination: equipment
-                    Guid.TryParse(Convert.ToString(plts_frel.SRC_UID), out uid);
-                    if (!_srcObjectToSlaves.ContainsKey(uid)) {
-                        _srcObjectToSlaves[uid] = new List<PltsSlave>() { new(plts_frel) };
-                    }
-                    else {
-                        var pltsSlave = new PltsSlave(plts_frel);
+        //        }
+        //        else if (relationshipIndicator == "Slave") {
+        //            // source: structure - destination: equipment
+        //            Guid.TryParse(Convert.ToString(plts_frel.SRC_UID), out uid);
+        //            if (!_srcObjectToSlaves.ContainsKey(uid)) {
+        //                _srcObjectToSlaves[uid] = new List<PltsSlave>() { new(plts_frel) };
+        //            }
+        //            else {
+        //                var pltsSlave = new PltsSlave(plts_frel);
 
-                        //pltsSlave.Fetch(_source, Direction.Destination);
-                        _srcObjectToSlaves[uid].Add(pltsSlave);
-                    }
-                }
-                else if (relationshipIndicator == "Rep") {
-                    throw new NotImplementedException("PLTS feature relations RelationshipIndicator = Rep");
-                }
-            }
+        //                //pltsSlave.Fetch(_source, Direction.Destination);
+        //                _srcObjectToSlaves[uid].Add(pltsSlave);
+        //            }
+        //        }
+        //        else if (relationshipIndicator == "Rep") {
+        //            throw new NotImplementedException("PLTS feature relations RelationshipIndicator = Rep");
+        //        }
+        //    }
 
-            foreach (var item in _srcObjectToSlaves) {
-                foreach (var frel in item.Value) {
+        //    foreach (var item in _srcObjectToSlaves) {
+        //        foreach (var frel in item.Value) {
 
-                    var key = frel?.PLTS_Frel?.SRC_FC?.ToLower();
-                    if (key != null) {
-                        if (frelSourceFeatureClasses.ContainsKey(key)) {
-                            if (frel != null) {
-                                frelSourceFeatureClasses[key].Add(frel.PLTS_Frel);
-                            }
-                        }
-                        else {
-                            if (frel != null) {
-                                frelSourceFeatureClasses[key] = new List<PLTS_Frel>() { frel.PLTS_Frel };
-                            }
-                        }
-                    }
-                }
-            }
+        //            var key = frel?.PLTS_Frel?.SRC_FC?.ToLower();
+        //            if (key != null) {
+        //                if (frelSourceFeatureClasses.ContainsKey(key)) {
+        //                    if (frel != null) {
+        //                        frelSourceFeatureClasses[key].Add(frel.PLTS_Frel);
+        //                    }
+        //                }
+        //                else {
+        //                    if (frel != null) {
+        //                        frelSourceFeatureClasses[key] = new List<PLTS_Frel>() { frel.PLTS_Frel };
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
 
-        }
+        //}
 
-        private void LoadPltsFrels2(Geodatabase source) {
+        private static void  LoadPltsFrels2(Geodatabase source) {
             using var pltsFrel = source.OpenDataset<Table>(source.GetName("PLTS_Frel"));
             var frelDestFeatureClasses = new Dictionary<string, IList<PLTS_Frel>>();
 
@@ -602,26 +600,26 @@ namespace S100Framework.Applications
                 .ToDictionary(group => group.Key, group => group.First());
 
             // foreach featureclass represented in plts_rels, load all destination objects
-            Dictionary<string, List<PLTS_Frel>> destinationFcToFrels = frels.GroupBy(obj => obj.DEST_FC ?? "Unknown DEST_FC").ToDictionary(group => group.Key, group => group.ToList());
+            var destinationFcToFrels = frels.GroupBy(obj => obj.DEST_FC ?? "Unknown DEST_FC").ToDictionary(group => group.Key, group => group.ToList());
 
-            int loadedRelatedObjectsCount = 0;
+            var loadedRelatedObjectsCount = 0;
 
             foreach (var destFc in destinationFcToFrels.Keys) {
-                var destinationFeatureClassName = _source?.GetName(destFc);
+                var destinationFeatureClassName = source?.GetName(destFc);
 
                 if (destinationFeatureClassName == null) {
                     throw new NotSupportedException("empty featureclass name");
                 }
-                if (_source == null) {
+                if (source == null) {
                     throw new NotSupportedException("source geodatabase");
                 }
 
 
-                if (!_source.IsFeatureClass(destinationFeatureClassName)) {
+                if (!source.IsFeatureClass(destinationFeatureClassName)) {
                     continue;
                 }
 
-                using var relatedFeatureClass = _source.OpenDataset<FeatureClass>(destinationFeatureClassName);
+                using var relatedFeatureClass = source.OpenDataset<FeatureClass>(destinationFeatureClassName);
 
                 using var cursorRelated = relatedFeatureClass.Search(null, true);
 
@@ -710,12 +708,44 @@ namespace S100Framework.Applications
         }
 
         internal bool HasRelated(Guid globalId) {
-
             return _srcObjectToSlaves.ContainsKey(globalId);
         }
 
         internal void AddRelation(S57Master master, S57Slave slave) {
-            _relations.Add(new(master, slave));
+            //if (_relationCount > 0) {
+            //    return;
+            //}
+
+            Relation relation = new(master, slave);
+
+            if (IsCircular(master, slave)) {
+                throw new NotSupportedException($"{relation} is circular. Not permitted.");
+
+            }
+
+            //_relationCount++;
+            if (_relations.Contains(relation)) {
+                throw new NotSupportedException($"{relation} relation´already added");
+            }
+
+
+            _relations.Add(relation);
+        }
+
+        internal bool IsCircular(S57Master master, S57Slave slave) {
+            //if (_relationCount > 0) {
+            //    return;
+            //}
+
+            S57Master master_ = new(master.S101Type, slave.Name);
+            S57Slave slave_ = new(slave.S101Type, master.Name);
+
+            Relation relation = new(master_, slave_);
+            //_relationCount++;
+            if (_relations.Contains(relation)) {
+                return true; 
+            }
+            return false;
         }
 
         internal void AddAssociation(S57Master master, S57Slave slave) {
@@ -728,10 +758,16 @@ namespace S100Framework.Applications
             }
         }
 
-        internal void CreateRelation (Type TPrimary, Type TForeign, Relation relation, Table featureAssociation, RowBuffer featureAssociationBuffer, Table associationBinding, RowBuffer associationBindingBuffer)  {
-            if (relation == null) {
-                throw new ArgumentNullException("relation");
+        internal void CreateRelation(Relation relation, Table featureAssociation, RowBuffer featureAssociationBuffer, Table associationBinding, RowBuffer associationBindingBuffer) {
+            if (relation.Master == null) {
+                throw new ArgumentNullException("relation master");
             }
+            if (relation.Slave == null) {
+                throw new ArgumentNullException("relation slave");
+            }
+            
+            Type TPrimary = relation.Master.S101Type;
+            Type TForeign = relation.Slave.S101Type;
 
             var featureBindingsPrimary = TPrimary?.GetProperty("_featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
             var featureBindingsForeign = TForeign?.GetProperty("_featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
@@ -739,16 +775,28 @@ namespace S100Framework.Applications
             string featureAssociationName;
             featureBindingDefinition? bindingDefinitionForeign;
             featureBindingDefinition? bindingDefinitionPrimary;
+
+            
+
             {
                 // Create the association
                 bindingDefinitionForeign = featureBindingsPrimary?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TForeign?.Name));
                 if (bindingDefinitionForeign == null) {
-                    throw new NotSupportedException($"no bindingdefinition on {TForeign?.Name} for {TForeign?.Name}");
+
+                    var tracebackMaster = ConversionAnalytics.Instance.GetTraceBack(relation.Master.Name);
+                    var tracebackMasterString = string.Join(", ", tracebackMaster.Select(tuple => $"{tuple.Item1} - {tuple.Item2}"));
+                    var tracebackSlave = ConversionAnalytics.Instance.GetTraceBack(relation.Slave.Name);
+                    var tracebackSlaveString = string.Join(", ", tracebackSlave.Select(tuple => $"{tuple.Item1} - {tuple.Item2}"));
+                    var msg = $"Cannot relate {relation.Master.GetType().Name} {relation.Master.S101Type.Name} with {relation.Slave.GetType().Name} {relation.Slave.S101Type.Name} - where name in ('{relation.Master.Name}','{relation.Slave.Name}') MASTERS:{tracebackMasterString} SLAVES:{tracebackSlaveString}";
+                    Logger.Current.DataError(-1, "", "relate", msg);
+                    return;
+                    //throw new NotSupportedException(msg);
                 }
                 featureAssociationBuffer["ps"] = ImporterNIS.ps101;
                 featureAssociationBuffer["code"] = bindingDefinitionForeign.association;
                 var association = featureAssociation.CreateRow(featureAssociationBuffer);
                 featureAssociationName = (string)association["name"];
+                
             }
             {
                 // Create primary end
@@ -757,15 +805,15 @@ namespace S100Framework.Applications
                     throw new NotSupportedException($"no bindingdefinition on {TPrimary?.Name} for {TForeign?.Name}");
                 }
                 associationBindingBuffer["ps"] = ImporterNIS.ps101;
-                associationBindingBuffer["roleType"] = bindingDefinitionPrimary.role.ToString();
+                associationBindingBuffer["roleType"] = bindingDefinitionPrimary.roleType.ToString();
                 associationBindingBuffer["associationId"] = featureAssociationName;
                 associationBindingBuffer["association"] = bindingDefinitionPrimary.association;
-                associationBindingBuffer["pid"] = relation?.Master?.Name;
+                associationBindingBuffer["primaryid"] = relation?.Master?.Name;
                 associationBindingBuffer["foreignid"] = relation?.Slave?.Name;
                 associationBindingBuffer["role"] = bindingDefinitionPrimary.role;
-                associationBindingBuffer["type"] = bindingDefinitionPrimary.roleType.ToString();
+                associationBindingBuffer["type"] = "FeatureBinding";
                 var association = associationBinding.CreateRow(associationBindingBuffer);
-
+                //_createdRelations.Add((relation?.Master?.Name, relation?.Slave?.Name), relation);
             }
             {
                 // Create foreign end
@@ -774,35 +822,43 @@ namespace S100Framework.Applications
                     throw new NotSupportedException($"no bindingdefinition on {TForeign?.Name} for {TPrimary?.Name}");
                 }
                 associationBindingBuffer["ps"] = ImporterNIS.ps101;
-                associationBindingBuffer["roleType"] = bindingDefinitionForeign.role.ToString();
+                associationBindingBuffer["roleType"] = bindingDefinitionForeign.roleType.ToString();
                 associationBindingBuffer["associationId"] = featureAssociationName;
                 associationBindingBuffer["association"] = bindingDefinitionForeign.association;
-                associationBindingBuffer["pid"] = relation?.Slave?.Name;
+                associationBindingBuffer["primaryid"] = relation?.Slave?.Name;
                 associationBindingBuffer["foreignid"] = relation?.Master?.Name;
                 associationBindingBuffer["role"] = bindingDefinitionForeign.role;
-                associationBindingBuffer["type"] = bindingDefinitionForeign.roleType.ToString();
+                associationBindingBuffer["type"] = "FeatureBinding";
                 var association = associationBinding.CreateRow(associationBindingBuffer);
+                //_createdRelations.Add((relation?.Slave?.Name, relation?.Master?.Name), relation);
+
             }
         }
 
-        internal void CreateRelations() {
-            if (_target == default) {
+        internal void CreateRelations(Geodatabase target) {
+            if (target == default) {
                 throw new NotSupportedException("Target is null");
             }
 
-            using var featureAssociation = _target.OpenDataset<Table>(_target.GetName("featureassociation"));
-            using var associationBinding = _target.OpenDataset<Table>(_target.GetName("associationbinding"));
+            using var featureAssociation = target.OpenDataset<Table>(target.GetName("featureassociation"));
+            using var associationBinding = target.OpenDataset<Table>(target.GetName("associationbinding"));
             using var featureAssociationBuffer = featureAssociation.CreateRowBuffer();
             //using var featureAssociationInsert = featureAssociation.CreateInsertCursor();
             using var associationBindingBuffer = associationBinding.CreateRowBuffer();
             //using var associationBindingInsert = associationBinding.CreateInsertCursor();
+
+            var duplicates = _relations
+                .GroupBy(p => new { p = p.Master.Name, s = p.Slave.Name})
+                .Where(g => g.Count() > 1)
+                .SelectMany(g => g)
+                .ToList();
 
             foreach (var relation in _relations) {
                 if (relation == null) {
                     throw new NotSupportedException("null relation");
                 }
 
-                CreateRelation(relation?.Master?.S101Type, relation?.Slave?.S101Type, relation, featureAssociation, featureAssociationBuffer, associationBinding, associationBindingBuffer);
+                CreateRelation(relation, featureAssociation, featureAssociationBuffer, associationBinding, associationBindingBuffer);
 #if null
                 if (relation?.Master?.Type.ToLower() == typeof(LateralBuoy).Name.ToLower()) {
                     if (relation?.Slave?.Type.ToLower() == typeof(Daymark).Name.ToLower()) {
@@ -839,9 +895,10 @@ namespace S100Framework.Applications
 #endif
             }
         }
+
     }
 
-    internal class S57Master
+    internal class S57Master : IEquatable<S57Master>
     {
         Type _s101type;
         string _s101name;
@@ -853,8 +910,28 @@ namespace S100Framework.Applications
 
         public Type S101Type { get => this._s101type; set => this._s101type = value; }
         public string Name { get => this._s101name; set => this._s101name = value; }
+
+        // Implement IEquatable<MyObject>
+        public bool Equals(S57Master other) {
+            if (other == null) {
+                return false;
+            }
+            return this._s101type.Equals(other._s101type) && this._s101name.Equals(other._s101name);
+        }
+
+        // Override Equals (for compatibility with collections like HashSet)
+        public override bool Equals(object obj) {
+            if (obj is Relation other) {
+                return Equals(other); // Use the correct Equals method
+            }
+            return false;
+        }
+
+        public override int GetHashCode() {
+            return HashCode.Combine(_s101type, _s101name);
+        }
     }
-    internal class S57Slave
+    internal class S57Slave : IEquatable<S57Slave>
     {
         Type _s101type;
         string _s101name;
@@ -866,12 +943,32 @@ namespace S100Framework.Applications
 
         public Type S101Type { get => this._s101type; set => this._s101type = value; }
         public string Name { get => this._s101name; set => this._s101name = value; }
+
+        // Implement IEquatable<MyObject>
+        public bool Equals(S57Slave other) {
+            if (other == null) {
+                return false;
+            }
+            return this._s101type.Equals(other._s101type)  && this._s101name.Equals(other._s101name);
+        }
+
+        // Override Equals (for compatibility with collections like HashSet)
+        public override bool Equals(object obj) {
+            if (obj is Relation other) {
+                return Equals(other); // Use the correct Equals method
+            }
+            return false;
+        }
+
+        public override int GetHashCode() {
+            return HashCode.Combine(_s101type, _s101name);
+        }
     }
 
-    internal class Relation
-    {
-        S57Master _master;
-        S57Slave _slave;
+    internal class Relation : IEquatable<Relation> {
+    
+        S57Master? _master;
+        S57Slave? _slave;
 
         public Relation(S57Master master, S57Slave slave) {
             this.Master = master;
@@ -880,7 +977,26 @@ namespace S100Framework.Applications
 
         internal S57Master? Master { get => this._master; set => this._master = value; }
         internal S57Slave? Slave { get => this._slave; set => this._slave = value; }
+
+        // Implement IEquatable<MyObject>
+        public bool Equals(Relation other) {
+            if (other == null) {
+                return false;
+            }
+            return this._master.Equals(other._master) && this._slave.Equals(other._slave);
+        }
+
+        // Override Equals (for compatibility with collections like HashSet)
+        public override bool Equals(object obj) {
+            if (obj is Relation other) {
+                return Equals(other); // Use the correct Equals method
+            }
+            return false;
+        }
+
+        public override int GetHashCode() {
+            return HashCode.Combine(_master, _slave);
+            Console.WriteLine($"{Master.S101Type.Name} -> {_slave.S101Type.Name}");
+        }
     }
-
-
 }

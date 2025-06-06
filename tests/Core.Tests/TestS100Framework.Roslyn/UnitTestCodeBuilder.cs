@@ -463,6 +463,11 @@ namespace TestS100Framework
                 //Assert.Equivalent(instance, deserialized);
             }
 
+            [Fact]
+            public void Test_YamlEnum() {
+                
+            }
+
             private bool VerifyProductSpecification(XDocument productSpecification) {
                 var navigator = productSpecification.CreateNavigator();
                 navigator.MoveToFollowing(XPathNodeType.Element);

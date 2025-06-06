@@ -1,6 +1,5 @@
 ﻿using ArcGIS.Core.Geometry;
 
-using S100Framework.ArcGIS.Core;
 using S100Framework.DomainModel.S131.FeatureTypes;
 using System.Globalization;
 using System.Reflection;

@@ -9,6 +9,14 @@ using System.Text.Json;
 using S100Framework.Applications.S57.esri;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using S100Framework.DomainModel;
+using VortexLoader;
+using Microsoft.Win32;
+using ArcGIS.Desktop.Internal.Core.Conda;
+using S100Framework.DomainModel.S101.FeatureTypes;
+using System.Runtime.CompilerServices;
+using S100Framework.Applications.Singletons;
+using Microsoft.AspNetCore.StaticFiles;
 
 
 namespace S100Framework.Applications
@@ -26,13 +34,18 @@ namespace S100Framework.Applications
         internal static string _scaminFilesPath = "";
         internal static string ps101 = "S-101";
         internal static string ps128 = "S-128";
+        internal static Geodatabase _geodatabase;
 
         internal static readonly int CompilationScale = 22000; // Used as filter for spatial queries to transfer attributes from other features based on location analysis
 
         //internal static FeatureRelations featureRelations = null;
         internal static RelatedEquipment? relatedEquipment;
 
+        internal static ConverterRegistry _converterRegistry = new ConverterRegistry();
+
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
+            
+
             Logger.Current.Information("Starting");
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
@@ -71,6 +84,7 @@ namespace S100Framework.Applications
                 }
             });
 
+
             Func<Action, bool> Store = (a) => {
                 a.Invoke();
                 return true;
@@ -85,8 +99,23 @@ namespace S100Framework.Applications
                 };
             }
 
-            using (Geodatabase source = createGeodatabase()) {
+            _converterRegistry.Register<AidsToNavigationP, CardinalBeacon>(Converters.CreateCardinalBeacon);
+            _converterRegistry.Register<AidsToNavigationP, RadarTransponderBeacon>(Converters.CreateRadarTransponderBeacon);
+            _converterRegistry.Register<AidsToNavigationP, LightAllAround>(Converters.CreateLightAllAround);
+            _converterRegistry.Register<CulturalFeaturesP, LightSectored>(Converters.CreateLightSectored);
+            _converterRegistry.Register<AidsToNavigationP, LightSectored>(Converters.CreateLightSectored);
+            _converterRegistry.Register<AidsToNavigationP, LightAirObstruction>(Converters.CreateLightAirObstruction);
+            _converterRegistry.Register<AidsToNavigationP, LightFogDetector>(Converters.CreateLightFogDetector);
+            _converterRegistry.Register<AidsToNavigationP, Daymark>(Converters.CreateDaymark);
+            _converterRegistry.Register<DangersP, Obstruction>(Converters.CreateObstruction);
+            _converterRegistry.Register<CulturalFeaturesA, LightSectored>(Converters.CreateLightSectored);
+            _converterRegistry.Register<PortsAndServicesP, LightSectored>(Converters.CreateLightSectored);
+            _converterRegistry.Register<PortsAndServicesP, SignalStationWarning>(Converters.CreateSignalStationWarning);
+            _converterRegistry.Register<AidsToNavigationP, FogSignal>(Converters.CreateFogSignal);
+            _converterRegistry.Register<AidsToNavigationP, RadarStation>(Converters.CreateRadarStation);
+            _converterRegistry.Register<CulturalFeaturesP, WindTurbine>(Converters.CreateWindturbine);
 
+            using (Geodatabase source = createGeodatabase()) {
                 Store(() => {
                     var query = new QueryFilter {
                         WhereClause = $"1=1",
@@ -111,17 +140,20 @@ namespace S100Framework.Applications
                     featureAssociation.DeleteRows(query);
                     informationAssociation.DeleteRows(query);
                     informationtype.DeleteRows(query);
-
                 });
 
-                
-                FeatureRelations.Instance.Initialize(source, destination);
+                Subtypes.Initialize(source);
+
+                FeatureRelations.Initialize(source, destination);
+
+                SpatialRelationResolver.Initialize(source);
+
                 relatedEquipment = new RelatedEquipment(source);
 
                 if (skinOfEarthOnly) {
                     // All "SKIN OF EARTH" cases / subtypes are marked with a "skin of earth" comment
                     var whereClause = filter.WhereClause.Clone();
-                    filter.WhereClause = $"{whereClause} and fcsubtype in (1,5,15,45)";
+                    filter.WhereClause = $"{whereClause} and fcsubtype in (1,5,15)";
                     Store(() => S57_DepthsA(source, destination, filter));
                     filter.WhereClause = $"{whereClause} and fcsubtype in (5)";
                     Store(() => S57_NaturalFeaturesA(source, destination, filter));
@@ -131,78 +163,68 @@ namespace S100Framework.Applications
                     Store(() => S57_MetadataA(source, destination, filter));
                     filter.WhereClause = $"{whereClause} and fcsubtype in (1)";
                     Store(() => S57_ProductCoverage(source, destination, filter));
+                    Store(() => FeatureRelations.Instance.CreateRelations(destination));
+
                 }
                 else {
+                    /*var whereClause = filter.WhereClause.Clone();
+                    filter.WhereClause = $"{whereClause} and globalid = '{{CA71EEFC-AF9F-4DB0-A55E-FD9D394FF58D}}'";
+                    filter.WhereClause = $"{whereClause}";
+                    */
+                    Store(() => S57_PortsAndServicesA(source, destination, filter));
 
-                    Store(() => S57_AidsToNavigationP(source, destination, filter));
+
+                    Store(() => S57_TidesAndVariationsA(source, destination, filter));
+                    Store(() => S57_TidesAndVariationsL(source, destination, filter));
+                    Store(() => S57_TidesAndVariationsP(source, destination, filter));
+                    Store(() => S57_SeabedA(source, destination, filter));
+                    Store(() => S57_SeabedL(source, destination, filter));
+                    Store(() => S57_SeabedP(source, destination, filter));
+                    Store(() => S57_CulturalFeaturesL(source, destination, filter));
+                    Store(() => S57_CulturalFeaturesA(source, destination, filter));
+                    Store(() => S57_CulturalFeaturesP(source, destination, filter));
+                    Store(() => S57_NaturalFeaturesP(source, destination, filter));
                     Store(() => S57_CoastlineA(source, destination, filter));
                     Store(() => S57_CoastlineL(source, destination, filter));
                     Store(() => S57_CoastlineP(source, destination, filter));
-                    Store(() => S57_CulturalFeaturesA(source, destination, filter));
-                    Store(() => S57_CulturalFeaturesL(source, destination, filter));
-                    Store(() => S57_CulturalFeaturesP(source, destination, filter));
                     Store(() => S57_DangersA(source, destination, filter));
                     Store(() => S57_DangersL(source, destination, filter));
                     Store(() => S57_DangersP(source, destination, filter));
                     Store(() => S57_DepthsA(source, destination, filter));
                     Store(() => S57_DepthsL(source, destination, filter));
                     Store(() => S57_IcefeaturesA(source, destination, filter));
-                    Store(() => S57_MetadataA(source, destination, filter)); // TODO: metadataP
+                    Store(() => S57_MetadataA(source, destination, filter));
                     Store(() => S57_MilitaryFeatureA(source, destination, filter));
                     Store(() => S57_MilitaryFeaturesP(source, destination, filter));
                     Store(() => S57_NaturalFeaturesA(source, destination, filter));
                     Store(() => S57_NaturalFeaturesL(source, destination, filter));
-                    Store(() => S57_NaturalFeaturesP(source, destination, filter));
                     Store(() => S57_OffshoreInstallationsA(source, destination, filter));
                     Store(() => S57_OffshoreInstallationsL(source, destination, filter));
                     Store(() => S57_OffshoreInstallationsP(source, destination, filter));
-                    Store(() => S57_PortsAndServicesA(source, destination, filter));
+
+
                     Store(() => S57_PortsAndServicesL(source, destination, filter));
                     Store(() => S57_PortsAndServicesP(source, destination, filter));
                     Store(() => S57_ProductCoverage(source, destination, filter));
                     Store(() => S57_RegulatedAreasAndLimitsA(source, destination, filter));
                     Store(() => S57_RegulatedAreasAndLimitsL(source, destination, filter));
                     Store(() => S57_RegulatedAreasAndLimitsP(source, destination, filter));
-                    Store(() => S57_SeabedA(source, destination, filter));
-                    Store(() => S57_SeabedL(source, destination, filter));
-                    Store(() => S57_SeabedP(source, destination, filter));
                     Store(() => S57_SoundingsP(source, destination, filter));
                     Store(() => S57_TracksAndRoutesA(source, destination, filter));
                     Store(() => S57_TracksAndRoutesL(source, destination, filter));
                     Store(() => S57_TracksAndRoutesP(source, destination, filter));
+                    Store(() => S57_AidsToNavigationP(source, destination, filter));
 
+                    Store(() => FeatureRelations.Instance.CreateRelations(destination));
                 }
-
-               FeatureRelations.Instance.CreateRelations();
 
                 Logger.Current.Information("Done");
 
                 return true;
             }
+
         }
 
-        public static IEnumerable<T> SelectIn<T>(Geometry geometry, FeatureClass in_featureclass, SpatialRelationship spatialRelationship, int compilationScale) where T : class {
-            SpatialQueryFilter spatialQueryFilter = new SpatialQueryFilter {
-                FilterGeometry = geometry,
-                SpatialRelationship = spatialRelationship,
-                WhereClause = $"plts_comp_scale = {compilationScale}"
-            };
-
-            using (RowCursor spatialSearch = in_featureclass.Search(spatialQueryFilter, true)) {
-                var shape = spatialSearch.FindField("SHAPE");
-                while (spatialSearch.MoveNext()) {
-                    using (Row row = spatialSearch.Current) {
-                        Feature feature = (Feature)row;
-                        if (feature != null) {
-                            var val = Activator.CreateInstance(typeof(T), feature) as T;
-                            if (val != null) {
-                                yield return val;
-                            }
-                        }
-                    }
-                }
-            }
-        }
 
         internal static void SetShape(RowBuffer buffer, Geometry? shape) {
             if (shape == null) {
@@ -222,16 +244,25 @@ namespace S100Framework.Applications
         /// </summary>
         /// <param _s101name="current"></param>
         /// <returns></returns>
-        private static rhythmOfLight GetRythmOfLight(AidsToNavigationP current) {
+        internal static rhythmOfLight GetRythmOfLight(AidsToNavigationP current) {
 
             /*
                 When populating rhythm of light, the
                 sub-attributes signal group, signal period and signal sequence are only valid for non-fixed lights
                 (that is, sub-attribute light characteristic ≠ 1 (fixed)), with signal group and signal period being
                 mandatory
-             */
+            */
 
-            var signalGroupN = current.SIGGRP != default ? new List<string> { current.SIGGRP } : new();
+            //current.SIGGRP != default ? new List<string> { current.SIGGRP } : new();
+            List<string> parenthesisParts = new List<string>();
+
+            if (!String.IsNullOrEmpty(current.SIGGRP)) {
+                string pattern = @"\([^()]*\)";
+
+                foreach (Match m in Regex.Matches(current.SIGGRP, pattern)) {
+                    parenthesisParts.Add(m.Value);
+                }
+            }
             var signalPeriodN = current.SIGPER;
 
             var sigseq = current.SIGSEQ;
@@ -239,25 +270,35 @@ namespace S100Framework.Applications
             lightCharacteristic lightCharacteristicsValue = default;
 
             if (current.LITCHR.HasValue) {
-                //if (current.LITCHR.Value == -32767) {
-                //    lightCharacteristicsValue = EnumHelper.GetEnumValue<lightCharacteristic>(-1);
-                //} else {
-                    lightCharacteristicsValue = EnumHelper.GetEnumValue<lightCharacteristic>(current.LITCHR.Value);
-                //}
+                lightCharacteristicsValue = EnumHelper.GetEnumValue<lightCharacteristic>(current.LITCHR.Value);
             }
 
             var signalSequences = GetSignalSequences(current.SIGSEQ);
 
             var rhythmOfLight = new rhythmOfLight() {
                 lightCharacteristic = lightCharacteristicsValue,
-                signalGroup = signalGroupN,
+                signalGroup = parenthesisParts,
                 signalPeriod = signalPeriodN,
                 signalSequence = signalSequences
             };
             return rhythmOfLight;
         }
 
-        private static List<signalSequence> GetSignalSequences(string? sigseq) {
+        internal static verticalDatum GetVerticalDatum(int value) {
+            /*
+            if (current.VERDAT.HasValue) {
+                instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
+            }
+            */
+            if (value != 23) {
+                return EnumHelper.GetEnumValue<verticalDatum>(value);
+            }
+
+            return verticalDatum.BalticSeaChartDatum2000;
+        }
+
+
+        internal static List<signalSequence> GetSignalSequences(string? sigseq) {
             var signalSequences = new List<signalSequence>();
 
             string pattern = @"(\d+\.\d+)|\((\d+\.\d+)\)";

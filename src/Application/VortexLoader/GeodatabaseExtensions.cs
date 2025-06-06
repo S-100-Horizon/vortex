@@ -12,25 +12,11 @@ namespace S100Framework.Applications
 
     internal static class GeodatabaseExtensions
     {
-        static bool _isInitialized = false;
-        private static IReadOnlyList<FeatureClassDefinition>? _layerDefinitions;
-        private static IReadOnlyList<TableDefinition>? _tableDefinitions;
 
-        private static void Initialize(this Geodatabase geodatabase) {
-            _layerDefinitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
-            _tableDefinitions = geodatabase.GetDefinitions<TableDefinition>();
-        }
-
-        public static IReadOnlyList<FeatureClassDefinition>? Layers {
-            get { return _layerDefinitions; }
-            set { _layerDefinitions = value; }
-        }
 
         internal static string? GetName(this Geodatabase geodatabase, string name) {
-            if (!_isInitialized) {
-                geodatabase.Initialize();
-                //_isInitialized = true;
-            }
+            var _layerDefinitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
+            var _tableDefinitions = geodatabase.GetDefinitions<TableDefinition>();
 
             var tableName = _layerDefinitions?.FirstOrDefault<FeatureClassDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();
             if (tableName == null) {
@@ -39,10 +25,8 @@ namespace S100Framework.Applications
             return tableName;
         }
         internal static bool IsFeatureClass(this Geodatabase geodatabase, string name) {
-            if (!_isInitialized) {
-                geodatabase.Initialize();
-                //_isInitialized = true;
-            }
+            var _layerDefinitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
+            var _tableDefinitions = geodatabase.GetDefinitions<TableDefinition>();
 
             var tableName = _layerDefinitions?.FirstOrDefault<FeatureClassDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase) || e.GetName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();
             if (tableName == null) {

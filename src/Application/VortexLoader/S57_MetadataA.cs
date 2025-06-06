@@ -3,6 +3,7 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -12,16 +13,15 @@ namespace S100Framework.Applications
         private static void S57_MetadataA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "MetadataA";
 
-            using var coastlinea = source.OpenDataset<FeatureClass>(source.GetName(tableName));
-            var subtypes = coastlinea.GetSubtypes();
-            var featureType = PrimitiveType.Area;
+            using var metadataa = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            Subtypes.Instance.RegisterSubtypes(metadataa);
             
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
-            using var cursor = coastlinea.Search(filter, true);
+            using var cursor = metadataa.Search(filter, true);
             int recordCount = 0;
             
             while (cursor.MoveNext()) {
@@ -32,7 +32,12 @@ namespace S100Framework.Applications
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
-                var subtype = current.FCSUBTYPE ?? default;
+
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                    continue;
+                }
+
+                var fcSubtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
 
@@ -45,8 +50,10 @@ namespace S100Framework.Applications
 
 
 
-                switch (subtype) {
+                switch (fcSubtype) {
                     case 1: { // M_ACCY_AccuracyOfData
+                            throw new NotImplementedException($"No M_ACCY_AccuracyOfData in DK or GL. {tableName}");
+
                             var instance = new QualityOfNonBathymetricData();
 
                             if (current.CATZOC.HasValue && current.CATZOC.Value != -32767) {
@@ -90,8 +97,10 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
+                            }
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -118,8 +127,10 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
+                            }
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -128,19 +139,26 @@ namespace S100Framework.Applications
                         break;
 
                     case 25: { // M_HOPA_HorizontalDatumShiftParameters
+                            throw new NotImplementedException($"No M_HOPA_HorizontalDatumShiftParameters in DK or GL. {tableName}");
+
                             //There is no equivalent Meta Feature _s101type in S - 101 for the S-57 Meta Object M_HOPA.It is considered
                             //that this information is not required for S - 101.Data Producers should consider removing instances of
                             //M_HOPA from their S-57 data for consistency.
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, "DEPRECATED");
                             Logger.Current.DataObject(objectid, tableName, longname, "Not converted");
-                            
                         }
                         break;
                     case 30: { // M_NPUB_NauticalPublicationInformation
                             var instance = new InformationArea();
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
+
 
                             if (current.SORDAT != default) {
                                 if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
@@ -167,8 +185,10 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
+                            }
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -181,6 +201,9 @@ namespace S100Framework.Applications
                             if (current.MARSYS.HasValue) {
                                 instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
+                            else {
+                                Logger.Current.DataError(current.OBJECTID ?? default,current.TableName ?? "Unknown tablename",current.LNAM ?? "Unknown LNAM",$"Missing MARSYS value for M_NSYS where globalid = '{{{current.GLOBALID}}}'");
+                            }
 
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -191,8 +214,10 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
+                            }
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -265,6 +290,8 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             
                         }
@@ -272,16 +299,23 @@ namespace S100Framework.Applications
                     case 45: { // M_SDAT_SoundingDatum
                             var instance = new SoundingDatum();
 
+                            // TODO: interoperabilityIdentifier
+
+                            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                                                        var featureN = featureClass.CreateRow(buffer);
+                            
+                            var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
+                            }
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -289,6 +323,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 50: { // M_SREL_SurveyReliability
+                            throw new NotImplementedException($"No M_SREL_SurveyReliability in DK or GL. {tableName}");
+
                             var instance = new QualityOfSurvey();
 
                             AddInformation(instance.information, feature);
@@ -300,8 +336,10 @@ namespace S100Framework.Applications
                                                         var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
+                            }
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -311,63 +349,70 @@ namespace S100Framework.Applications
                     case 55: { // M_VDAT_VerticalDatumOfData
                             var instance = new VerticalDatumOfData();
 
-                            if (current.VERDAT.HasValue) {
-                                var verdat = Convert.ToInt32(current.VERDAT);
-                                if (verdat != default) {
-                                    instance.verticalDatum = verdat switch {
-                                        1 => verticalDatum.MeanLowWaterSprings,
-                                        2 => verticalDatum.MeanLowerLowWaterSprings,
-                                        3 => verticalDatum.MeanSeaLevel,
-                                        4 => verticalDatum.LowestLowWater,
-                                        5 => verticalDatum.MeanLowWater,
-                                        6 => verticalDatum.LowestLowWaterSprings,
-                                        7 => verticalDatum.ApproximateMeanLowWaterSprings,
-                                        8 => verticalDatum.IndianSpringLowWater,
-                                        9 => verticalDatum.LowWaterSprings,
-                                        10 => verticalDatum.ApproximateLowestAstronomicalTide,
-                                        11 => verticalDatum.NearlyLowestLowWater,
-                                        12 => verticalDatum.MeanLowerLowWater,
-                                        13 => verticalDatum.LowWater,
-                                        14 => verticalDatum.ApproximateMeanLowWater,
-                                        15 => verticalDatum.ApproximateMeanLowerLowWater,
-                                        16 => verticalDatum.MeanHighWater,
-                                        17 => verticalDatum.MeanHighWaterSprings,
-                                        18 => verticalDatum.HighWater,
-                                        19 => verticalDatum.ApproximateMeanSeaLevel,
-                                        20 => verticalDatum.HighWaterSprings,
-                                        21 => verticalDatum.MeanHigherHighWater,
-                                        22 => verticalDatum.EquinoctialSpringLowWater,
-                                        23 => verticalDatum.LowestAstronomicalTide,
-                                        24 => verticalDatum.LocalDatum,
-                                        25 => verticalDatum.InternationalGreatLakesDatum1985,
-                                        26 => verticalDatum.MeanWaterLevel,
-                                        27 => verticalDatum.LowerLowWaterLargeTide,
-                                        28 => verticalDatum.HigherHighWaterLargeTide,
-                                        29 => verticalDatum.NearlyHighestHighWater,
-                                        30 => verticalDatum.HighestAstronomicalTide,
-                                        44 => verticalDatum.BalticSeaChartDatum2000,
-                                        -1 => verticalDatum.Unknown,
-                                        _ => throw new ArgumentOutOfRangeException(nameof(verdat), "Invalid value for vertical datum.")
-                                    };
+                            // TODO: interoperabilityIdentifier
 
-                                    AddInformation(instance.information, feature);
-                                    buffer["ps"] = ps101;
-                                    buffer["code"] = instance.GetType().Name;
-                                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                    SetShape(buffer,current.SHAPE);
-                                    
-                                    var featureN = featureClass.CreateRow(buffer);
-                                    var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
-                                    // TODO: Create relations
+                            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
                             
-                                    ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            SetShape(buffer, current.SHAPE);
 
-                                    Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                    
-                                }
-                                break;
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+
+
+                            // if (current.VERDAT.HasValue) {
+                            //var verdat = Convert.ToInt32(current.VERDAT);
+                            //if (verdat != default) {
+                            //    instance.verticalDatum = verdat switch {
+                            //        1 => verticalDatum.MeanLowWaterSprings,
+                            //        2 => verticalDatum.MeanLowerLowWaterSprings,
+                            //        3 => verticalDatum.MeanSeaLevel,
+                            //        4 => verticalDatum.LowestLowWater,
+                            //        5 => verticalDatum.MeanLowWater,
+                            //        6 => verticalDatum.LowestLowWaterSprings,
+                            //        7 => verticalDatum.ApproximateMeanLowWaterSprings,
+                            //        8 => verticalDatum.IndianSpringLowWater,
+                            //        9 => verticalDatum.LowWaterSprings,
+                            //        10 => verticalDatum.ApproximateLowestAstronomicalTide,
+                            //        11 => verticalDatum.NearlyLowestLowWater,
+                            //        12 => verticalDatum.MeanLowerLowWater,
+                            //        13 => verticalDatum.LowWater,
+                            //        14 => verticalDatum.ApproximateMeanLowWater,
+                            //        15 => verticalDatum.ApproximateMeanLowerLowWater,
+                            //        16 => verticalDatum.MeanHighWater,
+                            //        17 => verticalDatum.MeanHighWaterSprings,
+                            //        18 => verticalDatum.HighWater,
+                            //        19 => verticalDatum.ApproximateMeanSeaLevel,
+                            //        20 => verticalDatum.HighWaterSprings,
+                            //        21 => verticalDatum.MeanHigherHighWater,
+                            //        22 => verticalDatum.EquinoctialSpringLowWater,
+                            //        23 => verticalDatum.LowestAstronomicalTide,
+                            //        24 => verticalDatum.LocalDatum,
+                            //        25 => verticalDatum.InternationalGreatLakesDatum1985,
+                            //        26 => verticalDatum.MeanWaterLevel,
+                            //        27 => verticalDatum.LowerLowWaterLargeTide,
+                            //        28 => verticalDatum.HigherHighWaterLargeTide,
+                            //        29 => verticalDatum.NearlyHighestHighWater,
+                            //        30 => verticalDatum.HighestAstronomicalTide,
+                            //        44 => verticalDatum.BalticSeaChartDatum2000,
+                            //        -1 => verticalDatum.Unknown,
+                            //        _ => throw new ArgumentOutOfRangeException(nameof(verdat), "Invalid value for vertical datum.")
+                            //    };
+
+                            //}
+                            //break;
+                            //}
                         }
                         break;
                     default:
