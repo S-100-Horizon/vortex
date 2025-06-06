@@ -1220,6 +1220,10 @@ namespace S100Framework.Applications
 
                     if (!(client.BuildViewModelClassClient.ComplexTypes.Contains(code) && !client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode)))
                         builder.AppendLine($"\t\t[Category(\"{code}\")]");
+                    if (client.BuildViewModelClassClient.EnumerationTypes.Contains(referenceCode)) {
+                        builder.AppendLine($"\t\t[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]");
+                        builder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({referenceCode}List), typeof({referenceCode}))]");
+                    }
                     if (client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode))
                         builder.AppendLine("\t\t[ExpandableObject]");
                     builder.AppendLine($"\t\tpublic {prefix} {referenceCode} {{");
@@ -1251,11 +1255,11 @@ namespace S100Framework.Applications
                     constructorBuilder.AppendLine($"\t\t\t\tOnPropertyChanged(nameof({referenceCode}));");
                     constructorBuilder.AppendLine($"\t\t\t}};");
 
-                    if (client.BuildViewModelClassClient.EnumerationTypes.Contains(referenceCode)) {
-                        builder.AppendLine($"\t\t[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]");
-                        builder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({referenceCode}List), typeof({referenceCode}))]");
-                    }
                     builder.AppendLine($"\t\t[Category(\"{code}\")]");
+                    if (client.BuildViewModelClassClient.EnumerationTypes.Contains(referenceCode)) {
+                        builder.AppendLine($"\t\t[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]");
+                        builder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({referenceCode}List), typeof({referenceCode}))]");
+                    }                    
                     builder.AppendLine($"\t\tpublic {prefix} {referenceCode} {postfix}");
                     loadBuilder.AppendLine($"\t\t\t{referenceCode}.Clear();");
                     loadBuilder.AppendLine($"\t\t\tif (instance.{referenceCode} is not null) {{");

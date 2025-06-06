@@ -316,6 +316,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private nameUsage? _nameUsage  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(nameUsageList), typeof(nameUsage))]
 		public nameUsage? nameUsage {
 			get {
 				return _nameUsage;
@@ -829,6 +831,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class printSizeViewModel : ViewModelBase {
 		private iSO216? _iSO216  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(iSO216List), typeof(iSO216))]
 		public iSO216? iSO216 {
 			get {
 				return _iSO216;
@@ -975,6 +979,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private digitalSignatureReference _digitalSignatureReference ;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(digitalSignatureReferenceList), typeof(digitalSignatureReference))]
 		public digitalSignatureReference digitalSignatureReference {
 			get {
 				return _digitalSignatureReference;
@@ -988,6 +994,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public digitalSignatureReference[] digitalSignatureReferenceList => [(digitalSignatureReference)8];
 		private digitalSignatureValue? _digitalSignatureValue  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(digitalSignatureValueList), typeof(digitalSignatureValue))]
 		public digitalSignatureValue? digitalSignatureValue {
 			get {
 				return _digitalSignatureValue;
@@ -1051,6 +1059,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private supportFileFormat _supportFileFormat ;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(supportFileFormatList), typeof(supportFileFormat))]
 		public supportFileFormat supportFileFormat {
 			get {
 				return _supportFileFormat;
@@ -1064,6 +1074,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public supportFileFormat[] supportFileFormatList => [(supportFileFormat)1,(supportFileFormat)2,(supportFileFormat)3,(supportFileFormat)4,(supportFileFormat)5,(supportFileFormat)6,(supportFileFormat)7,(supportFileFormat)8,(supportFileFormat)9,(supportFileFormat)100];
 		private supportFilePurpose _supportFilePurpose ;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(supportFilePurposeList), typeof(supportFilePurpose))]
 		public supportFilePurpose supportFilePurpose {
 			get {
 				return _supportFilePurpose;
@@ -1296,6 +1308,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class sourceIndicationViewModel : ViewModelBase {
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -1339,6 +1353,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private sourceType? _sourceType  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -1425,9 +1441,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _telecommunicationIdentifier, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(telecommunicationServiceList), typeof(telecommunicationService))]
 		[Category("telecommunications")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(telecommunicationServiceList), typeof(telecommunicationService))]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -1545,9 +1561,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalOfCycleViewModel : ViewModelBase {
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(typeOfTimeIntervalUnitList), typeof(typeOfTimeIntervalUnit))]
 		[Category("timeIntervalOfCycle")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(typeOfTimeIntervalUnitList), typeof(typeOfTimeIntervalUnit))]
 		public ObservableCollection<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -1938,6 +1954,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private categoryOfProductMapping _categoryOfProductMapping ;
 
 		[Category("ProductMapping")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfProductMappingList), typeof(categoryOfProductMapping))]
 		public categoryOfProductMapping categoryOfProductMapping {
 			get {
 				return _categoryOfProductMapping;
@@ -2439,9 +2457,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _agencyResponsibleForProduction, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList), typeof(catalogueElementClassification))]
 		[Category("CatalogueElement")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList), typeof(catalogueElementClassification))]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -2468,9 +2486,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _classification, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(iMOMaritimeServiceList), typeof(iMOMaritimeService))]
 		[Category("CatalogueElement")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(iMOMaritimeServiceList), typeof(iMOMaritimeService))]
 		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -2536,6 +2554,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private distributionStatus? _distributionStatus  = default;
 
 		[Category("NavigationalProduct")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(distributionStatusList), typeof(distributionStatus))]
 		public distributionStatus? distributionStatus {
 			get {
 				return _distributionStatus;
@@ -2580,9 +2600,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _minimumDisplayScale, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(navigationPurposeList), typeof(navigationPurpose))]
 		[Category("NavigationalProduct")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(navigationPurposeList), typeof(navigationPurpose))]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -2634,6 +2654,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private specificUsage? _specificUsage  = default;
 
 		[Category("NavigationalProduct")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(specificUsageList), typeof(specificUsage))]
 		public specificUsage? specificUsage {
 			get {
 				return _specificUsage;
@@ -2681,6 +2703,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private verticalDatum? _verticalDatum  = default;
 
 		[Category("NavigationalProduct")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(verticalDatumList), typeof(verticalDatum))]
 		public verticalDatum? verticalDatum {
 			get {
 				return _verticalDatum;
@@ -2740,6 +2764,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private typeOfProductFormat _typeOfProductFormat ;
 
 		[Category("ElectronicProduct")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(typeOfProductFormatList), typeof(typeOfProductFormat))]
 		public typeOfProductFormat typeOfProductFormat {
 			get {
 				return _typeOfProductFormat;
@@ -2976,9 +3002,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _agencyResponsibleForProduction, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList), typeof(catalogueElementClassification))]
 		[Category("CatalogueElement")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList), typeof(catalogueElementClassification))]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3005,9 +3031,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _classification, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(iMOMaritimeServiceList), typeof(iMOMaritimeService))]
 		[Category("CatalogueElement")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(iMOMaritimeServiceList), typeof(iMOMaritimeService))]
 		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3073,6 +3099,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private distributionStatus? _distributionStatus  = default;
 
 		[Category("NavigationalProduct")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(distributionStatusList), typeof(distributionStatus))]
 		public distributionStatus? distributionStatus {
 			get {
 				return _distributionStatus;
@@ -3117,9 +3145,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _minimumDisplayScale, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(navigationPurposeList), typeof(navigationPurpose))]
 		[Category("NavigationalProduct")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(navigationPurposeList), typeof(navigationPurpose))]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3171,6 +3199,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private specificUsage? _specificUsage  = default;
 
 		[Category("NavigationalProduct")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(specificUsageList), typeof(specificUsage))]
 		public specificUsage? specificUsage {
 			get {
 				return _specificUsage;
@@ -3218,6 +3248,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private verticalDatum? _verticalDatum  = default;
 
 		[Category("NavigationalProduct")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(verticalDatumList), typeof(verticalDatum))]
 		public verticalDatum? verticalDatum {
 			get {
 				return _verticalDatum;
@@ -3514,9 +3546,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _agencyResponsibleForProduction, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList), typeof(catalogueElementClassification))]
 		[Category("CatalogueElement")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList), typeof(catalogueElementClassification))]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3543,9 +3575,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _classification, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(iMOMaritimeServiceList), typeof(iMOMaritimeService))]
 		[Category("CatalogueElement")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(iMOMaritimeServiceList), typeof(iMOMaritimeService))]
 		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3629,6 +3661,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private serviceStatus? _serviceStatus  = default;
 
 		[Category("S100Service")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(serviceStatusList), typeof(serviceStatus))]
 		public serviceStatus? serviceStatus {
 			get {
 				return _serviceStatus;
@@ -3643,6 +3677,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private typeOfProductFormat _typeOfProductFormat ;
 
 		[Category("S100Service")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(typeOfProductFormatList), typeof(typeOfProductFormat))]
 		public typeOfProductFormat typeOfProductFormat {
 			get {
 				return _typeOfProductFormat;

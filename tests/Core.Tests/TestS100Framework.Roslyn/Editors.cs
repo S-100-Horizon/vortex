@@ -1,4 +1,9 @@
-﻿using System.Windows;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Reflection;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Xceed.Wpf.Toolkit;
@@ -7,36 +12,51 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
 namespace S100Framework.WPF.Editors
 {
-    public sealed class TestEnumCheckComboEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.EnumCheckComboBoxEditor
+    public class EnumComboBoxEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
+        public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
+            var checkComboBox = new ComboBox {
+                Name = $"_comboBox{Guid.NewGuid():N}",
+                IsEditable = false,
+                IsDropDownOpen = false,
+            };
 
+            var attribute = (S100Framework.DomainModel.EnumerationAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.EnumerationAttribute), true)[0];
+
+            var bindingItemsSourceProperty = new Binding(attribute.PropertyName) { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
+            BindingOperations.SetBinding(checkComboBox, CheckComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            BindingOperations.SetBinding(checkComboBox, CheckComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+
+            var value = checkComboBox.SelectedValue;
+
+            //if (!string.IsNullOrEmpty(viewModel.RefId)) {
+            //    checkComboBox.SelectedValue = viewModel.RefId;
+            //}
+
+            return checkComboBox;
+        }
     }
 
-    public class EnumArrayEditor : ITypeEditor
+    public class EnumCollectionEditor : ITypeEditor
     {
+        private IList? _collection;
+        private Type? _enumType;
+
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+            // Get the underlying collection and enum type
+            _collection = (IList)propertyItem.Value;
+            _enumType = GetEnumType(propertyItem.PropertyType);
 
             // Create a stack panel to hold our controls
             var stackPanel = new StackPanel { Orientation = Orientation.Vertical };
 
-            var attribute = (S100Framework.DomainModel.EnumerationAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.EnumerationAttribute), true)[0];
-
-            // Get the enum type from the property
-            //var enumType = propertyItem.PropertyType.GetElementType();
-
             // Create a combo box for selecting new values
             var comboBox = new ComboBox {
-                Name = $"_comboBox{Guid.NewGuid():N}",
-                //ItemsSource = Enum.GetValues(enumType).Cast<Enum>(),
+                ItemsSource = Enum.GetValues(_enumType).Cast<object>(),
                 Margin = new Thickness(0, 0, 0, 5)
             };
-
-            var bindingItemsSourceProperty = new Binding(attribute.PropertyName) { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
-            BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
-
-            //var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
-            //BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
-
 
             // Create a button to add the selected value
             var addButton = new Button {
@@ -47,32 +67,24 @@ namespace S100Framework.WPF.Editors
             // Create a list box to display current values
             var listBox = new ListBox();
 
-
-            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
-            BindingOperations.SetBinding(listBox, ListBox.ItemsSourceProperty, bindingSelectedItemProperty);
-
-            // Initialize with current values if they exist
-            //if (propertyItem.Value is Array currentArray) {
-            //    foreach (var item in currentArray) {
-            //        listBox.Items.Add(item);
-            //    }
-            //}
-
-
+            // Initialize with current values
+            foreach (var item in _collection) {
+                listBox.Items.Add(item);
+            }
 
             // Handle add button click
             addButton.Click += (sender, args) => {
                 if (comboBox.SelectedItem != null) {
+                    _collection.Add(comboBox.SelectedItem);
                     listBox.Items.Add(comboBox.SelectedItem);
-                    //UpdatePropertyValue(propertyItem, listBox);
                 }
             };
 
             // Handle item removal
             listBox.KeyDown += (sender, args) => {
                 if (args.Key == System.Windows.Input.Key.Delete && listBox.SelectedItem != null) {
+                    _collection.Remove(listBox.SelectedItem);
                     listBox.Items.Remove(listBox.SelectedItem);
-                    UpdatePropertyValue(propertyItem, listBox);
                 }
             };
 
@@ -84,20 +96,19 @@ namespace S100Framework.WPF.Editors
             return stackPanel;
         }
 
-        private void UpdatePropertyValue(PropertyItem propertyItem, ListBox listBox) {
-            var attribute = (S100Framework.DomainModel.EnumerationAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.EnumerationAttribute), true)[0];
-
-            // Convert the ListBox items back to an array
-            var enumType = attribute.EnumType!;// propertyItem.PropertyType.GetElementType();
-            var array = Array.CreateInstance(enumType, listBox.Items.Count);
-
-            for (int i = 0; i < listBox.Items.Count; i++) {
-                array.SetValue(listBox.Items[i], i);
+        private Type GetEnumType(Type collectionType) {
+            // Handle ObservableCollection<T>
+            if (collectionType.IsGenericType &&
+                collectionType.GetGenericTypeDefinition() == typeof(ObservableCollection<>)) {
+                return collectionType.GetGenericArguments()[0];
             }
 
+            // Handle arrays
+            if (collectionType.IsArray) {
+                return collectionType.GetElementType()!;
+            }
 
-
-            propertyItem.Value = array;
+            throw new ArgumentException("Unsupported collection type");
         }
     }
 

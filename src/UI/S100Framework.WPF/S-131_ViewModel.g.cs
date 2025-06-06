@@ -145,6 +145,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class bearingInformationViewModel : ViewModelBase {
 		private cardinalDirection? _cardinalDirection  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(cardinalDirectionList), typeof(cardinalDirection))]
 		public cardinalDirection? cardinalDirection {
 			get {
 				return _cardinalDirection;
@@ -296,6 +298,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private condition? _condition  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(conditionList), typeof(condition))]
 		public condition? condition {
 			get {
 				return _condition;
@@ -476,6 +480,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class depthsDescriptionViewModel : ViewModelBase {
 		private categoryOfDepthsDescription _categoryOfDepthsDescription ;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfDepthsDescriptionList), typeof(categoryOfDepthsDescription))]
 		public categoryOfDepthsDescription categoryOfDepthsDescription {
 			get {
 				return _categoryOfDepthsDescription;
@@ -1411,6 +1417,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private onlineFunction? _onlineFunction  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(onlineFunctionList), typeof(onlineFunction))]
 		public onlineFunction? onlineFunction {
 			get {
 				return _onlineFunction;
@@ -1654,6 +1662,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class scheduleByDayOfWeekViewModel : ViewModelBase {
 		private categoryOfSchedule? _categoryOfSchedule  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfScheduleList), typeof(categoryOfSchedule))]
 		public categoryOfSchedule? categoryOfSchedule {
 			get {
 				return _categoryOfSchedule;
@@ -1840,6 +1850,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class telecommunicationsViewModel : ViewModelBase {
 		private categoryOfCommunicationPreference? _categoryOfCommunicationPreference  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfCommunicationPreferenceList), typeof(categoryOfCommunicationPreference))]
 		public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
 			get {
 				return _categoryOfCommunicationPreference;
@@ -1881,9 +1893,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _contactInstructions, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(telecommunicationServiceList), typeof(telecommunicationService))]
 		[Category("telecommunications")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(telecommunicationServiceList), typeof(telecommunicationService))]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -1958,6 +1970,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class textContentViewModel : ViewModelBase {
 		private categoryOfText? _categoryOfText  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfTextList), typeof(categoryOfText))]
 		public categoryOfText? categoryOfText {
 			get {
 				return _categoryOfText;
@@ -1995,6 +2009,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private sourceType? _sourceType  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -2072,9 +2088,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase {
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(dayOfWeekList), typeof(dayOfWeek))]
 		[Category("timeIntervalsByDayOfWeek")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(dayOfWeekList), typeof(dayOfWeek))]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -2247,6 +2263,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class vesselsMeasurementsViewModel : ViewModelBase {
 		private comparisonOperator _comparisonOperator ;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(comparisonOperatorList), typeof(comparisonOperator))]
 		public comparisonOperator comparisonOperator {
 			get {
 				return _comparisonOperator;
@@ -2260,6 +2278,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public comparisonOperator[] comparisonOperatorList => [(comparisonOperator)1,(comparisonOperator)2,(comparisonOperator)3,(comparisonOperator)4,(comparisonOperator)5,(comparisonOperator)6];
 		private vesselsCharacteristics _vesselsCharacteristics ;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsList), typeof(vesselsCharacteristics))]
 		public vesselsCharacteristics vesselsCharacteristics {
 			get {
 				return _vesselsCharacteristics;
@@ -2283,6 +2303,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private vesselsCharacteristicsUnit _vesselsCharacteristicsUnit ;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsUnitList), typeof(vesselsCharacteristicsUnit))]
 		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {
 			get {
 				return _vesselsCharacteristicsUnit;
@@ -2345,6 +2367,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private dynamicResource? _dynamicResource  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(dynamicResourceList), typeof(dynamicResource))]
 		public dynamicResource? dynamicResource {
 			get {
 				return _dynamicResource;
@@ -2664,6 +2688,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private membership _membership ;
 
 		[Category("InclusionType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(membershipList), typeof(membership))]
 		public membership membership {
 			get {
 				return _membership;
@@ -2707,6 +2733,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private categoryOfRelationship _categoryOfRelationship ;
 
 		[Category("PermissionType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfRelationshipList), typeof(categoryOfRelationship))]
 		public categoryOfRelationship categoryOfRelationship {
 			get {
 				return _categoryOfRelationship;
@@ -3059,6 +3087,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -3093,16 +3123,16 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _inBallast, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfCargoList), typeof(categoryOfCargo))]
 		[Category("Applicability")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfCargoList), typeof(categoryOfCargo))]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)2,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)10,(categoryOfCargo)11,(categoryOfCargo)12,(categoryOfCargo)13,(categoryOfCargo)14,(categoryOfCargo)15];
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfDangerousOrHazardousCargoList), typeof(categoryOfDangerousOrHazardousCargo))]
 		[Category("Applicability")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfDangerousOrHazardousCargoList), typeof(categoryOfDangerousOrHazardousCargo))]
 		public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3124,6 +3154,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private categoryOfVesselRegistry? _categoryOfVesselRegistry  = default;
 
 		[Category("Applicability")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfVesselRegistryList), typeof(categoryOfVesselRegistry))]
 		public categoryOfVesselRegistry? categoryOfVesselRegistry {
 			get {
 				return _categoryOfVesselRegistry;
@@ -3138,6 +3170,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private logicalConnectives? _logicalConnectives  = default;
 
 		[Category("Applicability")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(logicalConnectivesList), typeof(logicalConnectives))]
 		public logicalConnectives? logicalConnectives {
 			get {
 				return _logicalConnectives;
@@ -3340,6 +3374,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -3366,6 +3402,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private categoryOfAuthority _categoryOfAuthority ;
 
 		[Category("Authority")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
 		public categoryOfAuthority categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -3505,6 +3543,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -3528,37 +3568,37 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(firefightingServiceList), typeof(firefightingService))]
 		[Category("AvailablePortServices")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(firefightingServiceList), typeof(firefightingService))]
 		public ObservableCollection<firefightingService> firefightingService  { get; set; } = new ();
 
 		[Browsable(false)]
 		public firefightingService[] firefightingServiceList => [(firefightingService)1,(firefightingService)2,(firefightingService)3];
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(medicalServiceList), typeof(medicalService))]
 		[Category("AvailablePortServices")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(medicalServiceList), typeof(medicalService))]
 		public ObservableCollection<medicalService> medicalService  { get; set; } = new ();
 
 		[Browsable(false)]
 		public medicalService[] medicalServiceList => [(medicalService)1,(medicalService)2,(medicalService)3,(medicalService)4,(medicalService)5];
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(repairServiceList), typeof(repairService))]
 		[Category("AvailablePortServices")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(repairServiceList), typeof(repairService))]
 		public ObservableCollection<repairService> repairService  { get; set; } = new ();
 
 		[Browsable(false)]
 		public repairService[] repairServiceList => [(repairService)1,(repairService)2,(repairService)3,(repairService)4,(repairService)5,(repairService)6,(repairService)7,(repairService)8,(repairService)9,(repairService)10];
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(technicalPortServiceList), typeof(technicalPortService))]
 		[Category("AvailablePortServices")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(technicalPortServiceList), typeof(technicalPortService))]
 		public ObservableCollection<technicalPortService> technicalPortService  { get; set; } = new ();
 
 		[Browsable(false)]
 		public technicalPortService[] technicalPortServiceList => [(technicalPortService)1,(technicalPortService)2,(technicalPortService)3,(technicalPortService)4];
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(shipSanitationControlList), typeof(shipSanitationControl))]
 		[Category("AvailablePortServices")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(shipSanitationControlList), typeof(shipSanitationControl))]
 		public ObservableCollection<shipSanitationControl> shipSanitationControl  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3568,16 +3608,16 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Browsable(false)]
 		public transportConnection[] transportConnectionList =>  CodeList.transportConnections.ToArray();
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(berthingAssistanceList), typeof(berthingAssistance))]
 		[Category("AvailablePortServices")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(berthingAssistanceList), typeof(berthingAssistance))]
 		public ObservableCollection<berthingAssistance> berthingAssistance  { get; set; } = new ();
 
 		[Browsable(false)]
 		public berthingAssistance[] berthingAssistanceList => [(berthingAssistance)1,(berthingAssistance)2,(berthingAssistance)3,(berthingAssistance)4,(berthingAssistance)5,(berthingAssistance)6];
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(cargoServiceList), typeof(cargoService))]
 		[Category("AvailablePortServices")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(cargoServiceList), typeof(cargoService))]
 		public ObservableCollection<cargoService> cargoService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3587,16 +3627,16 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Browsable(false)]
 		public securitySafetyEmergencyService[] securitySafetyEmergencyServiceList =>  CodeList.securitySafetyEmergencyServices.ToArray();
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(wasteDisposalServiceList), typeof(wasteDisposalService))]
 		[Category("AvailablePortServices")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(wasteDisposalServiceList), typeof(wasteDisposalService))]
 		public ObservableCollection<wasteDisposalService> wasteDisposalService  { get; set; } = new ();
 
 		[Browsable(false)]
 		public wasteDisposalService[] wasteDisposalServiceList => [(wasteDisposalService)1,(wasteDisposalService)2,(wasteDisposalService)3,(wasteDisposalService)4,(wasteDisposalService)5,(wasteDisposalService)6,(wasteDisposalService)7,(wasteDisposalService)8,(wasteDisposalService)9,(wasteDisposalService)10,(wasteDisposalService)11,(wasteDisposalService)12,(wasteDisposalService)13,(wasteDisposalService)14,(wasteDisposalService)15,(wasteDisposalService)16,(wasteDisposalService)17,(wasteDisposalService)18,(wasteDisposalService)19,(wasteDisposalService)20,(wasteDisposalService)21,(wasteDisposalService)22,(wasteDisposalService)23,(wasteDisposalService)24];
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(supplyServiceList), typeof(supplyService))]
 		[Category("AvailablePortServices")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(supplyServiceList), typeof(supplyService))]
 		public ObservableCollection<supplyService> supplyService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3844,6 +3884,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -3892,6 +3934,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private categoryOfCommunicationPreference? _categoryOfCommunicationPreference  = default;
 
 		[Category("ContactDetails")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfCommunicationPreferenceList), typeof(categoryOfCommunicationPreference))]
 		public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
 			get {
 				return _categoryOfCommunicationPreference;
@@ -4131,6 +4175,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -4387,6 +4433,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -4413,6 +4461,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -4559,6 +4609,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -4725,6 +4777,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -4751,6 +4805,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -4897,6 +4953,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -4923,6 +4981,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -5069,6 +5129,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -5095,6 +5157,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -5241,6 +5305,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -5366,6 +5432,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private qualityOfHorizontalMeasurement? _qualityOfHorizontalMeasurement  = default;
 
 		[Category("SpatialQuality")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(qualityOfHorizontalMeasurementList), typeof(qualityOfHorizontalMeasurement))]
 		public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {
 			get {
 				return _qualityOfHorizontalMeasurement;
@@ -5478,6 +5546,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -5665,6 +5735,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -5731,6 +5803,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private iSPSLevel? _iSPSLevel  = default;
 
 		[Category("AnchorageArea")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
 		public iSPSLevel? iSPSLevel {
 			get {
 				return _iSPSLevel;
@@ -5919,6 +5993,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -6016,6 +6092,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private categoryOfBerthLocation? _categoryOfBerthLocation  = default;
 
 		[Category("Berth")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfBerthLocationList), typeof(categoryOfBerthLocation))]
 		public categoryOfBerthLocation? categoryOfBerthLocation {
 			get {
 				return _categoryOfBerthLocation;
@@ -6080,6 +6158,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private methodOfSecuring? _methodOfSecuring  = default;
 
 		[Category("Berth")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(methodOfSecuringList), typeof(methodOfSecuring))]
 		public methodOfSecuring? methodOfSecuring {
 			get {
 				return _methodOfSecuring;
@@ -6344,6 +6424,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -6651,6 +6733,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -6717,6 +6801,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private iSPSLevel? _iSPSLevel  = default;
 
 		[Category("DockArea")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
 		public iSPSLevel? iSPSLevel {
 			get {
 				return _iSPSLevel;
@@ -6905,6 +6991,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -7120,6 +7208,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -7186,6 +7276,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private iSPSLevel? _iSPSLevel  = default;
 
 		[Category("DumpingGround")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
 		public iSPSLevel? iSPSLevel {
 			get {
 				return _iSPSLevel;
@@ -7374,6 +7466,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -7589,6 +7683,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -7804,6 +7900,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -7868,6 +7966,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private iSPSLevel? _iSPSLevel  = default;
 
 		[Category("HarbourAreaAdministrative")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
 		public iSPSLevel? iSPSLevel {
 			get {
 				return _iSPSLevel;
@@ -7879,9 +7979,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Browsable(false)]
 		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList), typeof(categoryOfHarbourFacility))]
 		[Category("HarbourAreaAdministrative")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList), typeof(categoryOfHarbourFacility))]
 		public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -8085,6 +8185,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -8116,6 +8218,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private categoryOfPortSection? _categoryOfPortSection  = default;
 
 		[Category("HarbourAreaSection")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfPortSectionList), typeof(categoryOfPortSection))]
 		public categoryOfPortSection? categoryOfPortSection {
 			get {
 				return _categoryOfPortSection;
@@ -8127,9 +8231,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Browsable(false)]
 		public categoryOfPortSection[] categoryOfPortSectionList => [(categoryOfPortSection)1,(categoryOfPortSection)3,(categoryOfPortSection)8,(categoryOfPortSection)9,(categoryOfPortSection)11,(categoryOfPortSection)12];
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList), typeof(categoryOfHarbourFacility))]
 		[Category("HarbourAreaSection")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList), typeof(categoryOfHarbourFacility))]
 		public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -8137,6 +8241,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private iSPSLevel? _iSPSLevel  = default;
 
 		[Category("HarbourAreaSection")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
 		public iSPSLevel? iSPSLevel {
 			get {
 				return _iSPSLevel;
@@ -8341,6 +8447,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -8407,6 +8515,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private iSPSLevel? _iSPSLevel  = default;
 
 		[Category("HarbourBasin")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
 		public iSPSLevel? iSPSLevel {
 			get {
 				return _iSPSLevel;
@@ -8595,6 +8705,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -8634,9 +8746,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList), typeof(categoryOfHarbourFacility))]
 		[Category("HarbourFacility")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList), typeof(categoryOfHarbourFacility))]
 		public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -8813,6 +8925,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -8844,6 +8958,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private categoryOfMooringWarpingFacility _categoryOfMooringWarpingFacility ;
 
 		[Category("MooringWarpingFacility")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfMooringWarpingFacilityList), typeof(categoryOfMooringWarpingFacility))]
 		public categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility {
 			get {
 				return _categoryOfMooringWarpingFacility;
@@ -9073,6 +9189,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -9338,6 +9456,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -9404,6 +9524,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private iSPSLevel? _iSPSLevel  = default;
 
 		[Category("PilotBoardingPlace")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
 		public iSPSLevel? iSPSLevel {
 			get {
 				return _iSPSLevel;
@@ -9592,6 +9714,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -9658,6 +9782,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private iSPSLevel? _iSPSLevel  = default;
 
 		[Category("SeaplaneLandingArea")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
 		public iSPSLevel? iSPSLevel {
 			get {
 				return _iSPSLevel;
@@ -9846,6 +9972,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -9888,6 +10016,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private categoryOfHarbourFacility? _categoryOfHarbourFacility  = default;
 
 		[Category("Terminal")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList), typeof(categoryOfHarbourFacility))]
 		public categoryOfHarbourFacility? categoryOfHarbourFacility {
 			get {
 				return _categoryOfHarbourFacility;
@@ -9899,16 +10029,16 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Browsable(false)]
 		public categoryOfHarbourFacility[] categoryOfHarbourFacilityList => [(categoryOfHarbourFacility)1,(categoryOfHarbourFacility)3,(categoryOfHarbourFacility)5,(categoryOfHarbourFacility)7,(categoryOfHarbourFacility)8,(categoryOfHarbourFacility)10,(categoryOfHarbourFacility)11];
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfCargoList), typeof(categoryOfCargo))]
 		[Category("Terminal")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfCargoList), typeof(categoryOfCargo))]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)2,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)10,(categoryOfCargo)11,(categoryOfCargo)12,(categoryOfCargo)13,(categoryOfCargo)14,(categoryOfCargo)15];
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(productList), typeof(product))]
 		[Category("Terminal")]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[DomainModel.EnumerationAttribute(nameof(productList), typeof(product))]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -10140,6 +10270,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -10206,6 +10338,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private iSPSLevel? _iSPSLevel  = default;
 
 		[Category("TurningBasin")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
 		public iSPSLevel? iSPSLevel {
 			get {
 				return _iSPSLevel;
@@ -10394,6 +10528,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -10425,6 +10561,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private categoryOfPortSection _categoryOfPortSection ;
 
 		[Category("WaterwayArea")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfPortSectionList), typeof(categoryOfPortSection))]
 		public categoryOfPortSection categoryOfPortSection {
 			get {
 				return _categoryOfPortSection;
@@ -10652,6 +10790,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private categoryOfTemporalVariation? _categoryOfTemporalVariation  = default;
 
 		[Category("QualityOfNonBathymetricData")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfTemporalVariationList), typeof(categoryOfTemporalVariation))]
 		public categoryOfTemporalVariation? categoryOfTemporalVariation {
 			get {
 				return _categoryOfTemporalVariation;
@@ -10795,6 +10935,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private verticalDatum _verticalDatum ;
 
 		[Category("SoundingDatum")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(verticalDatumList), typeof(verticalDatum))]
 		public verticalDatum verticalDatum {
 			get {
 				return _verticalDatum;
@@ -10856,6 +10998,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private verticalDatum _verticalDatum ;
 
 		[Category("VerticalDatumOfData")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(verticalDatumList), typeof(verticalDatum))]
 		public verticalDatum verticalDatum {
 			get {
 				return _verticalDatum;
@@ -10950,6 +11094,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private textType? _textType  = default;
 
 		[Category("TextPlacement")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(textTypeList), typeof(textType))]
 		public textType? textType {
 			get {
 				return _textType;

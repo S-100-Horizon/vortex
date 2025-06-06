@@ -577,6 +577,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private warningType _warningType ;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(warningTypeList), typeof(warningType))]
 		public warningType warningType {
 			get {
 				return _warningType;
@@ -821,6 +823,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private nameUsage? _nameUsage  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(nameUsageList), typeof(nameUsage))]
 		public nameUsage? nameUsage {
 			get {
 				return _nameUsage;
@@ -995,6 +999,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private referenceCategory _referenceCategory ;
 
 		[Category("References")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(referenceCategoryList), typeof(referenceCategory))]
 		public referenceCategory referenceCategory {
 			get {
 				return _referenceCategory;
@@ -1210,6 +1216,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private restriction? _restriction  = default;
 
 		[Category("NavwarnPart")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(restrictionList), typeof(restriction))]
 		public restriction? restriction {
 			get {
 				return _restriction;
