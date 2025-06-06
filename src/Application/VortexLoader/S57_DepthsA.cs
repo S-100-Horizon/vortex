@@ -2,11 +2,14 @@
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System.Text.RegularExpressions;
 
 namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
+        private static readonly Regex _regexTruncatedDateValidation = new(@"^(\d{4}|-{4})(\d{2}|-{2})(\d{2}|-{2})$");
+
         private static void S57_DepthsA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DepthsA";
 
@@ -17,7 +20,7 @@ namespace S100Framework.Applications
             using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = s.Search(filter, true);
-            
+
             var recordCount = 0;
             var convertedCount = 0;
 
@@ -29,7 +32,7 @@ namespace S100Framework.Applications
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
                 var subtype = current.FCSUBTYPE ?? default;
-                
+
                 var drval1 = current.DRVAL1 ?? default;
                 var drval2 = current.DRVAL2 ?? default(decimal?);
                 var sordat = current.SORDAT ?? default;
@@ -53,7 +56,7 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -67,11 +70,11 @@ namespace S100Framework.Applications
                                 depthRangeMaximumValue = drval2,
                             };
 
-                            
+
 
                             if (!string.IsNullOrEmpty(sordat)) {
-                                DateHelper.TryConvertToDateOnly(sordat, out var date);
-                                instance.dredgedDate = sordat;
+                                if (_regexTruncatedDateValidation.IsMatch(sordat))
+                                    instance.dredgedDate = sordat;
                             }
 
                             if (current.RESTRN != default) {
@@ -109,8 +112,8 @@ namespace S100Framework.Applications
                             //TODO: 	verticalUncertainty
 
                             //TODO: maximumPermittedDraught - Not converted
-                            
-                            
+
+
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
@@ -120,7 +123,7 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -143,7 +146,7 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -159,7 +162,7 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
