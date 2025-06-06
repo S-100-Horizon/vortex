@@ -975,11 +975,9 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
-			[Required()]
-			public DateOnly dateEnd {get;set;}
+			public String dateEnd {get;set;}
 
-			[Required()]
-			public DateOnly dateStart {get;set;}
+			public String dateStart {get;set;}
 		}
 
 		[System.Serializable()]

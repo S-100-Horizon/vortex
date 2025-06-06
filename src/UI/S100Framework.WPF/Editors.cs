@@ -1,8 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,10 +15,51 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
 namespace S100Framework.WPF.Editors
 {
+    public class S100TruncatedDateEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    {
+        private static readonly Regex _regexValidation = new(@"^(\d{4}|-{4})(\d{2}|-{2})(\d{2}|-{2})$");
+
+        private static readonly Regex _regexInput = new(@"^(\d|-{1,8})$");
+
+        public string? Value { get; set; } = default;
+
+        public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
+            var control = new WatermarkTextBox {
+                Name = $"_textBox{Guid.NewGuid():N}",
+                MaxLength = 8,
+                KeepWatermarkOnGotFocus = true,
+                Watermark = "yyyyMMdd",
+            };
+            control.PreviewTextInput += this.Control_PreviewTextInput;
+
+            Value = $"{propertyItem.Value:yyyMMdd}";
+
+            var bindingSelectedItemProperty = new Binding(nameof(Value)) { Source = this, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            bindingSelectedItemProperty.ValidationRules.Add(new PartialDateRule());
+            BindingOperations.SetBinding(control, TextBox.TextProperty, bindingSelectedItemProperty);
+
+            return control;
+        }
+
+        private void Control_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e) {
+            if (string.IsNullOrEmpty(e.Text)) return;
+            e.Handled = !_regexInput.IsMatch(e.Text);           
+        }
+
+        public class PartialDateRule : ValidationRule
+        {
+            public override ValidationResult Validate(object value, CultureInfo cultureInfo) {
+                var s = (value as string) ?? string.Empty;
+                return _regexValidation.IsMatch(s) ? ValidationResult.ValidResult
+                    : new ValidationResult(false, "Must be yyyyMMdd, but yyyy or MM may be all “-”.");
+            }
+        }
+    }
+
     public class EnumComboBoxEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
-            var checkComboBox = new ComboBox {
+            var control = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
                 IsEditable = false,
                 IsDropDownOpen = false,
@@ -24,18 +68,18 @@ namespace S100Framework.WPF.Editors
             var attribute = (S100Framework.DomainModel.EnumerationAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.EnumerationAttribute), true)[0];
 
             var bindingItemsSourceProperty = new Binding(attribute.PropertyName) { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
-            BindingOperations.SetBinding(checkComboBox, CheckComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+            BindingOperations.SetBinding(control, CheckComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
-            BindingOperations.SetBinding(checkComboBox, CheckComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+            BindingOperations.SetBinding(control, CheckComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            var value = checkComboBox.SelectedValue;
+            var value = control.SelectedValue;
 
             //if (!string.IsNullOrEmpty(viewModel.RefId)) {
             //    checkComboBox.SelectedValue = viewModel.RefId;
             //}
 
-            return checkComboBox;
+            return control;
         }
     }
 
@@ -73,8 +117,7 @@ namespace S100Framework.WPF.Editors
             }
 
             // Handle add button click
-            addButton.Click += (sender, args) =>
-            {
+            addButton.Click += (sender, args) => {
                 if (comboBox.SelectedItem != null) {
                     _collection.Add(comboBox.SelectedItem);
                     listBox.Items.Add(comboBox.SelectedItem);
@@ -82,8 +125,7 @@ namespace S100Framework.WPF.Editors
             };
 
             // Handle item removal
-            listBox.KeyDown += (sender, args) =>
-            {
+            listBox.KeyDown += (sender, args) => {
                 if (args.Key == System.Windows.Input.Key.Delete && listBox.SelectedItem != null) {
                     _collection.Remove(listBox.SelectedItem);
                     listBox.Items.Remove(listBox.SelectedItem);
@@ -117,7 +159,7 @@ namespace S100Framework.WPF.Editors
     public sealed class EnumCheckComboEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
-            var checkComboBox = new CheckComboBox {
+            var control = new CheckComboBox {
                 Name = $"_checkComboBox{Guid.NewGuid():N}",
                 IsEditable = false,
                 IsSelectAllActive = true,
@@ -127,25 +169,25 @@ namespace S100Framework.WPF.Editors
             var attribute = (S100Framework.DomainModel.EnumerationAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.EnumerationAttribute), true)[0];
 
             var bindingItemsSourceProperty = new Binding(attribute.PropertyName) { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
-            BindingOperations.SetBinding(checkComboBox, CheckComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+            BindingOperations.SetBinding(control, CheckComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
-            BindingOperations.SetBinding(checkComboBox, CheckComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+            BindingOperations.SetBinding(control, CheckComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            var value = checkComboBox.SelectedValue;
+            var value = control.SelectedValue;
 
             //if (!string.IsNullOrEmpty(viewModel.RefId)) {
             //    checkComboBox.SelectedValue = viewModel.RefId;
             //}
 
-            return checkComboBox;
+            return control;
         }
     }
 
     public sealed class CodeListComboEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
-            var comboBox = new ComboBox {
+            var control = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
                 DisplayMemberPath = "label",
             };
@@ -153,19 +195,19 @@ namespace S100Framework.WPF.Editors
             var attribute = (S100Framework.DomainModel.CodeListAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.CodeListAttribute), true)[0];
 
             var bindingItemsSourceProperty = new Binding(attribute.PropertyName) { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
-            BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+            BindingOperations.SetBinding(control, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
-            BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+            BindingOperations.SetBinding(control, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            return comboBox;
+            return control;
         }
     }
 
     public sealed class CodeListCheckComboEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
-            var checkComboBox = new CheckComboBox {
+            var control = new CheckComboBox {
                 Name = $"_checkComboBox{Guid.NewGuid():N}",
                 IsEditable = false,
                 IsSelectAllActive = true,
@@ -176,12 +218,12 @@ namespace S100Framework.WPF.Editors
             var attribute = (S100Framework.DomainModel.CodeListAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.CodeListAttribute), true)[0];
 
             var bindingItemsSourceProperty = new Binding(attribute.PropertyName) { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
-            BindingOperations.SetBinding(checkComboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+            BindingOperations.SetBinding(control, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
-            BindingOperations.SetBinding(checkComboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+            BindingOperations.SetBinding(control, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            return checkComboBox;
+            return control;
         }
     }
 

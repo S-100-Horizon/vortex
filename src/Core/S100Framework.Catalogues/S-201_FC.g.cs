@@ -4129,9 +4129,9 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class fixedDateRange {
-			public DateOnly? dateEnd {get;set;} = default;
+			public String? dateEnd {get;set;} = default;
 
-			public DateOnly? dateStart {get;set;} = default;
+			public String? dateStart {get;set;} = default;
 		}
 
 		[System.Serializable()]
@@ -4155,11 +4155,9 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
-			[Required()]
-			public DateOnly dateEnd {get;set;}
+			public String dateEnd {get;set;}
 
-			[Required()]
-			public DateOnly dateStart {get;set;}
+			public String dateStart {get;set;}
 		}
 
 		[System.Serializable()]

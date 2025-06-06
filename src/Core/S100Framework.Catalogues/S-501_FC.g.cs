@@ -4332,9 +4332,9 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class detectionDateRange {
-			public DateOnly? lastDetectionYear {get;set;} = default;
+			public String? lastDetectionYear {get;set;} = default;
 
-			public DateOnly? firstDetectionYear {get;set;} = default;
+			public String? firstDetectionYear {get;set;} = default;
 		}
 
 		[System.Serializable()]
@@ -4370,9 +4370,9 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class fixedDateRange {
-			public DateOnly? dateStart {get;set;} = default;
+			public String? dateStart {get;set;} = default;
 
-			public DateOnly? dateEnd {get;set;} = default;
+			public String? dateEnd {get;set;} = default;
 		}
 
 		[System.Serializable()]
@@ -4403,7 +4403,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? lastSource {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 		}
 
 		[System.Serializable()]
@@ -4429,7 +4429,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? firstSource {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 		}
 
 		[System.Serializable()]
@@ -4586,17 +4586,13 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
-			[Required()]
-			public DateOnly dateStart {get;set;}
+			public String dateStart {get;set;}
 
-			[Required()]
-			public DateOnly dateEnd {get;set;}
+			public String dateEnd {get;set;}
 
-			[Required()]
-			public DateOnly periodicDateEnd {get;set;}
+			public String periodicDateEnd {get;set;}
 
-			[Required()]
-			public DateOnly periodicDateStart {get;set;}
+			public String periodicDateStart {get;set;}
 		}
 
 		[System.Serializable()]
@@ -4751,7 +4747,7 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ReferenceToAPublication : InformationNode, IInformationBindingDefinition {
-			public DateOnly? editionDate {get;set;} = default;
+			public String? editionDate {get;set;} = default;
 
 			public String? editionNumber {get;set;} = default;
 
@@ -4938,7 +4934,7 @@ namespace S100Framework.DomainModel.S501 {
 		public partial class PatrolArea : FeatureNode, IFeatureBindingDefinition {
 			public String? agencyResponsibleForProduction {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public String? nationality {get;set;} = default;
 
@@ -5048,7 +5044,7 @@ namespace S100Framework.DomainModel.S501 {
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public categoryofMarineProtectedArea? categoryofMarineProtectedArea {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public String? agencyResponsibleForProduction {get;set;} = default;
 
@@ -5175,7 +5171,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6])]
 			public categoryOfRoad? categoryOfRoad {get;set;} = default;
@@ -5301,7 +5297,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,5,6,7,16,17,501,503,517,520])]
 			public List<status> status {get;set;} = [];
@@ -5341,7 +5337,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public int? scaleMinimum {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[JsonIgnore]
 			public override string Code => nameof(DiscolouredWater);
@@ -5396,7 +5392,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -5478,7 +5474,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
@@ -5518,7 +5514,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public int? scaleMinimum {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
 
@@ -5622,7 +5618,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public int? scaleMinimum {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([502,504,520])]
 			public List<status> status {get;set;} = [];
@@ -5666,7 +5662,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public int? scaleMinimum {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public String nationality {get;set;} = string.Empty;
 
@@ -5717,7 +5713,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<featureName> featureName {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -5816,7 +5812,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public Boolean? lineTypeGeodesic {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([502,504,520])]
 			public status? status {get;set;} = default;
@@ -5899,7 +5895,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
 
@@ -5968,7 +5964,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
@@ -6056,7 +6052,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			[Required()]
@@ -6249,7 +6245,7 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MaritimeSafetyInformationArea : FeatureNode, IFeatureBindingDefinition {
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
 
@@ -6303,7 +6299,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([2])]
 			public heightLengthUnits? heightLengthUnits {get;set;} = default;
@@ -6355,7 +6351,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public Boolean? displayUncertainties {get;set;} = default;
 
@@ -6391,7 +6387,7 @@ namespace S100Framework.DomainModel.S501 {
 			[EnumerationValue([1,3,9,28])]
 			public List<status> status {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
 
@@ -6439,7 +6435,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public int? scaleMinimum {get;set;} = default;
 
-			public DateOnly? dateDisused {get;set;} = default;
+			public String? dateDisused {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
 
@@ -6509,7 +6505,7 @@ namespace S100Framework.DomainModel.S501 {
 			[EnumerationValue([1,2,4,5,6,7,8,12,14])]
 			public List<status> status {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
@@ -6551,7 +6547,7 @@ namespace S100Framework.DomainModel.S501 {
 			[EnumerationValue([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -6609,7 +6605,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public decimal? height {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1])]
 			public heightLengthUnits? heightLengthUnits {get;set;} = default;
@@ -6769,7 +6765,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public decimal? horizontalLength {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
 
@@ -6825,7 +6821,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<featureName> featureName {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
 
@@ -6893,7 +6889,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? agencyResponsibleForProduction {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public flightLevel? flightLevel {get;set;} = default;
 
@@ -6945,7 +6941,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public firstSourceInformation? firstSourceInformation {get;set;} = default;
 
-			public DateOnly? abandonmentDate {get;set;} = default;
+			public String? abandonmentDate {get;set;} = default;
 
 			public decimal? verticalLength {get;set;} = default;
 
@@ -6994,7 +6990,7 @@ namespace S100Framework.DomainModel.S501 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,14,17,18])]
 			public List<natureOfSurface> natureOfSurface {get;set;} = [];
 
-			public DateOnly? spuddedDate {get;set;} = default;
+			public String? spuddedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,12,13,14,15,16,17,18,19,20,21,22,23,501,502,503,504,506,508,509])]
 			public categoryOfObstruction? categoryOfObstruction {get;set;} = default;
@@ -7002,7 +6998,7 @@ namespace S100Framework.DomainModel.S501 {
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
-			public DateOnly? dateSunk {get;set;} = default;
+			public String? dateSunk {get;set;} = default;
 
 			public decimal? horizontalLength {get;set;} = default;
 
@@ -7015,7 +7011,7 @@ namespace S100Framework.DomainModel.S501 {
 			[EnumerationValue([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([501,502,503,504])]
 			public cardinalPointOrientation? cardinalPointOrientation {get;set;} = default;
@@ -7062,7 +7058,7 @@ namespace S100Framework.DomainModel.S501 {
 			[EnumerationValue([1,5,6,7,8,14,16,17,28])]
 			public List<status> status {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
@@ -7129,7 +7125,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<featureName> featureName {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[JsonIgnore]
 			public override string Code => nameof(FishingFacility);
@@ -7167,7 +7163,7 @@ namespace S100Framework.DomainModel.S501 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,19,20,504,505,506,508,509,510])]
 			public categoryOfRadioStation? categoryOfRadioStation {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public String? callsign {get;set;} = default;
 
@@ -7222,7 +7218,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<information> information {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[JsonIgnore]
 			public override string Code => nameof(TrafficSeparationSchemeCrossing);
@@ -7253,7 +7249,7 @@ namespace S100Framework.DomainModel.S501 {
 		public partial class TrafficSeparationSchemeLanePart : FeatureNode, IFeatureBindingDefinition {
 			public List<information> information {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
@@ -7315,7 +7311,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([2,4,6,8,9,10,12,17,18,19,20,21,22,23,24,27])]
 			public List<restriction> restriction {get;set;} = [];
@@ -7368,7 +7364,7 @@ namespace S100Framework.DomainModel.S501 {
 			[Required()]
 			public categoryOfLateralMark categoryOfLateralMark {get;set;}
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
@@ -7481,7 +7477,7 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SeparationZoneOrLine : FeatureNode, IFeatureBindingDefinition {
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
@@ -7534,7 +7530,7 @@ namespace S100Framework.DomainModel.S501 {
 			[EnumerationValue([502,510])]
 			public bottomFeatureClassification? bottomFeatureClassification {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public decimal? verticalLength {get;set;} = default;
 
@@ -7565,7 +7561,7 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ArchipelagicBaseline : FeatureNode, IFeatureBindingDefinition {
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([502,504])]
 			public status? status {get;set;} = default;
@@ -7656,7 +7652,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<information> information {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
 
@@ -7839,7 +7835,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public decimal? buriedDepth {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
 
@@ -7898,7 +7894,7 @@ namespace S100Framework.DomainModel.S501 {
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public decimal? horizontalLength {get;set;} = default;
 
@@ -7964,7 +7960,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public Boolean? existenceOfRestrictedArea {get;set;} = default;
 
-			public DateOnly? dateSunk {get;set;} = default;
+			public String? dateSunk {get;set;} = default;
 
 			public firstSourceInformation? firstSourceInformation {get;set;} = default;
 
@@ -8061,7 +8057,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? copyrightStatement {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
 
@@ -8177,7 +8173,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public int? scaleMinimum {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
@@ -8337,7 +8333,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
-			public DateOnly? dredgedDate {get;set;} = default;
+			public String? dredgedDate {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
 
@@ -8401,7 +8397,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,3,5])]
 			public List<categoryOfFerry> categoryOfFerry {get;set;} = [];
@@ -8487,7 +8483,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public decimal? height {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[JsonIgnore]
 			public override string Code => nameof(ShorelineConstruction);
@@ -8516,7 +8512,7 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CautionArea : FeatureNode, IFeatureBindingDefinition {
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -8848,7 +8844,7 @@ namespace S100Framework.DomainModel.S501 {
 			[EnumerationValue([1,2,4])]
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -9072,7 +9068,7 @@ namespace S100Framework.DomainModel.S501 {
 			[EnumerationValue([1,3,6,9])]
 			public List<status> status {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
@@ -9340,7 +9336,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
@@ -9376,7 +9372,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<information> information {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
 
@@ -9452,7 +9448,7 @@ namespace S100Framework.DomainModel.S501 {
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
@@ -9526,7 +9522,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public List<information> information {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
 
@@ -9569,7 +9565,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
 
@@ -9626,7 +9622,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
@@ -9733,7 +9729,7 @@ namespace S100Framework.DomainModel.S501 {
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;

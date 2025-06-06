@@ -619,9 +619,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class periodicDateRangeViewModel : ViewModelBase {
-		private DateOnly _dateEnd ;
+		private String _dateEnd ;
 
-		public DateOnly dateEnd {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String dateEnd {
 			get {
 				return _dateEnd;
 			}
@@ -629,9 +630,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _dateEnd, value);
 			}
 		}
-		private DateOnly _dateStart ;
+		private String _dateStart ;
 
-		public DateOnly dateStart {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String dateStart {
 			get {
 				return _dateStart;
 			}
@@ -1442,7 +1444,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("telecommunications")]
-		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(telecommunicationServiceList), typeof(telecommunicationService))]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
 
@@ -1562,7 +1564,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalOfCycleViewModel : ViewModelBase {
 		[Category("timeIntervalOfCycle")]
-		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(typeOfTimeIntervalUnitList), typeof(typeOfTimeIntervalUnit))]
 		public ObservableCollection<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit  { get; set; } = new ();
 
@@ -2458,7 +2460,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList), typeof(catalogueElementClassification))]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
 
@@ -2487,7 +2489,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(iMOMaritimeServiceList), typeof(iMOMaritimeService))]
 		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
 
@@ -2601,7 +2603,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("NavigationalProduct")]
-		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(navigationPurposeList), typeof(navigationPurpose))]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
 
@@ -3003,7 +3005,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList), typeof(catalogueElementClassification))]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
 
@@ -3032,7 +3034,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(iMOMaritimeServiceList), typeof(iMOMaritimeService))]
 		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
 
@@ -3146,7 +3148,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("NavigationalProduct")]
-		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(navigationPurposeList), typeof(navigationPurpose))]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
 
@@ -3547,7 +3549,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList), typeof(catalogueElementClassification))]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
 
@@ -3576,7 +3578,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(iMOMaritimeServiceList), typeof(iMOMaritimeService))]
 		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
 

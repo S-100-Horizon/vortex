@@ -1785,9 +1785,9 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class fixedDateRange {
-			public DateOnly? dateEnd {get;set;} = default;
+			public String? dateEnd {get;set;} = default;
 
-			public DateOnly? dateStart {get;set;} = default;
+			public String? dateStart {get;set;} = default;
 
 			public TimeOnly? timeOfDayEnd {get;set;} = default;
 

@@ -71,7 +71,7 @@ namespace S100Framework.Applications
 
                             if (!string.IsNullOrEmpty(sordat)) {
                                 DateHelper.TryConvertToDateOnly(sordat, out var date);
-                                instance.dredgedDate = date;
+                                instance.dredgedDate = sordat;
                             }
 
                             if (current.RESTRN != default) {

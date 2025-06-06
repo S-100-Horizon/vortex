@@ -150,12 +150,14 @@ namespace VortexConceptApplication
                 },
             };
 
-            var model = new LightAllAround() { };
+            var model = new DredgedArea() {
+                //dredgedDate = new DateOnly(2025, 2, 1)
+            };
 
-            model.colour.Add(S100Framework.DomainModel.S101.colour.Red);
-            model.colour.Add(S100Framework.DomainModel.S101.colour.Green);
+            //model.colour.Add(S100Framework.DomainModel.S101.colour.Red);
+            //model.colour.Add(S100Framework.DomainModel.S101.colour.Green);
 
-            var viewModel = new LightAllAroundViewModel() {
+            var viewModel = new DredgedAreaViewModel() {
                 Name = "S202600",
             }.Load(model);
 

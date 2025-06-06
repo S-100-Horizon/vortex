@@ -2112,9 +2112,9 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class fixedDateRange {
-			public DateOnly? dateStart {get;set;} = default;
+			public String? dateStart {get;set;} = default;
 
-			public DateOnly? dateEnd {get;set;} = default;
+			public String? dateEnd {get;set;} = default;
 		}
 
 		[System.Serializable()]
@@ -2181,11 +2181,9 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
-			[Required()]
-			public DateOnly dateStart {get;set;}
+			public String dateStart {get;set;}
 
-			[Required()]
-			public DateOnly dateEnd {get;set;}
+			public String dateEnd {get;set;}
 		}
 
 		[System.Serializable()]
@@ -2203,10 +2201,9 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class surveyDateRange {
-			public DateOnly? dateStart {get;set;} = default;
+			public String? dateStart {get;set;} = default;
 
-			[Required()]
-			public DateOnly dateEnd {get;set;}
+			public String dateEnd {get;set;}
 		}
 
 		[System.Serializable()]
@@ -2224,7 +2221,7 @@ namespace S100Framework.DomainModel.S131 {
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 		}
 
 		[System.Serializable()]
@@ -2775,7 +2772,7 @@ namespace S100Framework.DomainModel.S131 {
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[JsonIgnore]
 			public override string Code => nameof(InformationType);
@@ -3097,7 +3094,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NonStandardWorkingDay : InformationType {
-			public List<DateOnly> dateFixed {get;set;} = [];
+			public List<String> dateFixed {get;set;} = [];
 
 			public List<String> dateVariable {get;set;} = [];
 
@@ -3241,7 +3238,7 @@ namespace S100Framework.DomainModel.S131 {
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public List<textContent> textContent {get;set;} = [];
 
