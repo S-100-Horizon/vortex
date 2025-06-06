@@ -8,7 +8,6 @@ using ArcGIS.Desktop.Editing;
 using ArcGIS.Desktop.Editing.Attributes;
 using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
-using ArcGIS.Desktop.Internal.Mapping;
 using ArcGIS.Desktop.Mapping;
 using S100Framework.Catalogues;
 using S100Framework.DomainModel;
@@ -322,7 +321,7 @@ namespace VortexProAppModule
                         }
                         return ids;
                     }, TaskCreationOptions.None);
-                },                                               
+                },
             };
         }
 

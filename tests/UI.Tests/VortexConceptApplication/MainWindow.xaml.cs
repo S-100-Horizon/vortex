@@ -3,9 +3,7 @@
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S124;
-using S100Framework.DomainModel.S131.InformationTypes;
 using S100Framework.WPF;
-using S100Framework.WPF.ViewModel;
 using S100Framework.WPF.ViewModel.S101;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -14,7 +12,6 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
@@ -150,7 +147,7 @@ namespace VortexConceptApplication
                         });
                     }
                     return features;
-                },                
+                },
             };
 
             var model = new LightAllAround() { };

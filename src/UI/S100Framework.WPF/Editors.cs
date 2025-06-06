@@ -1,8 +1,4 @@
-﻿using S100Framework.WPF.ViewModel;
-using System.Collections;
-using System.ComponentModel;
-using System.Reflection;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Xceed.Wpf.Toolkit;
@@ -11,14 +7,15 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
 namespace S100Framework.WPF.Editors
 {
-    public sealed class TestEnumCheckComboEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.EnumCheckComboBoxEditor {
+    public sealed class TestEnumCheckComboEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.EnumCheckComboBoxEditor
+    {
 
     }
 
     public class EnumArrayEditor : ITypeEditor
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
-            
+
             // Create a stack panel to hold our controls
             var stackPanel = new StackPanel { Orientation = Orientation.Vertical };
 
@@ -64,17 +61,15 @@ namespace S100Framework.WPF.Editors
 
 
             // Handle add button click
-            addButton.Click += (sender, args) =>
-            {
-                if (comboBox.SelectedItem != null) {                    
+            addButton.Click += (sender, args) => {
+                if (comboBox.SelectedItem != null) {
                     listBox.Items.Add(comboBox.SelectedItem);
                     //UpdatePropertyValue(propertyItem, listBox);
                 }
             };
 
             // Handle item removal
-            listBox.KeyDown += (sender, args) =>
-            {
+            listBox.KeyDown += (sender, args) => {
                 if (args.Key == System.Windows.Input.Key.Delete && listBox.SelectedItem != null) {
                     listBox.Items.Remove(listBox.SelectedItem);
                     UpdatePropertyValue(propertyItem, listBox);
@@ -100,7 +95,7 @@ namespace S100Framework.WPF.Editors
                 array.SetValue(listBox.Items[i], i);
             }
 
-            
+
 
             propertyItem.Value = array;
         }

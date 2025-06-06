@@ -1,8 +1,4 @@
-﻿using S100Framework.WPF.ViewModel;
-using System.Collections;
-using System.ComponentModel;
-using System.Reflection;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Xceed.Wpf.Toolkit;

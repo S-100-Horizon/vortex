@@ -1,7 +1,6 @@
 ﻿#define prop
 //#define propfull
 
-using S100Framework;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -746,7 +745,8 @@ namespace TestS100Framework
             // public static explicit operator T(NullableUnknown<T> value) => value.Value;
         }
 
-        public class UnitTestNullalbe {
+        public class UnitTestNullalbe
+        {
             private readonly ITestOutputHelper _output;
 
             public UnitTestNullalbe(ITestOutputHelper output) {

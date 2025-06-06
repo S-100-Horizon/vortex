@@ -1,5 +1,4 @@
 ﻿using S100Framework.DomainModel;
-using S100Framework.WPF.Editors;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;

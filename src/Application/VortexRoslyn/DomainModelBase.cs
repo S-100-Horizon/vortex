@@ -1,9 +1,3 @@
-using System;
-using System.Linq;
-using System.ComponentModel;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-
 namespace S100Framework.DomainModel
 {
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]

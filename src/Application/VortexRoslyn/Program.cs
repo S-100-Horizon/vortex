@@ -1,6 +1,4 @@
 ﻿using CommandLine;
-using Microsoft.Extensions.Options;
-using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
@@ -150,7 +148,7 @@ namespace S100Framework.Applications
                                 dictionary.Add(role, (lower, upper));
                             }
                             else {
-                                if(!dictionary[role].Equals((lower, upper))) {
+                                if (!dictionary[role].Equals((lower, upper))) {
                                     Logger.Current.Error("role defined with different multiplicity ({role})", role);
                                     result = false;
                                 }
@@ -200,7 +198,7 @@ namespace S100Framework.Applications
                                 if (!dictionary[role].Equals((lower, upper))) {
                                     Logger.Current.Error("role defined with different multiplicity ({role})", role);
                                     result = false;
-                                }                                
+                                }
                             }
                         }
 
