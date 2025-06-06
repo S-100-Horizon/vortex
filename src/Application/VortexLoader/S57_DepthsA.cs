@@ -7,9 +7,7 @@ using System.Text.RegularExpressions;
 namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
-    {
-        private static readonly Regex _regexTruncatedDateValidation = new(@"^(\d{4}|-{4})(\d{2}|-{2})(\d{2}|-{2})$");
-
+    {        
         private static void S57_DepthsA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DepthsA";
 
@@ -73,7 +71,7 @@ namespace S100Framework.Applications
 
 
                             if (!string.IsNullOrEmpty(sordat)) {
-                                if (_regexTruncatedDateValidation.IsMatch(sordat))
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(sordat))
                                     instance.dredgedDate = sordat;
                             }
 

@@ -212,7 +212,7 @@ namespace S100Framework.Applications
 
                                 if (current.SORDAT != default) {
                                     if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                        instance.reportedDate = dateOnly;
+                                        instance.reportedDate = current.SORDAT;
                                     }
                                     else {
                                         Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");

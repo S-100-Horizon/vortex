@@ -374,8 +374,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }

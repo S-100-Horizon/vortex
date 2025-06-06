@@ -4,12 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace S100Framework.Applications
 {
     public static class DateHelper
     {
+        public static readonly Regex regexTruncatedDateValidation = new(@"^(\d{4}|-{4})(\d{2}|-{2})(\d{2}|-{2})$");
 
         public static bool TryConvertToDateOnly(string dateString, out DateOnly dateOnly) {
             if (dateString.Length != 8 || !int.TryParse(dateString, out _)) {
@@ -29,20 +31,14 @@ namespace S100Framework.Applications
         internal static bool TryGetPeriodicDateRange(string? start, string? end, out List<periodicDateRange> value) {
             if (start != default) {
                 if (end != default) {
-                    if (DateHelper.TryConvertToDateOnly(end, out var dateEnd)) {
-                        if (DateHelper.TryConvertToDateOnly(start, out var dateStart)) {
-                            value = new List<periodicDateRange>() {
+                    if (regexTruncatedDateValidation.IsMatch(end) && regexTruncatedDateValidation.IsMatch(start)) {
+                        value = new List<periodicDateRange>() {
                                 new periodicDateRange() {
-                                    dateStart = dateStart,
-                                    dateEnd = dateEnd
+                                    dateStart = start,
+                                    dateEnd = end
                                 }
                             };
-                            return true;
-                        }
-                        else {
-                            value = null;
-                            return false;
-                        }
+                        return true;
                     }
                     else {
                         value = null;
@@ -63,18 +59,12 @@ namespace S100Framework.Applications
         internal static bool TryGetFixedDateRange(string? start, string? end, out fixedDateRange? value) {
             if (start != default) {
                 if (end != default) {
-                    if (DateHelper.TryConvertToDateOnly(end, out var dateEnd)) {
-                        if (DateHelper.TryConvertToDateOnly(start, out var dateStart)) {
-                            value = new fixedDateRange() {
-                                dateStart = dateStart,
-                                dateEnd = dateEnd
-                            };
-                            return true;
-                        }
-                        else {
-                            value = null;
-                            return false;
-                        }
+                    if (regexTruncatedDateValidation.IsMatch(end) && regexTruncatedDateValidation.IsMatch(start)) {
+                        value = new fixedDateRange() {
+                            dateStart = start,
+                            dateEnd = end
+                        };
+                        return true;
                     }
                     else {
                         value = null;

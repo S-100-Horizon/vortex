@@ -119,8 +119,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
@@ -140,7 +140,7 @@ namespace S100Framework.Applications
 
                             if (current.SORDAT != default) {
                                 if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                    instance.reportedDate = dateOnly;
+                                    instance.reportedDate = current.SORDAT;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
@@ -261,8 +261,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
@@ -283,7 +283,7 @@ namespace S100Framework.Applications
 
                             if (current.SORDAT != default) {
                                 if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                    instance.reportedDate = dateOnly;
+                                    instance.reportedDate = current.SORDAT;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
@@ -411,8 +411,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
@@ -433,7 +433,7 @@ namespace S100Framework.Applications
 
                             if (current.SORDAT != default) {
                                 if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                    instance.reportedDate = dateOnly;
+                                    instance.reportedDate = current.SORDAT;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
@@ -555,8 +555,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
@@ -577,7 +577,7 @@ namespace S100Framework.Applications
 
                             if (current.SORDAT != default) {
                                 if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                    instance.reportedDate = dateOnly;
+                                    instance.reportedDate = current.SORDAT;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
@@ -711,8 +711,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
@@ -733,7 +733,7 @@ namespace S100Framework.Applications
 
                             if (current.SORDAT != default) {
                                 if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                    instance.reportedDate = dateOnly;
+                                    instance.reportedDate = current.SORDAT;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
@@ -851,8 +851,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
@@ -964,8 +964,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
@@ -1077,8 +1077,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
@@ -1200,8 +1200,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
@@ -1308,8 +1308,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
@@ -1420,8 +1420,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
@@ -1535,8 +1535,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
@@ -1629,8 +1629,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
@@ -1795,8 +1795,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
@@ -1905,8 +1905,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
@@ -2007,8 +2007,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
@@ -2090,8 +2090,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
@@ -2177,8 +2177,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
@@ -2267,8 +2267,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
@@ -2342,8 +2342,8 @@ namespace S100Framework.Applications
                                     if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
                                         if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
                                             instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
+                                                dateStart = current.PERSTA,
+                                                dateEnd = current.PEREND
                                             };
                                         }
                                         else {
@@ -2363,8 +2363,8 @@ namespace S100Framework.Applications
                                         if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
                                             instance.periodicDateRange = new List<periodicDateRange>() {
                                                 new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
+                                                    dateStart = current.PERSTA,
+                                                    dateEnd = current.PEREND
                                                 }
                                             };
                                         }
