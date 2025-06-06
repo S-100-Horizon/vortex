@@ -58,8 +58,8 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.SORDAT != default) {
-                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                    instance.reportedDate = dateOnly;
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                    instance.reportedDate = current.SORDAT;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -231,8 +231,8 @@ namespace S100Framework.Applications
                             }
 
                             if (current.SORDAT != default) {
-                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                    instance.reportedDate = dateOnly;
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                    instance.reportedDate = current.SORDAT;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -277,7 +277,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
-                            
+
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
                             }
@@ -332,8 +332,8 @@ namespace S100Framework.Applications
                             }
 
                             if (current.SORDAT != default) {
-                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                    instance.reportedDate = dateOnly;
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                    instance.reportedDate = current.SORDAT;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -434,8 +434,8 @@ namespace S100Framework.Applications
 
 
                             if (current.SORDAT != default) {
-                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                    instance.reportedDate = dateOnly;
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                    instance.reportedDate = current.SORDAT;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -454,7 +454,7 @@ namespace S100Framework.Applications
 
                             // TODO: verticalClearanceFixed		
                             instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
-                            
+
                             if (current.VERLEN.HasValue) {
                                 instance.verticalLength = current.VERLEN.Value;
                             }
@@ -615,8 +615,8 @@ namespace S100Framework.Applications
                             }
 
                             if (current.SORDAT != default) {
-                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                    instance.reportedDate = dateOnly;
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                    instance.reportedDate = current.SORDAT;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -625,7 +625,7 @@ namespace S100Framework.Applications
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
-                            } 
+                            }
 
                             if (current.VERLEN.HasValue) {
                                 instance.verticalLength = current.VERLEN.Value;
@@ -713,8 +713,8 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.SORDAT != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                        windturbine.reportedDate = dateOnly;
+                                    if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                        windturbine.reportedDate = current.SORDAT;
                                     }
                                     else {
                                         Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -825,8 +825,8 @@ namespace S100Framework.Applications
                             }
 
                             if (current.SORDAT != default) {
-                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                    instance.reportedDate = dateOnly;
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                    instance.reportedDate = current.SORDAT;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");

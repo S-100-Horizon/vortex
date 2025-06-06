@@ -160,7 +160,7 @@ namespace S100Framework.Applications
                                 // TODO: QualityOfVerticalMeasurement
 
                                 if (current.SORDAT != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                    if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
                                         instance.reportedDate = current.SORDAT;
                                     }
                                     else {
