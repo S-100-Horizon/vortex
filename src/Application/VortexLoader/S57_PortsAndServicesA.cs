@@ -1,4 +1,5 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Desktop.Internal.Core.Utilities;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
@@ -537,8 +538,8 @@ namespace S100Framework.Applications
 
 
                             if (current.SORDAT != default) {
-                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                    instance.reportedDate = dateOnly;
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                    instance.reportedDate = current.SORDAT;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -666,8 +667,8 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.SORDAT != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                        instance.reportedDate = dateOnly;
+                                    if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                        instance.reportedDate = current.SORDAT;
                                     }
                                     else {
                                         Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -734,8 +735,8 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.SORDAT != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                        instance.reportedDate = dateOnly;
+                                    if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                        instance.reportedDate = current.SORDAT;
                                     }
                                     else {
                                         Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -834,8 +835,8 @@ namespace S100Framework.Applications
 
 
                                 if (current.SORDAT != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                        instance.reportedDate = dateOnly;
+                                    if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                        instance.reportedDate = current.SORDAT;
                                     }
                                     else {
                                         Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -915,8 +916,8 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.SORDAT != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                        instance.reportedDate = dateOnly;
+                                    if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                        instance.reportedDate = current.SORDAT;
                                     }
                                     else {
                                         Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");

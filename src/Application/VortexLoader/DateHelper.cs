@@ -87,21 +87,17 @@ namespace S100Framework.Applications
         /// <param _s101name="value"></param>
         /// <returns></returns>
         internal static bool TryGetSurveyDateRange(string? start, string? end, out surveyDateRange? value) {
-            var dateStartConverted = DateHelper.TryConvertToDateOnly(start, out DateOnly dateStart);
-
-            if (!dateStartConverted) {
+            if (string.IsNullOrEmpty(start) || !DateHelper.regexTruncatedDateValidation.IsMatch(start)) {
                 value = null;
                 return false;
             }
 
-            var dateEndConverted = DateHelper.TryConvertToDateOnly(end, out DateOnly dateEnd);
-
             value = new surveyDateRange();
 
-            value.dateStart = dateStart;
-            if (dateEndConverted) {
-                value.dateEnd = dateEnd;
-            } 
+            value.dateStart = start;
+            if (!string.IsNullOrEmpty(end) && DateHelper.regexTruncatedDateValidation.IsMatch(end)) {
+                value.dateEnd = end;
+            }
 
             return true;
         }
