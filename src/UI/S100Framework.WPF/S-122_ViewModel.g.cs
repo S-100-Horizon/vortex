@@ -19,45 +19,45 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel.S122 {
 	internal static class Bootstrap {
-		public static AssociationViewModel CreateInformationAssociation(string type, string? pid = default) => type switch {
-			"AssociatedRxN" => new AssociatedRxNViewModel { PID = pid },
-			"ExceptionalWorkday" => new ExceptionalWorkdayViewModel { PID = pid },
-			"ProtectedAreaAuthority" => new ProtectedAreaAuthorityViewModel { PID = pid },
-			"ServiceControl" => new ServiceControlViewModel { PID = pid },
-			"RelatedOrganisation" => new RelatedOrganisationViewModel { PID = pid },
-			"PermissionType" => new PermissionTypeViewModel { PID = pid },
-			"InclusionType" => new InclusionTypeViewModel { PID = pid },
-			"AuthorityContact" => new AuthorityContactViewModel { PID = pid },
-			"AuthorityHours" => new AuthorityHoursViewModel { PID = pid },
-			"additionalInformation" => new additionalInformationViewModel { PID = pid },
+		public static AssociationViewModel CreateInformationAssociation(string type, string? name = default) => type switch {
+			"AssociatedRxN" => new AssociatedRxNViewModel { Name = name },
+			"ExceptionalWorkday" => new ExceptionalWorkdayViewModel { Name = name },
+			"ProtectedAreaAuthority" => new ProtectedAreaAuthorityViewModel { Name = name },
+			"ServiceControl" => new ServiceControlViewModel { Name = name },
+			"RelatedOrganisation" => new RelatedOrganisationViewModel { Name = name },
+			"PermissionType" => new PermissionTypeViewModel { Name = name },
+			"InclusionType" => new InclusionTypeViewModel { Name = name },
+			"AuthorityContact" => new AuthorityContactViewModel { Name = name },
+			"AuthorityHours" => new AuthorityHoursViewModel { Name = name },
+			"additionalInformation" => new additionalInformationViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
-		public static AssociationViewModel CreateFeatureAssociation(string type, string? pid = default) => type switch {
+		public static AssociationViewModel CreateFeatureAssociation(string type, string? name = default) => type switch {
 			_ or "" => throw new InvalidOperationException(),
 		};
 
-		public static InformationViewModel CreateInformationType(string type, string? pid = default) => type switch {
-			"InformationType" => new InformationTypeViewModel { PID = pid },
-			"AbstractRxN" => new AbstractRxNViewModel { PID = pid },
-			"NauticalInformation" => new NauticalInformationViewModel { PID = pid },
-			"Regulations" => new RegulationsViewModel { PID = pid },
-			"Restrictions" => new RestrictionsViewModel { PID = pid },
-			"Recommendations" => new RecommendationsViewModel { PID = pid },
-			"Authority" => new AuthorityViewModel { PID = pid },
-			"ContactDetails" => new ContactDetailsViewModel { PID = pid },
-			"NonStandardWorkingDay" => new NonStandardWorkingDayViewModel { PID = pid },
-			"ServiceHours" => new ServiceHoursViewModel { PID = pid },
-			"Applicability" => new ApplicabilityViewModel { PID = pid },
+		public static InformationViewModel CreateInformationType(string type, string? name = default) => type switch {
+			"InformationType" => new InformationTypeViewModel { Name = name },
+			"AbstractRxN" => new AbstractRxNViewModel { Name = name },
+			"NauticalInformation" => new NauticalInformationViewModel { Name = name },
+			"Regulations" => new RegulationsViewModel { Name = name },
+			"Restrictions" => new RestrictionsViewModel { Name = name },
+			"Recommendations" => new RecommendationsViewModel { Name = name },
+			"Authority" => new AuthorityViewModel { Name = name },
+			"ContactDetails" => new ContactDetailsViewModel { Name = name },
+			"NonStandardWorkingDay" => new NonStandardWorkingDayViewModel { Name = name },
+			"ServiceHours" => new ServiceHoursViewModel { Name = name },
+			"Applicability" => new ApplicabilityViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
-		public static FeatureViewModel CreateFeatureType(string type, string? pid = default) => type switch {
-			"RestrictedArea" => new RestrictedAreaViewModel { PID = pid },
-			"MarineProtectedArea" => new MarineProtectedAreaViewModel { PID = pid },
-			"VesselTrafficServiceArea" => new VesselTrafficServiceAreaViewModel { PID = pid },
-			"DataCoverage" => new DataCoverageViewModel { PID = pid },
-			"TextPlacement" => new TextPlacementViewModel { PID = pid },
+		public static FeatureViewModel CreateFeatureType(string type, string? name = default) => type switch {
+			"RestrictedArea" => new RestrictedAreaViewModel { Name = name },
+			"MarineProtectedArea" => new MarineProtectedAreaViewModel { Name = name },
+			"VesselTrafficServiceArea" => new VesselTrafficServiceAreaViewModel { Name = name },
+			"DataCoverage" => new DataCoverageViewModel { Name = name },
+			"TextPlacement" => new TextPlacementViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
@@ -91,6 +91,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class bearingInformationViewModel : ViewModelBase {
 		private cardinalDirection? _cardinalDirection  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(cardinalDirectionList), typeof(cardinalDirection))]
 		public cardinalDirection? cardinalDirection {
 			get {
 				return _cardinalDirection;
@@ -342,9 +344,10 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class fixedDateRangeViewModel : ViewModelBase {
-		private DateOnly? _dateStart  = default;
+		private String? _dateStart  = default;
 
-		public DateOnly? dateStart {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String? dateStart {
 			get {
 				return _dateStart;
 			}
@@ -352,9 +355,10 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _dateStart, value);
 			}
 		}
-		private DateOnly? _dateEnd  = default;
+		private String? _dateEnd  = default;
 
-		public DateOnly? dateEnd {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String? dateEnd {
 			get {
 				return _dateEnd;
 			}
@@ -693,6 +697,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private onlineFunction? _onlineFunction  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(onlineFunctionList), typeof(onlineFunction))]
 		public onlineFunction? onlineFunction {
 			get {
 				return _onlineFunction;
@@ -801,9 +807,10 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class periodicDateRangeViewModel : ViewModelBase {
-		private DateOnly _dateStart ;
+		private String _dateStart ;
 
-		public DateOnly dateStart {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String dateStart {
 			get {
 				return _dateStart;
 			}
@@ -811,9 +818,10 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _dateStart, value);
 			}
 		}
-		private DateOnly _dateEnd ;
+		private String _dateEnd ;
 
-		public DateOnly dateEnd {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String dateEnd {
 			get {
 				return _dateEnd;
 			}
@@ -918,6 +926,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class scheduleByDayOfWeekViewModel : ViewModelBase {
 		private categoryOfSchedule? _categoryOfSchedule  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfScheduleList), typeof(categoryOfSchedule))]
 		public categoryOfSchedule? categoryOfSchedule {
 			get {
 				return _categoryOfSchedule;
@@ -1137,6 +1147,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class telecommunicationsViewModel : ViewModelBase {
 		private categoryOfCommunicationPreference? _categoryOfCommunicationPreference  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfCommunicationPreferenceList), typeof(categoryOfCommunicationPreference))]
 		public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
 			get {
 				return _categoryOfCommunicationPreference;
@@ -1180,6 +1192,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private telecommunicationService? _telecommunicationService  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(telecommunicationServiceList), typeof(telecommunicationService))]
 		public telecommunicationService? telecommunicationService {
 			get {
 				return _telecommunicationService;
@@ -1251,6 +1265,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class textContentViewModel : ViewModelBase {
 		private categoryOfText? _categoryOfText  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfTextList), typeof(categoryOfText))]
 		public categoryOfText? categoryOfText {
 			get {
 				return _categoryOfText;
@@ -1274,6 +1290,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private sourceType? _sourceType  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -1285,9 +1303,10 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-		private DateOnly? _reportedDate  = default;
+		private String? _reportedDate  = default;
 
-		public DateOnly? reportedDate {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String? reportedDate {
 			get {
 				return _reportedDate;
 			}
@@ -1332,9 +1351,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase {
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(dayOfWeekList))]
 		[Category("timeIntervalsByDayOfWeek")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(dayOfWeekList), typeof(dayOfWeek))]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -1416,6 +1435,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class vesselsMeasurementsViewModel : ViewModelBase {
 		private vesselsCharacteristics _vesselsCharacteristics ;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsList), typeof(vesselsCharacteristics))]
 		public vesselsCharacteristics vesselsCharacteristics {
 			get {
 				return _vesselsCharacteristics;
@@ -1439,6 +1460,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private vesselsCharacteristicsUnit _vesselsCharacteristicsUnit ;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsUnitList), typeof(vesselsCharacteristicsUnit))]
 		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {
 			get {
 				return _vesselsCharacteristicsUnit;
@@ -1452,6 +1475,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public vesselsCharacteristicsUnit[] vesselsCharacteristicsUnitList => [(vesselsCharacteristicsUnit)3,(vesselsCharacteristicsUnit)4,(vesselsCharacteristicsUnit)5,(vesselsCharacteristicsUnit)6,(vesselsCharacteristicsUnit)7,(vesselsCharacteristicsUnit)9];
 		private comparisonOperator _comparisonOperator ;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(comparisonOperatorList), typeof(comparisonOperator))]
 		public comparisonOperator comparisonOperator {
 			get {
 				return _comparisonOperator;
@@ -1522,6 +1547,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private jurisdiction? _jurisdiction  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(jurisdictionList), typeof(jurisdiction))]
 		public jurisdiction? jurisdiction {
 			get {
 				return _jurisdiction;
@@ -1724,6 +1751,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private categoryOfRelationship _categoryOfRelationship ;
 
 		[Category("PermissionType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfRelationshipList), typeof(categoryOfRelationship))]
 		public categoryOfRelationship categoryOfRelationship {
 			get {
 				return _categoryOfRelationship;
@@ -1767,6 +1796,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private membership _membership ;
 
 		[Category("InclusionType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(membershipList), typeof(membership))]
 		public membership membership {
 			get {
 				return _membership;
@@ -1924,6 +1955,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -1935,10 +1968,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-		private DateOnly? _reportedDate  = default;
+		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		public DateOnly? reportedDate {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String? reportedDate {
 			get {
 				return _reportedDate;
 			}
@@ -2053,6 +2087,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -2064,10 +2100,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-		private DateOnly? _reportedDate  = default;
+		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		public DateOnly? reportedDate {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String? reportedDate {
 			get {
 				return _reportedDate;
 			}
@@ -2079,6 +2116,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -2230,6 +2269,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -2241,10 +2282,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-		private DateOnly? _reportedDate  = default;
+		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		public DateOnly? reportedDate {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String? reportedDate {
 			get {
 				return _reportedDate;
 			}
@@ -2256,6 +2298,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -2408,6 +2452,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -2419,10 +2465,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-		private DateOnly? _reportedDate  = default;
+		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		public DateOnly? reportedDate {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String? reportedDate {
 			get {
 				return _reportedDate;
 			}
@@ -2434,6 +2481,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -2586,6 +2635,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -2597,10 +2648,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-		private DateOnly? _reportedDate  = default;
+		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		public DateOnly? reportedDate {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String? reportedDate {
 			get {
 				return _reportedDate;
 			}
@@ -2612,6 +2664,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -2764,6 +2818,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -2775,10 +2831,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-		private DateOnly? _reportedDate  = default;
+		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		public DateOnly? reportedDate {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String? reportedDate {
 			get {
 				return _reportedDate;
 			}
@@ -2790,6 +2847,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -2942,6 +3001,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -2953,10 +3014,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-		private DateOnly? _reportedDate  = default;
+		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		public DateOnly? reportedDate {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String? reportedDate {
 			get {
 				return _reportedDate;
 			}
@@ -2968,6 +3030,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private categoryOfAuthority _categoryOfAuthority ;
 
 		[Category("Authority")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
 		public categoryOfAuthority categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -3101,6 +3165,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -3112,10 +3178,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-		private DateOnly? _reportedDate  = default;
+		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		public DateOnly? reportedDate {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String? reportedDate {
 			get {
 				return _reportedDate;
 			}
@@ -3127,6 +3194,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -3178,6 +3247,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private categoryOfCommunicationPreference? _categoryOfCommunicationPreference  = default;
 
 		[Category("ContactDetails")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfCommunicationPreferenceList), typeof(categoryOfCommunicationPreference))]
 		public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
 			get {
 				return _categoryOfCommunicationPreference;
@@ -3436,6 +3507,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -3447,10 +3520,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-		private DateOnly? _reportedDate  = default;
+		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		public DateOnly? reportedDate {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String? reportedDate {
 			get {
 				return _reportedDate;
 			}
@@ -3460,7 +3534,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 
 		[Category("NonStandardWorkingDay")]
-		public ObservableCollection<DateOnly> dateFixed  { get; set; } = new ();
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public ObservableCollection<String> dateFixed  { get; set; } = new ();
 		[Category("NonStandardWorkingDay")]
 		public ObservableCollection<String> dateVariable  { get; set; } = new ();
 		[Category("NonStandardWorkingDay")]
@@ -3602,6 +3677,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -3613,10 +3690,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-		private DateOnly? _reportedDate  = default;
+		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		public DateOnly? reportedDate {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String? reportedDate {
 			get {
 				return _reportedDate;
 			}
@@ -3762,6 +3840,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private sourceType? _sourceType  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -3773,10 +3853,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-		private DateOnly? _reportedDate  = default;
+		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		public DateOnly? reportedDate {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String? reportedDate {
 			get {
 				return _reportedDate;
 			}
@@ -3796,16 +3877,16 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _inBallast, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfCargoList))]
 		[Category("Applicability")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfCargoList), typeof(categoryOfCargo))]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1,(categoryOfCargo)2,(categoryOfCargo)3,(categoryOfCargo)4,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)9];
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfDangerousOrHazardousCargoList))]
 		[Category("Applicability")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfDangerousOrHazardousCargoList), typeof(categoryOfDangerousOrHazardousCargo))]
 		public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3827,6 +3908,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private categoryOfVesselRegistry? _categoryOfVesselRegistry  = default;
 
 		[Category("Applicability")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfVesselRegistryList), typeof(categoryOfVesselRegistry))]
 		public categoryOfVesselRegistry? categoryOfVesselRegistry {
 			get {
 				return _categoryOfVesselRegistry;
@@ -3841,6 +3924,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private logicalConnectives? _logicalConnectives  = default;
 
 		[Category("Applicability")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(logicalConnectivesList), typeof(logicalConnectives))]
 		public logicalConnectives? logicalConnectives {
 			get {
 				return _logicalConnectives;
@@ -4054,6 +4139,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -4065,10 +4152,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-		private DateOnly? _reportedDate  = default;
+		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
-		public DateOnly? reportedDate {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String? reportedDate {
 			get {
 				return _reportedDate;
 			}
@@ -4077,23 +4165,23 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			}
 		}
 
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfRestrictedAreaList))]
 		[Category("RestrictedArea")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfRestrictedAreaList), typeof(categoryOfRestrictedArea))]
 		public ObservableCollection<categoryOfRestrictedArea> categoryOfRestrictedArea  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfRestrictedArea[] categoryOfRestrictedAreaList => [(categoryOfRestrictedArea)1,(categoryOfRestrictedArea)4,(categoryOfRestrictedArea)5,(categoryOfRestrictedArea)6,(categoryOfRestrictedArea)7,(categoryOfRestrictedArea)8,(categoryOfRestrictedArea)9,(categoryOfRestrictedArea)10,(categoryOfRestrictedArea)12,(categoryOfRestrictedArea)14,(categoryOfRestrictedArea)18,(categoryOfRestrictedArea)19,(categoryOfRestrictedArea)20,(categoryOfRestrictedArea)21,(categoryOfRestrictedArea)22,(categoryOfRestrictedArea)23,(categoryOfRestrictedArea)24,(categoryOfRestrictedArea)25,(categoryOfRestrictedArea)26,(categoryOfRestrictedArea)27,(categoryOfRestrictedArea)28,(categoryOfRestrictedArea)29,(categoryOfRestrictedArea)30,(categoryOfRestrictedArea)31,(categoryOfRestrictedArea)32,(categoryOfRestrictedArea)33];
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(restrictionList))]
 		[Category("RestrictedArea")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(restrictionList), typeof(restriction))]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)7,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)14,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)26,(restriction)27,(restriction)28,(restriction)29,(restriction)30,(restriction)31,(restriction)32,(restriction)33,(restriction)34,(restriction)35,(restriction)36,(restriction)37,(restriction)38,(restriction)39,(restriction)40,(restriction)41];
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(statusList))]
 		[Category("RestrictedArea")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -4251,6 +4339,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -4262,10 +4352,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-		private DateOnly? _reportedDate  = default;
+		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
-		public DateOnly? reportedDate {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String? reportedDate {
 			get {
 				return _reportedDate;
 			}
@@ -4288,9 +4379,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public categoryOfMarineProtectedArea[] categoryOfMarineProtectedAreaList =>  CodeList.categoryOfMarineProtectedAreas.ToArray();
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfRestrictedAreaList))]
 		[Category("MarineProtectedArea")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfRestrictedAreaList), typeof(categoryOfRestrictedArea))]
 		public ObservableCollection<categoryOfRestrictedArea> categoryOfRestrictedArea  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -4298,6 +4389,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private jurisdiction _jurisdiction ;
 
 		[Category("MarineProtectedArea")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(jurisdictionList), typeof(jurisdiction))]
 		public jurisdiction jurisdiction {
 			get {
 				return _jurisdiction;
@@ -4309,16 +4402,16 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public jurisdiction[] jurisdictionList => [(jurisdiction)1,(jurisdiction)2,(jurisdiction)3];
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(restrictionList))]
 		[Category("MarineProtectedArea")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(restrictionList), typeof(restriction))]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)7,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)14,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)26,(restriction)27,(restriction)28,(restriction)29,(restriction)30,(restriction)31,(restriction)32,(restriction)33,(restriction)34,(restriction)35,(restriction)36,(restriction)37,(restriction)38,(restriction)39,(restriction)40,(restriction)41];
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(statusList))]
 		[Category("MarineProtectedArea")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -4494,6 +4587,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private sourceType? _sourceType  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -4505,10 +4600,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-		private DateOnly? _reportedDate  = default;
+		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
-		public DateOnly? reportedDate {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String? reportedDate {
 			get {
 				return _reportedDate;
 			}
@@ -4520,6 +4616,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private categoryOfVesselTrafficService _categoryOfVesselTrafficService ;
 
 		[Category("VesselTrafficServiceArea")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfVesselTrafficServiceList), typeof(categoryOfVesselTrafficService))]
 		public categoryOfVesselTrafficService categoryOfVesselTrafficService {
 			get {
 				return _categoryOfVesselTrafficService;

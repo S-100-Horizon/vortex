@@ -1,13 +1,6 @@
 ﻿using Pluralize.NET.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Reflection;
-using System.Reflection.Emit;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
@@ -63,15 +56,15 @@ namespace S100Framework.Applications
                 names = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
                 builderDomainModel.AppendLine($"\t\tpublic static string[] FeatureAssociationTypes => [{string.Join(',', names.Select(e => $"\"{e}\""))}];");
 
-                names = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
+                names = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.InvariantCultureIgnoreCase)).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
                 builderDomainModel.AppendLine($"\t\tpublic static string[] InformationTypes => [{string.Join(',', names.Select(e => $"\"{e}\""))}];");
 
-                names = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
+                names = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.InvariantCultureIgnoreCase)).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
                 builderDomainModel.AppendLine($"\t\tpublic static string[] FeatureTypes => [{string.Join(',', names.Select(e => $"\"{e}\""))}];");
 
                 builderDomainModel.AppendLine("\t\tpublic static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {");
                 var primitives = productSpecification.XPathSelectElements("//S100FC:permittedPrimitives", xmlNamespaceManager);
-                foreach(var p in primitives.GroupBy(e => e.Value!)) {
+                foreach (var p in primitives.GroupBy(e => e.Value!)) {
                     var featureNames = p.Select(e => $"\"{e.Parent!.Element(XName.Get("code", scope_S100))!.Value}\"");
                     builderDomainModel.AppendLine($"\t\t\tPrimitives.{p.Key} => [{string.Join(',', featureNames)}],");
                 }
@@ -80,10 +73,10 @@ namespace S100Framework.Applications
 
                 builderDomainModel.AppendLine("\t\tpublic static Primitives[] FeaturePrimitives(string featureType) => featureType switch {");
                 var featureTypes = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager);
-                foreach(var e in featureTypes) {
+                foreach (var e in featureTypes) {
                     var code = e.Element(XName.Get("code", scope_S100))!.Value;
-                    var p = e.Elements(XName.Get("permittedPrimitives", scope_S100)).Select(e=>$"Primitives.{e.Value!}");
-                    builderDomainModel.AppendLine($"\t\t\t\"{code}\" => [{string.Join(',',p)}],");
+                    var p = e.Elements(XName.Get("permittedPrimitives", scope_S100)).Select(e => $"Primitives.{e.Value!}");
+                    builderDomainModel.AppendLine($"\t\t\t\"{code}\" => [{string.Join(',', p)}],");
                 }
                 builderDomainModel.AppendLine("\t\t\t_ or \"\" => throw new InvalidOperationException(),");
                 builderDomainModel.AppendLine("\t\t};");
@@ -101,6 +94,8 @@ namespace S100Framework.Applications
 
             var informationAssociationsLookup = new Dictionary<string, ICollection<string>>();
             var featureAssociationsLookup = new Dictionary<string, ICollection<string>>();
+
+            var editorBuilders = new Dictionary<string, Action<StringBuilder>>();
 
             //  --- S100_FC_SimpleAttributes ----------------------------------------------------
             {
@@ -146,6 +141,11 @@ namespace S100Framework.Applications
 
                     builderDomainModel.AppendLine("\t}");
                     builderDomainModel.AppendLine();
+
+                    editorBuilders.Add(code, (b) => {
+                        b.AppendLine($"\t\t[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]");
+                        b.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({code}List), typeof({code}))]");
+                    });
                 }
 
                 //  CodeLists
@@ -217,7 +217,8 @@ namespace S100Framework.Applications
                         "enumeration" => code,
                         "real" => "decimal",
                         "text" => "String",
-                        "s100_truncateddate" => "DateOnly",
+                        //"s100_truncateddate" => "DateOnly",
+                        "s100_truncateddate" => "String",
                         "date" => "DateOnly",
                         "dateonly" => "DateOnly",
                         "datetime" => "DateTime",
@@ -230,6 +231,12 @@ namespace S100Framework.Applications
                         _ => throw new InvalidDataException(),
                     };
                     knowTypesPrefix.Add(code, prefix);
+
+                    if (e.Element(XName.Get("valueType", scope_S100))!.Value.Equals("s100_truncateddate", StringComparison.InvariantCultureIgnoreCase)) {
+                        editorBuilders.Add(code, (b) => {
+                            b.AppendLine($"\t\t[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]");
+                        });
+                    }
 
                     var postfix = e.Element(XName.Get("valueType", scope_S100))!.Value.ToLowerInvariant() switch {
                         "boolean" => "false",
@@ -249,7 +256,7 @@ namespace S100Framework.Applications
                     };
                     if (postfix != null) {
                         knowTypesPostfix.Add(code, postfix);
-                    }
+                    }                    
                 }
             }
 
@@ -300,7 +307,7 @@ namespace S100Framework.Applications
                             int? upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? null : int.Parse(_.Value!);
 
                             var prefix = knowTypesPrefix[referenceCode];
-                            var postfix = knowTypesPostfix.ContainsKey(referenceCode) ? $" = {knowTypesPostfix[referenceCode]};" : string.Empty;
+                            var postfix = knowTypesPostfix.ContainsKey(referenceCode) ? $" = {knowTypesPostfix[referenceCode]};" : string.Empty;                            
 
                             if (permittedValues is not null) {
                                 builderDomainModel.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
@@ -590,6 +597,7 @@ namespace S100Framework.Applications
                 ComplexTypes = complexTypes,
                 InformationAssociationsLookup = informationAssociationsLookup,
                 FeatureAssociationsLookup = featureAssociationsLookup,
+                Editors = editorBuilders,
             });
 
             return (builderDomainModel.ToString(), viewmodel);
@@ -606,6 +614,8 @@ namespace S100Framework.Applications
             public required IReadOnlyCollection<string> ComplexTypes { get; init; }
             public required IReadOnlyDictionary<string, ICollection<string>> InformationAssociationsLookup { get; init; }
             public required IReadOnlyDictionary<string, ICollection<string>> FeatureAssociationsLookup { get; init; }
+
+            public required IReadOnlyDictionary<string, Action<StringBuilder>> Editors { get; init; }
         }
 
         private static string BuildViewModel(XDocument productSpecification, BuildViewModelClient client) {
@@ -656,10 +666,10 @@ namespace S100Framework.Applications
             builderViewModel.AppendLine("\t}");
             builderViewModel.AppendLine();
 
-            var bootstrapCreateInformationAssociation = new StringBuilder().AppendLine("\t\tpublic static AssociationViewModel CreateInformationAssociation(string type, string? pid = default) => type switch {");
-            var bootstrapCreateFeatureAssociation = new StringBuilder().AppendLine("\t\tpublic static AssociationViewModel CreateFeatureAssociation(string type, string? pid = default) => type switch {");
-            var bootstrapCreateInformationType = new StringBuilder().AppendLine("\t\tpublic static InformationViewModel CreateInformationType(string type, string? pid = default) => type switch {");
-            var bootstrapCreateFeatureType = new StringBuilder().AppendLine("\t\tpublic static FeatureViewModel CreateFeatureType(string type, string? pid = default) => type switch {");
+            var bootstrapCreateInformationAssociation = new StringBuilder().AppendLine("\t\tpublic static AssociationViewModel CreateInformationAssociation(string type, string? name = default) => type switch {");
+            var bootstrapCreateFeatureAssociation = new StringBuilder().AppendLine("\t\tpublic static AssociationViewModel CreateFeatureAssociation(string type, string? name = default) => type switch {");
+            var bootstrapCreateInformationType = new StringBuilder().AppendLine("\t\tpublic static InformationViewModel CreateInformationType(string type, string? name = default) => type switch {");
+            var bootstrapCreateFeatureType = new StringBuilder().AppendLine("\t\tpublic static FeatureViewModel CreateFeatureType(string type, string? name = default) => type switch {");
 
             //  --- S100_FC_ComplexAttributes ---------------------------------------------------
             {
@@ -682,6 +692,7 @@ namespace S100Framework.Applications
                         ComplexTypes = client.ComplexTypes,
                         BaseClass = "ViewModelBase",
                         LoadPrefix = $"{code}ViewModel",
+                        Editors = client.Editors,
                     });
 
                     builderViewModel.AppendLine(s);
@@ -715,11 +726,12 @@ namespace S100Framework.Applications
                         ComplexTypes = client.ComplexTypes,
                         BaseClass = "AssociationViewModel",
                         LoadPrefix = $"{code}ViewModel",
+                        Editors = client.Editors,
                     });
 
                     builderViewModel.AppendLine(s);
 
-                    bootstrapCreateInformationAssociation.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ PID = pid }},");
+                    bootstrapCreateInformationAssociation.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ Name = name }},");
                 }
                 builderViewModel.AppendLine();
             }
@@ -750,11 +762,12 @@ namespace S100Framework.Applications
                         ComplexTypes = client.ComplexTypes,
                         BaseClass = "AssociationViewModel",
                         LoadPrefix = $"{code}ViewModel",
+                        Editors = client.Editors,
                     });
 
                     builderViewModel.AppendLine(s);
 
-                    bootstrapCreateFeatureAssociation.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ PID = pid }},");
+                    bootstrapCreateFeatureAssociation.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ Name = name }},");
                 }
                 builderViewModel.AppendLine();
             }
@@ -785,13 +798,14 @@ namespace S100Framework.Applications
                         ComplexTypes = client.ComplexTypes,
                         BaseClass = $"InformationViewModel<{code}>",
                         LoadPrefix = $"override InformationViewModel<{code}>",
-                    }, (b) => {                        
+                        Editors = client.Editors,
+                    }, (b) => {
                         b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
                     });
 
                     builderViewModel.AppendLine(s);
 
-                    bootstrapCreateInformationType.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ PID = pid }},");
+                    bootstrapCreateInformationType.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ Name = name }},");
                 }
                 builderViewModel.AppendLine();
             }
@@ -822,6 +836,7 @@ namespace S100Framework.Applications
                         ComplexTypes = client.ComplexTypes,
                         BaseClass = $"FeatureViewModel<{code}>",
                         LoadPrefix = $"override FeatureViewModel<{code}>",
+                        Editors = client.Editors,
                     }, (b) => {
                         b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
                         b.AppendLine();
@@ -830,7 +845,7 @@ namespace S100Framework.Applications
 
                     builderViewModel.AppendLine(s);
 
-                    bootstrapCreateFeatureType.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ PID = pid }},");
+                    bootstrapCreateFeatureType.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ Name = name }},");
                 }
                 builderViewModel.AppendLine();
             }
@@ -953,13 +968,11 @@ namespace S100Framework.Applications
             if (!isFirst)
                 builder.AppendLine();
             builder.AppendLine("\t\t\t[JsonIgnore]");
-            builder.AppendLine("\t\t\t[IgnoreDataMember]");
             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
 
             if (new string[] { "S100_FC_InformationType", "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
                 builder.AppendLine();
                 builder.AppendLine("\t\t\t[JsonIgnore]");
-                builder.AppendLine("\t\t\t[IgnoreDataMember]");
                 if (superType != null)
                     builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => [..{superType!.Value}._informationBindingDefinitions, ..{code}._informationBindingDefinitions];");
                 else
@@ -1007,7 +1020,6 @@ namespace S100Framework.Applications
             if (new string[] { "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
                 builder.AppendLine();
                 builder.AppendLine("\t\t\t[JsonIgnore]");
-                builder.AppendLine("\t\t\t[IgnoreDataMember]");
                 if (superType != null)
                     builder.AppendLine($"\t\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => [..{superType!.Value}._featureBindingDefinitions, ..{code}._featureBindingDefinitions];");
                 else
@@ -1051,6 +1063,7 @@ namespace S100Framework.Applications
                 featureBindings.AppendLine("\t\t\t];");
 
                 builder.AppendLine();
+                builder.AppendLine("\t\t\t[JsonIgnore]");
                 if (superType != null)
                     builder.AppendLine($"\t\t\tpublic override Primitives[] primitives => [..{superType!.Value}._primitives, ..{code}._primitives];");
                 else
@@ -1062,7 +1075,7 @@ namespace S100Framework.Applications
                     builder.AppendLine("\t\t\tpublic static Primitives[] _primitives => [");
 
                 var primitives = e.XPathSelectElements("S100FC:permittedPrimitives", xmlNamespaceManager);
-                builder.AppendLine($"\t\t\t\t{string.Join(", ", primitives.Select(e=>$"Primitives.{e.Value!}"))}");
+                builder.AppendLine($"\t\t\t\t{string.Join(", ", primitives.Select(e => $"Primitives.{e.Value!}"))}");
                 builder.AppendLine("\t\t\t];");
                 builder.AppendLine();
 
@@ -1090,6 +1103,8 @@ namespace S100Framework.Applications
             public required string BaseClass { get; init; }
 
             public required string LoadPrefix { get; init; }
+
+            public required IReadOnlyDictionary<string, Action<StringBuilder>> Editors { get; init; }
         }
 
         private static string BuildViewModelClass(XElement e, BuildViewModelClassClient client, Action<StringBuilder>? postAction = null) {
@@ -1229,6 +1244,14 @@ namespace S100Framework.Applications
 
                     if (!(client.BuildViewModelClassClient.ComplexTypes.Contains(code) && !client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode)))
                         builder.AppendLine($"\t\t[Category(\"{code}\")]");
+
+                    if (client.BuildViewModelClassClient.Editors.ContainsKey(referenceCode)) {
+                        client.BuildViewModelClassClient.Editors[referenceCode](builder);
+                    }
+                    //if (client.BuildViewModelClassClient.EnumerationTypes.Contains(referenceCode)) {
+                    //    builder.AppendLine($"\t\t[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]");
+                    //    builder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({referenceCode}List), typeof({referenceCode}))]");
+                    //}
                     if (client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode))
                         builder.AppendLine("\t\t[ExpandableObject]");
                     builder.AppendLine($"\t\tpublic {prefix} {referenceCode} {{");
@@ -1260,11 +1283,14 @@ namespace S100Framework.Applications
                     constructorBuilder.AppendLine($"\t\t\t\tOnPropertyChanged(nameof({referenceCode}));");
                     constructorBuilder.AppendLine($"\t\t\t}};");
 
-                    if (client.BuildViewModelClassClient.EnumerationTypes.Contains(referenceCode)) {
-                        builder.AppendLine($"\t\t[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]");
-                        builder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({referenceCode}List))]");
-                    }
                     builder.AppendLine($"\t\t[Category(\"{code}\")]");
+                    if (client.BuildViewModelClassClient.Editors.ContainsKey(referenceCode)) {
+                        client.BuildViewModelClassClient.Editors[referenceCode](builder);
+                    }
+                    //if (client.BuildViewModelClassClient.EnumerationTypes.Contains(referenceCode)) {
+                    //    builder.AppendLine($"\t\t[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]");
+                    //    builder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({referenceCode}List), typeof({referenceCode}))]");
+                    //}                    
                     builder.AppendLine($"\t\tpublic {prefix} {referenceCode} {postfix}");
                     loadBuilder.AppendLine($"\t\t\t{referenceCode}.Clear();");
                     loadBuilder.AppendLine($"\t\t\tif (instance.{referenceCode} is not null) {{");

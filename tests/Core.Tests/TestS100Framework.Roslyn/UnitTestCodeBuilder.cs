@@ -1,7 +1,6 @@
 ﻿#define prop
 //#define propfull
 
-using S100Framework;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -131,7 +130,7 @@ namespace TestS100Framework
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
                 File.WriteAllText(@".\..\..\..\S-101_FC.cs", content.DomainModel, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-101_ViewModel.cs", content.ViewModel, Encoding.UTF8);                
+                File.WriteAllText(@".\..\..\..\S-101_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
@@ -146,7 +145,7 @@ namespace TestS100Framework
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
                 File.WriteAllText(@".\..\..\..\S-122_FC.cs", content.DomainModel, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-122_ViewModel.cs", content.ViewModel, Encoding.UTF8);                
+                File.WriteAllText(@".\..\..\..\S-122_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
@@ -156,7 +155,7 @@ namespace TestS100Framework
 
                 var v = RuntimeHelpers.GetUninitializedObject(typeof(DateTime));
 
-                var s100 = XDocument.Load(@".\Artifacts\S-124FC_1.5_20240330.xml");
+                var s100 = XDocument.Load(@".\Artifacts\S-124 FC_(2.0.0)_0430.xml");
 
                 Assert.True(VerifyProductSpecification(s100));
 
@@ -172,7 +171,7 @@ namespace TestS100Framework
                 var type1 = typeof(Test.NullableTest);
                 var type2 = typeof(bool?);
 
-                var s100 = XDocument.Load(@".\Artifacts\S-128_FC_Ed2.0.0.xml");
+                var s100 = XDocument.Load(@".\Artifacts\S-128_FC.xml");
 
                 Assert.True(VerifyProductSpecification(s100));
 
@@ -613,53 +612,197 @@ namespace TestS100Framework
             public record featureBinding(string roleType, int lower, int? upper, string association, string role);
         }
     }
-}
 
+    namespace Nullable
+    {
+        // Define an enum for the state
+        public enum ValueState
+        {
+            Unknown,    // Default state, or explicitly unknown
+            HasValue,   // Contains a valid value (which could be null for reference types)
+            IsNull      // Explicitly set to a "null" or "not applicable" state
+        }
 
-/*
-            public class UpdatedInformationAssociation : FeatureAssociation
-            {
-                public UpdatedInformationAssociation AddUpdateInformation(string id) {
-                    RefId[] refId = [ new RefId {
-                        Role = "theUpdate",
-                        Type = typeof(UpdateInformation).Name,
-                        Value = id,
-                    }];
+        public readonly struct NullableUnknown<T> : IEquatable<NullableUnknown<T>>
+        {
+            private readonly T _value;
+            private readonly ValueState _state;
 
-                    base.RefIds = [.. refId];
-                    return this;
+            // Private constructor to control instantiation via factory methods
+            private NullableUnknown(T value, ValueState state) {
+                _value = value;
+                _state = state;
+            }
+
+            // --- Factory Methods ---
+
+            /// <summary>
+            /// Creates an instance with a specific value.
+            /// If 'value' is null for a reference type, it's still considered 'HasValue'.
+            /// </summary>
+            public static NullableUnknown<T> FromValue(T value) {
+                return new NullableUnknown<T>(value, ValueState.HasValue);
+            }
+
+            /// <summary>
+            /// Represents an explicitly null/not-present state.
+            /// </summary>
+            public static NullableUnknown<T> Null => new NullableUnknown<T>(default!, ValueState.IsNull);
+            // default! is used to satisfy nullable reference types if T is non-nullable.
+            // The actual default(T) value isn't used if state is IsNull.
+
+            /// <summary>
+            /// Represents an unknown state. This is also the default state of the struct.
+            /// </summary>
+            public static NullableUnknown<T> Unknown => default; // Relies on default struct init
+
+            // --- Properties ---
+
+            public bool HasValue => _state == ValueState.HasValue;
+            public bool IsNull => _state == ValueState.IsNull;
+            public bool IsUnknown => _state == ValueState.Unknown; // Or _state == default(ValueState)
+
+            /// <summary>
+            /// Gets the value if HasValue is true.
+            /// Throws InvalidOperationException if HasValue is false.
+            /// </summary>
+            public T Value {
+                get {
+                    if (!HasValue) {
+                        throw new InvalidOperationException("NullableUnknown does not have a value in its current state.");
+                    }
+                    return _value;
                 }
             }
 
-            public static QualityOfNonBathymetricData.UpdatedInformationAssociation CreateUpdatedInformation(string id) {
-                return new QualityOfNonBathymetricData.UpdatedInformationAssociation {
-                    Code = "UpdatedInformation",
-                    AssociationConnectorTypeName = "UpdatedInformation",
-                    RefIds = [new RefId {
-                        Role = "theUpdatedObject",
-                        Type = typeof(QualityOfNonBathymetricData).Name,
-                        Value = id,
-                    }]
+            /// <summary>
+            /// Gets the value if HasValue is true, otherwise returns default(T).
+            /// </summary>
+            public T GetValueOrDefault() => _value; // Works because _value is default(T) if not HasValue
+
+            /// <summary>
+            /// Gets the value if HasValue is true, otherwise returns the specified default value.
+            /// </summary>
+            public T GetValueOrDefault(T defaultValue) => HasValue ? _value : defaultValue;
+
+
+            // --- Overrides and IEquatable ---
+
+            public override bool Equals(object? obj) {
+                return obj is NullableUnknown<T> other && Equals(other);
+            }
+
+            public bool Equals(NullableUnknown<T> other) {
+                if (_state != other._state) {
+                    return false;
+                }
+                if (HasValue) // Only compare values if both have values
+                {
+                    return EqualityComparer<T>.Default.Equals(_value, other._value);
+                }
+                // If not HasValue, states being equal is enough (e.g., Unknown == Unknown)
+                return true;
+            }
+
+            public override int GetHashCode() {
+                unchecked // Overflow is fine, just wrap
+                {
+                    int hashCode = _state.GetHashCode();
+                    if (HasValue && _value != null) // Check _value for null to avoid NullReferenceException on _value.GetHashCode()
+                    {
+                        hashCode = (hashCode * 397) ^ EqualityComparer<T>.Default.GetHashCode(_value);
+                    }
+                    return hashCode;
+                }
+            }
+
+            public static bool operator ==(NullableUnknown<T> left, NullableUnknown<T> right) {
+                return left.Equals(right);
+            }
+
+            public static bool operator !=(NullableUnknown<T> left, NullableUnknown<T> right) {
+                return !left.Equals(right);
+            }
+
+            public override string ToString() {
+                return _state switch {
+                    ValueState.HasValue => _value?.ToString() ?? "null (value)", // Differentiate value 'null' from state 'Null'
+                    ValueState.IsNull => "Null (state)",
+                    ValueState.Unknown => "Unknown",
+                    _ => "Invalid State" // Should not happen
                 };
             }
- */
+
+            // --- Implicit Conversions (Optional but can be convenient) ---
+
+            /// <summary>
+            /// Implicitly converts a value of T to NullableUnknown<T> with HasValue state.
+            /// </summary>
+            public static implicit operator NullableUnknown<T>(T value) => FromValue(value);
+
+            // No implicit conversion from NullableUnknown<T> to T, as it might throw.
+            // An explicit conversion could be added:
+            // public static explicit operator T(NullableUnknown<T> value) => value.Value;
+        }
+
+        public class UnitTestNullalbe
+        {
+            private readonly ITestOutputHelper _output;
+
+            public UnitTestNullalbe(ITestOutputHelper output) {
+                this._output = output;
+            }
+
+            [Fact]
+            public void Test_NullableUnknown() {
+                // Example with int (value type)
+                NullableUnknown<int> age1 = NullableUnknown<int>.FromValue(30);
+                NullableUnknown<int> age2 = NullableUnknown<int>.Null;
+                NullableUnknown<int> age3 = NullableUnknown<int>.Unknown; // Or just default: NullableUnknown<int> age3;
+                NullableUnknown<int> age4 = 25; // Using implicit conversion
+
+                ProcessData(age1, NullableUnknown<string>.FromValue("Alice"));
+                ProcessData(age2, NullableUnknown<string>.FromValue(null)); // Name has a value, and that value is null
+                ProcessData(age3, NullableUnknown<string>.Null);          // Name is explicitly in the "Null state"
+                ProcessData(age4, NullableUnknown<string>.Unknown);       // Name is "Unknown"
+                ProcessData(default, "Bob"); // Default for NullableUnknown<int> is Unknown. Implicit for string.
 
 
+            }
 
-/*
-    public enum S100_FC_RoleType {
-        [System.Xml.Serialization.XmlEnum("association")]
-        association,
+            private void ProcessData(NullableUnknown<int> age, NullableUnknown<string> name) {
+                // Processing age
+                if (age.HasValue) {
+                    _output.WriteLine($"Age: {age.Value}");
+                }
+                else if (age.IsNull) {
+                    _output.WriteLine("Age: Not Applicable/Provided as Null");
+                }
+                else // age.IsUnknown
+                {
+                    _output.WriteLine("Age: Unknown");
+                }
 
-        [System.Xml.Serialization.XmlEnum("aggregation")]
-        aggregation,
-
-        [System.Xml.Serialization.XmlEnum("composition")]
-        composition
+                // Processing name (string can be null itself)
+                if (name.HasValue) {
+                    if (name.Value == null) {
+                        _output.WriteLine("Name: Provided as a null string value");
+                    }
+                    else {
+                        _output.WriteLine($"Name: {name.Value}");
+                    }
+                }
+                else if (name.IsNull) {
+                    _output.WriteLine("Name: Not Applicable/Provided as Null State");
+                }
+                else // name.IsUnknown
+                {
+                    _output.WriteLine("Name: Unknown");
+                }
+                _output.WriteLine("---");
+            }
+        }
     }
+}
 
-    public class informationBinding {
-        public S100_FC_RoleType roleType { get; set; }
 
-    }
-*/

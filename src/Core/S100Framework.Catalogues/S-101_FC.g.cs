@@ -5171,9 +5171,9 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class fixedDateRange {
-			public DateOnly? dateEnd {get;set;} = default;
+			public String? dateEnd {get;set;} = default;
 
-			public DateOnly? dateStart {get;set;} = default;
+			public String? dateStart {get;set;} = default;
 		}
 
 		[System.Serializable()]
@@ -5270,11 +5270,9 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
-			[Required()]
-			public DateOnly dateEnd {get;set;}
+			public String dateEnd {get;set;}
 
-			[Required()]
-			public DateOnly dateStart {get;set;}
+			public String dateStart {get;set;}
 		}
 
 		[System.Serializable()]
@@ -5355,10 +5353,9 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class surveyDateRange {
-			[Required()]
-			public DateOnly dateEnd {get;set;}
+			public String dateEnd {get;set;}
 
-			public DateOnly? dateStart {get;set;} = default;
+			public String? dateStart {get;set;} = default;
 		}
 
 		[System.Serializable()]
@@ -5642,7 +5639,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AdditionalInformation : InformationAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(AdditionalInformation);
 		}
 
@@ -5653,7 +5649,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class QualityOfBathymetricDataComposition : InformationAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(QualityOfBathymetricDataComposition);
 		}
 
@@ -5665,7 +5660,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpatialAssociation : InformationAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SpatialAssociation);
 		}
 	}
@@ -5678,7 +5672,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AidsToNavigationAssociation : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(AidsToNavigationAssociation);
 		}
 
@@ -5689,7 +5682,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ASLAggregation : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(ASLAggregation);
 		}
 
@@ -5700,7 +5692,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class BridgeAggregation : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(BridgeAggregation);
 		}
 
@@ -5711,7 +5702,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CautionAreaAssociation : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(CautionAreaAssociation);
 		}
 
@@ -5722,7 +5712,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DeepWaterRouteAggregation : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(DeepWaterRouteAggregation);
 		}
 
@@ -5733,7 +5722,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FairwayAggregation : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(FairwayAggregation);
 		}
 
@@ -5744,7 +5732,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FairwayAuxiliary : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(FairwayAuxiliary);
 		}
 
@@ -5755,7 +5742,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class IslandAggregation : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(IslandAggregation);
 		}
 
@@ -5766,7 +5752,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MooringTrotAggregation : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(MooringTrotAggregation);
 		}
 
@@ -5777,7 +5762,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PilotageDistrictAssociation : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(PilotageDistrictAssociation);
 		}
 
@@ -5788,7 +5772,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RangeSystemAggregation : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(RangeSystemAggregation);
 		}
 
@@ -5799,7 +5782,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RoofedStructureAggregation : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(RoofedStructureAggregation);
 		}
 
@@ -5810,7 +5792,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class StructureEquipment : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(StructureEquipment);
 		}
 
@@ -5821,7 +5802,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextAssociation : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(TextAssociation);
 		}
 
@@ -5832,7 +5812,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TrafficSeparationSchemeAggregation : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(TrafficSeparationSchemeAggregation);
 		}
 
@@ -5843,7 +5822,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TwoWayRouteAggregation : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(TwoWayRouteAggregation);
 		}
 
@@ -5854,7 +5832,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class UpdateAggregation : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(UpdateAggregation);
 		}
 
@@ -5865,7 +5842,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class UpdatedInformation : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(UpdatedInformation);
 		}
 	}
@@ -5900,11 +5876,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<telecommunications> telecommunications {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(ContactDetails);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -5925,11 +5899,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(ServiceHours);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => ServiceHours._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -5941,7 +5913,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NonStandardWorkingDay : InformationNode, IInformationBindingDefinition {
-			public List<DateOnly> dateFixed {get;set;} = [];
+			public List<String> dateFixed {get;set;} = [];
 
 			public List<String> dateVariable {get;set;} = [];
 
@@ -5952,11 +5924,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(NonStandardWorkingDay);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -5977,11 +5947,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(NauticalInformation);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => NauticalInformation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -5999,11 +5967,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<spatialAccuracy> spatialAccuracy {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SpatialQuality);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -6038,19 +6004,17 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(QualityOfNonBathymetricData);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => QualityOfNonBathymetricData._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -6090,19 +6054,17 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(DataCoverage);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => DataCoverage._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -6127,19 +6089,17 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(NavigationalSystemOfMarks);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => NavigationalSystemOfMarks._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => NavigationalSystemOfMarks._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => NavigationalSystemOfMarks._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -6177,19 +6137,17 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(LocalDirectionOfBuoyage);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => LocalDirectionOfBuoyage._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LocalDirectionOfBuoyage._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => LocalDirectionOfBuoyage._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -6240,11 +6198,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(QualityOfBathymetricData);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => QualityOfBathymetricData._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -6258,9 +6214,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfBathymetricData._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => QualityOfBathymetricData._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -6293,19 +6249,17 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SoundingDatum);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SoundingDatum._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SoundingDatum._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SoundingDatum._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -6338,19 +6292,17 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(VerticalDatumOfData);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => VerticalDatumOfData._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => VerticalDatumOfData._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => VerticalDatumOfData._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -6416,19 +6368,17 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(QualityOfSurvey);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => QualityOfSurvey._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfSurvey._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => QualityOfSurvey._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -6470,19 +6420,17 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(UpdateInformation);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => UpdateInformation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => UpdateInformation._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => UpdateInformation._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface, Primitives.noGeometry
@@ -6532,8 +6480,7 @@ namespace S100Framework.DomainModel.S101 {
 		public partial class MagneticVariation : FeatureNode, IFeatureBindingDefinition {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			[Required()]
-			public DateOnly referenceYearForMagneticVariation {get;set;}
+			public String referenceYearForMagneticVariation {get;set;}
 
 			[Required()]
 			public decimal valueOfAnnualChangeInMagneticVariation {get;set;}
@@ -6546,11 +6493,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(MagneticVariation);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => MagneticVariation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -6564,9 +6509,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => MagneticVariation._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => MagneticVariation._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface
@@ -6594,7 +6539,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public List<valueOfLocalMagneticAnomaly> valueOfLocalMagneticAnomaly {get;set;} = [];
 
@@ -6603,11 +6548,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(LocalMagneticAnomaly);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => LocalMagneticAnomaly._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -6621,9 +6564,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LocalMagneticAnomaly._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => LocalMagneticAnomaly._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface
@@ -6680,11 +6623,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Coastline);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Coastline._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -6698,9 +6639,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Coastline._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Coastline._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve
@@ -6739,7 +6680,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([18])]
 			public status? status {get;set;} = default;
@@ -6749,11 +6690,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(LandArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => LandArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -6767,9 +6706,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LandArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => LandArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface
@@ -6818,11 +6757,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(IslandGroup);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => IslandGroup._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -6836,9 +6773,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => IslandGroup._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => IslandGroup._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface, Primitives.noGeometry
@@ -6901,11 +6838,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(LandElevation);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => LandElevation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -6919,9 +6854,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LandElevation._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => LandElevation._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve
@@ -6965,11 +6900,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(River);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => River._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -6983,9 +6916,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => River._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => River._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -7028,11 +6961,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Rapids);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Rapids._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -7046,9 +6977,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Rapids._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Rapids._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -7094,11 +7025,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Waterfall);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Waterfall._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -7112,9 +7041,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Waterfall._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Waterfall._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve
@@ -7160,11 +7089,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Lake);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Lake._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -7178,9 +7105,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Lake._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Lake._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -7230,11 +7157,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(LandRegion);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => LandRegion._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -7248,9 +7173,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LandRegion._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => LandRegion._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface
@@ -7304,11 +7229,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Vegetation);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Vegetation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -7322,9 +7245,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Vegetation._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Vegetation._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface
@@ -7370,7 +7293,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,5,18])]
 			public List<status> status {get;set;} = [];
@@ -7385,11 +7308,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(IceArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => IceArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -7403,9 +7324,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => IceArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => IceArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -7460,11 +7381,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SlopingGround);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SlopingGround._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -7478,9 +7397,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SlopingGround._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SlopingGround._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -7537,11 +7456,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SlopeTopline);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SlopeTopline._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -7555,9 +7472,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SlopeTopline._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SlopeTopline._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve
@@ -7598,11 +7515,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Tideway);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Tideway._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -7616,9 +7531,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Tideway._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Tideway._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -7664,7 +7579,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
@@ -7678,11 +7593,9 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? inTheWater {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(BuiltUpArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => BuiltUpArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -7696,9 +7609,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => BuiltUpArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => BuiltUpArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -7760,7 +7673,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([4,7,8,12,13,14])]
 			public List<status> status {get;set;} = [];
@@ -7779,11 +7692,9 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? inTheWater {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Building);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Building._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -7797,9 +7708,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Building._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Building._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -7865,7 +7776,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,4,5,6,7,8,12,14])]
 			public List<status> status {get;set;} = [];
@@ -7877,11 +7788,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(AirportAirfield);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => AirportAirfield._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -7895,9 +7804,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => AirportAirfield._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => AirportAirfield._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -7941,7 +7850,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,4,5,6,7,8,12,14])]
 			public List<status> status {get;set;} = [];
@@ -7951,11 +7860,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Runway);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Runway._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -7969,9 +7876,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Runway._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Runway._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -8015,7 +7922,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,4,5,6,7,8,12,14])]
 			public List<status> status {get;set;} = [];
@@ -8025,11 +7932,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Helipad);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Helipad._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -8043,9 +7948,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Helipad._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Helipad._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -8118,7 +8023,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,4,5,7,12])]
 			public List<status> status {get;set;} = [];
@@ -8133,11 +8038,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Bridge);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Bridge._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -8151,9 +8054,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Bridge._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Bridge._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface, Primitives.noGeometry
@@ -8228,11 +8131,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SpanFixed);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SpanFixed._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -8246,9 +8147,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SpanFixed._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SpanFixed._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -8326,11 +8227,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SpanOpening);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SpanOpening._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -8344,9 +8243,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SpanOpening._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SpanOpening._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -8431,7 +8330,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([4,12])]
 			public List<status> status {get;set;} = [];
@@ -8453,11 +8352,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Conveyor);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Conveyor._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -8471,9 +8368,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Conveyor._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Conveyor._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -8539,7 +8436,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,4,5,7,12,28])]
 			public List<status> status {get;set;} = [];
@@ -8559,11 +8456,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(CableOverhead);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => CableOverhead._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -8577,9 +8472,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CableOverhead._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => CableOverhead._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve
@@ -8638,7 +8533,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,4,7,12])]
 			public List<status> status {get;set;} = [];
@@ -8656,11 +8551,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(PipelineOverhead);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => PipelineOverhead._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -8674,9 +8567,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => PipelineOverhead._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => PipelineOverhead._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve
@@ -8752,7 +8645,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([4,12])]
 			public List<status> status {get;set;} = [];
@@ -8772,11 +8665,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(PylonBridgeSupport);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => PylonBridgeSupport._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -8790,9 +8681,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => PylonBridgeSupport._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => PylonBridgeSupport._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -8881,7 +8772,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,7,12,13])]
 			public List<status> status {get;set;} = [];
@@ -8896,11 +8787,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(FenceWall);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => FenceWall._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -8914,9 +8803,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FenceWall._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => FenceWall._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve
@@ -8957,7 +8846,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,4,6,12,13,14])]
 			public List<status> status {get;set;} = [];
@@ -8967,11 +8856,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Railway);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Railway._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -8985,9 +8872,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Railway._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Railway._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve
@@ -9032,7 +8919,7 @@ namespace S100Framework.DomainModel.S101 {
 			[EnumerationValue([4,5])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,4,6,7,8,12,13,14])]
 			public List<status> status {get;set;} = [];
@@ -9042,11 +8929,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Road);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Road._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -9060,9 +8945,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Road._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Road._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -9103,7 +8988,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,3,4,6,8,14])]
 			public List<status> status {get;set;} = [];
@@ -9120,11 +9005,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Tunnel);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Tunnel._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -9138,9 +9021,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Tunnel._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Tunnel._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -9205,7 +9088,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([2,4,5,7,8,12,13,14])]
 			public List<status> status {get;set;} = [];
@@ -9225,11 +9108,9 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? inTheWater {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Landmark);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Landmark._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -9243,9 +9124,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Landmark._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Landmark._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface
@@ -9342,7 +9223,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([4,12,13])]
 			public List<status> status {get;set;} = [];
@@ -9361,11 +9242,9 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? inTheWater {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SiloTank);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SiloTank._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -9379,9 +9258,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SiloTank._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SiloTank._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -9463,7 +9342,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,4,5,7,8,12,13,14,28])]
 			public List<status> status {get;set;} = [];
@@ -9490,11 +9369,9 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? inTheWater {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(WindTurbine);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => WindTurbine._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -9508,9 +9385,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => WindTurbine._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => WindTurbine._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -9575,7 +9452,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([4,7,8,12,13,14,28])]
 			public List<status> status {get;set;} = [];
@@ -9594,11 +9471,9 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? inTheWater {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(FortifiedStructure);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => FortifiedStructure._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -9612,9 +9487,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FortifiedStructure._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => FortifiedStructure._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface
@@ -9692,7 +9567,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([4,12])]
 			public List<status> status {get;set;} = [];
@@ -9709,11 +9584,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(ProductionStorageArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => ProductionStorageArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -9727,9 +9600,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ProductionStorageArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => ProductionStorageArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -9776,11 +9649,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Checkpoint);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Checkpoint._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -9794,9 +9665,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Checkpoint._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Checkpoint._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -9854,7 +9725,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public decimal? verticalLength {get;set;} = default;
 
@@ -9868,11 +9739,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Hulk);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Hulk._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -9886,9 +9755,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Hulk._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Hulk._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -9958,7 +9827,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,4,6,7,8,12,14])]
 			public List<status> status {get;set;} = [];
@@ -9975,11 +9844,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Pile);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Pile._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -9993,9 +9860,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Pile._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Pile._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface
@@ -10075,7 +9942,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public decimal? verticalLength {get;set;} = default;
 
@@ -10087,11 +9954,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Dyke);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Dyke._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -10105,9 +9970,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Dyke._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Dyke._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -10170,7 +10035,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,6,7,8,12,13,14,28])]
 			public List<status> status {get;set;} = [];
@@ -10188,11 +10053,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(ShorelineConstruction);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => ShorelineConstruction._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -10206,9 +10069,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ShorelineConstruction._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => ShorelineConstruction._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface
@@ -10293,7 +10156,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,4,5,7,8,12,14])]
 			public List<status> status {get;set;} = [];
@@ -10316,11 +10179,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(StructureOverNavigableWater);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => StructureOverNavigableWater._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -10334,9 +10195,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => StructureOverNavigableWater._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => StructureOverNavigableWater._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -10402,7 +10263,7 @@ namespace S100Framework.DomainModel.S101 {
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,7,8,12,14])]
 			public List<status> status {get;set;} = [];
@@ -10415,11 +10276,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Causeway);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Causeway._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -10433,9 +10292,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Causeway._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Causeway._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -10483,7 +10342,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,3,4,5,6,8,14])]
 			public List<status> status {get;set;} = [];
@@ -10493,11 +10352,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Canal);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Canal._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -10511,9 +10368,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Canal._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Canal._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -10562,11 +10419,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(DistanceMark);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => DistanceMark._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -10580,9 +10435,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DistanceMark._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => DistanceMark._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -10657,11 +10512,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Gate);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Gate._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -10675,9 +10528,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Gate._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Gate._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface
@@ -10750,11 +10603,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Dam);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Dam._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -10768,9 +10619,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Dam._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Dam._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -10850,11 +10701,9 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? inTheWater {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Crane);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Crane._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -10868,9 +10717,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Crane._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Crane._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -10950,11 +10799,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Berth);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Berth._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -10968,9 +10815,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Berth._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Berth._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface
@@ -11039,7 +10886,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,12,14,18])]
 			public List<status> status {get;set;} = [];
@@ -11056,11 +10903,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Dolphin);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Dolphin._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -11074,9 +10919,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Dolphin._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Dolphin._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -11143,7 +10988,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,3,4,6,7,8,12,14])]
 			public List<status> status {get;set;} = [];
@@ -11155,11 +11000,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Bollard);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Bollard._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -11173,9 +11016,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Bollard._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Bollard._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -11251,11 +11094,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(DryDock);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => DryDock._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -11269,9 +11110,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DryDock._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => DryDock._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -11349,11 +11190,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(FloatingDock);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => FloatingDock._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -11367,9 +11206,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FloatingDock._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => FloatingDock._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -11445,11 +11284,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Pontoon);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Pontoon._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -11463,9 +11300,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Pontoon._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Pontoon._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -11551,11 +11388,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(DockArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => DockArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -11569,9 +11404,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DockArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => DockArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -11627,11 +11462,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Gridiron);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Gridiron._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -11645,9 +11478,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Gridiron._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Gridiron._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -11701,11 +11534,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(LockBasin);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => LockBasin._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -11719,9 +11550,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LockBasin._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => LockBasin._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -11764,11 +11595,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(MooringTrot);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => MooringTrot._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -11782,9 +11611,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => MooringTrot._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => MooringTrot._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface, Primitives.noGeometry
@@ -11836,11 +11665,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SeaAreaNamedWaterArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SeaAreaNamedWaterArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -11854,9 +11681,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SeaAreaNamedWaterArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SeaAreaNamedWaterArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -11909,11 +11736,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(TidalStreamFloodEbb);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => TidalStreamFloodEbb._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -11927,9 +11752,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TidalStreamFloodEbb._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => TidalStreamFloodEbb._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -11983,11 +11808,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(CurrentNonGravitational);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => CurrentNonGravitational._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -12001,9 +11824,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CurrentNonGravitational._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => CurrentNonGravitational._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -12048,11 +11871,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(WaterTurbulence);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => WaterTurbulence._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -12066,9 +11887,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => WaterTurbulence._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => WaterTurbulence._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface
@@ -12115,11 +11936,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(TidalStreamPanelData);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => TidalStreamPanelData._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -12133,9 +11952,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TidalStreamPanelData._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => TidalStreamPanelData._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -12174,7 +11993,7 @@ namespace S100Framework.DomainModel.S101 {
 			[EnumerationValue([1,3,4,8,9])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([18])]
 			public status? status {get;set;} = default;
@@ -12187,11 +12006,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Sounding);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Sounding._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -12205,9 +12022,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Sounding._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Sounding._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.pointSet
@@ -12244,7 +12061,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public decimal? depthRangeMaximumValue {get;set;} = default;
 
-			public DateOnly? dredgedDate {get;set;} = default;
+			public String? dredgedDate {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
 
@@ -12268,11 +12085,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(DredgedArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => DredgedArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -12286,9 +12101,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DredgedArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => DredgedArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -12333,18 +12148,16 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public DateOnly? sweptDate {get;set;} = default;
+			public String? sweptDate {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SweptArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SweptArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -12358,9 +12171,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SweptArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SweptArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -12410,11 +12223,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(DepthContour);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => DepthContour._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -12428,9 +12239,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DepthContour._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => DepthContour._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve
@@ -12465,11 +12276,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(DepthArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => DepthArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -12483,9 +12292,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DepthArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => DepthArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -12519,11 +12328,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(DepthNoBottomFound);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => DepthNoBottomFound._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -12537,9 +12344,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DepthNoBottomFound._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => DepthNoBottomFound._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.pointSet
@@ -12568,11 +12375,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(UnsurveyedArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => UnsurveyedArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -12586,9 +12391,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => UnsurveyedArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => UnsurveyedArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -12626,11 +12431,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SeabedArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SeabedArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -12644,9 +12447,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SeabedArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SeabedArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface
@@ -12690,11 +12493,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(WeedKelp);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => WeedKelp._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -12708,9 +12509,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => WeedKelp._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => WeedKelp._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -12751,11 +12552,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Seagrass);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Seagrass._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -12769,9 +12568,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Seagrass._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Seagrass._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -12812,11 +12611,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Sandwave);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Sandwave._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -12830,9 +12627,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Sandwave._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Sandwave._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface
@@ -12865,11 +12662,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Spring);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Spring._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -12883,9 +12678,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Spring._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Spring._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -12930,7 +12725,7 @@ namespace S100Framework.DomainModel.S101 {
 			[EnumerationValue([1,2,3,4,6,7,8,9])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([18])]
 			public status? status {get;set;} = default;
@@ -12955,11 +12750,9 @@ namespace S100Framework.DomainModel.S101 {
 			public decimal surroundingDepth {get;set;}
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(UnderwaterAwashRock);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => UnderwaterAwashRock._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -12973,9 +12766,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => UnderwaterAwashRock._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => UnderwaterAwashRock._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -13024,7 +12817,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([7,13,18])]
 			public List<status> status {get;set;} = [];
@@ -13053,11 +12846,9 @@ namespace S100Framework.DomainModel.S101 {
 			public decimal surroundingDepth {get;set;}
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Wreck);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Wreck._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -13071,9 +12862,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Wreck._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Wreck._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -13139,7 +12930,7 @@ namespace S100Framework.DomainModel.S101 {
 			[EnumerationValue([1,2,3,4,6,7,8,9])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,4,5,7,8,13,18,28])]
 			public List<status> status {get;set;} = [];
@@ -13165,11 +12956,9 @@ namespace S100Framework.DomainModel.S101 {
 			public decimal surroundingDepth {get;set;}
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Obstruction);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Obstruction._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -13183,9 +12972,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Obstruction._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Obstruction._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface
@@ -13232,7 +13021,7 @@ namespace S100Framework.DomainModel.S101 {
 			[EnumerationValue([1,2,3,4,6,7,8,9])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([13,18,28])]
 			public List<status> status {get;set;} = [];
@@ -13249,11 +13038,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(FoulGround);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => FoulGround._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -13267,9 +13054,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FoulGround._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => FoulGround._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -13303,18 +13090,16 @@ namespace S100Framework.DomainModel.S101 {
 		public partial class DiscolouredWater : FeatureNode, IFeatureBindingDefinition {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(DiscolouredWater);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => DiscolouredWater._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -13328,9 +13113,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DiscolouredWater._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => DiscolouredWater._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -13366,7 +13151,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,4,5,6,7,8,12,18,28])]
 			public List<status> status {get;set;} = [];
@@ -13378,11 +13163,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(FishingFacility);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => FishingFacility._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -13396,9 +13179,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FishingFacility._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => FishingFacility._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface
@@ -13488,11 +13271,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(MarineFarmCulture);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => MarineFarmCulture._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -13506,9 +13287,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => MarineFarmCulture._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => MarineFarmCulture._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface
@@ -13567,7 +13348,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,4,7,8,12,28])]
 			public List<status> status {get;set;} = [];
@@ -13584,11 +13365,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(OffshorePlatform);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => OffshorePlatform._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -13602,9 +13381,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => OffshorePlatform._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => OffshorePlatform._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -13674,11 +13453,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(CableSubmarine);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => CableSubmarine._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -13692,9 +13469,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CableSubmarine._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => CableSubmarine._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve
@@ -13756,11 +13533,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(CableArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => CableArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -13774,9 +13549,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CableArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => CableArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -13831,7 +13606,7 @@ namespace S100Framework.DomainModel.S101 {
 			[EnumerationValue([1,2,3,7,8,9,18,19])]
 			public List<product> product {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,3,4,5,8,9,11,12,13,14,16,17,18,20,23,24,25,26,39])]
 			public List<restriction> restriction {get;set;} = [];
@@ -13846,11 +13621,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(PipelineSubmarineOnLand);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => PipelineSubmarineOnLand._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -13864,9 +13637,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => PipelineSubmarineOnLand._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => PipelineSubmarineOnLand._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve
@@ -13923,11 +13696,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SubmarinePipelineArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SubmarinePipelineArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -13941,9 +13712,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SubmarinePipelineArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SubmarinePipelineArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -13994,7 +13765,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 			public List<restriction> restriction {get;set;} = [];
@@ -14017,11 +13788,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(OffshoreProductionArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => OffshoreProductionArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -14035,9 +13804,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => OffshoreProductionArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => OffshoreProductionArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -14092,11 +13861,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(NavigationLine);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => NavigationLine._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -14110,9 +13877,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => NavigationLine._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => NavigationLine._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve
@@ -14182,11 +13949,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(RecommendedTrack);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => RecommendedTrack._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -14200,9 +13965,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RecommendedTrack._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => RecommendedTrack._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve
@@ -14263,11 +14028,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(RangeSystem);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => RangeSystem._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -14281,9 +14044,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RangeSystem._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => RangeSystem._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface, Primitives.noGeometry
@@ -14372,11 +14135,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Fairway);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Fairway._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -14390,9 +14151,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Fairway._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Fairway._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -14455,11 +14216,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(FairwaySystem);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => FairwaySystem._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -14473,9 +14232,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FairwaySystem._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => FairwaySystem._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface, Primitives.noGeometry
@@ -14557,11 +14316,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(RecommendedRouteCentreline);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => RecommendedRouteCentreline._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -14575,9 +14332,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RecommendedRouteCentreline._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => RecommendedRouteCentreline._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve
@@ -14656,11 +14413,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(TwoWayRoutePart);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => TwoWayRoutePart._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -14674,9 +14429,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TwoWayRoutePart._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => TwoWayRoutePart._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -14729,11 +14484,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(TwoWayRoute);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => TwoWayRoute._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -14747,9 +14500,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TwoWayRoute._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => TwoWayRoute._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface, Primitives.noGeometry
@@ -14820,11 +14573,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(RecommendedTrafficLanePart);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => RecommendedTrafficLanePart._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -14838,9 +14589,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RecommendedTrafficLanePart._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => RecommendedTrafficLanePart._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -14900,11 +14651,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(DeepWaterRouteCentreline);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => DeepWaterRouteCentreline._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -14918,9 +14667,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRouteCentreline._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => DeepWaterRouteCentreline._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve
@@ -15007,11 +14756,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(DeepWaterRoutePart);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoutePart._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -15025,9 +14772,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoutePart._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => DeepWaterRoutePart._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -15088,11 +14835,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(DeepWaterRoute);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoute._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -15106,9 +14851,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoute._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => DeepWaterRoute._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface, Primitives.noGeometry
@@ -15181,11 +14926,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(InshoreTrafficZone);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => InshoreTrafficZone._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -15199,9 +14942,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => InshoreTrafficZone._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => InshoreTrafficZone._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -15254,11 +14997,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(PrecautionaryArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => PrecautionaryArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -15272,9 +15013,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => PrecautionaryArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => PrecautionaryArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -15333,11 +15074,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(TrafficSeparationSchemeLanePart);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeLanePart._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -15351,9 +15090,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeLanePart._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => TrafficSeparationSchemeLanePart._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -15397,11 +15136,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SeparationZoneOrLine);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SeparationZoneOrLine._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -15415,9 +15152,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SeparationZoneOrLine._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SeparationZoneOrLine._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -15461,11 +15198,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(TrafficSeparationSchemeBoundary);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeBoundary._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -15479,9 +15214,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeBoundary._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => TrafficSeparationSchemeBoundary._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve
@@ -15530,11 +15265,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(TrafficSeparationSchemeCrossing);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeCrossing._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -15548,9 +15281,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeCrossing._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => TrafficSeparationSchemeCrossing._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -15599,11 +15332,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(TrafficSeparationSchemeRoundabout);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeRoundabout._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -15617,9 +15348,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeRoundabout._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => TrafficSeparationSchemeRoundabout._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -15666,11 +15397,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(TrafficSeparationScheme);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationScheme._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -15684,9 +15413,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationScheme._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => TrafficSeparationScheme._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface, Primitives.noGeometry
@@ -15763,11 +15492,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(ArchipelagicSeaLaneArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLaneArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -15781,9 +15508,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => ArchipelagicSeaLaneArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -15836,11 +15563,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(ArchipelagicSeaLaneAxis);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLaneAxis._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -15854,9 +15579,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneAxis._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => ArchipelagicSeaLaneAxis._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve
@@ -15909,11 +15634,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(ArchipelagicSeaLane);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLane._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -15927,9 +15650,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLane._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => ArchipelagicSeaLane._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface, Primitives.noGeometry
@@ -16009,11 +15732,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(RadioCallingInPoint);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => RadioCallingInPoint._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -16027,9 +15748,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RadioCallingInPoint._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => RadioCallingInPoint._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve
@@ -16080,11 +15801,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(FerryRoute);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => FerryRoute._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -16098,9 +15817,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FerryRoute._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => FerryRoute._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -16147,11 +15866,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(RadarLine);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => RadarLine._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -16165,9 +15882,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RadarLine._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => RadarLine._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve
@@ -16215,11 +15932,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(RadarRange);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => RadarRange._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -16233,9 +15948,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RadarRange._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => RadarRange._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -16292,11 +16007,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(RadarStation);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => RadarStation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -16310,9 +16023,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RadarStation._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => RadarStation._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -16371,11 +16084,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(AnchorageArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => AnchorageArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -16389,9 +16100,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => AnchorageArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => AnchorageArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -16451,11 +16162,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(MooringArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => MooringArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -16469,9 +16178,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => MooringArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => MooringArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -16527,11 +16236,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(AnchorBerth);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => AnchorBerth._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -16545,9 +16252,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => AnchorBerth._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => AnchorBerth._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -16598,11 +16305,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SeaplaneLandingArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SeaplaneLandingArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -16616,9 +16321,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SeaplaneLandingArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SeaplaneLandingArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -16653,7 +16358,7 @@ namespace S100Framework.DomainModel.S101 {
 			[EnumerationValue([2,3,4,5,6])]
 			public List<categoryOfDumpingGround> categoryOfDumpingGround {get;set;} = [];
 
-			public DateOnly? dateDisused {get;set;} = default;
+			public String? dateDisused {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
 
@@ -16672,11 +16377,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(DumpingGround);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => DumpingGround._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -16690,9 +16393,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => DumpingGround._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => DumpingGround._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -16750,11 +16453,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(MilitaryPracticeArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => MilitaryPracticeArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -16768,9 +16469,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => MilitaryPracticeArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => MilitaryPracticeArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -16821,11 +16522,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(AdministrationArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => AdministrationArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -16839,9 +16538,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => AdministrationArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => AdministrationArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -16894,11 +16593,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(CargoTranshipmentArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => CargoTranshipmentArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -16912,9 +16609,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CargoTranshipmentArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => CargoTranshipmentArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -16955,7 +16652,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([5,7])]
 			public status? status {get;set;} = default;
@@ -16967,11 +16664,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(CautionArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => CautionArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -16985,9 +16680,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CautionArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => CautionArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -17035,7 +16730,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -17044,11 +16739,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(InformationArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => InformationArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -17062,9 +16755,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => InformationArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => InformationArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -17109,11 +16802,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(ContiguousZone);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => ContiguousZone._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -17127,9 +16818,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ContiguousZone._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => ContiguousZone._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -17164,11 +16855,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(ContinentalShelfArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => ContinentalShelfArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -17182,9 +16871,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ContinentalShelfArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => ContinentalShelfArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -17225,11 +16914,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(CustomZone);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => CustomZone._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -17243,9 +16930,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CustomZone._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => CustomZone._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -17280,11 +16967,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(ExclusiveEconomicZone);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => ExclusiveEconomicZone._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -17298,9 +16983,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => ExclusiveEconomicZone._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => ExclusiveEconomicZone._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -17338,11 +17023,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(FisheryZone);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => FisheryZone._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -17356,9 +17039,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FisheryZone._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => FisheryZone._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -17409,11 +17092,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(FishingGround);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => FishingGround._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -17427,9 +17108,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FishingGround._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => FishingGround._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -17473,11 +17154,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(FreePortArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => FreePortArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -17491,9 +17170,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FreePortArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => FreePortArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -17537,11 +17216,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(HarbourAreaAdministrative);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => HarbourAreaAdministrative._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -17555,9 +17232,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => HarbourAreaAdministrative._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => HarbourAreaAdministrative._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -17603,11 +17280,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(LogPond);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => LogPond._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -17621,9 +17296,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LogPond._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => LogPond._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -17667,7 +17342,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,4,5,7,8])]
 			public List<status> status {get;set;} = [];
@@ -17677,11 +17352,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(OilBarrier);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => OilBarrier._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -17695,9 +17368,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => OilBarrier._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => OilBarrier._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve
@@ -17738,11 +17411,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(StraightTerritorialSeaBaseline);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => StraightTerritorialSeaBaseline._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -17756,9 +17427,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => StraightTerritorialSeaBaseline._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => StraightTerritorialSeaBaseline._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve
@@ -17798,11 +17469,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(TerritorialSeaArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => TerritorialSeaArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -17816,9 +17485,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TerritorialSeaArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => TerritorialSeaArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve, Primitives.surface
@@ -17858,11 +17527,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SubmarineTransitLane);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SubmarineTransitLane._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -17876,9 +17543,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SubmarineTransitLane._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SubmarineTransitLane._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -17921,11 +17588,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(PilotageDistrict);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => PilotageDistrict._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -17939,9 +17604,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => PilotageDistrict._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => PilotageDistrict._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -17996,11 +17661,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(CollisionRegulationsLimit);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => CollisionRegulationsLimit._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -18014,9 +17677,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CollisionRegulationsLimit._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => CollisionRegulationsLimit._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.curve
@@ -18059,11 +17722,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(MarinePollutionRegulationsArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => MarinePollutionRegulationsArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -18077,9 +17738,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => MarinePollutionRegulationsArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => MarinePollutionRegulationsArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -18135,11 +17796,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(RestrictedArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => RestrictedArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -18153,9 +17812,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RestrictedArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => RestrictedArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -18255,11 +17914,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(LightAllAround);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => LightAllAround._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -18273,9 +17930,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LightAllAround._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => LightAllAround._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -18368,11 +18025,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(LightSectored);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => LightSectored._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -18386,9 +18041,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LightSectored._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => LightSectored._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -18477,11 +18132,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(LightFogDetector);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => LightFogDetector._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -18495,9 +18148,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LightFogDetector._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => LightFogDetector._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -18575,11 +18228,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(LightAirObstruction);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => LightAirObstruction._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -18593,9 +18244,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LightAirObstruction._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => LightAirObstruction._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -18679,11 +18330,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(LateralBuoy);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => LateralBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -18697,9 +18346,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LateralBuoy._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => LateralBuoy._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -18799,11 +18448,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(CardinalBuoy);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => CardinalBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -18817,9 +18464,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CardinalBuoy._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => CardinalBuoy._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -18915,11 +18562,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(IsolatedDangerBuoy);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -18933,9 +18578,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBuoy._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => IsolatedDangerBuoy._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -19031,11 +18676,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SafeWaterBuoy);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SafeWaterBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -19049,9 +18692,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBuoy._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SafeWaterBuoy._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -19150,11 +18793,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SpecialPurposeGeneralBuoy);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -19168,9 +18809,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBuoy._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SpecialPurposeGeneralBuoy._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -19261,11 +18902,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(EmergencyWreckMarkingBuoy);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => EmergencyWreckMarkingBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -19279,9 +18918,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => EmergencyWreckMarkingBuoy._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => EmergencyWreckMarkingBuoy._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -19371,11 +19010,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(InstallationBuoy);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => InstallationBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -19389,9 +19026,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => InstallationBuoy._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => InstallationBuoy._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -19470,11 +19107,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(MooringBuoy);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => MooringBuoy._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -19488,9 +19123,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => MooringBuoy._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => MooringBuoy._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -19583,7 +19218,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
@@ -19602,11 +19237,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(LateralBeacon);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => LateralBeacon._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -19620,9 +19253,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LateralBeacon._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => LateralBeacon._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -19723,7 +19356,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
@@ -19742,11 +19375,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(CardinalBeacon);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => CardinalBeacon._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -19760,9 +19391,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CardinalBeacon._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => CardinalBeacon._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -19859,7 +19490,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
@@ -19878,11 +19509,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(IsolatedDangerBeacon);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBeacon._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -19896,9 +19525,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBeacon._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => IsolatedDangerBeacon._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -19995,7 +19624,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
@@ -20014,11 +19643,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SafeWaterBeacon);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SafeWaterBeacon._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -20032,9 +19659,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBeacon._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SafeWaterBeacon._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -20134,7 +19761,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
@@ -20153,11 +19780,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SpecialPurposeGeneralBeacon);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBeacon._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -20171,9 +19796,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBeacon._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SpecialPurposeGeneralBeacon._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -20281,11 +19906,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Daymark);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Daymark._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -20299,9 +19922,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Daymark._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Daymark._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -20413,11 +20036,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(LightFloat);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => LightFloat._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -20431,9 +20052,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LightFloat._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => LightFloat._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -20527,11 +20148,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(LightVessel);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => LightVessel._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -20545,9 +20164,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => LightVessel._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => LightVessel._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -20625,11 +20244,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Retroreflector);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Retroreflector._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -20643,9 +20260,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Retroreflector._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Retroreflector._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -20693,11 +20310,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(RadarReflector);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => RadarReflector._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -20711,9 +20326,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RadarReflector._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => RadarReflector._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -20778,11 +20393,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(FogSignal);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => FogSignal._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -20796,9 +20409,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => FogSignal._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => FogSignal._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -20858,11 +20471,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(PhysicalAISAidToNavigation);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => PhysicalAISAidToNavigation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -20876,9 +20487,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => PhysicalAISAidToNavigation._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => PhysicalAISAidToNavigation._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -20942,11 +20553,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(VirtualAISAidToNavigation);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => VirtualAISAidToNavigation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -20960,9 +20569,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => VirtualAISAidToNavigation._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => VirtualAISAidToNavigation._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -21021,11 +20630,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(RadioStation);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => RadioStation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -21039,9 +20646,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RadioStation._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => RadioStation._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -21103,11 +20710,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(RadarTransponderBeacon);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => RadarTransponderBeacon._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -21121,9 +20726,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RadarTransponderBeacon._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => RadarTransponderBeacon._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -21200,11 +20805,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(PilotBoardingPlace);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => PilotBoardingPlace._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -21218,9 +20821,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => PilotBoardingPlace._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => PilotBoardingPlace._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -21269,11 +20872,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(VesselTrafficServiceArea);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => VesselTrafficServiceArea._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -21287,9 +20888,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => VesselTrafficServiceArea._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => VesselTrafficServiceArea._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.surface
@@ -21341,11 +20942,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(CoastGuardStation);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => CoastGuardStation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -21359,9 +20958,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => CoastGuardStation._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => CoastGuardStation._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -21414,11 +21013,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SignalStationWarning);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SignalStationWarning._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -21432,9 +21029,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SignalStationWarning._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SignalStationWarning._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -21495,11 +21092,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SignalStationTraffic);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SignalStationTraffic._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -21513,9 +21108,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SignalStationTraffic._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SignalStationTraffic._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -21576,11 +21171,9 @@ namespace S100Framework.DomainModel.S101 {
 			public List<information> information {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(RescueStation);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => RescueStation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -21594,9 +21187,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => RescueStation._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => RescueStation._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -21650,7 +21243,7 @@ namespace S100Framework.DomainModel.S101 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,25])]
 			public product? product {get;set;} = default;
 
-			public DateOnly? reportedDate {get;set;} = default;
+			public String? reportedDate {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,23,24,27])]
 			public List<restriction> restriction {get;set;} = [];
@@ -21667,11 +21260,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(HarbourFacility);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => HarbourFacility._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -21685,9 +21276,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => HarbourFacility._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => HarbourFacility._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -21738,11 +21329,9 @@ namespace S100Framework.DomainModel.S101 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(SmallCraftFacility);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => SmallCraftFacility._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -21756,9 +21345,9 @@ namespace S100Framework.DomainModel.S101 {
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => SmallCraftFacility._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => SmallCraftFacility._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
@@ -21804,19 +21393,17 @@ namespace S100Framework.DomainModel.S101 {
 			public int? scaleMinimum {get;set;} = default;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(TextPlacement);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => TextPlacement._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -21845,19 +21432,17 @@ namespace S100Framework.DomainModel.S101 {
 			public List<featureName> featureName {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(Chart1Feature);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => Chart1Feature._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => Chart1Feature._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => Chart1Feature._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.pointSet, Primitives.curve, Primitives.surface

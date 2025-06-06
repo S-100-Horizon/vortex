@@ -20,38 +20,38 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel.S128 {
 	internal static class Bootstrap {
-		public static AssociationViewModel CreateInformationAssociation(string type, string? pid = default) => type switch {
-			"CarriageRequirement" => new CarriageRequirementViewModel { PID = pid },
-			"DistributionDetails" => new DistributionDetailsViewModel { PID = pid },
-			"DistributorContact" => new DistributorContactViewModel { PID = pid },
-			"PriceOfElement" => new PriceOfElementViewModel { PID = pid },
-			"PriceOfNauticalProduct" => new PriceOfNauticalProductViewModel { PID = pid },
-			"ProducerContact" => new ProducerContactViewModel { PID = pid },
-			"ProductionDetails" => new ProductionDetailsViewModel { PID = pid },
-			"ProductPackage" => new ProductPackageViewModel { PID = pid },
+		public static AssociationViewModel CreateInformationAssociation(string type, string? name = default) => type switch {
+			"CarriageRequirement" => new CarriageRequirementViewModel { Name = name },
+			"DistributionDetails" => new DistributionDetailsViewModel { Name = name },
+			"DistributorContact" => new DistributorContactViewModel { Name = name },
+			"PriceOfElement" => new PriceOfElementViewModel { Name = name },
+			"PriceOfNauticalProduct" => new PriceOfNauticalProductViewModel { Name = name },
+			"ProducerContact" => new ProducerContactViewModel { Name = name },
+			"ProductionDetails" => new ProductionDetailsViewModel { Name = name },
+			"ProductPackage" => new ProductPackageViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
-		public static AssociationViewModel CreateFeatureAssociation(string type, string? pid = default) => type switch {
-			"ProductMapping" => new ProductMappingViewModel { PID = pid },
-			"Correlated" => new CorrelatedViewModel { PID = pid },
+		public static AssociationViewModel CreateFeatureAssociation(string type, string? name = default) => type switch {
+			"ProductMapping" => new ProductMappingViewModel { Name = name },
+			"Correlated" => new CorrelatedViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
-		public static InformationViewModel CreateInformationType(string type, string? pid = default) => type switch {
-			"CatalogueSectionHeader" => new CatalogueSectionHeaderViewModel { PID = pid },
-			"ContactDetails" => new ContactDetailsViewModel { PID = pid },
-			"IndicationOfCarriageRequirement" => new IndicationOfCarriageRequirementViewModel { PID = pid },
-			"PriceInformation" => new PriceInformationViewModel { PID = pid },
-			"ProducerInformation" => new ProducerInformationViewModel { PID = pid },
-			"DistributorInformation" => new DistributorInformationViewModel { PID = pid },
+		public static InformationViewModel CreateInformationType(string type, string? name = default) => type switch {
+			"CatalogueSectionHeader" => new CatalogueSectionHeaderViewModel { Name = name },
+			"ContactDetails" => new ContactDetailsViewModel { Name = name },
+			"IndicationOfCarriageRequirement" => new IndicationOfCarriageRequirementViewModel { Name = name },
+			"PriceInformation" => new PriceInformationViewModel { Name = name },
+			"ProducerInformation" => new ProducerInformationViewModel { Name = name },
+			"DistributorInformation" => new DistributorInformationViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
-		public static FeatureViewModel CreateFeatureType(string type, string? pid = default) => type switch {
-			"ElectronicProduct" => new ElectronicProductViewModel { PID = pid },
-			"PhysicalProduct" => new PhysicalProductViewModel { PID = pid },
-			"S100Service" => new S100ServiceViewModel { PID = pid },
+		public static FeatureViewModel CreateFeatureType(string type, string? name = default) => type switch {
+			"ElectronicProduct" => new ElectronicProductViewModel { Name = name },
+			"PhysicalProduct" => new PhysicalProductViewModel { Name = name },
+			"S100Service" => new S100ServiceViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
@@ -74,7 +74,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public static ICollection<string> FeatureAssociationBindings(string association, string role) => (association, role) switch {
 			("ProductMapping", "theReference") => ["CatalogueElement"],
-			("Correlated", "main") => ["NavigationalProduct"],
+			("Correlated", "theMain") => ["NavigationalProduct"],
+			("Correlated", "thePanel") => ["NavigationalProduct"],
 			_ => throw new InvalidOperationException(),
 		};
 	}
@@ -172,52 +173,52 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 	}
 	/// <summary>
-	/// user specified paper size width x, height y
+	/// User specified paper size width x, height y
 	/// </summary>
 	[CategoryOrder("customPaperSize",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class customPaperSizeViewModel : ViewModelBase {
-		private int _x ;
+		private decimal _paperWidth ;
 
-		public int x {
+		public decimal paperWidth {
 			get {
-				return _x;
+				return _paperWidth;
 			}
 			set {
-				SetValue(ref _x, value);
+				SetValue(ref _paperWidth, value);
 			}
 		}
-		private int _y ;
+		private decimal _paperLength ;
 
-		public int y {
+		public decimal paperLength {
 			get {
-				return _y;
+				return _paperLength;
 			}
 			set {
-				SetValue(ref _y, value);
+				SetValue(ref _paperLength, value);
 			}
 		}
 
 
 		public customPaperSizeViewModel Load(customPaperSize instance) {
-			x = instance.x;
-			y = instance.y;
+			paperWidth = instance.paperWidth;
+			paperLength = instance.paperLength;
 			return this;
 		}
 
 		public override string Serialize() {
 			var instance = new customPaperSize {
-				x = this.x,
-				y = this.y,
+				paperWidth = this.paperWidth,
+				paperLength = this.paperLength,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
 		[Browsable(false)]
 		public customPaperSize Model => new () {
-			x = this._x,
-			y = this._y,
+			paperWidth = this._paperWidth,
+			paperLength = this._paperLength,
 		};
 
 		public override string? ToString() => $"Custom Paper Size";
@@ -315,6 +316,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private nameUsage? _nameUsage  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(nameUsageList), typeof(nameUsage))]
 		public nameUsage? nameUsage {
 			get {
 				return _nameUsage;
@@ -446,7 +449,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 	}
 	/// <summary>
-	/// The cycle of issuing the nautical product data.
+	/// The cycle of issuing a product or service.
 	/// </summary>
 	[CategoryOrder("issuanceCycle",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -616,9 +619,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class periodicDateRangeViewModel : ViewModelBase {
-		private DateOnly _dateEnd ;
+		private String _dateEnd ;
 
-		public DateOnly dateEnd {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String dateEnd {
 			get {
 				return _dateEnd;
 			}
@@ -626,9 +630,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _dateEnd, value);
 			}
 		}
-		private DateOnly _dateStart ;
+		private String _dateStart ;
 
-		public DateOnly dateStart {
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		public String dateStart {
 			get {
 				return _dateStart;
 			}
@@ -661,7 +666,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override string? ToString() => $"Periodic Date Range";
 	}
 	/// <summary>
-	/// A sum of money paid or a claim discharged.
+	/// A decision or establishment of a price.
 	/// </summary>
 	[CategoryOrder("pricing",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -751,24 +756,24 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _printNation, value);
 			}
 		}
-		private String? _rePrintEdition  = default;
+		private String? _reprintEdition  = default;
 
-		public String? rePrintEdition {
+		public String? reprintEdition {
 			get {
-				return _rePrintEdition;
+				return _reprintEdition;
 			}
 			set {
-				SetValue(ref _rePrintEdition, value);
+				SetValue(ref _reprintEdition, value);
 			}
 		}
-		private String? _rePrintNation  = default;
+		private String? _reprintNation  = default;
 
-		public String? rePrintNation {
+		public String? reprintNation {
 			get {
-				return _rePrintNation;
+				return _reprintNation;
 			}
 			set {
-				SetValue(ref _rePrintNation, value);
+				SetValue(ref _reprintNation, value);
 			}
 		}
 		private printSizeViewModel _printSize ;
@@ -788,8 +793,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public printInformationViewModel Load(printInformation instance) {
 			printAgency = instance.printAgency;
 			printNation = instance.printNation;
-			rePrintEdition = instance.rePrintEdition;
-			rePrintNation = instance.rePrintNation;
+			reprintEdition = instance.reprintEdition;
+			reprintNation = instance.reprintNation;
 			printSize = new ();
 			if (instance.printSize != default) {
 				printSize.Load(instance.printSize);
@@ -801,8 +806,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			var instance = new printInformation {
 				printAgency = this.printAgency,
 				printNation = this.printNation,
-				rePrintEdition = this.rePrintEdition,
-				rePrintNation = this.rePrintNation,
+				reprintEdition = this.reprintEdition,
+				reprintNation = this.reprintNation,
 				printSize = this.printSize?.Model,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -812,8 +817,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public printInformation Model => new () {
 			printAgency = this._printAgency,
 			printNation = this._printNation,
-			rePrintEdition = this._rePrintEdition,
-			rePrintNation = this._rePrintNation,
+			reprintEdition = this._reprintEdition,
+			reprintNation = this._reprintNation,
 			printSize = this._printSize?.Model,
 		};
 
@@ -826,19 +831,21 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class printSizeViewModel : ViewModelBase {
-		private iso216? _iso216  = default;
+		private iSO216? _iSO216  = default;
 
-		public iso216? iso216 {
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(iSO216List), typeof(iSO216))]
+		public iSO216? iSO216 {
 			get {
-				return _iso216;
+				return _iSO216;
 			}
 			set {
-				SetValue(ref _iso216, value);
+				SetValue(ref _iSO216, value);
 			}
 		}
 
 		[Browsable(false)]
-		public iso216[] iso216List => [(iso216)1,(iso216)2,(iso216)3,(iso216)4,(iso216)5,(iso216)6,(iso216)7,(iso216)8];
+		public iSO216[] iSO216List => [(iSO216)1,(iSO216)2,(iSO216)3,(iSO216)4,(iSO216)5,(iSO216)6,(iSO216)7,(iSO216)8];
 		private customPaperSizeViewModel? _customPaperSize  = default;
 
 		[Category("printSize")]
@@ -854,7 +861,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 
 		public printSizeViewModel Load(printSize instance) {
-			iso216 = instance.iso216;
+			iSO216 = instance.iSO216;
 			customPaperSize = new ();
 			if (instance.customPaperSize != default) {
 				customPaperSize.Load(instance.customPaperSize);
@@ -864,7 +871,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string Serialize() {
 			var instance = new printSize {
-				iso216 = this.iso216,
+				iSO216 = this.iSO216,
 				customPaperSize = this.customPaperSize?.Model,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -872,37 +879,37 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Browsable(false)]
 		public printSize Model => new () {
-			iso216 = this._iso216,
+			iSO216 = this._iSO216,
 			customPaperSize = this._customPaperSize?.Model,
 		};
 
 		public override string? ToString() => $"Print Size";
 	}
 	/// <summary>
-	/// Product standard name referenced when manufacturing nautical products.
+	/// The name of the product specification to which a nautical product adheres.
 	/// </summary>
 	[CategoryOrder("productSpecification",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class productSpecificationViewModel : ViewModelBase {
-		private DateOnly _date ;
+		private DateOnly _editionDate ;
 
-		public DateOnly date {
+		public DateOnly editionDate {
 			get {
-				return _date;
+				return _editionDate;
 			}
 			set {
-				SetValue(ref _date, value);
+				SetValue(ref _editionDate, value);
 			}
 		}
-		private String? _ISSN  = default;
+		private String? _iSSN  = default;
 
-		public String? ISSN {
+		public String? iSSN {
 			get {
-				return _ISSN;
+				return _iSSN;
 			}
 			set {
-				SetValue(ref _ISSN, value);
+				SetValue(ref _iSSN, value);
 			}
 		}
 		private String _name  = string.Empty;
@@ -928,8 +935,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 
 		public productSpecificationViewModel Load(productSpecification instance) {
-			date = instance.date;
-			ISSN = instance.ISSN;
+			editionDate = instance.editionDate;
+			iSSN = instance.iSSN;
 			name = instance.name;
 			version = instance.version;
 			return this;
@@ -937,8 +944,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string Serialize() {
 			var instance = new productSpecification {
-				date = this.date,
-				ISSN = this.ISSN,
+				editionDate = this.editionDate,
+				iSSN = this.iSSN,
 				name = this.name,
 				version = this.version,
 			};
@@ -947,8 +954,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Browsable(false)]
 		public productSpecification Model => new () {
-			date = this._date,
-			ISSN = this._ISSN,
+			editionDate = this._editionDate,
+			iSSN = this._iSSN,
 			name = this._name,
 			version = this._version,
 		};
@@ -974,6 +981,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private digitalSignatureReference _digitalSignatureReference ;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(digitalSignatureReferenceList), typeof(digitalSignatureReference))]
 		public digitalSignatureReference digitalSignatureReference {
 			get {
 				return _digitalSignatureReference;
@@ -984,10 +993,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 
 		[Browsable(false)]
-		public digitalSignatureReference[] digitalSignatureReferenceList => [(digitalSignatureReference)1];
-		private String? _digitalSignatureValue  = default;
+		public digitalSignatureReference[] digitalSignatureReferenceList => [(digitalSignatureReference)8];
+		private digitalSignatureValue? _digitalSignatureValue  = default;
 
-		public String? digitalSignatureValue {
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(digitalSignatureValueList), typeof(digitalSignatureValue))]
+		public digitalSignatureValue? digitalSignatureValue {
 			get {
 				return _digitalSignatureValue;
 			}
@@ -995,6 +1006,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _digitalSignatureValue, value);
 			}
 		}
+
+		[Browsable(false)]
+		public digitalSignatureValue[] digitalSignatureValueList => [(digitalSignatureValue)1,(digitalSignatureValue)2];
 		private int? _editionNumber  = default;
 
 		public int? editionNumber {
@@ -1047,6 +1061,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private supportFileFormat _supportFileFormat ;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(supportFileFormatList), typeof(supportFileFormat))]
 		public supportFileFormat supportFileFormat {
 			get {
 				return _supportFileFormat;
@@ -1060,6 +1076,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public supportFileFormat[] supportFileFormatList => [(supportFileFormat)1,(supportFileFormat)2,(supportFileFormat)3,(supportFileFormat)4,(supportFileFormat)5,(supportFileFormat)6,(supportFileFormat)7,(supportFileFormat)8,(supportFileFormat)9,(supportFileFormat)100];
 		private supportFilePurpose _supportFilePurpose ;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(supportFilePurposeList), typeof(supportFilePurpose))]
 		public supportFilePurpose supportFilePurpose {
 			get {
 				return _supportFilePurpose;
@@ -1153,23 +1171,23 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			supportFileSpecification = this._supportFileSpecification?.Model,
 		};
 
-		public override string? ToString() => $"S100_Support File";
+		public override string? ToString() => $"Support File";
 	}
 	/// <summary>
-	/// The reason for inclusion of the support file.
+	/// The name of the product specification to which a support file adheres.
 	/// </summary>
 	[CategoryOrder("supportFileSpecification",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class supportFileSpecificationViewModel : ViewModelBase {
-		private DateOnly _date ;
+		private DateOnly _editionDate ;
 
-		public DateOnly date {
+		public DateOnly editionDate {
 			get {
-				return _date;
+				return _editionDate;
 			}
 			set {
-				SetValue(ref _date, value);
+				SetValue(ref _editionDate, value);
 			}
 		}
 		private String _name  = string.Empty;
@@ -1195,7 +1213,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 
 		public supportFileSpecificationViewModel Load(supportFileSpecification instance) {
-			date = instance.date;
+			editionDate = instance.editionDate;
 			name = instance.name;
 			version = instance.version;
 			return this;
@@ -1203,7 +1221,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string Serialize() {
 			var instance = new supportFileSpecification {
-				date = this.date,
+				editionDate = this.editionDate,
 				name = this.name,
 				version = this.version,
 			};
@@ -1212,28 +1230,28 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Browsable(false)]
 		public supportFileSpecification Model => new () {
-			date = this._date,
+			editionDate = this._editionDate,
 			name = this._name,
 			version = this._version,
 		};
 
-		public override string? ToString() => $"S100_Support File Specification";
+		public override string? ToString() => $"Support File Specification";
 	}
 	/// <summary>
-	/// Product standard name referenced when developing nautical product service.
+	/// The name of the (product) specification to which a nautical service adheres.
 	/// </summary>
 	[CategoryOrder("serviceSpecification",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class serviceSpecificationViewModel : ViewModelBase {
-		private DateOnly _date ;
+		private DateOnly _editionDate ;
 
-		public DateOnly date {
+		public DateOnly editionDate {
 			get {
-				return _date;
+				return _editionDate;
 			}
 			set {
-				SetValue(ref _date, value);
+				SetValue(ref _editionDate, value);
 			}
 		}
 		private String _name  = string.Empty;
@@ -1259,7 +1277,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 
 		public serviceSpecificationViewModel Load(serviceSpecification instance) {
-			date = instance.date;
+			editionDate = instance.editionDate;
 			name = instance.name;
 			version = instance.version;
 			return this;
@@ -1267,7 +1285,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string Serialize() {
 			var instance = new serviceSpecification {
-				date = this.date,
+				editionDate = this.editionDate,
 				name = this.name,
 				version = this.version,
 			};
@@ -1276,7 +1294,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Browsable(false)]
 		public serviceSpecification Model => new () {
-			date = this._date,
+			editionDate = this._editionDate,
 			name = this._name,
 			version = this._version,
 		};
@@ -1292,6 +1310,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class sourceIndicationViewModel : ViewModelBase {
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -1335,6 +1355,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private sourceType? _sourceType  = default;
 
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -1421,9 +1443,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _telecommunicationIdentifier, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(telecommunicationServiceList))]
 		[Category("telecommunications")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(telecommunicationServiceList), typeof(telecommunicationService))]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -1466,22 +1488,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 	}
 	/// <summary>
-	/// 
+	/// The temporal interval over which the product is updated or renewed.
 	/// </summary>
 	[CategoryOrder("timeIntervalOfProduct",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalOfProductViewModel : ViewModelBase {
-		private DateOnly _issueDate ;
-
-		public DateOnly issueDate {
-			get {
-				return _issueDate;
-			}
-			set {
-				SetValue(ref _issueDate, value);
-			}
-		}
 		private DateOnly? _expirationDate  = default;
 
 		public DateOnly? expirationDate {
@@ -1490,6 +1502,16 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 			set {
 				SetValue(ref _expirationDate, value);
+			}
+		}
+		private DateOnly _issueDate ;
+
+		public DateOnly issueDate {
+			get {
+				return _issueDate;
+			}
+			set {
+				SetValue(ref _issueDate, value);
 			}
 		}
 		private issuanceCycleViewModel? _issuanceCycle  = default;
@@ -1507,8 +1529,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 
 		public timeIntervalOfProductViewModel Load(timeIntervalOfProduct instance) {
-			issueDate = instance.issueDate;
 			expirationDate = instance.expirationDate;
+			issueDate = instance.issueDate;
 			issuanceCycle = new ();
 			if (instance.issuanceCycle != default) {
 				issuanceCycle.Load(instance.issuanceCycle);
@@ -1518,8 +1540,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string Serialize() {
 			var instance = new timeIntervalOfProduct {
-				issueDate = this.issueDate,
 				expirationDate = this.expirationDate,
+				issueDate = this.issueDate,
 				issuanceCycle = this.issuanceCycle?.Model,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -1527,23 +1549,23 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Browsable(false)]
 		public timeIntervalOfProduct Model => new () {
-			issueDate = this._issueDate,
 			expirationDate = this._expirationDate,
+			issueDate = this._issueDate,
 			issuanceCycle = this._issuanceCycle?.Model,
 		};
 
-		public override string? ToString() => $"Time Interval of Product";
+		public override string? ToString() => $"Time Interval Of Product";
 	}
 	/// <summary>
-	/// The temporal interval over which the cycle of issuing the nautical product data.
+	/// The temporal interval of the cycle over which data is produced.
 	/// </summary>
 	[CategoryOrder("timeIntervalOfCycle",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalOfCycleViewModel : ViewModelBase {
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(typeOfTimeIntervalUnitList))]
 		[Category("timeIntervalOfCycle")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(typeOfTimeIntervalUnitList), typeof(typeOfTimeIntervalUnit))]
 		public ObservableCollection<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -1584,7 +1606,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			valueOfTime = this._valueOfTime,
 		};
 
-		public override string? ToString() => $"Time Interval of Cycle";
+		public override string? ToString() => $"Time Interval Of Cycle";
 
 		public timeIntervalOfCycleViewModel() : base() {
 			typeOfTimeIntervalUnit.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -1593,7 +1615,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 	}
 	/// <summary>
-	/// Reference information of notice to mariners.
+	/// A reference to a of specific Notice to Mariners.
 	/// </summary>
 	[CategoryOrder("referenceToNM",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -1649,7 +1671,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override string? ToString() => $"Reference To NM";
 	}
 	/// <summary>
-	/// Week of the year.
+	/// The indication of a specific week within a specific year.
 	/// </summary>
 	[CategoryOrder("weekOfYear",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -1701,7 +1723,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	}
 
 	/// <summary>
-	/// carriage requirement.
+	/// A carriage requirement required by SOLAS or other regulation.
 	/// </summary>
 	[CategoryOrder("CarriageRequirement",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -1729,7 +1751,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	}
 
 	/// <summary>
-	/// Contact information of nautical product suppliers.
+	/// Details related to distribution.
 	/// </summary>
 	[CategoryOrder("DistributionDetails",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -1785,7 +1807,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	}
 
 	/// <summary>
-	/// price of element.
+	/// An association of price information to a catalogue element.
 	/// </summary>
 	[CategoryOrder("PriceOfElement",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -1809,11 +1831,11 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		};
 
-		public override string? ToString() => $"Price Of Element";
+		public override string? ToString() => $"Price of Element";
 	}
 
 	/// <summary>
-	/// The price of nautical product.
+	/// The price of a nautical product.
 	/// </summary>
 	[CategoryOrder("PriceOfNauticalProduct",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -1837,7 +1859,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		};
 
-		public override string? ToString() => $"Price Of Nautical Product";
+		public override string? ToString() => $"Price of Nautical Product";
 	}
 
 	/// <summary>
@@ -1869,7 +1891,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	}
 
 	/// <summary>
-	/// Contact information of nautical product publishing organizations.
+	/// Contact information of a producing organization.
 	/// </summary>
 	[CategoryOrder("ProductionDetails",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -1897,7 +1919,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	}
 
 	/// <summary>
-	/// Package of the various substances which are transported, stored or exploited.
+	/// A package or distinct set of products.
 	/// </summary>
 	[CategoryOrder("ProductPackage",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -1934,6 +1956,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private categoryOfProductMapping _categoryOfProductMapping ;
 
 		[Category("ProductMapping")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(categoryOfProductMappingList), typeof(categoryOfProductMapping))]
 		public categoryOfProductMapping categoryOfProductMapping {
 			get {
 				return _categoryOfProductMapping;
@@ -1997,7 +2021,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	}
 
 	/// <summary>
-	/// catalogue section header.
+	/// A header identifying a section within a catalogue.
 	/// </summary>
 	[CategoryOrder("CatalogueSectionHeader",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -2174,7 +2198,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	}
 
 	/// <summary>
-	/// requirements for transportation.
+	/// An indication of the type or justification of a carriage requirement.
 	/// </summary>
 	[CategoryOrder("IndicationOfCarriageRequirement",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -2234,7 +2258,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => IndicationOfCarriageRequirement._informationBindingDefinitions;
 
-		public override string? ToString() => $"Indication Of Carriage Requirement";
+		public override string? ToString() => $"Indication of Carriage Requirement";
 
 		public IndicationOfCarriageRequirementViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -2244,7 +2268,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	}
 
 	/// <summary>
-	/// Pricing information of nautical product.
+	/// Pricing information of nautical products.
 	/// </summary>
 	[CategoryOrder("PriceInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -2322,7 +2346,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	}
 
 	/// <summary>
-	/// Information about the country of production.
+	/// Information about the authority responsible for production.
 	/// </summary>
 	[CategoryOrder("ProducerInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -2377,7 +2401,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	}
 
 	/// <summary>
-	/// distributor information.
+	/// Information related to a distributor.
 	/// </summary>
 	[CategoryOrder("DistributorInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -2435,9 +2459,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _agencyResponsibleForProduction, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList))]
 		[Category("CatalogueElement")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList), typeof(catalogueElementClassification))]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -2464,13 +2488,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _classification, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(IMOMaritimeServiceList))]
 		[Category("CatalogueElement")]
-		public ObservableCollection<IMOMaritimeService> IMOMaritimeService  { get; set; } = new ();
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(iMOMaritimeServiceList), typeof(iMOMaritimeService))]
+		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
 
 		[Browsable(false)]
-		public IMOMaritimeService[] IMOMaritimeServiceList => Enum.GetValues<IMOMaritimeService>();
+		public iMOMaritimeService[] iMOMaritimeServiceList => Enum.GetValues<iMOMaritimeService>();
 		private Boolean _notForNavigation  = false;
 
 		[Category("CatalogueElement")]
@@ -2532,6 +2556,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private distributionStatus? _distributionStatus  = default;
 
 		[Category("NavigationalProduct")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(distributionStatusList), typeof(distributionStatus))]
 		public distributionStatus? distributionStatus {
 			get {
 				return _distributionStatus;
@@ -2576,9 +2602,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _minimumDisplayScale, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(navigationPurposeList))]
 		[Category("NavigationalProduct")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(navigationPurposeList), typeof(navigationPurpose))]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -2630,6 +2656,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private specificUsage? _specificUsage  = default;
 
 		[Category("NavigationalProduct")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(specificUsageList), typeof(specificUsage))]
 		public specificUsage? specificUsage {
 			get {
 				return _specificUsage;
@@ -2663,20 +2691,22 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _updateNumber, value);
 			}
 		}
-		private horizontalDatumEpsg? _horizontalDatumEpsg  = default;
+		private horizontalDatumEPSGCode? _horizontalDatumEPSGCode  = default;
 
 		[Category("NavigationalProduct")]
-		public horizontalDatumEpsg? horizontalDatumEpsg {
+		public horizontalDatumEPSGCode? horizontalDatumEPSGCode {
 			get {
-				return _horizontalDatumEpsg;
+				return _horizontalDatumEPSGCode;
 			}
 			set {
-				SetValue(ref _horizontalDatumEpsg, value);
+				SetValue(ref _horizontalDatumEPSGCode, value);
 			}
 		}
 		private verticalDatum? _verticalDatum  = default;
 
 		[Category("NavigationalProduct")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(verticalDatumList), typeof(verticalDatum))]
 		public verticalDatum? verticalDatum {
 			get {
 				return _verticalDatum;
@@ -2736,6 +2766,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private typeOfProductFormat _typeOfProductFormat ;
 
 		[Category("ElectronicProduct")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(typeOfProductFormatList), typeof(typeOfProductFormat))]
 		public typeOfProductFormat typeOfProductFormat {
 			get {
 				return _typeOfProductFormat;
@@ -2770,10 +2802,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 			catalogueElementIdentifier = instance.catalogueElementIdentifier;
 			classification = instance.classification;
-			IMOMaritimeService.Clear();
-			if (instance.IMOMaritimeService is not null) {
-				foreach(var e in instance.IMOMaritimeService)
-					IMOMaritimeService.Add(e);
+			iMOMaritimeService.Clear();
+			if (instance.iMOMaritimeService is not null) {
+				foreach(var e in instance.iMOMaritimeService)
+					iMOMaritimeService.Add(e);
 			}
 			notForNavigation = instance.notForNavigation;
 			featureName.Clear();
@@ -2829,7 +2861,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			specificUsage = instance.specificUsage;
 			updateDate = instance.updateDate;
 			updateNumber = instance.updateNumber;
-			horizontalDatumEpsg = instance.horizontalDatumEpsg;
+			horizontalDatumEPSGCode = instance.horizontalDatumEPSGCode;
 			verticalDatum = instance.verticalDatum;
 			compressionFlag = instance.compressionFlag;
 			datasetName = instance.datasetName;
@@ -2849,7 +2881,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				catalogueElementClassification = this.catalogueElementClassification.ToList(),
 				catalogueElementIdentifier = this.catalogueElementIdentifier,
 				classification = this.classification,
-				IMOMaritimeService = this.IMOMaritimeService.ToList(),
+				iMOMaritimeService = this.iMOMaritimeService.ToList(),
 				notForNavigation = this.notForNavigation,
 				featureName = this.featureName.Select(e => e.Model).ToList(),
 				information = this.information.Select(e => e.Model).ToList(),
@@ -2871,7 +2903,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				specificUsage = this.specificUsage,
 				updateDate = this.updateDate,
 				updateNumber = this.updateNumber,
-				horizontalDatumEpsg = this.horizontalDatumEpsg,
+				horizontalDatumEPSGCode = this.horizontalDatumEPSGCode,
 				verticalDatum = this.verticalDatum,
 				compressionFlag = this.compressionFlag,
 				datasetName = this.datasetName,
@@ -2889,7 +2921,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			catalogueElementClassification = this.catalogueElementClassification.ToList(),
 			catalogueElementIdentifier = this._catalogueElementIdentifier,
 			classification = this._classification,
-			IMOMaritimeService = this.IMOMaritimeService.ToList(),
+			iMOMaritimeService = this.iMOMaritimeService.ToList(),
 			notForNavigation = this._notForNavigation,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			information = this.information.Select(e => e.Model).ToList(),
@@ -2911,7 +2943,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			specificUsage = this._specificUsage,
 			updateDate = this._updateDate,
 			updateNumber = this._updateNumber,
-			horizontalDatumEpsg = this._horizontalDatumEpsg,
+			horizontalDatumEPSGCode = this._horizontalDatumEPSGCode,
 			verticalDatum = this._verticalDatum,
 			compressionFlag = this._compressionFlag,
 			datasetName = this._datasetName,
@@ -2930,8 +2962,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			catalogueElementClassification.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(catalogueElementClassification));
 			};
-			IMOMaritimeService.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(IMOMaritimeService));
+			iMOMaritimeService.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(iMOMaritimeService));
 			};
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -2955,7 +2987,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	}
 
 	/// <summary>
-	/// Paper navigation products.
+	/// A product printed on paper.
 	/// </summary>
 	[CategoryOrder("PhysicalProduct",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -2972,9 +3004,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _agencyResponsibleForProduction, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList))]
 		[Category("CatalogueElement")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList), typeof(catalogueElementClassification))]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3001,13 +3033,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _classification, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(IMOMaritimeServiceList))]
 		[Category("CatalogueElement")]
-		public ObservableCollection<IMOMaritimeService> IMOMaritimeService  { get; set; } = new ();
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(iMOMaritimeServiceList), typeof(iMOMaritimeService))]
+		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
 
 		[Browsable(false)]
-		public IMOMaritimeService[] IMOMaritimeServiceList => Enum.GetValues<IMOMaritimeService>();
+		public iMOMaritimeService[] iMOMaritimeServiceList => Enum.GetValues<iMOMaritimeService>();
 		private Boolean _notForNavigation  = false;
 
 		[Category("CatalogueElement")]
@@ -3069,6 +3101,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private distributionStatus? _distributionStatus  = default;
 
 		[Category("NavigationalProduct")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(distributionStatusList), typeof(distributionStatus))]
 		public distributionStatus? distributionStatus {
 			get {
 				return _distributionStatus;
@@ -3113,9 +3147,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _minimumDisplayScale, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(navigationPurposeList))]
 		[Category("NavigationalProduct")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(navigationPurposeList), typeof(navigationPurpose))]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3167,6 +3201,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private specificUsage? _specificUsage  = default;
 
 		[Category("NavigationalProduct")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(specificUsageList), typeof(specificUsage))]
 		public specificUsage? specificUsage {
 			get {
 				return _specificUsage;
@@ -3200,20 +3236,22 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _updateNumber, value);
 			}
 		}
-		private horizontalDatumEpsg? _horizontalDatumEpsg  = default;
+		private horizontalDatumEPSGCode? _horizontalDatumEPSGCode  = default;
 
 		[Category("NavigationalProduct")]
-		public horizontalDatumEpsg? horizontalDatumEpsg {
+		public horizontalDatumEPSGCode? horizontalDatumEPSGCode {
 			get {
-				return _horizontalDatumEpsg;
+				return _horizontalDatumEPSGCode;
 			}
 			set {
-				SetValue(ref _horizontalDatumEpsg, value);
+				SetValue(ref _horizontalDatumEPSGCode, value);
 			}
 		}
 		private verticalDatum? _verticalDatum  = default;
 
 		[Category("NavigationalProduct")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(verticalDatumList), typeof(verticalDatum))]
 		public verticalDatum? verticalDatum {
 			get {
 				return _verticalDatum;
@@ -3237,15 +3275,15 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _editionDate, value);
 			}
 		}
-		private String? _isbn  = default;
+		private String? _iSBN  = default;
 
 		[Category("PhysicalProduct")]
-		public String? isbn {
+		public String? iSBN {
 			get {
-				return _isbn;
+				return _iSBN;
 			}
 			set {
-				SetValue(ref _isbn, value);
+				SetValue(ref _iSBN, value);
 			}
 		}
 		private String? _publicationNumber  = default;
@@ -3259,15 +3297,15 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _publicationNumber, value);
 			}
 		}
-		private String? _typeOfPaper  = default;
+		private String? _typeOfPhysicalProduct  = default;
 
 		[Category("PhysicalProduct")]
-		public String? typeOfPaper {
+		public String? typeOfPhysicalProduct {
 			get {
-				return _typeOfPaper;
+				return _typeOfPhysicalProduct;
 			}
 			set {
-				SetValue(ref _typeOfPaper, value);
+				SetValue(ref _typeOfPhysicalProduct, value);
 			}
 		}
 		private printInformationViewModel? _printInformation  = default;
@@ -3305,10 +3343,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 			catalogueElementIdentifier = instance.catalogueElementIdentifier;
 			classification = instance.classification;
-			IMOMaritimeService.Clear();
-			if (instance.IMOMaritimeService is not null) {
-				foreach(var e in instance.IMOMaritimeService)
-					IMOMaritimeService.Add(e);
+			iMOMaritimeService.Clear();
+			if (instance.iMOMaritimeService is not null) {
+				foreach(var e in instance.iMOMaritimeService)
+					iMOMaritimeService.Add(e);
 			}
 			notForNavigation = instance.notForNavigation;
 			featureName.Clear();
@@ -3364,12 +3402,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			specificUsage = instance.specificUsage;
 			updateDate = instance.updateDate;
 			updateNumber = instance.updateNumber;
-			horizontalDatumEpsg = instance.horizontalDatumEpsg;
+			horizontalDatumEPSGCode = instance.horizontalDatumEPSGCode;
 			verticalDatum = instance.verticalDatum;
 			editionDate = instance.editionDate;
-			isbn = instance.isbn;
+			iSBN = instance.iSBN;
 			publicationNumber = instance.publicationNumber;
-			typeOfPaper = instance.typeOfPaper;
+			typeOfPhysicalProduct = instance.typeOfPhysicalProduct;
 			printInformation = new ();
 			if (instance.printInformation != default) {
 				printInformation.Load(instance.printInformation);
@@ -3387,7 +3425,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				catalogueElementClassification = this.catalogueElementClassification.ToList(),
 				catalogueElementIdentifier = this.catalogueElementIdentifier,
 				classification = this.classification,
-				IMOMaritimeService = this.IMOMaritimeService.ToList(),
+				iMOMaritimeService = this.iMOMaritimeService.ToList(),
 				notForNavigation = this.notForNavigation,
 				featureName = this.featureName.Select(e => e.Model).ToList(),
 				information = this.information.Select(e => e.Model).ToList(),
@@ -3409,12 +3447,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				specificUsage = this.specificUsage,
 				updateDate = this.updateDate,
 				updateNumber = this.updateNumber,
-				horizontalDatumEpsg = this.horizontalDatumEpsg,
+				horizontalDatumEPSGCode = this.horizontalDatumEPSGCode,
 				verticalDatum = this.verticalDatum,
 				editionDate = this.editionDate,
-				isbn = this.isbn,
+				iSBN = this.iSBN,
 				publicationNumber = this.publicationNumber,
-				typeOfPaper = this.typeOfPaper,
+				typeOfPhysicalProduct = this.typeOfPhysicalProduct,
 				printInformation = this.printInformation?.Model,
 				referenceToNM = this.referenceToNM?.Model,
 			};
@@ -3427,7 +3465,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			catalogueElementClassification = this.catalogueElementClassification.ToList(),
 			catalogueElementIdentifier = this._catalogueElementIdentifier,
 			classification = this._classification,
-			IMOMaritimeService = this.IMOMaritimeService.ToList(),
+			iMOMaritimeService = this.iMOMaritimeService.ToList(),
 			notForNavigation = this._notForNavigation,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			information = this.information.Select(e => e.Model).ToList(),
@@ -3449,12 +3487,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			specificUsage = this._specificUsage,
 			updateDate = this._updateDate,
 			updateNumber = this._updateNumber,
-			horizontalDatumEpsg = this._horizontalDatumEpsg,
+			horizontalDatumEPSGCode = this._horizontalDatumEPSGCode,
 			verticalDatum = this._verticalDatum,
 			editionDate = this._editionDate,
-			isbn = this._isbn,
+			iSBN = this._iSBN,
 			publicationNumber = this._publicationNumber,
-			typeOfPaper = this._typeOfPaper,
+			typeOfPhysicalProduct = this._typeOfPhysicalProduct,
 			printInformation = this._printInformation?.Model,
 			referenceToNM = this._referenceToNM?.Model,
 		};
@@ -3468,8 +3506,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			catalogueElementClassification.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(catalogueElementClassification));
 			};
-			IMOMaritimeService.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(IMOMaritimeService));
+			iMOMaritimeService.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(iMOMaritimeService));
 			};
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -3510,9 +3548,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _agencyResponsibleForProduction, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList))]
 		[Category("CatalogueElement")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList), typeof(catalogueElementClassification))]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3539,13 +3577,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _classification, value);
 			}
 		}
-		[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-		[DomainModel.EnumerationAttribute(nameof(IMOMaritimeServiceList))]
 		[Category("CatalogueElement")]
-		public ObservableCollection<IMOMaritimeService> IMOMaritimeService  { get; set; } = new ();
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(iMOMaritimeServiceList), typeof(iMOMaritimeService))]
+		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
 
 		[Browsable(false)]
-		public IMOMaritimeService[] IMOMaritimeServiceList => Enum.GetValues<IMOMaritimeService>();
+		public iMOMaritimeService[] iMOMaritimeServiceList => Enum.GetValues<iMOMaritimeService>();
 		private Boolean _notForNavigation  = false;
 
 		[Category("CatalogueElement")]
@@ -3625,6 +3663,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private serviceStatus? _serviceStatus  = default;
 
 		[Category("S100Service")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(serviceStatusList), typeof(serviceStatus))]
 		public serviceStatus? serviceStatus {
 			get {
 				return _serviceStatus;
@@ -3639,6 +3679,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private typeOfProductFormat _typeOfProductFormat ;
 
 		[Category("S100Service")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(typeOfProductFormatList), typeof(typeOfProductFormat))]
 		public typeOfProductFormat typeOfProductFormat {
 			get {
 				return _typeOfProductFormat;
@@ -3685,10 +3727,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 			catalogueElementIdentifier = instance.catalogueElementIdentifier;
 			classification = instance.classification;
-			IMOMaritimeService.Clear();
-			if (instance.IMOMaritimeService is not null) {
-				foreach(var e in instance.IMOMaritimeService)
-					IMOMaritimeService.Add(e);
+			iMOMaritimeService.Clear();
+			if (instance.iMOMaritimeService is not null) {
+				foreach(var e in instance.iMOMaritimeService)
+					iMOMaritimeService.Add(e);
 			}
 			notForNavigation = instance.notForNavigation;
 			featureName.Clear();
@@ -3739,7 +3781,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				catalogueElementClassification = this.catalogueElementClassification.ToList(),
 				catalogueElementIdentifier = this.catalogueElementIdentifier,
 				classification = this.classification,
-				IMOMaritimeService = this.IMOMaritimeService.ToList(),
+				iMOMaritimeService = this.iMOMaritimeService.ToList(),
 				notForNavigation = this.notForNavigation,
 				featureName = this.featureName.Select(e => e.Model).ToList(),
 				information = this.information.Select(e => e.Model).ToList(),
@@ -3763,7 +3805,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			catalogueElementClassification = this.catalogueElementClassification.ToList(),
 			catalogueElementIdentifier = this._catalogueElementIdentifier,
 			classification = this._classification,
-			IMOMaritimeService = this.IMOMaritimeService.ToList(),
+			iMOMaritimeService = this.iMOMaritimeService.ToList(),
 			notForNavigation = this._notForNavigation,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			information = this.information.Select(e => e.Model).ToList(),
@@ -3788,8 +3830,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			catalogueElementClassification.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(catalogueElementClassification));
 			};
-			IMOMaritimeService.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(IMOMaritimeService));
+			iMOMaritimeService.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(iMOMaritimeService));
 			};
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));

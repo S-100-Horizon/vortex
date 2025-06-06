@@ -3,9 +3,7 @@
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S124;
-using S100Framework.DomainModel.S131.InformationTypes;
 using S100Framework.WPF;
-using S100Framework.WPF.ViewModel;
 using S100Framework.WPF.ViewModel.S101;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -14,7 +12,6 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
@@ -151,24 +148,17 @@ namespace VortexConceptApplication
                     }
                     return features;
                 },
-                CreateInformationBinding = async (CreateInformationBindingEventArgs e) => {
-                    return Guid.NewGuid();
-                },
-                DeleteInformationBinding = async (DeleteInformationBindingEventArgs e) => {
-                    return true;
-                },
-                CreateFeatureBinding = async (CreateFeatureBindingEventArgs e) => {
-                    return Guid.NewGuid();
-                },
-                DeleteFeatureBinding = async (DeleteFeatureBindingEventArgs e) => {
-                    return true;
-                }
             };
 
-            var model = new TwoWayRoutePart() { };
+            var model = new DredgedArea() {
+                //dredgedDate = new DateOnly(2025, 2, 1)
+            };
 
-            var viewModel = new TwoWayRoutePartViewModel() {
-                PID = "S202600",
+            //model.colour.Add(S100Framework.DomainModel.S101.colour.Red);
+            //model.colour.Add(S100Framework.DomainModel.S101.colour.Green);
+
+            var viewModel = new DredgedAreaViewModel() {
+                Name = "S202600",
             }.Load(model);
 
             //viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {

@@ -6,7 +6,6 @@ using System.Globalization;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Serialization;
 using System.Xml.XPath;
 using Xunit.Abstractions;
 

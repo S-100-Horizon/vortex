@@ -1,9 +1,3 @@
-using System;
-using System.Linq;
-using System.ComponentModel;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-
 namespace S100Framework.DomainModel
 {
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
@@ -12,8 +6,12 @@ namespace S100Framework.DomainModel
         private string _propertyName;
         public string PropertyName => _propertyName;
 
-        public EnumerationAttribute(string propertyName) {
+        private Type? _enumType;
+        public Type? EnumType => _enumType;
+
+        public EnumerationAttribute(string propertyName, Type? type = default) {
             _propertyName = propertyName;
+            _enumType = type;
         }
     }
 
@@ -44,7 +42,8 @@ namespace S100Framework.DomainModel
     }
 
     [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]
-    public class SpatialAssocationAttribute : System.Attribute {
+    public class SpatialAssocationAttribute : System.Attribute
+    {
 
     }
 
@@ -112,7 +111,6 @@ namespace S100Framework.DomainModel
         public string role { get; set; } = string.Empty;
         public string? associationId { get; set; } = null;
         public string? informationId { get; set; } = null;
-        public string? PID { get; set; } = null;
     }
 
     public class informationBindingDefinition
@@ -135,7 +133,6 @@ namespace S100Framework.DomainModel
         public string role { get; set; } = string.Empty;
         public string? associationId { get; set; } = null;
         public string? featureId { get; set; } = null;
-        public string? PID { get; set; } = null;
     }
 
     public class featureBindingDefinition
@@ -158,7 +155,8 @@ namespace S100Framework.DomainModel
         composition,
     }
 
-    public enum Primitives {
+    public enum Primitives
+    {
         noGeometry,
         point,
         pointSet,

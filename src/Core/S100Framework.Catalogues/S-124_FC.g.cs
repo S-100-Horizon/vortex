@@ -11,40 +11,24 @@ using System.Text.Json.Serialization;
 namespace S100Framework.DomainModel.S124 {
 	public static class Summary
 	{
-		public static Version Version => new Version("1.5");
-		public static string[] ComplexTypes => ["featureName","dateTimeRange","eNCFeatureReference","featureReference","fixedDateRange","information","warningInformation","chartAffected","affectedChartPublications","locationName","generalArea","locality","messageSeriesIdentifier","nAVWARNTitle"];
-		public static string[] InformationAssociationTypes => ["NWPreambleContent","NWReferences"];
-		public static string[] FeatureAssociationTypes => ["AreaAffected","TextAssociation"];
-		public static string[] InformationTypes => ["NAVWARNPreamble","References"];
-		public static string[] FeatureTypes => ["NAVWARNPart","NAVWARNAreaAffected","TextPlacement"];
+		public static Version Version => new Version("2.0.0");
+		public static string[] ComplexTypes => ["affectedChartPublications","chartAffected","fixedDateRange","generalArea","information","locality","locationName","messageSeriesIdentifier","navwarnTitle","warningInformation","FeatureReference","FeatureName"];
+		public static string[] InformationAssociationTypes => ["navwarnPreambleContent","navwarnReferences"];
+		public static string[] FeatureAssociationTypes => ["TextAssociation","areaAffected"];
+		public static string[] InformationTypes => ["References","NavwarnPreamble"];
+		public static string[] FeatureTypes => ["NavwarnPart","NavwarnAreaAffected","TextPlacement"];
 		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
-			Primitives.noGeometry => ["NAVWARNPart"],
-			Primitives.point => ["NAVWARNPart","NAVWARNAreaAffected","TextPlacement"],
-			Primitives.curve => ["NAVWARNPart","NAVWARNAreaAffected"],
-			Primitives.surface => ["NAVWARNPart","NAVWARNAreaAffected"],
+			Primitives.point => ["NavwarnPart","NavwarnAreaAffected","TextPlacement"],
+			Primitives.curve => ["NavwarnPart","NavwarnAreaAffected"],
+			Primitives.surface => ["NavwarnPart","NavwarnAreaAffected"],
 			_ => throw new InvalidOperationException(),
 		};
 		public static Primitives[] FeaturePrimitives(string featureType) => featureType switch {
-			"NAVWARNPart" => [Primitives.noGeometry,Primitives.point,Primitives.curve,Primitives.surface],
-			"NAVWARNAreaAffected" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"NavwarnPart" => [Primitives.point,Primitives.curve,Primitives.surface],
+			"NavwarnAreaAffected" => [Primitives.point,Primitives.curve,Primitives.surface],
 			"TextPlacement" => [Primitives.point],
 			_ or "" => throw new InvalidOperationException(),
 		};
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum textType : int {
-		[System.ComponentModel.Description("TheIndividualNameOfAFeature")]
-		[EnumMember(Value = "Name")] 
-		Name = 1,
-
-		[System.ComponentModel.Description("TheDistinctCharacterSuchAsFixedFlashingOrOccultingWhichIsGivenToEachLightToAvoidConfusionWithNeighbouringOnes")]
-		[EnumMember(Value = "Light Characteristic")] 
-		LightCharacteristic = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -57,181 +41,6 @@ namespace S100Framework.DomainModel.S124 {
 		[System.ComponentModel.Description("TheNameIsIntendedToBeDisplayedWhenTheEndUserSystemIsSetToAnAlternateNameTextDisplaySettingForExampleAnAlternateLanguage")]
 		[EnumMember(Value = "Alternate Name Display")] 
 		AlternateNameDisplay = 2,
-
-		[System.ComponentModel.Description("TheNameOrTextIsNotIntendedToBeDisplayed")]
-		[EnumMember(Value = "No Chart Display")] 
-		NoChartDisplay = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum restriction : int {
-		[System.ComponentModel.Description("AnAreaWithinWhichAnchoringIsNotPermitted")]
-		[EnumMember(Value = "Anchoring Prohibited")] 
-		AnchoringProhibited = 1,
-
-		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichAnchoringIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
-		[EnumMember(Value = "Anchoring Restricted")] 
-		AnchoringRestricted = 2,
-
-		[System.ComponentModel.Description("AnAreaWithinWhichFishingIsNotPermitted")]
-		[EnumMember(Value = "Fishing Prohibited")] 
-		FishingProhibited = 3,
-
-		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichFishingIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
-		[EnumMember(Value = "Fishing Restricted")] 
-		FishingRestricted = 4,
-
-		[System.ComponentModel.Description("AnAreaWithinWhichTrawlingIsNotPermitted")]
-		[EnumMember(Value = "Trawling Prohibited")] 
-		TrawlingProhibited = 5,
-
-		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichTrawlingIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
-		[EnumMember(Value = "Trawling Restricted")] 
-		TrawlingRestricted = 6,
-
-		[System.ComponentModel.Description("AnAreaWithinWhichNavigationAndOrAnchoringIsProhibited")]
-		[EnumMember(Value = "Entry Prohibited")] 
-		EntryProhibited = 7,
-
-		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichNavigationIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
-		[EnumMember(Value = "Entry Restricted")] 
-		EntryRestricted = 8,
-
-		[System.ComponentModel.Description("AnAreaWithinWhichDredgingIsNotPermitted")]
-		[EnumMember(Value = "Dredging Prohibited")] 
-		DredgingProhibited = 9,
-
-		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichDredgingIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
-		[EnumMember(Value = "Dredging Restricted")] 
-		DredgingRestricted = 10,
-
-		[System.ComponentModel.Description("AnAreaWithinWhichDivingIsNotPermitted")]
-		[EnumMember(Value = "Diving Prohibited")] 
-		DivingProhibited = 11,
-
-		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichDivingIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
-		[EnumMember(Value = "Diving Restricted")] 
-		DivingRestricted = 12,
-
-		[System.ComponentModel.Description("MarinersMustAdjustTheSpeedOfTheirVesselsToReduceTheWaveOrWashWhichMayCauseErosionOrDisturbMooredVessels")]
-		[EnumMember(Value = "No Wake")] 
-		NoWake = 13,
-
-		[System.ComponentModel.Description("AnImoDeclaredRouteingMeasureComprisingAnAreaWithinDefinedLimitsInWhichEitherNavigationIsParticularlyHazardousOrItIsExceptionallyImportantToAvoidCasualtiesAndWhichShouldBeAvoidedByAllShipsOrCertainClassesOfShips")]
-		[EnumMember(Value = "Area To Be Avoided")] 
-		AreaToBeAvoided = 14,
-
-		[System.ComponentModel.Description("TheErectionOfPermanentOrTemporaryFixedStructuresOrArtificialIslandsIsProhibited")]
-		[EnumMember(Value = "Construction Prohibited")] 
-		ConstructionProhibited = 15,
-
-		[System.ComponentModel.Description("AnAreaWithinWhichDischargingOrDumpingIsProhibited")]
-		[EnumMember(Value = "Discharging Prohibited")] 
-		DischargingProhibited = 16,
-
-		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAnAppropriateAuthorityWithinWhichDischargingOrDumpingIsRestrictedInAccordanceWithSpecifiedConditions")]
-		[EnumMember(Value = "Discharging Restricted")] 
-		DischargingRestricted = 17,
-
-		[System.ComponentModel.Description("AnAreaWithinWhichIndustrialOrMineralExplorationAndDevelopmentAreProhibited")]
-		[EnumMember(Value = "Industrial or Mineral Exploration/Development Prohibited")] 
-		IndustrialOrMineralExplorationDevelopmentProhibited = 18,
-
-		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAnAppropriateAuthorityWithinWhichIndustrialOrMineralExplorationAndDevelopmentIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
-		[EnumMember(Value = "Industrial or Mineral Exploration/Development Restricted")] 
-		IndustrialOrMineralExplorationDevelopmentRestricted = 19,
-
-		[System.ComponentModel.Description("AnAreaWithinWhichExcavatingAHoleOnTheSeaBottomWithADrillIsProhibited")]
-		[EnumMember(Value = "Drilling Prohibited")] 
-		DrillingProhibited = 20,
-
-		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAnAppropriateAuthorityWithinWhichExcavatingAHoleOnTheSeaBottomWithADrillIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
-		[EnumMember(Value = "Drilling Restricted")] 
-		DrillingRestricted = 21,
-
-		[System.ComponentModel.Description("AnAreaWithinWhichTheRemovalOfHistoricalArtefactsIsProhibited")]
-		[EnumMember(Value = "Removal of Historical Artefacts Prohibited")] 
-		RemovalOfHistoricalArtefactsProhibited = 22,
-
-		[System.ComponentModel.Description("AnAreaInWhichCargoTranshipmentLighteningIsProhibited")]
-		[EnumMember(Value = "Cargo Transhipment (Lightening) Prohibited")] 
-		CargoTranshipmentLighteningProhibited = 23,
-
-		[System.ComponentModel.Description("AnAreaInWhichTheDraggingOfAnythingAlongTheBottomEGBottomTrawlingIsProhibited")]
-		[EnumMember(Value = "Dragging Prohibited")] 
-		DraggingProhibited = 24,
-
-		[System.ComponentModel.Description("AnAreaInWhichAVesselIsProhibitedFromStopping")]
-		[EnumMember(Value = "Stopping Prohibited")] 
-		StoppingProhibited = 25,
-
-		[System.ComponentModel.Description("AnAreaInWhichLandingIsProhibited")]
-		[EnumMember(Value = "Landing Prohibited")] 
-		LandingProhibited = 26,
-
-		[System.ComponentModel.Description("AnAreaWithinWhichSpeedIsRestricted")]
-		[EnumMember(Value = "Speed Restricted")] 
-		SpeedRestricted = 27,
-
-		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichOvertakingIsGenerallyProhibited")]
-		[EnumMember(Value = "Overtaking Prohibited")] 
-		OvertakingProhibited = 28,
-
-		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichOvertakingBetweenConvoysIsProhibited")]
-		[EnumMember(Value = "Overtaking of Convoys by Convoys Prohibited")] 
-		OvertakingOfConvoysByConvoysProhibited = 29,
-
-		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichPassingOrOvertakingIsGenerallyProhibited")]
-		[EnumMember(Value = "Passing or Overtaking Prohibited")] 
-		PassingOrOvertakingProhibited = 30,
-
-		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichVesselsAssembliesOfFloatingMaterialOrFloatingEstablishmentsMayNotBerth")]
-		[EnumMember(Value = "Berthing Prohibited")] 
-		BerthingProhibited = 31,
-
-		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichBerthingIsRestricted")]
-		[EnumMember(Value = "Berthing Restricted")] 
-		BerthingRestricted = 32,
-
-		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichVesselsAssembliesOfFloatingMaterialOrFloatingEstablishmentsMayNotMakeFastToTheBank")]
-		[EnumMember(Value = "Making Fast Prohibited")] 
-		MakingFastProhibited = 33,
-
-		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichMakingFastToTheBankIsRestricted")]
-		[EnumMember(Value = "Making Fast Restricted")] 
-		MakingFastRestricted = 34,
-
-		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichAllTurningIsGenerallyProhibited")]
-		[EnumMember(Value = "Turning Prohibited")] 
-		TurningProhibited = 35,
-
-		[System.ComponentModel.Description("AnAreaWithinWhichTheFairwayDepthIsRestricted")]
-		[EnumMember(Value = "Restricted Fairway Depth")] 
-		RestrictedFairwayDepth = 36,
-
-		[System.ComponentModel.Description("AnAreaWithinWhichTheFairwayWidthIsRestricted")]
-		[EnumMember(Value = "Restricted Fairway Width")] 
-		RestrictedFairwayWidth = 37,
-
-		[System.ComponentModel.Description("TheUseOfAnchoringSpudsTelescopicPilesIsProhibited")]
-		[EnumMember(Value = "Use of Spuds Prohibited")] 
-		UseOfSpudsProhibited = 38,
-
-		[System.ComponentModel.Description("AnAreaInWhichSwimmingIsProhibited")]
-		[EnumMember(Value = "Swimming Prohibited")] 
-		SwimmingProhibited = 39,
-
-		[System.ComponentModel.Description("AnAreaWithinWhichTheEmissionOfSoxIsRestricted")]
-		[EnumMember(Value = "SOx Emission Restricted")] 
-		SoxEmissionRestricted = 40,
-
-		[System.ComponentModel.Description("AnAreaWithinWhichTheEmissionOfNoxIsRestricted")]
-		[EnumMember(Value = "NOx Emission Restricted")] 
-		NoxEmissionRestricted = 41,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
 		Unknown = -1,
@@ -306,6 +115,33 @@ namespace S100Framework.DomainModel.S124 {
 		[System.ComponentModel.Description("ReferenceToWarningsOrNoticesThatAreConsideredInForce")]
 		[EnumMember(Value = "In-Force")] 
 		InForce = 3,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum restriction : int {
+		[System.ComponentModel.Description("oneAnAreaShownOnChartsWithinWhichNavigationAndOrAnchoringIsProhibited2InAviationTerminologyASpecifiedAreaWithinTheLandAreasOfAStateOrTerritorialWatersAdjacentTheretoOverWhichTheFlightOfAircraftIsProhibiTed")]
+		[EnumMember(Value = "Entry Prohibited")] 
+		EntryProhibited = 7,
+
+		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichNavigationIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
+		[EnumMember(Value = "Entry Restricted")] 
+		EntryRestricted = 8,
+
+		[System.ComponentModel.Description("AnImoDeclaredRouteingMeasureComprisingAnAreaWithinDefinedLimitsInWhichEitherNavigationIsParticularlyHazardousOrItIsExceptionallyImportantToAvoidCasualtiesAndWhichShouldBeAvoidedByAllShipsOrCertainClassesOfShips")]
+		[EnumMember(Value = "Area To Be Avoided")] 
+		AreaToBeAvoided = 14,
+
+		[System.ComponentModel.Description("AnAreaInWhichAVesselIsProhibitedFromStopping")]
+		[EnumMember(Value = "Stopping Prohibited")] 
+		StoppingProhibited = 25,
+
+		[System.ComponentModel.Description("AnAreaWithinWhichSpeedIsRestricted")]
+		[EnumMember(Value = "Speed Restricted")] 
+		SpeedRestricted = 27,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
 		Unknown = -1,
@@ -597,7 +433,7 @@ namespace S100Framework.DomainModel.S124 {
 			},
 			new() {
 				code = 54,
-				definition = "A buoy which has been removed and it&apos;s location is now marked by a winter spar buoy.",
+				definition = "A buoy which has been removed and it's location is now marked by a winter spar buoy.",
 				label = "Buoy Replaced by Winter Spar",
 			},
 			new() {
@@ -1935,82 +1771,6 @@ namespace S100Framework.DomainModel.S124 {
 	namespace ComplexAttributes {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class featureName {
-			public String language {get;set;} = string.Empty;
-
-			public String name {get;set;} = string.Empty;
-
-			[EnumerationValue([1,2,3])]
-			public nameUsage? nameUsage {get;set;} = default;
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class dateTimeRange {
-			[Required()]
-			public DateTime dateTimeEnd {get;set;}
-
-			[Required()]
-			public DateTime dateTimeStart {get;set;}
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class eNCFeatureReference {
-			public String editionNumber {get;set;} = string.Empty;
-
-			public String eNCName {get;set;} = string.Empty;
-
-			public List<String> featureObjectIdentifier {get;set;} = [];
-
-			public String updateNumber {get;set;} = string.Empty;
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class featureReference {
-			public List<String> featureIdentifier {get;set;} = [];
-
-			[Required()]
-			public dateTimeRange dateTimeRange {get;set;}
-
-			public List<String> atoNNumber {get;set;} = [];
-
-			public List<eNCFeatureReference> eNCFeatureReference {get;set;} = [];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class fixedDateRange {
-			public DateOnly? dateEnd {get;set;} = default;
-
-			public DateOnly? dateStart {get;set;} = default;
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class information {
-			public String? fileLocator {get;set;} = default;
-
-			public String? fileReference {get;set;} = default;
-
-			public String? headline {get;set;} = default;
-
-			public String? language {get;set;} = default;
-
-			public String? text {get;set;} = default;
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class warningInformation {
-			public information? information {get;set;} = default;
-
-			public List<navwarnTypeDetails> navwarnTypeDetails {get;set;} = [];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class chartAffected {
 			public String chartNumber {get;set;} = string.Empty;
 
@@ -2024,6 +1784,91 @@ namespace S100Framework.DomainModel.S124 {
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class fixedDateRange {
+			public String? dateEnd {get;set;} = default;
+
+			public String? dateStart {get;set;} = default;
+
+			public TimeOnly? timeOfDayEnd {get;set;} = default;
+
+			public TimeOnly? timeOfDayStart {get;set;} = default;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class information {
+			public String language {get;set;} = string.Empty;
+
+			public String text {get;set;} = string.Empty;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class locationName {
+			public String language {get;set;} = string.Empty;
+
+			public String text {get;set;} = string.Empty;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class messageSeriesIdentifier {
+			public String agencyResponsibleForProduction {get;set;} = string.Empty;
+
+			public String? interoperabilityIdentifier {get;set;} = default;
+
+			public String nameOfSeries {get;set;} = string.Empty;
+
+			public String? nationality {get;set;} = default;
+
+			[Required()]
+			public int warningNumber {get;set;}
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
+			[Required()]
+			public warningType warningType {get;set;}
+
+			[Required()]
+			public int year {get;set;}
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class navwarnTitle {
+			public String language {get;set;} = string.Empty;
+
+			public String text {get;set;} = string.Empty;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class warningInformation {
+			public List<information> information {get;set;} = [];
+
+			public List<navwarnTypeDetails> navwarnTypeDetails {get;set;} = [];
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class FeatureReference {
+			public List<String> atoNNumber {get;set;} = [];
+
+			public List<String> interoperabilityIdentifier {get;set;} = [];
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class FeatureName {
+			public String language {get;set;} = string.Empty;
+
+			public String Name {get;set;} = string.Empty;
+
+			[EnumerationValue([1,2,3])]
+			public nameUsage? nameUsage {get;set;} = default;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class affectedChartPublications {
 			public chartAffected? chartAffected {get;set;} = default;
 
@@ -2031,17 +1876,9 @@ namespace S100Framework.DomainModel.S124 {
 
 			public String? internationalChartAffected {get;set;} = default;
 
-			public String? language {get;set;} = default;
+			public String language {get;set;} = string.Empty;
 
 			public String? publicationAffected {get;set;} = default;
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class locationName {
-			public String? language {get;set;} = default;
-
-			public String text {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
@@ -2060,100 +1897,67 @@ namespace S100Framework.DomainModel.S124 {
 			public List<locationName> locationName {get;set;} = [];
 		}
 
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class messageSeriesIdentifier {
-			public String agencyResponsibleForProduction {get;set;} = string.Empty;
-
-			public String? countryName {get;set;} = default;
-
-			public String nameOfSeries {get;set;} = string.Empty;
-
-			public String? warningIdentifier {get;set;} = default;
-
-			[Required()]
-			public int warningNumber {get;set;}
-
-			[Required()]
-			public warningType warningType {get;set;}
-
-			[Required()]
-			public int year {get;set;}
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class nAVWARNTitle {
-			public String? language {get;set;} = default;
-
-			public String text {get;set;} = string.Empty;
-		}
-
 	}
 	public enum Role {
-		[System.ComponentModel.Description("TBD")]
-		affects,
-		[System.ComponentModel.Description("TBD")]
-		impacts,
-		[System.ComponentModel.Description("A pointer to a specific feature(s).")]
-		identifies,
-		[System.ComponentModel.Description("A pointer to a specific cartographically positioned location for text.")]
-		positions,
-		[System.ComponentModel.Description("TBD")]
-		theWarningPart,
-		[System.ComponentModel.Description("TBD")]
+		[System.ComponentModel.Description("The header of a navigational warning.")]
 		header,
-		[System.ComponentModel.Description("TBD")]
-		theWarning,
-		[System.ComponentModel.Description("TBD")]
+		[System.ComponentModel.Description("The body of a navigational warning.")]
+		theWarningPart,
+		[System.ComponentModel.Description("The references relevant to the navigational warning")]
 		theReferences,
+		[System.ComponentModel.Description("The navigational warning that has references")]
+		theWarning,
+		[System.ComponentModel.Description("A pointer to a specific feature(s).")]
+		thePositionProvider,
+		[System.ComponentModel.Description("A pointer to a specific cartographically positioned location for text.")]
+		theCartographicText,
+		[System.ComponentModel.Description("marked by an area to show impacts")]
+		impacts,
+		[System.ComponentModel.Description("marking an affected area")]
+		affects,
 	}
 
 	namespace InformationAssociations {
 		/// <summary>
-		/// TBD
+		/// The binding between a navigational warning preamble and the body.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class NWPreambleContent : InformationAssociation {
+		public partial class navwarnPreambleContent : InformationAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
-			public override string Code => nameof(NWPreambleContent);
+			public override string Code => nameof(navwarnPreambleContent);
 		}
 
 		/// <summary>
-		/// TBD
+		/// The relationship between a navigational warning and previous information relevant to its purpose.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class NWReferences : InformationAssociation {
+		public partial class navwarnReferences : InformationAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
-			public override string Code => nameof(NWReferences);
+			public override string Code => nameof(navwarnReferences);
 		}
 	}
 
 	namespace FeatureAssociations {
 		/// <summary>
-		/// Used to indicate an area outside of the geographic area of the associated feature that can nonetheless be influenced by that feature.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class AreaAffected : FeatureAssociation {
-			[JsonIgnore]
-			[IgnoreDataMember]
-			public override string Code => nameof(AreaAffected);
-		}
-
-		/// <summary>
-		/// A feature association for the binding between a geo feature and the cartographically positioned location for text.
+		/// a feature association for the binding between a geo feature and the cartographically positioned location for text.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextAssociation : FeatureAssociation {
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(TextAssociation);
+		}
+
+		/// <summary>
+		/// Association between a warning and the area impacted.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class areaAffected : FeatureAssociation {
+			[JsonIgnore]
+			public override string Code => nameof(areaAffected);
 		}
 	}
 
@@ -2165,53 +1969,6 @@ namespace S100Framework.DomainModel.S124 {
 
 	namespace InformationTypes {
 		/// <summary>
-		/// Preamble information for warnings, notices and other types of messages in a navigational warning scheme.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class NAVWARNPreamble : InformationNode, IInformationBindingDefinition {
-			public List<affectedChartPublications> affectedChartPublications {get;set;} = [];
-
-			public List<generalArea> generalArea {get;set;} = [];
-
-			public List<locality> locality {get;set;} = [];
-
-			[Required()]
-			public messageSeriesIdentifier messageSeriesIdentifier {get;set;}
-
-			public List<nAVWARNTitle> nAVWARNTitle {get;set;} = [];
-
-			public DateTime? cancellationDate {get;set;} = default;
-
-			[Required()]
-			public Boolean intService {get;set;} = false;
-
-			[Required()]
-			public navwarnTypeGeneral navwarnTypeGeneral {get;set;}
-
-			[Required()]
-			public DateTime publicationTime {get;set;}
-
-			[JsonIgnore]
-			[IgnoreDataMember]
-			public override string Code => nameof(NAVWARNPreamble);
-
-			[JsonIgnore]
-			[IgnoreDataMember]
-			public override informationBindingDefinition[] informationBindingDefinitions => NAVWARNPreamble._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(NWReferences),
-					role = Enum.GetName<Role>(Role.theReferences)!,
-					informationTypes = [nameof(References)],
-				},
-			];
-		}
-
-		/// <summary>
 		/// References to for example a navigational warning, nautical publication or chart.
 		/// </summary>
 		[System.Serializable()]
@@ -2222,17 +1979,70 @@ namespace S100Framework.DomainModel.S124 {
 			[Required()]
 			public Boolean noMessageOnHand {get;set;} = false;
 
+			[EnumerationValue([1,2,3])]
 			[Required()]
 			public referenceCategory referenceCategory {get;set;}
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(References);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => References._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(navwarnReferences),
+					role = Enum.GetName<Role>(Role.theWarning)!,
+					informationTypes = [nameof(NavwarnPreamble)],
+				},
+			];
+		}
+
+		/// <summary>
+		/// Preamble information for warnings, notices and other types of messages in a navigational warning scheme.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class NavwarnPreamble : InformationNode, IInformationBindingDefinition {
+			public List<affectedChartPublications> affectedChartPublications {get;set;} = [];
+
+			public List<generalArea> generalArea {get;set;} = [];
+
+			public List<locality> locality {get;set;} = [];
+
+			[Required()]
+			public messageSeriesIdentifier messageSeriesIdentifier {get;set;}
+
+			public List<navwarnTitle> navwarnTitle {get;set;} = [];
+
+			public DateTime? cancellationDate {get;set;} = default;
+
+			[Required()]
+			public Boolean intService {get;set;} = false;
+
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])]
+			[Required()]
+			public navwarnTypeGeneral navwarnTypeGeneral {get;set;}
+
+			[Required()]
+			public DateTime publicationTime {get;set;}
+
+			[JsonIgnore]
+			public override string Code => nameof(NavwarnPreamble);
+
+			[JsonIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => NavwarnPreamble._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(navwarnReferences),
+					role = Enum.GetName<Role>(Role.theReferences)!,
+					informationTypes = [nameof(References)],
+				},
 			];
 		}
 	}
@@ -2245,44 +2055,42 @@ namespace S100Framework.DomainModel.S124 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class NAVWARNPart : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public List<featureReference> featureReference {get;set;} = [];
+		public partial class NavwarnPart : FeatureNode, IFeatureBindingDefinition {
+			[EnumerationValue([7,8,14,25,27])]
+			public restriction? restriction {get;set;} = default;
 
 			public List<fixedDateRange> fixedDateRange {get;set;} = [];
 
 			[Required()]
 			public warningInformation warningInformation {get;set;}
 
-			[EnumerationValue([8,7,14,25,27])]
-			public restriction? restriction {get;set;} = default;
+			public List<FeatureName> FeatureName {get;set;} = [];
+
+			public List<FeatureReference> FeatureReference {get;set;} = [];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
-			public override string Code => nameof(NAVWARNPart);
+			public override string Code => nameof(NavwarnPart);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
-			public override informationBindingDefinition[] informationBindingDefinitions => NAVWARNPart._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => NavwarnPart._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 1,
 					upper =  1,
-					association = nameof(NWPreambleContent),
+					association = nameof(navwarnPreambleContent),
 					role = Enum.GetName<Role>(Role.header)!,
-					informationTypes = [nameof(NAVWARNPreamble)],
+					informationTypes = [nameof(NavwarnPreamble)],
 				},
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
-			public override featureBindingDefinition[] featureBindingDefinitions => NAVWARNPart._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => NavwarnPart._featureBindingDefinitions;
 
-			public override Primitives[] primitives => NAVWARNPart._primitives;
+			[JsonIgnore]
+			public override Primitives[] primitives => NavwarnPart._primitives;
 			public static Primitives[] _primitives => [
-				Primitives.noGeometry, Primitives.point, Primitives.curve, Primitives.surface
+				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
@@ -2290,42 +2098,40 @@ namespace S100Framework.DomainModel.S124 {
 					roleType = roleType.association,
 					lower = 0,
 					upper =  default,
-					association = nameof(AreaAffected),
+					association = nameof(areaAffected),
 					role = Enum.GetName<Role>(Role.affects)!,
-					featureTypes = [nameof(NAVWARNAreaAffected)],
+					featureTypes = [nameof(NavwarnAreaAffected)],
 				},
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
 					upper =  default,
 					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.positions)!,
+					role = Enum.GetName<Role>(Role.thePositionProvider)!,
 					featureTypes = [nameof(TextPlacement)],
 				},
 			];
 		}
 
 		/// <summary>
-		/// Used to enhance the user’s awareness of an affected area following some incident.
+		/// An area affected by some event marked by a navigational warning.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class NAVWARNAreaAffected : FeatureNode, IFeatureBindingDefinition {
+		public partial class NavwarnAreaAffected : FeatureNode, IFeatureBindingDefinition {
 			[JsonIgnore]
-			[IgnoreDataMember]
-			public override string Code => nameof(NAVWARNAreaAffected);
+			public override string Code => nameof(NavwarnAreaAffected);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
-			public override informationBindingDefinition[] informationBindingDefinitions => NAVWARNAreaAffected._informationBindingDefinitions;
+			public override informationBindingDefinition[] informationBindingDefinitions => NavwarnAreaAffected._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
-			public override featureBindingDefinition[] featureBindingDefinitions => NAVWARNAreaAffected._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => NavwarnAreaAffected._featureBindingDefinitions;
 
-			public override Primitives[] primitives => NAVWARNAreaAffected._primitives;
+			[JsonIgnore]
+			public override Primitives[] primitives => NavwarnAreaAffected._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
@@ -2335,9 +2141,9 @@ namespace S100Framework.DomainModel.S124 {
 					roleType = roleType.association,
 					lower = 1,
 					upper =  1,
-					association = nameof(AreaAffected),
+					association = nameof(areaAffected),
 					role = Enum.GetName<Role>(Role.impacts)!,
-					featureTypes = [nameof(NAVWARNPart)],
+					featureTypes = [nameof(NavwarnPart)],
 				},
 			];
 		}
@@ -2348,7 +2154,9 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
-			public String? text {get;set;} = default;
+			public int? scaleMinimum {get;set;} = default;
+
+			public String text {get;set;} = string.Empty;
 
 			[Required()]
 			public int textOffsetBearing {get;set;}
@@ -2356,27 +2164,21 @@ namespace S100Framework.DomainModel.S124 {
 			[Required()]
 			public int textOffsetDistance {get;set;}
 
-			public Boolean? textRotation {get;set;} = default;
-
-			[EnumerationValue([1,2])]
-			public textType? textType {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
+			[Required()]
+			public Boolean textRotation {get;set;} = false;
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override string Code => nameof(TextPlacement);
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
-			[IgnoreDataMember]
 			public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 
+			[JsonIgnore]
 			public override Primitives[] primitives => TextPlacement._primitives;
 			public static Primitives[] _primitives => [
 				Primitives.point
@@ -2384,12 +2186,12 @@ namespace S100Framework.DomainModel.S124 {
 
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
+					roleType = roleType.association,
+					lower = 1,
 					upper =  1,
 					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.identifies)!,
-					featureTypes = [nameof(NAVWARNPart)],
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(NavwarnPart)],
 				},
 			];
 		}
