@@ -9,13 +9,13 @@ namespace S100Framework.WPF.ViewModel
 {
     public interface iBootstrap
     {
-        static AssociationViewModel CreateInformationAssociation(string type, string? pid = default) { throw new NotImplementedException(); }
+        static AssociationViewModel CreateInformationAssociation(string type, string? name = default) { throw new NotImplementedException(); }
 
-        static AssociationViewModel CreateFeatureAssociation(string type, string? pid = default) { throw new NotImplementedException(); }
+        static AssociationViewModel CreateFeatureAssociation(string type, string? name = default) { throw new NotImplementedException(); }
 
-        static InformationViewModel CreateInformationType(string type, string? pid = default) { throw new NotImplementedException(); }
+        static InformationViewModel CreateInformationType(string type, string? name = default) { throw new NotImplementedException(); }
 
-        static FeatureViewModel CreateFeatureType(string type, string? pid = default) { throw new NotImplementedException(); }
+        static FeatureViewModel CreateFeatureType(string type, string? name = default) { throw new NotImplementedException(); }
 
         static ICollection<string> InformationAssociationBindings(string association, string role) { throw new NotImplementedException(); }
 
@@ -82,7 +82,7 @@ namespace S100Framework.WPF.ViewModel
     public abstract class AssociationViewModel : ViewModelBase
     {
         [Browsable(false)]
-        public string? PID { get; set; } = default;
+        public string? Name { get; set; } = default;
     }
 
     public abstract class InformationAssociationViewModel : AssociationViewModel
@@ -98,7 +98,7 @@ namespace S100Framework.WPF.ViewModel
     public abstract class InformationViewModel : ViewModelBase, ISerializable
     {
         [Browsable(false)]
-        public string? PID { get; set; } = default;
+        public string? Name { get; set; } = default;
 
         [Browsable(false)]
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
@@ -131,7 +131,7 @@ namespace S100Framework.WPF.ViewModel
     public abstract class FeatureViewModel : ViewModelBase, ISerializable
     {
         [Browsable(false)]
-        public string? PID { get; set; } = default;
+        public string? Name { get; set; } = default;
 
         [Browsable(false)]
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }

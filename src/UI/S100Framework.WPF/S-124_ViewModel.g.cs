@@ -20,28 +20,28 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel.S124 {
 	internal static class Bootstrap {
-		public static AssociationViewModel CreateInformationAssociation(string type, string? pid = default) => type switch {
-			"navwarnPreambleContent" => new navwarnPreambleContentViewModel { PID = pid },
-			"navwarnReferences" => new navwarnReferencesViewModel { PID = pid },
+		public static AssociationViewModel CreateInformationAssociation(string type, string? name = default) => type switch {
+			"navwarnPreambleContent" => new navwarnPreambleContentViewModel { Name = name },
+			"navwarnReferences" => new navwarnReferencesViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
-		public static AssociationViewModel CreateFeatureAssociation(string type, string? pid = default) => type switch {
-			"TextAssociation" => new TextAssociationViewModel { PID = pid },
-			"areaAffected" => new areaAffectedViewModel { PID = pid },
+		public static AssociationViewModel CreateFeatureAssociation(string type, string? name = default) => type switch {
+			"TextAssociation" => new TextAssociationViewModel { Name = name },
+			"areaAffected" => new areaAffectedViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
-		public static InformationViewModel CreateInformationType(string type, string? pid = default) => type switch {
-			"References" => new ReferencesViewModel { PID = pid },
-			"NavwarnPreamble" => new NavwarnPreambleViewModel { PID = pid },
+		public static InformationViewModel CreateInformationType(string type, string? name = default) => type switch {
+			"References" => new ReferencesViewModel { Name = name },
+			"NavwarnPreamble" => new NavwarnPreambleViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
-		public static FeatureViewModel CreateFeatureType(string type, string? pid = default) => type switch {
-			"NavwarnPart" => new NavwarnPartViewModel { PID = pid },
-			"NavwarnAreaAffected" => new NavwarnAreaAffectedViewModel { PID = pid },
-			"TextPlacement" => new TextPlacementViewModel { PID = pid },
+		public static FeatureViewModel CreateFeatureType(string type, string? name = default) => type switch {
+			"NavwarnPart" => new NavwarnPartViewModel { Name = name },
+			"NavwarnAreaAffected" => new NavwarnAreaAffectedViewModel { Name = name },
+			"TextPlacement" => new TextPlacementViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 

@@ -656,10 +656,10 @@ namespace S100Framework.Applications
             builderViewModel.AppendLine("\t}");
             builderViewModel.AppendLine();
 
-            var bootstrapCreateInformationAssociation = new StringBuilder().AppendLine("\t\tpublic static AssociationViewModel CreateInformationAssociation(string type, string? pid = default) => type switch {");
-            var bootstrapCreateFeatureAssociation = new StringBuilder().AppendLine("\t\tpublic static AssociationViewModel CreateFeatureAssociation(string type, string? pid = default) => type switch {");
-            var bootstrapCreateInformationType = new StringBuilder().AppendLine("\t\tpublic static InformationViewModel CreateInformationType(string type, string? pid = default) => type switch {");
-            var bootstrapCreateFeatureType = new StringBuilder().AppendLine("\t\tpublic static FeatureViewModel CreateFeatureType(string type, string? pid = default) => type switch {");
+            var bootstrapCreateInformationAssociation = new StringBuilder().AppendLine("\t\tpublic static AssociationViewModel CreateInformationAssociation(string type, string? name = default) => type switch {");
+            var bootstrapCreateFeatureAssociation = new StringBuilder().AppendLine("\t\tpublic static AssociationViewModel CreateFeatureAssociation(string type, string? name = default) => type switch {");
+            var bootstrapCreateInformationType = new StringBuilder().AppendLine("\t\tpublic static InformationViewModel CreateInformationType(string type, string? name = default) => type switch {");
+            var bootstrapCreateFeatureType = new StringBuilder().AppendLine("\t\tpublic static FeatureViewModel CreateFeatureType(string type, string? name = default) => type switch {");
 
             //  --- S100_FC_ComplexAttributes ---------------------------------------------------
             {
@@ -719,7 +719,7 @@ namespace S100Framework.Applications
 
                     builderViewModel.AppendLine(s);
 
-                    bootstrapCreateInformationAssociation.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ PID = pid }},");
+                    bootstrapCreateInformationAssociation.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ Name = name }},");
                 }
                 builderViewModel.AppendLine();
             }
@@ -754,7 +754,7 @@ namespace S100Framework.Applications
 
                     builderViewModel.AppendLine(s);
 
-                    bootstrapCreateFeatureAssociation.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ PID = pid }},");
+                    bootstrapCreateFeatureAssociation.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ Name = name }},");
                 }
                 builderViewModel.AppendLine();
             }
@@ -791,7 +791,7 @@ namespace S100Framework.Applications
 
                     builderViewModel.AppendLine(s);
 
-                    bootstrapCreateInformationType.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ PID = pid }},");
+                    bootstrapCreateInformationType.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ Name = name }},");
                 }
                 builderViewModel.AppendLine();
             }
@@ -830,7 +830,7 @@ namespace S100Framework.Applications
 
                     builderViewModel.AppendLine(s);
 
-                    bootstrapCreateFeatureType.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ PID = pid }},");
+                    bootstrapCreateFeatureType.AppendLine($"\t\t\t\"{code}\" => new {code}ViewModel {{ Name = name }},");
                 }
                 builderViewModel.AppendLine();
             }

@@ -20,38 +20,38 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel.S128 {
 	internal static class Bootstrap {
-		public static AssociationViewModel CreateInformationAssociation(string type, string? pid = default) => type switch {
-			"CarriageRequirement" => new CarriageRequirementViewModel { PID = pid },
-			"DistributionDetails" => new DistributionDetailsViewModel { PID = pid },
-			"DistributorContact" => new DistributorContactViewModel { PID = pid },
-			"PriceOfElement" => new PriceOfElementViewModel { PID = pid },
-			"PriceOfNauticalProduct" => new PriceOfNauticalProductViewModel { PID = pid },
-			"ProducerContact" => new ProducerContactViewModel { PID = pid },
-			"ProductionDetails" => new ProductionDetailsViewModel { PID = pid },
-			"ProductPackage" => new ProductPackageViewModel { PID = pid },
+		public static AssociationViewModel CreateInformationAssociation(string type, string? name = default) => type switch {
+			"CarriageRequirement" => new CarriageRequirementViewModel { Name = name },
+			"DistributionDetails" => new DistributionDetailsViewModel { Name = name },
+			"DistributorContact" => new DistributorContactViewModel { Name = name },
+			"PriceOfElement" => new PriceOfElementViewModel { Name = name },
+			"PriceOfNauticalProduct" => new PriceOfNauticalProductViewModel { Name = name },
+			"ProducerContact" => new ProducerContactViewModel { Name = name },
+			"ProductionDetails" => new ProductionDetailsViewModel { Name = name },
+			"ProductPackage" => new ProductPackageViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
-		public static AssociationViewModel CreateFeatureAssociation(string type, string? pid = default) => type switch {
-			"ProductMapping" => new ProductMappingViewModel { PID = pid },
-			"Correlated" => new CorrelatedViewModel { PID = pid },
+		public static AssociationViewModel CreateFeatureAssociation(string type, string? name = default) => type switch {
+			"ProductMapping" => new ProductMappingViewModel { Name = name },
+			"Correlated" => new CorrelatedViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
-		public static InformationViewModel CreateInformationType(string type, string? pid = default) => type switch {
-			"CatalogueSectionHeader" => new CatalogueSectionHeaderViewModel { PID = pid },
-			"ContactDetails" => new ContactDetailsViewModel { PID = pid },
-			"IndicationOfCarriageRequirement" => new IndicationOfCarriageRequirementViewModel { PID = pid },
-			"PriceInformation" => new PriceInformationViewModel { PID = pid },
-			"ProducerInformation" => new ProducerInformationViewModel { PID = pid },
-			"DistributorInformation" => new DistributorInformationViewModel { PID = pid },
+		public static InformationViewModel CreateInformationType(string type, string? name = default) => type switch {
+			"CatalogueSectionHeader" => new CatalogueSectionHeaderViewModel { Name = name },
+			"ContactDetails" => new ContactDetailsViewModel { Name = name },
+			"IndicationOfCarriageRequirement" => new IndicationOfCarriageRequirementViewModel { Name = name },
+			"PriceInformation" => new PriceInformationViewModel { Name = name },
+			"ProducerInformation" => new ProducerInformationViewModel { Name = name },
+			"DistributorInformation" => new DistributorInformationViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
-		public static FeatureViewModel CreateFeatureType(string type, string? pid = default) => type switch {
-			"ElectronicProduct" => new ElectronicProductViewModel { PID = pid },
-			"PhysicalProduct" => new PhysicalProductViewModel { PID = pid },
-			"S100Service" => new S100ServiceViewModel { PID = pid },
+		public static FeatureViewModel CreateFeatureType(string type, string? name = default) => type switch {
+			"ElectronicProduct" => new ElectronicProductViewModel { Name = name },
+			"PhysicalProduct" => new PhysicalProductViewModel { Name = name },
+			"S100Service" => new S100ServiceViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 

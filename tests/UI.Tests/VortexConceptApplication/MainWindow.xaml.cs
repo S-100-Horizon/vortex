@@ -159,7 +159,7 @@ namespace VortexConceptApplication
             model.colour.Add(S100Framework.DomainModel.S101.colour.Green);
 
             var viewModel = new LightAllAroundViewModel() {
-                PID = "S202600",
+                Name = "S202600",
             }.Load(model);
 
             //viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {

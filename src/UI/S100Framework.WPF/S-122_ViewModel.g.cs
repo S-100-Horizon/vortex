@@ -19,45 +19,45 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel.S122 {
 	internal static class Bootstrap {
-		public static AssociationViewModel CreateInformationAssociation(string type, string? pid = default) => type switch {
-			"AssociatedRxN" => new AssociatedRxNViewModel { PID = pid },
-			"ExceptionalWorkday" => new ExceptionalWorkdayViewModel { PID = pid },
-			"ProtectedAreaAuthority" => new ProtectedAreaAuthorityViewModel { PID = pid },
-			"ServiceControl" => new ServiceControlViewModel { PID = pid },
-			"RelatedOrganisation" => new RelatedOrganisationViewModel { PID = pid },
-			"PermissionType" => new PermissionTypeViewModel { PID = pid },
-			"InclusionType" => new InclusionTypeViewModel { PID = pid },
-			"AuthorityContact" => new AuthorityContactViewModel { PID = pid },
-			"AuthorityHours" => new AuthorityHoursViewModel { PID = pid },
-			"additionalInformation" => new additionalInformationViewModel { PID = pid },
+		public static AssociationViewModel CreateInformationAssociation(string type, string? name = default) => type switch {
+			"AssociatedRxN" => new AssociatedRxNViewModel { Name = name },
+			"ExceptionalWorkday" => new ExceptionalWorkdayViewModel { Name = name },
+			"ProtectedAreaAuthority" => new ProtectedAreaAuthorityViewModel { Name = name },
+			"ServiceControl" => new ServiceControlViewModel { Name = name },
+			"RelatedOrganisation" => new RelatedOrganisationViewModel { Name = name },
+			"PermissionType" => new PermissionTypeViewModel { Name = name },
+			"InclusionType" => new InclusionTypeViewModel { Name = name },
+			"AuthorityContact" => new AuthorityContactViewModel { Name = name },
+			"AuthorityHours" => new AuthorityHoursViewModel { Name = name },
+			"additionalInformation" => new additionalInformationViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
-		public static AssociationViewModel CreateFeatureAssociation(string type, string? pid = default) => type switch {
+		public static AssociationViewModel CreateFeatureAssociation(string type, string? name = default) => type switch {
 			_ or "" => throw new InvalidOperationException(),
 		};
 
-		public static InformationViewModel CreateInformationType(string type, string? pid = default) => type switch {
-			"InformationType" => new InformationTypeViewModel { PID = pid },
-			"AbstractRxN" => new AbstractRxNViewModel { PID = pid },
-			"NauticalInformation" => new NauticalInformationViewModel { PID = pid },
-			"Regulations" => new RegulationsViewModel { PID = pid },
-			"Restrictions" => new RestrictionsViewModel { PID = pid },
-			"Recommendations" => new RecommendationsViewModel { PID = pid },
-			"Authority" => new AuthorityViewModel { PID = pid },
-			"ContactDetails" => new ContactDetailsViewModel { PID = pid },
-			"NonStandardWorkingDay" => new NonStandardWorkingDayViewModel { PID = pid },
-			"ServiceHours" => new ServiceHoursViewModel { PID = pid },
-			"Applicability" => new ApplicabilityViewModel { PID = pid },
+		public static InformationViewModel CreateInformationType(string type, string? name = default) => type switch {
+			"InformationType" => new InformationTypeViewModel { Name = name },
+			"AbstractRxN" => new AbstractRxNViewModel { Name = name },
+			"NauticalInformation" => new NauticalInformationViewModel { Name = name },
+			"Regulations" => new RegulationsViewModel { Name = name },
+			"Restrictions" => new RestrictionsViewModel { Name = name },
+			"Recommendations" => new RecommendationsViewModel { Name = name },
+			"Authority" => new AuthorityViewModel { Name = name },
+			"ContactDetails" => new ContactDetailsViewModel { Name = name },
+			"NonStandardWorkingDay" => new NonStandardWorkingDayViewModel { Name = name },
+			"ServiceHours" => new ServiceHoursViewModel { Name = name },
+			"Applicability" => new ApplicabilityViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
-		public static FeatureViewModel CreateFeatureType(string type, string? pid = default) => type switch {
-			"RestrictedArea" => new RestrictedAreaViewModel { PID = pid },
-			"MarineProtectedArea" => new MarineProtectedAreaViewModel { PID = pid },
-			"VesselTrafficServiceArea" => new VesselTrafficServiceAreaViewModel { PID = pid },
-			"DataCoverage" => new DataCoverageViewModel { PID = pid },
-			"TextPlacement" => new TextPlacementViewModel { PID = pid },
+		public static FeatureViewModel CreateFeatureType(string type, string? name = default) => type switch {
+			"RestrictedArea" => new RestrictedAreaViewModel { Name = name },
+			"MarineProtectedArea" => new MarineProtectedAreaViewModel { Name = name },
+			"VesselTrafficServiceArea" => new VesselTrafficServiceAreaViewModel { Name = name },
+			"DataCoverage" => new DataCoverageViewModel { Name = name },
+			"TextPlacement" => new TextPlacementViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
