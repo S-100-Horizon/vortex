@@ -150,29 +150,7 @@ namespace VortexConceptApplication
                         });
                     }
                     return features;
-                },
-                CreateInformationBinding = async (CreateInformationBindingEventArgs e) => {
-                    return new informationBinding {
-                        association = e.association!,
-                        PID = e.PID,
-                        role = e.role!,
-                        roleType = Enum.GetName<roleType>(e.roleType!.Value)!,
-                    };
-                },
-                DeleteInformationBinding = async (DeleteInformationBindingEventArgs e) => {
-                    return true;
-                },
-                CreateFeatureBinding = async (CreateFeatureBindingEventArgs e) => {
-                    return new featureBinding {
-                        association = e.association!,
-                        PID = e.PID,
-                        role = e.role!,
-                        roleType = Enum.GetName<roleType>(e.roleType!.Value)!,
-                    };
-                },
-                DeleteFeatureBinding = async (DeleteFeatureBindingEventArgs e) => {
-                    return true;
-                }
+                },                
             };
 
             var model = new LightAllAround() { };

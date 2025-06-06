@@ -322,105 +322,7 @@ namespace VortexProAppModule
                         }
                         return ids;
                     }, TaskCreationOptions.None);
-                },
-
-                CreateInformationBinding = async (CreateInformationBindingEventArgs e) => {
-                    return await QueuedTask.Run(async () => {
-                        var inspector = base.Inspector;
-
-                        var informationBindings = inspector.IsNull("informationbindings") ? new List<informationBinding>() : System.Text.Json.JsonSerializer.Deserialize<List<informationBinding>>(Convert.ToString(inspector["informationbindings"]));
-
-                        var binding = new informationBinding {
-                            association = e.association,
-                            roleType = Enum.GetName<roleType>(e.roleType.Value),
-                            role = e.role,
-                            PID = e.PID,
-                        };
-                        informationBindings.Add(binding);
-
-                        inspector["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(informationBindings);
-                        return binding;;
-                    }, TaskCreationOptions.None);
-                },
-
-                DeleteInformationBinding = async (DeleteInformationBindingEventArgs e) => {
-                    return await QueuedTask.Run(() => {
-                        var inspector = base.Inspector;
-
-                        var editOperation = new EditOperation {
-                            Name = S100AttributesUpdate,
-                        };
-
-                        using var table = inspector.OpenDataset<Table>("associationbinding");
-
-                        using var cursor = table.Search(new QueryFilter {
-                            WhereClause = $"GLOBALID = '{e.Uuid:B}'"
-                        }, false);
-
-                        if (!cursor.MoveNext())
-                            return false;
-
-                        editOperation.Delete(table, cursor.Current.GetObjectID());
-
-                        if (!editOperation.IsEmpty) {
-                            if (editOperation.Execute()) {
-                                return true;
-                            }
-                            else if (System.Diagnostics.Debugger.IsAttached)
-                                System.Diagnostics.Debugger.Break();
-                        }
-                        return false;
-                    }, TaskCreationOptions.None);
-                },
-
-                CreateFeatureBinding = async (CreateFeatureBindingEventArgs e) => {
-                    return await QueuedTask.Run(() => {
-                        var inspector = base.Inspector;
-
-                        var featureBindings = inspector.IsNull("featurebindings") ? new List<featureBinding>() : System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(inspector["featurebindings"]));
-
-                        var binding = new featureBinding {
-                            association = e.association,
-                            roleType = Enum.GetName<roleType>(e.roleType.Value),
-                            role = e.role,
-                            PID = e.PID,
-                        };
-                        featureBindings.Add(binding);
-
-                        inspector["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(featureBindings);
-                        return binding;
-                    }, TaskCreationOptions.None);
-                },
-
-                DeleteFeatureBinding = async (DeleteFeatureBindingEventArgs e) => {
-                    return await QueuedTask.Run(() => {
-                        var inspector = base.Inspector;
-
-                        var editOperation = new EditOperation {
-                            Name = S100AttributesUpdate,
-                        };
-
-                        using var table = inspector.OpenDataset<Table>("associationbinding");
-
-                        using var cursor = table.Search(new QueryFilter {
-                            WhereClause = $"GLOBALID = '{e.Uuid:B}'"
-                        }, false);
-
-                        if (!cursor.MoveNext())
-                            return false;
-
-                        editOperation.Delete(table, cursor.Current.GetObjectID());
-
-                        if (!editOperation.IsEmpty) {
-                            if (editOperation.Execute()) {
-                                return true;
-                            }
-                            else if (System.Diagnostics.Debugger.IsAttached)
-                                System.Diagnostics.Debugger.Break();
-                        }
-                        return false;
-                    }, TaskCreationOptions.None);
-                },
+                },                                               
             };
         }
 
@@ -612,91 +514,34 @@ namespace VortexProAppModule
                     if (instance is IInformationBindingDefinition) {
                         var informationViewModel = (InformationViewModel)viewmodel;
 
+                        if (!inspector.IsNull("informationbindings")) {
+                            var informationBindings = System.Text.Json.JsonSerializer.Deserialize<List<informationBinding>>(Convert.ToString(inspector["informationbindings"]));
+                            foreach (var e in informationBindings)
+                                informationViewModel.InformationBindings.Add(new InformationBindingViewModel().Load(e));
+                        }
+
                         this.SelectedInformationProperty = new SelectedInformationTypeObjectViewModel(informationViewModel, (IInformationBindingDefinition)instance);
                         selectedObjectViewModel = this.SelectedInformationProperty;
-
-                        using var table = inspector.OpenDataset<Table>("associationbinding");
-
-                        var q = new QueryFilter {
-                            WhereClause = $"TYPE = 'InformationBinding' AND PRIMARYID = '{informationViewModel.PID}'",
-                        };
-                        using var cursor = table.Search(q, true);
-                        while (cursor.MoveNext()) {
-                            var row = cursor.Current;
-                            var binding = new InformationBindingViewModel {
-                                UID = row.GetGlobalID(),
-                            }.Load(new informationBinding {
-                                roleType = Convert.ToString(row["roleType"]),
-                                association = Convert.ToString(row["association"]),
-                                role = Convert.ToString(row["role"]),
-                                associationId = Convert.ToString(row["associationId"]),
-                                informationId = Convert.ToString(row["informationId"]),
-                                PID = informationViewModel.PID,
-                            });
-                            this.SelectedInformationProperty.InformationBindings.Add(binding);
-                        }
                     }
                     if (instance is IFeatureBindingDefinition) {
                         var featureViewModel = (FeatureViewModel)viewmodel;
 
+                        //  informationBinding
+                        if (!inspector.IsNull("informationbindings")) {
+                            var informationBindings = System.Text.Json.JsonSerializer.Deserialize<List<informationBinding>>(Convert.ToString(inspector["informationbindings"]));
+                            foreach (var e in informationBindings)
+                                featureViewModel.InformationBindings.Add(new InformationBindingViewModel().Load(e));
+                        }
+
+                        //  featureBinding                        
+                        if (!inspector.IsNull("featurebindings")) {
+                            var featureBindings = System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(inspector["featurebindings"]));
+                            foreach (var e in featureBindings)
+                                featureViewModel.FeatureBindings.Add(new FeatureBindingViewModel().Load(e));
+                        }
 
                         this.SelectedFeatureProperty = new SelectedFeatureTypeObjectViewModel(featureViewModel, (IFeatureBindingDefinition)instance);
                         selectedObjectViewModel = this.SelectedFeatureProperty;
-
-                        //  informationBinding
-                        {
-                            using var table = inspector.OpenDataset<Table>("associationbinding");
-
-                            var q = new QueryFilter {
-                                WhereClause = $"UPPER(TYPE) = 'INFORMATIONBINDING' AND PRIMARYID = '{featureViewModel.PID}'",
-                            };
-                            using var cursor = table.Search(q, true);
-                            while (cursor.MoveNext()) {
-                                var row = cursor.Current;
-                                var binding = new InformationBindingViewModel {
-                                    UID = row.GetGlobalID(),
-                                }.Load(new informationBinding {
-                                    roleType = Convert.ToString(row["roleType"]),
-                                    association = Convert.ToString(row["association"]),
-                                    role = Convert.ToString(row["role"]),
-                                    associationId = Convert.ToString(row["associationId"]),
-                                    informationId = Convert.ToString(row["foreignid"]),
-                                    PID = featureViewModel.PID,
-                                });
-                                this.SelectedFeatureProperty.InformationBindings.Add(binding);
-                            }
-                        }
-
-                        //  featureBinding
-                        {
-                            if (!inspector.IsNull("featurebindings")) {
-                                var featureBindings = System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(inspector["featurebindings"]));
-                                foreach (var e in featureBindings)
-                                    this.SelectedFeatureProperty.FeatureBindings.Add(new FeatureBindingViewModel().Load(e));
-
-                            }
-
-                            //using var table = inspector.OpenDataset<Table>("associationbinding");
-
-                            //var q = new QueryFilter {
-                            //    WhereClause = $"UPPER(TYPE) = 'FEATUREBINDING' AND PRIMARYID = '{featureViewModel.PID}'",
-                            //};
-                            //using var cursor = table.Search(q, true);
-                            //while (cursor.MoveNext()) {
-                            //    var row = cursor.Current;
-                            //    var binding = new FeatureBindingViewModel {
-                            //        //UID = row.GetGlobalID(),
-                            //    }.Load(new featureBinding {
-                            //        roleType = Convert.ToString(row["roleType"]),
-                            //        association = Convert.ToString(row["association"]),
-                            //        role = Convert.ToString(row["role"]),
-                            //        associationId = Convert.ToString(row["associationId"]),
-                            //        featureId = Convert.ToString(row["foreignid"]),
-                            //        PID = featureViewModel.PID,
-                            //    });
-                            //    this.SelectedFeatureProperty.FeatureBindings.Add(binding);
-                            //}
-                        }
                     }
                     if (instance is Association) {
                         var association = (AssociationViewModel)viewmodel;
@@ -707,35 +552,37 @@ namespace VortexProAppModule
                     if (instance is FeatureAssociation) {
                         var associationViewModel = (AssociationViewModel)viewmodel;
 
+                        //TODO: Find associations ???
+
                         //  featureBinding
                         {
-                            using var table = inspector.OpenDataset<Table>("associationbinding");
+                            //using var table = inspector.OpenDataset<Table>("associationbinding");
 
-                            var q = new QueryFilter {
-                                WhereClause = $"UPPER(TYPE) = 'FEATUREBINDING' AND ASSOCIATIONID = '{associationViewModel.PID}'",
-                            };
-                            using var cursor = table.Search(q, true);
-                            while (cursor.MoveNext()) {
-                                var row = cursor.Current;
-                                var binding = new FeatureBindingViewModel {
-                                    UID = row.GetGlobalID(),
-                                }.Load(new featureBinding {
-                                    roleType = Convert.ToString(row["roleType"]),
-                                    association = Convert.ToString(row["association"]),
-                                    role = Convert.ToString(row["role"]),
-                                    associationId = Convert.ToString(row["associationId"]),
-                                    featureId = Convert.ToString(row["foreignid"]),
-                                    PID = associationViewModel.PID,
-                                });
-                                this.SelectedAssociationProperty.FeatureBindings.Add(binding);
-                            }
+                            //var q = new QueryFilter {
+                            //    WhereClause = $"UPPER(TYPE) = 'FEATUREBINDING' AND ASSOCIATIONID = '{associationViewModel.PID}'",
+                            //};
+                            //using var cursor = table.Search(q, true);
+                            //while (cursor.MoveNext()) {
+                            //    var row = cursor.Current;
+                            //    var binding = new FeatureBindingViewModel {
+                            //        UID = row.GetGlobalID(),
+                            //    }.Load(new featureBinding {
+                            //        roleType = Convert.ToString(row["roleType"]),
+                            //        association = Convert.ToString(row["association"]),
+                            //        role = Convert.ToString(row["role"]),
+                            //        associationId = Convert.ToString(row["associationId"]),
+                            //        featureId = Convert.ToString(row["foreignid"]),
+                            //    });
+                            //    this.SelectedAssociationProperty.FeatureBindings.Add(binding);
+                            //}
                         }
                     }
 
-                    selectedObjectViewModel.PropertyChanged += this.OnPropertyChanged;
-                    selectedObjectViewModel.CollectionChanged += this.OnCollectionChanged;
-                    selectedObjectViewModel.CollectionItemChanged += this.OnCollectionItemChanged;
-
+                    if (selectedObjectViewModel != null) {
+                        selectedObjectViewModel.PropertyChanged += this.OnPropertyChanged;
+                        selectedObjectViewModel.CollectionChanged += this.OnCollectionChanged;
+                        selectedObjectViewModel.CollectionItemChanged += this.OnCollectionItemChanged;
+                    }
                     return viewmodel;
                 }), TaskCreationOptions.None);
 
@@ -766,7 +613,6 @@ namespace VortexProAppModule
                         association = e.association,
                         associationId = e.associationId,
                         featureId = e.featureId,
-                        PID = e.PID,
                         role = e.role,
                         roleType = e.roleType.HasValue ? Enum.GetName<roleType>(e.roleType.Value) : default,
                     });
@@ -781,9 +627,8 @@ namespace VortexProAppModule
                     var f = featureBindings.Select(e => new featureBinding {
                         association = e.association,
                         associationId = e.associationId,
-                        featureId=e.featureId,
-                        PID= e.PID,
-                        role=e.role,
+                        featureId = e.featureId,
+                        role = e.role,
                         roleType = e.roleType.HasValue ? Enum.GetName<roleType>(e.roleType.Value) : default,
                     });
                     Inspector["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(f);
@@ -793,56 +638,43 @@ namespace VortexProAppModule
 
         private async void OnPropertyChanged(object sender, PropertyChangedEventArgs e) {
             await QueuedTask.Run(async () => {
-                //if (!Project.Current.IsEditingEnabled) {
-                //    await Project.Current.SetIsEditingEnabledAsync(true);
-                //}
-
-                var editOperation = new EditOperation {
-                    Name = S100AttributesUpdate,
-                };
+                var updated = false;
 
                 if (sender is ViewModelBase viewModel) {
                     var json = viewModel.Serialize();
 
-                    if (DBNull.Value != Inspector["json"]) {
-                        if (string.Compare(json, Convert.ToString(Inspector["json"]), true) == 0)
-                            return;
+                    if (Inspector.IsNull("json")) {
+                        Inspector["json"] = json;
+                        updated |= true;
                     }
-
-                    Inspector["json"] = json;
+                    else if (string.Compare(json, Convert.ToString(Inspector["json"]), true) != 0) {
+                        Inspector["json"] = json;
+                        updated |= true;
+                    }
                 }
                 if (sender is InformationBindingViewModel informationBinding) {
-                    using var table = Inspector.OpenDataset<Table>("associationbinding");
-
-                    var q = new QueryFilter {
-                        WhereClause = $"GLOBALID = '{informationBinding.UID:B}'",
-                    };
-                    using var cursor = table.Search(q, false);
-                    if (cursor.MoveNext()) {
-                        editOperation.Modify(cursor.Current, new Dictionary<string, object> {
-                                        { "associationid", informationBinding.associationId },
-                                        { "foreignid", informationBinding.informationId },
-                                    });
+                    var informationBindings = Inspector.IsNull("informationbindings") ? new List<informationBinding>() : System.Text.Json.JsonSerializer.Deserialize<List<informationBinding>>(Convert.ToString(Inspector["informationbindings"]));
+                    var json = System.Text.Json.JsonSerializer.Serialize(informationBindings);
+                    if (Inspector.IsNull("informationbindings") && informationBindings.Any()) {
+                        Inspector["informationbindings"] = json;
+                        updated |= true;
+                    }
+                    else if (string.Compare(json, Convert.ToString(Inspector["informationbindings"]), true) != 0) {
+                        Inspector["informationbindings"] = json;
+                        updated |= true;
                     }
                 }
                 if (sender is FeatureBindingViewModel featureBinding) {
-                    //Inspector["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(featureBindings);
-
-                    using var table = Inspector.OpenDataset<Table>("associationbinding");
-
-                    var q = new QueryFilter {
-                        WhereClause = $"GLOBALID = '{featureBinding.UID:B}'",
-                    };
-                    using var cursor = table.Search(q, false);
-                    if (cursor.MoveNext()) {
-                        editOperation.Modify(cursor.Current, new Dictionary<string, object> {
-                                        { "associationid", featureBinding.associationId },
-                                        { "foreignid", featureBinding.featureId },
-                                    });
+                    var featureBindings = Inspector.IsNull("featurebindings") ? new List<featureBinding>() : System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(Inspector["featurebindings"]));
+                    var json = System.Text.Json.JsonSerializer.Serialize(featureBindings);
+                    if (Inspector.IsNull("featurebindings") && featureBindings.Any()) {
+                        Inspector["featurebindings"] = json;
+                        updated |= true;
                     }
-                }
-                if (!editOperation.IsEmpty) {
-                    var success = editOperation.Execute();
+                    else if (string.Compare(json, Convert.ToString(Inspector["featurebindings"]), true) != 0) {
+                        Inspector["featurebindings"] = json;
+                        updated |= true;
+                    }
                 }
             }, TaskCreationOptions.None);
         }

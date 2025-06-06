@@ -1,6 +1,7 @@
 ﻿using S100Framework.DomainModel;
 using S100Framework.WPF.Editors;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -19,22 +20,6 @@ namespace S100Framework.WPF.ViewModel
         static ICollection<string> InformationAssociationBindings(string association, string role) { throw new NotImplementedException(); }
 
         static ICollection<string> FeatureAssociationBindings(string association, string role) { throw new NotImplementedException(); }
-    }
-
-    //public static class Handles
-    //{
-    //    public static Func<InformationBindingViewModel?, string[]> GetInformations { get; set; } = (e) => { return []; };
-
-    //    public static Func<FeatureBindingViewModel?, string[]> GetFeatures { get; set; } = (e) => { return []; };
-
-    //    public static Func<InformationRefIdViewModel?, Task<string[]>> GetInformationsRefId { get; set; } = (e) => { return Task.FromResult(Array.Empty<string>()); };
-
-    //    public static Func<FeatureRefIdViewModel?, Task<string[]>> GetFeaturesRefId { get; set; } = (e) => { return Task.FromResult(Array.Empty<string>()); };
-    //}
-
-    public interface PID
-    {
-        public string? PID { get; }
     }
 
     public interface ISerializable
@@ -94,7 +79,7 @@ namespace S100Framework.WPF.ViewModel
         }
     }
 
-    public abstract class AssociationViewModel : ViewModelBase, PID
+    public abstract class AssociationViewModel : ViewModelBase
     {
         [Browsable(false)]
         public string? PID { get; set; } = default;
@@ -110,7 +95,7 @@ namespace S100Framework.WPF.ViewModel
         public abstract void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation);
     }
 
-    public abstract class InformationViewModel : ViewModelBase, PID, ISerializable
+    public abstract class InformationViewModel : ViewModelBase, ISerializable
     {
         [Browsable(false)]
         public string? PID { get; set; } = default;
@@ -118,10 +103,32 @@ namespace S100Framework.WPF.ViewModel
         [Browsable(false)]
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
 
-        //public abstract string Serialize();
+        public ObservableCollection<InformationBindingViewModel> InformationBindings = [];
+
+        public InformationViewModel() {
+            this.InformationBindings.CollectionChanged += this.OnInformationBindings_CollectionChanged;
+        }
+
+        protected void OnInformationBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
+            if (e.OldItems != null) {
+                foreach (var i in e.OldItems) {
+                    ((InformationBindingViewModel)i).PropertyChanged -= OnInformationBindings_CollectionItemChanged;
+                }
+            }
+            if (e.NewItems != null) {
+                foreach (var i in e.NewItems) {
+                    ((InformationBindingViewModel)i).PropertyChanged += OnInformationBindings_CollectionItemChanged;
+                }
+            }
+            base.OnPropertyChanged(nameof(InformationBindings));
+        }
+
+        protected void OnInformationBindings_CollectionItemChanged(object? sender, PropertyChangedEventArgs e) {
+            base.OnPropertyChanged(nameof(InformationBindings));
+        }
     }
 
-    public abstract class FeatureViewModel : ViewModelBase, PID, ISerializable
+    public abstract class FeatureViewModel : ViewModelBase, ISerializable
     {
         [Browsable(false)]
         public string? PID { get; set; } = default;
@@ -132,7 +139,50 @@ namespace S100Framework.WPF.ViewModel
         [Browsable(false)]
         public abstract featureBindingDefinition[] featureBindingDefinitions { get; }
 
-        //public abstract string Serialize();
+        public ObservableCollection<InformationBindingViewModel> InformationBindings = [];
+
+        public ObservableCollection<FeatureBindingViewModel> FeatureBindings = [];
+
+        public FeatureViewModel() {
+            this.InformationBindings.CollectionChanged += this.OnInformationBindings_CollectionChanged;
+            this.FeatureBindings.CollectionChanged += this.OnFeatureBindings_CollectionChanged;
+        }
+
+        protected void OnInformationBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
+            if (e.OldItems != null) {
+                foreach (var i in e.OldItems) {
+                    ((InformationBindingViewModel)i).PropertyChanged -= OnInformationBindings_CollectionItemChanged;
+                }
+            }
+            if (e.NewItems != null) {
+                foreach (var i in e.NewItems) {
+                    ((InformationBindingViewModel)i).PropertyChanged += OnInformationBindings_CollectionItemChanged;
+                }
+            }
+            base.OnPropertyChanged(nameof(InformationBindings));
+        }
+
+        protected void OnInformationBindings_CollectionItemChanged(object? sender, PropertyChangedEventArgs e) {
+            base.OnPropertyChanged(nameof(InformationBindings));
+        }
+
+        protected void OnFeatureBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
+            if (e.OldItems != null) {
+                foreach (var i in e.OldItems) {
+                    ((FeatureBindingViewModel)i).PropertyChanged -= OnFeatureBindings_CollectionItemChanged;
+                }
+            }
+            if (e.NewItems != null) {
+                foreach (var i in e.NewItems) {
+                    ((FeatureBindingViewModel)i).PropertyChanged += OnFeatureBindings_CollectionItemChanged;
+                }
+            }
+            base.OnPropertyChanged(nameof(FeatureBindings));
+        }
+
+        protected void OnFeatureBindings_CollectionItemChanged(object? sender, PropertyChangedEventArgs e) {
+            base.OnPropertyChanged(nameof(FeatureBindings));
+        }
     }
 
     public abstract class InformationViewModel<TInformationType> : InformationViewModel where TInformationType : InformationNode
@@ -144,92 +194,6 @@ namespace S100Framework.WPF.ViewModel
     {
         public abstract FeatureViewModel<TFeatureType> Load(TFeatureType instance);
     }
-
-
-    //public abstract class RefIdViewModel : INotifyPropertyChanged
-    //{
-    //    public event PropertyChangedEventHandler? PropertyChanged;
-
-    //    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
-    //        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    //    }
-
-    //    protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
-    //        if (string.IsNullOrWhiteSpace(propertyName)) return;
-
-    //        if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
-    //        backingFiled = value;
-    //        OnPropertyChanged(propertyName);
-    //    }
-
-    //    private string? _refId = string.Empty;
-
-    //    [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
-    //    public string? RefId {
-    //        get { return _refId; }
-    //        set { this.SetValue(ref _refId, value); }
-    //    }
-
-    //    [Browsable(false)]
-    //    public abstract string[] AssociationTypes { get; }
-    //}
-
-    //public abstract class InformationRefIdViewModel : RefIdViewModel
-    //{
-    //    private string? _informationType = default;
-
-    //    [Editor(typeof(InformationBindingEditor), typeof(InformationBindingEditor))]
-    //    public string? InformationType {
-    //        get { return _informationType; }
-    //        set {
-    //            this.SetValue(ref _informationType, value);
-
-    //            _ = UpdateInformationType(value);   // Fire and forget 
-    //        }
-    //    }
-
-    //    private async Task UpdateInformationType(string? value) {
-    //        RefIds.Clear();
-    //        foreach (var e in await Handles.GetInformationsRefId(this))
-    //            RefIds.Add(e);
-    //    }
-
-
-    //    public override string ToString() => string.IsNullOrEmpty(_informationType) ? "RefId" : $"{_informationType}: {RefId}";
-
-    //    [Browsable(false)]
-    //    public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
-
-    //    public override string[] AssociationTypes { get; } = [];
-    //}
-
-    //public abstract class FeatureRefIdViewModel : RefIdViewModel
-    //{
-    //    private string? _featureType = default;
-
-    //    [Editor(typeof(FeatureBindingEditor), typeof(FeatureBindingEditor))]
-    //    public string? FeatureType {
-    //        get { return _featureType; }
-    //        set {
-    //            this.SetValue(ref _featureType, value);
-
-    //            _ = UpdateFeatureType(value);   // Fire and forget
-    //        }
-    //    }
-
-    //    private async Task UpdateFeatureType(string? value) {
-    //        RefIds.Clear();
-    //        foreach (var e in await Handles.GetFeaturesRefId(this))
-    //            RefIds.Add(e);
-    //    }
-
-    //    public override string ToString() => string.IsNullOrEmpty(_featureType) ? "RefId" : $"{_featureType}: {RefId}";
-
-    //    [Browsable(false)]
-    //    public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
-
-    //    public override string[] AssociationTypes { get; } = [];
-    //}
 
     public class InformationBindingViewModel : INotifyPropertyChanged
     {
@@ -281,25 +245,10 @@ namespace S100Framework.WPF.ViewModel
             }
         }
 
-        private String? _pid = string.Empty;
-
-        public String? PID {
-            get {
-                return _pid;
-            }
-
-            set {
-                SetValue(ref _pid, value);
-
-
-            }
-        }
-
         public InformationBindingViewModel Load(informationBinding binding) {
             _informationBindingDefintion = binding;
             _associationId = binding.associationId;
             _informationId = binding.informationId;
-            _pid = binding.PID;
             return this;
         }
 
@@ -356,24 +305,10 @@ namespace S100Framework.WPF.ViewModel
             }
         }
 
-        private String? _pid = string.Empty;
-
-        public String? PID {
-            get {
-                return _pid;
-            }
-
-            set {
-                SetValue(ref _pid, value);
-            }
-        }
-
-
         public FeatureBindingViewModel Load(featureBinding binding) {
             _featureBindingDefintion = binding;
             _associationId = binding.associationId;
             _featureId = binding.featureId;
-            _pid = binding.PID;
             return this;
         }
 
