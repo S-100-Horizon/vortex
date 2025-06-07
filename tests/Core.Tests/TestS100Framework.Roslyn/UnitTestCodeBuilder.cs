@@ -25,7 +25,7 @@ namespace TestS100Framework
         }
     }
 
-    namespace TestS100Framework
+    namespace Roslyn
     {
         public class UnitTestCodeBuilder
         {
