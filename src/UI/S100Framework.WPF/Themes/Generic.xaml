@@ -67,7 +67,7 @@
                                             <ContextMenu>
                                                 <MenuItem Header="Select" 
                                                           Command="local:S100AttributeEditorControl.InformationAssociationAddSelectionCommand"
-                                                          CommandParameter="{Binding ElementName=PART_InformationBindingsList, Path=SelectedItem}">
+                                                          CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}">
                                                 </MenuItem>
                                                 <Separator/>
                                                 <MenuItem Header="Remove From List"
