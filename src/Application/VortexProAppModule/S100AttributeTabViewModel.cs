@@ -320,6 +320,30 @@ namespace VortexProAppModule
                         return ids;
                     }, TaskCreationOptions.None);
                 },
+                
+                SelectInformationBinding = async (SelectInformationBindingEventArgs e) => {
+                    await QueuedTask.Run(() => {
+                        foreach (var layer in MapView.Active.Map.GetStandaloneTablesAsFlattenedList().OfType<StandaloneTable>()) {
+                            if (layer is StandaloneTable table) {
+                                table.Select(new QueryFilter {
+                                    WhereClause = $"upper(name) = '{e.informationId}'"
+                                }, SelectionCombinationMethod.Add);
+                            }
+                        }
+                    }, TaskCreationOptions.None);
+                },
+
+                SelectFeatureBinding = async (SelectFeatureBindingEventArgs e) => {
+                    await QueuedTask.Run(() => {
+                        foreach(var layer in MapView.Active.Map.GetLayersAsFlattenedList().OfType<FeatureLayer>()) {
+                            if(layer is FeatureLayer featureLayer) {
+                                featureLayer.Select(new QueryFilter {
+                                    WhereClause = $"upper(name) = '{e.featureId}'"
+                                }, SelectionCombinationMethod.Add);
+                            }
+                        }
+                    }, TaskCreationOptions.None);
+                }
             };
         }
 

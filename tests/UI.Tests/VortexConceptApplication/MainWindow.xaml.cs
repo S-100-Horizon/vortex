@@ -148,6 +148,10 @@ namespace VortexConceptApplication
                     }
                     return features;
                 },
+                SelectInformationBinding = (SelectInformationBindingEventArgs e) => {
+                },
+                SelectFeatureBinding = (SelectFeatureBindingEventArgs e) => {
+                },
             };
 
             var model = new QualityOfBathymetricData() {

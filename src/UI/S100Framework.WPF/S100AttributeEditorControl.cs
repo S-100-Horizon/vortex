@@ -64,7 +64,41 @@ namespace S100Framework.WPF
         public roleType? roleType { get; }
         public string? association { get; }
         public string? role { get; }
-    }    
+    }
+
+    public class SelectInformationBindingEventArgs
+    {
+        public SelectInformationBindingEventArgs(roleType? roleType, string? association, string? role, string? associationId, string? informationId) {
+            this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
+            this.association = association ?? string.Empty;
+            this.role = role ?? string.Empty;
+            this.associationId = associationId ?? default;
+            this.informationId = informationId ?? default;
+        }
+
+        public roleType? roleType { get; }
+        public string? association { get; }
+        public string? role { get; }
+        public string? associationId { get; }
+        public string? informationId { get; }
+    }
+
+
+    public class SelectFeatureBindingEventArgs {
+        public SelectFeatureBindingEventArgs(roleType? roleType, string? association, string? role, string? associationId, string? featureId) {
+            this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
+            this.association = association ?? string.Empty;
+            this.role = role ?? string.Empty;
+            this.associationId = associationId ?? default;
+            this.featureId = featureId ?? default;
+        }
+
+        public roleType? roleType { get; }
+        public string? association { get; }
+        public string? role { get; }
+        public string? associationId { get; }
+        public string? featureId { get; }
+    }
 
     #endregion
 
@@ -174,6 +208,10 @@ namespace S100Framework.WPF
         public required Func<QueryInformationTypesEventArgs, Task<IEnumerable<InformationTypeId>>> QueryInformationTypes { get; set; }
 
         public required Func<QueryFeatureTypesEventArgs, Task<IEnumerable<FeatureTypeId>>> QueryFeatureTypes { get; set; }
+
+        public required Action<SelectInformationBindingEventArgs> SelectInformationBinding { get; set; }
+
+        public required Action<SelectFeatureBindingEventArgs> SelectFeatureBinding { get; set; }
     }
 
     [TemplatePart(Name = PART_PropertyGrid, Type = typeof(Xceed.Wpf.Toolkit.PropertyGrid.PropertyGrid))]
@@ -800,9 +838,9 @@ namespace S100Framework.WPF
         public static RoutedUICommand InformationAssociationAddSelectionCommand = new("Add information type to selection", "InformationAssociationAddSelectionCommandContent", typeof(S100AttributeEditorControl));
 
         private void InformationAssociationAddSelectionCommandContent(object sender, ExecutedRoutedEventArgs e) {
-            var viewModel = ((System.Windows.Controls.ContentControl)e.Parameter).Content as FeatureBindingViewModel;
+            var viewModel = (InformationBindingViewModel)e.Parameter;
             if (viewModel != null) {
-                //TODO
+                this.Host.SelectInformationBinding(new SelectInformationBindingEventArgs(viewModel.roleType, viewModel.association, viewModel.role, viewModel.associationId, viewModel.informationId));
             }
         }
 
@@ -890,9 +928,9 @@ namespace S100Framework.WPF
         public static RoutedUICommand FeatureAssociationAddSelectionCommand = new("Add feature type to selection", "FeatureAssociationAddSelectionCommandContent", typeof(S100AttributeEditorControl));
 
         private void FeatureAssociationAddSelectionCommandContent(object sender, ExecutedRoutedEventArgs e) {
-            var viewModel = ((System.Windows.Controls.ContentControl)e.Parameter).Content as FeatureBindingViewModel;
+            var viewModel = (FeatureBindingViewModel)e.Parameter;
             if (viewModel != null) {
-                //TODO
+                this.Host.SelectFeatureBinding(new SelectFeatureBindingEventArgs(viewModel.roleType, viewModel.association, viewModel.role, viewModel.associationId, viewModel.featureId));                
             }
         }
 
