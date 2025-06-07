@@ -21,20 +21,23 @@ namespace S100Framework.WPF.Editors
 
         private static readonly Regex _regexInput = new(@"^(\d|-{1,8})$");
 
-        public string? Value { get; set; } = default;
+        //public string? Value { get; set; } = default;
 
         public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
             var control = new WatermarkTextBox {
                 Name = $"_textBox{Guid.NewGuid():N}",
                 MaxLength = 8,
-                KeepWatermarkOnGotFocus = true,
+                KeepWatermarkOnGotFocus = false,
                 Watermark = "yyyyMMdd",
             };
             control.PreviewTextInput += this.Control_PreviewTextInput;
 
-            Value = $"{propertyItem.Value:yyyMMdd}";
+            //Value = $"{propertyItem.Value:yyyMMdd}";
 
-            var bindingSelectedItemProperty = new Binding(nameof(Value)) { Source = this, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            //BindingOperations.SetBinding(control, CheckComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+
+            //var bindingSelectedItemProperty = new Binding(nameof(Value)) { Source = this, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             bindingSelectedItemProperty.ValidationRules.Add(new PartialDateRule());
             BindingOperations.SetBinding(control, TextBox.TextProperty, bindingSelectedItemProperty);
 
