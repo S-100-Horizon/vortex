@@ -277,6 +277,8 @@ namespace S100Framework.WPF
             PropertyGrid = (PropertyGrid)GetTemplateChild(PART_PropertyGrid);
             PropertyGrid.IsReadOnly = !this.IsEditingEnabled;
 
+            PropertyGrid.PreparePropertyItem += this.PropertyGrid_PreparePropertyItem;
+
             InformationBindingsStackPanel = (StackPanel)GetTemplateChild(PART_InformationBindings);
             InformationBindingsStackPanel.IsEnabled = this.IsEditingEnabled;
 
@@ -307,7 +309,19 @@ namespace S100Framework.WPF
                     FeatureBindingDefinitionSelected = e.AddedItems[0] as featureBindingDefinition;
                 }
             };
-        }       
+        }
+
+        private void PropertyGrid_PreparePropertyItem(object sender, PropertyItemEventArgs e) {
+            var propertyItem = e.Item as Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem;
+            if (propertyItem == null)
+                return;
+
+            if (propertyItem.PropertyType.IsInterface)  // IViewModelHost
+                return;
+
+            if (propertyItem.IsExpandable)
+                propertyItem.IsExpanded = true;
+        }
 
         private void FeatureBindingsListView_SizeChanged(object sender, SizeChangedEventArgs e) {
             if (sender is ListView listView) {

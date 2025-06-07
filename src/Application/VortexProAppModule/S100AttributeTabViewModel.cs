@@ -1,6 +1,4 @@
-﻿#define S100ed3
-
-using ActiproSoftware.Windows.Extensions;
+﻿using ActiproSoftware.Windows.Extensions;
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Events;
 using ArcGIS.Desktop.Core;
@@ -502,7 +500,6 @@ namespace VortexProAppModule
                     }
                     else {
                         var json = Convert.ToString(inspector["JSON"]);
-
                         instance = System.Text.Json.JsonSerializer.Deserialize(json, type);
                     }
 

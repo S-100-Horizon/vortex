@@ -150,14 +150,14 @@ namespace VortexConceptApplication
                 },
             };
 
-            var model = new DredgedArea() {
+            var model = new QualityOfBathymetricData() {
                 //dredgedDate = new DateOnly(2025, 2, 1)
             };
 
             //model.colour.Add(S100Framework.DomainModel.S101.colour.Red);
             //model.colour.Add(S100Framework.DomainModel.S101.colour.Green);
 
-            var viewModel = new DredgedAreaViewModel() {
+            var viewModel = new QualityOfBathymetricDataViewModel() {
                 Name = "S202600",
             }.Load(model);
 
