@@ -466,15 +466,15 @@ namespace S100Framework.YAML
             }
         }
 
-        public static void AddTopology(this Dataset dataset, Topology topology) {
+        public static void AddTopology(this Dataset dataset, Matrix theMatrix) {
             // Curves
             CurveFeature? curveFeature = default;
             try {
-                Log.Information("Adding curve #{count}", topology.Curves.Count());
+                Log.Information("Adding curve #{count}", theMatrix.Curves.Count());
 
                 var concurrent = new ConcurrentBag<Curve>();
 
-                foreach (var c in topology.Curves) {
+                foreach (var c in theMatrix.Curves) {
                     curveFeature = c;
 
                     var coordinates = c.LineString.Coordinates.Select(e => new Coordinate(e.X, e.Y)).ToArray();
@@ -497,9 +497,9 @@ namespace S100Framework.YAML
             //  Composite Curves
             CompositeCurveFeature? compositeCurveFeature = default;
             try {
-                Log.Information("Adding compositecurve #{count}", topology.CompositeCurves.Count());
+                Log.Information("Adding compositecurve #{count}", theMatrix.CompositeCurves.Count());
 
-                foreach (var c in topology.CompositeCurves) {
+                foreach (var c in theMatrix.CompositeCurves) {
                     compositeCurveFeature = c;
 
                     var compositecurveIds = new string[c.Curves.Length];
@@ -523,9 +523,9 @@ namespace S100Framework.YAML
             //  Surface
             SurfaceFeature? surfaceFeature = default;
             try {
-                Log.Information("Adding surface #{count}", topology.Surfaces.Count());
+                Log.Information("Adding surface #{count}", theMatrix.Surfaces.Count());
 
-                foreach (var s in topology.Surfaces) {
+                foreach (var s in theMatrix.Surfaces) {
                     surfaceFeature = s;
 
                     var exteriorRing = s.Exterior.Reverse ? $"RC{s.Exterior.Id}" : $"C{s.Exterior.Id}";
@@ -688,7 +688,7 @@ namespace ArcGIS.Core.Data
         static GeometryFactory factory = new GeometryFactory(new PrecisionModel(10000000)); // Or PrecisionModels.Floating
         //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating)); // Or PrecisionModels.Floating
 
-        public static S100Framework.YAML.Topology? BuildTopology(this Geodatabase geodatabase, QueryFilter? queryFilter = default) {
+        public static S100Framework.YAML.Matrix? BuildTopology(this Geodatabase geodatabase, QueryFilter? queryFilter = default) {
             queryFilter = queryFilter switch {
                 SpatialQueryFilter spatial => new SpatialQueryFilter {
                     FilterGeometry = spatial.FilterGeometry,
@@ -722,11 +722,8 @@ namespace ArcGIS.Core.Data
             var whereClause = queryFilter.WhereClause;
             var prefix = queryFilter.PrefixClause;
 
-            S100Framework.YAML.Topology topology = new S100Framework.YAML.Topology {
-                Curves = new List<CurveFeature>(),
-                CompositeCurves = new List<CompositeCurveFeature>(),
-                Surfaces = new List<SurfaceFeature>(),
-                Mapping = new Dictionary<string, string>(),
+            S100Framework.YAML.Matrix topology = new S100Framework.YAML.Matrix {
+                Factory = factory,
             };
 
             var definitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
@@ -823,27 +820,10 @@ namespace ArcGIS.Core.Data
 
                 int count = polygons.Count();                
 
-                var t = new S100Framework.YAML.Topology {
-                    Factory = factory,
-                    Curves = new List<CurveFeature>(),
-                    CompositeCurves = new List<CompositeCurveFeature>(),
-                    Surfaces = new List<SurfaceFeature>(),
-                    Mapping = new Dictionary<string, string>(),
-                };
-
-                S100Framework.YAML.Topology.BuildTopology(curves.ToArray(), polygons.ToArray(), t);
-
-                if (t.Curves.Any())
-                    topology.Curves = topology.Curves.Union(t.Curves).ToList();
-                if (t.CompositeCurves.Any())
-                    topology.CompositeCurves = topology.CompositeCurves.Union(t.CompositeCurves).ToList();
-                if (t.Surfaces.Any())
-                    topology.Surfaces = topology.Surfaces.Union(t.Surfaces).ToList();
-                if (t.Mapping.Any())
-                    topology.Mapping = topology.Mapping.Union(t.Mapping).ToDictionary(e => e.Key, e => e.Value);
+                topology.BuildTopology(curves.ToArray(), polygons.ToArray());
             }
 
-            //  Non skin of Earth
+            //  Everything else
             {
                 var curves = new List<S100Framework.YAML.Polyline>();
 
@@ -913,19 +893,8 @@ namespace ArcGIS.Core.Data
 
                 int count = polygons.Count();
 
-                S100Framework.YAML.Topology.Build(curves.ToArray(), polygons.ToArray(), topology);
-
-                //if (t.Curves.Any())
-                //    topology.Curves = topology.Curves.Union(t.Curves).ToList();
-                //if (t.CompositeCurves.Any())
-                //    topology.CompositeCurves = topology.CompositeCurves.Union(t.CompositeCurves).ToList();
-                //if (t.Surfaces.Any())
-                //    topology.Surfaces = topology.Surfaces.Union(t.Surfaces).ToList();
-                //if (t.Mapping.Any())
-                //    topology.Mapping = topology.Mapping.Union(t.Mapping).ToDictionary(e => e.Key, e => e.Value);
-
-                //var ss2 = topology.Curves.Single(e => e.Id == 3415);
-            }            
+                topology.Build(curves.ToArray(), polygons.ToArray());
+            }
 
             Log.Verbose("Topology: #{curves}, #{composites}, #{surfaces}", topology.Curves.Count, topology.CompositeCurves.Count, topology.Surfaces.Count);
             return topology;
