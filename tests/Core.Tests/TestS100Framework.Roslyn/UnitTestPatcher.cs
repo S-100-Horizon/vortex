@@ -27,9 +27,16 @@ namespace TestS100Framework
 
             record associationbinding(string roleType, string association, string role, string associationID, string foreignID, string primaryID);
 
+            /// <summary>
+            /// Updates feature and information bindings in a geodatabase based on association data.
+            /// </summary>
+            /// <remarks>This method retrieves association binding data from a geodatabase, processes
+            /// it to group associations by their primary IDs, and updates feature classes and tables with serialized
+            /// binding information. The method operates on datasets such as "point", "pointset", "curve", "surface",
+            /// and "informationtype".</remarks>
             [Fact]
             public void Patch_Associations() {
-                var path = Environment.GetEnvironmentVariable("s100ed7.gdb")!;
+                var path = Environment.GetEnvironmentVariable("s100ed7.gdb") ?? throw new System.ArgumentNullException();
 
                 using var geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(path))));
 
