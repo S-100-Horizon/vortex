@@ -6,7 +6,6 @@ using ArcGIS.Desktop.Editing;
 using ArcGIS.Desktop.Editing.Attributes;
 using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
-using ArcGIS.Desktop.Internal.Mapping;
 using ArcGIS.Desktop.Mapping;
 using S100Framework.Catalogues;
 using S100Framework.DomainModel;
@@ -634,7 +633,7 @@ namespace VortexProAppModule
 
                                         var featureBindings = System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(row["featurebindings"]));
                                         System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                                            foreach (var e in featureBindings.Where(e=>e.associationId== associationViewModel.Name))
+                                            foreach (var e in featureBindings.Where(e => e.associationId == associationViewModel.Name))
                                                 selectedAssociationproperty.FeatureBindings.Add(new FeatureBindingViewModel().Load(e));
                                         }, System.Windows.Threading.DispatcherPriority.Normal);
                                     }

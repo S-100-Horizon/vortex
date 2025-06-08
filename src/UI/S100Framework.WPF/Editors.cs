@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Globalization;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,7 +42,7 @@ namespace S100Framework.WPF.Editors
 
         private void Control_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e) {
             if (string.IsNullOrEmpty(e.Text)) return;
-            e.Handled = !_regexInput.IsMatch(e.Text);           
+            e.Handled = !_regexInput.IsMatch(e.Text);
         }
 
         public class PartialDateRule : ValidationRule

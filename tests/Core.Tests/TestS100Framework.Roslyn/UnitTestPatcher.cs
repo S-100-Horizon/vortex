@@ -1,13 +1,5 @@
 ﻿using ArcGIS.Core.Data;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Localization;
-using Microsoft.Extensions.Options;
 using S100Framework.DomainModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit.Abstractions;
 using IO = System.IO;
 
@@ -15,8 +7,10 @@ namespace TestS100Framework
 {
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-    namespace Patcher {
-        public class UnitTestPatcher {
+    namespace Patcher
+    {
+        public class UnitTestPatcher
+        {
             private readonly ITestOutputHelper _output;
 
             public UnitTestPatcher(ITestOutputHelper output) {
@@ -42,7 +36,7 @@ namespace TestS100Framework
                     ".sde" or ".SDE" => new Geodatabase(new DatabaseConnectionFile(new Uri(IO.Path.GetFullPath(path)))),
                     ".gdb" or ".GDB" => new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(path)))),
                     _ => throw new System.ArgumentNullException(),
-                };                                       
+                };
 
                 var informationAssociationbindings = new List<associationbinding>();
                 var featureAssociationbindings = new List<associationbinding>();
@@ -113,7 +107,7 @@ namespace TestS100Framework
 
                             f["featurebindings"] = json;
                             cursor.Update(f);
-                        }                        
+                        }
                     }
 
                     var groupInformationAssociation = informationAssociationbindings.GroupBy(e => e.primaryID);
