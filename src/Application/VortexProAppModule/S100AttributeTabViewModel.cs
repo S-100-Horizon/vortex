@@ -6,6 +6,7 @@ using ArcGIS.Desktop.Editing;
 using ArcGIS.Desktop.Editing.Attributes;
 using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
+using ArcGIS.Desktop.Internal.Mapping;
 using ArcGIS.Desktop.Mapping;
 using S100Framework.Catalogues;
 using S100Framework.DomainModel;
@@ -320,30 +321,77 @@ namespace VortexProAppModule
                         return ids;
                     }, TaskCreationOptions.None);
                 },
-                
+
                 SelectInformationBinding = async (SelectInformationBindingEventArgs e) => {
+                    if (MapView.Active is null)
+                        return;
                     await QueuedTask.Run(() => {
                         foreach (var layer in MapView.Active.Map.GetStandaloneTablesAsFlattenedList().OfType<StandaloneTable>()) {
                             if (layer is StandaloneTable table) {
-                                table.Select(new QueryFilter {
-                                    WhereClause = $"upper(name) = '{e.informationId}'"
-                                }, SelectionCombinationMethod.Add);
+                                if (table.GetTable().GetName().EndsWith("informationtype", StringComparison.InvariantCultureIgnoreCase)) {
+                                    table.Select(new QueryFilter {
+                                        WhereClause = $"upper(name) = '{e.informationId}'"
+                                    }, SelectionCombinationMethod.Add);
+                                }
                             }
                         }
                     }, TaskCreationOptions.None);
                 },
 
                 SelectFeatureBinding = async (SelectFeatureBindingEventArgs e) => {
+                    if (MapView.Active is null)
+                        return;
                     await QueuedTask.Run(() => {
-                        foreach(var layer in MapView.Active.Map.GetLayersAsFlattenedList().OfType<FeatureLayer>()) {
-                            if(layer is FeatureLayer featureLayer) {
+                        foreach (var layer in MapView.Active.Map.GetLayersAsFlattenedList().OfType<FeatureLayer>()) {
+                            if (layer is FeatureLayer featureLayer) {
+                                var name = featureLayer.GetTable().GetName();
+                                var select = e.featureId[0] switch {
+                                    'P' or 'p' => name.EndsWith("point", StringComparison.InvariantCultureIgnoreCase) || name.EndsWith("pointset", StringComparison.InvariantCultureIgnoreCase),
+                                    'C' or 'c' => name.EndsWith("curve", StringComparison.InvariantCultureIgnoreCase),
+                                    'S' or 's' => name.EndsWith("surface", StringComparison.InvariantCultureIgnoreCase),
+                                    _ => false,
+                                };
+                                if (!select)
+                                    continue;
                                 featureLayer.Select(new QueryFilter {
                                     WhereClause = $"upper(name) = '{e.featureId}'"
                                 }, SelectionCombinationMethod.Add);
                             }
                         }
                     }, TaskCreationOptions.None);
-                }
+                },
+
+                SelectInformationAssociation = async (SelectAssociationEventArgs e) => {
+                    if (MapView.Active is null)
+                        return;
+                    await QueuedTask.Run(() => {
+                        foreach (var layer in MapView.Active.Map.GetStandaloneTablesAsFlattenedList()) {
+                            if (layer is StandaloneTable table) {
+                                if (table.GetTable().GetName().EndsWith("informationassociation", StringComparison.InvariantCultureIgnoreCase)) {
+                                    table.Select(new QueryFilter {
+                                        WhereClause = $"upper(name) = '{e.associationId}'"
+                                    }, SelectionCombinationMethod.Add);
+                                }
+                            }
+                        }
+                    }, TaskCreationOptions.None);
+                },
+
+                SelectFeatureAssociation = async (SelectAssociationEventArgs e) => {
+                    if (MapView.Active is null)
+                        return;
+                    await QueuedTask.Run(() => {
+                        foreach (var layer in MapView.Active.Map.GetStandaloneTablesAsFlattenedList()) {
+                            if (layer is StandaloneTable table) {
+                                if (table.GetTable().GetName().EndsWith("featureassociation", StringComparison.InvariantCultureIgnoreCase)) {
+                                    table.Select(new QueryFilter {
+                                        WhereClause = $"upper(name) = '{e.associationId}'"
+                                    }, SelectionCombinationMethod.Add);
+                                }
+                            }
+                        }
+                    }, TaskCreationOptions.None);
+                },
             };
         }
 
@@ -458,7 +506,7 @@ namespace VortexProAppModule
                         "curve" => _inspectorHandleFeature,
                         "surface" => _inspectorHandleFeature,
                         "informationtype" => _inspectorHandleInformation,
-                        "associationbinding" => null,
+                        //"associationbinding" => null,
                         "featureassociation" => _inspectorHandleFeatureAssociation,
                         "informationassociation" => _inspectorHandleInformationAssociation,
 
@@ -566,36 +614,65 @@ namespace VortexProAppModule
                     if (instance is Association) {
                         var association = (AssociationViewModel)viewmodel;
 
-                        this.SelectedAssociationProperty = new SelectedAssociationObjectViewModel(association);
-                        selectedObjectViewModel = this.SelectedAssociationProperty;
-                    }
-                    if (instance is FeatureAssociation) {
-                        var associationViewModel = (AssociationViewModel)viewmodel;
+                        var selectedAssociationproperty = new SelectedAssociationObjectViewModel(association);
 
-                        //TODO: Find associations ???
+                        if (instance is FeatureAssociation) {
+                            var associationViewModel = (AssociationViewModel)viewmodel;
 
-                        //  featureBinding
-                        {
-                            //using var table = inspector.OpenDataset<Table>("associationbinding");
+                            //  featureBinding
+                            {
+                                string[] tableNames = ["point", "pointset", "curve", "surface"];
 
-                            //var q = new QueryFilter {
-                            //    WhereClause = $"UPPER(TYPE) = 'FEATUREBINDING' AND ASSOCIATIONID = '{associationViewModel.PID}'",
-                            //};
-                            //using var cursor = table.Search(q, true);
-                            //while (cursor.MoveNext()) {
-                            //    var row = cursor.Current;
-                            //    var binding = new FeatureBindingViewModel {
-                            //        UID = row.GetGlobalID(),
-                            //    }.Load(new featureBinding {
-                            //        roleType = Convert.ToString(row["roleType"]),
-                            //        association = Convert.ToString(row["association"]),
-                            //        role = Convert.ToString(row["role"]),
-                            //        associationId = Convert.ToString(row["associationId"]),
-                            //        featureId = Convert.ToString(row["foreignid"]),
-                            //    });
-                            //    this.SelectedAssociationProperty.FeatureBindings.Add(binding);
-                            //}
+                                var query = new QueryFilter {
+                                    WhereClause = $"lower(featurebindings) LIKE '%\"associationid\":%\"{associationViewModel.Name.ToLowerInvariant()}\"%'",
+                                };
+                                foreach (var tableName in tableNames) {
+                                    using var table = inspector.OpenDataset<FeatureClass>(tableName);
+                                    using var cursor = table.Search(query, true);
+                                    while (cursor.MoveNext()) {
+                                        var row = cursor.Current;
+
+                                        var featureBindings = System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(row["featurebindings"]));
+                                        System.Windows.Application.Current.Dispatcher.Invoke(() => {
+                                            foreach (var e in featureBindings.Where(e=>e.associationId== associationViewModel.Name))
+                                                selectedAssociationproperty.FeatureBindings.Add(new FeatureBindingViewModel().Load(e));
+                                        }, System.Windows.Threading.DispatcherPriority.Normal);
+                                    }
+
+                                }
+                            }
                         }
+
+                        if (instance is InformationAssociation) {
+                            var associationViewModel = (AssociationViewModel)viewmodel;
+
+                            //  informationBinding
+                            {
+                                string[] tableNames = ["point", "pointset", "curve", "surface", "informationtype"];
+
+                                var query = new QueryFilter {
+                                    WhereClause = $"lower(informationbindings) LIKE '%\"associationid\":%\"{associationViewModel.Name.ToLowerInvariant()}\"%'",
+                                };
+                                foreach (var tableName in tableNames) {
+                                    using var table = inspector.OpenDataset<Table>(tableName);
+                                    using var cursor = table.Search(query, true);
+                                    while (cursor.MoveNext()) {
+                                        var row = cursor.Current;
+
+                                        var informationBindings = System.Text.Json.JsonSerializer.Deserialize<List<informationBinding>>(Convert.ToString(row["informationbindings"]));
+                                        System.Windows.Application.Current.Dispatcher.Invoke(() => {
+                                            foreach (var e in informationBindings.Where(e => e.associationId == associationViewModel.Name))
+                                                selectedAssociationproperty.InformationBindings.Add(new InformationBindingViewModel().Load(e));
+                                        }, System.Windows.Threading.DispatcherPriority.Normal);
+                                    }
+
+                                }
+                            }
+                        }
+
+                        this.SelectedAssociationProperty = selectedAssociationproperty;
+                        selectedObjectViewModel = this.SelectedAssociationProperty;
+
                     }
 
                     if (selectedObjectViewModel != null) {
