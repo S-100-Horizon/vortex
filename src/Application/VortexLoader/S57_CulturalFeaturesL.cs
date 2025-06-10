@@ -83,7 +83,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target,source);
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -129,7 +129,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target,source);
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -235,7 +235,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target,source);
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -365,7 +365,7 @@ namespace S100Framework.Applications
                             //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             //if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                            //    relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                            //    relatedEquipment?.CreateRelatedLineEquipment(current, instance, name);
                             //}
 
                             //ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -406,7 +406,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -455,7 +455,7 @@ namespace S100Framework.Applications
                             //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             //if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                            //    relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                            //    relatedEquipment?.CreateRelatedLineEquipment(current, instance, name);
                             //}
 
                             //ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -496,7 +496,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -538,7 +538,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -599,7 +599,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, name);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -641,7 +641,7 @@ namespace S100Framework.Applications
                             //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             //if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                            //    relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                            //    relatedEquipment?.CreateRelatedLineEquipment(current, instance, name);
                             //}
 
                             //ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -682,7 +682,7 @@ namespace S100Framework.Applications
                             //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             //if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                            //    relatedEquipment?.CreateRelatedLineEquipment(current, instance, name, target, source);
+                            //    relatedEquipment?.CreateRelatedLineEquipment(current, instance, name);
                             //}
 
                             //ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);

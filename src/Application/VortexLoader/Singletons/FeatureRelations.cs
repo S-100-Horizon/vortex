@@ -711,7 +711,7 @@ namespace S100Framework.Applications.Singletons
             return _srcObjectToSlaves.ContainsKey(globalId);
         }
 
-        internal void AddRelation(S57Master master, S57Slave slave) {
+        internal void AddRelation(S57Master master, S57Slave slave, RowBuffer bindingDestinationBuffer, Table featureAssociation) {
             //if (_relationCount > 0) {
             //    return;
             //}
@@ -730,6 +730,98 @@ namespace S100Framework.Applications.Singletons
 
 
             _relations.Add(relation);
+
+
+            StoreRelation(master, slave, bindingDestinationBuffer, featureAssociation);
+        }
+
+        private void StoreRelation(S57Master master, S57Slave slave, RowBuffer bindingDestinationBuffer, Table featureAssociation) {
+            Relation relation = new(master, slave);
+
+            if (relation.Master == null) {
+                throw new ArgumentNullException("relation master");
+            }
+            if (relation.Slave == null) {
+                throw new ArgumentNullException("relation slave");
+            }
+
+            Type TPrimary = relation.Master.S101Type;
+            Type TForeign = relation.Slave.S101Type;
+
+            var featureBindingsPrimary = TPrimary?.GetProperty("_featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
+            var featureBindingsForeign = TForeign?.GetProperty("_featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
+
+            string featureAssociationName;
+            featureBindingDefinition? bindingDefinitionForeign;
+            featureBindingDefinition? bindingDefinitionPrimary;
+
+            // Create association
+            {
+                bindingDefinitionForeign = featureBindingsPrimary?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TForeign?.Name));
+                if (bindingDefinitionForeign == null) {
+
+                    var tracebackMaster = ConversionAnalytics.Instance.GetTraceBack(relation.Master.Name);
+                    var tracebackMasterString = string.Join(", ", tracebackMaster.Select(tuple => $"{tuple.Item1} - {tuple.Item2}"));
+                    var tracebackSlave = ConversionAnalytics.Instance.GetTraceBack(relation.Slave.Name);
+                    var tracebackSlaveString = string.Join(", ", tracebackSlave.Select(tuple => $"{tuple.Item1} - {tuple.Item2}"));
+                    var msg = $"Cannot relate {relation.Master.GetType().Name} {relation.Master.S101Type.Name} with {relation.Slave.GetType().Name} {relation.Slave.S101Type.Name} - where name in ('{relation.Master.Name}','{relation.Slave.Name}') MASTERS:{tracebackMasterString} SLAVES:{tracebackSlaveString}";
+                    Logger.Current.DataError(-1, "", "relate", msg);
+                    return;
+                    //throw new NotSupportedException(msg);
+                }
+                bindingDestinationBuffer["ps"] = ImporterNIS.ps101;
+
+                //                featureAssociationBuffer["code"] = bindingDefinitionForeign.association;
+                
+                var featureAssociationBuffer = featureAssociation.CreateRowBuffer();
+
+                featureAssociationBuffer["ps"] = ImporterNIS.ps101;
+                featureAssociationBuffer["code"] = bindingDefinitionForeign.association;
+                var association = featureAssociation.CreateRow(featureAssociationBuffer);
+                featureAssociationName = (string)association["name"];
+            }
+
+            // Store binding
+            List<featureBinding> bindings = new List<featureBinding>();
+
+            // Create binding
+            {
+                // Create primary end
+                bindingDefinitionPrimary = featureBindingsPrimary?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TForeign?.Name));
+                if (bindingDefinitionPrimary == null) {
+                    throw new NotSupportedException($"no bindingdefinition on {TPrimary?.Name} for {TForeign?.Name}");
+                }
+                featureBinding featureBindingPrimary = new() {
+                    association = bindingDefinitionPrimary.association,
+                    associationId = featureAssociationName,
+                    featureId = relation?.Slave?.Name,
+                    role = bindingDefinitionPrimary.role,
+                    roleType = "FeatureBinding"
+
+                };
+                bindings.Add(featureBindingPrimary);
+            }
+            {
+                // TODO: Foreign end
+                //// Create foreign end
+                //bindingDefinitionForeign = featureBindingsForeign?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TPrimary?.Name));
+                //if (bindingDefinitionForeign == null) {
+                //    throw new NotSupportedException($"no bindingdefinition on {TForeign?.Name} for {TPrimary?.Name}");
+                //}
+
+                //featureBinding featureBindingForeign = new() {
+                //    association = bindingDefinitionForeign.association,
+                //    associationId = featureAssociationName,
+                //    featureId = relation?.Master?.Name,
+                //    role = bindingDefinitionForeign.role,
+                //    roleType = "FeatureBinding"
+                //};
+            }
+
+            var json = System.Text.Json.JsonSerializer.Serialize(bindings);
+
+            bindingDestinationBuffer["featurebindings"] = json;
+
         }
 
         internal bool IsCircular(S57Master master, S57Slave slave) {
@@ -775,8 +867,6 @@ namespace S100Framework.Applications.Singletons
             string featureAssociationName;
             featureBindingDefinition? bindingDefinitionForeign;
             featureBindingDefinition? bindingDefinitionPrimary;
-
-            
 
             {
                 // Create the association
@@ -836,6 +926,8 @@ namespace S100Framework.Applications.Singletons
         }
 
         internal void CreateRelations(Geodatabase target) {
+            throw new NotSupportedException("Featurebindings are created on the fly now...");
+
             if (target == default) {
                 throw new NotSupportedException("Target is null");
             }

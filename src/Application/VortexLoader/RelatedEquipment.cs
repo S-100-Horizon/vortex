@@ -16,18 +16,25 @@ using ArcGIS.Core.Geometry;
 using Microsoft.AspNetCore.Http.HttpResults;
 using S100Framework.Applications.Singletons;
 using ArcGIS.Core.CIM;
+using S100Framework.DomainModel.S122.ComplexAttributes;
 
 namespace S100Framework.Applications
 {
     internal class RelatedEquipment {
         Geodatabase _source;
+        Geodatabase _target;
 
         HashSet<(string TableName, int Subtype, Guid globalid)> _converted = new();
 
         HashSet<string> _relations = new();
 
-        public RelatedEquipment(Geodatabase source) {
+        //RowBuffer _featureAssociationBuffer = null;
+        Table _featureAssociation = null;
+
+        public RelatedEquipment(Geodatabase source, Geodatabase target) {
             this._source = source;
+            this._target = target;
+            this._featureAssociation = _target.OpenDataset<Table>(_target.GetName("featureassociation"));
         }
 
         internal topmark? GetTopMark(AidsToNavigationP structure) {
@@ -138,15 +145,15 @@ namespace S100Framework.Applications
             return null;
         }
 
-        internal void CreateRelatedLineEquipment(S57Object master, FeatureNode slave, string name, Geodatabase target, Geodatabase source) {
+        internal void CreateRelatedLineEquipment(S57Object master, FeatureNode slave, string name) {
             throw new NotImplementedException();
         }
 
-        internal void CreateRelatedAreaEquipment(S57Object structure, FeatureNode s101Object, string name, Geodatabase target, Geodatabase source) {
+        internal void CreateRelatedAreaEquipment(S57Object structure, FeatureNode s101Object, string name) {
             var areaRelated = FeatureRelations.Instance.GetRelated(structure.GlobalId);
 
-            var tableName = target.GetName("point");
-            using var featureClass = target.OpenDataset<FeatureClass>(tableName);
+            var tableName = _target.GetName("point");
+            using var featureClass = _target.OpenDataset<FeatureClass>(tableName);
             using var buffer = featureClass.CreateRowBuffer();
 
             // group structures per location
@@ -168,7 +175,7 @@ namespace S100Framework.Applications
 
                 // Sectoredlights
                 if (relatedLightSectored.Count > 0) {
-                    var lightSectored = Converters.CreateLightSectored(relatedLightSectored, source);
+                    var lightSectored = Converters.CreateLightSectored(relatedLightSectored, _source);
 
                     buffer["ps"] = ImporterNIS.ps101;
                     buffer["code"] = lightSectored.GetType().Name;
@@ -193,9 +200,8 @@ namespace S100Framework.Applications
 
                     // Add relation between master polygon and slave equipment
 
-
-                    FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), name), new(lightSectored.GetType(), equipmentName));
-
+                    FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), name), new(lightSectored.GetType(), equipmentName), buffer, this._featureAssociation);
+                    featureN.Store();
                 }
                 // 
                 foreach (var relatedObject in relatedNonSectoredEquipment) {
@@ -217,7 +223,8 @@ namespace S100Framework.Applications
                             throw new NotSupportedException("empty equipment name");
                         }
 
-                        FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), name), new(relatedObject.S101Type, equipmentName));
+                        FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), name), new(relatedObject.S101Type, equipmentName),buffer, this._featureAssociation);
+                        featureN.Store();
 
                         if (relatedObject.S57Object.TableName != null) {
                             ConversionAnalytics.Instance.AddConverted(relatedObject.S57Object.TableName, relatedObject.GlobalId, equipmentName ?? "Unknown equipment name");
@@ -284,8 +291,9 @@ namespace S100Framework.Applications
                     throw new NotSupportedException("empty equipment name");
                 }
 
-                FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name));
-               // return;
+                FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name),buffer, _featureAssociation);
+                featureN.Store();
+                // return;
             }
             
             // IF NOT SECTORED LIGHTS
@@ -316,10 +324,13 @@ namespace S100Framework.Applications
                         throw new NotSupportedException("empty equipment name");
                     }
 
-                    FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name));
+                    FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name),buffer, _featureAssociation);
+                    featureN.Store();
 
                     Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.S57Object.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
 
+                } else {
+                    throw new NotSupportedException("Relation without related object or related object Type information.");
                 }
             }
 

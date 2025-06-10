@@ -70,7 +70,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
@@ -139,7 +139,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
@@ -194,7 +194,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name);
                             }
 
 
@@ -218,7 +218,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name, target, source);
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, name);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);

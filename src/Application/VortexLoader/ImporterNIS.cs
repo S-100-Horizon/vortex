@@ -11,12 +11,11 @@ using System.Text.RegularExpressions;
 using System.Globalization;
 using S100Framework.DomainModel;
 using VortexLoader;
-using Microsoft.Win32;
-using ArcGIS.Desktop.Internal.Core.Conda;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using System.Runtime.CompilerServices;
 using S100Framework.Applications.Singletons;
-using Microsoft.AspNetCore.StaticFiles;
+using S100Framework.DomainModel.S101.InformationTypes;
+using System.Dynamic;
+using ArcGIS.Desktop.Mapping;
 
 
 namespace S100Framework.Applications
@@ -148,7 +147,7 @@ namespace S100Framework.Applications
 
                 SpatialRelationResolver.Initialize(source);
 
-                relatedEquipment = new RelatedEquipment(source);
+                relatedEquipment = new RelatedEquipment(source,destination);
 
                 if (skinOfEarthOnly) {
                     // All "SKIN OF EARTH" cases / subtypes are marked with a "skin of earth" comment
@@ -163,7 +162,7 @@ namespace S100Framework.Applications
                     Store(() => S57_MetadataA(source, destination, filter));
                     filter.WhereClause = $"{whereClause} and fcsubtype in (1)";
                     Store(() => S57_ProductCoverage(source, destination, filter));
-                    Store(() => FeatureRelations.Instance.CreateRelations(destination));
+                    //Store(() => FeatureRelations.Instance.CreateRelations(destination));
 
                 }
                 else {
@@ -171,51 +170,63 @@ namespace S100Framework.Applications
                     filter.WhereClause = $"{whereClause} and globalid = '{{CA71EEFC-AF9F-4DB0-A55E-FD9D394FF58D}}'";
                     filter.WhereClause = $"{whereClause}";
                     */
-                    Store(() => S57_PortsAndServicesA(source, destination, filter));
-
-
                     Store(() => S57_TidesAndVariationsA(source, destination, filter));
                     Store(() => S57_TidesAndVariationsL(source, destination, filter));
                     Store(() => S57_TidesAndVariationsP(source, destination, filter));
+
                     Store(() => S57_SeabedA(source, destination, filter));
                     Store(() => S57_SeabedL(source, destination, filter));
                     Store(() => S57_SeabedP(source, destination, filter));
+
                     Store(() => S57_CulturalFeaturesL(source, destination, filter));
                     Store(() => S57_CulturalFeaturesA(source, destination, filter));
                     Store(() => S57_CulturalFeaturesP(source, destination, filter));
-                    Store(() => S57_NaturalFeaturesP(source, destination, filter));
+
                     Store(() => S57_CoastlineA(source, destination, filter));
                     Store(() => S57_CoastlineL(source, destination, filter));
                     Store(() => S57_CoastlineP(source, destination, filter));
+
                     Store(() => S57_DangersA(source, destination, filter));
                     Store(() => S57_DangersL(source, destination, filter));
                     Store(() => S57_DangersP(source, destination, filter));
+
                     Store(() => S57_DepthsA(source, destination, filter));
                     Store(() => S57_DepthsL(source, destination, filter));
+
                     Store(() => S57_IcefeaturesA(source, destination, filter));
+
                     Store(() => S57_MetadataA(source, destination, filter));
+
                     Store(() => S57_MilitaryFeatureA(source, destination, filter));
                     Store(() => S57_MilitaryFeaturesP(source, destination, filter));
+
                     Store(() => S57_NaturalFeaturesA(source, destination, filter));
                     Store(() => S57_NaturalFeaturesL(source, destination, filter));
+                    Store(() => S57_NaturalFeaturesP(source, destination, filter));
+
                     Store(() => S57_OffshoreInstallationsA(source, destination, filter));
                     Store(() => S57_OffshoreInstallationsL(source, destination, filter));
                     Store(() => S57_OffshoreInstallationsP(source, destination, filter));
 
-
+                    Store(() => S57_PortsAndServicesA(source, destination, filter));
                     Store(() => S57_PortsAndServicesL(source, destination, filter));
                     Store(() => S57_PortsAndServicesP(source, destination, filter));
+
                     Store(() => S57_ProductCoverage(source, destination, filter));
+
                     Store(() => S57_RegulatedAreasAndLimitsA(source, destination, filter));
                     Store(() => S57_RegulatedAreasAndLimitsL(source, destination, filter));
                     Store(() => S57_RegulatedAreasAndLimitsP(source, destination, filter));
+
                     Store(() => S57_SoundingsP(source, destination, filter));
+
                     Store(() => S57_TracksAndRoutesA(source, destination, filter));
                     Store(() => S57_TracksAndRoutesL(source, destination, filter));
                     Store(() => S57_TracksAndRoutesP(source, destination, filter));
+
                     Store(() => S57_AidsToNavigationP(source, destination, filter));
 
-                    Store(() => FeatureRelations.Instance.CreateRelations(destination));
+                    //Store(() => FeatureRelations.Instance.CreateRelations(destination));
                 }
 
                 Logger.Current.Information("Done");
@@ -552,9 +563,8 @@ namespace S100Framework.Applications
             return featureName;
         }
 
-        internal static void AddInformation(IList<information> information, Feature current) {
-            // TODO: Still missing decision on how GST wants handling of both files and a copy of the file content.
-            // Sent to Nigel & Co.
+        internal static List<information> CreateFrom(Feature current) {
+            List<information> information = new List<information>();
 
             if (DBNull.Value != current["NTXTDS"]) {
                 var ntxtds = Convert.ToString(current["NTXTDS"])?.Trim();
@@ -653,6 +663,39 @@ namespace S100Framework.Applications
                     }
                 }
             }
+
+            return information;
+        }
+
+        internal static void CreateNauticalInformation(Feature current) {
+            NauticalInformation nobj = new NauticalInformation();
+            if (current["PICREP"].ToString() != default) {
+                nobj.pictorialRepresentation = current["PICREP"].ToString();
+            }
+
+            nobj.information = CreateFrom(current);
+            nobj.Code = ps101;
+
+            DateHelper.TryGetFixedDateRange(current["DATSTA"].ToString(), current["DATEND"].ToString(), out var dateRange);
+            if (dateRange != default) {
+                nobj.fixedDateRange = dateRange;
+            }
+
+
+            DateHelper.TryGetPeriodicDateRange(current["PERSTA"].ToString(), current["PEREND"].ToString(), out var periodicDateRange);
+            if (periodicDateRange != default) {
+                nobj.periodicDateRange = periodicDateRange;
+            }
+
+            // TODO: Store object and relation
+
+        }
+
+        internal static void AddInformation(IList<information> instanceInformation, Feature current) {
+            // TODO: Still missing decision on how GST wants handling of both files and a copy of the file content.
+            // Sent to Nigel & Co.
+            IList<information> information = CreateFrom(current);
+            instanceInformation = information;
         }
     }
 }
