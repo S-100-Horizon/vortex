@@ -16,6 +16,7 @@ using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101.InformationTypes;
 using System.Dynamic;
 using ArcGIS.Desktop.Mapping;
+using System.Linq;
 
 
 namespace S100Framework.Applications
@@ -691,11 +692,11 @@ namespace S100Framework.Applications
 
         }
 
-        internal static void AddInformation(IList<information> instanceInformation, Feature current) {
+        internal static void AddInformation(List<information> instanceInformation, Feature current) {
             // TODO: Still missing decision on how GST wants handling of both files and a copy of the file content.
             // Sent to Nigel & Co.
-            IList<information> information = CreateFrom(current);
-            instanceInformation = information;
+            List<information> information = CreateFrom(current);
+            instanceInformation.AddRange(information);
         }
     }
 }
