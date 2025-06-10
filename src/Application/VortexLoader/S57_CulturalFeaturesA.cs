@@ -727,12 +727,14 @@ namespace S100Framework.Applications
 
                                 // TODO: verticalClearanceFixed		
 
-                                if (current.VERDAT.HasValue) {
-                                    windturbine.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
-                                }
 
                                 if (current.VERLEN.HasValue) {
                                     windturbine.verticalLength = current.VERLEN.Value;
+
+                                    // only set vertical datum if vertical length - 7cs err: 
+                                    if (current.VERDAT.HasValue) {
+                                        windturbine.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
+                                    }
                                 }
 
 
@@ -1123,6 +1125,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
+
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 

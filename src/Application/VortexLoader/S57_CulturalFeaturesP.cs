@@ -560,7 +560,11 @@ namespace S100Framework.Applications
                                 // TODO: verticalClearanceFixed		
 
                                 if (current.VERDAT.HasValue) {
-                                    windturbine.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
+                                    windturbine.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23); 
+
+
+                                    
+
                                 }
 
                                 if (current.VERLEN.HasValue) {
