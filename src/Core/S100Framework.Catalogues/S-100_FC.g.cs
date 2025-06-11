@@ -119,5 +119,15 @@ namespace S100Framework.DomainModel.S100
         public string updateNumber { get; set; }
     }
 
+
+    [Serializable]
+    [XmlType(Namespace = "http://www.iho.int/s100gml/5.0")]
+    [XmlRoot("Dataset", Namespace = "http://www.iho.int/s100gml/5.0", IsNullable = false)]
+    public partial class DatasetType
+    {
+        [XmlElement(Order = 0)]
+        public DataSetIdentificationType DatasetIdentificationInformation { get; set; }
+    }
+
     #endregion
 }
