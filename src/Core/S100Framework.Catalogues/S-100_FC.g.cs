@@ -76,13 +76,13 @@ namespace S100Framework.DomainModel.S100
     [System.Serializable()]
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
     [XmlType(Namespace = "http://www.iho.int/s100gml/5.0")]
-    public partial class DataSetIdentificationType
+    public partial class DataSetIdentification
     {
         [XmlElement(Order = 0)]
-        public string encodingSpecification { get; set; } = "S-100 Part 10b";
+        public string encodingSpecification { get; init; } = "S-100 Part 10b";
 
         [XmlElement(Order = 1)]
-        public string encodingSpecificationEdition { get; set; } = "1.0";
+        public string encodingSpecificationEdition { get; init; } = "1.0";
 
         [XmlElement(Order = 2)]
         public string productIdentifier { get; set; }
@@ -122,12 +122,23 @@ namespace S100Framework.DomainModel.S100
 
     [Serializable]
     [XmlType(Namespace = "http://www.iho.int/s100gml/5.0")]
-    [XmlRoot("Dataset", Namespace = "http://www.iho.int/s100gml/5.0", IsNullable = false)]
-    public partial class DatasetType
+    [XmlRoot("Dataset", Namespace = "http://www.iho.int/S128/2.0", IsNullable = false)]
+    public partial class Dataset
     {
         [XmlElement(Order = 0)]
-        public DataSetIdentificationType DatasetIdentificationInformation { get; set; }
+        public DataSetIdentification DatasetIdentificationInformation { get; set; }
+
+        [XmlElement(Order = 1)]
+        public members? members { get; set; } = default;
     }
+
+    [Serializable]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+    public abstract class members
+    {
+        public abstract List<object> elements { get; set; }
+    }
+
 
     #endregion
 }
