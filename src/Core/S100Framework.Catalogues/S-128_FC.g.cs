@@ -1310,6 +1310,8 @@ namespace S100Framework.DomainModel.S128 {
 namespace S100Framework.DomainModel.S128 {
 	using ComplexAttributes;
 	using InformationAssociations;
+	using S100Framework.DomainModel.S128.FeatureTypes;
+	using System.Xml.Serialization;
 
 	namespace InformationTypes {
 		/// <summary>
@@ -1812,6 +1814,19 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 	}
+
+    [XmlType(Namespace = "http://www.iho.int/S128/2.0")]
+    public class Dataset : S100Framework.DomainModel.S100.Dataset {
+
+	}
+
+    [XmlType(Namespace = "http://www.iho.int/S128/2.0")]
+    public class members : S100Framework.DomainModel.S100.members {
+        [XmlElement("ElectronicProduct", typeof(ElectronicProduct), Order = 1)]
+        [XmlElement("PhysicalProduct", typeof(PhysicalProduct), Order = 1)]
+        [XmlElement("S100Service", typeof(S100Service), Order = 1)]
+        public override List<object> elements { get; set; } = new List<object>();
+    }
 }
 
 #pragma warning restore CS8981
