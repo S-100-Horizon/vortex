@@ -3,6 +3,7 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 #nullable enable
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -4768,6 +4769,54 @@ namespace S100Framework.DomainModel.S131 {
 				},
 			];
 		}
+	}
+
+	[XmlType(Namespace = "http://www.iho.int/S131/1.0")]
+	public class Dataset : S100Framework.DomainModel.S100.Dataset
+	{
+	}
+
+	[XmlType(Namespace = "http://www.iho.int/S131/1.0")]
+	public class members : S100Framework.DomainModel.S100.members
+	{
+		[XmlElement("InformationTypes.Applicability", typeof(InformationTypes.Applicability), Order = 1)]
+		[XmlElement("InformationTypes.Authority", typeof(InformationTypes.Authority), Order = 1)]
+		[XmlElement("InformationTypes.AvailablePortServices", typeof(InformationTypes.AvailablePortServices), Order = 1)]
+		[XmlElement("InformationTypes.ContactDetails", typeof(InformationTypes.ContactDetails), Order = 1)]
+		[XmlElement("InformationTypes.Entrance", typeof(InformationTypes.Entrance), Order = 1)]
+		[XmlElement("InformationTypes.NauticalInformation", typeof(InformationTypes.NauticalInformation), Order = 1)]
+		[XmlElement("InformationTypes.NonStandardWorkingDay", typeof(InformationTypes.NonStandardWorkingDay), Order = 1)]
+		[XmlElement("InformationTypes.Recommendations", typeof(InformationTypes.Recommendations), Order = 1)]
+		[XmlElement("InformationTypes.Regulations", typeof(InformationTypes.Regulations), Order = 1)]
+		[XmlElement("InformationTypes.Restrictions", typeof(InformationTypes.Restrictions), Order = 1)]
+		[XmlElement("InformationTypes.ServiceHours", typeof(InformationTypes.ServiceHours), Order = 1)]
+		[XmlElement("InformationTypes.SpatialQuality", typeof(InformationTypes.SpatialQuality), Order = 1)]
+		[XmlElement("FeatureTypes.AnchorBerth", typeof(FeatureTypes.AnchorBerth), Order = 1)]
+		[XmlElement("FeatureTypes.AnchorageArea", typeof(FeatureTypes.AnchorageArea), Order = 1)]
+		[XmlElement("FeatureTypes.Berth", typeof(FeatureTypes.Berth), Order = 1)]
+		[XmlElement("FeatureTypes.BerthPosition", typeof(FeatureTypes.BerthPosition), Order = 1)]
+		[XmlElement("FeatureTypes.DockArea", typeof(FeatureTypes.DockArea), Order = 1)]
+		[XmlElement("FeatureTypes.DryDock", typeof(FeatureTypes.DryDock), Order = 1)]
+		[XmlElement("FeatureTypes.DumpingGround", typeof(FeatureTypes.DumpingGround), Order = 1)]
+		[XmlElement("FeatureTypes.FloatingDock", typeof(FeatureTypes.FloatingDock), Order = 1)]
+		[XmlElement("FeatureTypes.Gridiron", typeof(FeatureTypes.Gridiron), Order = 1)]
+		[XmlElement("FeatureTypes.HarbourAreaAdministrative", typeof(FeatureTypes.HarbourAreaAdministrative), Order = 1)]
+		[XmlElement("FeatureTypes.HarbourAreaSection", typeof(FeatureTypes.HarbourAreaSection), Order = 1)]
+		[XmlElement("FeatureTypes.HarbourBasin", typeof(FeatureTypes.HarbourBasin), Order = 1)]
+		[XmlElement("FeatureTypes.HarbourFacility", typeof(FeatureTypes.HarbourFacility), Order = 1)]
+		[XmlElement("FeatureTypes.MooringWarpingFacility", typeof(FeatureTypes.MooringWarpingFacility), Order = 1)]
+		[XmlElement("FeatureTypes.OuterLimit", typeof(FeatureTypes.OuterLimit), Order = 1)]
+		[XmlElement("FeatureTypes.PilotBoardingPlace", typeof(FeatureTypes.PilotBoardingPlace), Order = 1)]
+		[XmlElement("FeatureTypes.SeaplaneLandingArea", typeof(FeatureTypes.SeaplaneLandingArea), Order = 1)]
+		[XmlElement("FeatureTypes.Terminal", typeof(FeatureTypes.Terminal), Order = 1)]
+		[XmlElement("FeatureTypes.TurningBasin", typeof(FeatureTypes.TurningBasin), Order = 1)]
+		[XmlElement("FeatureTypes.WaterwayArea", typeof(FeatureTypes.WaterwayArea), Order = 1)]
+		[XmlElement("FeatureTypes.DataCoverage", typeof(FeatureTypes.DataCoverage), Order = 1)]
+		[XmlElement("FeatureTypes.QualityOfNonBathymetricData", typeof(FeatureTypes.QualityOfNonBathymetricData), Order = 1)]
+		[XmlElement("FeatureTypes.SoundingDatum", typeof(FeatureTypes.SoundingDatum), Order = 1)]
+		[XmlElement("FeatureTypes.VerticalDatumOfData", typeof(FeatureTypes.VerticalDatumOfData), Order = 1)]
+		[XmlElement("FeatureTypes.TextPlacement", typeof(FeatureTypes.TextPlacement), Order = 1)]
+		public override List<object> elements { get; set; } = new List<object>();
 	}
 }
 

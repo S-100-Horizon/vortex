@@ -3,6 +3,7 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 #nullable enable
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -2547,6 +2548,33 @@ namespace S100Framework.DomainModel.S122 {
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
+	}
+
+	[XmlType(Namespace = "http://www.iho.int/S122/1.2")]
+	public class Dataset : S100Framework.DomainModel.S100.Dataset
+	{
+	}
+
+	[XmlType(Namespace = "http://www.iho.int/S122/1.2")]
+	public class members : S100Framework.DomainModel.S100.members
+	{
+		[XmlElement("InformationTypes.InformationType", typeof(InformationTypes.InformationType), Order = 1)]
+		[XmlElement("InformationTypes.AbstractRxN", typeof(InformationTypes.AbstractRxN), Order = 1)]
+		[XmlElement("InformationTypes.NauticalInformation", typeof(InformationTypes.NauticalInformation), Order = 1)]
+		[XmlElement("InformationTypes.Regulations", typeof(InformationTypes.Regulations), Order = 1)]
+		[XmlElement("InformationTypes.Restrictions", typeof(InformationTypes.Restrictions), Order = 1)]
+		[XmlElement("InformationTypes.Recommendations", typeof(InformationTypes.Recommendations), Order = 1)]
+		[XmlElement("InformationTypes.Authority", typeof(InformationTypes.Authority), Order = 1)]
+		[XmlElement("InformationTypes.ContactDetails", typeof(InformationTypes.ContactDetails), Order = 1)]
+		[XmlElement("InformationTypes.NonStandardWorkingDay", typeof(InformationTypes.NonStandardWorkingDay), Order = 1)]
+		[XmlElement("InformationTypes.ServiceHours", typeof(InformationTypes.ServiceHours), Order = 1)]
+		[XmlElement("InformationTypes.Applicability", typeof(InformationTypes.Applicability), Order = 1)]
+		[XmlElement("FeatureTypes.RestrictedArea", typeof(FeatureTypes.RestrictedArea), Order = 1)]
+		[XmlElement("FeatureTypes.MarineProtectedArea", typeof(FeatureTypes.MarineProtectedArea), Order = 1)]
+		[XmlElement("FeatureTypes.VesselTrafficServiceArea", typeof(FeatureTypes.VesselTrafficServiceArea), Order = 1)]
+		[XmlElement("FeatureTypes.DataCoverage", typeof(FeatureTypes.DataCoverage), Order = 1)]
+		[XmlElement("FeatureTypes.TextPlacement", typeof(FeatureTypes.TextPlacement), Order = 1)]
+		public override List<object> elements { get; set; } = new List<object>();
 	}
 }
 

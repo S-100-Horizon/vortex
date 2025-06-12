@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 using System.Xml.XPath;
 
 namespace S100Framework.Applications
@@ -35,6 +36,7 @@ namespace S100Framework.Applications
             builderDomainModel.AppendLine("using System.Linq;");
             builderDomainModel.AppendLine("using System.Runtime.Serialization;");
             builderDomainModel.AppendLine("using System.Text.Json.Serialization;");
+            builderDomainModel.AppendLine("using System.Xml.Serialization;");
             builderDomainModel.AppendLine();
             builderDomainModel.AppendLine("#nullable enable");
             builderDomainModel.AppendLine("#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.");
@@ -451,7 +453,7 @@ namespace S100Framework.Applications
 
             builderDomainModel.AppendLine();
 
-            builderDomainModel.AppendLine($"namespace S100Framework.DomainModel.{productId} {{");
+            builderDomainModel.AppendLine($"namespace S100Framework.DomainModel.{productId} {{");            
             builderDomainModel.AppendLine("\tusing ComplexAttributes;");
             if (productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager).Any())
                 builderDomainModel.AppendLine("\tusing InformationAssociations;");
@@ -580,6 +582,33 @@ namespace S100Framework.Applications
                 if (elements.Any())
                     builderDomainModel.AppendLine("\t}");
             }
+
+
+            //  --- GML -------------------------------------------------------------------------
+            var xmlType = $"[XmlType(Namespace = \"http://www.iho.int/{productId}/{versionNumber.Remove(versionNumber.LastIndexOf('.'))}\")]";
+            builderDomainModel.AppendLine("");
+            builderDomainModel.AppendLine($"\t{xmlType}");
+            builderDomainModel.AppendLine("\tpublic class Dataset : S100Framework.DomainModel.S100.Dataset");
+            builderDomainModel.AppendLine("\t{");
+            builderDomainModel.AppendLine("\t}");
+            builderDomainModel.AppendLine("");
+
+
+            List<string> xmlElements;
+
+
+            xmlElements = [.. productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.InvariantCultureIgnoreCase)).Select(e => "InformationTypes." + e.Element(XName.Get("code", scope_S100))!.Value), 
+                            .. productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.InvariantCultureIgnoreCase)).Select(e => "FeatureTypes." + e.Element(XName.Get("code", scope_S100))!.Value)];
+
+
+            builderDomainModel.AppendLine($"\t{xmlType}");
+            builderDomainModel.AppendLine("\tpublic class members : S100Framework.DomainModel.S100.members");
+            builderDomainModel.AppendLine("\t{");
+            foreach(var name in xmlElements) {
+                builderDomainModel.AppendLine($"\t\t[XmlElement(\"{name}\", typeof({name}), Order = 1)]");
+            }
+            builderDomainModel.AppendLine("\t\tpublic override List<object> elements { get; set; } = new List<object>();");
+            builderDomainModel.AppendLine("\t}");
 
             builderDomainModel.AppendLine("}");
 
@@ -899,6 +928,9 @@ namespace S100Framework.Applications
             foreach (var s in scopes)
                 xmlNamespaceManager.AddNamespace(s.Key, s.Value);
 
+            var productId = client.ProductSpecification.XPathSelectElement("//S100FC:productId", xmlNamespaceManager)!.Value.Replace("-", string.Empty).ToUpperInvariant();
+            var versionNumber = client.ProductSpecification.XPathSelectElement("//S100FC:versionNumber", xmlNamespaceManager)!.Value;
+
             var scope_S100 = scopes["S100FC"];
 
             var builder = new StringBuilder();
@@ -915,6 +947,8 @@ namespace S100Framework.Applications
                 _ => throw new InvalidDataException(),
             };
 
+            var xmlType = $"[XmlType(Namespace = \"http://www.iho.int/{productId}/{versionNumber.Remove(versionNumber.LastIndexOf('.'))}\")]";            
+
             var encapsulation = (e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value)) ? "abstract" : "partial";
 
             var superType = e.Elements(XName.Get("superType", scope_S100)).FirstOrDefault();
@@ -928,6 +962,7 @@ namespace S100Framework.Applications
 
             builder.AppendLine("\t\t[System.Serializable()]");
             builder.AppendLine("\t\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006: Naming Styles\", Justification = \"<Pending>\")]");
+            //builder.AppendLine($"\t\t{xmlType}");
             builder.AppendLine($"\t\tpublic {encapsulation} class {code} : {inheritance} {{");
 
             var isFirst = true;

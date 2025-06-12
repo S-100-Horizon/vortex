@@ -3,6 +3,7 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 #nullable enable
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -2195,6 +2196,22 @@ namespace S100Framework.DomainModel.S124 {
 				},
 			];
 		}
+	}
+
+	[XmlType(Namespace = "http://www.iho.int/S124/2.0")]
+	public class Dataset : S100Framework.DomainModel.S100.Dataset
+	{
+	}
+
+	[XmlType(Namespace = "http://www.iho.int/S124/2.0")]
+	public class members : S100Framework.DomainModel.S100.members
+	{
+		[XmlElement("InformationTypes.References", typeof(InformationTypes.References), Order = 1)]
+		[XmlElement("InformationTypes.NavwarnPreamble", typeof(InformationTypes.NavwarnPreamble), Order = 1)]
+		[XmlElement("FeatureTypes.NavwarnPart", typeof(FeatureTypes.NavwarnPart), Order = 1)]
+		[XmlElement("FeatureTypes.NavwarnAreaAffected", typeof(FeatureTypes.NavwarnAreaAffected), Order = 1)]
+		[XmlElement("FeatureTypes.TextPlacement", typeof(FeatureTypes.TextPlacement), Order = 1)]
+		public override List<object> elements { get; set; } = new List<object>();
 	}
 }
 

@@ -3,6 +3,7 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 #nullable enable
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -9761,6 +9762,108 @@ namespace S100Framework.DomainModel.S501 {
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
+	}
+
+	[XmlType(Namespace = "http://www.iho.int/S501/0.0")]
+	public class Dataset : S100Framework.DomainModel.S100.Dataset
+	{
+	}
+
+	[XmlType(Namespace = "http://www.iho.int/S501/0.0")]
+	public class members : S100Framework.DomainModel.S100.members
+	{
+		[XmlElement("InformationTypes.ReferenceToAPublication", typeof(InformationTypes.ReferenceToAPublication), Order = 1)]
+		[XmlElement("FeatureTypes.InstallationBuoy", typeof(FeatureTypes.InstallationBuoy), Order = 1)]
+		[XmlElement("FeatureTypes.DepthArea", typeof(FeatureTypes.DepthArea), Order = 1)]
+		[XmlElement("FeatureTypes.RadioCallingInPoint", typeof(FeatureTypes.RadioCallingInPoint), Order = 1)]
+		[XmlElement("FeatureTypes.PatrolArea", typeof(FeatureTypes.PatrolArea), Order = 1)]
+		[XmlElement("FeatureTypes.Checkpoint", typeof(FeatureTypes.Checkpoint), Order = 1)]
+		[XmlElement("FeatureTypes.MarineManagementArea", typeof(FeatureTypes.MarineManagementArea), Order = 1)]
+		[XmlElement("FeatureTypes.DepthContour", typeof(FeatureTypes.DepthContour), Order = 1)]
+		[XmlElement("FeatureTypes.EnvironmentallySensitiveSeaArea", typeof(FeatureTypes.EnvironmentallySensitiveSeaArea), Order = 1)]
+		[XmlElement("FeatureTypes.Road", typeof(FeatureTypes.Road), Order = 1)]
+		[XmlElement("FeatureTypes.River", typeof(FeatureTypes.River), Order = 1)]
+		[XmlElement("FeatureTypes.MilitaryPracticeArea", typeof(FeatureTypes.MilitaryPracticeArea), Order = 1)]
+		[XmlElement("FeatureTypes.DiscolouredWater", typeof(FeatureTypes.DiscolouredWater), Order = 1)]
+		[XmlElement("FeatureTypes.CardinalBuoy", typeof(FeatureTypes.CardinalBuoy), Order = 1)]
+		[XmlElement("FeatureTypes.SafeWaterBuoy", typeof(FeatureTypes.SafeWaterBuoy), Order = 1)]
+		[XmlElement("FeatureTypes.RadioStation", typeof(FeatureTypes.RadioStation), Order = 1)]
+		[XmlElement("FeatureTypes.MilitaryExerciseAirspace", typeof(FeatureTypes.MilitaryExerciseAirspace), Order = 1)]
+		[XmlElement("FeatureTypes.ContiguousZone", typeof(FeatureTypes.ContiguousZone), Order = 1)]
+		[XmlElement("FeatureTypes.NormalBaseline", typeof(FeatureTypes.NormalBaseline), Order = 1)]
+		[XmlElement("FeatureTypes.CableArea", typeof(FeatureTypes.CableArea), Order = 1)]
+		[XmlElement("FeatureTypes.ContinentalShelfArea", typeof(FeatureTypes.ContinentalShelfArea), Order = 1)]
+		[XmlElement("FeatureTypes.InternalWaters", typeof(FeatureTypes.InternalWaters), Order = 1)]
+		[XmlElement("FeatureTypes.AdministrationArea", typeof(FeatureTypes.AdministrationArea), Order = 1)]
+		[XmlElement("FeatureTypes.Bollard", typeof(FeatureTypes.Bollard), Order = 1)]
+		[XmlElement("FeatureTypes.Dolphin", typeof(FeatureTypes.Dolphin), Order = 1)]
+		[XmlElement("FeatureTypes.RadarRange", typeof(FeatureTypes.RadarRange), Order = 1)]
+		[XmlElement("FeatureTypes.IsolatedDangerBeacon", typeof(FeatureTypes.IsolatedDangerBeacon), Order = 1)]
+		[XmlElement("FeatureTypes.IsolatedDangerBuoy", typeof(FeatureTypes.IsolatedDangerBuoy), Order = 1)]
+		[XmlElement("FeatureTypes.SubmarineTransitLane", typeof(FeatureTypes.SubmarineTransitLane), Order = 1)]
+		[XmlElement("FeatureTypes.MaritimeSafetyInformationArea", typeof(FeatureTypes.MaritimeSafetyInformationArea), Order = 1)]
+		[XmlElement("FeatureTypes.AirspaceRestriction", typeof(FeatureTypes.AirspaceRestriction), Order = 1)]
+		[XmlElement("FeatureTypes.Sounding", typeof(FeatureTypes.Sounding), Order = 1)]
+		[XmlElement("FeatureTypes.TrafficSeparationSchemeBoundary", typeof(FeatureTypes.TrafficSeparationSchemeBoundary), Order = 1)]
+		[XmlElement("FeatureTypes.DumpingGround", typeof(FeatureTypes.DumpingGround), Order = 1)]
+		[XmlElement("FeatureTypes.AirportAirfield", typeof(FeatureTypes.AirportAirfield), Order = 1)]
+		[XmlElement("FeatureTypes.FoulGround", typeof(FeatureTypes.FoulGround), Order = 1)]
+		[XmlElement("FeatureTypes.LightAirObstruction", typeof(FeatureTypes.LightAirObstruction), Order = 1)]
+		[XmlElement("FeatureTypes.MooringBuoy", typeof(FeatureTypes.MooringBuoy), Order = 1)]
+		[XmlElement("FeatureTypes.UnderwaterAwashRock", typeof(FeatureTypes.UnderwaterAwashRock), Order = 1)]
+		[XmlElement("FeatureTypes.CableOverhead", typeof(FeatureTypes.CableOverhead), Order = 1)]
+		[XmlElement("FeatureTypes.ControlledAirspace", typeof(FeatureTypes.ControlledAirspace), Order = 1)]
+		[XmlElement("FeatureTypes.Obstruction", typeof(FeatureTypes.Obstruction), Order = 1)]
+		[XmlElement("FeatureTypes.FishingGround", typeof(FeatureTypes.FishingGround), Order = 1)]
+		[XmlElement("FeatureTypes.FishingFacility", typeof(FeatureTypes.FishingFacility), Order = 1)]
+		[XmlElement("FeatureTypes.NavigationSystem", typeof(FeatureTypes.NavigationSystem), Order = 1)]
+		[XmlElement("FeatureTypes.TrafficSeparationSchemeCrossing", typeof(FeatureTypes.TrafficSeparationSchemeCrossing), Order = 1)]
+		[XmlElement("FeatureTypes.TrafficSeparationSchemeLanePart", typeof(FeatureTypes.TrafficSeparationSchemeLanePart), Order = 1)]
+		[XmlElement("FeatureTypes.TerritorialSeaArea", typeof(FeatureTypes.TerritorialSeaArea), Order = 1)]
+		[XmlElement("FeatureTypes.LateralBeacon", typeof(FeatureTypes.LateralBeacon), Order = 1)]
+		[XmlElement("FeatureTypes.CoastGuardStation", typeof(FeatureTypes.CoastGuardStation), Order = 1)]
+		[XmlElement("FeatureTypes.SeparationZoneOrLine", typeof(FeatureTypes.SeparationZoneOrLine), Order = 1)]
+		[XmlElement("FeatureTypes.BottomFeature", typeof(FeatureTypes.BottomFeature), Order = 1)]
+		[XmlElement("FeatureTypes.ArchipelagicBaseline", typeof(FeatureTypes.ArchipelagicBaseline), Order = 1)]
+		[XmlElement("FeatureTypes.SmallBottomObject", typeof(FeatureTypes.SmallBottomObject), Order = 1)]
+		[XmlElement("FeatureTypes.ExclusiveEconomicZone", typeof(FeatureTypes.ExclusiveEconomicZone), Order = 1)]
+		[XmlElement("FeatureTypes.RadarStation", typeof(FeatureTypes.RadarStation), Order = 1)]
+		[XmlElement("FeatureTypes.DivingLocation", typeof(FeatureTypes.DivingLocation), Order = 1)]
+		[XmlElement("FeatureTypes.RestrictedArea", typeof(FeatureTypes.RestrictedArea), Order = 1)]
+		[XmlElement("FeatureTypes.CableSubmarine", typeof(FeatureTypes.CableSubmarine), Order = 1)]
+		[XmlElement("FeatureTypes.Wreck", typeof(FeatureTypes.Wreck), Order = 1)]
+		[XmlElement("FeatureTypes.QRoute", typeof(FeatureTypes.QRoute), Order = 1)]
+		[XmlElement("FeatureTypes.CompletenessOfProductSpecification", typeof(FeatureTypes.CompletenessOfProductSpecification), Order = 1)]
+		[XmlElement("FeatureTypes.RescueStation", typeof(FeatureTypes.RescueStation), Order = 1)]
+		[XmlElement("FeatureTypes.CardinalBeacon", typeof(FeatureTypes.CardinalBeacon), Order = 1)]
+		[XmlElement("FeatureTypes.LightVessel", typeof(FeatureTypes.LightVessel), Order = 1)]
+		[XmlElement("FeatureTypes.FisheryZone", typeof(FeatureTypes.FisheryZone), Order = 1)]
+		[XmlElement("FeatureTypes.DredgedArea", typeof(FeatureTypes.DredgedArea), Order = 1)]
+		[XmlElement("FeatureTypes.FerryRoute", typeof(FeatureTypes.FerryRoute), Order = 1)]
+		[XmlElement("FeatureTypes.ShorelineConstruction", typeof(FeatureTypes.ShorelineConstruction), Order = 1)]
+		[XmlElement("FeatureTypes.CautionArea", typeof(FeatureTypes.CautionArea), Order = 1)]
+		[XmlElement("FeatureTypes.DeepWaterRoutePart", typeof(FeatureTypes.DeepWaterRoutePart), Order = 1)]
+		[XmlElement("FeatureTypes.CurrentNonGravitational", typeof(FeatureTypes.CurrentNonGravitational), Order = 1)]
+		[XmlElement("FeatureTypes.DataCoverage", typeof(FeatureTypes.DataCoverage), Order = 1)]
+		[XmlElement("FeatureTypes.SeabedArea", typeof(FeatureTypes.SeabedArea), Order = 1)]
+		[XmlElement("FeatureTypes.SpecialPurposeGeneralBuoy", typeof(FeatureTypes.SpecialPurposeGeneralBuoy), Order = 1)]
+		[XmlElement("FeatureTypes.LightSectored", typeof(FeatureTypes.LightSectored), Order = 1)]
+		[XmlElement("FeatureTypes.IceLine", typeof(FeatureTypes.IceLine), Order = 1)]
+		[XmlElement("FeatureTypes.AnchorageArea", typeof(FeatureTypes.AnchorageArea), Order = 1)]
+		[XmlElement("FeatureTypes.LateralBuoy", typeof(FeatureTypes.LateralBuoy), Order = 1)]
+		[XmlElement("FeatureTypes.TrafficSeparationSchemeRoundabout", typeof(FeatureTypes.TrafficSeparationSchemeRoundabout), Order = 1)]
+		[XmlElement("FeatureTypes.DeepWaterRouteCentreline", typeof(FeatureTypes.DeepWaterRouteCentreline), Order = 1)]
+		[XmlElement("FeatureTypes.LightFloat", typeof(FeatureTypes.LightFloat), Order = 1)]
+		[XmlElement("FeatureTypes.LightAllAround", typeof(FeatureTypes.LightAllAround), Order = 1)]
+		[XmlElement("FeatureTypes.Coastline", typeof(FeatureTypes.Coastline), Order = 1)]
+		[XmlElement("FeatureTypes.SeaAreaNamedWaterArea", typeof(FeatureTypes.SeaAreaNamedWaterArea), Order = 1)]
+		[XmlElement("FeatureTypes.DropZone", typeof(FeatureTypes.DropZone), Order = 1)]
+		[XmlElement("FeatureTypes.Conveyor", typeof(FeatureTypes.Conveyor), Order = 1)]
+		[XmlElement("FeatureTypes.LineOfDelimitation", typeof(FeatureTypes.LineOfDelimitation), Order = 1)]
+		[XmlElement("FeatureTypes.StraightTerritorialSeaBaseline", typeof(FeatureTypes.StraightTerritorialSeaBaseline), Order = 1)]
+		[XmlElement("FeatureTypes.SafeWaterBeacon", typeof(FeatureTypes.SafeWaterBeacon), Order = 1)]
+		[XmlElement("FeatureTypes.SpecialPurposeGeneralBeacon", typeof(FeatureTypes.SpecialPurposeGeneralBeacon), Order = 1)]
+		public override List<object> elements { get; set; } = new List<object>();
 	}
 }
 

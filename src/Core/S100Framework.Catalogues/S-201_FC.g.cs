@@ -3,6 +3,7 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 #nullable enable
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -7515,6 +7516,76 @@ namespace S100Framework.DomainModel.S201 {
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 		}
+	}
+
+	[XmlType(Namespace = "http://www.iho.int/S201/2.0")]
+	public class Dataset : S100Framework.DomainModel.S100.Dataset
+	{
+	}
+
+	[XmlType(Namespace = "http://www.iho.int/S201/2.0")]
+	public class members : S100Framework.DomainModel.S100.members
+	{
+		[XmlElement("InformationTypes.AtoNFixingMethod", typeof(InformationTypes.AtoNFixingMethod), Order = 1)]
+		[XmlElement("InformationTypes.AtonStatusInformation", typeof(InformationTypes.AtonStatusInformation), Order = 1)]
+		[XmlElement("InformationTypes.PositioningInformation", typeof(InformationTypes.PositioningInformation), Order = 1)]
+		[XmlElement("InformationTypes.SpatialQuality", typeof(InformationTypes.SpatialQuality), Order = 1)]
+		[XmlElement("FeatureTypes.Landmark", typeof(FeatureTypes.Landmark), Order = 1)]
+		[XmlElement("FeatureTypes.LateralBeacon", typeof(FeatureTypes.LateralBeacon), Order = 1)]
+		[XmlElement("FeatureTypes.LateralBuoy", typeof(FeatureTypes.LateralBuoy), Order = 1)]
+		[XmlElement("FeatureTypes.NavigationLine", typeof(FeatureTypes.NavigationLine), Order = 1)]
+		[XmlElement("FeatureTypes.RecommendedTrack", typeof(FeatureTypes.RecommendedTrack), Order = 1)]
+		[XmlElement("FeatureTypes.LightSectored", typeof(FeatureTypes.LightSectored), Order = 1)]
+		[XmlElement("FeatureTypes.LightAllAround", typeof(FeatureTypes.LightAllAround), Order = 1)]
+		[XmlElement("FeatureTypes.LightAirObstruction", typeof(FeatureTypes.LightAirObstruction), Order = 1)]
+		[XmlElement("FeatureTypes.LightFogDetector", typeof(FeatureTypes.LightFogDetector), Order = 1)]
+		[XmlElement("FeatureTypes.RadarReflector", typeof(FeatureTypes.RadarReflector), Order = 1)]
+		[XmlElement("FeatureTypes.FogSignal", typeof(FeatureTypes.FogSignal), Order = 1)]
+		[XmlElement("FeatureTypes.EnvironmentObservationEquipment", typeof(FeatureTypes.EnvironmentObservationEquipment), Order = 1)]
+		[XmlElement("FeatureTypes.RadioStation", typeof(FeatureTypes.RadioStation), Order = 1)]
+		[XmlElement("FeatureTypes.Daymark", typeof(FeatureTypes.Daymark), Order = 1)]
+		[XmlElement("FeatureTypes.Retroreflector", typeof(FeatureTypes.Retroreflector), Order = 1)]
+		[XmlElement("FeatureTypes.RadarTransponderBeacon", typeof(FeatureTypes.RadarTransponderBeacon), Order = 1)]
+		[XmlElement("FeatureTypes.VirtualAISAidToNavigation", typeof(FeatureTypes.VirtualAISAidToNavigation), Order = 1)]
+		[XmlElement("FeatureTypes.PhysicalAISAidToNavigation", typeof(FeatureTypes.PhysicalAISAidToNavigation), Order = 1)]
+		[XmlElement("FeatureTypes.SyntheticAISAidToNavigation", typeof(FeatureTypes.SyntheticAISAidToNavigation), Order = 1)]
+		[XmlElement("FeatureTypes.PowerSource", typeof(FeatureTypes.PowerSource), Order = 1)]
+		[XmlElement("FeatureTypes.IsolatedDangerBeacon", typeof(FeatureTypes.IsolatedDangerBeacon), Order = 1)]
+		[XmlElement("FeatureTypes.CardinalBeacon", typeof(FeatureTypes.CardinalBeacon), Order = 1)]
+		[XmlElement("FeatureTypes.IsolatedDangerBuoy", typeof(FeatureTypes.IsolatedDangerBuoy), Order = 1)]
+		[XmlElement("FeatureTypes.CardinalBuoy", typeof(FeatureTypes.CardinalBuoy), Order = 1)]
+		[XmlElement("FeatureTypes.InstallationBuoy", typeof(FeatureTypes.InstallationBuoy), Order = 1)]
+		[XmlElement("FeatureTypes.MooringBuoy", typeof(FeatureTypes.MooringBuoy), Order = 1)]
+		[XmlElement("FeatureTypes.EmergencyWreckMarkingBuoy", typeof(FeatureTypes.EmergencyWreckMarkingBuoy), Order = 1)]
+		[XmlElement("FeatureTypes.Lighthouse", typeof(FeatureTypes.Lighthouse), Order = 1)]
+		[XmlElement("FeatureTypes.LightFloat", typeof(FeatureTypes.LightFloat), Order = 1)]
+		[XmlElement("FeatureTypes.LightVessel", typeof(FeatureTypes.LightVessel), Order = 1)]
+		[XmlElement("FeatureTypes.OffshorePlatform", typeof(FeatureTypes.OffshorePlatform), Order = 1)]
+		[XmlElement("FeatureTypes.SiloTank", typeof(FeatureTypes.SiloTank), Order = 1)]
+		[XmlElement("FeatureTypes.Pile", typeof(FeatureTypes.Pile), Order = 1)]
+		[XmlElement("FeatureTypes.Building", typeof(FeatureTypes.Building), Order = 1)]
+		[XmlElement("FeatureTypes.Bridge", typeof(FeatureTypes.Bridge), Order = 1)]
+		[XmlElement("FeatureTypes.SinkerAnchor", typeof(FeatureTypes.SinkerAnchor), Order = 1)]
+		[XmlElement("FeatureTypes.MooringShackle", typeof(FeatureTypes.MooringShackle), Order = 1)]
+		[XmlElement("FeatureTypes.CableSubmarine", typeof(FeatureTypes.CableSubmarine), Order = 1)]
+		[XmlElement("FeatureTypes.Swivel", typeof(FeatureTypes.Swivel), Order = 1)]
+		[XmlElement("FeatureTypes.Bridle", typeof(FeatureTypes.Bridle), Order = 1)]
+		[XmlElement("FeatureTypes.CounterWeight", typeof(FeatureTypes.CounterWeight), Order = 1)]
+		[XmlElement("FeatureTypes.Topmark", typeof(FeatureTypes.Topmark), Order = 1)]
+		[XmlElement("FeatureTypes.SafeWaterBeacon", typeof(FeatureTypes.SafeWaterBeacon), Order = 1)]
+		[XmlElement("FeatureTypes.SpecialPurposeGeneralBeacon", typeof(FeatureTypes.SpecialPurposeGeneralBeacon), Order = 1)]
+		[XmlElement("FeatureTypes.SafeWaterBuoy", typeof(FeatureTypes.SafeWaterBuoy), Order = 1)]
+		[XmlElement("FeatureTypes.SpecialPurposeGeneralBuoy", typeof(FeatureTypes.SpecialPurposeGeneralBuoy), Order = 1)]
+		[XmlElement("FeatureTypes.DangerousFeature", typeof(FeatureTypes.DangerousFeature), Order = 1)]
+		[XmlElement("FeatureTypes.AtonAggregation", typeof(FeatureTypes.AtonAggregation), Order = 1)]
+		[XmlElement("FeatureTypes.AtonAssociation", typeof(FeatureTypes.AtonAssociation), Order = 1)]
+		[XmlElement("FeatureTypes.QualityOfNonBathymetricData", typeof(FeatureTypes.QualityOfNonBathymetricData), Order = 1)]
+		[XmlElement("FeatureTypes.DataCoverage", typeof(FeatureTypes.DataCoverage), Order = 1)]
+		[XmlElement("FeatureTypes.LocalDirectionOfBuoyage", typeof(FeatureTypes.LocalDirectionOfBuoyage), Order = 1)]
+		[XmlElement("FeatureTypes.NavigationalSystemOfMarks", typeof(FeatureTypes.NavigationalSystemOfMarks), Order = 1)]
+		[XmlElement("FeatureTypes.SoundingDatum", typeof(FeatureTypes.SoundingDatum), Order = 1)]
+		[XmlElement("FeatureTypes.VerticalDatumOfData", typeof(FeatureTypes.VerticalDatumOfData), Order = 1)]
+		public override List<object> elements { get; set; } = new List<object>();
 	}
 }
 
