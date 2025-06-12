@@ -145,12 +145,12 @@ namespace S100Framework.Applications
             return null;
         }
 
-        internal void CreateRelatedLineEquipment(S57Object master, FeatureNode slave, string name) {
+        internal void CreateRelatedLineEquipment(S57Object s57master, FeatureNode s101master, Feature s101MasterFeature) {
             throw new NotImplementedException();
         }
 
-        internal void CreateRelatedAreaEquipment(S57Object structure, FeatureNode s101Object, string name) {
-            var areaRelated = FeatureRelations.Instance.GetRelated(structure.GlobalId);
+        internal void CreateRelatedAreaEquipment(S57Object s57master, FeatureNode s101master, Feature s101MasterFeature) {
+            var areaRelated = FeatureRelations.Instance.GetRelated(s57master.GlobalId);
 
             var tableName = _target.GetName("point");
             using var featureClass = _target.OpenDataset<FeatureClass>(tableName);
@@ -198,10 +198,10 @@ namespace S100Framework.Applications
                         Logger.Current.DataObject(-1, relatedObject.PLTS_Frel.DEST_FC, equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(lightSectored));
                     }
 
-                    // Add relation between master polygon and slave equipment
+                    // Add relation between s57master polygon and slave equipment
 
-                    FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), name), new(lightSectored.GetType(), equipmentName), buffer, this._featureAssociation);
-                    featureN.Store();
+                    FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()), new(lightSectored.GetType(), equipmentName), featureN, s101MasterFeature, this._featureAssociation);
+
                 }
                 // 
                 foreach (var relatedObject in relatedNonSectoredEquipment) {
@@ -223,8 +223,8 @@ namespace S100Framework.Applications
                             throw new NotSupportedException("empty equipment name");
                         }
 
-                        FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), name), new(relatedObject.S101Type, equipmentName),buffer, this._featureAssociation);
-                        featureN.Store();
+                        FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()), new(relatedObject.S101Type, equipmentName), featureN, s101MasterFeature, this._featureAssociation);
+                        
 
                         if (relatedObject.S57Object.TableName != null) {
                             ConversionAnalytics.Instance.AddConverted(relatedObject.S57Object.TableName, relatedObject.GlobalId, equipmentName ?? "Unknown equipment name");
@@ -234,7 +234,7 @@ namespace S100Framework.Applications
                             throw new NotSupportedException("empty equipment name");
                         }
 
-                        //FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name));
+                        //FeatureRelations.Instance.AddRelation(new(s101master.GetType(), equipmentName), new(instance.GetType(), name));
 
                         Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.S57Object.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
                     }
@@ -242,9 +242,10 @@ namespace S100Framework.Applications
             }
         }
 
-        internal void CreateRelatedPointEquipment(S57Object structure, FeatureNode s101Object, string name, Geodatabase target) {
+        // S57Object s57master, FeatureNode s101master, Feature s101MasterFeature
+        internal void CreateRelatedPointEquipment(S57Object s57master, FeatureNode s101master, Feature s101MasterFeature) {
 
-            var key = (structure.TableName.ToLower(), structure.FcSubtype.Value, structure.GlobalId);
+            var key = (s57master.TableName.ToLower(), s57master.FcSubtype.Value, s57master.GlobalId);
             if (_converted.Contains(key)) {
                 throw new DuplicateNameException($"Related equipment already converted for {key}");
             }
@@ -252,29 +253,29 @@ namespace S100Framework.Applications
             _converted.Add(key);
 
             // if all related equipments are topmarks - return. Topmarks have become attributes
-            if (!FeatureRelations.Instance.GetRelated(structure.GlobalId).Any(e => e?.PLTS_Frel?.DEST_SUB?.ToLower() != "topmar_topmark"))
+            if (!FeatureRelations.Instance.GetRelated(s57master.GlobalId).Any(e => e?.PLTS_Frel?.DEST_SUB?.ToLower() != "topmar_topmark"))
                 return;
 
-            var totalRelated = FeatureRelations.Instance.GetRelated(structure.GlobalId);
+            var totalRelated = FeatureRelations.Instance.GetRelated(s57master.GlobalId);
             
             var relatedLightSectored = totalRelated.Where(e => e.S101Type == typeof(LightSectored)).ToList();
 
             var relatedNonSectoredEquipment = totalRelated.Where(e => e.S101Type != typeof(LightSectored)).ToList();
 
-            var tableName = target.GetName("point");
-            using var featureClass = target.OpenDataset<FeatureClass>(tableName);
+            var tableName = _target.GetName("point");
+            using var featureClass = _target.OpenDataset<FeatureClass>(tableName);
             using var buffer = featureClass.CreateRowBuffer();
 
 
             // IF SECTORED LIGHTS
-            var related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightSectored), structure.GlobalId);
+            var related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightSectored), s57master.GlobalId);
             if (related.Count > 0) {
-                var instance = ImporterNIS._converterRegistry.Convert(structure,typeof(LightSectored));
+                var instance = ImporterNIS._converterRegistry.Convert(s57master,typeof(LightSectored));
 
                 buffer["ps"] = ImporterNIS.ps101;
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
-                ImporterNIS.SetShape(buffer, structure.Shape);
+                ImporterNIS.SetShape(buffer, s57master.Shape);
 
                 var featureN = featureClass.CreateRow(buffer);
                 var equipmentName = Convert.ToString(featureN["name"]);
@@ -291,8 +292,8 @@ namespace S100Framework.Applications
                     throw new NotSupportedException("empty equipment name");
                 }
 
-                FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name),buffer, _featureAssociation);
-                featureN.Store();
+                FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()), new(instance.GetType(), equipmentName), featureN, s101MasterFeature, _featureAssociation);
+                
                 // return;
             }
             
@@ -308,7 +309,7 @@ namespace S100Framework.Applications
                     buffer["ps"] = ImporterNIS.ps101;
                     buffer["code"] = instance.GetType().Name;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
-                    ImporterNIS.SetShape(buffer, structure.Shape);
+                    ImporterNIS.SetShape(buffer, s57master.Shape);
 
                     var featureN = featureClass.CreateRow(buffer);
                     var equipmentName = Convert.ToString(featureN["name"]);
@@ -324,7 +325,8 @@ namespace S100Framework.Applications
                         throw new NotSupportedException("empty equipment name");
                     }
 
-                    FeatureRelations.Instance.AddRelation(new(s101Object.GetType(), equipmentName), new(instance.GetType(), name),buffer, _featureAssociation);
+                    //FeatureRelations.Instance.AddRelation(new(s101master.GetType(), equipmentName), new(instance.GetType(), s101MasterFeature["name"].ToString()),buffer, s101structure, _featureAssociation);
+                    FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()), new(instance.GetType(), equipmentName), featureN, s101MasterFeature, _featureAssociation);
                     featureN.Store();
 
                     Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.S57Object.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
@@ -336,8 +338,8 @@ namespace S100Framework.Applications
 
             //if (s57Object is AidsToNavigationP) {
             //    var sourceTable = "AidsToNavigationP";
-            //    var master = (AidsToNavigationP)s57Object;
-            //    bool hasRelated = FeatureRelations.Instance.HasRelated(master.GLOBALID);
+            //    var s57master = (AidsToNavigationP)s57Object;
+            //    bool hasRelated = FeatureRelations.Instance.HasSlaves(s57master.GLOBALID);
             //    if (!hasRelated) {
             //        return;
             //    }
@@ -346,9 +348,9 @@ namespace S100Framework.Applications
             //    using var featureClass = target.OpenDataset<FeatureClass>(tableName);
             //    using var buffer = featureClass.CreateRowBuffer();
 
-            //    //var types = FeatureRelations.GetS101CatlitTypeFrom(master);
+            //    //var types = FeatureRelations.GetS101CatlitTypeFrom(s57master);
 
-            //    var related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightSectored), master.GLOBALID);
+            //    var related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightSectored), s57master.GLOBALID);
 
             //    if (related == null) {
             //        throw new NotSupportedException("empty relationships");
@@ -359,14 +361,14 @@ namespace S100Framework.Applications
             //    if (hasRelatedSectoredLights) {
             //        var instance = ImporterNIS._converterRegistry.ConvertList<LightSectored>(related);
 
-            //        if (master.PLTS_COMP_SCALE.HasValue && master.SHAPE != null) {
-            //            instance.scaleMinimum = Scamin.Instance.GetMinimumScale(master.SHAPE, "LIGHTS_Light", PrimitiveType.Point, master.PLTS_COMP_SCALE.Value);
+            //        if (s57master.PLTS_COMP_SCALE.HasValue && s57master.SHAPE != null) {
+            //            instance.scaleMinimum = Scamin.Instance.GetMinimumScale(s57master.SHAPE, "LIGHTS_Light", PrimitiveType.Point, s57master.PLTS_COMP_SCALE.Value);
             //        }
 
             //        buffer["ps"] = ImporterNIS.ps101;
             //        buffer["code"] = instance.GetType().Name;
             //        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
-            //        ImporterNIS.SetShape(buffer, master.SHAPE);
+            //        ImporterNIS.SetShape(buffer, s57master.SHAPE);
 
             //        var featureN = featureClass.CreateRow(buffer);
             //        var equipmentName = Convert.ToString(featureN["name"]);
@@ -385,7 +387,7 @@ namespace S100Framework.Applications
             //        return;
             //    }
 
-            //    related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightAllAround), master.GLOBALID);
+            //    related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightAllAround), s57master.GLOBALID);
             //    if (related == null) {
             //        throw new NotSupportedException("empty relationships");
             //    }
@@ -396,8 +398,8 @@ namespace S100Framework.Applications
             //            //var _slave = pltsSlave.Fetch(_source, Direction.Destination);
             //            var instance = ImporterNIS._converterRegistry.Convert<LightAllAround>(light);
 
-            //            if (master.PLTS_COMP_SCALE.HasValue && master.SHAPE != null) {
-            //                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(master.SHAPE, "LIGHTS_Light", PrimitiveType.Point, master.PLTS_COMP_SCALE.Value);
+            //            if (s57master.PLTS_COMP_SCALE.HasValue && s57master.SHAPE != null) {
+            //                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(s57master.SHAPE, "LIGHTS_Light", PrimitiveType.Point, s57master.PLTS_COMP_SCALE.Value);
             //            }
 
 
@@ -432,13 +434,13 @@ namespace S100Framework.Applications
             //        foreach (var relatedObject in relatedObjects) {
             //            info.Append($"{relatedObject.PLTS_Frel.SRC_SUB}::{relatedObject.PLTS_Frel.DEST_SUB}");
             //        }
-            //        throw new NotSupportedException($"{master.GetType().Name}: {info.ToString()}");
+            //        throw new NotSupportedException($"{s57master.GetType().Name}: {info.ToString()}");
             //    }
             //}
 
             //else if (s57Object is CulturalFeaturesP) {
-            //    var master = (CulturalFeaturesP)s57Object;
-            //    bool hasRelated = FeatureRelations.Instance.HasRelated(master.GLOBALID);
+            //    var s57master = (CulturalFeaturesP)s57Object;
+            //    bool hasRelated = FeatureRelations.Instance.HasSlaves(s57master.GLOBALID);
             //    if (!hasRelated) {
             //        return;
             //    }
@@ -447,9 +449,9 @@ namespace S100Framework.Applications
             //    var featureClass = target.OpenDataset<FeatureClass>(tableName);
             //    var buffer = featureClass.CreateRowBuffer();
 
-            //    //var types = FeatureRelations.GetS101CatlitTypeFrom(master);
+            //    //var types = FeatureRelations.GetS101CatlitTypeFrom(s57master);
 
-            //    var related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightSectored), master.GLOBALID);
+            //    var related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightSectored), s57master.GLOBALID);
             //    if (related == null) {
             //        throw new NotSupportedException("empty relationships");
             //    }
@@ -457,14 +459,14 @@ namespace S100Framework.Applications
             //    if (hasRelatedSectoredLights) {
             //        var instance = ImporterNIS._converterRegistry.ConvertList<LightSectored>(related);
 
-            //        if (master.PLTS_COMP_SCALE.HasValue && master.SHAPE != null) {
-            //            instance.scaleMinimum = Scamin.Instance.GetMinimumScale(master.SHAPE, "LIGHTS_Light", PrimitiveType.Point, master.PLTS_COMP_SCALE.Value);
+            //        if (s57master.PLTS_COMP_SCALE.HasValue && s57master.SHAPE != null) {
+            //            instance.scaleMinimum = Scamin.Instance.GetMinimumScale(s57master.SHAPE, "LIGHTS_Light", PrimitiveType.Point, s57master.PLTS_COMP_SCALE.Value);
             //        }
 
             //        buffer["ps"] = ImporterNIS.ps101;
             //        buffer["code"] = instance.GetType().Name;
             //        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
-            //        ImporterNIS.SetShape(buffer, master.SHAPE);
+            //        ImporterNIS.SetShape(buffer, s57master.SHAPE);
 
             //        var featureN = featureClass.CreateRow(buffer);
             //        var equipmentName = Convert.ToString(featureN["name"]);
@@ -481,7 +483,7 @@ namespace S100Framework.Applications
             //        Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
             //    }
 
-            //    related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightAllAround), master.GLOBALID);
+            //    related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightAllAround), s57master.GLOBALID);
             //    var hasRelatedLightsAllAround = related.Any();
             //    if (hasRelatedLightsAllAround) {
             //        foreach (var light in related) {
@@ -517,7 +519,7 @@ namespace S100Framework.Applications
             //        return;
             //    }
 
-            //    related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightAirObstruction), master.GLOBALID);
+            //    related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightAirObstruction), s57master.GLOBALID);
             //    var hasRelatedLightsAirObstruction = related.Any();
             //    if (hasRelatedLightsAirObstruction) {
             //        foreach (var light in related) {
@@ -553,7 +555,7 @@ namespace S100Framework.Applications
             //        return;
             //    }
 
-            //    related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(RadarTransponderBeacon), master.GLOBALID);
+            //    related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(RadarTransponderBeacon), s57master.GLOBALID);
             //    var hasRelatedRadarTransponder = related.Any();
             //    if (hasRelatedRadarTransponder) {
             //        foreach (var radarTransponder in related) {
@@ -587,7 +589,7 @@ namespace S100Framework.Applications
             //        }
             //    }
 
-            //    related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(Daymark), master.GLOBALID);
+            //    related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(Daymark), s57master.GLOBALID);
             //    var hasRelatedDaymark = related.Any();
             //    if (hasRelatedDaymark) {
             //        foreach (var daymark in related) {
@@ -622,7 +624,7 @@ namespace S100Framework.Applications
             //    }
 
 
-            //    var relatedLandmarks = FeatureRelations.Instance.GetRelated<CulturalFeaturesP>(typeof(Landmark), master.GLOBALID);
+            //    var relatedLandmarks = FeatureRelations.Instance.GetRelated<CulturalFeaturesP>(typeof(Landmark), s57master.GLOBALID);
             //    var hasRelatedLandmarks = relatedLandmarks.Any();
             //    if (hasRelatedLandmarks) {
             //        throw new NotSupportedException("related landmark");
@@ -634,7 +636,7 @@ namespace S100Framework.Applications
             //        foreach (var relatedObject in relatedObjects) {
             //            info.Append($"{relatedObject.PLTS_Frel.SRC_SUB}::{relatedObject.PLTS_Frel.DEST_SUB}");
             //        }
-            //        throw new NotSupportedException($"{master.GetType().Name}: {info.ToString()}");
+            //        throw new NotSupportedException($"{s57master.GetType().Name}: {info.ToString()}");
             //    }
 
             //}

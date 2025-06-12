@@ -93,10 +93,10 @@ namespace S100Framework.Applications
                 instance.valueOfNominalRange = current.VALNMR.Value;
             }		
             
-            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
-            
             if (current.VERLEN.HasValue) {
                 instance.verticalLength = current.VERLEN.Value;
+
+                instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
             }
 
             //if (plts_comp_scale != default) {
@@ -111,9 +111,6 @@ namespace S100Framework.Applications
 
                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
             }
-
-
-
 
             return instance;
         }

@@ -66,8 +66,8 @@ namespace S100Framework.Applications
             if (current.VALNMR.HasValue) {
                 instance.valueOfNominalRange = current.VALNMR.Value;
             }		
-            
-            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
+            // todo: mean sea level til baltic.
+            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
             
             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                 string subtype = "";

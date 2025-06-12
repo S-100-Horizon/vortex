@@ -84,8 +84,8 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
                         }
                         break;
@@ -201,8 +201,8 @@ namespace S100Framework.Applications
 
                             #endregion aidstonavigation
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
                         }
                         break;
@@ -321,8 +321,8 @@ namespace S100Framework.Applications
 
                             #endregion aidstonavigation
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
                         }
                         break;
@@ -437,8 +437,8 @@ namespace S100Framework.Applications
 
                             #endregion aidstonavigation
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
                         }
                         break;
@@ -557,8 +557,8 @@ namespace S100Framework.Applications
 
                             #endregion aidstonavigation
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
                         }
                         break;
@@ -652,8 +652,8 @@ namespace S100Framework.Applications
 
                             #endregion aidstonavigation
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
                         }
                         break;
@@ -742,8 +742,8 @@ namespace S100Framework.Applications
 
                             #endregion aidstonavigation
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
                         }
                         break;
@@ -833,8 +833,8 @@ namespace S100Framework.Applications
 
                             #endregion aidstonavigation
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
                         }
                         break;
@@ -928,8 +928,8 @@ namespace S100Framework.Applications
 
                             #endregion aidstonavigation
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
                         }
                         break;
@@ -1020,7 +1020,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
 
                             if (relatedEquipment != null) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, name, target);
+                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN);
                             }
                         }
                         break;
@@ -1113,8 +1113,8 @@ namespace S100Framework.Applications
 
                             #endregion aidstonavigation
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
                         }
                         break;
@@ -1133,8 +1133,8 @@ namespace S100Framework.Applications
 
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
                         }
                         break;
@@ -1158,8 +1158,8 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
                         }
                         break;
@@ -1371,8 +1371,8 @@ namespace S100Framework.Applications
 
                             #endregion aidstonavigation
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
                         }
                         break;
@@ -1461,8 +1461,8 @@ namespace S100Framework.Applications
 
                             #endregion aidstonavigation
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
                         }
                         break;
@@ -1517,8 +1517,8 @@ namespace S100Framework.Applications
 
                             #endregion aidstonavigation
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
                         }
                         break;
@@ -1539,8 +1539,8 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
                         }
                         break;
@@ -1560,8 +1560,8 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
 
                         }
@@ -1583,8 +1583,8 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
                         } 
                         break;
@@ -1631,8 +1631,8 @@ namespace S100Framework.Applications
 
                             AddInformation(instance.information, feature);
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
                         }
                         break;

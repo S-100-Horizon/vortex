@@ -9,15 +9,11 @@ using System.Text.Json;
 using S100Framework.Applications.S57.esri;
 using System.Text.RegularExpressions;
 using System.Globalization;
-using S100Framework.DomainModel;
 using VortexLoader;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101.InformationTypes;
-using System.Dynamic;
-using ArcGIS.Desktop.Mapping;
-using System.Linq;
-
+using System.Text.RegularExpressions;
 
 namespace S100Framework.Applications
 {
@@ -171,13 +167,14 @@ namespace S100Framework.Applications
                     filter.WhereClause = $"{whereClause} and globalid = '{{CA71EEFC-AF9F-4DB0-A55E-FD9D394FF58D}}'";
                     filter.WhereClause = $"{whereClause}";
                     */
+                    Store(() => S57_SeabedA(source, destination, filter));
+                    Store(() => S57_SeabedL(source, destination, filter));
+                    Store(() => S57_SeabedP(source, destination, filter));
+
                     Store(() => S57_TidesAndVariationsA(source, destination, filter));
                     Store(() => S57_TidesAndVariationsL(source, destination, filter));
                     Store(() => S57_TidesAndVariationsP(source, destination, filter));
 
-                    Store(() => S57_SeabedA(source, destination, filter));
-                    Store(() => S57_SeabedL(source, destination, filter));
-                    Store(() => S57_SeabedP(source, destination, filter));
 
                     Store(() => S57_CulturalFeaturesL(source, destination, filter));
                     Store(() => S57_CulturalFeaturesA(source, destination, filter));
@@ -302,7 +299,7 @@ namespace S100Framework.Applications
                 instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
             }
             */
-            if (value != 23) {
+            if (value != 3) {
                 return EnumHelper.GetEnumValue<verticalDatum>(value);
             }
 
@@ -564,7 +561,7 @@ namespace S100Framework.Applications
             return featureName;
         }
 
-        internal static List<information> CreateFrom(Feature current) {
+        internal static List<information> CreateInformationFrom(Feature current) {
             List<information> information = new List<information>();
 
             if (DBNull.Value != current["NTXTDS"]) {
@@ -579,7 +576,7 @@ namespace S100Framework.Applications
 
                         var instance = new information {
                             fileLocator = fileLocator,
-                            fileReference = fileReference,
+                            fileReference = FixFilename(fileReference) ?? default,
                             headline = note.Header,
                             language = language,
                             text = note.Content,
@@ -601,7 +598,7 @@ namespace S100Framework.Applications
 
                         var instance = new information {
                             fileLocator = fileLocator,
-                            fileReference = fileReference,
+                            fileReference = FixFilename(fileReference) ?? default,
                             headline = note.Header,
                             language = language,
                             text = note.Content,
@@ -616,12 +613,10 @@ namespace S100Framework.Applications
                 var inform = Convert.ToString(current["INFORM"])?.Trim();
                 if (!string.IsNullOrEmpty(inform)) {
 
-
                     //https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
                     // Separate discrete information populated in INFORM using a standard separator such as semicolon “;”.
 
                     string[] informs = inform != null ? inform.Split(';') : Array.Empty<string>();
-
 
                     foreach (var value in informs) {
                         string? fileLocator = default;
@@ -630,7 +625,7 @@ namespace S100Framework.Applications
 
                         var instance = new information {
                             fileLocator = fileLocator,
-                            fileReference = fileReference,
+                            fileReference = FixFilename(fileReference) ?? default,
                             headline = default,
                             language = language,
                             text = value,
@@ -639,6 +634,7 @@ namespace S100Framework.Applications
                     }
                 }
             }
+
             if (DBNull.Value != current["NINFOM"]) {
                 var ninfom = Convert.ToString(current["NINFOM"])?.Trim();
 
@@ -655,7 +651,7 @@ namespace S100Framework.Applications
 
                         var instance = new information {
                             fileLocator = fileLocator,
-                            fileReference = fileReference,
+                            fileReference = FixFilename(fileReference) ?? default,
                             headline = default,
                             language = language,
                             text = value,
@@ -664,38 +660,55 @@ namespace S100Framework.Applications
                     }
                 }
             }
-
             return information;
         }
 
-        internal static void CreateNauticalInformation(Feature current) {
+        private static string? FixFilename(string fileReference) {
+            if (fileReference == default) {
+                return default;
+            }
+            
+            string result = Regex.Replace(fileReference, @"^dk", match => {
+                string matched = match.Value;
+
+                string replacement = "";
+
+                replacement += char.IsUpper(matched[0]) ? 'D' : 'd';
+                replacement += char.IsUpper(matched[1]) ? 'K' : 'k';
+                replacement += "00";
+
+                return replacement;
+            }, RegexOptions.IgnoreCase);
+            
+            return result;
+        }
+
+        internal static NauticalInformation CreateNauticalInformation(string picrep, string datsta, string datend, string persta, string perend, List<information> information) {
             NauticalInformation nobj = new NauticalInformation();
-            if (current["PICREP"].ToString() != default) {
-                nobj.pictorialRepresentation = current["PICREP"].ToString();
+            if (picrep != default) {
+                nobj.pictorialRepresentation = picrep;
             }
 
-            nobj.information = CreateFrom(current);
+            nobj.information = information;
             nobj.Code = ps101;
 
-            DateHelper.TryGetFixedDateRange(current["DATSTA"].ToString(), current["DATEND"].ToString(), out var dateRange);
+            DateHelper.TryGetFixedDateRange(datsta, datend, out var dateRange);
             if (dateRange != default) {
                 nobj.fixedDateRange = dateRange;
             }
 
-
-            DateHelper.TryGetPeriodicDateRange(current["PERSTA"].ToString(), current["PEREND"].ToString(), out var periodicDateRange);
+            DateHelper.TryGetPeriodicDateRange(persta, perend, out var periodicDateRange);
             if (periodicDateRange != default) {
                 nobj.periodicDateRange = periodicDateRange;
             }
 
-            // TODO: Store object and relation
-
+            return nobj;
         }
 
         internal static void AddInformation(List<information> instanceInformation, Feature current) {
             // TODO: Still missing decision on how GST wants handling of both files and a copy of the file content.
             // Sent to Nigel & Co.
-            List<information> information = CreateFrom(current);
+            List<information> information = CreateInformationFrom(current);
             instanceInformation.AddRange(information);
         }
     }

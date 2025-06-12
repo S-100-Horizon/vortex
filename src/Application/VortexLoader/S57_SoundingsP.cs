@@ -144,8 +144,8 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(bufferPointset);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, sounding, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, sounding, featureN);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); 
@@ -201,8 +201,8 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(bufferPointset);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));

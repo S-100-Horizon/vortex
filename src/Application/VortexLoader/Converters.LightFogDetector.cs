@@ -50,7 +50,8 @@ namespace S100Framework.Applications
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
             }		
             
-            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
+            // covered by meta feature hence not to be set
+            //instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
             
             if (current.VERLEN.HasValue) {
                 instance.verticalLength = current.VERLEN.Value;

@@ -83,35 +83,57 @@ namespace S100Framework.Applications
 
                             var result = new List<(string, string)>();
 
-                            foreach (var natsur in list1) {
-                                foreach (var natqua in list2) {
-                                    if (natureOfSurfaceQualifyingTermsList != null && !string.IsNullOrEmpty(natsur)) {
+                            if (naturOfSurfaceCount > 0) {
+                                for (int i = 0; i < list1.Count(); i++) {
+                                    var natureOfSurface = EnumHelper.GetEnumValue<natureOfSurface>(list1[i]);
+
+                                    if (list2.Count() > i && !string.IsNullOrEmpty(list2[i])) {
                                         instance.surfaceCharacteristics.Add(new() {
-                                            natureOfSurface = EnumHelper.GetEnumValue<natureOfSurface>(natsur),
-                                            natureOfSurfaceQualifyingTerms = natureOfSurfaceQualifyingTermsList
+                                            natureOfSurface = natureOfSurface,
+                                            natureOfSurfaceQualifyingTerms = new() { natureOfSurfaceQualifyingTermsList[i] }
+
                                         });
                                     }
-
-                                    if (natureOfSurfaceQualifyingTermsList != null && string.IsNullOrEmpty(natsur)) {
+                                    else {
                                         instance.surfaceCharacteristics.Add(new() {
-                                            natureOfSurfaceQualifyingTerms = natureOfSurfaceQualifyingTermsList
+                                            natureOfSurface = natureOfSurface
                                         });
-                                    }
-
-                                    if (natureOfSurfaceQualifyingTermsList == null && !string.IsNullOrEmpty(natsur)) {
-                                        instance.surfaceCharacteristics.Add(new() {
-                                            natureOfSurface = EnumHelper.GetEnumValue<natureOfSurface>(natsur),
-                                        });
-                                    }
-
-                                    if (natureOfSurfaceQualifyingTermsList == null && string.IsNullOrEmpty(natsur)) {
-
                                     }
                                 }
                             }
+                            else {
+                                if (natureOfSurfaceQualifyingTermsCount > 0) {
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, longname, "NatureOfSurface is empty but natureOfSurfaceQualifyingTerms are not. This is not permitted.");
 
+                                }
+                            }
 
+                            //foreach (var natsur in list1) {
+                            //    foreach (var natqua in list2) {
+                            //        if (natureOfSurfaceQualifyingTermsList != null && !string.IsNullOrEmpty(natsur)) {
+                            //            instance.surfaceCharacteristics.Add(new() {
+                            //                natureOfSurface = EnumHelper.GetEnumValue<natureOfSurface>(natsur),
+                            //                natureOfSurfaceQualifyingTerms = natureOfSurfaceQualifyingTermsList
+                            //            });
+                            //        }
 
+                            //        if (natureOfSurfaceQualifyingTermsList != null && string.IsNullOrEmpty(natsur)) {
+                            //            instance.surfaceCharacteristics.Add(new() {
+                            //                natureOfSurfaceQualifyingTerms = natureOfSurfaceQualifyingTermsList
+                            //            });
+                            //        }
+
+                            //        if (natureOfSurfaceQualifyingTermsList == null && !string.IsNullOrEmpty(natsur)) {
+                            //            instance.surfaceCharacteristics.Add(new() {
+                            //                natureOfSurface = EnumHelper.GetEnumValue<natureOfSurface>(natsur),
+                            //            });
+                            //        }
+
+                            //        if (natureOfSurfaceQualifyingTermsList == null && string.IsNullOrEmpty(natsur)) {
+
+                            //        }
+                            //    }
+                            //}
 
                             if (current.WATLEV.HasValue) {
                                 instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
@@ -133,8 +155,8 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
@@ -167,8 +189,8 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
 
 
@@ -203,8 +225,8 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
@@ -240,8 +262,8 @@ namespace S100Framework.Applications
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                                if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                    relatedEquipment?.CreateRelatedPointEquipment(current, seagrass, name, target);
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment?.CreateRelatedPointEquipment(current, seagrass, featureN);
                                 }
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -279,8 +301,8 @@ namespace S100Framework.Applications
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                                if (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {
-                                    relatedEquipment?.CreateRelatedPointEquipment(current, instance, name, target);
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                                 }
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);

@@ -57,6 +57,9 @@ namespace S100Framework.Applications
 
             if (current.HEIGHT.HasValue) {
                 instance.height = current.HEIGHT.Value;
+                
+                // Set by covering meta feature
+                //instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
             }
 
             // TODO: interoperabilityidentifier
@@ -87,7 +90,6 @@ namespace S100Framework.Applications
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
             }
 
-            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
             
             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                 string subtype = "";
@@ -141,6 +143,9 @@ namespace S100Framework.Applications
 
             if (current.HEIGHT.HasValue) {
                 instance.height = current.HEIGHT.Value;
+
+                // Set by covering meta feature
+                //instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
             }
 
             // TODO: interoperabilityidentifier
@@ -171,8 +176,6 @@ namespace S100Framework.Applications
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
             }
 
-            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
-            
             return instance;
         }
 

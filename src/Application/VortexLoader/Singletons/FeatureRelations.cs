@@ -707,11 +707,11 @@ namespace S100Framework.Applications.Singletons
             ;
         }
 
-        internal bool HasRelated(Guid globalId) {
+        internal bool HasSlaves(Guid globalId) {
             return _srcObjectToSlaves.ContainsKey(globalId);
         }
 
-        internal void AddRelation(S57Master master, S57Slave slave, RowBuffer bindingDestinationBuffer, Table featureAssociation) {
+        internal void AddRelation(S57Master master, S57Slave slave, Feature s101SlaveFeature, Feature s101MasterFeature, Table featureAssociation) {
             //if (_relationCount > 0) {
             //    return;
             //}
@@ -728,14 +728,13 @@ namespace S100Framework.Applications.Singletons
                 throw new NotSupportedException($"{relation} relation´already added");
             }
 
-
+            // Legacy - is not in use... to be deleted.
             _relations.Add(relation);
 
-
-            StoreRelation(master, slave, bindingDestinationBuffer, featureAssociation);
+            StoreRelation(master, slave, s101SlaveFeature, s101MasterFeature,featureAssociation);
         }
 
-        private void StoreRelation(S57Master master, S57Slave slave, RowBuffer bindingDestinationBuffer, Table featureAssociation) {
+        private void StoreRelation(S57Master master, S57Slave slave, Feature s101SlaveFeature, Feature s101MasterFeature, Table featureAssociation) {
             Relation relation = new(master, slave);
 
             if (relation.Master == null) {
@@ -769,7 +768,7 @@ namespace S100Framework.Applications.Singletons
                     return;
                     //throw new NotSupportedException(msg);
                 }
-                bindingDestinationBuffer["ps"] = ImporterNIS.ps101;
+                s101SlaveFeature["ps"] = ImporterNIS.ps101;
 
                 //                featureAssociationBuffer["code"] = bindingDefinitionForeign.association;
                 
@@ -782,7 +781,8 @@ namespace S100Framework.Applications.Singletons
             }
 
             // Store binding
-            List<featureBinding> bindings = new List<featureBinding>();
+            List<featureBinding> primaryBindings = new List<featureBinding>();
+            List<featureBinding> foreignBindings = new List<featureBinding>();
 
             // Create binding
             {
@@ -799,29 +799,32 @@ namespace S100Framework.Applications.Singletons
                     roleType = "FeatureBinding"
 
                 };
-                bindings.Add(featureBindingPrimary);
+                primaryBindings.Add(featureBindingPrimary);
             }
             {
-                // TODO: Foreign end
-                //// Create foreign end
-                //bindingDefinitionForeign = featureBindingsForeign?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TPrimary?.Name));
-                //if (bindingDefinitionForeign == null) {
-                //    throw new NotSupportedException($"no bindingdefinition on {TForeign?.Name} for {TPrimary?.Name}");
-                //}
+                //TODO: Foreign end
+                // Create foreign end
+                bindingDefinitionForeign = featureBindingsForeign?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TPrimary?.Name));
+                if (bindingDefinitionForeign == null) {
+                    throw new NotSupportedException($"no bindingdefinition on {TForeign?.Name} for {TPrimary?.Name}");
+                }
 
-                //featureBinding featureBindingForeign = new() {
-                //    association = bindingDefinitionForeign.association,
-                //    associationId = featureAssociationName,
-                //    featureId = relation?.Master?.Name,
-                //    role = bindingDefinitionForeign.role,
-                //    roleType = "FeatureBinding"
-                //};
+                featureBinding featureBindingForeign = new() {
+                    association = bindingDefinitionForeign.association,
+                    associationId = featureAssociationName,
+                    featureId = relation?.Master?.Name,
+                    role = bindingDefinitionForeign.role,
+                    roleType = "FeatureBinding"
+                };
+
+                foreignBindings.Add(featureBindingForeign);
             }
 
-            var json = System.Text.Json.JsonSerializer.Serialize(bindings);
+            s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(primaryBindings);
+            s101MasterFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(foreignBindings);
 
-            bindingDestinationBuffer["featurebindings"] = json;
-
+            s101SlaveFeature.Store();
+            s101MasterFeature.Store();
         }
 
         internal bool IsCircular(S57Master master, S57Slave slave) {

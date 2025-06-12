@@ -71,10 +71,13 @@ namespace S100Framework.Applications
             }
 
             // TODO: verticalClearanceFixed		
-            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
+
             
             if (current.VERLEN.HasValue) {
                 instance.verticalLength = current.VERLEN.Value;
+
+                instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+
             }
 
             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
