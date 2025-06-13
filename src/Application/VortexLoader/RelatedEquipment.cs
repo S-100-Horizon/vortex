@@ -368,7 +368,7 @@ namespace S100Framework.Applications
             //        buffer["ps"] = ImporterNIS.ps101;
             //        buffer["code"] = instance.GetType().Name;
             //        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
-            //        ImporterNIS.SetShape(buffer, s57master.SHAPE);
+            //        SetShape(buffer, s57master.SHAPE);
 
             //        var featureN = featureClass.CreateRow(buffer);
             //        var equipmentName = Convert.ToString(featureN["name"]);
@@ -406,7 +406,7 @@ namespace S100Framework.Applications
             //            buffer["ps"] = ImporterNIS.ps101;
             //            buffer["code"] = instance.GetType().Name;
             //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
-            //            ImporterNIS.SetShape(buffer, light.SHAPE);
+            //            SetShape(buffer, light.SHAPE);
 
             //            var featureN = featureClass.CreateRow(buffer);
             //            var equipmentName = Convert.ToString(featureN["name"]);
@@ -466,7 +466,7 @@ namespace S100Framework.Applications
             //        buffer["ps"] = ImporterNIS.ps101;
             //        buffer["code"] = instance.GetType().Name;
             //        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
-            //        ImporterNIS.SetShape(buffer, s57master.SHAPE);
+            //        SetShape(buffer, s57master.SHAPE);
 
             //        var featureN = featureClass.CreateRow(buffer);
             //        var equipmentName = Convert.ToString(featureN["name"]);
@@ -497,7 +497,7 @@ namespace S100Framework.Applications
             //            buffer["ps"] = ImporterNIS.ps101;
             //            buffer["code"] = instance.GetType().Name;
             //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
-            //            ImporterNIS.SetShape(buffer, light.SHAPE);
+            //            SetShape(buffer, light.SHAPE);
 
             //            culturalFeaturesPConverted = true;
 
@@ -533,7 +533,7 @@ namespace S100Framework.Applications
             //            buffer["ps"] = ImporterNIS.ps101;
             //            buffer["code"] = instance.GetType().Name;
             //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
-            //            ImporterNIS.SetShape(buffer, light.SHAPE);
+            //            SetShape(buffer, light.SHAPE);
 
             //            culturalFeaturesPConverted = true;
 
@@ -568,7 +568,7 @@ namespace S100Framework.Applications
             //            buffer["ps"] = ImporterNIS.ps101;
             //            buffer["code"] = instance.GetType().Name;
             //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
-            //            ImporterNIS.SetShape(buffer, radarTransponder.SHAPE);
+            //            SetShape(buffer, radarTransponder.SHAPE);
 
             //            culturalFeaturesPConverted = true;
 
@@ -602,7 +602,7 @@ namespace S100Framework.Applications
             //            buffer["ps"] = ImporterNIS.ps101;
             //            buffer["code"] = instance.GetType().Name;
             //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
-            //            ImporterNIS.SetShape(buffer, daymark.SHAPE);
+            //            SetShape(buffer, daymark.SHAPE);
 
             //            culturalFeaturesPConverted = true;
 

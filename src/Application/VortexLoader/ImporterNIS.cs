@@ -234,7 +234,6 @@ namespace S100Framework.Applications
 
         }
 
-
         internal static void SetShape(RowBuffer buffer, Geometry? shape) {
             if (shape == null) {
                 throw new ArgumentException("Null geometry not supported");
@@ -242,11 +241,28 @@ namespace S100Framework.Applications
 
             if (shape.GeometryType == GeometryType.Point && shape.HasZ == false) {
                 buffer["shape"] = MapPointBuilderEx.CreateMapPoint(((MapPoint)shape).X, ((MapPoint)shape).Y, 0.00, shape.SpatialReference);
-            } else {
+            }
+            else {
                 buffer["shape"] = shape;
             }
         }
+        internal static void SetDrawingIndex(RowBuffer buffer, Geometry? shape) {
+            if (shape == null) {
+                throw new ArgumentException("Null geometry not supported");
+            }
 
+            _ = shape.GeometryType switch {
+                GeometryType.Unknown => throw new NotSupportedException("Geometry type: unknown "),
+                GeometryType.Point => null,
+                GeometryType.Envelope => throw new NotSupportedException("Geometry type: envelope"),
+                GeometryType.Multipoint => null,
+                GeometryType.Polyline => buffer["drawingindex"] = 4,
+                GeometryType.Polygon => buffer["drawingindex"] = 4,
+                GeometryType.Multipatch => throw new NotSupportedException("Geometry type: multipatch"),
+                GeometryType.GeometryBag => throw new NotSupportedException("Geometry type: geometrybag"),
+                _ => throw new NotSupportedException($"Unhandled geometry type {shape.GeometryType}")
+            };
+        }
 
         /// <summary>
         /// DCEG p460
@@ -566,7 +582,8 @@ namespace S100Framework.Applications
 
             if (DBNull.Value != current["NTXTDS"]) {
                 var ntxtds = Convert.ToString(current["NTXTDS"])?.Trim();
-                if (!string.IsNullOrEmpty(ntxtds)) {
+
+                if (!string.IsNullOrEmpty(ntxtds) && ntxtds.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, ntxtds);
                     if (File.Exists(filePath)) {
                         var note = new Note(filePath);
@@ -577,18 +594,29 @@ namespace S100Framework.Applications
                         var instance = new information {
                             fileLocator = fileLocator,
                             fileReference = FixFilename(fileReference) ?? default,
-                            headline = note.Header,
                             language = language,
-                            text = note.Content,
                         };
                         information.Add(instance);
                     }
+                    else {
+                        Logger.Current.DataError(current.GetObjectID(), current.GetTable().GetName(), "", $"AddInformation: Cannot find note {filePath}");
+                    }
+
+            }
+            else if (!string.IsNullOrEmpty(ntxtds)) {
+                    string language = "eng";
+
+                    var instance = new information {
+                        language = language,
+                        text = ntxtds,
+                    };
+                    information.Add(instance);
                 }
             }
 
             if (DBNull.Value != current["TXTDSC"]) {
                 var txtdsc = Convert.ToString(current["TXTDSC"])?.Trim();
-                if (!string.IsNullOrEmpty(txtdsc)) {
+                if (!string.IsNullOrEmpty(txtdsc) && txtdsc.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, txtdsc);
                     if (File.Exists(filePath)) {
                         var note = new Note(filePath);
@@ -599,13 +627,25 @@ namespace S100Framework.Applications
                         var instance = new information {
                             fileLocator = fileLocator,
                             fileReference = FixFilename(fileReference) ?? default,
-                            headline = note.Header,
                             language = language,
-                            text = note.Content,
                         };
                         information.Add(instance);
 
+                    } else {
+                        Logger.Current.DataError(current.GetObjectID(), current.GetTable().GetName(), "", $"AddInformation: Cannot find note {filePath}");
                     }
+                }
+                else if (!string.IsNullOrEmpty(txtdsc)) {
+                    string? fileLocator = default;
+                    string fileReference = txtdsc;
+                    string language = "eng";
+
+                    var instance = new information {
+                        fileLocator = fileLocator,
+                        language = language,
+                        text = txtdsc,
+                    };
+                    information.Add(instance);
                 }
             }
 
@@ -623,14 +663,30 @@ namespace S100Framework.Applications
                         string? fileReference = default;
                         string language = "eng";
 
-                        var instance = new information {
-                            fileLocator = fileLocator,
-                            fileReference = FixFilename(fileReference) ?? default,
-                            headline = default,
-                            language = language,
-                            text = value,
-                        };
-                        information.Add(instance);
+                        if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
+                            var filePath = System.IO.Path.Combine(_notesPath, value);
+                            if (File.Exists(value)) {
+                                var instance = new information {
+                                    fileLocator = fileLocator,
+                                    fileReference = FixFilename(value) ?? default,
+                                    headline = default,
+                                    language = language,
+                                    text = value,
+                                };
+                                information.Add(instance);
+                            }
+                            else {
+                                Logger.Current.DataError(current.GetObjectID(), current.GetTable().GetName(), "", $"AddInformation: Cannot find note {value}");
+                            }
+                        }
+                        else if (!string.IsNullOrEmpty(value)) {
+                            var instance = new information {
+                                fileLocator = fileLocator,
+                                language = language,
+                                text = value,
+                            };
+                            information.Add(instance);
+                        }
                     }
                 }
             }
@@ -649,14 +705,30 @@ namespace S100Framework.Applications
                         string? fileReference = default;
                         string language = "dan";
 
-                        var instance = new information {
-                            fileLocator = fileLocator,
-                            fileReference = FixFilename(fileReference) ?? default,
-                            headline = default,
-                            language = language,
-                            text = value,
-                        };
-                        information.Add(instance);
+                        if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
+                            var filePath = System.IO.Path.Combine(_notesPath, value);
+                            if (File.Exists(value)) {
+                                var instance = new information {
+                                    fileLocator = fileLocator,
+                                    fileReference = FixFilename(value) ?? default,
+                                    headline = default,
+                                    language = language,
+                                    text = value,
+                                };
+                                information.Add(instance);
+                            }
+                            else {
+                                Logger.Current.DataError(current.GetObjectID(), current.GetTable().GetName(), "", $"AddInformation: Cannot find note {value}");
+                            }
+                        }
+                        else if (!string.IsNullOrEmpty(value)) {
+                            var instance = new information {
+                                fileLocator = fileLocator,
+                                language = language,
+                                text = value,
+                            };
+                            information.Add(instance);
+                        }
                     }
                 }
             }
@@ -671,7 +743,7 @@ namespace S100Framework.Applications
             string result = Regex.Replace(fileReference, @"^dk", match => {
                 string matched = match.Value;
 
-                string replacement = "";
+                string replacement = "101";
 
                 replacement += char.IsUpper(matched[0]) ? 'D' : 'd';
                 replacement += char.IsUpper(matched[1]) ? 'K' : 'k';

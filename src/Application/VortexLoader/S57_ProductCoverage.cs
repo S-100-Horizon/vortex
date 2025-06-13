@@ -75,7 +75,7 @@ namespace S100Framework.Applications
                                 buffer["ps"] = ps128;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                ImporterNIS.SetShape(buffer, productCoverage.SHAPE);
+                                SetShape(buffer, productCoverage.SHAPE);
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
                                 // TODO: Create relations
@@ -101,7 +101,7 @@ namespace S100Framework.Applications
                                 buffer["ps"] = ps101;
                                 buffer["code"] = vdat.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(vdat);
-                                ImporterNIS.SetShape(buffer, productCoverage.SHAPE);
+                                SetShape(buffer, productCoverage.SHAPE);
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -112,7 +112,7 @@ namespace S100Framework.Applications
                                 buffer["ps"] = ps101;
                                 buffer["code"] = dataCoverage.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage);
-                                ImporterNIS.SetShape(buffer, productCoverage.SHAPE);
+                                SetShape(buffer, productCoverage.SHAPE);
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 

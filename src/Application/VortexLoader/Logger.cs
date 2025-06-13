@@ -47,7 +47,7 @@ namespace S100Framework.Applications
             logger.Write(LogLevel.DataTotalCount.ToLogLevel(), "{tablename};{totalCount};{convertedCount}", tablename,totalCount,convertedCount);
         }
 
-        public static void DataObject(this ILogger logger, int objectId, string tableName, string longname, string destination) {
+        public static void DataObject(this ILogger logger, Int64 objectId, string tableName, string longname, string destination) {
             logger.Write(LogLevel.DataObject.ToLogLevel(), "{ObjectId};{TableName};{LongName};{Destination}", objectId, tableName, longname, destination);
 
         }
@@ -59,7 +59,7 @@ namespace S100Framework.Applications
         }
 
 
-        public static void DataError(this ILogger logger, int objectId, string tableName, string longname, string message) {
+        public static void DataError(this ILogger logger, Int64 objectId, string tableName, string longname, string message) {
             logger.Write(LogLevel.DataError.ToLogLevel(), "{ObjectId};{TableName};{LongName};{Message}", objectId, tableName, longname, message);
         }
 
