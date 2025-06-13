@@ -796,7 +796,7 @@ namespace S100Framework.Applications.Singletons
                     associationId = featureAssociationName,
                     featureId = relation?.Slave?.Name,
                     role = bindingDefinitionPrimary.role,
-                    roleType = "FeatureBinding"
+                    roleType = bindingDefinitionPrimary.roleType.ToString()
 
                 };
                 primaryBindings.Add(featureBindingPrimary);
@@ -814,14 +814,14 @@ namespace S100Framework.Applications.Singletons
                     associationId = featureAssociationName,
                     featureId = relation?.Master?.Name,
                     role = bindingDefinitionForeign.role,
-                    roleType = "FeatureBinding"
+                    roleType = bindingDefinitionForeign.roleType.ToString()
                 };
 
                 foreignBindings.Add(featureBindingForeign);
             }
 
-            s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(primaryBindings);
-            s101MasterFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(foreignBindings);
+            s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(foreignBindings);
+            s101MasterFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(primaryBindings);
 
             s101SlaveFeature.Store();
             s101MasterFeature.Store();

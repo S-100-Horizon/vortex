@@ -167,6 +167,7 @@ namespace S100Framework.Applications
                     filter.WhereClause = $"{whereClause} and globalid = '{{CA71EEFC-AF9F-4DB0-A55E-FD9D394FF58D}}'";
                     filter.WhereClause = $"{whereClause}";
                     */
+
                     Store(() => S57_SeabedA(source, destination, filter));
                     Store(() => S57_SeabedL(source, destination, filter));
                     Store(() => S57_SeabedP(source, destination, filter));
@@ -223,6 +224,7 @@ namespace S100Framework.Applications
                     Store(() => S57_TracksAndRoutesP(source, destination, filter));
 
                     Store(() => S57_AidsToNavigationP(source, destination, filter));
+
 
                     //Store(() => FeatureRelations.Instance.CreateRelations(destination));
                 }
