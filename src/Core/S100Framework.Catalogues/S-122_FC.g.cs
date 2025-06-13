@@ -1582,20 +1582,26 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class contactAddress {
 			public String? deliveryPoint {get;set;} = default;
+			public bool ShouldSerializedeliveryPoint() { return false; }
 
 			public String? cityName {get;set;} = default;
+			public bool ShouldSerializecityName() { return false; }
 
 			public String? administrativeDivision {get;set;} = default;
+			public bool ShouldSerializeadministrativeDivision() { return false; }
 
 			public String? countryName {get;set;} = default;
+			public bool ShouldSerializecountryName() { return false; }
 
 			public String? postalCode {get;set;} = default;
+			public bool ShouldSerializepostalCode() { return false; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class featureName {
 			public Boolean? displayName {get;set;} = default;
+			public bool ShouldSerializedisplayName() { return false; }
 
 			public String language {get;set;} = string.Empty;
 
@@ -1606,30 +1612,39 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class fixedDateRange {
 			public String? dateStart {get;set;} = default;
+			public bool ShouldSerializedateStart() { return false; }
 
 			public String? dateEnd {get;set;} = default;
+			public bool ShouldSerializedateEnd() { return false; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class frequencyPair {
 			public int? frequencyShoreStationReceives {get;set;} = default;
+			public bool ShouldSerializefrequencyShoreStationReceives() { return false; }
 
 			public int? frequencyShoreStationTransmits {get;set;} = default;
+			public bool ShouldSerializefrequencyShoreStationTransmits() { return false; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class information {
 			public String? fileLocator {get;set;} = default;
+			public bool ShouldSerializefileLocator() { return false; }
 
 			public String? fileReference {get;set;} = default;
+			public bool ShouldSerializefileReference() { return false; }
 
 			public String? headline {get;set;} = default;
+			public bool ShouldSerializeheadline() { return false; }
 
 			public String? language {get;set;} = default;
+			public bool ShouldSerializelanguage() { return false; }
 
 			public String? text {get;set;} = default;
+			public bool ShouldSerializetext() { return false; }
 		}
 
 		[System.Serializable()]
@@ -1638,22 +1653,29 @@ namespace S100Framework.DomainModel.S122 {
 			public String onlineResourceLinkageURL {get;set;} = string.Empty;
 
 			public String? protocol {get;set;} = default;
+			public bool ShouldSerializeprotocol() { return false; }
 
 			public String? applicationProfile {get;set;} = default;
+			public bool ShouldSerializeapplicationProfile() { return false; }
 
 			public String? nameOfResource {get;set;} = default;
+			public bool ShouldSerializenameOfResource() { return false; }
 
 			public String? onlineResourceDescription {get;set;} = default;
+			public bool ShouldSerializeonlineResourceDescription() { return false; }
 
 			public String? protocolRequest {get;set;} = default;
+			public bool ShouldSerializeprotocolRequest() { return false; }
 
 			public onlineFunction? onlineFunction {get;set;} = default;
+			public bool ShouldSerializeonlineFunction() { return false; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class orientation {
 			public decimal? orientationUncertainty {get;set;} = default;
+			public bool ShouldSerializeorientationUncertainty() { return false; }
 
 			[Required()]
 			public decimal orientationValue {get;set;}
@@ -1671,10 +1693,13 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class rxNCode {
 			public categoryOfRxN? categoryOfRxN {get;set;} = default;
+			public bool ShouldSerializecategoryOfRxN() { return false; }
 
 			public actionOrActivity? actionOrActivity {get;set;} = default;
+			public bool ShouldSerializeactionOrActivity() { return false; }
 
 			public String? headline {get;set;} = default;
+			public bool ShouldSerializeheadline() { return false; }
 		}
 
 		[System.Serializable()]
@@ -1684,6 +1709,7 @@ namespace S100Framework.DomainModel.S122 {
 			public decimal sectorBearing {get;set;}
 
 			public int? sectorLineLength {get;set;} = default;
+			public bool ShouldSerializesectorLineLength() { return false; }
 		}
 
 		[System.Serializable()]
@@ -1693,6 +1719,7 @@ namespace S100Framework.DomainModel.S122 {
 			public decimal sectorBearing {get;set;}
 
 			public int? sectorLineLength {get;set;} = default;
+			public bool ShouldSerializesectorLineLength() { return false; }
 		}
 
 		[System.Serializable()]
@@ -1700,13 +1727,17 @@ namespace S100Framework.DomainModel.S122 {
 		public class textContent {
 			[EnumerationValue([1,2,3])]
 			public categoryOfText? categoryOfText {get;set;} = default;
+			public bool ShouldSerializecategoryOfText() { return false; }
 
 			public String? source {get;set;} = default;
+			public bool ShouldSerializesource() { return false; }
 
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
+			public bool ShouldSerializesourceType() { return false; }
 
 			public String? reportedDate {get;set;} = default;
+			public bool ShouldSerializereportedDate() { return false; }
 		}
 
 		[System.Serializable()]
@@ -1716,6 +1747,7 @@ namespace S100Framework.DomainModel.S122 {
 			public List<dayOfWeek> dayOfWeek {get;set;} = [];
 
 			public Boolean? dayOfWeekIsRange {get;set;} = default;
+			public bool ShouldSerializedayOfWeekIsRange() { return false; }
 
 			public List<TimeOnly> timeOfDayEnd {get;set;} = [];
 
@@ -1745,26 +1777,33 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class designation {
 			public String? designationScheme {get;set;} = default;
+			public bool ShouldSerializedesignationScheme() { return false; }
 
 			public String? designationIdentifier {get;set;} = default;
+			public bool ShouldSerializedesignationIdentifier() { return false; }
 
 			public jurisdiction? jurisdiction {get;set;} = default;
+			public bool ShouldSerializejurisdiction() { return false; }
 
 			public String? text {get;set;} = default;
+			public bool ShouldSerializetext() { return false; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class bearingInformation {
 			public cardinalDirection? cardinalDirection {get;set;} = default;
+			public bool ShouldSerializecardinalDirection() { return false; }
 
 			public decimal? distance {get;set;} = default;
+			public bool ShouldSerializedistance() { return false; }
 
 			public List<decimal> sectorBearing {get;set;} = [];
 
 			public List<information> information {get;set;} = [];
 
 			public orientation? orientation {get;set;} = default;
+			public bool ShouldSerializeorientation() { return false; }
 		}
 
 		[System.Serializable()]
@@ -1773,12 +1812,16 @@ namespace S100Framework.DomainModel.S122 {
 			public List<String> pictorialRepresentation {get;set;} = [];
 
 			public String? pictureCaption {get;set;} = default;
+			public bool ShouldSerializepictureCaption() { return false; }
 
 			public DateOnly? sourceDate {get;set;} = default;
+			public bool ShouldSerializesourceDate() { return false; }
 
 			public String? pictureInformation {get;set;} = default;
+			public bool ShouldSerializepictureInformation() { return false; }
 
 			public bearingInformation? bearingInformation {get;set;} = default;
+			public bool ShouldSerializebearingInformation() { return false; }
 		}
 
 		[System.Serializable()]
@@ -1786,6 +1829,7 @@ namespace S100Framework.DomainModel.S122 {
 		public class scheduleByDayOfWeek {
 			[EnumerationValue([1,2,3])]
 			public categoryOfSchedule? categoryOfSchedule {get;set;} = default;
+			public bool ShouldSerializecategoryOfSchedule() { return false; }
 
 			public List<timeIntervalsByDayOfWeek> timeIntervalsByDayOfWeek {get;set;} = [];
 		}
@@ -1805,17 +1849,22 @@ namespace S100Framework.DomainModel.S122 {
 		public class telecommunications {
 			[EnumerationValue([1,2,3,4])]
 			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
+			public bool ShouldSerializecategoryOfCommunicationPreference() { return false; }
 
 			public String? contactInstructions {get;set;} = default;
+			public bool ShouldSerializecontactInstructions() { return false; }
 
 			public String? telecomCarrier {get;set;} = default;
+			public bool ShouldSerializetelecomCarrier() { return false; }
 
 			public String telecommunicationIdentifier {get;set;} = string.Empty;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public telecommunicationService? telecommunicationService {get;set;} = default;
+			public bool ShouldSerializetelecommunicationService() { return false; }
 
 			public scheduleByDayOfWeek? scheduleByDayOfWeek {get;set;} = default;
+			public bool ShouldSerializescheduleByDayOfWeek() { return false; }
 		}
 
 	}
@@ -1986,17 +2035,21 @@ namespace S100Framework.DomainModel.S122 {
 			public List<featureName> featureName {get;set;} = [];
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
+			public bool ShouldSerializefixedDateRange() { return false; }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public List<graphic> graphic {get;set;} = [];
 
 			public String? source {get;set;} = default;
+			public bool ShouldSerializesource() { return false; }
 
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
+			public bool ShouldSerializesourceType() { return false; }
 
 			public String? reportedDate {get;set;} = default;
+			public bool ShouldSerializereportedDate() { return false; }
 
 			[JsonIgnore]
 			public override string Code => nameof(InformationType);
@@ -2015,8 +2068,10 @@ namespace S100Framework.DomainModel.S122 {
 		public partial class AbstractRxN : InformationType {
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			public categoryOfAuthority? categoryOfAuthority {get;set;} = default;
+			public bool ShouldSerializecategoryOfAuthority() { return false; }
 
 			public textContent? textContent {get;set;} = default;
+			public bool ShouldSerializetextContent() { return false; }
 
 			public List<rxNCode> rxNCode {get;set;} = [];
 
@@ -2157,17 +2212,22 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ContactDetails : AbstractRxN {
 			public String? callName {get;set;} = default;
+			public bool ShouldSerializecallName() { return false; }
 
 			public String? callSign {get;set;} = default;
+			public bool ShouldSerializecallSign() { return false; }
 
 			[EnumerationValue([1,2,3,4])]
 			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
+			public bool ShouldSerializecategoryOfCommunicationPreference() { return false; }
 
 			public List<String> communicationChannel {get;set;} = [];
 
 			public String? contactInstructions {get;set;} = default;
+			public bool ShouldSerializecontactInstructions() { return false; }
 
 			public String? mMSICode {get;set;} = default;
+			public bool ShouldSerializemMSICode() { return false; }
 
 			public List<int> signalFrequency {get;set;} = [];
 
@@ -2270,6 +2330,7 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Applicability : InformationType {
 			public Boolean? inBallast {get;set;} = default;
+			public bool ShouldSerializeinBallast() { return false; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
@@ -2279,16 +2340,21 @@ namespace S100Framework.DomainModel.S122 {
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])]
 			public categoryOfVessel? categoryOfVessel {get;set;} = default;
+			public bool ShouldSerializecategoryOfVessel() { return false; }
 
 			[EnumerationValue([1,2])]
 			public categoryOfVesselRegistry? categoryOfVesselRegistry {get;set;} = default;
+			public bool ShouldSerializecategoryOfVesselRegistry() { return false; }
 
 			[EnumerationValue([1,2])]
 			public logicalConnectives? logicalConnectives {get;set;} = default;
+			public bool ShouldSerializelogicalConnectives() { return false; }
 
 			public int? thicknessOfIceCapability {get;set;} = default;
+			public bool ShouldSerializethicknessOfIceCapability() { return false; }
 
 			public String? vesselPerformance {get;set;} = default;
+			public bool ShouldSerializevesselPerformance() { return false; }
 
 			public List<information> information {get;set;} = [];
 
@@ -2315,6 +2381,7 @@ namespace S100Framework.DomainModel.S122 {
 			public List<featureName> featureName {get;set;} = [];
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
+			public bool ShouldSerializefixedDateRange() { return false; }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -2323,11 +2390,14 @@ namespace S100Framework.DomainModel.S122 {
 			public String interoperabilityIdentifier {get;set;} = string.Empty;
 
 			public String? source {get;set;} = default;
+			public bool ShouldSerializesource() { return false; }
 
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
+			public bool ShouldSerializesourceType() { return false; }
 
 			public String? reportedDate {get;set;} = default;
+			public bool ShouldSerializereportedDate() { return false; }
 
 			[JsonIgnore]
 			public override string Code => nameof(FeatureType);
@@ -2551,12 +2621,12 @@ namespace S100Framework.DomainModel.S122 {
 	}
 
 	[XmlType(Namespace = "http://www.iho.int/S122/1.2")]
-	public class Dataset : S100Framework.DomainModel.S100.Dataset
+	public class Dataset : S100Framework.DomainModel.S100.DatasetBase
 	{
 	}
 
-	[XmlType(Namespace = "http://www.iho.int/S122/1.2")]
-	public class members : S100Framework.DomainModel.S100.members
+	[XmlType(Namespace = "http://www.iho.int/S122/1.2", TypeName = "members")]
+	public class Members : S100Framework.DomainModel.S100.MembersBase
 	{
 		[XmlElement("InformationTypes.InformationType", typeof(InformationTypes.InformationType), Order = 1)]
 		[XmlElement("InformationTypes.AbstractRxN", typeof(InformationTypes.AbstractRxN), Order = 1)]

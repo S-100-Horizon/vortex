@@ -1776,23 +1776,29 @@ namespace S100Framework.DomainModel.S124 {
 			public String chartNumber {get;set;} = string.Empty;
 
 			public String? chartPlanNumber {get;set;} = default;
+			public bool ShouldSerializechartPlanNumber() { return false; }
 
 			[Required()]
 			public DateOnly editionDate {get;set;}
 
 			public DateOnly? lastNoticeDate {get;set;} = default;
+			public bool ShouldSerializelastNoticeDate() { return false; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class fixedDateRange {
 			public String? dateEnd {get;set;} = default;
+			public bool ShouldSerializedateEnd() { return false; }
 
 			public String? dateStart {get;set;} = default;
+			public bool ShouldSerializedateStart() { return false; }
 
 			public TimeOnly? timeOfDayEnd {get;set;} = default;
+			public bool ShouldSerializetimeOfDayEnd() { return false; }
 
 			public TimeOnly? timeOfDayStart {get;set;} = default;
+			public bool ShouldSerializetimeOfDayStart() { return false; }
 		}
 
 		[System.Serializable()]
@@ -1817,10 +1823,12 @@ namespace S100Framework.DomainModel.S124 {
 			public String agencyResponsibleForProduction {get;set;} = string.Empty;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
+			public bool ShouldSerializeinteroperabilityIdentifier() { return false; }
 
 			public String nameOfSeries {get;set;} = string.Empty;
 
 			public String? nationality {get;set;} = default;
+			public bool ShouldSerializenationality() { return false; }
 
 			[Required()]
 			public int warningNumber {get;set;}
@@ -1866,26 +1874,32 @@ namespace S100Framework.DomainModel.S124 {
 
 			[EnumerationValue([1,2,3])]
 			public nameUsage? nameUsage {get;set;} = default;
+			public bool ShouldSerializenameUsage() { return false; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class affectedChartPublications {
 			public chartAffected? chartAffected {get;set;} = default;
+			public bool ShouldSerializechartAffected() { return false; }
 
 			public String? chartPublicationIdentifier {get;set;} = default;
+			public bool ShouldSerializechartPublicationIdentifier() { return false; }
 
 			public String? internationalChartAffected {get;set;} = default;
+			public bool ShouldSerializeinternationalChartAffected() { return false; }
 
 			public String language {get;set;} = string.Empty;
 
 			public String? publicationAffected {get;set;} = default;
+			public bool ShouldSerializepublicationAffected() { return false; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class generalArea {
 			public String? localityIdentifier {get;set;} = default;
+			public bool ShouldSerializelocalityIdentifier() { return false; }
 
 			public List<locationName> locationName {get;set;} = [];
 		}
@@ -1894,6 +1908,7 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class locality {
 			public String? localityIdentifier {get;set;} = default;
+			public bool ShouldSerializelocalityIdentifier() { return false; }
 
 			public List<locationName> locationName {get;set;} = [];
 		}
@@ -2019,6 +2034,7 @@ namespace S100Framework.DomainModel.S124 {
 			public List<navwarnTitle> navwarnTitle {get;set;} = [];
 
 			public DateTime? cancellationDate {get;set;} = default;
+			public bool ShouldSerializecancellationDate() { return false; }
 
 			[Required()]
 			public Boolean intService {get;set;} = false;
@@ -2059,6 +2075,7 @@ namespace S100Framework.DomainModel.S124 {
 		public partial class NavwarnPart : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([7,8,14,25,27])]
 			public restriction? restriction {get;set;} = default;
+			public bool ShouldSerializerestriction() { return false; }
 
 			public List<fixedDateRange> fixedDateRange {get;set;} = [];
 
@@ -2156,6 +2173,7 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
 			public int? scaleMinimum {get;set;} = default;
+			public bool ShouldSerializescaleMinimum() { return false; }
 
 			public String text {get;set;} = string.Empty;
 
@@ -2199,12 +2217,12 @@ namespace S100Framework.DomainModel.S124 {
 	}
 
 	[XmlType(Namespace = "http://www.iho.int/S124/2.0")]
-	public class Dataset : S100Framework.DomainModel.S100.Dataset
+	public class Dataset : S100Framework.DomainModel.S100.DatasetBase
 	{
 	}
 
-	[XmlType(Namespace = "http://www.iho.int/S124/2.0")]
-	public class members : S100Framework.DomainModel.S100.members
+	[XmlType(Namespace = "http://www.iho.int/S124/2.0", TypeName = "members")]
+	public class Members : S100Framework.DomainModel.S100.MembersBase
 	{
 		[XmlElement("InformationTypes.References", typeof(InformationTypes.References), Order = 1)]
 		[XmlElement("InformationTypes.NavwarnPreamble", typeof(InformationTypes.NavwarnPreamble), Order = 1)]

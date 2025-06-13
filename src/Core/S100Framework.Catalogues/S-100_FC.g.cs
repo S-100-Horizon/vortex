@@ -73,6 +73,8 @@ namespace S100Framework.DomainModel.S100
 
     #region ComplexTypes
 
+    #endregion
+
     [System.Serializable()]
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
     [XmlType(Namespace = "http://www.iho.int/s100gml/5.0")]
@@ -121,24 +123,19 @@ namespace S100Framework.DomainModel.S100
 
 
     [Serializable]
-    [XmlType(Namespace = "http://www.iho.int/s100gml/5.0")]
-    [XmlRoot("Dataset", Namespace = "http://www.iho.int/S128/2.0", IsNullable = false)]
-    public partial class Dataset
+    public partial class DatasetBase
     {
         [XmlElement(Order = 0)]
         public DataSetIdentification DatasetIdentificationInformation { get; set; }
 
-        [XmlElement(Order = 1)]
-        public members? members { get; set; } = default;
+        //[XmlElement(Order = 1)]
+        //public members? members { get; set; } = default;
     }
 
     [Serializable]
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-    public abstract class members
+    public abstract class MembersBase
     {
         public abstract List<object> elements { get; set; }
-    }
-
-
-    #endregion
+    }    
 }

@@ -317,7 +317,7 @@ namespace S100Framework.Applications
 
                             if (lower == 0 && upper.HasValue && upper.Value == 1) {
                                 prefix += "?";
-                                postfix = " = default;";
+                                postfix = " = default;";                                
                             }
                             else if (lower == 1 && upper.HasValue && upper.Value == 1) {
                                 if (!knowTypesPrefix[referenceCode].Equals("String"))
@@ -328,6 +328,9 @@ namespace S100Framework.Applications
                                 postfix = " = [];";
                             }
                             builderDomainModel.AppendLine($"\t\t\tpublic {prefix} {referenceCode} {{get;set;}}{postfix}");
+                            if (lower == 0 && upper.HasValue && upper.Value == 1) {
+                                builderDomainModel.AppendLine($"\t\t\tpublic bool ShouldSerialize{referenceCode}() {{ return false; }}");
+                            }
                         }
 
                         builderDomainModel.AppendLine("\t\t}");
@@ -585,10 +588,10 @@ namespace S100Framework.Applications
 
 
             //  --- GML -------------------------------------------------------------------------
-            var xmlType = $"[XmlType(Namespace = \"http://www.iho.int/{productId}/{versionNumber.Remove(versionNumber.LastIndexOf('.'))}\")]";
+            var xmlTypeNamespace = $"Namespace = \"http://www.iho.int/{productId}/{versionNumber.Remove(versionNumber.LastIndexOf('.'))}\"";
             builderDomainModel.AppendLine("");
-            builderDomainModel.AppendLine($"\t{xmlType}");
-            builderDomainModel.AppendLine("\tpublic class Dataset : S100Framework.DomainModel.S100.Dataset");
+            builderDomainModel.AppendLine($"\t[XmlType({xmlTypeNamespace})]");
+            builderDomainModel.AppendLine("\tpublic class Dataset : S100Framework.DomainModel.S100.DatasetBase");
             builderDomainModel.AppendLine("\t{");
             builderDomainModel.AppendLine("\t}");
             builderDomainModel.AppendLine("");
@@ -601,8 +604,8 @@ namespace S100Framework.Applications
                             .. productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.InvariantCultureIgnoreCase)).Select(e => "FeatureTypes." + e.Element(XName.Get("code", scope_S100))!.Value)];
 
 
-            builderDomainModel.AppendLine($"\t{xmlType}");
-            builderDomainModel.AppendLine("\tpublic class members : S100Framework.DomainModel.S100.members");
+            builderDomainModel.AppendLine($"\t[XmlType({xmlTypeNamespace}, TypeName = \"members\")]");
+            builderDomainModel.AppendLine("\tpublic class Members : S100Framework.DomainModel.S100.MembersBase");
             builderDomainModel.AppendLine("\t{");
             foreach(var name in xmlElements) {
                 builderDomainModel.AppendLine($"\t\t[XmlElement(\"{name}\", typeof({name}), Order = 1)]");
@@ -986,7 +989,7 @@ namespace S100Framework.Applications
 
                 if (lower == 0 && upper.HasValue && upper.Value == 1) {
                     prefix += "?";
-                    postfix = " = default;";
+                    postfix = " = default;";                    
                 }
                 else if (lower == 1 && upper.HasValue && upper.Value == 1) {
                     if (!client.KnowTypesPrefix[referenceCode].Equals("String"))
@@ -997,7 +1000,9 @@ namespace S100Framework.Applications
                     postfix = " = [];";
                 }
                 builder.AppendLine($"\t\t\tpublic {prefix} {referenceCode} {{get;set;}}{postfix}");
-
+                if (lower == 0 && upper.HasValue && upper.Value == 1) {
+                    builder.AppendLine($"\t\t\tpublic bool ShouldSerialize{referenceCode}() {{ return false; }}");
+                }
             }
 
             if (!isFirst)
