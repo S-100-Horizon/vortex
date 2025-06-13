@@ -331,12 +331,12 @@ namespace S100Framework.Applications
                     if(IO.File.Exists(@"C:\Program Files\s100compiler\s100compiler.exe")) {
                         var commandline = $"-f \"{IO.Path.Combine(output, $"{datasetName}.yaml")}\" -c \"{@"\\nas.gst.dk\public\projektdata\produktion\S-100\Product Specifications\S-101 Electronic Navigational Chart\2.0.0\101_Feature_Catalogue_2.0.0.xml"}\" -d \"{IO.Path.Combine(output, datasetName)}\"";
 
+                        if (IO.Directory.Exists(IO.Path.Combine(output, datasetName)))
+                            IO.Directory.Delete(IO.Path.Combine(output, datasetName), true);
+                        IO.Directory.CreateDirectory(IO.Path.Combine(output, datasetName));
+
                         if (!exchangeset) {
                             Log.Information("s100compiler.exe -f {dataset}.yaml -d {dataset}.000 -c 101_Feature_Catalogue_2.0.0.xml", datasetName);
-
-                            if (IO.Directory.Exists(IO.Path.Combine(output, datasetName)))
-                                IO.Directory.Delete(IO.Path.Combine(output, datasetName), true);
-                            IO.Directory.CreateDirectory(IO.Path.Combine(output, datasetName));                            
 
                             var p = new Process();
                             p.StartInfo.CreateNoWindow = true;
