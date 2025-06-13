@@ -4107,29 +4107,36 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class contactAddress {
 			public String? deliveryPoint {get;set;} = default;
-			public bool ShouldSerializedeliveryPoint() { return false; }
+
+			public bool ShouldSerializedeliveryPoint() { return string.IsNullOrEmpty(deliveryPoint); }
 
 			public String? cityName {get;set;} = default;
-			public bool ShouldSerializecityName() { return false; }
+
+			public bool ShouldSerializecityName() { return string.IsNullOrEmpty(cityName); }
 
 			public String? administrativeDivision {get;set;} = default;
-			public bool ShouldSerializeadministrativeDivision() { return false; }
+
+			public bool ShouldSerializeadministrativeDivision() { return string.IsNullOrEmpty(administrativeDivision); }
 
 			public String? countryName {get;set;} = default;
-			public bool ShouldSerializecountryName() { return false; }
+
+			public bool ShouldSerializecountryName() { return string.IsNullOrEmpty(countryName); }
 
 			public String? postalCode {get;set;} = default;
-			public bool ShouldSerializepostalCode() { return false; }
+
+			public bool ShouldSerializepostalCode() { return string.IsNullOrEmpty(postalCode); }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class featureName {
 			public Boolean? displayName {get;set;} = default;
-			public bool ShouldSerializedisplayName() { return false; }
+
+			public bool ShouldSerializedisplayName() { return displayName.HasValue; }
 
 			public String? language {get;set;} = default;
-			public bool ShouldSerializelanguage() { return false; }
+
+			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
 
 			public String name {get;set;} = string.Empty;
 		}
@@ -4138,10 +4145,12 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class fixedDateRange {
 			public String? dateEnd {get;set;} = default;
-			public bool ShouldSerializedateEnd() { return false; }
+
+			public bool ShouldSerializedateEnd() { return string.IsNullOrEmpty(dateEnd); }
 
 			public String? dateStart {get;set;} = default;
-			public bool ShouldSerializedateStart() { return false; }
+
+			public bool ShouldSerializedateStart() { return string.IsNullOrEmpty(dateStart); }
 		}
 
 		[System.Serializable()]
@@ -4151,14 +4160,16 @@ namespace S100Framework.DomainModel.S201 {
 			public Boolean multiplicityKnown {get;set;} = false;
 
 			public int? numberOfFeatures {get;set;} = default;
-			public bool ShouldSerializenumberOfFeatures() { return false; }
+
+			public bool ShouldSerializenumberOfFeatures() { return numberOfFeatures.HasValue; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class orientation {
 			public decimal? orientationUncertainty {get;set;} = default;
-			public bool ShouldSerializeorientationUncertainty() { return false; }
+
+			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[Required()]
 			public decimal orientationValue {get;set;}
@@ -4185,7 +4196,8 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorInformation {
 			public String? language {get;set;} = default;
-			public bool ShouldSerializelanguage() { return false; }
+
+			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
 
 			public String text {get;set;} = string.Empty;
 		}
@@ -4197,7 +4209,8 @@ namespace S100Framework.DomainModel.S201 {
 			public decimal sectorBearing {get;set;}
 
 			public int? sectorLineLength {get;set;} = default;
-			public bool ShouldSerializesectorLineLength() { return false; }
+
+			public bool ShouldSerializesectorLineLength() { return sectorLineLength.HasValue; }
 		}
 
 		[System.Serializable()]
@@ -4207,14 +4220,16 @@ namespace S100Framework.DomainModel.S201 {
 			public decimal sectorBearing {get;set;}
 
 			public int? sectorLineLength {get;set;} = default;
-			public bool ShouldSerializesectorLineLength() { return false; }
+
+			public bool ShouldSerializesectorLineLength() { return sectorLineLength.HasValue; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class shapeInformation {
 			public String? language {get;set;} = default;
-			public bool ShouldSerializelanguage() { return false; }
+
+			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
 
 			public String text {get;set;} = string.Empty;
 		}
@@ -4249,35 +4264,43 @@ namespace S100Framework.DomainModel.S201 {
 		public class ChangeDetails {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public atonCommissioning? atonCommissioning {get;set;} = default;
-			public bool ShouldSerializeatonCommissioning() { return false; }
+
+			public bool ShouldSerializeatonCommissioning() { return atonCommissioning.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
 			public atonRemoval? atonRemoval {get;set;} = default;
-			public bool ShouldSerializeatonRemoval() { return false; }
+
+			public bool ShouldSerializeatonRemoval() { return atonRemoval.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			public atonReplacement? atonReplacement {get;set;} = default;
-			public bool ShouldSerializeatonReplacement() { return false; }
+
+			public bool ShouldSerializeatonReplacement() { return atonReplacement.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			public fixedAtonChange? fixedAtonChange {get;set;} = default;
-			public bool ShouldSerializefixedAtonChange() { return false; }
+
+			public bool ShouldSerializefixedAtonChange() { return fixedAtonChange.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26])]
 			public floatingAtonChange? floatingAtonChange {get;set;} = default;
-			public bool ShouldSerializefloatingAtonChange() { return false; }
+
+			public bool ShouldSerializefloatingAtonChange() { return floatingAtonChange.HasValue; }
 
 			[EnumerationValue([1,2,3,4])]
 			public audibleSignalAtonChange? audibleSignalAtonChange {get;set;} = default;
-			public bool ShouldSerializeaudibleSignalAtonChange() { return false; }
+
+			public bool ShouldSerializeaudibleSignalAtonChange() { return audibleSignalAtonChange.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24])]
 			public lightedAtonChange? lightedAtonChange {get;set;} = default;
-			public bool ShouldSerializelightedAtonChange() { return false; }
+
+			public bool ShouldSerializelightedAtonChange() { return lightedAtonChange.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30])]
 			public electronicAtonChange? electronicAtonChange {get;set;} = default;
-			public bool ShouldSerializeelectronicAtonChange() { return false; }
+
+			public bool ShouldSerializeelectronicAtonChange() { return electronicAtonChange.HasValue; }
 		}
 
 		[System.Serializable()]
@@ -4288,13 +4311,16 @@ namespace S100Framework.DomainModel.S201 {
 			public heightLengthUnits heightLengthUnits {get;set;}
 
 			public decimal? horizontalLength {get;set;} = default;
-			public bool ShouldSerializehorizontalLength() { return false; }
+
+			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			public decimal? horizontalWidth {get;set;} = default;
-			public bool ShouldSerializehorizontalWidth() { return false; }
+
+			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
 			public decimal? verticalLength {get;set;} = default;
-			public bool ShouldSerializeverticalLength() { return false; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 		}
 
 		[System.Serializable()]
@@ -4314,25 +4340,30 @@ namespace S100Framework.DomainModel.S201 {
 			public decimal uncertaintyFixed {get;set;}
 
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
-			public bool ShouldSerializeuncertaintyVariableFactor() { return false; }
+
+			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class information {
 			public String? fileLocator {get;set;} = default;
-			public bool ShouldSerializefileLocator() { return false; }
+
+			public bool ShouldSerializefileLocator() { return string.IsNullOrEmpty(fileLocator); }
 
 			public String? fileReference {get;set;} = default;
-			public bool ShouldSerializefileReference() { return false; }
+
+			public bool ShouldSerializefileReference() { return string.IsNullOrEmpty(fileReference); }
 
 			public String? headline {get;set;} = default;
-			public bool ShouldSerializeheadline() { return false; }
+
+			public bool ShouldSerializeheadline() { return string.IsNullOrEmpty(headline); }
 
 			public String language {get;set;} = string.Empty;
 
 			public String? text {get;set;} = default;
-			public bool ShouldSerializetext() { return false; }
+
+			public bool ShouldSerializetext() { return string.IsNullOrEmpty(text); }
 		}
 
 		[System.Serializable()]
@@ -4341,7 +4372,8 @@ namespace S100Framework.DomainModel.S201 {
 			public String fileReference {get;set;} = string.Empty;
 
 			public String? language {get;set;} = default;
-			public bool ShouldSerializelanguage() { return false; }
+
+			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
 		}
 
 		[System.Serializable()]
@@ -4351,14 +4383,16 @@ namespace S100Framework.DomainModel.S201 {
 			public decimal uncertaintyFixed {get;set;}
 
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
-			public bool ShouldSerializeuncertaintyVariableFactor() { return false; }
+
+			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class directionalCharacter {
 			public Boolean? moireEffect {get;set;} = default;
-			public bool ShouldSerializemoireEffect() { return false; }
+
+			public bool ShouldSerializemoireEffect() { return moireEffect.HasValue; }
 
 			[Required()]
 			public orientation orientation {get;set;}
@@ -4373,10 +4407,15 @@ namespace S100Framework.DomainModel.S201 {
 
 			public List<String> signalGroup {get;set;} = [];
 
+			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
+
 			public decimal? signalPeriod {get;set;} = default;
-			public bool ShouldSerializesignalPeriod() { return false; }
+
+			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
 			public List<signalSequence> signalSequence {get;set;} = [];
+
+			public bool ShouldSerializesignalSequence() { return signalSequence.Any(); }
 		}
 
 		[System.Serializable()]
@@ -4393,13 +4432,16 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class spatialAccuracy {
 			public fixedDateRange? fixedDateRange {get;set;} = default;
-			public bool ShouldSerializefixedDateRange() { return false; }
+
+			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			public horizontalPositionUncertainty? horizontalPositionUncertainty {get;set;} = default;
-			public bool ShouldSerializehorizontalPositionUncertainty() { return false; }
+
+			public bool ShouldSerializehorizontalPositionUncertainty() { return horizontalPositionUncertainty!=default; }
 
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-			public bool ShouldSerializeverticalUncertainty() { return false; }
+
+			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 		}
 
 		[System.Serializable()]
@@ -4409,7 +4451,8 @@ namespace S100Framework.DomainModel.S201 {
 			public sectorLimit sectorLimit {get;set;}
 
 			public sectorInformation? sectorInformation {get;set;} = default;
-			public bool ShouldSerializesectorInformation() { return false; }
+
+			public bool ShouldSerializesectorInformation() { return sectorInformation!=default; }
 		}
 
 		[System.Serializable()]
@@ -4418,22 +4461,32 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			public directionalCharacter? directionalCharacter {get;set;} = default;
-			public bool ShouldSerializedirectionalCharacter() { return false; }
+
+			public bool ShouldSerializedirectionalCharacter() { return directionalCharacter!=default; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<lightVisibility> lightVisibility {get;set;} = [];
 
+			public bool ShouldSerializelightVisibility() { return lightVisibility.Any(); }
+
 			public sectorLimit? sectorLimit {get;set;} = default;
-			public bool ShouldSerializesectorLimit() { return false; }
+
+			public bool ShouldSerializesectorLimit() { return sectorLimit!=default; }
 
 			public decimal? valueOfNominalRange {get;set;} = default;
-			public bool ShouldSerializevalueOfNominalRange() { return false; }
+
+			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
 
 			public List<sectorInformation> sectorInformation {get;set;} = [];
 
+			public bool ShouldSerializesectorInformation() { return sectorInformation.Any(); }
+
 			public Boolean? sectorExtension {get;set;} = default;
-			public bool ShouldSerializesectorExtension() { return false; }
+
+			public bool ShouldSerializesectorExtension() { return sectorExtension.HasValue; }
 		}
 
 		[System.Serializable()]
@@ -4445,15 +4498,23 @@ namespace S100Framework.DomainModel.S201 {
 
 			public List<lightSector> lightSector {get;set;} = [];
 
+			public bool ShouldSerializelightSector() { return lightSector.Any(); }
+
 			public List<String> signalGroup {get;set;} = [];
 
+			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
+
 			public decimal? signalPeriod {get;set;} = default;
-			public bool ShouldSerializesignalPeriod() { return false; }
+
+			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
 			public List<signalSequence> signalSequence {get;set;} = [];
 
+			public bool ShouldSerializesignalSequence() { return signalSequence.Any(); }
+
 			public decimal? candela {get;set;} = default;
-			public bool ShouldSerializecandela() { return false; }
+
+			public bool ShouldSerializecandela() { return candela.HasValue; }
 		}
 
 	}
@@ -4784,14 +4845,24 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AtoNFixingMethod : InformationNode, IInformationBindingDefinition {
 			public String? referencePoint {get;set;} = default;
-			public bool ShouldSerializereferencePoint() { return false; }
+
+			public bool ShouldSerializereferencePoint() { return string.IsNullOrEmpty(referencePoint); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131])]
 			public horizontalDatum? horizontalDatum {get;set;} = default;
-			public bool ShouldSerializehorizontalDatum() { return false; }
 
+			public bool ShouldSerializehorizontalDatum() { return horizontalDatum.HasValue; }
+
+			[XmlIgnore]
 			[Required()]
 			public DateOnly sourceDate {get;set;}
+
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "sourceDate")]
+			public DateTime sourceDateField {
+				get { return sourceDate.ToDateTime(TimeOnly.MinValue); }
+				set { sourceDate = DateOnly.FromDateTime(value); }
+			}
 
 			public String positioningProcedure {get;set;} = string.Empty;
 
@@ -4815,7 +4886,8 @@ namespace S100Framework.DomainModel.S201 {
 
 			[EnumerationValue([1,2,3,4])]
 			public ChangeTypes? ChangeTypes {get;set;} = default;
-			public bool ShouldSerializeChangeTypes() { return false; }
+
+			public bool ShouldSerializeChangeTypes() { return ChangeTypes.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(AtonStatusInformation);
@@ -4835,7 +4907,8 @@ namespace S100Framework.DomainModel.S201 {
 			public String positioningDevice {get;set;} = string.Empty;
 
 			public positioningMethod? positioningMethod {get;set;} = default;
-			public bool ShouldSerializepositioningMethod() { return false; }
+
+			public bool ShouldSerializepositioningMethod() { return positioningMethod!=default; }
 
 			[JsonIgnore]
 			public override string Code => nameof(PositioningInformation);
@@ -4854,10 +4927,12 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class SpatialQuality : InformationNode, IInformationBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
-			public bool ShouldSerializequalityOfHorizontalMeasurement() { return false; }
+
+			public bool ShouldSerializequalityOfHorizontalMeasurement() { return qualityOfHorizontalMeasurement.HasValue; }
 
 			public spatialAccuracy? spatialAccuracy {get;set;} = default;
-			public bool ShouldSerializespatialAccuracy() { return false; }
+
+			public bool ShouldSerializespatialAccuracy() { return spatialAccuracy!=default; }
 
 			[JsonIgnore]
 			public override string Code => nameof(SpatialQuality);
@@ -4879,43 +4954,62 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class AidsToNavigation : FeatureNode, IFeatureBindingDefinition {
 			public String? iDCode {get;set;} = default;
-			public bool ShouldSerializeiDCode() { return false; }
+
+			public bool ShouldSerializeiDCode() { return string.IsNullOrEmpty(iDCode); }
 
 			public List<information> information {get;set;} = [];
 
+			public bool ShouldSerializeinformation() { return information.Any(); }
+
 			public List<featureName> featureName {get;set;} = [];
 
-			public int? scaleMinimum {get;set;} = default;
-			public bool ShouldSerializescaleMinimum() { return false; }
+			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			public int? scaleMinimum {get;set;} = default;
+
+			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
+
+			[XmlIgnore]
 			public DateOnly? sourceDate {get;set;} = default;
-			public bool ShouldSerializesourceDate() { return false; }
+
+			public bool ShouldSerializesourceDate() { return sourceDate.HasValue; }
 
 			public String? source {get;set;} = default;
-			public bool ShouldSerializesource() { return false; }
+
+			public bool ShouldSerializesource() { return string.IsNullOrEmpty(source); }
 
 			public String? pictorialRepresentation {get;set;} = default;
-			public bool ShouldSerializepictorialRepresentation() { return false; }
+
+			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
 
 			public String? inspectionFrequency {get;set;} = default;
-			public bool ShouldSerializeinspectionFrequency() { return false; }
+
+			public bool ShouldSerializeinspectionFrequency() { return string.IsNullOrEmpty(inspectionFrequency); }
 
 			public String? inspectionRequirements {get;set;} = default;
-			public bool ShouldSerializeinspectionRequirements() { return false; }
+
+			public bool ShouldSerializeinspectionRequirements() { return string.IsNullOrEmpty(inspectionRequirements); }
 
 			public String? aToNMaintenanceRecord {get;set;} = default;
-			public bool ShouldSerializeaToNMaintenanceRecord() { return false; }
 
+			public bool ShouldSerializeaToNMaintenanceRecord() { return string.IsNullOrEmpty(aToNMaintenanceRecord); }
+
+			[XmlIgnore]
 			public DateOnly? installationDate {get;set;} = default;
-			public bool ShouldSerializeinstallationDate() { return false; }
+
+			public bool ShouldSerializeinstallationDate() { return installationDate.HasValue; }
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
-			public bool ShouldSerializefixedDateRange() { return false; }
+
+			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			public periodicDateRange? periodicDateRange {get;set;} = default;
-			public bool ShouldSerializeperiodicDateRange() { return false; }
+
+			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange!=default; }
 
 			public List<String> SeasonalActionRequired {get;set;} = [];
+
+			public bool ShouldSerializeSeasonalActionRequired() { return SeasonalActionRequired.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(AidsToNavigation);
@@ -4972,14 +5066,17 @@ namespace S100Framework.DomainModel.S201 {
 
 			[EnumerationValue([1,2,3])]
 			public aidAvailabilityCategory? aidAvailabilityCategory {get;set;} = default;
-			public bool ShouldSerializeaidAvailabilityCategory() { return false; }
+
+			public bool ShouldSerializeaidAvailabilityCategory() { return aidAvailabilityCategory.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5])]
 			public condition? condition {get;set;} = default;
-			public bool ShouldSerializecondition() { return false; }
+
+			public bool ShouldSerializecondition() { return condition.HasValue; }
 
 			public contactAddress? contactAddress {get;set;} = default;
-			public bool ShouldSerializecontactAddress() { return false; }
+
+			public bool ShouldSerializecontactAddress() { return contactAddress!=default; }
 
 			[JsonIgnore]
 			public override string Code => nameof(StructureObject);
@@ -5034,6 +5131,8 @@ namespace S100Framework.DomainModel.S201 {
 		public abstract class Equipment : AidsToNavigation {
 			public List<String> remoteMonitoringSystem {get;set;} = [];
 
+			public bool ShouldSerializeremoteMonitoringSystem() { return remoteMonitoringSystem.Any(); }
+
 			[JsonIgnore]
 			public override string Code => nameof(Equipment);
 
@@ -5070,11 +5169,14 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class ElectronicAton : AidsToNavigation {
 			public String? AtoNNumber {get;set;} = default;
-			public bool ShouldSerializeAtoNNumber() { return false; }
+
+			public bool ShouldSerializeAtoNNumber() { return string.IsNullOrEmpty(AtoNNumber); }
 
 			public String mMSICode {get;set;} = string.Empty;
 
 			public List<status> status {get;set;} = [];
+
+			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(ElectronicAton);
@@ -5110,37 +5212,52 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			public decimal? elevation {get;set;} = default;
-			public bool ShouldSerializeelevation() { return false; }
+
+			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
 			public decimal? height {get;set;} = default;
-			public bool ShouldSerializeheight() { return false; }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
-			public bool ShouldSerializemarksNavigationalSystemOf() { return false; }
+
+			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
 			public Boolean? radarConspicuous {get;set;} = default;
-			public bool ShouldSerializeradarConspicuous() { return false; }
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			public decimal? verticalLength {get;set;} = default;
-			public bool ShouldSerializeverticalLength() { return false; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
-			public bool ShouldSerializevisualProminence() { return false; }
+
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
 			public decimal? verticalAccuracy {get;set;} = default;
-			public bool ShouldSerializeverticalAccuracy() { return false; }
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(GenericBeacon);
@@ -5176,30 +5293,43 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
-			public bool ShouldSerializemarksNavigationalSystemOf() { return false; }
+
+			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
 			public Boolean? radarConspicuous {get;set;} = default;
-			public bool ShouldSerializeradarConspicuous() { return false; }
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			public String? typeOfBuoy {get;set;} = default;
-			public bool ShouldSerializetypeOfBuoy() { return false; }
+
+			public bool ShouldSerializetypeOfBuoy() { return string.IsNullOrEmpty(typeOfBuoy); }
 
 			public decimal? verticalLength {get;set;} = default;
-			public bool ShouldSerializeverticalLength() { return false; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			public decimal? verticalAccuracy {get;set;} = default;
-			public bool ShouldSerializeverticalAccuracy() { return false; }
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(GenericBuoy);
@@ -5263,24 +5393,33 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			public decimal? height {get;set;} = default;
-			public bool ShouldSerializeheight() { return false; }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
-			public bool ShouldSerializeverticalDatum() { return false; }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			public decimal? verticalLength {get;set;} = default;
-			public bool ShouldSerializeverticalLength() { return false; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			public decimal? effectiveIntensity {get;set;} = default;
-			public bool ShouldSerializeeffectiveIntensity() { return false; }
+
+			public bool ShouldSerializeeffectiveIntensity() { return effectiveIntensity.HasValue; }
 
 			public decimal? peakIntensity {get;set;} = default;
-			public bool ShouldSerializepeakIntensity() { return false; }
+
+			public bool ShouldSerializepeakIntensity() { return peakIntensity.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(GenericLight);
@@ -5312,46 +5451,65 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
 			public List<categoryOfLandmark> categoryOfLandmark {get;set;} = [];
 
+			public bool ShouldSerializecategoryOfLandmark() { return categoryOfLandmark.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
+
+			public bool ShouldSerializecolour() { return colour.Any(); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48])]
 			public List<function> function {get;set;} = [];
+
+			public bool ShouldSerializefunction() { return function.Any(); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
 			public Boolean? radarConspicuous {get;set;} = default;
-			public bool ShouldSerializeradarConspicuous() { return false; }
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
-			public bool ShouldSerializeverticalDatum() { return false; }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[EnumerationValue([1,2,3])]
 			[Required()]
 			public visualProminence visualProminence {get;set;}
 
 			public decimal? elevation {get;set;} = default;
-			public bool ShouldSerializeelevation() { return false; }
+
+			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
 			public decimal? height {get;set;} = default;
-			public bool ShouldSerializeheight() { return false; }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			public Boolean? mannedStructure {get;set;} = default;
-			public bool ShouldSerializemannedStructure() { return false; }
+
+			public bool ShouldSerializemannedStructure() { return mannedStructure.HasValue; }
 
 			public decimal? verticalLength {get;set;} = default;
-			public bool ShouldSerializeverticalLength() { return false; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			public decimal? verticalAccuracy {get;set;} = default;
-			public bool ShouldSerializeverticalAccuracy() { return false; }
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(Landmark);
@@ -5449,6 +5607,8 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			[Required()]
 			public orientation orientation {get;set;}
 
@@ -5491,29 +5651,39 @@ namespace S100Framework.DomainModel.S201 {
 			public Boolean basedOnFixedMarks {get;set;} = false;
 
 			public decimal? depthRangeMinimumValue {get;set;} = default;
-			public bool ShouldSerializedepthRangeMinimumValue() { return false; }
+
+			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
 			public decimal? maximalPermittedDraught {get;set;} = default;
-			public bool ShouldSerializemaximalPermittedDraught() { return false; }
+
+			public bool ShouldSerializemaximalPermittedDraught() { return maximalPermittedDraught.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
-			public bool ShouldSerializeverticalDatum() { return false; }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[Required()]
 			public orientation orientation {get;set;}
 
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-			public bool ShouldSerializeverticalUncertainty() { return false; }
+
+			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
+			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
+
+			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
 			[EnumerationValue([1,2,3,4])]
 			[Required()]
@@ -5557,20 +5727,30 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,4,5,6,8,9,10,11,12,13,14,15,17,18,19,20])]
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
 
+			public bool ShouldSerializecategoryOfLight() { return categoryOfLight.Any(); }
+
 			[EnumerationValue([1,2,3,4])]
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
-			public bool ShouldSerializeexhibitionConditionOfLight() { return false; }
+
+			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.HasValue; }
 
 			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
 			public List<marksNavigationalSystemOf> marksNavigationalSystemOf {get;set;} = [];
 
+			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
-			public bool ShouldSerializesignalGeneration() { return false; }
+
+			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
 
 			public List<ObscuredSector> ObscuredSector {get;set;} = [];
 
+			public bool ShouldSerializeObscuredSector() { return ObscuredSector.Any(); }
+
 			public List<sectorCharacteristics> sectorCharacteristics {get;set;} = [];
+
+			public bool ShouldSerializesectorCharacteristics() { return sectorCharacteristics.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(LightSectored);
@@ -5602,35 +5782,46 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,4,5,6,8,9,10,11,12,13,14,15,17,18,19,20])]
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
 
+			public bool ShouldSerializecategoryOfLight() { return categoryOfLight.Any(); }
+
 			[EnumerationValue([1,2,3,4])]
 			public List<exhibitionConditionOfLight> exhibitionConditionOfLight {get;set;} = [];
 
+			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public lightVisibility? lightVisibility {get;set;} = default;
-			public bool ShouldSerializelightVisibility() { return false; }
+
+			public bool ShouldSerializelightVisibility() { return lightVisibility.HasValue; }
 
 			public Boolean? majorLight {get;set;} = default;
-			public bool ShouldSerializemajorLight() { return false; }
+
+			public bool ShouldSerializemajorLight() { return majorLight.HasValue; }
 
 			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
-			public bool ShouldSerializemarksNavigationalSystemOf() { return false; }
+
+			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
-			public bool ShouldSerializesignalGeneration() { return false; }
+
+			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
 
 			public decimal? valueOfNominalRange {get;set;} = default;
-			public bool ShouldSerializevalueOfNominalRange() { return false; }
+
+			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
 
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
-			public bool ShouldSerializemultiplicityOfFeatures() { return false; }
+
+			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
 			[Required()]
 			public rhythmOfLight rhythmOfLight {get;set;}
 
 			public int? flareBearing {get;set;} = default;
-			public bool ShouldSerializeflareBearing() { return false; }
+
+			public bool ShouldSerializeflareBearing() { return flareBearing.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(LightAllAround);
@@ -5661,28 +5852,36 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class LightAirObstruction : GenericLight {
 			[EnumerationValue([1,2,3,4])]
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
-			public bool ShouldSerializeexhibitionConditionOfLight() { return false; }
+
+			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<lightVisibility> lightVisibility {get;set;} = [];
 
+			public bool ShouldSerializelightVisibility() { return lightVisibility.Any(); }
+
 			public decimal? valueOfGeographicRange {get;set;} = default;
-			public bool ShouldSerializevalueOfGeographicRange() { return false; }
+
+			public bool ShouldSerializevalueOfGeographicRange() { return valueOfGeographicRange.HasValue; }
 
 			public decimal? valueOfLuminousRange {get;set;} = default;
-			public bool ShouldSerializevalueOfLuminousRange() { return false; }
+
+			public bool ShouldSerializevalueOfLuminousRange() { return valueOfLuminousRange.HasValue; }
 
 			public decimal? valueOfNominalRange {get;set;} = default;
-			public bool ShouldSerializevalueOfNominalRange() { return false; }
+
+			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
 
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
-			public bool ShouldSerializemultiplicityOfFeatures() { return false; }
+
+			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
 			[Required()]
 			public rhythmOfLight rhythmOfLight {get;set;}
 
 			public int? flareBearing {get;set;} = default;
-			public bool ShouldSerializeflareBearing() { return false; }
+
+			public bool ShouldSerializeflareBearing() { return flareBearing.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(LightAirObstruction);
@@ -5713,7 +5912,8 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class LightFogDetector : GenericLight {
 			[EnumerationValue([1,2,3,4,5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
-			public bool ShouldSerializesignalGeneration() { return false; }
+
+			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
 
 			[Required()]
 			public rhythmOfLight rhythmOfLight {get;set;}
@@ -5746,17 +5946,22 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadarReflector : Equipment {
 			public decimal? height {get;set;} = default;
-			public bool ShouldSerializeheight() { return false; }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
-			public bool ShouldSerializeverticalDatum() { return false; }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			public decimal? verticalAccuracy {get;set;} = default;
-			public bool ShouldSerializeverticalAccuracy() { return false; }
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(RadarReflector);
@@ -5790,29 +5995,38 @@ namespace S100Framework.DomainModel.S201 {
 			public categoryOfFogSignal categoryOfFogSignal {get;set;}
 
 			public int? signalFrequency {get;set;} = default;
-			public bool ShouldSerializesignalFrequency() { return false; }
+
+			public bool ShouldSerializesignalFrequency() { return signalFrequency.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
-			public bool ShouldSerializesignalGeneration() { return false; }
+
+			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
 
 			public String? signalGroup {get;set;} = default;
-			public bool ShouldSerializesignalGroup() { return false; }
+
+			public bool ShouldSerializesignalGroup() { return string.IsNullOrEmpty(signalGroup); }
 
 			public decimal? signalOutput {get;set;} = default;
-			public bool ShouldSerializesignalOutput() { return false; }
+
+			public bool ShouldSerializesignalOutput() { return signalOutput.HasValue; }
 
 			public decimal? signalPeriod {get;set;} = default;
-			public bool ShouldSerializesignalPeriod() { return false; }
+
+			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			public decimal? valueOfMaximumRange {get;set;} = default;
-			public bool ShouldSerializevalueOfMaximumRange() { return false; }
+
+			public bool ShouldSerializevalueOfMaximumRange() { return valueOfMaximumRange.HasValue; }
 
 			public signalSequence? signalSequence {get;set;} = default;
-			public bool ShouldSerializesignalSequence() { return false; }
+
+			public bool ShouldSerializesignalSequence() { return signalSequence!=default; }
 
 			[JsonIgnore]
 			public override string Code => nameof(FogSignal);
@@ -5842,12 +6056,17 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class EnvironmentObservationEquipment : Equipment {
 			public decimal? height {get;set;} = default;
-			public bool ShouldSerializeheight() { return false; }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			public List<String> typeOfEnvironmentalObservationEquipment {get;set;} = [];
+
+			public bool ShouldSerializetypeOfEnvironmentalObservationEquipment() { return typeOfEnvironmentalObservationEquipment.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(EnvironmentObservationEquipment);
@@ -5881,11 +6100,13 @@ namespace S100Framework.DomainModel.S201 {
 			public categoryOfRadioStation categoryOfRadioStation {get;set;}
 
 			public decimal? estimatedRangeOfTransmission {get;set;} = default;
-			public bool ShouldSerializeestimatedRangeOfTransmission() { return false; }
+
+			public bool ShouldSerializeestimatedRangeOfTransmission() { return estimatedRangeOfTransmission.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public status? status {get;set;} = default;
-			public bool ShouldSerializestatus() { return false; }
+
+			public bool ShouldSerializestatus() { return status.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(RadioStation);
@@ -5940,28 +6161,40 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class Daymark : Equipment {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
 			public categoryOfSpecialPurposeMark? categoryOfSpecialPurposeMark {get;set;} = default;
-			public bool ShouldSerializecategoryOfSpecialPurposeMark() { return false; }
+
+			public bool ShouldSerializecategoryOfSpecialPurposeMark() { return categoryOfSpecialPurposeMark.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			public decimal? elevation {get;set;} = default;
-			public bool ShouldSerializeelevation() { return false; }
+
+			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
 			public decimal? height {get;set;} = default;
-			public bool ShouldSerializeheight() { return false; }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
 			public decimal? orientationValue {get;set;} = default;
-			public bool ShouldSerializeorientationValue() { return false; }
+
+			public bool ShouldSerializeorientationValue() { return orientationValue.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
+
+			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
 			[Required()]
@@ -5969,13 +6202,16 @@ namespace S100Framework.DomainModel.S201 {
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
-			public bool ShouldSerializeverticalDatum() { return false; }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			public decimal? verticalLength {get;set;} = default;
-			public bool ShouldSerializeverticalLength() { return false; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			public shapeInformation? shapeInformation {get;set;} = default;
-			public bool ShouldSerializeshapeInformation() { return false; }
+
+			public bool ShouldSerializeshapeInformation() { return shapeInformation!=default; }
 
 			[Required()]
 			public Boolean isSlatted {get;set;} = false;
@@ -6010,25 +6246,35 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
-			public bool ShouldSerializemarksNavigationalSystemOf() { return false; }
+
+			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
-			public bool ShouldSerializeverticalDatum() { return false; }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			public decimal? height {get;set;} = default;
-			public bool ShouldSerializeheight() { return false; }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			public decimal? verticalAccuracy {get;set;} = default;
-			public bool ShouldSerializeverticalAccuracy() { return false; }
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(Retroreflector);
@@ -6062,28 +6308,37 @@ namespace S100Framework.DomainModel.S201 {
 			public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon {get;set;}
 
 			public radarWaveLength? radarWaveLength {get;set;} = default;
-			public bool ShouldSerializeradarWaveLength() { return false; }
+
+			public bool ShouldSerializeradarWaveLength() { return radarWaveLength!=default; }
 
 			public String? signalGroup {get;set;} = default;
-			public bool ShouldSerializesignalGroup() { return false; }
+
+			public bool ShouldSerializesignalGroup() { return string.IsNullOrEmpty(signalGroup); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			public decimal? valueOfNominalRange {get;set;} = default;
-			public bool ShouldSerializevalueOfNominalRange() { return false; }
+
+			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
 
 			public String? manufactorer {get;set;} = default;
-			public bool ShouldSerializemanufactorer() { return false; }
+
+			public bool ShouldSerializemanufactorer() { return string.IsNullOrEmpty(manufactorer); }
 
 			public sectorLimitOne? sectorLimitOne {get;set;} = default;
-			public bool ShouldSerializesectorLimitOne() { return false; }
+
+			public bool ShouldSerializesectorLimitOne() { return sectorLimitOne!=default; }
 
 			public sectorLimitTwo? sectorLimitTwo {get;set;} = default;
-			public bool ShouldSerializesectorLimitTwo() { return false; }
+
+			public bool ShouldSerializesectorLimitTwo() { return sectorLimitTwo!=default; }
 
 			public signalSequence? signalSequence {get;set;} = default;
-			public bool ShouldSerializesignalSequence() { return false; }
+
+			public bool ShouldSerializesignalSequence() { return signalSequence!=default; }
 
 			[JsonIgnore]
 			public override string Code => nameof(RadarTransponderBeacon);
@@ -6239,6 +6494,8 @@ namespace S100Framework.DomainModel.S201 {
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
+
+			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(PowerSource);
@@ -6498,39 +6755,55 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			public decimal? horizontalLength {get;set;} = default;
-			public bool ShouldSerializehorizontalLength() { return false; }
+
+			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			public decimal? horizontalWidth {get;set;} = default;
-			public bool ShouldSerializehorizontalWidth() { return false; }
+
+			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
 			public Boolean? mannedStructure {get;set;} = default;
-			public bool ShouldSerializemannedStructure() { return false; }
+
+			public bool ShouldSerializemannedStructure() { return mannedStructure.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
 			public Boolean? radarConspicuous {get;set;} = default;
-			public bool ShouldSerializeradarConspicuous() { return false; }
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			public decimal? verticalLength {get;set;} = default;
-			public bool ShouldSerializeverticalLength() { return false; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
-			public bool ShouldSerializevisualProminence() { return false; }
+
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
 			public decimal? verticalAccuracy {get;set;} = default;
-			public bool ShouldSerializeverticalAccuracy() { return false; }
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			public decimal? horizontalAccuracy {get;set;} = default;
-			public bool ShouldSerializehorizontalAccuracy() { return false; }
+
+			public bool ShouldSerializehorizontalAccuracy() { return horizontalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(LightFloat);
@@ -6562,39 +6835,55 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			public decimal? horizontalLength {get;set;} = default;
-			public bool ShouldSerializehorizontalLength() { return false; }
+
+			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			public decimal? horizontalWidth {get;set;} = default;
-			public bool ShouldSerializehorizontalWidth() { return false; }
+
+			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
 			public Boolean? mannedStructure {get;set;} = default;
-			public bool ShouldSerializemannedStructure() { return false; }
+
+			public bool ShouldSerializemannedStructure() { return mannedStructure.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
 			public Boolean? radarConspicuous {get;set;} = default;
-			public bool ShouldSerializeradarConspicuous() { return false; }
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			public decimal? verticalLength {get;set;} = default;
-			public bool ShouldSerializeverticalLength() { return false; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
-			public bool ShouldSerializevisualProminence() { return false; }
+
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
 			public decimal? verticalAccuracy {get;set;} = default;
-			public bool ShouldSerializeverticalAccuracy() { return false; }
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			public decimal? horizontalAccuracy {get;set;} = default;
-			public bool ShouldSerializehorizontalAccuracy() { return false; }
+
+			public bool ShouldSerializehorizontalAccuracy() { return horizontalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(LightVessel);
@@ -6626,43 +6915,62 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			public List<categoryOfOffshorePlatform> categoryOfOffshorePlatform {get;set;} = [];
 
+			public bool ShouldSerializecategoryOfOffshorePlatform() { return categoryOfOffshorePlatform.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
+
+			public bool ShouldSerializecolour() { return colour.Any(); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			public decimal? height {get;set;} = default;
-			public bool ShouldSerializeheight() { return false; }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			public Boolean? mannedStructure {get;set;} = default;
-			public bool ShouldSerializemannedStructure() { return false; }
+
+			public bool ShouldSerializemannedStructure() { return mannedStructure.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25])]
 			public List<product> product {get;set;} = [];
 
+			public bool ShouldSerializeproduct() { return product.Any(); }
+
 			public Boolean? radarConspicuous {get;set;} = default;
-			public bool ShouldSerializeradarConspicuous() { return false; }
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
-			public bool ShouldSerializeverticalDatum() { return false; }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			public decimal? verticalLength {get;set;} = default;
-			public bool ShouldSerializeverticalLength() { return false; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
-			public bool ShouldSerializevisualProminence() { return false; }
+
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
 			public decimal? verticalAccuracy {get;set;} = default;
-			public bool ShouldSerializeverticalAccuracy() { return false; }
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(OffshorePlatform);
@@ -6693,46 +7001,63 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class SiloTank : StructureObject {
 			[EnumerationValue([5,6,7,8,9])]
 			public buildingShape? buildingShape {get;set;} = default;
-			public bool ShouldSerializebuildingShape() { return false; }
+
+			public bool ShouldSerializebuildingShape() { return buildingShape.HasValue; }
 
 			[EnumerationValue([1,2,3,4])]
 			public categoryOfSiloTank? categoryOfSiloTank {get;set;} = default;
-			public bool ShouldSerializecategoryOfSiloTank() { return false; }
+
+			public bool ShouldSerializecategoryOfSiloTank() { return categoryOfSiloTank.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			public decimal? elevation {get;set;} = default;
-			public bool ShouldSerializeelevation() { return false; }
+
+			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
 			public decimal? height {get;set;} = default;
-			public bool ShouldSerializeheight() { return false; }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
 			public Boolean? radarConspicuous {get;set;} = default;
-			public bool ShouldSerializeradarConspicuous() { return false; }
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
-			public bool ShouldSerializeverticalDatum() { return false; }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			public decimal? verticalLength {get;set;} = default;
-			public bool ShouldSerializeverticalLength() { return false; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
-			public bool ShouldSerializevisualProminence() { return false; }
+
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
 			public decimal? verticalAccuracy {get;set;} = default;
-			public bool ShouldSerializeverticalAccuracy() { return false; }
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(SiloTank);
@@ -6763,30 +7088,40 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class Pile : StructureObject {
 			[EnumerationValue([1,3,4,5,6,7])]
 			public categoryOfPile? categoryOfPile {get;set;} = default;
-			public bool ShouldSerializecategoryOfPile() { return false; }
+
+			public bool ShouldSerializecategoryOfPile() { return categoryOfPile.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			public decimal? height {get;set;} = default;
-			public bool ShouldSerializeheight() { return false; }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
-			public bool ShouldSerializeverticalDatum() { return false; }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			public decimal? verticalLength {get;set;} = default;
-			public bool ShouldSerializeverticalLength() { return false; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
-			public bool ShouldSerializevisualProminence() { return false; }
+
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
 			public decimal? verticalAccuracy {get;set;} = default;
-			public bool ShouldSerializeverticalAccuracy() { return false; }
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(Pile);
@@ -6871,16 +7206,19 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class SinkerAnchor : AidsToNavigation {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public natureOfConstruction? natureOfConstruction {get;set;} = default;
-			public bool ShouldSerializenatureOfConstruction() { return false; }
+
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.HasValue; }
 
 			public sinkerDimensions? sinkerDimensions {get;set;} = default;
-			public bool ShouldSerializesinkerDimensions() { return false; }
+
+			public bool ShouldSerializesinkerDimensions() { return sinkerDimensions!=default; }
 
 			[Required()]
 			public decimal weight {get;set;}
 
 			public String? sinkerType {get;set;} = default;
-			public bool ShouldSerializesinkerType() { return false; }
+
+			public bool ShouldSerializesinkerType() { return string.IsNullOrEmpty(sinkerType); }
 
 			[JsonIgnore]
 			public override string Code => nameof(SinkerAnchor);
@@ -6919,14 +7257,17 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class MooringShackle : AidsToNavigation {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public natureOfConstruction? natureOfConstruction {get;set;} = default;
-			public bool ShouldSerializenatureOfConstruction() { return false; }
+
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6])]
 			public ShackleType? ShackleType {get;set;} = default;
-			public bool ShouldSerializeShackleType() { return false; }
+
+			public bool ShouldSerializeShackleType() { return ShackleType.HasValue; }
 
 			public decimal? weight {get;set;} = default;
-			public bool ShouldSerializeweight() { return false; }
+
+			public bool ShouldSerializeweight() { return weight.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(MooringShackle);
@@ -6996,7 +7337,8 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CableSubmarine : AidsToNavigation {
 			public CableDimensions? CableDimensions {get;set;} = default;
-			public bool ShouldSerializeCableDimensions() { return false; }
+
+			public bool ShouldSerializeCableDimensions() { return CableDimensions!=default; }
 
 			[EnumerationValue([1,3,4,5,6,7,8])]
 			[Required()]
@@ -7004,6 +7346,8 @@ namespace S100Framework.DomainModel.S201 {
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
+
+			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(CableSubmarine);
@@ -7058,13 +7402,16 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class Swivel : AidsToNavigation {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public natureOfConstruction? natureOfConstruction {get;set;} = default;
-			public bool ShouldSerializenatureOfConstruction() { return false; }
+
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.HasValue; }
 
 			public decimal? weight {get;set;} = default;
-			public bool ShouldSerializeweight() { return false; }
+
+			public bool ShouldSerializeweight() { return weight.HasValue; }
 
 			public String? swivelType {get;set;} = default;
-			public bool ShouldSerializeswivelType() { return false; }
+
+			public bool ShouldSerializeswivelType() { return string.IsNullOrEmpty(swivelType); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Swivel);
@@ -7118,10 +7465,12 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Bridle : AidsToNavigation {
 			public String? bridleLinkType {get;set;} = default;
-			public bool ShouldSerializebridleLinkType() { return false; }
+
+			public bool ShouldSerializebridleLinkType() { return string.IsNullOrEmpty(bridleLinkType); }
 
 			public String? legsDetails {get;set;} = default;
-			public bool ShouldSerializelegsDetails() { return false; }
+
+			public bool ShouldSerializelegsDetails() { return string.IsNullOrEmpty(legsDetails); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Bridle);
@@ -7184,13 +7533,15 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class CounterWeight : AidsToNavigation {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public natureOfConstruction? natureOfConstruction {get;set;} = default;
-			public bool ShouldSerializenatureOfConstruction() { return false; }
+
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.HasValue; }
 
 			[Required()]
 			public decimal weight {get;set;}
 
 			public String? counterWeightType {get;set;} = default;
-			public bool ShouldSerializecounterWeightType() { return false; }
+
+			public bool ShouldSerializecounterWeightType() { return string.IsNullOrEmpty(counterWeightType); }
 
 			[JsonIgnore]
 			public override string Code => nameof(CounterWeight);
@@ -7230,18 +7581,25 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
+
+			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
 			[Required()]
 			public topmarkDaymarkShape topmarkDaymarkShape {get;set;}
 
 			public decimal? verticalLength {get;set;} = default;
-			public bool ShouldSerializeverticalLength() { return false; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(Topmark);
@@ -7308,6 +7666,8 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
+			public bool ShouldSerializecategoryOfSpecialPurposeMark() { return categoryOfSpecialPurposeMark.Any(); }
+
 			[JsonIgnore]
 			public override string Code => nameof(SpecialPurposeGeneralBeacon);
 
@@ -7365,6 +7725,8 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
+			public bool ShouldSerializecategoryOfSpecialPurposeMark() { return categoryOfSpecialPurposeMark.Any(); }
+
 			[JsonIgnore]
 			public override string Code => nameof(SpecialPurposeGeneralBuoy);
 
@@ -7393,6 +7755,8 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DangerousFeature : FeatureNode, IFeatureBindingDefinition {
 			public List<information> information {get;set;} = [];
+
+			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(DangerousFeature);
@@ -7520,25 +7884,31 @@ namespace S100Framework.DomainModel.S201 {
 			public categoryOfTemporalVariation categoryOfTemporalVariation {get;set;}
 
 			public decimal? orientationUncertainty {get;set;} = default;
-			public bool ShouldSerializeorientationUncertainty() { return false; }
+
+			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			public decimal? horizontalDistanceUncertainty {get;set;} = default;
-			public bool ShouldSerializehorizontalDistanceUncertainty() { return false; }
+
+			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
 
 			[Required()]
 			public horizontalPositionUncertainty horizontalPositionUncertainty {get;set;}
 
 			public information? information {get;set;} = default;
-			public bool ShouldSerializeinformation() { return false; }
+
+			public bool ShouldSerializeinformation() { return information!=default; }
 
 			public String? informationInNationalLanguage {get;set;} = default;
-			public bool ShouldSerializeinformationInNationalLanguage() { return false; }
+
+			public bool ShouldSerializeinformationInNationalLanguage() { return string.IsNullOrEmpty(informationInNationalLanguage); }
 
 			public textualDescription? textualDescription {get;set;} = default;
-			public bool ShouldSerializetextualDescription() { return false; }
+
+			public bool ShouldSerializetextualDescription() { return textualDescription!=default; }
 
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-			public bool ShouldSerializeverticalUncertainty() { return false; }
+
+			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
 			[JsonIgnore]
 			public override string Code => nameof(QualityOfNonBathymetricData);
@@ -7721,10 +8091,12 @@ namespace S100Framework.DomainModel.S201 {
 	[XmlType(Namespace = "http://www.iho.int/S201/2.0")]
 	public class Dataset : S100Framework.DomainModel.S100.DatasetBase
 	{
+		[XmlElement(Order = 1)]
+		public Members? members { get; set; } = default;
 	}
 
 	[XmlType(Namespace = "http://www.iho.int/S201/2.0", TypeName = "members")]
-	public class Members : S100Framework.DomainModel.S100.MembersBase
+	public class Members
 	{
 		[XmlElement("InformationTypes.AtoNFixingMethod", typeof(InformationTypes.AtoNFixingMethod), Order = 1)]
 		[XmlElement("InformationTypes.AtonStatusInformation", typeof(InformationTypes.AtonStatusInformation), Order = 1)]
@@ -7785,7 +8157,7 @@ namespace S100Framework.DomainModel.S201 {
 		[XmlElement("FeatureTypes.NavigationalSystemOfMarks", typeof(FeatureTypes.NavigationalSystemOfMarks), Order = 1)]
 		[XmlElement("FeatureTypes.SoundingDatum", typeof(FeatureTypes.SoundingDatum), Order = 1)]
 		[XmlElement("FeatureTypes.VerticalDatumOfData", typeof(FeatureTypes.VerticalDatumOfData), Order = 1)]
-		public override List<object> elements { get; set; } = new List<object>();
+		public List<object> elements { get; set; } = new List<object>();
 	}
 }
 

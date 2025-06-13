@@ -119,23 +119,13 @@ namespace S100Framework.DomainModel.S100
 
         [XmlElement(DataType = "nonNegativeInteger", Order = 12)]
         public string updateNumber { get; set; }
-    }    
+    }
 
 
     [Serializable]
-    public partial class DatasetBase
+    public abstract class DatasetBase
     {
         [XmlElement(Order = 0)]
         public DataSetIdentification DatasetIdentificationInformation { get; set; }
-
-        //[XmlElement(Order = 1)]
-        //public members? members { get; set; } = default;
     }
-
-    [Serializable]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-    public abstract class MembersBase
-    {
-        public abstract List<object> elements { get; set; }
-    }    
 }

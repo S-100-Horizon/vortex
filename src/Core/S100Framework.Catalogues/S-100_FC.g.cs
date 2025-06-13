@@ -123,13 +123,10 @@ namespace S100Framework.DomainModel.S100
 
 
     [Serializable]
-    public partial class DatasetBase
+    public abstract class DatasetBase
     {
         [XmlElement(Order = 0)]
         public DataSetIdentification DatasetIdentificationInformation { get; set; }
-
-        //[XmlElement(Order = 1)]
-        //public members? members { get; set; } = default;
     }
 
     [Serializable]
@@ -137,5 +134,5 @@ namespace S100Framework.DomainModel.S100
     public abstract class MembersBase
     {
         public abstract List<object> elements { get; set; }
-    }    
+    }
 }

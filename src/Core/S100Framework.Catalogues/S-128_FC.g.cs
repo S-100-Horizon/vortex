@@ -903,18 +903,24 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class contactAddress {
 			public String? administrativeDivision {get;set;} = default;
-			public bool ShouldSerializeadministrativeDivision() { return false; }
+
+			public bool ShouldSerializeadministrativeDivision() { return string.IsNullOrEmpty(administrativeDivision); }
 
 			public String? cityName {get;set;} = default;
-			public bool ShouldSerializecityName() { return false; }
+
+			public bool ShouldSerializecityName() { return string.IsNullOrEmpty(cityName); }
 
 			public String? countryName {get;set;} = default;
-			public bool ShouldSerializecountryName() { return false; }
+
+			public bool ShouldSerializecountryName() { return string.IsNullOrEmpty(countryName); }
 
 			public List<String> deliveryPoint {get;set;} = [];
 
+			public bool ShouldSerializedeliveryPoint() { return deliveryPoint.Any(); }
+
 			public String? postalCode {get;set;} = default;
-			public bool ShouldSerializepostalCode() { return false; }
+
+			public bool ShouldSerializepostalCode() { return string.IsNullOrEmpty(postalCode); }
 		}
 
 		[System.Serializable()]
@@ -935,58 +941,72 @@ namespace S100Framework.DomainModel.S128 {
 			public String countryName {get;set;} = string.Empty;
 
 			public String? language {get;set;} = default;
-			public bool ShouldSerializelanguage() { return false; }
+
+			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class featureName {
 			public String? language {get;set;} = default;
-			public bool ShouldSerializelanguage() { return false; }
+
+			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
 
 			public String name {get;set;} = string.Empty;
 
 			public nameUsage? nameUsage {get;set;} = default;
-			public bool ShouldSerializenameUsage() { return false; }
+
+			public bool ShouldSerializenameUsage() { return nameUsage.HasValue; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class information {
 			public String? fileLocator {get;set;} = default;
-			public bool ShouldSerializefileLocator() { return false; }
+
+			public bool ShouldSerializefileLocator() { return string.IsNullOrEmpty(fileLocator); }
 
 			public String? fileReference {get;set;} = default;
-			public bool ShouldSerializefileReference() { return false; }
+
+			public bool ShouldSerializefileReference() { return string.IsNullOrEmpty(fileReference); }
 
 			public String? headline {get;set;} = default;
-			public bool ShouldSerializeheadline() { return false; }
+
+			public bool ShouldSerializeheadline() { return string.IsNullOrEmpty(headline); }
 
 			public String? language {get;set;} = default;
-			public bool ShouldSerializelanguage() { return false; }
+
+			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
 
 			public List<String> text {get;set;} = [];
+
+			public bool ShouldSerializetext() { return text.Any(); }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class onlineResource {
 			public String? applicationProfile {get;set;} = default;
-			public bool ShouldSerializeapplicationProfile() { return false; }
+
+			public bool ShouldSerializeapplicationProfile() { return string.IsNullOrEmpty(applicationProfile); }
 
 			public String linkage {get;set;} = string.Empty;
 
 			public String? nameOfResource {get;set;} = default;
-			public bool ShouldSerializenameOfResource() { return false; }
+
+			public bool ShouldSerializenameOfResource() { return string.IsNullOrEmpty(nameOfResource); }
 
 			public String? onlineDescription {get;set;} = default;
-			public bool ShouldSerializeonlineDescription() { return false; }
+
+			public bool ShouldSerializeonlineDescription() { return string.IsNullOrEmpty(onlineDescription); }
 
 			public String? protocol {get;set;} = default;
-			public bool ShouldSerializeprotocol() { return false; }
+
+			public bool ShouldSerializeprotocol() { return string.IsNullOrEmpty(protocol); }
 
 			public String? protocolRequest {get;set;} = default;
-			public bool ShouldSerializeprotocolRequest() { return false; }
+
+			public bool ShouldSerializeprotocolRequest() { return string.IsNullOrEmpty(protocolRequest); }
 		}
 
 		[System.Serializable()]
@@ -1001,7 +1021,8 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class pricing {
 			public String? contractPeriod {get;set;} = default;
-			public bool ShouldSerializecontractPeriod() { return false; }
+
+			public bool ShouldSerializecontractPeriod() { return string.IsNullOrEmpty(contractPeriod); }
 
 			public String currency {get;set;} = string.Empty;
 
@@ -1014,20 +1035,31 @@ namespace S100Framework.DomainModel.S128 {
 		public class printSize {
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public iSO216? iSO216 {get;set;} = default;
-			public bool ShouldSerializeiSO216() { return false; }
+
+			public bool ShouldSerializeiSO216() { return iSO216.HasValue; }
 
 			public customPaperSize? customPaperSize {get;set;} = default;
-			public bool ShouldSerializecustomPaperSize() { return false; }
+
+			public bool ShouldSerializecustomPaperSize() { return customPaperSize!=default; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class productSpecification {
+			[XmlIgnore]
 			[Required()]
 			public DateOnly editionDate {get;set;}
 
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "editionDate")]
+			public DateTime editionDateField {
+				get { return editionDate.ToDateTime(TimeOnly.MinValue); }
+				set { editionDate = DateOnly.FromDateTime(value); }
+			}
+
 			public String? iSSN {get;set;} = default;
-			public bool ShouldSerializeiSSN() { return false; }
+
+			public bool ShouldSerializeiSSN() { return string.IsNullOrEmpty(iSSN); }
 
 			public String name {get;set;} = string.Empty;
 
@@ -1037,8 +1069,16 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class supportFileSpecification {
+			[XmlIgnore]
 			[Required()]
 			public DateOnly editionDate {get;set;}
+
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "editionDate")]
+			public DateTime editionDateField {
+				get { return editionDate.ToDateTime(TimeOnly.MinValue); }
+				set { editionDate = DateOnly.FromDateTime(value); }
+			}
 
 			public String name {get;set;} = string.Empty;
 
@@ -1048,8 +1088,16 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class serviceSpecification {
+			[XmlIgnore]
 			[Required()]
 			public DateOnly editionDate {get;set;}
+
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "editionDate")]
+			public DateTime editionDateField {
+				get { return editionDate.ToDateTime(TimeOnly.MinValue); }
+				set { editionDate = DateOnly.FromDateTime(value); }
+			}
 
 			public String name {get;set;} = string.Empty;
 
@@ -1061,22 +1109,30 @@ namespace S100Framework.DomainModel.S128 {
 		public class sourceIndication {
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19])]
 			public categoryOfAuthority? categoryOfAuthority {get;set;} = default;
-			public bool ShouldSerializecategoryOfAuthority() { return false; }
+
+			public bool ShouldSerializecategoryOfAuthority() { return categoryOfAuthority.HasValue; }
 
 			public String? countryName {get;set;} = default;
-			public bool ShouldSerializecountryName() { return false; }
 
+			public bool ShouldSerializecountryName() { return string.IsNullOrEmpty(countryName); }
+
+			[XmlIgnore]
 			public DateOnly? reportedDate {get;set;} = default;
-			public bool ShouldSerializereportedDate() { return false; }
+
+			public bool ShouldSerializereportedDate() { return reportedDate.HasValue; }
 
 			public String? source {get;set;} = default;
-			public bool ShouldSerializesource() { return false; }
+
+			public bool ShouldSerializesource() { return string.IsNullOrEmpty(source); }
 
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14,15])]
 			public sourceType? sourceType {get;set;} = default;
-			public bool ShouldSerializesourceType() { return false; }
+
+			public bool ShouldSerializesourceType() { return sourceType.HasValue; }
 
 			public List<featureName> featureName {get;set;} = [];
+
+			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 		}
 
 		[System.Serializable()]
@@ -1088,6 +1144,8 @@ namespace S100Framework.DomainModel.S128 {
 
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public List<telecommunicationService> telecommunicationService {get;set;} = [];
+
+			public bool ShouldSerializetelecommunicationService() { return telecommunicationService.Any(); }
 		}
 
 		[System.Serializable()]
@@ -1095,6 +1153,8 @@ namespace S100Framework.DomainModel.S128 {
 		public class timeIntervalOfCycle {
 			[EnumerationValue([1,2,3,4])]
 			public List<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit {get;set;} = [];
+
+			public bool ShouldSerializetypeOfTimeIntervalUnit() { return typeOfTimeIntervalUnit.Any(); }
 
 			[Required()]
 			public int valueOfTime {get;set;}
@@ -1114,26 +1174,32 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class issuanceCycle {
 			public periodicDateRange? periodicDateRange {get;set;} = default;
-			public bool ShouldSerializeperiodicDateRange() { return false; }
+
+			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange!=default; }
 
 			public timeIntervalOfCycle? timeIntervalOfCycle {get;set;} = default;
-			public bool ShouldSerializetimeIntervalOfCycle() { return false; }
+
+			public bool ShouldSerializetimeIntervalOfCycle() { return timeIntervalOfCycle!=default; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class printInformation {
 			public String? printAgency {get;set;} = default;
-			public bool ShouldSerializeprintAgency() { return false; }
+
+			public bool ShouldSerializeprintAgency() { return string.IsNullOrEmpty(printAgency); }
 
 			public String? printNation {get;set;} = default;
-			public bool ShouldSerializeprintNation() { return false; }
+
+			public bool ShouldSerializeprintNation() { return string.IsNullOrEmpty(printNation); }
 
 			public String? reprintEdition {get;set;} = default;
-			public bool ShouldSerializereprintEdition() { return false; }
+
+			public bool ShouldSerializereprintEdition() { return string.IsNullOrEmpty(reprintEdition); }
 
 			public String? reprintNation {get;set;} = default;
-			public bool ShouldSerializereprintNation() { return false; }
+
+			public bool ShouldSerializereprintNation() { return string.IsNullOrEmpty(reprintNation); }
 
 			[Required()]
 			public printSize printSize {get;set;}
@@ -1143,7 +1209,8 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class supportFile {
 			public String? comment {get;set;} = default;
-			public bool ShouldSerializecomment() { return false; }
+
+			public bool ShouldSerializecomment() { return string.IsNullOrEmpty(comment); }
 
 			[EnumerationValue([8])]
 			[Required()]
@@ -1151,20 +1218,25 @@ namespace S100Framework.DomainModel.S128 {
 
 			[EnumerationValue([1,2])]
 			public digitalSignatureValue? digitalSignatureValue {get;set;} = default;
-			public bool ShouldSerializedigitalSignatureValue() { return false; }
+
+			public bool ShouldSerializedigitalSignatureValue() { return digitalSignatureValue.HasValue; }
 
 			public int? editionNumber {get;set;} = default;
-			public bool ShouldSerializeeditionNumber() { return false; }
+
+			public bool ShouldSerializeeditionNumber() { return editionNumber.HasValue; }
 
 			public String fileLocator {get;set;} = string.Empty;
 
 			public String fileName {get;set;} = string.Empty;
 
+			[XmlIgnore]
 			public DateOnly? issueDate {get;set;} = default;
-			public bool ShouldSerializeissueDate() { return false; }
+
+			public bool ShouldSerializeissueDate() { return issueDate.HasValue; }
 
 			public String? otherDataTypeDescription {get;set;} = default;
-			public bool ShouldSerializeotherDataTypeDescription() { return false; }
+
+			public bool ShouldSerializeotherDataTypeDescription() { return string.IsNullOrEmpty(otherDataTypeDescription); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,100])]
 			[Required()]
@@ -1184,24 +1256,44 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class timeIntervalOfProduct {
+			[XmlIgnore]
 			public DateOnly? expirationDate {get;set;} = default;
-			public bool ShouldSerializeexpirationDate() { return false; }
 
+			public bool ShouldSerializeexpirationDate() { return expirationDate.HasValue; }
+
+			[XmlIgnore]
 			[Required()]
 			public DateOnly issueDate {get;set;}
 
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "issueDate")]
+			public DateTime issueDateField {
+				get { return issueDate.ToDateTime(TimeOnly.MinValue); }
+				set { issueDate = DateOnly.FromDateTime(value); }
+			}
+
 			public issuanceCycle? issuanceCycle {get;set;} = default;
-			public bool ShouldSerializeissuanceCycle() { return false; }
+
+			public bool ShouldSerializeissuanceCycle() { return issuanceCycle!=default; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class referenceToNM {
+			[XmlIgnore]
 			[Required()]
 			public DateOnly publicationDate {get;set;}
 
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "publicationDate")]
+			public DateTime publicationDateField {
+				get { return publicationDate.ToDateTime(TimeOnly.MinValue); }
+				set { publicationDate = DateOnly.FromDateTime(value); }
+			}
+
 			public weekOfYear? weekOfYear {get;set;} = default;
-			public bool ShouldSerializeweekOfYear() { return false; }
+
+			public bool ShouldSerializeweekOfYear() { return weekOfYear!=default; }
 		}
 
 	}
@@ -1362,10 +1454,12 @@ namespace S100Framework.DomainModel.S128 {
 			public int catalogueSectionNumber {get;set;}
 
 			public String? catalogueSectionTitle {get;set;} = default;
-			public bool ShouldSerializecatalogueSectionTitle() { return false; }
+
+			public bool ShouldSerializecatalogueSectionTitle() { return string.IsNullOrEmpty(catalogueSectionTitle); }
 
 			public information? information {get;set;} = default;
-			public bool ShouldSerializeinformation() { return false; }
+
+			public bool ShouldSerializeinformation() { return information!=default; }
 
 			[JsonIgnore]
 			public override string Code => nameof(CatalogueSectionHeader);
@@ -1410,13 +1504,23 @@ namespace S100Framework.DomainModel.S128 {
 
 			public List<contactAddress> contactAddress {get;set;} = [];
 
+			public bool ShouldSerializecontactAddress() { return contactAddress.Any(); }
+
 			public List<information> information {get;set;} = [];
+
+			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			public List<onlineResource> onlineResource {get;set;} = [];
 
+			public bool ShouldSerializeonlineResource() { return onlineResource.Any(); }
+
 			public List<telecommunications> telecommunications {get;set;} = [];
 
+			public bool ShouldSerializetelecommunications() { return telecommunications.Any(); }
+
 			public List<sourceIndication> sourceIndication {get;set;} = [];
+
+			public bool ShouldSerializesourceIndication() { return sourceIndication.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(ContactDetails);
@@ -1450,12 +1554,16 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class IndicationOfCarriageRequirement : InformationNode, IInformationBindingDefinition {
 			public String? domesticCarriageRequirements {get;set;} = default;
-			public bool ShouldSerializedomesticCarriageRequirements() { return false; }
+
+			public bool ShouldSerializedomesticCarriageRequirements() { return string.IsNullOrEmpty(domesticCarriageRequirements); }
 
 			public String? internationalCarriageRequirements {get;set;} = default;
-			public bool ShouldSerializeinternationalCarriageRequirements() { return false; }
+
+			public bool ShouldSerializeinternationalCarriageRequirements() { return string.IsNullOrEmpty(internationalCarriageRequirements); }
 
 			public List<featureName> featureName {get;set;} = [];
+
+			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(IndicationOfCarriageRequirement);
@@ -1474,11 +1582,19 @@ namespace S100Framework.DomainModel.S128 {
 		public partial class PriceInformation : InformationNode, IInformationBindingDefinition {
 			public List<information> information {get;set;} = [];
 
+			public bool ShouldSerializeinformation() { return information.Any(); }
+
 			public List<onlineResource> onlineResource {get;set;} = [];
+
+			public bool ShouldSerializeonlineResource() { return onlineResource.Any(); }
 
 			public List<pricing> pricing {get;set;} = [];
 
+			public bool ShouldSerializepricing() { return pricing.Any(); }
+
 			public List<sourceIndication> sourceIndication {get;set;} = [];
+
+			public bool ShouldSerializesourceIndication() { return sourceIndication.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(PriceInformation);
@@ -1506,7 +1622,8 @@ namespace S100Framework.DomainModel.S128 {
 			public String agencyResponsibleForProduction {get;set;} = string.Empty;
 
 			public String? agencyName {get;set;} = default;
-			public bool ShouldSerializeagencyName() { return false; }
+
+			public bool ShouldSerializeagencyName() { return string.IsNullOrEmpty(agencyName); }
 
 			[JsonIgnore]
 			public override string Code => nameof(ProducerInformation);
@@ -1577,35 +1694,51 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class CatalogueElement : FeatureNode, IFeatureBindingDefinition {
 			public String? agencyResponsibleForProduction {get;set;} = default;
-			public bool ShouldSerializeagencyResponsibleForProduction() { return false; }
+
+			public bool ShouldSerializeagencyResponsibleForProduction() { return string.IsNullOrEmpty(agencyResponsibleForProduction); }
 
 			public List<catalogueElementClassification> catalogueElementClassification {get;set;} = [];
 
+			public bool ShouldSerializecatalogueElementClassification() { return catalogueElementClassification.Any(); }
+
 			public String? catalogueElementIdentifier {get;set;} = default;
-			public bool ShouldSerializecatalogueElementIdentifier() { return false; }
+
+			public bool ShouldSerializecatalogueElementIdentifier() { return string.IsNullOrEmpty(catalogueElementIdentifier); }
 
 			public String? classification {get;set;} = default;
-			public bool ShouldSerializeclassification() { return false; }
+
+			public bool ShouldSerializeclassification() { return string.IsNullOrEmpty(classification); }
 
 			public List<iMOMaritimeService> iMOMaritimeService {get;set;} = [];
+
+			public bool ShouldSerializeiMOMaritimeService() { return iMOMaritimeService.Any(); }
 
 			[Required()]
 			public Boolean notForNavigation {get;set;} = false;
 
 			public List<featureName> featureName {get;set;} = [];
 
+			public bool ShouldSerializefeatureName() { return featureName.Any(); }
+
 			public List<information> information {get;set;} = [];
 
+			public bool ShouldSerializeinformation() { return information.Any(); }
+
 			public onlineResource? onlineResource {get;set;} = default;
-			public bool ShouldSerializeonlineResource() { return false; }
+
+			public bool ShouldSerializeonlineResource() { return onlineResource!=default; }
 
 			public sourceIndication? sourceIndication {get;set;} = default;
-			public bool ShouldSerializesourceIndication() { return false; }
+
+			public bool ShouldSerializesourceIndication() { return sourceIndication!=default; }
 
 			public List<supportFile> supportFile {get;set;} = [];
 
+			public bool ShouldSerializesupportFile() { return supportFile.Any(); }
+
 			public timeIntervalOfProduct? timeIntervalOfProduct {get;set;} = default;
-			public bool ShouldSerializetimeIntervalOfProduct() { return false; }
+
+			public bool ShouldSerializetimeIntervalOfProduct() { return timeIntervalOfProduct!=default; }
 
 			[JsonIgnore]
 			public override string Code => nameof(CatalogueElement);
@@ -1668,52 +1801,72 @@ namespace S100Framework.DomainModel.S128 {
 		public abstract class NavigationalProduct : CatalogueElement {
 			public List<decimal> approximateGridResolution {get;set;} = [];
 
+			public bool ShouldSerializeapproximateGridResolution() { return approximateGridResolution.Any(); }
+
 			public List<int> compilationScale {get;set;} = [];
+
+			public bool ShouldSerializecompilationScale() { return compilationScale.Any(); }
 
 			[EnumerationValue([1,2])]
 			public distributionStatus? distributionStatus {get;set;} = default;
-			public bool ShouldSerializedistributionStatus() { return false; }
+
+			public bool ShouldSerializedistributionStatus() { return distributionStatus.HasValue; }
 
 			public int? editionNumber {get;set;} = default;
-			public bool ShouldSerializeeditionNumber() { return false; }
+
+			public bool ShouldSerializeeditionNumber() { return editionNumber.HasValue; }
 
 			public int? maximumDisplayScale {get;set;} = default;
-			public bool ShouldSerializemaximumDisplayScale() { return false; }
+
+			public bool ShouldSerializemaximumDisplayScale() { return maximumDisplayScale.HasValue; }
 
 			public int? minimumDisplayScale {get;set;} = default;
-			public bool ShouldSerializeminimumDisplayScale() { return false; }
+
+			public bool ShouldSerializeminimumDisplayScale() { return minimumDisplayScale.HasValue; }
 
 			[EnumerationValue([1,2,3])]
 			public List<navigationPurpose> navigationPurpose {get;set;} = [];
 
+			public bool ShouldSerializenavigationPurpose() { return navigationPurpose.Any(); }
+
 			public String? optimumDisplayScale {get;set;} = default;
-			public bool ShouldSerializeoptimumDisplayScale() { return false; }
+
+			public bool ShouldSerializeoptimumDisplayScale() { return string.IsNullOrEmpty(optimumDisplayScale); }
 
 			public String? originalProductNumber {get;set;} = default;
-			public bool ShouldSerializeoriginalProductNumber() { return false; }
+
+			public bool ShouldSerializeoriginalProductNumber() { return string.IsNullOrEmpty(originalProductNumber); }
 
 			public String? producerNation {get;set;} = default;
-			public bool ShouldSerializeproducerNation() { return false; }
+
+			public bool ShouldSerializeproducerNation() { return string.IsNullOrEmpty(producerNation); }
 
 			public String? productNumber {get;set;} = default;
-			public bool ShouldSerializeproductNumber() { return false; }
+
+			public bool ShouldSerializeproductNumber() { return string.IsNullOrEmpty(productNumber); }
 
 			[EnumerationValue([1,2,3,4,5,6])]
 			public specificUsage? specificUsage {get;set;} = default;
-			public bool ShouldSerializespecificUsage() { return false; }
 
+			public bool ShouldSerializespecificUsage() { return specificUsage.HasValue; }
+
+			[XmlIgnore]
 			public DateOnly? updateDate {get;set;} = default;
-			public bool ShouldSerializeupdateDate() { return false; }
+
+			public bool ShouldSerializeupdateDate() { return updateDate.HasValue; }
 
 			public int? updateNumber {get;set;} = default;
-			public bool ShouldSerializeupdateNumber() { return false; }
+
+			public bool ShouldSerializeupdateNumber() { return updateNumber.HasValue; }
 
 			public horizontalDatumEPSGCode? horizontalDatumEPSGCode {get;set;} = default;
-			public bool ShouldSerializehorizontalDatumEPSGCode() { return false; }
+
+			public bool ShouldSerializehorizontalDatumEPSGCode() { return horizontalDatumEPSGCode != default; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
-			public bool ShouldSerializeverticalDatum() { return false; }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(NavigationalProduct);
@@ -1759,23 +1912,35 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ElectronicProduct : NavigationalProduct {
 			public Boolean? compressionFlag {get;set;} = default;
-			public bool ShouldSerializecompressionFlag() { return false; }
+
+			public bool ShouldSerializecompressionFlag() { return compressionFlag.HasValue; }
 
 			public String? datasetName {get;set;} = default;
-			public bool ShouldSerializedatasetName() { return false; }
 
+			public bool ShouldSerializedatasetName() { return string.IsNullOrEmpty(datasetName); }
+
+			[XmlIgnore]
 			[Required()]
 			public DateOnly issueDate {get;set;}
 
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "issueDate")]
+			public DateTime issueDateField {
+				get { return issueDate.ToDateTime(TimeOnly.MinValue); }
+				set { issueDate = DateOnly.FromDateTime(value); }
+			}
+
 			public TimeOnly? issueTime {get;set;} = default;
-			public bool ShouldSerializeissueTime() { return false; }
+
+			public bool ShouldSerializeissueTime() { return issueTime.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
 			[Required()]
 			public typeOfProductFormat typeOfProductFormat {get;set;}
 
 			public productSpecification? productSpecification {get;set;} = default;
-			public bool ShouldSerializeproductSpecification() { return false; }
+
+			public bool ShouldSerializeproductSpecification() { return productSpecification!=default; }
 
 			[JsonIgnore]
 			public override string Code => nameof(ElectronicProduct);
@@ -1804,23 +1969,36 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PhysicalProduct : NavigationalProduct {
+			[XmlIgnore]
 			[Required()]
 			public DateOnly editionDate {get;set;}
 
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "editionDate")]
+			public DateTime editionDateField {
+				get { return editionDate.ToDateTime(TimeOnly.MinValue); }
+				set { editionDate = DateOnly.FromDateTime(value); }
+			}
+
 			public String? iSBN {get;set;} = default;
-			public bool ShouldSerializeiSBN() { return false; }
+
+			public bool ShouldSerializeiSBN() { return string.IsNullOrEmpty(iSBN); }
 
 			public String? publicationNumber {get;set;} = default;
-			public bool ShouldSerializepublicationNumber() { return false; }
+
+			public bool ShouldSerializepublicationNumber() { return string.IsNullOrEmpty(publicationNumber); }
 
 			public String? typeOfPhysicalProduct {get;set;} = default;
-			public bool ShouldSerializetypeOfPhysicalProduct() { return false; }
+
+			public bool ShouldSerializetypeOfPhysicalProduct() { return string.IsNullOrEmpty(typeOfPhysicalProduct); }
 
 			public printInformation? printInformation {get;set;} = default;
-			public bool ShouldSerializeprintInformation() { return false; }
+
+			public bool ShouldSerializeprintInformation() { return printInformation!=default; }
 
 			public referenceToNM? referenceToNM {get;set;} = default;
-			public bool ShouldSerializereferenceToNM() { return false; }
+
+			public bool ShouldSerializereferenceToNM() { return referenceToNM!=default; }
 
 			[JsonIgnore]
 			public override string Code => nameof(PhysicalProduct);
@@ -1850,24 +2028,29 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class S100Service : CatalogueElement {
 			public Boolean? compressionFlag {get;set;} = default;
-			public bool ShouldSerializecompressionFlag() { return false; }
+
+			public bool ShouldSerializecompressionFlag() { return compressionFlag.HasValue; }
 
 			public String? serviceName {get;set;} = default;
-			public bool ShouldSerializeserviceName() { return false; }
+
+			public bool ShouldSerializeserviceName() { return string.IsNullOrEmpty(serviceName); }
 
 			[EnumerationValue([1,2,3,4])]
 			public serviceStatus? serviceStatus {get;set;} = default;
-			public bool ShouldSerializeserviceStatus() { return false; }
+
+			public bool ShouldSerializeserviceStatus() { return serviceStatus.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
 			[Required()]
 			public typeOfProductFormat typeOfProductFormat {get;set;}
 
 			public serviceSpecification? serviceSpecification {get;set;} = default;
-			public bool ShouldSerializeserviceSpecification() { return false; }
+
+			public bool ShouldSerializeserviceSpecification() { return serviceSpecification!=default; }
 
 			public productSpecification? productSpecification {get;set;} = default;
-			public bool ShouldSerializeproductSpecification() { return false; }
+
+			public bool ShouldSerializeproductSpecification() { return productSpecification!=default; }
 
 			[JsonIgnore]
 			public override string Code => nameof(S100Service);
@@ -1894,10 +2077,12 @@ namespace S100Framework.DomainModel.S128 {
 	[XmlType(Namespace = "http://www.iho.int/S128/2.0")]
 	public class Dataset : S100Framework.DomainModel.S100.DatasetBase
 	{
+		[XmlElement(Order = 1)]
+		public Members? members { get; set; } = default;
 	}
 
 	[XmlType(Namespace = "http://www.iho.int/S128/2.0", TypeName = "members")]
-	public class Members : S100Framework.DomainModel.S100.MembersBase
+	public class Members
 	{
 		[XmlElement("InformationTypes.CatalogueSectionHeader", typeof(InformationTypes.CatalogueSectionHeader), Order = 1)]
 		[XmlElement("InformationTypes.ContactDetails", typeof(InformationTypes.ContactDetails), Order = 1)]
@@ -1908,7 +2093,7 @@ namespace S100Framework.DomainModel.S128 {
 		[XmlElement("FeatureTypes.ElectronicProduct", typeof(FeatureTypes.ElectronicProduct), Order = 1)]
 		[XmlElement("FeatureTypes.PhysicalProduct", typeof(FeatureTypes.PhysicalProduct), Order = 1)]
 		[XmlElement("FeatureTypes.S100Service", typeof(FeatureTypes.S100Service), Order = 1)]
-		public override List<object> elements { get; set; } = new List<object>();
+		public List<object> elements { get; set; } = new List<object>();
 	}
 }
 

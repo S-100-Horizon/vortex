@@ -1582,26 +1582,32 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class contactAddress {
 			public String? deliveryPoint {get;set;} = default;
-			public bool ShouldSerializedeliveryPoint() { return false; }
+
+			public bool ShouldSerializedeliveryPoint() { return string.IsNullOrEmpty(deliveryPoint); }
 
 			public String? cityName {get;set;} = default;
-			public bool ShouldSerializecityName() { return false; }
+
+			public bool ShouldSerializecityName() { return string.IsNullOrEmpty(cityName); }
 
 			public String? administrativeDivision {get;set;} = default;
-			public bool ShouldSerializeadministrativeDivision() { return false; }
+
+			public bool ShouldSerializeadministrativeDivision() { return string.IsNullOrEmpty(administrativeDivision); }
 
 			public String? countryName {get;set;} = default;
-			public bool ShouldSerializecountryName() { return false; }
+
+			public bool ShouldSerializecountryName() { return string.IsNullOrEmpty(countryName); }
 
 			public String? postalCode {get;set;} = default;
-			public bool ShouldSerializepostalCode() { return false; }
+
+			public bool ShouldSerializepostalCode() { return string.IsNullOrEmpty(postalCode); }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class featureName {
 			public Boolean? displayName {get;set;} = default;
-			public bool ShouldSerializedisplayName() { return false; }
+
+			public bool ShouldSerializedisplayName() { return displayName.HasValue; }
 
 			public String language {get;set;} = string.Empty;
 
@@ -1612,39 +1618,48 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class fixedDateRange {
 			public String? dateStart {get;set;} = default;
-			public bool ShouldSerializedateStart() { return false; }
+
+			public bool ShouldSerializedateStart() { return string.IsNullOrEmpty(dateStart); }
 
 			public String? dateEnd {get;set;} = default;
-			public bool ShouldSerializedateEnd() { return false; }
+
+			public bool ShouldSerializedateEnd() { return string.IsNullOrEmpty(dateEnd); }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class frequencyPair {
 			public int? frequencyShoreStationReceives {get;set;} = default;
-			public bool ShouldSerializefrequencyShoreStationReceives() { return false; }
+
+			public bool ShouldSerializefrequencyShoreStationReceives() { return frequencyShoreStationReceives.HasValue; }
 
 			public int? frequencyShoreStationTransmits {get;set;} = default;
-			public bool ShouldSerializefrequencyShoreStationTransmits() { return false; }
+
+			public bool ShouldSerializefrequencyShoreStationTransmits() { return frequencyShoreStationTransmits.HasValue; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class information {
 			public String? fileLocator {get;set;} = default;
-			public bool ShouldSerializefileLocator() { return false; }
+
+			public bool ShouldSerializefileLocator() { return string.IsNullOrEmpty(fileLocator); }
 
 			public String? fileReference {get;set;} = default;
-			public bool ShouldSerializefileReference() { return false; }
+
+			public bool ShouldSerializefileReference() { return string.IsNullOrEmpty(fileReference); }
 
 			public String? headline {get;set;} = default;
-			public bool ShouldSerializeheadline() { return false; }
+
+			public bool ShouldSerializeheadline() { return string.IsNullOrEmpty(headline); }
 
 			public String? language {get;set;} = default;
-			public bool ShouldSerializelanguage() { return false; }
+
+			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
 
 			public String? text {get;set;} = default;
-			public bool ShouldSerializetext() { return false; }
+
+			public bool ShouldSerializetext() { return string.IsNullOrEmpty(text); }
 		}
 
 		[System.Serializable()]
@@ -1653,29 +1668,36 @@ namespace S100Framework.DomainModel.S122 {
 			public String onlineResourceLinkageURL {get;set;} = string.Empty;
 
 			public String? protocol {get;set;} = default;
-			public bool ShouldSerializeprotocol() { return false; }
+
+			public bool ShouldSerializeprotocol() { return string.IsNullOrEmpty(protocol); }
 
 			public String? applicationProfile {get;set;} = default;
-			public bool ShouldSerializeapplicationProfile() { return false; }
+
+			public bool ShouldSerializeapplicationProfile() { return string.IsNullOrEmpty(applicationProfile); }
 
 			public String? nameOfResource {get;set;} = default;
-			public bool ShouldSerializenameOfResource() { return false; }
+
+			public bool ShouldSerializenameOfResource() { return string.IsNullOrEmpty(nameOfResource); }
 
 			public String? onlineResourceDescription {get;set;} = default;
-			public bool ShouldSerializeonlineResourceDescription() { return false; }
+
+			public bool ShouldSerializeonlineResourceDescription() { return string.IsNullOrEmpty(onlineResourceDescription); }
 
 			public String? protocolRequest {get;set;} = default;
-			public bool ShouldSerializeprotocolRequest() { return false; }
+
+			public bool ShouldSerializeprotocolRequest() { return string.IsNullOrEmpty(protocolRequest); }
 
 			public onlineFunction? onlineFunction {get;set;} = default;
-			public bool ShouldSerializeonlineFunction() { return false; }
+
+			public bool ShouldSerializeonlineFunction() { return onlineFunction.HasValue; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class orientation {
 			public decimal? orientationUncertainty {get;set;} = default;
-			public bool ShouldSerializeorientationUncertainty() { return false; }
+
+			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[Required()]
 			public decimal orientationValue {get;set;}
@@ -1693,13 +1715,16 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class rxNCode {
 			public categoryOfRxN? categoryOfRxN {get;set;} = default;
-			public bool ShouldSerializecategoryOfRxN() { return false; }
+
+			public bool ShouldSerializecategoryOfRxN() { return categoryOfRxN != default; }
 
 			public actionOrActivity? actionOrActivity {get;set;} = default;
-			public bool ShouldSerializeactionOrActivity() { return false; }
+
+			public bool ShouldSerializeactionOrActivity() { return actionOrActivity != default; }
 
 			public String? headline {get;set;} = default;
-			public bool ShouldSerializeheadline() { return false; }
+
+			public bool ShouldSerializeheadline() { return string.IsNullOrEmpty(headline); }
 		}
 
 		[System.Serializable()]
@@ -1709,7 +1734,8 @@ namespace S100Framework.DomainModel.S122 {
 			public decimal sectorBearing {get;set;}
 
 			public int? sectorLineLength {get;set;} = default;
-			public bool ShouldSerializesectorLineLength() { return false; }
+
+			public bool ShouldSerializesectorLineLength() { return sectorLineLength.HasValue; }
 		}
 
 		[System.Serializable()]
@@ -1719,7 +1745,8 @@ namespace S100Framework.DomainModel.S122 {
 			public decimal sectorBearing {get;set;}
 
 			public int? sectorLineLength {get;set;} = default;
-			public bool ShouldSerializesectorLineLength() { return false; }
+
+			public bool ShouldSerializesectorLineLength() { return sectorLineLength.HasValue; }
 		}
 
 		[System.Serializable()]
@@ -1727,17 +1754,21 @@ namespace S100Framework.DomainModel.S122 {
 		public class textContent {
 			[EnumerationValue([1,2,3])]
 			public categoryOfText? categoryOfText {get;set;} = default;
-			public bool ShouldSerializecategoryOfText() { return false; }
+
+			public bool ShouldSerializecategoryOfText() { return categoryOfText.HasValue; }
 
 			public String? source {get;set;} = default;
-			public bool ShouldSerializesource() { return false; }
+
+			public bool ShouldSerializesource() { return string.IsNullOrEmpty(source); }
 
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
-			public bool ShouldSerializesourceType() { return false; }
+
+			public bool ShouldSerializesourceType() { return sourceType.HasValue; }
 
 			public String? reportedDate {get;set;} = default;
-			public bool ShouldSerializereportedDate() { return false; }
+
+			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
 		}
 
 		[System.Serializable()]
@@ -1746,12 +1777,19 @@ namespace S100Framework.DomainModel.S122 {
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public List<dayOfWeek> dayOfWeek {get;set;} = [];
 
+			public bool ShouldSerializedayOfWeek() { return dayOfWeek.Any(); }
+
 			public Boolean? dayOfWeekIsRange {get;set;} = default;
-			public bool ShouldSerializedayOfWeekIsRange() { return false; }
+
+			public bool ShouldSerializedayOfWeekIsRange() { return dayOfWeekIsRange.HasValue; }
 
 			public List<TimeOnly> timeOfDayEnd {get;set;} = [];
 
+			public bool ShouldSerializetimeOfDayEnd() { return timeOfDayEnd.Any(); }
+
 			public List<TimeOnly> timeOfDayStart {get;set;} = [];
+
+			public bool ShouldSerializetimeOfDayStart() { return timeOfDayStart.Any(); }
 		}
 
 		[System.Serializable()]
@@ -1777,33 +1815,44 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class designation {
 			public String? designationScheme {get;set;} = default;
-			public bool ShouldSerializedesignationScheme() { return false; }
+
+			public bool ShouldSerializedesignationScheme() { return string.IsNullOrEmpty(designationScheme); }
 
 			public String? designationIdentifier {get;set;} = default;
-			public bool ShouldSerializedesignationIdentifier() { return false; }
+
+			public bool ShouldSerializedesignationIdentifier() { return string.IsNullOrEmpty(designationIdentifier); }
 
 			public jurisdiction? jurisdiction {get;set;} = default;
-			public bool ShouldSerializejurisdiction() { return false; }
+
+			public bool ShouldSerializejurisdiction() { return jurisdiction.HasValue; }
 
 			public String? text {get;set;} = default;
-			public bool ShouldSerializetext() { return false; }
+
+			public bool ShouldSerializetext() { return string.IsNullOrEmpty(text); }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class bearingInformation {
 			public cardinalDirection? cardinalDirection {get;set;} = default;
-			public bool ShouldSerializecardinalDirection() { return false; }
+
+			public bool ShouldSerializecardinalDirection() { return cardinalDirection.HasValue; }
 
 			public decimal? distance {get;set;} = default;
-			public bool ShouldSerializedistance() { return false; }
+
+			public bool ShouldSerializedistance() { return distance.HasValue; }
 
 			public List<decimal> sectorBearing {get;set;} = [];
 
+			public bool ShouldSerializesectorBearing() { return sectorBearing.Any(); }
+
 			public List<information> information {get;set;} = [];
 
+			public bool ShouldSerializeinformation() { return information.Any(); }
+
 			public orientation? orientation {get;set;} = default;
-			public bool ShouldSerializeorientation() { return false; }
+
+			public bool ShouldSerializeorientation() { return orientation!=default; }
 		}
 
 		[System.Serializable()]
@@ -1811,17 +1860,24 @@ namespace S100Framework.DomainModel.S122 {
 		public class graphic {
 			public List<String> pictorialRepresentation {get;set;} = [];
 
-			public String? pictureCaption {get;set;} = default;
-			public bool ShouldSerializepictureCaption() { return false; }
+			public bool ShouldSerializepictorialRepresentation() { return pictorialRepresentation.Any(); }
 
+			public String? pictureCaption {get;set;} = default;
+
+			public bool ShouldSerializepictureCaption() { return string.IsNullOrEmpty(pictureCaption); }
+
+			[XmlIgnore]
 			public DateOnly? sourceDate {get;set;} = default;
-			public bool ShouldSerializesourceDate() { return false; }
+
+			public bool ShouldSerializesourceDate() { return sourceDate.HasValue; }
 
 			public String? pictureInformation {get;set;} = default;
-			public bool ShouldSerializepictureInformation() { return false; }
+
+			public bool ShouldSerializepictureInformation() { return string.IsNullOrEmpty(pictureInformation); }
 
 			public bearingInformation? bearingInformation {get;set;} = default;
-			public bool ShouldSerializebearingInformation() { return false; }
+
+			public bool ShouldSerializebearingInformation() { return bearingInformation!=default; }
 		}
 
 		[System.Serializable()]
@@ -1829,9 +1885,12 @@ namespace S100Framework.DomainModel.S122 {
 		public class scheduleByDayOfWeek {
 			[EnumerationValue([1,2,3])]
 			public categoryOfSchedule? categoryOfSchedule {get;set;} = default;
-			public bool ShouldSerializecategoryOfSchedule() { return false; }
+
+			public bool ShouldSerializecategoryOfSchedule() { return categoryOfSchedule.HasValue; }
 
 			public List<timeIntervalsByDayOfWeek> timeIntervalsByDayOfWeek {get;set;} = [];
+
+			public bool ShouldSerializetimeIntervalsByDayOfWeek() { return timeIntervalsByDayOfWeek.Any(); }
 		}
 
 		[System.Serializable()]
@@ -1849,22 +1908,27 @@ namespace S100Framework.DomainModel.S122 {
 		public class telecommunications {
 			[EnumerationValue([1,2,3,4])]
 			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
-			public bool ShouldSerializecategoryOfCommunicationPreference() { return false; }
+
+			public bool ShouldSerializecategoryOfCommunicationPreference() { return categoryOfCommunicationPreference.HasValue; }
 
 			public String? contactInstructions {get;set;} = default;
-			public bool ShouldSerializecontactInstructions() { return false; }
+
+			public bool ShouldSerializecontactInstructions() { return string.IsNullOrEmpty(contactInstructions); }
 
 			public String? telecomCarrier {get;set;} = default;
-			public bool ShouldSerializetelecomCarrier() { return false; }
+
+			public bool ShouldSerializetelecomCarrier() { return string.IsNullOrEmpty(telecomCarrier); }
 
 			public String telecommunicationIdentifier {get;set;} = string.Empty;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public telecommunicationService? telecommunicationService {get;set;} = default;
-			public bool ShouldSerializetelecommunicationService() { return false; }
+
+			public bool ShouldSerializetelecommunicationService() { return telecommunicationService.HasValue; }
 
 			public scheduleByDayOfWeek? scheduleByDayOfWeek {get;set;} = default;
-			public bool ShouldSerializescheduleByDayOfWeek() { return false; }
+
+			public bool ShouldSerializescheduleByDayOfWeek() { return scheduleByDayOfWeek!=default; }
 		}
 
 	}
@@ -2034,22 +2098,32 @@ namespace S100Framework.DomainModel.S122 {
 		public partial class InformationType : InformationNode, IInformationBindingDefinition {
 			public List<featureName> featureName {get;set;} = [];
 
+			public bool ShouldSerializefeatureName() { return featureName.Any(); }
+
 			public fixedDateRange? fixedDateRange {get;set;} = default;
-			public bool ShouldSerializefixedDateRange() { return false; }
+
+			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
+			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
+
 			public List<graphic> graphic {get;set;} = [];
 
+			public bool ShouldSerializegraphic() { return graphic.Any(); }
+
 			public String? source {get;set;} = default;
-			public bool ShouldSerializesource() { return false; }
+
+			public bool ShouldSerializesource() { return string.IsNullOrEmpty(source); }
 
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
-			public bool ShouldSerializesourceType() { return false; }
+
+			public bool ShouldSerializesourceType() { return sourceType.HasValue; }
 
 			public String? reportedDate {get;set;} = default;
-			public bool ShouldSerializereportedDate() { return false; }
+
+			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
 
 			[JsonIgnore]
 			public override string Code => nameof(InformationType);
@@ -2068,12 +2142,16 @@ namespace S100Framework.DomainModel.S122 {
 		public partial class AbstractRxN : InformationType {
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			public categoryOfAuthority? categoryOfAuthority {get;set;} = default;
-			public bool ShouldSerializecategoryOfAuthority() { return false; }
+
+			public bool ShouldSerializecategoryOfAuthority() { return categoryOfAuthority.HasValue; }
 
 			public textContent? textContent {get;set;} = default;
-			public bool ShouldSerializetextContent() { return false; }
+
+			public bool ShouldSerializetextContent() { return textContent!=default; }
 
 			public List<rxNCode> rxNCode {get;set;} = [];
+
+			public bool ShouldSerializerxNCode() { return rxNCode.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(AbstractRxN);
@@ -2172,6 +2250,8 @@ namespace S100Framework.DomainModel.S122 {
 
 			public List<textContent> textContent {get;set;} = [];
 
+			public bool ShouldSerializetextContent() { return textContent.Any(); }
+
 			[JsonIgnore]
 			public override string Code => nameof(Authority);
 
@@ -2212,34 +2292,53 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ContactDetails : AbstractRxN {
 			public String? callName {get;set;} = default;
-			public bool ShouldSerializecallName() { return false; }
+
+			public bool ShouldSerializecallName() { return string.IsNullOrEmpty(callName); }
 
 			public String? callSign {get;set;} = default;
-			public bool ShouldSerializecallSign() { return false; }
+
+			public bool ShouldSerializecallSign() { return string.IsNullOrEmpty(callSign); }
 
 			[EnumerationValue([1,2,3,4])]
 			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
-			public bool ShouldSerializecategoryOfCommunicationPreference() { return false; }
+
+			public bool ShouldSerializecategoryOfCommunicationPreference() { return categoryOfCommunicationPreference.HasValue; }
 
 			public List<String> communicationChannel {get;set;} = [];
 
+			public bool ShouldSerializecommunicationChannel() { return communicationChannel.Any(); }
+
 			public String? contactInstructions {get;set;} = default;
-			public bool ShouldSerializecontactInstructions() { return false; }
+
+			public bool ShouldSerializecontactInstructions() { return string.IsNullOrEmpty(contactInstructions); }
 
 			public String? mMSICode {get;set;} = default;
-			public bool ShouldSerializemMSICode() { return false; }
+
+			public bool ShouldSerializemMSICode() { return string.IsNullOrEmpty(mMSICode); }
 
 			public List<int> signalFrequency {get;set;} = [];
 
+			public bool ShouldSerializesignalFrequency() { return signalFrequency.Any(); }
+
 			public List<contactAddress> contactAddress {get;set;} = [];
+
+			public bool ShouldSerializecontactAddress() { return contactAddress.Any(); }
 
 			public List<frequencyPair> frequencyPair {get;set;} = [];
 
+			public bool ShouldSerializefrequencyPair() { return frequencyPair.Any(); }
+
 			public List<onlineResource> onlineResource {get;set;} = [];
+
+			public bool ShouldSerializeonlineResource() { return onlineResource.Any(); }
 
 			public List<telecommunications> telecommunications {get;set;} = [];
 
+			public bool ShouldSerializetelecommunications() { return telecommunications.Any(); }
+
 			public List<information> information {get;set;} = [];
+
+			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(ContactDetails);
@@ -2266,9 +2365,15 @@ namespace S100Framework.DomainModel.S122 {
 		public partial class NonStandardWorkingDay : InformationType {
 			public List<String> dateFixed {get;set;} = [];
 
+			public bool ShouldSerializedateFixed() { return dateFixed.Any(); }
+
 			public List<String> dateVariable {get;set;} = [];
 
+			public bool ShouldSerializedateVariable() { return dateVariable.Any(); }
+
 			public List<information> information {get;set;} = [];
+
+			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(NonStandardWorkingDay);
@@ -2294,6 +2399,8 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ServiceHours : InformationType {
 			public List<scheduleByDayOfWeek> scheduleByDayOfWeek {get;set;} = [];
+
+			public bool ShouldSerializescheduleByDayOfWeek() { return scheduleByDayOfWeek.Any(); }
 
 			[Required()]
 			public information information {get;set;}
@@ -2330,35 +2437,49 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Applicability : InformationType {
 			public Boolean? inBallast {get;set;} = default;
-			public bool ShouldSerializeinBallast() { return false; }
+
+			public bool ShouldSerializeinBallast() { return inBallast.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
 
+			public bool ShouldSerializecategoryOfCargo() { return categoryOfCargo.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])]
 			public List<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo {get;set;} = [];
 
+			public bool ShouldSerializecategoryOfDangerousOrHazardousCargo() { return categoryOfDangerousOrHazardousCargo.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])]
 			public categoryOfVessel? categoryOfVessel {get;set;} = default;
-			public bool ShouldSerializecategoryOfVessel() { return false; }
+
+			public bool ShouldSerializecategoryOfVessel() { return categoryOfVessel != default; }
 
 			[EnumerationValue([1,2])]
 			public categoryOfVesselRegistry? categoryOfVesselRegistry {get;set;} = default;
-			public bool ShouldSerializecategoryOfVesselRegistry() { return false; }
+
+			public bool ShouldSerializecategoryOfVesselRegistry() { return categoryOfVesselRegistry.HasValue; }
 
 			[EnumerationValue([1,2])]
 			public logicalConnectives? logicalConnectives {get;set;} = default;
-			public bool ShouldSerializelogicalConnectives() { return false; }
+
+			public bool ShouldSerializelogicalConnectives() { return logicalConnectives.HasValue; }
 
 			public int? thicknessOfIceCapability {get;set;} = default;
-			public bool ShouldSerializethicknessOfIceCapability() { return false; }
+
+			public bool ShouldSerializethicknessOfIceCapability() { return thicknessOfIceCapability.HasValue; }
 
 			public String? vesselPerformance {get;set;} = default;
-			public bool ShouldSerializevesselPerformance() { return false; }
+
+			public bool ShouldSerializevesselPerformance() { return string.IsNullOrEmpty(vesselPerformance); }
 
 			public List<information> information {get;set;} = [];
 
+			public bool ShouldSerializeinformation() { return information.Any(); }
+
 			public List<vesselsMeasurements> vesselsMeasurements {get;set;} = [];
+
+			public bool ShouldSerializevesselsMeasurements() { return vesselsMeasurements.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Applicability);
@@ -2380,24 +2501,34 @@ namespace S100Framework.DomainModel.S122 {
 		public abstract class FeatureType : FeatureNode, IFeatureBindingDefinition {
 			public List<featureName> featureName {get;set;} = [];
 
+			public bool ShouldSerializefeatureName() { return featureName.Any(); }
+
 			public fixedDateRange? fixedDateRange {get;set;} = default;
-			public bool ShouldSerializefixedDateRange() { return false; }
+
+			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
+			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
+
 			public List<textContent> textContent {get;set;} = [];
+
+			public bool ShouldSerializetextContent() { return textContent.Any(); }
 
 			public String interoperabilityIdentifier {get;set;} = string.Empty;
 
 			public String? source {get;set;} = default;
-			public bool ShouldSerializesource() { return false; }
+
+			public bool ShouldSerializesource() { return string.IsNullOrEmpty(source); }
 
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
-			public bool ShouldSerializesourceType() { return false; }
+
+			public bool ShouldSerializesourceType() { return sourceType.HasValue; }
 
 			public String? reportedDate {get;set;} = default;
-			public bool ShouldSerializereportedDate() { return false; }
+
+			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
 
 			[JsonIgnore]
 			public override string Code => nameof(FeatureType);
@@ -2445,11 +2576,17 @@ namespace S100Framework.DomainModel.S122 {
 			[EnumerationValue([1,4,5,6,7,8,9,10,12,14,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33])]
 			public List<categoryOfRestrictedArea> categoryOfRestrictedArea {get;set;} = [];
 
+			public bool ShouldSerializecategoryOfRestrictedArea() { return categoryOfRestrictedArea.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41])]
 			public List<restriction> restriction {get;set;} = [];
 
+			public bool ShouldSerializerestriction() { return restriction.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
+
+			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(RestrictedArea);
@@ -2485,6 +2622,8 @@ namespace S100Framework.DomainModel.S122 {
 			[EnumerationValue([1,4,5,6,7,8,9,10,12,14,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33])]
 			public List<categoryOfRestrictedArea> categoryOfRestrictedArea {get;set;} = [];
 
+			public bool ShouldSerializecategoryOfRestrictedArea() { return categoryOfRestrictedArea.Any(); }
+
 			[EnumerationValue([1,2,3])]
 			[Required()]
 			public jurisdiction jurisdiction {get;set;}
@@ -2492,10 +2631,16 @@ namespace S100Framework.DomainModel.S122 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41])]
 			public List<restriction> restriction {get;set;} = [];
 
+			public bool ShouldSerializerestriction() { return restriction.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			public List<designation> designation {get;set;} = [];
+
+			public bool ShouldSerializedesignation() { return designation.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(MarineProtectedArea);
@@ -2623,10 +2768,12 @@ namespace S100Framework.DomainModel.S122 {
 	[XmlType(Namespace = "http://www.iho.int/S122/1.2")]
 	public class Dataset : S100Framework.DomainModel.S100.DatasetBase
 	{
+		[XmlElement(Order = 1)]
+		public Members? members { get; set; } = default;
 	}
 
 	[XmlType(Namespace = "http://www.iho.int/S122/1.2", TypeName = "members")]
-	public class Members : S100Framework.DomainModel.S100.MembersBase
+	public class Members
 	{
 		[XmlElement("InformationTypes.InformationType", typeof(InformationTypes.InformationType), Order = 1)]
 		[XmlElement("InformationTypes.AbstractRxN", typeof(InformationTypes.AbstractRxN), Order = 1)]
@@ -2644,7 +2791,7 @@ namespace S100Framework.DomainModel.S122 {
 		[XmlElement("FeatureTypes.VesselTrafficServiceArea", typeof(FeatureTypes.VesselTrafficServiceArea), Order = 1)]
 		[XmlElement("FeatureTypes.DataCoverage", typeof(FeatureTypes.DataCoverage), Order = 1)]
 		[XmlElement("FeatureTypes.TextPlacement", typeof(FeatureTypes.TextPlacement), Order = 1)]
-		public override List<object> elements { get; set; } = new List<object>();
+		public List<object> elements { get; set; } = new List<object>();
 	}
 }
 
