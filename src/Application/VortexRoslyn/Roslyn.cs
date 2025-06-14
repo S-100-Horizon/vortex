@@ -352,7 +352,7 @@ namespace S100Framework.Applications
 
                             if (lower == 0 && upper.HasValue && upper.Value == 1) {
                                 prefix += "?";
-                                postfix = " = default;";                                
+                                postfix = " = default;";
                             }
                             else if (lower == 1 && upper.HasValue && upper.Value == 1) {
                                 if (!knowTypesPrefix[referenceCode].Equals("String"))
@@ -509,7 +509,7 @@ namespace S100Framework.Applications
 
             builderDomainModel.AppendLine();
 
-            builderDomainModel.AppendLine($"namespace S100Framework.DomainModel.{productId} {{");            
+            builderDomainModel.AppendLine($"namespace S100Framework.DomainModel.{productId} {{");
             builderDomainModel.AppendLine("\tusing ComplexAttributes;");
             if (productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager).Any())
                 builderDomainModel.AppendLine("\tusing InformationAssociations;");
@@ -565,6 +565,11 @@ namespace S100Framework.Applications
                             InformationAssociationsLookup = informationAssociationsLookup,
                             FeatureAssociationsLookup = featureAssociationsLookup,
                             ShouldSerialize = shouldSerialize,
+                        }, (builder) => {
+                            builder.AppendLine();
+                            builder.AppendLine("\t\t\t[JsonIgnore]");
+                            builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
+                            builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
                         });
 
                         builderDomainModel.AppendLine(s);
@@ -631,6 +636,11 @@ namespace S100Framework.Applications
                             InformationAssociationsLookup = informationAssociationsLookup,
                             FeatureAssociationsLookup = featureAssociationsLookup,
                             ShouldSerialize = shouldSerialize,
+                        }, (builder) => {
+                            builder.AppendLine();
+                            builder.AppendLine("\t\t\t[JsonIgnore]");
+                            builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
+                            builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
                         });
 
                         builderDomainModel.AppendLine(s);
@@ -659,14 +669,14 @@ namespace S100Framework.Applications
             List<string> xmlElements;
 
 
-            xmlElements = [.. productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.InvariantCultureIgnoreCase)).Select(e => "InformationTypes." + e.Element(XName.Get("code", scope_S100))!.Value), 
+            xmlElements = [.. productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.InvariantCultureIgnoreCase)).Select(e => "InformationTypes." + e.Element(XName.Get("code", scope_S100))!.Value),
                             .. productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.InvariantCultureIgnoreCase)).Select(e => "FeatureTypes." + e.Element(XName.Get("code", scope_S100))!.Value)];
 
 
             builderDomainModel.AppendLine($"\t[XmlType({xmlTypeNamespace}, TypeName = \"members\")]");
             builderDomainModel.AppendLine("\tpublic class Members");
             builderDomainModel.AppendLine("\t{");
-            foreach(var name in xmlElements) {
+            foreach (var name in xmlElements) {
                 builderDomainModel.AppendLine($"\t\t[XmlElement(\"{name}\", typeof({name}), Order = 1)]");
             }
             builderDomainModel.AppendLine("\t\tpublic List<object> elements { get; set; } = new List<object>();");
@@ -980,10 +990,10 @@ namespace S100Framework.Applications
             public required IDictionary<string, ICollection<string>> InformationAssociationsLookup { get; init; }
             public required IDictionary<string, ICollection<string>> FeatureAssociationsLookup { get; init; }
 
-            public required IDictionary<string, Func<string,string>> ShouldSerialize { get; init; }
+            public required IDictionary<string, Func<string, string>> ShouldSerialize { get; init; }
         }
 
-        private static string BuildClass(XElement e, BuildClassClient client) {
+        private static string BuildClass(XElement e, BuildClassClient client, Action<StringBuilder>? postBuilder = default) {
             var navigator = client.ProductSpecification.CreateNavigator();
             navigator.MoveToFollowing(XPathNodeType.Element);
             var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
@@ -1011,7 +1021,7 @@ namespace S100Framework.Applications
                 _ => throw new InvalidDataException(),
             };
 
-            var xmlType = $"[XmlType(Namespace = \"http://www.iho.int/{productId}/{versionNumber.Remove(versionNumber.LastIndexOf('.'))}\")]";            
+            var xmlType = $"[XmlType(Namespace = \"http://www.iho.int/{productId}/{versionNumber.Remove(versionNumber.LastIndexOf('.'))}\")]";
 
             var encapsulation = (e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value)) ? "abstract" : "partial";
 
@@ -1054,7 +1064,7 @@ namespace S100Framework.Applications
 
                 if (lower == 0 && upper.HasValue && upper.Value == 1) {
                     prefix += "?";
-                    postfix = " = default;";                    
+                    postfix = " = default;";
                 }
                 else if (lower == 1 && upper.HasValue && upper.Value == 1) {
                     if (!client.KnowTypesPrefix[referenceCode].Equals("String"))
@@ -1202,6 +1212,8 @@ namespace S100Framework.Applications
 
                 builder.AppendLine(featureBindings.ToString().TrimEnd(Environment.NewLine.ToArray()));
             }
+
+            postBuilder?.Invoke(builder);
 
             builder.AppendLine("\t\t}");
 

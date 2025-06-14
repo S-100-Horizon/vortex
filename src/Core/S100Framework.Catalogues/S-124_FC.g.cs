@@ -2052,6 +2052,10 @@ namespace S100Framework.DomainModel.S124 {
 					informationTypes = [nameof(NavwarnPreamble)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -2108,6 +2112,10 @@ namespace S100Framework.DomainModel.S124 {
 					informationTypes = [nameof(References)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 	}
 	namespace FeatureTypes {
@@ -2183,6 +2191,10 @@ namespace S100Framework.DomainModel.S124 {
 					featureTypes = [nameof(TextPlacement)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -2218,6 +2230,10 @@ namespace S100Framework.DomainModel.S124 {
 					featureTypes = [nameof(NavwarnPart)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -2268,6 +2284,10 @@ namespace S100Framework.DomainModel.S124 {
 					featureTypes = [nameof(NavwarnPart)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 	}
 
