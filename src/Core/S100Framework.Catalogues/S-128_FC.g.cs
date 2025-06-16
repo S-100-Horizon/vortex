@@ -904,15 +904,15 @@ namespace S100Framework.DomainModel.S128 {
 		public class contactAddress {
 			public String? administrativeDivision {get;set;} = default;
 
-			public bool ShouldSerializeadministrativeDivision() { return string.IsNullOrEmpty(administrativeDivision); }
+			public bool ShouldSerializeadministrativeDivision() { return !string.IsNullOrEmpty(administrativeDivision); }
 
 			public String? cityName {get;set;} = default;
 
-			public bool ShouldSerializecityName() { return string.IsNullOrEmpty(cityName); }
+			public bool ShouldSerializecityName() { return !string.IsNullOrEmpty(cityName); }
 
 			public String? countryName {get;set;} = default;
 
-			public bool ShouldSerializecountryName() { return string.IsNullOrEmpty(countryName); }
+			public bool ShouldSerializecountryName() { return !string.IsNullOrEmpty(countryName); }
 
 			public List<String> deliveryPoint {get;set;} = [];
 
@@ -920,7 +920,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public String? postalCode {get;set;} = default;
 
-			public bool ShouldSerializepostalCode() { return string.IsNullOrEmpty(postalCode); }
+			public bool ShouldSerializepostalCode() { return !string.IsNullOrEmpty(postalCode); }
 		}
 
 		[System.Serializable()]
@@ -942,7 +942,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public String? language {get;set;} = default;
 
-			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
+			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 		}
 
 		[System.Serializable()]
@@ -950,7 +950,7 @@ namespace S100Framework.DomainModel.S128 {
 		public class featureName {
 			public String? language {get;set;} = default;
 
-			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
+			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			public String name {get;set;} = string.Empty;
 
@@ -964,19 +964,19 @@ namespace S100Framework.DomainModel.S128 {
 		public class information {
 			public String? fileLocator {get;set;} = default;
 
-			public bool ShouldSerializefileLocator() { return string.IsNullOrEmpty(fileLocator); }
+			public bool ShouldSerializefileLocator() { return !string.IsNullOrEmpty(fileLocator); }
 
 			public String? fileReference {get;set;} = default;
 
-			public bool ShouldSerializefileReference() { return string.IsNullOrEmpty(fileReference); }
+			public bool ShouldSerializefileReference() { return !string.IsNullOrEmpty(fileReference); }
 
 			public String? headline {get;set;} = default;
 
-			public bool ShouldSerializeheadline() { return string.IsNullOrEmpty(headline); }
+			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 
 			public String? language {get;set;} = default;
 
-			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
+			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			public List<String> text {get;set;} = [];
 
@@ -988,25 +988,25 @@ namespace S100Framework.DomainModel.S128 {
 		public class onlineResource {
 			public String? applicationProfile {get;set;} = default;
 
-			public bool ShouldSerializeapplicationProfile() { return string.IsNullOrEmpty(applicationProfile); }
+			public bool ShouldSerializeapplicationProfile() { return !string.IsNullOrEmpty(applicationProfile); }
 
 			public String linkage {get;set;} = string.Empty;
 
 			public String? nameOfResource {get;set;} = default;
 
-			public bool ShouldSerializenameOfResource() { return string.IsNullOrEmpty(nameOfResource); }
+			public bool ShouldSerializenameOfResource() { return !string.IsNullOrEmpty(nameOfResource); }
 
 			public String? onlineDescription {get;set;} = default;
 
-			public bool ShouldSerializeonlineDescription() { return string.IsNullOrEmpty(onlineDescription); }
+			public bool ShouldSerializeonlineDescription() { return !string.IsNullOrEmpty(onlineDescription); }
 
 			public String? protocol {get;set;} = default;
 
-			public bool ShouldSerializeprotocol() { return string.IsNullOrEmpty(protocol); }
+			public bool ShouldSerializeprotocol() { return !string.IsNullOrEmpty(protocol); }
 
 			public String? protocolRequest {get;set;} = default;
 
-			public bool ShouldSerializeprotocolRequest() { return string.IsNullOrEmpty(protocolRequest); }
+			public bool ShouldSerializeprotocolRequest() { return !string.IsNullOrEmpty(protocolRequest); }
 		}
 
 		[System.Serializable()]
@@ -1022,7 +1022,7 @@ namespace S100Framework.DomainModel.S128 {
 		public class pricing {
 			public String? contractPeriod {get;set;} = default;
 
-			public bool ShouldSerializecontractPeriod() { return string.IsNullOrEmpty(contractPeriod); }
+			public bool ShouldSerializecontractPeriod() { return !string.IsNullOrEmpty(contractPeriod); }
 
 			public String currency {get;set;} = string.Empty;
 
@@ -1059,7 +1059,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public String? iSSN {get;set;} = default;
 
-			public bool ShouldSerializeiSSN() { return string.IsNullOrEmpty(iSSN); }
+			public bool ShouldSerializeiSSN() { return !string.IsNullOrEmpty(iSSN); }
 
 			public String name {get;set;} = string.Empty;
 
@@ -1114,7 +1114,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public String? countryName {get;set;} = default;
 
-			public bool ShouldSerializecountryName() { return string.IsNullOrEmpty(countryName); }
+			public bool ShouldSerializecountryName() { return !string.IsNullOrEmpty(countryName); }
 
 			[XmlIgnore]
 			public DateOnly? reportedDate {get;set;} = default;
@@ -1123,7 +1123,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public String? source {get;set;} = default;
 
-			public bool ShouldSerializesource() { return string.IsNullOrEmpty(source); }
+			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14,15])]
 			public sourceType? sourceType {get;set;} = default;
@@ -1187,19 +1187,19 @@ namespace S100Framework.DomainModel.S128 {
 		public class printInformation {
 			public String? printAgency {get;set;} = default;
 
-			public bool ShouldSerializeprintAgency() { return string.IsNullOrEmpty(printAgency); }
+			public bool ShouldSerializeprintAgency() { return !string.IsNullOrEmpty(printAgency); }
 
 			public String? printNation {get;set;} = default;
 
-			public bool ShouldSerializeprintNation() { return string.IsNullOrEmpty(printNation); }
+			public bool ShouldSerializeprintNation() { return !string.IsNullOrEmpty(printNation); }
 
 			public String? reprintEdition {get;set;} = default;
 
-			public bool ShouldSerializereprintEdition() { return string.IsNullOrEmpty(reprintEdition); }
+			public bool ShouldSerializereprintEdition() { return !string.IsNullOrEmpty(reprintEdition); }
 
 			public String? reprintNation {get;set;} = default;
 
-			public bool ShouldSerializereprintNation() { return string.IsNullOrEmpty(reprintNation); }
+			public bool ShouldSerializereprintNation() { return !string.IsNullOrEmpty(reprintNation); }
 
 			[Required()]
 			public printSize printSize {get;set;}
@@ -1210,7 +1210,7 @@ namespace S100Framework.DomainModel.S128 {
 		public class supportFile {
 			public String? comment {get;set;} = default;
 
-			public bool ShouldSerializecomment() { return string.IsNullOrEmpty(comment); }
+			public bool ShouldSerializecomment() { return !string.IsNullOrEmpty(comment); }
 
 			[EnumerationValue([8])]
 			[Required()]
@@ -1236,7 +1236,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public String? otherDataTypeDescription {get;set;} = default;
 
-			public bool ShouldSerializeotherDataTypeDescription() { return string.IsNullOrEmpty(otherDataTypeDescription); }
+			public bool ShouldSerializeotherDataTypeDescription() { return !string.IsNullOrEmpty(otherDataTypeDescription); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,100])]
 			[Required()]
@@ -1455,7 +1455,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public String? catalogueSectionTitle {get;set;} = default;
 
-			public bool ShouldSerializecatalogueSectionTitle() { return string.IsNullOrEmpty(catalogueSectionTitle); }
+			public bool ShouldSerializecatalogueSectionTitle() { return !string.IsNullOrEmpty(catalogueSectionTitle); }
 
 			public information? information {get;set;} = default;
 
@@ -1563,11 +1563,11 @@ namespace S100Framework.DomainModel.S128 {
 		public partial class IndicationOfCarriageRequirement : InformationNode, IInformationBindingDefinition {
 			public String? domesticCarriageRequirements {get;set;} = default;
 
-			public bool ShouldSerializedomesticCarriageRequirements() { return string.IsNullOrEmpty(domesticCarriageRequirements); }
+			public bool ShouldSerializedomesticCarriageRequirements() { return !string.IsNullOrEmpty(domesticCarriageRequirements); }
 
 			public String? internationalCarriageRequirements {get;set;} = default;
 
-			public bool ShouldSerializeinternationalCarriageRequirements() { return string.IsNullOrEmpty(internationalCarriageRequirements); }
+			public bool ShouldSerializeinternationalCarriageRequirements() { return !string.IsNullOrEmpty(internationalCarriageRequirements); }
 
 			public List<featureName> featureName {get;set;} = [];
 
@@ -1639,7 +1639,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public String? agencyName {get;set;} = default;
 
-			public bool ShouldSerializeagencyName() { return string.IsNullOrEmpty(agencyName); }
+			public bool ShouldSerializeagencyName() { return !string.IsNullOrEmpty(agencyName); }
 
 			[JsonIgnore]
 			public override string Code => nameof(ProducerInformation);
@@ -1719,7 +1719,7 @@ namespace S100Framework.DomainModel.S128 {
 		public abstract class CatalogueElement : FeatureNode, IFeatureBindingDefinition {
 			public String? agencyResponsibleForProduction {get;set;} = default;
 
-			public bool ShouldSerializeagencyResponsibleForProduction() { return string.IsNullOrEmpty(agencyResponsibleForProduction); }
+			public bool ShouldSerializeagencyResponsibleForProduction() { return !string.IsNullOrEmpty(agencyResponsibleForProduction); }
 
 			public List<catalogueElementClassification> catalogueElementClassification {get;set;} = [];
 
@@ -1727,11 +1727,11 @@ namespace S100Framework.DomainModel.S128 {
 
 			public String? catalogueElementIdentifier {get;set;} = default;
 
-			public bool ShouldSerializecatalogueElementIdentifier() { return string.IsNullOrEmpty(catalogueElementIdentifier); }
+			public bool ShouldSerializecatalogueElementIdentifier() { return !string.IsNullOrEmpty(catalogueElementIdentifier); }
 
 			public String? classification {get;set;} = default;
 
-			public bool ShouldSerializeclassification() { return string.IsNullOrEmpty(classification); }
+			public bool ShouldSerializeclassification() { return !string.IsNullOrEmpty(classification); }
 
 			public List<iMOMaritimeService> iMOMaritimeService {get;set;} = [];
 
@@ -1859,19 +1859,19 @@ namespace S100Framework.DomainModel.S128 {
 
 			public String? optimumDisplayScale {get;set;} = default;
 
-			public bool ShouldSerializeoptimumDisplayScale() { return string.IsNullOrEmpty(optimumDisplayScale); }
+			public bool ShouldSerializeoptimumDisplayScale() { return !string.IsNullOrEmpty(optimumDisplayScale); }
 
 			public String? originalProductNumber {get;set;} = default;
 
-			public bool ShouldSerializeoriginalProductNumber() { return string.IsNullOrEmpty(originalProductNumber); }
+			public bool ShouldSerializeoriginalProductNumber() { return !string.IsNullOrEmpty(originalProductNumber); }
 
 			public String? producerNation {get;set;} = default;
 
-			public bool ShouldSerializeproducerNation() { return string.IsNullOrEmpty(producerNation); }
+			public bool ShouldSerializeproducerNation() { return !string.IsNullOrEmpty(producerNation); }
 
 			public String? productNumber {get;set;} = default;
 
-			public bool ShouldSerializeproductNumber() { return string.IsNullOrEmpty(productNumber); }
+			public bool ShouldSerializeproductNumber() { return !string.IsNullOrEmpty(productNumber); }
 
 			[EnumerationValue([1,2,3,4,5,6])]
 			public specificUsage? specificUsage {get;set;} = default;
@@ -1949,7 +1949,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public String? datasetName {get;set;} = default;
 
-			public bool ShouldSerializedatasetName() { return string.IsNullOrEmpty(datasetName); }
+			public bool ShouldSerializedatasetName() { return !string.IsNullOrEmpty(datasetName); }
 
 			[XmlIgnore]
 			[Required()]
@@ -2018,15 +2018,15 @@ namespace S100Framework.DomainModel.S128 {
 
 			public String? iSBN {get;set;} = default;
 
-			public bool ShouldSerializeiSBN() { return string.IsNullOrEmpty(iSBN); }
+			public bool ShouldSerializeiSBN() { return !string.IsNullOrEmpty(iSBN); }
 
 			public String? publicationNumber {get;set;} = default;
 
-			public bool ShouldSerializepublicationNumber() { return string.IsNullOrEmpty(publicationNumber); }
+			public bool ShouldSerializepublicationNumber() { return !string.IsNullOrEmpty(publicationNumber); }
 
 			public String? typeOfPhysicalProduct {get;set;} = default;
 
-			public bool ShouldSerializetypeOfPhysicalProduct() { return string.IsNullOrEmpty(typeOfPhysicalProduct); }
+			public bool ShouldSerializetypeOfPhysicalProduct() { return !string.IsNullOrEmpty(typeOfPhysicalProduct); }
 
 			public printInformation? printInformation {get;set;} = default;
 
@@ -2073,7 +2073,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public String? serviceName {get;set;} = default;
 
-			public bool ShouldSerializeserviceName() { return string.IsNullOrEmpty(serviceName); }
+			public bool ShouldSerializeserviceName() { return !string.IsNullOrEmpty(serviceName); }
 
 			[EnumerationValue([1,2,3,4])]
 			public serviceStatus? serviceStatus {get;set;} = default;
@@ -2128,15 +2128,15 @@ namespace S100Framework.DomainModel.S128 {
 	[XmlType(Namespace = "http://www.iho.int/S128/2.0", TypeName = "members")]
 	public class Members
 	{
-		[XmlElement("InformationTypes.CatalogueSectionHeader", typeof(InformationTypes.CatalogueSectionHeader), Order = 1)]
-		[XmlElement("InformationTypes.ContactDetails", typeof(InformationTypes.ContactDetails), Order = 1)]
-		[XmlElement("InformationTypes.IndicationOfCarriageRequirement", typeof(InformationTypes.IndicationOfCarriageRequirement), Order = 1)]
-		[XmlElement("InformationTypes.PriceInformation", typeof(InformationTypes.PriceInformation), Order = 1)]
-		[XmlElement("InformationTypes.ProducerInformation", typeof(InformationTypes.ProducerInformation), Order = 1)]
-		[XmlElement("InformationTypes.DistributorInformation", typeof(InformationTypes.DistributorInformation), Order = 1)]
-		[XmlElement("FeatureTypes.ElectronicProduct", typeof(FeatureTypes.ElectronicProduct), Order = 1)]
-		[XmlElement("FeatureTypes.PhysicalProduct", typeof(FeatureTypes.PhysicalProduct), Order = 1)]
-		[XmlElement("FeatureTypes.S100Service", typeof(FeatureTypes.S100Service), Order = 1)]
+		[XmlElement("InformationTypes.CatalogueSectionHeader", typeof(InformationTypes.CatalogueSectionHeader), Order = 1, ElementName = "CatalogueSectionHeader")]
+		[XmlElement("InformationTypes.ContactDetails", typeof(InformationTypes.ContactDetails), Order = 1, ElementName = "ContactDetails")]
+		[XmlElement("InformationTypes.IndicationOfCarriageRequirement", typeof(InformationTypes.IndicationOfCarriageRequirement), Order = 1, ElementName = "IndicationOfCarriageRequirement")]
+		[XmlElement("InformationTypes.PriceInformation", typeof(InformationTypes.PriceInformation), Order = 1, ElementName = "PriceInformation")]
+		[XmlElement("InformationTypes.ProducerInformation", typeof(InformationTypes.ProducerInformation), Order = 1, ElementName = "ProducerInformation")]
+		[XmlElement("InformationTypes.DistributorInformation", typeof(InformationTypes.DistributorInformation), Order = 1, ElementName = "DistributorInformation")]
+		[XmlElement("FeatureTypes.ElectronicProduct", typeof(FeatureTypes.ElectronicProduct), Order = 1, ElementName = "ElectronicProduct")]
+		[XmlElement("FeatureTypes.PhysicalProduct", typeof(FeatureTypes.PhysicalProduct), Order = 1, ElementName = "PhysicalProduct")]
+		[XmlElement("FeatureTypes.S100Service", typeof(FeatureTypes.S100Service), Order = 1, ElementName = "S100Service")]
 		public List<object> elements { get; set; } = new List<object>();
 	}
 }

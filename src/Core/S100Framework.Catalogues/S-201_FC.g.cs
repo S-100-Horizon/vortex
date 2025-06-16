@@ -4108,23 +4108,23 @@ namespace S100Framework.DomainModel.S201 {
 		public class contactAddress {
 			public String? deliveryPoint {get;set;} = default;
 
-			public bool ShouldSerializedeliveryPoint() { return string.IsNullOrEmpty(deliveryPoint); }
+			public bool ShouldSerializedeliveryPoint() { return !string.IsNullOrEmpty(deliveryPoint); }
 
 			public String? cityName {get;set;} = default;
 
-			public bool ShouldSerializecityName() { return string.IsNullOrEmpty(cityName); }
+			public bool ShouldSerializecityName() { return !string.IsNullOrEmpty(cityName); }
 
 			public String? administrativeDivision {get;set;} = default;
 
-			public bool ShouldSerializeadministrativeDivision() { return string.IsNullOrEmpty(administrativeDivision); }
+			public bool ShouldSerializeadministrativeDivision() { return !string.IsNullOrEmpty(administrativeDivision); }
 
 			public String? countryName {get;set;} = default;
 
-			public bool ShouldSerializecountryName() { return string.IsNullOrEmpty(countryName); }
+			public bool ShouldSerializecountryName() { return !string.IsNullOrEmpty(countryName); }
 
 			public String? postalCode {get;set;} = default;
 
-			public bool ShouldSerializepostalCode() { return string.IsNullOrEmpty(postalCode); }
+			public bool ShouldSerializepostalCode() { return !string.IsNullOrEmpty(postalCode); }
 		}
 
 		[System.Serializable()]
@@ -4136,7 +4136,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public String? language {get;set;} = default;
 
-			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
+			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			public String name {get;set;} = string.Empty;
 		}
@@ -4146,11 +4146,11 @@ namespace S100Framework.DomainModel.S201 {
 		public class fixedDateRange {
 			public String? dateEnd {get;set;} = default;
 
-			public bool ShouldSerializedateEnd() { return string.IsNullOrEmpty(dateEnd); }
+			public bool ShouldSerializedateEnd() { return !string.IsNullOrEmpty(dateEnd); }
 
 			public String? dateStart {get;set;} = default;
 
-			public bool ShouldSerializedateStart() { return string.IsNullOrEmpty(dateStart); }
+			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
 		}
 
 		[System.Serializable()]
@@ -4197,7 +4197,7 @@ namespace S100Framework.DomainModel.S201 {
 		public class sectorInformation {
 			public String? language {get;set;} = default;
 
-			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
+			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			public String text {get;set;} = string.Empty;
 		}
@@ -4229,7 +4229,7 @@ namespace S100Framework.DomainModel.S201 {
 		public class shapeInformation {
 			public String? language {get;set;} = default;
 
-			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
+			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			public String text {get;set;} = string.Empty;
 		}
@@ -4349,21 +4349,21 @@ namespace S100Framework.DomainModel.S201 {
 		public class information {
 			public String? fileLocator {get;set;} = default;
 
-			public bool ShouldSerializefileLocator() { return string.IsNullOrEmpty(fileLocator); }
+			public bool ShouldSerializefileLocator() { return !string.IsNullOrEmpty(fileLocator); }
 
 			public String? fileReference {get;set;} = default;
 
-			public bool ShouldSerializefileReference() { return string.IsNullOrEmpty(fileReference); }
+			public bool ShouldSerializefileReference() { return !string.IsNullOrEmpty(fileReference); }
 
 			public String? headline {get;set;} = default;
 
-			public bool ShouldSerializeheadline() { return string.IsNullOrEmpty(headline); }
+			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 
 			public String language {get;set;} = string.Empty;
 
 			public String? text {get;set;} = default;
 
-			public bool ShouldSerializetext() { return string.IsNullOrEmpty(text); }
+			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
 		}
 
 		[System.Serializable()]
@@ -4373,7 +4373,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public String? language {get;set;} = default;
 
-			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
+			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 		}
 
 		[System.Serializable()]
@@ -4846,7 +4846,7 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class AtoNFixingMethod : InformationNode, IInformationBindingDefinition {
 			public String? referencePoint {get;set;} = default;
 
-			public bool ShouldSerializereferencePoint() { return string.IsNullOrEmpty(referencePoint); }
+			public bool ShouldSerializereferencePoint() { return !string.IsNullOrEmpty(referencePoint); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131])]
 			public horizontalDatum? horizontalDatum {get;set;} = default;
@@ -4971,7 +4971,7 @@ namespace S100Framework.DomainModel.S201 {
 		public abstract class AidsToNavigation : FeatureNode, IFeatureBindingDefinition {
 			public String? iDCode {get;set;} = default;
 
-			public bool ShouldSerializeiDCode() { return string.IsNullOrEmpty(iDCode); }
+			public bool ShouldSerializeiDCode() { return !string.IsNullOrEmpty(iDCode); }
 
 			public List<information> information {get;set;} = [];
 
@@ -4992,23 +4992,23 @@ namespace S100Framework.DomainModel.S201 {
 
 			public String? source {get;set;} = default;
 
-			public bool ShouldSerializesource() { return string.IsNullOrEmpty(source); }
+			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			public String? inspectionFrequency {get;set;} = default;
 
-			public bool ShouldSerializeinspectionFrequency() { return string.IsNullOrEmpty(inspectionFrequency); }
+			public bool ShouldSerializeinspectionFrequency() { return !string.IsNullOrEmpty(inspectionFrequency); }
 
 			public String? inspectionRequirements {get;set;} = default;
 
-			public bool ShouldSerializeinspectionRequirements() { return string.IsNullOrEmpty(inspectionRequirements); }
+			public bool ShouldSerializeinspectionRequirements() { return !string.IsNullOrEmpty(inspectionRequirements); }
 
 			public String? aToNMaintenanceRecord {get;set;} = default;
 
-			public bool ShouldSerializeaToNMaintenanceRecord() { return string.IsNullOrEmpty(aToNMaintenanceRecord); }
+			public bool ShouldSerializeaToNMaintenanceRecord() { return !string.IsNullOrEmpty(aToNMaintenanceRecord); }
 
 			[XmlIgnore]
 			public DateOnly? installationDate {get;set;} = default;
@@ -5198,7 +5198,7 @@ namespace S100Framework.DomainModel.S201 {
 		public abstract class ElectronicAton : AidsToNavigation {
 			public String? AtoNNumber {get;set;} = default;
 
-			public bool ShouldSerializeAtoNNumber() { return string.IsNullOrEmpty(AtoNNumber); }
+			public bool ShouldSerializeAtoNNumber() { return !string.IsNullOrEmpty(AtoNNumber); }
 
 			public String mMSICode {get;set;} = string.Empty;
 
@@ -5357,7 +5357,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public String? typeOfBuoy {get;set;} = default;
 
-			public bool ShouldSerializetypeOfBuoy() { return string.IsNullOrEmpty(typeOfBuoy); }
+			public bool ShouldSerializetypeOfBuoy() { return !string.IsNullOrEmpty(typeOfBuoy); }
 
 			public decimal? verticalLength {get;set;} = default;
 
@@ -6089,7 +6089,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public String? signalGroup {get;set;} = default;
 
-			public bool ShouldSerializesignalGroup() { return string.IsNullOrEmpty(signalGroup); }
+			public bool ShouldSerializesignalGroup() { return !string.IsNullOrEmpty(signalGroup); }
 
 			public decimal? signalOutput {get;set;} = default;
 
@@ -6417,7 +6417,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public String? signalGroup {get;set;} = default;
 
-			public bool ShouldSerializesignalGroup() { return string.IsNullOrEmpty(signalGroup); }
+			public bool ShouldSerializesignalGroup() { return !string.IsNullOrEmpty(signalGroup); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
@@ -6430,7 +6430,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public String? manufactorer {get;set;} = default;
 
-			public bool ShouldSerializemanufactorer() { return string.IsNullOrEmpty(manufactorer); }
+			public bool ShouldSerializemanufactorer() { return !string.IsNullOrEmpty(manufactorer); }
 
 			public sectorLimitOne? sectorLimitOne {get;set;} = default;
 
@@ -7402,7 +7402,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public String? sinkerType {get;set;} = default;
 
-			public bool ShouldSerializesinkerType() { return string.IsNullOrEmpty(sinkerType); }
+			public bool ShouldSerializesinkerType() { return !string.IsNullOrEmpty(sinkerType); }
 
 			[JsonIgnore]
 			public override string Code => nameof(SinkerAnchor);
@@ -7607,7 +7607,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public String? swivelType {get;set;} = default;
 
-			public bool ShouldSerializeswivelType() { return string.IsNullOrEmpty(swivelType); }
+			public bool ShouldSerializeswivelType() { return !string.IsNullOrEmpty(swivelType); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Swivel);
@@ -7666,11 +7666,11 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class Bridle : AidsToNavigation {
 			public String? bridleLinkType {get;set;} = default;
 
-			public bool ShouldSerializebridleLinkType() { return string.IsNullOrEmpty(bridleLinkType); }
+			public bool ShouldSerializebridleLinkType() { return !string.IsNullOrEmpty(bridleLinkType); }
 
 			public String? legsDetails {get;set;} = default;
 
-			public bool ShouldSerializelegsDetails() { return string.IsNullOrEmpty(legsDetails); }
+			public bool ShouldSerializelegsDetails() { return !string.IsNullOrEmpty(legsDetails); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Bridle);
@@ -7745,7 +7745,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public String? counterWeightType {get;set;} = default;
 
-			public bool ShouldSerializecounterWeightType() { return string.IsNullOrEmpty(counterWeightType); }
+			public bool ShouldSerializecounterWeightType() { return !string.IsNullOrEmpty(counterWeightType); }
 
 			[JsonIgnore]
 			public override string Code => nameof(CounterWeight);
@@ -8140,7 +8140,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public String? informationInNationalLanguage {get;set;} = default;
 
-			public bool ShouldSerializeinformationInNationalLanguage() { return string.IsNullOrEmpty(informationInNationalLanguage); }
+			public bool ShouldSerializeinformationInNationalLanguage() { return !string.IsNullOrEmpty(informationInNationalLanguage); }
 
 			public textualDescription? textualDescription {get;set;} = default;
 
@@ -8362,65 +8362,65 @@ namespace S100Framework.DomainModel.S201 {
 	[XmlType(Namespace = "http://www.iho.int/S201/2.0", TypeName = "members")]
 	public class Members
 	{
-		[XmlElement("InformationTypes.AtoNFixingMethod", typeof(InformationTypes.AtoNFixingMethod), Order = 1)]
-		[XmlElement("InformationTypes.AtonStatusInformation", typeof(InformationTypes.AtonStatusInformation), Order = 1)]
-		[XmlElement("InformationTypes.PositioningInformation", typeof(InformationTypes.PositioningInformation), Order = 1)]
-		[XmlElement("InformationTypes.SpatialQuality", typeof(InformationTypes.SpatialQuality), Order = 1)]
-		[XmlElement("FeatureTypes.Landmark", typeof(FeatureTypes.Landmark), Order = 1)]
-		[XmlElement("FeatureTypes.LateralBeacon", typeof(FeatureTypes.LateralBeacon), Order = 1)]
-		[XmlElement("FeatureTypes.LateralBuoy", typeof(FeatureTypes.LateralBuoy), Order = 1)]
-		[XmlElement("FeatureTypes.NavigationLine", typeof(FeatureTypes.NavigationLine), Order = 1)]
-		[XmlElement("FeatureTypes.RecommendedTrack", typeof(FeatureTypes.RecommendedTrack), Order = 1)]
-		[XmlElement("FeatureTypes.LightSectored", typeof(FeatureTypes.LightSectored), Order = 1)]
-		[XmlElement("FeatureTypes.LightAllAround", typeof(FeatureTypes.LightAllAround), Order = 1)]
-		[XmlElement("FeatureTypes.LightAirObstruction", typeof(FeatureTypes.LightAirObstruction), Order = 1)]
-		[XmlElement("FeatureTypes.LightFogDetector", typeof(FeatureTypes.LightFogDetector), Order = 1)]
-		[XmlElement("FeatureTypes.RadarReflector", typeof(FeatureTypes.RadarReflector), Order = 1)]
-		[XmlElement("FeatureTypes.FogSignal", typeof(FeatureTypes.FogSignal), Order = 1)]
-		[XmlElement("FeatureTypes.EnvironmentObservationEquipment", typeof(FeatureTypes.EnvironmentObservationEquipment), Order = 1)]
-		[XmlElement("FeatureTypes.RadioStation", typeof(FeatureTypes.RadioStation), Order = 1)]
-		[XmlElement("FeatureTypes.Daymark", typeof(FeatureTypes.Daymark), Order = 1)]
-		[XmlElement("FeatureTypes.Retroreflector", typeof(FeatureTypes.Retroreflector), Order = 1)]
-		[XmlElement("FeatureTypes.RadarTransponderBeacon", typeof(FeatureTypes.RadarTransponderBeacon), Order = 1)]
-		[XmlElement("FeatureTypes.VirtualAISAidToNavigation", typeof(FeatureTypes.VirtualAISAidToNavigation), Order = 1)]
-		[XmlElement("FeatureTypes.PhysicalAISAidToNavigation", typeof(FeatureTypes.PhysicalAISAidToNavigation), Order = 1)]
-		[XmlElement("FeatureTypes.SyntheticAISAidToNavigation", typeof(FeatureTypes.SyntheticAISAidToNavigation), Order = 1)]
-		[XmlElement("FeatureTypes.PowerSource", typeof(FeatureTypes.PowerSource), Order = 1)]
-		[XmlElement("FeatureTypes.IsolatedDangerBeacon", typeof(FeatureTypes.IsolatedDangerBeacon), Order = 1)]
-		[XmlElement("FeatureTypes.CardinalBeacon", typeof(FeatureTypes.CardinalBeacon), Order = 1)]
-		[XmlElement("FeatureTypes.IsolatedDangerBuoy", typeof(FeatureTypes.IsolatedDangerBuoy), Order = 1)]
-		[XmlElement("FeatureTypes.CardinalBuoy", typeof(FeatureTypes.CardinalBuoy), Order = 1)]
-		[XmlElement("FeatureTypes.InstallationBuoy", typeof(FeatureTypes.InstallationBuoy), Order = 1)]
-		[XmlElement("FeatureTypes.MooringBuoy", typeof(FeatureTypes.MooringBuoy), Order = 1)]
-		[XmlElement("FeatureTypes.EmergencyWreckMarkingBuoy", typeof(FeatureTypes.EmergencyWreckMarkingBuoy), Order = 1)]
-		[XmlElement("FeatureTypes.Lighthouse", typeof(FeatureTypes.Lighthouse), Order = 1)]
-		[XmlElement("FeatureTypes.LightFloat", typeof(FeatureTypes.LightFloat), Order = 1)]
-		[XmlElement("FeatureTypes.LightVessel", typeof(FeatureTypes.LightVessel), Order = 1)]
-		[XmlElement("FeatureTypes.OffshorePlatform", typeof(FeatureTypes.OffshorePlatform), Order = 1)]
-		[XmlElement("FeatureTypes.SiloTank", typeof(FeatureTypes.SiloTank), Order = 1)]
-		[XmlElement("FeatureTypes.Pile", typeof(FeatureTypes.Pile), Order = 1)]
-		[XmlElement("FeatureTypes.Building", typeof(FeatureTypes.Building), Order = 1)]
-		[XmlElement("FeatureTypes.Bridge", typeof(FeatureTypes.Bridge), Order = 1)]
-		[XmlElement("FeatureTypes.SinkerAnchor", typeof(FeatureTypes.SinkerAnchor), Order = 1)]
-		[XmlElement("FeatureTypes.MooringShackle", typeof(FeatureTypes.MooringShackle), Order = 1)]
-		[XmlElement("FeatureTypes.CableSubmarine", typeof(FeatureTypes.CableSubmarine), Order = 1)]
-		[XmlElement("FeatureTypes.Swivel", typeof(FeatureTypes.Swivel), Order = 1)]
-		[XmlElement("FeatureTypes.Bridle", typeof(FeatureTypes.Bridle), Order = 1)]
-		[XmlElement("FeatureTypes.CounterWeight", typeof(FeatureTypes.CounterWeight), Order = 1)]
-		[XmlElement("FeatureTypes.Topmark", typeof(FeatureTypes.Topmark), Order = 1)]
-		[XmlElement("FeatureTypes.SafeWaterBeacon", typeof(FeatureTypes.SafeWaterBeacon), Order = 1)]
-		[XmlElement("FeatureTypes.SpecialPurposeGeneralBeacon", typeof(FeatureTypes.SpecialPurposeGeneralBeacon), Order = 1)]
-		[XmlElement("FeatureTypes.SafeWaterBuoy", typeof(FeatureTypes.SafeWaterBuoy), Order = 1)]
-		[XmlElement("FeatureTypes.SpecialPurposeGeneralBuoy", typeof(FeatureTypes.SpecialPurposeGeneralBuoy), Order = 1)]
-		[XmlElement("FeatureTypes.DangerousFeature", typeof(FeatureTypes.DangerousFeature), Order = 1)]
-		[XmlElement("FeatureTypes.AtonAggregation", typeof(FeatureTypes.AtonAggregation), Order = 1)]
-		[XmlElement("FeatureTypes.AtonAssociation", typeof(FeatureTypes.AtonAssociation), Order = 1)]
-		[XmlElement("FeatureTypes.QualityOfNonBathymetricData", typeof(FeatureTypes.QualityOfNonBathymetricData), Order = 1)]
-		[XmlElement("FeatureTypes.DataCoverage", typeof(FeatureTypes.DataCoverage), Order = 1)]
-		[XmlElement("FeatureTypes.LocalDirectionOfBuoyage", typeof(FeatureTypes.LocalDirectionOfBuoyage), Order = 1)]
-		[XmlElement("FeatureTypes.NavigationalSystemOfMarks", typeof(FeatureTypes.NavigationalSystemOfMarks), Order = 1)]
-		[XmlElement("FeatureTypes.SoundingDatum", typeof(FeatureTypes.SoundingDatum), Order = 1)]
-		[XmlElement("FeatureTypes.VerticalDatumOfData", typeof(FeatureTypes.VerticalDatumOfData), Order = 1)]
+		[XmlElement("InformationTypes.AtoNFixingMethod", typeof(InformationTypes.AtoNFixingMethod), Order = 1, ElementName = "AtoNFixingMethod")]
+		[XmlElement("InformationTypes.AtonStatusInformation", typeof(InformationTypes.AtonStatusInformation), Order = 1, ElementName = "AtonStatusInformation")]
+		[XmlElement("InformationTypes.PositioningInformation", typeof(InformationTypes.PositioningInformation), Order = 1, ElementName = "PositioningInformation")]
+		[XmlElement("InformationTypes.SpatialQuality", typeof(InformationTypes.SpatialQuality), Order = 1, ElementName = "SpatialQuality")]
+		[XmlElement("FeatureTypes.Landmark", typeof(FeatureTypes.Landmark), Order = 1, ElementName = "Landmark")]
+		[XmlElement("FeatureTypes.LateralBeacon", typeof(FeatureTypes.LateralBeacon), Order = 1, ElementName = "LateralBeacon")]
+		[XmlElement("FeatureTypes.LateralBuoy", typeof(FeatureTypes.LateralBuoy), Order = 1, ElementName = "LateralBuoy")]
+		[XmlElement("FeatureTypes.NavigationLine", typeof(FeatureTypes.NavigationLine), Order = 1, ElementName = "NavigationLine")]
+		[XmlElement("FeatureTypes.RecommendedTrack", typeof(FeatureTypes.RecommendedTrack), Order = 1, ElementName = "RecommendedTrack")]
+		[XmlElement("FeatureTypes.LightSectored", typeof(FeatureTypes.LightSectored), Order = 1, ElementName = "LightSectored")]
+		[XmlElement("FeatureTypes.LightAllAround", typeof(FeatureTypes.LightAllAround), Order = 1, ElementName = "LightAllAround")]
+		[XmlElement("FeatureTypes.LightAirObstruction", typeof(FeatureTypes.LightAirObstruction), Order = 1, ElementName = "LightAirObstruction")]
+		[XmlElement("FeatureTypes.LightFogDetector", typeof(FeatureTypes.LightFogDetector), Order = 1, ElementName = "LightFogDetector")]
+		[XmlElement("FeatureTypes.RadarReflector", typeof(FeatureTypes.RadarReflector), Order = 1, ElementName = "RadarReflector")]
+		[XmlElement("FeatureTypes.FogSignal", typeof(FeatureTypes.FogSignal), Order = 1, ElementName = "FogSignal")]
+		[XmlElement("FeatureTypes.EnvironmentObservationEquipment", typeof(FeatureTypes.EnvironmentObservationEquipment), Order = 1, ElementName = "EnvironmentObservationEquipment")]
+		[XmlElement("FeatureTypes.RadioStation", typeof(FeatureTypes.RadioStation), Order = 1, ElementName = "RadioStation")]
+		[XmlElement("FeatureTypes.Daymark", typeof(FeatureTypes.Daymark), Order = 1, ElementName = "Daymark")]
+		[XmlElement("FeatureTypes.Retroreflector", typeof(FeatureTypes.Retroreflector), Order = 1, ElementName = "Retroreflector")]
+		[XmlElement("FeatureTypes.RadarTransponderBeacon", typeof(FeatureTypes.RadarTransponderBeacon), Order = 1, ElementName = "RadarTransponderBeacon")]
+		[XmlElement("FeatureTypes.VirtualAISAidToNavigation", typeof(FeatureTypes.VirtualAISAidToNavigation), Order = 1, ElementName = "VirtualAISAidToNavigation")]
+		[XmlElement("FeatureTypes.PhysicalAISAidToNavigation", typeof(FeatureTypes.PhysicalAISAidToNavigation), Order = 1, ElementName = "PhysicalAISAidToNavigation")]
+		[XmlElement("FeatureTypes.SyntheticAISAidToNavigation", typeof(FeatureTypes.SyntheticAISAidToNavigation), Order = 1, ElementName = "SyntheticAISAidToNavigation")]
+		[XmlElement("FeatureTypes.PowerSource", typeof(FeatureTypes.PowerSource), Order = 1, ElementName = "PowerSource")]
+		[XmlElement("FeatureTypes.IsolatedDangerBeacon", typeof(FeatureTypes.IsolatedDangerBeacon), Order = 1, ElementName = "IsolatedDangerBeacon")]
+		[XmlElement("FeatureTypes.CardinalBeacon", typeof(FeatureTypes.CardinalBeacon), Order = 1, ElementName = "CardinalBeacon")]
+		[XmlElement("FeatureTypes.IsolatedDangerBuoy", typeof(FeatureTypes.IsolatedDangerBuoy), Order = 1, ElementName = "IsolatedDangerBuoy")]
+		[XmlElement("FeatureTypes.CardinalBuoy", typeof(FeatureTypes.CardinalBuoy), Order = 1, ElementName = "CardinalBuoy")]
+		[XmlElement("FeatureTypes.InstallationBuoy", typeof(FeatureTypes.InstallationBuoy), Order = 1, ElementName = "InstallationBuoy")]
+		[XmlElement("FeatureTypes.MooringBuoy", typeof(FeatureTypes.MooringBuoy), Order = 1, ElementName = "MooringBuoy")]
+		[XmlElement("FeatureTypes.EmergencyWreckMarkingBuoy", typeof(FeatureTypes.EmergencyWreckMarkingBuoy), Order = 1, ElementName = "EmergencyWreckMarkingBuoy")]
+		[XmlElement("FeatureTypes.Lighthouse", typeof(FeatureTypes.Lighthouse), Order = 1, ElementName = "Lighthouse")]
+		[XmlElement("FeatureTypes.LightFloat", typeof(FeatureTypes.LightFloat), Order = 1, ElementName = "LightFloat")]
+		[XmlElement("FeatureTypes.LightVessel", typeof(FeatureTypes.LightVessel), Order = 1, ElementName = "LightVessel")]
+		[XmlElement("FeatureTypes.OffshorePlatform", typeof(FeatureTypes.OffshorePlatform), Order = 1, ElementName = "OffshorePlatform")]
+		[XmlElement("FeatureTypes.SiloTank", typeof(FeatureTypes.SiloTank), Order = 1, ElementName = "SiloTank")]
+		[XmlElement("FeatureTypes.Pile", typeof(FeatureTypes.Pile), Order = 1, ElementName = "Pile")]
+		[XmlElement("FeatureTypes.Building", typeof(FeatureTypes.Building), Order = 1, ElementName = "Building")]
+		[XmlElement("FeatureTypes.Bridge", typeof(FeatureTypes.Bridge), Order = 1, ElementName = "Bridge")]
+		[XmlElement("FeatureTypes.SinkerAnchor", typeof(FeatureTypes.SinkerAnchor), Order = 1, ElementName = "SinkerAnchor")]
+		[XmlElement("FeatureTypes.MooringShackle", typeof(FeatureTypes.MooringShackle), Order = 1, ElementName = "MooringShackle")]
+		[XmlElement("FeatureTypes.CableSubmarine", typeof(FeatureTypes.CableSubmarine), Order = 1, ElementName = "CableSubmarine")]
+		[XmlElement("FeatureTypes.Swivel", typeof(FeatureTypes.Swivel), Order = 1, ElementName = "Swivel")]
+		[XmlElement("FeatureTypes.Bridle", typeof(FeatureTypes.Bridle), Order = 1, ElementName = "Bridle")]
+		[XmlElement("FeatureTypes.CounterWeight", typeof(FeatureTypes.CounterWeight), Order = 1, ElementName = "CounterWeight")]
+		[XmlElement("FeatureTypes.Topmark", typeof(FeatureTypes.Topmark), Order = 1, ElementName = "Topmark")]
+		[XmlElement("FeatureTypes.SafeWaterBeacon", typeof(FeatureTypes.SafeWaterBeacon), Order = 1, ElementName = "SafeWaterBeacon")]
+		[XmlElement("FeatureTypes.SpecialPurposeGeneralBeacon", typeof(FeatureTypes.SpecialPurposeGeneralBeacon), Order = 1, ElementName = "SpecialPurposeGeneralBeacon")]
+		[XmlElement("FeatureTypes.SafeWaterBuoy", typeof(FeatureTypes.SafeWaterBuoy), Order = 1, ElementName = "SafeWaterBuoy")]
+		[XmlElement("FeatureTypes.SpecialPurposeGeneralBuoy", typeof(FeatureTypes.SpecialPurposeGeneralBuoy), Order = 1, ElementName = "SpecialPurposeGeneralBuoy")]
+		[XmlElement("FeatureTypes.DangerousFeature", typeof(FeatureTypes.DangerousFeature), Order = 1, ElementName = "DangerousFeature")]
+		[XmlElement("FeatureTypes.AtonAggregation", typeof(FeatureTypes.AtonAggregation), Order = 1, ElementName = "AtonAggregation")]
+		[XmlElement("FeatureTypes.AtonAssociation", typeof(FeatureTypes.AtonAssociation), Order = 1, ElementName = "AtonAssociation")]
+		[XmlElement("FeatureTypes.QualityOfNonBathymetricData", typeof(FeatureTypes.QualityOfNonBathymetricData), Order = 1, ElementName = "QualityOfNonBathymetricData")]
+		[XmlElement("FeatureTypes.DataCoverage", typeof(FeatureTypes.DataCoverage), Order = 1, ElementName = "DataCoverage")]
+		[XmlElement("FeatureTypes.LocalDirectionOfBuoyage", typeof(FeatureTypes.LocalDirectionOfBuoyage), Order = 1, ElementName = "LocalDirectionOfBuoyage")]
+		[XmlElement("FeatureTypes.NavigationalSystemOfMarks", typeof(FeatureTypes.NavigationalSystemOfMarks), Order = 1, ElementName = "NavigationalSystemOfMarks")]
+		[XmlElement("FeatureTypes.SoundingDatum", typeof(FeatureTypes.SoundingDatum), Order = 1, ElementName = "SoundingDatum")]
+		[XmlElement("FeatureTypes.VerticalDatumOfData", typeof(FeatureTypes.VerticalDatumOfData), Order = 1, ElementName = "VerticalDatumOfData")]
 		public List<object> elements { get; set; } = new List<object>();
 	}
 }

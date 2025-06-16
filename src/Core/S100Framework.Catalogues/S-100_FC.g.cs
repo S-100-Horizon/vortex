@@ -105,7 +105,6 @@ namespace S100Framework.DomainModel.S100
         public DateTime datasetReferenceDate { get; set; }
 
         [XmlElement(Order = 8)]
-        [DefaultValue("eng")]
         public string datasetLanguage { get; set; } = "eng";
 
         [XmlElement(Order = 9)]

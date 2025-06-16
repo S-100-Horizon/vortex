@@ -2095,19 +2095,19 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? cityName {get;set;} = default;
 
-			public bool ShouldSerializecityName() { return string.IsNullOrEmpty(cityName); }
+			public bool ShouldSerializecityName() { return !string.IsNullOrEmpty(cityName); }
 
 			public String? administrativeDivision {get;set;} = default;
 
-			public bool ShouldSerializeadministrativeDivision() { return string.IsNullOrEmpty(administrativeDivision); }
+			public bool ShouldSerializeadministrativeDivision() { return !string.IsNullOrEmpty(administrativeDivision); }
 
 			public String? countryName {get;set;} = default;
 
-			public bool ShouldSerializecountryName() { return string.IsNullOrEmpty(countryName); }
+			public bool ShouldSerializecountryName() { return !string.IsNullOrEmpty(countryName); }
 
 			public String? postalCode {get;set;} = default;
 
-			public bool ShouldSerializepostalCode() { return string.IsNullOrEmpty(postalCode); }
+			public bool ShouldSerializepostalCode() { return !string.IsNullOrEmpty(postalCode); }
 		}
 
 		[System.Serializable()]
@@ -2119,7 +2119,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? language {get;set;} = default;
 
-			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
+			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			public String name {get;set;} = string.Empty;
 		}
@@ -2129,11 +2129,11 @@ namespace S100Framework.DomainModel.S131 {
 		public class fixedDateRange {
 			public String? dateStart {get;set;} = default;
 
-			public bool ShouldSerializedateStart() { return string.IsNullOrEmpty(dateStart); }
+			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
 
 			public String? dateEnd {get;set;} = default;
 
-			public bool ShouldSerializedateEnd() { return string.IsNullOrEmpty(dateEnd); }
+			public bool ShouldSerializedateEnd() { return !string.IsNullOrEmpty(dateEnd); }
 		}
 
 		[System.Serializable()]
@@ -2168,11 +2168,11 @@ namespace S100Framework.DomainModel.S131 {
 		public class information {
 			public String? fileLocator {get;set;} = default;
 
-			public bool ShouldSerializefileLocator() { return string.IsNullOrEmpty(fileLocator); }
+			public bool ShouldSerializefileLocator() { return !string.IsNullOrEmpty(fileLocator); }
 
 			public String? fileReference {get;set;} = default;
 
-			public bool ShouldSerializefileReference() { return string.IsNullOrEmpty(fileReference); }
+			public bool ShouldSerializefileReference() { return !string.IsNullOrEmpty(fileReference); }
 
 			public List<String> headline {get;set;} = [];
 
@@ -2180,11 +2180,11 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? language {get;set;} = default;
 
-			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
+			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			public String? text {get;set;} = default;
 
-			public bool ShouldSerializetext() { return string.IsNullOrEmpty(text); }
+			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
 		}
 
 		[System.Serializable()]
@@ -2194,19 +2194,19 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? protocol {get;set;} = default;
 
-			public bool ShouldSerializeprotocol() { return string.IsNullOrEmpty(protocol); }
+			public bool ShouldSerializeprotocol() { return !string.IsNullOrEmpty(protocol); }
 
 			public String? applicationProfile {get;set;} = default;
 
-			public bool ShouldSerializeapplicationProfile() { return string.IsNullOrEmpty(applicationProfile); }
+			public bool ShouldSerializeapplicationProfile() { return !string.IsNullOrEmpty(applicationProfile); }
 
 			public String? nameOfResource {get;set;} = default;
 
-			public bool ShouldSerializenameOfResource() { return string.IsNullOrEmpty(nameOfResource); }
+			public bool ShouldSerializenameOfResource() { return !string.IsNullOrEmpty(nameOfResource); }
 
 			public String? onlineResourceDescription {get;set;} = default;
 
-			public bool ShouldSerializeonlineResourceDescription() { return string.IsNullOrEmpty(onlineResourceDescription); }
+			public bool ShouldSerializeonlineResourceDescription() { return !string.IsNullOrEmpty(onlineResourceDescription); }
 
 			[EnumerationValue([1,3,4,5,6,7,8,9,10,11])]
 			public onlineFunction? onlineFunction {get;set;} = default;
@@ -2215,7 +2215,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? protocolRequest {get;set;} = default;
 
-			public bool ShouldSerializeprotocolRequest() { return string.IsNullOrEmpty(protocolRequest); }
+			public bool ShouldSerializeprotocolRequest() { return !string.IsNullOrEmpty(protocolRequest); }
 		}
 
 		[System.Serializable()]
@@ -2260,7 +2260,7 @@ namespace S100Framework.DomainModel.S131 {
 		public class surveyDateRange {
 			public String? dateStart {get;set;} = default;
 
-			public bool ShouldSerializedateStart() { return string.IsNullOrEmpty(dateStart); }
+			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
 
 			public String dateEnd {get;set;}
 		}
@@ -2283,7 +2283,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? source {get;set;} = default;
 
-			public bool ShouldSerializesource() { return string.IsNullOrEmpty(source); }
+			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
@@ -2292,7 +2292,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 		}
 
 		[System.Serializable()]
@@ -2420,7 +2420,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? locationByText {get;set;} = default;
 
-			public bool ShouldSerializelocationByText() { return string.IsNullOrEmpty(locationByText); }
+			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			public List<textContent> textContent {get;set;} = [];
 
@@ -2464,7 +2464,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? pictureCaption {get;set;} = default;
 
-			public bool ShouldSerializepictureCaption() { return string.IsNullOrEmpty(pictureCaption); }
+			public bool ShouldSerializepictureCaption() { return !string.IsNullOrEmpty(pictureCaption); }
 
 			[XmlIgnore]
 			public DateOnly? sourceDate {get;set;} = default;
@@ -2473,7 +2473,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? pictureInformation {get;set;} = default;
 
-			public bool ShouldSerializepictureInformation() { return string.IsNullOrEmpty(pictureInformation); }
+			public bool ShouldSerializepictureInformation() { return !string.IsNullOrEmpty(pictureInformation); }
 
 			public bearingInformation? bearingInformation {get;set;} = default;
 
@@ -2561,11 +2561,11 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? telecommunicationCarrier {get;set;} = default;
 
-			public bool ShouldSerializetelecommunicationCarrier() { return string.IsNullOrEmpty(telecommunicationCarrier); }
+			public bool ShouldSerializetelecommunicationCarrier() { return !string.IsNullOrEmpty(telecommunicationCarrier); }
 
 			public String? contactInstructions {get;set;} = default;
 
-			public bool ShouldSerializecontactInstructions() { return string.IsNullOrEmpty(contactInstructions); }
+			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public List<telecommunicationService> telecommunicationService {get;set;} = [];
@@ -2945,7 +2945,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? source {get;set;} = default;
 
-			public bool ShouldSerializesource() { return string.IsNullOrEmpty(source); }
+			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
@@ -2954,7 +2954,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[JsonIgnore]
 			public override string Code => nameof(InformationType);
@@ -3066,7 +3066,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? vesselPerformance {get;set;} = default;
 
-			public bool ShouldSerializevesselPerformance() { return string.IsNullOrEmpty(vesselPerformance); }
+			public bool ShouldSerializevesselPerformance() { return !string.IsNullOrEmpty(vesselPerformance); }
 
 			public List<information> information {get;set;} = [];
 
@@ -3219,7 +3219,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? tugInformation {get;set;} = default;
 
-			public bool ShouldSerializetugInformation() { return string.IsNullOrEmpty(tugInformation); }
+			public bool ShouldSerializetugInformation() { return !string.IsNullOrEmpty(tugInformation); }
 
 			public List<textContent> textContent {get;set;} = [];
 
@@ -3246,11 +3246,11 @@ namespace S100Framework.DomainModel.S131 {
 		public partial class ContactDetails : InformationType {
 			public String? callName {get;set;} = default;
 
-			public bool ShouldSerializecallName() { return string.IsNullOrEmpty(callName); }
+			public bool ShouldSerializecallName() { return !string.IsNullOrEmpty(callName); }
 
 			public String? callSign {get;set;} = default;
 
-			public bool ShouldSerializecallSign() { return string.IsNullOrEmpty(callSign); }
+			public bool ShouldSerializecallSign() { return !string.IsNullOrEmpty(callSign); }
 
 			[EnumerationValue([1,2,3,4])]
 			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
@@ -3267,7 +3267,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? contactInstructions {get;set;} = default;
 
-			public bool ShouldSerializecontactInstructions() { return string.IsNullOrEmpty(contactInstructions); }
+			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
 
 			public List<int> signalFrequency {get;set;} = [];
 
@@ -3283,7 +3283,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? mMSICode {get;set;} = default;
 
-			public bool ShouldSerializemMSICode() { return string.IsNullOrEmpty(mMSICode); }
+			public bool ShouldSerializemMSICode() { return !string.IsNullOrEmpty(mMSICode); }
 
 			public List<onlineResource> onlineResource {get;set;} = [];
 
@@ -3322,7 +3322,7 @@ namespace S100Framework.DomainModel.S131 {
 		public partial class Entrance : InformationType {
 			public String? entranceDescription {get;set;} = default;
 
-			public bool ShouldSerializeentranceDescription() { return string.IsNullOrEmpty(entranceDescription); }
+			public bool ShouldSerializeentranceDescription() { return !string.IsNullOrEmpty(entranceDescription); }
 
 			public List<String> associatedFeatureName {get;set;} = [];
 
@@ -3330,11 +3330,11 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? localKnowledgeDescription {get;set;} = default;
 
-			public bool ShouldSerializelocalKnowledgeDescription() { return string.IsNullOrEmpty(localKnowledgeDescription); }
+			public bool ShouldSerializelocalKnowledgeDescription() { return !string.IsNullOrEmpty(localKnowledgeDescription); }
 
 			public String? approachDescription {get;set;} = default;
 
-			public bool ShouldSerializeapproachDescription() { return string.IsNullOrEmpty(approachDescription); }
+			public bool ShouldSerializeapproachDescription() { return !string.IsNullOrEmpty(approachDescription); }
 
 			public List<markedBy> markedBy {get;set;} = [];
 
@@ -3571,11 +3571,11 @@ namespace S100Framework.DomainModel.S131 {
 		public abstract class FeatureType : FeatureNode, IFeatureBindingDefinition {
 			public String? locationMRN {get;set;} = default;
 
-			public bool ShouldSerializelocationMRN() { return string.IsNullOrEmpty(locationMRN); }
+			public bool ShouldSerializelocationMRN() { return !string.IsNullOrEmpty(locationMRN); }
 
 			public String? globalLocationNumber {get;set;} = default;
 
-			public bool ShouldSerializeglobalLocationNumber() { return string.IsNullOrEmpty(globalLocationNumber); }
+			public bool ShouldSerializeglobalLocationNumber() { return !string.IsNullOrEmpty(globalLocationNumber); }
 
 			public List<featureName> featureName {get;set;} = [];
 
@@ -3599,7 +3599,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? source {get;set;} = default;
 
-			public bool ShouldSerializesource() { return string.IsNullOrEmpty(source); }
+			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
@@ -3608,7 +3608,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			public List<textContent> textContent {get;set;} = [];
 
@@ -3890,7 +3890,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? locationByText {get;set;} = default;
 
-			public bool ShouldSerializelocationByText() { return string.IsNullOrEmpty(locationByText); }
+			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			public markedBy? markedBy {get;set;} = default;
 
@@ -3954,7 +3954,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? bollardDescription {get;set;} = default;
 
-			public bool ShouldSerializebollardDescription() { return string.IsNullOrEmpty(bollardDescription); }
+			public bool ShouldSerializebollardDescription() { return !string.IsNullOrEmpty(bollardDescription); }
 
 			public decimal? bollardPull {get;set;} = default;
 
@@ -3979,7 +3979,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? portFacilityNumber {get;set;} = default;
 
-			public bool ShouldSerializeportFacilityNumber() { return string.IsNullOrEmpty(portFacilityNumber); }
+			public bool ShouldSerializeportFacilityNumber() { return !string.IsNullOrEmpty(portFacilityNumber); }
 
 			public List<String> bollardNumber {get;set;} = [];
 
@@ -3987,7 +3987,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? gLNExtension {get;set;} = default;
 
-			public bool ShouldSerializegLNExtension() { return string.IsNullOrEmpty(gLNExtension); }
+			public bool ShouldSerializegLNExtension() { return !string.IsNullOrEmpty(gLNExtension); }
 
 			public List<String> metreMarkNumber {get;set;} = [];
 
@@ -3999,11 +3999,11 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? rampNumber {get;set;} = default;
 
-			public bool ShouldSerializerampNumber() { return string.IsNullOrEmpty(rampNumber); }
+			public bool ShouldSerializerampNumber() { return !string.IsNullOrEmpty(rampNumber); }
 
 			public String? locationByText {get;set;} = default;
 
-			public bool ShouldSerializelocationByText() { return string.IsNullOrEmpty(locationByText); }
+			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
 			public methodOfSecuring? methodOfSecuring {get;set;} = default;
@@ -4014,7 +4014,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? terminalIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeterminalIdentifier() { return string.IsNullOrEmpty(terminalIdentifier); }
+			public bool ShouldSerializeterminalIdentifier() { return !string.IsNullOrEmpty(terminalIdentifier); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Berth);
@@ -4085,7 +4085,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? bollardDescription {get;set;} = default;
 
-			public bool ShouldSerializebollardDescription() { return string.IsNullOrEmpty(bollardDescription); }
+			public bool ShouldSerializebollardDescription() { return !string.IsNullOrEmpty(bollardDescription); }
 
 			public decimal? bollardPull {get;set;} = default;
 
@@ -4097,7 +4097,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? gLNExtension {get;set;} = default;
 
-			public bool ShouldSerializegLNExtension() { return string.IsNullOrEmpty(gLNExtension); }
+			public bool ShouldSerializegLNExtension() { return !string.IsNullOrEmpty(gLNExtension); }
 
 			public List<String> metreMarkNumber {get;set;} = [];
 
@@ -4109,11 +4109,11 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? rampNumber {get;set;} = default;
 
-			public bool ShouldSerializerampNumber() { return string.IsNullOrEmpty(rampNumber); }
+			public bool ShouldSerializerampNumber() { return !string.IsNullOrEmpty(rampNumber); }
 
 			public String? locationByText {get;set;} = default;
 
-			public bool ShouldSerializelocationByText() { return string.IsNullOrEmpty(locationByText); }
+			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			[JsonIgnore]
 			public override string Code => nameof(BerthPosition);
@@ -4168,7 +4168,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? locationByText {get;set;} = default;
 
-			public bool ShouldSerializelocationByText() { return string.IsNullOrEmpty(locationByText); }
+			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			public markedBy? markedBy {get;set;} = default;
 
@@ -4283,7 +4283,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? locationByText {get;set;} = default;
 
-			public bool ShouldSerializelocationByText() { return string.IsNullOrEmpty(locationByText); }
+			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			public markedBy? markedBy {get;set;} = default;
 
@@ -4429,15 +4429,15 @@ namespace S100Framework.DomainModel.S131 {
 		public partial class HarbourAreaAdministrative : Layout {
 			public String? uNLocationCode {get;set;} = default;
 
-			public bool ShouldSerializeuNLocationCode() { return string.IsNullOrEmpty(uNLocationCode); }
+			public bool ShouldSerializeuNLocationCode() { return !string.IsNullOrEmpty(uNLocationCode); }
 
 			public String? nationality {get;set;} = default;
 
-			public bool ShouldSerializenationality() { return string.IsNullOrEmpty(nationality); }
+			public bool ShouldSerializenationality() { return !string.IsNullOrEmpty(nationality); }
 
 			public String? applicableLoadLineZone {get;set;} = default;
 
-			public bool ShouldSerializeapplicableLoadLineZone() { return string.IsNullOrEmpty(applicableLoadLineZone); }
+			public bool ShouldSerializeapplicableLoadLineZone() { return !string.IsNullOrEmpty(applicableLoadLineZone); }
 
 			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
@@ -4628,7 +4628,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? locationByText {get;set;} = default;
 
-			public bool ShouldSerializelocationByText() { return string.IsNullOrEmpty(locationByText); }
+			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			public markedBy? markedBy {get;set;} = default;
 
@@ -4738,7 +4738,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? bollardDescription {get;set;} = default;
 
-			public bool ShouldSerializebollardDescription() { return string.IsNullOrEmpty(bollardDescription); }
+			public bool ShouldSerializebollardDescription() { return !string.IsNullOrEmpty(bollardDescription); }
 
 			public decimal? bollardPull {get;set;} = default;
 
@@ -4880,7 +4880,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? locationByText {get;set;} = default;
 
-			public bool ShouldSerializelocationByText() { return string.IsNullOrEmpty(locationByText); }
+			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			public markedBy? markedBy {get;set;} = default;
 
@@ -4944,7 +4944,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? locationByText {get;set;} = default;
 
-			public bool ShouldSerializelocationByText() { return string.IsNullOrEmpty(locationByText); }
+			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			public markedBy? markedBy {get;set;} = default;
 
@@ -5004,7 +5004,7 @@ namespace S100Framework.DomainModel.S131 {
 		public partial class Terminal : Layout {
 			public String? portFacilityNumber {get;set;} = default;
 
-			public bool ShouldSerializeportFacilityNumber() { return string.IsNullOrEmpty(portFacilityNumber); }
+			public bool ShouldSerializeportFacilityNumber() { return !string.IsNullOrEmpty(portFacilityNumber); }
 
 			[EnumerationValue([1,3,5,7,8,10,11])]
 			public categoryOfHarbourFacility? categoryOfHarbourFacility {get;set;} = default;
@@ -5023,15 +5023,15 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? terminalIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeterminalIdentifier() { return string.IsNullOrEmpty(terminalIdentifier); }
+			public bool ShouldSerializeterminalIdentifier() { return !string.IsNullOrEmpty(terminalIdentifier); }
 
 			public String? sMDGTerminalCode {get;set;} = default;
 
-			public bool ShouldSerializesMDGTerminalCode() { return string.IsNullOrEmpty(sMDGTerminalCode); }
+			public bool ShouldSerializesMDGTerminalCode() { return !string.IsNullOrEmpty(sMDGTerminalCode); }
 
 			public String? uNLocationCode {get;set;} = default;
 
-			public bool ShouldSerializeuNLocationCode() { return string.IsNullOrEmpty(uNLocationCode); }
+			public bool ShouldSerializeuNLocationCode() { return !string.IsNullOrEmpty(uNLocationCode); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Terminal);
@@ -5110,7 +5110,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? locationByText {get;set;} = default;
 
-			public bool ShouldSerializelocationByText() { return string.IsNullOrEmpty(locationByText); }
+			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			public markedBy? markedBy {get;set;} = default;
 
@@ -5178,7 +5178,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? locationByText {get;set;} = default;
 
-			public bool ShouldSerializelocationByText() { return string.IsNullOrEmpty(locationByText); }
+			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			public markedBy? markedBy {get;set;} = default;
 
@@ -5410,7 +5410,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public String? text {get;set;} = default;
 
-			public bool ShouldSerializetext() { return string.IsNullOrEmpty(text); }
+			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
 
 			[Required()]
 			public int textOffsetMm {get;set;}
@@ -5468,43 +5468,43 @@ namespace S100Framework.DomainModel.S131 {
 	[XmlType(Namespace = "http://www.iho.int/S131/1.0", TypeName = "members")]
 	public class Members
 	{
-		[XmlElement("InformationTypes.Applicability", typeof(InformationTypes.Applicability), Order = 1)]
-		[XmlElement("InformationTypes.Authority", typeof(InformationTypes.Authority), Order = 1)]
-		[XmlElement("InformationTypes.AvailablePortServices", typeof(InformationTypes.AvailablePortServices), Order = 1)]
-		[XmlElement("InformationTypes.ContactDetails", typeof(InformationTypes.ContactDetails), Order = 1)]
-		[XmlElement("InformationTypes.Entrance", typeof(InformationTypes.Entrance), Order = 1)]
-		[XmlElement("InformationTypes.NauticalInformation", typeof(InformationTypes.NauticalInformation), Order = 1)]
-		[XmlElement("InformationTypes.NonStandardWorkingDay", typeof(InformationTypes.NonStandardWorkingDay), Order = 1)]
-		[XmlElement("InformationTypes.Recommendations", typeof(InformationTypes.Recommendations), Order = 1)]
-		[XmlElement("InformationTypes.Regulations", typeof(InformationTypes.Regulations), Order = 1)]
-		[XmlElement("InformationTypes.Restrictions", typeof(InformationTypes.Restrictions), Order = 1)]
-		[XmlElement("InformationTypes.ServiceHours", typeof(InformationTypes.ServiceHours), Order = 1)]
-		[XmlElement("InformationTypes.SpatialQuality", typeof(InformationTypes.SpatialQuality), Order = 1)]
-		[XmlElement("FeatureTypes.AnchorBerth", typeof(FeatureTypes.AnchorBerth), Order = 1)]
-		[XmlElement("FeatureTypes.AnchorageArea", typeof(FeatureTypes.AnchorageArea), Order = 1)]
-		[XmlElement("FeatureTypes.Berth", typeof(FeatureTypes.Berth), Order = 1)]
-		[XmlElement("FeatureTypes.BerthPosition", typeof(FeatureTypes.BerthPosition), Order = 1)]
-		[XmlElement("FeatureTypes.DockArea", typeof(FeatureTypes.DockArea), Order = 1)]
-		[XmlElement("FeatureTypes.DryDock", typeof(FeatureTypes.DryDock), Order = 1)]
-		[XmlElement("FeatureTypes.DumpingGround", typeof(FeatureTypes.DumpingGround), Order = 1)]
-		[XmlElement("FeatureTypes.FloatingDock", typeof(FeatureTypes.FloatingDock), Order = 1)]
-		[XmlElement("FeatureTypes.Gridiron", typeof(FeatureTypes.Gridiron), Order = 1)]
-		[XmlElement("FeatureTypes.HarbourAreaAdministrative", typeof(FeatureTypes.HarbourAreaAdministrative), Order = 1)]
-		[XmlElement("FeatureTypes.HarbourAreaSection", typeof(FeatureTypes.HarbourAreaSection), Order = 1)]
-		[XmlElement("FeatureTypes.HarbourBasin", typeof(FeatureTypes.HarbourBasin), Order = 1)]
-		[XmlElement("FeatureTypes.HarbourFacility", typeof(FeatureTypes.HarbourFacility), Order = 1)]
-		[XmlElement("FeatureTypes.MooringWarpingFacility", typeof(FeatureTypes.MooringWarpingFacility), Order = 1)]
-		[XmlElement("FeatureTypes.OuterLimit", typeof(FeatureTypes.OuterLimit), Order = 1)]
-		[XmlElement("FeatureTypes.PilotBoardingPlace", typeof(FeatureTypes.PilotBoardingPlace), Order = 1)]
-		[XmlElement("FeatureTypes.SeaplaneLandingArea", typeof(FeatureTypes.SeaplaneLandingArea), Order = 1)]
-		[XmlElement("FeatureTypes.Terminal", typeof(FeatureTypes.Terminal), Order = 1)]
-		[XmlElement("FeatureTypes.TurningBasin", typeof(FeatureTypes.TurningBasin), Order = 1)]
-		[XmlElement("FeatureTypes.WaterwayArea", typeof(FeatureTypes.WaterwayArea), Order = 1)]
-		[XmlElement("FeatureTypes.DataCoverage", typeof(FeatureTypes.DataCoverage), Order = 1)]
-		[XmlElement("FeatureTypes.QualityOfNonBathymetricData", typeof(FeatureTypes.QualityOfNonBathymetricData), Order = 1)]
-		[XmlElement("FeatureTypes.SoundingDatum", typeof(FeatureTypes.SoundingDatum), Order = 1)]
-		[XmlElement("FeatureTypes.VerticalDatumOfData", typeof(FeatureTypes.VerticalDatumOfData), Order = 1)]
-		[XmlElement("FeatureTypes.TextPlacement", typeof(FeatureTypes.TextPlacement), Order = 1)]
+		[XmlElement("InformationTypes.Applicability", typeof(InformationTypes.Applicability), Order = 1, ElementName = "Applicability")]
+		[XmlElement("InformationTypes.Authority", typeof(InformationTypes.Authority), Order = 1, ElementName = "Authority")]
+		[XmlElement("InformationTypes.AvailablePortServices", typeof(InformationTypes.AvailablePortServices), Order = 1, ElementName = "AvailablePortServices")]
+		[XmlElement("InformationTypes.ContactDetails", typeof(InformationTypes.ContactDetails), Order = 1, ElementName = "ContactDetails")]
+		[XmlElement("InformationTypes.Entrance", typeof(InformationTypes.Entrance), Order = 1, ElementName = "Entrance")]
+		[XmlElement("InformationTypes.NauticalInformation", typeof(InformationTypes.NauticalInformation), Order = 1, ElementName = "NauticalInformation")]
+		[XmlElement("InformationTypes.NonStandardWorkingDay", typeof(InformationTypes.NonStandardWorkingDay), Order = 1, ElementName = "NonStandardWorkingDay")]
+		[XmlElement("InformationTypes.Recommendations", typeof(InformationTypes.Recommendations), Order = 1, ElementName = "Recommendations")]
+		[XmlElement("InformationTypes.Regulations", typeof(InformationTypes.Regulations), Order = 1, ElementName = "Regulations")]
+		[XmlElement("InformationTypes.Restrictions", typeof(InformationTypes.Restrictions), Order = 1, ElementName = "Restrictions")]
+		[XmlElement("InformationTypes.ServiceHours", typeof(InformationTypes.ServiceHours), Order = 1, ElementName = "ServiceHours")]
+		[XmlElement("InformationTypes.SpatialQuality", typeof(InformationTypes.SpatialQuality), Order = 1, ElementName = "SpatialQuality")]
+		[XmlElement("FeatureTypes.AnchorBerth", typeof(FeatureTypes.AnchorBerth), Order = 1, ElementName = "AnchorBerth")]
+		[XmlElement("FeatureTypes.AnchorageArea", typeof(FeatureTypes.AnchorageArea), Order = 1, ElementName = "AnchorageArea")]
+		[XmlElement("FeatureTypes.Berth", typeof(FeatureTypes.Berth), Order = 1, ElementName = "Berth")]
+		[XmlElement("FeatureTypes.BerthPosition", typeof(FeatureTypes.BerthPosition), Order = 1, ElementName = "BerthPosition")]
+		[XmlElement("FeatureTypes.DockArea", typeof(FeatureTypes.DockArea), Order = 1, ElementName = "DockArea")]
+		[XmlElement("FeatureTypes.DryDock", typeof(FeatureTypes.DryDock), Order = 1, ElementName = "DryDock")]
+		[XmlElement("FeatureTypes.DumpingGround", typeof(FeatureTypes.DumpingGround), Order = 1, ElementName = "DumpingGround")]
+		[XmlElement("FeatureTypes.FloatingDock", typeof(FeatureTypes.FloatingDock), Order = 1, ElementName = "FloatingDock")]
+		[XmlElement("FeatureTypes.Gridiron", typeof(FeatureTypes.Gridiron), Order = 1, ElementName = "Gridiron")]
+		[XmlElement("FeatureTypes.HarbourAreaAdministrative", typeof(FeatureTypes.HarbourAreaAdministrative), Order = 1, ElementName = "HarbourAreaAdministrative")]
+		[XmlElement("FeatureTypes.HarbourAreaSection", typeof(FeatureTypes.HarbourAreaSection), Order = 1, ElementName = "HarbourAreaSection")]
+		[XmlElement("FeatureTypes.HarbourBasin", typeof(FeatureTypes.HarbourBasin), Order = 1, ElementName = "HarbourBasin")]
+		[XmlElement("FeatureTypes.HarbourFacility", typeof(FeatureTypes.HarbourFacility), Order = 1, ElementName = "HarbourFacility")]
+		[XmlElement("FeatureTypes.MooringWarpingFacility", typeof(FeatureTypes.MooringWarpingFacility), Order = 1, ElementName = "MooringWarpingFacility")]
+		[XmlElement("FeatureTypes.OuterLimit", typeof(FeatureTypes.OuterLimit), Order = 1, ElementName = "OuterLimit")]
+		[XmlElement("FeatureTypes.PilotBoardingPlace", typeof(FeatureTypes.PilotBoardingPlace), Order = 1, ElementName = "PilotBoardingPlace")]
+		[XmlElement("FeatureTypes.SeaplaneLandingArea", typeof(FeatureTypes.SeaplaneLandingArea), Order = 1, ElementName = "SeaplaneLandingArea")]
+		[XmlElement("FeatureTypes.Terminal", typeof(FeatureTypes.Terminal), Order = 1, ElementName = "Terminal")]
+		[XmlElement("FeatureTypes.TurningBasin", typeof(FeatureTypes.TurningBasin), Order = 1, ElementName = "TurningBasin")]
+		[XmlElement("FeatureTypes.WaterwayArea", typeof(FeatureTypes.WaterwayArea), Order = 1, ElementName = "WaterwayArea")]
+		[XmlElement("FeatureTypes.DataCoverage", typeof(FeatureTypes.DataCoverage), Order = 1, ElementName = "DataCoverage")]
+		[XmlElement("FeatureTypes.QualityOfNonBathymetricData", typeof(FeatureTypes.QualityOfNonBathymetricData), Order = 1, ElementName = "QualityOfNonBathymetricData")]
+		[XmlElement("FeatureTypes.SoundingDatum", typeof(FeatureTypes.SoundingDatum), Order = 1, ElementName = "SoundingDatum")]
+		[XmlElement("FeatureTypes.VerticalDatumOfData", typeof(FeatureTypes.VerticalDatumOfData), Order = 1, ElementName = "VerticalDatumOfData")]
+		[XmlElement("FeatureTypes.TextPlacement", typeof(FeatureTypes.TextPlacement), Order = 1, ElementName = "TextPlacement")]
 		public List<object> elements { get; set; } = new List<object>();
 	}
 }

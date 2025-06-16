@@ -1583,23 +1583,23 @@ namespace S100Framework.DomainModel.S122 {
 		public class contactAddress {
 			public String? deliveryPoint {get;set;} = default;
 
-			public bool ShouldSerializedeliveryPoint() { return string.IsNullOrEmpty(deliveryPoint); }
+			public bool ShouldSerializedeliveryPoint() { return !string.IsNullOrEmpty(deliveryPoint); }
 
 			public String? cityName {get;set;} = default;
 
-			public bool ShouldSerializecityName() { return string.IsNullOrEmpty(cityName); }
+			public bool ShouldSerializecityName() { return !string.IsNullOrEmpty(cityName); }
 
 			public String? administrativeDivision {get;set;} = default;
 
-			public bool ShouldSerializeadministrativeDivision() { return string.IsNullOrEmpty(administrativeDivision); }
+			public bool ShouldSerializeadministrativeDivision() { return !string.IsNullOrEmpty(administrativeDivision); }
 
 			public String? countryName {get;set;} = default;
 
-			public bool ShouldSerializecountryName() { return string.IsNullOrEmpty(countryName); }
+			public bool ShouldSerializecountryName() { return !string.IsNullOrEmpty(countryName); }
 
 			public String? postalCode {get;set;} = default;
 
-			public bool ShouldSerializepostalCode() { return string.IsNullOrEmpty(postalCode); }
+			public bool ShouldSerializepostalCode() { return !string.IsNullOrEmpty(postalCode); }
 		}
 
 		[System.Serializable()]
@@ -1619,11 +1619,11 @@ namespace S100Framework.DomainModel.S122 {
 		public class fixedDateRange {
 			public String? dateStart {get;set;} = default;
 
-			public bool ShouldSerializedateStart() { return string.IsNullOrEmpty(dateStart); }
+			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
 
 			public String? dateEnd {get;set;} = default;
 
-			public bool ShouldSerializedateEnd() { return string.IsNullOrEmpty(dateEnd); }
+			public bool ShouldSerializedateEnd() { return !string.IsNullOrEmpty(dateEnd); }
 		}
 
 		[System.Serializable()]
@@ -1643,23 +1643,23 @@ namespace S100Framework.DomainModel.S122 {
 		public class information {
 			public String? fileLocator {get;set;} = default;
 
-			public bool ShouldSerializefileLocator() { return string.IsNullOrEmpty(fileLocator); }
+			public bool ShouldSerializefileLocator() { return !string.IsNullOrEmpty(fileLocator); }
 
 			public String? fileReference {get;set;} = default;
 
-			public bool ShouldSerializefileReference() { return string.IsNullOrEmpty(fileReference); }
+			public bool ShouldSerializefileReference() { return !string.IsNullOrEmpty(fileReference); }
 
 			public String? headline {get;set;} = default;
 
-			public bool ShouldSerializeheadline() { return string.IsNullOrEmpty(headline); }
+			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 
 			public String? language {get;set;} = default;
 
-			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
+			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			public String? text {get;set;} = default;
 
-			public bool ShouldSerializetext() { return string.IsNullOrEmpty(text); }
+			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
 		}
 
 		[System.Serializable()]
@@ -1669,23 +1669,23 @@ namespace S100Framework.DomainModel.S122 {
 
 			public String? protocol {get;set;} = default;
 
-			public bool ShouldSerializeprotocol() { return string.IsNullOrEmpty(protocol); }
+			public bool ShouldSerializeprotocol() { return !string.IsNullOrEmpty(protocol); }
 
 			public String? applicationProfile {get;set;} = default;
 
-			public bool ShouldSerializeapplicationProfile() { return string.IsNullOrEmpty(applicationProfile); }
+			public bool ShouldSerializeapplicationProfile() { return !string.IsNullOrEmpty(applicationProfile); }
 
 			public String? nameOfResource {get;set;} = default;
 
-			public bool ShouldSerializenameOfResource() { return string.IsNullOrEmpty(nameOfResource); }
+			public bool ShouldSerializenameOfResource() { return !string.IsNullOrEmpty(nameOfResource); }
 
 			public String? onlineResourceDescription {get;set;} = default;
 
-			public bool ShouldSerializeonlineResourceDescription() { return string.IsNullOrEmpty(onlineResourceDescription); }
+			public bool ShouldSerializeonlineResourceDescription() { return !string.IsNullOrEmpty(onlineResourceDescription); }
 
 			public String? protocolRequest {get;set;} = default;
 
-			public bool ShouldSerializeprotocolRequest() { return string.IsNullOrEmpty(protocolRequest); }
+			public bool ShouldSerializeprotocolRequest() { return !string.IsNullOrEmpty(protocolRequest); }
 
 			public onlineFunction? onlineFunction {get;set;} = default;
 
@@ -1724,7 +1724,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			public String? headline {get;set;} = default;
 
-			public bool ShouldSerializeheadline() { return string.IsNullOrEmpty(headline); }
+			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 		}
 
 		[System.Serializable()]
@@ -1759,7 +1759,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			public String? source {get;set;} = default;
 
-			public bool ShouldSerializesource() { return string.IsNullOrEmpty(source); }
+			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
@@ -1768,7 +1768,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 		}
 
 		[System.Serializable()]
@@ -1816,11 +1816,11 @@ namespace S100Framework.DomainModel.S122 {
 		public class designation {
 			public String? designationScheme {get;set;} = default;
 
-			public bool ShouldSerializedesignationScheme() { return string.IsNullOrEmpty(designationScheme); }
+			public bool ShouldSerializedesignationScheme() { return !string.IsNullOrEmpty(designationScheme); }
 
 			public String? designationIdentifier {get;set;} = default;
 
-			public bool ShouldSerializedesignationIdentifier() { return string.IsNullOrEmpty(designationIdentifier); }
+			public bool ShouldSerializedesignationIdentifier() { return !string.IsNullOrEmpty(designationIdentifier); }
 
 			public jurisdiction? jurisdiction {get;set;} = default;
 
@@ -1828,7 +1828,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			public String? text {get;set;} = default;
 
-			public bool ShouldSerializetext() { return string.IsNullOrEmpty(text); }
+			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
 		}
 
 		[System.Serializable()]
@@ -1864,7 +1864,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			public String? pictureCaption {get;set;} = default;
 
-			public bool ShouldSerializepictureCaption() { return string.IsNullOrEmpty(pictureCaption); }
+			public bool ShouldSerializepictureCaption() { return !string.IsNullOrEmpty(pictureCaption); }
 
 			[XmlIgnore]
 			public DateOnly? sourceDate {get;set;} = default;
@@ -1873,7 +1873,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			public String? pictureInformation {get;set;} = default;
 
-			public bool ShouldSerializepictureInformation() { return string.IsNullOrEmpty(pictureInformation); }
+			public bool ShouldSerializepictureInformation() { return !string.IsNullOrEmpty(pictureInformation); }
 
 			public bearingInformation? bearingInformation {get;set;} = default;
 
@@ -1913,11 +1913,11 @@ namespace S100Framework.DomainModel.S122 {
 
 			public String? contactInstructions {get;set;} = default;
 
-			public bool ShouldSerializecontactInstructions() { return string.IsNullOrEmpty(contactInstructions); }
+			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
 
 			public String? telecomCarrier {get;set;} = default;
 
-			public bool ShouldSerializetelecomCarrier() { return string.IsNullOrEmpty(telecomCarrier); }
+			public bool ShouldSerializetelecomCarrier() { return !string.IsNullOrEmpty(telecomCarrier); }
 
 			public String telecommunicationIdentifier {get;set;} = string.Empty;
 
@@ -2114,7 +2114,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			public String? source {get;set;} = default;
 
-			public bool ShouldSerializesource() { return string.IsNullOrEmpty(source); }
+			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
@@ -2123,7 +2123,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[JsonIgnore]
 			public override string Code => nameof(InformationType);
@@ -2321,11 +2321,11 @@ namespace S100Framework.DomainModel.S122 {
 		public partial class ContactDetails : AbstractRxN {
 			public String? callName {get;set;} = default;
 
-			public bool ShouldSerializecallName() { return string.IsNullOrEmpty(callName); }
+			public bool ShouldSerializecallName() { return !string.IsNullOrEmpty(callName); }
 
 			public String? callSign {get;set;} = default;
 
-			public bool ShouldSerializecallSign() { return string.IsNullOrEmpty(callSign); }
+			public bool ShouldSerializecallSign() { return !string.IsNullOrEmpty(callSign); }
 
 			[EnumerationValue([1,2,3,4])]
 			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
@@ -2338,11 +2338,11 @@ namespace S100Framework.DomainModel.S122 {
 
 			public String? contactInstructions {get;set;} = default;
 
-			public bool ShouldSerializecontactInstructions() { return string.IsNullOrEmpty(contactInstructions); }
+			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
 
 			public String? mMSICode {get;set;} = default;
 
-			public bool ShouldSerializemMSICode() { return string.IsNullOrEmpty(mMSICode); }
+			public bool ShouldSerializemMSICode() { return !string.IsNullOrEmpty(mMSICode); }
 
 			public List<int> signalFrequency {get;set;} = [];
 
@@ -2511,7 +2511,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			public String? vesselPerformance {get;set;} = default;
 
-			public bool ShouldSerializevesselPerformance() { return string.IsNullOrEmpty(vesselPerformance); }
+			public bool ShouldSerializevesselPerformance() { return !string.IsNullOrEmpty(vesselPerformance); }
 
 			public List<information> information {get;set;} = [];
 
@@ -2563,7 +2563,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			public String? source {get;set;} = default;
 
-			public bool ShouldSerializesource() { return string.IsNullOrEmpty(source); }
+			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
@@ -2572,7 +2572,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[JsonIgnore]
 			public override string Code => nameof(FeatureType);
@@ -2843,22 +2843,22 @@ namespace S100Framework.DomainModel.S122 {
 	[XmlType(Namespace = "http://www.iho.int/S122/1.2", TypeName = "members")]
 	public class Members
 	{
-		[XmlElement("InformationTypes.InformationType", typeof(InformationTypes.InformationType), Order = 1)]
-		[XmlElement("InformationTypes.AbstractRxN", typeof(InformationTypes.AbstractRxN), Order = 1)]
-		[XmlElement("InformationTypes.NauticalInformation", typeof(InformationTypes.NauticalInformation), Order = 1)]
-		[XmlElement("InformationTypes.Regulations", typeof(InformationTypes.Regulations), Order = 1)]
-		[XmlElement("InformationTypes.Restrictions", typeof(InformationTypes.Restrictions), Order = 1)]
-		[XmlElement("InformationTypes.Recommendations", typeof(InformationTypes.Recommendations), Order = 1)]
-		[XmlElement("InformationTypes.Authority", typeof(InformationTypes.Authority), Order = 1)]
-		[XmlElement("InformationTypes.ContactDetails", typeof(InformationTypes.ContactDetails), Order = 1)]
-		[XmlElement("InformationTypes.NonStandardWorkingDay", typeof(InformationTypes.NonStandardWorkingDay), Order = 1)]
-		[XmlElement("InformationTypes.ServiceHours", typeof(InformationTypes.ServiceHours), Order = 1)]
-		[XmlElement("InformationTypes.Applicability", typeof(InformationTypes.Applicability), Order = 1)]
-		[XmlElement("FeatureTypes.RestrictedArea", typeof(FeatureTypes.RestrictedArea), Order = 1)]
-		[XmlElement("FeatureTypes.MarineProtectedArea", typeof(FeatureTypes.MarineProtectedArea), Order = 1)]
-		[XmlElement("FeatureTypes.VesselTrafficServiceArea", typeof(FeatureTypes.VesselTrafficServiceArea), Order = 1)]
-		[XmlElement("FeatureTypes.DataCoverage", typeof(FeatureTypes.DataCoverage), Order = 1)]
-		[XmlElement("FeatureTypes.TextPlacement", typeof(FeatureTypes.TextPlacement), Order = 1)]
+		[XmlElement("InformationTypes.InformationType", typeof(InformationTypes.InformationType), Order = 1, ElementName = "InformationType")]
+		[XmlElement("InformationTypes.AbstractRxN", typeof(InformationTypes.AbstractRxN), Order = 1, ElementName = "AbstractRxN")]
+		[XmlElement("InformationTypes.NauticalInformation", typeof(InformationTypes.NauticalInformation), Order = 1, ElementName = "NauticalInformation")]
+		[XmlElement("InformationTypes.Regulations", typeof(InformationTypes.Regulations), Order = 1, ElementName = "Regulations")]
+		[XmlElement("InformationTypes.Restrictions", typeof(InformationTypes.Restrictions), Order = 1, ElementName = "Restrictions")]
+		[XmlElement("InformationTypes.Recommendations", typeof(InformationTypes.Recommendations), Order = 1, ElementName = "Recommendations")]
+		[XmlElement("InformationTypes.Authority", typeof(InformationTypes.Authority), Order = 1, ElementName = "Authority")]
+		[XmlElement("InformationTypes.ContactDetails", typeof(InformationTypes.ContactDetails), Order = 1, ElementName = "ContactDetails")]
+		[XmlElement("InformationTypes.NonStandardWorkingDay", typeof(InformationTypes.NonStandardWorkingDay), Order = 1, ElementName = "NonStandardWorkingDay")]
+		[XmlElement("InformationTypes.ServiceHours", typeof(InformationTypes.ServiceHours), Order = 1, ElementName = "ServiceHours")]
+		[XmlElement("InformationTypes.Applicability", typeof(InformationTypes.Applicability), Order = 1, ElementName = "Applicability")]
+		[XmlElement("FeatureTypes.RestrictedArea", typeof(FeatureTypes.RestrictedArea), Order = 1, ElementName = "RestrictedArea")]
+		[XmlElement("FeatureTypes.MarineProtectedArea", typeof(FeatureTypes.MarineProtectedArea), Order = 1, ElementName = "MarineProtectedArea")]
+		[XmlElement("FeatureTypes.VesselTrafficServiceArea", typeof(FeatureTypes.VesselTrafficServiceArea), Order = 1, ElementName = "VesselTrafficServiceArea")]
+		[XmlElement("FeatureTypes.DataCoverage", typeof(FeatureTypes.DataCoverage), Order = 1, ElementName = "DataCoverage")]
+		[XmlElement("FeatureTypes.TextPlacement", typeof(FeatureTypes.TextPlacement), Order = 1, ElementName = "TextPlacement")]
 		public List<object> elements { get; set; } = new List<object>();
 	}
 }

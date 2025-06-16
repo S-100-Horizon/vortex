@@ -5178,11 +5178,11 @@ namespace S100Framework.DomainModel.S101 {
 		public class fixedDateRange {
 			public String? dateEnd {get;set;} = default;
 
-			public bool ShouldSerializedateEnd() { return string.IsNullOrEmpty(dateEnd); }
+			public bool ShouldSerializedateEnd() { return !string.IsNullOrEmpty(dateEnd); }
 
 			public String? dateStart {get;set;} = default;
 
-			public bool ShouldSerializedateStart() { return string.IsNullOrEmpty(dateStart); }
+			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
 		}
 
 		[System.Serializable()]
@@ -5234,21 +5234,21 @@ namespace S100Framework.DomainModel.S101 {
 		public class information {
 			public String? fileLocator {get;set;} = default;
 
-			public bool ShouldSerializefileLocator() { return string.IsNullOrEmpty(fileLocator); }
+			public bool ShouldSerializefileLocator() { return !string.IsNullOrEmpty(fileLocator); }
 
 			public String? fileReference {get;set;} = default;
 
-			public bool ShouldSerializefileReference() { return string.IsNullOrEmpty(fileReference); }
+			public bool ShouldSerializefileReference() { return !string.IsNullOrEmpty(fileReference); }
 
 			public String? headline {get;set;} = default;
 
-			public bool ShouldSerializeheadline() { return string.IsNullOrEmpty(headline); }
+			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 
 			public String language {get;set;} = string.Empty;
 
 			public String? text {get;set;} = default;
 
-			public bool ShouldSerializetext() { return string.IsNullOrEmpty(text); }
+			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
 		}
 
 		[System.Serializable()]
@@ -5260,7 +5260,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? referenceLocation {get;set;} = default;
 
-			public bool ShouldSerializereferenceLocation() { return string.IsNullOrEmpty(referenceLocation); }
+			public bool ShouldSerializereferenceLocation() { return !string.IsNullOrEmpty(referenceLocation); }
 
 			[Required()]
 			public decimal waterwayDistance {get;set;}
@@ -5282,13 +5282,13 @@ namespace S100Framework.DomainModel.S101 {
 		public class onlineResource {
 			public String? headline {get;set;} = default;
 
-			public bool ShouldSerializeheadline() { return string.IsNullOrEmpty(headline); }
+			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 
 			public String linkage {get;set;} = string.Empty;
 
 			public String? nameOfResource {get;set;} = default;
 
-			public bool ShouldSerializenameOfResource() { return string.IsNullOrEmpty(nameOfResource); }
+			public bool ShouldSerializenameOfResource() { return !string.IsNullOrEmpty(nameOfResource); }
 		}
 
 		[System.Serializable()]
@@ -5324,7 +5324,7 @@ namespace S100Framework.DomainModel.S101 {
 		public class sectorInformation {
 			public String? language {get;set;} = default;
 
-			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
+			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			public String text {get;set;} = string.Empty;
 		}
@@ -5356,7 +5356,7 @@ namespace S100Framework.DomainModel.S101 {
 		public class shapeInformation {
 			public String? language {get;set;} = default;
 
-			public bool ShouldSerializelanguage() { return string.IsNullOrEmpty(language); }
+			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			public String text {get;set;} = string.Empty;
 		}
@@ -5408,7 +5408,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? dateStart {get;set;} = default;
 
-			public bool ShouldSerializedateStart() { return string.IsNullOrEmpty(dateStart); }
+			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
 		}
 
 		[System.Serializable()]
@@ -5416,7 +5416,7 @@ namespace S100Framework.DomainModel.S101 {
 		public class telecommunications {
 			public String? contactInstructions {get;set;} = default;
 
-			public bool ShouldSerializecontactInstructions() { return string.IsNullOrEmpty(contactInstructions); }
+			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
 
 			public String telecommunicationIdentifier {get;set;} = string.Empty;
 
@@ -5517,7 +5517,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? vesselClass {get;set;} = default;
 
-			public bool ShouldSerializevesselClass() { return string.IsNullOrEmpty(vesselClass); }
+			public bool ShouldSerializevesselClass() { return !string.IsNullOrEmpty(vesselClass); }
 		}
 
 		[System.Serializable()]
@@ -5998,7 +5998,7 @@ namespace S100Framework.DomainModel.S101 {
 		public partial class ContactDetails : InformationNode, IInformationBindingDefinition {
 			public String? callSign {get;set;} = default;
 
-			public bool ShouldSerializecallSign() { return string.IsNullOrEmpty(callSign); }
+			public bool ShouldSerializecallSign() { return !string.IsNullOrEmpty(callSign); }
 
 			public List<String> communicationChannel {get;set;} = [];
 
@@ -6006,7 +6006,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? contactInstructions {get;set;} = default;
 
-			public bool ShouldSerializecontactInstructions() { return string.IsNullOrEmpty(contactInstructions); }
+			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
@@ -6018,7 +6018,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? mMSICode {get;set;} = default;
 
-			public bool ShouldSerializemMSICode() { return string.IsNullOrEmpty(mMSICode); }
+			public bool ShouldSerializemMSICode() { return !string.IsNullOrEmpty(mMSICode); }
 
 			public List<onlineResource> onlineResource {get;set;} = [];
 
@@ -6135,7 +6135,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(NauticalInformation);
@@ -6202,7 +6202,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? orientationUncertainty {get;set;} = default;
 
@@ -6265,7 +6265,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[Required()]
 			public int maximumDisplayScale {get;set;}
@@ -6317,7 +6317,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<information> information {get;set;} = [];
 
@@ -6364,7 +6364,7 @@ namespace S100Framework.DomainModel.S101 {
 		public partial class LocalDirectionOfBuoyage : FeatureNode, IFeatureBindingDefinition {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,9,11])]
 			[Required()]
@@ -6444,7 +6444,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public surveyDateRange? surveyDateRange {get;set;} = default;
 
@@ -6507,7 +6507,7 @@ namespace S100Framework.DomainModel.S101 {
 		public partial class SoundingDatum : FeatureNode, IFeatureBindingDefinition {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,19,22,23,24,25,26,27,44])]
 			[Required()]
@@ -6558,7 +6558,7 @@ namespace S100Framework.DomainModel.S101 {
 		public partial class VerticalDatumOfData : FeatureNode, IFeatureBindingDefinition {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			[Required()]
@@ -6625,7 +6625,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public int? lineSpacingMaximum {get;set;} = default;
 
@@ -6725,7 +6725,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[Required()]
 			public int updateNumber {get;set;}
@@ -6740,7 +6740,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? source {get;set;} = default;
 
-			public bool ShouldSerializesource() { return string.IsNullOrEmpty(source); }
+			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
 			public List<information> information {get;set;} = [];
 
@@ -6811,7 +6811,7 @@ namespace S100Framework.DomainModel.S101 {
 		public partial class MagneticVariation : FeatureNode, IFeatureBindingDefinition {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String referenceYearForMagneticVariation {get;set;}
 
@@ -6882,11 +6882,11 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			public List<valueOfLocalMagneticAnomaly> valueOfLocalMagneticAnomaly {get;set;} = [];
 
@@ -6975,7 +6975,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,14,17])]
 			public List<natureOfSurface> natureOfSurface {get;set;} = [];
@@ -6997,7 +6997,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Coastline);
@@ -7065,11 +7065,11 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([18])]
 			public status? status {get;set;} = default;
@@ -7153,7 +7153,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -7243,7 +7243,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
@@ -7319,7 +7319,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([5])]
 			public status? status {get;set;} = default;
@@ -7395,7 +7395,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? verticalLength {get;set;} = default;
 
@@ -7470,7 +7470,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? verticalLength {get;set;} = default;
 
@@ -7554,7 +7554,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([5])]
 			public status? status {get;set;} = default;
@@ -7635,7 +7635,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,14,17,18])]
 			public List<natureOfSurface> natureOfSurface {get;set;} = [];
@@ -7728,7 +7728,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? verticalLength {get;set;} = default;
 
@@ -7820,7 +7820,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -7828,7 +7828,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,5,18])]
 			public List<status> status {get;set;} = [];
@@ -7923,7 +7923,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([4,5,6,7,9,11])]
 			public List<natureOfSurface> natureOfSurface {get;set;} = [];
@@ -8022,7 +8022,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([4,5,6,7,9,11])]
 			public List<natureOfSurface> natureOfSurface {get;set;} = [];
@@ -8107,7 +8107,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -8192,7 +8192,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
@@ -8200,7 +8200,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
@@ -8217,7 +8217,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			public Boolean? inTheWater {get;set;} = default;
 
@@ -8317,7 +8317,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
@@ -8334,7 +8334,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([4,7,8,12,13,14])]
 			public List<status> status {get;set;} = [];
@@ -8360,7 +8360,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			public Boolean? inTheWater {get;set;} = default;
 
@@ -8461,11 +8461,11 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,2,4,5,6,7,8,12,14])]
 			public List<status> status {get;set;} = [];
@@ -8482,7 +8482,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(AirportAirfield);
@@ -8550,7 +8550,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,4,5,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
@@ -8563,7 +8563,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,2,4,5,6,7,8,12,14])]
 			public List<status> status {get;set;} = [];
@@ -8644,7 +8644,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,4,5,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
@@ -8657,7 +8657,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,2,4,5,6,7,8,12,14])]
 			public List<status> status {get;set;} = [];
@@ -8779,7 +8779,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,6,7,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
@@ -8796,7 +8796,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,2,4,5,7,12])]
 			public List<status> status {get;set;} = [];
@@ -8818,7 +8818,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Bridge);
@@ -8909,7 +8909,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[Required()]
 			public verticalClearanceFixed verticalClearanceFixed {get;set;}
@@ -8929,7 +8929,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(SpanFixed);
@@ -9020,7 +9020,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[Required()]
 			public verticalClearanceClosed verticalClearanceClosed {get;set;}
@@ -9043,7 +9043,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(SpanOpening);
@@ -9158,7 +9158,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? liftingCapacity {get;set;} = default;
 
@@ -9179,7 +9179,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([4,12])]
 			public List<status> status {get;set;} = [];
@@ -9214,7 +9214,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Conveyor);
@@ -9311,7 +9311,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
@@ -9323,7 +9323,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,4,5,7,12,28])]
 			public List<status> status {get;set;} = [];
@@ -9439,7 +9439,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
@@ -9456,7 +9456,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,4,7,12])]
 			public List<status> status {get;set;} = [];
@@ -9589,7 +9589,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
@@ -9606,7 +9606,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([4,12])]
 			public List<status> status {get;set;} = [];
@@ -9637,7 +9637,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(PylonBridgeSupport);
@@ -9760,7 +9760,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,6,7,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
@@ -9773,7 +9773,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,7,12,13])]
 			public List<status> status {get;set;} = [];
@@ -9867,11 +9867,11 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,4,6,12,13,14])]
 			public List<status> status {get;set;} = [];
@@ -9957,7 +9957,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([4,5])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
@@ -9966,7 +9966,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,4,6,7,8,12,13,14])]
 			public List<status> status {get;set;} = [];
@@ -10051,11 +10051,11 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,3,4,6,8,14])]
 			public List<status> status {get;set;} = [];
@@ -10081,7 +10081,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Tunnel);
@@ -10182,7 +10182,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
@@ -10199,7 +10199,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([2,4,5,7,8,12,13,14])]
 			public List<status> status {get;set;} = [];
@@ -10224,7 +10224,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			public Boolean? inTheWater {get;set;} = default;
 
@@ -10356,7 +10356,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
@@ -10378,7 +10378,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([4,12,13])]
 			public List<status> status {get;set;} = [];
@@ -10404,7 +10404,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			public Boolean? inTheWater {get;set;} = default;
 
@@ -10522,7 +10522,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
@@ -10539,7 +10539,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,2,4,5,7,8,12,13,14,28])]
 			public List<status> status {get;set;} = [];
@@ -10579,7 +10579,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			public Boolean? inTheWater {get;set;} = default;
 
@@ -10676,7 +10676,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
@@ -10689,7 +10689,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([4,7,8,12,13,14,28])]
 			public List<status> status {get;set;} = [];
@@ -10715,7 +10715,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			public Boolean? inTheWater {get;set;} = default;
 
@@ -10827,7 +10827,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,25])]
 			public List<product> product {get;set;} = [];
@@ -10840,7 +10840,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([4,12])]
 			public List<status> status {get;set;} = [];
@@ -10866,7 +10866,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(ProductionStorageArea);
@@ -10934,7 +10934,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,5,7,9,12])]
 			public List<status> status {get;set;} = [];
@@ -11042,7 +11042,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -11054,7 +11054,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			public decimal? verticalLength {get;set;} = default;
 
@@ -11075,7 +11075,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Hulk);
@@ -11182,7 +11182,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public Boolean? radarConspicuous {get;set;} = default;
 
@@ -11190,7 +11190,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,4,6,7,8,12,14])]
 			public List<status> status {get;set;} = [];
@@ -11216,7 +11216,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Pile);
@@ -11324,7 +11324,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
@@ -11337,7 +11337,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			public decimal? verticalLength {get;set;} = default;
 
@@ -11457,7 +11457,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
@@ -11470,7 +11470,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,2,3,4,6,7,8,12,13,14,28])]
 			public List<status> status {get;set;} = [];
@@ -11615,7 +11615,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,6,7,8,11,12])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
@@ -11637,7 +11637,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,4,5,7,8,12,14])]
 			public List<status> status {get;set;} = [];
@@ -11671,7 +11671,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(StructureOverNavigableWater);
@@ -11763,7 +11763,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
@@ -11772,7 +11772,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,7,8,12,14])]
 			public List<status> status {get;set;} = [];
@@ -11875,11 +11875,11 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,3,4,5,6,8,14])]
 			public List<status> status {get;set;} = [];
@@ -11962,7 +11962,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[Required()]
 			public measuredDistanceValue measuredDistanceValue {get;set;}
@@ -12062,7 +12062,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
@@ -12189,7 +12189,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
@@ -12312,7 +12312,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? liftingCapacity {get;set;} = default;
 
@@ -12363,7 +12363,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			public Boolean? inTheWater {get;set;} = default;
 
@@ -12463,7 +12463,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
@@ -12600,7 +12600,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
@@ -12617,7 +12617,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,12,14,18])]
 			public List<status> status {get;set;} = [];
@@ -12643,7 +12643,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Dolphin);
@@ -12739,7 +12739,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -12747,7 +12747,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,3,4,6,7,8,12,14])]
 			public List<status> status {get;set;} = [];
@@ -12764,7 +12764,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Bollard);
@@ -12860,7 +12860,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? horizontalLength {get;set;} = default;
 
@@ -12996,7 +12996,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? liftingCapacity {get;set;} = default;
 
@@ -13034,7 +13034,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(FloatingDock);
@@ -13122,7 +13122,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -13156,7 +13156,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Pontoon);
@@ -13273,7 +13273,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
@@ -13361,7 +13361,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,6,7,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
@@ -13471,7 +13471,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,4,6,8,13,14,16,17])]
 			public List<status> status {get;set;} = [];
@@ -13551,7 +13551,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -13635,7 +13635,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -13714,7 +13714,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[Required()]
 			public orientation orientation {get;set;}
@@ -13795,7 +13795,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[Required()]
 			public orientation orientation {get;set;}
@@ -13885,7 +13885,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -13956,13 +13956,13 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String stationName {get;set;} = string.Empty;
 
 			public String? stationNumber {get;set;} = default;
 
-			public bool ShouldSerializestationNumber() { return string.IsNullOrEmpty(stationNumber); }
+			public bool ShouldSerializestationNumber() { return !string.IsNullOrEmpty(stationNumber); }
 
 			public List<tidalStreamPanelValues> tidalStreamPanelValues {get;set;} = [];
 
@@ -14037,7 +14037,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,3,4,8,9])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
@@ -14046,7 +14046,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([18])]
 			public status? status {get;set;} = default;
@@ -14130,7 +14130,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? dredgedDate {get;set;} = default;
 
-			public bool ShouldSerializedredgedDate() { return string.IsNullOrEmpty(dredgedDate); }
+			public bool ShouldSerializedredgedDate() { return !string.IsNullOrEmpty(dredgedDate); }
 
 			public List<featureName> featureName {get;set;} = [];
 
@@ -14138,7 +14138,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
@@ -14239,11 +14239,11 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String? sweptDate {get;set;} = default;
 
-			public bool ShouldSerializesweptDate() { return string.IsNullOrEmpty(sweptDate); }
+			public bool ShouldSerializesweptDate() { return !string.IsNullOrEmpty(sweptDate); }
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -14318,7 +14318,7 @@ namespace S100Framework.DomainModel.S101 {
 		public partial class DepthContour : FeatureNode, IFeatureBindingDefinition {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[Required()]
 			public decimal valueOfDepthContour {get;set;}
@@ -14386,7 +14386,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<information> information {get;set;} = [];
 
@@ -14441,7 +14441,7 @@ namespace S100Framework.DomainModel.S101 {
 		public partial class DepthNoBottomFound : FeatureNode, IFeatureBindingDefinition {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,5,8,9,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
@@ -14505,7 +14505,7 @@ namespace S100Framework.DomainModel.S101 {
 		public partial class UnsurveyedArea : FeatureNode, IFeatureBindingDefinition {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<information> information {get;set;} = [];
 
@@ -14564,7 +14564,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<surfaceCharacteristics> surfaceCharacteristics {get;set;} = [];
 
@@ -14649,7 +14649,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -14720,7 +14720,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -14787,7 +14787,7 @@ namespace S100Framework.DomainModel.S101 {
 		public partial class Sandwave : FeatureNode, IFeatureBindingDefinition {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? verticalLength {get;set;} = default;
 
@@ -14854,7 +14854,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -14930,7 +14930,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([14])]
 			public natureOfSurface? natureOfSurface {get;set;} = default;
@@ -14944,7 +14944,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([18])]
 			public status? status {get;set;} = default;
@@ -15053,7 +15053,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,4,6,7,8,9])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
@@ -15066,7 +15066,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([7,13,18])]
 			public List<status> status {get;set;} = [];
@@ -15101,7 +15101,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			public decimal? defaultClearanceDepth {get;set;} = default;
 
@@ -15198,7 +15198,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
@@ -15221,7 +15221,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,4,5,7,8,13,18,28])]
 			public List<status> status {get;set;} = [];
@@ -15329,7 +15329,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,4,6,7,8,9])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
@@ -15338,7 +15338,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([13,18,28])]
 			public List<status> status {get;set;} = [];
@@ -15423,11 +15423,11 @@ namespace S100Framework.DomainModel.S101 {
 		public partial class DiscolouredWater : FeatureNode, IFeatureBindingDefinition {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -15500,7 +15500,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -15508,7 +15508,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,4,5,6,7,8,12,18,28])]
 			public List<status> status {get;set;} = [];
@@ -15622,7 +15622,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -15764,7 +15764,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,18,19,23])]
 			public List<product> product {get;set;} = [];
@@ -15777,7 +15777,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,2,4,7,8,12,28])]
 			public List<status> status {get;set;} = [];
@@ -15803,7 +15803,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(OffshorePlatform);
@@ -15900,7 +15900,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,4,13,18])]
 			public List<status> status {get;set;} = [];
@@ -15993,7 +15993,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,16,17,18,20,23,24,25,27,39])]
 			public List<restriction> restriction {get;set;} = [];
@@ -16104,7 +16104,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
@@ -16117,7 +16117,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,3,4,5,8,9,11,12,13,14,16,17,18,20,23,24,25,26,39])]
 			public List<restriction> restriction {get;set;} = [];
@@ -16139,7 +16139,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(PipelineSubmarineOnLand);
@@ -16211,7 +16211,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,7,8,18,19])]
 			public List<product> product {get;set;} = [];
@@ -16319,7 +16319,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,4,6,10,14,23])]
 			public List<product> product {get;set;} = [];
@@ -16332,7 +16332,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 			public List<restriction> restriction {get;set;} = [];
@@ -16435,7 +16435,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public int? measuredDistance {get;set;} = default;
 
@@ -16533,7 +16533,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
@@ -16658,7 +16658,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
@@ -16765,7 +16765,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
@@ -16892,7 +16892,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
@@ -16998,7 +16998,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? orientationValue {get;set;} = default;
 
@@ -17125,7 +17125,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[Required()]
 			public decimal orientationValue {get;set;}
@@ -17234,7 +17234,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
@@ -17333,7 +17333,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[Required()]
 			public decimal orientationValue {get;set;}
@@ -17419,7 +17419,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[Required()]
 			public decimal orientationValue {get;set;}
@@ -17543,7 +17543,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[Required()]
 			public decimal orientationValue {get;set;}
@@ -17673,7 +17673,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -17768,7 +17768,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
@@ -17861,7 +17861,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,14,16,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
@@ -17954,7 +17954,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? orientationValue {get;set;} = default;
 
@@ -18043,7 +18043,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,3,9,28])]
 			public List<status> status {get;set;} = [];
@@ -18119,7 +18119,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,3,9,28])]
 			public List<status> status {get;set;} = [];
@@ -18195,7 +18195,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
@@ -18280,7 +18280,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
@@ -18373,7 +18373,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
@@ -18484,11 +18484,11 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String? nationality {get;set;} = default;
 
-			public bool ShouldSerializenationality() { return string.IsNullOrEmpty(nationality); }
+			public bool ShouldSerializenationality() { return !string.IsNullOrEmpty(nationality); }
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -18571,11 +18571,11 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String? nationality {get;set;} = default;
 
-			public bool ShouldSerializenationality() { return string.IsNullOrEmpty(nationality); }
+			public bool ShouldSerializenationality() { return !string.IsNullOrEmpty(nationality); }
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -18658,7 +18658,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String nationality {get;set;} = string.Empty;
 
@@ -18763,7 +18763,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<decimal> orientationValue {get;set;} = [];
 
@@ -18860,7 +18860,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -18940,7 +18940,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[Required()]
 			public decimal orientationValue {get;set;}
@@ -19027,7 +19027,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,4,7])]
 			public List<status> status {get;set;} = [];
@@ -19099,7 +19099,7 @@ namespace S100Framework.DomainModel.S101 {
 		public partial class RadarStation : FeatureNode, IFeatureBindingDefinition {
 			public String? callSign {get;set;} = default;
 
-			public bool ShouldSerializecallSign() { return string.IsNullOrEmpty(callSign); }
+			public bool ShouldSerializecallSign() { return !string.IsNullOrEmpty(callSign); }
 
 			[EnumerationValue([1,2])]
 			public List<categoryOfRadarStation> categoryOfRadarStation {get;set;} = [];
@@ -19120,7 +19120,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -19218,7 +19218,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -19316,7 +19316,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
@@ -19427,7 +19427,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -19511,7 +19511,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -19601,7 +19601,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? dateDisused {get;set;} = default;
 
-			public bool ShouldSerializedateDisused() { return string.IsNullOrEmpty(dateDisused); }
+			public bool ShouldSerializedateDisused() { return !string.IsNullOrEmpty(dateDisused); }
 
 			public List<featureName> featureName {get;set;} = [];
 
@@ -19609,7 +19609,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
@@ -19703,11 +19703,11 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String? nationality {get;set;} = default;
 
-			public bool ShouldSerializenationality() { return string.IsNullOrEmpty(nationality); }
+			public bool ShouldSerializenationality() { return !string.IsNullOrEmpty(nationality); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -19804,7 +19804,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<String> nationality {get;set;} = [];
 
@@ -19820,7 +19820,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(AdministrationArea);
@@ -19887,7 +19887,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -19981,7 +19981,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -19989,7 +19989,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([5,7])]
 			public status? status {get;set;} = default;
@@ -20006,7 +20006,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(CautionArea);
@@ -20081,7 +20081,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -20089,7 +20089,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -20101,7 +20101,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(InformationArea);
@@ -20168,7 +20168,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<String> nationality {get;set;} = [];
 
@@ -20235,7 +20235,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<String> nationality {get;set;} = [];
 
@@ -20306,7 +20306,7 @@ namespace S100Framework.DomainModel.S101 {
 		public partial class CustomZone : FeatureNode, IFeatureBindingDefinition {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String nationality {get;set;} = string.Empty;
 
@@ -20371,7 +20371,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<String> nationality {get;set;} = [];
 
@@ -20438,7 +20438,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String nationality {get;set;} = string.Empty;
 
@@ -20516,7 +20516,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -20605,7 +20605,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,6,8,14])]
 			public List<status> status {get;set;} = [];
@@ -20681,7 +20681,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,4,6,8,14])]
 			public List<status> status {get;set;} = [];
@@ -20757,7 +20757,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -20851,11 +20851,11 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,2,4,5,7,8])]
 			public List<status> status {get;set;} = [];
@@ -20927,7 +20927,7 @@ namespace S100Framework.DomainModel.S101 {
 		public partial class StraightTerritorialSeaBaseline : FeatureNode, IFeatureBindingDefinition {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String nationality {get;set;} = string.Empty;
 
@@ -20992,7 +20992,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<String> nationality {get;set;} = [];
 
@@ -21068,11 +21068,11 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String? nationality {get;set;} = default;
 
-			public bool ShouldSerializenationality() { return string.IsNullOrEmpty(nationality); }
+			public bool ShouldSerializenationality() { return !string.IsNullOrEmpty(nationality); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
@@ -21156,7 +21156,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -21239,7 +21239,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -21247,7 +21247,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? regulationCitation {get;set;} = default;
 
-			public bool ShouldSerializeregulationCitation() { return string.IsNullOrEmpty(regulationCitation); }
+			public bool ShouldSerializeregulationCitation() { return !string.IsNullOrEmpty(regulationCitation); }
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -21318,11 +21318,11 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String? regulationCitation {get;set;} = default;
 
-			public bool ShouldSerializeregulationCitation() { return string.IsNullOrEmpty(regulationCitation); }
+			public bool ShouldSerializeregulationCitation() { return !string.IsNullOrEmpty(regulationCitation); }
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -21402,7 +21402,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -21534,7 +21534,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2])]
 			public lightVisibility? lightVisibility {get;set;} = default;
@@ -21695,7 +21695,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
@@ -21839,7 +21839,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -21963,7 +21963,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? height {get;set;} = default;
 
@@ -22099,7 +22099,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
@@ -22142,7 +22142,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(LateralBuoy);
@@ -22251,7 +22251,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
@@ -22294,7 +22294,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(CardinalBuoy);
@@ -22399,7 +22399,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
@@ -22442,7 +22442,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(IsolatedDangerBuoy);
@@ -22547,7 +22547,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
@@ -22590,7 +22590,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(SafeWaterBuoy);
@@ -22700,7 +22700,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
@@ -22743,7 +22743,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(SpecialPurposeGeneralBuoy);
@@ -22848,7 +22848,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
@@ -22882,7 +22882,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(EmergencyWreckMarkingBuoy);
@@ -22984,7 +22984,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([7,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
@@ -23024,7 +23024,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(InstallationBuoy);
@@ -23113,7 +23113,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
@@ -23155,7 +23155,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(MooringBuoy);
@@ -23273,7 +23273,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public decimal? height {get;set;} = default;
 
@@ -23299,7 +23299,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
@@ -23329,7 +23329,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(LateralBeacon);
@@ -23459,7 +23459,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
@@ -23481,7 +23481,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
@@ -23511,7 +23511,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(CardinalBeacon);
@@ -23637,7 +23637,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
@@ -23659,7 +23659,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
@@ -23689,7 +23689,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(IsolatedDangerBeacon);
@@ -23815,7 +23815,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
@@ -23837,7 +23837,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
@@ -23867,7 +23867,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(SafeWaterBeacon);
@@ -23998,7 +23998,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
@@ -24020,7 +24020,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
@@ -24050,7 +24050,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(SpecialPurposeGeneralBeacon);
@@ -24172,7 +24172,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,4,6,7,8,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
@@ -24214,7 +24214,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Daymark);
@@ -24339,7 +24339,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([6,7,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
@@ -24382,7 +24382,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(LightFloat);
@@ -24491,7 +24491,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
@@ -24530,7 +24530,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(LightVessel);
@@ -24631,7 +24631,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -24715,7 +24715,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -24803,7 +24803,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -24820,7 +24820,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? signalGroup {get;set;} = default;
 
-			public bool ShouldSerializesignalGroup() { return string.IsNullOrEmpty(signalGroup); }
+			public bool ShouldSerializesignalGroup() { return !string.IsNullOrEmpty(signalGroup); }
 
 			public decimal? signalPeriod {get;set;} = default;
 
@@ -24924,11 +24924,11 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String? mMSICode {get;set;} = default;
 
-			public bool ShouldSerializemMSICode() { return string.IsNullOrEmpty(mMSICode); }
+			public bool ShouldSerializemMSICode() { return !string.IsNullOrEmpty(mMSICode); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -25024,11 +25024,11 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String? mMSICode {get;set;} = default;
 
-			public bool ShouldSerializemMSICode() { return string.IsNullOrEmpty(mMSICode); }
+			public bool ShouldSerializemMSICode() { return !string.IsNullOrEmpty(mMSICode); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -25108,7 +25108,7 @@ namespace S100Framework.DomainModel.S101 {
 		public partial class RadioStation : FeatureNode, IFeatureBindingDefinition {
 			public String? callSign {get;set;} = default;
 
-			public bool ShouldSerializecallSign() { return string.IsNullOrEmpty(callSign); }
+			public bool ShouldSerializecallSign() { return !string.IsNullOrEmpty(callSign); }
 
 			[EnumerationValue([5,10,11,14,19,20])]
 			public List<categoryOfRadioStation> categoryOfRadioStation {get;set;} = [];
@@ -25137,7 +25137,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -25225,7 +25225,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -25241,7 +25241,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? signalGroup {get;set;} = default;
 
-			public bool ShouldSerializesignalGroup() { return string.IsNullOrEmpty(signalGroup); }
+			public bool ShouldSerializesignalGroup() { return !string.IsNullOrEmpty(signalGroup); }
 
 			public List<signalSequence> signalSequence {get;set;} = [];
 
@@ -25363,7 +25363,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -25456,7 +25456,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public int? scaleMinimum {get;set;} = default;
 
@@ -25535,7 +25535,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public Boolean? isMRCC {get;set;} = default;
 
@@ -25632,7 +25632,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -25733,7 +25733,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -25834,7 +25834,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -25932,7 +25932,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
@@ -25950,7 +25950,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? reportedDate {get;set;} = default;
 
-			public bool ShouldSerializereportedDate() { return string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,23,24,27])]
 			public List<restriction> restriction {get;set;} = [];
@@ -25976,7 +25976,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(HarbourFacility);
@@ -26044,7 +26044,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
@@ -26065,7 +26065,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return string.IsNullOrEmpty(pictorialRepresentation); }
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[JsonIgnore]
 			public override string Code => nameof(SmallCraftFacility);
@@ -26232,201 +26232,201 @@ namespace S100Framework.DomainModel.S101 {
 	[XmlType(Namespace = "http://www.iho.int/S101/2.0", TypeName = "members")]
 	public class Members
 	{
-		[XmlElement("InformationTypes.ContactDetails", typeof(InformationTypes.ContactDetails), Order = 1)]
-		[XmlElement("InformationTypes.ServiceHours", typeof(InformationTypes.ServiceHours), Order = 1)]
-		[XmlElement("InformationTypes.NonStandardWorkingDay", typeof(InformationTypes.NonStandardWorkingDay), Order = 1)]
-		[XmlElement("InformationTypes.NauticalInformation", typeof(InformationTypes.NauticalInformation), Order = 1)]
-		[XmlElement("InformationTypes.SpatialQuality", typeof(InformationTypes.SpatialQuality), Order = 1)]
-		[XmlElement("FeatureTypes.QualityOfNonBathymetricData", typeof(FeatureTypes.QualityOfNonBathymetricData), Order = 1)]
-		[XmlElement("FeatureTypes.DataCoverage", typeof(FeatureTypes.DataCoverage), Order = 1)]
-		[XmlElement("FeatureTypes.NavigationalSystemOfMarks", typeof(FeatureTypes.NavigationalSystemOfMarks), Order = 1)]
-		[XmlElement("FeatureTypes.LocalDirectionOfBuoyage", typeof(FeatureTypes.LocalDirectionOfBuoyage), Order = 1)]
-		[XmlElement("FeatureTypes.QualityOfBathymetricData", typeof(FeatureTypes.QualityOfBathymetricData), Order = 1)]
-		[XmlElement("FeatureTypes.SoundingDatum", typeof(FeatureTypes.SoundingDatum), Order = 1)]
-		[XmlElement("FeatureTypes.VerticalDatumOfData", typeof(FeatureTypes.VerticalDatumOfData), Order = 1)]
-		[XmlElement("FeatureTypes.QualityOfSurvey", typeof(FeatureTypes.QualityOfSurvey), Order = 1)]
-		[XmlElement("FeatureTypes.UpdateInformation", typeof(FeatureTypes.UpdateInformation), Order = 1)]
-		[XmlElement("FeatureTypes.MagneticVariation", typeof(FeatureTypes.MagneticVariation), Order = 1)]
-		[XmlElement("FeatureTypes.LocalMagneticAnomaly", typeof(FeatureTypes.LocalMagneticAnomaly), Order = 1)]
-		[XmlElement("FeatureTypes.Coastline", typeof(FeatureTypes.Coastline), Order = 1)]
-		[XmlElement("FeatureTypes.LandArea", typeof(FeatureTypes.LandArea), Order = 1)]
-		[XmlElement("FeatureTypes.IslandGroup", typeof(FeatureTypes.IslandGroup), Order = 1)]
-		[XmlElement("FeatureTypes.LandElevation", typeof(FeatureTypes.LandElevation), Order = 1)]
-		[XmlElement("FeatureTypes.River", typeof(FeatureTypes.River), Order = 1)]
-		[XmlElement("FeatureTypes.Rapids", typeof(FeatureTypes.Rapids), Order = 1)]
-		[XmlElement("FeatureTypes.Waterfall", typeof(FeatureTypes.Waterfall), Order = 1)]
-		[XmlElement("FeatureTypes.Lake", typeof(FeatureTypes.Lake), Order = 1)]
-		[XmlElement("FeatureTypes.LandRegion", typeof(FeatureTypes.LandRegion), Order = 1)]
-		[XmlElement("FeatureTypes.Vegetation", typeof(FeatureTypes.Vegetation), Order = 1)]
-		[XmlElement("FeatureTypes.IceArea", typeof(FeatureTypes.IceArea), Order = 1)]
-		[XmlElement("FeatureTypes.SlopingGround", typeof(FeatureTypes.SlopingGround), Order = 1)]
-		[XmlElement("FeatureTypes.SlopeTopline", typeof(FeatureTypes.SlopeTopline), Order = 1)]
-		[XmlElement("FeatureTypes.Tideway", typeof(FeatureTypes.Tideway), Order = 1)]
-		[XmlElement("FeatureTypes.BuiltUpArea", typeof(FeatureTypes.BuiltUpArea), Order = 1)]
-		[XmlElement("FeatureTypes.Building", typeof(FeatureTypes.Building), Order = 1)]
-		[XmlElement("FeatureTypes.AirportAirfield", typeof(FeatureTypes.AirportAirfield), Order = 1)]
-		[XmlElement("FeatureTypes.Runway", typeof(FeatureTypes.Runway), Order = 1)]
-		[XmlElement("FeatureTypes.Helipad", typeof(FeatureTypes.Helipad), Order = 1)]
-		[XmlElement("FeatureTypes.Bridge", typeof(FeatureTypes.Bridge), Order = 1)]
-		[XmlElement("FeatureTypes.SpanFixed", typeof(FeatureTypes.SpanFixed), Order = 1)]
-		[XmlElement("FeatureTypes.SpanOpening", typeof(FeatureTypes.SpanOpening), Order = 1)]
-		[XmlElement("FeatureTypes.Conveyor", typeof(FeatureTypes.Conveyor), Order = 1)]
-		[XmlElement("FeatureTypes.CableOverhead", typeof(FeatureTypes.CableOverhead), Order = 1)]
-		[XmlElement("FeatureTypes.PipelineOverhead", typeof(FeatureTypes.PipelineOverhead), Order = 1)]
-		[XmlElement("FeatureTypes.PylonBridgeSupport", typeof(FeatureTypes.PylonBridgeSupport), Order = 1)]
-		[XmlElement("FeatureTypes.FenceWall", typeof(FeatureTypes.FenceWall), Order = 1)]
-		[XmlElement("FeatureTypes.Railway", typeof(FeatureTypes.Railway), Order = 1)]
-		[XmlElement("FeatureTypes.Road", typeof(FeatureTypes.Road), Order = 1)]
-		[XmlElement("FeatureTypes.Tunnel", typeof(FeatureTypes.Tunnel), Order = 1)]
-		[XmlElement("FeatureTypes.Landmark", typeof(FeatureTypes.Landmark), Order = 1)]
-		[XmlElement("FeatureTypes.SiloTank", typeof(FeatureTypes.SiloTank), Order = 1)]
-		[XmlElement("FeatureTypes.WindTurbine", typeof(FeatureTypes.WindTurbine), Order = 1)]
-		[XmlElement("FeatureTypes.FortifiedStructure", typeof(FeatureTypes.FortifiedStructure), Order = 1)]
-		[XmlElement("FeatureTypes.ProductionStorageArea", typeof(FeatureTypes.ProductionStorageArea), Order = 1)]
-		[XmlElement("FeatureTypes.Checkpoint", typeof(FeatureTypes.Checkpoint), Order = 1)]
-		[XmlElement("FeatureTypes.Hulk", typeof(FeatureTypes.Hulk), Order = 1)]
-		[XmlElement("FeatureTypes.Pile", typeof(FeatureTypes.Pile), Order = 1)]
-		[XmlElement("FeatureTypes.Dyke", typeof(FeatureTypes.Dyke), Order = 1)]
-		[XmlElement("FeatureTypes.ShorelineConstruction", typeof(FeatureTypes.ShorelineConstruction), Order = 1)]
-		[XmlElement("FeatureTypes.StructureOverNavigableWater", typeof(FeatureTypes.StructureOverNavigableWater), Order = 1)]
-		[XmlElement("FeatureTypes.Causeway", typeof(FeatureTypes.Causeway), Order = 1)]
-		[XmlElement("FeatureTypes.Canal", typeof(FeatureTypes.Canal), Order = 1)]
-		[XmlElement("FeatureTypes.DistanceMark", typeof(FeatureTypes.DistanceMark), Order = 1)]
-		[XmlElement("FeatureTypes.Gate", typeof(FeatureTypes.Gate), Order = 1)]
-		[XmlElement("FeatureTypes.Dam", typeof(FeatureTypes.Dam), Order = 1)]
-		[XmlElement("FeatureTypes.Crane", typeof(FeatureTypes.Crane), Order = 1)]
-		[XmlElement("FeatureTypes.Berth", typeof(FeatureTypes.Berth), Order = 1)]
-		[XmlElement("FeatureTypes.Dolphin", typeof(FeatureTypes.Dolphin), Order = 1)]
-		[XmlElement("FeatureTypes.Bollard", typeof(FeatureTypes.Bollard), Order = 1)]
-		[XmlElement("FeatureTypes.DryDock", typeof(FeatureTypes.DryDock), Order = 1)]
-		[XmlElement("FeatureTypes.FloatingDock", typeof(FeatureTypes.FloatingDock), Order = 1)]
-		[XmlElement("FeatureTypes.Pontoon", typeof(FeatureTypes.Pontoon), Order = 1)]
-		[XmlElement("FeatureTypes.DockArea", typeof(FeatureTypes.DockArea), Order = 1)]
-		[XmlElement("FeatureTypes.Gridiron", typeof(FeatureTypes.Gridiron), Order = 1)]
-		[XmlElement("FeatureTypes.LockBasin", typeof(FeatureTypes.LockBasin), Order = 1)]
-		[XmlElement("FeatureTypes.MooringTrot", typeof(FeatureTypes.MooringTrot), Order = 1)]
-		[XmlElement("FeatureTypes.SeaAreaNamedWaterArea", typeof(FeatureTypes.SeaAreaNamedWaterArea), Order = 1)]
-		[XmlElement("FeatureTypes.TidalStreamFloodEbb", typeof(FeatureTypes.TidalStreamFloodEbb), Order = 1)]
-		[XmlElement("FeatureTypes.CurrentNonGravitational", typeof(FeatureTypes.CurrentNonGravitational), Order = 1)]
-		[XmlElement("FeatureTypes.WaterTurbulence", typeof(FeatureTypes.WaterTurbulence), Order = 1)]
-		[XmlElement("FeatureTypes.TidalStreamPanelData", typeof(FeatureTypes.TidalStreamPanelData), Order = 1)]
-		[XmlElement("FeatureTypes.Sounding", typeof(FeatureTypes.Sounding), Order = 1)]
-		[XmlElement("FeatureTypes.DredgedArea", typeof(FeatureTypes.DredgedArea), Order = 1)]
-		[XmlElement("FeatureTypes.SweptArea", typeof(FeatureTypes.SweptArea), Order = 1)]
-		[XmlElement("FeatureTypes.DepthContour", typeof(FeatureTypes.DepthContour), Order = 1)]
-		[XmlElement("FeatureTypes.DepthArea", typeof(FeatureTypes.DepthArea), Order = 1)]
-		[XmlElement("FeatureTypes.DepthNoBottomFound", typeof(FeatureTypes.DepthNoBottomFound), Order = 1)]
-		[XmlElement("FeatureTypes.UnsurveyedArea", typeof(FeatureTypes.UnsurveyedArea), Order = 1)]
-		[XmlElement("FeatureTypes.SeabedArea", typeof(FeatureTypes.SeabedArea), Order = 1)]
-		[XmlElement("FeatureTypes.WeedKelp", typeof(FeatureTypes.WeedKelp), Order = 1)]
-		[XmlElement("FeatureTypes.Seagrass", typeof(FeatureTypes.Seagrass), Order = 1)]
-		[XmlElement("FeatureTypes.Sandwave", typeof(FeatureTypes.Sandwave), Order = 1)]
-		[XmlElement("FeatureTypes.Spring", typeof(FeatureTypes.Spring), Order = 1)]
-		[XmlElement("FeatureTypes.UnderwaterAwashRock", typeof(FeatureTypes.UnderwaterAwashRock), Order = 1)]
-		[XmlElement("FeatureTypes.Wreck", typeof(FeatureTypes.Wreck), Order = 1)]
-		[XmlElement("FeatureTypes.Obstruction", typeof(FeatureTypes.Obstruction), Order = 1)]
-		[XmlElement("FeatureTypes.FoulGround", typeof(FeatureTypes.FoulGround), Order = 1)]
-		[XmlElement("FeatureTypes.DiscolouredWater", typeof(FeatureTypes.DiscolouredWater), Order = 1)]
-		[XmlElement("FeatureTypes.FishingFacility", typeof(FeatureTypes.FishingFacility), Order = 1)]
-		[XmlElement("FeatureTypes.MarineFarmCulture", typeof(FeatureTypes.MarineFarmCulture), Order = 1)]
-		[XmlElement("FeatureTypes.OffshorePlatform", typeof(FeatureTypes.OffshorePlatform), Order = 1)]
-		[XmlElement("FeatureTypes.CableSubmarine", typeof(FeatureTypes.CableSubmarine), Order = 1)]
-		[XmlElement("FeatureTypes.CableArea", typeof(FeatureTypes.CableArea), Order = 1)]
-		[XmlElement("FeatureTypes.PipelineSubmarineOnLand", typeof(FeatureTypes.PipelineSubmarineOnLand), Order = 1)]
-		[XmlElement("FeatureTypes.SubmarinePipelineArea", typeof(FeatureTypes.SubmarinePipelineArea), Order = 1)]
-		[XmlElement("FeatureTypes.OffshoreProductionArea", typeof(FeatureTypes.OffshoreProductionArea), Order = 1)]
-		[XmlElement("FeatureTypes.NavigationLine", typeof(FeatureTypes.NavigationLine), Order = 1)]
-		[XmlElement("FeatureTypes.RecommendedTrack", typeof(FeatureTypes.RecommendedTrack), Order = 1)]
-		[XmlElement("FeatureTypes.RangeSystem", typeof(FeatureTypes.RangeSystem), Order = 1)]
-		[XmlElement("FeatureTypes.Fairway", typeof(FeatureTypes.Fairway), Order = 1)]
-		[XmlElement("FeatureTypes.FairwaySystem", typeof(FeatureTypes.FairwaySystem), Order = 1)]
-		[XmlElement("FeatureTypes.RecommendedRouteCentreline", typeof(FeatureTypes.RecommendedRouteCentreline), Order = 1)]
-		[XmlElement("FeatureTypes.TwoWayRoutePart", typeof(FeatureTypes.TwoWayRoutePart), Order = 1)]
-		[XmlElement("FeatureTypes.TwoWayRoute", typeof(FeatureTypes.TwoWayRoute), Order = 1)]
-		[XmlElement("FeatureTypes.RecommendedTrafficLanePart", typeof(FeatureTypes.RecommendedTrafficLanePart), Order = 1)]
-		[XmlElement("FeatureTypes.DeepWaterRouteCentreline", typeof(FeatureTypes.DeepWaterRouteCentreline), Order = 1)]
-		[XmlElement("FeatureTypes.DeepWaterRoutePart", typeof(FeatureTypes.DeepWaterRoutePart), Order = 1)]
-		[XmlElement("FeatureTypes.DeepWaterRoute", typeof(FeatureTypes.DeepWaterRoute), Order = 1)]
-		[XmlElement("FeatureTypes.InshoreTrafficZone", typeof(FeatureTypes.InshoreTrafficZone), Order = 1)]
-		[XmlElement("FeatureTypes.PrecautionaryArea", typeof(FeatureTypes.PrecautionaryArea), Order = 1)]
-		[XmlElement("FeatureTypes.TrafficSeparationSchemeLanePart", typeof(FeatureTypes.TrafficSeparationSchemeLanePart), Order = 1)]
-		[XmlElement("FeatureTypes.SeparationZoneOrLine", typeof(FeatureTypes.SeparationZoneOrLine), Order = 1)]
-		[XmlElement("FeatureTypes.TrafficSeparationSchemeBoundary", typeof(FeatureTypes.TrafficSeparationSchemeBoundary), Order = 1)]
-		[XmlElement("FeatureTypes.TrafficSeparationSchemeCrossing", typeof(FeatureTypes.TrafficSeparationSchemeCrossing), Order = 1)]
-		[XmlElement("FeatureTypes.TrafficSeparationSchemeRoundabout", typeof(FeatureTypes.TrafficSeparationSchemeRoundabout), Order = 1)]
-		[XmlElement("FeatureTypes.TrafficSeparationScheme", typeof(FeatureTypes.TrafficSeparationScheme), Order = 1)]
-		[XmlElement("FeatureTypes.ArchipelagicSeaLaneArea", typeof(FeatureTypes.ArchipelagicSeaLaneArea), Order = 1)]
-		[XmlElement("FeatureTypes.ArchipelagicSeaLaneAxis", typeof(FeatureTypes.ArchipelagicSeaLaneAxis), Order = 1)]
-		[XmlElement("FeatureTypes.ArchipelagicSeaLane", typeof(FeatureTypes.ArchipelagicSeaLane), Order = 1)]
-		[XmlElement("FeatureTypes.RadioCallingInPoint", typeof(FeatureTypes.RadioCallingInPoint), Order = 1)]
-		[XmlElement("FeatureTypes.FerryRoute", typeof(FeatureTypes.FerryRoute), Order = 1)]
-		[XmlElement("FeatureTypes.RadarLine", typeof(FeatureTypes.RadarLine), Order = 1)]
-		[XmlElement("FeatureTypes.RadarRange", typeof(FeatureTypes.RadarRange), Order = 1)]
-		[XmlElement("FeatureTypes.RadarStation", typeof(FeatureTypes.RadarStation), Order = 1)]
-		[XmlElement("FeatureTypes.AnchorageArea", typeof(FeatureTypes.AnchorageArea), Order = 1)]
-		[XmlElement("FeatureTypes.MooringArea", typeof(FeatureTypes.MooringArea), Order = 1)]
-		[XmlElement("FeatureTypes.AnchorBerth", typeof(FeatureTypes.AnchorBerth), Order = 1)]
-		[XmlElement("FeatureTypes.SeaplaneLandingArea", typeof(FeatureTypes.SeaplaneLandingArea), Order = 1)]
-		[XmlElement("FeatureTypes.DumpingGround", typeof(FeatureTypes.DumpingGround), Order = 1)]
-		[XmlElement("FeatureTypes.MilitaryPracticeArea", typeof(FeatureTypes.MilitaryPracticeArea), Order = 1)]
-		[XmlElement("FeatureTypes.AdministrationArea", typeof(FeatureTypes.AdministrationArea), Order = 1)]
-		[XmlElement("FeatureTypes.CargoTranshipmentArea", typeof(FeatureTypes.CargoTranshipmentArea), Order = 1)]
-		[XmlElement("FeatureTypes.CautionArea", typeof(FeatureTypes.CautionArea), Order = 1)]
-		[XmlElement("FeatureTypes.InformationArea", typeof(FeatureTypes.InformationArea), Order = 1)]
-		[XmlElement("FeatureTypes.ContiguousZone", typeof(FeatureTypes.ContiguousZone), Order = 1)]
-		[XmlElement("FeatureTypes.ContinentalShelfArea", typeof(FeatureTypes.ContinentalShelfArea), Order = 1)]
-		[XmlElement("FeatureTypes.CustomZone", typeof(FeatureTypes.CustomZone), Order = 1)]
-		[XmlElement("FeatureTypes.ExclusiveEconomicZone", typeof(FeatureTypes.ExclusiveEconomicZone), Order = 1)]
-		[XmlElement("FeatureTypes.FisheryZone", typeof(FeatureTypes.FisheryZone), Order = 1)]
-		[XmlElement("FeatureTypes.FishingGround", typeof(FeatureTypes.FishingGround), Order = 1)]
-		[XmlElement("FeatureTypes.FreePortArea", typeof(FeatureTypes.FreePortArea), Order = 1)]
-		[XmlElement("FeatureTypes.HarbourAreaAdministrative", typeof(FeatureTypes.HarbourAreaAdministrative), Order = 1)]
-		[XmlElement("FeatureTypes.LogPond", typeof(FeatureTypes.LogPond), Order = 1)]
-		[XmlElement("FeatureTypes.OilBarrier", typeof(FeatureTypes.OilBarrier), Order = 1)]
-		[XmlElement("FeatureTypes.StraightTerritorialSeaBaseline", typeof(FeatureTypes.StraightTerritorialSeaBaseline), Order = 1)]
-		[XmlElement("FeatureTypes.TerritorialSeaArea", typeof(FeatureTypes.TerritorialSeaArea), Order = 1)]
-		[XmlElement("FeatureTypes.SubmarineTransitLane", typeof(FeatureTypes.SubmarineTransitLane), Order = 1)]
-		[XmlElement("FeatureTypes.PilotageDistrict", typeof(FeatureTypes.PilotageDistrict), Order = 1)]
-		[XmlElement("FeatureTypes.CollisionRegulationsLimit", typeof(FeatureTypes.CollisionRegulationsLimit), Order = 1)]
-		[XmlElement("FeatureTypes.MarinePollutionRegulationsArea", typeof(FeatureTypes.MarinePollutionRegulationsArea), Order = 1)]
-		[XmlElement("FeatureTypes.RestrictedArea", typeof(FeatureTypes.RestrictedArea), Order = 1)]
-		[XmlElement("FeatureTypes.LightAllAround", typeof(FeatureTypes.LightAllAround), Order = 1)]
-		[XmlElement("FeatureTypes.LightSectored", typeof(FeatureTypes.LightSectored), Order = 1)]
-		[XmlElement("FeatureTypes.LightFogDetector", typeof(FeatureTypes.LightFogDetector), Order = 1)]
-		[XmlElement("FeatureTypes.LightAirObstruction", typeof(FeatureTypes.LightAirObstruction), Order = 1)]
-		[XmlElement("FeatureTypes.LateralBuoy", typeof(FeatureTypes.LateralBuoy), Order = 1)]
-		[XmlElement("FeatureTypes.CardinalBuoy", typeof(FeatureTypes.CardinalBuoy), Order = 1)]
-		[XmlElement("FeatureTypes.IsolatedDangerBuoy", typeof(FeatureTypes.IsolatedDangerBuoy), Order = 1)]
-		[XmlElement("FeatureTypes.SafeWaterBuoy", typeof(FeatureTypes.SafeWaterBuoy), Order = 1)]
-		[XmlElement("FeatureTypes.SpecialPurposeGeneralBuoy", typeof(FeatureTypes.SpecialPurposeGeneralBuoy), Order = 1)]
-		[XmlElement("FeatureTypes.EmergencyWreckMarkingBuoy", typeof(FeatureTypes.EmergencyWreckMarkingBuoy), Order = 1)]
-		[XmlElement("FeatureTypes.InstallationBuoy", typeof(FeatureTypes.InstallationBuoy), Order = 1)]
-		[XmlElement("FeatureTypes.MooringBuoy", typeof(FeatureTypes.MooringBuoy), Order = 1)]
-		[XmlElement("FeatureTypes.LateralBeacon", typeof(FeatureTypes.LateralBeacon), Order = 1)]
-		[XmlElement("FeatureTypes.CardinalBeacon", typeof(FeatureTypes.CardinalBeacon), Order = 1)]
-		[XmlElement("FeatureTypes.IsolatedDangerBeacon", typeof(FeatureTypes.IsolatedDangerBeacon), Order = 1)]
-		[XmlElement("FeatureTypes.SafeWaterBeacon", typeof(FeatureTypes.SafeWaterBeacon), Order = 1)]
-		[XmlElement("FeatureTypes.SpecialPurposeGeneralBeacon", typeof(FeatureTypes.SpecialPurposeGeneralBeacon), Order = 1)]
-		[XmlElement("FeatureTypes.Daymark", typeof(FeatureTypes.Daymark), Order = 1)]
-		[XmlElement("FeatureTypes.LightFloat", typeof(FeatureTypes.LightFloat), Order = 1)]
-		[XmlElement("FeatureTypes.LightVessel", typeof(FeatureTypes.LightVessel), Order = 1)]
-		[XmlElement("FeatureTypes.Retroreflector", typeof(FeatureTypes.Retroreflector), Order = 1)]
-		[XmlElement("FeatureTypes.RadarReflector", typeof(FeatureTypes.RadarReflector), Order = 1)]
-		[XmlElement("FeatureTypes.FogSignal", typeof(FeatureTypes.FogSignal), Order = 1)]
-		[XmlElement("FeatureTypes.PhysicalAISAidToNavigation", typeof(FeatureTypes.PhysicalAISAidToNavigation), Order = 1)]
-		[XmlElement("FeatureTypes.VirtualAISAidToNavigation", typeof(FeatureTypes.VirtualAISAidToNavigation), Order = 1)]
-		[XmlElement("FeatureTypes.RadioStation", typeof(FeatureTypes.RadioStation), Order = 1)]
-		[XmlElement("FeatureTypes.RadarTransponderBeacon", typeof(FeatureTypes.RadarTransponderBeacon), Order = 1)]
-		[XmlElement("FeatureTypes.PilotBoardingPlace", typeof(FeatureTypes.PilotBoardingPlace), Order = 1)]
-		[XmlElement("FeatureTypes.VesselTrafficServiceArea", typeof(FeatureTypes.VesselTrafficServiceArea), Order = 1)]
-		[XmlElement("FeatureTypes.CoastGuardStation", typeof(FeatureTypes.CoastGuardStation), Order = 1)]
-		[XmlElement("FeatureTypes.SignalStationWarning", typeof(FeatureTypes.SignalStationWarning), Order = 1)]
-		[XmlElement("FeatureTypes.SignalStationTraffic", typeof(FeatureTypes.SignalStationTraffic), Order = 1)]
-		[XmlElement("FeatureTypes.RescueStation", typeof(FeatureTypes.RescueStation), Order = 1)]
-		[XmlElement("FeatureTypes.HarbourFacility", typeof(FeatureTypes.HarbourFacility), Order = 1)]
-		[XmlElement("FeatureTypes.SmallCraftFacility", typeof(FeatureTypes.SmallCraftFacility), Order = 1)]
-		[XmlElement("FeatureTypes.TextPlacement", typeof(FeatureTypes.TextPlacement), Order = 1)]
-		[XmlElement("FeatureTypes.Chart1Feature", typeof(FeatureTypes.Chart1Feature), Order = 1)]
+		[XmlElement("InformationTypes.ContactDetails", typeof(InformationTypes.ContactDetails), Order = 1, ElementName = "ContactDetails")]
+		[XmlElement("InformationTypes.ServiceHours", typeof(InformationTypes.ServiceHours), Order = 1, ElementName = "ServiceHours")]
+		[XmlElement("InformationTypes.NonStandardWorkingDay", typeof(InformationTypes.NonStandardWorkingDay), Order = 1, ElementName = "NonStandardWorkingDay")]
+		[XmlElement("InformationTypes.NauticalInformation", typeof(InformationTypes.NauticalInformation), Order = 1, ElementName = "NauticalInformation")]
+		[XmlElement("InformationTypes.SpatialQuality", typeof(InformationTypes.SpatialQuality), Order = 1, ElementName = "SpatialQuality")]
+		[XmlElement("FeatureTypes.QualityOfNonBathymetricData", typeof(FeatureTypes.QualityOfNonBathymetricData), Order = 1, ElementName = "QualityOfNonBathymetricData")]
+		[XmlElement("FeatureTypes.DataCoverage", typeof(FeatureTypes.DataCoverage), Order = 1, ElementName = "DataCoverage")]
+		[XmlElement("FeatureTypes.NavigationalSystemOfMarks", typeof(FeatureTypes.NavigationalSystemOfMarks), Order = 1, ElementName = "NavigationalSystemOfMarks")]
+		[XmlElement("FeatureTypes.LocalDirectionOfBuoyage", typeof(FeatureTypes.LocalDirectionOfBuoyage), Order = 1, ElementName = "LocalDirectionOfBuoyage")]
+		[XmlElement("FeatureTypes.QualityOfBathymetricData", typeof(FeatureTypes.QualityOfBathymetricData), Order = 1, ElementName = "QualityOfBathymetricData")]
+		[XmlElement("FeatureTypes.SoundingDatum", typeof(FeatureTypes.SoundingDatum), Order = 1, ElementName = "SoundingDatum")]
+		[XmlElement("FeatureTypes.VerticalDatumOfData", typeof(FeatureTypes.VerticalDatumOfData), Order = 1, ElementName = "VerticalDatumOfData")]
+		[XmlElement("FeatureTypes.QualityOfSurvey", typeof(FeatureTypes.QualityOfSurvey), Order = 1, ElementName = "QualityOfSurvey")]
+		[XmlElement("FeatureTypes.UpdateInformation", typeof(FeatureTypes.UpdateInformation), Order = 1, ElementName = "UpdateInformation")]
+		[XmlElement("FeatureTypes.MagneticVariation", typeof(FeatureTypes.MagneticVariation), Order = 1, ElementName = "MagneticVariation")]
+		[XmlElement("FeatureTypes.LocalMagneticAnomaly", typeof(FeatureTypes.LocalMagneticAnomaly), Order = 1, ElementName = "LocalMagneticAnomaly")]
+		[XmlElement("FeatureTypes.Coastline", typeof(FeatureTypes.Coastline), Order = 1, ElementName = "Coastline")]
+		[XmlElement("FeatureTypes.LandArea", typeof(FeatureTypes.LandArea), Order = 1, ElementName = "LandArea")]
+		[XmlElement("FeatureTypes.IslandGroup", typeof(FeatureTypes.IslandGroup), Order = 1, ElementName = "IslandGroup")]
+		[XmlElement("FeatureTypes.LandElevation", typeof(FeatureTypes.LandElevation), Order = 1, ElementName = "LandElevation")]
+		[XmlElement("FeatureTypes.River", typeof(FeatureTypes.River), Order = 1, ElementName = "River")]
+		[XmlElement("FeatureTypes.Rapids", typeof(FeatureTypes.Rapids), Order = 1, ElementName = "Rapids")]
+		[XmlElement("FeatureTypes.Waterfall", typeof(FeatureTypes.Waterfall), Order = 1, ElementName = "Waterfall")]
+		[XmlElement("FeatureTypes.Lake", typeof(FeatureTypes.Lake), Order = 1, ElementName = "Lake")]
+		[XmlElement("FeatureTypes.LandRegion", typeof(FeatureTypes.LandRegion), Order = 1, ElementName = "LandRegion")]
+		[XmlElement("FeatureTypes.Vegetation", typeof(FeatureTypes.Vegetation), Order = 1, ElementName = "Vegetation")]
+		[XmlElement("FeatureTypes.IceArea", typeof(FeatureTypes.IceArea), Order = 1, ElementName = "IceArea")]
+		[XmlElement("FeatureTypes.SlopingGround", typeof(FeatureTypes.SlopingGround), Order = 1, ElementName = "SlopingGround")]
+		[XmlElement("FeatureTypes.SlopeTopline", typeof(FeatureTypes.SlopeTopline), Order = 1, ElementName = "SlopeTopline")]
+		[XmlElement("FeatureTypes.Tideway", typeof(FeatureTypes.Tideway), Order = 1, ElementName = "Tideway")]
+		[XmlElement("FeatureTypes.BuiltUpArea", typeof(FeatureTypes.BuiltUpArea), Order = 1, ElementName = "BuiltUpArea")]
+		[XmlElement("FeatureTypes.Building", typeof(FeatureTypes.Building), Order = 1, ElementName = "Building")]
+		[XmlElement("FeatureTypes.AirportAirfield", typeof(FeatureTypes.AirportAirfield), Order = 1, ElementName = "AirportAirfield")]
+		[XmlElement("FeatureTypes.Runway", typeof(FeatureTypes.Runway), Order = 1, ElementName = "Runway")]
+		[XmlElement("FeatureTypes.Helipad", typeof(FeatureTypes.Helipad), Order = 1, ElementName = "Helipad")]
+		[XmlElement("FeatureTypes.Bridge", typeof(FeatureTypes.Bridge), Order = 1, ElementName = "Bridge")]
+		[XmlElement("FeatureTypes.SpanFixed", typeof(FeatureTypes.SpanFixed), Order = 1, ElementName = "SpanFixed")]
+		[XmlElement("FeatureTypes.SpanOpening", typeof(FeatureTypes.SpanOpening), Order = 1, ElementName = "SpanOpening")]
+		[XmlElement("FeatureTypes.Conveyor", typeof(FeatureTypes.Conveyor), Order = 1, ElementName = "Conveyor")]
+		[XmlElement("FeatureTypes.CableOverhead", typeof(FeatureTypes.CableOverhead), Order = 1, ElementName = "CableOverhead")]
+		[XmlElement("FeatureTypes.PipelineOverhead", typeof(FeatureTypes.PipelineOverhead), Order = 1, ElementName = "PipelineOverhead")]
+		[XmlElement("FeatureTypes.PylonBridgeSupport", typeof(FeatureTypes.PylonBridgeSupport), Order = 1, ElementName = "PylonBridgeSupport")]
+		[XmlElement("FeatureTypes.FenceWall", typeof(FeatureTypes.FenceWall), Order = 1, ElementName = "FenceWall")]
+		[XmlElement("FeatureTypes.Railway", typeof(FeatureTypes.Railway), Order = 1, ElementName = "Railway")]
+		[XmlElement("FeatureTypes.Road", typeof(FeatureTypes.Road), Order = 1, ElementName = "Road")]
+		[XmlElement("FeatureTypes.Tunnel", typeof(FeatureTypes.Tunnel), Order = 1, ElementName = "Tunnel")]
+		[XmlElement("FeatureTypes.Landmark", typeof(FeatureTypes.Landmark), Order = 1, ElementName = "Landmark")]
+		[XmlElement("FeatureTypes.SiloTank", typeof(FeatureTypes.SiloTank), Order = 1, ElementName = "SiloTank")]
+		[XmlElement("FeatureTypes.WindTurbine", typeof(FeatureTypes.WindTurbine), Order = 1, ElementName = "WindTurbine")]
+		[XmlElement("FeatureTypes.FortifiedStructure", typeof(FeatureTypes.FortifiedStructure), Order = 1, ElementName = "FortifiedStructure")]
+		[XmlElement("FeatureTypes.ProductionStorageArea", typeof(FeatureTypes.ProductionStorageArea), Order = 1, ElementName = "ProductionStorageArea")]
+		[XmlElement("FeatureTypes.Checkpoint", typeof(FeatureTypes.Checkpoint), Order = 1, ElementName = "Checkpoint")]
+		[XmlElement("FeatureTypes.Hulk", typeof(FeatureTypes.Hulk), Order = 1, ElementName = "Hulk")]
+		[XmlElement("FeatureTypes.Pile", typeof(FeatureTypes.Pile), Order = 1, ElementName = "Pile")]
+		[XmlElement("FeatureTypes.Dyke", typeof(FeatureTypes.Dyke), Order = 1, ElementName = "Dyke")]
+		[XmlElement("FeatureTypes.ShorelineConstruction", typeof(FeatureTypes.ShorelineConstruction), Order = 1, ElementName = "ShorelineConstruction")]
+		[XmlElement("FeatureTypes.StructureOverNavigableWater", typeof(FeatureTypes.StructureOverNavigableWater), Order = 1, ElementName = "StructureOverNavigableWater")]
+		[XmlElement("FeatureTypes.Causeway", typeof(FeatureTypes.Causeway), Order = 1, ElementName = "Causeway")]
+		[XmlElement("FeatureTypes.Canal", typeof(FeatureTypes.Canal), Order = 1, ElementName = "Canal")]
+		[XmlElement("FeatureTypes.DistanceMark", typeof(FeatureTypes.DistanceMark), Order = 1, ElementName = "DistanceMark")]
+		[XmlElement("FeatureTypes.Gate", typeof(FeatureTypes.Gate), Order = 1, ElementName = "Gate")]
+		[XmlElement("FeatureTypes.Dam", typeof(FeatureTypes.Dam), Order = 1, ElementName = "Dam")]
+		[XmlElement("FeatureTypes.Crane", typeof(FeatureTypes.Crane), Order = 1, ElementName = "Crane")]
+		[XmlElement("FeatureTypes.Berth", typeof(FeatureTypes.Berth), Order = 1, ElementName = "Berth")]
+		[XmlElement("FeatureTypes.Dolphin", typeof(FeatureTypes.Dolphin), Order = 1, ElementName = "Dolphin")]
+		[XmlElement("FeatureTypes.Bollard", typeof(FeatureTypes.Bollard), Order = 1, ElementName = "Bollard")]
+		[XmlElement("FeatureTypes.DryDock", typeof(FeatureTypes.DryDock), Order = 1, ElementName = "DryDock")]
+		[XmlElement("FeatureTypes.FloatingDock", typeof(FeatureTypes.FloatingDock), Order = 1, ElementName = "FloatingDock")]
+		[XmlElement("FeatureTypes.Pontoon", typeof(FeatureTypes.Pontoon), Order = 1, ElementName = "Pontoon")]
+		[XmlElement("FeatureTypes.DockArea", typeof(FeatureTypes.DockArea), Order = 1, ElementName = "DockArea")]
+		[XmlElement("FeatureTypes.Gridiron", typeof(FeatureTypes.Gridiron), Order = 1, ElementName = "Gridiron")]
+		[XmlElement("FeatureTypes.LockBasin", typeof(FeatureTypes.LockBasin), Order = 1, ElementName = "LockBasin")]
+		[XmlElement("FeatureTypes.MooringTrot", typeof(FeatureTypes.MooringTrot), Order = 1, ElementName = "MooringTrot")]
+		[XmlElement("FeatureTypes.SeaAreaNamedWaterArea", typeof(FeatureTypes.SeaAreaNamedWaterArea), Order = 1, ElementName = "SeaAreaNamedWaterArea")]
+		[XmlElement("FeatureTypes.TidalStreamFloodEbb", typeof(FeatureTypes.TidalStreamFloodEbb), Order = 1, ElementName = "TidalStreamFloodEbb")]
+		[XmlElement("FeatureTypes.CurrentNonGravitational", typeof(FeatureTypes.CurrentNonGravitational), Order = 1, ElementName = "CurrentNonGravitational")]
+		[XmlElement("FeatureTypes.WaterTurbulence", typeof(FeatureTypes.WaterTurbulence), Order = 1, ElementName = "WaterTurbulence")]
+		[XmlElement("FeatureTypes.TidalStreamPanelData", typeof(FeatureTypes.TidalStreamPanelData), Order = 1, ElementName = "TidalStreamPanelData")]
+		[XmlElement("FeatureTypes.Sounding", typeof(FeatureTypes.Sounding), Order = 1, ElementName = "Sounding")]
+		[XmlElement("FeatureTypes.DredgedArea", typeof(FeatureTypes.DredgedArea), Order = 1, ElementName = "DredgedArea")]
+		[XmlElement("FeatureTypes.SweptArea", typeof(FeatureTypes.SweptArea), Order = 1, ElementName = "SweptArea")]
+		[XmlElement("FeatureTypes.DepthContour", typeof(FeatureTypes.DepthContour), Order = 1, ElementName = "DepthContour")]
+		[XmlElement("FeatureTypes.DepthArea", typeof(FeatureTypes.DepthArea), Order = 1, ElementName = "DepthArea")]
+		[XmlElement("FeatureTypes.DepthNoBottomFound", typeof(FeatureTypes.DepthNoBottomFound), Order = 1, ElementName = "DepthNoBottomFound")]
+		[XmlElement("FeatureTypes.UnsurveyedArea", typeof(FeatureTypes.UnsurveyedArea), Order = 1, ElementName = "UnsurveyedArea")]
+		[XmlElement("FeatureTypes.SeabedArea", typeof(FeatureTypes.SeabedArea), Order = 1, ElementName = "SeabedArea")]
+		[XmlElement("FeatureTypes.WeedKelp", typeof(FeatureTypes.WeedKelp), Order = 1, ElementName = "WeedKelp")]
+		[XmlElement("FeatureTypes.Seagrass", typeof(FeatureTypes.Seagrass), Order = 1, ElementName = "Seagrass")]
+		[XmlElement("FeatureTypes.Sandwave", typeof(FeatureTypes.Sandwave), Order = 1, ElementName = "Sandwave")]
+		[XmlElement("FeatureTypes.Spring", typeof(FeatureTypes.Spring), Order = 1, ElementName = "Spring")]
+		[XmlElement("FeatureTypes.UnderwaterAwashRock", typeof(FeatureTypes.UnderwaterAwashRock), Order = 1, ElementName = "UnderwaterAwashRock")]
+		[XmlElement("FeatureTypes.Wreck", typeof(FeatureTypes.Wreck), Order = 1, ElementName = "Wreck")]
+		[XmlElement("FeatureTypes.Obstruction", typeof(FeatureTypes.Obstruction), Order = 1, ElementName = "Obstruction")]
+		[XmlElement("FeatureTypes.FoulGround", typeof(FeatureTypes.FoulGround), Order = 1, ElementName = "FoulGround")]
+		[XmlElement("FeatureTypes.DiscolouredWater", typeof(FeatureTypes.DiscolouredWater), Order = 1, ElementName = "DiscolouredWater")]
+		[XmlElement("FeatureTypes.FishingFacility", typeof(FeatureTypes.FishingFacility), Order = 1, ElementName = "FishingFacility")]
+		[XmlElement("FeatureTypes.MarineFarmCulture", typeof(FeatureTypes.MarineFarmCulture), Order = 1, ElementName = "MarineFarmCulture")]
+		[XmlElement("FeatureTypes.OffshorePlatform", typeof(FeatureTypes.OffshorePlatform), Order = 1, ElementName = "OffshorePlatform")]
+		[XmlElement("FeatureTypes.CableSubmarine", typeof(FeatureTypes.CableSubmarine), Order = 1, ElementName = "CableSubmarine")]
+		[XmlElement("FeatureTypes.CableArea", typeof(FeatureTypes.CableArea), Order = 1, ElementName = "CableArea")]
+		[XmlElement("FeatureTypes.PipelineSubmarineOnLand", typeof(FeatureTypes.PipelineSubmarineOnLand), Order = 1, ElementName = "PipelineSubmarineOnLand")]
+		[XmlElement("FeatureTypes.SubmarinePipelineArea", typeof(FeatureTypes.SubmarinePipelineArea), Order = 1, ElementName = "SubmarinePipelineArea")]
+		[XmlElement("FeatureTypes.OffshoreProductionArea", typeof(FeatureTypes.OffshoreProductionArea), Order = 1, ElementName = "OffshoreProductionArea")]
+		[XmlElement("FeatureTypes.NavigationLine", typeof(FeatureTypes.NavigationLine), Order = 1, ElementName = "NavigationLine")]
+		[XmlElement("FeatureTypes.RecommendedTrack", typeof(FeatureTypes.RecommendedTrack), Order = 1, ElementName = "RecommendedTrack")]
+		[XmlElement("FeatureTypes.RangeSystem", typeof(FeatureTypes.RangeSystem), Order = 1, ElementName = "RangeSystem")]
+		[XmlElement("FeatureTypes.Fairway", typeof(FeatureTypes.Fairway), Order = 1, ElementName = "Fairway")]
+		[XmlElement("FeatureTypes.FairwaySystem", typeof(FeatureTypes.FairwaySystem), Order = 1, ElementName = "FairwaySystem")]
+		[XmlElement("FeatureTypes.RecommendedRouteCentreline", typeof(FeatureTypes.RecommendedRouteCentreline), Order = 1, ElementName = "RecommendedRouteCentreline")]
+		[XmlElement("FeatureTypes.TwoWayRoutePart", typeof(FeatureTypes.TwoWayRoutePart), Order = 1, ElementName = "TwoWayRoutePart")]
+		[XmlElement("FeatureTypes.TwoWayRoute", typeof(FeatureTypes.TwoWayRoute), Order = 1, ElementName = "TwoWayRoute")]
+		[XmlElement("FeatureTypes.RecommendedTrafficLanePart", typeof(FeatureTypes.RecommendedTrafficLanePart), Order = 1, ElementName = "RecommendedTrafficLanePart")]
+		[XmlElement("FeatureTypes.DeepWaterRouteCentreline", typeof(FeatureTypes.DeepWaterRouteCentreline), Order = 1, ElementName = "DeepWaterRouteCentreline")]
+		[XmlElement("FeatureTypes.DeepWaterRoutePart", typeof(FeatureTypes.DeepWaterRoutePart), Order = 1, ElementName = "DeepWaterRoutePart")]
+		[XmlElement("FeatureTypes.DeepWaterRoute", typeof(FeatureTypes.DeepWaterRoute), Order = 1, ElementName = "DeepWaterRoute")]
+		[XmlElement("FeatureTypes.InshoreTrafficZone", typeof(FeatureTypes.InshoreTrafficZone), Order = 1, ElementName = "InshoreTrafficZone")]
+		[XmlElement("FeatureTypes.PrecautionaryArea", typeof(FeatureTypes.PrecautionaryArea), Order = 1, ElementName = "PrecautionaryArea")]
+		[XmlElement("FeatureTypes.TrafficSeparationSchemeLanePart", typeof(FeatureTypes.TrafficSeparationSchemeLanePart), Order = 1, ElementName = "TrafficSeparationSchemeLanePart")]
+		[XmlElement("FeatureTypes.SeparationZoneOrLine", typeof(FeatureTypes.SeparationZoneOrLine), Order = 1, ElementName = "SeparationZoneOrLine")]
+		[XmlElement("FeatureTypes.TrafficSeparationSchemeBoundary", typeof(FeatureTypes.TrafficSeparationSchemeBoundary), Order = 1, ElementName = "TrafficSeparationSchemeBoundary")]
+		[XmlElement("FeatureTypes.TrafficSeparationSchemeCrossing", typeof(FeatureTypes.TrafficSeparationSchemeCrossing), Order = 1, ElementName = "TrafficSeparationSchemeCrossing")]
+		[XmlElement("FeatureTypes.TrafficSeparationSchemeRoundabout", typeof(FeatureTypes.TrafficSeparationSchemeRoundabout), Order = 1, ElementName = "TrafficSeparationSchemeRoundabout")]
+		[XmlElement("FeatureTypes.TrafficSeparationScheme", typeof(FeatureTypes.TrafficSeparationScheme), Order = 1, ElementName = "TrafficSeparationScheme")]
+		[XmlElement("FeatureTypes.ArchipelagicSeaLaneArea", typeof(FeatureTypes.ArchipelagicSeaLaneArea), Order = 1, ElementName = "ArchipelagicSeaLaneArea")]
+		[XmlElement("FeatureTypes.ArchipelagicSeaLaneAxis", typeof(FeatureTypes.ArchipelagicSeaLaneAxis), Order = 1, ElementName = "ArchipelagicSeaLaneAxis")]
+		[XmlElement("FeatureTypes.ArchipelagicSeaLane", typeof(FeatureTypes.ArchipelagicSeaLane), Order = 1, ElementName = "ArchipelagicSeaLane")]
+		[XmlElement("FeatureTypes.RadioCallingInPoint", typeof(FeatureTypes.RadioCallingInPoint), Order = 1, ElementName = "RadioCallingInPoint")]
+		[XmlElement("FeatureTypes.FerryRoute", typeof(FeatureTypes.FerryRoute), Order = 1, ElementName = "FerryRoute")]
+		[XmlElement("FeatureTypes.RadarLine", typeof(FeatureTypes.RadarLine), Order = 1, ElementName = "RadarLine")]
+		[XmlElement("FeatureTypes.RadarRange", typeof(FeatureTypes.RadarRange), Order = 1, ElementName = "RadarRange")]
+		[XmlElement("FeatureTypes.RadarStation", typeof(FeatureTypes.RadarStation), Order = 1, ElementName = "RadarStation")]
+		[XmlElement("FeatureTypes.AnchorageArea", typeof(FeatureTypes.AnchorageArea), Order = 1, ElementName = "AnchorageArea")]
+		[XmlElement("FeatureTypes.MooringArea", typeof(FeatureTypes.MooringArea), Order = 1, ElementName = "MooringArea")]
+		[XmlElement("FeatureTypes.AnchorBerth", typeof(FeatureTypes.AnchorBerth), Order = 1, ElementName = "AnchorBerth")]
+		[XmlElement("FeatureTypes.SeaplaneLandingArea", typeof(FeatureTypes.SeaplaneLandingArea), Order = 1, ElementName = "SeaplaneLandingArea")]
+		[XmlElement("FeatureTypes.DumpingGround", typeof(FeatureTypes.DumpingGround), Order = 1, ElementName = "DumpingGround")]
+		[XmlElement("FeatureTypes.MilitaryPracticeArea", typeof(FeatureTypes.MilitaryPracticeArea), Order = 1, ElementName = "MilitaryPracticeArea")]
+		[XmlElement("FeatureTypes.AdministrationArea", typeof(FeatureTypes.AdministrationArea), Order = 1, ElementName = "AdministrationArea")]
+		[XmlElement("FeatureTypes.CargoTranshipmentArea", typeof(FeatureTypes.CargoTranshipmentArea), Order = 1, ElementName = "CargoTranshipmentArea")]
+		[XmlElement("FeatureTypes.CautionArea", typeof(FeatureTypes.CautionArea), Order = 1, ElementName = "CautionArea")]
+		[XmlElement("FeatureTypes.InformationArea", typeof(FeatureTypes.InformationArea), Order = 1, ElementName = "InformationArea")]
+		[XmlElement("FeatureTypes.ContiguousZone", typeof(FeatureTypes.ContiguousZone), Order = 1, ElementName = "ContiguousZone")]
+		[XmlElement("FeatureTypes.ContinentalShelfArea", typeof(FeatureTypes.ContinentalShelfArea), Order = 1, ElementName = "ContinentalShelfArea")]
+		[XmlElement("FeatureTypes.CustomZone", typeof(FeatureTypes.CustomZone), Order = 1, ElementName = "CustomZone")]
+		[XmlElement("FeatureTypes.ExclusiveEconomicZone", typeof(FeatureTypes.ExclusiveEconomicZone), Order = 1, ElementName = "ExclusiveEconomicZone")]
+		[XmlElement("FeatureTypes.FisheryZone", typeof(FeatureTypes.FisheryZone), Order = 1, ElementName = "FisheryZone")]
+		[XmlElement("FeatureTypes.FishingGround", typeof(FeatureTypes.FishingGround), Order = 1, ElementName = "FishingGround")]
+		[XmlElement("FeatureTypes.FreePortArea", typeof(FeatureTypes.FreePortArea), Order = 1, ElementName = "FreePortArea")]
+		[XmlElement("FeatureTypes.HarbourAreaAdministrative", typeof(FeatureTypes.HarbourAreaAdministrative), Order = 1, ElementName = "HarbourAreaAdministrative")]
+		[XmlElement("FeatureTypes.LogPond", typeof(FeatureTypes.LogPond), Order = 1, ElementName = "LogPond")]
+		[XmlElement("FeatureTypes.OilBarrier", typeof(FeatureTypes.OilBarrier), Order = 1, ElementName = "OilBarrier")]
+		[XmlElement("FeatureTypes.StraightTerritorialSeaBaseline", typeof(FeatureTypes.StraightTerritorialSeaBaseline), Order = 1, ElementName = "StraightTerritorialSeaBaseline")]
+		[XmlElement("FeatureTypes.TerritorialSeaArea", typeof(FeatureTypes.TerritorialSeaArea), Order = 1, ElementName = "TerritorialSeaArea")]
+		[XmlElement("FeatureTypes.SubmarineTransitLane", typeof(FeatureTypes.SubmarineTransitLane), Order = 1, ElementName = "SubmarineTransitLane")]
+		[XmlElement("FeatureTypes.PilotageDistrict", typeof(FeatureTypes.PilotageDistrict), Order = 1, ElementName = "PilotageDistrict")]
+		[XmlElement("FeatureTypes.CollisionRegulationsLimit", typeof(FeatureTypes.CollisionRegulationsLimit), Order = 1, ElementName = "CollisionRegulationsLimit")]
+		[XmlElement("FeatureTypes.MarinePollutionRegulationsArea", typeof(FeatureTypes.MarinePollutionRegulationsArea), Order = 1, ElementName = "MarinePollutionRegulationsArea")]
+		[XmlElement("FeatureTypes.RestrictedArea", typeof(FeatureTypes.RestrictedArea), Order = 1, ElementName = "RestrictedArea")]
+		[XmlElement("FeatureTypes.LightAllAround", typeof(FeatureTypes.LightAllAround), Order = 1, ElementName = "LightAllAround")]
+		[XmlElement("FeatureTypes.LightSectored", typeof(FeatureTypes.LightSectored), Order = 1, ElementName = "LightSectored")]
+		[XmlElement("FeatureTypes.LightFogDetector", typeof(FeatureTypes.LightFogDetector), Order = 1, ElementName = "LightFogDetector")]
+		[XmlElement("FeatureTypes.LightAirObstruction", typeof(FeatureTypes.LightAirObstruction), Order = 1, ElementName = "LightAirObstruction")]
+		[XmlElement("FeatureTypes.LateralBuoy", typeof(FeatureTypes.LateralBuoy), Order = 1, ElementName = "LateralBuoy")]
+		[XmlElement("FeatureTypes.CardinalBuoy", typeof(FeatureTypes.CardinalBuoy), Order = 1, ElementName = "CardinalBuoy")]
+		[XmlElement("FeatureTypes.IsolatedDangerBuoy", typeof(FeatureTypes.IsolatedDangerBuoy), Order = 1, ElementName = "IsolatedDangerBuoy")]
+		[XmlElement("FeatureTypes.SafeWaterBuoy", typeof(FeatureTypes.SafeWaterBuoy), Order = 1, ElementName = "SafeWaterBuoy")]
+		[XmlElement("FeatureTypes.SpecialPurposeGeneralBuoy", typeof(FeatureTypes.SpecialPurposeGeneralBuoy), Order = 1, ElementName = "SpecialPurposeGeneralBuoy")]
+		[XmlElement("FeatureTypes.EmergencyWreckMarkingBuoy", typeof(FeatureTypes.EmergencyWreckMarkingBuoy), Order = 1, ElementName = "EmergencyWreckMarkingBuoy")]
+		[XmlElement("FeatureTypes.InstallationBuoy", typeof(FeatureTypes.InstallationBuoy), Order = 1, ElementName = "InstallationBuoy")]
+		[XmlElement("FeatureTypes.MooringBuoy", typeof(FeatureTypes.MooringBuoy), Order = 1, ElementName = "MooringBuoy")]
+		[XmlElement("FeatureTypes.LateralBeacon", typeof(FeatureTypes.LateralBeacon), Order = 1, ElementName = "LateralBeacon")]
+		[XmlElement("FeatureTypes.CardinalBeacon", typeof(FeatureTypes.CardinalBeacon), Order = 1, ElementName = "CardinalBeacon")]
+		[XmlElement("FeatureTypes.IsolatedDangerBeacon", typeof(FeatureTypes.IsolatedDangerBeacon), Order = 1, ElementName = "IsolatedDangerBeacon")]
+		[XmlElement("FeatureTypes.SafeWaterBeacon", typeof(FeatureTypes.SafeWaterBeacon), Order = 1, ElementName = "SafeWaterBeacon")]
+		[XmlElement("FeatureTypes.SpecialPurposeGeneralBeacon", typeof(FeatureTypes.SpecialPurposeGeneralBeacon), Order = 1, ElementName = "SpecialPurposeGeneralBeacon")]
+		[XmlElement("FeatureTypes.Daymark", typeof(FeatureTypes.Daymark), Order = 1, ElementName = "Daymark")]
+		[XmlElement("FeatureTypes.LightFloat", typeof(FeatureTypes.LightFloat), Order = 1, ElementName = "LightFloat")]
+		[XmlElement("FeatureTypes.LightVessel", typeof(FeatureTypes.LightVessel), Order = 1, ElementName = "LightVessel")]
+		[XmlElement("FeatureTypes.Retroreflector", typeof(FeatureTypes.Retroreflector), Order = 1, ElementName = "Retroreflector")]
+		[XmlElement("FeatureTypes.RadarReflector", typeof(FeatureTypes.RadarReflector), Order = 1, ElementName = "RadarReflector")]
+		[XmlElement("FeatureTypes.FogSignal", typeof(FeatureTypes.FogSignal), Order = 1, ElementName = "FogSignal")]
+		[XmlElement("FeatureTypes.PhysicalAISAidToNavigation", typeof(FeatureTypes.PhysicalAISAidToNavigation), Order = 1, ElementName = "PhysicalAISAidToNavigation")]
+		[XmlElement("FeatureTypes.VirtualAISAidToNavigation", typeof(FeatureTypes.VirtualAISAidToNavigation), Order = 1, ElementName = "VirtualAISAidToNavigation")]
+		[XmlElement("FeatureTypes.RadioStation", typeof(FeatureTypes.RadioStation), Order = 1, ElementName = "RadioStation")]
+		[XmlElement("FeatureTypes.RadarTransponderBeacon", typeof(FeatureTypes.RadarTransponderBeacon), Order = 1, ElementName = "RadarTransponderBeacon")]
+		[XmlElement("FeatureTypes.PilotBoardingPlace", typeof(FeatureTypes.PilotBoardingPlace), Order = 1, ElementName = "PilotBoardingPlace")]
+		[XmlElement("FeatureTypes.VesselTrafficServiceArea", typeof(FeatureTypes.VesselTrafficServiceArea), Order = 1, ElementName = "VesselTrafficServiceArea")]
+		[XmlElement("FeatureTypes.CoastGuardStation", typeof(FeatureTypes.CoastGuardStation), Order = 1, ElementName = "CoastGuardStation")]
+		[XmlElement("FeatureTypes.SignalStationWarning", typeof(FeatureTypes.SignalStationWarning), Order = 1, ElementName = "SignalStationWarning")]
+		[XmlElement("FeatureTypes.SignalStationTraffic", typeof(FeatureTypes.SignalStationTraffic), Order = 1, ElementName = "SignalStationTraffic")]
+		[XmlElement("FeatureTypes.RescueStation", typeof(FeatureTypes.RescueStation), Order = 1, ElementName = "RescueStation")]
+		[XmlElement("FeatureTypes.HarbourFacility", typeof(FeatureTypes.HarbourFacility), Order = 1, ElementName = "HarbourFacility")]
+		[XmlElement("FeatureTypes.SmallCraftFacility", typeof(FeatureTypes.SmallCraftFacility), Order = 1, ElementName = "SmallCraftFacility")]
+		[XmlElement("FeatureTypes.TextPlacement", typeof(FeatureTypes.TextPlacement), Order = 1, ElementName = "TextPlacement")]
+		[XmlElement("FeatureTypes.Chart1Feature", typeof(FeatureTypes.Chart1Feature), Order = 1, ElementName = "Chart1Feature")]
 		public List<object> elements { get; set; } = new List<object>();
 	}
 }

@@ -114,8 +114,8 @@ namespace S100Framework.Applications
                 { "DateTime?", (code) => $"{code}.HasValue" },
                 { "DateOnly?", (code) => $"{code}.HasValue" },
                 { "TimeOnly?", (code) => $"{code}.HasValue" },
-                { "String", (code) => $"string.IsNullOrEmpty({code})" },
-                { "String?", (code) => $"string.IsNullOrEmpty({code})" },
+                { "String", (code) => $"!string.IsNullOrEmpty({code})" },
+                { "String?", (code) => $"!string.IsNullOrEmpty({code})" },
             };
 
             //  --- S100_FC_SimpleAttributes ----------------------------------------------------
@@ -677,7 +677,7 @@ namespace S100Framework.Applications
             builderDomainModel.AppendLine("\tpublic class Members");
             builderDomainModel.AppendLine("\t{");
             foreach (var name in xmlElements) {
-                builderDomainModel.AppendLine($"\t\t[XmlElement(\"{name}\", typeof({name}), Order = 1)]");
+                builderDomainModel.AppendLine($"\t\t[XmlElement(\"{name}\", typeof({name}), Order = 1, ElementName = \"{name.Split('.')[^1]}\")]");
             }
             builderDomainModel.AppendLine("\t\tpublic List<object> elements { get; set; } = new List<object>();");
             builderDomainModel.AppendLine("\t}");

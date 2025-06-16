@@ -1777,7 +1777,7 @@ namespace S100Framework.DomainModel.S124 {
 
 			public String? chartPlanNumber {get;set;} = default;
 
-			public bool ShouldSerializechartPlanNumber() { return string.IsNullOrEmpty(chartPlanNumber); }
+			public bool ShouldSerializechartPlanNumber() { return !string.IsNullOrEmpty(chartPlanNumber); }
 
 			[XmlIgnore]
 			[Required()]
@@ -1801,11 +1801,11 @@ namespace S100Framework.DomainModel.S124 {
 		public class fixedDateRange {
 			public String? dateEnd {get;set;} = default;
 
-			public bool ShouldSerializedateEnd() { return string.IsNullOrEmpty(dateEnd); }
+			public bool ShouldSerializedateEnd() { return !string.IsNullOrEmpty(dateEnd); }
 
 			public String? dateStart {get;set;} = default;
 
-			public bool ShouldSerializedateStart() { return string.IsNullOrEmpty(dateStart); }
+			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
 
 			public TimeOnly? timeOfDayEnd {get;set;} = default;
 
@@ -1839,13 +1839,13 @@ namespace S100Framework.DomainModel.S124 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializeinteroperabilityIdentifier() { return string.IsNullOrEmpty(interoperabilityIdentifier); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public String nameOfSeries {get;set;} = string.Empty;
 
 			public String? nationality {get;set;} = default;
 
-			public bool ShouldSerializenationality() { return string.IsNullOrEmpty(nationality); }
+			public bool ShouldSerializenationality() { return !string.IsNullOrEmpty(nationality); }
 
 			[Required()]
 			public int warningNumber {get;set;}
@@ -1912,17 +1912,17 @@ namespace S100Framework.DomainModel.S124 {
 
 			public String? chartPublicationIdentifier {get;set;} = default;
 
-			public bool ShouldSerializechartPublicationIdentifier() { return string.IsNullOrEmpty(chartPublicationIdentifier); }
+			public bool ShouldSerializechartPublicationIdentifier() { return !string.IsNullOrEmpty(chartPublicationIdentifier); }
 
 			public String? internationalChartAffected {get;set;} = default;
 
-			public bool ShouldSerializeinternationalChartAffected() { return string.IsNullOrEmpty(internationalChartAffected); }
+			public bool ShouldSerializeinternationalChartAffected() { return !string.IsNullOrEmpty(internationalChartAffected); }
 
 			public String language {get;set;} = string.Empty;
 
 			public String? publicationAffected {get;set;} = default;
 
-			public bool ShouldSerializepublicationAffected() { return string.IsNullOrEmpty(publicationAffected); }
+			public bool ShouldSerializepublicationAffected() { return !string.IsNullOrEmpty(publicationAffected); }
 		}
 
 		[System.Serializable()]
@@ -1930,7 +1930,7 @@ namespace S100Framework.DomainModel.S124 {
 		public class generalArea {
 			public String? localityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializelocalityIdentifier() { return string.IsNullOrEmpty(localityIdentifier); }
+			public bool ShouldSerializelocalityIdentifier() { return !string.IsNullOrEmpty(localityIdentifier); }
 
 			public List<locationName> locationName {get;set;} = [];
 
@@ -1942,7 +1942,7 @@ namespace S100Framework.DomainModel.S124 {
 		public class locality {
 			public String? localityIdentifier {get;set;} = default;
 
-			public bool ShouldSerializelocalityIdentifier() { return string.IsNullOrEmpty(localityIdentifier); }
+			public bool ShouldSerializelocalityIdentifier() { return !string.IsNullOrEmpty(localityIdentifier); }
 
 			public List<locationName> locationName {get;set;} = [];
 
@@ -2301,11 +2301,11 @@ namespace S100Framework.DomainModel.S124 {
 	[XmlType(Namespace = "http://www.iho.int/S124/2.0", TypeName = "members")]
 	public class Members
 	{
-		[XmlElement("InformationTypes.References", typeof(InformationTypes.References), Order = 1)]
-		[XmlElement("InformationTypes.NavwarnPreamble", typeof(InformationTypes.NavwarnPreamble), Order = 1)]
-		[XmlElement("FeatureTypes.NavwarnPart", typeof(FeatureTypes.NavwarnPart), Order = 1)]
-		[XmlElement("FeatureTypes.NavwarnAreaAffected", typeof(FeatureTypes.NavwarnAreaAffected), Order = 1)]
-		[XmlElement("FeatureTypes.TextPlacement", typeof(FeatureTypes.TextPlacement), Order = 1)]
+		[XmlElement("InformationTypes.References", typeof(InformationTypes.References), Order = 1, ElementName = "References")]
+		[XmlElement("InformationTypes.NavwarnPreamble", typeof(InformationTypes.NavwarnPreamble), Order = 1, ElementName = "NavwarnPreamble")]
+		[XmlElement("FeatureTypes.NavwarnPart", typeof(FeatureTypes.NavwarnPart), Order = 1, ElementName = "NavwarnPart")]
+		[XmlElement("FeatureTypes.NavwarnAreaAffected", typeof(FeatureTypes.NavwarnAreaAffected), Order = 1, ElementName = "NavwarnAreaAffected")]
+		[XmlElement("FeatureTypes.TextPlacement", typeof(FeatureTypes.TextPlacement), Order = 1, ElementName = "TextPlacement")]
 		public List<object> elements { get; set; } = new List<object>();
 	}
 }
