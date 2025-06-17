@@ -13,14 +13,14 @@ namespace NetTopologySuite.Geometries
     {
         private static readonly XNamespace gml = "http://www.opengis.net/gml/3.2";
         private static readonly XNamespace s100 = "http://www.iho.int/S100/gml";
-        private static readonly XNamespace s128 = "http://www.iho.int/S128/gml";
+        //private static readonly XNamespace s128 = "http://www.iho.int/S128/gml";
 
         /// <summary>
         /// Creates a complete <S128:geometry> element from an NTS Polygon.
         /// </summary>
-        public static string ToGMLFeatureS100(this Polygon polygon, string gmlId, XmlQualifiedName ns, string srsName = "http://www.opengis.net/def/crs/EPSG/0/4326") {
+        public static XElement? ToGMLFeatureS100(this Polygon polygon, string gmlId, XmlQualifiedName ns, string srsName = "http://www.opengis.net/def/crs/EPSG/0/4326") {
             if (polygon == null || polygon.IsEmpty) {
-                return string.Empty;
+                return default;
             }
 
             // The core GML part is built first (same logic as before)
@@ -44,7 +44,7 @@ namespace NetTopologySuite.Geometries
             }
 
             // 2. Assemble the final structure using the correct namespaces and prefixes.
-            var s128Geometry = new XElement(s128 + "geometry",
+            var s128Geometry = new XElement("geometry",
                 new XAttribute(XNamespace.Xmlns + ns.Name, ns.Namespace),
                 new XAttribute(XNamespace.Xmlns + "S100", s100.NamespaceName),
                 new XAttribute(XNamespace.Xmlns + "gml", gml.NamespaceName),
@@ -61,7 +61,8 @@ namespace NetTopologySuite.Geometries
                 )
             );
 
-            return s128Geometry.ToString(SaveOptions.None);
+            return s128Geometry;
+            //return s128Geometry.ToString(SaveOptions.None);
         }
 
         /// <summary>
@@ -71,7 +72,7 @@ namespace NetTopologySuite.Geometries
         private static string CoordinatesToPosList(Coordinate[] coordinates) {
             var sb = new StringBuilder();
             foreach (var coord in coordinates) {
-                sb.Append($"{coord.X} {coord.Y} ");
+                sb.Append($"{coord.Y} {coord.X} ");
             }
             return sb.ToString().Trim();
         }

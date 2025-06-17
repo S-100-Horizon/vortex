@@ -590,6 +590,7 @@ namespace S100Framework.Applications
                         builderDomainModel.AppendLine("\t\tusing FeatureAssociations;");
                     if (productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager).Any())
                         builderDomainModel.AppendLine("\t\tusing InformationTypes;");
+                    builderDomainModel.AppendLine("\t\tusing System.Xml;");
                     builderDomainModel.AppendLine();
                 }
 
@@ -641,6 +642,13 @@ namespace S100Framework.Applications
                             builder.AppendLine("\t\t\t[JsonIgnore]");
                             builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
                             builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
+
+                            if (!(e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value))) {
+                                builder.AppendLine();
+                                builder.AppendLine("\t\t\t[JsonIgnore]");
+                                builder.AppendLine("\t\t\t[XmlAnyElement]");
+                                builder.AppendLine("\t\t\tpublic XmlElement[]? Geometry { get; set; } = default;");
+                            }
                         });
 
                         builderDomainModel.AppendLine(s);
@@ -1010,7 +1018,7 @@ namespace S100Framework.Applications
             var builder = new StringBuilder();
 
             var name = e.Element(XName.Get("name", scope_S100))!.Value;
-            var definition = e.Element(XName.Get("definition", scope_S100))!.Value;
+            var definition = e.Element(XName.Get("definition", scope_S100))!.Value.TrimEnd(Environment.NewLine.ToArray());
             var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
             var inheritance = e.Name.LocalName switch {

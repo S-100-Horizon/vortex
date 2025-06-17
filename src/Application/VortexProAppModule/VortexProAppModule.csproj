@@ -7,8 +7,8 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <NoWarn>CA1416</NoWarn>
     <RootNamespace>VortexProAppModule</RootNamespace>
-    <AssemblyVersion>1.0.353.0</AssemblyVersion>
-    <FileVersion>1.0.353.0</FileVersion>
+    <AssemblyVersion>1.0.356.0</AssemblyVersion>
+    <FileVersion>1.0.356.0</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <ShouldCreateLogs>True</ShouldCreateLogs>
