@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 using System.Xml.XPath;
 
 namespace S100Framework.Applications
@@ -35,6 +36,7 @@ namespace S100Framework.Applications
             builderDomainModel.AppendLine("using System.Linq;");
             builderDomainModel.AppendLine("using System.Runtime.Serialization;");
             builderDomainModel.AppendLine("using System.Text.Json.Serialization;");
+            builderDomainModel.AppendLine("using System.Xml.Serialization;");
             builderDomainModel.AppendLine();
             builderDomainModel.AppendLine("#nullable enable");
             builderDomainModel.AppendLine("#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.");
@@ -97,6 +99,25 @@ namespace S100Framework.Applications
 
             var editorBuilders = new Dictionary<string, Action<StringBuilder>>();
 
+            var shouldSerialize = new Dictionary<string, Func<string, string>> {
+                { "Boolean?", (code) => $"{code}.HasValue" },
+                { "bool?", (code) => $"{code}.HasValue" },
+                { "integer?", (code) => $"{code}.HasValue" },
+                { "int?", (code) => $"{code}.HasValue" },
+                { "long?", (code) => $"{code}.HasValue" },
+                { "Int32?", (code) => $"{code}.HasValue" },
+                { "Int64?", (code) => $"{code}.HasValue" },
+                { "real?", (code) => $"{code}.HasValue" },
+                { "float?", (code) => $"{code}.HasValue" },
+                { "double?", (code) => $"{code}.HasValue" },
+                { "decimal?", (code) => $"{code}.HasValue" },
+                { "DateTime?", (code) => $"{code}.HasValue" },
+                { "DateOnly?", (code) => $"{code}.HasValue" },
+                { "TimeOnly?", (code) => $"{code}.HasValue" },
+                { "String", (code) => $"!string.IsNullOrEmpty({code})" },
+                { "String?", (code) => $"!string.IsNullOrEmpty({code})" },
+            };
+
             //  --- S100_FC_SimpleAttributes ----------------------------------------------------
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_SimpleAttribute", xmlNamespaceManager);
@@ -109,6 +130,10 @@ namespace S100Framework.Applications
                     knownTypes.Add(code);
                     knowTypesPrefix.Add(code, code);
                     enumTypes.Add(code);
+
+                    shouldSerialize.Add($"{code}?", (code) => {
+                        return $"{code}.HasValue";
+                    });
 
                     builderDomainModel.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
                     builderDomainModel.AppendLine("\t[System.Serializable()]");
@@ -164,6 +189,10 @@ namespace S100Framework.Applications
                         builderDomainModel.AppendLine();
 
                         codelistTypes.Add(code);
+
+                        shouldSerialize.Add($"{code}?", (code) => {
+                            return $"{code} != default";
+                        });
                     }
 
                     builderDomainModel.AppendLine("\tpublic static class CodeList");
@@ -256,7 +285,7 @@ namespace S100Framework.Applications
                     };
                     if (postfix != null) {
                         knowTypesPostfix.Add(code, postfix);
-                    }                    
+                    }
                 }
             }
 
@@ -289,6 +318,10 @@ namespace S100Framework.Applications
                         knownTypes.Add(code);
                         knowTypesPrefix.Add(code, code);
 
+                        shouldSerialize.Add($"{code}?", (code) => {
+                            return $"{code}!=default";
+                        });
+
                         builderDomainModel.AppendLine("\t\t[System.Serializable()]");
                         builderDomainModel.AppendLine("\t\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
 
@@ -307,10 +340,14 @@ namespace S100Framework.Applications
                             int? upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? null : int.Parse(_.Value!);
 
                             var prefix = knowTypesPrefix[referenceCode];
-                            var postfix = knowTypesPostfix.ContainsKey(referenceCode) ? $" = {knowTypesPostfix[referenceCode]};" : string.Empty;                            
+                            var postfix = knowTypesPostfix.ContainsKey(referenceCode) ? $" = {knowTypesPostfix[referenceCode]};" : string.Empty;
 
                             if (permittedValues is not null) {
                                 builderDomainModel.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
+                            }
+
+                            if (prefix.Equals("DateOnly")) {
+                                builderDomainModel.AppendLine("\t\t\t[XmlIgnore]");
                             }
 
                             if (lower == 0 && upper.HasValue && upper.Value == 1) {
@@ -326,6 +363,25 @@ namespace S100Framework.Applications
                                 postfix = " = [];";
                             }
                             builderDomainModel.AppendLine($"\t\t\tpublic {prefix} {referenceCode} {{get;set;}}{postfix}");
+
+                            if (prefix.Equals("DateOnly")) {
+                                builderDomainModel.AppendLine();
+                                builderDomainModel.AppendLine("\t\t\t[JsonIgnore]");
+                                builderDomainModel.AppendLine($"\t\t\t[System.Xml.Serialization.XmlElementAttribute(DataType = \"date\", ElementName = \"{referenceCode}\")]");
+                                builderDomainModel.AppendLine($"\t\t\tpublic DateTime {referenceCode}Field {{");
+                                builderDomainModel.AppendLine($"\t\t\t\tget {{ return {referenceCode}.ToDateTime(TimeOnly.MinValue); }}");
+                                builderDomainModel.AppendLine($"\t\t\t\tset {{ {referenceCode} = DateOnly.FromDateTime(value); }}");
+                                builderDomainModel.AppendLine("\t\t\t}");
+                            }
+
+                            if (lower == 0 && upper.HasValue && upper.Value == 1) {
+                                builderDomainModel.AppendLine();
+                                builderDomainModel.AppendLine($"\t\t\tpublic bool ShouldSerialize{referenceCode}() {{ return {shouldSerialize[prefix](referenceCode)}; }}");
+                            }
+                            if (prefix.StartsWith("List<")) {
+                                builderDomainModel.AppendLine();
+                                builderDomainModel.AppendLine($"\t\t\tpublic bool ShouldSerialize{referenceCode}() {{ return {referenceCode}.Any(); }}");
+                            }
                         }
 
                         builderDomainModel.AppendLine("\t\t}");
@@ -393,6 +449,7 @@ namespace S100Framework.Applications
                         KnowTypesPostfix = knowTypesPostfix,
                         InformationAssociationsLookup = informationAssociationsLookup,
                         FeatureAssociationsLookup = featureAssociationsLookup,
+                        ShouldSerialize = shouldSerialize,
                     });
 
                     builderDomainModel.AppendLine(s);
@@ -432,6 +489,7 @@ namespace S100Framework.Applications
                             KnowTypesPostfix = knowTypesPostfix,
                             InformationAssociationsLookup = informationAssociationsLookup,
                             FeatureAssociationsLookup = featureAssociationsLookup,
+                            ShouldSerialize = shouldSerialize,
                         });
 
                         builderDomainModel.AppendLine(s);
@@ -506,6 +564,12 @@ namespace S100Framework.Applications
                             KnowTypesPostfix = knowTypesPostfix,
                             InformationAssociationsLookup = informationAssociationsLookup,
                             FeatureAssociationsLookup = featureAssociationsLookup,
+                            ShouldSerialize = shouldSerialize,
+                        }, (builder) => {
+                            builder.AppendLine();
+                            builder.AppendLine("\t\t\t[JsonIgnore]");
+                            builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
+                            builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
                         });
 
                         builderDomainModel.AppendLine(s);
@@ -526,6 +590,7 @@ namespace S100Framework.Applications
                         builderDomainModel.AppendLine("\t\tusing FeatureAssociations;");
                     if (productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager).Any())
                         builderDomainModel.AppendLine("\t\tusing InformationTypes;");
+                    builderDomainModel.AppendLine("\t\tusing System.Xml;");
                     builderDomainModel.AppendLine();
                 }
 
@@ -571,6 +636,19 @@ namespace S100Framework.Applications
                             KnowTypesPostfix = knowTypesPostfix,
                             InformationAssociationsLookup = informationAssociationsLookup,
                             FeatureAssociationsLookup = featureAssociationsLookup,
+                            ShouldSerialize = shouldSerialize,
+                        }, (builder) => {
+                            builder.AppendLine();
+                            builder.AppendLine("\t\t\t[JsonIgnore]");
+                            builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
+                            builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
+
+                            if (!(e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value))) {
+                                builder.AppendLine();
+                                builder.AppendLine("\t\t\t[JsonIgnore]");
+                                builder.AppendLine("\t\t\t[XmlAnyElement]");
+                                builder.AppendLine("\t\t\tpublic XmlElement[]? Geometry { get; set; } = default;");
+                            }
                         });
 
                         builderDomainModel.AppendLine(s);
@@ -580,6 +658,37 @@ namespace S100Framework.Applications
                 if (elements.Any())
                     builderDomainModel.AppendLine("\t}");
             }
+
+
+            //  --- GML -------------------------------------------------------------------------
+            var xmlTypeNamespace = $"Namespace = \"http://www.iho.int/{productId}/{versionNumber.Remove(versionNumber.LastIndexOf('.'))}\"";
+            builderDomainModel.AppendLine("");
+            builderDomainModel.AppendLine($"\t[XmlType({xmlTypeNamespace})]");
+            builderDomainModel.AppendLine("\tpublic class Dataset : S100Framework.DomainModel.S100.DatasetBase");
+            builderDomainModel.AppendLine("\t{");
+
+            builderDomainModel.AppendLine("\t\t[XmlElement(Order = 1)]");
+            builderDomainModel.AppendLine("\t\tpublic Members? members { get; set; } = default;");
+
+            builderDomainModel.AppendLine("\t}");
+            builderDomainModel.AppendLine("");
+
+
+            List<string> xmlElements;
+
+
+            xmlElements = [.. productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.InvariantCultureIgnoreCase)).Select(e => "InformationTypes." + e.Element(XName.Get("code", scope_S100))!.Value),
+                            .. productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.InvariantCultureIgnoreCase)).Select(e => "FeatureTypes." + e.Element(XName.Get("code", scope_S100))!.Value)];
+
+
+            builderDomainModel.AppendLine($"\t[XmlType({xmlTypeNamespace}, TypeName = \"members\")]");
+            builderDomainModel.AppendLine("\tpublic class Members");
+            builderDomainModel.AppendLine("\t{");
+            foreach (var name in xmlElements) {
+                builderDomainModel.AppendLine($"\t\t[XmlElement(\"{name}\", typeof({name}), Order = 1, ElementName = \"{name.Split('.')[^1]}\")]");
+            }
+            builderDomainModel.AppendLine("\t\tpublic List<object> elements { get; set; } = new List<object>();");
+            builderDomainModel.AppendLine("\t}");
 
             builderDomainModel.AppendLine("}");
 
@@ -888,9 +997,11 @@ namespace S100Framework.Applications
 
             public required IDictionary<string, ICollection<string>> InformationAssociationsLookup { get; init; }
             public required IDictionary<string, ICollection<string>> FeatureAssociationsLookup { get; init; }
+
+            public required IDictionary<string, Func<string, string>> ShouldSerialize { get; init; }
         }
 
-        private static string BuildClass(XElement e, BuildClassClient client) {
+        private static string BuildClass(XElement e, BuildClassClient client, Action<StringBuilder>? postBuilder = default) {
             var navigator = client.ProductSpecification.CreateNavigator();
             navigator.MoveToFollowing(XPathNodeType.Element);
             var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
@@ -899,12 +1010,15 @@ namespace S100Framework.Applications
             foreach (var s in scopes)
                 xmlNamespaceManager.AddNamespace(s.Key, s.Value);
 
+            var productId = client.ProductSpecification.XPathSelectElement("//S100FC:productId", xmlNamespaceManager)!.Value.Replace("-", string.Empty).ToUpperInvariant();
+            var versionNumber = client.ProductSpecification.XPathSelectElement("//S100FC:versionNumber", xmlNamespaceManager)!.Value;
+
             var scope_S100 = scopes["S100FC"];
 
             var builder = new StringBuilder();
 
             var name = e.Element(XName.Get("name", scope_S100))!.Value;
-            var definition = e.Element(XName.Get("definition", scope_S100))!.Value;
+            var definition = e.Element(XName.Get("definition", scope_S100))!.Value.TrimEnd(Environment.NewLine.ToArray());
             var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
             var inheritance = e.Name.LocalName switch {
@@ -914,6 +1028,8 @@ namespace S100Framework.Applications
                 "S100_FC_FeatureAssociation" => "FeatureAssociation",
                 _ => throw new InvalidDataException(),
             };
+
+            var xmlType = $"[XmlType(Namespace = \"http://www.iho.int/{productId}/{versionNumber.Remove(versionNumber.LastIndexOf('.'))}\")]";
 
             var encapsulation = (e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value)) ? "abstract" : "partial";
 
@@ -928,6 +1044,7 @@ namespace S100Framework.Applications
 
             builder.AppendLine("\t\t[System.Serializable()]");
             builder.AppendLine("\t\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006: Naming Styles\", Justification = \"<Pending>\")]");
+            //builder.AppendLine($"\t\t{xmlType}");
             builder.AppendLine($"\t\tpublic {encapsulation} class {code} : {inheritance} {{");
 
             var isFirst = true;
@@ -949,6 +1066,10 @@ namespace S100Framework.Applications
                     builder.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                 }
 
+                if (prefix.Equals("DateOnly")) {
+                    builder.AppendLine("\t\t\t[XmlIgnore]");
+                }
+
                 if (lower == 0 && upper.HasValue && upper.Value == 1) {
                     prefix += "?";
                     postfix = " = default;";
@@ -963,6 +1084,24 @@ namespace S100Framework.Applications
                 }
                 builder.AppendLine($"\t\t\tpublic {prefix} {referenceCode} {{get;set;}}{postfix}");
 
+                if (prefix.Equals("DateOnly")) {
+                    builder.AppendLine();
+                    builder.AppendLine("\t\t\t[JsonIgnore]");
+                    builder.AppendLine($"\t\t\t[System.Xml.Serialization.XmlElementAttribute(DataType = \"date\", ElementName = \"{referenceCode}\")]");
+                    builder.AppendLine($"\t\t\tpublic DateTime {referenceCode}Field {{");
+                    builder.AppendLine($"\t\t\t\tget {{ return {referenceCode}.ToDateTime(TimeOnly.MinValue); }}");
+                    builder.AppendLine($"\t\t\t\tset {{ {referenceCode} = DateOnly.FromDateTime(value); }}");
+                    builder.AppendLine("\t\t\t}");
+                }
+
+                if (lower == 0 && upper.HasValue && upper.Value == 1) {
+                    builder.AppendLine();
+                    builder.AppendLine($"\t\t\tpublic bool ShouldSerialize{referenceCode}() {{ return {client.ShouldSerialize[prefix](referenceCode)}; }}");
+                }
+                if (prefix.StartsWith("List<")) {
+                    builder.AppendLine();
+                    builder.AppendLine($"\t\t\tpublic bool ShouldSerialize{referenceCode}() {{ return {referenceCode}.Any(); }}");
+                }
             }
 
             if (!isFirst)
@@ -1081,6 +1220,8 @@ namespace S100Framework.Applications
 
                 builder.AppendLine(featureBindings.ToString().TrimEnd(Environment.NewLine.ToArray()));
             }
+
+            postBuilder?.Invoke(builder);
 
             builder.AppendLine("\t\t}");
 
