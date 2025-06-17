@@ -102,9 +102,23 @@ namespace S100Framework.Applications
                                 }
                             }
                             else {
-                                if (natureOfSurfaceQualifyingTermsCount > 0) {
-                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, longname, "NatureOfSurface is empty but natureOfSurfaceQualifyingTerms are not. This is not permitted.");
+                                // S-57 Appendix B.1 Annex A_Ed 4.4.0_FINAL.pdf
+                                // p.74 - (d) Hard bottom: The attribute NATQUA = 10 (hard) should be encoded, without being associated with NATSUR.
 
+                                if (natureOfSurfaceQualifyingTermsCount > 0) {
+                                    for (int i = 0; i < list2.Count(); i++) {
+                                        if (list2.Count() > i && !string.IsNullOrEmpty(list2[i])) {
+                                            if (list2[i] != "10") {
+                                                Logger.Current.DataError(current.OBJECTID ?? -1, tableName, longname, "NatureOfSurface is empty but natureOfSurfaceQualifyingTerms are not. This is not permitted.");
+                                            }
+                                            else {
+                                                instance.surfaceCharacteristics.Add(new() {
+                                                    natureOfSurfaceQualifyingTerms = new() { natureOfSurfaceQualifyingTermsList[i] }
+                                                });
+                                            }
+                                        }
+
+                                    }
                                 }
                             }
 
