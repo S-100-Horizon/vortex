@@ -138,10 +138,6 @@ namespace S100Framework.YAML
                 // Ensure enum value comes 'EnumMemberAttribute' and no enums are sat to 0, -1 or "unknown".
                 case Type t when t.IsEnum:
                     var enumvalue = ToEnumString(propertyValue);
-                    if (enumvalue == null)
-                        break;
-
-                    enumvalue = enumvalue == "Unknown" ? null : enumvalue;
 
                     attributes.Add(new(propertyName, enumvalue, null, parentId));
                     break;
@@ -198,21 +194,9 @@ namespace S100Framework.YAML
         public static string? ToEnumString(object? enumValue) {
             if (enumValue == null) return null;
             if (enumValue.ToString() == "0") return null;
-
+            if (enumValue.ToString() == "-1") return null;
+            if (enumValue.ToString() == "Unknown") return null;
             return $"{(int)enumValue!}";
-
-            var enumType = enumValue.GetType();
-
-            if (!enumType.IsEnum) throw new ArgumentException($"Provided value is not an enum: {enumValue}");
-
-            var name = Enum.GetName(enumType, enumValue!);
-
-            if (name == null) throw new ArgumentException($"Invalid enum value: {enumValue}");
-            return name;
-            var field = enumType.GetField(name);
-            var enumMemberAttribute = field?.GetCustomAttribute<EnumMemberAttribute>();
-
-            return enumMemberAttribute?.Value ?? name; // Fallback to the enum name
         }
 
         private class FeatureNodeDeserializer : IYamlTypeConverter
