@@ -7,7 +7,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
-using System.Windows.Media;
 using Xceed.Wpf.Toolkit;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 
@@ -64,7 +63,51 @@ namespace S100Framework.WPF
         public roleType? roleType { get; }
         public string? association { get; }
         public string? role { get; }
-    }    
+    }
+
+    public class SelectInformationBindingEventArgs
+    {
+        public SelectInformationBindingEventArgs(roleType? roleType, string? association, string? role, string? associationId, string? informationId) {
+            this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
+            this.association = association ?? string.Empty;
+            this.role = role ?? string.Empty;
+            this.associationId = associationId ?? default;
+            this.informationId = informationId ?? default;
+        }
+
+        public roleType? roleType { get; }
+        public string? association { get; }
+        public string? role { get; }
+        public string? associationId { get; }
+        public string? informationId { get; }
+    }
+
+
+    public class SelectFeatureBindingEventArgs
+    {
+        public SelectFeatureBindingEventArgs(roleType? roleType, string? association, string? role, string? associationId, string? featureId) {
+            this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
+            this.association = association ?? string.Empty;
+            this.role = role ?? string.Empty;
+            this.associationId = associationId ?? default;
+            this.featureId = featureId ?? default;
+        }
+
+        public roleType? roleType { get; }
+        public string? association { get; }
+        public string? role { get; }
+        public string? associationId { get; }
+        public string? featureId { get; }
+    }
+
+    public class SelectAssociationEventArgs
+    {
+        public SelectAssociationEventArgs(string? associationId) {
+            this.associationId = associationId ?? default;
+        }
+
+        public string? associationId { get; }
+    }
 
     #endregion
 
@@ -174,6 +217,14 @@ namespace S100Framework.WPF
         public required Func<QueryInformationTypesEventArgs, Task<IEnumerable<InformationTypeId>>> QueryInformationTypes { get; set; }
 
         public required Func<QueryFeatureTypesEventArgs, Task<IEnumerable<FeatureTypeId>>> QueryFeatureTypes { get; set; }
+
+        public required Action<SelectInformationBindingEventArgs> SelectInformationBinding { get; set; }
+
+        public required Action<SelectFeatureBindingEventArgs> SelectFeatureBinding { get; set; }
+
+        public required Action<SelectAssociationEventArgs> SelectInformationAssociation { get; set; }
+
+        public required Action<SelectAssociationEventArgs> SelectFeatureAssociation { get; set; }
     }
 
     [TemplatePart(Name = PART_PropertyGrid, Type = typeof(Xceed.Wpf.Toolkit.PropertyGrid.PropertyGrid))]
@@ -236,6 +287,8 @@ namespace S100Framework.WPF
             binding = new CommandBinding(S100AttributeEditorControl.InformationAssociationIdDoubleClick, this.InformationAssociationIdDoubleClickContent);
             this.CommandBindings.Add(binding);
             binding = new CommandBinding(S100AttributeEditorControl.FeatureAssociationIdDoubleClick, this.FeatureAssociationIdDoubleClickContent);
+            this.CommandBindings.Add(binding);
+            binding = new CommandBinding(S100AttributeEditorControl.AssociationAddSelectionCommand, this.AssociationAddSelectionCommandContent);
             this.CommandBindings.Add(binding);
 
             //  InformationBindings
@@ -352,7 +405,7 @@ namespace S100Framework.WPF
             }
         }
 
-        private void FeatureBindingsListView_Loaded(object sender, RoutedEventArgs e) {            
+        private void FeatureBindingsListView_Loaded(object sender, RoutedEventArgs e) {
         }
 
         private object? _selectedObject = default;
@@ -406,17 +459,20 @@ namespace S100Framework.WPF
         public static readonly DependencyProperty SelectedInformationObjectProperty =
             DependencyProperty.Register("SelectedInformationObject", typeof(SelectedInformationTypeObjectViewModel), typeof(S100AttributeEditorControl), new UIPropertyMetadata(null, OnSelectedInformationChanged));
 
-        public SelectedInformationTypeObjectViewModel SelectedInformationObject {
+        public SelectedInformationTypeObjectViewModel? SelectedInformationObject {
             get {
                 return (SelectedInformationTypeObjectViewModel)GetValue(SelectedInformationObjectProperty);
             }
             set {
+                SelectedInformationObject = default;
+                SelectedAssociationObject = default;
+
                 if (SelectedFeatureObject != null) {
                     this.SelectedFeatureObject.FeatureObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
                 }
-                if (SelectedInformationObject != null) {
-                    this.SelectedInformationObject.InformationObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
-                }
+                //if (SelectedInformationObject != null) {
+                //    this.SelectedInformationObject.InformationObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
+                //}                
                 SetValue(SelectedInformationObjectProperty, value);
             }
         }
@@ -424,6 +480,9 @@ namespace S100Framework.WPF
         private static void OnSelectedInformationChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args) {
             var control = sender as S100AttributeEditorControl;
             if (control is null)
+                return;
+
+            if (control.SelectedInformationObject is null)
                 return;
 
             control._selectedObject = control.SelectedInformationObject.InformationObject;
@@ -470,14 +529,17 @@ namespace S100Framework.WPF
         public static readonly DependencyProperty SelectedFeatureObjectProperty =
             DependencyProperty.Register("SelectedFeatureObject", typeof(SelectedFeatureTypeObjectViewModel), typeof(S100AttributeEditorControl), new UIPropertyMetadata(null, OnSelectedFeatureChanged));
 
-        public SelectedFeatureTypeObjectViewModel SelectedFeatureObject {
+        public SelectedFeatureTypeObjectViewModel? SelectedFeatureObject {
             get {
                 return (SelectedFeatureTypeObjectViewModel)GetValue(SelectedFeatureObjectProperty);
             }
             set {
-                if (SelectedFeatureObject != null) {
-                    this.SelectedFeatureObject.FeatureObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
-                }
+                SelectedFeatureObject = default;
+                SelectedAssociationObject = default;
+
+                //if (SelectedFeatureObject != null) {
+                //    this.SelectedFeatureObject.FeatureObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
+                //}
                 if (SelectedInformationObject != null) {
                     this.SelectedInformationObject.InformationObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
                 }
@@ -489,6 +551,9 @@ namespace S100Framework.WPF
         private static void OnSelectedFeatureChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args) {
             var control = sender as S100AttributeEditorControl;
             if (control is null)
+                return;
+
+            if (control.SelectedFeatureObject is null)
                 return;
 
             control._selectedObject = control.SelectedFeatureObject.FeatureObject;
@@ -554,18 +619,19 @@ namespace S100Framework.WPF
         public static readonly DependencyProperty SelectedAssociationObjectProperty =
                     DependencyProperty.Register("SelectedAssociationObject", typeof(SelectedAssociationObjectViewModel), typeof(S100AttributeEditorControl), new UIPropertyMetadata(null, OnSelectedAssociationChanged));
 
-        public SelectedAssociationObjectViewModel SelectedAssociationObject {
+        public SelectedAssociationObjectViewModel? SelectedAssociationObject {
             get {
                 return (SelectedAssociationObjectViewModel)GetValue(SelectedAssociationObjectProperty);
             }
             set {
-                if (SelectedFeatureObject != null) {
-                    this.SelectedFeatureObject.FeatureObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
-                }
-                if (SelectedInformationObject != null) {
-                    this.SelectedInformationObject.InformationObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
-                }
-
+                SelectedFeatureObject = default;
+                SelectedInformationObject = default;
+                //if (SelectedFeatureObject != null) {
+                //    this.SelectedFeatureObject.FeatureObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
+                //}
+                //if (SelectedInformationObject != null) {
+                //    this.SelectedInformationObject.InformationObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
+                //}
                 SetValue(SelectedAssociationObjectProperty, value);
             }
         }
@@ -573,6 +639,9 @@ namespace S100Framework.WPF
         private static void OnSelectedAssociationChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args) {
             var control = sender as S100AttributeEditorControl;
             if (control is null)
+                return;
+
+            if (control.SelectedAssociationObject is null)
                 return;
 
             control._selectedObject = control.SelectedAssociationObject.AssociationObject;
@@ -645,7 +714,6 @@ namespace S100Framework.WPF
         private void SelectedObject_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
             this.PropertyChanged?.Invoke(sender, e);
         }
-
 
         #endregion
 
@@ -725,6 +793,17 @@ namespace S100Framework.WPF
             }
         }
 
+        public static RoutedUICommand AssociationAddSelectionCommand = new("Add association type to selection", "AssociationAddSelectionCommandContent", typeof(S100AttributeEditorControl));
+
+        private void AssociationAddSelectionCommandContent(object sender, ExecutedRoutedEventArgs e) {
+            if (e.Parameter is FeatureBindingViewModel featureBindingViewModel) {
+                this.Host.SelectFeatureAssociation(new SelectAssociationEventArgs(featureBindingViewModel.associationId));
+            }
+            if (e.Parameter is InformationBindingViewModel informationBindingViewModel) {
+                this.Host.SelectFeatureAssociation(new SelectAssociationEventArgs(informationBindingViewModel.associationId));
+            }
+        }
+
         private ObservableCollection<AssociationId> _associationsDropdown = new ObservableCollection<AssociationId>();
 
         #endregion
@@ -800,9 +879,9 @@ namespace S100Framework.WPF
         public static RoutedUICommand InformationAssociationAddSelectionCommand = new("Add information type to selection", "InformationAssociationAddSelectionCommandContent", typeof(S100AttributeEditorControl));
 
         private void InformationAssociationAddSelectionCommandContent(object sender, ExecutedRoutedEventArgs e) {
-            var viewModel = ((System.Windows.Controls.ContentControl)e.Parameter).Content as FeatureBindingViewModel;
+            var viewModel = (InformationBindingViewModel)e.Parameter;
             if (viewModel != null) {
-                //TODO
+                this.Host.SelectInformationBinding(new SelectInformationBindingEventArgs(viewModel.roleType, viewModel.association, viewModel.role, viewModel.associationId, viewModel.informationId));
             }
         }
 
@@ -890,9 +969,9 @@ namespace S100Framework.WPF
         public static RoutedUICommand FeatureAssociationAddSelectionCommand = new("Add feature type to selection", "FeatureAssociationAddSelectionCommandContent", typeof(S100AttributeEditorControl));
 
         private void FeatureAssociationAddSelectionCommandContent(object sender, ExecutedRoutedEventArgs e) {
-            var viewModel = ((System.Windows.Controls.ContentControl)e.Parameter).Content as FeatureBindingViewModel;
+            var viewModel = (FeatureBindingViewModel)e.Parameter;
             if (viewModel != null) {
-                //TODO
+                this.Host.SelectFeatureBinding(new SelectFeatureBindingEventArgs(viewModel.roleType, viewModel.association, viewModel.role, viewModel.associationId, viewModel.featureId));
             }
         }
 

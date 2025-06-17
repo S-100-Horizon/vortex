@@ -3,6 +3,7 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 #nullable enable
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -4107,13 +4108,23 @@ namespace S100Framework.DomainModel.S201 {
 		public class contactAddress {
 			public String? deliveryPoint {get;set;} = default;
 
+			public bool ShouldSerializedeliveryPoint() { return !string.IsNullOrEmpty(deliveryPoint); }
+
 			public String? cityName {get;set;} = default;
+
+			public bool ShouldSerializecityName() { return !string.IsNullOrEmpty(cityName); }
 
 			public String? administrativeDivision {get;set;} = default;
 
+			public bool ShouldSerializeadministrativeDivision() { return !string.IsNullOrEmpty(administrativeDivision); }
+
 			public String? countryName {get;set;} = default;
 
+			public bool ShouldSerializecountryName() { return !string.IsNullOrEmpty(countryName); }
+
 			public String? postalCode {get;set;} = default;
+
+			public bool ShouldSerializepostalCode() { return !string.IsNullOrEmpty(postalCode); }
 		}
 
 		[System.Serializable()]
@@ -4121,7 +4132,11 @@ namespace S100Framework.DomainModel.S201 {
 		public class featureName {
 			public Boolean? displayName {get;set;} = default;
 
+			public bool ShouldSerializedisplayName() { return displayName.HasValue; }
+
 			public String? language {get;set;} = default;
+
+			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			public String name {get;set;} = string.Empty;
 		}
@@ -4131,7 +4146,11 @@ namespace S100Framework.DomainModel.S201 {
 		public class fixedDateRange {
 			public String? dateEnd {get;set;} = default;
 
+			public bool ShouldSerializedateEnd() { return !string.IsNullOrEmpty(dateEnd); }
+
 			public String? dateStart {get;set;} = default;
+
+			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
 		}
 
 		[System.Serializable()]
@@ -4141,12 +4160,16 @@ namespace S100Framework.DomainModel.S201 {
 			public Boolean multiplicityKnown {get;set;} = false;
 
 			public int? numberOfFeatures {get;set;} = default;
+
+			public bool ShouldSerializenumberOfFeatures() { return numberOfFeatures.HasValue; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class orientation {
 			public decimal? orientationUncertainty {get;set;} = default;
+
+			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[Required()]
 			public decimal orientationValue {get;set;}
@@ -4174,6 +4197,8 @@ namespace S100Framework.DomainModel.S201 {
 		public class sectorInformation {
 			public String? language {get;set;} = default;
 
+			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
+
 			public String text {get;set;} = string.Empty;
 		}
 
@@ -4184,6 +4209,8 @@ namespace S100Framework.DomainModel.S201 {
 			public decimal sectorBearing {get;set;}
 
 			public int? sectorLineLength {get;set;} = default;
+
+			public bool ShouldSerializesectorLineLength() { return sectorLineLength.HasValue; }
 		}
 
 		[System.Serializable()]
@@ -4193,12 +4220,16 @@ namespace S100Framework.DomainModel.S201 {
 			public decimal sectorBearing {get;set;}
 
 			public int? sectorLineLength {get;set;} = default;
+
+			public bool ShouldSerializesectorLineLength() { return sectorLineLength.HasValue; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class shapeInformation {
 			public String? language {get;set;} = default;
+
+			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			public String text {get;set;} = string.Empty;
 		}
@@ -4234,26 +4265,42 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public atonCommissioning? atonCommissioning {get;set;} = default;
 
+			public bool ShouldSerializeatonCommissioning() { return atonCommissioning.HasValue; }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
 			public atonRemoval? atonRemoval {get;set;} = default;
+
+			public bool ShouldSerializeatonRemoval() { return atonRemoval.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			public atonReplacement? atonReplacement {get;set;} = default;
 
+			public bool ShouldSerializeatonReplacement() { return atonReplacement.HasValue; }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			public fixedAtonChange? fixedAtonChange {get;set;} = default;
+
+			public bool ShouldSerializefixedAtonChange() { return fixedAtonChange.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26])]
 			public floatingAtonChange? floatingAtonChange {get;set;} = default;
 
+			public bool ShouldSerializefloatingAtonChange() { return floatingAtonChange.HasValue; }
+
 			[EnumerationValue([1,2,3,4])]
 			public audibleSignalAtonChange? audibleSignalAtonChange {get;set;} = default;
+
+			public bool ShouldSerializeaudibleSignalAtonChange() { return audibleSignalAtonChange.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24])]
 			public lightedAtonChange? lightedAtonChange {get;set;} = default;
 
+			public bool ShouldSerializelightedAtonChange() { return lightedAtonChange.HasValue; }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30])]
 			public electronicAtonChange? electronicAtonChange {get;set;} = default;
+
+			public bool ShouldSerializeelectronicAtonChange() { return electronicAtonChange.HasValue; }
 		}
 
 		[System.Serializable()]
@@ -4265,9 +4312,15 @@ namespace S100Framework.DomainModel.S201 {
 
 			public decimal? horizontalLength {get;set;} = default;
 
+			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
+
 			public decimal? horizontalWidth {get;set;} = default;
 
+			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
+
 			public decimal? verticalLength {get;set;} = default;
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 		}
 
 		[System.Serializable()]
@@ -4287,6 +4340,8 @@ namespace S100Framework.DomainModel.S201 {
 			public decimal uncertaintyFixed {get;set;}
 
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
+
+			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
 		}
 
 		[System.Serializable()]
@@ -4294,13 +4349,21 @@ namespace S100Framework.DomainModel.S201 {
 		public class information {
 			public String? fileLocator {get;set;} = default;
 
+			public bool ShouldSerializefileLocator() { return !string.IsNullOrEmpty(fileLocator); }
+
 			public String? fileReference {get;set;} = default;
 
+			public bool ShouldSerializefileReference() { return !string.IsNullOrEmpty(fileReference); }
+
 			public String? headline {get;set;} = default;
+
+			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 
 			public String language {get;set;} = string.Empty;
 
 			public String? text {get;set;} = default;
+
+			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
 		}
 
 		[System.Serializable()]
@@ -4309,6 +4372,8 @@ namespace S100Framework.DomainModel.S201 {
 			public String fileReference {get;set;} = string.Empty;
 
 			public String? language {get;set;} = default;
+
+			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 		}
 
 		[System.Serializable()]
@@ -4318,12 +4383,16 @@ namespace S100Framework.DomainModel.S201 {
 			public decimal uncertaintyFixed {get;set;}
 
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
+
+			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class directionalCharacter {
 			public Boolean? moireEffect {get;set;} = default;
+
+			public bool ShouldSerializemoireEffect() { return moireEffect.HasValue; }
 
 			[Required()]
 			public orientation orientation {get;set;}
@@ -4338,9 +4407,15 @@ namespace S100Framework.DomainModel.S201 {
 
 			public List<String> signalGroup {get;set;} = [];
 
+			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
+
 			public decimal? signalPeriod {get;set;} = default;
 
+			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
+
 			public List<signalSequence> signalSequence {get;set;} = [];
+
+			public bool ShouldSerializesignalSequence() { return signalSequence.Any(); }
 		}
 
 		[System.Serializable()]
@@ -4358,9 +4433,15 @@ namespace S100Framework.DomainModel.S201 {
 		public class spatialAccuracy {
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
+			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
+
 			public horizontalPositionUncertainty? horizontalPositionUncertainty {get;set;} = default;
 
+			public bool ShouldSerializehorizontalPositionUncertainty() { return horizontalPositionUncertainty!=default; }
+
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
+
+			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 		}
 
 		[System.Serializable()]
@@ -4370,6 +4451,8 @@ namespace S100Framework.DomainModel.S201 {
 			public sectorLimit sectorLimit {get;set;}
 
 			public sectorInformation? sectorInformation {get;set;} = default;
+
+			public bool ShouldSerializesectorInformation() { return sectorInformation!=default; }
 		}
 
 		[System.Serializable()]
@@ -4378,18 +4461,32 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			public directionalCharacter? directionalCharacter {get;set;} = default;
+
+			public bool ShouldSerializedirectionalCharacter() { return directionalCharacter!=default; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<lightVisibility> lightVisibility {get;set;} = [];
 
+			public bool ShouldSerializelightVisibility() { return lightVisibility.Any(); }
+
 			public sectorLimit? sectorLimit {get;set;} = default;
+
+			public bool ShouldSerializesectorLimit() { return sectorLimit!=default; }
 
 			public decimal? valueOfNominalRange {get;set;} = default;
 
+			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
+
 			public List<sectorInformation> sectorInformation {get;set;} = [];
 
+			public bool ShouldSerializesectorInformation() { return sectorInformation.Any(); }
+
 			public Boolean? sectorExtension {get;set;} = default;
+
+			public bool ShouldSerializesectorExtension() { return sectorExtension.HasValue; }
 		}
 
 		[System.Serializable()]
@@ -4401,13 +4498,23 @@ namespace S100Framework.DomainModel.S201 {
 
 			public List<lightSector> lightSector {get;set;} = [];
 
+			public bool ShouldSerializelightSector() { return lightSector.Any(); }
+
 			public List<String> signalGroup {get;set;} = [];
+
+			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
 
 			public decimal? signalPeriod {get;set;} = default;
 
+			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
+
 			public List<signalSequence> signalSequence {get;set;} = [];
 
+			public bool ShouldSerializesignalSequence() { return signalSequence.Any(); }
+
 			public decimal? candela {get;set;} = default;
+
+			public bool ShouldSerializecandela() { return candela.HasValue; }
 		}
 
 	}
@@ -4739,11 +4846,23 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class AtoNFixingMethod : InformationNode, IInformationBindingDefinition {
 			public String? referencePoint {get;set;} = default;
 
+			public bool ShouldSerializereferencePoint() { return !string.IsNullOrEmpty(referencePoint); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131])]
 			public horizontalDatum? horizontalDatum {get;set;} = default;
 
+			public bool ShouldSerializehorizontalDatum() { return horizontalDatum.HasValue; }
+
+			[XmlIgnore]
 			[Required()]
 			public DateOnly sourceDate {get;set;}
+
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "sourceDate")]
+			public DateTime sourceDateField {
+				get { return sourceDate.ToDateTime(TimeOnly.MinValue); }
+				set { sourceDate = DateOnly.FromDateTime(value); }
+			}
 
 			public String positioningProcedure {get;set;} = string.Empty;
 
@@ -4754,6 +4873,10 @@ namespace S100Framework.DomainModel.S201 {
 			public override informationBindingDefinition[] informationBindingDefinitions => AtoNFixingMethod._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4768,6 +4891,8 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4])]
 			public ChangeTypes? ChangeTypes {get;set;} = default;
 
+			public bool ShouldSerializeChangeTypes() { return ChangeTypes.HasValue; }
+
 			[JsonIgnore]
 			public override string Code => nameof(AtonStatusInformation);
 
@@ -4775,6 +4900,10 @@ namespace S100Framework.DomainModel.S201 {
 			public override informationBindingDefinition[] informationBindingDefinitions => AtonStatusInformation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4787,6 +4916,8 @@ namespace S100Framework.DomainModel.S201 {
 
 			public positioningMethod? positioningMethod {get;set;} = default;
 
+			public bool ShouldSerializepositioningMethod() { return positioningMethod!=default; }
+
 			[JsonIgnore]
 			public override string Code => nameof(PositioningInformation);
 
@@ -4794,6 +4925,10 @@ namespace S100Framework.DomainModel.S201 {
 			public override informationBindingDefinition[] informationBindingDefinitions => PositioningInformation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4805,7 +4940,11 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
 
+			public bool ShouldSerializequalityOfHorizontalMeasurement() { return qualityOfHorizontalMeasurement.HasValue; }
+
 			public spatialAccuracy? spatialAccuracy {get;set;} = default;
+
+			public bool ShouldSerializespatialAccuracy() { return spatialAccuracy!=default; }
 
 			[JsonIgnore]
 			public override string Code => nameof(SpatialQuality);
@@ -4814,11 +4953,16 @@ namespace S100Framework.DomainModel.S201 {
 			public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 	}
 	namespace FeatureTypes {
 		using FeatureAssociations;
 		using InformationTypes;
+		using System.Xml;
 
 		/// <summary>
 		/// A visual, acoustical, or radio device, external to a ship, designed to assist in determining a safe course or a vessel's position, or to warn of dangers and/or obstructions. Aids to navigation usually include buoys, beacons, fog signals, lights, radio beacons, leading marks, radio position fixing systems and GNSS which are chart-related and assist safe navigation.
@@ -4828,31 +4972,61 @@ namespace S100Framework.DomainModel.S201 {
 		public abstract class AidsToNavigation : FeatureNode, IFeatureBindingDefinition {
 			public String? iDCode {get;set;} = default;
 
+			public bool ShouldSerializeiDCode() { return !string.IsNullOrEmpty(iDCode); }
+
 			public List<information> information {get;set;} = [];
+
+			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			public List<featureName> featureName {get;set;} = [];
 
+			public bool ShouldSerializefeatureName() { return featureName.Any(); }
+
 			public int? scaleMinimum {get;set;} = default;
 
+			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
+
+			[XmlIgnore]
 			public DateOnly? sourceDate {get;set;} = default;
+
+			public bool ShouldSerializesourceDate() { return sourceDate.HasValue; }
 
 			public String? source {get;set;} = default;
 
+			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
+
 			public String? pictorialRepresentation {get;set;} = default;
+
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			public String? inspectionFrequency {get;set;} = default;
 
+			public bool ShouldSerializeinspectionFrequency() { return !string.IsNullOrEmpty(inspectionFrequency); }
+
 			public String? inspectionRequirements {get;set;} = default;
+
+			public bool ShouldSerializeinspectionRequirements() { return !string.IsNullOrEmpty(inspectionRequirements); }
 
 			public String? aToNMaintenanceRecord {get;set;} = default;
 
+			public bool ShouldSerializeaToNMaintenanceRecord() { return !string.IsNullOrEmpty(aToNMaintenanceRecord); }
+
+			[XmlIgnore]
 			public DateOnly? installationDate {get;set;} = default;
+
+			public bool ShouldSerializeinstallationDate() { return installationDate.HasValue; }
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
+			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
+
 			public periodicDateRange? periodicDateRange {get;set;} = default;
 
+			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange!=default; }
+
 			public List<String> SeasonalActionRequired {get;set;} = [];
+
+			public bool ShouldSerializeSeasonalActionRequired() { return SeasonalActionRequired.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(AidsToNavigation);
@@ -4897,6 +5071,10 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(AtonAssociation)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4910,10 +5088,16 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3])]
 			public aidAvailabilityCategory? aidAvailabilityCategory {get;set;} = default;
 
+			public bool ShouldSerializeaidAvailabilityCategory() { return aidAvailabilityCategory.HasValue; }
+
 			[EnumerationValue([1,2,3,4,5])]
 			public condition? condition {get;set;} = default;
 
+			public bool ShouldSerializecondition() { return condition.HasValue; }
+
 			public contactAddress? contactAddress {get;set;} = default;
+
+			public bool ShouldSerializecontactAddress() { return contactAddress!=default; }
 
 			[JsonIgnore]
 			public override string Code => nameof(StructureObject);
@@ -4958,6 +5142,10 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(Equipment)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4967,6 +5155,8 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class Equipment : AidsToNavigation {
 			public List<String> remoteMonitoringSystem {get;set;} = [];
+
+			public bool ShouldSerializeremoteMonitoringSystem() { return remoteMonitoringSystem.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Equipment);
@@ -4995,6 +5185,10 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(StructureObject)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -5005,9 +5199,13 @@ namespace S100Framework.DomainModel.S201 {
 		public abstract class ElectronicAton : AidsToNavigation {
 			public String? AtoNNumber {get;set;} = default;
 
+			public bool ShouldSerializeAtoNNumber() { return !string.IsNullOrEmpty(AtoNNumber); }
+
 			public String mMSICode {get;set;} = string.Empty;
 
 			public List<status> status {get;set;} = [];
+
+			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(ElectronicAton);
@@ -5028,6 +5226,10 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -5043,30 +5245,52 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			public decimal? elevation {get;set;} = default;
 
+			public bool ShouldSerializeelevation() { return elevation.HasValue; }
+
 			public decimal? height {get;set;} = default;
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
+			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
 			public Boolean? radarConspicuous {get;set;} = default;
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			public decimal? verticalLength {get;set;} = default;
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
+
 			public decimal? verticalAccuracy {get;set;} = default;
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(GenericBeacon);
@@ -5087,6 +5311,10 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -5102,25 +5330,43 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
+
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
 
 			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
+			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
 			public Boolean? radarConspicuous {get;set;} = default;
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			public String? typeOfBuoy {get;set;} = default;
+
+			public bool ShouldSerializetypeOfBuoy() { return !string.IsNullOrEmpty(typeOfBuoy); }
 
 			public decimal? verticalLength {get;set;} = default;
 
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
+
 			public decimal? verticalAccuracy {get;set;} = default;
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(GenericBuoy);
@@ -5173,6 +5419,10 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(CounterWeight)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -5184,19 +5434,33 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			public decimal? height {get;set;} = default;
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
+
 			public decimal? verticalLength {get;set;} = default;
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			public decimal? effectiveIntensity {get;set;} = default;
 
+			public bool ShouldSerializeeffectiveIntensity() { return effectiveIntensity.HasValue; }
+
 			public decimal? peakIntensity {get;set;} = default;
+
+			public bool ShouldSerializepeakIntensity() { return peakIntensity.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(GenericLight);
@@ -5217,6 +5481,10 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -5228,25 +5496,41 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
 			public List<categoryOfLandmark> categoryOfLandmark {get;set;} = [];
 
+			public bool ShouldSerializecategoryOfLandmark() { return categoryOfLandmark.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
+
+			public bool ShouldSerializecolour() { return colour.Any(); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48])]
 			public List<function> function {get;set;} = [];
+
+			public bool ShouldSerializefunction() { return function.Any(); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
 			public Boolean? radarConspicuous {get;set;} = default;
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[EnumerationValue([1,2,3])]
 			[Required()]
@@ -5254,13 +5538,23 @@ namespace S100Framework.DomainModel.S201 {
 
 			public decimal? elevation {get;set;} = default;
 
+			public bool ShouldSerializeelevation() { return elevation.HasValue; }
+
 			public decimal? height {get;set;} = default;
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			public Boolean? mannedStructure {get;set;} = default;
 
+			public bool ShouldSerializemannedStructure() { return mannedStructure.HasValue; }
+
 			public decimal? verticalLength {get;set;} = default;
 
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
+
 			public decimal? verticalAccuracy {get;set;} = default;
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(Landmark);
@@ -5281,6 +5575,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5312,6 +5614,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5343,6 +5653,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5357,6 +5675,8 @@ namespace S100Framework.DomainModel.S201 {
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
+
+			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[Required()]
 			public orientation orientation {get;set;}
@@ -5388,6 +5708,14 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(RecommendedTrack)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5401,24 +5729,38 @@ namespace S100Framework.DomainModel.S201 {
 
 			public decimal? depthRangeMinimumValue {get;set;} = default;
 
+			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
+
 			public decimal? maximalPermittedDraught {get;set;} = default;
+
+			public bool ShouldSerializemaximalPermittedDraught() { return maximalPermittedDraught.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[Required()]
 			public orientation orientation {get;set;}
 
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
+			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
+			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
+
+			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
 			[EnumerationValue([1,2,3,4])]
 			[Required()]
@@ -5451,6 +5793,14 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(NavigationLine)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5462,18 +5812,30 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,4,5,6,8,9,10,11,12,13,14,15,17,18,19,20])]
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
 
+			public bool ShouldSerializecategoryOfLight() { return categoryOfLight.Any(); }
+
 			[EnumerationValue([1,2,3,4])]
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
+
+			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.HasValue; }
 
 			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
 			public List<marksNavigationalSystemOf> marksNavigationalSystemOf {get;set;} = [];
 
+			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
+			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
+
 			public List<ObscuredSector> ObscuredSector {get;set;} = [];
 
+			public bool ShouldSerializeObscuredSector() { return ObscuredSector.Any(); }
+
 			public List<sectorCharacteristics> sectorCharacteristics {get;set;} = [];
+
+			public bool ShouldSerializesectorCharacteristics() { return sectorCharacteristics.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(LightSectored);
@@ -5494,6 +5856,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5505,28 +5875,46 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,4,5,6,8,9,10,11,12,13,14,15,17,18,19,20])]
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
 
+			public bool ShouldSerializecategoryOfLight() { return categoryOfLight.Any(); }
+
 			[EnumerationValue([1,2,3,4])]
 			public List<exhibitionConditionOfLight> exhibitionConditionOfLight {get;set;} = [];
+
+			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.Any(); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public lightVisibility? lightVisibility {get;set;} = default;
 
+			public bool ShouldSerializelightVisibility() { return lightVisibility.HasValue; }
+
 			public Boolean? majorLight {get;set;} = default;
+
+			public bool ShouldSerializemajorLight() { return majorLight.HasValue; }
 
 			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
+			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
+
 			[EnumerationValue([1,2,3,4,5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
+			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
+
 			public decimal? valueOfNominalRange {get;set;} = default;
 
+			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
+
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
+
+			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
 			[Required()]
 			public rhythmOfLight rhythmOfLight {get;set;}
 
 			public int? flareBearing {get;set;} = default;
+
+			public bool ShouldSerializeflareBearing() { return flareBearing.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(LightAllAround);
@@ -5547,6 +5935,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5558,21 +5954,35 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4])]
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
+			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.HasValue; }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<lightVisibility> lightVisibility {get;set;} = [];
 
+			public bool ShouldSerializelightVisibility() { return lightVisibility.Any(); }
+
 			public decimal? valueOfGeographicRange {get;set;} = default;
+
+			public bool ShouldSerializevalueOfGeographicRange() { return valueOfGeographicRange.HasValue; }
 
 			public decimal? valueOfLuminousRange {get;set;} = default;
 
+			public bool ShouldSerializevalueOfLuminousRange() { return valueOfLuminousRange.HasValue; }
+
 			public decimal? valueOfNominalRange {get;set;} = default;
 
+			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
+
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
+
+			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
 			[Required()]
 			public rhythmOfLight rhythmOfLight {get;set;}
 
 			public int? flareBearing {get;set;} = default;
+
+			public bool ShouldSerializeflareBearing() { return flareBearing.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(LightAirObstruction);
@@ -5593,6 +6003,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5603,6 +6021,8 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class LightFogDetector : GenericLight {
 			[EnumerationValue([1,2,3,4,5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
+
+			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
 
 			[Required()]
 			public rhythmOfLight rhythmOfLight {get;set;}
@@ -5626,6 +6046,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5636,13 +6064,21 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class RadarReflector : Equipment {
 			public decimal? height {get;set;} = default;
 
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
+
+			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
+
 			public decimal? verticalAccuracy {get;set;} = default;
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(RadarReflector);
@@ -5663,6 +6099,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5677,21 +6121,37 @@ namespace S100Framework.DomainModel.S201 {
 
 			public int? signalFrequency {get;set;} = default;
 
+			public bool ShouldSerializesignalFrequency() { return signalFrequency.HasValue; }
+
 			[EnumerationValue([1,2,3,4,5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
+			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
+
 			public String? signalGroup {get;set;} = default;
+
+			public bool ShouldSerializesignalGroup() { return !string.IsNullOrEmpty(signalGroup); }
 
 			public decimal? signalOutput {get;set;} = default;
 
+			public bool ShouldSerializesignalOutput() { return signalOutput.HasValue; }
+
 			public decimal? signalPeriod {get;set;} = default;
+
+			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			public decimal? valueOfMaximumRange {get;set;} = default;
 
+			public bool ShouldSerializevalueOfMaximumRange() { return valueOfMaximumRange.HasValue; }
+
 			public signalSequence? signalSequence {get;set;} = default;
+
+			public bool ShouldSerializesignalSequence() { return signalSequence!=default; }
 
 			[JsonIgnore]
 			public override string Code => nameof(FogSignal);
@@ -5712,6 +6172,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5722,10 +6190,16 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class EnvironmentObservationEquipment : Equipment {
 			public decimal? height {get;set;} = default;
 
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			public List<String> typeOfEnvironmentalObservationEquipment {get;set;} = [];
+
+			public bool ShouldSerializetypeOfEnvironmentalObservationEquipment() { return typeOfEnvironmentalObservationEquipment.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(EnvironmentObservationEquipment);
@@ -5746,6 +6220,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5760,8 +6242,12 @@ namespace S100Framework.DomainModel.S201 {
 
 			public decimal? estimatedRangeOfTransmission {get;set;} = default;
 
+			public bool ShouldSerializeestimatedRangeOfTransmission() { return estimatedRangeOfTransmission.HasValue; }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public status? status {get;set;} = default;
+
+			public bool ShouldSerializestatus() { return status.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(RadioStation);
@@ -5806,6 +6292,14 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(VirtualAISAidToNavigation)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5817,23 +6311,39 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
 			public categoryOfSpecialPurposeMark? categoryOfSpecialPurposeMark {get;set;} = default;
 
+			public bool ShouldSerializecategoryOfSpecialPurposeMark() { return categoryOfSpecialPurposeMark.HasValue; }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
+
+			public bool ShouldSerializecolour() { return colour.Any(); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			public decimal? elevation {get;set;} = default;
 
+			public bool ShouldSerializeelevation() { return elevation.HasValue; }
+
 			public decimal? height {get;set;} = default;
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
 			public decimal? orientationValue {get;set;} = default;
+
+			public bool ShouldSerializeorientationValue() { return orientationValue.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
+
+			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
 			[Required()]
@@ -5842,9 +6352,15 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
+
 			public decimal? verticalLength {get;set;} = default;
 
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
+
 			public shapeInformation? shapeInformation {get;set;} = default;
+
+			public bool ShouldSerializeshapeInformation() { return shapeInformation!=default; }
 
 			[Required()]
 			public Boolean isSlatted {get;set;} = false;
@@ -5868,6 +6384,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5879,21 +6403,35 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
+
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
 
 			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
+			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
+
+			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
+
 			public decimal? height {get;set;} = default;
 
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
 			public decimal? verticalAccuracy {get;set;} = default;
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(Retroreflector);
@@ -5914,6 +6452,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5928,20 +6474,36 @@ namespace S100Framework.DomainModel.S201 {
 
 			public radarWaveLength? radarWaveLength {get;set;} = default;
 
+			public bool ShouldSerializeradarWaveLength() { return radarWaveLength!=default; }
+
 			public String? signalGroup {get;set;} = default;
+
+			public bool ShouldSerializesignalGroup() { return !string.IsNullOrEmpty(signalGroup); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			public decimal? valueOfNominalRange {get;set;} = default;
+
+			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
 
 			public String? manufactorer {get;set;} = default;
 
+			public bool ShouldSerializemanufactorer() { return !string.IsNullOrEmpty(manufactorer); }
+
 			public sectorLimitOne? sectorLimitOne {get;set;} = default;
+
+			public bool ShouldSerializesectorLimitOne() { return sectorLimitOne!=default; }
 
 			public sectorLimitTwo? sectorLimitTwo {get;set;} = default;
 
+			public bool ShouldSerializesectorLimitTwo() { return sectorLimitTwo!=default; }
+
 			public signalSequence? signalSequence {get;set;} = default;
+
+			public bool ShouldSerializesignalSequence() { return signalSequence!=default; }
 
 			[JsonIgnore]
 			public override string Code => nameof(RadarTransponderBeacon);
@@ -5962,6 +6524,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6001,6 +6571,14 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(RadioStation)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6040,6 +6618,14 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(RadioStation)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6083,6 +6669,14 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(RadioStation)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6097,6 +6691,8 @@ namespace S100Framework.DomainModel.S201 {
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
+
+			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(PowerSource);
@@ -6117,6 +6713,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6144,6 +6748,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6175,6 +6787,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6202,6 +6822,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6233,6 +6861,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6264,6 +6900,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6291,6 +6935,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6318,6 +6970,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6345,6 +7005,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6356,31 +7024,55 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			public decimal? horizontalLength {get;set;} = default;
+
+			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			public decimal? horizontalWidth {get;set;} = default;
 
+			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
+
 			public Boolean? mannedStructure {get;set;} = default;
+
+			public bool ShouldSerializemannedStructure() { return mannedStructure.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
 			public Boolean? radarConspicuous {get;set;} = default;
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			public decimal? verticalLength {get;set;} = default;
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
+
 			public decimal? verticalAccuracy {get;set;} = default;
 
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
+
 			public decimal? horizontalAccuracy {get;set;} = default;
+
+			public bool ShouldSerializehorizontalAccuracy() { return horizontalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(LightFloat);
@@ -6401,6 +7093,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6412,31 +7112,55 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			public decimal? horizontalLength {get;set;} = default;
+
+			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			public decimal? horizontalWidth {get;set;} = default;
 
+			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
+
 			public Boolean? mannedStructure {get;set;} = default;
+
+			public bool ShouldSerializemannedStructure() { return mannedStructure.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
 			public Boolean? radarConspicuous {get;set;} = default;
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			public decimal? verticalLength {get;set;} = default;
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
+
 			public decimal? verticalAccuracy {get;set;} = default;
 
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
+
 			public decimal? horizontalAccuracy {get;set;} = default;
+
+			public bool ShouldSerializehorizontalAccuracy() { return horizontalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(LightVessel);
@@ -6457,6 +7181,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6468,36 +7200,62 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			public List<categoryOfOffshorePlatform> categoryOfOffshorePlatform {get;set;} = [];
 
+			public bool ShouldSerializecategoryOfOffshorePlatform() { return categoryOfOffshorePlatform.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
+
+			public bool ShouldSerializecolour() { return colour.Any(); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			public decimal? height {get;set;} = default;
 
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
 			public Boolean? mannedStructure {get;set;} = default;
+
+			public bool ShouldSerializemannedStructure() { return mannedStructure.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25])]
 			public List<product> product {get;set;} = [];
 
+			public bool ShouldSerializeproduct() { return product.Any(); }
+
 			public Boolean? radarConspicuous {get;set;} = default;
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
+
 			public decimal? verticalLength {get;set;} = default;
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
+
 			public decimal? verticalAccuracy {get;set;} = default;
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(OffshorePlatform);
@@ -6518,6 +7276,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6529,36 +7295,62 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([5,6,7,8,9])]
 			public buildingShape? buildingShape {get;set;} = default;
 
+			public bool ShouldSerializebuildingShape() { return buildingShape.HasValue; }
+
 			[EnumerationValue([1,2,3,4])]
 			public categoryOfSiloTank? categoryOfSiloTank {get;set;} = default;
+
+			public bool ShouldSerializecategoryOfSiloTank() { return categoryOfSiloTank.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			public decimal? elevation {get;set;} = default;
 
+			public bool ShouldSerializeelevation() { return elevation.HasValue; }
+
 			public decimal? height {get;set;} = default;
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
 			public Boolean? radarConspicuous {get;set;} = default;
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
 
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
+
 			public decimal? verticalLength {get;set;} = default;
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
+
 			public decimal? verticalAccuracy {get;set;} = default;
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(SiloTank);
@@ -6579,6 +7371,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6590,23 +7390,39 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,3,4,5,6,7])]
 			public categoryOfPile? categoryOfPile {get;set;} = default;
 
+			public bool ShouldSerializecategoryOfPile() { return categoryOfPile.HasValue; }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
+
+			public bool ShouldSerializecolour() { return colour.Any(); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			public decimal? height {get;set;} = default;
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
+
 			public decimal? verticalLength {get;set;} = default;
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
+
 			public decimal? verticalAccuracy {get;set;} = default;
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(Pile);
@@ -6627,6 +7443,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6654,6 +7478,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6681,6 +7513,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6692,12 +7532,18 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public natureOfConstruction? natureOfConstruction {get;set;} = default;
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.HasValue; }
+
 			public sinkerDimensions? sinkerDimensions {get;set;} = default;
+
+			public bool ShouldSerializesinkerDimensions() { return sinkerDimensions!=default; }
 
 			[Required()]
 			public decimal weight {get;set;}
 
 			public String? sinkerType {get;set;} = default;
+
+			public bool ShouldSerializesinkerType() { return !string.IsNullOrEmpty(sinkerType); }
 
 			[JsonIgnore]
 			public override string Code => nameof(SinkerAnchor);
@@ -6726,6 +7572,14 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(MooringShackle)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6737,10 +7591,16 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public natureOfConstruction? natureOfConstruction {get;set;} = default;
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.HasValue; }
+
 			[EnumerationValue([1,2,3,4,5,6])]
 			public ShackleType? ShackleType {get;set;} = default;
 
+			public bool ShouldSerializeShackleType() { return ShackleType.HasValue; }
+
 			public decimal? weight {get;set;} = default;
+
+			public bool ShouldSerializeweight() { return weight.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(MooringShackle);
@@ -6801,6 +7661,14 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(SinkerAnchor)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6811,12 +7679,16 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class CableSubmarine : AidsToNavigation {
 			public CableDimensions? CableDimensions {get;set;} = default;
 
+			public bool ShouldSerializeCableDimensions() { return CableDimensions!=default; }
+
 			[EnumerationValue([1,3,4,5,6,7,8])]
 			[Required()]
 			public categoryOfCable categoryOfCable {get;set;}
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
+
+			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(CableSubmarine);
@@ -6861,6 +7733,14 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(MooringShackle)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6872,9 +7752,15 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public natureOfConstruction? natureOfConstruction {get;set;} = default;
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.HasValue; }
+
 			public decimal? weight {get;set;} = default;
 
+			public bool ShouldSerializeweight() { return weight.HasValue; }
+
 			public String? swivelType {get;set;} = default;
+
+			public bool ShouldSerializeswivelType() { return !string.IsNullOrEmpty(swivelType); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Swivel);
@@ -6919,6 +7805,14 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(MooringShackle)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6929,7 +7823,11 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class Bridle : AidsToNavigation {
 			public String? bridleLinkType {get;set;} = default;
 
+			public bool ShouldSerializebridleLinkType() { return !string.IsNullOrEmpty(bridleLinkType); }
+
 			public String? legsDetails {get;set;} = default;
+
+			public bool ShouldSerializelegsDetails() { return !string.IsNullOrEmpty(legsDetails); }
 
 			[JsonIgnore]
 			public override string Code => nameof(Bridle);
@@ -6982,6 +7880,14 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(CableSubmarine)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6993,10 +7899,14 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public natureOfConstruction? natureOfConstruction {get;set;} = default;
 
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.HasValue; }
+
 			[Required()]
 			public decimal weight {get;set;}
 
 			public String? counterWeightType {get;set;} = default;
+
+			public bool ShouldSerializecounterWeightType() { return !string.IsNullOrEmpty(counterWeightType); }
 
 			[JsonIgnore]
 			public override string Code => nameof(CounterWeight);
@@ -7025,6 +7935,14 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(GenericBuoy)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7036,17 +7954,25 @@ namespace S100Framework.DomainModel.S201 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			public List<status> status {get;set;} = [];
+
+			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
 			[Required()]
 			public topmarkDaymarkShape topmarkDaymarkShape {get;set;}
 
 			public decimal? verticalLength {get;set;} = default;
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[JsonIgnore]
 			public override string Code => nameof(Topmark);
@@ -7075,6 +8001,14 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(GenericBuoy)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7102,6 +8036,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7112,6 +8054,8 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class SpecialPurposeGeneralBeacon : GenericBeacon {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
+
+			public bool ShouldSerializecategoryOfSpecialPurposeMark() { return categoryOfSpecialPurposeMark.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(SpecialPurposeGeneralBeacon);
@@ -7132,6 +8076,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7159,6 +8111,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7169,6 +8129,8 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class SpecialPurposeGeneralBuoy : GenericBuoy {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
+
+			public bool ShouldSerializecategoryOfSpecialPurposeMark() { return categoryOfSpecialPurposeMark.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(SpecialPurposeGeneralBuoy);
@@ -7189,6 +8151,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7198,6 +8168,8 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DangerousFeature : FeatureNode, IFeatureBindingDefinition {
 			public List<information> information {get;set;} = [];
+
+			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(DangerousFeature);
@@ -7226,6 +8198,14 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(AtonAssociation)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7265,6 +8245,14 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(AidsToNavigation)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7312,6 +8300,14 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(AidsToNavigation)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7326,18 +8322,30 @@ namespace S100Framework.DomainModel.S201 {
 
 			public decimal? orientationUncertainty {get;set;} = default;
 
+			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
+
 			public decimal? horizontalDistanceUncertainty {get;set;} = default;
+
+			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
 
 			[Required()]
 			public horizontalPositionUncertainty horizontalPositionUncertainty {get;set;}
 
 			public information? information {get;set;} = default;
 
+			public bool ShouldSerializeinformation() { return information!=default; }
+
 			public String? informationInNationalLanguage {get;set;} = default;
+
+			public bool ShouldSerializeinformationInNationalLanguage() { return !string.IsNullOrEmpty(informationInNationalLanguage); }
 
 			public textualDescription? textualDescription {get;set;} = default;
 
+			public bool ShouldSerializetextualDescription() { return textualDescription!=default; }
+
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
+
+			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
 			[JsonIgnore]
 			public override string Code => nameof(QualityOfNonBathymetricData);
@@ -7358,6 +8366,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7391,6 +8407,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7421,6 +8445,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7452,6 +8484,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7483,6 +8523,14 @@ namespace S100Framework.DomainModel.S201 {
 
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7514,7 +8562,87 @@ namespace S100Framework.DomainModel.S201 {
 
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
+	}
+
+	[XmlType(Namespace = "http://www.iho.int/S201/2.0")]
+	public class Dataset : S100Framework.DomainModel.S100.DatasetBase
+	{
+		[XmlElement(Order = 1)]
+		public Members? members { get; set; } = default;
+	}
+
+	[XmlType(Namespace = "http://www.iho.int/S201/2.0", TypeName = "members")]
+	public class Members
+	{
+		[XmlElement("InformationTypes.AtoNFixingMethod", typeof(InformationTypes.AtoNFixingMethod), Order = 1, ElementName = "AtoNFixingMethod")]
+		[XmlElement("InformationTypes.AtonStatusInformation", typeof(InformationTypes.AtonStatusInformation), Order = 1, ElementName = "AtonStatusInformation")]
+		[XmlElement("InformationTypes.PositioningInformation", typeof(InformationTypes.PositioningInformation), Order = 1, ElementName = "PositioningInformation")]
+		[XmlElement("InformationTypes.SpatialQuality", typeof(InformationTypes.SpatialQuality), Order = 1, ElementName = "SpatialQuality")]
+		[XmlElement("FeatureTypes.Landmark", typeof(FeatureTypes.Landmark), Order = 1, ElementName = "Landmark")]
+		[XmlElement("FeatureTypes.LateralBeacon", typeof(FeatureTypes.LateralBeacon), Order = 1, ElementName = "LateralBeacon")]
+		[XmlElement("FeatureTypes.LateralBuoy", typeof(FeatureTypes.LateralBuoy), Order = 1, ElementName = "LateralBuoy")]
+		[XmlElement("FeatureTypes.NavigationLine", typeof(FeatureTypes.NavigationLine), Order = 1, ElementName = "NavigationLine")]
+		[XmlElement("FeatureTypes.RecommendedTrack", typeof(FeatureTypes.RecommendedTrack), Order = 1, ElementName = "RecommendedTrack")]
+		[XmlElement("FeatureTypes.LightSectored", typeof(FeatureTypes.LightSectored), Order = 1, ElementName = "LightSectored")]
+		[XmlElement("FeatureTypes.LightAllAround", typeof(FeatureTypes.LightAllAround), Order = 1, ElementName = "LightAllAround")]
+		[XmlElement("FeatureTypes.LightAirObstruction", typeof(FeatureTypes.LightAirObstruction), Order = 1, ElementName = "LightAirObstruction")]
+		[XmlElement("FeatureTypes.LightFogDetector", typeof(FeatureTypes.LightFogDetector), Order = 1, ElementName = "LightFogDetector")]
+		[XmlElement("FeatureTypes.RadarReflector", typeof(FeatureTypes.RadarReflector), Order = 1, ElementName = "RadarReflector")]
+		[XmlElement("FeatureTypes.FogSignal", typeof(FeatureTypes.FogSignal), Order = 1, ElementName = "FogSignal")]
+		[XmlElement("FeatureTypes.EnvironmentObservationEquipment", typeof(FeatureTypes.EnvironmentObservationEquipment), Order = 1, ElementName = "EnvironmentObservationEquipment")]
+		[XmlElement("FeatureTypes.RadioStation", typeof(FeatureTypes.RadioStation), Order = 1, ElementName = "RadioStation")]
+		[XmlElement("FeatureTypes.Daymark", typeof(FeatureTypes.Daymark), Order = 1, ElementName = "Daymark")]
+		[XmlElement("FeatureTypes.Retroreflector", typeof(FeatureTypes.Retroreflector), Order = 1, ElementName = "Retroreflector")]
+		[XmlElement("FeatureTypes.RadarTransponderBeacon", typeof(FeatureTypes.RadarTransponderBeacon), Order = 1, ElementName = "RadarTransponderBeacon")]
+		[XmlElement("FeatureTypes.VirtualAISAidToNavigation", typeof(FeatureTypes.VirtualAISAidToNavigation), Order = 1, ElementName = "VirtualAISAidToNavigation")]
+		[XmlElement("FeatureTypes.PhysicalAISAidToNavigation", typeof(FeatureTypes.PhysicalAISAidToNavigation), Order = 1, ElementName = "PhysicalAISAidToNavigation")]
+		[XmlElement("FeatureTypes.SyntheticAISAidToNavigation", typeof(FeatureTypes.SyntheticAISAidToNavigation), Order = 1, ElementName = "SyntheticAISAidToNavigation")]
+		[XmlElement("FeatureTypes.PowerSource", typeof(FeatureTypes.PowerSource), Order = 1, ElementName = "PowerSource")]
+		[XmlElement("FeatureTypes.IsolatedDangerBeacon", typeof(FeatureTypes.IsolatedDangerBeacon), Order = 1, ElementName = "IsolatedDangerBeacon")]
+		[XmlElement("FeatureTypes.CardinalBeacon", typeof(FeatureTypes.CardinalBeacon), Order = 1, ElementName = "CardinalBeacon")]
+		[XmlElement("FeatureTypes.IsolatedDangerBuoy", typeof(FeatureTypes.IsolatedDangerBuoy), Order = 1, ElementName = "IsolatedDangerBuoy")]
+		[XmlElement("FeatureTypes.CardinalBuoy", typeof(FeatureTypes.CardinalBuoy), Order = 1, ElementName = "CardinalBuoy")]
+		[XmlElement("FeatureTypes.InstallationBuoy", typeof(FeatureTypes.InstallationBuoy), Order = 1, ElementName = "InstallationBuoy")]
+		[XmlElement("FeatureTypes.MooringBuoy", typeof(FeatureTypes.MooringBuoy), Order = 1, ElementName = "MooringBuoy")]
+		[XmlElement("FeatureTypes.EmergencyWreckMarkingBuoy", typeof(FeatureTypes.EmergencyWreckMarkingBuoy), Order = 1, ElementName = "EmergencyWreckMarkingBuoy")]
+		[XmlElement("FeatureTypes.Lighthouse", typeof(FeatureTypes.Lighthouse), Order = 1, ElementName = "Lighthouse")]
+		[XmlElement("FeatureTypes.LightFloat", typeof(FeatureTypes.LightFloat), Order = 1, ElementName = "LightFloat")]
+		[XmlElement("FeatureTypes.LightVessel", typeof(FeatureTypes.LightVessel), Order = 1, ElementName = "LightVessel")]
+		[XmlElement("FeatureTypes.OffshorePlatform", typeof(FeatureTypes.OffshorePlatform), Order = 1, ElementName = "OffshorePlatform")]
+		[XmlElement("FeatureTypes.SiloTank", typeof(FeatureTypes.SiloTank), Order = 1, ElementName = "SiloTank")]
+		[XmlElement("FeatureTypes.Pile", typeof(FeatureTypes.Pile), Order = 1, ElementName = "Pile")]
+		[XmlElement("FeatureTypes.Building", typeof(FeatureTypes.Building), Order = 1, ElementName = "Building")]
+		[XmlElement("FeatureTypes.Bridge", typeof(FeatureTypes.Bridge), Order = 1, ElementName = "Bridge")]
+		[XmlElement("FeatureTypes.SinkerAnchor", typeof(FeatureTypes.SinkerAnchor), Order = 1, ElementName = "SinkerAnchor")]
+		[XmlElement("FeatureTypes.MooringShackle", typeof(FeatureTypes.MooringShackle), Order = 1, ElementName = "MooringShackle")]
+		[XmlElement("FeatureTypes.CableSubmarine", typeof(FeatureTypes.CableSubmarine), Order = 1, ElementName = "CableSubmarine")]
+		[XmlElement("FeatureTypes.Swivel", typeof(FeatureTypes.Swivel), Order = 1, ElementName = "Swivel")]
+		[XmlElement("FeatureTypes.Bridle", typeof(FeatureTypes.Bridle), Order = 1, ElementName = "Bridle")]
+		[XmlElement("FeatureTypes.CounterWeight", typeof(FeatureTypes.CounterWeight), Order = 1, ElementName = "CounterWeight")]
+		[XmlElement("FeatureTypes.Topmark", typeof(FeatureTypes.Topmark), Order = 1, ElementName = "Topmark")]
+		[XmlElement("FeatureTypes.SafeWaterBeacon", typeof(FeatureTypes.SafeWaterBeacon), Order = 1, ElementName = "SafeWaterBeacon")]
+		[XmlElement("FeatureTypes.SpecialPurposeGeneralBeacon", typeof(FeatureTypes.SpecialPurposeGeneralBeacon), Order = 1, ElementName = "SpecialPurposeGeneralBeacon")]
+		[XmlElement("FeatureTypes.SafeWaterBuoy", typeof(FeatureTypes.SafeWaterBuoy), Order = 1, ElementName = "SafeWaterBuoy")]
+		[XmlElement("FeatureTypes.SpecialPurposeGeneralBuoy", typeof(FeatureTypes.SpecialPurposeGeneralBuoy), Order = 1, ElementName = "SpecialPurposeGeneralBuoy")]
+		[XmlElement("FeatureTypes.DangerousFeature", typeof(FeatureTypes.DangerousFeature), Order = 1, ElementName = "DangerousFeature")]
+		[XmlElement("FeatureTypes.AtonAggregation", typeof(FeatureTypes.AtonAggregation), Order = 1, ElementName = "AtonAggregation")]
+		[XmlElement("FeatureTypes.AtonAssociation", typeof(FeatureTypes.AtonAssociation), Order = 1, ElementName = "AtonAssociation")]
+		[XmlElement("FeatureTypes.QualityOfNonBathymetricData", typeof(FeatureTypes.QualityOfNonBathymetricData), Order = 1, ElementName = "QualityOfNonBathymetricData")]
+		[XmlElement("FeatureTypes.DataCoverage", typeof(FeatureTypes.DataCoverage), Order = 1, ElementName = "DataCoverage")]
+		[XmlElement("FeatureTypes.LocalDirectionOfBuoyage", typeof(FeatureTypes.LocalDirectionOfBuoyage), Order = 1, ElementName = "LocalDirectionOfBuoyage")]
+		[XmlElement("FeatureTypes.NavigationalSystemOfMarks", typeof(FeatureTypes.NavigationalSystemOfMarks), Order = 1, ElementName = "NavigationalSystemOfMarks")]
+		[XmlElement("FeatureTypes.SoundingDatum", typeof(FeatureTypes.SoundingDatum), Order = 1, ElementName = "SoundingDatum")]
+		[XmlElement("FeatureTypes.VerticalDatumOfData", typeof(FeatureTypes.VerticalDatumOfData), Order = 1, ElementName = "VerticalDatumOfData")]
+		public List<object> elements { get; set; } = new List<object>();
 	}
 }
 

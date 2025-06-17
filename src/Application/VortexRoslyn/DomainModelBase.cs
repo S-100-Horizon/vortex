@@ -1,3 +1,5 @@
+using System.Xml.Serialization;
+
 namespace S100Framework.DomainModel
 {
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
@@ -70,6 +72,7 @@ namespace S100Framework.DomainModel
     [System.SerializableAttribute()]
     public abstract class Node
     {
+        [XmlIgnore]
         public virtual string Code { get; set; } = string.Empty;
     }
 

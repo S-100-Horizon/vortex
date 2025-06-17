@@ -3,6 +3,7 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 #nullable enable
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -1776,10 +1777,23 @@ namespace S100Framework.DomainModel.S124 {
 
 			public String? chartPlanNumber {get;set;} = default;
 
+			public bool ShouldSerializechartPlanNumber() { return !string.IsNullOrEmpty(chartPlanNumber); }
+
+			[XmlIgnore]
 			[Required()]
 			public DateOnly editionDate {get;set;}
 
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "editionDate")]
+			public DateTime editionDateField {
+				get { return editionDate.ToDateTime(TimeOnly.MinValue); }
+				set { editionDate = DateOnly.FromDateTime(value); }
+			}
+
+			[XmlIgnore]
 			public DateOnly? lastNoticeDate {get;set;} = default;
+
+			public bool ShouldSerializelastNoticeDate() { return lastNoticeDate.HasValue; }
 		}
 
 		[System.Serializable()]
@@ -1787,11 +1801,19 @@ namespace S100Framework.DomainModel.S124 {
 		public class fixedDateRange {
 			public String? dateEnd {get;set;} = default;
 
+			public bool ShouldSerializedateEnd() { return !string.IsNullOrEmpty(dateEnd); }
+
 			public String? dateStart {get;set;} = default;
+
+			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
 
 			public TimeOnly? timeOfDayEnd {get;set;} = default;
 
+			public bool ShouldSerializetimeOfDayEnd() { return timeOfDayEnd.HasValue; }
+
 			public TimeOnly? timeOfDayStart {get;set;} = default;
+
+			public bool ShouldSerializetimeOfDayStart() { return timeOfDayStart.HasValue; }
 		}
 
 		[System.Serializable()]
@@ -1817,9 +1839,13 @@ namespace S100Framework.DomainModel.S124 {
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
+
 			public String nameOfSeries {get;set;} = string.Empty;
 
 			public String? nationality {get;set;} = default;
+
+			public bool ShouldSerializenationality() { return !string.IsNullOrEmpty(nationality); }
 
 			[Required()]
 			public int warningNumber {get;set;}
@@ -1845,7 +1871,11 @@ namespace S100Framework.DomainModel.S124 {
 		public class warningInformation {
 			public List<information> information {get;set;} = [];
 
+			public bool ShouldSerializeinformation() { return information.Any(); }
+
 			public List<navwarnTypeDetails> navwarnTypeDetails {get;set;} = [];
+
+			public bool ShouldSerializenavwarnTypeDetails() { return navwarnTypeDetails.Any(); }
 		}
 
 		[System.Serializable()]
@@ -1853,7 +1883,11 @@ namespace S100Framework.DomainModel.S124 {
 		public class FeatureReference {
 			public List<String> atoNNumber {get;set;} = [];
 
+			public bool ShouldSerializeatoNNumber() { return atoNNumber.Any(); }
+
 			public List<String> interoperabilityIdentifier {get;set;} = [];
+
+			public bool ShouldSerializeinteroperabilityIdentifier() { return interoperabilityIdentifier.Any(); }
 		}
 
 		[System.Serializable()]
@@ -1865,6 +1899,8 @@ namespace S100Framework.DomainModel.S124 {
 
 			[EnumerationValue([1,2,3])]
 			public nameUsage? nameUsage {get;set;} = default;
+
+			public bool ShouldSerializenameUsage() { return nameUsage.HasValue; }
 		}
 
 		[System.Serializable()]
@@ -1872,13 +1908,21 @@ namespace S100Framework.DomainModel.S124 {
 		public class affectedChartPublications {
 			public chartAffected? chartAffected {get;set;} = default;
 
+			public bool ShouldSerializechartAffected() { return chartAffected!=default; }
+
 			public String? chartPublicationIdentifier {get;set;} = default;
 
+			public bool ShouldSerializechartPublicationIdentifier() { return !string.IsNullOrEmpty(chartPublicationIdentifier); }
+
 			public String? internationalChartAffected {get;set;} = default;
+
+			public bool ShouldSerializeinternationalChartAffected() { return !string.IsNullOrEmpty(internationalChartAffected); }
 
 			public String language {get;set;} = string.Empty;
 
 			public String? publicationAffected {get;set;} = default;
+
+			public bool ShouldSerializepublicationAffected() { return !string.IsNullOrEmpty(publicationAffected); }
 		}
 
 		[System.Serializable()]
@@ -1886,7 +1930,11 @@ namespace S100Framework.DomainModel.S124 {
 		public class generalArea {
 			public String? localityIdentifier {get;set;} = default;
 
+			public bool ShouldSerializelocalityIdentifier() { return !string.IsNullOrEmpty(localityIdentifier); }
+
 			public List<locationName> locationName {get;set;} = [];
+
+			public bool ShouldSerializelocationName() { return locationName.Any(); }
 		}
 
 		[System.Serializable()]
@@ -1894,7 +1942,11 @@ namespace S100Framework.DomainModel.S124 {
 		public class locality {
 			public String? localityIdentifier {get;set;} = default;
 
+			public bool ShouldSerializelocalityIdentifier() { return !string.IsNullOrEmpty(localityIdentifier); }
+
 			public List<locationName> locationName {get;set;} = [];
+
+			public bool ShouldSerializelocationName() { return locationName.Any(); }
 		}
 
 	}
@@ -1976,6 +2028,8 @@ namespace S100Framework.DomainModel.S124 {
 		public partial class References : InformationNode, IInformationBindingDefinition {
 			public List<messageSeriesIdentifier> messageSeriesIdentifier {get;set;} = [];
 
+			public bool ShouldSerializemessageSeriesIdentifier() { return messageSeriesIdentifier.Any(); }
+
 			[Required()]
 			public Boolean noMessageOnHand {get;set;} = false;
 
@@ -1998,6 +2052,10 @@ namespace S100Framework.DomainModel.S124 {
 					informationTypes = [nameof(NavwarnPreamble)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -2008,16 +2066,26 @@ namespace S100Framework.DomainModel.S124 {
 		public partial class NavwarnPreamble : InformationNode, IInformationBindingDefinition {
 			public List<affectedChartPublications> affectedChartPublications {get;set;} = [];
 
+			public bool ShouldSerializeaffectedChartPublications() { return affectedChartPublications.Any(); }
+
 			public List<generalArea> generalArea {get;set;} = [];
 
+			public bool ShouldSerializegeneralArea() { return generalArea.Any(); }
+
 			public List<locality> locality {get;set;} = [];
+
+			public bool ShouldSerializelocality() { return locality.Any(); }
 
 			[Required()]
 			public messageSeriesIdentifier messageSeriesIdentifier {get;set;}
 
 			public List<navwarnTitle> navwarnTitle {get;set;} = [];
 
+			public bool ShouldSerializenavwarnTitle() { return navwarnTitle.Any(); }
+
 			public DateTime? cancellationDate {get;set;} = default;
+
+			public bool ShouldSerializecancellationDate() { return cancellationDate.HasValue; }
 
 			[Required()]
 			public Boolean intService {get;set;} = false;
@@ -2044,11 +2112,16 @@ namespace S100Framework.DomainModel.S124 {
 					informationTypes = [nameof(References)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 	}
 	namespace FeatureTypes {
 		using FeatureAssociations;
 		using InformationTypes;
+		using System.Xml;
 
 		/// <summary>
 		/// Navigational warning information that may be geo-located.
@@ -2059,14 +2132,22 @@ namespace S100Framework.DomainModel.S124 {
 			[EnumerationValue([7,8,14,25,27])]
 			public restriction? restriction {get;set;} = default;
 
+			public bool ShouldSerializerestriction() { return restriction.HasValue; }
+
 			public List<fixedDateRange> fixedDateRange {get;set;} = [];
+
+			public bool ShouldSerializefixedDateRange() { return fixedDateRange.Any(); }
 
 			[Required()]
 			public warningInformation warningInformation {get;set;}
 
 			public List<FeatureName> FeatureName {get;set;} = [];
 
+			public bool ShouldSerializeFeatureName() { return FeatureName.Any(); }
+
 			public List<FeatureReference> FeatureReference {get;set;} = [];
+
+			public bool ShouldSerializeFeatureReference() { return FeatureReference.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(NavwarnPart);
@@ -2111,6 +2192,14 @@ namespace S100Framework.DomainModel.S124 {
 					featureTypes = [nameof(TextPlacement)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -2146,6 +2235,14 @@ namespace S100Framework.DomainModel.S124 {
 					featureTypes = [nameof(NavwarnPart)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -2155,6 +2252,8 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
 			public int? scaleMinimum {get;set;} = default;
+
+			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
 			public String text {get;set;} = string.Empty;
 
@@ -2194,7 +2293,33 @@ namespace S100Framework.DomainModel.S124 {
 					featureTypes = [nameof(NavwarnPart)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XmlElement[]? Geometry { get; set; } = default;
 		}
+	}
+
+	[XmlType(Namespace = "http://www.iho.int/S124/2.0")]
+	public class Dataset : S100Framework.DomainModel.S100.DatasetBase
+	{
+		[XmlElement(Order = 1)]
+		public Members? members { get; set; } = default;
+	}
+
+	[XmlType(Namespace = "http://www.iho.int/S124/2.0", TypeName = "members")]
+	public class Members
+	{
+		[XmlElement("InformationTypes.References", typeof(InformationTypes.References), Order = 1, ElementName = "References")]
+		[XmlElement("InformationTypes.NavwarnPreamble", typeof(InformationTypes.NavwarnPreamble), Order = 1, ElementName = "NavwarnPreamble")]
+		[XmlElement("FeatureTypes.NavwarnPart", typeof(FeatureTypes.NavwarnPart), Order = 1, ElementName = "NavwarnPart")]
+		[XmlElement("FeatureTypes.NavwarnAreaAffected", typeof(FeatureTypes.NavwarnAreaAffected), Order = 1, ElementName = "NavwarnAreaAffected")]
+		[XmlElement("FeatureTypes.TextPlacement", typeof(FeatureTypes.TextPlacement), Order = 1, ElementName = "TextPlacement")]
+		public List<object> elements { get; set; } = new List<object>();
 	}
 }
 
