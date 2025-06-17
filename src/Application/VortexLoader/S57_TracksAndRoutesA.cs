@@ -3,6 +3,7 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S501.ComplexAttributes;
 
 namespace S100Framework.Applications
 {
@@ -281,8 +282,21 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 30: { // RCTLPT_RecommendedTrafficLanePart
-                            var instance = new RecommendedTrafficLanePart() {
-                            };
+                            var instance = new RecommendedTrafficLanePart(); 
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            // TODO: maximumPermittedDraught
+
+                            if (current.ORIENT.HasValue) {
+                                instance.orientationValue = current.ORIENT.Value;
+                            }
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -292,37 +306,84 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-
-
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
 
+                            AddInformation(instance.information, feature);
+
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
                         }
-                        break;
+                            break;
                     case 40: { // RECTRC_RecommendedTrack
-                            var instance = new RecommendedTrack() {
-                            };
+                            var instance = new RecommendedTrack();
 
+                            if (current.CATTRK.HasValue) {
+                                if (current.CATTRK.Value == 1) {
+                                    instance.basedOnFixedMarks = true;
+                                }
+                                else if (current.CATTRK.Value == 2) {
+                                    instance.basedOnFixedMarks = false;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, longname, $"Cannot convert value {current.CATTRK.Value} to basedOnFixedMarks boolean. Only values 1 and 2 are supported.");
+                                }
+                            }
+
+                            if (current.DRVAL1.HasValue) {
+                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            // TODO: maximumPermittedDraught
+
+                            if (current.ORIENT.HasValue) {
+                                instance.orientationValue = current.ORIENT.Value;
+                            }
+
+
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
+                            }
+
+                            if (current.QUASOU != default) {
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                            }
 
                             if (current.TRAFIC.HasValue) {
                                 instance.trafficFlow = EnumHelper.GetEnumValue<trafficFlow>(current.TRAFIC.Value);
                             }
 
+
+                            if (current.SOUACC.HasValue) {
+                                instance.verticalUncertainty = new() {
+                                    uncertaintyFixed = current.SOUACC.Value
+                                };
+                            }
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -332,28 +393,25 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            
-
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedAreaEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
                         }
                         break;
                     case 45: { // SUBTLN_SubmarineTransitLane
@@ -463,8 +521,30 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 60: { // TSSLPT_TrafficSeparationSchemeLanePart
-                            var instance = new TrafficSeparationSchemeLanePart() {
-                            };
+                            var instance = new TrafficSeparationSchemeLanePart();
+
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.ORIENT.HasValue) {
+                                instance.orientationValue = current.ORIENT.Value;
+                            }
+
+                            if (current.RESTRN != default) {
+                                instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            // TODO: VesselSpeedLimit
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -474,13 +554,8 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-
-
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
                             AddInformation(instance.information, feature);
+
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
@@ -489,8 +564,10 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
+                            }
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
