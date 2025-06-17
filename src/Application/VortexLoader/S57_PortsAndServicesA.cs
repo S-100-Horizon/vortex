@@ -1,11 +1,12 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Desktop.Internal.Core.Utilities;
-using S100Framework.Applications.S57.esri;
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.Applications.Singletons;
 using ArcGIS.Core.Geometry;
 using ArcGIS.Core.Internal.Geometry;
+using ArcGIS.Desktop.Internal.Core.Utilities;
+using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.FeatureTypes;
+
 
 namespace S100Framework.Applications
 {
@@ -584,8 +585,17 @@ SetDrawingIndex(buffer, current.SHAPE);
                         }
                         break;
                     case 55: { // HRBFAC_HarbourFacility
-                            var instance = new HarbourFacility() {
-                            };
+                            var instance = new HarbourFacility();
+
+                            if (current.CATHAF != default) {
+                                instance.categoryOfHarbourFacility = EnumHelper.GetEnumValues<categoryOfHarbourFacility>(current.CATHAF);
+                            }
+
+                            if (current.COMCHA != default) {
+                                instance.communicationChannel = current.COMCHA.Split(',').ToList<string>();
+                            }
+
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -594,7 +604,6 @@ SetDrawingIndex(buffer, current.SHAPE);
 
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
-
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -610,7 +619,7 @@ SetDrawingIndex(buffer, current.SHAPE);
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
