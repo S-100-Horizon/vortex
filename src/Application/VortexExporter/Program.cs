@@ -144,6 +144,7 @@ namespace S100Framework.Applications
 
                     if (datasetName.Equals("101DK40751E")) continue;
                     if (datasetName.Equals("101DK40545E")) continue;
+                    if (datasetName.Equals("101DK5KOEBH")) continue;
                     
 
                     Log.Information("{dataset}", datasetName);

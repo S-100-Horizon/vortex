@@ -480,6 +480,8 @@ namespace S100Framework.YAML
             for (int i = 0; i < polygons.Length; i++) {
                 if (matrixPolygons[i].ExterioRing.IsEmpty) continue;
 
+                //if (!matrixPolygons[i].Name.Equals("S1788749")) continue;
+
                 NetTopologySuite.Geometries.Geometry boundary1 = matrixPolygons[i].ExterioRing;
 
                 for (var j = i + 1; j < polygons.Length; j++) {
@@ -497,6 +499,10 @@ namespace S100Framework.YAML
                             continue;
 
                         var sharedEdgesGeometry = boundary1.Intersection(boundary2);
+                        if (sharedEdgesGeometry is GeometryCollection geometryCollection) {
+                            var lineStrings = geometryCollection.OfType<LineString>();
+                            sharedEdgesGeometry = geometryCollection.Factory.CreateMultiLineString(lineStrings.ToArray());
+                        }
 
                         if (sharedEdgesGeometry == null || sharedEdgesGeometry.IsEmpty) continue;
 
@@ -532,6 +538,10 @@ namespace S100Framework.YAML
                                 continue;
 
                             var sharedEdgesGeometry = boundary1.Intersection(boundary2);
+                            if(sharedEdgesGeometry is GeometryCollection geometryCollection) {
+                                var lineStrings = geometryCollection.OfType<LineString>();
+                                sharedEdgesGeometry = geometryCollection.Factory.CreateMultiLineString(lineStrings.ToArray());
+                            }
 
                             if (sharedEdgesGeometry == null || sharedEdgesGeometry.IsEmpty) continue;
 
@@ -540,7 +550,7 @@ namespace S100Framework.YAML
                             lineMerger.Add(sharedEdgesGeometry);
 
                             var sharedEdgesLineString = lineMerger.GetMergedLineStrings().Select(e => (LineString)e).ToList();
-
+                            
                             boundary1 = boundary1.SymmetricDifference(sharedEdgesGeometry);
                             matrixPolygons[i].LineStringsExterior.AddRange(sharedEdgesLineString);
 
@@ -780,6 +790,8 @@ namespace S100Framework.YAML
 
                             text = reverse.ToText().Substring("LINESTRING (".Length).TrimEnd(')');
 
+                            var index = lineStringText.IndexOf(text);
+                            if (index < 0) System.Diagnostics.Debugger.Break();
                             sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
                         }
                     }
@@ -803,13 +815,15 @@ namespace S100Framework.YAML
                 return featureRef;
             };
 
+            //options = new ParallelOptions { MaxDegreeOfParallelism = 1 };
+
             Parallel.ForEach(matrixPolygons, options, (m) => {
                 if (m.LineStringsExterior.Count == 0)
                     return;
 
                 var origin = polygons.Single(e => e.name == m.Name);
 
-                //if (origin.name.Equals("S1287791")) System.Diagnostics.Debugger.Break();
+                if (origin.name.Equals("S1287791")) System.Diagnostics.Debugger.Break();
 
                 FeatureRef exteriorId = action(m.LineStringsExterior, LinearRingOrientation.Clockwise);
 
