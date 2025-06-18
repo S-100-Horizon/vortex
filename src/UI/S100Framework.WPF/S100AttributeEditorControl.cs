@@ -464,15 +464,16 @@ namespace S100Framework.WPF
                 return (SelectedInformationTypeObjectViewModel)GetValue(SelectedInformationObjectProperty);
             }
             set {
-                SelectedInformationObject = default;
-                SelectedAssociationObject = default;
+                //SelectedInformationObject = default;
+                //SelectedAssociationObject = default;
 
-                if (SelectedFeatureObject != null) {
-                    this.SelectedFeatureObject.FeatureObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
+                //if (SelectedFeatureObject != null) {
+                //    this.SelectedFeatureObject.FeatureObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
+                //}
+                if (SelectedInformationObject != null) {
+                    this.SelectedInformationObject.InformationObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
                 }
-                //if (SelectedInformationObject != null) {
-                //    this.SelectedInformationObject.InformationObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
-                //}                
+                SetValue(SelectedAssociationObjectProperty, default);
                 SetValue(SelectedInformationObjectProperty, value);
             }
         }
@@ -534,16 +535,16 @@ namespace S100Framework.WPF
                 return (SelectedFeatureTypeObjectViewModel)GetValue(SelectedFeatureObjectProperty);
             }
             set {
-                SelectedFeatureObject = default;
-                SelectedAssociationObject = default;
+                //SelectedFeatureObject = default;
+                //SelectedAssociationObject = default;
 
-                //if (SelectedFeatureObject != null) {
-                //    this.SelectedFeatureObject.FeatureObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
-                //}
-                if (SelectedInformationObject != null) {
-                    this.SelectedInformationObject.InformationObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
+                if (SelectedFeatureObject != null) {
+                    this.SelectedFeatureObject.FeatureObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
                 }
-
+                //if (SelectedInformationObject != null) {
+                //    this.SelectedInformationObject.InformationObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
+                //}
+                SetValue(SelectedAssociationObjectProperty, default);
                 SetValue(SelectedFeatureObjectProperty, value);
             }
         }
