@@ -2810,7 +2810,6 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(PermissionType);
 		}
 
-		[SpatialAssocation]
 		/// <summary>
 		/// Association for linking spatial quality to spatial objects.
 		/// </summary>

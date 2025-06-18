@@ -1,4 +1,5 @@
 ﻿using Pluralize.NET.Core;
+using S100Framework.DomainModel;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
@@ -12,9 +13,11 @@ namespace S100Framework.Applications
     {
         private static Pluralizer pluralizer = new();
 
-        private static ICollection<string> spatialAssociationTypes = new List<string>() { "SpatialAssociation" };
+        //private static ICollection<string> spatialAssociationTypes = new List<string>() { "SpatialAssociation" };
 
-        public static (string DomainModel, string ViewModel) Build(XDocument productSpecification) {
+        private static ICollection<Primitives> spatialAssociationPrimitives = [Primitives.curve, Primitives.pointSet, Primitives.point];
+
+        public static (string DomainModel, string ViewModel) Build(XDocument productSpecification, bool supportingSpatialAssociation = false) {
             var navigator = productSpecification.CreateNavigator();
             navigator.MoveToFollowing(XPathNodeType.Element);
             var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
@@ -439,8 +442,8 @@ namespace S100Framework.Applications
                         builderDomainModel.AppendLine();
                     isFirst = false;
 
-                    if (spatialAssociationTypes.Contains(code))
-                        builderDomainModel.AppendLine("\t\t[SpatialAssocation]");
+                    //if (spatialAssociationTypes.Contains(code))
+                    //    builderDomainModel.AppendLine("\t\t[SpatialAssocation]");
 
                     var s = BuildClass(e, new BuildClassClient {
                         ProductSpecification = productSpecification,
@@ -450,6 +453,7 @@ namespace S100Framework.Applications
                         InformationAssociationsLookup = informationAssociationsLookup,
                         FeatureAssociationsLookup = featureAssociationsLookup,
                         ShouldSerialize = shouldSerialize,
+                        SupportingSpatialAssociation = supportingSpatialAssociation,
                     });
 
                     builderDomainModel.AppendLine(s);
@@ -477,7 +481,8 @@ namespace S100Framework.Applications
 
                     roles = roles.Where(r => productSpecification.XPathSelectElements($"//S100FC:featureBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).Any());
 
-                    if (!spatialAssociationTypes.Contains(code)) {
+                    //if (!spatialAssociationTypes.Contains(code))
+                    {
                         if (!isFirst)
                             builderDomainModel.AppendLine();
                         isFirst = false;
@@ -490,6 +495,7 @@ namespace S100Framework.Applications
                             InformationAssociationsLookup = informationAssociationsLookup,
                             FeatureAssociationsLookup = featureAssociationsLookup,
                             ShouldSerialize = shouldSerialize,
+                            SupportingSpatialAssociation = supportingSpatialAssociation,
                         });
 
                         builderDomainModel.AppendLine(s);
@@ -565,6 +571,7 @@ namespace S100Framework.Applications
                             InformationAssociationsLookup = informationAssociationsLookup,
                             FeatureAssociationsLookup = featureAssociationsLookup,
                             ShouldSerialize = shouldSerialize,
+                            SupportingSpatialAssociation = supportingSpatialAssociation,
                         }, (builder) => {
                             builder.AppendLine();
                             builder.AppendLine("\t\t\t[JsonIgnore]");
@@ -637,6 +644,7 @@ namespace S100Framework.Applications
                             InformationAssociationsLookup = informationAssociationsLookup,
                             FeatureAssociationsLookup = featureAssociationsLookup,
                             ShouldSerialize = shouldSerialize,
+                            SupportingSpatialAssociation = supportingSpatialAssociation,
                         }, (builder) => {
                             builder.AppendLine();
                             builder.AppendLine("\t\t\t[JsonIgnore]");
@@ -999,6 +1007,8 @@ namespace S100Framework.Applications
             public required IDictionary<string, ICollection<string>> FeatureAssociationsLookup { get; init; }
 
             public required IDictionary<string, Func<string, string>> ShouldSerialize { get; init; }
+
+            public required bool SupportingSpatialAssociation { get; init; }
         }
 
         private static string BuildClass(XElement e, BuildClassClient client, Action<StringBuilder>? postBuilder = default) {
@@ -1152,6 +1162,30 @@ namespace S100Framework.Applications
                         client.InformationAssociationsLookup[key].Add(informationType.Attribute("ref")!.Value);
                     }
                 }
+
+                //SPATIALASSOCIATION
+                if (client.SupportingSpatialAssociation && new string[] { "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
+                    var primitives = e.XPathSelectElements("S100FC:permittedPrimitives", xmlNamespaceManager);
+                    if (primitives.Any(e => spatialAssociationPrimitives.Contains(Enum.Parse<Primitives>(e.Value!)))) {
+                        informationBindings.AppendLine("\t\t\t\tnew informationBindingDefinition {");
+                        informationBindings.AppendLine($"\t\t\t\t\troleType = roleType.association,");
+                        informationBindings.AppendLine($"\t\t\t\t\tlower = 0,");
+                        informationBindings.AppendLine($"\t\t\t\t\tupper =  1,");
+                        informationBindings.AppendLine($"\t\t\t\t\tassociation = nameof(SpatialAssociation),");
+                        informationBindings.AppendLine($"\t\t\t\t\trole = Enum.GetName<Role>(Role.theQualityInformation)!,");
+                        informationBindings.AppendLine($"\t\t\t\t\tinformationTypes = [{string.Join(',', "nameof(SpatialQuality)")}],");
+                        informationBindings.AppendLine("\t\t\t\t},");
+
+                        //var key = $"\"SpatialAssociation\", \"theQualityInformation\"";
+                        //if (!client.InformationAssociationsLookup.ContainsKey(key))
+                        //    client.InformationAssociationsLookup.Add(key, new List<string>());
+                        //foreach (var informationType in informationBinding.Elements(XName.Get("informationType", scope_S100))) {
+                        //    client.InformationAssociationsLookup[key].Add(informationType.Attribute("ref")!.Value);
+                        //}
+                    }
+                }
+
+
                 informationBindings.AppendLine("\t\t\t];");
                 builder.AppendLine(informationBindings.ToString().TrimEnd(Environment.NewLine.ToArray()));
             }

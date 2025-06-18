@@ -125,7 +125,7 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.Applications.Roslyn.Build(s100);
+                var content = S100Framework.Applications.Roslyn.Build(s100, true);
 
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 

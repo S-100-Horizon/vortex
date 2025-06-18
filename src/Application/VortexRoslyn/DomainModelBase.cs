@@ -165,5 +165,5 @@ namespace S100Framework.DomainModel
         pointSet,
         curve,
         surface,
-    }
+    }    
 }
