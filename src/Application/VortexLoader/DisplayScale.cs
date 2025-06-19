@@ -38,6 +38,21 @@ namespace S100Framework.Applications
             MinimumDisplayScale = minimumDisplayScale;
         }
 
+        public static DisplayScale? GetDisplayScale(string series) {
+            DisplayScale scale = series.ToLower() switch {
+                "dk4" => new DisplayScale(11000, 22000, 90000),
+                "dk5" => new DisplayScale(6000, 12000, 22000),
+                _ => throw new Exception("unknown series")
+
+            };
+            return scale;
+        }
+
+        /// <summary>
+        /// Deprecated
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public static DisplayScale? GetNearestBelowKey(int key) {
             // Find all keys less than or equal to the provided key
             var nearestKey = DisplayScales.Keys

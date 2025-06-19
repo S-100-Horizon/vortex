@@ -67,6 +67,8 @@ namespace S100Framework.Applications
 
                 if (!string.IsNullOrEmpty(o.Query)) {
                     filter.WhereClause = o.Query!.Trim();
+                } else {
+                    filter.WhereClause = "";
                 }
 
                 if (!string.IsNullOrEmpty(o.NotesPath)) {
@@ -110,6 +112,7 @@ namespace S100Framework.Applications
             _converterRegistry.Register<AidsToNavigationP, FogSignal>(Converters.CreateFogSignal);
             _converterRegistry.Register<AidsToNavigationP, RadarStation>(Converters.CreateRadarStation);
             _converterRegistry.Register<CulturalFeaturesP, WindTurbine>(Converters.CreateWindturbine);
+            _converterRegistry.Register<PortsAndServicesP, SignalStationTraffic>(Converters.CreateSignalStationTraffic);
 
             using (Geodatabase source = createGeodatabase()) {
                 Store(() => {
@@ -127,26 +130,39 @@ namespace S100Framework.Applications
                     using var informationAssociation = destination.OpenDataset<Table>(destination.GetName("InformationAssociation"));
                     using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationType"));
 
+                    Logger.Current.Information($"Deleting data from destination: {point.GetName()}");
                     point.DeleteRows(query);
+                    Logger.Current.Information($"Deleting data from destination: {pointset.GetName()}");
                     pointset.DeleteRows(query);
+                    Logger.Current.Information($"Deleting data from destination: {curve.GetName()}");
                     curve.DeleteRows(query);
+                    Logger.Current.Information($"Deleting data from destination: {surface.GetName()}");
                     surface.DeleteRows(query);
+                    Logger.Current.Information($"Deleting data from destination: {associationBinding.GetName()}");
                     associationBinding.DeleteRows(query);
+                    Logger.Current.Information($"Deleting data from destination: {attributeBinding.GetName()}");
                     attributeBinding.DeleteRows(query);
+                    Logger.Current.Information($"Deleting data from destination: {featureAssociation.GetName()}");
                     featureAssociation.DeleteRows(query);
+                    Logger.Current.Information($"Deleting data from destination: {informationAssociation.GetName()}");
                     informationAssociation.DeleteRows(query);
+                    Logger.Current.Information($"Deleting data from destination: {informationtype.GetName()}");
                     informationtype.DeleteRows(query);
                 });
 
+                Logger.Current.Information($"Loading subtypes codes to subtype name");
                 Subtypes.Initialize(source);
 
+                Logger.Current.Information($"Loading featurerelations");
                 FeatureRelations.Initialize(source, destination);
 
+                Logger.Current.Information($"Initializing SpatialRelationResolver");
                 SpatialRelationResolver.Initialize(source);
 
                 relatedEquipment = new RelatedEquipment(source,destination);
 
                 if (skinOfEarthOnly) {
+                    Logger.Current.Information($"Converting skin of earth only Filter: {filter.WhereClause}");
                     // All "SKIN OF EARTH" cases / subtypes are marked with a "skin of earth" comment
                     var whereClause = filter.WhereClause.Clone();
                     filter.WhereClause = $"{whereClause} and fcsubtype in (1,5,15)";
@@ -167,6 +183,7 @@ namespace S100Framework.Applications
                     filter.WhereClause = $"{whereClause} and globalid = '{{CA71EEFC-AF9F-4DB0-A55E-FD9D394FF58D}}'";
                     filter.WhereClause = $"{whereClause}";
                     */
+                    Logger.Current.Information($"Converting all tables: {filter.WhereClause}");
 
                     Store(() => S57_SeabedA(source, destination, filter));
                     Store(() => S57_SeabedL(source, destination, filter));
@@ -248,22 +265,27 @@ namespace S100Framework.Applications
                 buffer["shape"] = shape;
             }
         }
-        internal static void SetDrawingIndex(RowBuffer buffer, Geometry? shape) {
-            if (shape == null) {
-                throw new ArgumentException("Null geometry not supported");
-            }
-
-            _ = shape.GeometryType switch {
-                GeometryType.Unknown => throw new NotSupportedException("Geometry type: unknown "),
-                GeometryType.Point => null,
-                GeometryType.Envelope => throw new NotSupportedException("Geometry type: envelope"),
-                GeometryType.Multipoint => null,
-                GeometryType.Polyline => buffer["drawingindex"] = 4,
-                GeometryType.Polygon => buffer["drawingindex"] = 4,
-                GeometryType.Multipatch => throw new NotSupportedException("Geometry type: multipatch"),
-                GeometryType.GeometryBag => throw new NotSupportedException("Geometry type: geometrybag"),
-                _ => throw new NotSupportedException($"Unhandled geometry type {shape.GeometryType}")
+        internal static void SetDrawingIndex(RowBuffer buffer, int comp_scale) {
+            _ = comp_scale switch {
+                <22000 => buffer["drawingIndex"] = 4,
+                <90000 => buffer["drawingIndex"] = 5,
+                <180000 => buffer["drawingIndex"] = 3,
+                <700000 => buffer["drawingIndex"] = 2,
+                _ => buffer["drawingIndex"] = 1
             };
+
+
+            //_ = shape.GeometryType switch {
+            //    GeometryType.Unknown => throw new NotSupportedException("Geometry type: unknown "),
+            //    GeometryType.Point => null,
+            //    GeometryType.Envelope => throw new NotSupportedException("Geometry type: envelope"),
+            //    GeometryType.Multipoint => null,
+            //    GeometryType.Polyline => buffer["drawingindex"] = 4,
+            //    GeometryType.Polygon => buffer["drawingindex"] = 4,
+            //    GeometryType.Multipatch => throw new NotSupportedException("Geometry type: multipatch"),
+            //    GeometryType.GeometryBag => throw new NotSupportedException("Geometry type: geometrybag"),
+            //    _ => throw new NotSupportedException($"Unhandled geometry type {shape.GeometryType}")
+            //};
         }
 
         /// <summary>

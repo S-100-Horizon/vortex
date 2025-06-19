@@ -20,7 +20,6 @@ namespace S100Framework.Applications
             });
 
             int recordCount = 0;
-            
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
@@ -43,6 +42,13 @@ namespace S100Framework.Applications
                 var edtn = current.EDTN ?? default;
                 var updn = current.UPDN ?? default;
                 var isdt = current.ISDT ?? default;
+                var serie = current.SERIES ?? default;
+
+                if (serie == default) {
+                    serie = dsnm.Substring(0, 3);
+                }
+
+
 
                 var instance = new S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct {
                     catalogueElementClassification = new List<S100Framework.DomainModel.S128.catalogueElementClassification> {
@@ -66,8 +72,9 @@ namespace S100Framework.Applications
                     var productCoverage = new ProductCoverage((Feature)cursorCoverage.Current);
                     var catcov = productCoverage.CATCOV ?? default;
                     var plts_comp_scale = productCoverage.PLTS_COMP_SCALE ?? default;
-
-                    var displayScale = DisplayScale.GetNearestBelowKey(plts_comp_scale) ?? default;
+                    
+                    //var displayScale = DisplayScale.GetNearestBelowKey(plts_comp_scale) ?? default;
+                    var displayScale = DisplayScale.GetDisplayScale(serie) ?? default;
 
 
                     switch (catcov) {
@@ -76,6 +83,8 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer, productCoverage.SHAPE);
+                                ImporterNIS.SetDrawingIndex(buffer, productCoverage.PLTS_COMP_SCALE.Value);
+
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
                                 // TODO: Create relations
@@ -102,6 +111,8 @@ namespace S100Framework.Applications
                                 buffer["code"] = vdat.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(vdat);
                                 SetShape(buffer, productCoverage.SHAPE);
+                                ImporterNIS.SetDrawingIndex(buffer, productCoverage.PLTS_COMP_SCALE.Value);
+
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -113,6 +124,8 @@ namespace S100Framework.Applications
                                 buffer["code"] = dataCoverage.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage);
                                 SetShape(buffer, productCoverage.SHAPE);
+                                ImporterNIS.SetDrawingIndex(buffer, productCoverage.PLTS_COMP_SCALE.Value);
+
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 

@@ -39,7 +39,9 @@ namespace VortexLoader
             if (_converters.TryGetValue((fromType, toType), out var converter)) {
                 return converter(value, geodatabase);
             }
-
+            
+            //return null;
+            // TODO: 'No converter registered from PortsAndServicesP to SignalStationTraffic'
             throw new InvalidOperationException($"No converter registered from {fromType.Name} to {toType.Name}");
         }
     }

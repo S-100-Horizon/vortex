@@ -41,7 +41,9 @@ namespace S100Framework.Applications
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
 
-                var displayScale = DisplayScale.GetNearestBelowKey(plts_comp_scale) ?? default;
+                //var displayScale = GetDisplayScale(serie); // DisplayScale.GetNearestBelowKey(plts_comp_scale) ?? default;
+
+                
 
                 if (current.PUBREF != default) {
                     //if (System.Diagnostics.Debugger.IsAttached)
@@ -109,31 +111,29 @@ namespace S100Framework.Applications
                         break;
 
                     case 20: { // M_CSCL_CompilationScaleOfData
+                            //var instance = new DataCoverage();
 
+                            //if (displayScale != null) {
+                            //    instance.maximumDisplayScale = displayScale.MaximumDisplayScale;
+                            //    instance.minimumDisplayScale = displayScale.MinimumDisplayScale.GetValueOrDefault();
+                            //    instance.optimumDisplayScale = displayScale.OptimumDisplayScale;
+                            //}
 
-                            var instance = new DataCoverage();
+                            //AddInformation(instance.information, feature);
+                            //buffer["ps"] = ps101;
+                            //buffer["code"] = instance.GetType().Name;
+                            //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            //SetShape(buffer,current.SHAPE);
+                            //var featureN = featureClass.CreateRow(buffer);
+                            //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            if (displayScale != null) {
-                                instance.maximumDisplayScale = displayScale.MaximumDisplayScale;
-                                instance.minimumDisplayScale = displayScale.MinimumDisplayScale.GetValueOrDefault();
-                                instance.optimumDisplayScale = displayScale.OptimumDisplayScale;
-                            }
+                            //if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                            //    relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
+                            //}
 
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            //ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
-                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN);
-                            }
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
-
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            //Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             
                         }
                         break;
@@ -181,7 +181,8 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -210,7 +211,8 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -286,6 +288,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
@@ -308,7 +311,8 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -333,7 +337,9 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                                                        var featureN = featureClass.CreateRow(buffer);
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
@@ -358,7 +364,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";

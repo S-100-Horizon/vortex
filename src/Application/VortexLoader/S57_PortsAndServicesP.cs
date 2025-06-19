@@ -69,7 +69,8 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -108,7 +109,8 @@ SetDrawingIndex(buffer, current.SHAPE);
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -147,7 +149,8 @@ SetDrawingIndex(buffer, current.SHAPE);
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -201,7 +204,8 @@ SetDrawingIndex(buffer, current.SHAPE);
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -236,7 +240,8 @@ SetDrawingIndex(buffer, current.SHAPE);
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -279,7 +284,8 @@ SetDrawingIndex(buffer, current.SHAPE);
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -317,7 +323,8 @@ SetDrawingIndex(buffer, current.SHAPE);
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -362,7 +369,8 @@ SetDrawingIndex(buffer, current.SHAPE);
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -462,7 +470,8 @@ SetDrawingIndex(buffer, current.SHAPE);
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -574,7 +583,8 @@ SetDrawingIndex(buffer, current.SHAPE);
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                                SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -647,7 +657,8 @@ SetDrawingIndex(buffer, current.SHAPE);
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                                SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -761,7 +772,8 @@ SetDrawingIndex(buffer, current.SHAPE);
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                                SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -850,7 +862,8 @@ SetDrawingIndex(buffer, current.SHAPE);
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                                SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -945,7 +958,8 @@ SetDrawingIndex(buffer, current.SHAPE);
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                                SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -983,7 +997,8 @@ SetDrawingIndex(buffer, current.SHAPE);
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -1031,7 +1046,8 @@ SetDrawingIndex(buffer, current.SHAPE);
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -1071,7 +1087,8 @@ SetDrawingIndex(buffer, current.SHAPE);
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -1086,64 +1103,38 @@ SetDrawingIndex(buffer, current.SHAPE);
                         }
                         break;
                     case 65: { // SISTAT_SignalStationTraffic // SLAVE RIND: 2  
-                            var instance = new SignalStationTraffic();
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
+                            var instance = _converterRegistry.Convert<SignalStationTraffic>(current);
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
 
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
-
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-
                         }
                         break;
                     case 70: { // SISTAW_SignalStationWarning // SLAVE RIND: 2
-                            var instance = new SignalStationWarning();
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
+                            var instance = _converterRegistry.Convert<SignalStationWarning>(current);
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
-                            }
-
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
 
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -1180,7 +1171,8 @@ SetDrawingIndex(buffer, current.SHAPE);
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
