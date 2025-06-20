@@ -108,7 +108,7 @@ namespace S100Framework.Applications
                     using var surface = source.OpenDataset<FeatureClass>(definitionFeatures.Single(e => e.GetAliasName().Equals("surface")).GetName());
 
                     using var cursor = surface.Search(new QueryFilter {
-                        WhereClause = $"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"{dsnm.ToUpperInvariant()}\"%'",
+                        WhereClause = $"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"{dsnm!.ToUpperInvariant()}\"%'",
                     }, true);
 
                     while (cursor.MoveNext()) {
@@ -121,6 +121,10 @@ namespace S100Framework.Applications
 
                         var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
 
+                        var whereClause = "upper(ps) = 'S-101'";
+                        if (!current.IsNull("drawingindex"))
+                            whereClause += $" AND drawingindex = {Convert.ToInt32(current["drawingindex"])}";
+
                         datasets.Add((new Dataset {
                             CellName = $"101{electricProduct!.datasetName!}.000",
                             Comment = "Not for navigation!",
@@ -131,7 +135,7 @@ namespace S100Framework.Applications
                             FilterGeometry = shape,
                             SpatialRelationship = SpatialRelationship.Relation,
                             SpatialRelationshipDescription = "T*****FF*",
-                            WhereClause = "upper(ps) = 'S-101'",
+                            WhereClause = whereClause,
                         }));                        
                     }
                 }
@@ -144,7 +148,6 @@ namespace S100Framework.Applications
 
                     if (datasetName.Equals("101DK40751E")) continue;
                     if (datasetName.Equals("101DK40545E")) continue;
-                    if (datasetName.Equals("101DK5KOEBH")) continue;
                     
 
                     Log.Information("{dataset}", datasetName);
