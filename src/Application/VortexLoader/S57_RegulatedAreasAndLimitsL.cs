@@ -166,21 +166,19 @@ namespace S100Framework.Applications
                     case 30: { // STSLNE_StraightTerritorialSeaBaseline
                             var instance = new StraightTerritorialSeaBaseline();
 
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.NATION != default) {
+                                instance.nationality = current.NATION ;
+                            }
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
-
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            if (current.NATION != default) 
-                            { 
-                                instance.nationality = current.NATION;
-                            }
-
-                            //instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
