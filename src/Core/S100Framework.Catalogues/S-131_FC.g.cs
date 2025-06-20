@@ -2968,6 +2968,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.providesInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -3008,6 +3009,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(InclusionType),
 					role = Enum.GetName<Role>(Role.isApplicableTo)!,
 					informationTypes = [nameof(Applicability)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -3016,6 +3018,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(RelatedOrganisation),
 					role = Enum.GetName<Role>(Role.theOrganisation)!,
 					informationTypes = [nameof(Authority)],
+					primitives = [],
 				},
 			];
 
@@ -3088,6 +3091,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(InclusionType),
 					role = Enum.GetName<Role>(Role.theApplicableRxN)!,
 					informationTypes = [nameof(AbstractRxN)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -3096,6 +3100,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(PermissionType),
 					role = Enum.GetName<Role>(Role.vslLocation)!,
 					informationTypes = [nameof(InformationType)],
+					primitives = [],
 				},
 			];
 
@@ -3131,6 +3136,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(AuthorityContact),
 					role = Enum.GetName<Role>(Role.theContactDetails)!,
 					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -3139,6 +3145,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(RelatedOrganisation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(AbstractRxN)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -3147,6 +3154,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(AuthorityHours),
 					role = Enum.GetName<Role>(Role.theServiceHours)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -3305,6 +3313,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(AuthorityContact),
 					role = Enum.GetName<Role>(Role.theAuthority)!,
 					informationTypes = [nameof(Authority)],
+					primitives = [],
 				},
 			];
 
@@ -3391,6 +3400,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.informationProvidedFor)!,
 					informationTypes = [nameof(InformationType)],
+					primitives = [],
 				},
 			];
 
@@ -3514,6 +3524,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(ExceptionalWorkday),
 					role = Enum.GetName<Role>(Role.partialWorkingDay)!,
 					informationTypes = [nameof(NonStandardWorkingDay)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -3522,6 +3533,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(AuthorityHours),
 					role = Enum.GetName<Role>(Role.theAuthority_srvHrs)!,
 					informationTypes = [nameof(Authority)],
+					primitives = [],
 				},
 			];
 
@@ -3627,6 +3639,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(PermissionType),
 					role = Enum.GetName<Role>(Role.permission)!,
 					informationTypes = [nameof(Applicability)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -3635,6 +3648,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(AssociatedRxN),
 					role = Enum.GetName<Role>(Role.theRxN)!,
 					informationTypes = [nameof(AbstractRxN)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -3643,6 +3657,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.providesInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -3690,6 +3705,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(ServiceContact),
 					role = Enum.GetName<Role>(Role.theContactDetails)!,
 					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
 				},
 			];
 
@@ -3729,6 +3745,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(ServiceControl),
 					role = Enum.GetName<Role>(Role.controlAuthority)!,
 					informationTypes = [nameof(Authority)],
+					primitives = [],
 				},
 			];
 
@@ -3842,6 +3859,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(ServiceAvailability),
 					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
 					informationTypes = [nameof(AvailablePortServices)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -3850,6 +3868,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(LocationHours),
 					role = Enum.GetName<Role>(Role.location_srvHrs)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -3918,6 +3937,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(LocationHours),
 					role = Enum.GetName<Role>(Role.location_srvHrs)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -4037,6 +4057,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(ServiceAvailability),
 					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
 					informationTypes = [nameof(AvailablePortServices)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -4045,6 +4066,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(LocationHours),
 					role = Enum.GetName<Role>(Role.location_srvHrs)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -4208,6 +4230,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(ServiceAvailability),
 					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
 					informationTypes = [nameof(AvailablePortServices)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -4216,6 +4239,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(LocationHours),
 					role = Enum.GetName<Role>(Role.location_srvHrs)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -4271,6 +4295,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(LocationHours),
 					role = Enum.GetName<Role>(Role.location_srvHrs)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -4331,6 +4356,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(LocationHours),
 					role = Enum.GetName<Role>(Role.location_srvHrs)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -4386,6 +4412,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(LocationHours),
 					role = Enum.GetName<Role>(Role.location_srvHrs)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -4433,6 +4460,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(LocationHours),
 					role = Enum.GetName<Role>(Role.location_srvHrs)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -4502,6 +4530,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(ServiceAvailability),
 					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
 					informationTypes = [nameof(AvailablePortServices)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -4510,6 +4539,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(LocationHours),
 					role = Enum.GetName<Role>(Role.location_srvHrs)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -4588,6 +4618,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(ServiceAvailability),
 					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
 					informationTypes = [nameof(AvailablePortServices)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -4596,6 +4627,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(LocationHours),
 					role = Enum.GetName<Role>(Role.location_srvHrs)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -4696,6 +4728,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(LocationHours),
 					role = Enum.GetName<Role>(Role.location_srvHrs)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -4752,6 +4785,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(LocationHours),
 					role = Enum.GetName<Role>(Role.location_srvHrs)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -4813,6 +4847,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(ServiceAvailability),
 					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
 					informationTypes = [nameof(AvailablePortServices)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -4821,6 +4856,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(LocationHours),
 					role = Enum.GetName<Role>(Role.location_srvHrs)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -4896,6 +4932,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(LimitEntrance),
 					role = Enum.GetName<Role>(Role.entranceReference)!,
 					informationTypes = [nameof(Entrance)],
+					primitives = [],
 				},
 			];
 
@@ -4964,6 +5001,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(LocationHours),
 					role = Enum.GetName<Role>(Role.location_srvHrs)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -5032,6 +5070,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(LocationHours),
 					role = Enum.GetName<Role>(Role.location_srvHrs)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -5114,6 +5153,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(ServiceAvailability),
 					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
 					informationTypes = [nameof(AvailablePortServices)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -5122,6 +5162,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(LocationHours),
 					role = Enum.GetName<Role>(Role.location_srvHrs)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -5206,6 +5247,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(LocationHours),
 					role = Enum.GetName<Role>(Role.location_srvHrs)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -5273,6 +5315,7 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(LocationHours),
 					role = Enum.GetName<Role>(Role.location_srvHrs)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 

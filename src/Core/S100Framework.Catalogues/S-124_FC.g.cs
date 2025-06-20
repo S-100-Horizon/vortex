@@ -2050,6 +2050,7 @@ namespace S100Framework.DomainModel.S124 {
 					association = nameof(navwarnReferences),
 					role = Enum.GetName<Role>(Role.theWarning)!,
 					informationTypes = [nameof(NavwarnPreamble)],
+					primitives = [],
 				},
 			];
 
@@ -2110,6 +2111,7 @@ namespace S100Framework.DomainModel.S124 {
 					association = nameof(navwarnReferences),
 					role = Enum.GetName<Role>(Role.theReferences)!,
 					informationTypes = [nameof(References)],
+					primitives = [],
 				},
 			];
 
@@ -2162,6 +2164,7 @@ namespace S100Framework.DomainModel.S124 {
 					association = nameof(navwarnPreambleContent),
 					role = Enum.GetName<Role>(Role.header)!,
 					informationTypes = [nameof(NavwarnPreamble)],
+					primitives = [],
 				},
 			];
 

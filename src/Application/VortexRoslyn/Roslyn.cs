@@ -1153,6 +1153,7 @@ namespace S100Framework.Applications
                     informationBindings.AppendLine($"\t\t\t\t\tassociation = nameof({association}),");
                     informationBindings.AppendLine($"\t\t\t\t\trole = Enum.GetName<Role>(Role.{role})!,");
                     informationBindings.AppendLine($"\t\t\t\t\tinformationTypes = [{string.Join(',', informationBinding.Elements(XName.Get("informationType", scope_S100)).Select(e => $"nameof({e.Attribute("ref")!.Value})"))}],");
+                    informationBindings.AppendLine($"\t\t\t\t\tprimitives = [],");
                     informationBindings.AppendLine("\t\t\t\t},");
 
                     var key = $"\"{association}\", \"{role}\"";
@@ -1167,6 +1168,7 @@ namespace S100Framework.Applications
                 if (client.SupportingSpatialAssociation && new string[] { "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
                     var primitives = e.XPathSelectElements("S100FC:permittedPrimitives", xmlNamespaceManager);
                     if (primitives.Any(e => spatialAssociationPrimitives.Contains(Enum.Parse<Primitives>(e.Value!)))) {
+                        var p = primitives.Where(e => spatialAssociationPrimitives.Contains(Enum.Parse<Primitives>(e.Value!))).Select(e=> $"Primitives.{Enum.Parse<Primitives>(e.Value!)}");
                         informationBindings.AppendLine("\t\t\t\tnew informationBindingDefinition {");
                         informationBindings.AppendLine($"\t\t\t\t\troleType = roleType.association,");
                         informationBindings.AppendLine($"\t\t\t\t\tlower = 0,");
@@ -1174,6 +1176,7 @@ namespace S100Framework.Applications
                         informationBindings.AppendLine($"\t\t\t\t\tassociation = nameof(SpatialAssociation),");
                         informationBindings.AppendLine($"\t\t\t\t\trole = Enum.GetName<Role>(Role.theQualityInformation)!,");
                         informationBindings.AppendLine($"\t\t\t\t\tinformationTypes = [{string.Join(',', "nameof(SpatialQuality)")}],");
+                        informationBindings.AppendLine($"\t\t\t\t\tprimitives = [{string.Join(',',p)}],");
                         informationBindings.AppendLine("\t\t\t\t},");
 
                         //var key = $"\"SpatialAssociation\", \"theQualityInformation\"";
