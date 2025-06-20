@@ -185,14 +185,13 @@ namespace S100Framework.Applications
                     */
                     Logger.Current.Information($"Converting all tables: {filter.WhereClause}");
 
-                    Store(() => S57_SeabedA(source, destination, filter));
-                    Store(() => S57_SeabedL(source, destination, filter));
-                    Store(() => S57_SeabedP(source, destination, filter));
-
                     Store(() => S57_TidesAndVariationsA(source, destination, filter));
                     Store(() => S57_TidesAndVariationsL(source, destination, filter));
                     Store(() => S57_TidesAndVariationsP(source, destination, filter));
 
+                    Store(() => S57_SeabedA(source, destination, filter));
+                    Store(() => S57_SeabedL(source, destination, filter));
+                    Store(() => S57_SeabedP(source, destination, filter));
 
                     Store(() => S57_CulturalFeaturesL(source, destination, filter));
                     Store(() => S57_CulturalFeaturesA(source, destination, filter));
@@ -253,6 +252,13 @@ namespace S100Framework.Applications
 
         }
 
+        internal static string GetNation(string nation) {
+            return nation switch {
+                "DK" => "DAN",
+                _ => throw new NotSupportedException($"Nation {nation} cannot be converted")
+            };
+        }
+
         internal static void SetShape(RowBuffer buffer, Geometry? shape) {
             if (shape == null) {
                 throw new ArgumentException("Null geometry not supported");
@@ -267,8 +273,8 @@ namespace S100Framework.Applications
         }
         internal static void SetDrawingIndex(RowBuffer buffer, int comp_scale) {
             _ = comp_scale switch {
-                <22000 => buffer["drawingIndex"] = 4,
-                <90000 => buffer["drawingIndex"] = 5,
+                <22000 => buffer["drawingIndex"] = 5,
+                <90000 => buffer["drawingIndex"] = 4,
                 <180000 => buffer["drawingIndex"] = 3,
                 <700000 => buffer["drawingIndex"] = 2,
                 _ => buffer["drawingIndex"] = 1
@@ -312,7 +318,7 @@ namespace S100Framework.Applications
                     parenthesisParts.Add(m.Value);
                 }
             }
-            var signalPeriodN = current.SIGPER;
+            var signalPeriodN = current.SIGPER == -32767 ? null : current.SIGPER;
 
             var sigseq = current.SIGSEQ;
 

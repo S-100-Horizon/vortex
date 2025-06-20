@@ -50,7 +50,7 @@ namespace S100Framework.Applications
                 instance.signalGroup = current.SIGGRP;
             }
             if (current.SIGPER != default) {
-                instance.signalPeriod = current.SIGPER;
+                instance.signalPeriod = current.SIGPER == -32767 ? null : current.SIGPER;
             }
 
             if (current.SIGSEQ != default) {

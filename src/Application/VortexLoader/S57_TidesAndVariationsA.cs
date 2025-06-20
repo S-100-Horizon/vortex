@@ -52,6 +52,29 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
+                            /*  27.152 reference year for magnetic variation (RYRMGV)
+                                IHO Definition: REFERENCE YEAR FOR MAGNETIC VARIATION. The reference calendar year for magnetic
+                                variation values. (S-57 Edition 3.1, Appendix A – Chapter 2, Page 2.176, November 2000).
+                                Attribute Type: Truncated date
+                                Unit: Four digit year indication (YYYY)
+                                Format: YYYY----
+                                Example: 2009----
+                                
+                                Remarks:
+                                The dashes (----) must be included in all cases.
+                            */
+                            if (current.RYRMGV != default) {
+                                instance.referenceYearForMagneticVariation = current.RYRMGV.PadRight(8,'-');
+                            }
+
+                            if (current.VALACM.HasValue) {
+                                instance.valueOfAnnualChangeInMagneticVariation = current.VALACM.Value;
+                            }
+
+                            if (current.VALMAG.HasValue) {
+                                instance.valueOfMagneticVariation = current.VALMAG.Value;
+                            }
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
@@ -69,7 +92,7 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN);
+                                relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
                             }
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));

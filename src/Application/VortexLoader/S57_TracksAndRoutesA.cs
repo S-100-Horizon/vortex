@@ -599,25 +599,35 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 65: { // TSSRON_TrafficSeparationSchemeRoundabout
-                            var instance = new TrafficSeparationSchemeRoundabout() {
-                            };
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
+                            var instance = new TrafficSeparationSchemeRoundabout();
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
+                            // TODO: interoperabilityIdentifier
 
+                            if (current.RESTRN != default) {
+                                instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
+                            }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
+
+                            // TODO: vesselspeedlimit
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
@@ -626,8 +636,10 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relations
-                            
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
+                            }
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));

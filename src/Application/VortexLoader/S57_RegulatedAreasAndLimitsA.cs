@@ -191,7 +191,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATION != default) {
-                                instance.nationality = new() { current.NATION };
+                                instance.nationality = new() { GetNation(current.NATION) };
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -274,7 +274,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATION != default) {
-                                instance.nationality = new() { current.NATION };
+                                instance.nationality = new() { GetNation(current.NATION) };
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -495,7 +495,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATION != default) {
-                                instance.nationality = new() { current.NATION };
+                                instance.nationality = new() { GetNation(current.NATION) };
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -614,7 +614,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATION != default) {
-                                instance.nationality = current.NATION;
+                                instance.nationality = GetNation(current.NATION);
                             }
 
                             if (current.STATUS != default) {
@@ -946,7 +946,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATION != default) {
-                                instance.nationality = new() { current.NATION };
+                                instance.nationality = new() { GetNation(current.NATION) };
                             }
 
 

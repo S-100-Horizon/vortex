@@ -197,8 +197,43 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 35: { // M_NSYS_NavigationalSystemOfMarks // Navigational System of Marks - region A and B globally
-                            var instance = new NavigationalSystemOfMarks();
+                            if (current.ORIENT.HasValue) {
+                                var localDirectionOfBuoyage = new LocalDirectionOfBuoyage();
 
+                                // TODO: interoperabilityIdentifier
+
+                                if (current.MARSYS.HasValue) {
+                                    localDirectionOfBuoyage.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID ?? default, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown LNAM", $"Missing MARSYS value for M_NSYS where globalid = '{{{current.GLOBALID}}}'");
+                                }
+                                localDirectionOfBuoyage.orientationValue = current.ORIENT.Value;
+
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                    string subtype = "";
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                    localDirectionOfBuoyage.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                }
+                                AddInformation(localDirectionOfBuoyage.information, feature);
+                                buffer["ps"] = ps101;
+                                buffer["code"] = localDirectionOfBuoyage.GetType().Name;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(localDirectionOfBuoyage, jsonSerializerOptions);
+                                SetShape(buffer, current.SHAPE);
+                                ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
+                                var featurelocalDirectionOfBuoyage = featureClass.CreateRow(buffer);
+                                var namelocalDirectionOfBuoyage = Convert.ToString(featurelocalDirectionOfBuoyage["name"]) ?? "Unknown name";
+
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment.CreateRelatedPointEquipment(current, localDirectionOfBuoyage, featurelocalDirectionOfBuoyage);
+                                }
+
+                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(localDirectionOfBuoyage));
+                            }
+
+                            var instance = new NavigationalSystemOfMarks();
                             if (current.MARSYS.HasValue) {
                                 instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
