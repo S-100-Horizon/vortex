@@ -6721,6 +6721,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(SpatialAssociation),
 					role = Enum.GetName<Role>(Role.theQualityInformation)!,
 					informationTypes = [nameof(SpatialQuality)],
+                    primitives = [Primitives.curve, Primitives.pointSet, Primitives.point]
 				},
 			];
 

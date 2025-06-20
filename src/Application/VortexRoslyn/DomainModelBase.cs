@@ -126,6 +126,8 @@ namespace S100Framework.DomainModel
         public string role { get; set; } = string.Empty;
         public string[] informationTypes { get; set; } = [];
 
+        public Primitives[] primitives { get; set; } = [];
+
         public override string ToString() => $"{association}, {role}";
     }
 

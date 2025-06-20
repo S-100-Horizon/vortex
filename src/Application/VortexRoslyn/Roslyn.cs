@@ -1260,6 +1260,7 @@ namespace S100Framework.Applications
             builder.AppendLine("\t\t}");
 
             return builder.ToString().TrimEnd([.. Environment.NewLine]);
+            //return Regex.Replace(builder.ToString().TrimEnd([.. Environment.NewLine]), @"\r(?!\n)", "\r\n");            
         }
 
         struct BuildViewModelClassClient
