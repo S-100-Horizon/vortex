@@ -136,6 +136,9 @@ namespace S100Framework.WPF.ViewModel
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
 
         [Browsable(false)]
+        public abstract informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive);
+
+        [Browsable(false)]
         public abstract featureBindingDefinition[] featureBindingDefinitions { get; }
 
         public ObservableCollection<InformationBindingViewModel> InformationBindings = [];

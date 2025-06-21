@@ -136,33 +136,41 @@ namespace S100Framework.WPF
 
     public class SelectedInformationTypeObjectViewModel : SelectedObjectViewModel
     {
-        public SelectedInformationTypeObjectViewModel(InformationViewModel informationObject, IInformationBindingDefinition informationBinding) {
+        public SelectedInformationTypeObjectViewModel(InformationViewModel informationObject/*, IInformationBindingDefinition informationBinding*/) {
             this.InformationObject = informationObject;
-            this.InformationBinding = informationBinding;
+            this.informationBindingDefinitions = informationObject.informationBindingDefinitions;
 
-            this.InformationObject.PropertyChanged += base.OnPropertyChanged;
+            this.InformationObject.PropertyChanged += base.OnPropertyChanged;            
         }
 
-        public InformationViewModel InformationObject { get; private set; }
+        public informationBindingDefinition[] informationBindingDefinitions { get; private set; }
 
-        public IInformationBindingDefinition InformationBinding { get; private set; }
+        public InformationViewModel InformationObject { get; private set; }        
     }
 
     public class SelectedFeatureTypeObjectViewModel : SelectedObjectViewModel
     {
-        public SelectedFeatureTypeObjectViewModel(FeatureViewModel featureObject, IFeatureBindingDefinition featureBinding) {
+        public SelectedFeatureTypeObjectViewModel(FeatureViewModel featureObject) {
             this.FeatureObject = featureObject;
-            this.FeatureBinding = featureBinding;
+            this.informationBindingDefinitions = featureObject.informationBindingDefinitions;
+            this.featureBindingDefinitions = featureObject.featureBindingDefinitions;
 
             this.FeatureObject.PropertyChanged += base.OnPropertyChanged;
-            //this.InformationBindings.CollectionChanged += this.OnInformationBindings_CollectionChanged;
-            //this.FeatureBindings.CollectionChanged += this.OnFeatureBindings_CollectionChanged;            
+        }
+
+        public SelectedFeatureTypeObjectViewModel(FeatureViewModel featureObject, Primitives primitive) {
+            this.FeatureObject = featureObject;
+            this.informationBindingDefinitions = featureObject.informationBindingDefinitionsByPrimitive(primitive);
+            this.featureBindingDefinitions = featureObject.featureBindingDefinitions;
+
+            this.FeatureObject.PropertyChanged += base.OnPropertyChanged;
         }
 
         public FeatureViewModel FeatureObject { get; private set; }
 
-        public IFeatureBindingDefinition FeatureBinding { get; private set; }
+        public informationBindingDefinition[] informationBindingDefinitions { get; private set; }
 
+        public featureBindingDefinition[] featureBindingDefinitions { get; private set; }
     }
 
     public class SelectedAssociationObjectViewModel : SelectedObjectViewModel
@@ -507,9 +515,9 @@ namespace S100Framework.WPF
                 informationStackPanel = Visibility.Visible;
 
                 if (control.InformationBindingDefinitionsCheckComboBox != null) {
-                    control.InformationBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedInformationObject.InformationBinding.informationBindingDefinitions;
+                    control.InformationBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedInformationObject.informationBindingDefinitions;
 
-                    if (!control.SelectedInformationObject.InformationBinding.informationBindingDefinitions.Any()) {
+                    if (!control.SelectedInformationObject.informationBindingDefinitions.Any()) {
                         informationStackPanel = Visibility.Collapsed;
                     }
                 }
@@ -579,9 +587,9 @@ namespace S100Framework.WPF
                 informationStackPanel = Visibility.Visible;
 
                 if (control.InformationBindingDefinitionsCheckComboBox != null) {
-                    control.InformationBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedFeatureObject.FeatureBinding.informationBindingDefinitions;
+                    control.InformationBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedFeatureObject.informationBindingDefinitions;
 
-                    if (!control.SelectedFeatureObject.FeatureBinding.informationBindingDefinitions.Any()) {
+                    if (!control.SelectedFeatureObject.informationBindingDefinitions.Any()) {
                         informationStackPanel = Visibility.Collapsed;
                     }
                 }
@@ -597,9 +605,9 @@ namespace S100Framework.WPF
                 featureStackPanel = Visibility.Visible;
 
                 if (control.FeatureBindingDefinitionsCheckComboBox != null) {
-                    control.FeatureBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedFeatureObject.FeatureBinding.featureBindingDefinitions;
+                    control.FeatureBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedFeatureObject.featureBindingDefinitions;
 
-                    if (!control.SelectedFeatureObject.FeatureBinding.featureBindingDefinitions.Any()) {
+                    if (!control.SelectedFeatureObject.featureBindingDefinitions.Any()) {
                         featureStackPanel = Visibility.Collapsed;
                     }
                 }

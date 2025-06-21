@@ -2953,6 +2953,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			productSpecification = this._productSpecification?.Model,
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => ElectronicProduct._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. ElectronicProduct._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => ElectronicProduct._featureBindingDefinitions;
 
@@ -3497,6 +3498,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			referenceToNM = this._referenceToNM?.Model,
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => PhysicalProduct._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. PhysicalProduct._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => PhysicalProduct._featureBindingDefinitions;
 
@@ -3821,6 +3823,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			productSpecification = this._productSpecification?.Model,
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => S100Service._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. S100Service._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => S100Service._featureBindingDefinitions;
 

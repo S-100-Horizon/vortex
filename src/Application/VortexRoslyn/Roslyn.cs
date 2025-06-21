@@ -917,7 +917,7 @@ namespace S100Framework.Applications
                         LoadPrefix = $"override InformationViewModel<{code}>",
                         Editors = client.Editors,
                     }, (b) => {
-                        b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
+                        b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");                        
                     });
 
                     builderViewModel.AppendLine(s);
@@ -956,6 +956,7 @@ namespace S100Framework.Applications
                         Editors = client.Editors,
                     }, (b) => {
                         b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
+                        b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. {code}._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];");
                         b.AppendLine();
                         b.AppendLine($"\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => {code}._featureBindingDefinitions;");
                     });
@@ -1168,7 +1169,7 @@ namespace S100Framework.Applications
                 if (client.SupportingSpatialAssociation && new string[] { "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
                     var primitives = e.XPathSelectElements("S100FC:permittedPrimitives", xmlNamespaceManager);
                     if (primitives.Any(e => spatialAssociationPrimitives.Contains(Enum.Parse<Primitives>(e.Value!)))) {
-                        var p = primitives.Where(e => spatialAssociationPrimitives.Contains(Enum.Parse<Primitives>(e.Value!))).Select(e=> $"Primitives.{Enum.Parse<Primitives>(e.Value!)}");
+                        var p = primitives.Where(e => spatialAssociationPrimitives.Contains(Enum.Parse<Primitives>(e.Value!))).Select(e => $"Primitives.{Enum.Parse<Primitives>(e.Value!)}");
                         informationBindings.AppendLine("\t\t\t\tnew informationBindingDefinition {");
                         informationBindings.AppendLine($"\t\t\t\t\troleType = roleType.association,");
                         informationBindings.AppendLine($"\t\t\t\t\tlower = 0,");
@@ -1176,7 +1177,7 @@ namespace S100Framework.Applications
                         informationBindings.AppendLine($"\t\t\t\t\tassociation = nameof(SpatialAssociation),");
                         informationBindings.AppendLine($"\t\t\t\t\trole = Enum.GetName<Role>(Role.theQualityInformation)!,");
                         informationBindings.AppendLine($"\t\t\t\t\tinformationTypes = [{string.Join(',', "nameof(SpatialQuality)")}],");
-                        informationBindings.AppendLine($"\t\t\t\t\tprimitives = [{string.Join(',',p)}],");
+                        informationBindings.AppendLine($"\t\t\t\t\tprimitives = [{string.Join(',', p)}],");
                         informationBindings.AppendLine("\t\t\t\t},");
 
                         //var key = $"\"SpatialAssociation\", \"theQualityInformation\"";

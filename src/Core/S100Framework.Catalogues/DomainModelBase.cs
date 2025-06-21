@@ -62,7 +62,7 @@ namespace S100Framework.DomainModel
 
     public interface IFeatureBindingDefinition
     {
-        informationBindingDefinition[] informationBindingDefinitions { get; }
+        informationBindingDefinition[] informationBindingDefinitions { get; }        
 
         featureBindingDefinition[] featureBindingDefinitions { get; }
 
