@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36203.30
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "S100Framework", "S100Framework", "{EDF7B539-CB0B-432B-8B37-65E1A2B61F9B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0789D6FF-5C2B-425D-A17F-9F5159C43FE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S100Framework.ArcGIS.Core", "src\Core\S100Framework.ArcGIS.Core\S100Framework.ArcGIS.Core.csproj", "{000BA5F1-AB0A-A38E-B79D-C3F28627EE8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S100Framework.Catalogues", "src\Core\S100Framework.Catalogues\S100Framework.Catalogues.csproj", "{55976168-1A24-B3C3-CB45-3B719FEE332C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S100Framework.GML", "src\Core\S100Framework.GML\S100Framework.GML.csproj", "{2D7D4455-D93B-0F91-9601-31CE2E6774BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VortexAPI", "src\Application\VortexAPI\VortexAPI.csproj", "{E9052354-DF50-492A-9CA3-0374DFA217D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{000BA5F1-AB0A-A38E-B79D-C3F28627EE8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{000BA5F1-AB0A-A38E-B79D-C3F28627EE8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{000BA5F1-AB0A-A38E-B79D-C3F28627EE8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{000BA5F1-AB0A-A38E-B79D-C3F28627EE8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55976168-1A24-B3C3-CB45-3B719FEE332C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55976168-1A24-B3C3-CB45-3B719FEE332C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55976168-1A24-B3C3-CB45-3B719FEE332C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55976168-1A24-B3C3-CB45-3B719FEE332C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D7D4455-D93B-0F91-9601-31CE2E6774BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D7D4455-D93B-0F91-9601-31CE2E6774BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D7D4455-D93B-0F91-9601-31CE2E6774BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D7D4455-D93B-0F91-9601-31CE2E6774BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9052354-DF50-492A-9CA3-0374DFA217D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9052354-DF50-492A-9CA3-0374DFA217D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9052354-DF50-492A-9CA3-0374DFA217D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9052354-DF50-492A-9CA3-0374DFA217D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{000BA5F1-AB0A-A38E-B79D-C3F28627EE8F} = {EDF7B539-CB0B-432B-8B37-65E1A2B61F9B}
+		{55976168-1A24-B3C3-CB45-3B719FEE332C} = {EDF7B539-CB0B-432B-8B37-65E1A2B61F9B}
+		{2D7D4455-D93B-0F91-9601-31CE2E6774BA} = {EDF7B539-CB0B-432B-8B37-65E1A2B61F9B}
+		{E9052354-DF50-492A-9CA3-0374DFA217D4} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {31B3FD5C-2823-4242-87DC-6DD2C49671E1}
+	EndGlobalSection
+EndGlobal
