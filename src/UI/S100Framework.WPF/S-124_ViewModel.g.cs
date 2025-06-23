@@ -1295,6 +1295,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			FeatureReference = this.FeatureReference.Select(e => e.Model).ToList(),
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => NavwarnPart._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. NavwarnPart._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => NavwarnPart._featureBindingDefinitions;
 
@@ -1338,6 +1339,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => NavwarnAreaAffected._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. NavwarnAreaAffected._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => NavwarnAreaAffected._featureBindingDefinitions;
 
@@ -1437,6 +1439,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			textRotation = this._textRotation,
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. TextPlacement._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 

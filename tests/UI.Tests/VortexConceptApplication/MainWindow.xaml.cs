@@ -176,7 +176,7 @@ namespace VortexConceptApplication
 
             SelectedProperty = viewModel;
 
-            var selectedFeature = new SelectedFeatureTypeObjectViewModel(viewModel, model);
+            var selectedFeature = new SelectedFeatureTypeObjectViewModel(viewModel);
 
 
             selectedFeature!.PropertyChanged += (object? sender, PropertyChangedEventArgs e) => {

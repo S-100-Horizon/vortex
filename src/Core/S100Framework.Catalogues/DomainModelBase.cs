@@ -62,7 +62,7 @@ namespace S100Framework.DomainModel
 
     public interface IFeatureBindingDefinition
     {
-        informationBindingDefinition[] informationBindingDefinitions { get; }
+        informationBindingDefinition[] informationBindingDefinitions { get; }        
 
         featureBindingDefinition[] featureBindingDefinitions { get; }
 
@@ -126,7 +126,9 @@ namespace S100Framework.DomainModel
         public string role { get; set; } = string.Empty;
         public string[] informationTypes { get; set; } = [];
 
-        public override string ToString() => $"{association}, {role}";
+        public Primitives[] primitives { get; set; } = [];
+
+        public override string ToString() => $"{association}, {role}";        
     }
 
     public class featureBinding

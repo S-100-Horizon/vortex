@@ -127,6 +127,11 @@ namespace S100Framework.WPF.ViewModel
         }
     }
 
+    public abstract class InformationViewModel<TInformationType> : InformationViewModel where TInformationType : InformationNode
+    {
+        public abstract InformationViewModel<TInformationType> Load(TInformationType instance);
+    }
+
     public abstract class FeatureViewModel : ViewModelBase, ISerializable
     {
         [Browsable(false)]
@@ -134,6 +139,8 @@ namespace S100Framework.WPF.ViewModel
 
         [Browsable(false)]
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
+        [Browsable(false)]
+        public abstract informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive);
 
         [Browsable(false)]
         public abstract featureBindingDefinition[] featureBindingDefinitions { get; }
@@ -182,11 +189,6 @@ namespace S100Framework.WPF.ViewModel
         protected void OnFeatureBindings_CollectionItemChanged(object? sender, PropertyChangedEventArgs e) {
             base.OnPropertyChanged(nameof(FeatureBindings));
         }
-    }
-
-    public abstract class InformationViewModel<TInformationType> : InformationViewModel where TInformationType : InformationNode
-    {
-        public abstract InformationViewModel<TInformationType> Load(TInformationType instance);
     }
 
     public abstract class FeatureViewModel<TFeatureType> : FeatureViewModel where TFeatureType : FeatureNode

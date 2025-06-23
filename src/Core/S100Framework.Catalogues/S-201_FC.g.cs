@@ -5041,6 +5041,7 @@ namespace S100Framework.DomainModel.S201 {
 					association = nameof(Atonstatus),
 					role = Enum.GetName<Role>(Role.Statuspart)!,
 					informationTypes = [nameof(AtonStatusInformation)],
+					primitives = [],
 				},
 			];
 
@@ -5112,6 +5113,7 @@ namespace S100Framework.DomainModel.S201 {
 					association = nameof(AtonPositioningInformationAssociation),
 					role = Enum.GetName<Role>(Role.positioningMethod)!,
 					informationTypes = [nameof(PositioningInformation)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -5120,6 +5122,7 @@ namespace S100Framework.DomainModel.S201 {
 					association = nameof(AtonFixingMethodAssociation),
 					role = Enum.GetName<Role>(Role.fixingMethod)!,
 					informationTypes = [nameof(AtoNFixingMethod)],
+					primitives = [],
 				},
 			];
 

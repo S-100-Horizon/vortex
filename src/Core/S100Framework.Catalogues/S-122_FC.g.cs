@@ -2170,6 +2170,7 @@ namespace S100Framework.DomainModel.S122 {
 					association = nameof(RelatedOrganisation),
 					role = Enum.GetName<Role>(Role.theOrganisation)!,
 					informationTypes = [nameof(Authority)],
+					primitives = [],
 				},
 			];
 
@@ -2197,6 +2198,7 @@ namespace S100Framework.DomainModel.S122 {
 					association = nameof(RelatedOrganisation),
 					role = Enum.GetName<Role>(Role.theOrganisation)!,
 					informationTypes = [nameof(Authority)],
+					primitives = [],
 				},
 			];
 
@@ -2289,6 +2291,7 @@ namespace S100Framework.DomainModel.S122 {
 					association = nameof(RelatedOrganisation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(AbstractRxN)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -2297,6 +2300,7 @@ namespace S100Framework.DomainModel.S122 {
 					association = nameof(AuthorityContact),
 					role = Enum.GetName<Role>(Role.theContactDetails)!,
 					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -2305,6 +2309,7 @@ namespace S100Framework.DomainModel.S122 {
 					association = nameof(AuthorityHours),
 					role = Enum.GetName<Role>(Role.theServiceHours)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -2381,6 +2386,7 @@ namespace S100Framework.DomainModel.S122 {
 					association = nameof(AuthorityContact),
 					role = Enum.GetName<Role>(Role.theAuthority)!,
 					informationTypes = [nameof(Authority)],
+					primitives = [],
 				},
 			];
 
@@ -2420,6 +2426,7 @@ namespace S100Framework.DomainModel.S122 {
 					association = nameof(ExceptionalWorkday),
 					role = Enum.GetName<Role>(Role.theServiceHours_nsdy)!,
 					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -2454,6 +2461,7 @@ namespace S100Framework.DomainModel.S122 {
 					association = nameof(AuthorityHours),
 					role = Enum.GetName<Role>(Role.theAuthority_srvHrs)!,
 					informationTypes = [nameof(Authority)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -2462,6 +2470,7 @@ namespace S100Framework.DomainModel.S122 {
 					association = nameof(ExceptionalWorkday),
 					role = Enum.GetName<Role>(Role.partialWorkingDay)!,
 					informationTypes = [nameof(NonStandardWorkingDay)],
+					primitives = [],
 				},
 			];
 
@@ -2588,6 +2597,7 @@ namespace S100Framework.DomainModel.S122 {
 					association = nameof(AssociatedRxN),
 					role = Enum.GetName<Role>(Role.theRxN)!,
 					informationTypes = [nameof(AbstractRxN)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -2596,6 +2606,7 @@ namespace S100Framework.DomainModel.S122 {
 					association = nameof(additionalInformation),
 					role = Enum.GetName<Role>(Role.providesInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -2712,6 +2723,7 @@ namespace S100Framework.DomainModel.S122 {
 					association = nameof(ProtectedAreaAuthority),
 					role = Enum.GetName<Role>(Role.responsibleAuthority)!,
 					informationTypes = [nameof(Authority)],
+					primitives = [],
 				},
 			];
 
@@ -2759,6 +2771,7 @@ namespace S100Framework.DomainModel.S122 {
 					association = nameof(ServiceControl),
 					role = Enum.GetName<Role>(Role.controlAuthority)!,
 					informationTypes = [nameof(Authority)],
+					primitives = [],
 				},
 			];
 

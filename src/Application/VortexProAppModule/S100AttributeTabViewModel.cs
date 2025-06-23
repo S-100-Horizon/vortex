@@ -587,10 +587,18 @@ namespace VortexProAppModule
                                 informationViewModel.InformationBindings.Add(new InformationBindingViewModel().Load(e));
                         }
 
-                        this.SelectedInformationProperty = new SelectedInformationTypeObjectViewModel(informationViewModel, (IInformationBindingDefinition)instance);
+                        this.SelectedInformationProperty = new SelectedInformationTypeObjectViewModel(informationViewModel);//, (IInformationBindingDefinition)instance);
                         selectedObjectViewModel = this.SelectedInformationProperty;
                     }
                     if (instance is IFeatureBindingDefinition) {
+                        var primitive = inspector.Shape.GeometryType switch {
+                            ArcGIS.Core.Geometry.GeometryType.Point => Primitives.point,
+                            ArcGIS.Core.Geometry.GeometryType.Multipoint => Primitives.pointSet,
+                            ArcGIS.Core.Geometry.GeometryType.Polyline => Primitives.curve,
+                            ArcGIS.Core.Geometry.GeometryType.Polygon => Primitives.surface,
+                            _ => throw new InvalidOperationException()
+                        };
+
                         var featureViewModel = (FeatureViewModel)viewmodel;
 
                         //  informationBinding
@@ -607,7 +615,7 @@ namespace VortexProAppModule
                                 featureViewModel.FeatureBindings.Add(new FeatureBindingViewModel().Load(e));
                         }
 
-                        this.SelectedFeatureProperty = new SelectedFeatureTypeObjectViewModel(featureViewModel, (IFeatureBindingDefinition)instance);
+                        this.SelectedFeatureProperty = new SelectedFeatureTypeObjectViewModel(featureViewModel, primitive);
                         selectedObjectViewModel = this.SelectedFeatureProperty;
                     }
                     if (instance is Association) {

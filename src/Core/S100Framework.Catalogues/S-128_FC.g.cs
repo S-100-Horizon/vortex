@@ -1474,6 +1474,7 @@ namespace S100Framework.DomainModel.S128 {
 					association = nameof(PriceOfNauticalProduct),
 					role = Enum.GetName<Role>(Role.thePriceInformation)!,
 					informationTypes = [nameof(PriceInformation)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -1482,6 +1483,7 @@ namespace S100Framework.DomainModel.S128 {
 					association = nameof(ProductionDetails),
 					role = Enum.GetName<Role>(Role.theProducer)!,
 					informationTypes = [nameof(ProducerInformation)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -1490,6 +1492,7 @@ namespace S100Framework.DomainModel.S128 {
 					association = nameof(DistributionDetails),
 					role = Enum.GetName<Role>(Role.theDistributor)!,
 					informationTypes = [nameof(DistributorInformation)],
+					primitives = [],
 				},
 			];
 
@@ -1539,6 +1542,7 @@ namespace S100Framework.DomainModel.S128 {
 					association = nameof(ProducerContact),
 					role = Enum.GetName<Role>(Role.theProducer)!,
 					informationTypes = [nameof(ProducerInformation)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -1547,6 +1551,7 @@ namespace S100Framework.DomainModel.S128 {
 					association = nameof(DistributorContact),
 					role = Enum.GetName<Role>(Role.theDistributor)!,
 					informationTypes = [nameof(DistributorInformation)],
+					primitives = [],
 				},
 			];
 
@@ -1621,6 +1626,7 @@ namespace S100Framework.DomainModel.S128 {
 					association = nameof(PriceOfNauticalProduct),
 					role = Enum.GetName<Role>(Role.theCatalogueOfNauticalProduct)!,
 					informationTypes = [nameof(CatalogueSectionHeader)],
+					primitives = [],
 				},
 			];
 
@@ -1654,6 +1660,7 @@ namespace S100Framework.DomainModel.S128 {
 					association = nameof(ProducerContact),
 					role = Enum.GetName<Role>(Role.theContactDetails)!,
 					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -1662,6 +1669,7 @@ namespace S100Framework.DomainModel.S128 {
 					association = nameof(ProductionDetails),
 					role = Enum.GetName<Role>(Role.catalogueHeader)!,
 					informationTypes = [nameof(CatalogueSectionHeader)],
+					primitives = [],
 				},
 			];
 
@@ -1691,6 +1699,7 @@ namespace S100Framework.DomainModel.S128 {
 					association = nameof(DistributionDetails),
 					role = Enum.GetName<Role>(Role.catalogueHeader)!,
 					informationTypes = [nameof(CatalogueSectionHeader)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -1699,6 +1708,7 @@ namespace S100Framework.DomainModel.S128 {
 					association = nameof(DistributorContact),
 					role = Enum.GetName<Role>(Role.theContactDetails)!,
 					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
 				},
 			];
 
@@ -1778,6 +1788,7 @@ namespace S100Framework.DomainModel.S128 {
 					association = nameof(CarriageRequirement),
 					role = Enum.GetName<Role>(Role.theRequirement)!,
 					informationTypes = [nameof(IndicationOfCarriageRequirement)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -1786,6 +1797,7 @@ namespace S100Framework.DomainModel.S128 {
 					association = nameof(PriceOfElement),
 					role = Enum.GetName<Role>(Role.thePriceInformation)!,
 					informationTypes = [nameof(PriceInformation)],
+					primitives = [],
 				},
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -1794,6 +1806,7 @@ namespace S100Framework.DomainModel.S128 {
 					association = nameof(ProductPackage),
 					role = Enum.GetName<Role>(Role.elementContainer)!,
 					informationTypes = [nameof(CatalogueSectionHeader)],
+					primitives = [],
 				},
 			];
 

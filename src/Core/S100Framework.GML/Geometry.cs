@@ -18,7 +18,7 @@ namespace NetTopologySuite.Geometries
         /// <summary>
         /// Creates a complete <S128:geometry> element from an NTS Polygon.
         /// </summary>
-        public static XElement? ToGMLFeatureS100(this Polygon polygon, string gmlId, XmlQualifiedName ns, string srsName = "http://www.opengis.net/def/crs/EPSG/0/4326") {
+        public static XElement? ToGMLFeatureS100(this Polygon polygon, string gmlId, XmlQualifiedName ns, string srsName = "EPSG:4326") {
             if (polygon == null || polygon.IsEmpty) {
                 return default;
             }

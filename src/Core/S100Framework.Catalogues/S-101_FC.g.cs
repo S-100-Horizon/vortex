@@ -5789,7 +5789,6 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(QualityOfBathymetricDataComposition);
 		}
 
-		[SpatialAssocation]
 		/// <summary>
 		/// An association for the binding between a spatial type and its spatial quality information.
 		/// </summary>
@@ -6488,6 +6487,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(QualityOfBathymetricDataComposition),
 					role = Enum.GetName<Role>(Role.theQualityInformation)!,
 					informationTypes = [nameof(SpatialQuality)],
+					primitives = [],
 				},
 			];
 
@@ -6715,6 +6715,15 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => QualityOfSurvey._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
+				},
 			];
 
 			[JsonIgnore]
@@ -6785,6 +6794,15 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => UpdateInformation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
+				},
 			];
 
 			[JsonIgnore]
@@ -6879,6 +6897,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -6954,6 +6982,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -7057,6 +7095,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -7146,6 +7194,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -7229,6 +7287,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -7328,6 +7387,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -7408,6 +7477,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -7487,6 +7566,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -7571,6 +7660,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -7655,6 +7754,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -7745,6 +7845,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -7841,6 +7951,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -7950,6 +8070,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -8049,6 +8170,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -8152,6 +8283,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -8227,6 +8368,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -8337,6 +8488,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -8484,6 +8645,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -8606,6 +8777,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -8704,6 +8885,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -8802,6 +8993,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -8954,6 +9155,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -9069,6 +9280,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -9187,6 +9408,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -9362,6 +9593,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -9506,6 +9747,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -9639,6 +9890,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -9797,6 +10058,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -9959,6 +10230,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -10052,6 +10333,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -10151,6 +10442,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -10257,6 +10558,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -10408,6 +10719,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -10592,6 +10913,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -10771,6 +11102,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -10911,6 +11252,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -11062,6 +11413,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -11147,6 +11508,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -11279,6 +11650,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -11424,6 +11805,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -11566,6 +11957,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -11713,6 +12114,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -11891,6 +12302,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -12014,6 +12426,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -12120,6 +12542,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -12205,6 +12637,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -12334,6 +12776,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -12465,6 +12917,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -12611,6 +13073,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -12745,6 +13217,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -12895,6 +13377,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -13020,6 +13512,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -13154,6 +13656,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -13298,6 +13801,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -13424,6 +13937,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -13562,6 +14085,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -13664,6 +14188,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -13764,6 +14289,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
 				},
 			];
 
@@ -13843,6 +14369,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -13931,6 +14458,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -14020,6 +14557,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -14114,6 +14661,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -14193,6 +14750,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -14278,6 +14845,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -14372,6 +14949,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.pointSet],
 				},
 			];
 
@@ -14481,6 +15068,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -14567,6 +15155,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -14649,6 +15238,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -14714,6 +15313,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -14782,6 +15382,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.pointSet],
 				},
 			];
 
@@ -14841,6 +15451,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -14917,6 +15528,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -14997,6 +15618,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -15072,6 +15703,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -15147,6 +15788,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -15214,6 +15865,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -15332,6 +15993,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -15468,6 +16139,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -15622,6 +16303,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -15732,6 +16423,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -15807,6 +16508,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -15901,6 +16612,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -16049,6 +16770,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -16187,6 +16918,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -16301,6 +17042,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -16407,6 +17158,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -16535,6 +17287,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -16638,6 +17400,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -16772,6 +17544,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -16867,6 +17640,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -16987,6 +17770,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -17086,6 +17879,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -17229,6 +18032,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -17332,6 +18136,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -17466,6 +18271,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -17591,6 +18406,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -17682,6 +18498,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -17789,6 +18606,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -17897,6 +18724,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -18034,6 +18871,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -18133,6 +18971,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -18246,6 +19085,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -18343,6 +19183,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -18444,6 +19294,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -18524,6 +19375,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -18604,6 +19465,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -18693,6 +19564,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -18782,6 +19654,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -18869,6 +19742,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -18984,6 +19858,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -19075,6 +19950,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -19164,6 +20049,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -19288,6 +20174,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.curve],
 				},
 			];
 
@@ -19381,6 +20277,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -19464,6 +20370,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -19552,6 +20468,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -19657,6 +20574,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -19764,6 +20691,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -19874,6 +20811,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -19976,6 +20923,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -20069,6 +21026,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -20167,6 +21134,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -20273,6 +21250,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -20364,6 +21351,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -20461,6 +21458,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -20558,6 +21565,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -20657,6 +21674,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -20740,6 +21767,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -20811,6 +21848,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -20884,6 +21931,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -20955,6 +22003,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -21029,6 +22087,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -21122,6 +22181,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -21202,6 +22262,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -21282,6 +22343,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -21366,6 +22428,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -21464,6 +22536,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -21537,6 +22619,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -21617,6 +22709,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -21697,6 +22799,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -21776,6 +22879,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -21871,6 +22975,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.curve],
 				},
 			];
 
@@ -21950,6 +23064,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -22052,6 +23167,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -22218,6 +23334,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -22367,6 +23493,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -22510,6 +23646,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -22646,6 +23792,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -22786,6 +23942,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -22942,6 +24108,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -23094,6 +24270,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -23246,6 +24432,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -23403,6 +24599,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -23546,6 +24752,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -23692,6 +24908,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -23827,6 +25053,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -24005,6 +25241,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -24191,6 +25437,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -24373,6 +25629,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -24555,6 +25821,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -24742,6 +26018,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -24910,6 +26196,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -25082,6 +26378,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -25234,6 +26540,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -25356,6 +26672,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -25444,6 +26770,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -25561,6 +26897,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -25665,6 +27011,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -25773,6 +27129,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -25882,6 +27248,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -25994,6 +27370,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -26121,6 +27507,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -26204,6 +27600,7 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
 				},
 			];
 
@@ -26300,6 +27697,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -26397,6 +27804,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -26502,6 +27919,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -26607,6 +28034,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -26736,6 +28173,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -26829,6 +28276,16 @@ namespace S100Framework.DomainModel.S101 {
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
 				},
 			];
 
@@ -26900,6 +28357,15 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point],
+				},
 			];
 
 			[JsonIgnore]
@@ -26951,6 +28417,15 @@ namespace S100Framework.DomainModel.S101 {
 			[JsonIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => Chart1Feature._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(SpatialAssociation),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [Primitives.point,Primitives.pointSet,Primitives.curve],
+				},
 			];
 
 			[JsonIgnore]
