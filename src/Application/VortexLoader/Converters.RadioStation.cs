@@ -22,7 +22,34 @@ namespace S100Framework.Applications
             }
 
             if (current.CATROS != null) {
-                instance.categoryOfRadioStation = EnumHelper.GetEnumValues<categoryOfRadioStation>(current.CATROS);
+                var subtype = Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out var val) ? val : "Unknown";
+
+                var category = current.CATROS switch {
+                    "1" => null,
+                    "2" => null,
+                    "3" => null,
+                    "4" => null,
+                    "5" => "5",
+                    "6" => null,
+                    "7" => null,
+                    "8" => null,
+                    "9" => null,
+                    "10" => "10",
+                    "11" => "11",
+                    "12" => "11",
+                    "13" => "11",
+                    "14" => "14",
+                    "19" => "19",
+                    "20" => "20",
+                    _ => throw new NotSupportedException($"Cannot convert radiostation category {current.CATROS} aton: globalid:{current.GLOBALID}")
+                };
+
+                if (category != null) {
+                    instance.categoryOfRadioStation = EnumHelper.GetEnumValues<categoryOfRadioStation>(category);
+                } else {
+                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Radiostation of type {subtype} is not converted.");
+                    return null;
+                }
             }
 
             if (current.COMCHA != default) {

@@ -3,6 +3,9 @@ using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101.InformationTypes;
+using S100Framework.DomainModel;
+using S100Framework.DomainModel.S101.InformationAssociations;
 
 
 namespace S100Framework.Applications
@@ -23,26 +26,36 @@ namespace S100Framework.Applications
             using var depthsl = source.OpenDataset<FeatureClass>(source.GetName("DepthsL"));
             Subtypes.Instance.RegisterSubtypes(depthsl);
 
-            using var plts_spatialattributel = source.OpenDataset<FeatureClass>(source.GetName("PLTS_SpatialAttributeL"));
-            using var informationtype = target.OpenDataset<Table>(target.GetName("informationType"));
+            //using var plts_spatialattributel = source.OpenDataset<FeatureClass>(source.GetName("PLTS_SpatialAttributeL"));
+            //using var informationtype = target.OpenDataset<Table>(target.GetName("informationType"));
 
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
-            
+            using var informationTypeTable = target.OpenDataset<Table>(target.GetName("informationtype"));
+            using var featureassociationTable = target.OpenDataset<Table>(target.GetName("featureassociation"));
+
+
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
+
+            using var bufferInformationType = informationTypeTable.CreateRowBuffer();
+
+
 
             using var cursor = depthsl.Search(filter, true);
             int recordCount = 0;
             
             
             while (cursor.MoveNext()) {
+
                 recordCount += 1;
 
                 var feature = (Feature)cursor.Current;
 
                 var current = new DepthsL(feature);
+
+                var spatialQualityHits = SpatialAssociations.Instance.GetSpatialAttributeL(feature.GetShape());
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
@@ -53,7 +66,6 @@ namespace S100Framework.Applications
                 var fcSubtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
-
 
                 switch (fcSubtype) {
                     case 5: { // DEPCNT_DepthContour
@@ -73,8 +85,6 @@ namespace S100Framework.Applications
 
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
-
-                            
 
 
                             /*
@@ -128,7 +138,6 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
@@ -139,6 +148,44 @@ namespace S100Framework.Applications
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
+                            }
+
+                            // Spatial Quality
+                            if (spatialQualityHits.Count > 0) {
+                                foreach (var spatialQuality in spatialQualityHits) {
+                                    SpatialQuality spatialQuality101 = new SpatialQuality();
+
+                                    spatialQuality101.qualityOfHorizontalMeasurement = EnumHelper.GetEnumValue<qualityOfHorizontalMeasurement>(spatialQuality.qualityOfPrecision);
+
+                                    bufferInformationType["ps"] = ps101;
+                                    bufferInformationType["code"] = instance.GetType().Name;
+                                    bufferInformationType["json"] = System.Text.Json.JsonSerializer.Serialize(spatialQuality101, jsonSerializerOptions);
+
+                                    var informationTypeRow = informationTypeTable.CreateRow(buffer);
+                                    var informationName = Convert.ToString(informationTypeRow["name"]) ?? "Unknown name";
+
+                                    // create Association
+                                    
+                                    var featureAssociationBuffer = featureassociationTable.CreateRowBuffer();
+
+                                    featureAssociationBuffer["ps"] = ImporterNIS.ps101;
+                                    featureAssociationBuffer["code"] = "association";
+                                    
+                                    var association = featureassociationTable.CreateRow(featureAssociationBuffer);
+                                    var featureAssociationName = (string)association["name"];
+
+                                    // create binding
+                                    var informationBinding = new informationBinding {
+                                        informationId = informationName,
+                                        associationId = featureAssociationName,
+                                        association = nameof(SpatialAssociation),
+                                        role = Enum.GetName<Role>(Role.theQualityInformation)!,
+                                        roleType = roleType.association.ToString()
+                                    };
+
+                                    buffer["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(informationBinding);
+                                    featureN.Store();
+                                }
                             }
 
 

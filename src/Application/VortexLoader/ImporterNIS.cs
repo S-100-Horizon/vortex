@@ -113,6 +113,9 @@ namespace S100Framework.Applications
             _converterRegistry.Register<AidsToNavigationP, RadarStation>(Converters.CreateRadarStation);
             _converterRegistry.Register<CulturalFeaturesP, WindTurbine>(Converters.CreateWindturbine);
             _converterRegistry.Register<PortsAndServicesP, SignalStationTraffic>(Converters.CreateSignalStationTraffic);
+            _converterRegistry.Register<AidsToNavigationP, RadioStation>(Converters.CreateRadioStation);
+
+
 
             using (Geodatabase source = createGeodatabase()) {
                 Store(() => {
@@ -158,6 +161,9 @@ namespace S100Framework.Applications
 
                 Logger.Current.Information($"Initializing SpatialRelationResolver");
                 SpatialRelationResolver.Initialize(source);
+                
+                Logger.Current.Information($"Initializing SpatialAssociations");
+                SpatialAssociations.Initialize(source);
 
                 relatedEquipment = new RelatedEquipment(source,destination);
 
@@ -185,6 +191,9 @@ namespace S100Framework.Applications
                     */
                     Logger.Current.Information($"Converting all tables: {filter.WhereClause}");
 
+                    Store(() => S57_DepthsL(source, destination, filter));
+
+
                     Store(() => S57_TidesAndVariationsA(source, destination, filter));
                     Store(() => S57_TidesAndVariationsL(source, destination, filter));
                     Store(() => S57_TidesAndVariationsP(source, destination, filter));
@@ -206,7 +215,6 @@ namespace S100Framework.Applications
                     Store(() => S57_DangersP(source, destination, filter));
 
                     Store(() => S57_DepthsA(source, destination, filter));
-                    Store(() => S57_DepthsL(source, destination, filter));
 
                     Store(() => S57_IcefeaturesA(source, destination, filter));
 
