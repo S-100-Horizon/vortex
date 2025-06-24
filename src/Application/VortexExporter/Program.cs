@@ -6,6 +6,7 @@ using S100Framework.DomainModel.S101;
 using S100Framework.YAML;
 using Serilog;
 using System.Diagnostics;
+using System.Text.Json;
 using Dataset = S100Framework.YAML.Dataset;
 using Esri = ArcGIS.Core.Hosting.Host;
 using IO = System.IO;
@@ -136,7 +137,7 @@ namespace S100Framework.Applications
                             SpatialRelationship = SpatialRelationship.Relation,
                             SpatialRelationshipDescription = "T*****FF*",
                             WhereClause = whereClause,
-                        }));                        
+                        }));
                     }
                 }
 
@@ -148,11 +149,11 @@ namespace S100Framework.Applications
 
                     if (datasetName.Equals("101DK40751E")) continue;
                     if (datasetName.Equals("101DK40545E")) continue;
-                    
+
 
                     Log.Information("{dataset}", datasetName);
                     var geometries = new List<(Geometry geometry, string name)>();
-                    var featureAssociations = new Dictionary<string, YAML.Association[]>();
+                    //var featureAssociations = new Dictionary<string, YAML.Association[]>();
 
                     // Build Topology
                     Log.Information("Building topology..");
@@ -160,45 +161,6 @@ namespace S100Framework.Applications
 
                     Log.Information("Topology finished! Found {curves} Curves, {composites} CompositeCurves, {surfaces} Surfaces", topology!.Curves.Count, topology.CompositeCurves.Count, topology.Surfaces.Count);
                     dataset.AddTopology(topology);
-
-                    // FeatureAssociations - Only typeof associations. Skip composition/aggregation roleTypes for now
-                    try {
-                        using var type = source.OpenDataset<Table>(definitionTables.Single(e => e.GetAliasName().Equals("associationbinding")).GetName());
-
-                        using var cursor = type.Search(new QueryFilter {
-                            WhereClause = "UPPER(type) = 'FEATUREBINDING' AND (UPPER(roleType) = 'AGGREGATION' OR UPPER(roleType) = 'COMPOSITION')"
-                        });
-
-                        while (cursor.MoveNext()) {
-                            var current = cursor.Current;
-
-                            var name = current["association"].ToString()!;
-                            var role = current["role"].ToString()!;
-
-                            var id = current["primaryid"].ToString()!;
-                            var to = current["foreignid"].ToString()!;
-
-                            var foid = $"110:{to![1..]}:1";       // Geodatastyrelsen: 110 
-
-                            var association = new YAML.Association() {
-                                Name = name,
-                                Role = role,
-                                To = foid,
-                            };
-
-                            // Add or update
-                            if (featureAssociations.TryGetValue(id, out var existingArray))
-                                featureAssociations[id] = [.. existingArray, association];
-                            else
-                                featureAssociations[id] = [association];
-                        }
-                    }
-                    catch (Exception ex) {
-                        Log.Information("Table: associationbinding: {message} ", ex.Message);
-                        Logger.Current.Error("Exception: {ex}", ex);
-                    }
-
-                    Log.Information("FeatureAssociations found: #{count}", featureAssociations.Count);
 
                     // InformationTypes
                     try {
@@ -296,12 +258,57 @@ namespace S100Framework.Applications
                                 if (!S100Framework.YAML.Converter.IsDefault(instance!))
                                     feature.Attributes = (FeatureNode)instance!;
 
-                                // FeatureAssociations
-                                var hasAssociations = featureAssociations.TryGetValue(name, out var associations);
+                                // Information Associations
+                                if (!current.IsNull("informationbindings")) {
+                                    using var document = JsonDocument.Parse(Convert.ToString(current["informationbindings"])!);
+                                    var root = document.RootElement;
 
-                                if (hasAssociations) {
-                                    foreach (var asso in associations!) {
-                                        feature.AddFeatureAssociation(asso);
+                                    // Nessecary?
+                                    var roleType = root.GetProperty("roleType").GetString();
+                                    //var associationId = root.GetProperty("associationId").GetString();
+
+                                    var association = root.GetProperty("association").GetString();
+                                    var role = root.GetProperty("role").GetString();
+                                    var informationId = root.GetProperty("informationId").GetString();
+
+
+                                    var asso = new YAML.Association {
+                                        Name = association,
+                                        Role = role,
+                                        To = informationId,
+                                    };
+
+                                    feature.AddAssociation(asso);
+                                }
+
+                                // Feature Associations
+                                if (!current.IsNull("featurebindings")) {
+                                    using var document = JsonDocument.Parse(Convert.ToString(current["featurebindings"])!);
+                                    var root = document.RootElement;
+
+                                    if (root.ValueKind == JsonValueKind.Array) {
+                                        foreach (var element in root.EnumerateArray()) {
+                                            var roleType = element.GetProperty("roleType").GetString();
+
+                                            // Skip association roleType for now
+                                            if (roleType == "association") 
+                                                continue;
+                                            
+                                            //var associationId = element.GetProperty("associationId").GetString();
+
+                                            var association = element.GetProperty("association").GetString();
+                                            var role = element.GetProperty("role").GetString();
+                                            var featureId = element.GetProperty("featureId").GetString();
+
+
+                                            var asso = new YAML.Association {
+                                                Name = association,
+                                                Role = role,
+                                                To = $"110:{featureId[1..]}:1"
+                                            };
+
+                                            feature.AddFeatureAssociation(asso);
+                                        }
                                     }
                                 }
 
@@ -325,14 +332,14 @@ namespace S100Framework.Applications
                     }
 
                     // Serialize to YAML
-                    var yaml = S100Framework.YAML.Converter.Serialize(dataset);                    
+                    var yaml = S100Framework.YAML.Converter.Serialize(dataset);
 
                     var output = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
                     File.WriteAllText(IO.Path.Combine(output, $"{datasetName}.yaml"), yaml);
                     File.WriteAllText(IO.Path.Combine(@"c:\temp", $"{datasetName}.yaml"), yaml);
 
-                    if(IO.File.Exists(@"C:\Program Files\s100compiler\s100compiler.exe")) {
+                    if (IO.File.Exists(@"C:\Program Files\s100compiler\s100compiler.exe")) {
                         var commandline = $"-f \"{IO.Path.Combine(output, $"{datasetName}.yaml")}\" -c \"{@"\\nas.gst.dk\public\projektdata\produktion\S-100\Product Specifications\S-101 Electronic Navigational Chart\2.0.0\101_Feature_Catalogue_2.0.0.xml"}\" -d \"{IO.Path.Combine(output, datasetName)}\"";
 
                         if (IO.Directory.Exists(IO.Path.Combine(output, datasetName)))
@@ -430,7 +437,8 @@ namespace S100Framework.YAML
                     }
                 case ArcGIS.Core.Geometry.Multipoint multiPoint: {   // Depths
                         var points = multiPoint.Points.Select(e => new Coordinate(e.X, e.Y)).ToArray();
-                        var depths = multiPoint.Points.Select(e => e.Z.RoundToIHO()).ToArray();
+                        //var depths = multiPoint.Points.Select(e => e.Z.RoundToIHO()).ToArray();
+                        var depths = multiPoint.Points.Select(e => Math.Round(e.Z, 7)).ToArray();
 
                         var pointSet = new PointSet(points, depths) { Name = name };
                         dataset.AddPointSet(pointSet);
@@ -857,7 +865,7 @@ namespace ArcGIS.Core.Data
                 //    }
                 //}
 
-                int count = polygons.Count();                
+                int count = polygons.Count();
 
                 topology.BuildTopology(curves.ToArray(), polygons.ToArray());
             }
