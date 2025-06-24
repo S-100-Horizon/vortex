@@ -10,7 +10,9 @@ namespace VortexAPI
             //});
 
 
-            On<CreateProduct>().GetId(cmd => cmd.ProductID).Apply(new EventSourcing.Products.v1.Created(""));
+            On<CreateProduct>()
+                .GetId(cmd => $"product::{cmd.ProductID}")
+                .Apply(new EventSourcing.Products.v1.Created(""));
 
         }
 
