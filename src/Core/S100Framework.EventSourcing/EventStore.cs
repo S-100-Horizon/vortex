@@ -1,5 +1,4 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Data;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
 using System;
 using System.Collections.Generic;
@@ -99,6 +98,10 @@ namespace S100Framework.EventSourcing
             }
 
             return null;
+        }
+
+        public void Handle<TCommand>() {
+
         }
 
         private async Task<StreamEvent[]> ReadStream(string streamName, StreamReadPosition start, bool failIfNotFound = true, CancellationToken cancellationToken = default) {

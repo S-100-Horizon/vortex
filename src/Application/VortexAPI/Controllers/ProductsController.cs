@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using static VortexAPI.ProductsCommandController;
 
 namespace VortexAPI.Controllers
 {
@@ -8,9 +9,11 @@ namespace VortexAPI.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly ILogger<ProductsController> _logger;
+        private readonly ProductsCommandController _commandController;
 
-        public ProductsController(ILogger<ProductsController> logger) {
+        public ProductsController(ILogger<ProductsController> logger, ProductsCommandController commandController) {
             _logger = logger;
+            _commandController = commandController;
         }
 
         [HttpGet]
@@ -21,6 +24,8 @@ namespace VortexAPI.Controllers
         [HttpPut("{productId}")]
         public IActionResult Put(string productId) {
             if (string.IsNullOrEmpty(productId)) return BadRequest();
+
+            _commandController.Handle<CreateProduct>(new CreateProduct(productId), CancellationToken.None);
 
             return Ok();
         }
