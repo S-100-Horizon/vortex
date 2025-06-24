@@ -162,45 +162,6 @@ namespace S100Framework.Applications
                     Log.Information("Topology finished! Found {curves} Curves, {composites} CompositeCurves, {surfaces} Surfaces", topology!.Curves.Count, topology.CompositeCurves.Count, topology.Surfaces.Count);
                     dataset.AddTopology(topology);
 
-                    // FeatureAssociations - Only typeof associations. Skip composition/aggregation roleTypes for now
-                    //try {
-                    //    using var type = source.OpenDataset<Table>(definitionTables.Single(e => e.GetAliasName().Equals("associationbinding")).GetName());
-
-                    //    using var cursor = type.Search(new QueryFilter {
-                    //        WhereClause = "UPPER(type) = 'FEATUREBINDING' AND (UPPER(roleType) = 'AGGREGATION' OR UPPER(roleType) = 'COMPOSITION')"
-                    //    });
-
-                    //    while (cursor.MoveNext()) {
-                    //        var current = cursor.Current;
-
-                    //        var name = current["association"].ToString()!;
-                    //        var role = current["role"].ToString()!;
-
-                    //        var id = current["primaryid"].ToString()!;
-                    //        var to = current["foreignid"].ToString()!;
-
-                    //        var foid = $"110:{to![1..]}:1";       // Geodatastyrelsen: 110 
-
-                    //        var association = new YAML.Association() {
-                    //            Name = name,
-                    //            Role = role,
-                    //            To = foid,
-                    //        };
-
-                    //        // Add or update
-                    //        if (featureAssociations.TryGetValue(id, out var existingArray))
-                    //            featureAssociations[id] = [.. existingArray, association];
-                    //        else
-                    //            featureAssociations[id] = [association];
-                    //    }
-                    //}
-                    //catch (Exception ex) {
-                    //    Log.Information("Table: associationbinding: {message} ", ex.Message);
-                    //    Logger.Current.Error("Exception: {ex}", ex);
-                    //}
-
-                    //Log.Information("FeatureAssociations found: #{count}", featureAssociations.Count);
-
                     // InformationTypes
                     try {
                         using var informationType = source.OpenDataset<Table>(definitionTables.Single(e => e.GetAliasName().Equals("informationtype")).GetName());
@@ -304,7 +265,7 @@ namespace S100Framework.Applications
 
                                     // Nessecary?
                                     var roleType = root.GetProperty("roleType").GetString();
-                                    var associationId = root.GetProperty("associationId").GetString();
+                                    //var associationId = root.GetProperty("associationId").GetString();
 
                                     var association = root.GetProperty("association").GetString();
                                     var role = root.GetProperty("role").GetString();
@@ -321,33 +282,35 @@ namespace S100Framework.Applications
                                 }
 
                                 // Feature Associations
-                                //if (!current.IsNull("featurebindings")) {
-                                //    using var document = JsonDocument.Parse(Convert.ToString(current["featurebindings"])!);
-                                //    var root = document.RootElement;
+                                if (!current.IsNull("featurebindings")) {
+                                    using var document = JsonDocument.Parse(Convert.ToString(current["featurebindings"])!);
+                                    var root = document.RootElement;
 
-                                //    if (root.ValueKind == JsonValueKind.Array) {
-                                //        foreach (var element in root.EnumerateArray()) {
-                                //            // Nessecary?
-                                //            var roleType = element.GetProperty("roleType").GetString();
-                                //            var associationId = element.GetProperty("associationId").GetString();
+                                    if (root.ValueKind == JsonValueKind.Array) {
+                                        foreach (var element in root.EnumerateArray()) {
+                                            var roleType = element.GetProperty("roleType").GetString();
 
-                                //            var association = element.GetProperty("association").GetString();
-                                //            var role = element.GetProperty("role").GetString();
-                                //            var featureId = element.GetProperty("featureId").GetString();
+                                            // Skip association roleType for now
+                                            if (roleType == "association") 
+                                                continue;
+                                            
+                                            //var associationId = element.GetProperty("associationId").GetString();
+
+                                            var association = element.GetProperty("association").GetString();
+                                            var role = element.GetProperty("role").GetString();
+                                            var featureId = element.GetProperty("featureId").GetString();
 
 
-                                //            var asso = new YAML.Association {
-                                //                Name = association,
-                                //                Role = role,
-                                //                To = $"110:{featureId[1..]}:1"
-                                //            };
+                                            var asso = new YAML.Association {
+                                                Name = association,
+                                                Role = role,
+                                                To = $"110:{featureId[1..]}:1"
+                                            };
 
-                                //            feature.AddFeatureAssociation(asso);
-                                //        }
-                                //    } else {
-                                //        Console.WriteLine();
-                                //    }
-                                //}
+                                            feature.AddFeatureAssociation(asso);
+                                        }
+                                    }
+                                }
 
                                 dataset.AddFeature(feature);
 
