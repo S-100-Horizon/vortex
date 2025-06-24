@@ -437,7 +437,8 @@ namespace S100Framework.YAML
                     }
                 case ArcGIS.Core.Geometry.Multipoint multiPoint: {   // Depths
                         var points = multiPoint.Points.Select(e => new Coordinate(e.X, e.Y)).ToArray();
-                        var depths = multiPoint.Points.Select(e => e.Z.RoundToIHO()).ToArray();
+                        //var depths = multiPoint.Points.Select(e => e.Z.RoundToIHO()).ToArray();
+                        var depths = multiPoint.Points.Select(e => Math.Round(e.Z, 7)).ToArray();
 
                         var pointSet = new PointSet(points, depths) { Name = name };
                         dataset.AddPointSet(pointSet);
