@@ -591,7 +591,6 @@ namespace S100Framework.YAML
         /// IHO Rounding rules applied (0-21m = decimeter, 21-31m = half meter 31+ = whole meter).
         /// </summary>
         public static double RoundToIHO(this double value) {
-
             if (value < -31d) {
                 return Math.Floor(value);
             }
@@ -607,7 +606,6 @@ namespace S100Framework.YAML
             else if (value < 31) {
                 return value % 1 < 0.5 ? Math.Floor(value) : Math.Floor(value) + 0.5;
             }
-
             return Math.Floor(value);
         }
 

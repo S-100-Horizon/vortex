@@ -40,6 +40,38 @@ namespace TestNisImporter
             Assert.True(ImporterNIS.GetStatus(status).Count == 2, "");
         }
 
+        [Fact]
+        public void TestRounding() {
+            
+            Assert.True(RoundToIHO(5.6d) == 5.6d);
+        }
+        public static double RoundToIHO(double value) {
+
+            if (value < -31d) {
+                return Math.Floor(value);
+            }
+            else if (value < -21.0d) {
+                return value % 1 < 0.5 ? Math.Ceiling(value) - 0.5d : Math.Ceiling(value);
+            }
+            else if (value < 0) {
+                return RoundDownwards(value, 1, -0.5d);
+            }
+            else if (value < 21.0d) {
+                return RoundDownwards(value, 1);
+            }
+            else if (value < 31) {
+                return value % 1 < 0.5 ? Math.Floor(value) : Math.Floor(value) + 0.5;
+            }
+
+            return Math.Floor(value);
+        }
+        public static double RoundDownwards(double value, int digits, double offset = 0d) {
+            var power10 = 1E1;
+            value *= power10;
+            value += offset;
+            value = Math.Truncate(value);
+            return value /= power10;
+        }
 
         [Fact]
         public void TestRadarWaveLength() {

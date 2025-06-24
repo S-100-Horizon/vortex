@@ -40,7 +40,9 @@ namespace S100Framework.Applications
         internal static ConverterRegistry _converterRegistry = new ConverterRegistry();
 
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
+
             
+            //await ExtractLasCommand.ExecuteExtractLasToolAsync();
 
             Logger.Current.Information("Starting");
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
@@ -191,8 +193,10 @@ namespace S100Framework.Applications
                     */
                     Logger.Current.Information($"Converting all tables: {filter.WhereClause}");
 
-                    Store(() => S57_DepthsL(source, destination, filter));
 
+                    Store(() => S57_SoundingsP(source, destination, filter));
+
+                    Store(() => S57_DepthsL(source, destination, filter));
 
                     Store(() => S57_TidesAndVariationsA(source, destination, filter));
                     Store(() => S57_TidesAndVariationsL(source, destination, filter));
@@ -241,7 +245,7 @@ namespace S100Framework.Applications
                     Store(() => S57_RegulatedAreasAndLimitsL(source, destination, filter));
                     Store(() => S57_RegulatedAreasAndLimitsP(source, destination, filter));
 
-                    Store(() => S57_SoundingsP(source, destination, filter));
+                    
 
                     Store(() => S57_TracksAndRoutesA(source, destination, filter));
                     Store(() => S57_TracksAndRoutesL(source, destination, filter));

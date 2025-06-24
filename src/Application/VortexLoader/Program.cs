@@ -126,7 +126,7 @@ namespace S100Framework.Applications
             });
 
             using Geodatabase target = createGeodatabase();
-            
+
 
             var result = command switch {
                 "GML" => ImporterGML(target, arguments),
