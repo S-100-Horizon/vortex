@@ -72,11 +72,11 @@ namespace S100Framework.Applications.Singletons
         internal List<(Guid globalId, int qualityOfPrecision, Geometry Shape)> GetSpatialAttributeL(Geometry geometry) {
             var intersects = new List<(Guid globalId, int qualityOfPrecision, Geometry Shape)>();
 
-            var value = GeometryEngine.Instance.ExportToWKT(WktExportFlags.WktExportLineString, geometry);
+            var value = ToWktWithDecimals(geometry, 7);
             if (_spatialAttributesL.ContainsKey(value)) {
                 intersects.Add(_spatialAttributesL[value]);
             }
-            return default;
+            return intersects;
         }
 
         internal static void Initialize(Geodatabase geodatabase) {
