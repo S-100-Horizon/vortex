@@ -41,6 +41,16 @@ namespace TestNisImporter
         }
 
         [Fact]
+        public void TestGetCommunicationChannel() {
+
+            Assert.True(ImporterNIS.GetCommunicationChannel("[74]")[0] == "[VHF0074]");
+            Assert.True(ImporterNIS.GetCommunicationChannel("[04]")[0] == "[VHF0004]");
+            Assert.True(ImporterNIS.GetCommunicationChannel("[WX1]")[0] == "[WX0001]");
+            Assert.True(ImporterNIS.GetCommunicationChannel("[WX01];[04]")[0] == "[WX0001]");
+            Assert.True(ImporterNIS.GetCommunicationChannel("[WX01];[04]")[1] == "[VHF0004]");
+        }
+
+        [Fact]
         public void TestRounding() {
             
             Assert.True(RoundToIHO(5.6d) == 5.6d);

@@ -23,7 +23,7 @@ namespace S100Framework.Applications
             }
 
             if (current.COMCHA != default) {
-                instance.communicationChannel = current.COMCHA.Split(',').ToList<string>();
+                instance.communicationChannel = ImporterNIS.GetCommunicationChannel(current.COMCHA);
             }
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);

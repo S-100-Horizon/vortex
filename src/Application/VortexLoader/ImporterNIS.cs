@@ -777,6 +777,45 @@ namespace S100Framework.Applications
             return information;
         }
 
+        internal static List<string> GetCommunicationChannel(string input) {
+            var result = new List<string>();
+            if (string.IsNullOrWhiteSpace(input)) return result;
+
+            var tokens = input.Split(';');
+            foreach (var token in tokens) {
+                var trimmed = token.Trim();
+                if (!trimmed.StartsWith("[") || !trimmed.EndsWith("]")) {
+                    result.Add(trimmed); // Unrecognized format, keep as is
+                    continue;
+                }
+
+                var content = trimmed.Substring(1, trimmed.Length - 2);
+
+                if (Regex.IsMatch(content, @"[A-Za-z]")) {
+                    var match = Regex.Match(content, @"^([A-Za-z]+)(\d+)$");
+                    if (match.Success) {
+                        var prefix = match.Groups[1].Value;
+                        var number = int.Parse(match.Groups[2].Value).ToString("D4");
+                        result.Add($"[{prefix}{number}]");
+                    }
+                    else {
+                        result.Add(trimmed);
+                    }
+                }
+                else {
+                    if (int.TryParse(content, out int number)) {
+                        var formatted = $"[VHF{number:D4}]";
+                        result.Add(formatted);
+                    }
+                    else {
+                        result.Add(trimmed);
+                    }
+                }
+            }
+
+            return result;
+        }
+
         private static string? FixFilename(string fileReference) {
             if (fileReference == default) {
                 return default;

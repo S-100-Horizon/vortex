@@ -1,9 +1,10 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Desktop.Internal.Mapping;
 using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.Applications.Singletons;
-using ArcGIS.Desktop.Internal.Mapping;
+using System.Text.RegularExpressions;
 
 namespace S100Framework.Applications
 {
@@ -267,14 +268,19 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 25: { // RDOCAL_RadioCallingInPoint
-                            var instance = new RadioCallingInPoint() {
-                            };
-
+                            var instance = new RadioCallingInPoint();
 
                             if (current.TRAFIC.HasValue) {
                                 instance.trafficFlow = EnumHelper.GetEnumValue<trafficFlow>(current.TRAFIC.Value);
                             }
 
+                            if (current.ORIENT.HasValue) {
+                                instance.orientationValue = new() { current.ORIENT.Value };
+                            }
+
+                            if (current.COMCHA != default) {
+                                instance.communicationChannel = GetCommunicationChannel(current.COMCHA);
+                            }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -285,15 +291,14 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-
-
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
+
+
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
@@ -449,8 +454,6 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-
-
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
@@ -470,11 +473,9 @@ namespace S100Framework.Applications
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
                             }
 
-
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
                         }
                         break;
                     default:
@@ -489,5 +490,6 @@ namespace S100Framework.Applications
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
 
-    }
+
+}
 }

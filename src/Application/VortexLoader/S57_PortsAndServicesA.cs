@@ -603,7 +603,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.COMCHA != default) {
-                                instance.communicationChannel = current.COMCHA.Split(',').ToList<string>();
+                                instance.communicationChannel = GetCommunicationChannel(current.COMCHA);
                             }
 
 
