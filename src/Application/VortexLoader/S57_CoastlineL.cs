@@ -52,19 +52,19 @@ namespace S100Framework.Applications
                     case 1: { // COALNE_Coastline
                             var instance = new Coastline();
 
-                           if (catcoa != default && instance.natureOfSurface == default) {
+                           if (catcoa != default/* && instance.natureOfSurface == default*/) {
                                 categoryOfCoastline? e = catcoa switch {
                                     1 => categoryOfCoastline.SteepCoast,
                                     2 => categoryOfCoastline.FlatCoast,
-                                    //3 => categoryOfCoastline.., // SANDY SHORE
-                                    //4 => categoryOfCoastline., // STONY SHORE
-                                    //5 => categoryOfCoastline., // SHINGLY SHORE
+                                    3 => null, // SANDY SHORE
+                                    4 => null, // STONY SHORE
+                                    5 => null, // SHINGLY SHORE
                                     6 => categoryOfCoastline.GlacierSeawardEnd,
                                     7 => categoryOfCoastline.Mangrove,
                                     8 => categoryOfCoastline.MarshyShore,
-                                    //9 => categoryOfCoastline., //CORAL REEF
-                                    //10 => categoryOfCoastline, // ICE COAST
-                                    //11 => categoryOfCoastline, // SHELLY SHORE
+                                    9 => null, //CORAL REEF
+                                    10 => null, // ICE COAST
+                                    11 => null, // SHELLY SHORE
                                     -32767 =>(categoryOfCoastline)(-1),
                                     _ => throw new IndexOutOfRangeException($"catcoa to categoryOfCoastLine: {catcoa}")
                                 };
