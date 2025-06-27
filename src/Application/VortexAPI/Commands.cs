@@ -12,10 +12,14 @@ namespace VortexAPI
 
             On<CreateProduct>()
                 .GetId(cmd => $"product::{cmd.ProductID}")
-                .Apply(new EventSourcing.Products.v1.Created(""));
+                .Commit(new EventSourcing.Products.v1.Created(""));
 
+            //On<UpdateName>()
+            //    .GetId(cmd => $"product::{cmd.ProductID}")
+            //    .Commit(new EventSourcing.Products.v1.NameUpdated());
         }
 
         public record CreateProduct(string ProductID);
+        public record UpdateName(string Name);
     }
 }

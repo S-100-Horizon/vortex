@@ -46,7 +46,8 @@ namespace S100Framework.EventSourcing
 
     public interface ICommandHandler<TCommand> where TCommand : class
     {
-        void Apply<TEvent>(TEvent message) where TEvent : class;
+        void Commit<TEvent>(TEvent message) where TEvent : class;
+        void Commit<TEvent>(TEvent[] message) where TEvent : class;
     }
 
     public sealed class CommandHandler<TCommand> : IIdentityHandler<TCommand>, ICommandHandler<TCommand> where TCommand : class
@@ -64,7 +65,11 @@ namespace S100Framework.EventSourcing
             return this;
         }
 
-        public void Apply<TEvent>(TEvent message) where TEvent : class {
+        public void Commit<TEvent>(TEvent message) where TEvent : class {
+            this.Commit<TEvent>([message]);
+        }
+
+        public void Commit<TEvent>(TEvent[] message) where TEvent : class {
 
         }
     }

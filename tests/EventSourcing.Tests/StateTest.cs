@@ -35,27 +35,20 @@ namespace EventSourcing.Tests
 
             fastZip.ExtractZip("s100ed7.gdb.zip", output.FullName, null);
 
-            using var geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(output.FullName))));
+            var createProduct = new VortexAPI.EventSourcing.Products.v1.Created("DK4LIMFE");
 
+            var updateName = new VortexAPI.EventSourcing.Products.v1.NameUpdated("Kattegat - Randers Fjord - Mariager Fjord - Entrance to Limfjorden");
+
+            var eventStore = EventStore.OpenEventStore(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(output.FullName))), CancellationToken.None);
+
+            var options = new ParallelOptions { MaxDegreeOfParallelism = 8 };
+            //Parallel.For(0, 124, options, async (i) => {
             var streamname = $"test::product::{DateTime.Now.Ticks}";
 
-            using(var messages = geodatabase.OpenDataset<Table>("messages")) {                
-                using var buffer = messages.CreateRowBuffer();
-
-                var createProduct = new VortexAPI.EventSourcing.Products.v1.Created("Hello");
-
-                var tt = createProduct.GetType().GetCustomAttribute<EventTypeAttribute>();
-                
-
-                buffer["streamname"] = streamname;
-                buffer["messagetype"] = ((EventTypeAttribute)createProduct.GetType().GetCustomAttribute(typeof(EventTypeAttribute))!).EventType;
-                buffer["message"] = System.Text.Json.JsonSerializer.Serialize(createProduct);
-                buffer["metadata"] = DBNull.Value;
-                messages.CreateRow(buffer);
-            }            
 
 
-            var eventStore = geodatabase.OpenEventStore();
+            await eventStore.WriteStream<object>(streamname, [createProduct, updateName], false);
+            //});            
 
 
             var state = await eventStore.LoadState<ProductState>(streamname);

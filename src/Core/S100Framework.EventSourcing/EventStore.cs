@@ -1,12 +1,14 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Desktop.Framework.Threading.Tasks;
 using System;
+using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using static S100Framework.EventSourcing.EventStore;
@@ -39,9 +41,6 @@ namespace S100Framework.EventSourcing
 
     public sealed class EventStore
     {
-        private Geodatabase _geodatabase;
-        private Table _messages;
-
         [StructLayout(LayoutKind.Auto)]
         public record struct StreamEvent(Guid Id, object? Payload, /*Metadata Metadata, */string ContentType, long Position, bool FromArchive = false);
 
@@ -62,13 +61,61 @@ namespace S100Framework.EventSourcing
 
         private IDictionary<string, Type> _eventTypes = new Dictionary<string, Type>();
 
-        internal EventStore(Geodatabase geodatabase) {
-            _geodatabase = geodatabase ?? throw new ArgumentNullException(nameof(geodatabase));
+        private Action _beginTransaction;
+        private Action _endTransaction;
+        private Func<Geodatabase> _createGeodatabase;
+        private Func<Geodatabase, Table> _openMessages;
+        private Func<Table, RowBuffer> _createBuffer;
 
-            var syntax = geodatabase.GetSQLSyntax();
+        public static EventStore OpenEventStore(FileGeodatabaseConnectionPath fileGeodatabaseConnection, CancellationToken cancellationToken) {
+            Mutex mutex = new();
 
-            _messages = _geodatabase.OpenDataset<Table>("messages");
+            var geodatabase = new Geodatabase(fileGeodatabaseConnection);
+            var messages = geodatabase.OpenDataset<Table>("messages");
+            var buffer = messages.CreateRowBuffer();
 
+            //BlockingCollection<Action> actions = new BlockingCollection<Action>();
+
+            //var task = Task.Run(() => {
+            //    try {
+            //        while (!cancellationToken.IsCancellationRequested) {
+            //            var a = actions.Take();
+
+            //            System.Diagnostics.Debugger.Break();
+            //            a.Invoke();
+            //        }
+            //    }
+            //    catch (OperationCanceledException) {
+            //    }
+            //    finally {
+            //    }
+            //});
+
+            var instance = new EventStore() {
+                _createGeodatabase = () => {
+                    return geodatabase;
+                },
+                _openMessages = (gdb) => {
+                    return messages;
+                },
+                _createBuffer = (table) => {
+                    buffer["streamname"] = string.Empty;
+                    buffer["messagetype"] = DBNull.Value;
+                    buffer["message"] = DBNull.Value;
+                    buffer["metadata"] = DBNull.Value;
+                    return buffer;
+                },
+                _beginTransaction = () => {
+                    mutex.WaitOne();
+                },
+                _endTransaction = () => {
+                    mutex.ReleaseMutex();
+                }
+            };
+            return instance;
+        }
+
+        internal EventStore() {
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
 
             var attributeTypes = new List<Type>();
@@ -78,6 +125,12 @@ namespace S100Framework.EventSourcing
             }
 
             _eventTypes = attributeTypes.ToDictionary(e => e.GetCustomAttribute<EventTypeAttribute>()!.EventType, e => e);
+
+            _beginTransaction = () => throw new NotImplementedException();
+            _endTransaction = () => throw new NotImplementedException();
+            _createGeodatabase = () => throw new NotImplementedException();
+            _openMessages = (gdb) => throw new NotImplementedException();
+            _createBuffer = (table) => throw new NotImplementedException();
         }
 
         public async Task<FoldedEventStream<TState>> LoadState<TState>(string streamName, bool failIfNotFound = true, CancellationToken cancellationToken = default) where TState : State<TState>, new() {
@@ -96,8 +149,6 @@ namespace S100Framework.EventSourcing
 
                 throw;
             }
-
-            return null;
         }
 
         public void Handle<TCommand>() {
@@ -108,6 +159,9 @@ namespace S100Framework.EventSourcing
             var streamEvents = new List<StreamEvent>();
 
             try {
+                var _geodatabase = _createGeodatabase();
+                var _messages = _openMessages(_geodatabase);
+
                 using var cursor = _messages.Search(new QueryFilter {
                     Offset = (int)start.Value,
                     //RowCount = pageSize,
@@ -129,6 +183,8 @@ namespace S100Framework.EventSourcing
                         FromArchive = false,
                     });
                 }
+                if (failIfNotFound && !streamEvents.Any())
+                    throw new Exceptions.StreamNotFound(streamName);
             }
             catch (Exceptions.StreamNotFound) when (!failIfNotFound) {
                 return [];
@@ -136,13 +192,65 @@ namespace S100Framework.EventSourcing
 
             return streamEvents.ToArray();
         }
+
+        public Task<StreamEvent[]> WriteStream<TEvent>(string streamName, TEvent[] messages, bool failIfNotFound = true, CancellationToken cancellationToken = default) where TEvent : class {
+            if (string.IsNullOrEmpty(streamName)) throw new ArgumentNullException(nameof(streamName));
+            if (!messages.Any()) return Task.FromResult(Array.Empty<StreamEvent>());
+
+            var streamEvents = new List<StreamEvent>();
+
+            var supportsTansaction = true;
+
+            try {
+                _beginTransaction();
+
+                var _geodatabase = _createGeodatabase();
+
+                var _messages = _openMessages(_geodatabase);
+
+                if (failIfNotFound) {
+                    using var cursor = _messages.Search(new QueryFilter {
+                        WhereClause = $"streamname = '{streamName}'",
+                        PostfixClause = "ORDER BY streamName, sequenceid asc"
+                    }, true);
+                    if (!cursor.MoveNext())
+                        throw new Exceptions.StreamNotFound(streamName);
+                }
+
+                var buffer = _createBuffer(_messages);
+
+                for (int i = 0; i < messages.Length; i++) {
+                    var message = messages[i];
+                    var messageType = message.GetType().GetCustomAttribute<EventTypeAttribute>()!.EventType;
+
+                    buffer["streamname"] = streamName;
+                    buffer["messagetype"] = messageType;
+                    buffer["message"] = System.Text.Json.JsonSerializer.Serialize(message);
+                    buffer["metadata"] = DBNull.Value;
+                    using var row = _messages.CreateRow(buffer);
+
+                    streamEvents.Add(new StreamEvent {
+                        Payload = message,
+                        ContentType = messageType,
+                        Position = Convert.ToInt64(row["sequenceid"]),
+                        FromArchive = false,
+                    });
+                }
+
+            }
+            catch (Exceptions.StreamNotFound) when (!failIfNotFound) {
+                return Task.FromResult(Array.Empty<StreamEvent>());
+            }
+            finally {
+                if (!supportsTansaction)
+                    _endTransaction();
+            }
+            return Task.FromResult(streamEvents.ToArray());
+        }
     }
 
     public static class ArcGISExtension
     {
-        public static EventStore OpenEventStore(this ArcGIS.Core.Data.Geodatabase geodatabase) {
-            return new EventStore(geodatabase);
-        }
     }
 
     static class TaskExtensions

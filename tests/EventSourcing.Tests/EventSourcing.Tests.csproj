@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Application\VortexAPI\VortexAPI.csproj" />
-    <ProjectReference Include="..\..\src\Core\S100Framework.EventSourcing\S100Framework.EventSourcing.csproj" />
   </ItemGroup>
 
   <ItemGroup>
