@@ -131,7 +131,7 @@ namespace S100Framework.Applications
                             Comment = "Not for navigation!",
                             Edition = 1,
                             ENCVer = "INT.IHO.S-101.2.0",
-                            FCVer = "2.0.0",
+                            FCVer = "2.0",
                         }, new SpatialQueryFilter {
                             FilterGeometry = shape,
                             SpatialRelationship = SpatialRelationship.Relation,
