@@ -1,9 +1,10 @@
 ﻿using ArcGIS.Core.Data;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S101;
+using NetTopologySuite.Operation.Buffer;
 using S100Framework.Applications.S57.esri;
-using System;
 using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.FeatureTypes;
+using System;
 
 namespace S100Framework.Applications
 {
@@ -79,7 +80,9 @@ namespace S100Framework.Applications
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name; 
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["shape"] = current.SHAPE;
+                            SetShape(bufferSurface, current.SHAPE);
+                            SetDrawingIndex(bufferSurface, current.PLTS_COMP_SCALE!.Value);
+
                             var featureN = featureClass.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -132,8 +135,11 @@ namespace S100Framework.Applications
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name; 
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["shape"] = current.SHAPE;
-                            
+
+                            SetShape(bufferSurface, current.SHAPE);
+                            SetDrawingIndex(bufferSurface, current.PLTS_COMP_SCALE!.Value);
+
+
                             var featureN = featureClass.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -180,7 +186,10 @@ namespace S100Framework.Applications
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["shape"] = current.SHAPE;
+                            SetShape(bufferSurface, current.Shape);
+                            SetDrawingIndex(bufferSurface, current.PLTS_COMP_SCALE!.Value);
+
+
                             var featureN = featureClass.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -221,7 +230,9 @@ namespace S100Framework.Applications
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name; 
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["shape"] = current.SHAPE;
+                            SetShape(bufferSurface, current.SHAPE);
+                            SetDrawingIndex(bufferSurface, current.PLTS_COMP_SCALE!.Value);
+
                             var featureN = featureClass.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -274,7 +285,8 @@ namespace S100Framework.Applications
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["shape"] = current.SHAPE;
+                            SetShape(bufferSurface, current.SHAPE);
+                            SetDrawingIndex(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
@@ -298,7 +310,7 @@ namespace S100Framework.Applications
                             //    visualProminence = null,
                             //    scaleMinimum = null,
                             //};
-                            
+
                             //if (current.CATSLO.HasValue) {
                             //    instance.categoryOfSlope = EnumHelper.GetEnumValue<categoryOfSlope>(current.CATSLO.Value);
                             //}
@@ -338,7 +350,8 @@ namespace S100Framework.Applications
                             //bufferSurface["ps"] = ps101;
                             //bufferSurface["code"] = instance.GetType().Name; 
                             //bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            //bufferSurface["shape"] = current.SHAPE;
+                            //SetShape(bufferSurface, current.SHAPE);
+                            //SetDrawingIndex(bufferSurface, current.PLTS_COMP_SCALE!.Value);
                             //var featureN = featureClass.CreateRow(bufferSurface);
                             //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -388,7 +401,9 @@ namespace S100Framework.Applications
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["shape"] = current.SHAPE;
+                            SetShape(bufferSurface, current.SHAPE);
+                            SetDrawingIndex(bufferSurface, current.PLTS_COMP_SCALE!.Value);
+
                             var featureN = featureClass.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 

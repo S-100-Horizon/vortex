@@ -100,7 +100,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN);
+                                relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
@@ -187,7 +187,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN);
+                                relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
@@ -227,7 +227,7 @@ namespace S100Framework.Applications
                                 var namelocalDirectionOfBuoyage = Convert.ToString(featurelocalDirectionOfBuoyage["name"]) ?? "Unknown name";
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                    relatedEquipment.CreateRelatedPointEquipment(current, localDirectionOfBuoyage, featurelocalDirectionOfBuoyage);
+                                    relatedEquipment.CreateRelatedAreaEquipment(current, localDirectionOfBuoyage, featurelocalDirectionOfBuoyage);
                                 }
 
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(localDirectionOfBuoyage));
@@ -252,7 +252,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN);
+                                relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
@@ -331,7 +331,31 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
+                            // Create the sounding datum
+                            {
+                                var soundingDatum = new SoundingDatum();
+
+                                // TODO: interoperabilityIdentifier
+
+                                soundingDatum.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+
+                                AddInformation(soundingDatum.information, feature);
+                                buffer["ps"] = ps101;
+                                buffer["code"] = soundingDatum.GetType().Name;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(soundingDatum, jsonSerializerOptions);
+                                SetShape(buffer, current.SHAPE);
+                                ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+
+                                var soundingDatumFeature = featureClass.CreateRow(buffer);
+                                var soundingDatumName = Convert.ToString(soundingDatumFeature["name"]) ?? "Unknown name";
+
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment.CreateRelatedAreaEquipment(current, soundingDatum, soundingDatumFeature);
+                                }
+
+                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(soundingDatum));
+                            }
                         }
                         break;
                     case 45: { // M_SDAT_SoundingDatum
@@ -352,7 +376,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN);
+                                relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
@@ -378,7 +402,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN);
+                                relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
@@ -405,7 +429,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN);
+                                relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);

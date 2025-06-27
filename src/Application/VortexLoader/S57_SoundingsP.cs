@@ -57,7 +57,9 @@ namespace S100Framework.Applications
                         }
 
                         var mappoint = MapPointBuilderEx.CreateMapPoint(shape.X, shape.Y, Convert.ToDouble(depth), shape.SpatialReference);
-                        bufferPointset["shape"] = MultipointBuilderEx.CreateMultipoint(mappoint);
+
+                        SetShape(bufferPointset, MultipointBuilderEx.CreateMultipoint(mappoint));
+                        SetDrawingIndex(bufferPointset, current.PLTS_COMP_SCALE!.Value);
 
                         if (quasou == default || !string.Equals(quasou, "5", StringComparison.InvariantCultureIgnoreCase)) {
                             var sounding = new Sounding {
@@ -142,6 +144,7 @@ namespace S100Framework.Applications
                             bufferPointset["ps"] = ps101;
                             bufferPointset["code"] = sounding.GetType().Name;
                             var featureN = featureClass.CreateRow(bufferPointset);
+
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {

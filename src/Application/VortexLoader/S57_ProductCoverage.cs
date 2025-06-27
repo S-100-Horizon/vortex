@@ -79,11 +79,15 @@ namespace S100Framework.Applications
 
                     switch (catcov) {
                         case 1: {
+                                
+
                                 buffer["ps"] = ps128;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer, productCoverage.SHAPE);
                                 ImporterNIS.SetDrawingIndex(buffer, productCoverage.PLTS_COMP_SCALE.Value);
+
+
 
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
@@ -92,6 +96,8 @@ namespace S100Framework.Applications
                             }
 
                             var dataCoverage = new DataCoverage();
+
+                            
 
                             if (displayScale != null) {
                                 dataCoverage.maximumDisplayScale = displayScale.MaximumDisplayScale;
