@@ -132,6 +132,7 @@ namespace S100Framework.Applications
                             Edition = 1,
                             ENCVer = "INT.IHO.S-101.2.0",
                             FCVer = "2.0",
+                            verticalDatum = "Baltic Sea Chart Datum 2000,44",
                         }, new SpatialQueryFilter {
                             FilterGeometry = shape,
                             SpatialRelationship = SpatialRelationship.Relation,

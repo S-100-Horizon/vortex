@@ -20,6 +20,8 @@ namespace S100Framework.YAML
         [YamlMember(Alias = "encver", ApplyNamingConventions = false)]
         public string ENCVer { get; set; } = "INT.IHO.S-101.2.0";
         public string? FCVer { get; set; } = default;
+        [YamlMember(Alias = "verticalDatum", ApplyNamingConventions = false)]
+        public string? verticalDatum { get; set; } = default;
 
         public Metadata Metadata { get; set; } = new Metadata();
 

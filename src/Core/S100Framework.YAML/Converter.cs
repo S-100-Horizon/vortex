@@ -321,6 +321,9 @@ namespace S100Framework.YAML
                     case "FCVer":
                         dataset.FCVer = value;
                         break;
+                    case "verticalDatum":
+                        dataset.verticalDatum = value;
+                        break;
                 }
             }
 
