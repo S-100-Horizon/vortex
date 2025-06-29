@@ -55,50 +55,44 @@ namespace S100Framework.WPF.Editors
         }
     }
 
-
-    public class TestEnumComboBoxEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    public class EnumComboBoxEditor : ComboBoxEditor
     {
-        public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
-            var control = new PropertyGridEditorEnumCheckComboBox();
-
+        protected override IEnumerable CreateItemsSource(PropertyItem propertyItem) {
             var attribute = (S100Framework.DomainModel.EnumerationAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.EnumerationAttribute), true)[0];
-
-            var bindingItemsSourceProperty = new Binding(attribute.PropertyName) { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
-            BindingOperations.SetBinding(control, CheckComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
-
-            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
-            BindingOperations.SetBinding(control, CheckComboBox.SelectedItemProperty, bindingSelectedItemProperty);
-
-            return control;
+            return (IEnumerable)propertyItem.Instance.GetType().GetProperty(attribute.PropertyName)!.GetValue(propertyItem.Instance)!;
         }
     }
 
-    public class EnumComboBoxEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
-    {
-        public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
-            var control = new ComboBox {
-                Name = $"_comboBox{Guid.NewGuid():N}",
-                IsEditable = false,
-                IsDropDownOpen = false,
-            };
+    //public class EnumComboBoxEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    //{
+    //    public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
+    //        //var control = new ComboBox {
+    //        //    Name = $"_comboBox{Guid.NewGuid():N}",
+    //        //    IsEditable = false,
+    //        //    IsDropDownOpen = false,
+    //        //    BorderBrush = System.Windows.Media.Brushes.Transparent,
+    //        //    Background = System.Windows.Media.Brushes.Transparent,                
+    //        //};
 
-            var attribute = (S100Framework.DomainModel.EnumerationAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.EnumerationAttribute), true)[0];
+    //        var control = new PropertyGridEditorComboBox();
 
-            var bindingItemsSourceProperty = new Binding(attribute.PropertyName) { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
-            BindingOperations.SetBinding(control, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+    //        var attribute = (S100Framework.DomainModel.EnumerationAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.EnumerationAttribute), true)[0];
 
-            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
-            BindingOperations.SetBinding(control, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+    //        var bindingItemsSourceProperty = new Binding(attribute.PropertyName) { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
+    //        BindingOperations.SetBinding(control, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
-            var value = control.SelectedValue;
+    //        var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+    //        BindingOperations.SetBinding(control, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            //if (!string.IsNullOrEmpty(viewModel.RefId)) {
-            //    checkComboBox.SelectedValue = viewModel.RefId;
-            //}
+    //        var value = control.SelectedValue;
 
-            return control;
-        }
-    }
+    //        //if (!string.IsNullOrEmpty(viewModel.RefId)) {
+    //        //    checkComboBox.SelectedValue = viewModel.RefId;
+    //        //}
+
+    //        return control;
+    //    }
+    //}
 
     public class EnumCollectionEditor : ITypeEditor
     {

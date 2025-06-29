@@ -338,7 +338,7 @@ namespace S100Framework.WPF
             PropertyGrid = (PropertyGrid)GetTemplateChild(PART_PropertyGrid);
             PropertyGrid.IsReadOnly = !this.IsEditingEnabled;
 
-            PropertyGrid.PreparePropertyItem += this.PropertyGrid_PreparePropertyItem;
+            PropertyGrid.PreparePropertyItem += this.PropertyGrid_PreparePropertyItem;            
 
             InformationBindingsStackPanel = (StackPanel)GetTemplateChild(PART_InformationBindings);
             InformationBindingsStackPanel.IsEnabled = this.IsEditingEnabled;
