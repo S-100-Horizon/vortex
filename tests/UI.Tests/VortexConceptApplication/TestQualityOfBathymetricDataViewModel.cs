@@ -9,25 +9,15 @@ using System.Threading.Tasks;
 
 namespace VortexConceptApplication
 {
-    public class TestQualityOfBathymetricDataViewModel : QualityOfBathymetricDataViewModel, INotifyDataErrorInfo
+    public class TestQualityOfBathymetricDataViewModel : QualityOfBathymetricDataViewModel
     {
         private Random _random = new Random();
 
-        [Browsable(false)]
-        public bool HasErrors => true;
+        protected override void Validate() {
+            base.Validate();
 
-        public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
-
-
-        public IEnumerable GetErrors(string? propertyName) {
-            return propertyName switch {
-                "HasErrors" => Enumerable.Empty<string>(),
-                "featuresDetected" => Enumerable.Empty<string>(),
-                "surveyDataRange" => Enumerable.Empty<string>(),
-                "dataAssessment" or "information" or "fullSeafloorCoverageAchieved" => new string[] { "Error" },
-                _ => Enumerable.Empty<string>(),
-                //_ =>  _random.Next(0,99) < 50 ? Enumerable.Empty<string>() : new string[] { "Yellow" },
-            };
+            //base.AddError("dataAssessment", "dataAssessment is invalid.");
         }
+
     }
 }

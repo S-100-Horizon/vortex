@@ -159,7 +159,8 @@ namespace VortexConceptApplication
             };
 
             var model = new QualityOfBathymetricData() {
-                //dredgedDate = new DateOnly(2025, 2, 1)
+                //dredgedDate = new DateOnly(2025, 2, 1)                
+                //categoryOfTemporalVariation = S100Framework.DomainModel.S101.categoryOfTemporalVariation.ExtremeEvent,
             };
 
             //model.colour.Add(S100Framework.DomainModel.S101.colour.Red);

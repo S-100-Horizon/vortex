@@ -1,7 +1,9 @@
 ﻿using S100Framework.DomainModel;
+using System.Collections;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 namespace S100Framework.WPF.ViewModel
@@ -26,18 +28,56 @@ namespace S100Framework.WPF.ViewModel
         //public string Serialize();
     }
 
-    public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
+    public abstract class ViewModelBase : INotifyPropertyChanged, INotifyDataErrorInfo, IDisposable
     {
+        public ViewModelBase() {
+            this.PropertyChanged += (sender, e) => {
+                if (string.IsNullOrEmpty(e.PropertyName)) return;
+                if (e.PropertyName == nameof(HasErrors)) return; // Prevent recursive validation call
+
+                Validate();
+            };
+        }
+
         [Browsable(false)]
         public Guid? UID { get; set; } = default;
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public abstract string Serialize();
 
-        protected Dictionary<ViewModelBase, string> nestedProperties = new();
+        protected virtual void Validate() {
+            this._errors.Clear(); // Clear previous errors
+
+            var context = new NullabilityInfoContext();
+
+            bool IsNuallable(PropertyInfo property) {
+                var info = context.Create(property);
+                return info.ReadState == NullabilityState.Nullable;
+            }
+
+            var t = this.GetType().GetProperties()
+                .Where(p => p.GetCustomAttribute<BrowsableAttribute>() == null && !IsNuallable(p))
+                .ToList();
+
+            this.GetType().GetProperties()
+                .Where(p => p.GetCustomAttribute<BrowsableAttribute>() == null && !IsNuallable(p))
+                .ToList()
+                .ForEach(p => {
+                    var value = p.GetValue(this);
+                    if (value == null || (value is string str && string.IsNullOrWhiteSpace(str))) {
+                        this.AddError(p.Name, $"{p.Name} is required.");
+                    }
+                });
+        }
+
+        #region INotifyPropertyChanged
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        private Dictionary<ViewModelBase, string> nestedProperties = new();
 
         protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
             if (string.IsNullOrWhiteSpace(propertyName)) return;
@@ -68,7 +108,52 @@ namespace S100Framework.WPF.ViewModel
             OnPropertyChanged(propertyName);
         }
 
-        public abstract string Serialize();
+        #endregion
+
+
+        #region INotifyDataErrorInfo
+
+        private readonly Dictionary<string, List<string>> _errors = new Dictionary<string, List<string>>();
+
+        public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
+
+        [Browsable(false)]
+        public bool HasErrors => _errors.Any();
+
+        public IEnumerable GetErrors(string? propertyName) {
+            if (string.IsNullOrEmpty(propertyName)) return Enumerable.Empty<string>();
+
+            return _errors.ContainsKey(propertyName) ? _errors[propertyName] : Enumerable.Empty<string>();
+        }
+
+        protected void OnErrorsChanged(string propertyName) {
+            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+        }
+
+        protected void AddError(string propertyName, string error) {
+            if (!_errors.ContainsKey(propertyName)) {
+                _errors[propertyName] = new List<string>();
+            }
+
+            if (!_errors[propertyName].Contains(error)) {
+                _errors[propertyName].Add(error);
+                OnErrorsChanged(propertyName);
+                OnPropertyChanged(nameof(HasErrors));
+            }
+        }
+
+        protected void ClearErrors(string propertyName) {
+            if (_errors.ContainsKey(propertyName)) {
+                _errors.Remove(propertyName);
+                OnErrorsChanged(propertyName);
+                OnPropertyChanged(nameof(HasErrors));
+            }
+        }
+
+        #endregion
+
+
+        #region IDisposable
 
         public void Dispose() {   // need to make sure that we unsubscibed
             foreach (ViewModelBase viewModel in nestedProperties.Keys) {
@@ -76,6 +161,8 @@ namespace S100Framework.WPF.ViewModel
                 viewModel.Dispose();
             }
         }
+
+        #endregion
     }
 
     public abstract class AssociationViewModel : ViewModelBase
