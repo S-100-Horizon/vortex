@@ -385,7 +385,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class fixedDateRangeViewModel : ViewModelBase {
 		private String? _dateEnd  = default;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? dateEnd {
 			get {
 				return _dateEnd;
@@ -396,7 +395,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 		private String? _dateStart  = default;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? dateStart {
 			get {
 				return _dateStart;
@@ -676,7 +674,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class periodicDateRangeViewModel : ViewModelBase {
 		private String _dateEnd ;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String dateEnd {
 			get {
 				return _dateEnd;
@@ -687,7 +684,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 		private String _dateStart ;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String dateStart {
 			get {
 				return _dateStart;

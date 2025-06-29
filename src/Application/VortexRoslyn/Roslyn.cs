@@ -100,7 +100,7 @@ namespace S100Framework.Applications
             var informationAssociationsLookup = new Dictionary<string, ICollection<string>>();
             var featureAssociationsLookup = new Dictionary<string, ICollection<string>>();
 
-            var editorBuilders = new Dictionary<string, Action<StringBuilder>>();
+            var editorBuilders = new Dictionary<string, Action<StringBuilder, int, int?>>();
 
             var shouldSerialize = new Dictionary<string, Func<string, string>> {
                 { "Boolean?", (code) => $"{code}.HasValue" },
@@ -170,8 +170,11 @@ namespace S100Framework.Applications
                     builderDomainModel.AppendLine("\t}");
                     builderDomainModel.AppendLine();
 
-                    editorBuilders.Add(code, (b) => {
-                        b.AppendLine($"\t\t[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]");
+                    editorBuilders.Add(code, (b, lower, upper) => {
+                        if (lower > 1 || (upper.HasValue && upper.Value > 1))
+                            b.AppendLine($"\t\t[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]");
+                        else
+                            b.AppendLine($"\t\t[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]");
                         b.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({code}List), typeof({code}))]");
                     });
                 }
@@ -265,8 +268,9 @@ namespace S100Framework.Applications
                     knowTypesPrefix.Add(code, prefix);
 
                     if (e.Element(XName.Get("valueType", scope_S100))!.Value.Equals("s100_truncateddate", StringComparison.InvariantCultureIgnoreCase)) {
-                        editorBuilders.Add(code, (b) => {
-                            b.AppendLine($"\t\t[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]");
+                        editorBuilders.Add(code, (b, lower, upper) => {
+                            if (lower > 1 || (upper.HasValue && upper.Value > 1))
+                                b.AppendLine($"\t\t[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]");
                         });
                     }
 
@@ -732,7 +736,7 @@ namespace S100Framework.Applications
             public required IReadOnlyDictionary<string, ICollection<string>> InformationAssociationsLookup { get; init; }
             public required IReadOnlyDictionary<string, ICollection<string>> FeatureAssociationsLookup { get; init; }
 
-            public required IReadOnlyDictionary<string, Action<StringBuilder>> Editors { get; init; }
+            public required IReadOnlyDictionary<string, Action<StringBuilder,int,int?>> Editors { get; init; }
         }
 
         private static string BuildViewModel(XDocument productSpecification, BuildViewModelClient client) {
@@ -917,7 +921,7 @@ namespace S100Framework.Applications
                         LoadPrefix = $"override InformationViewModel<{code}>",
                         Editors = client.Editors,
                     }, (b) => {
-                        b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");                        
+                        b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
                     });
 
                     builderViewModel.AppendLine(s);
@@ -1284,7 +1288,7 @@ namespace S100Framework.Applications
 
             public required string LoadPrefix { get; init; }
 
-            public required IReadOnlyDictionary<string, Action<StringBuilder>> Editors { get; init; }
+            public required IReadOnlyDictionary<string, Action<StringBuilder, int, int?>> Editors { get; init; }
         }
 
         private static string BuildViewModelClass(XElement e, BuildViewModelClassClient client, Action<StringBuilder>? postAction = null) {
@@ -1426,7 +1430,7 @@ namespace S100Framework.Applications
                         builder.AppendLine($"\t\t[Category(\"{code}\")]");
 
                     if (client.BuildViewModelClassClient.Editors.ContainsKey(referenceCode)) {
-                        client.BuildViewModelClassClient.Editors[referenceCode](builder);
+                        client.BuildViewModelClassClient.Editors[referenceCode](builder,lower,upper);
                     }
                     //if (client.BuildViewModelClassClient.EnumerationTypes.Contains(referenceCode)) {
                     //    builder.AppendLine($"\t\t[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]");
@@ -1465,7 +1469,7 @@ namespace S100Framework.Applications
 
                     builder.AppendLine($"\t\t[Category(\"{code}\")]");
                     if (client.BuildViewModelClassClient.Editors.ContainsKey(referenceCode)) {
-                        client.BuildViewModelClassClient.Editors[referenceCode](builder);
+                        client.BuildViewModelClassClient.Editors[referenceCode](builder, lower, upper);
                     }
                     //if (client.BuildViewModelClassClient.EnumerationTypes.Contains(referenceCode)) {
                     //    builder.AppendLine($"\t\t[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]");
