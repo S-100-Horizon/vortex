@@ -497,7 +497,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class fixedDateRangeViewModel : ViewModelBase {
 		private String? _dateEnd  = default;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? dateEnd {
 			get {
 				return _dateEnd;
@@ -508,7 +507,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private String? _dateStart  = default;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? dateStart {
 			get {
 				return _dateStart;
@@ -1215,7 +1213,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class periodicDateRangeViewModel : ViewModelBase {
 		private String _dateEnd ;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String dateEnd {
 			get {
 				return _dateEnd;
@@ -1226,7 +1223,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private String _dateStart ;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String dateStart {
 			get {
 				return _dateStart;
@@ -2020,7 +2016,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfSurface[] natureOfSurfaceList => [(natureOfSurface)1,(natureOfSurface)2,(natureOfSurface)3,(natureOfSurface)4,(natureOfSurface)5,(natureOfSurface)6,(natureOfSurface)7,(natureOfSurface)8,(natureOfSurface)9,(natureOfSurface)11,(natureOfSurface)14,(natureOfSurface)17,(natureOfSurface)18];
 		[Category("surfaceCharacteristics")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
 		[DomainModel.EnumerationAttribute(nameof(natureOfSurfaceQualifyingTermsList), typeof(natureOfSurfaceQualifyingTerms))]
 		public ObservableCollection<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTerms  { get; set; } = new ();
 
@@ -2082,7 +2078,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class surveyDateRangeViewModel : ViewModelBase {
 		private String _dateEnd ;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String dateEnd {
 			get {
 				return _dateEnd;
@@ -2093,7 +2088,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private String? _dateStart  = default;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? dateStart {
 			get {
 				return _dateStart;
@@ -2361,7 +2355,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase {
 		[Category("timeIntervalsByDayOfWeek")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
 		[DomainModel.EnumerationAttribute(nameof(dayOfWeekList), typeof(dayOfWeek))]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
@@ -3857,7 +3851,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NonStandardWorkingDayViewModel : InformationViewModel<NonStandardWorkingDay> {
 		[Category("NonStandardWorkingDay")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public ObservableCollection<String> dateFixed  { get; set; } = new ();
 		[Category("NonStandardWorkingDay")]
 		public ObservableCollection<String> dateVariable  { get; set; } = new ();
@@ -5359,7 +5352,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String _referenceYearForMagneticVariation ;
 
 		[Category("MagneticVariation")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String referenceYearForMagneticVariation {
 			get {
 				return _referenceYearForMagneticVariation;
@@ -5477,7 +5469,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("LocalMagneticAnomaly")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -5790,7 +5781,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("LandArea")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -6897,7 +6887,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("IceArea")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -7561,7 +7550,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("BuiltUpArea")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -7834,7 +7822,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Building")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8089,7 +8076,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("AirportAirfield")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8258,7 +8244,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Runway")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8423,7 +8408,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Helipad")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8693,7 +8677,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Bridge")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -9357,7 +9340,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Conveyor")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -9686,7 +9668,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("CableOverhead")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -9975,7 +9956,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("PipelineOverhead")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -10287,7 +10267,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("PylonBridgeSupport")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -10612,7 +10591,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("FenceWall")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -10827,7 +10805,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Railway")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -10989,7 +10966,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Road")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -11150,7 +11126,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Tunnel")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -11439,7 +11414,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Landmark")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -11818,7 +11792,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("SiloTank")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -12156,7 +12129,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("WindTurbine")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -12498,7 +12470,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("FortifiedStructure")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -12782,7 +12753,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("ProductionStorageArea")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -13191,7 +13161,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Hulk")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -13478,7 +13447,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Pile")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -13730,7 +13698,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Dyke")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -14018,7 +13985,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("ShorelineConstruction")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -14379,7 +14345,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("StructureOverNavigableWater")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -14676,7 +14641,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Causeway")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -14892,7 +14856,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Canal")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -16405,7 +16368,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Dolphin")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -16660,7 +16622,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Bollard")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -18987,7 +18948,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Sounding")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -19142,7 +19102,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _dredgedDate  = default;
 
 		[Category("DredgedArea")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? dredgedDate {
 			get {
 				return _dredgedDate;
@@ -19353,7 +19312,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _sweptDate  = default;
 
 		[Category("SweptArea")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? sweptDate {
 			get {
 				return _sweptDate;
@@ -20285,7 +20243,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("UnderwaterAwashRock")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -20559,7 +20516,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Wreck")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -20900,7 +20856,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Obstruction")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -21161,7 +21116,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("FoulGround")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -21335,7 +21289,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("DiscolouredWater")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -21459,7 +21412,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("FishingFacility")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -22008,7 +21960,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("OffshorePlatform")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -22641,7 +22592,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("PipelineSubmarineOnLand")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -23089,7 +23039,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("OffshoreProductionArea")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -28465,7 +28414,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _dateDisused  = default;
 
 		[Category("DumpingGround")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? dateDisused {
 			get {
 				return _dateDisused;
@@ -29159,7 +29107,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("CautionArea")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -29315,7 +29262,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationArea")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -30466,7 +30412,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("OilBarrier")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -35032,7 +34977,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("LateralBeacon")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -35415,7 +35359,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("CardinalBeacon")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -35782,7 +35725,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("IsolatedDangerBeacon")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -36146,7 +36088,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("SafeWaterBeacon")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -36517,7 +36458,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("SpecialPurposeGeneralBeacon")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -39947,7 +39887,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("HarbourFacility")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -40322,7 +40261,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 		[Category("TextPlacement")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
 		[DomainModel.EnumerationAttribute(nameof(textTypeList), typeof(textType))]
 		public ObservableCollection<textType> textType  { get; set; } = new ();
 
