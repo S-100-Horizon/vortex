@@ -165,7 +165,7 @@ namespace VortexConceptApplication
             //model.colour.Add(S100Framework.DomainModel.S101.colour.Red);
             //model.colour.Add(S100Framework.DomainModel.S101.colour.Green);
 
-            var viewModel = new QualityOfBathymetricDataViewModel() {
+            var viewModel = new TestQualityOfBathymetricDataViewModel() {
                 Name = "S202600",
             }.Load(model);
 
