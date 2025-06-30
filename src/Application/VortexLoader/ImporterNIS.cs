@@ -266,7 +266,7 @@ namespace S100Framework.Applications
 
         internal static string GetNation(string nation) {
             return nation switch {
-                "DK" => "DAN",
+                "DK" => "DK",
                 _ => throw new NotSupportedException($"Nation {nation} cannot be converted")
             };
         }
@@ -609,7 +609,7 @@ namespace S100Framework.Applications
                 var nobjnm = nobjnme.Trim();
                 if (!string.IsNullOrEmpty(nobjnm)) {
                     featureName.Add(new featureName {
-                        language = "dk",
+                        language = "dan",
                         nameUsage = nameUsage.AlternateNameDisplay,
                         name = nobjnm,
                     });
