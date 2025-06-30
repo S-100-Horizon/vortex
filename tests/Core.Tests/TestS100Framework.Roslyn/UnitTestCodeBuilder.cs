@@ -623,6 +623,10 @@ namespace TestS100Framework
             IsNull      // Explicitly set to a "null" or "not applicable" state
         }
 
+        public enum Colors {
+            Red,Green,Yellow
+        }
+
         public readonly struct NullableUnknown<T> : IEquatable<NullableUnknown<T>>
         {
             private readonly T _value;
@@ -755,6 +759,8 @@ namespace TestS100Framework
 
             [Fact]
             public void Test_NullableUnknown() {
+                Nullable<Colors> colors;
+
                 // Example with int (value type)
                 NullableUnknown<int> age1 = NullableUnknown<int>.FromValue(30);
                 NullableUnknown<int> age2 = NullableUnknown<int>.Null;

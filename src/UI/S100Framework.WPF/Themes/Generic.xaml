@@ -15,7 +15,14 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:S100AttributeEditorControl}">
-
+                    <ControlTemplate.Resources>
+                        <ResourceDictionary>
+                            <xctk:PropertyGridContextMenu x:Key="AdvancedOptionsMenu">
+                                <MenuItem Header="unknown" Command="local:S100AttributeEditorControl.UnknownCommand" />
+                                <MenuItem Header="reset" Command="local:S100AttributeEditorControl.ResetCommand" />
+                            </xctk:PropertyGridContextMenu>
+                        </ResourceDictionary>
+                    </ControlTemplate.Resources>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="3*"/>
@@ -25,8 +32,9 @@
                         <xctk:PropertyGrid x:Name="PART_PropertyGrid" Grid.Row="0"
                                                    AutoGenerateProperties="True"                           
                                                    UpdateTextBoxSourceOnEnterKey="True"
-                                                   ShowAdvancedOptions="True"
-                                                   ShowSummary="False">
+                                                   ShowAdvancedOptions="False"
+                                                   ShowSummary="False"
+                                                   AdvancedOptionsMenu="{StaticResource AdvancedOptionsMenu}">
                         </xctk:PropertyGrid>
 
                         <Border Grid.Row="1" Background="{TemplateBinding Background}"
