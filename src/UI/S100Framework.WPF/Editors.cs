@@ -274,7 +274,7 @@ namespace S100Framework.WPF.Editors
     }
 
 
-    public class UnknownEditor<T> : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor where T : unmanaged
+    public class UnknownEditor<T> : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor where T : notnull
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
 
@@ -293,7 +293,7 @@ namespace S100Framework.WPF.Editors
                 ToolTip = "[Unknown]",
                 GroupName = "Unknown",
                 Background = System.Windows.Media.Brushes.Orange,
-                IsChecked = !instance.HasValue,
+                IsChecked = instance == null,
                 HorizontalAlignment = HorizontalAlignment.Left,
             };
             //Panel.SetZIndex(radioButtonUnknown, 1);
