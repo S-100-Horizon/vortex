@@ -150,11 +150,10 @@ namespace S100Framework.Applications
 
                     if (datasetName.Equals("101DK40751E")) continue;
                     if (datasetName.Equals("101DK40545E")) continue;
-                    if (datasetName.Equals("101DK40347E")) continue; 
+                    if (datasetName.Equals("101DK40347E")) continue;
 
                     Log.Information("{dataset}", datasetName);
                     var geometries = new List<(Geometry geometry, string name)>();
-                    //var featureAssociations = new Dictionary<string, YAML.Association[]>();
 
                     // Build Topology
                     Log.Information("Building topology..");
@@ -264,14 +263,9 @@ namespace S100Framework.Applications
                                     using var document = JsonDocument.Parse(Convert.ToString(current["informationbindings"])!);
                                     var root = document.RootElement;
 
-                                    // Nessecary?
-                                    var roleType = root.GetProperty("roleType").GetString();
-                                    //var associationId = root.GetProperty("associationId").GetString();
-
-                                    var association = root.GetProperty("association").GetString();
-                                    var role = root.GetProperty("role").GetString();
-                                    var informationId = root.GetProperty("informationId").GetString();
-
+                                    var association = root.GetProperty("association").GetString()!;
+                                    var role = root.GetProperty("role").GetString()!;
+                                    var informationId = root.GetProperty("informationId").GetString()!;
 
                                     var asso = new YAML.Association {
                                         Name = association,
@@ -279,7 +273,15 @@ namespace S100Framework.Applications
                                         To = informationId,
                                     };
 
-                                    feature.AddAssociation(asso);
+                                    // Special case for SpatialAssociation
+                                    if (prim != Primitive.Surface && association.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase)) {
+                                        var curve = dataset?.Curves?.FirstOrDefault(e => e.Name == geometry);
+
+                                        curve?.AddAssociation(asso);
+                                    }
+                                    else {
+                                        feature?.AddAssociation(asso);
+                                    }
                                 }
 
                                 // Feature Associations
@@ -292,14 +294,12 @@ namespace S100Framework.Applications
                                             var roleType = element.GetProperty("roleType").GetString();
 
                                             // Skip association roleType for now
-                                            if (roleType == "association") 
+                                            if (roleType == "association")
                                                 continue;
-                                            
-                                            //var associationId = element.GetProperty("associationId").GetString();
 
-                                            var association = element.GetProperty("association").GetString();
-                                            var role = element.GetProperty("role").GetString();
-                                            var featureId = element.GetProperty("featureId").GetString();
+                                            var association = element.GetProperty("association").GetString()!;
+                                            var role = element.GetProperty("role").GetString()!;
+                                            var featureId = element.GetProperty("featureId").GetString()!;
 
 
                                             var asso = new YAML.Association {
