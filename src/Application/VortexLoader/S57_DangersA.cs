@@ -432,7 +432,7 @@ namespace S100Framework.Applications
                     case 25: { // WRECKS_Wreck
                             var instance = new Wreck();
 
-                            if (current.VALSOU.HasValue) {
+                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
                                 instance.valueOfSounding = current.VALSOU.Value;
                             }
 
@@ -501,7 +501,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN);
+                                relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);

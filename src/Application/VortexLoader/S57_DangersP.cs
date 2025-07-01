@@ -386,17 +386,6 @@ namespace S100Framework.Applications
                     case 45: { // WRECKS
                             var instance = new Wreck();
 
-                            if (current.SHAPE != null) {
-                                foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
-                                    var drval1 = depthArea.DRVAL1 ?? default;
-                                    instance.surroundingDepth = drval1;
-                                }
-                            }
-
-                            if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
-                            }
-
                             if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
                                 instance.valueOfSounding = current.VALSOU.Value;
                             }
@@ -407,6 +396,38 @@ namespace S100Framework.Applications
                             }
 
 
+                            if (current.EXPSOU.HasValue) {
+                                instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.QUASOU != default) {
+                                if (current.QUASOU == "-32767")
+                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>("-1");
+                                else {
+                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                }
+                            }
+
+                            if (current.CONRAD.HasValue) {
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
+                            }
+
+                            if (current.WATLEV.HasValue) {
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -416,24 +437,25 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
+                            AddInformation(instance.information, feature);
+
+                            foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
+                                var drval1 = depthArea.DRVAL1 ?? default;
+                                instance.surroundingDepth = drval1;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
