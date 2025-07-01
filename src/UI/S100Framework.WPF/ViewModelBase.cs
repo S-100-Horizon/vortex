@@ -403,4 +403,35 @@ namespace S100Framework.WPF.ViewModel
 
         //public abstract FeatureAssociation Save(FeatureAssociation featureAssociation, string role);
     }
+
+    public class TristateViewModel<T> : ViewModelBase
+    {
+        private T? _value;
+
+        public T? value {
+            get { return _value; }
+            set { 
+                SetValue(ref _value, value); 
+            }
+        }
+
+        private TristateStatus _status = TristateStatus.Null;
+
+        public TristateStatus status {
+            get { return _status; }
+            set {
+                SetValue(ref _status, value);
+            }
+        }
+
+        public TristateViewModel<T> Load(Tristate<T> instance) {
+            value = instance.Value;
+            status = instance.Status;
+            return this;
+        }
+
+        public override string Serialize() {
+            throw new NotImplementedException();
+        }
+    }
 }

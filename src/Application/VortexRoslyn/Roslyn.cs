@@ -17,7 +17,7 @@ namespace S100Framework.Applications
 
         private static ICollection<Primitives> spatialAssociationPrimitives = [Primitives.curve, Primitives.pointSet, Primitives.point];
 
-        public static (string DomainModel, string ViewModel) Build(XDocument productSpecification, bool supportingSpatialAssociation = false) {
+        public static (string DomainModel, string ViewModel) Build(XDocument productSpecification, bool supportingSpatialAssociation = false, bool supportingTristate = false) {
             var navigator = productSpecification.CreateNavigator();
             navigator.MoveToFollowing(XPathNodeType.Element);
             var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);

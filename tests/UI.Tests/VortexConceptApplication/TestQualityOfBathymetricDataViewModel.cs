@@ -2,6 +2,7 @@
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.WPF.Converters;
+using S100Framework.WPF.Editors;
 using S100Framework.WPF.ViewModel;
 using S100Framework.WPF.ViewModel.S101;
 using System;
@@ -30,19 +31,20 @@ namespace VortexConceptApplication
 
     public class TestQualityOfBathymetricData : QualityOfBathymetricData
     {
+        [EnumerationValue([1, 2, 3, 5, 6])]
+        [Required()]
+        public categoryOfTemporalVariation? categoryOfTemporalVariationUnknown { get; set; }
+
     }
 
     public class TestQualityOfBathymetricDataViewModel : QualityOfBathymetricDataViewModel
     {
-        private Random _random = new Random();
-
-
-        private Tristate<categoryOfTemporalVariation> _categoryOfTemporalVariationUnknown = Tristate<categoryOfTemporalVariation>.Unknown;
+        private categoryOfTemporalVariation? _categoryOfTemporalVariationUnknown;
 
         [Category("QualityOfBathymetricData")]
-        [Editor(typeof(TristateEditor<categoryOfTemporalVariation>), typeof(TristateEditor<categoryOfTemporalVariation>))]
+        [Editor(typeof(UnknownEditor<categoryOfTemporalVariation>), typeof(UnknownEditor<categoryOfTemporalVariation>))]
         [S100Framework.DomainModel.EnumerationAttribute(nameof(categoryOfTemporalVariationList), typeof(categoryOfTemporalVariation))]
-        public Tristate<categoryOfTemporalVariation> categoryOfTemporalVariationUnknown {
+        public categoryOfTemporalVariation? categoryOfTemporalVariationUnknown {
             get {
                 return _categoryOfTemporalVariationUnknown;
             }
@@ -50,6 +52,9 @@ namespace VortexConceptApplication
                 SetValue(ref _categoryOfTemporalVariationUnknown, value);
             }
         }
+
+
+
 
         private String _interoperabilityIdentifier2;
 
@@ -66,6 +71,7 @@ namespace VortexConceptApplication
 
 
         public override FeatureViewModel<QualityOfBathymetricData> Load(QualityOfBathymetricData instance) {
+            _categoryOfTemporalVariationUnknown = default;
             return base.Load(instance);
         }
 
@@ -91,7 +97,7 @@ namespace VortexConceptApplication
 
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
 
-            var instance = (Tristate<T>)propertyItem.Value;
+            var instance = (TristateViewModel<T>)propertyItem.Value;
 
             var panel = new DockPanel {
                 LastChildFill = true,
@@ -163,7 +169,4 @@ namespace VortexConceptApplication
             return panel;
         }
     }
-
-
-
 }

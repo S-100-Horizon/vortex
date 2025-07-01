@@ -122,6 +122,7 @@ namespace S100Framework.WPF
         public event NotifyCollectionItemEventHandler? CollectionItemChanged;
 
         protected void OnPropertyChanged(object? sender, PropertyChangedEventArgs e) {
+            if ("HasErrors".Equals(e.PropertyName)) return;
             this.PropertyChanged?.Invoke(sender, e);
         }
 
