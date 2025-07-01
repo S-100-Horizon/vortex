@@ -1,7 +1,9 @@
 ﻿#define prop
 //#define propfull
 
+using S100Framework.DomainModel;
 using System.IO;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Xml;
@@ -125,7 +127,7 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.Applications.Roslyn.Build(s100, true);
+                var content = S100Framework.Applications.Roslyn.Build(s100, true, true);
 
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
@@ -463,10 +465,14 @@ namespace TestS100Framework
                 //Assert.Equivalent(instance, deserialized);
             }
 
-            [Fact]
-            public void Test_YamlEnum() {
-                
-            }
+            //[Fact]
+            //public void Test_Required() {
+            //    var type = typeof(QualityOfBathymetricData);
+
+            //    var required = type.GetProperty("categoryOfTemporalVariation")!.GetCustomAttribute<RequiredAttribute>();
+            //    if (required != null)
+            //        ;   //  HAS ATTRIBUTE
+            //}
 
             private bool VerifyProductSpecification(XDocument productSpecification) {
                 var navigator = productSpecification.CreateNavigator();
@@ -628,6 +634,10 @@ namespace TestS100Framework
             IsNull      // Explicitly set to a "null" or "not applicable" state
         }
 
+        public enum Colors {
+            Red,Green,Yellow
+        }
+
         public readonly struct NullableUnknown<T> : IEquatable<NullableUnknown<T>>
         {
             private readonly T _value;
@@ -760,6 +770,8 @@ namespace TestS100Framework
 
             [Fact]
             public void Test_NullableUnknown() {
+                Nullable<Colors> colors;
+
                 // Example with int (value type)
                 NullableUnknown<int> age1 = NullableUnknown<int>.FromValue(30);
                 NullableUnknown<int> age2 = NullableUnknown<int>.Null;

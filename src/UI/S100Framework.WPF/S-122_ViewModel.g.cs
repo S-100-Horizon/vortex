@@ -346,7 +346,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class fixedDateRangeViewModel : ViewModelBase {
 		private String? _dateStart  = default;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? dateStart {
 			get {
 				return _dateStart;
@@ -357,7 +356,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String? _dateEnd  = default;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? dateEnd {
 			get {
 				return _dateEnd;
@@ -809,7 +807,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class periodicDateRangeViewModel : ViewModelBase {
 		private String _dateStart ;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String dateStart {
 			get {
 				return _dateStart;
@@ -820,7 +817,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String _dateEnd ;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String dateEnd {
 			get {
 				return _dateEnd;
@@ -1305,7 +1301,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 		private String? _reportedDate  = default;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -1352,7 +1347,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase {
 		[Category("timeIntervalsByDayOfWeek")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
 		[DomainModel.EnumerationAttribute(nameof(dayOfWeekList), typeof(dayOfWeek))]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
@@ -1971,7 +1966,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -2103,7 +2097,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -2285,7 +2278,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -2468,7 +2460,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -2651,7 +2642,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -2834,7 +2824,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -3017,7 +3006,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -3181,7 +3169,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -3523,7 +3510,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -3534,7 +3520,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 
 		[Category("NonStandardWorkingDay")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public ObservableCollection<String> dateFixed  { get; set; } = new ();
 		[Category("NonStandardWorkingDay")]
 		public ObservableCollection<String> dateVariable  { get; set; } = new ();
@@ -3693,7 +3678,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -3856,7 +3840,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -4155,7 +4138,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -4356,7 +4338,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -4605,7 +4586,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;

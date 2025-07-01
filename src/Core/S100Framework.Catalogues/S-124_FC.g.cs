@@ -1773,6 +1773,7 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class chartAffected {
+			[Required()]
 			public String chartNumber {get;set;} = string.Empty;
 
 			public String? chartPlanNumber {get;set;} = default;
@@ -1819,28 +1820,34 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class information {
+			[Required()]
 			public String language {get;set;} = string.Empty;
 
+			[Required()]
 			public String text {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class locationName {
+			[Required()]
 			public String language {get;set;} = string.Empty;
 
+			[Required()]
 			public String text {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class messageSeriesIdentifier {
+			[Required()]
 			public String agencyResponsibleForProduction {get;set;} = string.Empty;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[Required()]
 			public String nameOfSeries {get;set;} = string.Empty;
 
 			public String? nationality {get;set;} = default;
@@ -1861,8 +1868,10 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class navwarnTitle {
+			[Required()]
 			public String language {get;set;} = string.Empty;
 
+			[Required()]
 			public String text {get;set;} = string.Empty;
 		}
 
@@ -1893,8 +1902,10 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class FeatureName {
+			[Required()]
 			public String language {get;set;} = string.Empty;
 
+			[Required()]
 			public String Name {get;set;} = string.Empty;
 
 			[EnumerationValue([1,2,3])]
@@ -1918,6 +1929,7 @@ namespace S100Framework.DomainModel.S124 {
 
 			public bool ShouldSerializeinternationalChartAffected() { return !string.IsNullOrEmpty(internationalChartAffected); }
 
+			[Required()]
 			public String language {get;set;} = string.Empty;
 
 			public String? publicationAffected {get;set;} = default;
@@ -2258,6 +2270,7 @@ namespace S100Framework.DomainModel.S124 {
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[Required()]
 			public String text {get;set;} = string.Empty;
 
 			[Required()]

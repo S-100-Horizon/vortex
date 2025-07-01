@@ -621,7 +621,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class periodicDateRangeViewModel : ViewModelBase {
 		private String _dateEnd ;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String dateEnd {
 			get {
 				return _dateEnd;
@@ -632,7 +631,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _dateStart ;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String dateStart {
 			get {
 				return _dateStart;
@@ -2603,7 +2601,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("NavigationalProduct")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
 		[DomainModel.EnumerationAttribute(nameof(navigationPurposeList), typeof(navigationPurpose))]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
 
@@ -3149,7 +3147,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("NavigationalProduct")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
 		[DomainModel.EnumerationAttribute(nameof(navigationPurposeList), typeof(navigationPurpose))]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
 

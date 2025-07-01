@@ -2,7 +2,6 @@
 using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.DomainModel;
-using S100Framework.DomainModel.S101;
 using S100Framework.YAML;
 using Serilog;
 using System.Diagnostics;
@@ -49,13 +48,6 @@ namespace S100Framework.Applications
                 .CreateLogger();
 
             Log.Information("exporter.exe {args}", string.Join(' ', args));
-
-
-            var nameUsage1 = DomainModel.S101.nameUsage.DefaultNameDisplay;
-
-            var v = (int)nameUsage1;
-
-            var enumvalue = S100Framework.YAML.Converter.ToEnumString(nameUsage1);
 
 
             try {
@@ -308,12 +300,12 @@ namespace S100Framework.Applications
                                                 To = $"110:{featureId[1..]}:1"
                                             };
 
-                                            feature.AddFeatureAssociation(asso);
+                                            feature?.AddFeatureAssociation(asso);
                                         }
                                     }
                                 }
 
-                                dataset.AddFeature(feature);
+                                dataset?.AddFeature(feature!);
 
                                 geometries.Add(new(current.GetShape(), name!));
                             }
@@ -328,12 +320,12 @@ namespace S100Framework.Applications
                     // Geometries
                     foreach (var (geometry, name) in geometries.OrderBy(e => e.geometry.GeometryType)) {
                         if (geometry.GeometryType == GeometryType.Polygon) continue;    // Skip polygons after topology
-                        dataset.AddGeometry(geometry, name!);
+                        dataset?.AddGeometry(geometry, name!);
                         Log.Verbose("Adding {geometryType} with ID: {name}", geometry.GeometryType, name);
                     }
 
                     // Serialize to YAML
-                    var yaml = S100Framework.YAML.Converter.Serialize(dataset);
+                    var yaml = S100Framework.YAML.Converter.Serialize(dataset!);
 
                     var output = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
@@ -403,19 +395,13 @@ namespace S100Framework.Applications
                 return -1;
             }
         }
-
-        private const string jsonSurface = "{\"rings\":[[[12.5,54.7015465],[12.4732885,54.694891],[12.4421088,54.6871107],[12.4323619,54.6790339],[12.4167304,54.6660724],[12.4093265,54.6599296],[12.4021195,54.6539479],[12.3978169,54.6503758],[12.3895268,54.6434911],[12.3772575,54.6332961],[12.3758783,54.6321497],[12.3700522,54.6273061],[12.3649871,54.623094],[12.3626519,54.6211517],[12.3590146,54.6181259],[12.3549381,54.6147341],[12.3494461,54.6101634],[12.3414574,54.6035126],[12.339328,54.6017394],[12.3362479,54.5991741],[12.3332861,54.596707],[12.3244586,54.5893516],[12.3170332,54.583162],[12.3015427,54.5702419],[12.2733278,54.5466828],[12.2612285,54.5365694],[12.2413132,54.5199097],[12.24082,54.5194969],[12.2396746,54.5185383],[12.2359635,54.5154316],[12.2285345,54.509211],[12.217541,54.5],[12.0,54.5],[12.0,55.0],[12.5,55.0],[12.5,54.7015465]]],\"spatialReference\":{\"wkid\":4326,\"latestWkid\":4326,\"xyTolerance\":3.5355339e-08,\"zTolerance\":0.001,\"mTolerance\":0.001,\"falseX\":-400,\"falseY\":-400,\"xyUnits\":99999999.99999999,\"falseZ\":-100000,\"zUnits\":10000,\"falseM\":-100000,\"mUnits\":10000}}";
     }
 }
 
 namespace S100Framework.YAML
 {
     using System.Collections.Concurrent;
-    using System.Collections.Generic;
-    using System.Globalization;
     using System.Linq;
-
-    using System.Text.RegularExpressions;
 
     public static class Extension
     {
@@ -429,88 +415,25 @@ namespace S100Framework.YAML
                                 Name = $"{name}"
                             };
 
-                            dataset!.AddPoint(p);
+                            dataset?.AddPoint(p);
                         }
                         else {
-                            dataset!.UpdateFeatureReferences(name, datasetPoint!.Name);
+                            dataset?.UpdateFeatureReferences(name, datasetPoint.Name!);
                         }
                         break;
                     }
                 case ArcGIS.Core.Geometry.Multipoint multiPoint: {   // Depths
                         var points = multiPoint.Points.Select(e => new Coordinate(e.X, e.Y)).ToArray();
-                        //var depths = multiPoint.Points.Select(e => e.Z.RoundToIHO()).ToArray();
+
                         var depths = multiPoint.Points.Select(e => Math.Round(e.Z, 7)).ToArray();
 
                         var pointSet = new PointSet(points, depths) { Name = name };
                         dataset.AddPointSet(pointSet);
                         break;
                     }
-                case ArcGIS.Core.Geometry.Polyline polyline: {        // Curve will be handled in Topology
-                        break;
-                        var vertices = polyline.Points.Select(p => new Coordinate(p.X, p.Y)).ToArray();
-
-                        var first = dataset?.GetOrCreateStartPoint(vertices, name);
-                        var last = dataset?.GetOrCreateEndPoint(vertices, name);
-
-                        var curve = new Curve(first!, last!, vertices) {
-                            Name = name,
-                        };
-
-                        dataset!.AddCurve(curve);
-
-                        // Create curve if another doesnt exist with the exact same vertices
-                        //_ = dataset.GetOrCreateCurve(vertices, name);
-
-                        break;
-                    }
-                case ArcGIS.Core.Geometry.Polygon polygon: {         // Surface are handled in Topology
-                        break; // 
-                        if (polygon.ExteriorRingCount == 0 || polygon.ExteriorRingCount > 1)
-                            throw new ArgumentException("Unsupported exterior ring count");
-
-                        if (polygon.ExteriorRingCount == 0 || polygon.ExteriorRingCount > 1)
-                            throw new ArgumentException("Unsupported exterior ring count");
-
-                        var nameWithoutIdentifier = Regex.Replace(name, @"\D", "");
-
-                        var exteriorRing = polygon.GetExteriorRing(0);
-
-                        var exteriorCoordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
-
-                        // Insert starting coordinate at the end of coordinate[] to ensure its a closed polygon
-                        exteriorCoordinates = [.. exteriorCoordinates, exteriorCoordinates[0]];
-
-                        var exteriorCurve = dataset.GetOrCreateCurve(exteriorCoordinates, nameWithoutIdentifier);
-
-                        var surface = new Surface(exteriorCurve.Name!) {
-                            Name = name
-                        };
-
-                        // Add interior rings
-                        int id = 1;
-                        if (polygon.Parts.Count > 1) {
-                            foreach (var interiorRing in polygon.Parts.Skip(1)) {
-                                var interiorCoordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
-
-                                // Insert starting coordinate at the end of coordinate[] to ensure its a closed polygon
-                                interiorCoordinates = [.. interiorCoordinates, interiorCoordinates[0]];
-
-                                var interiorCurve = dataset.GetOrCreateCurve(interiorCoordinates, nameWithoutIdentifier, id);
-
-                                id++;
-
-                                if (surface.InteriorRings == null) {
-                                    surface.InteriorRings = [interiorCurve.Name!];
-                                }
-                                else {
-                                    surface.InteriorRings = [.. surface.InteriorRings, interiorCurve.Name!];
-                                }
-                            }
-
-                            dataset.AddSurface(surface);
-                        }
-                        break;
-                    }
+                case ArcGIS.Core.Geometry.Polyline polyline:        // Curves are handled in Topology
+                case ArcGIS.Core.Geometry.Polygon polygon:          // Surfaces are handled in Topology
+                    break;
                 default:
                     throw new ArgumentException($"Unsupported geometry type: {geometry.GeometryType}");
             }
@@ -584,7 +507,7 @@ namespace S100Framework.YAML
                     var surface = new Surface(exteriorRing) {
                         InteriorRings = interiorRings,
                         //Name = s.Ref
-                        Name = $"S{s.Id}",
+                        Name = $"S{s?.Id}",
                     };
 
                     _ = dataset.AddSurface(surface);
@@ -593,37 +516,6 @@ namespace S100Framework.YAML
             catch (Exception ex) {
                 Log.Error("Exception! {ex} on surface: {surface}", ex, surfaceFeature?.Id);
             }
-        }
-
-        /// <summary>
-        /// The NCPS NIS was data loaded by ENCs for Denmark. The ENC only holds depth data to One decimal place and derived from paper chart practices <br />
-        /// IHO Rounding rules applied (0-21m = decimeter, 21-31m = half meter 31+ = whole meter).
-        /// </summary>
-        public static double RoundToIHO(this double value) {
-            if (value < -31d) {
-                return Math.Floor(value);
-            }
-            else if (value < -21.0d) {
-                return value % 1 < 0.5 ? Math.Ceiling(value) - 0.5d : Math.Ceiling(value);
-            }
-            else if (value < 0) {
-                return RoundDownwards(value, 1, -0.5d);
-            }
-            else if (value < 21.0d) {
-                return RoundDownwards(value, 1);
-            }
-            else if (value < 31) {
-                return value % 1 < 0.5 ? Math.Floor(value) : Math.Floor(value) + 0.5;
-            }
-            return Math.Floor(value);
-        }
-
-        public static double RoundDownwards(double value, int digits, double offset = 0d) {
-            var power10 = 1E1;
-            value *= power10;
-            value += offset;
-            value = Math.Truncate(value);
-            return value /= power10;
         }
 
         public static void UpdateFeatureReferences(this Dataset dataset, string original, string target) {
@@ -640,35 +532,9 @@ namespace S100Framework.YAML
                 foreach (var ass in feature?.FeatureAssociation ?? []) {
                     if (ass?.To?.Contains(original) ?? false) {
                         Log.Verbose("  - Updating feature association reference with original {original} and target: {target}", original, target);
-                        ass.To = ass?.To?.Replace(original, target);
+                        ass.To = ass?.To?.Replace(original, target)!;
                     }
                 }
-            }
-        }
-
-        public static Curve GetOrCreateCurve(this Dataset dataset, Coordinate[] coordinates, string name, int identifier = 0) {
-            var tempCurve = new Curve(coordinates);
-            var datasetCurve = dataset?.Curves?.FirstOrDefault(e => e.Vertices == tempCurve.Vertices);
-
-            // To-do: If curve vertices exist but only reversed, skip this element instead and return the ReverseCurve
-            if (datasetCurve == default) {
-                var first = dataset?.GetOrCreateStartPoint(coordinates, name, identifier);
-                var last = dataset?.GetOrCreateEndPoint(coordinates, name, identifier);
-                var curveName = identifier == 0 ? $"C{name}" : $"C{name}-{identifier}";
-                //var curveName = $"C{name}-{identifier}";
-
-                var curve = new Curve(first!, last!, coordinates) {
-                    Name = curveName,
-                };
-
-                dataset!.AddCurve(curve);
-
-                return curve;
-            }
-            else {
-                // Nessecary?
-                //dataset.UpdateReferences($"C{name}", datasetCurve.Name);
-                return datasetCurve!;
             }
         }
 
@@ -705,19 +571,6 @@ namespace S100Framework.YAML
             else {
                 return datasetPoint;
             }
-        }
-
-        public static Coordinate[] BuildCoordinateFromStringArray(string[] curvesStr) {
-            var coordinates = new List<Coordinate>();
-
-            for (int i = 0; i < curvesStr.Length; i += 2) {
-                _ = Double.TryParse(curvesStr[i], CultureInfo.InvariantCulture, out double x);
-                _ = Double.TryParse(curvesStr[i + 1], CultureInfo.InvariantCulture, out double y);
-
-                coordinates.Add(new(x, y));
-            }
-
-            return coordinates.ToArray();
         }
     }
 }

@@ -316,11 +316,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _moireEffect, value);
 			}
 		}
-		private orientationViewModel _orientation ;
+		private orientationViewModel? _orientation  = default;
 
 		[Category("directionalCharacter")]
 		[ExpandableObject]
-		public orientationViewModel orientation {
+		public orientationViewModel? orientation {
 			get {
 				return _orientation;
 			}
@@ -362,9 +362,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class featureNameViewModel : ViewModelBase {
-		private String _language  = string.Empty;
+		private String? _language  = default;
 
-		public String language {
+		public String? language {
 			get {
 				return _language;
 			}
@@ -372,9 +372,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _language, value);
 			}
 		}
-		private String _name  = string.Empty;
+		private String? _name  = default;
 
-		public String name {
+		public String? name {
 			get {
 				return _name;
 			}
@@ -431,9 +431,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class featuresDetectedViewModel : ViewModelBase {
-		private Boolean _leastDepthOfDetectedFeaturesMeasured  = false;
+		private Boolean? _leastDepthOfDetectedFeaturesMeasured  = default;
 
-		public Boolean leastDepthOfDetectedFeaturesMeasured {
+		public Boolean? leastDepthOfDetectedFeaturesMeasured {
 			get {
 				return _leastDepthOfDetectedFeaturesMeasured;
 			}
@@ -441,9 +441,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _leastDepthOfDetectedFeaturesMeasured, value);
 			}
 		}
-		private Boolean _significantFeaturesDetected  = false;
+		private Boolean? _significantFeaturesDetected  = default;
 
-		public Boolean significantFeaturesDetected {
+		public Boolean? significantFeaturesDetected {
 			get {
 				return _significantFeaturesDetected;
 			}
@@ -497,7 +497,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class fixedDateRangeViewModel : ViewModelBase {
 		private String? _dateEnd  = default;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? dateEnd {
 			get {
 				return _dateEnd;
@@ -508,7 +507,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private String? _dateStart  = default;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? dateStart {
 			get {
 				return _dateStart;
@@ -558,9 +556,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _frequencyShoreStationReceives, value);
 			}
 		}
-		private int _frequencyShoreStationTransmits ;
+		private int? _frequencyShoreStationTransmits  = default;
 
-		public int frequencyShoreStationTransmits {
+		public int? frequencyShoreStationTransmits {
 			get {
 				return _frequencyShoreStationTransmits;
 			}
@@ -599,9 +597,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalClearanceFixedViewModel : ViewModelBase {
-		private decimal _horizontalClearanceValue ;
+		private decimal? _horizontalClearanceValue  = default;
 
-		public decimal horizontalClearanceValue {
+		public decimal? horizontalClearanceValue {
 			get {
 				return _horizontalClearanceValue;
 			}
@@ -650,9 +648,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalClearanceOpenViewModel : ViewModelBase {
-		private decimal _horizontalClearanceValue ;
+		private decimal? _horizontalClearanceValue  = default;
 
-		public decimal horizontalClearanceValue {
+		public decimal? horizontalClearanceValue {
 			get {
 				return _horizontalClearanceValue;
 			}
@@ -701,9 +699,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
-		private decimal _uncertaintyFixed ;
+		private decimal? _uncertaintyFixed  = default;
 
-		public decimal uncertaintyFixed {
+		public decimal? uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
 			}
@@ -782,9 +780,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _headline, value);
 			}
 		}
-		private String _language  = string.Empty;
+		private String? _language  = default;
 
-		public String language {
+		public String? language {
 			get {
 				return _language;
 			}
@@ -978,11 +976,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class measuredDistanceValueViewModel : ViewModelBase {
-		private distanceUnitOfMeasurement _distanceUnitOfMeasurement ;
+		private distanceUnitOfMeasurement? _distanceUnitOfMeasurement  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(distanceUnitOfMeasurementList), typeof(distanceUnitOfMeasurement))]
-		public distanceUnitOfMeasurement distanceUnitOfMeasurement {
+		public distanceUnitOfMeasurement? distanceUnitOfMeasurement {
 			get {
 				return _distanceUnitOfMeasurement;
 			}
@@ -1003,9 +1001,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _referenceLocation, value);
 			}
 		}
-		private decimal _waterwayDistance ;
+		private decimal? _waterwayDistance  = default;
 
-		public decimal waterwayDistance {
+		public decimal? waterwayDistance {
 			get {
 				return _waterwayDistance;
 			}
@@ -1047,9 +1045,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class multiplicityOfFeaturesViewModel : ViewModelBase {
-		private Boolean _multiplicityKnown  = false;
+		private Boolean? _multiplicityKnown  = default;
 
-		public Boolean multiplicityKnown {
+		public Boolean? multiplicityKnown {
 			get {
 				return _multiplicityKnown;
 			}
@@ -1108,9 +1106,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _headline, value);
 			}
 		}
-		private String _linkage  = string.Empty;
+		private String? _linkage  = default;
 
-		public String linkage {
+		public String? linkage {
 			get {
 				return _linkage;
 			}
@@ -1172,9 +1170,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _orientationUncertainty, value);
 			}
 		}
-		private decimal _orientationValue ;
+		private decimal? _orientationValue  = default;
 
-		public decimal orientationValue {
+		public decimal? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -1213,10 +1211,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class periodicDateRangeViewModel : ViewModelBase {
-		private String _dateEnd ;
+		private String? _dateEnd  = default;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		public String dateEnd {
+		public String? dateEnd {
 			get {
 				return _dateEnd;
 			}
@@ -1224,10 +1221,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _dateEnd, value);
 			}
 		}
-		private String _dateStart ;
+		private String? _dateStart  = default;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		public String dateStart {
+		public String? dateStart {
 			get {
 				return _dateStart;
 			}
@@ -1266,9 +1262,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class radarWaveLengthViewModel : ViewModelBase {
-		private String _radarBand  = string.Empty;
+		private String? _radarBand  = default;
 
-		public String radarBand {
+		public String? radarBand {
 			get {
 				return _radarBand;
 			}
@@ -1276,9 +1272,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _radarBand, value);
 			}
 		}
-		private decimal _waveLengthValue ;
+		private decimal? _waveLengthValue  = default;
 
-		public decimal waveLengthValue {
+		public decimal? waveLengthValue {
 			get {
 				return _waveLengthValue;
 			}
@@ -1317,11 +1313,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class rhythmOfLightViewModel : ViewModelBase {
-		private lightCharacteristic _lightCharacteristic ;
+		private lightCharacteristic? _lightCharacteristic  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(lightCharacteristicList), typeof(lightCharacteristic))]
-		public lightCharacteristic lightCharacteristic {
+		public lightCharacteristic? lightCharacteristic {
 			get {
 				return _lightCharacteristic;
 			}
@@ -1458,11 +1454,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorCharacteristicsViewModel : ViewModelBase {
-		private lightCharacteristic _lightCharacteristic ;
+		private lightCharacteristic? _lightCharacteristic  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(lightCharacteristicList), typeof(lightCharacteristic))]
-		public lightCharacteristic lightCharacteristic {
+		public lightCharacteristic? lightCharacteristic {
 			get {
 				return _lightCharacteristic;
 			}
@@ -1563,9 +1559,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _language, value);
 			}
 		}
-		private String _text  = string.Empty;
+		private String? _text  = default;
 
-		public String text {
+		public String? text {
 			get {
 				return _text;
 			}
@@ -1604,11 +1600,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitViewModel : ViewModelBase {
-		private sectorLimitOneViewModel _sectorLimitOne ;
+		private sectorLimitOneViewModel? _sectorLimitOne  = default;
 
 		[Category("sectorLimit")]
 		[ExpandableObject]
-		public sectorLimitOneViewModel sectorLimitOne {
+		public sectorLimitOneViewModel? sectorLimitOne {
 			get {
 				return _sectorLimitOne;
 			}
@@ -1616,11 +1612,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _sectorLimitOne, value);
 			}
 		}
-		private sectorLimitTwoViewModel _sectorLimitTwo ;
+		private sectorLimitTwoViewModel? _sectorLimitTwo  = default;
 
 		[Category("sectorLimit")]
 		[ExpandableObject]
-		public sectorLimitTwoViewModel sectorLimitTwo {
+		public sectorLimitTwoViewModel? sectorLimitTwo {
 			get {
 				return _sectorLimitTwo;
 			}
@@ -1665,9 +1661,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitOneViewModel : ViewModelBase {
-		private decimal _sectorBearing ;
+		private decimal? _sectorBearing  = default;
 
-		public decimal sectorBearing {
+		public decimal? sectorBearing {
 			get {
 				return _sectorBearing;
 			}
@@ -1716,9 +1712,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitTwoViewModel : ViewModelBase {
-		private decimal _sectorBearing ;
+		private decimal? _sectorBearing  = default;
 
-		public decimal sectorBearing {
+		public decimal? sectorBearing {
 			get {
 				return _sectorBearing;
 			}
@@ -1777,9 +1773,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _language, value);
 			}
 		}
-		private String _text  = string.Empty;
+		private String? _text  = default;
 
-		public String text {
+		public String? text {
 			get {
 				return _text;
 			}
@@ -1818,9 +1814,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class signalSequenceViewModel : ViewModelBase {
-		private decimal _signalDuration ;
+		private decimal? _signalDuration  = default;
 
-		public decimal signalDuration {
+		public decimal? signalDuration {
 			get {
 				return _signalDuration;
 			}
@@ -1828,11 +1824,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _signalDuration, value);
 			}
 		}
-		private signalStatus _signalStatus ;
+		private signalStatus? _signalStatus  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(signalStatusList), typeof(signalStatus))]
-		public signalStatus signalStatus {
+		public signalStatus? signalStatus {
 			get {
 				return _signalStatus;
 			}
@@ -1953,9 +1949,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class speedViewModel : ViewModelBase {
-		private decimal _speedMaximum ;
+		private decimal? _speedMaximum  = default;
 
-		public decimal speedMaximum {
+		public decimal? speedMaximum {
 			get {
 				return _speedMaximum;
 			}
@@ -2020,7 +2016,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfSurface[] natureOfSurfaceList => [(natureOfSurface)1,(natureOfSurface)2,(natureOfSurface)3,(natureOfSurface)4,(natureOfSurface)5,(natureOfSurface)6,(natureOfSurface)7,(natureOfSurface)8,(natureOfSurface)9,(natureOfSurface)11,(natureOfSurface)14,(natureOfSurface)17,(natureOfSurface)18];
 		[Category("surfaceCharacteristics")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
 		[DomainModel.EnumerationAttribute(nameof(natureOfSurfaceQualifyingTermsList), typeof(natureOfSurfaceQualifyingTerms))]
 		public ObservableCollection<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTerms  { get; set; } = new ();
 
@@ -2080,10 +2076,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class surveyDateRangeViewModel : ViewModelBase {
-		private String _dateEnd ;
+		private String? _dateEnd  = default;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		public String dateEnd {
+		public String? dateEnd {
 			get {
 				return _dateEnd;
 			}
@@ -2093,7 +2088,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		private String? _dateStart  = default;
 
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? dateStart {
 			get {
 				return _dateStart;
@@ -2143,9 +2137,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _contactInstructions, value);
 			}
 		}
-		private String _telecommunicationIdentifier  = string.Empty;
+		private String? _telecommunicationIdentifier  = default;
 
-		public String telecommunicationIdentifier {
+		public String? telecommunicationIdentifier {
 			get {
 				return _telecommunicationIdentifier;
 			}
@@ -2202,11 +2196,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class tidalStreamPanelValuesViewModel : ViewModelBase {
-		private referenceTide _referenceTide ;
+		private referenceTide? _referenceTide  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(referenceTideList), typeof(referenceTide))]
-		public referenceTide referenceTide {
+		public referenceTide? referenceTide {
 			get {
 				return _referenceTide;
 			}
@@ -2217,11 +2211,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public referenceTide[] referenceTideList => [(referenceTide)1,(referenceTide)2];
-		private referenceTideType _referenceTideType ;
+		private referenceTideType? _referenceTideType  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(referenceTideTypeList), typeof(referenceTideType))]
-		public referenceTideType referenceTideType {
+		public referenceTideType? referenceTideType {
 			get {
 				return _referenceTideType;
 			}
@@ -2291,11 +2285,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class tidalStreamValueViewModel : ViewModelBase {
-		private orientationViewModel _orientation ;
+		private orientationViewModel? _orientation  = default;
 
 		[Category("tidalStreamValue")]
 		[ExpandableObject]
-		public orientationViewModel orientation {
+		public orientationViewModel? orientation {
 			get {
 				return _orientation;
 			}
@@ -2303,9 +2297,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _orientation, value);
 			}
 		}
-		private decimal _speedMaximum ;
+		private decimal? _speedMaximum  = default;
 
-		public decimal speedMaximum {
+		public decimal? speedMaximum {
 			get {
 				return _speedMaximum;
 			}
@@ -2313,9 +2307,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _speedMaximum, value);
 			}
 		}
-		private decimal _timeRelativeToTide ;
+		private decimal? _timeRelativeToTide  = default;
 
-		public decimal timeRelativeToTide {
+		public decimal? timeRelativeToTide {
 			get {
 				return _timeRelativeToTide;
 			}
@@ -2361,7 +2355,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase {
 		[Category("timeIntervalsByDayOfWeek")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
 		[DomainModel.EnumerationAttribute(nameof(dayOfWeekList), typeof(dayOfWeek))]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
@@ -2464,11 +2458,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
-		private topmarkDaymarkShape _topmarkDaymarkShape ;
+		private topmarkDaymarkShape? _topmarkDaymarkShape  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(topmarkDaymarkShapeList), typeof(topmarkDaymarkShape))]
-		public topmarkDaymarkShape topmarkDaymarkShape {
+		public topmarkDaymarkShape? topmarkDaymarkShape {
 			get {
 				return _topmarkDaymarkShape;
 			}
@@ -2535,9 +2529,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class valueOfLocalMagneticAnomalyViewModel : ViewModelBase {
-		private decimal _magneticAnomalyValue ;
+		private decimal? _magneticAnomalyValue  = default;
 
-		public decimal magneticAnomalyValue {
+		public decimal? magneticAnomalyValue {
 			get {
 				return _magneticAnomalyValue;
 			}
@@ -2591,9 +2585,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalClearanceClosedViewModel : ViewModelBase {
-		private decimal _verticalClearanceValue ;
+		private decimal? _verticalClearanceValue  = default;
 
-		public decimal verticalClearanceValue {
+		public decimal? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
 			}
@@ -2647,9 +2641,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalClearanceFixedViewModel : ViewModelBase {
-		private decimal _verticalClearanceValue ;
+		private decimal? _verticalClearanceValue  = default;
 
-		public decimal verticalClearanceValue {
+		public decimal? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
 			}
@@ -2703,9 +2697,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalClearanceOpenViewModel : ViewModelBase {
-		private Boolean _verticalClearanceUnlimited  = false;
+		private Boolean? _verticalClearanceUnlimited  = default;
 
-		public Boolean verticalClearanceUnlimited {
+		public Boolean? verticalClearanceUnlimited {
 			get {
 				return _verticalClearanceUnlimited;
 			}
@@ -2772,9 +2766,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalClearanceSafeViewModel : ViewModelBase {
-		private decimal _verticalClearanceValue ;
+		private decimal? _verticalClearanceValue  = default;
 
-		public decimal verticalClearanceValue {
+		public decimal? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
 			}
@@ -2828,9 +2822,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalUncertaintyViewModel : ViewModelBase {
-		private decimal _uncertaintyFixed ;
+		private decimal? _uncertaintyFixed  = default;
 
-		public decimal uncertaintyFixed {
+		public decimal? uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
 			}
@@ -2879,9 +2873,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class vesselSpeedLimitViewModel : ViewModelBase {
-		private decimal _speedLimit ;
+		private decimal? _speedLimit  = default;
 
-		public decimal speedLimit {
+		public decimal? speedLimit {
 			get {
 				return _speedLimit;
 			}
@@ -2889,11 +2883,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _speedLimit, value);
 			}
 		}
-		private speedUnits _speedUnits ;
+		private speedUnits? _speedUnits  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(speedUnitsList), typeof(speedUnits))]
-		public speedUnits speedUnits {
+		public speedUnits? speedUnits {
 			get {
 				return _speedUnits;
 			}
@@ -2948,11 +2942,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class zoneOfConfidenceViewModel : ViewModelBase {
-		private categoryOfZoneOfConfidenceInData _categoryOfZoneOfConfidenceInData ;
+		private categoryOfZoneOfConfidenceInData? _categoryOfZoneOfConfidenceInData  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfZoneOfConfidenceInDataList), typeof(categoryOfZoneOfConfidenceInData))]
-		public categoryOfZoneOfConfidenceInData categoryOfZoneOfConfidenceInData {
+		public categoryOfZoneOfConfidenceInData? categoryOfZoneOfConfidenceInData {
 			get {
 				return _categoryOfZoneOfConfidenceInData;
 			}
@@ -3857,7 +3851,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NonStandardWorkingDayViewModel : InformationViewModel<NonStandardWorkingDay> {
 		[Category("NonStandardWorkingDay")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public ObservableCollection<String> dateFixed  { get; set; } = new ();
 		[Category("NonStandardWorkingDay")]
 		public ObservableCollection<String> dateVariable  { get; set; } = new ();
@@ -4127,11 +4120,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalDistanceUncertainty, value);
 			}
 		}
-		private horizontalPositionUncertaintyViewModel _horizontalPositionUncertainty ;
+		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
 		[ExpandableObject]
-		public horizontalPositionUncertaintyViewModel horizontalPositionUncertainty {
+		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
 			get {
 				return _horizontalPositionUncertainty;
 			}
@@ -4282,10 +4275,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private int _maximumDisplayScale ;
+		private int? _maximumDisplayScale  = default;
 
 		[Category("DataCoverage")]
-		public int maximumDisplayScale {
+		public int? maximumDisplayScale {
 			get {
 				return _maximumDisplayScale;
 			}
@@ -4293,10 +4286,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _maximumDisplayScale, value);
 			}
 		}
-		private int _minimumDisplayScale ;
+		private int? _minimumDisplayScale  = default;
 
 		[Category("DataCoverage")]
-		public int minimumDisplayScale {
+		public int? minimumDisplayScale {
 			get {
 				return _minimumDisplayScale;
 			}
@@ -4304,10 +4297,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _minimumDisplayScale, value);
 			}
 		}
-		private int _optimumDisplayScale ;
+		private int? _optimumDisplayScale  = default;
 
 		[Category("DataCoverage")]
-		public int optimumDisplayScale {
+		public int? optimumDisplayScale {
 			get {
 				return _optimumDisplayScale;
 			}
@@ -4375,12 +4368,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NavigationalSystemOfMarksViewModel : FeatureViewModel<NavigationalSystemOfMarks> {
-		private marksNavigationalSystemOf _marksNavigationalSystemOf ;
+		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Category("NavigationalSystemOfMarks")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(marksNavigationalSystemOfList), typeof(marksNavigationalSystemOf))]
-		public marksNavigationalSystemOf marksNavigationalSystemOf {
+		public marksNavigationalSystemOf? marksNavigationalSystemOf {
 			get {
 				return _marksNavigationalSystemOf;
 			}
@@ -4464,12 +4457,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private marksNavigationalSystemOf _marksNavigationalSystemOf ;
+		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Category("LocalDirectionOfBuoyage")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(marksNavigationalSystemOfList), typeof(marksNavigationalSystemOf))]
-		public marksNavigationalSystemOf marksNavigationalSystemOf {
+		public marksNavigationalSystemOf? marksNavigationalSystemOf {
 			get {
 				return _marksNavigationalSystemOf;
 			}
@@ -4480,10 +4473,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)11];
-		private decimal _orientationValue ;
+		private decimal? _orientationValue  = default;
 
 		[Category("LocalDirectionOfBuoyage")]
-		public decimal orientationValue {
+		public decimal? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -4559,12 +4552,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class QualityOfBathymetricDataViewModel : FeatureViewModel<QualityOfBathymetricData> {
-		private categoryOfTemporalVariation _categoryOfTemporalVariation ;
+		private categoryOfTemporalVariation? _categoryOfTemporalVariation  = default;
 
 		[Category("QualityOfBathymetricData")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfTemporalVariationList), typeof(categoryOfTemporalVariation))]
-		public categoryOfTemporalVariation categoryOfTemporalVariation {
+		public categoryOfTemporalVariation? categoryOfTemporalVariation {
 			get {
 				return _categoryOfTemporalVariation;
 			}
@@ -4575,12 +4568,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1,(categoryOfTemporalVariation)2,(categoryOfTemporalVariation)3,(categoryOfTemporalVariation)5,(categoryOfTemporalVariation)6];
-		private dataAssessment _dataAssessment ;
+		private dataAssessment? _dataAssessment  = default;
 
 		[Category("QualityOfBathymetricData")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(dataAssessmentList), typeof(dataAssessment))]
-		public dataAssessment dataAssessment {
+		public dataAssessment? dataAssessment {
 			get {
 				return _dataAssessment;
 			}
@@ -4613,11 +4606,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _depthRangeMinimumValue, value);
 			}
 		}
-		private featuresDetectedViewModel _featuresDetected ;
+		private featuresDetectedViewModel? _featuresDetected  = default;
 
 		[Category("QualityOfBathymetricData")]
 		[ExpandableObject]
-		public featuresDetectedViewModel featuresDetected {
+		public featuresDetectedViewModel? featuresDetected {
 			get {
 				return _featuresDetected;
 			}
@@ -4625,10 +4618,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _featuresDetected, value);
 			}
 		}
-		private Boolean _fullSeafloorCoverageAchieved  = false;
+		private Boolean? _fullSeafloorCoverageAchieved  = default;
 
 		[Category("QualityOfBathymetricData")]
-		public Boolean fullSeafloorCoverageAchieved {
+		public Boolean? fullSeafloorCoverageAchieved {
 			get {
 				return _fullSeafloorCoverageAchieved;
 			}
@@ -4757,12 +4750,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private verticalDatum _verticalDatum ;
+		private verticalDatum? _verticalDatum  = default;
 
 		[Category("SoundingDatum")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(verticalDatumList), typeof(verticalDatum))]
-		public verticalDatum verticalDatum {
+		public verticalDatum? verticalDatum {
 			get {
 				return _verticalDatum;
 			}
@@ -4835,12 +4828,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private verticalDatum _verticalDatum ;
+		private verticalDatum? _verticalDatum  = default;
 
 		[Category("VerticalDatumOfData")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(verticalDatumList), typeof(verticalDatum))]
-		public verticalDatum verticalDatum {
+		public verticalDatum? verticalDatum {
 			get {
 				return _verticalDatum;
 			}
@@ -5047,10 +5040,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _scaleValueMinimum, value);
 			}
 		}
-		private String _surveyAuthority  = string.Empty;
+		private String? _surveyAuthority  = default;
 
 		[Category("QualityOfSurvey")]
-		public String surveyAuthority {
+		public String? surveyAuthority {
 			get {
 				return _surveyAuthority;
 			}
@@ -5058,11 +5051,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _surveyAuthority, value);
 			}
 		}
-		private surveyDateRangeViewModel _surveyDateRange ;
+		private surveyDateRangeViewModel? _surveyDateRange  = default;
 
 		[Category("QualityOfSurvey")]
 		[ExpandableObject]
-		public surveyDateRangeViewModel surveyDateRange {
+		public surveyDateRangeViewModel? surveyDateRange {
 			get {
 				return _surveyDateRange;
 			}
@@ -5230,10 +5223,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private int _updateNumber ;
+		private int? _updateNumber  = default;
 
 		[Category("UpdateInformation")]
-		public int updateNumber {
+		public int? updateNumber {
 			get {
 				return _updateNumber;
 			}
@@ -5241,12 +5234,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _updateNumber, value);
 			}
 		}
-		private updateType _updateType ;
+		private updateType? _updateType  = default;
 
 		[Category("UpdateInformation")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(updateTypeList), typeof(updateType))]
-		public updateType updateType {
+		public updateType? updateType {
 			get {
 				return _updateType;
 			}
@@ -5356,11 +5349,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private String _referenceYearForMagneticVariation ;
+		private String? _referenceYearForMagneticVariation  = default;
 
 		[Category("MagneticVariation")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		public String referenceYearForMagneticVariation {
+		public String? referenceYearForMagneticVariation {
 			get {
 				return _referenceYearForMagneticVariation;
 			}
@@ -5368,10 +5360,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _referenceYearForMagneticVariation, value);
 			}
 		}
-		private decimal _valueOfAnnualChangeInMagneticVariation ;
+		private decimal? _valueOfAnnualChangeInMagneticVariation  = default;
 
 		[Category("MagneticVariation")]
-		public decimal valueOfAnnualChangeInMagneticVariation {
+		public decimal? valueOfAnnualChangeInMagneticVariation {
 			get {
 				return _valueOfAnnualChangeInMagneticVariation;
 			}
@@ -5379,10 +5371,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _valueOfAnnualChangeInMagneticVariation, value);
 			}
 		}
-		private decimal _valueOfMagneticVariation ;
+		private decimal? _valueOfMagneticVariation  = default;
 
 		[Category("MagneticVariation")]
-		public decimal valueOfMagneticVariation {
+		public decimal? valueOfMagneticVariation {
 			get {
 				return _valueOfMagneticVariation;
 			}
@@ -5477,7 +5469,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("LocalMagneticAnomaly")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -5790,7 +5781,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("LandArea")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -5981,10 +5971,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LandElevationViewModel : FeatureViewModel<LandElevation> {
-		private decimal _elevation ;
+		private decimal? _elevation  = default;
 
 		[Category("LandElevation")]
-		public decimal elevation {
+		public decimal? elevation {
 			get {
 				return _elevation;
 			}
@@ -6676,12 +6666,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class VegetationViewModel : FeatureViewModel<Vegetation> {
-		private categoryOfVegetation _categoryOfVegetation ;
+		private categoryOfVegetation? _categoryOfVegetation  = default;
 
 		[Category("Vegetation")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfVegetationList), typeof(categoryOfVegetation))]
-		public categoryOfVegetation categoryOfVegetation {
+		public categoryOfVegetation? categoryOfVegetation {
 			get {
 				return _categoryOfVegetation;
 			}
@@ -6841,12 +6831,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class IceAreaViewModel : FeatureViewModel<IceArea> {
-		private categoryOfIce _categoryOfIce ;
+		private categoryOfIce? _categoryOfIce  = default;
 
 		[Category("IceArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfIceList), typeof(categoryOfIce))]
-		public categoryOfIce categoryOfIce {
+		public categoryOfIce? categoryOfIce {
 			get {
 				return _categoryOfIce;
 			}
@@ -6897,7 +6887,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("IceArea")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -7561,7 +7550,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("BuiltUpArea")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -7834,7 +7822,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Building")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8089,7 +8076,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("AirportAirfield")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8258,7 +8244,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Runway")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8423,7 +8408,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Helipad")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8693,7 +8677,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Bridge")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8919,11 +8902,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private verticalClearanceFixedViewModel _verticalClearanceFixed ;
+		private verticalClearanceFixedViewModel? _verticalClearanceFixed  = default;
 
 		[Category("SpanFixed")]
 		[ExpandableObject]
-		public verticalClearanceFixedViewModel verticalClearanceFixed {
+		public verticalClearanceFixedViewModel? verticalClearanceFixed {
 			get {
 				return _verticalClearanceFixed;
 			}
@@ -9079,11 +9062,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private verticalClearanceClosedViewModel _verticalClearanceClosed ;
+		private verticalClearanceClosedViewModel? _verticalClearanceClosed  = default;
 
 		[Category("SpanOpening")]
 		[ExpandableObject]
-		public verticalClearanceClosedViewModel verticalClearanceClosed {
+		public verticalClearanceClosedViewModel? verticalClearanceClosed {
 			get {
 				return _verticalClearanceClosed;
 			}
@@ -9091,11 +9074,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _verticalClearanceClosed, value);
 			}
 		}
-		private verticalClearanceOpenViewModel _verticalClearanceOpen ;
+		private verticalClearanceOpenViewModel? _verticalClearanceOpen  = default;
 
 		[Category("SpanOpening")]
 		[ExpandableObject]
-		public verticalClearanceOpenViewModel verticalClearanceOpen {
+		public verticalClearanceOpenViewModel? verticalClearanceOpen {
 			get {
 				return _verticalClearanceOpen;
 			}
@@ -9357,7 +9340,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Conveyor")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -9686,7 +9668,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("CableOverhead")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -9975,7 +9956,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("PipelineOverhead")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -10163,12 +10143,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PylonBridgeSupportViewModel : FeatureViewModel<PylonBridgeSupport> {
-		private categoryOfPylon _categoryOfPylon ;
+		private categoryOfPylon? _categoryOfPylon  = default;
 
 		[Category("PylonBridgeSupport")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfPylonList), typeof(categoryOfPylon))]
-		public categoryOfPylon categoryOfPylon {
+		public categoryOfPylon? categoryOfPylon {
 			get {
 				return _categoryOfPylon;
 			}
@@ -10287,7 +10267,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("PylonBridgeSupport")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -10612,7 +10591,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("FenceWall")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -10827,7 +10805,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Railway")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -10989,7 +10966,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Road")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -11150,7 +11126,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Tunnel")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -11439,7 +11414,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Landmark")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -11466,12 +11440,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private visualProminence _visualProminence ;
+		private visualProminence? _visualProminence  = default;
 
 		[Category("Landmark")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(visualProminenceList), typeof(visualProminence))]
-		public visualProminence visualProminence {
+		public visualProminence? visualProminence {
 			get {
 				return _visualProminence;
 			}
@@ -11818,7 +11792,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("SiloTank")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -12156,7 +12129,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("WindTurbine")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -12498,7 +12470,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("FortifiedStructure")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -12682,12 +12653,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ProductionStorageAreaViewModel : FeatureViewModel<ProductionStorageArea> {
-		private categoryOfProductionArea _categoryOfProductionArea ;
+		private categoryOfProductionArea? _categoryOfProductionArea  = default;
 
 		[Category("ProductionStorageArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfProductionAreaList), typeof(categoryOfProductionArea))]
-		public categoryOfProductionArea categoryOfProductionArea {
+		public categoryOfProductionArea? categoryOfProductionArea {
 			get {
 				return _categoryOfProductionArea;
 			}
@@ -12782,7 +12753,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("ProductionStorageArea")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -13191,7 +13161,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Hulk")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -13478,7 +13447,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Pile")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -13730,7 +13698,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Dyke")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -14018,7 +13985,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("ShorelineConstruction")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -14295,11 +14261,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _height, value);
 			}
 		}
-		private horizontalClearanceFixedViewModel _horizontalClearanceFixed ;
+		private horizontalClearanceFixedViewModel? _horizontalClearanceFixed  = default;
 
 		[Category("StructureOverNavigableWater")]
 		[ExpandableObject]
-		public horizontalClearanceFixedViewModel horizontalClearanceFixed {
+		public horizontalClearanceFixedViewModel? horizontalClearanceFixed {
 			get {
 				return _horizontalClearanceFixed;
 			}
@@ -14379,7 +14345,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("StructureOverNavigableWater")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -14395,11 +14360,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)4,(status)5,(status)7,(status)8,(status)12,(status)14];
-		private verticalClearanceFixedViewModel _verticalClearanceFixed ;
+		private verticalClearanceFixedViewModel? _verticalClearanceFixed  = default;
 
 		[Category("StructureOverNavigableWater")]
 		[ExpandableObject]
-		public verticalClearanceFixedViewModel verticalClearanceFixed {
+		public verticalClearanceFixedViewModel? verticalClearanceFixed {
 			get {
 				return _verticalClearanceFixed;
 			}
@@ -14676,7 +14641,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Causeway")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -14892,7 +14856,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Canal")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -15014,10 +14977,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DistanceMarkViewModel : FeatureViewModel<DistanceMark> {
-		private Boolean _distanceMarkVisible  = false;
+		private Boolean? _distanceMarkVisible  = default;
 
 		[Category("DistanceMark")]
-		public Boolean distanceMarkVisible {
+		public Boolean? distanceMarkVisible {
 			get {
 				return _distanceMarkVisible;
 			}
@@ -15050,11 +15013,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private measuredDistanceValueViewModel _measuredDistanceValue ;
+		private measuredDistanceValueViewModel? _measuredDistanceValue  = default;
 
 		[Category("DistanceMark")]
 		[ExpandableObject]
-		public measuredDistanceValueViewModel measuredDistanceValue {
+		public measuredDistanceValueViewModel? measuredDistanceValue {
 			get {
 				return _measuredDistanceValue;
 			}
@@ -16405,7 +16368,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Dolphin")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -16660,7 +16622,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Bollard")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -18407,12 +18368,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TidalStreamFloodEbbViewModel : FeatureViewModel<TidalStreamFloodEbb> {
-		private categoryOfTidalStream _categoryOfTidalStream ;
+		private categoryOfTidalStream? _categoryOfTidalStream  = default;
 
 		[Category("TidalStreamFloodEbb")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfTidalStreamList), typeof(categoryOfTidalStream))]
-		public categoryOfTidalStream categoryOfTidalStream {
+		public categoryOfTidalStream? categoryOfTidalStream {
 			get {
 				return _categoryOfTidalStream;
 			}
@@ -18448,11 +18409,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private orientationViewModel _orientation ;
+		private orientationViewModel? _orientation  = default;
 
 		[Category("TidalStreamFloodEbb")]
 		[ExpandableObject]
-		public orientationViewModel orientation {
+		public orientationViewModel? orientation {
 			get {
 				return _orientation;
 			}
@@ -18460,11 +18421,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _orientation, value);
 			}
 		}
-		private speedViewModel _speed ;
+		private speedViewModel? _speed  = default;
 
 		[Category("TidalStreamFloodEbb")]
 		[ExpandableObject]
-		public speedViewModel speed {
+		public speedViewModel? speed {
 			get {
 				return _speed;
 			}
@@ -18590,11 +18551,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private orientationViewModel _orientation ;
+		private orientationViewModel? _orientation  = default;
 
 		[Category("CurrentNonGravitational")]
 		[ExpandableObject]
-		public orientationViewModel orientation {
+		public orientationViewModel? orientation {
 			get {
 				return _orientation;
 			}
@@ -18604,11 +18565,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		[Category("CurrentNonGravitational")]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
-		private speedViewModel _speed ;
+		private speedViewModel? _speed  = default;
 
 		[Category("CurrentNonGravitational")]
 		[ExpandableObject]
-		public speedViewModel speed {
+		public speedViewModel? speed {
 			get {
 				return _speed;
 			}
@@ -18735,12 +18696,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class WaterTurbulenceViewModel : FeatureViewModel<WaterTurbulence> {
-		private categoryOfWaterTurbulence _categoryOfWaterTurbulence ;
+		private categoryOfWaterTurbulence? _categoryOfWaterTurbulence  = default;
 
 		[Category("WaterTurbulence")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfWaterTurbulenceList), typeof(categoryOfWaterTurbulence))]
-		public categoryOfWaterTurbulence categoryOfWaterTurbulence {
+		public categoryOfWaterTurbulence? categoryOfWaterTurbulence {
 			get {
 				return _categoryOfWaterTurbulence;
 			}
@@ -18852,10 +18813,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private String _stationName  = string.Empty;
+		private String? _stationName  = default;
 
 		[Category("TidalStreamPanelData")]
-		public String stationName {
+		public String? stationName {
 			get {
 				return _stationName;
 			}
@@ -18987,7 +18948,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Sounding")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -19117,10 +19077,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DredgedAreaViewModel : FeatureViewModel<DredgedArea> {
-		private decimal _depthRangeMinimumValue ;
+		private decimal? _depthRangeMinimumValue  = default;
 
 		[Category("DredgedArea")]
-		public decimal depthRangeMinimumValue {
+		public decimal? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -19142,7 +19102,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _dredgedDate  = default;
 
 		[Category("DredgedArea")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? dredgedDate {
 			get {
 				return _dredgedDate;
@@ -19328,10 +19287,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SweptAreaViewModel : FeatureViewModel<SweptArea> {
-		private decimal _depthRangeMinimumValue ;
+		private decimal? _depthRangeMinimumValue  = default;
 
 		[Category("SweptArea")]
-		public decimal depthRangeMinimumValue {
+		public decimal? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -19353,7 +19312,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _sweptDate  = default;
 
 		[Category("SweptArea")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? sweptDate {
 			get {
 				return _sweptDate;
@@ -19441,10 +19399,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal _valueOfDepthContour ;
+		private decimal? _valueOfDepthContour  = default;
 
 		[Category("DepthContour")]
-		public decimal valueOfDepthContour {
+		public decimal? valueOfDepthContour {
 			get {
 				return _valueOfDepthContour;
 			}
@@ -19517,10 +19475,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DepthAreaViewModel : FeatureViewModel<DepthArea> {
-		private decimal _depthRangeMinimumValue ;
+		private decimal? _depthRangeMinimumValue  = default;
 
 		[Category("DepthArea")]
-		public decimal depthRangeMinimumValue {
+		public decimal? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -19528,10 +19486,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _depthRangeMinimumValue, value);
 			}
 		}
-		private decimal _depthRangeMaximumValue ;
+		private decimal? _depthRangeMaximumValue  = default;
 
 		[Category("DepthArea")]
-		public decimal depthRangeMaximumValue {
+		public decimal? depthRangeMaximumValue {
 			get {
 				return _depthRangeMaximumValue;
 			}
@@ -20285,7 +20243,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("UnderwaterAwashRock")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -20317,10 +20274,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)2,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)4,(techniqueOfVerticalMeasurement)5,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)10,(techniqueOfVerticalMeasurement)11,(techniqueOfVerticalMeasurement)12,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17,(techniqueOfVerticalMeasurement)18];
-		private decimal _valueOfSounding ;
+		private decimal? _valueOfSounding  = default;
 
 		[Category("UnderwaterAwashRock")]
-		public decimal valueOfSounding {
+		public decimal? valueOfSounding {
 			get {
 				return _valueOfSounding;
 			}
@@ -20328,12 +20285,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _valueOfSounding, value);
 			}
 		}
-		private waterLevelEffect _waterLevelEffect ;
+		private waterLevelEffect? _waterLevelEffect  = default;
 
 		[Category("UnderwaterAwashRock")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(waterLevelEffectList), typeof(waterLevelEffect))]
-		public waterLevelEffect waterLevelEffect {
+		public waterLevelEffect? waterLevelEffect {
 			get {
 				return _waterLevelEffect;
 			}
@@ -20368,10 +20325,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _defaultClearanceDepth, value);
 			}
 		}
-		private decimal _surroundingDepth ;
+		private decimal? _surroundingDepth  = default;
 
 		[Category("UnderwaterAwashRock")]
-		public decimal surroundingDepth {
+		public decimal? surroundingDepth {
 			get {
 				return _surroundingDepth;
 			}
@@ -20559,7 +20516,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Wreck")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -20609,12 +20565,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private waterLevelEffect _waterLevelEffect ;
+		private waterLevelEffect? _waterLevelEffect  = default;
 
 		[Category("Wreck")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(waterLevelEffectList), typeof(waterLevelEffect))]
-		public waterLevelEffect waterLevelEffect {
+		public waterLevelEffect? waterLevelEffect {
 			get {
 				return _waterLevelEffect;
 			}
@@ -20660,10 +20616,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _defaultClearanceDepth, value);
 			}
 		}
-		private decimal _surroundingDepth ;
+		private decimal? _surroundingDepth  = default;
 
 		[Category("Wreck")]
-		public decimal surroundingDepth {
+		public decimal? surroundingDepth {
 			get {
 				return _surroundingDepth;
 			}
@@ -20900,7 +20856,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Obstruction")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -20945,12 +20900,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private waterLevelEffect _waterLevelEffect ;
+		private waterLevelEffect? _waterLevelEffect  = default;
 
 		[Category("Obstruction")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(waterLevelEffectList), typeof(waterLevelEffect))]
-		public waterLevelEffect waterLevelEffect {
+		public waterLevelEffect? waterLevelEffect {
 			get {
 				return _waterLevelEffect;
 			}
@@ -20985,10 +20940,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _defaultClearanceDepth, value);
 			}
 		}
-		private decimal _surroundingDepth ;
+		private decimal? _surroundingDepth  = default;
 
 		[Category("Obstruction")]
-		public decimal surroundingDepth {
+		public decimal? surroundingDepth {
 			get {
 				return _surroundingDepth;
 			}
@@ -21161,7 +21116,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("FoulGround")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -21335,7 +21289,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("DiscolouredWater")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -21459,7 +21412,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("FishingFacility")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -21717,12 +21669,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		[Category("MarineFarmCulture")]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
-		private waterLevelEffect _waterLevelEffect ;
+		private waterLevelEffect? _waterLevelEffect  = default;
 
 		[Category("MarineFarmCulture")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(waterLevelEffectList), typeof(waterLevelEffect))]
-		public waterLevelEffect waterLevelEffect {
+		public waterLevelEffect? waterLevelEffect {
 			get {
 				return _waterLevelEffect;
 			}
@@ -22008,7 +21960,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("OffshorePlatform")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -22641,7 +22592,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("PipelineSubmarineOnLand")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -23089,7 +23039,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("OffshoreProductionArea")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -23299,12 +23248,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NavigationLineViewModel : FeatureViewModel<NavigationLine> {
-		private categoryOfNavigationLine _categoryOfNavigationLine ;
+		private categoryOfNavigationLine? _categoryOfNavigationLine  = default;
 
 		[Category("NavigationLine")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfNavigationLineList), typeof(categoryOfNavigationLine))]
-		public categoryOfNavigationLine categoryOfNavigationLine {
+		public categoryOfNavigationLine? categoryOfNavigationLine {
 			get {
 				return _categoryOfNavigationLine;
 			}
@@ -23349,11 +23298,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _measuredDistance, value);
 			}
 		}
-		private orientationViewModel _orientation ;
+		private orientationViewModel? _orientation  = default;
 
 		[Category("NavigationLine")]
 		[ExpandableObject]
-		public orientationViewModel orientation {
+		public orientationViewModel? orientation {
 			get {
 				return _orientation;
 			}
@@ -23470,10 +23419,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RecommendedTrackViewModel : FeatureViewModel<RecommendedTrack> {
-		private Boolean _basedOnFixedMarks  = false;
+		private Boolean? _basedOnFixedMarks  = default;
 
 		[Category("RecommendedTrack")]
-		public Boolean basedOnFixedMarks {
+		public Boolean? basedOnFixedMarks {
 			get {
 				return _basedOnFixedMarks;
 			}
@@ -23528,10 +23477,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _maximumPermittedDraught, value);
 			}
 		}
-		private decimal _orientationValue ;
+		private decimal? _orientationValue  = default;
 
 		[Category("RecommendedTrack")]
-		public decimal orientationValue {
+		public decimal? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -23562,12 +23511,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)2,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17,(techniqueOfVerticalMeasurement)18];
-		private trafficFlow _trafficFlow ;
+		private trafficFlow? _trafficFlow  = default;
 
 		[Category("RecommendedTrack")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(trafficFlowList), typeof(trafficFlow))]
-		public trafficFlow trafficFlow {
+		public trafficFlow? trafficFlow {
 			get {
 				return _trafficFlow;
 			}
@@ -24220,10 +24169,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RecommendedRouteCentrelineViewModel : FeatureViewModel<RecommendedRouteCentreline> {
-		private Boolean _basedOnFixedMarks  = false;
+		private Boolean? _basedOnFixedMarks  = default;
 
 		[Category("RecommendedRouteCentreline")]
-		public Boolean basedOnFixedMarks {
+		public Boolean? basedOnFixedMarks {
 			get {
 				return _basedOnFixedMarks;
 			}
@@ -24510,10 +24459,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal _orientationValue ;
+		private decimal? _orientationValue  = default;
 
 		[Category("TwoWayRoutePart")]
-		public decimal orientationValue {
+		public decimal? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -24542,12 +24491,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)5,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17,(techniqueOfVerticalMeasurement)18];
-		private trafficFlow _trafficFlow ;
+		private trafficFlow? _trafficFlow  = default;
 
 		[Category("TwoWayRoutePart")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(trafficFlowList), typeof(trafficFlow))]
-		public trafficFlow trafficFlow {
+		public trafficFlow? trafficFlow {
 			get {
 				return _trafficFlow;
 			}
@@ -24826,10 +24775,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal _orientationValue ;
+		private decimal? _orientationValue  = default;
 
 		[Category("RecommendedTrafficLanePart")]
-		public decimal orientationValue {
+		public decimal? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -24925,10 +24874,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DeepWaterRouteCentrelineViewModel : FeatureViewModel<DeepWaterRouteCentreline> {
-		private Boolean _basedOnFixedMarks  = false;
+		private Boolean? _basedOnFixedMarks  = default;
 
 		[Category("DeepWaterRouteCentreline")]
-		public Boolean basedOnFixedMarks {
+		public Boolean? basedOnFixedMarks {
 			get {
 				return _basedOnFixedMarks;
 			}
@@ -24983,10 +24932,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal _orientationValue ;
+		private decimal? _orientationValue  = default;
 
 		[Category("DeepWaterRouteCentreline")]
-		public decimal orientationValue {
+		public decimal? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -25015,12 +24964,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)5,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17,(techniqueOfVerticalMeasurement)18];
-		private trafficFlow _trafficFlow ;
+		private trafficFlow? _trafficFlow  = default;
 
 		[Category("DeepWaterRouteCentreline")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(trafficFlowList), typeof(trafficFlow))]
-		public trafficFlow trafficFlow {
+		public trafficFlow? trafficFlow {
 			get {
 				return _trafficFlow;
 			}
@@ -25172,10 +25121,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DeepWaterRoutePartViewModel : FeatureViewModel<DeepWaterRoutePart> {
-		private decimal _depthRangeMinimumValue ;
+		private decimal? _depthRangeMinimumValue  = default;
 
 		[Category("DeepWaterRoutePart")]
-		public decimal depthRangeMinimumValue {
+		public decimal? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -25219,10 +25168,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal _orientationValue ;
+		private decimal? _orientationValue  = default;
 
 		[Category("DeepWaterRoutePart")]
-		public decimal orientationValue {
+		public decimal? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -25258,12 +25207,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)5,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17,(techniqueOfVerticalMeasurement)18];
-		private trafficFlow _trafficFlow ;
+		private trafficFlow? _trafficFlow  = default;
 
 		[Category("DeepWaterRoutePart")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(trafficFlowList), typeof(trafficFlow))]
-		public trafficFlow trafficFlow {
+		public trafficFlow? trafficFlow {
 			get {
 				return _trafficFlow;
 			}
@@ -26882,10 +26831,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private String _nationality  = string.Empty;
+		private String? _nationality  = default;
 
 		[Category("ArchipelagicSeaLane")]
-		public String nationality {
+		public String? nationality {
 			get {
 				return _nationality;
 			}
@@ -27012,12 +26961,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)3,(status)4,(status)5,(status)6,(status)7,(status)9];
-		private trafficFlow _trafficFlow ;
+		private trafficFlow? _trafficFlow  = default;
 
 		[Category("RadioCallingInPoint")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(trafficFlowList), typeof(trafficFlow))]
-		public trafficFlow trafficFlow {
+		public trafficFlow? trafficFlow {
 			get {
 				return _trafficFlow;
 			}
@@ -27311,10 +27260,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal _orientationValue ;
+		private decimal? _orientationValue  = default;
 
 		[Category("RadarLine")]
-		public decimal orientationValue {
+		public decimal? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -28465,7 +28414,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _dateDisused  = default;
 
 		[Category("DumpingGround")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? dateDisused {
 			get {
 				return _dateDisused;
@@ -28821,12 +28769,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _inDispute, value);
 			}
 		}
-		private jurisdiction _jurisdiction ;
+		private jurisdiction? _jurisdiction  = default;
 
 		[Category("AdministrationArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(jurisdictionList), typeof(jurisdiction))]
-		public jurisdiction jurisdiction {
+		public jurisdiction? jurisdiction {
 			get {
 				return _jurisdiction;
 			}
@@ -29159,7 +29107,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("CautionArea")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -29315,7 +29262,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationArea")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -29654,10 +29600,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private String _nationality  = string.Empty;
+		private String? _nationality  = default;
 
 		[Category("CustomZone")]
-		public String nationality {
+		public String? nationality {
 			get {
 				return _nationality;
 			}
@@ -29842,10 +29788,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private String _nationality  = string.Empty;
+		private String? _nationality  = default;
 
 		[Category("FisheryZone")]
-		public String nationality {
+		public String? nationality {
 			get {
 				return _nationality;
 			}
@@ -30466,7 +30412,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("OilBarrier")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -30590,10 +30535,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private String _nationality  = string.Empty;
+		private String? _nationality  = default;
 
 		[Category("StraightTerritorialSeaBaseline")]
-		public String nationality {
+		public String? nationality {
 			get {
 				return _nationality;
 			}
@@ -31559,11 +31504,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		[Category("LightAllAround")]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
-		private rhythmOfLightViewModel _rhythmOfLight ;
+		private rhythmOfLightViewModel? _rhythmOfLight  = default;
 
 		[Category("LightAllAround")]
 		[ExpandableObject]
-		public rhythmOfLightViewModel rhythmOfLight {
+		public rhythmOfLightViewModel? rhythmOfLight {
 			get {
 				return _rhythmOfLight;
 			}
@@ -32590,12 +32535,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LateralBuoyViewModel : FeatureViewModel<LateralBuoy> {
-		private buoyShape _buoyShape ;
+		private buoyShape? _buoyShape  = default;
 
 		[Category("LateralBuoy")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
-		public buoyShape buoyShape {
+		public buoyShape? buoyShape {
 			get {
 				return _buoyShape;
 			}
@@ -32606,12 +32551,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
-		private categoryOfLateralMark _categoryOfLateralMark ;
+		private categoryOfLateralMark? _categoryOfLateralMark  = default;
 
 		[Category("LateralBuoy")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfLateralMarkList), typeof(categoryOfLateralMark))]
-		public categoryOfLateralMark categoryOfLateralMark {
+		public categoryOfLateralMark? categoryOfLateralMark {
 			get {
 				return _categoryOfLateralMark;
 			}
@@ -32892,12 +32837,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CardinalBuoyViewModel : FeatureViewModel<CardinalBuoy> {
-		private buoyShape _buoyShape ;
+		private buoyShape? _buoyShape  = default;
 
 		[Category("CardinalBuoy")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
-		public buoyShape buoyShape {
+		public buoyShape? buoyShape {
 			get {
 				return _buoyShape;
 			}
@@ -32908,12 +32853,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
-		private categoryOfCardinalMark _categoryOfCardinalMark ;
+		private categoryOfCardinalMark? _categoryOfCardinalMark  = default;
 
 		[Category("CardinalBuoy")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfCardinalMarkList), typeof(categoryOfCardinalMark))]
-		public categoryOfCardinalMark categoryOfCardinalMark {
+		public categoryOfCardinalMark? categoryOfCardinalMark {
 			get {
 				return _categoryOfCardinalMark;
 			}
@@ -33194,12 +33139,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class IsolatedDangerBuoyViewModel : FeatureViewModel<IsolatedDangerBuoy> {
-		private buoyShape _buoyShape ;
+		private buoyShape? _buoyShape  = default;
 
 		[Category("IsolatedDangerBuoy")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
-		public buoyShape buoyShape {
+		public buoyShape? buoyShape {
 			get {
 				return _buoyShape;
 			}
@@ -33477,12 +33422,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SafeWaterBuoyViewModel : FeatureViewModel<SafeWaterBuoy> {
-		private buoyShape _buoyShape ;
+		private buoyShape? _buoyShape  = default;
 
 		[Category("SafeWaterBuoy")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
-		public buoyShape buoyShape {
+		public buoyShape? buoyShape {
 			get {
 				return _buoyShape;
 			}
@@ -33760,12 +33705,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SpecialPurposeGeneralBuoyViewModel : FeatureViewModel<SpecialPurposeGeneralBuoy> {
-		private buoyShape _buoyShape ;
+		private buoyShape? _buoyShape  = default;
 
 		[Category("SpecialPurposeGeneralBuoy")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
-		public buoyShape buoyShape {
+		public buoyShape? buoyShape {
 			get {
 				return _buoyShape;
 			}
@@ -34060,12 +34005,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class EmergencyWreckMarkingBuoyViewModel : FeatureViewModel<EmergencyWreckMarkingBuoy> {
-		private buoyShape _buoyShape ;
+		private buoyShape? _buoyShape  = default;
 
 		[Category("EmergencyWreckMarkingBuoy")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
-		public buoyShape buoyShape {
+		public buoyShape? buoyShape {
 			get {
 				return _buoyShape;
 			}
@@ -34314,12 +34259,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class InstallationBuoyViewModel : FeatureViewModel<InstallationBuoy> {
-		private buoyShape _buoyShape ;
+		private buoyShape? _buoyShape  = default;
 
 		[Category("InstallationBuoy")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
-		public buoyShape buoyShape {
+		public buoyShape? buoyShape {
 			get {
 				return _buoyShape;
 			}
@@ -34601,12 +34546,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class MooringBuoyViewModel : FeatureViewModel<MooringBuoy> {
-		private buoyShape _buoyShape ;
+		private buoyShape? _buoyShape  = default;
 
 		[Category("MooringBuoy")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
-		public buoyShape buoyShape {
+		public buoyShape? buoyShape {
 			get {
 				return _buoyShape;
 			}
@@ -34875,12 +34820,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LateralBeaconViewModel : FeatureViewModel<LateralBeacon> {
-		private beaconShape _beaconShape ;
+		private beaconShape? _beaconShape  = default;
 
 		[Category("LateralBeacon")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(beaconShapeList), typeof(beaconShape))]
-		public beaconShape beaconShape {
+		public beaconShape? beaconShape {
 			get {
 				return _beaconShape;
 			}
@@ -34891,12 +34836,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
-		private categoryOfLateralMark _categoryOfLateralMark ;
+		private categoryOfLateralMark? _categoryOfLateralMark  = default;
 
 		[Category("LateralBeacon")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfLateralMarkList), typeof(categoryOfLateralMark))]
-		public categoryOfLateralMark categoryOfLateralMark {
+		public categoryOfLateralMark? categoryOfLateralMark {
 			get {
 				return _categoryOfLateralMark;
 			}
@@ -35032,7 +34977,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("LateralBeacon")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -35258,12 +35202,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CardinalBeaconViewModel : FeatureViewModel<CardinalBeacon> {
-		private beaconShape _beaconShape ;
+		private beaconShape? _beaconShape  = default;
 
 		[Category("CardinalBeacon")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(beaconShapeList), typeof(beaconShape))]
-		public beaconShape beaconShape {
+		public beaconShape? beaconShape {
 			get {
 				return _beaconShape;
 			}
@@ -35274,12 +35218,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
-		private categoryOfCardinalMark _categoryOfCardinalMark ;
+		private categoryOfCardinalMark? _categoryOfCardinalMark  = default;
 
 		[Category("CardinalBeacon")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfCardinalMarkList), typeof(categoryOfCardinalMark))]
-		public categoryOfCardinalMark categoryOfCardinalMark {
+		public categoryOfCardinalMark? categoryOfCardinalMark {
 			get {
 				return _categoryOfCardinalMark;
 			}
@@ -35415,7 +35359,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("CardinalBeacon")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -35641,12 +35584,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class IsolatedDangerBeaconViewModel : FeatureViewModel<IsolatedDangerBeacon> {
-		private beaconShape _beaconShape ;
+		private beaconShape? _beaconShape  = default;
 
 		[Category("IsolatedDangerBeacon")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(beaconShapeList), typeof(beaconShape))]
-		public beaconShape beaconShape {
+		public beaconShape? beaconShape {
 			get {
 				return _beaconShape;
 			}
@@ -35782,7 +35725,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("IsolatedDangerBeacon")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -36005,12 +35947,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SafeWaterBeaconViewModel : FeatureViewModel<SafeWaterBeacon> {
-		private beaconShape _beaconShape ;
+		private beaconShape? _beaconShape  = default;
 
 		[Category("SafeWaterBeacon")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(beaconShapeList), typeof(beaconShape))]
-		public beaconShape beaconShape {
+		public beaconShape? beaconShape {
 			get {
 				return _beaconShape;
 			}
@@ -36146,7 +36088,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("SafeWaterBeacon")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -36369,12 +36310,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SpecialPurposeGeneralBeaconViewModel : FeatureViewModel<SpecialPurposeGeneralBeacon> {
-		private beaconShape _beaconShape ;
+		private beaconShape? _beaconShape  = default;
 
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(beaconShapeList), typeof(beaconShape))]
-		public beaconShape beaconShape {
+		public beaconShape? beaconShape {
 			get {
 				return _beaconShape;
 			}
@@ -36517,7 +36458,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("SpecialPurposeGeneralBeacon")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -36854,12 +36794,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)4,(status)5,(status)7,(status)8,(status)12];
-		private topmarkDaymarkShape _topmarkDaymarkShape ;
+		private topmarkDaymarkShape? _topmarkDaymarkShape  = default;
 
 		[Category("Daymark")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(topmarkDaymarkShapeList), typeof(topmarkDaymarkShape))]
-		public topmarkDaymarkShape topmarkDaymarkShape {
+		public topmarkDaymarkShape? topmarkDaymarkShape {
 			get {
 				return _topmarkDaymarkShape;
 			}
@@ -37923,12 +37863,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FogSignalViewModel : FeatureViewModel<FogSignal> {
-		private categoryOfFogSignal _categoryOfFogSignal ;
+		private categoryOfFogSignal? _categoryOfFogSignal  = default;
 
 		[Category("FogSignal")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfFogSignalList), typeof(categoryOfFogSignal))]
-		public categoryOfFogSignal categoryOfFogSignal {
+		public categoryOfFogSignal? categoryOfFogSignal {
 			get {
 				return _categoryOfFogSignal;
 			}
@@ -38388,12 +38328,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)5,(status)7];
-		private virtualAISAidToNavigationType _virtualAISAidToNavigationType ;
+		private virtualAISAidToNavigationType? _virtualAISAidToNavigationType  = default;
 
 		[Category("VirtualAISAidToNavigation")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(virtualAISAidToNavigationTypeList), typeof(virtualAISAidToNavigationType))]
-		public virtualAISAidToNavigationType virtualAISAidToNavigationType {
+		public virtualAISAidToNavigationType? virtualAISAidToNavigationType {
 			get {
 				return _virtualAISAidToNavigationType;
 			}
@@ -38711,12 +38651,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RadarTransponderBeaconViewModel : FeatureViewModel<RadarTransponderBeacon> {
-		private categoryOfRadarTransponderBeacon _categoryOfRadarTransponderBeacon ;
+		private categoryOfRadarTransponderBeacon? _categoryOfRadarTransponderBeacon  = default;
 
 		[Category("RadarTransponderBeacon")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfRadarTransponderBeaconList), typeof(categoryOfRadarTransponderBeacon))]
-		public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon {
+		public categoryOfRadarTransponderBeacon? categoryOfRadarTransponderBeacon {
 			get {
 				return _categoryOfRadarTransponderBeacon;
 			}
@@ -39947,7 +39887,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("HarbourFacility")]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -40288,10 +40227,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TextPlacementViewModel : FeatureViewModel<TextPlacement> {
-		private int _textOffsetBearing ;
+		private int? _textOffsetBearing  = default;
 
 		[Category("TextPlacement")]
-		public int textOffsetBearing {
+		public int? textOffsetBearing {
 			get {
 				return _textOffsetBearing;
 			}
@@ -40299,10 +40238,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _textOffsetBearing, value);
 			}
 		}
-		private int _textOffsetDistance ;
+		private int? _textOffsetDistance  = default;
 
 		[Category("TextPlacement")]
-		public int textOffsetDistance {
+		public int? textOffsetDistance {
 			get {
 				return _textOffsetDistance;
 			}
@@ -40322,7 +40261,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 		[Category("TextPlacement")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
 		[DomainModel.EnumerationAttribute(nameof(textTypeList), typeof(textType))]
 		public ObservableCollection<textType> textType  { get; set; } = new ();
 
