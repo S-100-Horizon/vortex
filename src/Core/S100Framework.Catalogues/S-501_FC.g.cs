@@ -4360,6 +4360,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 
+			[Required()]
 			public String linkage {get;set;} = string.Empty;
 
 			public String? nameOfResource {get;set;} = default;
@@ -4375,8 +4376,10 @@ namespace S100Framework.DomainModel.S501 {
 
 			public bool ShouldSerializenameUsage() { return nameUsage.HasValue; }
 
+			[Required()]
 			public String name {get;set;} = string.Empty;
 
+			[Required()]
 			public String language {get;set;} = string.Empty;
 		}
 
@@ -4436,6 +4439,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 
+			[Required()]
 			public String language {get;set;} = string.Empty;
 
 			public String? fileLocator {get;set;} = default;
@@ -4592,6 +4596,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public bool ShouldSerializeproductionAgency() { return !string.IsNullOrEmpty(productionAgency); }
 
+			[Required()]
 			public String sourceID {get;set;} = string.Empty;
 		}
 
@@ -4655,18 +4660,23 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
+			[Required()]
 			public String dateStart {get;set;}
 
+			[Required()]
 			public String dateEnd {get;set;}
 
+			[Required()]
 			public String periodicDateEnd {get;set;}
 
+			[Required()]
 			public String periodicDateStart {get;set;}
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class shapeInformation {
+			[Required()]
 			public String text {get;set;} = string.Empty;
 
 			public String? language {get;set;} = default;
@@ -4688,6 +4698,7 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorInformation {
+			[Required()]
 			public String text {get;set;} = string.Empty;
 
 			public String? language {get;set;} = default;
@@ -5629,6 +5640,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public bool ShouldSerializealtitudeRange() { return altitudeRange!=default; }
 
+			[Required()]
 			public String depthRestriction {get;set;} = string.Empty;
 
 			[EnumerationValue([1])]
@@ -6280,6 +6292,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[Required()]
 			public String nationality {get;set;} = string.Empty;
 
 			public String? agencyResponsibleForProduction {get;set;} = default;
@@ -7714,6 +7727,7 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightAirObstruction : FeatureNode, IFeatureBindingDefinition {
+			[Required()]
 			public String pictorialRepresentation {get;set;} = string.Empty;
 
 			public decimal? valueOfNominalRange {get;set;} = default;
@@ -9292,6 +9306,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public bool ShouldSerializeinDispute() { return inDispute.HasValue; }
 
+			[Required()]
 			public String nationality {get;set;} = string.Empty;
 
 			public List<information> information {get;set;} = [];
@@ -10421,6 +10436,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[Required()]
 			public String nationality {get;set;} = string.Empty;
 
 			public List<String> nationalMaritimeAuthority {get;set;} = [];
@@ -11288,6 +11304,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[Required()]
 			public String pictorialRepresentation {get;set;} = string.Empty;
 
 			public decimal? height {get;set;} = default;
@@ -12387,6 +12404,7 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class StraightTerritorialSeaBaseline : FeatureNode, IFeatureBindingDefinition {
+			[Required()]
 			public String nationality {get;set;} = string.Empty;
 
 			public sourceIdentification? sourceIdentification {get;set;} = default;

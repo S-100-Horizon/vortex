@@ -2121,6 +2121,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
+			[Required()]
 			public String name {get;set;} = string.Empty;
 		}
 
@@ -2190,6 +2191,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class onlineResource {
+			[Required()]
 			public String onlineResourceLinkageURL {get;set;} = string.Empty;
 
 			public String? protocol {get;set;} = default;
@@ -2232,8 +2234,10 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
+			[Required()]
 			public String dateStart {get;set;}
 
+			[Required()]
 			public String dateEnd {get;set;}
 		}
 
@@ -2262,6 +2266,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
 
+			[Required()]
 			public String dateEnd {get;set;}
 		}
 
@@ -2416,6 +2421,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[Required()]
 			public String development {get;set;} = string.Empty;
 
 			public String? locationByText {get;set;} = default;
@@ -2557,6 +2563,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializecategoryOfCommunicationPreference() { return categoryOfCommunicationPreference.HasValue; }
 
+			[Required()]
 			public String telecommunicationIdentifier {get;set;} = string.Empty;
 
 			public String? telecommunicationCarrier {get;set;} = default;
@@ -4038,6 +4045,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializemethodOfSecuring() { return methodOfSecuring.HasValue; }
 
+			[Required()]
 			public String uNLocationCode {get;set;} = string.Empty;
 
 			public String? terminalIdentifier {get;set;} = default;
@@ -4820,6 +4828,7 @@ namespace S100Framework.DomainModel.S131 {
 			[Required()]
 			public categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility {get;set;}
 
+			[Required()]
 			public String iDCode {get;set;} = string.Empty;
 
 			public String? bollardDescription {get;set;} = default;

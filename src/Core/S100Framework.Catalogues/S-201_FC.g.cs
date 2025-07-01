@@ -4138,6 +4138,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
+			[Required()]
 			public String name {get;set;} = string.Empty;
 		}
 
@@ -4178,14 +4179,17 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
+			[Required()]
 			public String dateEnd {get;set;}
 
+			[Required()]
 			public String dateStart {get;set;}
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class radarWaveLength {
+			[Required()]
 			public String radarBand {get;set;} = string.Empty;
 
 			[Required()]
@@ -4199,6 +4203,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
+			[Required()]
 			public String text {get;set;} = string.Empty;
 		}
 
@@ -4231,6 +4236,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
+			[Required()]
 			public String text {get;set;} = string.Empty;
 		}
 
@@ -4330,6 +4336,7 @@ namespace S100Framework.DomainModel.S201 {
 			[Required()]
 			public positioningEquipment positioningEquipment {get;set;}
 
+			[Required()]
 			public String NMEAString {get;set;} = string.Empty;
 		}
 
@@ -4359,6 +4366,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 
+			[Required()]
 			public String language {get;set;} = string.Empty;
 
 			public String? text {get;set;} = default;
@@ -4369,6 +4377,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class textualDescription {
+			[Required()]
 			public String fileReference {get;set;} = string.Empty;
 
 			public String? language {get;set;} = default;
@@ -4864,6 +4873,7 @@ namespace S100Framework.DomainModel.S201 {
 				set { sourceDate = DateOnly.FromDateTime(value); }
 			}
 
+			[Required()]
 			public String positioningProcedure {get;set;} = string.Empty;
 
 			[JsonIgnore]
@@ -4912,6 +4922,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PositioningInformation : InformationNode, IInformationBindingDefinition {
+			[Required()]
 			public String positioningDevice {get;set;} = string.Empty;
 
 			public positioningMethod? positioningMethod {get;set;} = default;
@@ -5084,6 +5095,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class StructureObject : AidsToNavigation {
+			[Required()]
 			public String AtoNNumber {get;set;} = string.Empty;
 
 			[EnumerationValue([1,2,3])]
@@ -5204,6 +5216,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializeAtoNNumber() { return !string.IsNullOrEmpty(AtoNNumber); }
 
+			[Required()]
 			public String mMSICode {get;set;} = string.Empty;
 
 			public List<status> status {get;set;} = [];
