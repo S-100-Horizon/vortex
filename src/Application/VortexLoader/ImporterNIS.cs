@@ -32,9 +32,10 @@ namespace S100Framework.Applications
         internal static string ps128 = "S-128";
         internal static Geodatabase _geodatabase;
 
-        internal static readonly int CompilationScale = 22000; // Used as filter for spatial queries to transfer attributes from other features based on location analysis
+        internal static int CompilationScale = -1; // Used as filter for spatial queries to transfer attributes from other features based on location analysis
 
-        //internal static FeatureRelations featureRelations = null;
+
+//internal static FeatureRelations featureRelations = null;
         internal static RelatedEquipment? relatedEquipment;
 
         internal static ConverterRegistry _converterRegistry = new ConverterRegistry();
@@ -83,6 +84,24 @@ namespace S100Framework.Applications
                     _scaminFilesPath = o.ScaminFilesPath;
                 }
             });
+
+            var inputwhereClause = filter.WhereClause.Clone();
+            string pattern = @"PLTS_COMP_SCALE\s*=\s*(\d+)";
+
+            Match match = Regex.Match((string)inputwhereClause, pattern, RegexOptions.IgnoreCase);
+
+            if (match.Success) {
+                string value = match.Groups[1].Value;
+                if (!int.TryParse(value, out int CompilationScale)) {
+                    throw new NotSupportedException("PLTS_COMP_SCALE must be part of whereclause! Fix your arguments.");
+                }
+            }
+            else {
+                throw new NotSupportedException("PLTS_COMP_SCALE must be part of whereclause! Fix your arguments.");
+            }
+
+
+
 
 
             Func<Action, bool> Store = (a) => {
@@ -193,6 +212,7 @@ namespace S100Framework.Applications
                     */
                     Logger.Current.Information($"Converting all tables: {filter.WhereClause}");
 
+                    Store(() => S101_SoundingDatum(source, destination, filter, CompilationScale)); 
 
                     Store(() => S57_SoundingsP(source, destination, filter));
 
@@ -244,8 +264,6 @@ namespace S100Framework.Applications
                     Store(() => S57_RegulatedAreasAndLimitsA(source, destination, filter));
                     Store(() => S57_RegulatedAreasAndLimitsL(source, destination, filter));
                     Store(() => S57_RegulatedAreasAndLimitsP(source, destination, filter));
-
-                    
 
                     Store(() => S57_TracksAndRoutesA(source, destination, filter));
                     Store(() => S57_TracksAndRoutesL(source, destination, filter));

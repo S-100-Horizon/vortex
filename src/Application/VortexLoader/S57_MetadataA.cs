@@ -1,9 +1,13 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Desktop.Framework.Threading.Tasks;
+using ArcGIS.Desktop.Internal.Mapping.TOC;
 using S100Framework.Applications.S57.esri;
-using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
-using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101.FeatureTypes;
+using System.Diagnostics;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace S100Framework.Applications
 {
@@ -156,7 +160,7 @@ namespace S100Framework.Applications
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
 
@@ -181,7 +185,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
@@ -214,14 +218,14 @@ namespace S100Framework.Applications
                                     string subtype = "";
                                     if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                         throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                    localDirectionOfBuoyage.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                    localDirectionOfBuoyage.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
                                 AddInformation(localDirectionOfBuoyage.information, feature);
                                 buffer["ps"] = ps101;
                                 buffer["code"] = localDirectionOfBuoyage.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(localDirectionOfBuoyage, jsonSerializerOptions);
                                 SetShape(buffer, current.SHAPE);
-                                ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+                                ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featurelocalDirectionOfBuoyage = featureClass.CreateRow(buffer);
                                 var namelocalDirectionOfBuoyage = Convert.ToString(featurelocalDirectionOfBuoyage["name"]) ?? "Unknown name";
@@ -246,7 +250,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
@@ -279,16 +283,6 @@ namespace S100Framework.Applications
                                 populated with value 6 (unassessed).
                             */
 
-                            if (current.CATZOC.HasValue && current.CATZOC.Value != -32767) {
-                                if (current.CATZOC.Value == 6) {
-                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.Unassessed;
-                                    instance.dataAssessment = dataAssessment.Unassessed;
-                                } else {
-                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.UnlikelyToChange;
-                                    instance.dataAssessment = dataAssessment.Unassessed;
-                                }
-                            }
-
                             if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m) {
                                 instance.depthRangeMinimumValue = current.DRVAL1;
                             }
@@ -298,8 +292,133 @@ namespace S100Framework.Applications
                             }
 
                             // TODO: featuresDetected
-                            
-                            // TODO: fillSeafloorCoverageAchieved
+                            //Code Description
+                            //1   zone of confidence A1
+                            //2   zone of confidence A2
+                            //3   zone of confidence B
+                            //4   zone of confidence C
+                            //5   zone of confidence D
+                            //6   zone of confidence U(data not assessed)
+
+                            // During the automated conversion process, for all M_QUAL
+                            // except those where CATZOC = 6 (zone of confidence U(data not assessed)),
+                            // the corresponding Quality of Bathymetric Data will
+                            // have category of temporal variation populated with value 5(unlikely to change).
+
+                            /* S-65 Annex B p.8
+                                Data Assessment: The S-101 mandatory attribute data assessment introduces an option to reduce
+                                screen clutter in some ECDIS display modes through population of value 2 (assessed (oceanic)). This
+                                value is intended for use where an indication of the overall data quality is not considered to be required
+                                – generally in depths deeper the 200 metres. However, determination as to when this value may be
+                                populated cannot be made during the automated conversion process, therefore for all M_QUAL except
+                                those where CATZOC = 6 (zone of confidence U (data not assessed)), the corresponding Quality of
+                                Bathymetric Data will have data assessment populated with value 1 (assessed).
+                             */
+
+
+
+                            if (current.CATZOC.HasValue) { // A1
+                                int catzoc = current.CATZOC!.Value;
+
+                                if (catzoc == 1) {
+                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.UnlikelyToChange;
+                                    instance.dataAssessment = dataAssessment.Assessed;
+                                    instance.featuresDetected = new featuresDetected() {
+                                        significantFeaturesDetected = true,
+                                        leastDepthOfDetectedFeaturesMeasured = true,
+                                        
+                                    };
+                                    instance.fullSeafloorCoverageAchieved = true;
+                                    instance.zoneOfConfidence = new() {
+                                        new zoneOfConfidence() {
+                                            categoryOfZoneOfConfidenceInData = categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA1
+                                        }
+                                    };
+                                }
+                                else if (catzoc == 2) { // A2
+                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.UnlikelyToChange;
+                                    instance.dataAssessment = dataAssessment.Assessed;
+                                    instance.featuresDetected = new featuresDetected() {
+                                        significantFeaturesDetected = true,
+                                        leastDepthOfDetectedFeaturesMeasured = true,
+
+                                    };
+                                    instance.fullSeafloorCoverageAchieved = true;
+                                    instance.zoneOfConfidence = new() {
+                                        new zoneOfConfidence() {
+                                            categoryOfZoneOfConfidenceInData = categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA2,
+                                        }
+                                    };
+                                }
+                                else if (catzoc == 3) { // B
+                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.UnlikelyToChange;
+                                    instance.dataAssessment = dataAssessment.Assessed;
+                                    instance.featuresDetected = new featuresDetected() {
+                                        significantFeaturesDetected = false,
+                                        leastDepthOfDetectedFeaturesMeasured = false,
+
+                                    };
+                                    instance.fullSeafloorCoverageAchieved = false;
+                                    instance.zoneOfConfidence = new() {
+                                        new zoneOfConfidence() {
+                                            categoryOfZoneOfConfidenceInData = categoryOfZoneOfConfidenceInData.ZoneOfConfidenceB,
+                                        }
+                                    };
+                                }
+                                else if (catzoc == 4) { // C
+                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.UnlikelyToChange;
+                                    instance.dataAssessment = dataAssessment.Assessed;
+                                    instance.featuresDetected = new featuresDetected() {
+                                        significantFeaturesDetected = false,
+                                        leastDepthOfDetectedFeaturesMeasured = false,
+
+                                    };
+                                    instance.fullSeafloorCoverageAchieved = false;
+                                    instance.zoneOfConfidence = new() {
+                                        new zoneOfConfidence() {
+                                            categoryOfZoneOfConfidenceInData = categoryOfZoneOfConfidenceInData.ZoneOfConfidenceC,
+                                        }
+                                    };
+
+                                }
+                                else if (catzoc == 5) { // D
+                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.UnlikelyToChange;
+                                    instance.dataAssessment = dataAssessment.Assessed;
+                                    instance.featuresDetected = new featuresDetected() {
+                                        significantFeaturesDetected = false,
+                                        leastDepthOfDetectedFeaturesMeasured = false,
+
+                                    };
+                                    instance.fullSeafloorCoverageAchieved = false;
+                                    instance.zoneOfConfidence = new() {
+                                        new zoneOfConfidence() {
+                                            categoryOfZoneOfConfidenceInData = categoryOfZoneOfConfidenceInData.ZoneOfConfidenceD,
+                                        }
+                                    };
+
+                                }
+                                else if (catzoc == 6) { // U
+                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.Unassessed;
+                                    instance.dataAssessment = dataAssessment.Unassessed;
+
+                                    instance.featuresDetected = new featuresDetected() {
+                                        significantFeaturesDetected = false,
+                                        leastDepthOfDetectedFeaturesMeasured = false,
+
+                                    };
+                                    instance.fullSeafloorCoverageAchieved = false;
+                                    instance.zoneOfConfidence = new() {
+                                        new zoneOfConfidence() {
+                                            categoryOfZoneOfConfidenceInData = categoryOfZoneOfConfidenceInData.ZoneOfConfidenceC,
+                                        }
+                                    };
+
+
+                                }
+                                else {
+                                    throw new NotSupportedException($"Unknown catzoc {catzoc}. objectid: {objectid} - {tableName}");
+                                }
+                            }
 
                             // TODO: interoperabilityIdentifier
 
@@ -307,13 +426,6 @@ namespace S100Framework.Applications
                                 instance.surveyDateRange = dateRange;
                             }
 
-                            if (current.CATZOC.HasValue && current.CATZOC.Value != -32767m) {
-                                instance.zoneOfConfidence = new() {
-                                    new zoneOfConfidence() {
-                                        categoryOfZoneOfConfidenceInData = EnumHelper.GetEnumValue<categoryOfZoneOfConfidenceInData>(current.CATZOC.Value),
-                                    }
-                                };
-                            }
 
                             if (DateHelper.TryGetSurveyDateRange(current.SURSTA, current.SUREND, out var surveyDateRange)) {
                                 instance.surveyDateRange = surveyDateRange;
@@ -323,7 +435,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
@@ -331,58 +443,10 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-
-                            // Create the sounding datum
-                            {
-                                var soundingDatum = new SoundingDatum();
-
-                                // TODO: interoperabilityIdentifier
-
-                                soundingDatum.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
-
-                                AddInformation(soundingDatum.information, feature);
-                                buffer["ps"] = ps101;
-                                buffer["code"] = soundingDatum.GetType().Name;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(soundingDatum, jsonSerializerOptions);
-                                SetShape(buffer, current.SHAPE);
-                                ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
-
-                                var soundingDatumFeature = featureClass.CreateRow(buffer);
-                                var soundingDatumName = Convert.ToString(soundingDatumFeature["name"]) ?? "Unknown name";
-
-                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                    relatedEquipment.CreateRelatedAreaEquipment(current, soundingDatum, soundingDatumFeature);
-                                }
-
-                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(soundingDatum));
-                            }
                         }
                         break;
                     case 45: { // M_SDAT_SoundingDatum
-                            var instance = new SoundingDatum();
-
-                            // TODO: interoperabilityIdentifier
-
-                            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
-
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
-
-                            var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
-                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
-                            }
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
-
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+                            // Handled by S101_SoundingDatum
                         }
                         break;
                     case 50: { // M_SREL_SurveyReliability
@@ -396,7 +460,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
@@ -423,7 +487,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE.Value);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
