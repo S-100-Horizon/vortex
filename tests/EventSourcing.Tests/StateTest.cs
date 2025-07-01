@@ -35,21 +35,17 @@ namespace EventSourcing.Tests
 
             fastZip.ExtractZip("s100ed7.gdb.zip", output.FullName, null);
 
-            var createProduct = new VortexAPI.EventSourcing.Products.v1.Created("DK4LIMFE");
-
-            var updateName = new VortexAPI.EventSourcing.Products.v1.NameUpdated("Kattegat - Randers Fjord - Mariager Fjord - Entrance to Limfjorden");
-
+            
             var eventStore = EventStore.OpenEventStore(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(output.FullName))), CancellationToken.None);
 
-            var options = new ParallelOptions { MaxDegreeOfParallelism = 8 };
-            //Parallel.For(0, 124, options, async (i) => {
-            var streamname = $"test::product::{DateTime.Now.Ticks}";
+
+            var controller = new VortexAPI.ProductsCommandController(eventStore);
 
 
+            var streamname = $"product::DK4LIMFE";
 
-            await eventStore.WriteStream<object>(streamname, [createProduct, updateName], false);
-            //});            
-
+            controller.Handle(new VortexAPI.ProductsCommandController.CreateProduct("DK4LIMFE"), CancellationToken.None);
+            controller.Handle(new VortexAPI.ProductsCommandController.UpdateName("DK4LIMFE", "Kattegat - Randers Fjord - Mariager Fjord - Entrance to Limfjorden"), CancellationToken.None); 
 
             var state = await eventStore.LoadState<ProductState>(streamname);
 

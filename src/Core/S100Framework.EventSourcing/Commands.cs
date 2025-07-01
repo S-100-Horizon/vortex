@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace S100Framework.EventSourcing
 {
-    public abstract record CommandController
+    public interface IHandlers {
+        void RegisterHandle<TCommand>(Func<TCommand,(string streamname, object[] events)> commandHandler) where TCommand : class;
+    }
+
+    public abstract record CommandController : IHandlers
     {
         private EventStore _eventStore;
 
@@ -17,7 +22,7 @@ namespace S100Framework.EventSourcing
         }
 
         protected IIdentityHandler<TCommand> On<TCommand>() where TCommand : class {
-            return new CommandHandler<TCommand>(_eventStore);
+            return new CommandHandler<TCommand>(this);
         }
 
         public void Handle<TCommand>(TCommand command, CancellationToken cancellationToken) where TCommand : class {
@@ -31,12 +36,14 @@ namespace S100Framework.EventSourcing
             registeredHandler(command);
         }
 
-        //protected void On<TCommand>(Action<TCommand> handle) {
-        //    Ensure.NotNull(handle, "handle");
-        //    if (!_handlers.TryAdd(typeof(TCommand), (object command) => handle((TCommand)command))) {
-        //        throw new Exceptions.DuplicateTypeException<TCommand>();
-        //    }
-        //}
+        public void RegisterHandle<TCommand>(Func<TCommand, (string streamname, object[] events)> commandHandler) where TCommand : class {
+            _handlers.Add(typeof(TCommand), async (cmd) => {
+                TCommand command = (TCommand)cmd;
+                var result = commandHandler(command);
+
+                await _eventStore.WriteStream<object>(result.streamname, result.events, false);
+            });            
+        }
     }
 
     public interface IIdentityHandler<TCommand> where TCommand : class
@@ -46,31 +53,43 @@ namespace S100Framework.EventSourcing
 
     public interface ICommandHandler<TCommand> where TCommand : class
     {
-        void Commit<TEvent>(TEvent message) where TEvent : class;
-        void Commit<TEvent>(TEvent[] message) where TEvent : class;
+        void Commit<TEvent>(Func<TCommand, TEvent> getMessage) where TEvent : class;
+        void Commit<TEvent>(Func<TCommand, TEvent[]> getMessage) where TEvent : class;
     }
 
     public sealed class CommandHandler<TCommand> : IIdentityHandler<TCommand>, ICommandHandler<TCommand> where TCommand : class
     {
-        private EventStore _eventStore;
+        private IHandlers _handler;
 
         private Func<TCommand, string>? _getId = default;
 
-        public CommandHandler(EventStore eventStore) {
-            _eventStore = eventStore ?? throw new ArgumentNullException(nameof(eventStore));
+        public CommandHandler(IHandlers handler) {
+            _handler = handler ?? throw new ArgumentNullException(nameof(handler));
         }
 
         public ICommandHandler<TCommand> GetId(Func<TCommand, string> getId) {
-            _getId = (command) => getId((TCommand)command);
+            _getId = (command) => getId(command);
             return this;
         }
 
-        public void Commit<TEvent>(TEvent message) where TEvent : class {
-            this.Commit<TEvent>([message]);
+        public void Commit<TEvent>(Func<TCommand, TEvent> getMessage) where TEvent : class {          
+            Func<TCommand, (string streamname, object[] events)> func = (cmd) => {
+                var streamid = _getId!(cmd);
+                var events = getMessage(cmd);
+
+                return (streamid,[events]);
+            };
+            _handler.RegisterHandle(func);
         }
 
-        public void Commit<TEvent>(TEvent[] message) where TEvent : class {
+        public void Commit<TEvent>(Func<TCommand, TEvent[]> getMessage) where TEvent : class {
+            Func<TCommand, (string streamname, object[] events)> func = (cmd) => {
+                var streamid = _getId!(cmd);
+                var events = getMessage(cmd);
 
+                return (streamid, events);
+            };
+            _handler.RegisterHandle(func);
         }
     }
 }
