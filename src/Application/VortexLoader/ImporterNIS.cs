@@ -27,12 +27,13 @@ namespace S100Framework.Applications
 
         //  https://github.com/iho-ohi/S-57-to-S-101-conversion-sub-WG
         internal static string _notesPath = "";
+        internal static int _compilationScale = -1;
         internal static string _scaminFilesPath = "";
         internal static string ps101 = "S-101";
         internal static string ps128 = "S-128";
         internal static Geodatabase _geodatabase;
 
-        internal static int CompilationScale = -1; // Used as filter for spatial queries to transfer attributes from other features based on location analysis
+        
 
 
 //internal static FeatureRelations featureRelations = null;
@@ -70,7 +71,28 @@ namespace S100Framework.Applications
 
                 if (!string.IsNullOrEmpty(o.Query)) {
                     filter.WhereClause = o.Query!.Trim();
-                } else {
+
+                    string pattern = @"PLTS_COMP_SCALE\s*=\s*(\d+)";
+
+                    Match match = Regex.Match((string)o.Query, pattern, RegexOptions.IgnoreCase);
+
+                    
+
+                    if (match.Success) {
+                        string value = match.Groups[1].Value;
+                        if (!int.TryParse(value, out _compilationScale)) {
+                            throw new NotSupportedException("PLTS_COMP_SCALE must be part of whereclause! Fix your arguments.");
+                        }
+                    }
+                    else {
+                        throw new NotSupportedException("PLTS_COMP_SCALE must be part of whereclause! Fix your arguments.");
+                    }
+
+
+
+
+                }
+                else {
                     filter.WhereClause = "";
                 }
 
@@ -85,20 +107,6 @@ namespace S100Framework.Applications
                 }
             });
 
-            var inputwhereClause = filter.WhereClause.Clone();
-            string pattern = @"PLTS_COMP_SCALE\s*=\s*(\d+)";
-
-            Match match = Regex.Match((string)inputwhereClause, pattern, RegexOptions.IgnoreCase);
-
-            if (match.Success) {
-                string value = match.Groups[1].Value;
-                if (!int.TryParse(value, out int CompilationScale)) {
-                    throw new NotSupportedException("PLTS_COMP_SCALE must be part of whereclause! Fix your arguments.");
-                }
-            }
-            else {
-                throw new NotSupportedException("PLTS_COMP_SCALE must be part of whereclause! Fix your arguments.");
-            }
 
 
 
@@ -135,8 +143,6 @@ namespace S100Framework.Applications
             _converterRegistry.Register<CulturalFeaturesP, WindTurbine>(Converters.CreateWindturbine);
             _converterRegistry.Register<PortsAndServicesP, SignalStationTraffic>(Converters.CreateSignalStationTraffic);
             _converterRegistry.Register<AidsToNavigationP, RadioStation>(Converters.CreateRadioStation);
-
-
 
             using (Geodatabase source = createGeodatabase()) {
                 Store(() => {
@@ -212,7 +218,7 @@ namespace S100Framework.Applications
                     */
                     Logger.Current.Information($"Converting all tables: {filter.WhereClause}");
 
-                    Store(() => S101_SoundingDatum(source, destination, filter, CompilationScale)); 
+                    Store(() => S101_SoundingDatum(source, destination, filter, ImporterNIS._compilationScale)); 
 
                     Store(() => S57_SoundingsP(source, destination, filter));
 
@@ -275,8 +281,19 @@ namespace S100Framework.Applications
                     //Store(() => FeatureRelations.Instance.CreateRelations(destination));
                 }
 
-                Logger.Current.Information("Done");
 
+                Logger.Current.Information($"Loading sanity checker");
+                SanityChecker.Initialize(destination);
+
+                if (SanityChecker.Instance.Check_DrawingIndex() == 0) {
+                    Logger.Current.Information("Drawing index check PASSED");
+                }
+                else {
+                    Logger.Current.Error("Drawing index check FAILED. Check for missing drawing indexes in data.");
+                }
+
+
+                Logger.Current.Information("Done");
                 return true;
             }
 
