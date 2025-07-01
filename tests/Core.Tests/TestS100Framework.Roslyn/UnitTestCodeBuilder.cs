@@ -2,7 +2,6 @@
 //#define propfull
 
 using S100Framework.DomainModel;
-using S100Framework.DomainModel.S101.FeatureTypes;
 using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -466,19 +465,14 @@ namespace TestS100Framework
                 //Assert.Equivalent(instance, deserialized);
             }
 
-            [Fact]
-            public void Test_YamlEnum() {
-                
-            }
+            //[Fact]
+            //public void Test_Required() {
+            //    var type = typeof(QualityOfBathymetricData);
 
-            [Fact]
-            public void Test_Required() {
-                var type = typeof(QualityOfBathymetricData);
-
-                var required = type.GetProperty("categoryOfTemporalVariation")!.GetCustomAttribute<RequiredAttribute>();
-                if (required != null)
-                    ;   //  HAS ATTRIBUTE
-            }
+            //    var required = type.GetProperty("categoryOfTemporalVariation")!.GetCustomAttribute<RequiredAttribute>();
+            //    if (required != null)
+            //        ;   //  HAS ATTRIBUTE
+            //}
 
             private bool VerifyProductSpecification(XDocument productSpecification) {
                 var navigator = productSpecification.CreateNavigator();
