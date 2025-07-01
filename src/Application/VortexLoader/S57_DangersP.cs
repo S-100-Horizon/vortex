@@ -207,7 +207,10 @@ namespace S100Framework.Applications
                                 S-101.
                             */
 
-                            var obstruction = new Obstruction();
+                            var obstruction = new Obstruction {
+                                surroundingDepth = default,
+                                waterLevelEffect = default,
+                            };
 
                             //if (current.CATOBS categoryOfObstruction
 
@@ -245,7 +248,11 @@ namespace S100Framework.Applications
                         break;
 
                     case 35: { // UWTROC
-                            var instance = new UnderwaterAwashRock();
+                            var instance = new UnderwaterAwashRock {
+                                surroundingDepth = default,
+                                valueOfSounding = default,
+                                waterLevelEffect = default,
+                            };
 
                             if (current.EXPSOU.HasValue) {
                                 instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
@@ -345,6 +352,7 @@ namespace S100Framework.Applications
                             // TODO: no instances in NIS
                             // TODO: surrounding depth, valueofsounding
                             var instance = new WaterTurbulence {
+                                categoryOfWaterTurbulence = default,
                             };
 
                             if (current.CATWAT.HasValue) {
@@ -384,7 +392,10 @@ namespace S100Framework.Applications
                         break;
 
                     case 45: { // WRECKS
-                            var instance = new Wreck();
+                            var instance = new Wreck {
+                                surroundingDepth = default,
+                                waterLevelEffect = default,
+                            };
 
                             if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
                                 instance.valueOfSounding = current.VALSOU.Value;

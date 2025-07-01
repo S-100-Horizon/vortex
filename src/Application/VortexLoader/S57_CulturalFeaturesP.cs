@@ -275,7 +275,8 @@ SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
                              */
 
                             if (current.CATCTR == 1) {
-                                var instance = new Landmark() {
+                                var instance = new Landmark {
+                                    visualProminence = default,
                                 };
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -326,7 +327,8 @@ SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             }
                             else if (current.CATCTR == 5) {
-                                var instance = new Landmark() {
+                                var instance = new Landmark {
+                                    visualProminence = default,
                                 };
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                     string subtype = "";
@@ -625,7 +627,9 @@ SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
                                 continue;
                             }
 
-                            var instance = new Landmark();
+                            var instance = new Landmark {
+                                visualProminence = default,
+                            };
 
                             if (current.CATLMK != default) {
                                 instance.categoryOfLandmark = EnumHelper.GetEnumValues<categoryOfLandmark>(current.CATLMK);
@@ -726,8 +730,10 @@ SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
                         break;
 
                     case 40: { // PRDARE_ProductionStorageArea
-                            var instance = new ProductionStorageArea() {
+                            var instance = new ProductionStorageArea {
+                                categoryOfProductionArea = default,
                             };
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -769,7 +775,8 @@ SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
                         break;
 
                     case 45: { // PYLONS_PylonBridgeSupport
-                            var instance = new PylonBridgeSupport() {
+                            var instance = new PylonBridgeSupport {
+                                categoryOfPylon = default,
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";

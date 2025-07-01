@@ -8,7 +8,10 @@ namespace S100Framework.Applications
 {
     internal static partial class Converters {
             internal static CardinalBeacon CreateCardinalBeacon(AidsToNavigationP current, Geodatabase source) {
-            var instance = new CardinalBeacon();
+            var instance = new CardinalBeacon {
+                beaconShape = default,
+                categoryOfCardinalMark = default,
+            };
 
             if (current.BCNSHP.HasValue) {
                 instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);

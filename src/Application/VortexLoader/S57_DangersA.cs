@@ -24,7 +24,7 @@ namespace S100Framework.Applications
 
             using var cursor = dangersa.Search(filter, true);
             int recordCount = 0;
-            
+
             while (cursor.MoveNext()) {
                 recordCount += 1;
 
@@ -85,7 +85,7 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
@@ -95,11 +95,11 @@ namespace S100Framework.Applications
                                 relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN);
                             }
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
 
 
                         }
@@ -133,7 +133,7 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
@@ -143,11 +143,11 @@ namespace S100Framework.Applications
                                 relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN);
                             }
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
                         }
                         break;
                     case 15: { // OBSTRN_Obstruction
@@ -274,7 +274,10 @@ namespace S100Framework.Applications
                                 */
 
 
-                                var instance = new Obstruction();
+                                var instance = new Obstruction {
+                                    surroundingDepth = default,
+                                    waterLevelEffect = default,
+                                };
 
                                 if (current.CATOBS.HasValue) {
                                     instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(current.CATOBS.Value);
@@ -388,8 +391,9 @@ namespace S100Framework.Applications
                             throw new NotImplementedException($"No WATTUR_WaterTurbulence in DK or GL. {tableName}");
 
                             var instance = new WaterTurbulence {
-
+                                categoryOfWaterTurbulence = default,
                             };
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -411,7 +415,7 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
@@ -421,16 +425,19 @@ namespace S100Framework.Applications
                                 relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN);
                             }
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
 
                         }
                         break;
                     case 25: { // WRECKS_Wreck
-                            var instance = new Wreck();
+                            var instance = new Wreck {
+                                surroundingDepth = default,
+                                waterLevelEffect = default,
+                            };
 
                             if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
                                 instance.valueOfSounding = current.VALSOU.Value;
@@ -445,7 +452,7 @@ namespace S100Framework.Applications
                             if (current.EXPSOU.HasValue) {
                                 instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
                             }
-                            
+
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.HEIGHT.HasValue) {
@@ -494,7 +501,7 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
@@ -504,7 +511,7 @@ namespace S100Framework.Applications
                                 relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
                             }
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }

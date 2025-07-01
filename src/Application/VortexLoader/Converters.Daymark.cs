@@ -15,7 +15,9 @@ namespace S100Framework.Applications
     {
 
         internal static Daymark CreateDaymark(AidsToNavigationP current, Geodatabase source) {
-            var instance = new Daymark();
+            var instance = new Daymark {
+                topmarkDaymarkShape = default,
+            };
 
             if (current.CATSPM != default) {
                 instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
