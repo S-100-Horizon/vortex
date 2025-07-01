@@ -154,7 +154,6 @@ namespace S100Framework.Applications
 
                     Log.Information("{dataset}", datasetName);
                     var geometries = new List<(Geometry geometry, string name)>();
-                    //var featureAssociations = new Dictionary<string, YAML.Association[]>();
 
                     // Build Topology
                     Log.Information("Building topology..");
@@ -264,35 +263,24 @@ namespace S100Framework.Applications
                                     using var document = JsonDocument.Parse(Convert.ToString(current["informationbindings"])!);
                                     var root = document.RootElement;
 
-                                    // Nessecary?
-                                    var roleType = root.GetProperty("roleType").GetString();
-                                    //var associationId = root.GetProperty("associationId").GetString();
+                                    var association = root.GetProperty("association").GetString()!;
+                                    var role = root.GetProperty("role").GetString()!;
+                                    var informationId = root.GetProperty("informationId").GetString()!;
 
-                                    var association = root.GetProperty("association").GetString();
-                                    var role = root.GetProperty("role").GetString();
-                                    var informationId = root.GetProperty("informationId").GetString();
-
+                                    var asso = new YAML.Association {
+                                        Name = association,
+                                        Role = role,
+                                        To = informationId,
+                                    };
 
                                     // Special case for SpatialAssociation
                                     if (prim != Primitive.Surface && association.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase)) {
-                                        var asso = new YAML.Association {
-                                            Name = association,
-                                            Role = role,
-                                            To = informationId,
-                                        };
-
                                         var curve = dataset?.Curves?.FirstOrDefault(e => e.Name == geometry);
-                                        if (curve != null)
-                                            curve.Association = asso;
+
+                                        curve?.AddAssociation(asso);
                                     }
                                     else {
-                                        var asso = new YAML.Association {
-                                            Name = association,
-                                            Role = role,
-                                            To = informationId,
-                                        };
-
-                                        feature.AddAssociation(asso);
+                                        feature?.AddAssociation(asso);
                                     }
                                 }
 
@@ -309,11 +297,9 @@ namespace S100Framework.Applications
                                             if (roleType == "association")
                                                 continue;
 
-                                            //var associationId = element.GetProperty("associationId").GetString();
-
-                                            var association = element.GetProperty("association").GetString();
-                                            var role = element.GetProperty("role").GetString();
-                                            var featureId = element.GetProperty("featureId").GetString();
+                                            var association = element.GetProperty("association").GetString()!;
+                                            var role = element.GetProperty("role").GetString()!;
+                                            var featureId = element.GetProperty("featureId").GetString()!;
 
 
                                             var asso = new YAML.Association {

@@ -153,7 +153,12 @@ namespace S100Framework.YAML
 
         public string? Location => Coordinate is null ? string.Empty : string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", Coordinate.X, Coordinate.Y);
 
-        public Association? Association { get; set; }
+        public ICollection<Association>? Association => _associations.Any() ? _associations : null;
+        private ICollection<Association> _associations = new HashSet<Association>();
+        public Point AddAssociation(Association association) {
+            _associations.Add(association);
+            return this;
+        }
 
         [YamlIgnore]
         public Coordinate? Coordinate { get; private set; } = new Coordinate(x, y);
@@ -165,7 +170,12 @@ namespace S100Framework.YAML
         public string? Location => Points is null ? string.Empty : string.Join(",", Points.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.X, e.Y)));
         public string? Z => Depths is null ? string.Empty : string.Join(",", Depths.Select(e => e.ToString(CultureInfo.InvariantCulture)));
 
-        public Association? Association { get; set; }
+        public ICollection<Association>? Association => _associations.Any() ? _associations : null;
+        private ICollection<Association> _associations = new HashSet<Association>();
+        public PointSet AddAssociation(Association association) {
+            _associations.Add(association);
+            return this;
+        }
 
         [YamlIgnore]
         public double[] Depths { get; private set; } = depths;
@@ -199,7 +209,13 @@ namespace S100Framework.YAML
         public string? Start => _start?.Name ?? null;
 
         public string? End => _end?.Name ?? null;
-        public Association? Association { get; set; }
+        public ICollection<Association>? Association => _associations.Any() ? _associations : null;
+        private ICollection<Association> _associations = new HashSet<Association>();
+        public Curve AddAssociation(Association association) {
+            _associations.Add(association);
+            return this;
+        }
+
 
         public string? Vertices => Coordinate is null ? string.Empty : string.Join(",", Coordinate.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.X, e.Y)));
         [YamlIgnore]
@@ -233,7 +249,12 @@ namespace S100Framework.YAML
             Curves = curves;
         }
         public string? Name { get; set; }
-        public Association? Association { get; set; }
+        public ICollection<Association>? Association => _associations.Any() ? _associations : null;
+        private ICollection<Association> _associations = new HashSet<Association>();
+        public CompositeCurve AddAssociation(Association association) {
+            _associations.Add(association);
+            return this;
+        }
 
         //public string? Components => Curves is null ? null : string.Join(',', Curves.Select(e => e.Name));
         public string Components => string.Join(",", Curves);
@@ -251,7 +272,12 @@ namespace S100Framework.YAML
         [YamlIgnore]
         public string[]? InteriorRings { get; set; }
 
-
+        public ICollection<Association>? Association => _associations.Any() ? _associations : null;
+        private ICollection<Association> _associations = new HashSet<Association>();
+        public Surface AddAssociation(Association association) {
+            _associations.Add(association);
+            return this;
+        }
 
         public dynamic[]? Interior => InteriorRings?.Length == 0 ? null : InteriorRings?.Select(e => new { Hole = e }).ToArray();
 
