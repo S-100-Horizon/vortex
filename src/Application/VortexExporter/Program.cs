@@ -150,7 +150,7 @@ namespace S100Framework.Applications
 
                     if (datasetName.Equals("101DK40751E")) continue;
                     if (datasetName.Equals("101DK40545E")) continue;
-                    if (datasetName.Equals("101DK40347E")) continue; 
+                    if (datasetName.Equals("101DK40347E")) continue;
 
                     Log.Information("{dataset}", datasetName);
                     var geometries = new List<(Geometry geometry, string name)>();
@@ -273,13 +273,27 @@ namespace S100Framework.Applications
                                     var informationId = root.GetProperty("informationId").GetString();
 
 
-                                    var asso = new YAML.Association {
-                                        Name = association,
-                                        Role = role,
-                                        To = informationId,
-                                    };
+                                    // Special case for SpatialAssociation
+                                    if (prim != Primitive.Surface && association.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase)) {
+                                        var asso = new YAML.Association {
+                                            Name = association,
+                                            Role = role,
+                                            To = informationId,
+                                        };
 
-                                    feature.AddAssociation(asso);
+                                        var curve = dataset?.Curves?.FirstOrDefault(e => e.Name == geometry);
+                                        if (curve != null)
+                                            curve.Association = asso;
+                                    }
+                                    else {
+                                        var asso = new YAML.Association {
+                                            Name = association,
+                                            Role = role,
+                                            To = informationId,
+                                        };
+
+                                        feature.AddAssociation(asso);
+                                    }
                                 }
 
                                 // Feature Associations
@@ -292,9 +306,9 @@ namespace S100Framework.Applications
                                             var roleType = element.GetProperty("roleType").GetString();
 
                                             // Skip association roleType for now
-                                            if (roleType == "association") 
+                                            if (roleType == "association")
                                                 continue;
-                                            
+
                                             //var associationId = element.GetProperty("associationId").GetString();
 
                                             var association = element.GetProperty("association").GetString();
