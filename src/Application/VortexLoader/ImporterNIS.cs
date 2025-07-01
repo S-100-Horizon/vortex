@@ -44,10 +44,10 @@ namespace S100Framework.Applications
             arguments.WithParsed<Options>(o => {
                 var source = o.Source!;
 
-                if (IO.File.Exists(source) && ".sde".Equals(IO.Path.GetExtension(source), StringComparison.InvariantCultureIgnoreCase)) {
+                if (IO.File.Exists(source) && ".sde".Equals(IO.Path.GetExtension(source), StringComparison.OrdinalIgnoreCase)) {
                     createGeodatabase = () => { return new Geodatabase(new DatabaseConnectionFile(new Uri(IO.Path.GetFullPath(source)))); };
                 }
-                else if (IO.Directory.Exists(source) && ".gdb".Equals(IO.Path.GetExtension(source), StringComparison.InvariantCultureIgnoreCase)) {
+                else if (IO.Directory.Exists(source) && ".gdb".Equals(IO.Path.GetExtension(source), StringComparison.OrdinalIgnoreCase)) {
                     createGeodatabase = () => { return new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(source)))); };
                 }
                 else

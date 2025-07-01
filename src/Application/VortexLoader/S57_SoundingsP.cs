@@ -56,7 +56,7 @@ namespace S100Framework.Applications
                         var mappoint = MapPointBuilderEx.CreateMapPoint(shape.X, shape.Y, Convert.ToDouble(depth), shape.SpatialReference);
                         bufferPointset["shape"] = MultipointBuilderEx.CreateMultipoint(mappoint);
 
-                        if (quasou == default || !string.Equals(quasou, "5", StringComparison.InvariantCultureIgnoreCase)) {
+                        if (quasou == default || !string.Equals(quasou, "5", StringComparison.OrdinalIgnoreCase)) {
                             var sounding = new Sounding {
                             };
                             if (quasou != default) {

@@ -42,7 +42,7 @@ namespace VortexProAppModule
                 return;
 
             foreach (var table in incomingMap.GetStandaloneTablesAsFlattenedList()) {
-                if (table.Name.Equals("attributebinding", StringComparison.InvariantCultureIgnoreCase))
+                if (table.Name.Equals("attributebinding", StringComparison.OrdinalIgnoreCase))
                     continue;
                 await RegisterStandaloneTableGuidAsync(table);
             }
