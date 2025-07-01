@@ -12,15 +12,19 @@ namespace VortexAPI
 
             On<CreateProduct>()
                 .GetId(cmd => $"product::{cmd.ProductID}")
-                .Commit(cmd => new EventSourcing.Products.v1.Created(cmd.ProductID));
+                .Action((cmd, p) => {
+                    p.Publish(() => new EventSourcing.Products.v1.Created(cmd.ProductID));
+                });
 
             On<UpdateName>()
                 .GetId(cmd => $"product::{cmd.ProductID}")
-                .Commit(cmd => new EventSourcing.Products.v1.NameUpdated(cmd.Name));
+                .Action((cmd, p) => {
+                    p.Publish(() => new EventSourcing.Products.v1.NameUpdated(cmd.Name));
+                });
         }
 
-        public record CreateProduct(string ProductID);
+    public record CreateProduct(string ProductID);
 
-        public record UpdateName(string ProductID, string Name);
-    }
+    public record UpdateName(string ProductID, string Name);
+}
 }

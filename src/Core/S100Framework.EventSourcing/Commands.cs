@@ -53,15 +53,30 @@ namespace S100Framework.EventSourcing
 
     public interface ICommandHandler<TCommand> where TCommand : class
     {
-        void Commit<TEvent>(Func<TCommand, TEvent> getMessage) where TEvent : class;
-        void Commit<TEvent>(Func<TCommand, TEvent[]> getMessage) where TEvent : class;
+        void Action(Action<TCommand, IPublisherHandler> getMessage);
     }
 
-    public sealed class CommandHandler<TCommand> : IIdentityHandler<TCommand>, ICommandHandler<TCommand> where TCommand : class
+    public interface IPublisherHandler {
+        void Publish<TEvent>(Func<TEvent> message) where TEvent : class;
+    }
+
+    public sealed class CommandHandler<TCommand> : IIdentityHandler<TCommand>, ICommandHandler<TCommand>, IPublisherHandler where TCommand : class
     {
+        class PublisherHandler : IPublisherHandler
+        {
+            private object[] _events = [];
+
+            public void Publish<TEvent>(Func<TEvent> message) where TEvent : class {
+                _events = [.. _events, message()];
+            }
+
+            public object[] Events => _events;
+        }
+
         private IHandlers _handler;
 
         private Func<TCommand, string>? _getId = default;
+
 
         public CommandHandler(IHandlers handler) {
             _handler = handler ?? throw new ArgumentNullException(nameof(handler));
@@ -72,24 +87,43 @@ namespace S100Framework.EventSourcing
             return this;
         }
 
-        public void Commit<TEvent>(Func<TCommand, TEvent> getMessage) where TEvent : class {          
+        public void Action(Action<TCommand, IPublisherHandler> getMessage) {
             Func<TCommand, (string streamname, object[] events)> func = (cmd) => {
-                var streamid = _getId!(cmd);
-                var events = getMessage(cmd);
+                var publisher = new PublisherHandler();
 
-                return (streamid,[events]);
+                var streamid = _getId!(cmd);
+                getMessage(cmd, publisher);
+
+                return (streamid, publisher.Events);
             };
             _handler.RegisterHandle(func);
         }
 
-        public void Commit<TEvent>(Func<TCommand, TEvent[]> getMessage) where TEvent : class {
-            Func<TCommand, (string streamname, object[] events)> func = (cmd) => {
-                var streamid = _getId!(cmd);
-                var events = getMessage(cmd);
-
-                return (streamid, events);
-            };
-            _handler.RegisterHandle(func);
+        public void Publish<TEvent>(Func<TEvent> message) where TEvent : class {
+            throw new NotImplementedException();
         }
+
+
+
+
+        //public void Commit<TEvent>(Func<TCommand, TEvent> getMessage) where TEvent : class {          
+        //    Func<TCommand, (string streamname, object[] events)> func = (cmd) => {
+        //        var streamid = _getId!(cmd);
+        //        var events = getMessage(cmd);
+
+        //        return (streamid,[events]);
+        //    };
+        //    _handler.RegisterHandle(func);
+        //}
+
+        //public void Commit<TEvent>(Func<TCommand, TEvent[]> getMessage) where TEvent : class {
+        //    Func<TCommand, (string streamname, object[] events)> func = (cmd) => {
+        //        var streamid = _getId!(cmd);
+        //        var events = getMessage(cmd);
+
+        //        return (streamid, events);
+        //    };
+        //    _handler.RegisterHandle(func);
+        //}
     }
 }
