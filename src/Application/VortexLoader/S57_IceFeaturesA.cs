@@ -46,6 +46,7 @@ namespace S100Framework.Applications
                 switch (fcSubtype) {
                     case 15: { // ICEARE_IceArea
                             var instance = new IceArea() {
+                                categoryOfIce = default,
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using S100Framework.DomainModel.S501;
+using System.Collections;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Text.RegularExpressions;
@@ -261,9 +262,14 @@ namespace S100Framework.WPF.Editors
 
             panel.Children.Add(radioButtonUnknown);
 
-            var type = typeof(T);
+            var type = typeof(T)!;
 
-            if (type.IsEnum) {
+            ITypeEditor editor;
+
+            if (type == typeof(string)) {
+                editor = new TextBoxEditor();
+            }
+            else if (type.IsEnum) {
                 var defaultEditor = new PropertyGridEditorComboBox() {
                 };
                 defaultEditor.SelectionChanged += (s, e) => {

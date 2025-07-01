@@ -24,7 +24,10 @@ namespace TestLua
                 ";
 
             var qualityOfBathymetricData = new QualityOfBathymetricData {
-
+                categoryOfTemporalVariation = default,
+                dataAssessment = default,
+                featuresDetected = default,
+                fullSeafloorCoverageAchieved = default,
             };
 
             UserData.RegisterType<QualityOfBathymetricData>();

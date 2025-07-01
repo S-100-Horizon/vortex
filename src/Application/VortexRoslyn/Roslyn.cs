@@ -365,7 +365,7 @@ namespace S100Framework.Applications
                                 //if (!knowTypesPrefix[referenceCode].Equals("String")) 2025-07-01
                                 builderDomainModel.AppendLine($"\t\t\t[Required()]");
                                 if (supportingUnknown) {
-                                    prefix += "?";
+                                    prefix = "required " + prefix + "?";
                                     postfix = " = default;";
                                 }
                             }
@@ -1110,7 +1110,7 @@ namespace S100Framework.Applications
                     //if (!client.KnowTypesPrefix[referenceCode].Equals("String"))
                     builder.AppendLine($"\t\t\t[Required()]");
                     if (client.SupportingUnknown) {
-                        prefix += "?";
+                        prefix = "required " + prefix + "?";
                         postfix = " = default;";
                     }
                 }
