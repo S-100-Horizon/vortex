@@ -177,7 +177,7 @@ namespace S100Framework.Applications
                             b.AppendLine($"\t\t[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]");
                         }
                         else if (lower == 1 && upper.HasValue && upper.Value == 1) {
-                            b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownEditor<{code}>), typeof(Editors.UnknownEditor<{code}>))]");
+                            b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownEditor<{code}?>), typeof(Editors.UnknownEditor<{code}?>))]");
                         }
                         else
                             b.AppendLine($"\t\t[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]");
@@ -287,7 +287,7 @@ namespace S100Framework.Applications
                                 if (prefix.Equals("string", StringComparison.OrdinalIgnoreCase))
                                     b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]");
                                 else
-                                    b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownEditor<{prefix}>), typeof(Editors.UnknownEditor<{prefix}>))]");
+                                    b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownEditor<{prefix}?>), typeof(Editors.UnknownEditor<{prefix}?>))]");
                             }
                         });
                     }

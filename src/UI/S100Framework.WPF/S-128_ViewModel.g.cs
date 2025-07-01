@@ -181,7 +181,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class customPaperSizeViewModel : ViewModelBase {
 		private decimal _paperWidth ;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal>), typeof(Editors.UnknownEditor<decimal>))]
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal paperWidth {
 			get {
 				return _paperWidth;
@@ -192,7 +192,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private decimal _paperLength ;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal>), typeof(Editors.UnknownEditor<decimal>))]
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal paperLength {
 			get {
 				return _paperLength;
@@ -701,7 +701,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private decimal _price ;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal>), typeof(Editors.UnknownEditor<decimal>))]
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal price {
 			get {
 				return _price;
@@ -902,7 +902,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class productSpecificationViewModel : ViewModelBase {
 		private DateOnly _editionDate ;
 
-		[Editor(typeof(Editors.UnknownEditor<DateOnly>), typeof(Editors.UnknownEditor<DateOnly>))]
+		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly editionDate {
 			get {
 				return _editionDate;
@@ -992,7 +992,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private digitalSignatureReference _digitalSignatureReference ;
 
-		[Editor(typeof(Editors.UnknownEditor<digitalSignatureReference>), typeof(Editors.UnknownEditor<digitalSignatureReference>))]
+		[Editor(typeof(Editors.UnknownEditor<digitalSignatureReference?>), typeof(Editors.UnknownEditor<digitalSignatureReference?>))]
 		[DomainModel.EnumerationAttribute(nameof(digitalSignatureReferenceList), typeof(digitalSignatureReference))]
 		public digitalSignatureReference digitalSignatureReference {
 			get {
@@ -1074,7 +1074,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private supportFileFormat _supportFileFormat ;
 
-		[Editor(typeof(Editors.UnknownEditor<supportFileFormat>), typeof(Editors.UnknownEditor<supportFileFormat>))]
+		[Editor(typeof(Editors.UnknownEditor<supportFileFormat?>), typeof(Editors.UnknownEditor<supportFileFormat?>))]
 		[DomainModel.EnumerationAttribute(nameof(supportFileFormatList), typeof(supportFileFormat))]
 		public supportFileFormat supportFileFormat {
 			get {
@@ -1089,7 +1089,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public supportFileFormat[] supportFileFormatList => [(supportFileFormat)1,(supportFileFormat)2,(supportFileFormat)3,(supportFileFormat)4,(supportFileFormat)5,(supportFileFormat)6,(supportFileFormat)7,(supportFileFormat)8,(supportFileFormat)9,(supportFileFormat)100];
 		private supportFilePurpose _supportFilePurpose ;
 
-		[Editor(typeof(Editors.UnknownEditor<supportFilePurpose>), typeof(Editors.UnknownEditor<supportFilePurpose>))]
+		[Editor(typeof(Editors.UnknownEditor<supportFilePurpose?>), typeof(Editors.UnknownEditor<supportFilePurpose?>))]
 		[DomainModel.EnumerationAttribute(nameof(supportFilePurposeList), typeof(supportFilePurpose))]
 		public supportFilePurpose supportFilePurpose {
 			get {
@@ -1195,7 +1195,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class supportFileSpecificationViewModel : ViewModelBase {
 		private DateOnly _editionDate ;
 
-		[Editor(typeof(Editors.UnknownEditor<DateOnly>), typeof(Editors.UnknownEditor<DateOnly>))]
+		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly editionDate {
 			get {
 				return _editionDate;
@@ -1262,7 +1262,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class serviceSpecificationViewModel : ViewModelBase {
 		private DateOnly _editionDate ;
 
-		[Editor(typeof(Editors.UnknownEditor<DateOnly>), typeof(Editors.UnknownEditor<DateOnly>))]
+		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly editionDate {
 			get {
 				return _editionDate;
@@ -1527,7 +1527,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private DateOnly _issueDate ;
 
-		[Editor(typeof(Editors.UnknownEditor<DateOnly>), typeof(Editors.UnknownEditor<DateOnly>))]
+		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly issueDate {
 			get {
 				return _issueDate;
@@ -1594,7 +1594,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public typeOfTimeIntervalUnit[] typeOfTimeIntervalUnitList => [(typeOfTimeIntervalUnit)1,(typeOfTimeIntervalUnit)2,(typeOfTimeIntervalUnit)3,(typeOfTimeIntervalUnit)4];
 		private int _valueOfTime ;
 
-		[Editor(typeof(Editors.UnknownEditor<int>), typeof(Editors.UnknownEditor<int>))]
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int valueOfTime {
 			get {
 				return _valueOfTime;
@@ -1646,7 +1646,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class referenceToNMViewModel : ViewModelBase {
 		private DateOnly _publicationDate ;
 
-		[Editor(typeof(Editors.UnknownEditor<DateOnly>), typeof(Editors.UnknownEditor<DateOnly>))]
+		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly publicationDate {
 			get {
 				return _publicationDate;
@@ -1703,7 +1703,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class weekOfYearViewModel : ViewModelBase {
 		private int _weekNumber ;
 
-		[Editor(typeof(Editors.UnknownEditor<int>), typeof(Editors.UnknownEditor<int>))]
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int weekNumber {
 			get {
 				return _weekNumber;
@@ -1714,7 +1714,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private int _yearNumber ;
 
-		[Editor(typeof(Editors.UnknownEditor<int>), typeof(Editors.UnknownEditor<int>))]
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int yearNumber {
 			get {
 				return _yearNumber;
@@ -1982,7 +1982,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private categoryOfProductMapping _categoryOfProductMapping ;
 
 		[Category("ProductMapping")]
-		[Editor(typeof(Editors.UnknownEditor<categoryOfProductMapping>), typeof(Editors.UnknownEditor<categoryOfProductMapping>))]
+		[Editor(typeof(Editors.UnknownEditor<categoryOfProductMapping?>), typeof(Editors.UnknownEditor<categoryOfProductMapping?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfProductMappingList), typeof(categoryOfProductMapping))]
 		public categoryOfProductMapping categoryOfProductMapping {
 			get {
@@ -2056,7 +2056,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private int _catalogueSectionNumber ;
 
 		[Category("CatalogueSectionHeader")]
-		[Editor(typeof(Editors.UnknownEditor<int>), typeof(Editors.UnknownEditor<int>))]
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int catalogueSectionNumber {
 			get {
 				return _catalogueSectionNumber;
@@ -2528,7 +2528,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private Boolean _notForNavigation  = false;
 
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.UnknownEditor<Boolean>), typeof(Editors.UnknownEditor<Boolean>))]
+		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
 		public Boolean notForNavigation {
 			get {
 				return _notForNavigation;
@@ -2775,7 +2775,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private DateOnly _issueDate ;
 
 		[Category("ElectronicProduct")]
-		[Editor(typeof(Editors.UnknownEditor<DateOnly>), typeof(Editors.UnknownEditor<DateOnly>))]
+		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly issueDate {
 			get {
 				return _issueDate;
@@ -2798,7 +2798,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private typeOfProductFormat _typeOfProductFormat ;
 
 		[Category("ElectronicProduct")]
-		[Editor(typeof(Editors.UnknownEditor<typeOfProductFormat>), typeof(Editors.UnknownEditor<typeOfProductFormat>))]
+		[Editor(typeof(Editors.UnknownEditor<typeOfProductFormat?>), typeof(Editors.UnknownEditor<typeOfProductFormat?>))]
 		[DomainModel.EnumerationAttribute(nameof(typeOfProductFormatList), typeof(typeOfProductFormat))]
 		public typeOfProductFormat typeOfProductFormat {
 			get {
@@ -3076,7 +3076,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private Boolean _notForNavigation  = false;
 
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.UnknownEditor<Boolean>), typeof(Editors.UnknownEditor<Boolean>))]
+		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
 		public Boolean notForNavigation {
 			get {
 				return _notForNavigation;
@@ -3301,7 +3301,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private DateOnly _editionDate ;
 
 		[Category("PhysicalProduct")]
-		[Editor(typeof(Editors.UnknownEditor<DateOnly>), typeof(Editors.UnknownEditor<DateOnly>))]
+		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly editionDate {
 			get {
 				return _editionDate;
@@ -3623,7 +3623,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private Boolean _notForNavigation  = false;
 
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.UnknownEditor<Boolean>), typeof(Editors.UnknownEditor<Boolean>))]
+		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
 		public Boolean notForNavigation {
 			get {
 				return _notForNavigation;
@@ -3716,7 +3716,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private typeOfProductFormat _typeOfProductFormat ;
 
 		[Category("S100Service")]
-		[Editor(typeof(Editors.UnknownEditor<typeOfProductFormat>), typeof(Editors.UnknownEditor<typeOfProductFormat>))]
+		[Editor(typeof(Editors.UnknownEditor<typeOfProductFormat?>), typeof(Editors.UnknownEditor<typeOfProductFormat?>))]
 		[DomainModel.EnumerationAttribute(nameof(typeOfProductFormatList), typeof(typeOfProductFormat))]
 		public typeOfProductFormat typeOfProductFormat {
 			get {

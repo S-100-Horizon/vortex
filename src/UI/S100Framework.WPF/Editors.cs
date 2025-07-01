@@ -274,11 +274,11 @@ namespace S100Framework.WPF.Editors
     }
 
 
-    public class UnknownEditor<T> : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor where T : notnull
+    public class UnknownEditor<T> : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
 
-            var instance = (T?)propertyItem.Value;
+            var instance = (T)propertyItem.Value;
 
             //var panel = new DockPanel {
             //    LastChildFill = true,
