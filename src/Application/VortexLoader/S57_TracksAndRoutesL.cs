@@ -40,6 +40,9 @@ namespace S100Framework.Applications
                 switch (subtype) {
                     case 1: { // DWRTCL_DeepWaterRouteCenterline
                             var instance = new DeepWaterRouteCentreline() {
+                                basedOnFixedMarks = default,
+                                orientationValue = default,
+                                trafficFlow = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
@@ -88,6 +91,8 @@ namespace S100Framework.Applications
                         break;
                     case 10: { // NAVLNE_NavigationLine
                             var instance = new NavigationLine() {
+                                categoryOfNavigationLine = default,
+                                orientation = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
@@ -119,6 +124,7 @@ namespace S100Framework.Applications
                         break;
                     case 15: { // RADLNE_RadarLine
                             var instance = new RadarLine() {
+                                orientationValue = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
@@ -141,6 +147,7 @@ namespace S100Framework.Applications
                         break;
                     case 20: { // RCRTCL_RecommendedRouteCenterline
                             var instance = new RecommendedRouteCentreline() {
+                                basedOnFixedMarks = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
@@ -163,6 +170,7 @@ namespace S100Framework.Applications
                         break;
                     case 25: { // RDOCAL_RadioCallingInPoint
                             var instance = new RadioCallingInPoint() {
+                                trafficFlow = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
@@ -185,6 +193,9 @@ namespace S100Framework.Applications
                         break;
                     case 30: { // RECTRC_RecommendedTrack
                             var instance = new RecommendedTrack() {
+                                basedOnFixedMarks = default,
+                                orientationValue = default,
+                                trafficFlow = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;

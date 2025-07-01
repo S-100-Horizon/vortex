@@ -231,6 +231,7 @@ namespace S100Framework.Applications
                         break;
                     case 30: { // LNDMRK_Landmark
                             var instance = new Landmark() {
+                                visualProminence = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;

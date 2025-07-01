@@ -75,6 +75,7 @@ namespace S100Framework.Applications
                         break;
                     case 5: { // LNDELV_LandElevation
                             var instance = new LandElevation {
+                                elevation = default,
                                 scaleMinimum = null,
                             };
 
@@ -168,7 +169,7 @@ namespace S100Framework.Applications
                         break;
                     case 25: { // VEGATN_Vegetation
                             var instance = new Vegetation {
-
+                                categoryOfVegetation = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;

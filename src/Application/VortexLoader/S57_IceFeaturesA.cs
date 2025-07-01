@@ -39,6 +39,7 @@ namespace S100Framework.Applications
                 switch (subtype) {
                     case 15: { // ICEARE_IceArea
                             var instance = new IceArea() {
+                                categoryOfIce = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;

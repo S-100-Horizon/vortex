@@ -201,6 +201,7 @@ namespace S100Framework.Applications
                             if (current.CATCTR == 1) {
 
                                 var instance = new Landmark() {
+                                    visualProminence = default,
                                 };
                                 if (plts_comp_scale != default) {
                                     //instance.scaleMinimum = plts_comp_scale;
@@ -238,6 +239,7 @@ namespace S100Framework.Applications
                             }
                             else if (current.CATCTR == 5) {
                                 var instance = new Landmark() {
+                                    visualProminence = default,
                                 };
                                 if (plts_comp_scale != default) {
                                     //instance.scaleMinimum = plts_comp_scale;
@@ -340,6 +342,7 @@ namespace S100Framework.Applications
                         break;
                     case 35: { // LNDMRK_Landmark
                             var instance = new Landmark() {
+                                visualProminence = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
@@ -374,6 +377,7 @@ namespace S100Framework.Applications
                         break;
                     case 40: { // PRDARE_ProductionStorageArea
                             var instance = new ProductionStorageArea() {
+                                categoryOfProductionArea = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
@@ -402,6 +406,7 @@ namespace S100Framework.Applications
                         break;
                     case 45: { // PYLONS_PylonBridgeSupport
                             var instance = new PylonBridgeSupport() {
+                                categoryOfPylon = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;

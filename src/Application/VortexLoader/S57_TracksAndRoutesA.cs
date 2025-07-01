@@ -40,6 +40,9 @@ namespace S100Framework.Applications
                 switch (subtype) {
                     case 1: { // DWRTPT_DeepWaterRoutePart
                             var instance = new DeepWaterRoutePart() {
+                                depthRangeMinimumValue = default,
+                                orientationValue = default,
+                                trafficFlow = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
@@ -174,6 +177,7 @@ namespace S100Framework.Applications
                         break;
                     case 30: { // RCTLPT_RecommendedTrafficLanePart
                             var instance = new RecommendedTrafficLanePart() {
+                                orientationValue = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
@@ -195,6 +199,9 @@ namespace S100Framework.Applications
                         break;
                     case 40: { // RECTRC_RecommendedTrack
                             var instance = new RecommendedTrack() {
+                                basedOnFixedMarks = default,
+                                orientationValue = default,
+                                trafficFlow = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
@@ -323,6 +330,8 @@ namespace S100Framework.Applications
                         break;
                     case 70: { // TWRTPT_TwoWayRoutePart
                             var instance = new TwoWayRoutePart() {
+                                orientationValue = default,
+                                trafficFlow = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;

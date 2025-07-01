@@ -159,7 +159,10 @@ namespace S100Framework.Applications
                                 */
 
 
-                                var instance = new Obstruction();
+                                var instance = new Obstruction() {
+                                    surroundingDepth = default,
+                                    waterLevelEffect = default,
+                                };
 
                                 if (current.CATOBS.HasValue) {
                                     if (current.CATOBS.Value == -32767)
@@ -260,7 +263,9 @@ namespace S100Framework.Applications
                             // TODO: surrounding depth, valueofsounding
 
                             var instance = new UnderwaterAwashRock {
-                                waterLevelEffect = waterLevelEffect.CoversAndUncovers
+                                surroundingDepth = default,
+                                valueOfSounding = default,
+                                waterLevelEffect = waterLevelEffect.CoversAndUncovers                                
                             };
 
                             
@@ -357,7 +362,7 @@ namespace S100Framework.Applications
                             // TODO: no instances in NIS
                             // TODO: surrounding depth, valueofsounding
                             var instance = new WaterTurbulence {
-
+                                categoryOfWaterTurbulence = default,
                             };
 
                             if (current.CATWAT.HasValue) {
@@ -389,7 +394,10 @@ namespace S100Framework.Applications
                         break;
                     case 45: { // WRECKS
                             waterLevelEffect waterLeveleffectCurrent = default;
-                            var instance = new Wreck();
+                            var instance = new Wreck() {
+                                surroundingDepth = default,
+                                waterLevelEffect = default,
+                            };
 
                             if (current.SHAPE != null) {
                                 foreach (var depthArea in SelectIn<DepthsA>(current.SHAPE, depthsA, SpatialRelationship.Intersects, ImporterNIS.CompilationScale)) {

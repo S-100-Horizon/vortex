@@ -293,6 +293,7 @@ namespace TestS100Framework
                 Foid = "1810:3:2",
                 Prim = S100Framework.YAML.Primitive.Surface,
                 Attributes = new SpecialPurposeGeneralBeacon {
+                    beaconShape = default,
                     verticalLength = 4.5m
                 }
             };

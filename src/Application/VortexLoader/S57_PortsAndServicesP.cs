@@ -151,7 +151,10 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 20: { // DISMAR_DistanceMark
-                            var instance = new DistanceMark();
+                            var instance = new DistanceMark() {
+                                distanceMarkVisible = default,
+                                measuredDistanceValue = default,
+                            };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
                             }
@@ -457,7 +460,9 @@ namespace S100Framework.Applications
 
                             // MOORING BUOY
                             if (catmor == 7) {
-                                var instance = new MooringBuoy();
+                                var instance = new MooringBuoy() {
+                                    buoyShape = default,
+                                };
 
                                 if (plts_comp_scale != default) {
                                     //instance.scaleMinimum = plts_comp_scale;

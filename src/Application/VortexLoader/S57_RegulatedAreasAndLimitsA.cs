@@ -82,7 +82,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 10: { // ADMARE_AdministrationAreaNamed
-                            var instance = new AdministrationArea();
+                            var instance = new AdministrationArea() {
+                                jurisdiction = default,
+                            };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
                             }
@@ -100,7 +102,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 15: { // ARCSLN_ArchipelagicSeaLane
-                            var instance = new ArchipelagicSeaLane();
+                            var instance = new ArchipelagicSeaLane() {
+                                nationality = default,
+                            };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
                             }
@@ -175,7 +179,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 35: { // CUSZNE_CustomZone
-                            var instance = new CustomZone();
+                            var instance = new CustomZone() {
+                                nationality = default,
+                            };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
                             }
@@ -273,7 +279,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 65: { // FSHZNE_FisheryZone
-                            var instance = new FisheryZone();
+                            var instance = new FisheryZone() {
+                                nationality = default,
+                            };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
                             }
@@ -342,7 +350,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 95: { // MARCUL_MarineFarmCulture
-                            var instance = new MarineFarmCulture();
+                            var instance = new MarineFarmCulture() {
+                                waterLevelEffect = default,
+                            };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
                             }

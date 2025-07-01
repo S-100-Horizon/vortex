@@ -170,7 +170,10 @@ namespace S100Framework.Applications
                                 */
 
 
-                                var instance = new Obstruction();
+                                var instance = new Obstruction() {
+                                    surroundingDepth = default,
+                                    waterLevelEffect = default,
+                                };
 
                                 if (current.CATOBS.HasValue) {
                                     if (current.CATOBS.Value == -32767)
@@ -269,7 +272,7 @@ namespace S100Framework.Applications
                         break;
                     case 20: { // WATTUR_WaterTurbulence
                             var instance = new WaterTurbulence {
-
+                                categoryOfWaterTurbulence = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
@@ -299,7 +302,8 @@ namespace S100Framework.Applications
                         break;
                     case 25: { // WRECKS_Wreck
                             var instance = new Wreck {
-
+                                surroundingDepth = default,
+                                waterLevelEffect = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;

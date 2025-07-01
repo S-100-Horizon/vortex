@@ -54,7 +54,10 @@ namespace S100Framework.Applications
 
                 switch (subtype) {
                     case 1: { // BCNCAR_BeaconCardinal
-                            var instance = new CardinalBeacon();
+                            var instance = new CardinalBeacon() {
+                                beaconShape = default,
+                                categoryOfCardinalMark = default,
+                            };
                             
                             #region aidstonavigation
                             if (current.BCNSHP.HasValue) {
@@ -206,7 +209,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 5: { // BCNISD_BeaconIsolatedDanger
-                            var instance = new IsolatedDangerBeacon();
+                            var instance = new IsolatedDangerBeacon() {
+                                beaconShape = default,                                
+                            };
 
                             #region aidstonavigation
                             if (current.BCNSHP.HasValue) {
@@ -349,7 +354,10 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 10: { // BCNLAT_BeaconLateral
-                            var instance = new LateralBeacon();
+                            var instance = new LateralBeacon() {
+                                beaconShape = default,
+                                categoryOfLateralMark = default,
+                            };
 
                             #region aidstonavigation
                             if (current.BCNSHP.HasValue) {
@@ -501,7 +509,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 15: { // BCNSAW_BeaconSafeWater
-                            var instance = new SafeWaterBeacon();
+                            var instance = new SafeWaterBeacon() {
+                                beaconShape = default,
+                            };
 
                             #region aidstonavigation
                             if (current.BCNSHP.HasValue) {
@@ -645,7 +655,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 20: { // BCNSPP_BeaconSpecialPurpose
-                            var instance = new SpecialPurposeGeneralBeacon();
+                            var instance = new SpecialPurposeGeneralBeacon() {
+                                beaconShape = default,
+                            };
 
                             #region aidstonavigation
                             if (plts_comp_scale != default) {
@@ -801,7 +813,11 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 25: { // BOYCAR_BuoyCardinal
-                            var instance = new CardinalBuoy();
+                            var instance = new CardinalBuoy() {
+                                buoyShape = default,
+                                categoryOfCardinalMark = default,
+                            };
+
                             #region aidstonavigation
 
                             if (current.BOYSHP.HasValue) {
@@ -925,7 +941,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 30: { // BOYINB_BuoyInstallation
-                            var instance = new InstallationBuoy();
+                            var instance = new InstallationBuoy() {
+                                buoyShape = default,
+                            };
                             #region aidstonavigation
                             if (current.BOYSHP.HasValue) {
                                 if (current.BOYSHP.Value == -32767)
@@ -1040,7 +1058,10 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 35: { // BOYISD_BuoyIsolatedDanger
-                            var instance = new IsolatedDangerBuoy();
+                            var instance = new IsolatedDangerBuoy() {
+                                buoyShape = default,
+                            };
+
                             #region aidstonavigation
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
@@ -1149,7 +1170,10 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 40: { // BOYLAT_BuoyLateral
-                            var instance = new LateralBuoy();
+                            var instance = new LateralBuoy() {
+                                buoyShape = default,
+                                categoryOfLateralMark = default,                                
+                            };
 
                             #region aidstonavigation
 
@@ -1274,7 +1298,10 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 45: { // BOYSAW_BuoySafeWater
-                            var instance = new SafeWaterBuoy();
+                            var instance = new SafeWaterBuoy() {
+                                buoyShape = default,
+                            };
+
                             #region aidstonavigation
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
@@ -1386,7 +1413,10 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 50: { // BOYSPP_BuoySpecialPurpose
-                            var instance = new SpecialPurposeGeneralBuoy();
+                            var instance = new SpecialPurposeGeneralBuoy() {
+                                buoyShape = default,
+                            };
+
                             #region aidstonavigation
                             if (current.COLOUR != default) {
                                 instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
@@ -1496,7 +1526,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 55: { // DAYMAR_Daymark // SLAVE RIND: 2
-                            var instance = new Daymark();
+                            var instance = new Daymark() {
+                                topmarkDaymarkShape = default,
+                            };
 
                             #region aidstonavigation
 
@@ -1610,7 +1642,9 @@ namespace S100Framework.Applications
                             //We have one TOPMAR at the same location as a FOGSIG(in three scale bands).We need to add topmark shape in fog signal INFORM.
                             //We do not have in the database information regarding “Radio Activated” nor “Call Activated”. We do have one instance of “On request”. What does this refer to??
 
-                            var instance = new FogSignal();
+                            var instance = new FogSignal() {
+                                categoryOfFogSignal = default,
+                            };
 
                             #region aidstonavigation
 
@@ -2331,8 +2365,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 105: { // RTPBCN_RadarTransponderBeacon // SLAVE RIND: 2
-                            var instance = new RadarTransponderBeacon();
-
+                            var instance = new RadarTransponderBeacon() {
+                                categoryOfRadarTransponderBeacon = default,
+                            };
 
                             #region aidstonavigation
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -2455,7 +2490,9 @@ namespace S100Framework.Applications
         }
 
         internal static LightAllAround CreateLightAllAround(AidsToNavigationP current) {
-            var instance = new LightAllAround();
+            var instance = new LightAllAround() {
+                rhythmOfLight = default,
+            };
 
             if (current.COLOUR != default) {
                 instance.colour = GetColours(current.COLOUR);

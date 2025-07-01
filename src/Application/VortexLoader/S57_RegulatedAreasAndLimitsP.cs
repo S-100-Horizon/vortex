@@ -134,6 +134,7 @@ namespace S100Framework.Applications
                         break;
                     case 35: { // MARCUL_MarineFarmCulture
                             var instance = new MarineFarmCulture() {
+                                waterLevelEffect = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;

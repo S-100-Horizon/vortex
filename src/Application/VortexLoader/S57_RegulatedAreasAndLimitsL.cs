@@ -56,7 +56,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 25: { // MARCUL_MarineFarmCulture
-                            var instance = new MarineFarmCulture();
+                            var instance = new MarineFarmCulture() {
+                                waterLevelEffect = default,
+                            };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
                             }
@@ -74,7 +76,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 30: { // STSLNE_StraightTerritorialSeaBaseline
-                            var instance = new StraightTerritorialSeaBaseline();
+                            var instance = new StraightTerritorialSeaBaseline() {
+                                nationality = default,
+                            };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
                             }

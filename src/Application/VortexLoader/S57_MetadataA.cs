@@ -55,7 +55,11 @@ namespace S100Framework.Applications
                         break;
 
                     case 20: { // M_CSCL_CompilationScaleOfData
-                            var instance = new DataCoverage();
+                            var instance = new DataCoverage() {
+                                maximumDisplayScale = default,
+                                minimumDisplayScale = default,
+                                optimumDisplayScale = default,
+                            };
 
                             instance.maximumDisplayScale = displayScale.MaximumDisplayScale;
                             instance.minimumDisplayScale = displayScale.MinimumDisplayScale.Value;
@@ -99,7 +103,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 35: { // M_NSYS_NavigationalSystemOfMarks // Navigational System of Marks - region A and B globally
-                            var instance = new NavigationalSystemOfMarks();
+                            var instance = new NavigationalSystemOfMarks() {
+                                marksNavigationalSystemOf = default,
+                            };
 
                             marksNavigationalSystemOf? marsysConverted = null;
 
@@ -131,7 +137,12 @@ namespace S100Framework.Applications
                         break;
                     case 40: { // M_QUAL_QualityOfData // SKIN OF EARTH
 
-                            var instance = new QualityOfBathymetricData();
+                            var instance = new QualityOfBathymetricData() {
+                                categoryOfTemporalVariation = default,
+                                dataAssessment = default,
+                                featuresDetected = default,
+                                fullSeafloorCoverageAchieved = default,
+                            };
                             // TODO: categoryOfTemporalVariation
                             //instance.categoryOfTemporalVariation = EnumHelper.GetEnumValue<categoryOfTemporalVariation>()
 
@@ -145,7 +156,10 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 45: { // M_SDAT_SoundingDatum
-                            var instance = new SoundingDatum();
+                            var instance = new SoundingDatum() {
+                                verticalDatum = default,
+                            };
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -157,7 +171,10 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 50: { // M_SREL_SurveyReliability
-                            var instance = new QualityOfSurvey();
+                            var instance = new QualityOfSurvey() {
+                                surveyAuthority = default,
+                                surveyDateRange = default,
+                            };
 
                             AddInformation(instance.information, feature);
 
@@ -171,7 +188,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 55: { // M_VDAT_VerticalDatumOfData
-                            var instance = new VerticalDatumOfData();
+                            var instance = new VerticalDatumOfData() {
+                                verticalDatum = default,
+                            };
 
                             if (current.VERDAT.HasValue) {
                                 var verdat = Convert.ToInt32(current.VERDAT);

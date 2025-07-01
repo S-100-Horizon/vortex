@@ -62,6 +62,7 @@ namespace S100Framework.Applications
                         break;
                     case 5: { // RCTLPT_RecommendedTrafficLanePart
                             var instance = new RecommendedTrafficLanePart() {
+                                orientationValue = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
@@ -83,6 +84,7 @@ namespace S100Framework.Applications
                         break;
                     case 10: { // RDOCAL_RadioCallingInPoint
                             var instance = new RadioCallingInPoint() {
+                                trafficFlow = default,
                             };
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;

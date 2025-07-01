@@ -101,7 +101,10 @@ namespace S100Framework.Applications
                             }
 
                             else {
-                                var instance = new Obstruction();
+                                var instance = new Obstruction() {
+                                    surroundingDepth = default,
+                                    waterLevelEffect = default,
+                                };
 
                                 if (current.CATOBS.HasValue) {
                                     if (current.CATOBS.Value == -32767)
@@ -227,7 +230,7 @@ namespace S100Framework.Applications
                         break;
                     case 15: { // WATTUR_WaterTurbulence
                             var instance = new WaterTurbulence {
-
+                                categoryOfWaterTurbulence = default,
                             };
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
