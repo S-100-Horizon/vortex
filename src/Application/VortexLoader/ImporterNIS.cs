@@ -323,7 +323,7 @@ namespace S100Framework.Applications
             };
         }
 
-        private static void AddOrientation(decimal orientationValue, Feature feature) {
+        private static void AddOrientation(decimal? orientationValue, Feature feature) {
             if (DBNull.Value != feature["ORIENT"]) {
                 var orient = Convert.ToDecimal(feature["ORIENT"]);
                 orientationValue = orient;

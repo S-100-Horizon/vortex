@@ -1,7 +1,10 @@
 ﻿#define prop
 //#define propfull
 
+using S100Framework.DomainModel;
+using S100Framework.DomainModel.S101.FeatureTypes;
 using System.IO;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Xml;
@@ -125,7 +128,7 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.Applications.Roslyn.Build(s100, true);
+                var content = S100Framework.Applications.Roslyn.Build(s100, true, true);
 
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
@@ -461,6 +464,15 @@ namespace TestS100Framework
                 //var deserialized = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence>(json);
 
                 //Assert.Equivalent(instance, deserialized);
+            }
+
+            [Fact]
+            public void Test_Required() {
+                var type = typeof(QualityOfBathymetricData);
+
+                var required = type.GetProperty("categoryOfTemporalVariation")!.GetCustomAttribute<RequiredAttribute>();
+                if (required != null)
+                    ;   //  HAS ATTRIBUTE
             }
 
             private bool VerifyProductSpecification(XDocument productSpecification) {

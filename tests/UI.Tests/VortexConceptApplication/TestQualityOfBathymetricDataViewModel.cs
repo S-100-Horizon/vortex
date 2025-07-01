@@ -33,7 +33,7 @@ namespace VortexConceptApplication
     {
         [EnumerationValue([1, 2, 3, 5, 6])]
         [Required()]
-        public categoryOfTemporalVariation? categoryOfTemporalVariationUnknown { get; set; }
+        public required categoryOfTemporalVariation? categoryOfTemporalVariationUnknown { get; set; } = default;
 
     }
 

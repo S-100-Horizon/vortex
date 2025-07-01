@@ -159,6 +159,7 @@ namespace VortexConceptApplication
             };
 
             var model = new TestQualityOfBathymetricData() {
+                categoryOfTemporalVariationUnknown = default,
                 //dredgedDate = new DateOnly(2025, 2, 1)                
                 //categoryOfTemporalVariation = S100Framework.DomainModel.S101.categoryOfTemporalVariation.ExtremeEvent,
             };
