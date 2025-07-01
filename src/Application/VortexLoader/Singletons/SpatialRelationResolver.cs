@@ -52,7 +52,7 @@ namespace S100Framework.Applications.Singletons
             var featureclass = _featureClasses[typeof(T).Name];
 
             if (current.Shape != null) {
-                foreach (var SpatialRelated in SelectIn<T>(current.Shape, featureclass, SpatialRelationship.Intersects, ImporterNIS.CompilationScale)) {
+                foreach (var SpatialRelated in SelectIn<T>(current.Shape, featureclass, SpatialRelationship.Intersects, ImporterNIS._compilationScale)) {
                     yield return SpatialRelated;
                 }
             }
@@ -67,7 +67,7 @@ namespace S100Framework.Applications.Singletons
             var featureclass = _featureClasses[typeof(T).Name];
 
             if (current.Shape != null) {
-                foreach (var SpatialRelated in SelectIn<T>(current.Shape, featureclass, SpatialRelationship.Touches, ImporterNIS.CompilationScale)) {
+                foreach (var SpatialRelated in SelectIn<T>(current.Shape, featureclass, SpatialRelationship.Touches, ImporterNIS._compilationScale)) {
                     yield return SpatialRelated;
                 }
             }
