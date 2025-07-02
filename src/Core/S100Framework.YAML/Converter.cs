@@ -14,6 +14,7 @@ using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
+using RequiredMemberAttribute = System.Runtime.CompilerServices.RequiredMemberAttribute;
 
 using Scalar = YamlDotNet.Core.Events.Scalar;
 
@@ -87,7 +88,7 @@ namespace S100Framework.YAML
 
                 var propertyValue = property.GetValue(obj, null);
 
-                var required = property.GetCustomAttribute<RequiredAttribute>() != null;
+                var required = property.GetCustomAttribute<RequiredMemberAttribute>() != null;
 
                 try {
                     attributes.BuildAttributeItem(propertyValue, property.Name, property.PropertyType, ref propertyId, parentId, required);
