@@ -455,7 +455,7 @@ namespace S100Framework.YAML
                     var first = dataset?.GetOrCreateStartPoint(coordinates, $"{c.Id}");
                     var last = dataset?.GetOrCreateEndPoint(coordinates, $"{c.Id}");
 
-                    var curve = new Curve(first!, last!, coordinates) {
+                    var curve = new Curve(first?.Name, last?.Name, coordinates) {
                         Name = $"C{c.Id}",
                     };
 
