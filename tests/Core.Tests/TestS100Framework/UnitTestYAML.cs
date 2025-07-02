@@ -60,12 +60,14 @@ namespace TestS100Framework
 
         [Fact]
         public void Test_Serialize_RequiredAttribute() {
-            var lightAllAround = new QualityOfBathymetricData {
-                dataAssessment = dataAssessment.AssessedOceanic,
-                categoryOfTemporalVariation = categoryOfTemporalVariation.Unknown
+            var qualityOfBathymetricData = new QualityOfBathymetricData {
+                categoryOfTemporalVariation = null,
+                dataAssessment = null,
+                featuresDetected = null,
+                fullSeafloorCoverageAchieved = null,
             };
 
-            var yaml = S100Framework.YAML.Converter.Serialize(lightAllAround);
+            var yaml = S100Framework.YAML.Converter.Serialize(qualityOfBathymetricData);
 
             System.Diagnostics.Debugger.Break();
         }

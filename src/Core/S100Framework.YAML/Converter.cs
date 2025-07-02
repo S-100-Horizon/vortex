@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
 using System.Runtime.Serialization;
+using System.Security.AccessControl;
 using System.Text.Json.Serialization;
 using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
@@ -88,10 +89,6 @@ namespace S100Framework.YAML
 
                 var required = property.GetCustomAttribute<RequiredAttribute>() != null;
 
-
-                if (required && propertyValue == null)
-                    Debugger.Break();
-
                 try {
                     attributes.BuildAttributeItem(propertyValue, property.Name, property.PropertyType, ref propertyId, parentId, required);
                 }
@@ -103,8 +100,7 @@ namespace S100Framework.YAML
         }
 
         private static void BuildAttributeItem(this List<YamlAttributeItem> attributes, object? propertyValue, string propertyName, Type propertyType, ref int propertyId, int? parentId, bool required = false) {
-
-            // If the attribute is not required and the value is null, emit from yaml
+            // If the attribute is not required and the value is null, omit from yaml
             if (!required && propertyValue == null)
                 return;
 
@@ -156,7 +152,12 @@ namespace S100Framework.YAML
                     break;
 
                 case Type t when typeof(IEnumerable).IsAssignableFrom(t):
-                    if (propertyValue == null) break;
+                    // If the property is a nullable collection, but still required, add it with null value
+                    if (propertyValue == null) {
+                        attributes.Add(new(propertyName, null, null, parentId));
+                        break;
+                    }
+
                     if (propertyValue is not IEnumerable collection) break;
 
                     foreach (var item in collection!) {
@@ -169,7 +170,12 @@ namespace S100Framework.YAML
                     break;
 
                 case Type t when t.IsClass:
-                    if (propertyValue == null) break;
+                    // If the property is a nullable object, but still required, add it with null value
+                    if (propertyValue == null) {
+                        attributes.Add(new(propertyName, null, null, parentId));
+                        break;
+                    }
+                       
 
                     // Add root object with ID and value = null
                     attributes.Add(new(t.Name, null, propertyId, parentId));
