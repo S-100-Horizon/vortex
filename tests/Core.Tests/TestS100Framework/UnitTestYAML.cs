@@ -59,6 +59,18 @@ namespace TestS100Framework
         }
 
         [Fact]
+        public void Test_Serialize_RequiredAttribute() {
+            var lightAllAround = new QualityOfBathymetricData {
+                dataAssessment = dataAssessment.AssessedOceanic,
+                categoryOfTemporalVariation = categoryOfTemporalVariation.Unknown
+            };
+
+            var yaml = S100Framework.YAML.Converter.Serialize(lightAllAround);
+
+            System.Diagnostics.Debugger.Break();
+        }
+
+        [Fact]
         public void Test_Deserialize_Feature() {
             var yamlDataset = @"CellName: 101DK40349E.000
 Comment: Not for navigation!

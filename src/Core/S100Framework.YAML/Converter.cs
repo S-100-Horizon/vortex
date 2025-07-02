@@ -85,8 +85,15 @@ namespace S100Framework.YAML
                     continue;
 
                 var propertyValue = property.GetValue(obj, null);
+
+                var required = property.GetCustomAttribute<RequiredAttribute>() != null;
+
+
+                if (required && propertyValue == null)
+                    Debugger.Break();
+
                 try {
-                    attributes.BuildAttributeItem(propertyValue, property.Name, property.PropertyType, ref propertyId, parentId);
+                    attributes.BuildAttributeItem(propertyValue, property.Name, property.PropertyType, ref propertyId, parentId, required);
                 }
                 catch (Exception ex) {
                     Console.WriteLine(ex.Message);
@@ -95,8 +102,10 @@ namespace S100Framework.YAML
             return attributes;
         }
 
-        private static void BuildAttributeItem(this List<YamlAttributeItem> attributes, object? propertyValue, string propertyName, Type propertyType, ref int propertyId, int? parentId) {
-            if (propertyValue == null)
+        private static void BuildAttributeItem(this List<YamlAttributeItem> attributes, object? propertyValue, string propertyName, Type propertyType, ref int propertyId, int? parentId, bool required = false) {
+
+            // If the attribute is not required and the value is null, emit from yaml
+            if (!required && propertyValue == null)
                 return;
 
             var typed = Nullable.GetUnderlyingType(propertyType) ?? propertyType;
