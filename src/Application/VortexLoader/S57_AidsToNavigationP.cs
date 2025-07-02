@@ -92,7 +92,9 @@ namespace S100Framework.Applications
                         break;
 
                     case 5: { // BCNISD_BeaconIsolatedDanger
-                            var instance = new IsolatedDangerBeacon();
+                            var instance = new IsolatedDangerBeacon {
+                                beaconShape = default,
+                            };
 
                             #region aidstonavigation
 
@@ -210,7 +212,10 @@ namespace S100Framework.Applications
                         break;
 
                     case 10: { // BCNLAT_BeaconLateral
-                            var instance = new LateralBeacon();
+                            var instance = new LateralBeacon {
+                                beaconShape = default,
+                                categoryOfLateralMark = default,
+                            };
 
                             #region aidstonavigation
 
@@ -331,7 +336,9 @@ namespace S100Framework.Applications
                         break;
 
                     case 15: { // BCNSAW_BeaconSafeWater
-                            var instance = new SafeWaterBeacon();
+                            var instance = new SafeWaterBeacon {
+                                beaconShape = default,
+                            };
 
                             #region aidstonavigation
 
@@ -448,7 +455,9 @@ namespace S100Framework.Applications
                         break;
 
                     case 20: { // BCNSPP_BeaconSpecialPurpose
-                            var instance = new SpecialPurposeGeneralBeacon();
+                            var instance = new SpecialPurposeGeneralBeacon {
+                                beaconShape = default,
+                            };
 
                             #region aidstonavigation
 
@@ -569,7 +578,10 @@ namespace S100Framework.Applications
                         break;
 
                     case 25: { // BOYCAR_BuoyCardinal
-                            var instance = new CardinalBuoy();
+                            var instance = new CardinalBuoy {
+                                buoyShape = default,
+                                categoryOfCardinalMark = default,
+                            };
 
                             #region aidstonavigation
 
@@ -665,7 +677,9 @@ namespace S100Framework.Applications
                         break;
 
                     case 30: { // BOYINB_BuoyInstallation
-                            var instance = new InstallationBuoy();
+                            var instance = new InstallationBuoy {
+                                buoyShape = default,
+                            };
 
                             #region aidstonavigation
 
@@ -756,7 +770,9 @@ namespace S100Framework.Applications
                         break;
 
                     case 35: { // BOYISD_BuoyIsolatedDanger
-                            var instance = new IsolatedDangerBuoy();
+                            var instance = new IsolatedDangerBuoy {
+                                buoyShape = default,
+                            };
 
                             #region aidstonavigation
 
@@ -848,7 +864,10 @@ namespace S100Framework.Applications
                         break;
 
                     case 40: { // BOYLAT_BuoyLateral
-                            var instance = new LateralBuoy();
+                            var instance = new LateralBuoy {
+                                buoyShape = default,
+                                categoryOfLateralMark = default,
+                            };
 
                             #region aidstonavigation
 
@@ -944,7 +963,9 @@ namespace S100Framework.Applications
                         break;
 
                     case 45: { // BOYSAW_BuoySafeWater
-                            var instance = new SafeWaterBuoy();
+                            var instance = new SafeWaterBuoy {
+                                buoyShape = default,
+                            };
 
                             #region aidstonavigation
 
@@ -1036,7 +1057,9 @@ namespace S100Framework.Applications
                         break;
 
                     case 50: { // BOYSPP_BuoySpecialPurpose
-                            var instance = new SpecialPurposeGeneralBuoy();
+                            var instance = new SpecialPurposeGeneralBuoy {
+                                buoyShape = default,
+                            };
 
                             #region aidstonavigation
 

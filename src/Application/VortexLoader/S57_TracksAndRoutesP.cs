@@ -86,6 +86,7 @@ namespace S100Framework.Applications
                         break;
                     case 5: { // RCTLPT_RecommendedTrafficLanePart
                             var instance = new RecommendedTrafficLanePart() {
+                                orientationValue = default,
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -125,6 +126,7 @@ namespace S100Framework.Applications
                         break;
                     case 10: { // RDOCAL_RadioCallingInPoint
                             var instance = new RadioCallingInPoint() {
+                                trafficFlow = default,
                             };
 
 

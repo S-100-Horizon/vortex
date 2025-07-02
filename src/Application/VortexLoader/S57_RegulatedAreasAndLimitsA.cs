@@ -180,7 +180,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 10: { // ADMARE_AdministrationAreaNamed
-                            var instance = new AdministrationArea();
+                            var instance = new AdministrationArea {
+                                jurisdiction = default,
+                            };
 
                             if (current.JRSDTN.HasValue) {
                                 instance.jurisdiction = EnumHelper.GetEnumValue<jurisdiction>(current.JRSDTN.Value);
@@ -229,7 +231,9 @@ namespace S100Framework.Applications
                     case 15: { // ARCSLN_ArchipelagicSeaLane
                             throw new NotImplementedException($"No ARCSLN_ArchipelagicSeaLane in DK or GL. {tableName}");
 
-                            var instance = new ArchipelagicSeaLane();
+                            var instance = new ArchipelagicSeaLane {
+                                nationality = default,
+                            };
                             
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -400,7 +404,9 @@ namespace S100Framework.Applications
                     case 35: { // CUSZNE_CustomZone
                             throw new NotImplementedException($"No CUSZNE_CustomZone in DK or GL. {tableName}");    
 
-                            var instance = new CustomZone();
+                            var instance = new CustomZone {
+                                nationality = default,
+                            };
                             
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -607,7 +613,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 65: { // FSHZNE_FisheryZone
-                            var instance = new FisheryZone();
+                            var instance = new FisheryZone {
+                                nationality = default,
+                            };
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
@@ -737,7 +745,10 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 95: { // MARCUL_MarineFarmCulture
-                            var instance = new MarineFarmCulture();
+                            var instance = new MarineFarmCulture {
+                                waterLevelEffect = default,
+                            };
+
                             if (current.CATMFA != null) {
                                 instance.categoryOfMarineFarmCulture = EnumHelper.GetEnumValue<categoryOfMarineFarmCulture>(current.CATMFA);
                             }

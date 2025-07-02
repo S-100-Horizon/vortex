@@ -51,8 +51,12 @@ namespace S100Framework.Applications
                     case 1: { // DWRTCL_DeepWaterRouteCenterline
                             throw new NotImplementedException($"No DWRTCL_DeepWaterRouteCenterline in DK or GL. {tableName}");
 
-                            var instance = new DeepWaterRouteCentreline() {
+                            var instance = new DeepWaterRouteCentreline {
+                                basedOnFixedMarks = default,
+                                orientationValue = default,
+                                trafficFlow = default,
                             };
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -135,8 +139,11 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 10: { // NAVLNE_NavigationLine
-                            var instance = new NavigationLine() {
+                            var instance = new NavigationLine {
+                                categoryOfNavigationLine = default,
+                                orientation = default,
                             };
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -188,8 +195,10 @@ namespace S100Framework.Applications
                             throw new NotImplementedException($"No RADLNE_RadarLine in DK or GL. {tableName}");
 
 
-                            var instance = new RadarLine() {
+                            var instance = new RadarLine {
+                                orientationValue = default,
                             };
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -228,8 +237,10 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 20: { // RCRTCL_RecommendedRouteCenterline
-                            var instance = new RecommendedRouteCentreline() {
+                            var instance = new RecommendedRouteCentreline {
+                                basedOnFixedMarks = default,                                
                             };
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -268,7 +279,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 25: { // RDOCAL_RadioCallingInPoint
-                            var instance = new RadioCallingInPoint();
+                            var instance = new RadioCallingInPoint {
+                                trafficFlow = default,
+                            };
 
                             if (current.TRAFIC.HasValue) {
                                 instance.trafficFlow = EnumHelper.GetEnumValue<trafficFlow>(current.TRAFIC.Value);
@@ -319,7 +332,11 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 30: { // RECTRC_RecommendedTrack
-                            var instance = new RecommendedTrack();
+                            var instance = new RecommendedTrack {
+                                basedOnFixedMarks = default,
+                                orientationValue = default,
+                                trafficFlow = default,
+                            };
 
                             if (current.CATTRK.HasValue) {
                                 if (current.CATTRK.Value == 1) {

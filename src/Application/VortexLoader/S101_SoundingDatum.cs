@@ -56,7 +56,9 @@ namespace S100Framework.Applications
                     continue;
                 }
 
-                var instance = new SoundingDatum();
+                var instance = new SoundingDatum {
+                    verticalDatum = default,
+                };
 
                 instance.verticalDatum = DomainModel.S101.verticalDatum.BalticSeaChartDatum2000;
 
@@ -81,7 +83,9 @@ namespace S100Framework.Applications
 
                         var current = new MetaDataA(feature);
 
-                        var instance = new SoundingDatum();
+                        var instance = new SoundingDatum {
+                            verticalDatum = default,
+                        };
 
                         // TODO: interoperabilityIdentifier
 

@@ -363,7 +363,9 @@ namespace S100Framework.Applications
                         break;
 
                     case 35: {    // VEGATN
-                            var instance = new Vegetation();
+                            var instance = new Vegetation {
+                                categoryOfVegetation = default,
+                            };
 
                             if (current.CATVEG != default) {
                                 instance.categoryOfVegetation = EnumHelper.GetEnumValue<categoryOfVegetation>(current.CATVEG);

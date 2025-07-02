@@ -73,7 +73,9 @@ namespace S100Framework.Applications
 
                 switch (fcSubtype) {
                     case 5: { // DEPCNT_DepthContour
-                            var instance = new DepthContour();
+                            var instance = new DepthContour {
+                                valueOfDepthContour = default,
+                            };
 
                             if (current.VALDCO.HasValue) {
                                 instance.valueOfDepthContour = current.VALDCO.Value;

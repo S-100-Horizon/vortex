@@ -96,7 +96,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 5: { // LNDELV_LandElevation
-                            var instance = new LandElevation();
+                            var instance = new LandElevation() {
+                                elevation = default,
+                            };
 
                             if (current.ELEVAT != default) {
                                 instance.elevation = current.ELEVAT ?? default;
@@ -297,6 +299,7 @@ namespace S100Framework.Applications
                         break;
                     case 30: { // VEGATN_Vegetation
                             var instance = new Vegetation() {
+                                categoryOfVegetation = default,
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";

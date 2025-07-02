@@ -45,7 +45,11 @@ namespace S100Framework.Applications
 
                 switch (fcSubtype) {
                     case 1: { // DWRTPT_DeepWaterRoutePart
-                            var instance = new DeepWaterRoutePart();
+                            var instance = new DeepWaterRoutePart {
+                                depthRangeMinimumValue = default,
+                                orientationValue = default,
+                                trafficFlow = default,
+                            };
 
                             if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767) {
                                 instance.depthRangeMinimumValue = current.DRVAL1.Value;
@@ -294,7 +298,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 30: { // RCTLPT_RecommendedTrafficLanePart
-                            var instance = new RecommendedTrafficLanePart(); 
+                            var instance = new RecommendedTrafficLanePart {
+                                orientationValue = default,
+                            }; 
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
@@ -343,7 +349,11 @@ namespace S100Framework.Applications
                         }
                             break;
                     case 40: { // RECTRC_RecommendedTrack
-                            var instance = new RecommendedTrack();
+                            var instance = new RecommendedTrack {
+                                basedOnFixedMarks = default,
+                                orientationValue = default,
+                                trafficFlow = default,
+                            };
 
                             if (current.CATTRK.HasValue) {
                                 if (current.CATTRK.Value == 1) {
@@ -649,8 +659,11 @@ namespace S100Framework.Applications
                     case 70: { // TWRTPT_TwoWayRoutePart
                             throw new NotImplementedException($"No TWRTPT_TwoWayRoutePart in DK or GL. {tableName}");    
 
-                            var instance = new TwoWayRoutePart() {
+                            var instance = new TwoWayRoutePart {
+                                orientationValue = default,
+                                trafficFlow = default,
                             };
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 

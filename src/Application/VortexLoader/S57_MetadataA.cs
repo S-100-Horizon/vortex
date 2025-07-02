@@ -60,7 +60,9 @@ namespace S100Framework.Applications
                     case 1: { // M_ACCY_AccuracyOfData
                             throw new NotImplementedException($"No M_ACCY_AccuracyOfData in DK or GL. {tableName}");
 
-                            var instance = new QualityOfNonBathymetricData();
+                            var instance = new QualityOfNonBathymetricData {
+                                horizontalPositionUncertainty = default,
+                            };
 
                             if (current.CATZOC.HasValue && current.CATZOC.Value != -32767) {
                                 if (current.CATZOC.Value == 6) {
@@ -202,7 +204,10 @@ namespace S100Framework.Applications
                         break;
                     case 35: { // M_NSYS_NavigationalSystemOfMarks // Navigational System of Marks - region A and B globally
                             if (current.ORIENT.HasValue) {
-                                var localDirectionOfBuoyage = new LocalDirectionOfBuoyage();
+                                var localDirectionOfBuoyage = new LocalDirectionOfBuoyage {
+                                    marksNavigationalSystemOf = default,
+                                    orientationValue = default,                                    
+                                };
 
                                 // TODO: interoperabilityIdentifier
 
@@ -237,7 +242,10 @@ namespace S100Framework.Applications
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(localDirectionOfBuoyage));
                             }
 
-                            var instance = new NavigationalSystemOfMarks();
+                            var instance = new NavigationalSystemOfMarks {
+                                marksNavigationalSystemOf = default,
+                            };
+
                             if (current.MARSYS.HasValue) {
                                 instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
@@ -266,7 +274,13 @@ namespace S100Framework.Applications
                         break;
                     case 40: { // M_QUAL_QualityOfData // SKIN OF EARTH
 
-                            var instance = new QualityOfBathymetricData();
+                            var instance = new QualityOfBathymetricData {
+                                categoryOfTemporalVariation = default,
+                                dataAssessment = default,
+                                featuresDetected = default,
+                                fullSeafloorCoverageAchieved = default,
+                            };
+
                             // TODO: categoryOfTemporalVariation
 
                             /*
@@ -452,7 +466,10 @@ namespace S100Framework.Applications
                     case 50: { // M_SREL_SurveyReliability
                             throw new NotImplementedException($"No M_SREL_SurveyReliability in DK or GL. {tableName}");
 
-                            var instance = new QualityOfSurvey();
+                            var instance = new QualityOfSurvey {
+                                surveyAuthority = default,
+                                surveyDateRange = default,
+                            };
 
                             AddInformation(instance.information, feature);
 
@@ -476,7 +493,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 55: { // M_VDAT_VerticalDatumOfData
-                            var instance = new VerticalDatumOfData();
+                            var instance = new VerticalDatumOfData {
+                                verticalDatum = default,
+                            };
 
                             // TODO: interoperabilityIdentifier
 

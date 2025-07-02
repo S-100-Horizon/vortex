@@ -11,7 +11,9 @@ namespace S100Framework.Applications
     {
 
         internal static LightAllAround CreateLightAllAround(AidsToNavigationP current, Geodatabase source) {
-            var instance = new LightAllAround();
+            var instance = new LightAllAround {
+                rhythmOfLight = default,
+            };
 
             if (current.CATLIT != null) {
                 instance.categoryOfLight = EnumHelper.GetEnumValues<categoryOfLight>(current.CATLIT);
