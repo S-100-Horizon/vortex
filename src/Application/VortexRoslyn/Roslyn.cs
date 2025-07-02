@@ -165,9 +165,9 @@ namespace S100Framework.Applications
                     }
 
 
-                    builderDomainModel.AppendLine("\t\t[System.ComponentModel.Description(\"Unknown value.\")]");
-                    builderDomainModel.AppendLine("\t\t[EnumMember(Value = \"Unknown\")]");
-                    builderDomainModel.AppendLine("\t\tUnknown = -1,");
+                    //builderDomainModel.AppendLine("\t\t[System.ComponentModel.Description(\"Unknown value.\")]");
+                    //builderDomainModel.AppendLine("\t\t[EnumMember(Value = \"Unknown\")]");
+                    //builderDomainModel.AppendLine("\t\tUnknown = -1,");
 
                     builderDomainModel.AppendLine("\t}");
                     builderDomainModel.AppendLine();
@@ -381,7 +381,7 @@ namespace S100Framework.Applications
                             }
                             else if (lower == 1 && upper.HasValue && upper.Value == 1) {
                                 //if (!knowTypesPrefix[referenceCode].Equals("String")) 2025-07-01
-                                builderDomainModel.AppendLine($"\t\t\t[Required()]");
+                                //builderDomainModel.AppendLine($"\t\t\t[Required()]");
                                 if (supportingUnknown) {
                                     prefix = "required " + prefix + "?";
                                     postfix = " = default;";
@@ -1126,7 +1126,7 @@ namespace S100Framework.Applications
                 }
                 else if (lower == 1 && upper.HasValue && upper.Value == 1) {
                     //if (!client.KnowTypesPrefix[referenceCode].Equals("String"))
-                    builder.AppendLine($"\t\t\t[Required()]");
+                    //builder.AppendLine($"\t\t\t[Required()]");
                     if (client.SupportingUnknown) {
                         prefix = "required " + prefix + "?";
                         postfix = " = default;";
