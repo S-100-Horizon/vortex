@@ -79,7 +79,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 25: { // MARCUL_MarineFarmCulture
-                            var instance = new MarineFarmCulture();
+                            var instance = new MarineFarmCulture {
+                                waterLevelEffect = default,
+                            };
 
                             if (current.CATMFA != null) {
                                 instance.categoryOfMarineFarmCulture = EnumHelper.GetEnumValue<categoryOfMarineFarmCulture>(current.CATMFA);
@@ -164,7 +166,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 30: { // STSLNE_StraightTerritorialSeaBaseline
-                            var instance = new StraightTerritorialSeaBaseline();
+                            var instance = new StraightTerritorialSeaBaseline {
+                                nationality = default,
+                            };
 
                             // TODO: interoperabilityIdentifier
 

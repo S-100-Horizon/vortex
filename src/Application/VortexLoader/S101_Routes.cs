@@ -9,7 +9,7 @@ namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
-        private static void S101_SoundingDatum(Geodatabase source, Geodatabase target, QueryFilter filter) {
+        private static void S101_Routes(Geodatabase source, Geodatabase target, QueryFilter filter) {
 
             var metadataATableName = "MetaDataA";
             var productCoverageTableName = "ProductCoverage";
@@ -66,7 +66,7 @@ namespace S100Framework.Applications
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                 SetShape(buffer, item);
-                ImporterNIS.SetDrawingIndex(buffer, _compilationScale);
+                //TODO: ImporterNIS.SetDrawingIndex(buffer, plts_comp_scale);
 
                 var featureN = featureClass.CreateRow(buffer);
                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";

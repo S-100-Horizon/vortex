@@ -14,7 +14,9 @@ namespace S100Framework.Applications
     internal static partial class Converters {
         internal static FogSignal CreateFogSignal(S57Object structure, Geodatabase source) {
 
-            var instance = new FogSignal();
+            var instance = new FogSignal {
+                categoryOfFogSignal = default,
+            };
 
             var current = structure as AidsToNavigationP;
 

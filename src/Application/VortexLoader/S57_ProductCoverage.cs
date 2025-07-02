@@ -95,7 +95,11 @@ namespace S100Framework.Applications
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
                             }
 
-                            var dataCoverage = new DataCoverage();
+                            var dataCoverage = new DataCoverage {
+                                maximumDisplayScale = default,
+                                minimumDisplayScale = default,
+                                optimumDisplayScale = default,
+                            };
 
                             
 
@@ -105,7 +109,9 @@ namespace S100Framework.Applications
                                 dataCoverage.optimumDisplayScale = displayScale.OptimumDisplayScale;
                             } 
                             {
-                                var vdat = new VerticalDatumOfData();
+                                var vdat = new VerticalDatumOfData {
+                                    verticalDatum = default,
+                                };
 
 
                                 //    TODO: Fix hardcoded vertical datum of dataset -> EnumHelper.GetEnumValue<DomainModel.S101.verticalDatum>(current.VDAT.Value);

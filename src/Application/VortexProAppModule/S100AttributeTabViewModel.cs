@@ -327,7 +327,7 @@ namespace VortexProAppModule
                     await QueuedTask.Run(() => {
                         foreach (var layer in MapView.Active.Map.GetStandaloneTablesAsFlattenedList().OfType<StandaloneTable>()) {
                             if (layer is StandaloneTable table) {
-                                if (table.GetTable().GetName().EndsWith("informationtype", StringComparison.InvariantCultureIgnoreCase)) {
+                                if (table.GetTable().GetName().EndsWith("informationtype", StringComparison.OrdinalIgnoreCase)) {
                                     table.Select(new QueryFilter {
                                         WhereClause = $"upper(name) = '{e.informationId}'"
                                     }, SelectionCombinationMethod.Add);
@@ -345,9 +345,9 @@ namespace VortexProAppModule
                             if (layer is FeatureLayer featureLayer) {
                                 var name = featureLayer.GetTable().GetName();
                                 var select = e.featureId[0] switch {
-                                    'P' or 'p' => name.EndsWith("point", StringComparison.InvariantCultureIgnoreCase) || name.EndsWith("pointset", StringComparison.InvariantCultureIgnoreCase),
-                                    'C' or 'c' => name.EndsWith("curve", StringComparison.InvariantCultureIgnoreCase),
-                                    'S' or 's' => name.EndsWith("surface", StringComparison.InvariantCultureIgnoreCase),
+                                    'P' or 'p' => name.EndsWith("point", StringComparison.OrdinalIgnoreCase) || name.EndsWith("pointset", StringComparison.InvariantCultureIgnoreCase),
+                                    'C' or 'c' => name.EndsWith("curve", StringComparison.OrdinalIgnoreCase),
+                                    'S' or 's' => name.EndsWith("surface", StringComparison.OrdinalIgnoreCase),
                                     _ => false,
                                 };
                                 if (!select)
@@ -366,7 +366,7 @@ namespace VortexProAppModule
                     await QueuedTask.Run(() => {
                         foreach (var layer in MapView.Active.Map.GetStandaloneTablesAsFlattenedList()) {
                             if (layer is StandaloneTable table) {
-                                if (table.GetTable().GetName().EndsWith("informationassociation", StringComparison.InvariantCultureIgnoreCase)) {
+                                if (table.GetTable().GetName().EndsWith("informationassociation", StringComparison.OrdinalIgnoreCase)) {
                                     table.Select(new QueryFilter {
                                         WhereClause = $"upper(name) = '{e.associationId}'"
                                     }, SelectionCombinationMethod.Add);
@@ -382,7 +382,7 @@ namespace VortexProAppModule
                     await QueuedTask.Run(() => {
                         foreach (var layer in MapView.Active.Map.GetStandaloneTablesAsFlattenedList()) {
                             if (layer is StandaloneTable table) {
-                                if (table.GetTable().GetName().EndsWith("featureassociation", StringComparison.InvariantCultureIgnoreCase)) {
+                                if (table.GetTable().GetName().EndsWith("featureassociation", StringComparison.OrdinalIgnoreCase)) {
                                     table.Select(new QueryFilter {
                                         WhereClause = $"upper(name) = '{e.associationId}'"
                                     }, SelectionCombinationMethod.Add);
@@ -518,11 +518,11 @@ namespace VortexProAppModule
                     }
 
                     if (!string.IsNullOrEmpty(tableNames.Item2)) {
-                        return _catalogues.SingleOrDefault(e => e.Equals(tableNames.Item2, StringComparison.InvariantCultureIgnoreCase) || e.Replace("-", string.Empty).Equals(tableNames.Item2, StringComparison.InvariantCultureIgnoreCase));
+                        return _catalogues.SingleOrDefault(e => e.Equals(tableNames.Item2, StringComparison.OrdinalIgnoreCase) || e.Replace("-", string.Empty).Equals(tableNames.Item2, StringComparison.OrdinalIgnoreCase));
                     }
 
                     return geodatabase.GetConnector() switch {
-                        FileGeodatabaseConnectionPath fileGeodatabase => _catalogues.SingleOrDefault(e => e.Equals(IO.Path.GetFileNameWithoutExtension(fileGeodatabase.Path.AbsolutePath), StringComparison.InvariantCultureIgnoreCase) || e.Replace("-", string.Empty).Equals(IO.Path.GetFileNameWithoutExtension(fileGeodatabase.Path.AbsolutePath), StringComparison.InvariantCultureIgnoreCase)),
+                        FileGeodatabaseConnectionPath fileGeodatabase => _catalogues.SingleOrDefault(e => e.Equals(IO.Path.GetFileNameWithoutExtension(fileGeodatabase.Path.AbsolutePath), StringComparison.OrdinalIgnoreCase) || e.Replace("-", string.Empty).Equals(IO.Path.GetFileNameWithoutExtension(fileGeodatabase.Path.AbsolutePath), StringComparison.InvariantCultureIgnoreCase)),
                         _ => null,
                     };
                 }, TaskCreationOptions.None);

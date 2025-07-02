@@ -222,7 +222,11 @@ namespace S100Framework.Applications
                     case 20: { // DISMAR_DistanceMark
                             throw new NotImplementedException($"No DISMAR_DistanceMark in DK or GL. {tableName}");
 
-                            var instance = new DistanceMark();
+                            var instance = new DistanceMark {
+                                distanceMarkVisible = default,
+                                measuredDistanceValue = default,
+                            };
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -884,7 +888,9 @@ namespace S100Framework.Applications
 
                             // MOORING BUOY
                             if (catmor == 7) {
-                                var instance = new MooringBuoy();
+                                var instance = new MooringBuoy {
+                                    buoyShape = default,
+                                };
 
                                 if (current.BOYSHP == default) {
                                     instance.buoyShape = buoyShape.Spherical;

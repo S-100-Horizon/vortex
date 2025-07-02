@@ -936,8 +936,10 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class defaultLocale {
+			[Required()]
 			public String characterEncoding {get;set;} = string.Empty;
 
+			[Required()]
 			public String countryName {get;set;} = string.Empty;
 
 			public String? language {get;set;} = default;
@@ -952,6 +954,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
+			[Required()]
 			public String name {get;set;} = string.Empty;
 
 			public nameUsage? nameUsage {get;set;} = default;
@@ -990,6 +993,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializeapplicationProfile() { return !string.IsNullOrEmpty(applicationProfile); }
 
+			[Required()]
 			public String linkage {get;set;} = string.Empty;
 
 			public String? nameOfResource {get;set;} = default;
@@ -1012,8 +1016,10 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
+			[Required()]
 			public String dateEnd {get;set;}
 
+			[Required()]
 			public String dateStart {get;set;}
 		}
 
@@ -1024,6 +1030,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializecontractPeriod() { return !string.IsNullOrEmpty(contractPeriod); }
 
+			[Required()]
 			public String currency {get;set;} = string.Empty;
 
 			[Required()]
@@ -1061,8 +1068,10 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializeiSSN() { return !string.IsNullOrEmpty(iSSN); }
 
+			[Required()]
 			public String name {get;set;} = string.Empty;
 
+			[Required()]
 			public String version {get;set;} = string.Empty;
 		}
 
@@ -1080,8 +1089,10 @@ namespace S100Framework.DomainModel.S128 {
 				set { editionDate = DateOnly.FromDateTime(value); }
 			}
 
+			[Required()]
 			public String name {get;set;} = string.Empty;
 
+			[Required()]
 			public String version {get;set;} = string.Empty;
 		}
 
@@ -1099,8 +1110,10 @@ namespace S100Framework.DomainModel.S128 {
 				set { editionDate = DateOnly.FromDateTime(value); }
 			}
 
+			[Required()]
 			public String name {get;set;} = string.Empty;
 
+			[Required()]
 			public String version {get;set;} = string.Empty;
 		}
 
@@ -1138,8 +1151,10 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class telecommunications {
+			[Required()]
 			public String contactInstructions {get;set;} = string.Empty;
 
+			[Required()]
 			public String telecommunicationIdentifier {get;set;} = string.Empty;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
@@ -1225,8 +1240,10 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializeeditionNumber() { return editionNumber.HasValue; }
 
+			[Required()]
 			public String fileLocator {get;set;} = string.Empty;
 
+			[Required()]
 			public String fileName {get;set;} = string.Empty;
 
 			[XmlIgnore]
@@ -1507,6 +1524,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ContactDetails : InformationNode, IInformationBindingDefinition {
+			[Required()]
 			public String contactInstructions {get;set;} = string.Empty;
 
 			public List<contactAddress> contactAddress {get;set;} = [];
@@ -1641,6 +1659,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ProducerInformation : InformationNode, IInformationBindingDefinition {
+			[Required()]
 			public String agencyResponsibleForProduction {get;set;} = string.Empty;
 
 			public String? agencyName {get;set;} = default;
@@ -1684,6 +1703,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DistributorInformation : InformationNode, IInformationBindingDefinition {
+			[Required()]
 			public String distributorName {get;set;} = string.Empty;
 
 			[JsonIgnore]

@@ -1609,8 +1609,10 @@ namespace S100Framework.DomainModel.S122 {
 
 			public bool ShouldSerializedisplayName() { return displayName.HasValue; }
 
+			[Required()]
 			public String language {get;set;} = string.Empty;
 
+			[Required()]
 			public String name {get;set;} = string.Empty;
 		}
 
@@ -1665,6 +1667,7 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class onlineResource {
+			[Required()]
 			public String onlineResourceLinkageURL {get;set;} = string.Empty;
 
 			public String? protocol {get;set;} = default;
@@ -1706,8 +1709,10 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
+			[Required()]
 			public String dateStart {get;set;}
 
+			[Required()]
 			public String dateEnd {get;set;}
 		}
 
@@ -1919,6 +1924,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			public bool ShouldSerializetelecomCarrier() { return !string.IsNullOrEmpty(telecomCarrier); }
 
+			[Required()]
 			public String telecommunicationIdentifier {get;set;} = string.Empty;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
@@ -2569,6 +2575,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 
+			[Required()]
 			public String interoperabilityIdentifier {get;set;} = string.Empty;
 
 			public String? source {get;set;} = default;

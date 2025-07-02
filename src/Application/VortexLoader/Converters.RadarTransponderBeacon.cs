@@ -15,7 +15,9 @@ namespace S100Framework.Applications
 {
     internal static partial class Converters {
             internal static RadarTransponderBeacon CreateRadarTransponderBeacon(AidsToNavigationP current, Geodatabase source) {
-            var instance = new RadarTransponderBeacon();
+            var instance = new RadarTransponderBeacon {
+                categoryOfRadarTransponderBeacon = default,
+            };
 
             if (current.CATROS != null) {
                 instance.categoryOfRadarTransponderBeacon = EnumHelper.GetEnumValue<categoryOfRadarTransponderBeacon>(current.CATROS);

@@ -65,6 +65,7 @@ namespace S100Framework.Applications
                 }
 
                 var topmark = new topmark() {
+                    topmarkDaymarkShape = default,
                     // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
 
                 };
@@ -121,7 +122,8 @@ namespace S100Framework.Applications
                     daymarkColourPattern = ImporterNIS.GetColourPattern(relatedDaymark.COLPAT);
                 }
 
-                var daymark = new Daymark() {
+                var daymark = new Daymark {
+                    topmarkDaymarkShape = default,
                     // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
 
                 };

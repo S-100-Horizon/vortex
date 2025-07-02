@@ -56,7 +56,7 @@ namespace TestS100Framework
 
                             var type = Convert.ToString(row["type"])!;
 
-                            if (type.Equals("FeatureBinding", StringComparison.InvariantCultureIgnoreCase)) {
+                            if (type.Equals("FeatureBinding", StringComparison.OrdinalIgnoreCase)) {
                                 featureAssociationbindings.Add(new UnitTestPatcher.associationbinding(
                                         Convert.ToString(row["roleType"])!,
                                         Convert.ToString(row["association"])!,
@@ -66,7 +66,7 @@ namespace TestS100Framework
                                         Convert.ToString(row["primaryID"])!
                                     ));
                             }
-                            else if (type.Equals("InformationBinding", StringComparison.InvariantCultureIgnoreCase)) {
+                            else if (type.Equals("InformationBinding", StringComparison.OrdinalIgnoreCase)) {
                                 informationAssociationbindings.Add(new UnitTestPatcher.associationbinding(
                                         Convert.ToString(row["roleType"])!,
                                         Convert.ToString(row["association"])!,
@@ -92,10 +92,10 @@ namespace TestS100Framework
 
                             var name = Convert.ToString(f["name"])!;
 
-                            if (!groupFeatureAssociation.Any(e => e.Key.Equals(name, StringComparison.InvariantCultureIgnoreCase)))
+                            if (!groupFeatureAssociation.Any(e => e.Key.Equals(name, StringComparison.OrdinalIgnoreCase)))
                                 continue;
 
-                            var bindings = groupFeatureAssociation.Where(e => e.Key.Equals(name, StringComparison.InvariantCultureIgnoreCase)).SelectMany(e => e.Select(a => new featureBinding {
+                            var bindings = groupFeatureAssociation.Where(e => e.Key.Equals(name, StringComparison.OrdinalIgnoreCase)).SelectMany(e => e.Select(a => new featureBinding {
                                 association = a.association,
                                 associationId = a.associationID,
                                 featureId = a.foreignID,
@@ -123,10 +123,10 @@ namespace TestS100Framework
 
                             var name = Convert.ToString(row["name"])!;
 
-                            if (!groupInformationAssociation.Any(e => e.Key.Equals(name, StringComparison.InvariantCultureIgnoreCase)))
+                            if (!groupInformationAssociation.Any(e => e.Key.Equals(name, StringComparison.OrdinalIgnoreCase)))
                                 continue;
 
-                            var bindings = groupInformationAssociation.Where(e => e.Key.Equals(name, StringComparison.InvariantCultureIgnoreCase)).SelectMany(e => e.Select(a => new informationBinding {
+                            var bindings = groupInformationAssociation.Where(e => e.Key.Equals(name, StringComparison.OrdinalIgnoreCase)).SelectMany(e => e.Select(a => new informationBinding {
                                 association = a.association,
                                 associationId = a.associationID,
                                 informationId = a.foreignID,

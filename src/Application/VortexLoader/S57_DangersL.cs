@@ -128,7 +128,10 @@ namespace S100Framework.Applications
                             }
 
                             else {
-                                var instance = new Obstruction();
+                                var instance = new Obstruction() {
+                                    surroundingDepth = default,
+                                    waterLevelEffect = default,
+                                };
 
                                 if (current.CATOBS.HasValue) {
                                     instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(current.CATOBS.Value);
@@ -274,7 +277,7 @@ namespace S100Framework.Applications
                     case 15: { // WATTUR_WaterTurbulence
                             throw new NotImplementedException($"No WATTUR_WaterTurbulence in DK or GL. {tableName}");
                             var instance = new WaterTurbulence {
-
+                                categoryOfWaterTurbulence = default,
                             };
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);

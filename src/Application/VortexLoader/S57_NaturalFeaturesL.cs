@@ -90,6 +90,7 @@ namespace S100Framework.Applications
                         break;
                     case 5: { // LNDELV_LandElevation
                             var instance = new LandElevation {
+                                elevation = default,
                                 scaleMinimum = null,
                             };
 
@@ -259,7 +260,7 @@ namespace S100Framework.Applications
                             throw new NotImplementedException($"No VEGATN_Vegetation in DK or GL. {tableName}");
 
                             var instance = new Vegetation {
-
+                                categoryOfVegetation = default,
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";

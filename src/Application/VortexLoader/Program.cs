@@ -83,14 +83,14 @@ namespace S100Framework.Applications
             arguments.WithParsed<Options>(o => {
                 var target = o.Target!;
 
-                if (IO.File.Exists(target) && ".sde".Equals(IO.Path.GetExtension(target), StringComparison.InvariantCultureIgnoreCase)) {
+                if (IO.File.Exists(target) && ".sde".Equals(IO.Path.GetExtension(target), StringComparison.OrdinalIgnoreCase)) {
                     createGeodatabase = () => { 
                         var geodatabase = new Geodatabase(new DatabaseConnectionFile(new Uri(IO.Path.GetFullPath(target))));
                         
                         return geodatabase;
                     };
                 }
-                else if (IO.Directory.Exists(target) && ".gdb".Equals(IO.Path.GetExtension(target), StringComparison.InvariantCultureIgnoreCase)) {
+                else if (IO.Directory.Exists(target) && ".gdb".Equals(IO.Path.GetExtension(target), StringComparison.OrdinalIgnoreCase)) {
                     createGeodatabase = () => { 
                         var geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(target))));
 
@@ -104,7 +104,7 @@ namespace S100Framework.Applications
 
                         var geodatabase = new Geodatabase(serviceProps);
 
-                        var destinationVersion = geodatabase.GetVersionManager().GetVersionNames().FirstOrDefault(name => name.EndsWith("20250203", StringComparison.InvariantCultureIgnoreCase));
+                        var destinationVersion = geodatabase.GetVersionManager().GetVersionNames().FirstOrDefault(name => name.EndsWith("20250203", StringComparison.OrdinalIgnoreCase));
 
                         if (destinationVersion == null) {
                             geodatabase.GetVersionManager().CreateVersion(new VersionDescription() {

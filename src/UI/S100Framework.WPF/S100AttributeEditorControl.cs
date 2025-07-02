@@ -122,6 +122,7 @@ namespace S100Framework.WPF
         public event NotifyCollectionItemEventHandler? CollectionItemChanged;
 
         protected void OnPropertyChanged(object? sender, PropertyChangedEventArgs e) {
+            if ("HasErrors".Equals(e.PropertyName)) return;
             this.PropertyChanged?.Invoke(sender, e);
         }
 
@@ -300,7 +301,7 @@ namespace S100Framework.WPF
             this.CommandBindings.Add(binding);
 
             //  InformationBindings
-            binding = new CommandBinding(S100AttributeEditorControl.InformationAssociationSelectedCommand, this.InformationAssociationSelectedContent);
+            binding = new CommandBinding(S100AttributeEditorControl.InformationAssociationSelectedCommand, this.InformationAssociationSelectedCommandContent);
             this.CommandBindings.Add(binding);
             binding = new CommandBinding(S100AttributeEditorControl.QueryInformationsCommand, this.QueryInformationsContent);
             this.CommandBindings.Add(binding);
@@ -329,6 +330,12 @@ namespace S100Framework.WPF
             binding = new CommandBinding(S100AttributeEditorControl.FeatureAssociationAddSelectionCommand, this.FeatureAssociationAddSelectionCommandContent);
             this.CommandBindings.Add(binding);
             binding = new CommandBinding(S100AttributeEditorControl.FeatureAssociationRemoveFromListSelectionCommand, this.FeatureAssociationRemoveFromListSelectionCommandContent);
+            this.CommandBindings.Add(binding);
+
+            //  Unknown/Nullable
+            binding = new CommandBinding(S100AttributeEditorControl.UnknownCommand, this.UnknownCommandContent);
+            this.CommandBindings.Add(binding);
+            binding = new CommandBinding(S100AttributeEditorControl.ResetCommand, this.ResetCommandContent);
             this.CommandBindings.Add(binding);
         }
 
@@ -822,7 +829,7 @@ namespace S100Framework.WPF
 
         public static RoutedUICommand InformationAssociationSelectedCommand = new("Information association selected.", "InformationAssociationSelectedCommand", typeof(S100AttributeEditorControl));
 
-        private void InformationAssociationSelectedContent(object sender, ExecutedRoutedEventArgs e) {
+        private void InformationAssociationSelectedCommandContent(object sender, ExecutedRoutedEventArgs e) {
         }
 
         public static RoutedUICommand QueryInformationsCommand = new("Query informations.", "QueryInformationsCommand", typeof(S100AttributeEditorControl));
@@ -993,6 +1000,22 @@ namespace S100Framework.WPF
                     this._selectedFeatureBindings!.Remove(viewModel);
                 }
             }
+        }
+
+        #endregion
+
+        #region Unknown/Nullable
+
+        public static RoutedUICommand UnknownCommand = new("Unknow.", "UnknownCommand", typeof(S100AttributeEditorControl));
+
+        private void UnknownCommandContent(object sender, ExecutedRoutedEventArgs e) {
+            System.Diagnostics.Debugger.Break();
+        }
+
+        public static RoutedUICommand ResetCommand = new("Reset.", "ResetCommand", typeof(S100AttributeEditorControl));
+
+        private void ResetCommandContent(object sender, ExecutedRoutedEventArgs e) {
+            System.Diagnostics.Debugger.Break();
         }
 
         #endregion

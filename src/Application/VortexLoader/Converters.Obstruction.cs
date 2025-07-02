@@ -17,7 +17,10 @@ namespace S100Framework.Applications
 
         internal static Obstruction CreateObstruction(DangersP current, Geodatabase source) {
 
-            var instance = new Obstruction();
+            var instance = new Obstruction {
+                surroundingDepth = default,
+                waterLevelEffect = default,
+            };
 
             if (current.CATOBS.HasValue) {
                 instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(current.CATOBS.Value);

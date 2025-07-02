@@ -285,6 +285,7 @@ namespace S100Framework.Applications
                         break;
                     case 35: { // MARCUL_MarineFarmCulture
                             var instance = new MarineFarmCulture() {
+                                waterLevelEffect = default,
                             };
 
 

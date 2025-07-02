@@ -807,7 +807,9 @@ namespace S100Framework.Applications
                             }
                             // MOORING BUOY
                             if (catmor == 7) {
-                                var instance = new MooringBuoy();
+                                var instance = new MooringBuoy() {
+                                    buoyShape = default,
+                                };
 
                                 if (current.BOYSHP == default) {
                                     instance.buoyShape = buoyShape.Spherical;
