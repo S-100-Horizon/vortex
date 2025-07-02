@@ -267,7 +267,7 @@ namespace S100Framework.WPF.Editors
 
             ITypeEditor editor = new TextBoxEditor();
 
-            
+
             panel.Children.Add(radioButtonUnknown);
 
             return panel;
@@ -292,34 +292,47 @@ namespace S100Framework.WPF.Editors
                 Background = System.Windows.Media.Brushes.Orange,
                 HorizontalAlignment = HorizontalAlignment.Left,
                 IsChecked = instance == null,
-                Margin = new Thickness(1, 1, 0, 0),                
+                Margin = new Thickness(1, 1, 0, 0),
             };
             //Panel.SetZIndex(radioButtonUnknown, 1);
             radioButtonUnknown.Checked += (s, e) => {
                 //OnPropertyChanged(nameof(instance));
             };
 
-            var type = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);            
+            var propertyType = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
 
-            if (type.IsEnum) {
-                var defaultEditor = new PropertyGridEditorComboBox() {
+            if (propertyType.IsEnum) {
+                var editor = new PropertyGridEditorComboBox() {
                 };
-                defaultEditor.SelectionChanged += (s, e) => {
+                editor.SelectionChanged += (s, e) => {
                     radioButtonUnknown.IsChecked = false;
                 };
                 radioButtonUnknown.Click += (s, e) => {
-                    defaultEditor.SelectedValue = null;
+                    editor.SelectedValue = null;
                     radioButtonUnknown.IsChecked = true;
                 };
 
                 var attribute = (S100Framework.DomainModel.EnumerationAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.EnumerationAttribute), true)[0];
 
                 var bindingItemsSourceProperty = new Binding(attribute.PropertyName) { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
-                BindingOperations.SetBinding(defaultEditor, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+                BindingOperations.SetBinding(editor, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
                 var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
-                BindingOperations.SetBinding(defaultEditor, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
-                panel.Children.Add(defaultEditor);
+                BindingOperations.SetBinding(editor, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+                panel.Children.Add(editor);
+            }
+            else {                
+                if (propertyType == typeof(bool) || propertyType == typeof(Boolean)) {
+                    var editor = new PropertyGridEditorCheckBox();
+
+                    editor.IsThreeState = true;
+
+                    var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+                    BindingOperations.SetBinding(editor, CheckBox.IsCheckedProperty, bindingSelectedItemProperty);                    
+                    return editor;
+                }
+                else
+                    System.Diagnostics.Debugger.Break();
             }
 
             panel.Children.Add(radioButtonUnknown);
