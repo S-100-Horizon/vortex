@@ -3,6 +3,7 @@ using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using ArcGIS.Core.CIM;
 using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -11,17 +12,17 @@ namespace S100Framework.Applications
         private static void S57_CulturalFeaturesP(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "CulturalFeaturesP";
 
-            var culturalFeaturesP = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            using var culturalFeaturesP = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            Subtypes.Instance.RegisterSubtypes(culturalFeaturesP);
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
-            
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = culturalFeaturesP.Search(filter, true);
             int recordCount = 0;
-            int convertedCount = 0;
+
             while (cursor.MoveNext()) {
                 recordCount += 1;
 
@@ -31,81 +32,144 @@ namespace S100Framework.Applications
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
-                var subtype = current.FCSUBTYPE ?? default;
+
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                    continue;
+                }
+
+
+                var fcSubtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
                 var status = current.STATUS ?? default;
 
-
-                switch (subtype) {
-
+                switch (fcSubtype) {
                     case 1: { // AIRARE_AirportAirfield
-                            var instance = new AirportAirfield() {
-                            };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            var instance = new AirportAirfield();
+
+                            if (current.CATAIR != default) {
+                                instance.categoryOfAirportAirfield = EnumHelper.GetEnumValues<categoryOfAirportAirfield>(current.CATAIR);
                             }
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.SORDAT != default) {
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                    instance.reportedDate = current.SORDAT;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
                             AddInformation(instance.information, feature);
+
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
+
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
                         }
                         break;
+
                     case 5: { // BRIDGE_Bridge
-                            var instance = new Bridge() {
-                            };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
-                            if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
-                            }
+                            throw new NotImplementedException($"No BRIDGE_Bridge in DK and GL. {tableName}");
 
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
-                            }
+                            //var instance = new Bridge() {
+                            //};
+                            //if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                            //    string subtype = "";
 
-                            if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
-                            }
+                            //    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                            //        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
+                            //    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            //}
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
+                            //if (current.COLOUR != default) {
+                            //    instance.colour = GetColours(current.COLOUR);
+                            //}
 
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            //if (current.COLPAT != default) {
+                            //    instance.colourPattern = GetColourPattern(current.COLPAT);
+                            //}
+
+                            //if (current.CONDTN.HasValue) {
+                            //    instance.condition = GetCondition(current.CONDTN.Value);
+                            //}
+
+                            //if (current.STATUS != default) {
+                            //    instance.status = GetStatus(current.STATUS);
+                            //}
+
+                            //instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            //AddInformation(instance.information, feature);
+                            //buffer["ps"] = ps101;
+
+                            //buffer["code"] = instance.GetType().Name;
+                            //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            //SetShape(buffer, current.SHAPE);
+SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+                            //var featureN = featureClass.CreateRow(buffer);
+                            //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            //if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                            //    relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            //}
+
+                            //ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                            //Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
                         break;
+
                     case 10: { // BUAARE_BuiltUpArea
                             var instance = new BuiltUpArea() {
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
+
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -117,17 +181,32 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
                         }
                         break;
+
                     case 15: { // BUISGL_BuildingSingle
                             var instance = new Building() {
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             if (current.NATCON != default) {
@@ -156,27 +235,24 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-
-                            #region related
-
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
-
 
                         }
                         break;
+
                     case 20: { // CTRPNT_ControlPoint
+                            throw new NotImplementedException($"No CTRPNT_ControlPoint in DK and GL. {tableName}");
 
                             /*
                             4.3 Control points
@@ -199,15 +275,20 @@ namespace S100Framework.Applications
                              */
 
                             if (current.CATCTR == 1) {
-
-                                var instance = new Landmark() {
+                                var instance = new Landmark {
                                     visualProminence = default,
                                 };
-                                if (plts_comp_scale != default) {
-                                    //instance.scaleMinimum = plts_comp_scale;
-                                }
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
 
-                                instance.categoryOfLandmark = [ categoryOfLandmark.TriangulationMark ];
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
+
+                                instance.categoryOfLandmark = [categoryOfLandmark.TriangulationMark];
 
                                 if (current.COLOUR != default) {
                                     instance.colour = GetColours(current.COLOUR);
@@ -232,22 +313,34 @@ namespace S100Framework.Applications
 
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                SetShape(buffer,current.SHAPE);
-                                insert.Insert(buffer);
+                                SetShape(buffer, current.SHAPE);
+                                SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+                                var featureN = featureClass.CreateRow(buffer);
+                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                                }
+
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                convertedCount++;
                             }
                             else if (current.CATCTR == 5) {
-                                var instance = new Landmark() {
+                                var instance = new Landmark {
                                     visualProminence = default,
                                 };
-                                if (plts_comp_scale != default) {
-                                    //instance.scaleMinimum = plts_comp_scale;
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                    string subtype = "";
+
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
                                 instance.categoryOfLandmark = [categoryOfLandmark.BoundaryMark];
 
-
                                 if (current.COLOUR != default) {
                                     instance.colour = GetColours(current.COLOUR);
                                 }
@@ -271,54 +364,126 @@ namespace S100Framework.Applications
 
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                SetShape(buffer,current.SHAPE);
-                                insert.Insert(buffer);
+                                SetShape(buffer, current.SHAPE);
+                                SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+                                var featureN = featureClass.CreateRow(buffer);
+                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                                }
+
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                convertedCount++;
                             }
 
+                            else {
+                                throw new Exception($"Unhandled controlpoint CATCTR {current.CATCTR}");
+                            }
                         }
                         break;
+
                     case 25: { // DAMCON_Dam
-                            var instance = new Dam() {
-                            };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
-                            if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
-                            }
+                            throw new NotImplementedException($"DAMCON_Dam - CulturalFeaturesL. {tableName}");
 
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
-                            }
+                            ///*  S-65 Annex B
+                            //    Point is not an allowable geometric primitive for Dam, therefore DAMCON of geometric primitive
+                            //    point will convert to an instance of the S-101 Feature type Landmark (see S-101 DCEG clause 7.2).
+                            //*/
+                            //var instance = new Landmark();
 
-                            if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
-                            }
+                            //if (current.CATDAM.HasValue) {
+                            //    instance.categoryOfLandmark = new() { categoryOfLandmark.Dam };
+                            //}
 
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
+                            //if (current.COLOUR != default) {
+                            //    instance.colour = GetColours(current.COLOUR);
+                            //}
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
+                            //if (current.COLPAT != default) {
+                            //    instance.colourPattern = GetColourPattern(current.COLPAT);
+                            //}
 
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            //if (current.CONDTN.HasValue) {
+                            //    instance.condition = GetCondition(current.CONDTN.Value);
+                            //}
+
+                            //instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            //if (current.HEIGHT.HasValue) {
+                            //    instance.height = current.HEIGHT.Value;
+                            //}
+
+                            //// TODO: interoperabilityIdentifier
+
+                            //if (current.NATCON != default) {
+                            //    instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                            //}
+
+                            //if (current.CONRAD.HasValue) {
+                            //    instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
+                            //}
+
+                            //if (current.STATUS != default) {
+                            //    instance.status = GetStatus(current.STATUS);
+                            //}
+
+                            //if (current.VERLEN.HasValue) {
+                            //    instance.verticalLength = current.VERLEN.Value;
+                            //}
+
+                            ///*  S-65 Annex B
+                            //    When converting the S-57 DAMCON Object class of geometric primitive point the S-101 mandatory
+                            //    attribute visual prominence on the converted Landmark feature will be populated during the
+                            //    automated conversion process with value 2 (not visually conspicuous). Data Producers will be
+                            //    required to evaluate their converted datasets and amend this value as appropriate.
+                            //*/
+                            //instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(2);
+
+
+                            //if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                            //    string subtype = "";
+
+                            //    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                            //        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                            //    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            //}
+
+                            //AddInformation(instance.information, feature);
+
+                            //buffer["ps"] = ps101;
+
+                            //buffer["code"] = instance.GetType().Name;
+                            //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            //SetShape(buffer, current.SHAPE);
+SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+                            //var featureN = featureClass.CreateRow(buffer);
+                            //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            //if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                            //    relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            //}
+
+                            //ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                            //Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
                         break;
+
                     case 30: { // FORSTC_FortifiedStructure
                             var instance = new FortifiedStructure() {
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
+
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -331,22 +496,147 @@ namespace S100Framework.Applications
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
                         }
                         break;
-                    case 35: { // LNDMRK_Landmark
-                            var instance = new Landmark() {
+
+                        case 35: { // LNDMRK_Landmark
+                            if (current.CATLMK == "19") {
+                                var windturbine = ImporterNIS._converterRegistry.Convert<WindTurbine>(current);
+
+                                if (current.COLOUR != default) {
+                                    windturbine.colour = GetColours(current.COLOUR);
+                                }
+
+                                if (current.COLPAT != default) {
+                                    windturbine.colourPattern = GetColourPattern(current.COLPAT);
+                                }
+
+                                if (current.CONDTN.HasValue) {
+                                    windturbine.condition = GetCondition(current.CONDTN.Value);
+                                }
+
+                                if (current.ELEVAT.HasValue) {
+                                    windturbine.elevation = current.ELEVAT.Value;
+                                }
+
+                                windturbine.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                                DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                                if (dateRange != default) {
+                                    windturbine.fixedDateRange = dateRange;
+                                }
+
+                                if (current.HEIGHT.HasValue) {
+                                    windturbine.height = current.HEIGHT.Value;
+                                }
+
+                                // TODO: interoperabilityIdentifier
+
+                                // TODO: multiplicityOfFeatures
+
+                                if (current.NATCON != default) {
+                                    windturbine.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                }
+
+                                if (current.CONRAD.HasValue) {
+                                    windturbine.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
+                                }
+
+                                if (current.SORDAT != default) {
+                                    if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                        windturbine.reportedDate = current.SORDAT;
+                                    }
+                                    else {
+                                        Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    }
+                                }
+
+                                if (current.STATUS != default) {
+                                    windturbine.status = GetStatus(current.STATUS);
+                                }
+
+                                // TODO: verticalClearanceFixed		
+
+                                if (current.VERDAT.HasValue) {
+                                    windturbine.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3); 
+
+
+                                    
+
+                                }
+
+                                if (current.VERLEN.HasValue) {
+                                    windturbine.verticalLength = current.VERLEN.Value;
+                                }
+
+
+                                if (current.CONVIS.HasValue) {
+                                    windturbine.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                }
+
+                                if (current.WATLEV.HasValue) {
+                                    windturbine.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                                }
+
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                    string subtype = "";
+
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                    windturbine.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                }
+
+                                AddInformation(windturbine.information, feature);
+
+                                if (current.PICREP != default) {
+                                    windturbine.pictorialRepresentation = current.PICREP;
+                                }
+
+                                //TODO: inTheWater
+
+                                buffer["ps"] = ps101;
+                                buffer["code"] = windturbine.GetType().Name;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(windturbine, jsonSerializerOptions);
+                                SetShape(buffer, current.SHAPE);
+                                SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                                var windturbineFeature = featureClass.CreateRow(buffer);
+                                var structureName = Convert.ToString(windturbineFeature["name"]);
+
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment?.CreateRelatedPointEquipment(current, windturbine, windturbineFeature);
+                                }
+
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
+                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(windturbine));
+                                continue;
+                            }
+
+                            var instance = new Landmark {
                                 visualProminence = default,
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+
+                            if (current.CATLMK != default) {
+                                instance.categoryOfLandmark = EnumHelper.GetEnumValues<categoryOfLandmark>(current.CATLMK);
                             }
+
+                            // TODO: CATSPM
+
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
                             }
@@ -359,28 +649,98 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
+                            if (current.ELEVAT.HasValue) {
+                                instance.elevation = current.ELEVAT.Value;
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            if (current.FUNCTN != null) {
+                                instance.function = EnumHelper.GetEnumValues<function>(current.FUNCTN);
+                            }
+
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            // TODO: multiplicityOfFeatures
+
+                            if (current.NATCON != default) {
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                            }
+
+                            if (current.CONRAD.HasValue) {
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
+                            }
+
+                            if (current.SORDAT != default) {
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                    instance.reportedDate = current.SORDAT;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
+                            }
 
+                            if (current.CONVIS.HasValue) {
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
+                            AddInformation(instance.information, feature);
+
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
+
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
                         }
                         break;
+
                     case 40: { // PRDARE_ProductionStorageArea
-                            var instance = new ProductionStorageArea() {
+                            var instance = new ProductionStorageArea {
                                 categoryOfProductionArea = default,
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -398,19 +758,35 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
                         }
                         break;
+
                     case 45: { // PYLONS_PylonBridgeSupport
-                            var instance = new PylonBridgeSupport() {
+                            var instance = new PylonBridgeSupport {
                                 categoryOfPylon = default,
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
+
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
                             }
@@ -433,18 +809,36 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
                         }
                         break;
+
                     case 50: { // ROADWY_Road
+                            throw new NotImplementedException($"No ROADWY_Road in DK or GL. {tableName}");
+
                             var instance = new Road() {
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
+
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -460,18 +854,36 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
                         }
                         break;
+
                     case 55: { // RUNWAY_Runway
+                            throw new NotImplementedException($"No RUNWAY_Runway in DK or GL. {tableName}");
+
                             var instance = new Runway() {
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
+
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -487,18 +899,34 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
                         }
                         break;
+
                     case 60: { // SILTNK_SiloTank
                             var instance = new SiloTank() {
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
+
 
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
@@ -522,18 +950,37 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
                         }
                         break;
+
                     case 65: { // TUNNEL_Tunnel
+
+                            throw new NotImplementedException($"No TUNNEL_Tunnel in DK or GL. {tableName}");
+
                             var instance = new Tunnel() {
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
+
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -550,25 +997,29 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
                         }
                         break;
+
                     default:
                         // code block
                         System.Diagnostics.Debugger.Break();
                         break;
-
                 }
-
-
-
             }
-            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
+            Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
-
-
     }
 }

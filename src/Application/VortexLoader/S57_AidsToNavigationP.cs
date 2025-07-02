@@ -1,225 +1,105 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
+using Microsoft.AspNetCore.Mvc;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
-
-
+using System.Globalization;
+using VortexLoader;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
-    internal static partial class ImporterNIS {
-
-
-
+    internal static partial class ImporterNIS
+    {
         private static void S57_AidsToNavigationP(Geodatabase source, Geodatabase target, QueryFilter filter) {
-
-
             var tableName = "AidsToNavigationP";
 
-            var aidstonavigation = source.OpenDataset<FeatureClass>(source.GetName(tableName));
-
-            var featureAssociation = target.OpenDataset<Table>(target.GetName("featureassociation"));
-            var informationAssociation = target.OpenDataset<Table>(target.GetName("informationassociation"));
+            using var aidstonavigationp = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
-            using var featureAssociationBuffer = featureAssociation.CreateRowBuffer();
-            using var featureAssociationInsert = featureAssociation.CreateInsertCursor();
-            using var informationAssociationBuffer = informationAssociation.CreateRowBuffer();
-            using var informationAssociationInsert = informationAssociation.CreateInsertCursor();
+            var orgWhereClause = filter.WhereClause.Clone().ToString();
 
-            using var cursor = aidstonavigation.Search(filter, true);
-            int recordCount = 0;
-            int convertedCount = 0;
+            //filter.WhereClause += " AND globalid in ('{FF531488-02BE-496F-91D5-7E6FEDCB0CD1}')";
+            //filter.WhereClause += " AND globalid in ('{80125E6A-2D84-4FD2-B9C8-BEF5594FA926}', '{048BFCB0-F3B2-4075-9460-B89E1840CA03}')"; // NO SPEC FLOATING LIGHT
+
+            using var cursor = aidstonavigationp.Search(filter, true);
             
+            //filter.WhereClause = orgWhereClause;
+
+            int recordCount = 0;
+            var _slaves = new Dictionary<Guid,string>();
+
             while (cursor.MoveNext()) {
                 recordCount += 1;
-                var feature = (Feature)cursor.Current;
+                var feature = (Feature)cursor.Current; 
                 var current = new AidsToNavigationP(feature);
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
-                var subtype = current.FCSUBTYPE ?? default;
-                var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
-                var longname = current.LNAM ?? Strings.UNKNOWN;
+                var fcSubtype = current.FCSUBTYPE ?? default;
 
-                if (featureRelations.IsSlave(globalid)) {
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
                     continue;
                 }
 
-                switch (subtype) {
+                var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
+                var longname = current.LNAM ?? Strings.UNKNOWN;
+
+                if (FeatureRelations.Instance.IsSlave(globalid)) {
+                    Subtypes.Instance.TryGetSubtype(tableName, current.FCSUBTYPE.Value, out var subtype);
+                    _slaves.Add(globalid,$"{tableName}::{globalid}::{subtype}");
+                    continue;
+                }
+
+                switch (fcSubtype) {
                     case 1: { // BCNCAR_BeaconCardinal
-                            var instance = new CardinalBeacon() {
-                                beaconShape = default,
-                                categoryOfCardinalMark = default,
-                            };
-                            
-                            #region aidstonavigation
-                            if (current.BCNSHP.HasValue) {
-                                if (current.BCNSHP.Value == -32767)
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(-1);
-                                else {
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
-                                }
-                            }
 
-                            if (current.CATCAM.HasValue) {
-                                if (current.CATCAM.Value == -32767)
-                                    instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(-1);
-                                else {
-                                    instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(current.CATCAM.Value);
-                                }
-                            }
+                            var instance = _converterRegistry.Convert<CardinalBeacon>(current);
 
-                            if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);  
-                            }
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
 
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
-                            }
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                            if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
-                            }
-
-                            if (current.ELEVAT.HasValue) {
-                                instance.elevation = current.ELEVAT.Value;
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
-                            if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
-                            }
-
-                            if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value;
-                            }
-
-                            
-
-
-                            // TODO: interoperabilityidentifier
-
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
-                            }
-
-                            if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
-                            }
-
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-                                }
-                            }
-
-                            if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
-                            }
-
-                            if (current.SORDAT != default) {
-                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                    instance.reportedDate = current.SORDAT;
-                                }
-                                else {
-                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
-                                }
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-                            
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
-                            }
-
-                            instance.verticalLength = current.VERLEN;
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-                            var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
-
-                            if (current.CONVIS.HasValue) {
-                                if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
-                                else {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
-                                }
-                            }
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             AddInformation(instance.information, feature);
 
-                            instance.pictorialRepresentation = current.PICREP;
-
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-
-                            //insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
 
-                            #endregion aidstonavigation
-                            #region related
-
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
                         }
                         break;
+
                     case 5: { // BCNISD_BeaconIsolatedDanger
-                            var instance = new IsolatedDangerBeacon() {
-                                beaconShape = default,                                
+                            var instance = new IsolatedDangerBeacon {
+                                beaconShape = default,
                             };
 
                             #region aidstonavigation
+
                             if (current.BCNSHP.HasValue) {
-                                if (current.BCNSHP.Value == -32767)
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(-1);
-                                else {
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
-                                }
+                                instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
                             }
 
                             if (current.COLOUR != default) {
@@ -251,47 +131,29 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            if (current.MARSYS.HasValue) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
                             if (current.SORDAT != default) {
-                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
                                     instance.reportedDate = current.SORDAT;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -299,31 +161,28 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
+                            var topmark = relatedEquipment?.GetTopMark(current);
+                            
 
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
 
-                            instance.verticalLength = current.VERLEN;
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-                            var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
-
-
-                            if (current.CONVIS.HasValue) {
-                                if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
-                                else {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
-                                }
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
                             }
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             AddInformation(instance.information, feature);
@@ -333,47 +192,39 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
+                            
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
 
                             #endregion aidstonavigation
-                            #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
                         }
                         break;
+
                     case 10: { // BCNLAT_BeaconLateral
-                            var instance = new LateralBeacon() {
+                            var instance = new LateralBeacon {
                                 beaconShape = default,
                                 categoryOfLateralMark = default,
                             };
 
                             #region aidstonavigation
+
                             if (current.BCNSHP.HasValue) {
-                                if (current.BCNSHP.Value == -32767)
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(-1);
-                                else {
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
-                                }
+                                instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
                             }
 
                             if (current.CATLAM.HasValue) {
-                                if (current.CATLAM.Value == -32767)
-                                    instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(-1);
-                                else {
-                                    instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(current.CATLAM.Value);
-                                }
+                                instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(current.CATLAM.Value);
                             }
 
                             if (current.COLOUR != default) {
@@ -399,52 +250,35 @@ namespace S100Framework.Applications
                                 instance.fixedDateRange = dateRange;
                             }
 
-                            if (current.HEIGHT.HasValue) { 
+                            // TODO: interoperabilityidentifier
+
+                            if (current.HEIGHT.HasValue) {
                                 instance.height = current.HEIGHT.Value;
                             }
 
-                            // TODO: interoperabilityidentifier
-
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            if (current.MARSYS.HasValue) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
                             if (current.SORDAT != default) {
-                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
                                     instance.reportedDate = current.SORDAT;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -452,74 +286,64 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            var topmark = relatedEquipment?.GetTopMark(current);
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
 
-                            instance.verticalLength = current.VERLEN;
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-
-                            var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
-
-                            if (current.CONVIS.HasValue) {
-                                if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
-                                else {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
-                                }
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
                             }
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
 
                             AddInformation(instance.information, feature);
 
-                            instance.pictorialRepresentation = current.PICREP;
-
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
 
                             #endregion aidstonavigation
-                            #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
                         }
                         break;
+
                     case 15: { // BCNSAW_BeaconSafeWater
-                            var instance = new SafeWaterBeacon() {
+                            var instance = new SafeWaterBeacon {
                                 beaconShape = default,
                             };
 
                             #region aidstonavigation
+
                             if (current.BCNSHP.HasValue) {
-                                if (current.BCNSHP.Value == -32767)
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(-1);
-                                else {
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
-                                }
+                                instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
                             }
 
                             if (current.COLOUR != default) {
@@ -551,46 +375,29 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            if (current.MARSYS.HasValue) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
                             if (current.SORDAT != default) {
-                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
                                     instance.reportedDate = current.SORDAT;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -598,86 +405,68 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            var topmark = relatedEquipment?.GetTopMark(current);
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
 
-                            instance.verticalLength = current.VERLEN;
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-
-                            var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
-
-
-                            if (current.CONVIS.HasValue) {
-                                if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
-                                else {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
-                                }
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
                             }
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
 
                             AddInformation(instance.information, feature);
 
-                            instance.pictorialRepresentation = current.PICREP;
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-
-                            //insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
 
                             #endregion aidstonavigation
-                            #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
                         }
                         break;
+
                     case 20: { // BCNSPP_BeaconSpecialPurpose
-                            var instance = new SpecialPurposeGeneralBeacon() {
+                            var instance = new SpecialPurposeGeneralBeacon {
                                 beaconShape = default,
                             };
 
                             #region aidstonavigation
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
 
                             if (current.BCNSHP.HasValue) {
-                                if (current.BCNSHP.Value == -32767)
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(-1);
-                                else {
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
-                                }
+                                instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
                             }
 
                             if (current.CATSPM != default) {
-                                if (current.CATSPM == "-32767")
-                                    instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(-1);
-                                else {
-                                    instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
-                                }
+                                instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
                             }
 
                             if (current.COLOUR != default) {
@@ -697,7 +486,7 @@ namespace S100Framework.Applications
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            
+
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
@@ -709,46 +498,29 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            if (current.MARSYS.HasValue) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
                             if (current.SORDAT != default) {
-                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
                                     instance.reportedDate = current.SORDAT;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -756,64 +528,57 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            var topmark = relatedEquipment?.GetTopMark(current);
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
 
-                            instance.verticalLength = current.VERLEN;
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-
-                            var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
-
-
-                            if (current.CONVIS.HasValue) {
-                                if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
-                                else {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
-                                }
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
                             }
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
 
                             AddInformation(instance.information, feature);
 
-                            instance.pictorialRepresentation = current.PICREP;
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
 
                             #endregion aidstonavigation
-                            #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
                         }
                         break;
+
                     case 25: { // BOYCAR_BuoyCardinal
-                            var instance = new CardinalBuoy() {
+                            var instance = new CardinalBuoy {
                                 buoyShape = default,
                                 categoryOfCardinalMark = default,
                             };
@@ -821,19 +586,11 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BOYSHP.HasValue) {
-                                if (current.BOYSHP.Value == -32767)
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(-1);
-                                else {
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
-                                }
+                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
                             }
 
                             if (current.CATCAM.HasValue) {
-                                if (current.CATCAM.Value == -32767)
-                                    instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(-1);
-                                else {
-                                    instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(current.CATCAM.Value);
-                                }
+                                instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(current.CATCAM.Value);
                             }
 
                             if (current.COLOUR != default) {
@@ -853,104 +610,85 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            if (current.MARSYS.HasValue) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            var topmark = relatedEquipment?.GetTopMark(current);
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
 
-                            instance.verticalLength = current.VERLEN;
-
-
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-                            var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
-
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
                             }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
 
                             AddInformation(instance.information, feature);
 
-                            instance.pictorialRepresentation = current.PICREP;
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
 
                             #endregion aidstonavigation
-                            #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
                         }
                         break;
+
                     case 30: { // BOYINB_BuoyInstallation
-                            var instance = new InstallationBuoy() {
+                            var instance = new InstallationBuoy {
                                 buoyShape = default,
                             };
+
                             #region aidstonavigation
+
                             if (current.BOYSHP.HasValue) {
-                                if (current.BOYSHP.Value == -32767)
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>("-1");
-                                else {
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
-                                }
+                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                            }
+
+                            if (current.CATINB.HasValue) {
+                                instance.categoryOfInstallationBuoy = EnumHelper.GetEnumValue<categoryOfInstallationBuoy>(current.CATINB.Value);
                             }
 
                             if (current.COLOUR != default) {
@@ -968,103 +706,78 @@ namespace S100Framework.Applications
                                 instance.fixedDateRange = dateRange;
                             }
 
-
                             // TODO: interoperabilityidentifier
-
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
+                            }
 
-                                }
+                            if (current.PRODCT != default) {
+                                instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
 
-                            if (current.CONVIS.HasValue) {
-                                if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
-                                else {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
-                                }
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
 
                             AddInformation(instance.information, feature);
 
-                            instance.pictorialRepresentation = current.PICREP;
-
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
 
                             #endregion aidstonavigation
-                            #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
                         }
                         break;
+
                     case 35: { // BOYISD_BuoyIsolatedDanger
-                            var instance = new IsolatedDangerBuoy() {
+                            var instance = new IsolatedDangerBuoy {
                                 buoyShape = default,
                             };
 
                             #region aidstonavigation
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+
+                            if (current.BOYSHP.HasValue) {
+                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
                             }
 
                             if (current.COLOUR != default) {
@@ -1084,113 +797,86 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            if (current.MARSYS.HasValue) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            var topmark = relatedEquipment?.GetTopMark(current);
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
 
-                            instance.verticalLength = current.VERLEN;
-                            var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
                             }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
 
                             AddInformation(instance.information, feature);
 
-                            instance.pictorialRepresentation = current.PICREP;
-
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
 
                             #endregion aidstonavigation
-                            #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
                         }
                         break;
+
                     case 40: { // BOYLAT_BuoyLateral
-                            var instance = new LateralBuoy() {
+                            var instance = new LateralBuoy {
                                 buoyShape = default,
-                                categoryOfLateralMark = default,                                
+                                categoryOfLateralMark = default,
                             };
 
                             #region aidstonavigation
 
                             if (current.BOYSHP.HasValue) {
-                                if (current.BOYSHP.Value == -32767)
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(-1);
-                                else {
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
-                                }
+                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
                             }
 
                             if (current.CATLAM.HasValue) {
-                                if (current.CATLAM.Value == -32767)
-                                    instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(-1);
-                                else {
-                                    instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(current.CATLAM.Value);
-                                }
+                                instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(current.CATLAM.Value);
                             }
 
                             if (current.COLOUR != default) {
@@ -1210,99 +896,83 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            if (current.MARSYS.HasValue) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            var topmark = relatedEquipment?.GetTopMark(current);
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
 
-                            instance.verticalLength = current.VERLEN;
-
-                            var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
-
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
                             }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
 
                             AddInformation(instance.information, feature);
-                            instance.pictorialRepresentation = current.PICREP;
 
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
 
                             #endregion aidstonavigation
-                            #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
                         }
                         break;
+
                     case 45: { // BOYSAW_BuoySafeWater
-                            var instance = new SafeWaterBuoy() {
+                            var instance = new SafeWaterBuoy {
                                 buoyShape = default,
                             };
 
                             #region aidstonavigation
+
+                            if (current.BOYSHP.HasValue) {
+                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                            }
+
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
                             }
@@ -1311,7 +981,6 @@ namespace S100Framework.Applications
                                 instance.colourPattern = GetColourPattern(current.COLPAT);
                             }
 
-
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
@@ -1321,103 +990,87 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            if (current.MARSYS.HasValue) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            var topmark = relatedEquipment?.GetTopMark(current);
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
 
-                            instance.verticalLength = current.VERLEN;
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-
-                            var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
-
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
                             }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
 
                             AddInformation(instance.information, feature);
 
-                            instance.pictorialRepresentation = current.PICREP;
-
-
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
-
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
 
                             #endregion aidstonavigation
-                            #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
-
+                            if (relatedEquipment != null) {
+                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
                         }
                         break;
+
                     case 50: { // BOYSPP_BuoySpecialPurpose
-                            var instance = new SpecialPurposeGeneralBuoy() {
+                            var instance = new SpecialPurposeGeneralBuoy {
                                 buoyShape = default,
                             };
 
                             #region aidstonavigation
+
+                            if (current.BOYSHP.HasValue) {
+                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                            }
+
+                            if (current.CATSPM != default) {
+                                instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
+                            }
+
                             if (current.COLOUR != default) {
                                 instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
                             }
@@ -1426,9 +1079,8 @@ namespace S100Framework.Applications
                                 instance.colourPattern = GetColourPattern(current.COLPAT);
                             }
 
-
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            
+
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
@@ -1436,63 +1088,45 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            if (current.MARSYS.HasValue) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
                             }
 
-                            instance.verticalLength = current.VERLEN;
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-
-                            var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            var topmark = relatedEquipment?.GetTopMark(current);
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
 
                             AddInformation(instance.information, feature);
 
@@ -1502,228 +1136,71 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-
-                            //insert.Insert(buffer);
-
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
 
                             #endregion aidstonavigation
-                            #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
-
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
                         }
                         break;
+
                     case 55: { // DAYMAR_Daymark // SLAVE RIND: 2
-                            var instance = new Daymark() {
-                                topmarkDaymarkShape = default,
-                            };
-
-                            #region aidstonavigation
-
-                            if (current.COLOUR != default) {
-                                instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
-                            }
-
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
-                            }
-
-                            if (current.ELEVAT.HasValue) {
-                                instance.elevation = current.ELEVAT.Value;
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
-                            if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
-                            }
-
-                            if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value;
-                            }
-
-                            // TODO: interoperabilityidentifier
-
-                            if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
-                            }
-
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
-                            }
-
-                            if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
-                            }
-
-                            instance.verticalLength = current.VERLEN;
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
-
+                            var instance = ImporterNIS._converterRegistry.Convert<Daymark>(current);
                             AddInformation(instance.information, feature);
-
-                            instance.pictorialRepresentation = current.PICREP;
-
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
-
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
 
-                            #endregion aidstonavigation
-                            #region related
-
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
-
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
                         }
                         break;
-                    case 60: { // FOGSIG_FogSignal // SLAVE RIND: 2
 
+                    case 60: { // FOGSIG_FogSignal // SLAVE RIND: 2
                             //https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
                             //We have one TOPMAR at the same location as a FOGSIG(in three scale bands).We need to add topmark shape in fog signal INFORM.
                             //We do not have in the database information regarding “Radio Activated” nor “Call Activated”. We do have one instance of “On request”. What does this refer to??
-
-                            var instance = new FogSignal() {
-                                categoryOfFogSignal = default,
-                            };
-
-                            #region aidstonavigation
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
-                            if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
-                            }
-
-                            // TODO: interoperabilityidentifier
-
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
-                            }
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
+                            var instance = _converterRegistry.Convert<FogSignal>(current);
 
                             AddInformation(instance.information, feature);
+
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
-
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
 
-                            #endregion aidstonavigation
-                            #region related
-
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
                         }
                         break;
+
                     case 65: { // LIGHTS_Light // SLAVE RIND: 2
                             // Only free floating lights!
                             // lights without frels
@@ -1732,78 +1209,125 @@ namespace S100Framework.Applications
                             //var related = featureRelations.GetRelated(current.GLOBALID);
 
                             var lnam = current.LNAM;
-                            if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightSectored)) {
-                                var instance = CreateLightSectored(new List<AidsToNavigationP>() { current }); // No related sectors - only the one on the feature.
+                            if (FeatureRelations.Instance.GetS101CatlitTypeFrom(current) == typeof(LightSectored)) {
+                                var instance = ImporterNIS._converterRegistry.Convert<LightSectored>(current); // No related sectors - only the one on the feature.
+
                                 AddInformation(instance.information, feature);
+
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                    string subtype = "";
+
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                }
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                SetShape(buffer,current.SHAPE);
-                                //insert.Insert(buffer);
+                                SetShape(buffer, current.SHAPE);
+                                SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                                var featureN = featureClass.CreateRow(buffer);
+                                var structureName = Convert.ToString(featureN["name"]);
+                                if (structureName == null) {
+                                    throw new NotSupportedException("empty structure name");
+                                }
+
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName);
+
+                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            }
+                            else if (FeatureRelations.Instance.GetS101CatlitTypeFrom(current) == typeof(LightAirObstruction)) {
+                                var instance = ImporterNIS._converterRegistry.Convert<LightAirObstruction>(current); //CreateLightAirObstruction(current);
+
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                    string subtype = "";
+
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                }
+
+
+                                AddInformation(instance.information, feature);
+                                buffer["ps"] = ps101;
+                                buffer["code"] = instance.GetType().Name;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                SetShape(buffer, current.SHAPE);
+                                SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
                                 var structureName = Convert.ToString(featureN["name"]);
 
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                convertedCount++;
-
-
                             }
-                            else if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightAirObstruction)) {
-                                var instance = CreateLightAirObstruction(current);
+                            else if (FeatureRelations.Instance.GetS101CatlitTypeFrom(current) == typeof(LightFogDetector)) {
+                                var instance = ImporterNIS._converterRegistry.Convert<LightFogDetector>(new List<AidsToNavigationP>() { current }); // var instance = CreateLightFogDetector(current);
 
-                                AddInformation(instance.information, feature);
-                                buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                SetShape(buffer,current.SHAPE);
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                    string subtype = "";
 
-                                var featureN = featureClass.CreateRow(buffer);
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                convertedCount++;
-                            }
-                            else if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightFogDetector)) {
-                                var instance = CreateLightFogDetector(current);
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                }
+
+
                                 AddInformation(instance.information, feature);
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                SetShape(buffer,current.SHAPE);
+                                SetShape(buffer, current.SHAPE);
+                                SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
                                 var structureName = Convert.ToString(featureN["name"]);
 
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                convertedCount++;
                             }
-                            else if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightAllAround)) {
-                                var instance = CreateLightAllAround(current);
+                            else if (FeatureRelations.Instance.GetS101CatlitTypeFrom(current) == typeof(LightAllAround)) {
+                                var instance = ImporterNIS._converterRegistry.Convert<LightAllAround>(current);
+
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                    string subtype = "";
+
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                }
 
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                SetShape(buffer,current.SHAPE);
+                                SetShape(buffer, current.SHAPE);
+                                SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
-                                //insert.Insert(buffer);
                                 var featureN = featureClass.CreateRow(buffer);
+                                var structureName = Convert.ToString(featureN["name"]);
 
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                convertedCount++;
                             }
-
                             else {
                                 throw new NotSupportedException($"{current.GetType()}");
                             }
                         }
                         break;
+
                     case 70: { // LITFLT_LightFloat
                             var instance = new LightFloat();
 
                             #region aidstonavigation
+
                             if (current.COLOUR != default) {
                                 instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
                             }
@@ -1819,112 +1343,12 @@ namespace S100Framework.Applications
                                 instance.fixedDateRange = dateRange;
                             }
 
-                            if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                            if (current.HORLEN.HasValue) {
+                                instance.horizontalLength = current.HORLEN.Value;
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
-                            }
-
-                            if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
-                            }
-
-                            instance.verticalLength = current.VERLEN;
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-                            var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
-
-                            if (current.CONVIS.HasValue) {
-                                if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
-                                else {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
-                                }
-                            }
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
-
-                            AddInformation(instance.information, feature);
-
-                            instance.pictorialRepresentation = current.PICREP;
-
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
-
-                            var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
-
-                            // TODO: Create relation
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
-                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-
-                            #endregion aidstonavigation
-                            #region related
-
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
-
-                        }
-                        break;
-                    case 75: { // LITVES_LightVessel
-                            var instance = new LightVessel();
-
-                            #region aidstonavigation
-                            if (current.COLOUR != default) {
-                                instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
-                            }
-
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
-                            if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
+                            if (current.HORWID.HasValue) {
+                                instance.horizontalWidth = current.HORWID.Value;
                             }
 
                             // TODO: interoperabilityidentifier
@@ -1933,92 +1357,159 @@ namespace S100Framework.Applications
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            var topmark = relatedEquipment?.GetTopMark(current);
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
 
-                            instance.verticalLength = current.VERLEN;
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-
-
-                            if (current.CONVIS.HasValue) {
-                                if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
-                                else {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
-                                }
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN;
                             }
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
 
                             AddInformation(instance.information, feature);
 
-                            instance.pictorialRepresentation = current.PICREP;
-
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
-
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
 
                             #endregion aidstonavigation
-                            #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
-
-
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
                         }
                         break;
+
+                    case 75: { // LITVES_LightVessel
+                            var instance = new LightVessel();
+
+                            #region aidstonavigation
+
+                            if (current.COLOUR != default) {
+                                instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
+                            }
+
+                            if (current.COLPAT != default) {
+                                instance.colourPattern = GetColourPattern(current.COLPAT);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            if (current.HORLEN.HasValue) {
+                                instance.horizontalLength = current.HORLEN.Value;
+                            }
+
+                            if (current.HORWID.HasValue) {
+                                instance.horizontalWidth = current.HORWID.Value;
+                            }
+
+                            // TODO: interoperabilityidentifier
+
+                            if (current.NATCON != default) {
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                            }
+
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
+                            }
+
+                            if (current.CONRAD.HasValue) {
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN;
+                            }
+
+                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
+
+                            AddInformation(instance.information, feature);
+
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
+
+                            #endregion aidstonavigation
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
+                        }
+                        break;
+
                     case 85: { // RADRFL_RadarReflector // NOT PART OF Esri PLTS_MASTER_SLAVES
                             var instance = new RadarReflector();
 
@@ -2035,435 +1526,166 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
 
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
-                            }
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
+
 
                             AddInformation(instance.information, feature);
-
-
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-
-                            //insert.Insert(buffer);
-
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
 
                             #endregion aidstonavigation
-                            #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
-
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
                         }
                         break;
+
                     case 90: { // RADSTA_RadarStation  // SLAVE RIND: 2
-                            var instance = new RadarStation();
-
-                            #region aidstonavigation
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                            if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value;
-                            }
-
-                            // TODO: interoperabilityidentifier
-
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
-                            }
-
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
+                            var instance = _converterRegistry.Convert<RadarStation>(current);
 
                             AddInformation(instance.information, feature);
-
-
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
-
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
 
-                            #endregion aidstonavigation
-                            #region related
-
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
-
-
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
                         }
                         break;
+
                     case 95: { // RDOSTA_RadioStation // SLAVE RIND: 2
-                            var instance = new RadioStation();
-
-                            #region aidstonavigation
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
-                            if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
-                            }
-
-                            // TODO: interoperabilityidentifier
-
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            // TODO: topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
-                            }
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
-
+                            var instance = _converterRegistry.Convert<RadioStation>(current);
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
-
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
 
-                            #endregion aidstonavigation
-                            #region related
-
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
-
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
 
                         }
                         break;
+
                     case 100: { // RETRFL_RetroReflector // SLAVE RIND: 2
-                            var instance = new Retroreflector();
-
-                            #region aidstonavigation
-
-                            if (current.COLOUR != default) {
-                                instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
-                            }
-
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
-                            }
-
-                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
-                            if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
-                            }
-
-                            if (current.HEIGHT.HasValue) { 
-                                instance.height = current.HEIGHT.Value;
-                            }
-
-                            // TODO: interoperabilityidentifier
-
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
-                            }
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
+                            var instance = _converterRegistry.Convert<Retroreflector>(current);
 
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
 
-                            #endregion aidstonavigation
-                            #region related
-
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
-
-
-                        }
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
+                        } 
                         break;
+
                     case 105: { // RTPBCN_RadarTransponderBeacon // SLAVE RIND: 2
-                            var instance = new RadarTransponderBeacon() {
-                                categoryOfRadarTransponderBeacon = default,
-                            };
+                            var instance = _converterRegistry.Convert<RadarTransponderBeacon>(current);
 
-                            #region aidstonavigation
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (current.CATRTB.HasValue) {
+                                instance.categoryOfRadarTransponderBeacon = EnumHelper.GetEnumValue<categoryOfRadarTransponderBeacon>(current.CATRTB.Value);
+                            }
 
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = current.PERSTA,
-                                                dateEnd = current.PEREND
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
+                            if (current.SIGGRP != default) {
+                                instance.signalGroup = current.SIGGRP;
+                             }
+
+                            if (current.RADWAL != default) {
+                                if (TryGetRadarWaveLengths(current.RADWAL, out var lengths)) {
+                                    instance.radarWaveLength = lengths;
                                 }
                             }
 
-                            // TODO: interoperabilityidentifier
-
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = current.PERSTA,
-                                                    dateEnd = current.PEREND
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
-
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
-                            }
-
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
-
-                            AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            // TODO: Create relation
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
 
-                            #endregion aidstonavigation
-                            #region related
+                            AddInformation(instance.information, feature);
 
-                            relatedEquipment.CreateRelatedEquipment(current, name, target);
-
-                            #endregion related
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
                         }
                         break;
+
                     case 110: { // TOPMAR_Topmark // SLAVE RIND: 2
-                            // TODO: TOPMAR
-                            //System.Diagnostics.Debugger.Break();
-                            //GetCorrespondingAidsToNav
                             /*
 
                                 The S-101 complex attribute topmark has been introduced in S-101 to encode topmarks on aids to
@@ -2474,190 +1696,70 @@ namespace S100Framework.Applications
                                 topmark shape information populated in the S-57 attribute INFORM will be converted to the S-101
                                 complex attribute shape information. See also clause 12.6.
                             */
-                            throw new NotImplementedException("Master topmarks");
-                            convertedCount++;
 
+                            throw new NotImplementedException("Impossible! No stand alone topmarks alloved.");
+                            
                         }
-                        break;
                     default:
                         // code block
-                        System.Diagnostics.Debugger.Break();
-                        break;
-
+                        throw new Exception($"Missing subtype in S57_AidsToNavigation: {fcSubtype}");
                 }
             }
-            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
+
+            Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
+
+            var _nonConvertedSlaves = new List<Guid>();
+
+            foreach (var slaveId in _slaves.Keys) {
+                if (!ConversionAnalytics.Instance.IsConverted(slaveId)) {
+                    _nonConvertedSlaves.Add(slaveId);
+                    Logger.Current.DataError(-1, tableName, "These slaves are missing the structure", $"{_slaves[slaveId]}");
+                }
+            }
         }
 
-        internal static LightAllAround CreateLightAllAround(AidsToNavigationP current) {
-            var instance = new LightAllAround() {
-                rhythmOfLight = default,
+        internal static bool TryGetRadarWaveLengths(string radwal, out List<radarWaveLength> radarWaveLengths) {
+            radarWaveLengths = new List<radarWaveLength>();
+
+            string[] parts = radwal.Split(',');
+            foreach (var part in parts) {
+                string[] split = part.Split('-');
+                if (split.Length == 2) {
+                    if (decimal.TryParse(split[0], CultureInfo.InvariantCulture, out decimal waveLength)) {
+                        string band = split[1];
+                        radarWaveLengths.Add(new radarWaveLength() {
+                            radarBand = band,
+                            waveLengthValue = waveLength
+                        });
+                    }
+                    else { // data error
+                        return false;
+                    }
+                }
+                else { // data error
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        internal static frequencyPair? GetFrequencyPair(int frequencyShoreStationTransmits) {
+            return new frequencyPair() {
+                frequencyShoreStationTransmits = frequencyShoreStationTransmits
             };
-
-            if (current.COLOUR != default) {
-                instance.colour = GetColours(current.COLOUR);
-            }
-
-            instance.rhythmOfLight = GetRythmOfLight(current);
-
-            if (current.CATLIT != null) {
-
-                if (current.CATLIT == "-32767") {
-                    instance.categoryOfLight = EnumHelper.GetEnumValues<categoryOfLight>(-1);
-                }
-                else {
-                    instance.categoryOfLight = EnumHelper.GetEnumValues<categoryOfLight>(current.CATLIT);
-                }
-            }
-
-            if (current.EXCLIT.HasValue) {
-                instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<exhibitionConditionOfLight>(current.EXCLIT.Value);
-            }
-
-            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
-            if (dateRange != default) {
-                instance.fixedDateRange = dateRange;
-            }
-
-            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-            //if (current.PLTS_COMP_SCALE.HasValue) {
-            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
-            //}
-
-            if (current.STATUS != default) {
-                instance.status = GetStatus(current.STATUS);
-            }
-
-            if (current.SIGGEN != null) {
-                instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
-            }
-
-            if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value;
-            }
-
-            if (current.EXCLIT.HasValue) {
-                instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<exhibitionConditionOfLight>(current.EXCLIT);
-            }
-
-            if (current.MARSYS.HasValue) {
-                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
-            }
-
-            if (current.MLTYLT.HasValue) {
-                instance.multiplicityOfFeatures = new multiplicityOfFeatures() {
-                    multiplicityKnown = true,
-                    numberOfFeatures = current.MLTYLT
-                };
-            }
-
-            return instance;
         }
 
-        internal static LightFogDetector CreateLightFogDetector(AidsToNavigationP current) {
-            var instance = new LightFogDetector();
-            //if (current.PLTS_COMP_SCALE.HasValue) {
-            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
-            //}
-            if (current.COLOUR != default) {
-                instance.colour = GetColours(current.COLOUR);
-            }
-
-            if (current.STATUS != default) {
-                instance.status = GetStatus(current.STATUS);
-            }
-
-            instance.rhythmOfLight = GetRythmOfLight(current);
 
 
-            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-            return instance;
-        }
-
-        internal static LightAirObstruction CreateLightAirObstruction(AidsToNavigationP current) {
-            // LIGHTS: Attribute catlits contains value 6 (air obstruction light)
-            // Build "Light Air Obstruction");
-            var instance = new LightAirObstruction();
-            //if (current.PLTS_COMP_SCALE.HasValue) {
-            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
-            //}
-            if (current.COLOUR != default) {
-                instance.colour = GetColours(current.COLOUR);
-            }
-
-            if (current.STATUS != default) {
-                instance.status = GetStatus(current.STATUS);
-            }
-
-            instance.rhythmOfLight = GetRythmOfLight(current);
-
-            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-            return instance;
-        }
-
-        internal static LightSectored CreateLightSectored(IList<AidsToNavigationP> lights) {
-            var instance = new LightSectored();
-
-            // TODO: evaluate
-            var current = lights.First();
-
-            if (current.EXCLIT.HasValue) {
-                instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<exhibitionConditionOfLight>(current.EXCLIT.Value);
-            }
-
-            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
-            if (dateRange != default) {
-                instance.fixedDateRange = dateRange;
-            }
-
-            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-            //if (current.PLTS_COMP_SCALE.HasValue) {
-            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
-            //}
-
-            if (current.STATUS != default) {
-                instance.status = GetStatus(current.STATUS);
-            }
-
-            if (current.SIGGEN != null) {
-                instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
-            }
-
-            instance.sectorCharacteristics = (GetSectorCharacteristics(lights));
-
-            if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value;
-            }
-
-            if (current.EXCLIT.HasValue) {
-                instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<exhibitionConditionOfLight>(current.EXCLIT);
-            }
-
-            if (current.MARSYS.HasValue) {
-                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
-            }
-
-            if (current.MLTYLT.HasValue) {
-                instance.multiplicityOfFeatures = new multiplicityOfFeatures() {
-                    multiplicityKnown = true,
-                    numberOfFeatures = current.MLTYLT
-                };
-            }
 
 
-            return instance;
-        }
 
 
         /// <summary>
         /// Take all sectored lights related to this instance and convert them into one sector characteristics
         /// </summary>
-        /// <param name="current"></param>
-        /// <param name="sectors"></param>
+        /// <param _s101name="current"></param>
+        /// <param _s101name="sectors"></param>
         /// <returns>List of sectorCharacteristics</returns>
         internal static List<sectorCharacteristics> GetSectorCharacteristics(IList<AidsToNavigationP> lights) {
             var sectorCharacteristics = new List<sectorCharacteristics>();
@@ -2690,14 +1792,19 @@ namespace S100Framework.Applications
             //    }
             //}
             //else {
-                foreach (var light in lights) {
-                    var rhythmofLight = GetRythmOfLight(light);
-                    if (light.SECTR1 != null && light.SECTR2 != null) {
-                        {
+            foreach (var light in lights) {
+                var rhythmofLight = GetRythmOfLight(light);
+                if (light.SECTR1 != null && light.SECTR2 != null) {
+                    {
                         List<lightVisibility> visibility = new List<lightVisibility>();
 
                         if (light.LITVIS != null) {
                             visibility = EnumHelper.GetEnumValues<lightVisibility>(light.LITVIS);
+                        }
+
+                        List<colour> colours = new();
+                        if (light.COLOUR != default) {
+                            colours = GetColours(light.COLOUR);
                         }
 
                         var sectorCharacteristic = new sectorCharacteristics() {
@@ -2709,7 +1816,7 @@ namespace S100Framework.Applications
                                 new lightSector() {
                                     lightVisibility = visibility,
                                     valueOfNominalRange = light.VALNMR.GetValueOrDefault(),
-                                    colour = EnumHelper.GetEnumValues<colour>(light.COLOUR),
+                                    colour = colours,
                                     sectorLimit = new sectorLimit() {
                                         sectorLimitOne = new sectorLimitOne() {
                                             sectorBearing = light.SECTR1.Value,
@@ -2722,15 +1829,14 @@ namespace S100Framework.Applications
                             }
                         };
 
-
-                            sectorCharacteristics.Add(sectorCharacteristic);
-                        };
-                    }
-
+                        sectorCharacteristics.Add(sectorCharacteristic);
+                    };
                 }
+            }
             //}
 
             return sectorCharacteristics;
         }
     }
 }
+

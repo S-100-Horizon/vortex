@@ -2,7 +2,7 @@
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -11,9 +11,10 @@ namespace S100Framework.Applications
         private static void S57_DangersL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DangersL";
 
-            var dangersl = source.OpenDataset<FeatureClass>(source.GetName("DangersL"));
-            var depthsA = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
-
+            using var dangersl = source.OpenDataset<FeatureClass>(source.GetName("DangersL"));
+            using var depthsA = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
+            Subtypes.Instance.RegisterSubtypes(dangersl);
+            
             //var dredged = source.OpenDataset<FeatureClass>("Depare");
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
@@ -24,7 +25,7 @@ namespace S100Framework.Applications
 
             using var cursor = dangersl.Search(filter, true);
             int recordCount = 0;
-            int convertedCount = 0;
+            
             while (cursor.MoveNext()) {
                 recordCount += 1;
 
@@ -34,7 +35,13 @@ namespace S100Framework.Applications
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
-                var subtype = current.FCSUBTYPE ?? default;
+
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                    continue;
+                }
+
+
+                var fcSubtype = current.FCSUBTYPE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
 
                 bool isValsouEmpty = !current.VALSOU.HasValue;
@@ -45,7 +52,7 @@ namespace S100Framework.Applications
                 // S-101 Annex A_DCEG Edition 1.5.0_Draft for Edition 2.0.0.pdf: p.771
                 //Decimal defaultClearanceDepth = -1;
 
-                switch (subtype) {
+                switch (fcSubtype) {
                     case 1: { // FSHFAC_FishingFacility
                             var instance = new FishingFacility {
 
@@ -66,10 +73,20 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 5: { // OBSTRN_Obstruction
@@ -93,10 +110,20 @@ namespace S100Framework.Applications
 
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                ImporterNIS.SetShape(buffer, current.SHAPE);
-                                insert.Insert(buffer);
+                                SetShape(buffer, current.SHAPE);
+                                SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                                var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
+                                }
+
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                convertedCount++;
+                                
                                 break;
                             }
 
@@ -107,12 +134,7 @@ namespace S100Framework.Applications
                                 };
 
                                 if (current.CATOBS.HasValue) {
-                                    if (current.CATOBS.Value == -32767)
-                                        instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(-1);
-                                    else {
-
-                                        instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(current.CATOBS.Value);
-                                    }
+                                    instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(current.CATOBS.Value);
                                 }
 
 
@@ -145,11 +167,11 @@ namespace S100Framework.Applications
                                 // TODO: QualityOfVerticalMeasurement
 
                                 if (current.SORDAT != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                    if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
                                         instance.reportedDate = current.SORDAT;
                                     }
                                     else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                        Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                     }
                                 }
 
@@ -159,7 +181,7 @@ namespace S100Framework.Applications
 
                                 // TODO: techniqueOfVerticalMeasurement
 
-                                if (current.VALSOU.HasValue) {
+                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
                                     instance.valueOfSounding = current.VALSOU.Value;
                                 }
 
@@ -168,40 +190,54 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.WATLEV.HasValue) {
-                                    if (current.WATLEV.Value == -32767)
-                                        instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
-                                    else {
-                                        instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
-                                    }
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
                                 }
 
-                                //if (current.PLTS_COMP_SCALE.HasValue) {
-                                //  instance.scaleMinimum = current.PLTS_COMP_SCALE;
-                                //}
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
+
 
                                 AddInformation(instance.information, feature);
 
                                 // TODO: defaultClearanceDepth
 
-                                if (current.SHAPE != null) {
-                                    foreach (var depthArea in SelectIn<DepthsA>(current.SHAPE, depthsA, SpatialRelationship.Intersects, ImporterNIS.CompilationScale)) {
-                                        var drval1 = depthArea.DRVAL1 ?? default;
-                                        instance.surroundingDepth = drval1;
-                                    }
+                                foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
+                                    var drval1 = depthArea.DRVAL1 ?? default;
+                                    instance.surroundingDepth = drval1;
                                 }
+
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                                 SetShape(buffer, current.SHAPE);
-                                insert.Insert(buffer);
+                                SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                                var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                                }
+
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                convertedCount++;
+                                
                             }
                         
                         }
                         break;
                     case 10: { // OILBAR_OilBarrier
+                            throw new NotImplementedException($"No OILBAR_OilBarrier in DK or GL. {tableName}");
+                            
                             var instance = new OilBarrier {
 
                             };
@@ -221,14 +257,25 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
 
                         }
                         break;
                     case 15: { // WATTUR_WaterTurbulence
+                            throw new NotImplementedException($"No WATTUR_WaterTurbulence in DK or GL. {tableName}");
                             var instance = new WaterTurbulence {
                                 categoryOfWaterTurbulence = default,
                             };
@@ -241,10 +288,20 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     default:
@@ -256,7 +313,7 @@ namespace S100Framework.Applications
 
 
             }
-            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
+            Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
 
     }

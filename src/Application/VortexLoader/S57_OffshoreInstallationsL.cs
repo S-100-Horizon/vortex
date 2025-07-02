@@ -2,6 +2,9 @@
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.DomainModel.S124.ComplexAttributes;
+using System.ComponentModel;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -11,15 +14,16 @@ namespace S100Framework.Applications
             var tableName = "OffshoreInstallationsL";
             
 
-            using var featureclass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
 
             using var offshoreinstallations = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            Subtypes.Instance.RegisterSubtypes(offshoreinstallations);
 
             int recordCount = 0;
-            int convertedCount = 0;
+            
 
-            using var buffer = featureclass.CreateRowBuffer();
-            using var insert = featureclass.CreateInsertCursor();
+            using var buffer = featureClass.CreateRowBuffer();
+            using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = offshoreinstallations.Search(filter, true);
 
@@ -30,74 +34,116 @@ namespace S100Framework.Applications
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
-                var subtype = current.FCSUBTYPE ?? default;
+
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                    continue;
+                }
+
+                var fcSubtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
                 var status = current.STATUS ?? default;
                 var condtn = current.CONDTN ?? default;
                 var verlen = current.VERLEN ?? default;
 
-                switch (subtype) {
+                switch (fcSubtype) {
                     case 1: { // CBLSUB_CableSubmarine
 
                             // The S-57 attributes DRVAL1 and DRVAL2 for CBLSUB will not be converted. It is considered that
                             // these attributes are not relevant for Cable Submarine in S - 101.
-
+                            
                             var instance = new CableSubmarine();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+
+                                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            /* S57
-                             * Code	Description
-                                1	power line
-                                3	transmission line
-                                4	telephone
-                                5	telegraph
-                                6	mooring cable/chain
-                                -1	Unknown
-                             */
-
-
-                            if (current.CATCBL != default) {
-                                instance.categoryOfCable = current.CATCBL switch {
-                                    1 => categoryOfCable.PowerLine,
-                                    3 => categoryOfCable.TransmissionLine,
-                                    4 => categoryOfCable.TelecommunicationsCable, //CATCBL value 4 (telephone) will convert to category of cable value 10 (telecommunications cable).
-                                    5 => categoryOfCable.MooringCable,
-                                    -32767 =>null,
-                                    _ => throw new IndexOutOfRangeException(),
-                                };
+                            if (current.BURDEP.HasValue) {
+                                instance.buriedDepth = current.BURDEP.Value;
                             }
+
+                            if (current.CATCBL.HasValue) {
+                                if (current.CATCBL.Value == 4) {
+                                    /*
+                                        S-65 Annex B
+                                        Amended guidance for conversion of CATCBL value 4 (telephone) to convert
+                                        to new value category of cable = 10 (telecommunications cable).
+                                        11.5.1, 11.5.3, A-2
+                                     */
+
+                                    instance.categoryOfCable = categoryOfCable.TelecommunicationsCable;
+                                }
+                                else {
+                                    instance.categoryOfCable = EnumHelper.GetEnumValue<categoryOfCable>(current.CATCBL.Value);
+                                }
+                            };
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
+                            }
+
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 5: { // PIPSOL_PipelineSubmarineOnLand
                             var instance = new PipelineSubmarineOnLand();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
-                            
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
+
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -113,18 +159,28 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
+                            }
+
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
                         break;
+                    default:
+                        // code block
+                        System.Diagnostics.Debugger.Break();
+                        break;
                 }
-
-
-
             }
-            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
+            Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using CommandLine;
-using Microsoft.Extensions.Options;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
@@ -48,7 +47,7 @@ namespace S100Framework.Applications
             mapping.Features.Add(new Mapping.Feature("SlopeTopline", "Natural features"));
             mapping.Features.Add(new Mapping.Feature("River", "Natural features"));
             mapping.Features.Add(new Mapping.Feature("Rapids", "Natural features"));
-            mapping.Features.Add(new Mapping.Feature("Waterfall", "Natural features"));            
+            mapping.Features.Add(new Mapping.Feature("Waterfall", "Natural features"));
             mapping.Features.Add(new Mapping.Feature("Vegetation", "Natural features"));
 
 
@@ -67,7 +66,7 @@ namespace S100Framework.Applications
 
             var scope_S100 = scopes["S100FC"];
 
-            var html = File.ReadAllText("dceg_template.html");            
+            var html = File.ReadAllText("dceg_template.html");
 
             //  InformationTypes
             {
@@ -158,7 +157,7 @@ namespace S100Framework.Applications
                     //var key = "General";
 
                     var key = mapping.Features.FirstOrDefault(f => f.Code == e.Key)?.Category;
-                    if(key == default) {
+                    if (key == default) {
                         key = "General";
                     }
 
@@ -175,7 +174,7 @@ namespace S100Framework.Applications
                 b.Clear();
                 int id = 1;
                 foreach (var e in featureCategories) {
-                    b.AppendLine($"{{ id: \"cat{id++}\", name: \"{e.Key}\", features: [{string.Join(',', e.Value.Select(f=> $"\"{f}\""))}] }},");
+                    b.AppendLine($"{{ id: \"cat{id++}\", name: \"{e.Key}\", features: [{string.Join(',', e.Value.Select(f => $"\"{f}\""))}] }},");
                 }
 
                 html = html.Replace("###featureCategories###", b.ToString().TrimEnd(','));
@@ -192,7 +191,8 @@ namespace S100Framework.Applications
         }
     }
 
-    public class Mapping {
+    public class Mapping
+    {
         public record Feature(string Code, string Category);
 
         public ICollection<Feature> Features { get; private set; } = new List<Feature>();

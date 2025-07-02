@@ -47,19 +47,19 @@ namespace S100Framework.Applications
             logger.Write(LogLevel.DataTotalCount.ToLogLevel(), "{tablename};{totalCount};{convertedCount}", tablename,totalCount,convertedCount);
         }
 
-        public static void DataObject(this ILogger logger, int objectId, string tableName, string longname, string destination) {
+        public static void DataObject(this ILogger logger, Int64 objectId, string tableName, string longname, string destination) {
             logger.Write(LogLevel.DataObject.ToLogLevel(), "{ObjectId};{TableName};{LongName};{Destination}", objectId, tableName, longname, destination);
 
         }
 
         public static void DataObject(ILogger logger, string fileName, string message) {
-            // Log with custom property that indicates the file name
+            // Log with custom property that indicates the file _s101name
             logger.ForContext("LogFileName", fileName)
                   .Debug(message);
         }
 
 
-        public static void DataError(this ILogger logger, int objectId, string tableName, string longname, string message) {
+        public static void DataError(this ILogger logger, Int64 objectId, string tableName, string longname, string message) {
             logger.Write(LogLevel.DataError.ToLogLevel(), "{ObjectId};{TableName};{LongName};{Message}", objectId, tableName, longname, message);
         }
 
@@ -94,6 +94,7 @@ namespace S100Framework.Applications
             _logger = new LoggerConfiguration()
                 .MinimumLevel.Verbose()  
                 .WriteTo.Logger(lc => lc
+                    .WriteTo.Console()
                     .Filter.ByIncludingOnly(e => e.Level < (LogEventLevel)6)
                     .Enrich.WithExceptionData()
                     .WriteTo.File(System.IO.Path.Combine(_logDir, @"Vortex", "Loader",$"{_dateTimeString}", "Loader_System.log"),

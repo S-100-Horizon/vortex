@@ -2,25 +2,27 @@
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using System.Text.RegularExpressions;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
-    {        
+    {
         private static void S57_DepthsA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DepthsA";
 
-            using var s = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
+            using var depthsA = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
+            var subtypes = depthsA.GetSubtypes();
+
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
-            using var cursor = s.Search(filter, true);
-
+            using var cursor = depthsA.Search(filter, true);
+            
             var recordCount = 0;
-            var convertedCount = 0;
+            
 
             while (cursor.MoveNext()) {
                 recordCount += 1;
@@ -29,8 +31,14 @@ namespace S100Framework.Applications
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
-                var subtype = current.FCSUBTYPE ?? default;
 
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                    continue;
+                }
+
+
+                var fcSubtype = current.FCSUBTYPE ?? default;
+                
                 var drval1 = current.DRVAL1 ?? default;
                 var drval2 = current.DRVAL2 ?? default(decimal?);
                 var sordat = current.SORDAT ?? default;
@@ -40,7 +48,7 @@ namespace S100Framework.Applications
                 var quasou = current.QUASOU ?? default;
                 var tecsou = current.TECSOU ?? default;
 
-                switch (subtype) {
+                switch (fcSubtype) {
                     case 1: {     // DEPARE // SKIN OF EARTH
                             var instance = new DepthArea {
                                 depthRangeMinimumValue = drval1,
@@ -49,16 +57,26 @@ namespace S100Framework.Applications
 
                             // TODO: Spatial association to Spatial Quality
 
+                            // TODO: InteroperabilityIdentifier
+
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            SetShape(buffer,current.SHAPE);
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
                         break;
 
@@ -68,35 +86,30 @@ namespace S100Framework.Applications
                                 depthRangeMaximumValue = drval2,
                             };
 
-
-
-                            if (!string.IsNullOrEmpty(sordat)) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(sordat))
-                                    instance.dredgedDate = sordat;
-                            }
-
-                            if (current.RESTRN != default) {
-                                if (current.RESTRN == "-32767")
-                                    instance.restriction = EnumHelper.GetEnumValues<restriction>(-1);
+                            if (current.SORDAT != default) {
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                    instance.dredgedDate = current.SORDAT;
+                                }
                                 else {
-                                    instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
-                            // The S-57 attribute QUASOU for DEPARE will not be converted. It is considered that this attribute is
-                            // not relevant for Depth Area in S - 101.
-                            //if (current.QUASOU != default) {
-                            //    if (current.QUASOU == "-32767")
-                            //        instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValue<qualityOfVerticalMeasurement>("-1");
-                            //    else {
-                            //        instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValue<qualityOfVerticalMeasurement>(current);
-                            //    }
-                            //}
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            //if (current.SOUACC.HasValue) {
-                            //    instance.verticalUncertainty = new DomainModel.S101.ComplexAttributes.verticalUncertainty() {
-                            //        uncertaintyFixed = current.SOUACC.Value
-                            //    };
+                            if (current.RESTRN != default) {
+                                instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
+                            }
+
+                            // TODO: InteroperabilityIdentifier
+
+                            // TODO: maximumPermittedDraught - Not converted
+                            
+
+                            // The S-57 attribute QUASOU for DEPARE will not be converted. It is considered that this attribute is
+                            // not relevant for Depth Area in S-101.
+                            //if (current.QUASOU != default) {
+                            //    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValue<qualityOfVerticalMeasurement>(current);
                             //}
 
                             if (!string.IsNullOrEmpty(restrn)) {
@@ -107,64 +120,116 @@ namespace S100Framework.Applications
                                 instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(tecsou);
                             }
 
-                            //TODO: 	verticalUncertainty
+                            //TODO: verticalUncertainty - Not converted
+                            //if (current.SOUACC.HasValue) {
+                            //    instance.verticalUncertainty = new DomainModel.S101.ComplexAttributes.verticalUncertainty() {
+                            //        uncertaintyFixed = current.SOUACC.Value
+                            //    };
+                            //}
 
-                            //TODO: maximumPermittedDraught - Not converted
-
-
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            // TODO: VesselSpeedLimit
 
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            insert.Insert(buffer);
+                            SetShape(buffer,current.SHAPE);
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
 
-                    case 10: {    //SWPARE
+                    case 10: {    // SWPARE_SweptArea
+                            throw new NotImplementedException($"No SWPARE_SweptArea in DK or GL. {tableName}");
+
                             var instance = new SweptArea {
                                 depthRangeMinimumValue = drval1,
                                 scaleMinimum = null,
                                 sweptDate = null,
                             };
-                            if (!string.IsNullOrEmpty(sordat)) {
-                                System.Diagnostics.Debugger.Break();    //  Swept Date
+
+                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767) {
+                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
                             }
+
+                            if (current.SORDAT != default) {
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                    instance.sweptDate = current.SORDAT;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
 
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            insert.Insert(buffer);
+                            SetShape(buffer,current.SHAPE);
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                          
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
+
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
 
                     case 15: {    // UNSARE  // SKIN OF EARTH
-                            var instance = new UnsurveyedArea {
-                            };
+                            var instance = new UnsurveyedArea();
+
                             AddInformation(instance.information, feature);
 
+                            // TODO: InteroperabilityIdentifier
+                            
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            SetShape(buffer,current.SHAPE);
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
 
                         }
                         break;
@@ -175,7 +240,7 @@ namespace S100Framework.Applications
 
                 }
             }
-            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
+            Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
     }
 }

@@ -2,6 +2,7 @@
 using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -12,18 +13,16 @@ namespace S100Framework.Applications
 
             using var productDefinitionsTable = source.OpenDataset<Table>(source.GetName("ProductDefinitions"));
             using var productCoverageFeatureClass = source.OpenDataset<FeatureClass>(source.GetName("ProductCoverage"));
-            using var surfaceFeatureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
-            surfaceFeatureClass.DeleteRows(new QueryFilter {
+            featureClass.DeleteRows(new QueryFilter {
                 WhereClause = $"ps = 'S-128' AND (code = 'ElectronicProduct' or code = 'instance')",
             });
 
             int recordCount = 0;
-            int convertedCount = 0;
 
-            using var buffer = surfaceFeatureClass.CreateRowBuffer();
-            using var insert = surfaceFeatureClass.CreateInsertCursor();
-
+            using var buffer = featureClass.CreateRowBuffer();
+            using var insert = featureClass.CreateInsertCursor();
             using var cursor = productDefinitionsTable.Search(null, true);
 
             while (cursor.MoveNext()) {
@@ -34,10 +33,22 @@ namespace S100Framework.Applications
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
 
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                    continue;
+                }
+
+
                 var dsnm = current.DSNM ?? default;
                 var edtn = current.EDTN ?? default;
                 var updn = current.UPDN ?? default;
                 var isdt = current.ISDT ?? default;
+                var serie = current.SERIES ?? default;
+
+                if (serie == default) {
+                    serie = dsnm.Substring(0, 3);
+                }
+
+
 
                 var instance = new S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct {
                     catalogueElementClassification = new List<S100Framework.DomainModel.S128.catalogueElementClassification> {
@@ -61,46 +72,84 @@ namespace S100Framework.Applications
                     var productCoverage = new ProductCoverage((Feature)cursorCoverage.Current);
                     var catcov = productCoverage.CATCOV ?? default;
                     var plts_comp_scale = productCoverage.PLTS_COMP_SCALE ?? default;
-
-                    var displayScale = DisplayScale.GetNearestBelowKey(plts_comp_scale) ?? default;
+                    
+                    //var displayScale = DisplayScale.GetNearestBelowKey(plts_comp_scale) ?? default;
+                    var displayScale = DisplayScale.GetDisplayScale(serie) ?? default;
 
 
                     switch (catcov) {
-                        case 1:
-                            //buffer["ps"] = ps128;
-                            //buffer["code"] = instance.GetType().Name;
-                            //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            //ImporterNIS.SetShape(buffer, productCoverage.SHAPE);
-                            //insert.Insert(buffer);
+                        case 1: {
+                                
+
+                                buffer["ps"] = ps128;
+                                buffer["code"] = instance.GetType().Name;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                SetShape(buffer, productCoverage.SHAPE);
+                                ImporterNIS.SetDrawingIndex(buffer, productCoverage.PLTS_COMP_SCALE.Value);
 
 
 
-                            var dataCoverage = new DataCoverage() { 
-                                maximumDisplayScale = displayScale.MaximumDisplayScale,
-                                optimumDisplayScale = displayScale.OptimumDisplayScale,
-                                minimumDisplayScale = displayScale.MinimumDisplayScale.Value
+                                var featureN = featureClass.CreateRow(buffer);
+                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                                // TODO: Create relations
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+                            }
+
+                            var dataCoverage = new DataCoverage {
+                                maximumDisplayScale = default,
+                                minimumDisplayScale = default,
+                                optimumDisplayScale = default,
                             };
 
-                            buffer["ps"] = ps101;
-                            buffer["code"] = dataCoverage.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage);
-                            ImporterNIS.SetShape(buffer, productCoverage.SHAPE);
-                            insert.Insert(buffer);
+                            
+
+                            if (displayScale != null) {
+                                dataCoverage.maximumDisplayScale = displayScale.MaximumDisplayScale;
+                                dataCoverage.minimumDisplayScale = displayScale.MinimumDisplayScale.GetValueOrDefault();
+                                dataCoverage.optimumDisplayScale = displayScale.OptimumDisplayScale;
+                            } 
+                            {
+                                var vdat = new VerticalDatumOfData {
+                                    verticalDatum = default,
+                                };
+
+
+                                //    TODO: Fix hardcoded vertical datum of dataset -> EnumHelper.GetEnumValue<DomainModel.S101.verticalDatum>(current.VDAT.Value);
+                                if (current.VDAT.HasValue) {
+                                    vdat.verticalDatum = DomainModel.S101.verticalDatum.BalticSeaChartDatum2000; 
+                                }
+
+                                buffer["ps"] = ps101;
+                                buffer["code"] = vdat.GetType().Name;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(vdat);
+                                SetShape(buffer, productCoverage.SHAPE);
+                                ImporterNIS.SetDrawingIndex(buffer, productCoverage.PLTS_COMP_SCALE.Value);
+
+                                var featureN = featureClass.CreateRow(buffer);
+                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                                // TODO: Create relations
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            } 
+                            {
+                                buffer["ps"] = ps101;
+                                buffer["code"] = dataCoverage.GetType().Name;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage);
+                                SetShape(buffer, productCoverage.SHAPE);
+                                ImporterNIS.SetDrawingIndex(buffer, productCoverage.PLTS_COMP_SCALE.Value);
+
+                                var featureN = featureClass.CreateRow(buffer);
+                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                                // TODO: Create relations
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+                            }
                             break;
                     }
                 }
-
                 Logger.Current.DataObject(objectid, tableName, dsnm, System.Text.Json.JsonSerializer.Serialize(instance));
-                convertedCount++;
-
-
-
-
-
-
             }
-
-            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
+            Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
     }
 }

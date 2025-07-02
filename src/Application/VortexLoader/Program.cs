@@ -3,20 +3,14 @@ using ArcGIS.Core.Geometry;
 using ArcGIS.Desktop.Mapping;
 
 using CommandLine;
-using S100Framework.ArcGIS.Core;
+using System.Data.Common;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Esri = ArcGIS.Core.Hosting.Host;
 using IO = System.IO;
 
-/*
 
---v --cmd NIS --target "https://enterprise.gst.dk/arcgisserver/rest/services/S-100/s100ed4raw/FeatureServer" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --skinofearthonly true --notespath "G:\indigo\ENC\NotesAndPictures"
---v --cmd NIS --target "C:\Vortex\s100ed4.gdb" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --skinofearthonly true --notespath "G:\indigo\ENC\NotesAndPictures"
---v --cmd NIS --target "C:\Vortex\connections\nis.sde" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --skinofearthonly true --notespath "G:\indigo\ENC\NotesAndPictures"
---v --cmd NIS --target "C:\Vortex\connections\SQLServer-ncps-mssql-test-s100ed4_traditional(s101_dbo).sde" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --skinofearthonly true --notespath "G:\indigo\ENC\NotesAndPictures"
---v --cmd NIS --target "C:\Vortex\s100ed4.gdb" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --skinofearthonly true --notespath "G:\indigo\ENC\NotesAndPictures"
- */
+
 
 namespace S100Framework.Applications
 {
@@ -29,9 +23,9 @@ namespace S100Framework.Applications
         //  --query "PLTS_COMP_SCALE = 22000"
 
         //private static Serilog.Core.Logger? _logger;
-
+        
         private static Regex _substitute = new(@"^S(?<number>\d+)$", RegexOptions.Singleline | RegexOptions.CultureInvariant | RegexOptions.IgnorePatternWhitespace | RegexOptions.IgnoreCase);
-
+        
         public class Options
         {
             [Option('c', "cmd", Required = true, HelpText = "Command (GML|NIS)")]
@@ -59,9 +53,10 @@ namespace S100Framework.Applications
             public string? NotesPath { get; set; }
 
             [Option('s', "skinofearthonly", Required = false, HelpText = "Exports only DEPARE, DRGARE, UNSARE and LNDARE.")]
-            public string? SkinOfEarthOnly { get; set; } 
+            public string? SkinOfEarthOnly { get; set; }
 
-            
+            [Option('f', "scaminfiles", Required = false, HelpText = "Path to folder with scamin files. Supports only Grønland and Denmark scamin files.")]
+            public string? ScaminFilesPath { get; set; }
         }
 
         static void Main(string[] args) {
@@ -131,7 +126,7 @@ namespace S100Framework.Applications
             });
 
             using Geodatabase target = createGeodatabase();
-            
+
 
             var result = command switch {
                 "GML" => ImporterGML(target, arguments),

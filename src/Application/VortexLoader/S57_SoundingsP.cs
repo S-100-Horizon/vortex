@@ -2,9 +2,8 @@
 using ArcGIS.Core.Geometry;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S101.InformationTypes;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -13,18 +12,19 @@ namespace S100Framework.Applications
         private static void S57_SoundingsP(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "SoundingsP";
 
-            using var s = source.OpenDataset<FeatureClass>(source.GetName("SoundingsP"));
-            using var pointset = target.OpenDataset<FeatureClass>(target.GetName("pointset"));
-            using var informationtype = target.OpenDataset<Table>(target.GetName("informationTypes"));
+            using var soundingsP = source.OpenDataset<FeatureClass>(source.GetName("SoundingsP"));
 
-            using var bufferPointset = pointset.CreateRowBuffer();
-            using var insertPointset = pointset.CreateInsertCursor();
+            Subtypes.Instance.RegisterSubtypes(soundingsP);
 
-            using var cursor = s.Search(filter, true);
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("pointset"));
+            using var informationtype = target.OpenDataset<Table>(target.GetName("informationType"));
 
-            var convertedCount = 0;
+            using var bufferPointset = featureClass.CreateRowBuffer();
+            using var insertPointset = featureClass.CreateInsertCursor();
+
+            using var cursor = soundingsP.Search(filter, true);
+            
             var recordCount = 0;
-
 
             while (cursor.MoveNext()) {
                 recordCount += 1;
@@ -34,8 +34,13 @@ namespace S100Framework.Applications
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
+
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                    continue;
+                }
+
                 var longname = current.LNAM ?? Strings.UNKNOWN;
-                var subtype = current.FCSUBTYPE ?? default;
+                var fcSubtype = current.FCSUBTYPE ?? default;
                 var depth = current.DEPTH ?? default;
                 var quasou = current.QUASOU ?? default;
                 var quapos = current.P_QUAPOS ?? default;
@@ -43,9 +48,7 @@ namespace S100Framework.Applications
                 var objnam = current.OBJNAM ?? default;
                 var nobjnm = current.NOBJNM ?? default;
 
-
-
-                switch (subtype) {
+                switch (fcSubtype) {
                     case 1:
                         var shape = current.SHAPE as MapPoint;
                         if (shape == default) {
@@ -54,7 +57,9 @@ namespace S100Framework.Applications
                         }
 
                         var mappoint = MapPointBuilderEx.CreateMapPoint(shape.X, shape.Y, Convert.ToDouble(depth), shape.SpatialReference);
-                        bufferPointset["shape"] = MultipointBuilderEx.CreateMultipoint(mappoint);
+
+                        SetShape(bufferPointset, MultipointBuilderEx.CreateMultipoint(mappoint));
+                        SetDrawingIndex(bufferPointset, current.PLTS_COMP_SCALE!.Value);
 
                         if (quasou == default || !string.Equals(quasou, "5", StringComparison.OrdinalIgnoreCase)) {
                             var sounding = new Sounding {
@@ -69,13 +74,14 @@ namespace S100Framework.Applications
                                             (techniqueOfVerticalMeasurement)Enum.Parse(typeof(techniqueOfVerticalMeasurement), tecsou)
                                         };
                             }
+
                             //if (objnam != default) {
 
                             //    if (!string.IsNullOrEmpty(objnam.Trim())) {
                             //        sounding.featureName.Add(new featureName {
                             //            language = "eng",
                             //            nameUsage = null,
-                            //            name = objnam.Trim(),
+                            //            _s101name = objnam.Trim(),
                             //        });
                             //    }
                             //}
@@ -85,27 +91,73 @@ namespace S100Framework.Applications
                             //        sounding.featureName.Add(new featureName {
                             //            language = "dk",
                             //            nameUsage = nameUsage.AlternateNameDisplay,
-                            //            name = nobjnm.Trim(),
+                            //            _s101name = nobjnm.Trim(),
                             //        });
                             //    }
                             //}
 
-                            
+                           
                             sounding.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+
+                            // TODO: interoperabilityIdentifier
+
+
+                            if (current.QUASOU != default) {
+                                if (current.QUASOU == "-32767")
+                                    sounding.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>("-1");
+                                else {
+                                    sounding.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                }
+                            }
+
+
+                            if (current.SORDAT != default) {
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                    sounding.reportedDate = current.SORDAT;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
+                            if (current.STATUS != default) {
+                                sounding.status = ImporterNIS.GetSingleStatus(current.STATUS);
+                            }
+
+                            if (current.TECSOU != null) {
+                                sounding.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                sounding.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
                             AddInformation(sounding.information, feature);
 
                             bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(sounding);
                             bufferPointset["ps"] = ps101;
                             bufferPointset["code"] = sounding.GetType().Name;
+                            var featureN = featureClass.CreateRow(bufferPointset);
 
-                            var oid = insertPointset.Insert(bufferPointset);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, sounding, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); 
+                            
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(sounding));
-                            convertedCount++;
-
 
                             // TODO: Handle Spatialquality
                             //if (quapos != default && quapos == 4) {
-                            //    /*  SOUNDG with attribute QUAPOS = 4 (approximate) will also be converted to an instance of the S101 Information type Spatial Quality (see S-101 DCEG clause 24.5), attribute quality of horizontal
+                            //    /*  SOUNDG with attribute QUAPOS = 4 (approximate) will also be converted to an instance of the S101 Information _s101type Spatial Quality (see S-101 DCEG clause 24.5), attribute quality of horizontal
                             //        measurement = 4 (approximate), associated to the geometry of the Sounding feature using the
                             //        association Spatial Association. */
                             //    using var information = informationtype.CreateRowBuffer();
@@ -122,17 +174,43 @@ namespace S100Framework.Applications
                         }
                         else {
                             /*  SOUNDG with attribute QUASOU = 5 (no bottom found at value shown) will be converted to an
-                                instance of the S-101 Feature type Depth – No Bottom Found. Where this is the case, the attributes
+                                instance of the S-101 Feature _s101type Depth – No Bottom Found. Where this is the case, the attributes
                                 EXPSOU, NOBJNM, OBJNAM, SOUACC and STATUS will not be converted. It is considered that
                                 these attributes are not relevant for Depth – No Bottom Found in S-101. */
-                            var instance = new DepthNoBottomFound {
+                            var instance = new DepthNoBottomFound();
 
-                            };
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.TECSOU != null) {
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                            }
+
+                                
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
+                            AddInformation(instance.information, feature);
 
                             bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            var oid = insertPointset.Insert(bufferPointset);
+
+                            var featureN = featureClass.CreateRow(bufferPointset);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+
                         }
                         break;
                     default:
@@ -142,7 +220,7 @@ namespace S100Framework.Applications
 
                 }
             }
-            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
+            Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
     }
 }

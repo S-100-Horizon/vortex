@@ -9,7 +9,11 @@ using System.Text.Json;
 using S100Framework.Applications.S57.esri;
 using System.Text.RegularExpressions;
 using System.Globalization;
-
+using VortexLoader;
+using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101.InformationTypes;
+using System.Text.RegularExpressions;
 
 namespace S100Framework.Applications
 {
@@ -23,21 +27,30 @@ namespace S100Framework.Applications
 
         //  https://github.com/iho-ohi/S-57-to-S-101-conversion-sub-WG
         internal static string _notesPath = "";
+        internal static int _compilationScale = -1;
+        internal static string _scaminFilesPath = "";
         internal static string ps101 = "S-101";
         internal static string ps128 = "S-128";
+        internal static Geodatabase _geodatabase;
 
-        internal static readonly int CompilationScale = 22000; // Used as filter for spatial queries to transfer attributes from other features based on location analysis
+        //internal static FeatureRelations featureRelations = null;
+        internal static RelatedEquipment? relatedEquipment;
 
-        internal static FeatureRelations featureRelations = new FeatureRelations();
-        internal static RelatedEquipment relatedEquipment;
+        internal static ConverterRegistry _converterRegistry = new ConverterRegistry();
 
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
+
+            
+            //await ExtractLasCommand.ExecuteExtractLasToolAsync();
+
+            Logger.Current.Information("Starting");
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
             // default value - overwritten by args
             var filter = new QueryFilter {
                 WhereClause = "PLTS_COMP_SCALE = 22000",
             };
+
             // default value - overwritten by args
             var skinOfEarthOnly = false;
 
@@ -55,6 +68,29 @@ namespace S100Framework.Applications
 
                 if (!string.IsNullOrEmpty(o.Query)) {
                     filter.WhereClause = o.Query!.Trim();
+
+                    string pattern = @"PLTS_COMP_SCALE\s*=\s*(\d+)";
+
+                    Match match = Regex.Match((string)o.Query, pattern, RegexOptions.IgnoreCase);
+
+                    
+
+                    if (match.Success) {
+                        string value = match.Groups[1].Value;
+                        if (!int.TryParse(value, out _compilationScale)) {
+                            throw new NotSupportedException("PLTS_COMP_SCALE must be part of whereclause! Fix your arguments.");
+                        }
+                    }
+                    else {
+                        throw new NotSupportedException("PLTS_COMP_SCALE must be part of whereclause! Fix your arguments.");
+                    }
+
+
+
+
+                }
+                else {
+                    filter.WhereClause = "";
                 }
 
                 if (!string.IsNullOrEmpty(o.NotesPath)) {
@@ -63,7 +99,15 @@ namespace S100Framework.Applications
                 if (!string.IsNullOrEmpty(o.SkinOfEarthOnly)) {
                     skinOfEarthOnly = bool.Parse(o.SkinOfEarthOnly);
                 }
+                if (!string.IsNullOrEmpty(o.ScaminFilesPath)) {
+                    _scaminFilesPath = o.ScaminFilesPath;
+                }
             });
+
+
+
+
+
 
             Func<Action, bool> Store = (a) => {
                 a.Invoke();
@@ -79,8 +123,25 @@ namespace S100Framework.Applications
                 };
             }
 
-            using (Geodatabase source = createGeodatabase()) {
+            _converterRegistry.Register<AidsToNavigationP, CardinalBeacon>(Converters.CreateCardinalBeacon);
+            _converterRegistry.Register<AidsToNavigationP, RadarTransponderBeacon>(Converters.CreateRadarTransponderBeacon);
+            _converterRegistry.Register<AidsToNavigationP, LightAllAround>(Converters.CreateLightAllAround);
+            _converterRegistry.Register<CulturalFeaturesP, LightSectored>(Converters.CreateLightSectored);
+            _converterRegistry.Register<AidsToNavigationP, LightSectored>(Converters.CreateLightSectored);
+            _converterRegistry.Register<AidsToNavigationP, LightAirObstruction>(Converters.CreateLightAirObstruction);
+            _converterRegistry.Register<AidsToNavigationP, LightFogDetector>(Converters.CreateLightFogDetector);
+            _converterRegistry.Register<AidsToNavigationP, Daymark>(Converters.CreateDaymark);
+            _converterRegistry.Register<DangersP, Obstruction>(Converters.CreateObstruction);
+            _converterRegistry.Register<CulturalFeaturesA, LightSectored>(Converters.CreateLightSectored);
+            _converterRegistry.Register<PortsAndServicesP, LightSectored>(Converters.CreateLightSectored);
+            _converterRegistry.Register<PortsAndServicesP, SignalStationWarning>(Converters.CreateSignalStationWarning);
+            _converterRegistry.Register<AidsToNavigationP, FogSignal>(Converters.CreateFogSignal);
+            _converterRegistry.Register<AidsToNavigationP, RadarStation>(Converters.CreateRadarStation);
+            _converterRegistry.Register<CulturalFeaturesP, WindTurbine>(Converters.CreateWindturbine);
+            _converterRegistry.Register<PortsAndServicesP, SignalStationTraffic>(Converters.CreateSignalStationTraffic);
+            _converterRegistry.Register<AidsToNavigationP, RadioStation>(Converters.CreateRadioStation);
 
+            using (Geodatabase source = createGeodatabase()) {
                 Store(() => {
                     var query = new QueryFilter {
                         WhereClause = $"1=1",
@@ -89,24 +150,52 @@ namespace S100Framework.Applications
                     using var pointset = destination.OpenDataset<FeatureClass>(destination.GetName("pointset"));
                     using var curve = destination.OpenDataset<FeatureClass>(destination.GetName("curve"));
                     using var surface = destination.OpenDataset<FeatureClass>(destination.GetName("surface"));
-                    using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationTypes"));
-                    using var informationAssociation = destination.OpenDataset<Table>(destination.GetName("InformationAssociation"));
 
+                    using var associationBinding = destination.OpenDataset<Table>(destination.GetName("associationbinding"));
+                    using var attributeBinding = destination.OpenDataset<Table>(destination.GetName("attributebinding"));
+                    using var featureAssociation = destination.OpenDataset<Table>(destination.GetName("featureassociation"));
+                    using var informationAssociation = destination.OpenDataset<Table>(destination.GetName("InformationAssociation"));
+                    using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationType"));
+
+                    Logger.Current.Information($"Deleting data from destination: {point.GetName()}");
                     point.DeleteRows(query);
+                    Logger.Current.Information($"Deleting data from destination: {pointset.GetName()}");
                     pointset.DeleteRows(query);
+                    Logger.Current.Information($"Deleting data from destination: {curve.GetName()}");
                     curve.DeleteRows(query);
+                    Logger.Current.Information($"Deleting data from destination: {surface.GetName()}");
                     surface.DeleteRows(query);
-                    informationtype.DeleteRows(query);
+                    Logger.Current.Information($"Deleting data from destination: {associationBinding.GetName()}");
+                    associationBinding.DeleteRows(query);
+                    Logger.Current.Information($"Deleting data from destination: {attributeBinding.GetName()}");
+                    attributeBinding.DeleteRows(query);
+                    Logger.Current.Information($"Deleting data from destination: {featureAssociation.GetName()}");
+                    featureAssociation.DeleteRows(query);
+                    Logger.Current.Information($"Deleting data from destination: {informationAssociation.GetName()}");
                     informationAssociation.DeleteRows(query);
+                    Logger.Current.Information($"Deleting data from destination: {informationtype.GetName()}");
+                    informationtype.DeleteRows(query);
                 });
 
-                featureRelations.Initialize(source);
-                relatedEquipment = new RelatedEquipment(source, featureRelations);
+                Logger.Current.Information($"Loading subtypes codes to subtype name");
+                Subtypes.Initialize(source);
+
+                Logger.Current.Information($"Loading featurerelations");
+                FeatureRelations.Initialize(source, destination);
+
+                Logger.Current.Information($"Initializing SpatialRelationResolver");
+                SpatialRelationResolver.Initialize(source);
+                
+                Logger.Current.Information($"Initializing SpatialAssociations");
+                SpatialAssociations.Initialize(source);
+
+                relatedEquipment = new RelatedEquipment(source,destination);
 
                 if (skinOfEarthOnly) {
+                    Logger.Current.Information($"Converting skin of earth only Filter: {filter.WhereClause}");
                     // All "SKIN OF EARTH" cases / subtypes are marked with a "skin of earth" comment
                     var whereClause = filter.WhereClause.Clone();
-                    filter.WhereClause = $"{whereClause} and fcsubtype in (1,5,15,45)";
+                    filter.WhereClause = $"{whereClause} and fcsubtype in (1,5,15)";
                     Store(() => S57_DepthsA(source, destination, filter));
                     filter.WhereClause = $"{whereClause} and fcsubtype in (5)";
                     Store(() => S57_NaturalFeaturesA(source, destination, filter));
@@ -116,71 +205,104 @@ namespace S100Framework.Applications
                     Store(() => S57_MetadataA(source, destination, filter));
                     filter.WhereClause = $"{whereClause} and fcsubtype in (1)";
                     Store(() => S57_ProductCoverage(source, destination, filter));
+                    //Store(() => FeatureRelations.Instance.CreateRelations(destination));
+
                 }
                 else {
-                    Store(() => S57_AidsToNavigationP(source, destination, filter));
-                    Store(() => S57_DangersL(source, destination, filter));
-                    Store(() => S57_DangersA(source, destination, filter));
-                    Store(() => S57_DangersP(source, destination, filter));
-                    Store(() => S57_MetadataA(source, destination, filter));
-                    Store(() => S57_ProductCoverage(source, destination, filter));
-                    Store(() => S57_TracksAndRoutesL(source, destination, filter));
-                    Store(() => S57_MilitaryFeatureA(source, destination, filter));
-                    Store(() => S57_TracksAndRoutesA(source, destination, filter));
-                    Store(() => S57_MilitaryFeaturesP(source, destination, filter));
-                    Store(() => S57_IcefeaturesA(source, destination, filter));
-                    Store(() => S57_TracksAndRoutesP(source, destination, filter));
-                    Store(() => S57_CoastlineL(source, destination, filter));
-                    Store(() => S57_CoastlineA(source, destination, filter));
-                    Store(() => S57_CoastlineP(source, destination, filter));
+                    /*var whereClause = filter.WhereClause.Clone();
+                    filter.WhereClause = $"{whereClause} and globalid = '{{CA71EEFC-AF9F-4DB0-A55E-FD9D394FF58D}}'";
+                    filter.WhereClause = $"{whereClause}";
+                    */
+                    Logger.Current.Information($"Converting all tables: {filter.WhereClause}");
+
+                    Store(() => S101_Routes(source, destination, filter)); 
+
+                    Store(() => S101_SoundingDatum(source, destination, filter)); 
+
+                    Store(() => S57_SoundingsP(source, destination, filter));
+
+                    Store(() => S57_DepthsL(source, destination, filter));
+
+                    Store(() => S57_TidesAndVariationsA(source, destination, filter));
+                    Store(() => S57_TidesAndVariationsL(source, destination, filter));
+                    Store(() => S57_TidesAndVariationsP(source, destination, filter));
+
+                    Store(() => S57_SeabedA(source, destination, filter));
+                    Store(() => S57_SeabedL(source, destination, filter));
+                    Store(() => S57_SeabedP(source, destination, filter));
+
                     Store(() => S57_CulturalFeaturesL(source, destination, filter));
                     Store(() => S57_CulturalFeaturesA(source, destination, filter));
                     Store(() => S57_CulturalFeaturesP(source, destination, filter));
-                    Store(() => S57_SeabedP(source, destination, filter));
-                    Store(() => S57_PortsAndServicesL(source, destination, filter));
-                    Store(() => S57_PortsAndServicesA(source, destination, filter));
-                    Store(() => S57_PortsAndServicesP(source, destination, filter));
-                    Store(() => S57_RegulatedAreasAndLimitsL(source, destination, filter));
-                    Store(() => S57_RegulatedAreasAndLimitsA(source, destination, filter));
-                    Store(() => S57_RegulatedAreasAndLimitsP(source, destination, filter));
-                    Store(() => S57_OffshoreInstallationsL(source, destination, filter));
-                    Store(() => S57_OffshoreInstallationsA(source, destination, filter));
-                    Store(() => S57_OffshoreInstallationsP(source, destination, filter));
-                    Store(() => S57_NaturalFeaturesL(source, destination, filter));
-                    Store(() => S57_NaturalFeaturesA(source, destination, filter));
-                    Store(() => S57_NaturalFeaturesP(source, destination, filter));
-                    Store(() => S57_DepthsL(source, destination, filter));
-                    Store(() => S57_DepthsA(source, destination, filter));
-                    Store(() => S57_SoundingsP(source, destination, filter));
 
+                    Store(() => S57_CoastlineA(source, destination, filter));
+                    Store(() => S57_CoastlineL(source, destination, filter));
+                    Store(() => S57_CoastlineP(source, destination, filter));
+
+                    Store(() => S57_DangersA(source, destination, filter));
+                    Store(() => S57_DangersL(source, destination, filter));
+                    Store(() => S57_DangersP(source, destination, filter));
+
+                    Store(() => S57_DepthsA(source, destination, filter));
+
+                    Store(() => S57_IcefeaturesA(source, destination, filter));
+
+                    Store(() => S57_MetadataA(source, destination, filter));
+
+                    Store(() => S57_MilitaryFeatureA(source, destination, filter));
+                    Store(() => S57_MilitaryFeaturesP(source, destination, filter));
+
+                    Store(() => S57_NaturalFeaturesA(source, destination, filter));
+                    Store(() => S57_NaturalFeaturesL(source, destination, filter));
+                    Store(() => S57_NaturalFeaturesP(source, destination, filter));
+
+                    Store(() => S57_OffshoreInstallationsA(source, destination, filter));
+                    Store(() => S57_OffshoreInstallationsL(source, destination, filter));
+                    Store(() => S57_OffshoreInstallationsP(source, destination, filter));
+
+                    Store(() => S57_PortsAndServicesA(source, destination, filter));
+                    Store(() => S57_PortsAndServicesL(source, destination, filter));
+                    Store(() => S57_PortsAndServicesP(source, destination, filter));
+
+                    Store(() => S57_ProductCoverage(source, destination, filter));
+
+                    Store(() => S57_RegulatedAreasAndLimitsA(source, destination, filter));
+                    Store(() => S57_RegulatedAreasAndLimitsL(source, destination, filter));
+                    Store(() => S57_RegulatedAreasAndLimitsP(source, destination, filter));
+
+                    Store(() => S57_TracksAndRoutesA(source, destination, filter));
+                    Store(() => S57_TracksAndRoutesL(source, destination, filter));
+                    Store(() => S57_TracksAndRoutesP(source, destination, filter));
+
+                    Store(() => S57_AidsToNavigationP(source, destination, filter));
+
+
+                    //Store(() => FeatureRelations.Instance.CreateRelations(destination));
                 }
 
 
+                Logger.Current.Information($"Loading sanity checker");
+                SanityChecker.Initialize(destination);
+
+                if (SanityChecker.Instance.Check_DrawingIndex() == 0) {
+                    Logger.Current.Information("Drawing index check PASSED");
+                }
+                else {
+                    Logger.Current.Error("Drawing index check FAILED. Check for missing drawing indexes in data.");
+                }
+
+
+                Logger.Current.Information("Done");
                 return true;
             }
+
         }
 
-        public static IEnumerable<T> SelectIn<T>(Geometry geometry, FeatureClass in_featureclass, SpatialRelationship spatialRelationship, int compilationScale) where T : class {
-            SpatialQueryFilter spatialQueryFilter = new SpatialQueryFilter {
-                FilterGeometry = geometry,
-                SpatialRelationship = spatialRelationship,
-                WhereClause = $"plts_comp_scale = {compilationScale}"
+        internal static string GetNation(string nation) {
+            return nation switch {
+                "DK" => "DK",
+                _ => throw new NotSupportedException($"Nation {nation} cannot be converted")
             };
-
-            using (RowCursor spatialSearch = in_featureclass.Search(spatialQueryFilter, true)) {
-                var shape = spatialSearch.FindField("SHAPE");
-                while (spatialSearch.MoveNext()) {
-                    using (Row row = spatialSearch.Current) {
-                        Feature feature = (Feature)row;
-                        if (feature != null) {
-                            var val = Activator.CreateInstance(typeof(T), feature) as T;
-                            if (val != null) {
-                                yield return val;
-                            }
-                        }
-                    }
-                }
-            }
         }
 
         internal static void SetShape(RowBuffer buffer, Geometry? shape) {
@@ -189,31 +311,95 @@ namespace S100Framework.Applications
             }
 
             if (shape.GeometryType == GeometryType.Point && shape.HasZ == false) {
-                buffer["shape"] = MapPointBuilderEx.CreateMapPoint((shape as MapPoint).X, (shape as MapPoint).Y, 0.00, shape.SpatialReference);
-            } else {
+                buffer["shape"] = MapPointBuilderEx.CreateMapPoint(((MapPoint)shape).X, ((MapPoint)shape).Y, 0.00, shape.SpatialReference);
+            }
+            else {
                 buffer["shape"] = shape;
             }
         }
+        internal static void SetDrawingIndex(RowBuffer buffer, int comp_scale) {
+            _ = comp_scale switch {
+                <22000 => buffer["drawingIndex"] = 5,
+                <90000 => buffer["drawingIndex"] = 4,
+                <180000 => buffer["drawingIndex"] = 3,
+                <700000 => buffer["drawingIndex"] = 2,
+                _ => buffer["drawingIndex"] = 1
+            };
 
+
+            //_ = shape.GeometryType switch {
+            //    GeometryType.Unknown => throw new NotSupportedException("Geometry type: unknown "),
+            //    GeometryType.Point => null,
+            //    GeometryType.Envelope => throw new NotSupportedException("Geometry type: envelope"),
+            //    GeometryType.Multipoint => null,
+            //    GeometryType.Polyline => buffer["drawingindex"] = 4,
+            //    GeometryType.Polygon => buffer["drawingindex"] = 4,
+            //    GeometryType.Multipatch => throw new NotSupportedException("Geometry type: multipatch"),
+            //    GeometryType.GeometryBag => throw new NotSupportedException("Geometry type: geometrybag"),
+            //    _ => throw new NotSupportedException($"Unhandled geometry type {shape.GeometryType}")
+            //};
+        }
 
         /// <summary>
         /// DCEG p460
         /// </summary>
-        /// <param name="current"></param>
+        /// <param _s101name="current"></param>
         /// <returns></returns>
-        private static rhythmOfLight GetRythmOfLight(AidsToNavigationP current) {
-            
+        internal static rhythmOfLight GetRythmOfLight(AidsToNavigationP current) {
+
             /*
                 When populating rhythm of light, the
                 sub-attributes signal group, signal period and signal sequence are only valid for non-fixed lights
                 (that is, sub-attribute light characteristic ≠ 1 (fixed)), with signal group and signal period being
                 mandatory
-             */
+            */
 
-            var signalGroupN = current.SIGGRP != default ? new List<string> { current.SIGGRP } : null;
-            var signalPeriodN = current.SIGPER;
+            //current.SIGGRP != default ? new List<string> { current.SIGGRP } : new();
+            List<string> parenthesisParts = new List<string>();
+
+            if (!String.IsNullOrEmpty(current.SIGGRP)) {
+                string pattern = @"\([^()]*\)";
+
+                foreach (Match m in Regex.Matches(current.SIGGRP, pattern)) {
+                    parenthesisParts.Add(m.Value);
+                }
+            }
+            var signalPeriodN = current.SIGPER == -32767 ? null : current.SIGPER;
 
             var sigseq = current.SIGSEQ;
+
+            lightCharacteristic lightCharacteristicsValue = default;
+
+            if (current.LITCHR.HasValue) {
+                lightCharacteristicsValue = EnumHelper.GetEnumValue<lightCharacteristic>(current.LITCHR.Value);
+            }
+
+            var signalSequences = GetSignalSequences(current.SIGSEQ);
+
+            var rhythmOfLight = new rhythmOfLight() {
+                lightCharacteristic = lightCharacteristicsValue,
+                signalGroup = parenthesisParts,
+                signalPeriod = signalPeriodN,
+                signalSequence = signalSequences
+            };
+            return rhythmOfLight;
+        }
+
+        internal static verticalDatum GetVerticalDatum(int value) {
+            /*
+            if (current.VERDAT.HasValue) {
+                instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
+            }
+            */
+            if (value != 3) {
+                return EnumHelper.GetEnumValue<verticalDatum>(value);
+            }
+
+            return verticalDatum.BalticSeaChartDatum2000;
+        }
+
+
+        internal static List<signalSequence> GetSignalSequences(string? sigseq) {
             var signalSequences = new List<signalSequence>();
 
             string pattern = @"(\d+\.\d+)|\((\d+\.\d+)\)";
@@ -242,13 +428,7 @@ namespace S100Framework.Applications
                     }
                 }
             }
-            var rhythmOfLight = new rhythmOfLight() {
-                lightCharacteristic = EnumHelper.GetEnumValue<lightCharacteristic>(current.LITCHR.Value),
-                signalGroup = signalGroupN,
-                signalPeriod = signalPeriodN,
-                signalSequence = signalSequences
-            };
-            return rhythmOfLight;
+            return signalSequences;
         }
 
         internal static List<colour> GetColours(string color) {
@@ -343,7 +523,7 @@ namespace S100Framework.Applications
                 /*
                  * code	status
                 alias	STATUS
-                name	Status
+                _s101name	Status
                 definition	The condition of an object at a given instant in time.
                 valueType	enumeration  listedValues	
 
@@ -374,7 +554,7 @@ namespace S100Framework.Applications
                         other than the allowable values will not be converted across to S-101. Data Producers are advised to
                         check any populated values for STATUS on LNDARE and amend appropriately. */
                     foreach (var c in featureStatus.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
-                        status? e = featureStatus.ToLowerInvariant() switch {
+                        status? e = c.ToLowerInvariant() switch {
                             "1" => status.Permanent,
                             "2" => status.Occasional,
                             "3" => status.Recommended,
@@ -410,7 +590,7 @@ namespace S100Framework.Applications
         /*
                 code	condition
                 alias	CONDTN
-                name	Condition
+                _s101name	Condition
                 definition	The various conditions of buildings and other constructions.
                 valueType	enumeration
                 listedValues	
@@ -433,7 +613,7 @@ namespace S100Framework.Applications
         //    };
         //}
 
-
+        
 
         public static condition GetCondition(int conditionValue) {
             return conditionValue switch {
@@ -463,7 +643,7 @@ namespace S100Framework.Applications
                 var nobjnm = nobjnme.Trim();
                 if (!string.IsNullOrEmpty(nobjnm)) {
                     featureName.Add(new featureName {
-                        language = "dk",
+                        language = "dan",
                         nameUsage = nameUsage.AlternateNameDisplay,
                         name = nobjnm,
                     });
@@ -473,13 +653,13 @@ namespace S100Framework.Applications
             return featureName;
         }
 
-        internal static void AddInformation(IList<information> information, Feature current) {
-            // TODO: Still missing decision on how GST wants handling of both files and a copy of the file content.
-            // Sent to Nigel & Co.
+        internal static List<information> CreateInformationFrom(Feature current) {
+            List<information> information = new List<information>();
 
             if (DBNull.Value != current["NTXTDS"]) {
                 var ntxtds = Convert.ToString(current["NTXTDS"])?.Trim();
-                if (!string.IsNullOrEmpty(ntxtds)) {
+
+                if (!string.IsNullOrEmpty(ntxtds) && ntxtds.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, ntxtds);
                     if (File.Exists(filePath)) {
                         var note = new Note(filePath);
@@ -489,19 +669,30 @@ namespace S100Framework.Applications
 
                         var instance = new information {
                             fileLocator = fileLocator,
-                            fileReference = fileReference,
-                            headline = note.Header,
+                            fileReference = FixFilename(fileReference) ?? default,
                             language = language,
-                            text = note.Content,
                         };
                         information.Add(instance);
                     }
+                    else {
+                        Logger.Current.DataError(current.GetObjectID(), current.GetTable().GetName(), "", $"AddInformation: Cannot find note {filePath}");
+                    }
+
+            }
+            else if (!string.IsNullOrEmpty(ntxtds)) {
+                    string language = "eng";
+
+                    var instance = new information {
+                        language = language,
+                        text = ntxtds,
+                    };
+                    information.Add(instance);
                 }
             }
 
             if (DBNull.Value != current["TXTDSC"]) {
                 var txtdsc = Convert.ToString(current["TXTDSC"])?.Trim();
-                if (!string.IsNullOrEmpty(txtdsc)) {
+                if (!string.IsNullOrEmpty(txtdsc) && txtdsc.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, txtdsc);
                     if (File.Exists(filePath)) {
                         var note = new Note(filePath);
@@ -511,14 +702,26 @@ namespace S100Framework.Applications
 
                         var instance = new information {
                             fileLocator = fileLocator,
-                            fileReference = fileReference,
-                            headline = note.Header,
+                            fileReference = FixFilename(fileReference) ?? default,
                             language = language,
-                            text = note.Content,
                         };
                         information.Add(instance);
 
+                    } else {
+                        Logger.Current.DataError(current.GetObjectID(), current.GetTable().GetName(), "", $"AddInformation: Cannot find note {filePath}");
                     }
+                }
+                else if (!string.IsNullOrEmpty(txtdsc)) {
+                    string? fileLocator = default;
+                    string fileReference = txtdsc;
+                    string language = "eng";
+
+                    var instance = new information {
+                        fileLocator = fileLocator,
+                        language = language,
+                        text = txtdsc,
+                    };
+                    information.Add(instance);
                 }
             }
 
@@ -526,29 +729,44 @@ namespace S100Framework.Applications
                 var inform = Convert.ToString(current["INFORM"])?.Trim();
                 if (!string.IsNullOrEmpty(inform)) {
 
-
                     //https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
                     // Separate discrete information populated in INFORM using a standard separator such as semicolon “;”.
 
                     string[] informs = inform != null ? inform.Split(';') : Array.Empty<string>();
-
 
                     foreach (var value in informs) {
                         string? fileLocator = default;
                         string? fileReference = default;
                         string language = "eng";
 
-                        var instance = new information {
-                            fileLocator = fileLocator,
-                            fileReference = fileReference,
-                            headline = default,
-                            language = language,
-                            text = value,
-                        };
-                        information.Add(instance);
+                        if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
+                            var filePath = System.IO.Path.Combine(_notesPath, value);
+                            if (File.Exists(value)) {
+                                var instance = new information {
+                                    fileLocator = fileLocator,
+                                    fileReference = FixFilename(value) ?? default,
+                                    headline = default,
+                                    language = language,
+                                    text = value,
+                                };
+                                information.Add(instance);
+                            }
+                            else {
+                                Logger.Current.DataError(current.GetObjectID(), current.GetTable().GetName(), "", $"AddInformation: Cannot find note {value}");
+                            }
+                        }
+                        else if (!string.IsNullOrEmpty(value)) {
+                            var instance = new information {
+                                fileLocator = fileLocator,
+                                language = language,
+                                text = value,
+                            };
+                            information.Add(instance);
+                        }
                     }
                 }
             }
+
             if (DBNull.Value != current["NINFOM"]) {
                 var ninfom = Convert.ToString(current["NINFOM"])?.Trim();
 
@@ -563,17 +781,122 @@ namespace S100Framework.Applications
                         string? fileReference = default;
                         string language = "dan";
 
-                        var instance = new information {
-                            fileLocator = fileLocator,
-                            fileReference = fileReference,
-                            headline = default,
-                            language = language,
-                            text = value,
-                        };
-                        information.Add(instance);
+                        if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
+                            var filePath = System.IO.Path.Combine(_notesPath, value);
+                            if (File.Exists(value)) {
+                                var instance = new information {
+                                    fileLocator = fileLocator,
+                                    fileReference = FixFilename(value) ?? default,
+                                    headline = default,
+                                    language = language,
+                                    text = value,
+                                };
+                                information.Add(instance);
+                            }
+                            else {
+                                Logger.Current.DataError(current.GetObjectID(), current.GetTable().GetName(), "", $"AddInformation: Cannot find note {value}");
+                            }
+                        }
+                        else if (!string.IsNullOrEmpty(value)) {
+                            var instance = new information {
+                                fileLocator = fileLocator,
+                                language = language,
+                                text = value,
+                            };
+                            information.Add(instance);
+                        }
                     }
                 }
             }
+            return information;
+        }
+
+        internal static List<string> GetCommunicationChannel(string input) {
+            var result = new List<string>();
+            if (string.IsNullOrWhiteSpace(input)) return result;
+
+            var tokens = input.Split(';');
+            foreach (var token in tokens) {
+                var trimmed = token.Trim();
+                if (!trimmed.StartsWith("[") || !trimmed.EndsWith("]")) {
+                    result.Add(trimmed); // Unrecognized format, keep as is
+                    continue;
+                }
+
+                var content = trimmed.Substring(1, trimmed.Length - 2);
+
+                if (Regex.IsMatch(content, @"[A-Za-z]")) {
+                    var match = Regex.Match(content, @"^([A-Za-z]+)(\d+)$");
+                    if (match.Success) {
+                        var prefix = match.Groups[1].Value;
+                        var number = int.Parse(match.Groups[2].Value).ToString("D4");
+                        result.Add($"[{prefix}{number}]");
+                    }
+                    else {
+                        result.Add(trimmed);
+                    }
+                }
+                else {
+                    if (int.TryParse(content, out int number)) {
+                        var formatted = $"[VHF{number:D4}]";
+                        result.Add(formatted);
+                    }
+                    else {
+                        result.Add(trimmed);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        private static string? FixFilename(string fileReference) {
+            if (fileReference == default) {
+                return default;
+            }
+            
+            string result = Regex.Replace(fileReference, @"^dk", match => {
+                string matched = match.Value;
+
+                string replacement = "101";
+
+                replacement += char.IsUpper(matched[0]) ? 'D' : 'd';
+                replacement += char.IsUpper(matched[1]) ? 'K' : 'k';
+                replacement += "00";
+
+                return replacement;
+            }, RegexOptions.IgnoreCase);
+            
+            return result;
+        }
+
+        internal static NauticalInformation CreateNauticalInformation(string picrep, string datsta, string datend, string persta, string perend, List<information> information) {
+            NauticalInformation nobj = new NauticalInformation();
+            if (picrep != default) {
+                nobj.pictorialRepresentation = picrep;
+            }
+
+            nobj.information = information;
+            nobj.Code = ps101;
+
+            DateHelper.TryGetFixedDateRange(datsta, datend, out var dateRange);
+            if (dateRange != default) {
+                nobj.fixedDateRange = dateRange;
+            }
+
+            DateHelper.TryGetPeriodicDateRange(persta, perend, out var periodicDateRange);
+            if (periodicDateRange != default) {
+                nobj.periodicDateRange = periodicDateRange;
+            }
+
+            return nobj;
+        }
+
+        internal static void AddInformation(List<information> instanceInformation, Feature current) {
+            // TODO: Still missing decision on how GST wants handling of both files and a copy of the file content.
+            // Sent to Nigel & Co.
+            List<information> information = CreateInformationFrom(current);
+            instanceInformation.AddRange(information);
         }
     }
 }

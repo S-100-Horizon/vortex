@@ -1,9 +1,11 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.DomainModel.S101;
-
-using S100Framework.DomainModel.S101.InformationTypes;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101.InformationTypes;
+using S100Framework.DomainModel;
+using S100Framework.DomainModel.S101.InformationAssociations;
 
 
 namespace S100Framework.Applications
@@ -21,52 +23,75 @@ namespace S100Framework.Applications
         private static void S57_DepthsL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DepthsL";
 
-            
 
-            var depthsl = source.OpenDataset<FeatureClass>(source.GetName("DepthsL"));
-            var plts_spatialattributel = source.OpenDataset<FeatureClass>(source.GetName("PLTS_SpatialAttributeL"));
-            using var informationtype = target.OpenDataset<Table>(target.GetName("informationTypes"));
+
+
+
+
+            using var depthsl = source.OpenDataset<FeatureClass>(source.GetName("DepthsL"));
+            Subtypes.Instance.RegisterSubtypes(depthsl);
+
+            //using var plts_spatialattributel = source.OpenDataset<FeatureClass>(source.GetName("PLTS_SpatialAttributeL"));
+            //using var informationtype = target.OpenDataset<Table>(target.GetName("informationType"));
+
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
-            
+
+
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
+
+
+
             using var cursor = depthsl.Search(filter, true);
             int recordCount = 0;
-            int convertedCount = 0;
-            
+
+            var informationBinding = CreateAssociationSpatialQuality(target);
+
+
             while (cursor.MoveNext()) {
+
                 recordCount += 1;
 
                 var feature = (Feature)cursor.Current;
 
                 var current = new DepthsL(feature);
 
+                var spatialQualityHits = SpatialAssociations.Instance.GetSpatialAttributeL(feature.GetShape());
+
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
-                var subtype = current.FCSUBTYPE ?? default;
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                    continue;
+                }
+
+                var fcSubtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
-                var drval1 = current.DRVAL1 ?? default;
-                var drval2 = current.DRVAL2 ?? default;
-                var valco = current.VALDCO ?? default;
-                var quasou = current.QUASOU ?? default;
-                var scamin_step = current.SCAMIN_STEP ?? default;
-                var sordat = current.SORDAT ?? default;
-                var sorind = current.SORIND ?? default;
-                var souacc = current.SOUACC ?? default;
 
-                switch (subtype) {
+                switch (fcSubtype) {
                     case 5: { // DEPCNT_DepthContour
-                            var instance = new DepthContour() {
-                                valueOfDepthContour = valco
+                            var instance = new DepthContour {
+                                valueOfDepthContour = default,
                             };
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.VALDCO.HasValue) {
+                                instance.valueOfDepthContour = current.VALDCO.Value;
                             }
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
 
                             /*
                                QUAPOS = 1 (surveyed) -> will not be converted
@@ -83,7 +108,7 @@ namespace S100Framework.Applications
 
                             */
 
-                            
+
                             // TODO: handle spatial quality spatial relation
 
                             //if (current.SHAPE != null) {
@@ -115,17 +140,72 @@ namespace S100Framework.Applications
                             //        }
                             //    }
                             //}
-                            
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
 
+                            AddInformation(instance.information, feature);
+
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            SetShape(buffer, current.SHAPE);
+                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
+                            }
+
+                            // Spatial Quality
+                            if (spatialQualityHits.Count > 0) {
+
+                                buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(informationBinding);
+                                featureN.Store();
+
+
+                                //foreach (var spatialQuality in spatialQualityHits) {
+                                //    // create spatial quality
+                                //    SpatialQuality spatialQuality101 = new SpatialQuality();
+
+                                //    spatialQuality101.qualityOfHorizontalMeasurement = EnumHelper.GetEnumValue<qualityOfHorizontalMeasurement>(spatialQuality.qualityOfPrecision);
+
+                                //    bufferInformationType["ps"] = ps101;
+                                //    bufferInformationType["code"] = spatialQuality101.Code;
+                                //    bufferInformationType["json"] = System.Text.Json.JsonSerializer.Serialize(spatialQuality101, jsonSerializerOptions);
+
+                                //    var informationTypeRow = informationTypeTable.CreateRow(bufferInformationType);
+                                //    var informationName = Convert.ToString(informationTypeRow["name"]) ?? "Unknown name";
+
+                                //    // create Association
+
+                                //    var informationAssociationBuffer = informationassociationTable.CreateRowBuffer();
+
+                                //    informationAssociationBuffer["ps"] = ImporterNIS.ps101;
+                                //    informationAssociationBuffer["code"] = "association";
+
+                                //    var association = informationassociationTable.CreateRow(informationAssociationBuffer);
+                                //    var informationAssociationName = (string)association["name"];
+
+                                //    // create binding
+                                //    var informationBinding = new informationBinding {
+                                //        informationId = informationName,
+                                //        associationId = informationAssociationName,
+                                //        association = nameof(SpatialAssociation),
+                                //        role = Enum.GetName<Role>(Role.theQualityInformation)!,
+                                //        roleType = roleType.association.ToString()
+                                //    };
+
+                                //    buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(informationBinding);
+                                //    featureN.Store();
+                                //}
+                            }
+
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+
                         }
                         break;
                     default:
@@ -135,8 +215,54 @@ namespace S100Framework.Applications
 
                 }
             }
-            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
+            Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
+
+        private static informationBinding CreateAssociationSpatialQuality(Geodatabase target) {
+            // create spatial quality
+            SpatialQuality spatialQuality101 = new SpatialQuality();
+
+            using var informationTypeTable = target.OpenDataset<Table>(target.GetName("informationtype"));
+            using var informationassociationTable = target.OpenDataset<Table>(target.GetName("informationassociation"));
+            using var bufferInformationType = informationTypeTable.CreateRowBuffer();
+
+
+            spatialQuality101.qualityOfHorizontalMeasurement = EnumHelper.GetEnumValue<qualityOfHorizontalMeasurement>(4);
+
+            bufferInformationType["ps"] = ps101;
+            bufferInformationType["code"] = spatialQuality101.Code;
+            bufferInformationType["json"] = System.Text.Json.JsonSerializer.Serialize(spatialQuality101, jsonSerializerOptions);
+
+            var informationTypeRow = informationTypeTable.CreateRow(bufferInformationType);
+            var informationName = Convert.ToString(informationTypeRow["name"]) ?? "Unknown name";
+
+            // create Association
+
+            var informationAssociationBuffer = informationassociationTable.CreateRowBuffer();
+
+            informationAssociationBuffer["ps"] = ImporterNIS.ps101;
+            informationAssociationBuffer["code"] = "association";
+
+            var association = informationassociationTable.CreateRow(informationAssociationBuffer);
+            var informationAssociationName = (string)association["name"];
+
+            // create binding
+            var informationBinding = new informationBinding {
+                informationId = informationName,
+                associationId = informationAssociationName,
+                association = nameof(SpatialAssociation),
+                role = Enum.GetName<Role>(Role.theQualityInformation)!,
+                roleType = roleType.association.ToString()
+            };
+
+            return /*informationAssociationName, spatialQuality101,*/ informationBinding;
+
+
+        }
+
+
+
 
     }
 }
+

@@ -1,6 +1,4 @@
 ﻿using Serilog;
-using Serilog.Core;
-using Serilog.Events;
 
 namespace S100Framework.Applications
 {

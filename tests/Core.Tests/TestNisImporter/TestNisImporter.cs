@@ -1,13 +1,15 @@
 using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
-using ArcGIS.Core.Data.Exceptions;
+using ArcGIS.Core.Geometry;
+using ArcGIS.Core.Internal.Geometry;
 using S100Framework.Applications;
-using System.Collections.Generic;
+using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101.FeatureTypes;
+using System;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Xunit.Abstractions;
-using Xunit.Sdk;
 using IO = System.IO;
 
 namespace TestNisImporter
@@ -24,13 +26,114 @@ namespace TestNisImporter
                 Status = status;
             }
         }
-        
+
         private readonly ITestOutputHelper _output;
 
         public TestNisImporter(ITestOutputHelper output) {
             this._output = output;
             ArcGIS.Core.Hosting.Host.Initialize();
         }
+
+        [Fact]
+        public void TestStatus() {
+            var status = "2,15";
+            Assert.True(ImporterNIS.GetStatus(status).Count == 2, "");
+        }
+
+        [Fact]
+        public void TestGetCommunicationChannel() {
+
+            Assert.True(ImporterNIS.GetCommunicationChannel("[74]")[0] == "[VHF0074]");
+            Assert.True(ImporterNIS.GetCommunicationChannel("[04]")[0] == "[VHF0004]");
+            Assert.True(ImporterNIS.GetCommunicationChannel("[WX1]")[0] == "[WX0001]");
+            Assert.True(ImporterNIS.GetCommunicationChannel("[WX01];[04]")[0] == "[WX0001]");
+            Assert.True(ImporterNIS.GetCommunicationChannel("[WX01];[04]")[1] == "[VHF0004]");
+        }
+
+        [Fact]
+        public void TestRounding() {
+            
+            Assert.True(RoundToIHO(5.6d) == 5.6d);
+        }
+        public static double RoundToIHO(double value) {
+
+            if (value < -31d) {
+                return Math.Floor(value);
+            }
+            else if (value < -21.0d) {
+                return value % 1 < 0.5 ? Math.Ceiling(value) - 0.5d : Math.Ceiling(value);
+            }
+            else if (value < 0) {
+                return RoundDownwards(value, 1, -0.5d);
+            }
+            else if (value < 21.0d) {
+                return RoundDownwards(value, 1);
+            }
+            else if (value < 31) {
+                return value % 1 < 0.5 ? Math.Floor(value) : Math.Floor(value) + 0.5;
+            }
+
+            return Math.Floor(value);
+        }
+        public static double RoundDownwards(double value, int digits, double offset = 0d) {
+            var power10 = 1E1;
+            value *= power10;
+            value += offset;
+            value = Math.Truncate(value);
+            return value /= power10;
+        }
+
+        [Fact]
+        public void TestRadarWaveLength() {
+            //var rwl1 = ImporterNIS.GetRadarWaveLengths("0.10-S");
+            {
+                ImporterNIS.TryGetRadarWaveLengths("0.03-X,0.10-S", out var lengths);
+                Assert.True(lengths.Count == 2, "");
+                Assert.True(lengths[0].radarBand == "X");
+                Assert.True(lengths[0].waveLengthValue == 0.03m);
+                Assert.True(lengths[1].radarBand == "S");
+                Assert.True(lengths[1].waveLengthValue == 0.10m);
+            }
+            {
+                ImporterNIS.TryGetRadarWaveLengths("0.10-S", out var lengths);
+                Assert.True(lengths.Count == 1, "");
+                Assert.True(lengths[0].radarBand == "S");
+                Assert.True(lengths[0].waveLengthValue == 0.10m);
+            }
+        }
+
+        [Fact]
+        public void TestScaleMinimum() {
+            ImporterNIS._scaminFilesPath = @"G:\indigo\Configuration";
+            {
+                var val1 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "DMPGRD_DumpingGround", 22000);
+                Assert.True(val1.HasValue);
+                Assert.True(val1.Value == 89999, "Wrong scamin");
+
+                var val2 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "DMPGRD_DumpingGroundXX", 22000);
+                Assert.False(val2.HasValue);
+            }
+            {
+                var val1 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "FLODOC_FloatingDock", 22000);
+                Assert.False(val1.HasValue);
+                Assert.True(val1.GetValueOrDefault() == 44999, "Wrong scamin");
+
+                var val2 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "FLODOC_FloatingDock", 22000);
+                Assert.False(val2.HasValue);
+                Assert.True(val2.GetValueOrDefault() == 44999, "Wrong scamin");
+
+                var val3 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "FLODOC_FloatingDock", 22000);
+                Assert.False(val3.HasValue);
+            }
+            {
+                var val1 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "BRIDGE_Bridge", 22000); // step value is null
+                Assert.False(val1.HasValue);
+                Assert.True(val1.GetValueOrDefault() == 44999, "Wrong scamin");
+                var val2 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "DMPGRD_DumpingGroundXX", 22000);
+                Assert.False(val2.HasValue);
+            }
+        }
+
 
         [Fact]
         public void TestSignalSequence() {
@@ -88,7 +191,8 @@ namespace TestNisImporter
 
             StringBuilder csSubtypes = new StringBuilder();
 
-            var featureClass = source.OpenDataset<FeatureClass>("SeabedL");
+            var featureClass = source.OpenDataset<FeatureClass>("TidesAndVariationsP");
+            string shapeType = "Point"; // Area | Point | Line
 
             var subtypes = featureClass.GetDefinition().GetSubtypes();
 
@@ -104,21 +208,44 @@ namespace TestNisImporter
                 csSubtypes.AppendLine($"\t\tvar instance = new XXX(){{");
                 csSubtypes.AppendLine($"\t\t}};");
 
+                csSubtypes.AppendLine($"\t\t\tif (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {{");
+                csSubtypes.AppendLine($"\t\t\tstring subtype = \"\";");
+
+                csSubtypes.AppendLine($"\t\t\tif (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))");
+                csSubtypes.AppendLine($"\t\t\tthrow new NotSupportedException($\"Unknown subtype for {{current.TableName}}, {{current.FCSUBTYPE.Value}}\");");
+
+                csSubtypes.AppendLine($"\t\t\tinstance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);");
+                csSubtypes.AppendLine($"\t\t\t}}");
+
                 csSubtypes.AppendLine($"\t\t\tif (plts_comp_scale != default) {{");
                 csSubtypes.AppendLine($"\t\t\t\t\t//instance.scaleMinimum = plts_comp_scale;");
                 csSubtypes.AppendLine($"\t\t\t}}");
                 csSubtypes.AppendLine($"");
-                csSubtypes.AppendLine($"\t\t\tAddCondition(instance.condition, feature);");
-                csSubtypes.AppendLine($"\t\t\tAddStatus(instance.status, feature);");
+                //csSubtypes.AppendLine($"\t\t\tAddCondition(instance.condition, feature);");
+                //csSubtypes.AppendLine($"\t\t\tAddStatus(instance.status, feature);");
                 csSubtypes.AppendLine($"\t\t\tinstance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);");
                 csSubtypes.AppendLine($"\t\t\tAddInformation(instance.information, feature);");
                 csSubtypes.AppendLine($"\t\t\tbuffer[\"ps\"] = ps101;");
                 csSubtypes.AppendLine($"\t\t\tbuffer[\"code\"] = instance.GetType().Name;");
                 csSubtypes.AppendLine($"\t\t\tbuffer[\"json\"] = System.Text.Json.JsonSerializer.Serialize(instance);");
-                csSubtypes.AppendLine($"\t\t\tbuffer[\"shape\"] = current.SHAPE;");
-                csSubtypes.AppendLine($"\t\t\tinsert.Insert(buffer);");
-                csSubtypes.AppendLine($"\t\t\tLogger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));");
-                csSubtypes.AppendLine($"\t\t\tconvertedCount++;");
+
+                //csSubtypes.AppendLine($"\t\t\tbuffer[\"shape\"] = current.SHAPE;");
+                //csSubtypes.AppendLine($"\t\t\tinsert.Insert(buffer);");
+                //csSubtypes.AppendLine($"\t\t\tLogger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));");
+                csSubtypes.AppendLine($"\t\t\tSetShape(buffer, current.SHAPE);");
+
+                csSubtypes.AppendLine($"\t\t\tvar featureN = featureClass.CreateRow(buffer);");
+                csSubtypes.AppendLine($"\t\t\tvar name = Convert.ToString(featureN[\"name\"]) ?? \"Unknown name\";");
+
+                csSubtypes.AppendLine($"\t\t\tif (FeatureRelations.Instance.HasRelated(current.GLOBALID)) {{");
+                csSubtypes.AppendLine($"\t\t\t\trelatedEquipment?.CreateRelated{shapeType}Equipment(current, instance, name, target, source);");
+                csSubtypes.AppendLine($"\t\t\t}}");
+
+                csSubtypes.AppendLine($"\t\t\tConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); ");
+
+                csSubtypes.AppendLine($"\t\t\tLogger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance)); ");
+
+                //csSubtypes.AppendLine($"\t\t\tconvertedCount++;");
 
 
                 csSubtypes.AppendLine($"\t\t}}");
@@ -232,7 +359,7 @@ namespace TestNisImporter
             var prefix = "NIS.";
 
             string filePath = IO.Path.GetFullPath(IO.Path.Combine(@".\..\..\..\..\..\..\src\Application\VortexLoader\S-57.esri\status.txt"));
-            
+
             StringBuilder content = new StringBuilder();
 
             List<Dataset> datasets = new List<Dataset>();
@@ -245,8 +372,9 @@ namespace TestNisImporter
             using (StreamWriter file = new StreamWriter(filePath)) {
                 foreach (var dataset in datasets) {
                     if (dataset is FeatureClass) {
-                        var subtypes = (dataset as FeatureClass).GetDefinition().GetSubtypes();
-                        var fields = (dataset as FeatureClass).GetDefinition().GetFields();
+                        var featureclass = (FeatureClass)dataset;
+                        var subtypes = featureclass.GetDefinition().GetSubtypes();
+                        var fields = featureclass.GetDefinition().GetFields();
                         var fieldHasData = new Dictionary<string, bool>();
                         var fieldAlias = new Dictionary<string, string>();
 
@@ -257,7 +385,10 @@ namespace TestNisImporter
 
                         var sortedDict = new SortedDictionary<int, string>();
 
-                        var searchCursor = (dataset as FeatureClass).Search(new QueryFilter() { WhereClause = "1=1" });
+                        var searchCursor = (dataset as FeatureClass)?.Search(new QueryFilter() { WhereClause = "1=1" });
+                        if (searchCursor == null) {
+                            throw new NotSupportedException("dataset is not a featureclass");
+                        }
 
                         var subtypeCount = new Dictionary<int, int>();
 
@@ -271,7 +402,7 @@ namespace TestNisImporter
 
                             foreach (var fieldName in fieldHasData.Keys) {
                                 if (DBNull.Value != current[fieldName]) {
-                                    fieldHasData[fieldName] = true; 
+                                    fieldHasData[fieldName] = true;
                                 }
                             }
 
@@ -280,7 +411,8 @@ namespace TestNisImporter
                                 int subtype = Convert.ToInt32(subtypeValue);
                                 if (subtypeCount.ContainsKey(subtype)) {
                                     subtypeCount[subtype] += 1;
-                                } else {
+                                }
+                                else {
                                     subtypeCount[subtype] = 1;
                                 }
                             }
@@ -309,6 +441,18 @@ namespace TestNisImporter
                 file.WriteLine(content.ToString());
             }
         }
+
+        [Fact]
+        public void TestRelation() {
+            var relation1 = new Relation(new(typeof(SpecialPurposeGeneralBeacon), "S1"), new(typeof(LightAirObstruction), "S2"));
+            var relation2 = new Relation(new(typeof(SpecialPurposeGeneralBeacon), "S1"), new(typeof(LightAirObstruction), "S2"));
+
+            var relations = new HashSet<Relation>();
+
+            Assert.True(relation1.Equals(relation2));
+
+        }
+
 
 
         [Fact]
@@ -393,7 +537,7 @@ namespace TestNisImporter
                 csFile.AppendLine("{");
 
                 foreach (var dataset in datasets) {
-
+                    var datasetName = dataset.GetName();
                     StringBuilder fields = new StringBuilder();
                     StringBuilder ctor = new StringBuilder();
                     StringBuilder objectClass = new StringBuilder();
@@ -412,6 +556,8 @@ namespace TestNisImporter
                         ctor.AppendLine($"\t\tpublic {dataset.GetName()} (Row row) {{");
                     }
 
+                    ctor.AppendLine($"\t\t\tbase.TableName = \"{datasetName}\";");
+
                     var fieldInfo = (Type: "Int32", Conversion: "Convert.ToInt32", DefaultValue: "default", Alias: string.Empty);
 
                     foreach (var field in datasetfields) {
@@ -429,8 +575,8 @@ namespace TestNisImporter
                             (FieldType)esriFieldType.esriFieldTypeSingle => (Type: "internal int?", Conversion: "Convert.ToInt32", Default: "default", Alias: field.AliasName),
                             (FieldType)esriFieldType.esriFieldTypeDate => (Type: "internal DateTime?", Conversion: "Convert.ToDateTime", Default: "default", Alias: field.AliasName),
                             (FieldType)esriFieldType.esriFieldTypeGUID => (Type: "internal Guid", Conversion: "Guid.Parse", Default: "Guid.Empty", Alias: field.AliasName),
-                            //(FieldType)esriFieldType.esriFieldTypeBlob => (Type: "byte[]", Conversion: "", Default: "new byte[fs.Length]", field.AliasName),
-                            //(FieldType)esriFieldType.esriFieldTypeRaster => (Type: "Raster", Conversion: "", Default: "default", field.AliasName),
+                            //(FieldType)esriFieldType.esriFieldTypeBlob => (S101Type: "byte[]", Conversion: "", Default: "new byte[fs.Length]", field.AliasName),
+                            //(FieldType)esriFieldType.esriFieldTypeRaster => (S101Type: "Raster", Conversion: "", Default: "default", field.AliasName),
                             (FieldType)esriFieldType.esriFieldTypeOID => (Type: "internal int?", Conversion: "Convert.ToInt32", Default: "default", Alias: field.AliasName),
                             (FieldType)esriFieldType.esriFieldTypeGlobalID => (Type: "internal Guid", Conversion: "Guid.Parse", Default: "Guid.Empty", Alias: field.AliasName),
                             (FieldType)esriFieldType.esriFieldTypeGeometry => (Type: "internal Geometry?", Conversion: "(Geometry?)", Default: "default", Alias: field.AliasName),
@@ -448,6 +594,7 @@ namespace TestNisImporter
                             }
                             if (fieldInfo.Type.ToLower().Contains("guid")) {
                                 fieldValue = $@"Guid.TryParse(Convert.ToString(feature[""{field.Name.ToUpper()}""]), out {field.Name.ToUpper()})";
+
                             }
 
                         }
@@ -487,11 +634,23 @@ namespace TestNisImporter
 
                         if (fieldInfo.Type.ToLower().Contains("guid")) {
                             ctor.AppendLine($"\t\t\t\t{fieldValue};");
+                            if (field.Name.ToUpper() == "GLOBALID") {
+                                ctor.AppendLine($"\t\t\t\tbase.GlobalId = this.GLOBALID;");
+                            }
                         }
                         else {
                             ctor.AppendLine($"\t\t\t\t{field.Name.ToUpper()} = {fieldValue};");
                             if (field.Name.ToUpper() == "VALIDATIONSTATUS") {
                                 ctor.AppendLine($"\t\t\t\t}}");
+                            }
+                            if (field.Name.ToUpper() == "SHAPE") {
+                                ctor.AppendLine($"\t\t\t\tbase.Shape = this.SHAPE;");
+                            }
+                            if (field.Name.ToUpper() == "PLTS_COMP_SCALE") {
+                                ctor.AppendLine($"\t\t\t\tbase.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;");
+                            }
+                            if (field.Name.ToUpper() == "FCSUBTYPE") {
+                                ctor.AppendLine($"\t\t\t\tbase.FcSubtype = this.FCSUBTYPE.Value;");
                             }
                         }
                         ctor.AppendLine($"\t\t\t}}");
@@ -509,10 +668,7 @@ namespace TestNisImporter
                 csFile.AppendLine(@"}");
                 file.WriteLine(csFile.ToString());
             }
-
-
         }
-
 
         [Fact]
         public void BuildImportS57ToGeodatabaseScripts() {

@@ -9,35 +9,42 @@ using System.Threading.Tasks;
 
 namespace S100Framework.Applications
 {
+
     internal static class GeodatabaseExtensions
     {
-        static bool _isInitialized = false;
-        private static IReadOnlyList<FeatureClassDefinition> _layerDefinitions;
-        private static IReadOnlyList<TableDefinition> _tableDefinitions;
 
-        private static void Initialize(this Geodatabase geodatabase) {
-            _layerDefinitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
-            _tableDefinitions = geodatabase.GetDefinitions<TableDefinition>();
-        }
 
-        public static IReadOnlyList<FeatureClassDefinition> Layers {
-            get { return _layerDefinitions; }
-            set { _layerDefinitions = value; }
-        }
+        internal static string? GetName(this Geodatabase geodatabase, string name) {
+            var _layerDefinitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
+            var _tableDefinitions = geodatabase.GetDefinitions<TableDefinition>();
 
-        internal static string GetName(this Geodatabase geodatabase, string name) {
-            if (!_isInitialized) { 
-                geodatabase.Initialize();
-                //_isInitialized = true;
-            }
-
-            var tableName = _layerDefinitions.FirstOrDefault<FeatureClassDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.OrdinalIgnoreCase))?.GetName();
+            var tableName = _layerDefinitions?.FirstOrDefault<FeatureClassDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();
             if (tableName == null) {
-                tableName = _tableDefinitions.FirstOrDefault<TableDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.OrdinalIgnoreCase))?.GetName();
-
+                tableName = _tableDefinitions?.FirstOrDefault<TableDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();
             }
             return tableName;
         }
+        internal static bool IsFeatureClass(this Geodatabase geodatabase, string name) {
+            var _layerDefinitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
+            var _tableDefinitions = geodatabase.GetDefinitions<TableDefinition>();
+
+            var tableName = _layerDefinitions?.FirstOrDefault<FeatureClassDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase) || e.GetName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();
+            if (tableName == null) {
+                tableName = _tableDefinitions?.FirstOrDefault<TableDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase) || e.GetName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();
+                return false;
+            }
+            return true;
+        }
+
+        internal static SortedDictionary<int, string> GetSubtypes(this FeatureClass featureClass) {
+            var subtypes = featureClass.GetDefinition().GetSubtypes();
+            var sortedDict = new SortedDictionary<int, string>();
+            foreach (var subtype in subtypes) {
+                sortedDict.Add(subtype.GetCode(), subtype.GetName());
+            }
+            return sortedDict;
+        }
+
 
         internal static bool IsTraditionallyVersioned(this Geodatabase geodatabase) {
             if (geodatabase.IsVersioningSupported()) {
