@@ -163,7 +163,6 @@ namespace VortexConceptApplication
                 dataAssessment = default,
                 featuresDetected = default,
                 fullSeafloorCoverageAchieved = default,
-                categoryOfTemporalVariationUnknown = default,
                 //dredgedDate = new DateOnly(2025, 2, 1)                
                 //categoryOfTemporalVariation = S100Framework.DomainModel.S101.categoryOfTemporalVariation.ExtremeEvent,
             };

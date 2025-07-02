@@ -31,31 +31,10 @@ namespace VortexConceptApplication
 
     public class TestQualityOfBathymetricData : QualityOfBathymetricData
     {
-        [EnumerationValue([1, 2, 3, 5, 6])]
-        [Required()]
-        public required categoryOfTemporalVariation? categoryOfTemporalVariationUnknown { get; set; } = default;
-
     }
 
     public class TestQualityOfBathymetricDataViewModel : QualityOfBathymetricDataViewModel
     {
-        private categoryOfTemporalVariation? _categoryOfTemporalVariationUnknown;
-
-        [Category("QualityOfBathymetricData")]
-        [Editor(typeof(UnknownEditor<categoryOfTemporalVariation>), typeof(UnknownEditor<categoryOfTemporalVariation>))]
-        [S100Framework.DomainModel.EnumerationAttribute(nameof(categoryOfTemporalVariationList), typeof(categoryOfTemporalVariation))]
-        public categoryOfTemporalVariation? categoryOfTemporalVariationUnknown {
-            get {
-                return _categoryOfTemporalVariationUnknown;
-            }
-            set {
-                SetValue(ref _categoryOfTemporalVariationUnknown, value);
-            }
-        }
-
-
-
-
         private String _interoperabilityIdentifier2;
 
         [Category("QualityOfBathymetricData")]
@@ -67,20 +46,6 @@ namespace VortexConceptApplication
                 SetValue(ref _interoperabilityIdentifier2, value);
             }
         }
-
-
-
-        public override FeatureViewModel<QualityOfBathymetricData> Load(QualityOfBathymetricData instance) {
-            _categoryOfTemporalVariationUnknown = default;
-            return base.Load(instance);
-        }
-
-        protected override void Validate() {
-            base.Validate();
-
-            //base.AddError("dataAssessment", "dataAssessment is invalid.");
-        }
-
     }
 
     public class TristateEditor<T> : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor

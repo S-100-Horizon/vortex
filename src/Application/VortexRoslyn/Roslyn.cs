@@ -61,10 +61,10 @@ namespace S100Framework.Applications
                 names = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
                 builderDomainModel.AppendLine($"\t\tpublic static string[] FeatureAssociationTypes => [{string.Join(',', names.Select(e => $"\"{e}\""))}];");
 
-                names = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.InvariantCultureIgnoreCase)).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
+                names = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.OrdinalIgnoreCase)).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
                 builderDomainModel.AppendLine($"\t\tpublic static string[] InformationTypes => [{string.Join(',', names.Select(e => $"\"{e}\""))}];");
 
-                names = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.InvariantCultureIgnoreCase)).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
+                names = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.OrdinalIgnoreCase)).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
                 builderDomainModel.AppendLine($"\t\tpublic static string[] FeatureTypes => [{string.Join(',', names.Select(e => $"\"{e}\""))}];");
 
                 builderDomainModel.AppendLine("\t\tpublic static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {");
@@ -117,6 +117,8 @@ namespace S100Framework.Applications
                 { "DateTime?", (code) => $"{code}.HasValue" },
                 { "DateOnly?", (code) => $"{code}.HasValue" },
                 { "TimeOnly?", (code) => $"{code}.HasValue" },
+                { "string", (code) => $"!string.IsNullOrEmpty({code})" },
+                { "string?", (code) => $"!string.IsNullOrEmpty({code})" },
                 { "String", (code) => $"!string.IsNullOrEmpty({code})" },
                 { "String?", (code) => $"!string.IsNullOrEmpty({code})" },
             };
@@ -171,8 +173,12 @@ namespace S100Framework.Applications
                     builderDomainModel.AppendLine();
 
                     editorBuilders.Add(code, (b, lower, upper) => {
-                        if (lower > 1 || (upper.HasValue && upper.Value > 1))
+                        if (lower > 1 || (upper.HasValue && upper.Value > 1)) {
                             b.AppendLine($"\t\t[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]");
+                        }
+                        else if (lower == 1 && upper.HasValue && upper.Value == 1) {
+                            b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownEditor<{code}?>), typeof(Editors.UnknownEditor<{code}?>))]");
+                        }
                         else
                             b.AppendLine($"\t\t[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]");
                         b.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({code}List), typeof({code}))]");
@@ -267,10 +273,22 @@ namespace S100Framework.Applications
                     };
                     knowTypesPrefix.Add(code, prefix);
 
-                    if (e.Element(XName.Get("valueType", scope_S100))!.Value.Equals("s100_truncateddate", StringComparison.InvariantCultureIgnoreCase)) {
+                    if (e.Element(XName.Get("valueType", scope_S100))!.Value.Equals("s100_truncateddate", StringComparison.OrdinalIgnoreCase)) {
                         editorBuilders.Add(code, (b, lower, upper) => {
                             if (lower > 1 || (upper.HasValue && upper.Value > 1))
                                 b.AppendLine($"\t\t[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]");
+                            else if (lower == 1 && upper.HasValue && upper.Value == 1)
+                                b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]");
+                        });
+                    }
+                    else {
+                        editorBuilders.Add(code, (b, lower, upper) => {
+                            if (lower == 1 && upper.HasValue && upper.Value == 1) {
+                                if (prefix.Equals("string", StringComparison.OrdinalIgnoreCase))
+                                    b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]");
+                                else
+                                    b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownEditor<{prefix}?>), typeof(Editors.UnknownEditor<{prefix}?>))]");
+                            }
                         });
                     }
 
@@ -697,8 +715,8 @@ namespace S100Framework.Applications
             List<string> xmlElements;
 
 
-            xmlElements = [.. productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.InvariantCultureIgnoreCase)).Select(e => "InformationTypes." + e.Element(XName.Get("code", scope_S100))!.Value),
-                            .. productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.InvariantCultureIgnoreCase)).Select(e => "FeatureTypes." + e.Element(XName.Get("code", scope_S100))!.Value)];
+            xmlElements = [.. productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.OrdinalIgnoreCase )).Select(e => "InformationTypes." + e.Element(XName.Get("code", scope_S100))!.Value),
+                            .. productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager).Where(e => e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.OrdinalIgnoreCase )).Select(e => "FeatureTypes." + e.Element(XName.Get("code", scope_S100))!.Value)];
 
 
             builderDomainModel.AppendLine($"\t[XmlType({xmlTypeNamespace}, TypeName = \"members\")]");

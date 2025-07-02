@@ -61,7 +61,7 @@ namespace S100Framework.Applications
                         SetShape(bufferPointset, MultipointBuilderEx.CreateMultipoint(mappoint));
                         SetDrawingIndex(bufferPointset, current.PLTS_COMP_SCALE!.Value);
 
-                        if (quasou == default || !string.Equals(quasou, "5", StringComparison.InvariantCultureIgnoreCase)) {
+                        if (quasou == default || !string.Equals(quasou, "5", StringComparison.OrdinalIgnoreCase)) {
                             var sounding = new Sounding {
                             };
                             if (quasou != default) {

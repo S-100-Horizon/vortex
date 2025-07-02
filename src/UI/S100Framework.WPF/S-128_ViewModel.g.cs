@@ -181,6 +181,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class customPaperSizeViewModel : ViewModelBase {
 		private decimal _paperWidth ;
 
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal paperWidth {
 			get {
 				return _paperWidth;
@@ -191,6 +192,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private decimal _paperLength ;
 
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal paperLength {
 			get {
 				return _paperLength;
@@ -232,6 +234,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class defaultLocaleViewModel : ViewModelBase {
 		private String _characterEncoding  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String characterEncoding {
 			get {
 				return _characterEncoding;
@@ -242,6 +245,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _countryName  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String countryName {
 			get {
 				return _countryName;
@@ -306,6 +310,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _name  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String name {
 			get {
 				return _name;
@@ -528,6 +533,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _linkage  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String linkage {
 			get {
 				return _linkage;
@@ -621,6 +627,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class periodicDateRangeViewModel : ViewModelBase {
 		private String _dateEnd ;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String dateEnd {
 			get {
 				return _dateEnd;
@@ -631,6 +638,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _dateStart ;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String dateStart {
 			get {
 				return _dateStart;
@@ -682,6 +690,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _currency  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String currency {
 			get {
 				return _currency;
@@ -692,6 +701,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private decimal _price ;
 
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal price {
 			get {
 				return _price;
@@ -892,6 +902,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class productSpecificationViewModel : ViewModelBase {
 		private DateOnly _editionDate ;
 
+		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly editionDate {
 			get {
 				return _editionDate;
@@ -912,6 +923,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _name  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String name {
 			get {
 				return _name;
@@ -922,6 +934,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _version  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String version {
 			get {
 				return _version;
@@ -979,7 +992,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private digitalSignatureReference _digitalSignatureReference ;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<digitalSignatureReference?>), typeof(Editors.UnknownEditor<digitalSignatureReference?>))]
 		[DomainModel.EnumerationAttribute(nameof(digitalSignatureReferenceList), typeof(digitalSignatureReference))]
 		public digitalSignatureReference digitalSignatureReference {
 			get {
@@ -1019,6 +1032,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _fileLocator  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String fileLocator {
 			get {
 				return _fileLocator;
@@ -1029,6 +1043,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _fileName  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String fileName {
 			get {
 				return _fileName;
@@ -1059,7 +1074,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private supportFileFormat _supportFileFormat ;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<supportFileFormat?>), typeof(Editors.UnknownEditor<supportFileFormat?>))]
 		[DomainModel.EnumerationAttribute(nameof(supportFileFormatList), typeof(supportFileFormat))]
 		public supportFileFormat supportFileFormat {
 			get {
@@ -1074,7 +1089,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public supportFileFormat[] supportFileFormatList => [(supportFileFormat)1,(supportFileFormat)2,(supportFileFormat)3,(supportFileFormat)4,(supportFileFormat)5,(supportFileFormat)6,(supportFileFormat)7,(supportFileFormat)8,(supportFileFormat)9,(supportFileFormat)100];
 		private supportFilePurpose _supportFilePurpose ;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<supportFilePurpose?>), typeof(Editors.UnknownEditor<supportFilePurpose?>))]
 		[DomainModel.EnumerationAttribute(nameof(supportFilePurposeList), typeof(supportFilePurpose))]
 		public supportFilePurpose supportFilePurpose {
 			get {
@@ -1180,6 +1195,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class supportFileSpecificationViewModel : ViewModelBase {
 		private DateOnly _editionDate ;
 
+		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly editionDate {
 			get {
 				return _editionDate;
@@ -1190,6 +1206,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _name  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String name {
 			get {
 				return _name;
@@ -1200,6 +1217,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _version  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String version {
 			get {
 				return _version;
@@ -1244,6 +1262,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class serviceSpecificationViewModel : ViewModelBase {
 		private DateOnly _editionDate ;
 
+		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly editionDate {
 			get {
 				return _editionDate;
@@ -1254,6 +1273,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _name  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String name {
 			get {
 				return _name;
@@ -1264,6 +1284,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _version  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String version {
 			get {
 				return _version;
@@ -1423,6 +1444,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class telecommunicationsViewModel : ViewModelBase {
 		private String _contactInstructions  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String contactInstructions {
 			get {
 				return _contactInstructions;
@@ -1433,6 +1455,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String _telecommunicationIdentifier  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String telecommunicationIdentifier {
 			get {
 				return _telecommunicationIdentifier;
@@ -1504,6 +1527,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private DateOnly _issueDate ;
 
+		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly issueDate {
 			get {
 				return _issueDate;
@@ -1570,6 +1594,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public typeOfTimeIntervalUnit[] typeOfTimeIntervalUnitList => [(typeOfTimeIntervalUnit)1,(typeOfTimeIntervalUnit)2,(typeOfTimeIntervalUnit)3,(typeOfTimeIntervalUnit)4];
 		private int _valueOfTime ;
 
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int valueOfTime {
 			get {
 				return _valueOfTime;
@@ -1621,6 +1646,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class referenceToNMViewModel : ViewModelBase {
 		private DateOnly _publicationDate ;
 
+		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly publicationDate {
 			get {
 				return _publicationDate;
@@ -1677,6 +1703,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class weekOfYearViewModel : ViewModelBase {
 		private int _weekNumber ;
 
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int weekNumber {
 			get {
 				return _weekNumber;
@@ -1687,6 +1714,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private int _yearNumber ;
 
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int yearNumber {
 			get {
 				return _yearNumber;
@@ -1954,7 +1982,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private categoryOfProductMapping _categoryOfProductMapping ;
 
 		[Category("ProductMapping")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<categoryOfProductMapping?>), typeof(Editors.UnknownEditor<categoryOfProductMapping?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfProductMappingList), typeof(categoryOfProductMapping))]
 		public categoryOfProductMapping categoryOfProductMapping {
 			get {
@@ -2028,6 +2056,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private int _catalogueSectionNumber ;
 
 		[Category("CatalogueSectionHeader")]
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int catalogueSectionNumber {
 			get {
 				return _catalogueSectionNumber;
@@ -2101,6 +2130,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String _contactInstructions  = string.Empty;
 
 		[Category("ContactDetails")]
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String contactInstructions {
 			get {
 				return _contactInstructions;
@@ -2353,6 +2383,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String _agencyResponsibleForProduction  = string.Empty;
 
 		[Category("ProducerInformation")]
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String agencyResponsibleForProduction {
 			get {
 				return _agencyResponsibleForProduction;
@@ -2408,6 +2439,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String _distributorName  = string.Empty;
 
 		[Category("DistributorInformation")]
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String distributorName {
 			get {
 				return _distributorName;
@@ -2496,6 +2528,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private Boolean _notForNavigation  = false;
 
 		[Category("CatalogueElement")]
+		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
 		public Boolean notForNavigation {
 			get {
 				return _notForNavigation;
@@ -2742,6 +2775,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private DateOnly _issueDate ;
 
 		[Category("ElectronicProduct")]
+		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly issueDate {
 			get {
 				return _issueDate;
@@ -2764,7 +2798,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private typeOfProductFormat _typeOfProductFormat ;
 
 		[Category("ElectronicProduct")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<typeOfProductFormat?>), typeof(Editors.UnknownEditor<typeOfProductFormat?>))]
 		[DomainModel.EnumerationAttribute(nameof(typeOfProductFormatList), typeof(typeOfProductFormat))]
 		public typeOfProductFormat typeOfProductFormat {
 			get {
@@ -3042,6 +3076,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private Boolean _notForNavigation  = false;
 
 		[Category("CatalogueElement")]
+		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
 		public Boolean notForNavigation {
 			get {
 				return _notForNavigation;
@@ -3266,6 +3301,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private DateOnly _editionDate ;
 
 		[Category("PhysicalProduct")]
+		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly editionDate {
 			get {
 				return _editionDate;
@@ -3587,6 +3623,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private Boolean _notForNavigation  = false;
 
 		[Category("CatalogueElement")]
+		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
 		public Boolean notForNavigation {
 			get {
 				return _notForNavigation;
@@ -3679,7 +3716,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private typeOfProductFormat _typeOfProductFormat ;
 
 		[Category("S100Service")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<typeOfProductFormat?>), typeof(Editors.UnknownEditor<typeOfProductFormat?>))]
 		[DomainModel.EnumerationAttribute(nameof(typeOfProductFormatList), typeof(typeOfProductFormat))]
 		public typeOfProductFormat typeOfProductFormat {
 			get {

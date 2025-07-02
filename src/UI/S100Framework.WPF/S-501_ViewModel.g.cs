@@ -143,6 +143,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class qRouteChannelWidthViewModel : ViewModelBase {
 		private decimal _rightQRouteWidth ;
 
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal rightQRouteWidth {
 			get {
 				return _rightQRouteWidth;
@@ -242,6 +243,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private Boolean _multiplicityKnown  = false;
 
+		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
 		public Boolean multiplicityKnown {
 			get {
 				return _multiplicityKnown;
@@ -293,6 +295,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private String _linkage  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String linkage {
 			get {
 				return _linkage;
@@ -347,7 +350,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class topmarkViewModel : ViewModelBase {
 		private topmarkDaymarkShape _topmarkDaymarkShape ;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<topmarkDaymarkShape?>), typeof(Editors.UnknownEditor<topmarkDaymarkShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(topmarkDaymarkShapeList), typeof(topmarkDaymarkShape))]
 		public topmarkDaymarkShape topmarkDaymarkShape {
 			get {
@@ -456,6 +459,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public nameUsage[] nameUsageList => [(nameUsage)1,(nameUsage)2];
 		private String _name  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String name {
 			get {
 				return _name;
@@ -466,6 +470,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private String _language  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String language {
 			get {
 				return _language;
@@ -561,6 +566,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class altitudeRangeViewModel : ViewModelBase {
 		private int _minimumAltitude ;
 
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int minimumAltitude {
 			get {
 				return _minimumAltitude;
@@ -571,6 +577,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private int _maximumAltitude ;
 
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int maximumAltitude {
 			get {
 				return _maximumAltitude;
@@ -612,6 +619,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class altitudeViewModel : ViewModelBase {
 		private int _minimumAltitude ;
 
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int minimumAltitude {
 			get {
 				return _minimumAltitude;
@@ -622,6 +630,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private int _maximumAltitude ;
 
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int maximumAltitude {
 			get {
 				return _maximumAltitude;
@@ -677,7 +686,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 		private lightCharacteristic _lightCharacteristic ;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<lightCharacteristic?>), typeof(Editors.UnknownEditor<lightCharacteristic?>))]
 		[DomainModel.EnumerationAttribute(nameof(lightCharacteristicList), typeof(lightCharacteristic))]
 		public lightCharacteristic lightCharacteristic {
 			get {
@@ -758,6 +767,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private decimal _verticalClearanceValue ;
 
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
@@ -881,6 +891,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private String _language  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String language {
 			get {
 				return _language;
@@ -961,7 +972,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class firstSourceInformationViewModel : ViewModelBase {
 		private firstSensor _firstSensor ;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<firstSensor?>), typeof(Editors.UnknownEditor<firstSensor?>))]
 		[DomainModel.EnumerationAttribute(nameof(firstSensorList), typeof(firstSensor))]
 		public firstSensor firstSensor {
 			get {
@@ -1030,6 +1041,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class horizontalClearanceFixedViewModel : ViewModelBase {
 		private decimal _horizontalClearanceValue ;
 
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal horizontalClearanceValue {
 			get {
 				return _horizontalClearanceValue;
@@ -1091,6 +1103,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private decimal _uncertaintyFixed ;
 
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
@@ -1142,6 +1155,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private int _frequencyShoreStationTransmits ;
 
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int frequencyShoreStationTransmits {
 			get {
 				return _frequencyShoreStationTransmits;
@@ -1183,6 +1197,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class vesselMeasurementsSpecificationViewModel : ViewModelBase {
 		private decimal _vesselsCharacteristicsValue ;
 
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal vesselsCharacteristicsValue {
 			get {
 				return _vesselsCharacteristicsValue;
@@ -1193,7 +1208,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private vesselsCharacteristics _vesselsCharacteristics ;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<vesselsCharacteristics?>), typeof(Editors.UnknownEditor<vesselsCharacteristics?>))]
 		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsList), typeof(vesselsCharacteristics))]
 		public vesselsCharacteristics vesselsCharacteristics {
 			get {
@@ -1208,7 +1223,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public vesselsCharacteristics[] vesselsCharacteristicsList => [(vesselsCharacteristics)1,(vesselsCharacteristics)2,(vesselsCharacteristics)3,(vesselsCharacteristics)4,(vesselsCharacteristics)6,(vesselsCharacteristics)10,(vesselsCharacteristics)11];
 		private vesselsCharacteristicsUnit _vesselsCharacteristicsUnit ;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<vesselsCharacteristicsUnit?>), typeof(Editors.UnknownEditor<vesselsCharacteristicsUnit?>))]
 		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsUnitList), typeof(vesselsCharacteristicsUnit))]
 		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {
 			get {
@@ -1376,7 +1391,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private magneticAnomalyDetectorSignature _magneticAnomalyDetectorSignature ;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<magneticAnomalyDetectorSignature?>), typeof(Editors.UnknownEditor<magneticAnomalyDetectorSignature?>))]
 		[DomainModel.EnumerationAttribute(nameof(magneticAnomalyDetectorSignatureList), typeof(magneticAnomalyDetectorSignature))]
 		public magneticAnomalyDetectorSignature magneticAnomalyDetectorSignature {
 			get {
@@ -1435,6 +1450,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private decimal _speedMaximum ;
 
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal speedMaximum {
 			get {
 				return _speedMaximum;
@@ -1488,6 +1504,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private decimal _verticalClearanceValue ;
 
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
@@ -1562,6 +1579,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private String _sourceID  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String sourceID {
 			get {
 				return _sourceID;
@@ -1609,6 +1627,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
 		private decimal _uncertaintyFixed ;
 
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
@@ -1674,7 +1693,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<lightSectorViewModel> lightSector  { get; set; } = new ();
 		private lightCharacteristic _lightCharacteristic ;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<lightCharacteristic?>), typeof(Editors.UnknownEditor<lightCharacteristic?>))]
 		[DomainModel.EnumerationAttribute(nameof(lightCharacteristicList), typeof(lightCharacteristic))]
 		public lightCharacteristic lightCharacteristic {
 			get {
@@ -1755,6 +1774,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class orientationViewModel : ViewModelBase {
 		private decimal _orientationValue ;
 
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal orientationValue {
 			get {
 				return _orientationValue;
@@ -1806,6 +1826,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class directionHeadingViewModel : ViewModelBase {
 		private decimal _headingDownBearing ;
 
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal headingDownBearing {
 			get {
 				return _headingDownBearing;
@@ -1816,6 +1837,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private decimal _headingUpBearing ;
 
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal headingUpBearing {
 			get {
 				return _headingUpBearing;
@@ -1857,6 +1879,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class flightLevelViewModel : ViewModelBase {
 		private int _minimumFlightLevel ;
 
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int minimumFlightLevel {
 			get {
 				return _minimumFlightLevel;
@@ -1867,6 +1890,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private int _maximumFlightLevel ;
 
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int maximumFlightLevel {
 			get {
 				return _maximumFlightLevel;
@@ -1908,7 +1932,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class vesselSpeedLimitViewModel : ViewModelBase {
 		private speedUnits _speedUnits ;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<speedUnits?>), typeof(Editors.UnknownEditor<speedUnits?>))]
 		[DomainModel.EnumerationAttribute(nameof(speedUnitsList), typeof(speedUnits))]
 		public speedUnits speedUnits {
 			get {
@@ -1933,6 +1957,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private decimal _speedLimit ;
 
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal speedLimit {
 			get {
 				return _speedLimit;
@@ -1977,6 +2002,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class periodicDateRangeViewModel : ViewModelBase {
 		private String _dateStart ;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String dateStart {
 			get {
 				return _dateStart;
@@ -1987,6 +2013,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private String _dateEnd ;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String dateEnd {
 			get {
 				return _dateEnd;
@@ -1997,6 +2024,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private String _periodicDateEnd ;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String periodicDateEnd {
 			get {
 				return _periodicDateEnd;
@@ -2007,6 +2035,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private String _periodicDateStart ;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String periodicDateStart {
 			get {
 				return _periodicDateStart;
@@ -2054,6 +2083,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class shapeInformationViewModel : ViewModelBase {
 		private String _text  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String text {
 			get {
 				return _text;
@@ -2241,7 +2271,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class signalSequenceViewModel : ViewModelBase {
 		private signalStatus _signalStatus ;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<signalStatus?>), typeof(Editors.UnknownEditor<signalStatus?>))]
 		[DomainModel.EnumerationAttribute(nameof(signalStatusList), typeof(signalStatus))]
 		public signalStatus signalStatus {
 			get {
@@ -2256,6 +2286,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public signalStatus[] signalStatusList => [(signalStatus)1,(signalStatus)2];
 		private decimal _signalDuration ;
 
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal signalDuration {
 			get {
 				return _signalDuration;
@@ -2297,6 +2328,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class sectorInformationViewModel : ViewModelBase {
 		private String _text  = string.Empty;
 
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String text {
 			get {
 				return _text;
@@ -2475,6 +2507,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private decimal _sectorBearing ;
 
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal sectorBearing {
 			get {
 				return _sectorBearing;
@@ -2526,6 +2559,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private decimal _sectorBearing ;
 
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal sectorBearing {
 			get {
 				return _sectorBearing;
@@ -2746,7 +2780,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private buoyShape _buoyShape ;
 
 		[Category("InstallationBuoy")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
 		public buoyShape buoyShape {
 			get {
@@ -2940,6 +2974,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private decimal _depthRangeMaximumValue ;
 
 		[Category("DepthArea")]
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal depthRangeMaximumValue {
 			get {
 				return _depthRangeMaximumValue;
@@ -2964,6 +2999,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private decimal _depthRangeMinimumValue ;
 
 		[Category("DepthArea")]
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
@@ -3112,7 +3148,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private trafficFlow _trafficFlow ;
 
 		[Category("RadioCallingInPoint")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<trafficFlow?>), typeof(Editors.UnknownEditor<trafficFlow?>))]
 		[DomainModel.EnumerationAttribute(nameof(trafficFlowList), typeof(trafficFlow))]
 		public trafficFlow trafficFlow {
 			get {
@@ -3283,7 +3319,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private categoryOfPatrolArea _categoryOfPatrolArea ;
 
 		[Category("PatrolArea")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<categoryOfPatrolArea?>), typeof(Editors.UnknownEditor<categoryOfPatrolArea?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfPatrolAreaList), typeof(categoryOfPatrolArea))]
 		public categoryOfPatrolArea categoryOfPatrolArea {
 			get {
@@ -3592,7 +3628,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private jurisdiction _jurisdiction ;
 
 		[Category("MarineManagementArea")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<jurisdiction?>), typeof(Editors.UnknownEditor<jurisdiction?>))]
 		[DomainModel.EnumerationAttribute(nameof(jurisdictionList), typeof(jurisdiction))]
 		public jurisdiction jurisdiction {
 			get {
@@ -3846,6 +3882,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private decimal _valueOfDepthContour ;
 
 		[Category("DepthContour")]
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal valueOfDepthContour {
 			get {
 				return _valueOfDepthContour;
@@ -4327,6 +4364,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String _depthRestriction  = string.Empty;
 
 		[Category("MilitaryPracticeArea")]
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String depthRestriction {
 			get {
 				return _depthRestriction;
@@ -4776,7 +4814,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private categoryOfCardinalMark _categoryOfCardinalMark ;
 
 		[Category("CardinalBuoy")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<categoryOfCardinalMark?>), typeof(Editors.UnknownEditor<categoryOfCardinalMark?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfCardinalMarkList), typeof(categoryOfCardinalMark))]
 		public categoryOfCardinalMark categoryOfCardinalMark {
 			get {
@@ -4824,7 +4862,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private buoyShape _buoyShape ;
 
 		[Category("CardinalBuoy")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
 		public buoyShape buoyShape {
 			get {
@@ -5110,7 +5148,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private buoyShape _buoyShape ;
 
 		[Category("SafeWaterBuoy")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
 		public buoyShape buoyShape {
 			get {
@@ -6017,6 +6055,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String _nationality  = string.Empty;
 
 		[Category("NormalBaseline")]
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String nationality {
 			get {
 				return _nationality;
@@ -6673,7 +6712,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private jurisdiction _jurisdiction ;
 
 		[Category("AdministrationArea")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<jurisdiction?>), typeof(Editors.UnknownEditor<jurisdiction?>))]
 		[DomainModel.EnumerationAttribute(nameof(jurisdictionList), typeof(jurisdiction))]
 		public jurisdiction jurisdiction {
 			get {
@@ -6984,7 +7023,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private categoryOfDolphin _categoryOfDolphin ;
 
 		[Category("Dolphin")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<categoryOfDolphin?>), typeof(Editors.UnknownEditor<categoryOfDolphin?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfDolphinList), typeof(categoryOfDolphin))]
 		public categoryOfDolphin categoryOfDolphin {
 			get {
@@ -7419,7 +7458,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private beaconShape _beaconShape ;
 
 		[Category("IsolatedDangerBeacon")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<beaconShape?>), typeof(Editors.UnknownEditor<beaconShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(beaconShapeList), typeof(beaconShape))]
 		public beaconShape beaconShape {
 			get {
@@ -7869,7 +7908,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private buoyShape _buoyShape ;
 
 		[Category("IsolatedDangerBuoy")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
 		public buoyShape buoyShape {
 			get {
@@ -9483,6 +9522,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String _pictorialRepresentation  = string.Empty;
 
 		[Category("LightAirObstruction")]
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String pictorialRepresentation {
 			get {
 				return _pictorialRepresentation;
@@ -9932,7 +9972,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private buoyShape _buoyShape ;
 
 		[Category("MooringBuoy")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
 		public buoyShape buoyShape {
 			get {
@@ -10132,6 +10172,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private decimal _valueOfSounding ;
 
 		[Category("UnderwaterAwashRock")]
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal valueOfSounding {
 			get {
 				return _valueOfSounding;
@@ -10166,7 +10207,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private waterLevelEffect _waterLevelEffect ;
 
 		[Category("UnderwaterAwashRock")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<waterLevelEffect?>), typeof(Editors.UnknownEditor<waterLevelEffect?>))]
 		[DomainModel.EnumerationAttribute(nameof(waterLevelEffectList), typeof(waterLevelEffect))]
 		public waterLevelEffect waterLevelEffect {
 			get {
@@ -11471,7 +11512,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private waterLevelEffect _waterLevelEffect ;
 
 		[Category("Obstruction")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<waterLevelEffect?>), typeof(Editors.UnknownEditor<waterLevelEffect?>))]
 		[DomainModel.EnumerationAttribute(nameof(waterLevelEffectList), typeof(waterLevelEffect))]
 		public waterLevelEffect waterLevelEffect {
 			get {
@@ -12853,7 +12894,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private beaconShape _beaconShape ;
 
 		[Category("LateralBeacon")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<beaconShape?>), typeof(Editors.UnknownEditor<beaconShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(beaconShapeList), typeof(beaconShape))]
 		public beaconShape beaconShape {
 			get {
@@ -12896,7 +12937,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private categoryOfLateralMark _categoryOfLateralMark ;
 
 		[Category("LateralBeacon")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<categoryOfLateralMark?>), typeof(Editors.UnknownEditor<categoryOfLateralMark?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfLateralMarkList), typeof(categoryOfLateralMark))]
 		public categoryOfLateralMark categoryOfLateralMark {
 			get {
@@ -13696,6 +13737,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String _nationality  = string.Empty;
 
 		[Category("ArchipelagicBaseline")]
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String nationality {
 			get {
 				return _nationality;
@@ -13841,6 +13883,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private decimal _valueOfSounding ;
 
 		[Category("SmallBottomObject")]
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal valueOfSounding {
 			get {
 				return _valueOfSounding;
@@ -14966,7 +15009,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private waterLevelEffect _waterLevelEffect ;
 
 		[Category("Wreck")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<waterLevelEffect?>), typeof(Editors.UnknownEditor<waterLevelEffect?>))]
 		[DomainModel.EnumerationAttribute(nameof(waterLevelEffectList), typeof(waterLevelEffect))]
 		public waterLevelEffect waterLevelEffect {
 			get {
@@ -15597,7 +15640,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private categoryOfCompleteness _categoryOfCompleteness ;
 
 		[Category("CompletenessOfProductSpecification")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<categoryOfCompleteness?>), typeof(Editors.UnknownEditor<categoryOfCompleteness?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfCompletenessList), typeof(categoryOfCompleteness))]
 		public categoryOfCompleteness categoryOfCompleteness {
 			get {
@@ -15907,7 +15950,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private beaconShape _beaconShape ;
 
 		[Category("CardinalBeacon")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<beaconShape?>), typeof(Editors.UnknownEditor<beaconShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(beaconShapeList), typeof(beaconShape))]
 		public beaconShape beaconShape {
 			get {
@@ -15935,7 +15978,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private categoryOfCardinalMark _categoryOfCardinalMark ;
 
 		[Category("CardinalBeacon")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<categoryOfCardinalMark?>), typeof(Editors.UnknownEditor<categoryOfCardinalMark?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfCardinalMarkList), typeof(categoryOfCardinalMark))]
 		public categoryOfCardinalMark categoryOfCardinalMark {
 			get {
@@ -16538,6 +16581,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String _nationality  = string.Empty;
 
 		[Category("FisheryZone")]
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String nationality {
 			get {
 				return _nationality;
@@ -16757,6 +16801,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private decimal _depthRangeMinimumValue ;
 
 		[Category("DredgedArea")]
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
@@ -17224,7 +17269,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private waterLevelEffect _waterLevelEffect ;
 
 		[Category("ShorelineConstruction")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<waterLevelEffect?>), typeof(Editors.UnknownEditor<waterLevelEffect?>))]
 		[DomainModel.EnumerationAttribute(nameof(waterLevelEffectList), typeof(waterLevelEffect))]
 		public waterLevelEffect waterLevelEffect {
 			get {
@@ -17630,7 +17675,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private trafficFlow _trafficFlow ;
 
 		[Category("DeepWaterRoutePart")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<trafficFlow?>), typeof(Editors.UnknownEditor<trafficFlow?>))]
 		[DomainModel.EnumerationAttribute(nameof(trafficFlowList), typeof(trafficFlow))]
 		public trafficFlow trafficFlow {
 			get {
@@ -17682,6 +17727,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private decimal _depthRangeMinimumValue ;
 
 		[Category("DeepWaterRoutePart")]
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
@@ -17709,6 +17755,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private decimal _orientationValue ;
 
 		[Category("DeepWaterRoutePart")]
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal orientationValue {
 			get {
 				return _orientationValue;
@@ -18061,6 +18108,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private int _optimumDisplayScale ;
 
 		[Category("DataCoverage")]
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int optimumDisplayScale {
 			get {
 				return _optimumDisplayScale;
@@ -18072,6 +18120,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private int _minimumDisplayScale ;
 
 		[Category("DataCoverage")]
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int minimumDisplayScale {
 			get {
 				return _minimumDisplayScale;
@@ -18085,6 +18134,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private int _maximumDisplayScale ;
 
 		[Category("DataCoverage")]
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int maximumDisplayScale {
 			get {
 				return _maximumDisplayScale;
@@ -18181,7 +18231,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private waterLevelEffect _waterLevelEffect ;
 
 		[Category("SeabedArea")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<waterLevelEffect?>), typeof(Editors.UnknownEditor<waterLevelEffect?>))]
 		[DomainModel.EnumerationAttribute(nameof(waterLevelEffectList), typeof(waterLevelEffect))]
 		public waterLevelEffect waterLevelEffect {
 			get {
@@ -18289,7 +18339,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private buoyShape _buoyShape ;
 
 		[Category("SpecialPurposeGeneralBuoy")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
 		public buoyShape buoyShape {
 			get {
@@ -18689,6 +18739,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String _pictorialRepresentation  = string.Empty;
 
 		[Category("LightSectored")]
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String pictorialRepresentation {
 			get {
 				return _pictorialRepresentation;
@@ -19238,7 +19289,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private categoryOfLateralMark _categoryOfLateralMark ;
 
 		[Category("LateralBuoy")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<categoryOfLateralMark?>), typeof(Editors.UnknownEditor<categoryOfLateralMark?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfLateralMarkList), typeof(categoryOfLateralMark))]
 		public categoryOfLateralMark categoryOfLateralMark {
 			get {
@@ -19272,7 +19323,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private buoyShape _buoyShape ;
 
 		[Category("LateralBuoy")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
 		public buoyShape buoyShape {
 			get {
@@ -19671,6 +19722,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private decimal _orientationValue ;
 
 		[Category("DeepWaterRouteCentreline")]
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal orientationValue {
 			get {
 				return _orientationValue;
@@ -19684,7 +19736,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private trafficFlow _trafficFlow ;
 
 		[Category("DeepWaterRouteCentreline")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<trafficFlow?>), typeof(Editors.UnknownEditor<trafficFlow?>))]
 		[DomainModel.EnumerationAttribute(nameof(trafficFlowList), typeof(trafficFlow))]
 		public trafficFlow trafficFlow {
 			get {
@@ -19777,6 +19829,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private Boolean _basedOnFixedMarks  = false;
 
 		[Category("DeepWaterRouteCentreline")]
+		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
 		public Boolean basedOnFixedMarks {
 			get {
 				return _basedOnFixedMarks;
@@ -21522,6 +21575,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String _nationality  = string.Empty;
 
 		[Category("StraightTerritorialSeaBaseline")]
+		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String nationality {
 			get {
 				return _nationality;
@@ -21807,7 +21861,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private beaconShape _beaconShape ;
 
 		[Category("SafeWaterBeacon")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<beaconShape?>), typeof(Editors.UnknownEditor<beaconShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(beaconShapeList), typeof(beaconShape))]
 		public beaconShape beaconShape {
 			get {
@@ -22192,7 +22246,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private beaconShape _beaconShape ;
 
 		[Category("SpecialPurposeGeneralBeacon")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[Editor(typeof(Editors.UnknownEditor<beaconShape?>), typeof(Editors.UnknownEditor<beaconShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(beaconShapeList), typeof(beaconShape))]
 		public beaconShape beaconShape {
 			get {

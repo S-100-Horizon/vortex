@@ -1,5 +1,4 @@
-﻿using S100Framework.DomainModel.S501;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Text.RegularExpressions;
@@ -239,28 +238,68 @@ namespace S100Framework.WPF.Editors
         }
     }
 
-
-    public class UnknownEditor<T> : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor where T : unmanaged
+    public class UnknownStringEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
 
-            var instance = (T?)propertyItem.Value;
+            var instance = (String?)propertyItem.Value;
 
-            var panel = new DockPanel {
-                LastChildFill = true,
+            //var panel = new DockPanel {
+            //    LastChildFill = true,
+            //};
+
+            var panel = new Grid {
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Center,
             };
 
             var radioButtonUnknown = new RadioButton {
                 ToolTip = "[Unknown]",
                 GroupName = "Unknown",
                 Background = System.Windows.Media.Brushes.Orange,
-                IsChecked = !instance.HasValue,
+                IsChecked = string.IsNullOrEmpty(instance),
+                HorizontalAlignment = HorizontalAlignment.Left,
             };
+            //Panel.SetZIndex(radioButtonUnknown, 1);
             radioButtonUnknown.Checked += (s, e) => {
                 //OnPropertyChanged(nameof(instance));
             };
 
+            ITypeEditor editor = new TextBoxEditor();
+
             panel.Children.Add(radioButtonUnknown);
+
+            return panel;
+        }
+    }
+
+
+    public class UnknownEditor<T> : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    {
+        public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+
+            var instance = (T)propertyItem.Value;
+
+            //var panel = new DockPanel {
+            //    LastChildFill = true,
+            //};
+
+            var panel = new Grid {
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+
+            var radioButtonUnknown = new RadioButton {
+                ToolTip = "[Unknown]",
+                GroupName = "Unknown",
+                Background = System.Windows.Media.Brushes.Orange,
+                IsChecked = instance == null,
+                HorizontalAlignment = HorizontalAlignment.Left,
+            };
+            //Panel.SetZIndex(radioButtonUnknown, 1);
+            radioButtonUnknown.Checked += (s, e) => {
+                //OnPropertyChanged(nameof(instance));
+            };
 
             var type = typeof(T)!;
 
@@ -289,6 +328,8 @@ namespace S100Framework.WPF.Editors
                 BindingOperations.SetBinding(defaultEditor, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
                 panel.Children.Add(defaultEditor);
             }
+
+            panel.Children.Add(radioButtonUnknown);
 
             return panel;
         }
