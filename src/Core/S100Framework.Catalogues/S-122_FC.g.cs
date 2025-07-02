@@ -102,9 +102,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("Northnorthwest")]
 		[EnumMember(Value = "NNW")] 
 		Nnw = 16,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -153,9 +150,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("OnlineFileAccessProvidedIso191152014")]
 		[EnumMember(Value = "File Access")] 
 		FileAccess = 11,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -216,9 +210,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("SuezCanalGrossTonnageScgtIsDerivedWithANumberOfModificationsFromTheFormerNetRegisterTonnageOfTheMoorsomSystemAndWasEstablishedByTheInternationalCommissionOfConstantinopleInItsProtocolOf18December1873ItIsStillInUseAsAmendedByTheRulesOfNavigationOfTheSuezCanalAuthorityAndIsRegisteredInTheSuezCanalTonnageCertificate")]
 		[EnumMember(Value = "Suez Canal Gross Tonnage")] 
 		SuezCanalGrossTonnage = 14,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -271,9 +262,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("TheSuezCanalGrossTonnageScgtIsDerivedWithANumberOfModificationsFromTheFormerNetRegisterTonnageOfTheMoorsomSystemAndWasEstablishedByTheInternationalCommissionOfConstantinopleInItsProtocolOf18December1873ItIsStillInUseAsAmendedByTheRulesOfNavigationOfTheSuezCanalAuthorityAndIsRegisteredInTheSuezCanalTonnageCertificate")]
 		[EnumMember(Value = "Suez Canal Gross Tonnage")] 
 		SuezCanalGrossTonnage = 12,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -302,9 +290,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("TheTwoValuesAreNotEquivalentAdaptedHttpEnWikipediaOrgWikiLogical_connective")]
 		[EnumMember(Value = "Not equal to")] 
 		NotEqualTo = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -337,9 +322,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("TheSeventhDayOfTheWeek")]
 		[EnumMember(Value = "Saturday")] 
 		Saturday = 7,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -368,9 +350,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("UseOfFacilityWaterwayOrServiceIsNotRequired")]
 		[EnumMember(Value = "Not Required")] 
 		NotRequired = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -383,9 +362,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("VesselsWithTheseCharacteristicsAreExcludedFromTheRegulationRestrictionRecommendationNauticalInformation")]
 		[EnumMember(Value = "excluded")] 
 		Excluded = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -422,9 +398,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("MessagesAndOtherDataExchangedBetweenIndividualsUsingComputersInANetwork")]
 		[EnumMember(Value = "Email")] 
 		Email = 8,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -441,9 +414,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("TheServiceIsAvailableButNotManned")]
 		[EnumMember(Value = "Unmanned Operation")] 
 		UnmannedOperation = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -532,9 +502,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("HarmfulSubstancesAreThoseSubstancesWhichAreIdentifiedAsMarinePollutantsInTheInternationalMaritimeDangerousGoodsCodeImdgCodePackagedFormIsDefinedAsTheFormsOfContainmentSpecifiedForHarmfulSubstancesInTheImdgCode")]
 		[EnumMember(Value = "Harmful Substances in Packaged Form")] 
 		HarmfulSubstancesInPackagedForm = 21,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -575,9 +542,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("MaterialCarriedByAShipToEnsureItsStability")]
 		[EnumMember(Value = "Ballast")] 
 		Ballast = 9,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -598,9 +562,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("AChannelOrFrequencyToBeUsedForWorkingWithARadioStationWhenThePreferredWorkingChannelOrFrequencyIsBusyOrIsSufferingFromInterference")]
 		[EnumMember(Value = "Alternate Working")] 
 		AlternateWorking = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -665,9 +626,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("TheAgencyOrEstablishmentForCollectingDutiesTolls")]
 		[EnumMember(Value = "Customs")] 
 		Customs = 16,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -692,9 +650,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("AServiceEstablishedToProvidePortInformationWithoutInteractionBetweenTheCustomerAndTheServiceProviderThisInformationCouldBeInterAliaBerthingInformationAvailabilityOfPortServicesShippingSchedulesMeteorologicalAndHydrologicalData")]
 		[EnumMember(Value = "Local Port Service")] 
 		LocalPortService = 5,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -863,9 +818,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("ItemSelectedForModification")]
 		[EnumMember(Value = "Candidate for Modification")] 
 		CandidateForModification = 43,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1034,9 +986,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("AnAreaWithinWhichTheEmissionOfNoxIsRestricted")]
 		[EnumMember(Value = "NOx Emission Restricted")] 
 		NoxEmissionRestricted = 41,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1053,9 +1002,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("AnAreaSmallerThanTheNationInWhichItLies")]
 		[EnumMember(Value = "National Sub-Division")] 
 		NationalSubDivision = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1164,9 +1110,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("AnAreaWithinWhichTheShipPollutionEmissionIsControlled")]
 		[EnumMember(Value = "Ship Pollution Emission Control")] 
 		ShipPollutionEmissionControl = 33,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1211,9 +1154,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("InformationObtainedFromTheAnalysisOfTrafficData")]
 		[EnumMember(Value = "Traffic Data")] 
 		TrafficData = 14,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1230,9 +1170,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("TheWholeText")]
 		[EnumMember(Value = "Full Text")] 
 		FullText = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1245,9 +1182,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("TheVesselIsRegisteredOrEnrolledUnderANationalFlagDifferentFromThePortHarbourTerritorialSeaExclusiveEconomicZoneOrOtherAdministrativeAreaInWhichTheObjectThatPossessesThisAttributeAppliesOrIsLocated")]
 		[EnumMember(Value = "Foreign")] 
 		Foreign = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1260,9 +1194,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.ComponentModel.Description("AtLeastOneOfTheConditionsDescribedByTheOtherAttributesOfTheObjectOrSubAttributesOfTheSameComplexAttributesIsTrue")]
 		[EnumMember(Value = "Logical Disjunction")] 
 		LogicalDisjunction = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Serializable()]
@@ -1609,10 +1540,8 @@ namespace S100Framework.DomainModel.S122 {
 
 			public bool ShouldSerializedisplayName() { return displayName.HasValue; }
 
-			[Required()]
 			public String language {get;set;} = string.Empty;
 
-			[Required()]
 			public String name {get;set;} = string.Empty;
 		}
 
@@ -1667,7 +1596,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class onlineResource {
-			[Required()]
 			public String onlineResourceLinkageURL {get;set;} = string.Empty;
 
 			public String? protocol {get;set;} = default;
@@ -1702,17 +1630,14 @@ namespace S100Framework.DomainModel.S122 {
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
-			[Required()]
 			public decimal orientationValue {get;set;}
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
-			[Required()]
 			public String dateStart {get;set;}
 
-			[Required()]
 			public String dateEnd {get;set;}
 		}
 
@@ -1735,7 +1660,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitOne {
-			[Required()]
 			public decimal sectorBearing {get;set;}
 
 			public int? sectorLineLength {get;set;} = default;
@@ -1746,7 +1670,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitTwo {
-			[Required()]
 			public decimal sectorBearing {get;set;}
 
 			public int? sectorLineLength {get;set;} = default;
@@ -1801,18 +1724,14 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class vesselsMeasurements {
 			[EnumerationValue([1,2,3,4,6,7,8,9,10,11,12,13])]
-			[Required()]
 			public vesselsCharacteristics vesselsCharacteristics {get;set;}
 
-			[Required()]
 			public decimal vesselsCharacteristicsValue {get;set;}
 
 			[EnumerationValue([3,4,5,6,7,9])]
-			[Required()]
 			public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {get;set;}
 
 			[EnumerationValue([1,2,3,4,5,6])]
-			[Required()]
 			public comparisonOperator comparisonOperator {get;set;}
 		}
 
@@ -1901,10 +1820,8 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimit {
-			[Required()]
 			public sectorLimitOne sectorLimitOne {get;set;}
 
-			[Required()]
 			public sectorLimitTwo sectorLimitTwo {get;set;}
 		}
 
@@ -1924,7 +1841,6 @@ namespace S100Framework.DomainModel.S122 {
 
 			public bool ShouldSerializetelecomCarrier() { return !string.IsNullOrEmpty(telecomCarrier); }
 
-			[Required()]
 			public String telecommunicationIdentifier {get;set;} = string.Empty;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
@@ -2038,7 +1954,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PermissionType : InformationAssociation {
-			[Required()]
 			public categoryOfRelationship categoryOfRelationship {get;set;}
 
 			[JsonIgnore]
@@ -2051,7 +1966,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InclusionType : InformationAssociation {
-			[Required()]
 			public membership membership {get;set;}
 
 			[JsonIgnore]
@@ -2277,7 +2191,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Authority : InformationType {
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
-			[Required()]
 			public categoryOfAuthority categoryOfAuthority {get;set;}
 
 			public List<textContent> textContent {get;set;} = [];
@@ -2451,7 +2364,6 @@ namespace S100Framework.DomainModel.S122 {
 
 			public bool ShouldSerializescheduleByDayOfWeek() { return scheduleByDayOfWeek.Any(); }
 
-			[Required()]
 			public information information {get;set;}
 
 			[JsonIgnore]
@@ -2575,7 +2487,6 @@ namespace S100Framework.DomainModel.S122 {
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 
-			[Required()]
 			public String interoperabilityIdentifier {get;set;} = string.Empty;
 
 			public String? source {get;set;} = default;
@@ -2691,7 +2602,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MarineProtectedArea : FeatureType {
 			[EnumerationValue([1,2,3,4,5,6,7])]
-			[Required()]
 			public categoryOfMarineProtectedArea categoryOfMarineProtectedArea {get;set;}
 
 			[EnumerationValue([1,4,5,6,7,8,9,10,12,14,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33])]
@@ -2700,7 +2610,6 @@ namespace S100Framework.DomainModel.S122 {
 			public bool ShouldSerializecategoryOfRestrictedArea() { return categoryOfRestrictedArea.Any(); }
 
 			[EnumerationValue([1,2,3])]
-			[Required()]
 			public jurisdiction jurisdiction {get;set;}
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41])]
@@ -2762,7 +2671,6 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class VesselTrafficServiceArea : FeatureType {
 			[EnumerationValue([1,2,3,4,5])]
-			[Required()]
 			public categoryOfVesselTrafficService categoryOfVesselTrafficService {get;set;}
 
 			[JsonIgnore]

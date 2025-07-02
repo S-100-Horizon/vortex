@@ -82,7 +82,7 @@ namespace S100Framework.Applications
                                             "8" => natureOfSurfaceQualifyingTerms.Volcanic,
                                             "9" => natureOfSurfaceQualifyingTerms.Calcareous,
                                             "10" => natureOfSurfaceQualifyingTerms.Hard,
-                                            "-1" => natureOfSurfaceQualifyingTerms.Unknown,
+                                            "-1" => default,    //natureOfSurfaceQualifyingTerms.Unknown,
                                             _ => throw new ArgumentOutOfRangeException(nameof(current.NATSUR), "Invalid value for nature of surface qualifying terms.")
                                         };
                                         if (e.HasValue) {
@@ -91,8 +91,8 @@ namespace S100Framework.Applications
                                     }
                                 }
                             }
-                            
-                            natureOfSurface natureOfSurfaceValue = (natureOfSurface)(-1);
+
+                            natureOfSurface? natureOfSurfaceValue = default;    // (natureOfSurface)(-1);
 
                             if (current.NATSUR != default) {
                                 natureOfSurfaceValue = current.NATSUR switch {
@@ -109,7 +109,7 @@ namespace S100Framework.Applications
                                     "14" => natureOfSurface.Coral,
                                     "17" => natureOfSurface.Shells,
                                     "18" => natureOfSurface.Boulder,
-                                    "-32767" => (natureOfSurface)(-1),
+                                    "-32767" => default, //(natureOfSurface)(-1),
                                     _ => throw new ArgumentOutOfRangeException(nameof(current.NATSUR), "Invalid value for nature of surface.")
                                 };
                             }

@@ -42,9 +42,6 @@ namespace S100Framework.DomainModel.S124 {
 		[System.ComponentModel.Description("TheNameIsIntendedToBeDisplayedWhenTheEndUserSystemIsSetToAnAlternateNameTextDisplaySettingForExampleAnAlternateLanguage")]
 		[EnumMember(Value = "Alternate Name Display")] 
 		AlternateNameDisplay = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -97,9 +94,6 @@ namespace S100Framework.DomainModel.S124 {
 		[System.ComponentModel.Description("AListOfSerialNumbersOfLocalWarningsWhichAreInForce")]
 		[EnumMember(Value = "Local In-Force Bulletin")] 
 		LocalInForceBulletin = 12,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -116,9 +110,6 @@ namespace S100Framework.DomainModel.S124 {
 		[System.ComponentModel.Description("ReferenceToWarningsOrNoticesThatAreConsideredInForce")]
 		[EnumMember(Value = "In-Force")] 
 		InForce = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -143,9 +134,6 @@ namespace S100Framework.DomainModel.S124 {
 		[System.ComponentModel.Description("AnAreaWithinWhichSpeedIsRestricted")]
 		[EnumMember(Value = "Speed Restricted")] 
 		SpeedRestricted = 27,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Serializable()]
@@ -1773,7 +1761,6 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class chartAffected {
-			[Required()]
 			public String chartNumber {get;set;} = string.Empty;
 
 			public String? chartPlanNumber {get;set;} = default;
@@ -1781,7 +1768,6 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializechartPlanNumber() { return !string.IsNullOrEmpty(chartPlanNumber); }
 
 			[XmlIgnore]
-			[Required()]
 			public DateOnly editionDate {get;set;}
 
 			[JsonIgnore]
@@ -1820,58 +1806,47 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class information {
-			[Required()]
 			public String language {get;set;} = string.Empty;
 
-			[Required()]
 			public String text {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class locationName {
-			[Required()]
 			public String language {get;set;} = string.Empty;
 
-			[Required()]
 			public String text {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class messageSeriesIdentifier {
-			[Required()]
 			public String agencyResponsibleForProduction {get;set;} = string.Empty;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public String nameOfSeries {get;set;} = string.Empty;
 
 			public String? nationality {get;set;} = default;
 
 			public bool ShouldSerializenationality() { return !string.IsNullOrEmpty(nationality); }
 
-			[Required()]
 			public int warningNumber {get;set;}
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
-			[Required()]
 			public warningType warningType {get;set;}
 
-			[Required()]
 			public int year {get;set;}
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class navwarnTitle {
-			[Required()]
 			public String language {get;set;} = string.Empty;
 
-			[Required()]
 			public String text {get;set;} = string.Empty;
 		}
 
@@ -1902,10 +1877,8 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class FeatureName {
-			[Required()]
 			public String language {get;set;} = string.Empty;
 
-			[Required()]
 			public String Name {get;set;} = string.Empty;
 
 			[EnumerationValue([1,2,3])]
@@ -1929,7 +1902,6 @@ namespace S100Framework.DomainModel.S124 {
 
 			public bool ShouldSerializeinternationalChartAffected() { return !string.IsNullOrEmpty(internationalChartAffected); }
 
-			[Required()]
 			public String language {get;set;} = string.Empty;
 
 			public String? publicationAffected {get;set;} = default;
@@ -2042,11 +2014,9 @@ namespace S100Framework.DomainModel.S124 {
 
 			public bool ShouldSerializemessageSeriesIdentifier() { return messageSeriesIdentifier.Any(); }
 
-			[Required()]
 			public Boolean noMessageOnHand {get;set;} = false;
 
 			[EnumerationValue([1,2,3])]
-			[Required()]
 			public referenceCategory referenceCategory {get;set;}
 
 			[JsonIgnore]
@@ -2089,7 +2059,6 @@ namespace S100Framework.DomainModel.S124 {
 
 			public bool ShouldSerializelocality() { return locality.Any(); }
 
-			[Required()]
 			public messageSeriesIdentifier messageSeriesIdentifier {get;set;}
 
 			public List<navwarnTitle> navwarnTitle {get;set;} = [];
@@ -2100,14 +2069,11 @@ namespace S100Framework.DomainModel.S124 {
 
 			public bool ShouldSerializecancellationDate() { return cancellationDate.HasValue; }
 
-			[Required()]
 			public Boolean intService {get;set;} = false;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])]
-			[Required()]
 			public navwarnTypeGeneral navwarnTypeGeneral {get;set;}
 
-			[Required()]
 			public DateTime publicationTime {get;set;}
 
 			[JsonIgnore]
@@ -2152,7 +2118,6 @@ namespace S100Framework.DomainModel.S124 {
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange.Any(); }
 
-			[Required()]
 			public warningInformation warningInformation {get;set;}
 
 			public List<FeatureName> FeatureName {get;set;} = [];
@@ -2270,16 +2235,12 @@ namespace S100Framework.DomainModel.S124 {
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
-			[Required()]
 			public String text {get;set;} = string.Empty;
 
-			[Required()]
 			public int textOffsetBearing {get;set;}
 
-			[Required()]
 			public int textOffsetDistance {get;set;}
 
-			[Required()]
 			public Boolean textRotation {get;set;} = false;
 
 			[JsonIgnore]

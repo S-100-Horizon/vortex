@@ -179,7 +179,7 @@ namespace S100Framework.Applications
                                 instance.bridgeConstruction = bridgeConstruction.SuspensionBridge;
                             }
                             else if (current.CATBRG != default && current.CATBRG == "-32767") {
-                                instance.bridgeConstruction = bridgeConstruction.Unknown;
+                                instance.bridgeConstruction = default;  // bridgeConstruction.Unknown;
                                 instance.openingBridge = false;
                                 Logger.Current.DataError(objectid, tableName, longname, $"CATBRG is unknown hence OpeningBridge unknown - OpeningBridge set to false");
                             }
