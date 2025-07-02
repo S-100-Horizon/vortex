@@ -251,9 +251,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ATallSparLikeBeaconFittedWithAPermanentlySubmergedBuoyancyChamberTheLowerEndOfTheBodyIsSecuredToSeabedSinkerEitherByAFlexibleJointOrByACableUnderTension")]
 		[EnumMember(Value = "Buoyant Beacon")] 
 		BuoyantBeacon = 7,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -278,9 +275,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ConsistsOfTowersOnEachSideOfTheWatercourseConnectedByASystemOfGirdersOnWhichACarriageRuns")]
 		[EnumMember(Value = "Transporter Bridge")] 
 		TransporterBridge = 5,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -301,9 +295,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ABridgeSupportingAnArtificiallyElevatedChannelForTheConveyanceOfWater")]
 		[EnumMember(Value = "Aqueduct")] 
 		Aqueduct = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -328,9 +319,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AShapeTheSidesOfWhichAreSixEqualSquaresARegularHexahedron")]
 		[EnumMember(Value = "Cubic")] 
 		Cubic = 9,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -367,9 +355,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ASpeciallyConstructedShuttleShapedBuoyWhichIsUsedInIceConditions")]
 		[EnumMember(Value = "Ice Buoy")] 
 		IceBuoy = 8,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -406,9 +391,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AnAreaOfLandSetAsideForTheTakeOffAndLandingOfAeroplanesOrHelicoptersInTimesOfSearchAndRescue")]
 		[EnumMember(Value = "Search and Rescue Airfield")] 
 		SearchAndRescueAirfield = 9,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -453,9 +435,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ALocationNotDefinedByARegulatoryAuthorityThatHasBeenReportedToBeSuitableAndSafeForAnchoring")]
 		[EnumMember(Value = "Reported Anchorage")] 
 		ReportedAnchorage = 15,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -484,9 +463,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AComplexForHolidayMakersWithCottagesShopsAndEntertainmentOnSiteWhichIsMainlyPopulatedOnASeasonalBasis")]
 		[EnumMember(Value = "Holiday Village")] 
 		HolidayVillage = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -515,9 +491,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ACableUsedForTheTransmissionAndReceptionOfModulatedCommunicationWavesSignals")]
 		[EnumMember(Value = "Telecommunications Cable")] 
 		TelecommunicationsCable = 10,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -534,9 +507,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ACanalUsedToSupplyWaterForThePurposeOfIrrigation")]
 		[EnumMember(Value = "Irrigation")] 
 		Irrigation = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -557,9 +527,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("QuadrantBoundedByTheTrueBearingSwNwTakenFromThePointOfInterestItShouldBePassedToTheWestSideOfTheMark")]
 		[EnumMember(Value = "West Cardinal Mark")] 
 		WestCardinalMark = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -568,9 +535,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ServesAsAGovernmentCheckpointWhereCustomsDutiesAreCollectedTheFlowOfGoodsAreRegulatedAndRestrictionsEnforcedAndShipmentsOrVehiclesAreClearedForEnteringOrLeavingACountry")]
 		[EnumMember(Value = "Custom")] 
 		Custom = 1,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -599,9 +563,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AVerticalCliffFormingTheSeawardEdgeOfAnIceShelfRangingInHeightFrom2MetresTo50MetresOrMoreAboveSeaLevel")]
 		[EnumMember(Value = "Ice Coast")] 
 		IceCoast = 10,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -622,9 +583,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AnyOfVariousMechanicalDevicesForRaisingObjectsOrMaterials")]
 		[EnumMember(Value = "Lift/Elevator")] 
 		LiftElevator = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -649,9 +607,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("APowerfulTravellingCraneMountedOnAMovableGantryOfLargeSpan")]
 		[EnumMember(Value = "Goliath Crane")] 
 		GoliathCrane = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -668,9 +623,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AnOpeningDamAcrossAChannelWhichWhenRequiredIsClosedToControlFloodWaters")]
 		[EnumMember(Value = "Flood Barrage")] 
 		FloodBarrage = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -683,9 +635,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ADockInWhichWaterCanBeMaintainedAtAnyLevelByClosingAGateWhenTheWaterIsAtTheDesiredLevel")]
 		[EnumMember(Value = "Wet Dock")] 
 		WetDock = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -706,9 +655,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("APostOrGroupOfPostsDrivenIntoTheSeabedOrRiverbedUsedToAssistInBerthingOfVesselsByTakingUpSomeBerthingLoadsKeepVesselsFromPressingAgainstThePierStructureOrToProtectStructuresFromPossibleImpactByShips")]
 		[EnumMember(Value = "Fender or Breasting Dolphin")] 
 		FenderOrBreastingDolphin = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -733,9 +679,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AnAreaAtSeaWhereDisusedVesselsAreScuttled")]
 		[EnumMember(Value = "Vessel Dumping Ground")] 
 		VesselDumpingGround = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -752,9 +695,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ASolidManMadeBarrierOfGenerallyHeavyMaterialUsedAsAnEnclosureBoundaryOrForProtection")]
 		[EnumMember(Value = "Wall")] 
 		Wall = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -775,9 +715,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AHighSpeedWaterVesselForCivilianUse")]
 		[EnumMember(Value = "High Speed Ferry")] 
 		HighSpeedFerry = 5,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -798,9 +735,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ANetBuiltAtSeaForCatchingTunny")]
 		[EnumMember(Value = "Tunny Net")] 
 		TunnyNet = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -845,9 +779,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AHornUsesCompressedAirOrElectricityToVibrateADiaphragmAndExistsInAVarietyOfTypesWhichDifferGreatlyInTheirSoundAndPower")]
 		[EnumMember(Value = "Horn")] 
 		Horn = 10,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -884,9 +815,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AnythingServingAsABulwarkOrDefence")]
 		[EnumMember(Value = "Rampart")] 
 		Rampart = 9,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -911,9 +839,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ASlidingGateOrOtherContrivanceForChangingTheLevelOfABodyOfWaterByControllingTheFlowIntoOrOutOfIt")]
 		[EnumMember(Value = "Sluice")] 
 		Sluice = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -974,9 +899,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("TheServicesOfAPersonWhoDirectsTheMovementsOfAVesselThroughPilotWatersUsuallyAPersonWhoHasDemonstratedExtensiveKnowledgeOfChannelsAidsToNavigationDangersToNavigationEtcInAParticularAreaAndIsLicensedForThatAreaAreAvailable")]
 		[EnumMember(Value = "Pilotage Service")] 
 		PilotageService = 15,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1009,9 +931,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("APermanentlyMooredFloatingStructureOftenConstructedFromOldShipsUsedForTrainingPurposes")]
 		[EnumMember(Value = "Training Vessel")] 
 		TrainingVessel = 7,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1028,9 +947,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("SeaIceThatIsMoreThanOneYearOldInContrastToWinterIceTheWmoCodeDefinesPolarIceAsAnySeaIceMoreThanOneYearOldAndMoreThan3MetresThick")]
 		[EnumMember(Value = "Polar Ice")] 
 		PolarIce = 8,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1043,9 +959,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ALargeMooringBuoyUsedByTankersToLoadAndUnloadInPortApproachesOrInOffshoreOilAndGasFields")]
 		[EnumMember(Value = "Single Buoy Mooring")] 
 		SingleBuoyMooring = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1134,9 +1047,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AWatercourseThatIsPermanentlyDryOrDryExceptForTheRainySeason")]
 		[EnumMember(Value = "Wadi")] 
 		Wadi = 21,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1245,9 +1155,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ABarrierToCheckOrConfineAnythingInMotionParticularlyOneConstructedToHoldBackWaterAndRaiseItsLevelToFormAReservoirOrToPreventFlooding")]
 		[EnumMember(Value = "Dam")] 
 		Dam = 27,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1268,9 +1175,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AtAPointWhereAChannelDividesWhenProceedingInTheConventionalDirectionOfBuoyageThePreferredChannelOrPrimaryRouteIsIndicatedByAModifiedStarboardHandLateralMark")]
 		[EnumMember(Value = "Preferred Channel to Port Lateral Mark")] 
 		PreferredChannelToPortLateralMark = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1331,9 +1235,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AGroupOfLightsOfIdenticalCharacterAndAlmostIdenticalPositionThatAreDisposedVertically")]
 		[EnumMember(Value = "Vertically Disposed")] 
 		VerticallyDisposed = 20,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1358,9 +1259,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AnAreaWherePearlsAreArtificiallyCultivated")]
 		[EnumMember(Value = "Pearl Culture Farm")] 
 		PearlCultureFarm = 5,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1385,9 +1283,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AnAreaForShootingPistolsRiflesAndMachineGunsEtcAtATarget")]
 		[EnumMember(Value = "Small Arms Firing Range")] 
 		SmallArmsFiringRange = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1404,9 +1299,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AnAreaSetAsideForTheMooringOfTankers")]
 		[EnumMember(Value = "Mooring Area for Tankers")] 
 		MooringAreaForTankers = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1423,9 +1315,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ALinePassingThroughOneOrMoreClearlyDefinedObjectsAlongThePathOfWhichAVesselCanApproachSafelyUpToACertainDistanceOff")]
 		[EnumMember(Value = "Leading Line Bearing a Recommended Track")] 
 		LeadingLineBearingARecommendedTrack = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1514,9 +1403,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("OneOfSeveralGeneraOfTropicalTreesOrShrubsWhichProduceManyPropRootsAndGrowAlongLowLyingCoastsIntoShallowWater")]
 		[EnumMember(Value = "Mangrove")] 
 		Mangrove = 23,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1565,9 +1451,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AFloatingStructureAnchoredToTheSeabedForStoringOil")]
 		[EnumMember(Value = "Floating Oil Tank")] 
 		FloatingOilTank = 11,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1596,9 +1479,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ALargeScalePhotovoltaicSystemPvSystemDesignedForTheSupplyOfMerchantPowerIntoTheElectricityGridTheyAreDifferentiatedFromMostBuildingMountedAndOtherDecentralisedSolarPowerApplicationsBecauseTheySupplyPowerAtTheUtilityLevelRatherThanToALocalUserOrUsersTheGenericExpressionUtilityScaleSolarIsSometimesUsedToDescribeThisTypeOfProject")]
 		[EnumMember(Value = "Solar Farm")] 
 		SolarFarm = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1611,9 +1491,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AFloatingTubeShapedStructureWithACurtain2MetreHangingUnderItBelowTheSurfaceWhichPreventsTheSpreadOfOil")]
 		[EnumMember(Value = "Floating Oil Barrier")] 
 		FloatingOilBarrier = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1634,9 +1511,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AGeneralNameForBridgesOfWhichPartOrTheEntireSpanOfTheBridgeMayBeRaisedOrDrawnAsideToAllowShipsToPassThrough")]
 		[EnumMember(Value = "Drawbridge")] 
 		Drawbridge = 7,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1669,9 +1543,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("APostWhereToWhichSomethingSuchAsACraftCanBeMoored")]
 		[EnumMember(Value = "Mooring Post")] 
 		MooringPost = 8,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1688,9 +1559,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("PilotEmbarksFromAVesselOrDisembarksToAVesselWhichComesOutFromTheShoreOnRequest")]
 		[EnumMember(Value = "Pilot Comes Out from Shore")] 
 		PilotComesOutFromShore = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1719,9 +1587,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AHighPressureSubSurfacePipelineUsuallyOnTheSeafloorWithHolesEmittingACurtainOfAirBubblesItsUsesIncludeThePreventionOfAcousticTransmissionThroughTheWaterPreventingTheSpreadOfSurfaceDebrisOrFloatingLiquidsControllingTheMovementOfFish")]
 		[EnumMember(Value = "Bubble Curtain")] 
 		BubbleCurtain = 7,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1734,9 +1599,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ThePreferredChoiceInExtraordinaryConditions")]
 		[EnumMember(Value = "Alternate")] 
 		Alternate = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1789,9 +1651,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ALargeScalePhotovoltaicSystemPvSystemDesignedForTheSupplyOfMerchantPowerIntoTheElectricityGridTheyAreDifferentiatedFromMostBuildingMountedAndOtherDecentralisedSolarPowerApplicationsBecauseTheySupplyPowerAtTheUtilityLevelRatherThanToALocalUserOrUsersTheGenericExpressionUtilityScaleSolarIsSometimesUsedToDescribeThisTypeOfProject")]
 		[EnumMember(Value = "Solar Farm")] 
 		SolarFarm = 12,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1820,9 +1679,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ATowerOrPylonSupportingASuspendedPipelineOrPipelines")]
 		[EnumMember(Value = "Pipeline Pylon")] 
 		PipelinePylon = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1835,9 +1691,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AShoreBasedStationWhichTheMarinerCanContactByRadioToObtainAPosition")]
 		[EnumMember(Value = "Coast Radar Station")] 
 		CoastRadarStation = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1854,9 +1707,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ARadarBeaconThatMayBeUsedInConjunctionWithAtLeastOneOtherRadarBeaconToIndicateALeadingLine")]
 		[EnumMember(Value = "Leading Racon/Radar Transponder Beacon")] 
 		LeadingRaconRadarTransponderBeacon = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1885,9 +1735,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AnAisShoreStationForUseByCompetentAuthoritiesToProvideAisServiceManageTheDataLinkAndEnableEffectiveShipToShoreShoreToShipTransmissionOfInformation")]
 		[EnumMember(Value = "AIS Base Station")] 
 		AisBaseStation = 20,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1920,9 +1767,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("APlaceWhereFirstAidEquipmentIsAvailable")]
 		[EnumMember(Value = "First Aid Equipment")] 
 		FirstAidEquipment = 8,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2023,9 +1867,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AnAreaWithinWhichRecreationalActivitiesRegularlyTakePlaceAndThereforeVesselMovementMayBeRestricted")]
 		[EnumMember(Value = "Recreation Area")] 
 		RecreationArea = 32,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2054,9 +1895,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ASecondaryRoadInAnUrbanAreaForLocalTraffic")]
 		[EnumMember(Value = "Minor Street")] 
 		MinorStreet = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2073,9 +1911,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("TheServiceIsAvailableButNotManned")]
 		[EnumMember(Value = "Unmanned Operation")] 
 		UnmannedOperation = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2300,9 +2135,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ASeabedVolcanoSubmergedAtTheChartSoundingDatumWhichMayOrMayNotBeActive")]
 		[EnumMember(Value = "Submarine Volcano")] 
 		SubmarineVolcano = 56,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2387,9 +2219,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ASectionOfWallDesignatedForTyingUpVesselsAwaitingTransitBollardsAndMooringDevicesAreAvailableForBothLargeAndSmallShips")]
 		[EnumMember(Value = "Tie-Up Wall")] 
 		TieUpWall = 23,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2434,9 +2263,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("VisualSignalLightsPlacedInAWaterwayToIndicateToShippingTheMovementsAuthorizedAtTheTimeAtWhichTheyAreShown")]
 		[EnumMember(Value = "Traffic Control Light")] 
 		TrafficControlLight = 10,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2501,9 +2327,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ADeviceForMeasuringAndConveyingInformationAboutTheWaterLevelNonTidalInTheAreaInQuestion")]
 		[EnumMember(Value = "Water Level Gauge")] 
 		WaterLevelGauge = 15,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2524,9 +2347,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ATowerSupportingAnElevatedStorageTankOfWater")]
 		[EnumMember(Value = "Water Tower")] 
 		WaterTower = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2559,9 +2379,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AMassOfDetritusFormingAPrecipitousStrongSlopeUponAMountainSideAlsoTheMaterialComposingSuchASlope")]
 		[EnumMember(Value = "Scree")] 
 		Scree = 7,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2694,9 +2511,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("APlaceWhereAVesselIsPatrolledByASecurityServiceOrStoredInASecureLockup")]
 		[EnumMember(Value = "Guard and/or Security Service")] 
 		GuardAndOrSecurityService = 33,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2945,9 +2759,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ASurfaceFollowingBuoyUsedToMeasureWaveActivity")]
 		[EnumMember(Value = "Wave Recorder")] 
 		WaveRecorder = 63,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2976,9 +2787,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("NotHavingBeenAssessed")]
 		[EnumMember(Value = "Unassessed")] 
 		Unassessed = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3003,9 +2811,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ACoveredOrPartiallyCoveredTerminalForTheLoadingAndUnloadingOfPassengers")]
 		[EnumMember(Value = "Covered Passenger Terminal")] 
 		CoveredPassengerTerminal = 5,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3022,9 +2827,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AnyOtherHorizontalMovementOfWaterAssociatedWithTidesForExampleRotaryFlow")]
 		[EnumMember(Value = "Other Tidal Flow")] 
 		OtherTidalFlow = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3085,9 +2887,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("CasuarinaEquisetifoliaTheMostWidespreadAndWellKnownMemberOfTheFamilyCasuarinaceae")]
 		[EnumMember(Value = "Filao Tree")] 
 		FilaoTree = 22,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3112,9 +2911,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AWaveThatFormsOverASubmergedOffshoreReefOrRockSometimesInVeryCalmWeatherOrAtHighTideNearlySwellingButInOtherConditionsBreakingHeavilyAndProducingADangerousStretchOfBrokenWaterTheReefOrRockItself")]
 		[EnumMember(Value = "Bombora")] 
 		Bombora = 5,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3131,9 +2927,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ACertainTypeOfSeaweedOrMoreGenerallyALargeFloatingMassOfThisSeaweed")]
 		[EnumMember(Value = "Sargasso")] 
 		Sargasso = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3158,9 +2951,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("WreckOfWhichAnyPortionOfTheHullOrSuperstructureIsVisibleAtTheSoundingDatumIndicated")]
 		[EnumMember(Value = "Wreck Showing Any Portion of Hull or Superstructure")] 
 		WreckShowingAnyPortionOfHullOrSuperstructure = 5,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3189,9 +2979,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("TheQualityOfTheBathymetricDataHasYetToBeAssessed")]
 		[EnumMember(Value = "Zone of Confidence U")] 
 		ZoneOfConfidenceU = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3248,9 +3035,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Pink")] 
 		Pink = 13,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3279,9 +3063,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ABandOrStripeOfColourWhichIsDisplayedAroundTheOuterEdgeOfTheFeatureWhichMayAlsoFormABorderToAnInnerPatternOrPlainColour")]
 		[EnumMember(Value = "Border Stripe")] 
 		BorderStripe = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3306,9 +3087,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("DetailedPlanningHasBeenCompletedButConstructionHasNotBeenInitiated")]
 		[EnumMember(Value = "Planned Construction")] 
 		PlannedConstruction = 5,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3325,9 +3103,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("NotHavingBeenAssessed")]
 		[EnumMember(Value = "Unassessed")] 
 		Unassessed = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3360,9 +3135,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("TheDayOfTheWeekFollowingFridayAndPrecedingSunday")]
 		[EnumMember(Value = "Saturday")] 
 		Saturday = 7,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3387,9 +3159,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AUnitOfLengthEqualTo1852MetresThisValueWasApprovedByTheInternationalHydrographicConferenceOf1929AndHasBeenAdoptedByNearlyAllMaritimeStates")]
 		[EnumMember(Value = "Nautical Miles")] 
 		NauticalMiles = 5,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3410,9 +3179,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ALightWhichIsOnlyExhibitedAtNight")]
 		[EnumMember(Value = "Night Light")] 
 		NightLight = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3429,9 +3195,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("TheDepthIsDeeperThanTheMaximumDepthOfTheSurroundingDepthArea")]
 		[EnumMember(Value = "Deeper Than the Range of Depth of the Surrounding Depth Area")] 
 		DeeperThanTheRangeOfDepthOfTheSurroundingDepthArea = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3620,9 +3383,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AFacilityToMoveSolidsLiquidsOrGasesByMeansOfPressureOrSuction")]
 		[EnumMember(Value = "Pumping Station")] 
 		PumpingStation = 48,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3639,9 +3399,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AnAreaSmallerThanTheNationInWhichItLies")]
 		[EnumMember(Value = "National Sub-Division")] 
 		NationalSubDivision = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3734,9 +3491,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ARhythmicLightInWhichAFixedLightIsCombinedWithAFlashingLightOfHigherLuminousIntensityAndDifferentColour")]
 		[EnumMember(Value = "Fixed and Alternating Flashing")] 
 		FixedAndAlternatingFlashing = 29,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3777,9 +3531,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("LightsThatMustBeInLineToBeVisible")]
 		[EnumMember(Value = "Visible in Line of Range")] 
 		VisibleInLineOfRange = 9,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3792,9 +3543,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "West")] 
 		West = 13,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3815,9 +3563,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("NavigationalAidsAsRequiredInInternationalNationalOrRegionalRegulationsThatContainTheSameNavigationalAidsAsTheEuropeanCodeForInlandWaterwaysOfUneceOrIfThereIsNoRegulationForAWaterwayNavigationalAidsAsRecommendedInTheEuropeanCodeForInlandWaterwaysOfUnece")]
 		[EnumMember(Value = "main European inland waterway marking system")] 
 		MainEuropeanInlandWaterwayMarkingSystem = 11,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3830,9 +3575,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("TheNameIsIntendedToBeDisplayedWhenTheEndUserSystemIsSetToAnAlternateNameTextDisplaySettingForExampleAnAlternateLanguage")]
 		[EnumMember(Value = "Alternate Name Display")] 
 		AlternateNameDisplay = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3877,9 +3619,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("oneAnyArtificialOrNaturalSubstanceHavingSimilarPropertiesAndCompositionAsFusedBoraxObsidianOrTheLike2SomethingMadeOfSuchASubstanceAsAWindowpane")]
 		[EnumMember(Value = "Glass")] 
 		Glass = 12,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3936,9 +3675,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ARoundedRockWithDiameterOf256MillimetresOrLarger")]
 		[EnumMember(Value = "Boulder")] 
 		Boulder = 18,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3983,9 +3719,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("FirmUsuallyRefersToAnAreaOfTheSeafloorNotCoveredByUnconsolidatedSediment")]
 		[EnumMember(Value = "Hard")] 
 		Hard = 10,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4002,9 +3735,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ThePlaceWhereVesselsBeingNavigatedUnderAPilotSInstructionsDropOffThePilotAndPickUpADifferentPilotForFutureNavigationUnderPilotSInstructions")]
 		[EnumMember(Value = "Pilot Change")] 
 		PilotChange = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4109,9 +3839,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ParticlesOfLessThan0002mmStiffStickyEarthThatBecomesHardWhenBaked")]
 		[EnumMember(Value = "Clay")] 
 		Clay = 25,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4120,9 +3847,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("APositionThatIsConsideredToBeLessThanThirdOrderAccuracyButIsGenerallyConsideredToBeWithin305MetresOfItsCorrectGeographicLocationAlsoMayApplyToAFeatureWhosePositionDoesNotRemainFixed")]
 		[EnumMember(Value = "Approximate")] 
 		Approximate = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4167,9 +3891,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("DepthsMayBeAlteredByHumanInfluenceButWillNotBeRoutinelyMaintained")]
 		[EnumMember(Value = "Not Regularly Maintained")] 
 		NotRegularlyMaintained = 11,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4182,9 +3903,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("TheLowestLevelReachedAtAPlaceByTheWaterSurfaceInOneOscillation")]
 		[EnumMember(Value = "Low Water")] 
 		LowWater = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4201,9 +3919,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("TheTidesOfMeanRangeOccurringBetweenSpringAndNeapTides")]
 		[EnumMember(Value = "Mean")] 
 		Mean = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4324,9 +4039,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AnAreaWithinWhichAnyVesselPropelledByMachineryIsProhibited")]
 		[EnumMember(Value = "Power-Driven Vessels Prohibited")] 
 		PowerDrivenVesselsProhibited = 42,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4355,9 +4067,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ActivatedByMakingACallToAMannedStation")]
 		[EnumMember(Value = "Call Activated")] 
 		CallActivated = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4370,9 +4079,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("TheIndicationOfAnElementOfASignalSequenceBeingAPeriodOfEclipseOrSilence")]
 		[EnumMember(Value = "Eclipsed/Silent")] 
 		EclipsedSilent = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4389,9 +4095,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ANauticalUnitOfSpeedOneKnotIsOneNauticalMilePerHourTheNameIsDerivedFromTheKnotsInTheLogLine")]
 		[EnumMember(Value = "Knots")] 
 		Knots = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4468,9 +4171,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("MarkedByBuoys")]
 		[EnumMember(Value = "Buoyed")] 
 		Buoyed = 28,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4523,9 +4223,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("SweptAreasWhereTheClearanceDepthIsAccuratelyKnownButTheActualSeabedDepthIsNotAccuratelyKnown")]
 		[EnumMember(Value = "Mechanically Swept Survey")] 
 		MechanicallySweptSurvey = 13,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4546,9 +4243,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ToChangeThePlaceOrPositionOfSomething")]
 		[EnumMember(Value = "Move")] 
 		Move = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4613,9 +4307,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("TheGivenAreaWasDeterminedToBeFreeFromNavigationalDangersToACertainDepthByTowingALineOrObjectBelowTheSurfaceAtTheDesiredDepthOrLeastDepthSAndPositionSWithinAnAreaWasIdentifiedUsingTheSameTechnique")]
 		[EnumMember(Value = "Mechanically Swept")] 
 		MechanicallySwept = 18,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4652,9 +4343,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("MessagesAndOtherDataExchangedBetweenIndividualsUsingComputersInANetwork")]
 		[EnumMember(Value = "Email")] 
 		Email = 8,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4667,9 +4355,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ADistinguishingTraitQualityOrPropertyOfAFeatureClass")]
 		[EnumMember(Value = "Feature Characteristic")] 
 		FeatureCharacteristic = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4806,9 +4491,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AnUncommonAndOrNonStandardizedShapeAsTextuallyDescribedUsingAnAssociatedAttribute")]
 		[EnumMember(Value = "Other Shape (See Shape Information)")] 
 		OtherShapeSeeShapeInformation = 33,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4829,9 +4511,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("TrafficFlowInTwoGenerallyOppositeDirections")]
 		[EnumMember(Value = "Two-Way")] 
 		TwoWay = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4960,9 +4639,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("TheDatumRefersToEachBalticCountrySRealizationOfTheEuropeanVerticalReferenceSystemEvrsWithLandUpliftEpoch2000WhichIsConnectedToTheNormaalAmsterdamsPeilNap")]
 		[EnumMember(Value = "Baltic Sea Chart Datum 2000")] 
 		BalticSeaChartDatum2000 = 44,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -5015,9 +4691,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("AMarkUsedToIndicateTheExistenceOfARecentWreck")]
 		[EnumMember(Value = "Emergency Wreck Marking")] 
 		EmergencyWreckMarking = 12,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -5034,9 +4707,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("ObjectsWhichAreEasilyIdentifiableButDoNotJustifyBeingClassedAsConspicuous")]
 		[EnumMember(Value = "Prominent")] 
 		Prominent = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -5069,9 +4739,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("RestingOrMovingOnTheSurfaceOfALiquidWithoutSinking")]
 		[EnumMember(Value = "Floating")] 
 		Floating = 7,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -5136,9 +4803,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.ComponentModel.Description("GoodsThatAreStowedOnBoardShipInIndividuallyCountedUnitsAndNotInIntermodalContainersNorInBulkAsWithOilOrGrain")]
 		[EnumMember(Value = "Break Bulk Cargo")] 
 		BreakBulkCargo = 15,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	public static class CodeList
@@ -5149,10 +4813,8 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class featureName {
-			[Required()]
 			public required String? language {get;set;} = default;
 
-			[Required()]
 			public required String? name {get;set;} = default;
 
 			[EnumerationValue([1,2])]
@@ -5164,10 +4826,8 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class featuresDetected {
-			[Required()]
 			public required Boolean? leastDepthOfDetectedFeaturesMeasured {get;set;} = default;
 
-			[Required()]
 			public required Boolean? significantFeaturesDetected {get;set;} = default;
 
 			public decimal? sizeOfFeaturesDetected {get;set;} = default;
@@ -5194,14 +4854,12 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializefrequencyShoreStationReceives() { return frequencyShoreStationReceives.HasValue; }
 
-			[Required()]
 			public required int? frequencyShoreStationTransmits {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class horizontalClearanceFixed {
-			[Required()]
 			public required decimal? horizontalClearanceValue {get;set;} = default;
 
 			public decimal? horizontalDistanceUncertainty {get;set;} = default;
@@ -5212,7 +4870,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class horizontalClearanceOpen {
-			[Required()]
 			public required decimal? horizontalClearanceValue {get;set;} = default;
 
 			public decimal? horizontalDistanceUncertainty {get;set;} = default;
@@ -5223,7 +4880,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class horizontalPositionUncertainty {
-			[Required()]
 			public required decimal? uncertaintyFixed {get;set;} = default;
 
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
@@ -5246,7 +4902,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 
-			[Required()]
 			public required String? language {get;set;} = default;
 
 			public String? text {get;set;} = default;
@@ -5258,21 +4913,18 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class measuredDistanceValue {
 			[EnumerationValue([1,2,3,4,5])]
-			[Required()]
 			public required distanceUnitOfMeasurement? distanceUnitOfMeasurement {get;set;} = default;
 
 			public String? referenceLocation {get;set;} = default;
 
 			public bool ShouldSerializereferenceLocation() { return !string.IsNullOrEmpty(referenceLocation); }
 
-			[Required()]
 			public required decimal? waterwayDistance {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class multiplicityOfFeatures {
-			[Required()]
 			public required Boolean? multiplicityKnown {get;set;} = default;
 
 			public int? numberOfFeatures {get;set;} = default;
@@ -5287,7 +4939,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 
-			[Required()]
 			public required String? linkage {get;set;} = default;
 
 			public String? nameOfResource {get;set;} = default;
@@ -5302,27 +4953,22 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
-			[Required()]
 			public required decimal? orientationValue {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
-			[Required()]
 			public required String? dateEnd {get;set;} = default;
 
-			[Required()]
 			public required String? dateStart {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class radarWaveLength {
-			[Required()]
 			public required String? radarBand {get;set;} = default;
 
-			[Required()]
 			public required decimal? waveLengthValue {get;set;} = default;
 		}
 
@@ -5333,14 +4979,12 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
-			[Required()]
 			public required String? text {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitOne {
-			[Required()]
 			public required decimal? sectorBearing {get;set;} = default;
 
 			public decimal? sectorLineLength {get;set;} = default;
@@ -5351,7 +4995,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitTwo {
-			[Required()]
 			public required decimal? sectorBearing {get;set;} = default;
 
 			public decimal? sectorLineLength {get;set;} = default;
@@ -5366,25 +5009,21 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
-			[Required()]
 			public required String? text {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class signalSequence {
-			[Required()]
 			public required decimal? signalDuration {get;set;} = default;
 
 			[EnumerationValue([1,2])]
-			[Required()]
 			public required signalStatus? signalStatus {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class speed {
-			[Required()]
 			public required decimal? speedMaximum {get;set;} = default;
 
 			public decimal? speedMinimum {get;set;} = default;
@@ -5413,7 +5052,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class surveyDateRange {
-			[Required()]
 			public required String? dateEnd {get;set;} = default;
 
 			public String? dateStart {get;set;} = default;
@@ -5428,7 +5066,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
 
-			[Required()]
 			public required String? telecommunicationIdentifier {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
@@ -5440,13 +5077,10 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class tidalStreamValue {
-			[Required()]
 			public required orientation? orientation {get;set;} = default;
 
-			[Required()]
 			public required decimal? speedMaximum {get;set;} = default;
 
-			[Required()]
 			public required decimal? timeRelativeToTide {get;set;} = default;
 		}
 
@@ -5485,7 +5119,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33])]
-			[Required()]
 			public required topmarkDaymarkShape? topmarkDaymarkShape {get;set;} = default;
 
 			public List<shapeInformation> shapeInformation {get;set;} = [];
@@ -5496,7 +5129,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class valueOfLocalMagneticAnomaly {
-			[Required()]
 			public required decimal? magneticAnomalyValue {get;set;} = default;
 
 			[EnumerationValue([5,13])]
@@ -5508,7 +5140,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class verticalUncertainty {
-			[Required()]
 			public required decimal? uncertaintyFixed {get;set;} = default;
 
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
@@ -5519,11 +5150,9 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class vesselSpeedLimit {
-			[Required()]
 			public required decimal? speedLimit {get;set;} = default;
 
 			[EnumerationValue([2,3,4])]
-			[Required()]
 			public required speedUnits? speedUnits {get;set;} = default;
 
 			public String? vesselClass {get;set;} = default;
@@ -5535,7 +5164,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class zoneOfConfidence {
 			[EnumerationValue([1,2,3,4,5,6])]
-			[Required()]
 			public required categoryOfZoneOfConfidenceInData? categoryOfZoneOfConfidenceInData {get;set;} = default;
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -5558,7 +5186,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializemoireEffect() { return moireEffect.HasValue; }
 
-			[Required()]
 			public required orientation? orientation {get;set;} = default;
 		}
 
@@ -5566,7 +5193,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class rhythmOfLight {
 			[EnumerationValue([1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,25,26,27,28,29])]
-			[Required()]
 			public required lightCharacteristic? lightCharacteristic {get;set;} = default;
 
 			public List<String> signalGroup {get;set;} = [];
@@ -5598,10 +5224,8 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimit {
-			[Required()]
 			public required sectorLimitOne? sectorLimitOne {get;set;} = default;
 
-			[Required()]
 			public required sectorLimitTwo? sectorLimitTwo {get;set;} = default;
 		}
 
@@ -5625,11 +5249,9 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class tidalStreamPanelValues {
 			[EnumerationValue([1,2])]
-			[Required()]
 			public required referenceTide? referenceTide {get;set;} = default;
 
 			[EnumerationValue([1,2,3])]
-			[Required()]
 			public required referenceTideType? referenceTideType {get;set;} = default;
 
 			public decimal? streamDepth {get;set;} = default;
@@ -5644,7 +5266,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class verticalClearanceClosed {
-			[Required()]
 			public required decimal? verticalClearanceValue {get;set;} = default;
 
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
@@ -5655,7 +5276,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class verticalClearanceFixed {
-			[Required()]
 			public required decimal? verticalClearanceValue {get;set;} = default;
 
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
@@ -5666,7 +5286,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class verticalClearanceOpen {
-			[Required()]
 			public required Boolean? verticalClearanceUnlimited {get;set;} = default;
 
 			public decimal? verticalClearanceValue {get;set;} = default;
@@ -5681,7 +5300,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class verticalClearanceSafe {
-			[Required()]
 			public required decimal? verticalClearanceValue {get;set;} = default;
 
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
@@ -5727,7 +5345,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorCharacteristics {
 			[EnumerationValue([1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,25,26,27,28,29])]
-			[Required()]
 			public required lightCharacteristic? lightCharacteristic {get;set;} = default;
 
 			public List<lightSector> lightSector {get;set;} = [];
@@ -6208,7 +5825,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
 
-			[Required()]
 			public required horizontalPositionUncertainty? horizontalPositionUncertainty {get;set;} = default;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -6282,13 +5898,10 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public required int? maximumDisplayScale {get;set;} = default;
 
-			[Required()]
 			public required int? minimumDisplayScale {get;set;} = default;
 
-			[Required()]
 			public required int? optimumDisplayScale {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
@@ -6331,7 +5944,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NavigationalSystemOfMarks : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,9,11])]
-			[Required()]
 			public required marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -6390,10 +6002,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,9,11])]
-			[Required()]
 			public required marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
-			[Required()]
 			public required decimal? orientationValue {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
@@ -6448,11 +6058,9 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class QualityOfBathymetricData : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,5,6])]
-			[Required()]
 			public required categoryOfTemporalVariation? categoryOfTemporalVariation {get;set;} = default;
 
 			[EnumerationValue([1,2,3])]
-			[Required()]
 			public required dataAssessment? dataAssessment {get;set;} = default;
 
 			public decimal? depthRangeMaximumValue {get;set;} = default;
@@ -6463,10 +6071,8 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
-			[Required()]
 			public required featuresDetected? featuresDetected {get;set;} = default;
 
-			[Required()]
 			public required Boolean? fullSeafloorCoverageAchieved {get;set;} = default;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -6542,7 +6148,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,19,22,23,24,25,26,27,44])]
-			[Required()]
 			public required verticalDatum? verticalDatum {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
@@ -6597,7 +6202,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
-			[Required()]
 			public required verticalDatum? verticalDatum {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
@@ -6701,10 +6305,8 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializescaleValueMinimum() { return scaleValueMinimum.HasValue; }
 
-			[Required()]
 			public required String? surveyAuthority {get;set;} = default;
 
-			[Required()]
 			public required surveyDateRange? surveyDateRange {get;set;} = default;
 
 			[EnumerationValue([1,2,4,5,6,7,8,9,10,11,12,13])]
@@ -6781,11 +6383,9 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public required int? updateNumber {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4])]
-			[Required()]
 			public required updateType? updateType {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
@@ -6880,13 +6480,10 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public required String? referenceYearForMagneticVariation {get;set;} = default;
 
-			[Required()]
 			public required decimal? valueOfAnnualChangeInMagneticVariation {get;set;} = default;
 
-			[Required()]
 			public required decimal? valueOfMagneticVariation {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
@@ -7363,7 +6960,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LandElevation : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
 			public required decimal? elevation {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
@@ -7915,7 +7511,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Vegetation : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([3,4,5,6,11,13,14,15,16,17,18,19,20,22])]
-			[Required()]
 			public required categoryOfVegetation? categoryOfVegetation {get;set;} = default;
 
 			public decimal? elevation {get;set;} = default;
@@ -8021,7 +7616,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class IceArea : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,5,8])]
-			[Required()]
 			public required categoryOfIce? categoryOfIce {get;set;} = default;
 
 			public decimal? elevation {get;set;} = default;
@@ -9260,7 +8854,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public required verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
 
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
@@ -9385,10 +8978,8 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public required verticalClearanceClosed? verticalClearanceClosed {get;set;} = default;
 
-			[Required()]
 			public required verticalClearanceOpen? verticalClearanceOpen {get;set;} = default;
 
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
@@ -9976,7 +9567,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PylonBridgeSupport : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6])]
-			[Required()]
 			public required categoryOfPylon? categoryOfPylon {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
@@ -10700,7 +10290,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[EnumerationValue([1,2,3])]
-			[Required()]
 			public required visualProminence? visualProminence {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
@@ -11346,7 +10935,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ProductionStorageArea : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
-			[Required()]
 			public required categoryOfProductionArea? categoryOfProductionArea {get;set;} = default;
 
 			[EnumerationValue([1,2,3,5])]
@@ -12231,7 +11819,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
-			[Required()]
 			public required horizontalClearanceFixed? horizontalClearanceFixed {get;set;} = default;
 
 			public decimal? horizontalLength {get;set;} = default;
@@ -12273,7 +11860,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
-			[Required()]
 			public required verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
 
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
@@ -12611,7 +12197,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DistanceMark : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
 			public required Boolean? distanceMarkVisible {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
@@ -12626,7 +12211,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public required measuredDistanceValue? measuredDistanceValue {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
@@ -14528,7 +14112,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TidalStreamFloodEbb : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3])]
-			[Required()]
 			public required categoryOfTidalStream? categoryOfTidalStream {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
@@ -14543,10 +14126,8 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public required orientation? orientation {get;set;} = default;
 
-			[Required()]
 			public required speed? speed {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
@@ -14638,14 +14219,12 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public required orientation? orientation {get;set;} = default;
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
-			[Required()]
 			public required speed? speed {get;set;} = default;
 
 			[EnumerationValue([5])]
@@ -14731,7 +14310,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class WaterTurbulence : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5])]
-			[Required()]
 			public required categoryOfWaterTurbulence? categoryOfWaterTurbulence {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
@@ -14827,7 +14405,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public required String? stationName {get;set;} = default;
 
 			public String? stationNumber {get;set;} = default;
@@ -15019,7 +14596,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DredgedArea : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
 			public required decimal? depthRangeMinimumValue {get;set;} = default;
 
 			public decimal? depthRangeMaximumValue {get;set;} = default;
@@ -15137,7 +14713,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SweptArea : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
 			public required decimal? depthRangeMinimumValue {get;set;} = default;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -15228,7 +14803,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public required decimal? valueOfDepthContour {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
@@ -15300,10 +14874,8 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DepthArea : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
 			public required decimal? depthRangeMinimumValue {get;set;} = default;
 
-			[Required()]
 			public required decimal? depthRangeMaximumValue {get;set;} = default;
 
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -15972,11 +15544,9 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
-			[Required()]
 			public required decimal? valueOfSounding {get;set;} = default;
 
 			[EnumerationValue([3,4,5])]
-			[Required()]
 			public required waterLevelEffect? waterLevelEffect {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
@@ -15991,7 +15561,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializedefaultClearanceDepth() { return defaultClearanceDepth.HasValue; }
 
-			[Required()]
 			public required decimal? surroundingDepth {get;set;} = default;
 
 			[JsonIgnore]
@@ -16118,7 +15687,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5])]
-			[Required()]
 			public required waterLevelEffect? waterLevelEffect {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
@@ -16137,7 +15705,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializedefaultClearanceDepth() { return defaultClearanceDepth.HasValue; }
 
-			[Required()]
 			public required decimal? surroundingDepth {get;set;} = default;
 
 			[JsonIgnore]
@@ -16286,7 +15853,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,7])]
-			[Required()]
 			public required waterLevelEffect? waterLevelEffect {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
@@ -16301,7 +15867,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializedefaultClearanceDepth() { return defaultClearanceDepth.HasValue; }
 
-			[Required()]
 			public required decimal? surroundingDepth {get;set;} = default;
 
 			[JsonIgnore]
@@ -16760,7 +16325,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
 			[EnumerationValue([1,2,3,4,5,7])]
-			[Required()]
 			public required waterLevelEffect? waterLevelEffect {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
@@ -17606,7 +17170,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NavigationLine : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3])]
-			[Required()]
 			public required categoryOfNavigationLine? categoryOfNavigationLine {get;set;} = default;
 
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -17621,7 +17184,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializemeasuredDistance() { return measuredDistance.HasValue; }
 
-			[Required()]
 			public required orientation? orientation {get;set;} = default;
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
@@ -17710,7 +17272,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RecommendedTrack : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
 			public required Boolean? basedOnFixedMarks {get;set;} = default;
 
 			public decimal? depthRangeMinimumValue {get;set;} = default;
@@ -17733,7 +17294,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
-			[Required()]
 			public required decimal? orientationValue {get;set;} = default;
 
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
@@ -17756,7 +17316,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
 			[EnumerationValue([1,2,3,4])]
-			[Required()]
 			public required trafficFlow? trafficFlow {get;set;} = default;
 
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
@@ -18213,7 +17772,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RecommendedRouteCentreline : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
 			public required Boolean? basedOnFixedMarks {get;set;} = default;
 
 			public decimal? depthRangeMinimumValue {get;set;} = default;
@@ -18373,7 +17931,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public required decimal? orientationValue {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,6])]
@@ -18392,7 +17949,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
 			[EnumerationValue([1,2,3,4])]
-			[Required()]
 			public required trafficFlow? trafficFlow {get;set;} = default;
 
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
@@ -18591,7 +18147,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public required decimal? orientationValue {get;set;} = default;
 
 			[EnumerationValue([1,6,9])]
@@ -18668,7 +18223,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DeepWaterRouteCentreline : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
 			public required Boolean? basedOnFixedMarks {get;set;} = default;
 
 			public decimal? depthRangeMinimumValue {get;set;} = default;
@@ -18691,7 +18245,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public required decimal? orientationValue {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,6,7])]
@@ -18710,7 +18263,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
 			[EnumerationValue([1,2,3,4])]
-			[Required()]
 			public required trafficFlow? trafficFlow {get;set;} = default;
 
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
@@ -18810,7 +18362,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DeepWaterRoutePart : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
 			public required decimal? depthRangeMinimumValue {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
@@ -18829,7 +18380,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public required decimal? orientationValue {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,6,7])]
@@ -18853,7 +18403,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
 			[EnumerationValue([1,2,3,4])]
-			[Required()]
 			public required trafficFlow? trafficFlow {get;set;} = default;
 
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
@@ -20040,7 +19589,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public required String? nationality {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
@@ -20165,7 +19713,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[EnumerationValue([1,2,3,4])]
-			[Required()]
 			public required trafficFlow? trafficFlow {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
@@ -20356,7 +19903,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public required decimal? orientationValue {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,7])]
@@ -21326,7 +20872,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinDispute() { return inDispute.HasValue; }
 
 			[EnumerationValue([1,2,3])]
-			[Required()]
 			public required jurisdiction? jurisdiction {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
@@ -21923,7 +21468,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public required String? nationality {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
@@ -22075,7 +21619,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public required String? nationality {get;set;} = default;
 
 			[EnumerationValue([1,5,6,7])]
@@ -22613,7 +22156,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
-			[Required()]
 			public required String? nationality {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
@@ -23305,7 +22847,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
-			[Required()]
 			public required rhythmOfLight? rhythmOfLight {get;set;} = default;
 
 			[EnumerationValue([5,6])]
@@ -23875,11 +23416,9 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LateralBuoy : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
-			[Required()]
 			public required buoyShape? buoyShape {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4])]
-			[Required()]
 			public required categoryOfLateralMark? categoryOfLateralMark {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
@@ -24041,11 +23580,9 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CardinalBuoy : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
-			[Required()]
 			public required buoyShape? buoyShape {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4])]
-			[Required()]
 			public required categoryOfCardinalMark? categoryOfCardinalMark {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
@@ -24207,7 +23744,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class IsolatedDangerBuoy : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
-			[Required()]
 			public required buoyShape? buoyShape {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
@@ -24369,7 +23905,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SafeWaterBuoy : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
-			[Required()]
 			public required buoyShape? buoyShape {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
@@ -24531,7 +24066,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpecialPurposeGeneralBuoy : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
-			[Required()]
 			public required buoyShape? buoyShape {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,14,15,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,42,43,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63])]
@@ -24698,7 +24232,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class EmergencyWreckMarkingBuoy : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6])]
-			[Required()]
 			public required buoyShape? buoyShape {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
@@ -24843,7 +24376,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InstallationBuoy : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
-			[Required()]
 			public required buoyShape? buoyShape {get;set;} = default;
 
 			[EnumerationValue([1,2])]
@@ -24991,7 +24523,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MooringBuoy : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
-			[Required()]
 			public required buoyShape? buoyShape {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
@@ -25152,11 +24683,9 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LateralBeacon : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6,7])]
-			[Required()]
 			public required beaconShape? beaconShape {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4])]
-			[Required()]
 			public required categoryOfLateralMark? categoryOfLateralMark {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
@@ -25348,11 +24877,9 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CardinalBeacon : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6,7])]
-			[Required()]
 			public required beaconShape? beaconShape {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4])]
-			[Required()]
 			public required categoryOfCardinalMark? categoryOfCardinalMark {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
@@ -25544,7 +25071,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class IsolatedDangerBeacon : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6,7])]
-			[Required()]
 			public required beaconShape? beaconShape {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
@@ -25736,7 +25262,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SafeWaterBeacon : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6,7])]
-			[Required()]
 			public required beaconShape? beaconShape {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
@@ -25928,7 +25453,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpecialPurposeGeneralBeacon : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6,7])]
-			[Required()]
 			public required beaconShape? beaconShape {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,10,11,12,14,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,60,61,62,63])]
@@ -26178,7 +25702,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33])]
-			[Required()]
 			public required topmarkDaymarkShape? topmarkDaymarkShape {get;set;} = default;
 
 			public decimal? verticalLength {get;set;} = default;
@@ -26845,7 +26368,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FogSignal : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
-			[Required()]
 			public required categoryOfFogSignal? categoryOfFogSignal {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
@@ -27123,7 +26645,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
-			[Required()]
 			public required virtualAISAidToNavigationType? virtualAISAidToNavigationType {get;set;} = default;
 
 			public int? scaleMinimum {get;set;} = default;
@@ -27323,7 +26844,6 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadarTransponderBeacon : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3])]
-			[Required()]
 			public required categoryOfRadarTransponderBeacon? categoryOfRadarTransponderBeacon {get;set;} = default;
 
 			public List<featureName> featureName {get;set;} = [];
@@ -28350,10 +27870,8 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
 			public required int? textOffsetBearing {get;set;} = default;
 
-			[Required()]
 			public required int? textOffsetDistance {get;set;} = default;
 
 			public Boolean? textRotation {get;set;} = default;

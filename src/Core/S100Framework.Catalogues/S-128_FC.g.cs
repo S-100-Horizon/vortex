@@ -86,9 +86,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.ComponentModel.Description("APrintedNauticalChartIsAASpecialPurposeMapThatIsIssuedOfficiallyByOrOnTheAuthorityOfAGovernmentAuthorizedHydrographicOfficeOrOtherRelevantGovernmentInstitutionAndIsDesignedToMeetTheRequirementsOfMarineNavigation")]
 		[EnumMember(Value = "Printed Nautical Chart")] 
 		PrintedNauticalChart = 13,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -165,9 +162,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.ComponentModel.Description("ValueAddedResellersVarsWhoAreAbleToOfferComprehensiveEndUseServicesThatBringTogetherVariousNavigationalProductsIntoOnePackage")]
 		[EnumMember(Value = "VARs")] 
 		Vars = 19,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -180,9 +174,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.ComponentModel.Description("SpecifiesTheAlgorithmUsedToComputeDigitalSignatureValue")]
 		[EnumMember(Value = "Digital Signature Reference")] 
 		DigitalSignatureReference = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -199,9 +190,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.ComponentModel.Description("TheNameOrTextIsNotIntendedToBeDisplayed")]
 		[EnumMember(Value = "No Chart Display")] 
 		NoChartDisplay = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -214,9 +202,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.ComponentModel.Description("AProductOrServiceThatHasBeenWithdrawn")]
 		[EnumMember(Value = "Withdrawn")] 
 		Withdrawn = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -285,9 +270,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.ComponentModel.Description("AServiceAimedAtProvidingInformationAboutAndAssistWithSearchAndRescueFunctions")]
 		[EnumMember(Value = "Search and Rescue Service")] 
 		SearchAndRescueService = 16,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -324,9 +306,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.ComponentModel.Description("TheEighthSizeAsOutputSizeOnNauticalPaperChartReferringToIso216")]
 		[EnumMember(Value = "A7")] 
 		A7 = 8,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -347,9 +326,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.ComponentModel.Description("AProductOrServiceThatIsRecommendedToMakeUseOfAddedValueProvidedByAnotherProductOrService")]
 		[EnumMember(Value = "Recommended Enhancement User")] 
 		RecommendedEnhancementUser = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -358,9 +334,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.ComponentModel.Description("EllipticCurveDigitalSignatureAlgorithmEcdsaThatUsesSignaturesBasedOnTheIssuingCertificateAndGeneratedUsingTheIssuerSP384EllipticCurveKey")]
 		[EnumMember(Value = "ECDSA-384-SHA2")] 
 		Ecdsa384Sha2 = 8,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -377,9 +350,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.ComponentModel.Description("ForOceanCrossingAndPlanningPurposes")]
 		[EnumMember(Value = "Overview")] 
 		Overview = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -424,9 +394,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.ComponentModel.Description("BeingTheOneOrOnesDistinctFromThatOrThoseFirstMentionedOrImplied")]
 		[EnumMember(Value = "Other")] 
 		Other = 100,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -443,9 +410,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.ComponentModel.Description("DeletesAnExistingFile")]
 		[EnumMember(Value = "Deletion")] 
 		Deletion = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -466,9 +430,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.ComponentModel.Description("IndicatesThatAFeatureMethodProductOrComponentIsNoLongerAvailableOrHasBeenPermanentlyRemoved")]
 		[EnumMember(Value = "Deleted")] 
 		Deleted = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -517,9 +478,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.ComponentModel.Description("ANationalOrRegionalAuthorityChargedWithAdministrationOfMaritimeAffairs")]
 		[EnumMember(Value = "Maritime")] 
 		Maritime = 15,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -548,9 +506,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.ComponentModel.Description("ForShipsBerthing")]
 		[EnumMember(Value = "Navigational Purpose Berthing")] 
 		NavigationalPurposeBerthing = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -587,9 +542,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.ComponentModel.Description("MessagesAndOtherDataExchangedBetweenIndividualsUsingComputersInANetwork")]
 		[EnumMember(Value = "Email")] 
 		Email = 8,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -642,9 +594,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.ComponentModel.Description("PortableNetworkGraphicsFormat")]
 		[EnumMember(Value = "PNG")] 
 		Png = 12,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -665,9 +614,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.ComponentModel.Description("APeriodOfOneRevolutionOfTheEarthAroundTheSun")]
 		[EnumMember(Value = "Year")] 
 		Year = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -864,9 +810,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.ComponentModel.Description("AVerticalReferenceNearTheLowestAstronomicalTideLatBelowWhichTheSeaLevelFallsOnlyVeryExceptionally")]
 		[EnumMember(Value = "Hydrographic Zero")] 
 		HydrographicZero = 49,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Serializable()]
@@ -926,20 +869,16 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class customPaperSize {
-			[Required()]
 			public decimal paperWidth {get;set;}
 
-			[Required()]
 			public decimal paperLength {get;set;}
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class defaultLocale {
-			[Required()]
 			public String characterEncoding {get;set;} = string.Empty;
 
-			[Required()]
 			public String countryName {get;set;} = string.Empty;
 
 			public String? language {get;set;} = default;
@@ -954,7 +893,6 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
-			[Required()]
 			public String name {get;set;} = string.Empty;
 
 			public nameUsage? nameUsage {get;set;} = default;
@@ -993,7 +931,6 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializeapplicationProfile() { return !string.IsNullOrEmpty(applicationProfile); }
 
-			[Required()]
 			public String linkage {get;set;} = string.Empty;
 
 			public String? nameOfResource {get;set;} = default;
@@ -1016,10 +953,8 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
-			[Required()]
 			public String dateEnd {get;set;}
 
-			[Required()]
 			public String dateStart {get;set;}
 		}
 
@@ -1030,10 +965,8 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializecontractPeriod() { return !string.IsNullOrEmpty(contractPeriod); }
 
-			[Required()]
 			public String currency {get;set;} = string.Empty;
 
-			[Required()]
 			public decimal price {get;set;}
 		}
 
@@ -1054,7 +987,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class productSpecification {
 			[XmlIgnore]
-			[Required()]
 			public DateOnly editionDate {get;set;}
 
 			[JsonIgnore]
@@ -1068,10 +1000,8 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializeiSSN() { return !string.IsNullOrEmpty(iSSN); }
 
-			[Required()]
 			public String name {get;set;} = string.Empty;
 
-			[Required()]
 			public String version {get;set;} = string.Empty;
 		}
 
@@ -1079,7 +1009,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class supportFileSpecification {
 			[XmlIgnore]
-			[Required()]
 			public DateOnly editionDate {get;set;}
 
 			[JsonIgnore]
@@ -1089,10 +1018,8 @@ namespace S100Framework.DomainModel.S128 {
 				set { editionDate = DateOnly.FromDateTime(value); }
 			}
 
-			[Required()]
 			public String name {get;set;} = string.Empty;
 
-			[Required()]
 			public String version {get;set;} = string.Empty;
 		}
 
@@ -1100,7 +1027,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class serviceSpecification {
 			[XmlIgnore]
-			[Required()]
 			public DateOnly editionDate {get;set;}
 
 			[JsonIgnore]
@@ -1110,10 +1036,8 @@ namespace S100Framework.DomainModel.S128 {
 				set { editionDate = DateOnly.FromDateTime(value); }
 			}
 
-			[Required()]
 			public String name {get;set;} = string.Empty;
 
-			[Required()]
 			public String version {get;set;} = string.Empty;
 		}
 
@@ -1151,10 +1075,8 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class telecommunications {
-			[Required()]
 			public String contactInstructions {get;set;} = string.Empty;
 
-			[Required()]
 			public String telecommunicationIdentifier {get;set;} = string.Empty;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
@@ -1171,17 +1093,14 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializetypeOfTimeIntervalUnit() { return typeOfTimeIntervalUnit.Any(); }
 
-			[Required()]
 			public int valueOfTime {get;set;}
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class weekOfYear {
-			[Required()]
 			public int weekNumber {get;set;}
 
-			[Required()]
 			public int yearNumber {get;set;}
 		}
 
@@ -1216,7 +1135,6 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializereprintNation() { return !string.IsNullOrEmpty(reprintNation); }
 
-			[Required()]
 			public printSize printSize {get;set;}
 		}
 
@@ -1228,7 +1146,6 @@ namespace S100Framework.DomainModel.S128 {
 			public bool ShouldSerializecomment() { return !string.IsNullOrEmpty(comment); }
 
 			[EnumerationValue([8])]
-			[Required()]
 			public digitalSignatureReference digitalSignatureReference {get;set;}
 
 			[EnumerationValue([1,2])]
@@ -1240,10 +1157,8 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializeeditionNumber() { return editionNumber.HasValue; }
 
-			[Required()]
 			public String fileLocator {get;set;} = string.Empty;
 
-			[Required()]
 			public String fileName {get;set;} = string.Empty;
 
 			[XmlIgnore]
@@ -1256,17 +1171,13 @@ namespace S100Framework.DomainModel.S128 {
 			public bool ShouldSerializeotherDataTypeDescription() { return !string.IsNullOrEmpty(otherDataTypeDescription); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,100])]
-			[Required()]
 			public supportFileFormat supportFileFormat {get;set;}
 
 			[EnumerationValue([1,2,3])]
-			[Required()]
 			public supportFilePurpose supportFilePurpose {get;set;}
 
-			[Required()]
 			public defaultLocale defaultLocale {get;set;}
 
-			[Required()]
 			public supportFileSpecification supportFileSpecification {get;set;}
 		}
 
@@ -1279,7 +1190,6 @@ namespace S100Framework.DomainModel.S128 {
 			public bool ShouldSerializeexpirationDate() { return expirationDate.HasValue; }
 
 			[XmlIgnore]
-			[Required()]
 			public DateOnly issueDate {get;set;}
 
 			[JsonIgnore]
@@ -1298,7 +1208,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class referenceToNM {
 			[XmlIgnore]
-			[Required()]
 			public DateOnly publicationDate {get;set;}
 
 			[JsonIgnore]
@@ -1435,7 +1344,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ProductMapping : FeatureAssociation {
 			[EnumerationValue([1,2,3,4])]
-			[Required()]
 			public categoryOfProductMapping categoryOfProductMapping {get;set;}
 
 			[JsonIgnore]
@@ -1467,7 +1375,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CatalogueSectionHeader : InformationNode, IInformationBindingDefinition {
-			[Required()]
 			public int catalogueSectionNumber {get;set;}
 
 			public String? catalogueSectionTitle {get;set;} = default;
@@ -1524,7 +1431,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ContactDetails : InformationNode, IInformationBindingDefinition {
-			[Required()]
 			public String contactInstructions {get;set;} = string.Empty;
 
 			public List<contactAddress> contactAddress {get;set;} = [];
@@ -1659,7 +1565,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ProducerInformation : InformationNode, IInformationBindingDefinition {
-			[Required()]
 			public String agencyResponsibleForProduction {get;set;} = string.Empty;
 
 			public String? agencyName {get;set;} = default;
@@ -1703,7 +1608,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DistributorInformation : InformationNode, IInformationBindingDefinition {
-			[Required()]
 			public String distributorName {get;set;} = string.Empty;
 
 			[JsonIgnore]
@@ -1768,7 +1672,6 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializeiMOMaritimeService() { return iMOMaritimeService.Any(); }
 
-			[Required()]
 			public Boolean notForNavigation {get;set;} = false;
 
 			public List<featureName> featureName {get;set;} = [];
@@ -1986,7 +1889,6 @@ namespace S100Framework.DomainModel.S128 {
 			public bool ShouldSerializedatasetName() { return !string.IsNullOrEmpty(datasetName); }
 
 			[XmlIgnore]
-			[Required()]
 			public DateOnly issueDate {get;set;}
 
 			[JsonIgnore]
@@ -2001,7 +1903,6 @@ namespace S100Framework.DomainModel.S128 {
 			public bool ShouldSerializeissueTime() { return issueTime.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
-			[Required()]
 			public typeOfProductFormat typeOfProductFormat {get;set;}
 
 			public productSpecification? productSpecification {get;set;} = default;
@@ -2044,7 +1945,6 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PhysicalProduct : NavigationalProduct {
 			[XmlIgnore]
-			[Required()]
 			public DateOnly editionDate {get;set;}
 
 			[JsonIgnore]
@@ -2123,7 +2023,6 @@ namespace S100Framework.DomainModel.S128 {
 			public bool ShouldSerializeserviceStatus() { return serviceStatus.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
-			[Required()]
 			public typeOfProductFormat typeOfProductFormat {get;set;}
 
 			public serviceSpecification? serviceSpecification {get;set;} = default;

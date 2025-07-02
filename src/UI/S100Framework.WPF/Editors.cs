@@ -267,6 +267,7 @@ namespace S100Framework.WPF.Editors
 
             ITypeEditor editor = new TextBoxEditor();
 
+            
             panel.Children.Add(radioButtonUnknown);
 
             return panel;
@@ -280,10 +281,6 @@ namespace S100Framework.WPF.Editors
 
             var instance = (T)propertyItem.Value;
 
-            //var panel = new DockPanel {
-            //    LastChildFill = true,
-            //};
-
             var panel = new Grid {
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -291,24 +288,20 @@ namespace S100Framework.WPF.Editors
 
             var radioButtonUnknown = new RadioButton {
                 ToolTip = "[Unknown]",
-                GroupName = "Unknown",
+                GroupName = propertyItem.DisplayName,
                 Background = System.Windows.Media.Brushes.Orange,
-                IsChecked = instance == null,
                 HorizontalAlignment = HorizontalAlignment.Left,
+                IsChecked = instance == null,
+                Margin = new Thickness(1, 1, 0, 0),                
             };
             //Panel.SetZIndex(radioButtonUnknown, 1);
             radioButtonUnknown.Checked += (s, e) => {
                 //OnPropertyChanged(nameof(instance));
             };
 
-            var type = typeof(T)!;
+            var type = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);            
 
-            ITypeEditor editor;
-
-            if (type == typeof(string)) {
-                editor = new TextBoxEditor();
-            }
-            else if (type.IsEnum) {
+            if (type.IsEnum) {
                 var defaultEditor = new PropertyGridEditorComboBox() {
                 };
                 defaultEditor.SelectionChanged += (s, e) => {

@@ -138,9 +138,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("APositionThatIsComputedFromData")]
 		[EnumMember(Value = "Calculated")] 
 		Calculated = 11,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -161,9 +158,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Temporary changes")] 
 		TemporaryChanges = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -192,9 +186,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Nautical Miles")] 
 		NauticalMiles = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -719,9 +710,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("AnArbitraryDatumDefinedByALocalHarbourAuthorityFromWhichLevelsAndTidalHeightsAreMeasuredByThisAuthority")]
 		[EnumMember(Value = "Local Datum")] 
 		LocalDatum = 131,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -734,9 +722,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("TheIndicationOfAnElementOfASignalSequenceBeingAPeriodOfEclipseOrSilence")]
 		[EnumMember(Value = "Eclipsed/Silent")] 
 		EclipsedSilent = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -769,9 +754,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("ACableMadeOfGlassOrPlasticFiberDesignedToGuideLightAlongItsLengthFibreOpticCablesAreWidelyUsedInFiberOpticCommunicationWhichPermitsTransmissionOverLongerDistancesAndAtHigherDataRatesThanOtherFormsOfCommunication")]
 		[EnumMember(Value = "Fibre Optic Cable")] 
 		FibreOpticCable = 8,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -784,9 +766,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("AMooringStructureUsedByTankersToLoadAndUnloadInPortApproachesOrInOffshoreOilAndGasFieldsTheSizeOfTheStructureCanVaryBetweenALargeMooringBuoyAndAMannedFloatingStructureAlsoKnownAsSinglePointMooringSpm")]
 		[EnumMember(Value = "Single Buoy Mooring")] 
 		SingleBuoyMooring = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -815,9 +794,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "quick release link")] 
 		QuickReleaseLink = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -846,9 +822,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("AVerticalHollowCylinderOfMetalWoodOrOtherMaterialForcedIntoTheEarthOrSeabed")]
 		[EnumMember(Value = "Pipe")] 
 		Pipe = 7,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -869,9 +842,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("ATowerSupportingAnElevatedStorageTankOfWater")]
 		[EnumMember(Value = "Water Tower")] 
 		WaterTower = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -896,9 +866,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("AShapeTheSidesOfWhichAreSixEqualSquaresARegularHexahedron")]
 		[EnumMember(Value = "Cubic")] 
 		Cubic = 9,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1003,9 +970,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("ParticlesOfLessThan0002mmStiffStickyEarthThatBecomesHardWhenBaked")]
 		[EnumMember(Value = "Clay")] 
 		Clay = 25,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1054,9 +1018,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("AFloatingStructureAnchoredToTheSeabedForStoringOil")]
 		[EnumMember(Value = "Floating Oil Tank")] 
 		FloatingOilTank = 11,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1077,9 +1038,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("QuadrantBoundedByTheTrueBearingSwNwTakenFromThePointOfInterestItShouldBePassedToTheWestSideOfTheMark")]
 		[EnumMember(Value = "West Cardinal Mark")] 
 		WestCardinalMark = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1196,9 +1154,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("AVeryQuickFlashingLightInWhichAGroupOfTwoOrMoreFlashesWhichAreSpecifiedInNumberIsRegularlyRepeated")]
 		[EnumMember(Value = "Group very quick light")] 
 		GroupVeryQuickLight = 35,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1219,9 +1174,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "electrical service")] 
 		ElectricalService = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1234,9 +1186,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "monitored")] 
 		Monitored = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1253,9 +1202,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("FullTwoWayCommunicationTransmissionRemoteControlConfiguration")]
 		[EnumMember(Value = "Physical AIS Type 3")] 
 		PhysicalAisType3 = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1308,9 +1254,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("AMarkUsedToIndicateTheExistenceOfARecentlyIdentifiedNewDangerSuchAsAWreck")]
 		[EnumMember(Value = "New Danger Marking")] 
 		NewDangerMarking = 12,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1327,9 +1270,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("ARadarBeaconThatMayBeUsedInConjunctionWithAtLeastOneOtherRadarBeaconToIndicateALeadingLine")]
 		[EnumMember(Value = "Leading Racon/Radar Transponder Beacon")] 
 		LeadingRaconRadarTransponderBeacon = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1470,9 +1410,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("HavingTheFormOfOrConsistingOfATube")]
 		[EnumMember(Value = "Tubular")] 
 		Tubular = 34,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1729,9 +1666,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("AMarkIndicatingAJetskiProhibitedArea")]
 		[EnumMember(Value = "Jetski Prohibited")] 
 		JetskiProhibited = 64,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1800,9 +1734,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("AnOnshoreAisUnitThatMonitorsTrafficInTheWaterways")]
 		[EnumMember(Value = "AIS Base Station")] 
 		AisBaseStation = 20,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1847,9 +1778,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("AHornUsesCompressedAirOrElectricityToVibrateADiaphragmAndExistsInAVarietyOfTypesWhichDifferGreatlyInTheirSoundAndPower")]
 		[EnumMember(Value = "Horn")] 
 		Horn = 10,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1890,9 +1818,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("LightsThatMustInLineToBeVisible")]
 		[EnumMember(Value = "Visible in Line of Range")] 
 		VisibleInLineOfRange = 9,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1921,9 +1846,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("ActivatedByMakingACallToAMannedStation")]
 		[EnumMember(Value = "Call Activated")] 
 		CallActivated = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1944,9 +1866,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("ALightWhichIsOnlyExhibitedAtNight")]
 		[EnumMember(Value = "Night Light")] 
 		NightLight = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2015,9 +1934,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("AGroupOfLightsOfIdenticalCharacterAndAlmostIdenticalPositionThatAreDisposedVertically")]
 		[EnumMember(Value = "Vertically Disposed")] 
 		VerticallyDisposed = 20,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2038,9 +1954,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("TrafficFlowInTwoGenerallyOppositeDirections")]
 		[EnumMember(Value = "Two-Way")] 
 		TwoWay = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2113,9 +2026,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("TermUsedToDescribeTheImageryDerivedFromSubdividingTheElectromagneticSpectrumIntoVeryNarrowBandwidthsTheseNarrowBandwidthsMayBeCombinedWithOrSubtractedFromEachOtherInVariousWaysToFormImagesUsefulInPreciseTerrainOrTargetAnalysis")]
 		[EnumMember(Value = "Hyperspectral Imagery")] 
 		HyperspectralImagery = 17,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2164,9 +2074,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("DepthsMayBeAlteredByHumanInfluenceButWillNotBeRoutinelyMaintained")]
 		[EnumMember(Value = "Not Regularly Maintained")] 
 		NotRegularlyMaintained = 11,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2183,9 +2090,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("ALinePassingThroughOneOrMoreClearlyDefinedObjectsAlongThePathOfWhichAVesselCanApproachSafelyUpToACertainDistanceOff")]
 		[EnumMember(Value = "Leading Line Bearing a Recommended Track")] 
 		LeadingLineBearingARecommendedTrack = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2298,9 +2202,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("ContinueAlongBank")]
 		[EnumMember(Value = "Continue Along Bank")] 
 		ContinueAlongBank = 27,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2481,9 +2382,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("DutchEstuaryLowWaterReferenceLevelOlw")]
 		[EnumMember(Value = "Dutch Estuary Low Water Reference Level (OLW)")] 
 		DutchEstuaryLowWaterReferenceLevelOlw = 45,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2676,9 +2574,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("AFacilityToMoveSolidsLiquidsOrGasesByMeansOfPressureOrSuction")]
 		[EnumMember(Value = "Pumping Station")] 
 		PumpingStation = 48,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2791,9 +2686,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("ABarrierToCheckOrConfineAnythingInMotionParticularlyOneConstructedToHoldBackWaterAndRaiseItsLevelToFormAReservoirOrToPreventFlooding")]
 		[EnumMember(Value = "Dam")] 
 		Dam = 27,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2830,9 +2722,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("ASpeciallyConstructedShuttleShapedBuoyWhichIsUsedInIceConditions")]
 		[EnumMember(Value = "Ice Buoy")] 
 		IceBuoy = 8,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2849,9 +2738,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("ObjectsWhichAreEasilyIdentifiableButDoNotJustifyBeingClassedAsConspicuous")]
 		[EnumMember(Value = "Prominent")] 
 		Prominent = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3020,9 +2906,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("ItemSelectedForModification")]
 		[EnumMember(Value = "Candidate for Modification")] 
 		CandidateForModification = 43,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3083,9 +2966,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("ConstructedFromPlastic")]
 		[EnumMember(Value = "Plastic")] 
 		Plastic = 14,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3126,9 +3006,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("NavigationalAidsConformToTheBrazilianComplementaryAidsOnTheParaguayParanaWaterway")]
 		[EnumMember(Value = "Paraguay-Parana Waterway - Brazilian Complementary Aids")] 
 		ParaguayParanaWaterwayBrazilianComplementaryAids = 15,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3169,9 +3046,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("AShapeThatIsMadeUpOfThreeLinesAndThreeAnglesOnADifferentColouredBackground")]
 		[EnumMember(Value = "Triangle")] 
 		Triangle = 9,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3256,9 +3130,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Green Temporary")] 
 		GreenTemporary = 20,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3291,9 +3162,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("ATallSparLikeBeaconFittedWithAPermanentlySubmergedBuoyancyChamberTheLowerEndOfTheBodyIsSecuredToSeabedSinkerEitherByAFlexibleJointOrByACableUnderTension")]
 		[EnumMember(Value = "Buoyant Beacon")] 
 		BuoyantBeacon = 7,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3310,9 +3178,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("AnAtonOrSystemOfAtonThatIsConsideredByTheCompetentAuthorityToBeOfNecessaryNavigationalSignificance")]
 		[EnumMember(Value = "Category 3")] 
 		Category3 = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3337,9 +3202,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("DetailedPlanningHasBeenCompletedButConstructionHasNotBeenInitiated")]
 		[EnumMember(Value = "Planned Construction")] 
 		PlannedConstruction = 5,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3368,9 +3230,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("NotHavingBeenAssessed")]
 		[EnumMember(Value = "Unassessed")] 
 		Unassessed = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3427,9 +3286,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "EGNOS establishment")] 
 		EgnosEstablishment = 13,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3538,9 +3394,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "e-Chayka station temporary removal")] 
 		EChaykaStationTemporaryRemoval = 26,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3609,9 +3462,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "RACON temporary change")] 
 		RaconTemporaryChange = 16,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3660,9 +3510,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Beacon restored to normal")] 
 		BeaconRestoredToNormal = 11,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3771,9 +3618,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Seasonal recommissioning in progress")] 
 		SeasonalRecommissioningInProgress = 26,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3794,9 +3638,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Fog signal operating properly")] 
 		FogSignalOperatingProperly = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3897,9 +3738,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Rear leading/range beacon restored to normal")] 
 		RearLeadingRangeBeaconRestoredToNormal = 24,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4024,9 +3862,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "EGNOS out of service")] 
 		EgnosOutOfService = 30,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4047,9 +3882,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "GPS/WAAS Receiver")] 
 		GpsWaasReceiver = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
 	}
 
 	[System.Serializable()]
@@ -4138,7 +3970,6 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
-			[Required()]
 			public String name {get;set;} = string.Empty;
 		}
 
@@ -4157,7 +3988,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class multiplicityOfFeatures {
-			[Required()]
 			public Boolean multiplicityKnown {get;set;} = false;
 
 			public int? numberOfFeatures {get;set;} = default;
@@ -4172,27 +4002,22 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
-			[Required()]
 			public decimal orientationValue {get;set;}
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
-			[Required()]
 			public String dateEnd {get;set;}
 
-			[Required()]
 			public String dateStart {get;set;}
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class radarWaveLength {
-			[Required()]
 			public String radarBand {get;set;} = string.Empty;
 
-			[Required()]
 			public decimal waveLengthValue {get;set;}
 		}
 
@@ -4203,14 +4028,12 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
-			[Required()]
 			public String text {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitOne {
-			[Required()]
 			public decimal sectorBearing {get;set;}
 
 			public int? sectorLineLength {get;set;} = default;
@@ -4221,7 +4044,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitTwo {
-			[Required()]
 			public decimal sectorBearing {get;set;}
 
 			public int? sectorLineLength {get;set;} = default;
@@ -4236,32 +4058,26 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
-			[Required()]
 			public String text {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class signalSequence {
-			[Required()]
 			public decimal signalDuration {get;set;}
 
 			[EnumerationValue([1,2])]
-			[Required()]
 			public signalStatus signalStatus {get;set;}
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class CableDimensions {
-			[Required()]
 			public decimal cableLength {get;set;}
 
 			[EnumerationValue([1,2,3,4,5,6])]
-			[Required()]
 			public heightLengthUnits heightLengthUnits {get;set;}
 
-			[Required()]
 			public decimal diameter {get;set;}
 		}
 
@@ -4313,7 +4129,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sinkerDimensions {
 			[EnumerationValue([1,2,3,4,5,6])]
-			[Required()]
 			public heightLengthUnits heightLengthUnits {get;set;}
 
 			public decimal? horizontalLength {get;set;} = default;
@@ -4333,17 +4148,14 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class positioningMethod {
 			[EnumerationValue([1,2,3,4])]
-			[Required()]
 			public positioningEquipment positioningEquipment {get;set;}
 
-			[Required()]
 			public String NMEAString {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class horizontalPositionUncertainty {
-			[Required()]
 			public decimal uncertaintyFixed {get;set;}
 
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
@@ -4366,7 +4178,6 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 
-			[Required()]
 			public String language {get;set;} = string.Empty;
 
 			public String? text {get;set;} = default;
@@ -4377,7 +4188,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class textualDescription {
-			[Required()]
 			public String fileReference {get;set;} = string.Empty;
 
 			public String? language {get;set;} = default;
@@ -4388,7 +4198,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class verticalUncertainty {
-			[Required()]
 			public decimal uncertaintyFixed {get;set;}
 
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
@@ -4403,7 +4212,6 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializemoireEffect() { return moireEffect.HasValue; }
 
-			[Required()]
 			public orientation orientation {get;set;}
 		}
 
@@ -4411,7 +4219,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class rhythmOfLight {
 			[EnumerationValue([1,2,3,4,5,6,7,8,12,13,14,15,16,17,18,19,20,25,26,27,28,29,30,31,32,33,34,35])]
-			[Required()]
 			public lightCharacteristic lightCharacteristic {get;set;}
 
 			public List<String> signalGroup {get;set;} = [];
@@ -4430,10 +4237,8 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimit {
-			[Required()]
 			public sectorLimitOne sectorLimitOne {get;set;}
 
-			[Required()]
 			public sectorLimitTwo sectorLimitTwo {get;set;}
 		}
 
@@ -4456,7 +4261,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class ObscuredSector {
-			[Required()]
 			public sectorLimit sectorLimit {get;set;}
 
 			public sectorInformation? sectorInformation {get;set;} = default;
@@ -4502,7 +4306,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorCharacteristics {
 			[EnumerationValue([1,2,3,4,5,6,7,8,12,13,14,15,16,17,18,19,20,25,26,27,28,29,30,31,32,33,34,35])]
-			[Required()]
 			public lightCharacteristic lightCharacteristic {get;set;}
 
 			public List<lightSector> lightSector {get;set;} = [];
@@ -4863,7 +4666,6 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializehorizontalDatum() { return horizontalDatum.HasValue; }
 
 			[XmlIgnore]
-			[Required()]
 			public DateOnly sourceDate {get;set;}
 
 			[JsonIgnore]
@@ -4873,7 +4675,6 @@ namespace S100Framework.DomainModel.S201 {
 				set { sourceDate = DateOnly.FromDateTime(value); }
 			}
 
-			[Required()]
 			public String positioningProcedure {get;set;} = string.Empty;
 
 			[JsonIgnore]
@@ -4895,7 +4696,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AtonStatusInformation : InformationNode, IInformationBindingDefinition {
-			[Required()]
 			public ChangeDetails ChangeDetails {get;set;}
 
 			[EnumerationValue([1,2,3,4])]
@@ -4922,7 +4722,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PositioningInformation : InformationNode, IInformationBindingDefinition {
-			[Required()]
 			public String positioningDevice {get;set;} = string.Empty;
 
 			public positioningMethod? positioningMethod {get;set;} = default;
@@ -5095,7 +4894,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class StructureObject : AidsToNavigation {
-			[Required()]
 			public String AtoNNumber {get;set;} = string.Empty;
 
 			[EnumerationValue([1,2,3])]
@@ -5216,7 +5014,6 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializeAtoNNumber() { return !string.IsNullOrEmpty(AtoNNumber); }
 
-			[Required()]
 			public String mMSICode {get;set;} = string.Empty;
 
 			public List<status> status {get;set;} = [];
@@ -5255,7 +5052,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class GenericBeacon : StructureObject {
 			[EnumerationValue([1,2,3,4,5,6,7])]
-			[Required()]
 			public beaconShape beaconShape {get;set;}
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
@@ -5340,7 +5136,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class GenericBuoy : StructureObject {
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
-			[Required()]
 			public buoyShape buoyShape {get;set;}
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
@@ -5549,7 +5344,6 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[EnumerationValue([1,2,3])]
-			[Required()]
 			public visualProminence visualProminence {get;set;}
 
 			public decimal? elevation {get;set;} = default;
@@ -5608,7 +5402,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LateralBeacon : GenericBeacon {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
-			[Required()]
 			public categoryOfLateralMark categoryOfLateralMark {get;set;}
 
 			[JsonIgnore]
@@ -5647,7 +5440,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LateralBuoy : GenericBuoy {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
-			[Required()]
 			public categoryOfLateralMark categoryOfLateralMark {get;set;}
 
 			[JsonIgnore]
@@ -5686,7 +5478,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NavigationLine : AidsToNavigation {
 			[EnumerationValue([1,2,3])]
-			[Required()]
 			public categoryOfNavigationLine categoryOfNavigationLine {get;set;}
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
@@ -5694,7 +5485,6 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
-			[Required()]
 			public orientation orientation {get;set;}
 
 			[JsonIgnore]
@@ -5740,7 +5530,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RecommendedTrack : AidsToNavigation {
-			[Required()]
 			public Boolean basedOnFixedMarks {get;set;} = false;
 
 			public decimal? depthRangeMinimumValue {get;set;} = default;
@@ -5761,7 +5550,6 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
-			[Required()]
 			public orientation orientation {get;set;}
 
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
@@ -5779,7 +5567,6 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
 			[EnumerationValue([1,2,3,4])]
-			[Required()]
 			public trafficFlow trafficFlow {get;set;}
 
 			[JsonIgnore]
@@ -5925,7 +5712,6 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
-			[Required()]
 			public rhythmOfLight rhythmOfLight {get;set;}
 
 			public int? flareBearing {get;set;} = default;
@@ -5993,7 +5779,6 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
-			[Required()]
 			public rhythmOfLight rhythmOfLight {get;set;}
 
 			public int? flareBearing {get;set;} = default;
@@ -6040,7 +5825,6 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
 
-			[Required()]
 			public rhythmOfLight rhythmOfLight {get;set;}
 
 			[JsonIgnore]
@@ -6132,7 +5916,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FogSignal : Equipment {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
-			[Required()]
 			public categoryOfFogSignal categoryOfFogSignal {get;set;}
 
 			public int? signalFrequency {get;set;} = default;
@@ -6253,7 +6036,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadioStation : Equipment {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,19,20])]
-			[Required()]
 			public categoryOfRadioStation categoryOfRadioStation {get;set;}
 
 			public decimal? estimatedRangeOfTransmission {get;set;} = default;
@@ -6362,7 +6144,6 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
-			[Required()]
 			public topmarkDaymarkShape topmarkDaymarkShape {get;set;}
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
@@ -6378,7 +6159,6 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializeshapeInformation() { return shapeInformation!=default; }
 
-			[Required()]
 			public Boolean isSlatted {get;set;} = false;
 
 			[JsonIgnore]
@@ -6485,7 +6265,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadarTransponderBeacon : Equipment {
 			[EnumerationValue([1,2,3])]
-			[Required()]
 			public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon {get;set;}
 
 			public radarWaveLength? radarWaveLength {get;set;} = default;
@@ -6557,7 +6336,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class VirtualAISAidToNavigation : ElectronicAton {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
-			[Required()]
 			public virtualAISAidToNavigationType virtualAISAidToNavigationType {get;set;}
 
 			[JsonIgnore]
@@ -6604,7 +6382,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PhysicalAISAidToNavigation : ElectronicAton {
 			[EnumerationValue([1,2,3])]
-			[Required()]
 			public CategoryOfPhysicalAISAidToNavigation CategoryOfPhysicalAISAidToNavigation {get;set;}
 
 			[JsonIgnore]
@@ -6651,11 +6428,9 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SyntheticAISAidToNavigation : ElectronicAton {
 			[EnumerationValue([1,2])]
-			[Required()]
 			public CategoryOfSyntheticAISAidtoNavigation CategoryOfSyntheticAISAidtoNavigation {get;set;}
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
-			[Required()]
 			public virtualAISAidToNavigationType virtualAISAidToNavigationType {get;set;}
 
 			[JsonIgnore]
@@ -6702,7 +6477,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PowerSource : Equipment {
 			[EnumerationValue([1,2,3,4])]
-			[Required()]
 			public CategoryOfPowerSource CategoryOfPowerSource {get;set;}
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
@@ -6781,7 +6555,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CardinalBeacon : GenericBeacon {
 			[EnumerationValue([1,2,3,4])]
-			[Required()]
 			public categoryOfCardinalMark categoryOfCardinalMark {get;set;}
 
 			[JsonIgnore]
@@ -6855,7 +6628,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CardinalBuoy : GenericBuoy {
 			[EnumerationValue([1,2,3,4])]
-			[Required()]
 			public categoryOfCardinalMark categoryOfCardinalMark {get;set;}
 
 			[JsonIgnore]
@@ -6894,7 +6666,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InstallationBuoy : GenericBuoy {
 			[EnumerationValue([1,2])]
-			[Required()]
 			public categoryOfInstallationBuoy categoryOfInstallationBuoy {get;set;}
 
 			[JsonIgnore]
@@ -7554,7 +7325,6 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializesinkerDimensions() { return sinkerDimensions!=default; }
 
-			[Required()]
 			public decimal weight {get;set;}
 
 			public String? sinkerType {get;set;} = default;
@@ -7698,7 +7468,6 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializeCableDimensions() { return CableDimensions!=default; }
 
 			[EnumerationValue([1,3,4,5,6,7,8])]
-			[Required()]
 			public categoryOfCable categoryOfCable {get;set;}
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
@@ -7917,7 +7686,6 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.HasValue; }
 
-			[Required()]
 			public decimal weight {get;set;}
 
 			public String? counterWeightType {get;set;} = default;
@@ -7983,7 +7751,6 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
-			[Required()]
 			public topmarkDaymarkShape topmarkDaymarkShape {get;set;}
 
 			public decimal? verticalLength {get;set;} = default;
@@ -8231,7 +7998,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AtonAggregation : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,3,2])]
-			[Required()]
 			public CategoryOfAggregation CategoryOfAggregation {get;set;}
 
 			[JsonIgnore]
@@ -8278,7 +8044,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AtonAssociation : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2])]
-			[Required()]
 			public CategoryOfAssociation CategoryOfAssociation {get;set;}
 
 			[JsonIgnore]
@@ -8333,7 +8098,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class QualityOfNonBathymetricData : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6])]
-			[Required()]
 			public categoryOfTemporalVariation categoryOfTemporalVariation {get;set;}
 
 			public decimal? orientationUncertainty {get;set;} = default;
@@ -8344,7 +8108,6 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
 
-			[Required()]
 			public horizontalPositionUncertainty horizontalPositionUncertainty {get;set;}
 
 			public information? information {get;set;} = default;
@@ -8398,10 +8161,8 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
 			public int maximumDisplayScale {get;set;}
 
-			[Required()]
 			public int minimumDisplayScale {get;set;}
 
 			[JsonIgnore]
@@ -8439,7 +8200,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LocalDirectionOfBuoyage : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
 			public orientation orientation {get;set;}
 
 			[JsonIgnore]
@@ -8478,7 +8238,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NavigationalSystemOfMarks : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,9,10,11,12,13,15])]
-			[Required()]
 			public marksNavigationalSystemOf marksNavigationalSystemOf {get;set;}
 
 			[JsonIgnore]
@@ -8517,7 +8276,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SoundingDatum : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
-			[Required()]
 			public verticalDatum verticalDatum {get;set;}
 
 			[JsonIgnore]
@@ -8556,7 +8314,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class VerticalDatumOfData : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
-			[Required()]
 			public verticalDatum verticalDatum {get;set;}
 
 			[JsonIgnore]
