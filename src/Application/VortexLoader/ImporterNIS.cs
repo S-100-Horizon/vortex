@@ -33,10 +33,7 @@ namespace S100Framework.Applications
         internal static string ps128 = "S-128";
         internal static Geodatabase _geodatabase;
 
-        
-
-
-//internal static FeatureRelations featureRelations = null;
+        //internal static FeatureRelations featureRelations = null;
         internal static RelatedEquipment? relatedEquipment;
 
         internal static ConverterRegistry _converterRegistry = new ConverterRegistry();
@@ -218,7 +215,9 @@ namespace S100Framework.Applications
                     */
                     Logger.Current.Information($"Converting all tables: {filter.WhereClause}");
 
-                    Store(() => S101_SoundingDatum(source, destination, filter, ImporterNIS._compilationScale)); 
+                    Store(() => S101_Routes(source, destination, filter)); 
+
+                    Store(() => S101_SoundingDatum(source, destination, filter)); 
 
                     Store(() => S57_SoundingsP(source, destination, filter));
 
