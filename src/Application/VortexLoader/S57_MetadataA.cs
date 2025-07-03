@@ -206,7 +206,7 @@ namespace S100Framework.Applications
                             if (current.ORIENT.HasValue) {
                                 var localDirectionOfBuoyage = new LocalDirectionOfBuoyage {
                                     marksNavigationalSystemOf = default,
-                                    orientationValue = default,                                    
+                                    orientationValue = default,
                                 };
 
                                 // TODO: interoperabilityIdentifier
@@ -241,35 +241,36 @@ namespace S100Framework.Applications
 
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(localDirectionOfBuoyage));
                             }
-
-                            var instance = new NavigationalSystemOfMarks {
-                                marksNavigationalSystemOf = default,
-                            };
-
-                            if (current.MARSYS.HasValue) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
-                            }
                             else {
-                                Logger.Current.DataError(current.OBJECTID ?? default,current.TableName ?? "Unknown tablename",current.LNAM ?? "Unknown LNAM",$"Missing MARSYS value for M_NSYS where globalid = '{{{current.GLOBALID}}}'");
+                                var instance = new NavigationalSystemOfMarks {
+                                    marksNavigationalSystemOf = default,
+                                };
+
+                                if (current.MARSYS.HasValue) {
+                                    instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID ?? default, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown LNAM", $"Missing MARSYS value for M_NSYS where globalid = '{{{current.GLOBALID}}}'");
+                                }
+
+                                AddInformation(instance.information, feature);
+                                buffer["ps"] = ps101;
+                                buffer["code"] = instance.GetType().Name;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                SetShape(buffer, current.SHAPE);
+                                ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                                var featureN = featureClass.CreateRow(buffer);
+                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
+                                }
+
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             }
-
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
-
-                            var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
-                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
-                            }
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
-
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
                         break;
                     case 40: { // M_QUAL_QualityOfData // SKIN OF EARTH
