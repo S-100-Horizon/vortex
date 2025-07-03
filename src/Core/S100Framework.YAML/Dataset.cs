@@ -186,29 +186,29 @@ namespace S100Framework.YAML
 
     public class Curve
     {
-        private Point? _start;
-        private Point? _end;
+        private string? _start;
+        private string? _end;
 
         public Curve(Coordinate[] vertices) {
             Coordinate = vertices;
         }
-
-        public Curve(Point start, Coordinate[] vertices) {
+        public Curve(string start, Coordinate[] vertices) {
             _start = start;
+
             Coordinate = vertices;
         }
-
-        public Curve(Point start, Point end, Coordinate[] vertices) {
+        public Curve(string? start, string? end, Coordinate[] vertices) {
             _start = start;
             _end = end;
+
             Coordinate = vertices;
         }
 
         public string? Name { get; set; }
 
-        public string? Start => _start?.Name ?? null;
+        public string? Start => _start;
 
-        public string? End => _end?.Name ?? null;
+        public string? End => _end;
         public ICollection<Association>? Association => _associations.Any() ? _associations : null;
         private ICollection<Association> _associations = new HashSet<Association>();
         public Curve AddAssociation(Association association) {
@@ -222,21 +222,6 @@ namespace S100Framework.YAML
         public string? ReversedVertices => Coordinate is null ? string.Empty : string.Join(",", Coordinate.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.X, e.Y)).Reverse());
         [YamlIgnore]
         public Coordinate[]? Coordinate { get; private set; }
-
-        //public override bool Equals(object obj) {
-        //    if (obj is Curve other) {
-        //        // Compare based on same start and end points (regardless of order)
-        //        if (Vertices == other.Vertices) return true;
-        //        if (Vertices == other.ReversedVertices) return true;
-        //    }
-        //    return false;
-        //}
-
-        //public override int GetHashCode() {
-        //    // Ensure same hash for curves that have the same start and end points (regardless of order)
-        //    int hash1 = Vertices.GetHashCode();
-        //    return hash1; // XOR to avoid order dependency
-        //}
     }
 
     public class CompositeCurve
@@ -256,7 +241,6 @@ namespace S100Framework.YAML
             return this;
         }
 
-        //public string? Components => Curves is null ? null : string.Join(',', Curves.Select(e => e.Name));
         public string Components => string.Join(",", Curves);
 
         [YamlIgnore]
@@ -281,11 +265,6 @@ namespace S100Framework.YAML
 
         public dynamic[]? Interior => InteriorRings?.Length == 0 ? null : InteriorRings?.Select(e => new { Hole = e }).ToArray();
 
-        //[YamlIgnore]
-        //public Curve ExteriorRing { get; set; } = exterior;
-
-        //[YamlIgnore]
-        //public Curve[] InteriorRings { get; set; } = [];
     }
 
     public class Coordinate(double x, double y)
