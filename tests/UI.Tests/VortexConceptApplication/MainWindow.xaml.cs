@@ -185,7 +185,7 @@ namespace VortexConceptApplication
 
 
             selectedFeature!.PropertyChanged += (object? sender, PropertyChangedEventArgs e) => {
-                System.Diagnostics.Debugger.Break();
+                //System.Diagnostics.Debugger.Break();
             };
 
             S100AttributeEditor.SelectedFeatureObject = selectedFeature;

@@ -292,7 +292,7 @@ namespace S100Framework.WPF.Editors
             var radioButtonUnknown = new RadioButton {
                 ToolTip = "[Unknown]",
                 GroupName = "Unknown",
-                Background = System.Windows.Media.Brushes.Orange,
+                //Background = System.Windows.Media.Brushes.Orange,
                 IsChecked = instance == null,
                 HorizontalAlignment = HorizontalAlignment.Left,
             };

@@ -280,28 +280,29 @@ namespace S100Framework.WPF.Editors
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
 
             var instance = (T)propertyItem.Value;
-
-            var panel = new Grid {
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                VerticalAlignment = VerticalAlignment.Center,
-            };
-
-            var radioButtonUnknown = new RadioButton {
-                ToolTip = "[Unknown]",
-                GroupName = propertyItem.DisplayName,
-                Background = System.Windows.Media.Brushes.Orange,
-                HorizontalAlignment = HorizontalAlignment.Left,
-                IsChecked = instance == null,
-                Margin = new Thickness(1, 1, 0, 0),
-            };
-            //Panel.SetZIndex(radioButtonUnknown, 1);
-            radioButtonUnknown.Checked += (s, e) => {
-                //OnPropertyChanged(nameof(instance));
-            };
+            
 
             var propertyType = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
 
             if (propertyType.IsEnum) {
+                var panel = new Grid {
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    VerticalAlignment = VerticalAlignment.Center,
+                };
+
+                var radioButtonUnknown = new RadioButton {
+                    ToolTip = "[Unknown]",
+                    GroupName = propertyItem.DisplayName,
+                    Background = System.Windows.Media.Brushes.Orange,
+                    HorizontalAlignment = HorizontalAlignment.Left,
+                    IsChecked = instance == null,
+                    Margin = new Thickness(1, 1, 0, 0),
+                };
+                //Panel.SetZIndex(radioButtonUnknown, 1);
+                radioButtonUnknown.Checked += (s, e) => {
+                    //OnPropertyChanged(nameof(instance));
+                };
+
                 var editor = new PropertyGridEditorComboBox() {
                 };
                 editor.SelectionChanged += (s, e) => {
@@ -320,24 +321,42 @@ namespace S100Framework.WPF.Editors
                 var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
                 BindingOperations.SetBinding(editor, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
                 panel.Children.Add(editor);
+
+                panel.Children.Add(radioButtonUnknown);
+                return panel;
             }
             else {                
                 if (propertyType == typeof(bool) || propertyType == typeof(Boolean)) {
+                    var panel = new StackPanel {
+                        Orientation = Orientation.Horizontal,
+                        VerticalAlignment = VerticalAlignment.Center,
+                    };
+
                     var editor = new PropertyGridEditorCheckBox();
 
                     editor.IsThreeState = true;
 
                     var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
-                    BindingOperations.SetBinding(editor, CheckBox.IsCheckedProperty, bindingSelectedItemProperty);                    
+                    BindingOperations.SetBinding(editor, CheckBox.IsCheckedProperty, bindingSelectedItemProperty);
+
                     return editor;
+
+                    panel.Children.Add(editor);
+
+                    var label = new Label {
+                        Content ="<unknown>",
+                    };
+                    panel.Children.Add(label);
+                    
                 }
                 else
                     System.Diagnostics.Debugger.Break();
             }
+            throw new NotImplementedException();
 
-            panel.Children.Add(radioButtonUnknown);
+            //panel.Children.Add(radioButtonUnknown);
 
-            return panel;
+            //return panel;
         }
     }
 
