@@ -142,7 +142,7 @@ namespace S100Framework.Applications
 
                     if (datasetName.Equals("101DK40751E")) continue;
                     if (datasetName.Equals("101DK40545E")) continue;
-                    if (datasetName.Equals("101DK40347E")) continue;
+                    //if (datasetName.Equals("101DK40347E")) continue;
 
                     Log.Information("{dataset}", datasetName);
                     var geometries = new List<(Geometry geometry, string name)>();
@@ -582,14 +582,14 @@ namespace ArcGIS.Core.Data
     using System.Collections.Concurrent;
     using System.Linq;
 
-    internal static class Extension
+    public static class Extension
     {
         static SpatialReference spatialReference = SpatialReferenceBuilder.CreateSpatialReference(4326);
 
         static GeometryFactory factory = new GeometryFactory(new PrecisionModel(10000000)); // Or PrecisionModels.Floating
         //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating)); // Or PrecisionModels.Floating
 
-        public static S100Framework.YAML.Matrix? BuildTopology(this Geodatabase geodatabase, QueryFilter? queryFilter = default) {
+        public static S100Framework.YAML.Matrix? BuildTopology(this Geodatabase geodatabase, QueryFilter? queryFilter = default, Action<ICollection<LineString>>? persist = default) {
             queryFilter = queryFilter switch {
                 SpatialQueryFilter spatial => new SpatialQueryFilter {
                     FilterGeometry = spatial.FilterGeometry,
@@ -794,7 +794,7 @@ namespace ArcGIS.Core.Data
 
                 int count = polygons.Count();
 
-                topology.Build(curves.ToArray(), polygons.ToArray());
+                topology.Build(curves.ToArray(), polygons.ToArray(), persist);
             }
 
             Log.Verbose("Topology: #{curves}, #{composites}, #{surfaces}", topology.Curves.Count, topology.CompositeCurves.Count, topology.Surfaces.Count);
