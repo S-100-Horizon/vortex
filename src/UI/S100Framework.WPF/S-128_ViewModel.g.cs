@@ -179,7 +179,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class customPaperSizeViewModel : ViewModelBase {
-		private decimal _paperWidth ;
+		private decimal _paperWidth  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal paperWidth {
@@ -190,7 +190,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _paperWidth, value);
 			}
 		}
-		private decimal _paperLength ;
+		private decimal _paperLength  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal paperLength {
@@ -625,7 +625,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class periodicDateRangeViewModel : ViewModelBase {
-		private String _dateEnd ;
+		private String _dateEnd  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String dateEnd {
@@ -636,7 +636,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _dateEnd, value);
 			}
 		}
-		private String _dateStart ;
+		private String _dateStart  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		public String dateStart {
@@ -699,7 +699,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _currency, value);
 			}
 		}
-		private decimal _price ;
+		private decimal _price  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal price {
@@ -784,7 +784,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _reprintNation, value);
 			}
 		}
-		private printSizeViewModel _printSize ;
+		private printSizeViewModel _printSize  = default;
 
 		[Category("printInformation")]
 		[ExpandableObject]
@@ -900,7 +900,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class productSpecificationViewModel : ViewModelBase {
-		private DateOnly _editionDate ;
+		private DateOnly _editionDate  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly editionDate {
@@ -990,7 +990,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _comment, value);
 			}
 		}
-		private digitalSignatureReference _digitalSignatureReference ;
+		private digitalSignatureReference _digitalSignatureReference  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<digitalSignatureReference?>), typeof(Editors.UnknownEditor<digitalSignatureReference?>))]
 		[DomainModel.EnumerationAttribute(nameof(digitalSignatureReferenceList), typeof(digitalSignatureReference))]
@@ -1072,7 +1072,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _otherDataTypeDescription, value);
 			}
 		}
-		private supportFileFormat _supportFileFormat ;
+		private supportFileFormat _supportFileFormat  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<supportFileFormat?>), typeof(Editors.UnknownEditor<supportFileFormat?>))]
 		[DomainModel.EnumerationAttribute(nameof(supportFileFormatList), typeof(supportFileFormat))]
@@ -1087,7 +1087,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Browsable(false)]
 		public supportFileFormat[] supportFileFormatList => [(supportFileFormat)1,(supportFileFormat)2,(supportFileFormat)3,(supportFileFormat)4,(supportFileFormat)5,(supportFileFormat)6,(supportFileFormat)7,(supportFileFormat)8,(supportFileFormat)9,(supportFileFormat)100];
-		private supportFilePurpose _supportFilePurpose ;
+		private supportFilePurpose _supportFilePurpose  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<supportFilePurpose?>), typeof(Editors.UnknownEditor<supportFilePurpose?>))]
 		[DomainModel.EnumerationAttribute(nameof(supportFilePurposeList), typeof(supportFilePurpose))]
@@ -1102,7 +1102,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Browsable(false)]
 		public supportFilePurpose[] supportFilePurposeList => [(supportFilePurpose)1,(supportFilePurpose)2,(supportFilePurpose)3];
-		private defaultLocaleViewModel _defaultLocale ;
+		private defaultLocaleViewModel _defaultLocale  = default;
 
 		[Category("supportFile")]
 		[ExpandableObject]
@@ -1114,7 +1114,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _defaultLocale, value);
 			}
 		}
-		private supportFileSpecificationViewModel _supportFileSpecification ;
+		private supportFileSpecificationViewModel _supportFileSpecification  = default;
 
 		[Category("supportFile")]
 		[ExpandableObject]
@@ -1193,7 +1193,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class supportFileSpecificationViewModel : ViewModelBase {
-		private DateOnly _editionDate ;
+		private DateOnly _editionDate  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly editionDate {
@@ -1260,7 +1260,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class serviceSpecificationViewModel : ViewModelBase {
-		private DateOnly _editionDate ;
+		private DateOnly _editionDate  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly editionDate {
@@ -1525,7 +1525,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _expirationDate, value);
 			}
 		}
-		private DateOnly _issueDate ;
+		private DateOnly _issueDate  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly issueDate {
@@ -1592,7 +1592,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Browsable(false)]
 		public typeOfTimeIntervalUnit[] typeOfTimeIntervalUnitList => [(typeOfTimeIntervalUnit)1,(typeOfTimeIntervalUnit)2,(typeOfTimeIntervalUnit)3,(typeOfTimeIntervalUnit)4];
-		private int _valueOfTime ;
+		private int _valueOfTime  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int valueOfTime {
@@ -1644,7 +1644,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class referenceToNMViewModel : ViewModelBase {
-		private DateOnly _publicationDate ;
+		private DateOnly _publicationDate  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly publicationDate {
@@ -1701,7 +1701,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class weekOfYearViewModel : ViewModelBase {
-		private int _weekNumber ;
+		private int _weekNumber  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int weekNumber {
@@ -1712,7 +1712,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _weekNumber, value);
 			}
 		}
-		private int _yearNumber ;
+		private int _yearNumber  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int yearNumber {
@@ -1979,7 +1979,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ProductMappingViewModel : AssociationViewModel {
-		private categoryOfProductMapping _categoryOfProductMapping ;
+		private categoryOfProductMapping _categoryOfProductMapping  = default;
 
 		[Category("ProductMapping")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfProductMapping?>), typeof(Editors.UnknownEditor<categoryOfProductMapping?>))]
@@ -2053,7 +2053,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CatalogueSectionHeaderViewModel : InformationViewModel<CatalogueSectionHeader> {
-		private int _catalogueSectionNumber ;
+		private int _catalogueSectionNumber  = default;
 
 		[Category("CatalogueSectionHeader")]
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
@@ -2772,7 +2772,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _datasetName, value);
 			}
 		}
-		private DateOnly _issueDate ;
+		private DateOnly _issueDate  = default;
 
 		[Category("ElectronicProduct")]
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
@@ -2795,7 +2795,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _issueTime, value);
 			}
 		}
-		private typeOfProductFormat _typeOfProductFormat ;
+		private typeOfProductFormat _typeOfProductFormat  = default;
 
 		[Category("ElectronicProduct")]
 		[Editor(typeof(Editors.UnknownEditor<typeOfProductFormat?>), typeof(Editors.UnknownEditor<typeOfProductFormat?>))]
@@ -3298,7 +3298,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)42,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
 
-		private DateOnly _editionDate ;
+		private DateOnly _editionDate  = default;
 
 		[Category("PhysicalProduct")]
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
@@ -3713,7 +3713,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Browsable(false)]
 		public serviceStatus[] serviceStatusList => [(serviceStatus)1,(serviceStatus)2,(serviceStatus)3,(serviceStatus)4];
-		private typeOfProductFormat _typeOfProductFormat ;
+		private typeOfProductFormat _typeOfProductFormat  = default;
 
 		[Category("S100Service")]
 		[Editor(typeof(Editors.UnknownEditor<typeOfProductFormat?>), typeof(Editors.UnknownEditor<typeOfProductFormat?>))]

@@ -386,6 +386,14 @@ namespace S100Framework.Applications
                                     prefix = "required " + prefix + "?";
                                     postfix = " = default;";
                                 }
+                                else {
+                                    prefix = "required " + prefix;
+                                    postfix = knowTypesPrefix[referenceCode] switch {
+                                        "String" or "string" => " = string.Empty;",
+                                        "Boolean" or "bool" => " = false;",
+                                        _ => " = default;",
+                                    };
+                                }
                             }
                             else {
                                 prefix = $"List<{prefix}>";
@@ -1131,6 +1139,14 @@ namespace S100Framework.Applications
                         prefix = "required " + prefix + "?";
                         postfix = " = default;";
                     }
+                    else {
+                        prefix = "required " + prefix;
+                        postfix = client.KnowTypesPrefix[referenceCode] switch {
+                            "String" or "string" => " = string.Empty;",
+                            "Boolean" or "bool" => " = false;",
+                            _ => " = default;",
+                        };
+                    }
                 }
                 else {
                     prefix = $"List<{prefix}>";
@@ -1462,6 +1478,13 @@ namespace S100Framework.Applications
                     if (client.SupportingUnknown) {
                         prefix += "?";
                         postfix = " = default;";
+                    }
+                    else {
+                        postfix = client.BuildViewModelClassClient.KnowTypesPrefix[referenceCode] switch {
+                            "String" or "string" => " = string.Empty;",
+                            "Boolean" or "bool" => " = false;",
+                            _ => " = default;",
+                        };
                     }
                 }
                 else {

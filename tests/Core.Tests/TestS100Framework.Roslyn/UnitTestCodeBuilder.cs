@@ -57,6 +57,8 @@ namespace TestS100Framework
 
                 Build_S124();
 
+                Build_S127();
+
                 Build_S128();
 
                 Build_S131();
@@ -79,6 +81,10 @@ namespace TestS100Framework
                 Build_S124();
                 File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-124_FC.g.cs", File.ReadAllText(@".\..\..\..\S-124_FC.cs"));
                 File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-124_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-124_ViewModel.cs"));
+
+                Build_S127();
+                File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-127_FC.g.cs", File.ReadAllText(@".\..\..\..\S-127_FC.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-127_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-127_ViewModel.cs"));
 
                 Build_S128();
                 File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-128_FC.g.cs", File.ReadAllText(@".\..\..\..\S-128_FC.cs"));
@@ -166,6 +172,22 @@ namespace TestS100Framework
 
                 File.WriteAllText(@".\..\..\..\S-124_FC.cs", content.DomainModel, Encoding.UTF8);
                 File.WriteAllText(@".\..\..\..\S-124_ViewModel.cs", content.ViewModel, Encoding.UTF8);
+            }
+
+            [Fact]
+            public void Build_S127() {
+                var type1 = typeof(Test.NullableTest);
+                var type2 = typeof(bool?);
+
+                var s100 = XDocument.Load(@".\Artifacts\S-127FC_2.0.0 .xml");
+
+                Assert.True(VerifyProductSpecification(s100));
+
+                var content = S100Framework.Applications.Roslyn.Build(s100);
+                //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
+
+                File.WriteAllText(@".\..\..\..\S-127_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-127_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
