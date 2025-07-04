@@ -104,110 +104,182 @@ namespace S100Framework.Applications
                         }
                         break;
 
-                    case 5: { // BRIDGE_Bridge
-                            var instance = new Bridge() {
-                            };
+                    case 5: { // BRIDGE_Bridge  // SPANS
+                            //var instance = new Bridge();
+
+                            bool openingBridge = false;
+                            categoryOfOpeningBridge categoryOfOpeningBridgeValue = default;
+                            bridgeConstruction bridgeConstructionValue = default;
+                            List<bridgeFunction> bridgeFunctionValue = new List<bridgeFunction>();
+                            int? scaleMinimum = default;
+                            List<colour> colours = new();
+                            colourPattern? colourPatterns = default;
+                            condition? conditionValue = default;
+                            List<status> statusValue = new();
+                            List<natureOfConstruction> natureOfConstructionValues = new();
+
+                            if (current.CATBRG != default && current.CATBRG == "1") {
+                                openingBridge = false;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "2") {
+                                openingBridge = true;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "3") {
+                                openingBridge = true;
+                                categoryOfOpeningBridgeValue = categoryOfOpeningBridge.SwingBridge;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "4") {
+                                openingBridge = true;
+                                categoryOfOpeningBridgeValue = categoryOfOpeningBridge.LiftingBridge;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "5") {
+                                openingBridge = true;
+                                categoryOfOpeningBridgeValue = categoryOfOpeningBridge.BasculeBridge;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "6") {
+                                openingBridge = false;
+                                bridgeConstructionValue = bridgeConstruction.PontoonBridge;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "7") {
+                                openingBridge = true;
+                                categoryOfOpeningBridgeValue = categoryOfOpeningBridge.Drawbridge;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "8") {
+                                openingBridge = false;
+                                bridgeConstructionValue = bridgeConstruction.TransporterBridge;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "9") {
+                                openingBridge = false;
+                                bridgeFunctionValue = new List<bridgeFunction>() { bridgeFunction.Pedestrian };
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "10") {
+                                openingBridge = false;
+                                bridgeConstructionValue = bridgeConstruction.Viaduct;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "11") {
+                                openingBridge = false;
+                                bridgeFunctionValue = new List<bridgeFunction>() { bridgeFunction.Aqueduct };
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "12") {
+                                openingBridge = false;
+                                bridgeConstructionValue = bridgeConstruction.SuspensionBridge;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "-32767") {
+                                bridgeConstructionValue = default;  // bridgeConstruction.Unknown;
+                                openingBridge = false;
+                                Logger.Current.DataError(objectid, tableName, longname, $"CATBRG is unknown hence OpeningBridge unknown - OpeningBridge set to false");
+                            }
+
+
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                colours = GetColours(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
+                                colourPatterns = GetColourPattern(current.COLPAT);
                             }
 
                             if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
+                                conditionValue = GetCondition(current.CONDTN.Value);
                             }
 
                             if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
+                                statusValue = GetStatus(current.STATUS);
                             }
 
-                            if (current.CATBRG != default && current.CATBRG == "1") {
-                                instance.openingBridge = false;
-                            }
-                            else if (current.CATBRG != default && current.CATBRG == "2") {
-                                instance.openingBridge = true;
-                            }
-                            else if (current.CATBRG != default && current.CATBRG == "3") {
-                                instance.openingBridge = true;
-                                instance.categoryOfOpeningBridge = categoryOfOpeningBridge.SwingBridge;
-                            }
-                            else if (current.CATBRG != default && current.CATBRG == "4") {
-                                instance.openingBridge = true;
-                                instance.categoryOfOpeningBridge = categoryOfOpeningBridge.LiftingBridge;
-                            }
-                            else if (current.CATBRG != default && current.CATBRG == "5") {
-                                instance.openingBridge = true;
-                                instance.categoryOfOpeningBridge = categoryOfOpeningBridge.BasculeBridge;
-                            }
-                            else if (current.CATBRG != default && current.CATBRG == "6") {
-                                instance.openingBridge = false;
-                                instance.bridgeConstruction = bridgeConstruction.PontoonBridge;
-                            }
-                            else if (current.CATBRG != default && current.CATBRG == "7") {
-                                instance.openingBridge = true;
-                                instance.categoryOfOpeningBridge = categoryOfOpeningBridge.Drawbridge;
-                            }
-                            else if (current.CATBRG != default && current.CATBRG == "8") {
-                                instance.openingBridge = false;
-                                instance.bridgeConstruction = bridgeConstruction.TransporterBridge;
-                            }
-                            else if (current.CATBRG != default && current.CATBRG == "9") {
-                                instance.openingBridge = false;
-                                instance.bridgeFunction = new List<bridgeFunction>() { bridgeFunction.Pedestrian };
-                            }
-                            else if (current.CATBRG != default && current.CATBRG == "10") {
-                                instance.openingBridge = false;
-                                instance.bridgeConstruction = bridgeConstruction.Viaduct;
-                            }
-                            else if (current.CATBRG != default && current.CATBRG == "11") {
-                                instance.openingBridge = false;
-                                instance.bridgeFunction = new List<bridgeFunction>() { bridgeFunction.Aqueduct };
-                            }
-                            else if (current.CATBRG != default && current.CATBRG == "12") {
-                                instance.openingBridge = false;
-                                instance.bridgeConstruction = bridgeConstruction.SuspensionBridge;
-                            }
-                            else if (current.CATBRG != default && current.CATBRG == "-32767") {
-                                instance.bridgeConstruction = default;  // bridgeConstruction.Unknown;
-                                instance.openingBridge = false;
-                                Logger.Current.DataError(objectid, tableName, longname, $"CATBRG is unknown hence OpeningBridge unknown - OpeningBridge set to false");
-                            }
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                natureOfConstructionValues = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
 
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+                            // Span
+                            if (openingBridge) {
+                                var instance = new SpanOpening() {
+                                    verticalClearanceClosed = new verticalClearanceClosed() {
+                                        verticalClearanceValue = current.VERCCL.HasValue ? current.VERCCL!.Value : default,
+                                    }
+                                    ,
+                                    verticalClearanceOpen = new verticalClearanceOpen() {
+                                        verticalClearanceValue = current.VERCOP.HasValue ? current.VERCOP!.Value : default,
+                                        verticalClearanceUnlimited = !current.VERCOP.HasValue,
+                                    }
+                                   
+                                };
 
-                            var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                                instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
+                                    horizontalClearanceValue = current.HORCLR.HasValue ? current.HORCLR!.Value : default,
+                                    horizontalDistanceUncertainty = current.HORACC.HasValue ? current.HORACC!.Value : default
+                                };
 
-                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
+
+                                AddInformation(instance.information, feature);
+                                buffer["ps"] = ps101;
+
+                                buffer["code"] = instance.GetType().Name;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                SetShape(buffer, current.SHAPE);
+                                SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                                var featureN = featureClass.CreateRow(buffer);
+                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
+                                }
+
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            }
+                            if (!openingBridge) {
+                                var instance = new SpanFixed() {
+                                    verticalClearanceFixed = new verticalClearanceFixed() {
+                                        verticalClearanceValue = current.VERCCL.HasValue ? current.VERCCL!.Value : default,
+                                    }
+                                };
+
+                                instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
+                                    horizontalClearanceValue = current.HORCLR.HasValue ? current.HORCLR!.Value : default,
+                                    horizontalDistanceUncertainty = current.HORACC.HasValue ? current.HORACC!.Value : default
+                                };
+
+                                AddInformation(instance.information, feature);
+                                buffer["ps"] = ps101;
+
+                                buffer["code"] = instance.GetType().Name;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                SetShape(buffer, current.SHAPE);
+                                SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                                var featureN = featureClass.CreateRow(buffer);
+                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
+                                }
+
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+
                             }
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            // TODO: Bridge - outer ring of all features in the bridge
+
                         }
                         break;
 

@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VortexLoader;
 using S100Framework.Applications.Singletons;
+using System.Diagnostics.Eventing.Reader;
 
 namespace S100Framework.Applications
 {
@@ -166,11 +167,16 @@ namespace S100Framework.Applications
                 instance.periodicDateRange = periodicDateRange;
             }
 
-            instance.sectorCharacteristics = (ImporterNIS.GetSectorCharacteristics(lights));
+            if (lights.Count == 0) {
+                instance.sectorCharacteristics = (ImporterNIS.GetSectorCharacteristics([current])); 
+            }
+            else {
+                instance.sectorCharacteristics = (ImporterNIS.GetSectorCharacteristics(lights));
+            }
 
             if (current.SIGGEN != null) {
-                instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
-            }
+                    instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
+                }
 
             if (current.STATUS != default) {
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
