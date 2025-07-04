@@ -206,6 +206,7 @@ namespace S100Framework.Applications
                     //filter.WhereClause = "globalid = '{D7DE9631-CF20-4143-B3F4-47BB4A2AE541}'";
                     //filter.WhereClause = "globalid = '{855B900E-760C-4D68-AE02-8F3CA6FE60DD}'";
                     //filter.WhereClause = "globalid = '{BAFFC1F3-A89C-4E13-982F-B577E50A06DC}'";
+                    Store(() => S57_CulturalFeaturesA(source, destination, filter));
 
                     Logger.Current.Information($"Converting PortsAndServices");
                     Store(() => S57_PortsAndServicesA(source, destination, filter));
