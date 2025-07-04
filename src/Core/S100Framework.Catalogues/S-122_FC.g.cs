@@ -1540,9 +1540,9 @@ namespace S100Framework.DomainModel.S122 {
 
 			public bool ShouldSerializedisplayName() { return displayName.HasValue; }
 
-			public String language {get;set;} = string.Empty;
+			public required String language {get;set;} = string.Empty;
 
-			public String name {get;set;} = string.Empty;
+			public required String name {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
@@ -1596,7 +1596,7 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class onlineResource {
-			public String onlineResourceLinkageURL {get;set;} = string.Empty;
+			public required String onlineResourceLinkageURL {get;set;} = string.Empty;
 
 			public String? protocol {get;set;} = default;
 
@@ -1630,15 +1630,15 @@ namespace S100Framework.DomainModel.S122 {
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
-			public decimal orientationValue {get;set;}
+			public required decimal orientationValue {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
-			public String dateStart {get;set;}
+			public required String dateStart {get;set;} = string.Empty;
 
-			public String dateEnd {get;set;}
+			public required String dateEnd {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
@@ -1660,7 +1660,7 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitOne {
-			public decimal sectorBearing {get;set;}
+			public required decimal sectorBearing {get;set;} = default;
 
 			public int? sectorLineLength {get;set;} = default;
 
@@ -1670,7 +1670,7 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitTwo {
-			public decimal sectorBearing {get;set;}
+			public required decimal sectorBearing {get;set;} = default;
 
 			public int? sectorLineLength {get;set;} = default;
 
@@ -1724,15 +1724,15 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class vesselsMeasurements {
 			[EnumerationValue([1,2,3,4,6,7,8,9,10,11,12,13])]
-			public vesselsCharacteristics vesselsCharacteristics {get;set;}
+			public required vesselsCharacteristics vesselsCharacteristics {get;set;} = default;
 
-			public decimal vesselsCharacteristicsValue {get;set;}
+			public required decimal vesselsCharacteristicsValue {get;set;} = default;
 
 			[EnumerationValue([3,4,5,6,7,9])]
-			public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {get;set;}
+			public required vesselsCharacteristicsUnit vesselsCharacteristicsUnit {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6])]
-			public comparisonOperator comparisonOperator {get;set;}
+			public required comparisonOperator comparisonOperator {get;set;} = default;
 		}
 
 		[System.Serializable()]
@@ -1820,9 +1820,9 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimit {
-			public sectorLimitOne sectorLimitOne {get;set;}
+			public required sectorLimitOne sectorLimitOne {get;set;} = default;
 
-			public sectorLimitTwo sectorLimitTwo {get;set;}
+			public required sectorLimitTwo sectorLimitTwo {get;set;} = default;
 		}
 
 		[System.Serializable()]
@@ -1841,7 +1841,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			public bool ShouldSerializetelecomCarrier() { return !string.IsNullOrEmpty(telecomCarrier); }
 
-			public String telecommunicationIdentifier {get;set;} = string.Empty;
+			public required String telecommunicationIdentifier {get;set;} = string.Empty;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public telecommunicationService? telecommunicationService {get;set;} = default;
@@ -1954,7 +1954,7 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PermissionType : InformationAssociation {
-			public categoryOfRelationship categoryOfRelationship {get;set;}
+			public required categoryOfRelationship categoryOfRelationship {get;set;} = default;
 
 			[JsonIgnore]
 			public override string Code => nameof(PermissionType);
@@ -1966,7 +1966,7 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InclusionType : InformationAssociation {
-			public membership membership {get;set;}
+			public required membership membership {get;set;} = default;
 
 			[JsonIgnore]
 			public override string Code => nameof(InclusionType);
@@ -2191,7 +2191,7 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Authority : InformationType {
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
-			public categoryOfAuthority categoryOfAuthority {get;set;}
+			public required categoryOfAuthority categoryOfAuthority {get;set;} = default;
 
 			public List<textContent> textContent {get;set;} = [];
 
@@ -2364,7 +2364,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			public bool ShouldSerializescheduleByDayOfWeek() { return scheduleByDayOfWeek.Any(); }
 
-			public information information {get;set;}
+			public required information information {get;set;} = default;
 
 			[JsonIgnore]
 			public override string Code => nameof(ServiceHours);
@@ -2487,7 +2487,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 
-			public String interoperabilityIdentifier {get;set;} = string.Empty;
+			public required String interoperabilityIdentifier {get;set;} = string.Empty;
 
 			public String? source {get;set;} = default;
 
@@ -2602,7 +2602,7 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MarineProtectedArea : FeatureType {
 			[EnumerationValue([1,2,3,4,5,6,7])]
-			public categoryOfMarineProtectedArea categoryOfMarineProtectedArea {get;set;}
+			public required categoryOfMarineProtectedArea categoryOfMarineProtectedArea {get;set;} = default;
 
 			[EnumerationValue([1,4,5,6,7,8,9,10,12,14,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33])]
 			public List<categoryOfRestrictedArea> categoryOfRestrictedArea {get;set;} = [];
@@ -2610,7 +2610,7 @@ namespace S100Framework.DomainModel.S122 {
 			public bool ShouldSerializecategoryOfRestrictedArea() { return categoryOfRestrictedArea.Any(); }
 
 			[EnumerationValue([1,2,3])]
-			public jurisdiction jurisdiction {get;set;}
+			public required jurisdiction jurisdiction {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41])]
 			public List<restriction> restriction {get;set;} = [];
@@ -2671,7 +2671,7 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class VesselTrafficServiceArea : FeatureType {
 			[EnumerationValue([1,2,3,4,5])]
-			public categoryOfVesselTrafficService categoryOfVesselTrafficService {get;set;}
+			public required categoryOfVesselTrafficService categoryOfVesselTrafficService {get;set;} = default;
 
 			[JsonIgnore]
 			public override string Code => nameof(VesselTrafficServiceArea);

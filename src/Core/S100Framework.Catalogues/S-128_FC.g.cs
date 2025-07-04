@@ -869,17 +869,17 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class customPaperSize {
-			public decimal paperWidth {get;set;}
+			public required decimal paperWidth {get;set;} = default;
 
-			public decimal paperLength {get;set;}
+			public required decimal paperLength {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class defaultLocale {
-			public String characterEncoding {get;set;} = string.Empty;
+			public required String characterEncoding {get;set;} = string.Empty;
 
-			public String countryName {get;set;} = string.Empty;
+			public required String countryName {get;set;} = string.Empty;
 
 			public String? language {get;set;} = default;
 
@@ -893,7 +893,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
-			public String name {get;set;} = string.Empty;
+			public required String name {get;set;} = string.Empty;
 
 			public nameUsage? nameUsage {get;set;} = default;
 
@@ -931,7 +931,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializeapplicationProfile() { return !string.IsNullOrEmpty(applicationProfile); }
 
-			public String linkage {get;set;} = string.Empty;
+			public required String linkage {get;set;} = string.Empty;
 
 			public String? nameOfResource {get;set;} = default;
 
@@ -953,9 +953,9 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
-			public String dateEnd {get;set;}
+			public required String dateEnd {get;set;} = string.Empty;
 
-			public String dateStart {get;set;}
+			public required String dateStart {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
@@ -965,9 +965,9 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializecontractPeriod() { return !string.IsNullOrEmpty(contractPeriod); }
 
-			public String currency {get;set;} = string.Empty;
+			public required String currency {get;set;} = string.Empty;
 
-			public decimal price {get;set;}
+			public required decimal price {get;set;} = default;
 		}
 
 		[System.Serializable()]
@@ -987,58 +987,37 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class productSpecification {
 			[XmlIgnore]
-			public DateOnly editionDate {get;set;}
-
-			[JsonIgnore]
-			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "editionDate")]
-			public DateTime editionDateField {
-				get { return editionDate.ToDateTime(TimeOnly.MinValue); }
-				set { editionDate = DateOnly.FromDateTime(value); }
-			}
+			public required DateOnly editionDate {get;set;} = default;
 
 			public String? iSSN {get;set;} = default;
 
 			public bool ShouldSerializeiSSN() { return !string.IsNullOrEmpty(iSSN); }
 
-			public String name {get;set;} = string.Empty;
+			public required String name {get;set;} = string.Empty;
 
-			public String version {get;set;} = string.Empty;
+			public required String version {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class supportFileSpecification {
 			[XmlIgnore]
-			public DateOnly editionDate {get;set;}
+			public required DateOnly editionDate {get;set;} = default;
 
-			[JsonIgnore]
-			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "editionDate")]
-			public DateTime editionDateField {
-				get { return editionDate.ToDateTime(TimeOnly.MinValue); }
-				set { editionDate = DateOnly.FromDateTime(value); }
-			}
+			public required String name {get;set;} = string.Empty;
 
-			public String name {get;set;} = string.Empty;
-
-			public String version {get;set;} = string.Empty;
+			public required String version {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class serviceSpecification {
 			[XmlIgnore]
-			public DateOnly editionDate {get;set;}
+			public required DateOnly editionDate {get;set;} = default;
 
-			[JsonIgnore]
-			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "editionDate")]
-			public DateTime editionDateField {
-				get { return editionDate.ToDateTime(TimeOnly.MinValue); }
-				set { editionDate = DateOnly.FromDateTime(value); }
-			}
+			public required String name {get;set;} = string.Empty;
 
-			public String name {get;set;} = string.Empty;
-
-			public String version {get;set;} = string.Empty;
+			public required String version {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
@@ -1075,9 +1054,9 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class telecommunications {
-			public String contactInstructions {get;set;} = string.Empty;
+			public required String contactInstructions {get;set;} = string.Empty;
 
-			public String telecommunicationIdentifier {get;set;} = string.Empty;
+			public required String telecommunicationIdentifier {get;set;} = string.Empty;
 
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public List<telecommunicationService> telecommunicationService {get;set;} = [];
@@ -1093,15 +1072,15 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializetypeOfTimeIntervalUnit() { return typeOfTimeIntervalUnit.Any(); }
 
-			public int valueOfTime {get;set;}
+			public required int valueOfTime {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class weekOfYear {
-			public int weekNumber {get;set;}
+			public required int weekNumber {get;set;} = default;
 
-			public int yearNumber {get;set;}
+			public required int yearNumber {get;set;} = default;
 		}
 
 		[System.Serializable()]
@@ -1135,7 +1114,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializereprintNation() { return !string.IsNullOrEmpty(reprintNation); }
 
-			public printSize printSize {get;set;}
+			public required printSize printSize {get;set;} = default;
 		}
 
 		[System.Serializable()]
@@ -1146,7 +1125,7 @@ namespace S100Framework.DomainModel.S128 {
 			public bool ShouldSerializecomment() { return !string.IsNullOrEmpty(comment); }
 
 			[EnumerationValue([8])]
-			public digitalSignatureReference digitalSignatureReference {get;set;}
+			public required digitalSignatureReference digitalSignatureReference {get;set;} = default;
 
 			[EnumerationValue([1,2])]
 			public digitalSignatureValue? digitalSignatureValue {get;set;} = default;
@@ -1157,9 +1136,9 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializeeditionNumber() { return editionNumber.HasValue; }
 
-			public String fileLocator {get;set;} = string.Empty;
+			public required String fileLocator {get;set;} = string.Empty;
 
-			public String fileName {get;set;} = string.Empty;
+			public required String fileName {get;set;} = string.Empty;
 
 			[XmlIgnore]
 			public DateOnly? issueDate {get;set;} = default;
@@ -1171,14 +1150,14 @@ namespace S100Framework.DomainModel.S128 {
 			public bool ShouldSerializeotherDataTypeDescription() { return !string.IsNullOrEmpty(otherDataTypeDescription); }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,100])]
-			public supportFileFormat supportFileFormat {get;set;}
+			public required supportFileFormat supportFileFormat {get;set;} = default;
 
 			[EnumerationValue([1,2,3])]
-			public supportFilePurpose supportFilePurpose {get;set;}
+			public required supportFilePurpose supportFilePurpose {get;set;} = default;
 
-			public defaultLocale defaultLocale {get;set;}
+			public required defaultLocale defaultLocale {get;set;} = default;
 
-			public supportFileSpecification supportFileSpecification {get;set;}
+			public required supportFileSpecification supportFileSpecification {get;set;} = default;
 		}
 
 		[System.Serializable()]
@@ -1190,14 +1169,7 @@ namespace S100Framework.DomainModel.S128 {
 			public bool ShouldSerializeexpirationDate() { return expirationDate.HasValue; }
 
 			[XmlIgnore]
-			public DateOnly issueDate {get;set;}
-
-			[JsonIgnore]
-			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "issueDate")]
-			public DateTime issueDateField {
-				get { return issueDate.ToDateTime(TimeOnly.MinValue); }
-				set { issueDate = DateOnly.FromDateTime(value); }
-			}
+			public required DateOnly issueDate {get;set;} = default;
 
 			public issuanceCycle? issuanceCycle {get;set;} = default;
 
@@ -1208,14 +1180,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class referenceToNM {
 			[XmlIgnore]
-			public DateOnly publicationDate {get;set;}
-
-			[JsonIgnore]
-			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "publicationDate")]
-			public DateTime publicationDateField {
-				get { return publicationDate.ToDateTime(TimeOnly.MinValue); }
-				set { publicationDate = DateOnly.FromDateTime(value); }
-			}
+			public required DateOnly publicationDate {get;set;} = default;
 
 			public weekOfYear? weekOfYear {get;set;} = default;
 
@@ -1344,7 +1309,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ProductMapping : FeatureAssociation {
 			[EnumerationValue([1,2,3,4])]
-			public categoryOfProductMapping categoryOfProductMapping {get;set;}
+			public required categoryOfProductMapping categoryOfProductMapping {get;set;} = default;
 
 			[JsonIgnore]
 			public override string Code => nameof(ProductMapping);
@@ -1375,7 +1340,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CatalogueSectionHeader : InformationNode, IInformationBindingDefinition {
-			public int catalogueSectionNumber {get;set;}
+			public required int catalogueSectionNumber {get;set;} = default;
 
 			public String? catalogueSectionTitle {get;set;} = default;
 
@@ -1431,7 +1396,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ContactDetails : InformationNode, IInformationBindingDefinition {
-			public String contactInstructions {get;set;} = string.Empty;
+			public required String contactInstructions {get;set;} = string.Empty;
 
 			public List<contactAddress> contactAddress {get;set;} = [];
 
@@ -1565,7 +1530,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ProducerInformation : InformationNode, IInformationBindingDefinition {
-			public String agencyResponsibleForProduction {get;set;} = string.Empty;
+			public required String agencyResponsibleForProduction {get;set;} = string.Empty;
 
 			public String? agencyName {get;set;} = default;
 
@@ -1608,7 +1573,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DistributorInformation : InformationNode, IInformationBindingDefinition {
-			public String distributorName {get;set;} = string.Empty;
+			public required String distributorName {get;set;} = string.Empty;
 
 			[JsonIgnore]
 			public override string Code => nameof(DistributorInformation);
@@ -1672,7 +1637,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializeiMOMaritimeService() { return iMOMaritimeService.Any(); }
 
-			public Boolean notForNavigation {get;set;} = false;
+			public required Boolean notForNavigation {get;set;} = false;
 
 			public List<featureName> featureName {get;set;} = [];
 
@@ -1889,21 +1854,14 @@ namespace S100Framework.DomainModel.S128 {
 			public bool ShouldSerializedatasetName() { return !string.IsNullOrEmpty(datasetName); }
 
 			[XmlIgnore]
-			public DateOnly issueDate {get;set;}
-
-			[JsonIgnore]
-			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "issueDate")]
-			public DateTime issueDateField {
-				get { return issueDate.ToDateTime(TimeOnly.MinValue); }
-				set { issueDate = DateOnly.FromDateTime(value); }
-			}
+			public required DateOnly issueDate {get;set;} = default;
 
 			public TimeOnly? issueTime {get;set;} = default;
 
 			public bool ShouldSerializeissueTime() { return issueTime.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
-			public typeOfProductFormat typeOfProductFormat {get;set;}
+			public required typeOfProductFormat typeOfProductFormat {get;set;} = default;
 
 			public productSpecification? productSpecification {get;set;} = default;
 
@@ -1945,14 +1903,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PhysicalProduct : NavigationalProduct {
 			[XmlIgnore]
-			public DateOnly editionDate {get;set;}
-
-			[JsonIgnore]
-			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "editionDate")]
-			public DateTime editionDateField {
-				get { return editionDate.ToDateTime(TimeOnly.MinValue); }
-				set { editionDate = DateOnly.FromDateTime(value); }
-			}
+			public required DateOnly editionDate {get;set;} = default;
 
 			public String? iSBN {get;set;} = default;
 
@@ -2023,7 +1974,7 @@ namespace S100Framework.DomainModel.S128 {
 			public bool ShouldSerializeserviceStatus() { return serviceStatus.HasValue; }
 
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
-			public typeOfProductFormat typeOfProductFormat {get;set;}
+			public required typeOfProductFormat typeOfProductFormat {get;set;} = default;
 
 			public serviceSpecification? serviceSpecification {get;set;} = default;
 
