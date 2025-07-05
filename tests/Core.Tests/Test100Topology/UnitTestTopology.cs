@@ -179,6 +179,121 @@ namespace Test100Topology
         }
 
 
+        [Fact]
+        public void Test_DK40751E() {
+            //  ???
+
+            var replicaPath = Environment.GetEnvironmentVariable("S100FrameworkDatabase") ?? throw new System.ArgumentNullException();
+
+            var connection = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(replicaPath)));
+
+            using var geodatabase = new Geodatabase(connection);
+
+
+            using var surface = geodatabase.OpenDataset<FeatureClass>("surface");
+
+            using var cursor = surface.Search(new QueryFilter {
+                WhereClause = $"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"DK40751E\"%'",
+            }, true);
+
+            cursor.MoveNext();
+
+            var current = (Feature)cursor.Current;
+
+            var electricProduct = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(current["json"])!);
+
+            var polygon = (ArcGIS.Core.Geometry.Polygon)current.GetShape();
+            var json = polygon.ToJson();
+
+            var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
+
+            var whereClause = $"upper(ps) = 'S-101' AND drawingindex = {Convert.ToInt32(current["drawingindex"])}";
+
+            var filter = new SpatialQueryFilter {
+                WhereClause = whereClause,
+                FilterGeometry = shape,
+                SpatialRelationship = SpatialRelationship.Relation,
+                SpatialRelationshipDescription = "T*****FF*",
+            };
+
+
+            S100Framework.YAML.Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
+
+
+            var topology = geodatabase.BuildTopology(filter, (collection) => {
+                var lineStrings = collection.ToArray();
+
+                using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
+                    PersistTopology(target, lineStrings);
+                }
+            });
+
+            using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
+                if (topology is not null)
+                    PersistTopology(target, topology);
+            }
+
+            System.Diagnostics.Debugger.Break();
+        }
+
+        
+        [Fact]
+        public void Test_DK40545E() {
+            //  The Skin of the Earth boundary curve is not coincident with the data limit.
+            //  Related Objects: 2675149
+
+            var replicaPath = Environment.GetEnvironmentVariable("S100FrameworkDatabase") ?? throw new System.ArgumentNullException();
+
+            var connection = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(replicaPath)));
+
+            using var geodatabase = new Geodatabase(connection);
+
+
+            using var surface = geodatabase.OpenDataset<FeatureClass>("surface");
+
+            using var cursor = surface.Search(new QueryFilter {
+                WhereClause = $"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"DK40545E\"%'",
+            }, true);
+
+            cursor.MoveNext();
+
+            var current = (Feature)cursor.Current;
+
+            var electricProduct = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(current["json"])!);
+
+            var polygon = (ArcGIS.Core.Geometry.Polygon)current.GetShape();
+            var json = polygon.ToJson();
+
+            var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
+
+            var whereClause = $"upper(ps) = 'S-101' AND drawingindex = {Convert.ToInt32(current["drawingindex"])}";
+
+            var filter = new SpatialQueryFilter {
+                WhereClause = whereClause,
+                FilterGeometry = shape,
+                SpatialRelationship = SpatialRelationship.Relation,
+                SpatialRelationshipDescription = "T*****FF*",
+            };
+
+
+            S100Framework.YAML.Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
+
+
+            var topology = geodatabase.BuildTopology(filter, (collection) => {
+                var lineStrings = collection.ToArray();
+
+                using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
+                    PersistTopology(target, lineStrings);
+                }
+            });
+
+            using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
+                if (topology is not null)
+                    PersistTopology(target, topology);
+            }
+
+            System.Diagnostics.Debugger.Break();
+        }
 
         [Fact]
         public void Test_S2557775() {

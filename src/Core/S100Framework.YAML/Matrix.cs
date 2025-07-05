@@ -2,6 +2,7 @@
 using NetTopologySuite.Algorithm.Match;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
+using NetTopologySuite.Operation;
 using NetTopologySuite.Operation.Linemerge;
 using NetTopologySuite.Operation.Union;
 using System.Collections.Concurrent;
@@ -103,63 +104,91 @@ namespace S100Framework.YAML
         private ConcurrentDictionary<string, string> _mapping = new ConcurrentDictionary<string, string>();
         private ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)> _hashing = new ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
 
-        private IList<LineString> AddRange(List<LineString> lineStrings, List<LineString> append) {
-            var inserts = new List<LineString>();
-
-            for (int k = 0; k < append.Count; k++) {
-                var boundary1 = append[k];
-
-                var intersects = false;
-                for (int l = 0; l < lineStrings.Count; l++) {
-                    Geometry boundary2 = lineStrings[l];
-                    if (boundary1.EqualsExact(boundary2)) {
-                        intersects = true;
-                        break;
-                    }
-                    if (boundary2.Intersects(boundary1)) {
-                        var sharedEdgesGeometry = boundary2.Intersection(boundary1);
-
-                        if (sharedEdgesGeometry is NetTopologySuite.Geometries.Point || sharedEdgesGeometry is NetTopologySuite.Geometries.MultiPoint) {
-                            break;
-                        }
-
-                        if (sharedEdgesGeometry is not NetTopologySuite.Geometries.Point) {
-                            intersects = true;
-
-                            if (sharedEdgesGeometry is GeometryCollection collection) {
-                                sharedEdgesGeometry = sharedEdgesGeometry.Factory.CreateMultiLineString(collection.OfType<LineString>().ToArray());
-                            }
-                            if (sharedEdgesGeometry.IsEmpty)
-                                break;
-
-                            var lineMerger = new LineMerger();
-                            lineMerger.Add(sharedEdgesGeometry);
-
-                            var sharedEdgesLineString = lineMerger.GetMergedLineStrings().Select(e => (LineString)e).ToList();
-                            boundary2 = boundary2.SymmetricDifference(sharedEdgesGeometry);
-
-                            if (boundary2.IsEmpty)
-                                break;
-
-                            AddLineStringsFromGeometry(boundary2, inserts);
-                        }
-                    }
-                    else if (boundary1.Contains(boundary2)) {
-                        intersects = true;
-                        System.Diagnostics.Debugger.Break();
-                    }
-                    else if (boundary2.Contains(boundary1)) {
-                        intersects = true;
-                        System.Diagnostics.Debugger.Break();
-                    }
-                }
-                if (!intersects && !boundary1.IsEmpty)
-                    inserts.Add(boundary1);
+        private List<LineString> Append(List<LineString> lineStrings, List<LineString> append) {
+            foreach (var linestring in append) {
+                lineStrings = Append(lineStrings, linestring);
             }
-            lineStrings.AddRange(inserts);
             return lineStrings;
         }
 
+        private List<LineString> Append(List<LineString> lineStrings, Geometry geometry) {
+            if (geometry is LineString line) {
+                if (!line.IsEmpty) {
+                    return Append(lineStrings, line);
+                }
+            }
+            else if (geometry is MultiLineString multiLine) {
+                foreach (var subLine in multiLine.Geometries.OfType<LineString>()) {
+                    if (!subLine.IsEmpty) {
+                        lineStrings = Append(lineStrings, subLine);
+                    }
+                }
+            }
+            else
+                throw new NotImplementedException();
+            return lineStrings;
+        }
+
+        private List<LineString> Append(List<LineString> lineStrings, LineString lineString) {
+            var inserts = new List<LineString>();
+
+            NetTopologySuite.Geometries.Geometry boundary1 = lineString;
+
+            for (int l = 0; l < lineStrings.Count; l++) {
+                var boundary2 = lineStrings[l];
+                if (boundary1.Disjoint(boundary2)) {
+                    inserts.Add(boundary2);
+                    continue;
+                }
+                if (boundary1.EqualsExact(boundary2)) {
+                    inserts.Add(boundary2);
+                    continue;
+                }
+                if (boundary2.Intersects(boundary1)) {
+                    var sharedEdgesGeometry = boundary1.Intersection(boundary2);
+
+                    if (sharedEdgesGeometry is NetTopologySuite.Geometries.Point || sharedEdgesGeometry is NetTopologySuite.Geometries.MultiPoint) {
+                        inserts.Add(boundary2);
+                        continue;
+                    }
+
+                    if (sharedEdgesGeometry is not NetTopologySuite.Geometries.Point) {
+                        if (sharedEdgesGeometry is GeometryCollection collection) {
+                            sharedEdgesGeometry = sharedEdgesGeometry.Factory.CreateMultiLineString(collection.OfType<LineString>().ToArray());
+                        }
+                        if (sharedEdgesGeometry.IsEmpty) {
+                            inserts.Add(boundary2);
+                            continue;
+                        }
+
+                        var lineMerger = new LineMerger();
+                        lineMerger.Add(sharedEdgesGeometry);
+
+                        var sharedEdgesLineString = lineMerger.GetMergedLineStrings().Select(e => (LineString)e).ToList();
+
+                        boundary1 = boundary1.SymmetricDifference(sharedEdgesGeometry);
+                        //AddLineStringsFromGeometry(sharedEdgesGeometry, inserts);
+                        inserts.AddRange(sharedEdgesLineString);
+
+                        //boundary1 = boundary1.SymmetricDifference(boundary2);
+                        //AddLineStringsFromGeometry(boundary1.SymmetricDifference(boundary2), inserts);
+
+                    }
+                }
+                else if (boundary1.Contains(boundary2)) {
+                    System.Diagnostics.Debugger.Break();
+                }
+                else if (boundary2.Contains(boundary1)) {
+                    System.Diagnostics.Debugger.Break();
+                }
+            }
+            if (!boundary1.IsEmpty) {
+                //inserts.Add(boundary1);
+                AddLineStringsFromGeometry(boundary1, inserts);
+            }
+
+            return inserts;
+        }
 
         public S100Framework.YAML.Matrix Build(S100Framework.YAML.Polyline[] polylines, S100Framework.YAML.Polygon[] polygons, Action<ICollection<LineString>>? interceptor = default) {
             int count = polygons.Count();
@@ -180,7 +209,7 @@ namespace S100Framework.YAML
                 if (!matrixPolygons[i].ExterioRing.IsEmpty) {
                     NetTopologySuite.Geometries.Geometry boundary1 = matrixPolygons[i].ExterioRing;
 
-                    for (var j = 0; j < this.Curves.Count; j++) {                        
+                    for (var j = 0; j < this.Curves.Count; j++) {
                         var boundary2 = this.Curves[j].LineString;
 
                         if (!boundary1.Disjoint(boundary2)) {
@@ -196,8 +225,8 @@ namespace S100Framework.YAML
 
                             var sharedEdgesGeometry = boundary1.Intersection(boundary2);
 
-                            if (sharedEdgesGeometry is GeometryCollection collection) {
-                                sharedEdgesGeometry = sharedEdgesGeometry.Factory.CreateMultiLineString(collection.OfType<LineString>().ToArray());
+                            if (sharedEdgesGeometry is GeometryCollection geometryCollection) {
+                                sharedEdgesGeometry = sharedEdgesGeometry.Factory.CreateMultiLineString(geometryCollection.OfType<LineString>().ToArray());
                             }
 
                             if (sharedEdgesGeometry == null || sharedEdgesGeometry.IsEmpty) continue;
@@ -208,9 +237,7 @@ namespace S100Framework.YAML
                             var sharedEdgesLineString = lineMerger.GetMergedLineStrings().Select(e => (LineString)e).ToList();
 
                             boundary1 = boundary1.SymmetricDifference(sharedEdgesGeometry);
-
-                            AddLineStringsFromGeometry(sharedEdgesGeometry, matrixPolygons[i].LineStringsExterior);
-                            //AddRange(matrixPolygons[i].LineStringsExterior, sharedEdgesLineString);                            
+                            matrixPolygons[i].LineStringsExterior.AddRange(sharedEdgesLineString);
                         }
 
                         if (boundary1.IsEmpty)
@@ -218,29 +245,9 @@ namespace S100Framework.YAML
                     }
 
                     if (!boundary1.IsEmpty) {
-                        //if (boundary1Name.Equals("S2557775")) {
-                        //    System.Diagnostics.Debugger.Break();
-
-                        //    //AddLineStringsFromGeometry(boundary1, matrixPolygons[i].LineStringsExterior);
-                        //    var append = new List<LineString>();
-                        //    AddLineStringsFromGeometry(boundary1, append);
-
-                        //    interceptor?.Invoke(matrixPolygons[i].LineStringsExterior);
-                        //    interceptor?.Invoke(append);
-
-                        //    var append2 = new List<LineString>();
-                        //    foreach (var a in append) {
-                        //        AddRange(append2, [a]);
-                        //    }
-
-                        //    AddRange(matrixPolygons[i].LineStringsExterior, append2);
-
-                        //    interceptor?.Invoke(matrixPolygons[i].LineStringsExterior);
-                        //}
-                        //else
-                            AddLineStringsFromGeometry(boundary1, matrixPolygons[i].LineStringsExterior);
+                        AddLineStringsFromGeometry(boundary1, matrixPolygons[i].LineStringsExterior);
                     }
-                }                
+                }
 
                 if (polygons[i].InteriorRings.Any()) {
                     if (matrixPolygons[i].LineStringInterior.Length == 0)
@@ -440,7 +447,7 @@ namespace S100Framework.YAML
                             true => orientation == LinearRingOrientation.CCW ? merged : (LineString)merged.Reverse(),
                             false => orientation == LinearRingOrientation.CW ? merged : (LineString)merged.Reverse(),
                         };
-                    }                    
+                    }
 
                     var lineStringText = merged.ToText();
 
@@ -541,7 +548,7 @@ namespace S100Framework.YAML
             return this;
         }
 
-        public S100Framework.YAML.Matrix BuildTopology(S100Framework.YAML.Polyline[] polylines, S100Framework.YAML.Polygon[] polygons) {
+        public S100Framework.YAML.Matrix BuildTopology(S100Framework.YAML.Polyline[] polylines, S100Framework.YAML.Polygon[] polygons, Action<ICollection<LineString>>? interceptor = default) {
             int count = polygons.Count();
 
             var stopwatch = new Stopwatch();
@@ -553,7 +560,9 @@ namespace S100Framework.YAML
 
 
             for (int i = 0; i < polygons.Length; i++) {
-                //if (matrixPolygons[i].Name.Equals("S2557165")) System.Diagnostics.Debugger.Break();
+                var boundary1Name = matrixPolygons[i].Name;
+
+                ////if (matrixPolygons[i].Name.Equals("S2677014")) System.Diagnostics.Debugger.Break();
 
                 //20250702, if (matrixPolygons[i].ExterioRing.IsEmpty) continue;                
 
@@ -575,26 +584,25 @@ namespace S100Framework.YAML
                                 continue;
 
                             var sharedEdgesGeometry = boundary1.Intersection(boundary2);
+
                             if (sharedEdgesGeometry is GeometryCollection geometryCollection) {
-                                var lineStrings = geometryCollection.OfType<LineString>();
-                                sharedEdgesGeometry = geometryCollection.Factory.CreateMultiLineString(lineStrings.ToArray());
+                                sharedEdgesGeometry = geometryCollection.Factory.CreateMultiLineString(geometryCollection.OfType<LineString>().ToArray());
                             }
 
                             if (sharedEdgesGeometry == null || sharedEdgesGeometry.IsEmpty) continue;
 
                             var lineMerger = new LineMerger();
-
                             lineMerger.Add(sharedEdgesGeometry);
 
                             var sharedEdgesLineString = lineMerger.GetMergedLineStrings().Select(e => (LineString)e).ToList();
 
                             boundary1 = boundary1.SymmetricDifference(sharedEdgesGeometry);
-                            matrixPolygons[i].LineStringsExterior.AddRange(sharedEdgesLineString);
-                            //AddRange(matrixPolygons[i].LineStringsExterior, sharedEdgesLineString);
+                            //matrixPolygons[i].LineStringsExterior.AddRange(sharedEdgesLineString);
+                            matrixPolygons[i].LineStringsExterior = Append(matrixPolygons[i].LineStringsExterior, sharedEdgesLineString);
 
                             matrixPolygons[j].ExterioRing = boundary2.SymmetricDifference(sharedEdgesGeometry);
-                            matrixPolygons[j].LineStringsExterior.AddRange(sharedEdgesLineString);
-                            //AddRange(matrixPolygons[j].LineStringsExterior, sharedEdgesLineString);
+                            //matrixPolygons[j].LineStringsExterior.AddRange(sharedEdgesLineString);
+                            matrixPolygons[j].LineStringsExterior = Append(matrixPolygons[j].LineStringsExterior, sharedEdgesLineString);
 
                             //boundary1 = matrixPolygons[i].ExterioRing;
                         }
@@ -624,13 +632,15 @@ namespace S100Framework.YAML
                                 if (sharedEdgesGeometry == null || sharedEdgesGeometry.IsEmpty) continue;
 
                                 var lineMerger = new LineMerger();
-
                                 lineMerger.Add(sharedEdgesGeometry);
 
                                 var sharedEdgesLineString = lineMerger.GetMergedLineStrings().Select(e => (LineString)e).ToList();
 
+                                ////if (matrixPolygons[j].Name.Equals("S2674391") && ring == 0) System.Diagnostics.Debugger.Break();
+
                                 boundary1 = boundary1.SymmetricDifference(sharedEdgesGeometry);
-                                matrixPolygons[i].LineStringsExterior.AddRange(sharedEdgesLineString);
+                                //matrixPolygons[i].LineStringsExterior.AddRange(sharedEdgesLineString);
+                                matrixPolygons[i].LineStringsExterior = Append(matrixPolygons[i].LineStringsExterior, sharedEdgesLineString);
 
                                 if (matrixPolygons[j].LineStringInterior.Length == 0)
                                     matrixPolygons[j].LineStringInterior = new List<LineString>[polygons[j].InteriorRings.Length];
@@ -638,29 +648,57 @@ namespace S100Framework.YAML
                                     matrixPolygons[j].LineStringInterior[ring] = new List<LineString>();
 
                                 matrixPolygons[j].InteriorRings[ring] = boundary2.SymmetricDifference(sharedEdgesGeometry);
-                                matrixPolygons[j].LineStringInterior[ring].AddRange(sharedEdgesLineString);
+                                //matrixPolygons[j].LineStringInterior[ring].AddRange(sharedEdgesLineString);
+                                matrixPolygons[j].LineStringInterior[ring] = Append(matrixPolygons[j].LineStringInterior[ring], sharedEdgesLineString);
+
+                                ////if (matrixPolygons[j].Name.Equals("S2674391") && ring == 0) {
+                                ////    var dummies = new List<LineString>();
+                                ////    AddLineStringsFromGeometry(matrixPolygons[j].InteriorRings[ring], dummies);
+                                ////    interceptor?.Invoke(dummies);
+                                ////    interceptor?.Invoke(matrixPolygons[j].LineStringInterior[ring]);
+                                ////}
                             }
                         }
+
                         if (boundary1.IsEmpty)
                             break;
                     }
 
+                    ////if (matrixPolygons[i].Name.Equals("S2677014")) System.Diagnostics.Debugger.Break();
+
                     if (!boundary1.IsEmpty) {
-                        AddLineStringsFromGeometry(boundary1, matrixPolygons[i].LineStringsExterior);
-                        //var append = new List<LineString>();
-                        //AddLineStringsFromGeometry(boundary1, append);
-                        //AddRange(matrixPolygons[i].LineStringsExterior, append);
+                        ////if (matrixPolygons[i].Name.Equals("S2677014")) {
+                        ////    interceptor?.Invoke(matrixPolygons[i].LineStringsExterior);
+                        ////}
+
+                        //AddLineStringsFromGeometry(boundary1, matrixPolygons[i].LineStringsExterior);
+                        matrixPolygons[i].LineStringsExterior = Append(matrixPolygons[i].LineStringsExterior, boundary1);
                     }
+                    ////if (matrixPolygons[i].Name.Equals("S2675S2677014148")) {
+                    ////    interceptor?.Invoke(matrixPolygons[i].LineStringsExterior);
+                    ////}
                 }
                 if (polygons[i].InteriorRings.Any()) {
                     if (matrixPolygons[i].LineStringInterior.Length == 0)
                         matrixPolygons[i].LineStringInterior = new List<LineString>[polygons[i].InteriorRings.Length];
 
+                    ////if (boundary1Name.Equals("S2674391")) {
+                    ////    System.Diagnostics.Debugger.Break();
+                    ////    interceptor?.Invoke(matrixPolygons[i].LineStringInterior[0]);
+                    ////}
+
                     for (int ring = 0; ring < polygons[i].InteriorRings.Length; ring++) {
                         if (matrixPolygons[i].LineStringInterior[ring] is null)
                             matrixPolygons[i].LineStringInterior[ring] = new List<LineString>();
 
-                        NetTopologySuite.Geometries.Geometry interior1 = polygons[i].InteriorRings[ring];
+                        NetTopologySuite.Geometries.Geometry interior1 = matrixPolygons[i].InteriorRings[ring];
+
+                        ////if (boundary1Name.Equals("S2674391") && ring == 0) {
+                        ////    System.Diagnostics.Debugger.Break();
+                        ////    var dummies = new List<LineString>();
+                        ////    AddLineStringsFromGeometry(interior1, dummies);
+                        ////    interceptor?.Invoke(dummies);
+                        ////}
 
                         for (var j = i + 1; j < polygons.Length; j++) {
                             var boundary2 = matrixPolygons[j].ExterioRing;
@@ -680,30 +718,58 @@ namespace S100Framework.YAML
 
                             var sharedEdgesGeometry = interior1.Intersection(boundary2);
 
+                            if (sharedEdgesGeometry is GeometryCollection geometryCollection) {
+                                sharedEdgesGeometry = geometryCollection.Factory.CreateMultiLineString(geometryCollection.OfType<LineString>().ToArray());
+                            }
+
                             if (sharedEdgesGeometry == null || sharedEdgesGeometry.IsEmpty) continue;
 
                             var lineMerger = new LineMerger();
-
                             lineMerger.Add(sharedEdgesGeometry);
 
                             var sharedEdgesLineString = lineMerger.GetMergedLineStrings().Select(e => (LineString)e).ToList();
 
                             interior1 = interior1.SymmetricDifference(sharedEdgesGeometry);
+                            //matrixPolygons[i].LineStringInterior[ring].AddRange(sharedEdgesLineString);
+                            matrixPolygons[i].LineStringInterior[ring] = Append(matrixPolygons[i].LineStringInterior[ring], sharedEdgesLineString);
 
-                            matrixPolygons[i].LineStringInterior[ring].AddRange(sharedEdgesLineString);
+                            ////if (boundary1Name.Equals("S2674391") && ring == 0) {
+                            ////    System.Diagnostics.Debugger.Break();
+                            ////    interceptor?.Invoke(matrixPolygons[i].LineStringInterior[0]);
+                            ////}
 
                             matrixPolygons[j].ExterioRing = boundary2.SymmetricDifference(sharedEdgesGeometry);
-                            matrixPolygons[j].LineStringsExterior.AddRange(sharedEdgesLineString);
+                            //matrixPolygons[j].LineStringsExterior.AddRange(sharedEdgesLineString);
+                            matrixPolygons[j].LineStringsExterior = Append(matrixPolygons[j].LineStringsExterior, sharedEdgesLineString);
 
                             if (interior1.IsEmpty)
                                 break;
                         }
 
                         if (!interior1.IsEmpty) {
-                            AddLineStringsFromGeometry(interior1, matrixPolygons[i].LineStringInterior[ring]);
+                            //AddLineStringsFromGeometry(interior1, matrixPolygons[i].LineStringInterior[ring]);                     
+                            matrixPolygons[i].LineStringInterior[ring] = Append(matrixPolygons[i].LineStringInterior[ring], interior1);
+
+                            ////if (boundary1Name.Equals("S2674391") && ring == 0) {
+                            ////    System.Diagnostics.Debugger.Break();
+                            ////    interceptor?.Invoke(matrixPolygons[i].LineStringInterior[0]);
+                            ////}
                         }
                     }
                 }
+
+                ////if (matrixPolygons[i].Name.Equals("S2677014")) {
+                ////    interceptor?.Invoke(matrixPolygons[i].LineStringsExterior);
+                ////}
+
+                ////if (matrixPolygons[i].Name.Equals("S2674391")) {
+                ////    List<LineString> dummies = [.. matrixPolygons[i].LineStringInterior[0]];
+
+                ////    var nabo = matrixPolygons.Single(e => e.Name.Equals("S2674284"));
+                ////    dummies = [.. dummies, .. nabo.LineStringsExterior];
+
+                ////    interceptor?.Invoke(dummies);
+                ////}
             }
 
             foreach (var m in matrixPolygons) {
@@ -763,8 +829,6 @@ namespace S100Framework.YAML
                     if ((crosses && intersects) && !(contains | overlaps | coveredby))
                         continue;
 
-                    var lineMerger = new LineMerger();
-
                     var sharedEdgesGeometry = boundary1.Intersection(c.LineString);
 
                     if (sharedEdgesGeometry is GeometryCollection collection) {
@@ -773,6 +837,7 @@ namespace S100Framework.YAML
 
                     if (sharedEdgesGeometry == null || sharedEdgesGeometry.IsEmpty) continue;
 
+                    var lineMerger = new LineMerger();
                     lineMerger.Add(sharedEdgesGeometry);
 
                     var sharedEdgesLineString = lineMerger.GetMergedLineStrings().Select(e => (LineString)e).ToList();
@@ -916,6 +981,10 @@ namespace S100Framework.YAML
                     var interiorRefs = new List<FeatureRef>();
 
                     foreach (var interior in m.LineStringInterior) {
+                        //if (origin.name.Equals("S2674391")) {
+                        //    System.Diagnostics.Debugger.Break();
+                        //    interceptor?.Invoke(interior);
+                        //}
                         var interiorRef = action(interior, LinearRingOrientation.CounterClockwise);
                         interiorRefs.Add(interiorRef);
                     }

@@ -140,8 +140,8 @@ namespace S100Framework.Applications
 
                     var datasetName = dataset.CellName.Split('.')[0];
 
-                    if (datasetName.Equals("101DK40751E")) continue;
-                    if (datasetName.Equals("101DK40545E")) continue;
+                    //if (datasetName.Equals("101DK40751E")) continue;
+                    //if (datasetName.Equals("101DK40545E")) continue;
                     //if (datasetName.Equals("101DK40347E")) continue;
 
                     Log.Information("{dataset}", datasetName);
@@ -587,8 +587,8 @@ namespace ArcGIS.Core.Data
         static SpatialReference spatialReference = SpatialReferenceBuilder.CreateSpatialReference(4326);
 
         //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(10000000)); // Or PrecisionModels.Floating
-        //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating)); // Or PrecisionModels.Floating
-        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(100000000)); // Or PrecisionModels.Floating
+        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating)); // Or PrecisionModels.Floating
+        //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(100000000)); // Or PrecisionModels.Floating
 
         public static S100Framework.YAML.Matrix? BuildTopology(this Geodatabase geodatabase, QueryFilter? queryFilter = default, Action<ICollection<LineString>>? interceptor = default) {
             queryFilter = queryFilter switch {
@@ -722,7 +722,7 @@ namespace ArcGIS.Core.Data
 
                 int count = polygons.Count();
 
-                topology.BuildTopology(curves.ToArray(), polygons.ToArray());
+                topology.BuildTopology(curves.ToArray(), polygons.ToArray(), interceptor);
             }
 
             //  Everything else
@@ -795,7 +795,7 @@ namespace ArcGIS.Core.Data
 
                 int count = polygons.Count();
 
-                topology.Build(curves.ToArray(), polygons.ToArray(), interceptor);
+                //topology.Build(curves.ToArray(), polygons.ToArray(), interceptor);
             }
 
             Log.Verbose("Topology: #{curves}, #{composites}, #{surfaces}", topology.Curves.Count, topology.CompositeCurves.Count, topology.Surfaces.Count);
