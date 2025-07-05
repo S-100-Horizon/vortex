@@ -12,9 +12,7 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 namespace S100Framework.WPF.Editors
 {
     public class S100TruncatedDateEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
-    {
-        private static readonly Regex _regexValidation = new(@"^(\d{4}|-{4})(\d{2}|-{2})(\d{2}|-{2})$");
-
+    {        
         private static readonly Regex _regexInput = new(@"^(\d|-{1,8})$");
 
         //public string? Value { get; set; } = default;
@@ -43,15 +41,17 @@ namespace S100Framework.WPF.Editors
         private void Control_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e) {
             if (string.IsNullOrEmpty(e.Text)) return;
             e.Handled = !_regexInput.IsMatch(e.Text);
-        }
+        }     
+    }
 
-        public class PartialDateRule : ValidationRule
-        {
-            public override ValidationResult Validate(object value, CultureInfo cultureInfo) {
-                var s = (value as string) ?? string.Empty;
-                return _regexValidation.IsMatch(s) ? ValidationResult.ValidResult
-                    : new ValidationResult(false, "Must be yyyyMMdd, but yyyy or MM may be all “-”.");
-            }
+    public class PartialDateRule : ValidationRule
+    {
+        private static readonly Regex _regexValidation = new(@"^(\d{4}|-{4})(\d{2}|-{2})(\d{2}|-{2})$");
+
+        public override ValidationResult Validate(object value, CultureInfo cultureInfo) {
+            var s = (value as string) ?? string.Empty;
+            return _regexValidation.IsMatch(s) ? ValidationResult.ValidResult
+                : new ValidationResult(false, "Must be yyyyMMdd, but yyyy, MM or dd may be all \"-\".");
         }
     }
 
@@ -254,7 +254,8 @@ namespace S100Framework.WPF.Editors
                 GroupName = "Unknown",
                 IsChecked = string.IsNullOrEmpty(instance),
                 HorizontalAlignment = HorizontalAlignment.Right,
-                Margin = new Thickness(0, 1, 12, 0),
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(0, 0, 14, 0),
             };
             radioButtonUnknown.Checked += (s, e) => {
                 //OnPropertyChanged(nameof(instance));
@@ -283,8 +284,6 @@ namespace S100Framework.WPF.Editors
 
     public class UnknownS100TruncatedDateEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
-        private static readonly Regex _regexValidation = new(@"^(\d{4}|-{4})(\d{2}|-{2})(\d{2}|-{2})$");
-
         private static readonly Regex _regexInput = new(@"^(\d|-{1,8})$");
 
         //public string? Value { get; set; } = default;
@@ -302,7 +301,8 @@ namespace S100Framework.WPF.Editors
                 GroupName = "Unknown",
                 IsChecked = string.IsNullOrEmpty(instance),
                 HorizontalAlignment = HorizontalAlignment.Right,
-                Margin = new Thickness(0, 1, 12, 0),
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(0, 0, 14, 0),
             };
             radioButtonUnknown.Checked += (s, e) => {
                 //OnPropertyChanged(nameof(instance));
@@ -340,15 +340,6 @@ namespace S100Framework.WPF.Editors
             if (string.IsNullOrEmpty(e.Text)) return;
             e.Handled = !_regexInput.IsMatch(e.Text);
         }
-
-        public class PartialDateRule : ValidationRule
-        {
-            public override ValidationResult Validate(object value, CultureInfo cultureInfo) {
-                var s = (value as string) ?? string.Empty;
-                return _regexValidation.IsMatch(s) ? ValidationResult.ValidResult
-                    : new ValidationResult(false, "Must be yyyyMMdd, but yyyy or MM may be all “-”.");
-            }
-        }
     }
 
     public class UnknownEditor<T> : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
@@ -369,8 +360,9 @@ namespace S100Framework.WPF.Editors
                     ToolTip = "[Unknown]",
                     GroupName = propertyItem.DisplayName,
                     HorizontalAlignment = HorizontalAlignment.Right,
+                    VerticalAlignment = VerticalAlignment.Center,
                     IsChecked = instance == null,
-                    Margin = new Thickness(0, 1, 12, 0),
+                    Margin = new Thickness(0, 0, 14, 0),
                 };
                 radioButtonUnknown.Checked += (s, e) => {
                     //OnPropertyChanged(nameof(instance));

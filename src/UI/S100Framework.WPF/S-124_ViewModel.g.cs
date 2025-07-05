@@ -245,6 +245,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class fixedDateRangeViewModel : ViewModelBase {
 		private String? _dateEnd  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? dateEnd {
 			get {
 				return _dateEnd;
@@ -255,6 +256,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String? _dateStart  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? dateStart {
 			get {
 				return _dateStart;

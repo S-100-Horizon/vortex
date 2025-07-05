@@ -274,7 +274,8 @@ namespace S100Framework.Applications
                     knowTypesPrefix.Add(code, prefix);
 
                     if (e.Element(XName.Get("valueType", scope_S100))!.Value.Equals("s100_truncateddate", StringComparison.OrdinalIgnoreCase)) {
-                        editorBuilders.Add(code, (b, lower, upper) => {                            
+                        editorBuilders.Add(code, (b, lower, upper) => {
+                            b.AppendLine("\t\t[S100TruncatedDateAttribute]");
                             if (lower > 1 || (upper.HasValue && upper.Value > 1))
                                 b.AppendLine($"\t\t[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]");
                             else if (lower == 1 && upper.HasValue && upper.Value == 1)
