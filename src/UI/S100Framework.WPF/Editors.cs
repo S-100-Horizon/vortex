@@ -255,7 +255,7 @@ namespace S100Framework.WPF.Editors
                 IsChecked = string.IsNullOrEmpty(instance),
                 HorizontalAlignment = HorizontalAlignment.Right,
                 VerticalAlignment = VerticalAlignment.Center,
-                Margin = new Thickness(0, 0, 14, 0),
+                Margin = new Thickness(0, 0, 18, 0),
             };
             radioButtonUnknown.Checked += (s, e) => {
                 //OnPropertyChanged(nameof(instance));
@@ -302,7 +302,7 @@ namespace S100Framework.WPF.Editors
                 IsChecked = string.IsNullOrEmpty(instance),
                 HorizontalAlignment = HorizontalAlignment.Right,
                 VerticalAlignment = VerticalAlignment.Center,
-                Margin = new Thickness(0, 0, 14, 0),
+                Margin = new Thickness(0, 0, 18, 0),
             };
             radioButtonUnknown.Checked += (s, e) => {
                 //OnPropertyChanged(nameof(instance));
@@ -362,7 +362,7 @@ namespace S100Framework.WPF.Editors
                     HorizontalAlignment = HorizontalAlignment.Right,
                     VerticalAlignment = VerticalAlignment.Center,
                     IsChecked = instance == null,
-                    Margin = new Thickness(0, 0, 14, 0),
+                    Margin = new Thickness(0, 0, 18, 0),
                 };
                 radioButtonUnknown.Checked += (s, e) => {
                     //OnPropertyChanged(nameof(instance));
@@ -390,29 +390,54 @@ namespace S100Framework.WPF.Editors
                 panel.Children.Add(radioButtonUnknown);
                 return panel;
             }
-            else {                
-                if (propertyType == typeof(bool) || propertyType == typeof(Boolean)) {
-                    var panel = new StackPanel {
-                        Orientation = Orientation.Horizontal,
-                        VerticalAlignment = VerticalAlignment.Center,
+            else if (propertyType == typeof(bool) || propertyType == typeof(Boolean)) {
+                var panel = new StackPanel {
+                    Orientation = Orientation.Horizontal,
+                    VerticalAlignment = VerticalAlignment.Center,
+                };
+
+                var editor = new PropertyGridEditorCheckBox();
+
+                editor.IsThreeState = true;
+
+                var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+                BindingOperations.SetBinding(editor, CheckBox.IsCheckedProperty, bindingSelectedItemProperty);
+
+                return editor;
+            }
+            else {
+                var panel = new Grid {
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    VerticalAlignment = VerticalAlignment.Center,
+                };
+
+                var radioButtonUnknown = new RadioButton {
+                    ToolTip = "[Unknown]",
+                    GroupName = propertyItem.DisplayName,
+                    HorizontalAlignment = HorizontalAlignment.Right,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    IsChecked = instance == null,
+                    Margin = new Thickness(0, 0, 18, 0),
+                };
+                radioButtonUnknown.Checked += (s, e) => {
+                    //OnPropertyChanged(nameof(instance));
+                };
+                
+                if (propertyType == typeof(decimal) || propertyType == typeof(Decimal)) {
+                    var editor = new PropertyGridEditorDecimalUpDown();
+                    editor.ValueChanged += (s, e) => {
+                        radioButtonUnknown.IsChecked = !editor.Value.HasValue;
                     };
-
-                    var editor = new PropertyGridEditorCheckBox();
-
-                    editor.IsThreeState = true;
-
+                    radioButtonUnknown.Click += (s, e) => {
+                        editor.Value = default;
+                        radioButtonUnknown.IsChecked = true;
+                    };
                     var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
-                    BindingOperations.SetBinding(editor, CheckBox.IsCheckedProperty, bindingSelectedItemProperty);
-
-                    return editor;
-
+                    BindingOperations.SetBinding(editor, TextBox.TextProperty, bindingSelectedItemProperty);
                     panel.Children.Add(editor);
 
-                    var label = new Label {
-                        Content ="<unknown>",
-                    };
-                    panel.Children.Add(label);
-                    
+                    panel.Children.Add(radioButtonUnknown);
+                    return panel;
                 }
                 else
                     System.Diagnostics.Debugger.Break();
