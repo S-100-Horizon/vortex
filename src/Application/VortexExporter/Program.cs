@@ -708,7 +708,7 @@ namespace ArcGIS.Core.Data
 
                 var splitters = new List<S100Framework.YAML.Polyline>();
                 using (var surface = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("surface")).GetName())) {
-                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('RESTRICTEDAREA'))";
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('RESTRICTEDAREA','CAUTIONAREA','SPANFIXED','SEAAREANAMEDWATERAREA','SOUNDINGDATUM',)";
 
                     using var cursor = surface.Search(queryFilter);
 
