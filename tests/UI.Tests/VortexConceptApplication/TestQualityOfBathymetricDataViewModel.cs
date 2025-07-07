@@ -35,9 +35,24 @@ namespace VortexConceptApplication
 
     public class TestQualityOfBathymetricDataViewModel : QualityOfBathymetricDataViewModel
     {
+        private decimal? _decimal;
+
+        [Category("Test")]
+        [Editor(typeof(S100Framework.WPF.Editors.UnknownEditor<decimal?>), typeof(S100Framework.WPF.Editors.UnknownEditor<decimal?>))]
+        public decimal? Decimal {
+            get {
+                return _decimal;
+            }
+            set {
+                SetValue(ref _decimal, value);
+            }
+        }
+
+
+
         private String _interoperabilityIdentifier2;
 
-        [Category("QualityOfBathymetricData")]
+        [Category("Test")]
         public String interoperabilityIdentifier2 {
             get {
                 return _interoperabilityIdentifier2;

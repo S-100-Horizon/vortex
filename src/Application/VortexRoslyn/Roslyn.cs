@@ -275,10 +275,12 @@ namespace S100Framework.Applications
 
                     if (e.Element(XName.Get("valueType", scope_S100))!.Value.Equals("s100_truncateddate", StringComparison.OrdinalIgnoreCase)) {
                         editorBuilders.Add(code, (b, lower, upper) => {
+                            b.AppendLine("\t\t[S100TruncatedDateAttribute]");
                             if (lower > 1 || (upper.HasValue && upper.Value > 1))
                                 b.AppendLine($"\t\t[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]");
                             else if (lower == 1 && upper.HasValue && upper.Value == 1)
-                                b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]");
+                                b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]");
+                            //b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]");
                         });
                     }
                     else {
@@ -385,6 +387,14 @@ namespace S100Framework.Applications
                                 if (supportingUnknown) {
                                     prefix = "required " + prefix + "?";
                                     postfix = " = default;";
+                                }
+                                else {
+                                    prefix = "required " + prefix;
+                                    postfix = knowTypesPrefix[referenceCode] switch {
+                                        "String" or "string" => " = string.Empty;",
+                                        "Boolean" or "bool" => " = false;",
+                                        _ => " = default;",
+                                    };
                                 }
                             }
                             else {
@@ -1131,6 +1141,14 @@ namespace S100Framework.Applications
                         prefix = "required " + prefix + "?";
                         postfix = " = default;";
                     }
+                    else {
+                        prefix = "required " + prefix;
+                        postfix = client.KnowTypesPrefix[referenceCode] switch {
+                            "String" or "string" => " = string.Empty;",
+                            "Boolean" or "bool" => " = false;",
+                            _ => " = default;",
+                        };
+                    }
                 }
                 else {
                     prefix = $"List<{prefix}>";
@@ -1462,6 +1480,13 @@ namespace S100Framework.Applications
                     if (client.SupportingUnknown) {
                         prefix += "?";
                         postfix = " = default;";
+                    }
+                    else {
+                        postfix = client.BuildViewModelClassClient.KnowTypesPrefix[referenceCode] switch {
+                            "String" or "string" => " = string.Empty;",
+                            "Boolean" or "bool" => " = false;",
+                            _ => " = default;",
+                        };
                     }
                 }
                 else {

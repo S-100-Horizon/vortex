@@ -55,6 +55,7 @@ namespace TestS100Framework
             Assert.NotNull(types.SingleOrDefault(e => e.Name.Equals("MooringWarpingFacility")));
 
             var mooringWarpingFacility = new MooringWarpingFacility {
+                iDCode = string.Empty,
                 categoryOfMooringWarpingFacility = S100Framework.DomainModel.S131.categoryOfMooringWarpingFacility.Dolphin,
             };
 

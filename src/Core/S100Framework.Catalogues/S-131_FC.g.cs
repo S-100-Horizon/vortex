@@ -1998,7 +1998,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
-			public String name {get;set;} = string.Empty;
+			public required String name {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
@@ -2032,7 +2032,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class horizontalPositionUncertainty {
-			public decimal uncertaintyFixed {get;set;}
+			public required decimal uncertaintyFixed {get;set;} = default;
 
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
 
@@ -2066,7 +2066,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class onlineResource {
-			public String onlineResourceLinkageURL {get;set;} = string.Empty;
+			public required String onlineResourceLinkageURL {get;set;} = string.Empty;
 
 			public String? protocol {get;set;} = default;
 
@@ -2101,15 +2101,15 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
-			public decimal orientationValue {get;set;}
+			public required decimal orientationValue {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
-			public String dateStart {get;set;}
+			public required String dateStart {get;set;} = string.Empty;
 
-			public String dateEnd {get;set;}
+			public required String dateEnd {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
@@ -2137,7 +2137,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
 
-			public String dateEnd {get;set;}
+			public required String dateEnd {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
@@ -2202,7 +2202,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class verticalUncertainty {
-			public decimal uncertaintyFixed {get;set;}
+			public required decimal uncertaintyFixed {get;set;} = default;
 
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
 
@@ -2213,15 +2213,15 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class vesselsMeasurements {
 			[EnumerationValue([1,2,3,4,5,6])]
-			public comparisonOperator comparisonOperator {get;set;}
+			public required comparisonOperator comparisonOperator {get;set;} = default;
 
 			[EnumerationValue([1,2,3,4,6,7,8,9,10,11,12,13])]
-			public vesselsCharacteristics vesselsCharacteristics {get;set;}
+			public required vesselsCharacteristics vesselsCharacteristics {get;set;} = default;
 
-			public decimal vesselsCharacteristicsValue {get;set;}
+			public required decimal vesselsCharacteristicsValue {get;set;} = default;
 
 			[EnumerationValue([1,3,4,5,6,7,9])]
-			public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {get;set;}
+			public required vesselsCharacteristicsUnit vesselsCharacteristicsUnit {get;set;} = default;
 		}
 
 		[System.Serializable()]
@@ -2286,7 +2286,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
-			public String development {get;set;} = string.Empty;
+			public required String development {get;set;} = string.Empty;
 
 			public String? locationByText {get;set;} = default;
 
@@ -2301,7 +2301,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class depthsDescription {
 			[EnumerationValue([1,2,3])]
-			public categoryOfDepthsDescription categoryOfDepthsDescription {get;set;}
+			public required categoryOfDepthsDescription categoryOfDepthsDescription {get;set;} = default;
 
 			public List<textContent> textContent {get;set;} = [];
 
@@ -2426,7 +2426,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializecategoryOfCommunicationPreference() { return categoryOfCommunicationPreference.HasValue; }
 
-			public String telecommunicationIdentifier {get;set;} = string.Empty;
+			public required String telecommunicationIdentifier {get;set;} = string.Empty;
 
 			public String? telecommunicationCarrier {get;set;} = default;
 
@@ -2658,7 +2658,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InclusionType : InformationAssociation {
 			[EnumerationValue([1,2])]
-			public membership membership {get;set;}
+			public required membership membership {get;set;} = default;
 
 			[JsonIgnore]
 			public override string Code => nameof(InclusionType);
@@ -2671,7 +2671,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PermissionType : InformationAssociation {
 			[EnumerationValue([1,2,3,4,5,6])]
-			public categoryOfRelationship categoryOfRelationship {get;set;}
+			public required categoryOfRelationship categoryOfRelationship {get;set;} = default;
 
 			[JsonIgnore]
 			public override string Code => nameof(PermissionType);
@@ -2983,7 +2983,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Authority : InformationType {
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
-			public categoryOfAuthority categoryOfAuthority {get;set;}
+			public required categoryOfAuthority categoryOfAuthority {get;set;} = default;
 
 			public textContent? textContent {get;set;} = default;
 
@@ -3904,7 +3904,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializemethodOfSecuring() { return methodOfSecuring.HasValue; }
 
-			public String uNLocationCode {get;set;} = string.Empty;
+			public required String uNLocationCode {get;set;} = string.Empty;
 
 			public String? terminalIdentifier {get;set;} = default;
 
@@ -4683,9 +4683,9 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MooringWarpingFacility : Layout {
 			[EnumerationValue([1,2,3,4,5,6,7])]
-			public categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility {get;set;}
+			public required categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility {get;set;} = default;
 
-			public String iDCode {get;set;} = string.Empty;
+			public required String iDCode {get;set;} = string.Empty;
 
 			public String? bollardDescription {get;set;} = default;
 
@@ -5152,7 +5152,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class WaterwayArea : Layout {
 			[EnumerationValue([1,3,8,9,11,12])]
-			public categoryOfPortSection categoryOfPortSection {get;set;}
+			public required categoryOfPortSection categoryOfPortSection {get;set;} = default;
 
 			public depthsDescription? depthsDescription {get;set;} = default;
 
@@ -5218,9 +5218,9 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
-			public int maximumDisplayScale {get;set;}
+			public required int maximumDisplayScale {get;set;} = default;
 
-			public int minimumDisplayScale {get;set;}
+			public required int minimumDisplayScale {get;set;} = default;
 
 			[JsonIgnore]
 			public override string Code => nameof(DataCoverage);
@@ -5266,7 +5266,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
 
-			public horizontalPositionUncertainty horizontalPositionUncertainty {get;set;}
+			public required horizontalPositionUncertainty horizontalPositionUncertainty {get;set;} = default;
 
 			public decimal? orientationUncertainty {get;set;} = default;
 
@@ -5320,7 +5320,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SoundingDatum : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,19,22,23,24,25,26,27,44])]
-			public verticalDatum verticalDatum {get;set;}
+			public required verticalDatum verticalDatum {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
 
@@ -5362,7 +5362,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class VerticalDatumOfData : FeatureNode, IFeatureBindingDefinition {
 			[EnumerationValue([3,16,17,18,19,20,21,24,25,26,28,29,30,44])]
-			public verticalDatum verticalDatum {get;set;}
+			public required verticalDatum verticalDatum {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
 
@@ -5403,13 +5403,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
-			public decimal orientationValue {get;set;}
+			public required decimal orientationValue {get;set;} = default;
 
 			public String? text {get;set;} = default;
 
 			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
 
-			public int textOffsetMm {get;set;}
+			public required int textOffsetMm {get;set;} = default;
 
 			[EnumerationValue([1])]
 			public textType? textType {get;set;} = default;

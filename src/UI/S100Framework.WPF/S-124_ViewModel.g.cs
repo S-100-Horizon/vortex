@@ -185,7 +185,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _chartPlanNumber, value);
 			}
 		}
-		private DateOnly _editionDate ;
+		private DateOnly _editionDate  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		public DateOnly editionDate {
@@ -245,6 +245,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class fixedDateRangeViewModel : ViewModelBase {
 		private String? _dateEnd  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? dateEnd {
 			get {
 				return _dateEnd;
@@ -255,6 +256,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String? _dateStart  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? dateStart {
 			get {
 				return _dateStart;
@@ -574,7 +576,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _nationality, value);
 			}
 		}
-		private int _warningNumber ;
+		private int _warningNumber  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int warningNumber {
@@ -585,7 +587,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _warningNumber, value);
 			}
 		}
-		private warningType _warningType ;
+		private warningType _warningType  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<warningType?>), typeof(Editors.UnknownEditor<warningType?>))]
 		[DomainModel.EnumerationAttribute(nameof(warningTypeList), typeof(warningType))]
@@ -600,7 +602,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Browsable(false)]
 		public warningType[] warningTypeList => [(warningType)1,(warningType)2,(warningType)3,(warningType)4,(warningType)5,(warningType)6,(warningType)7,(warningType)8,(warningType)9,(warningType)10,(warningType)11,(warningType)12];
-		private int _year ;
+		private int _year  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		public int year {
@@ -1012,7 +1014,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _noMessageOnHand, value);
 			}
 		}
-		private referenceCategory _referenceCategory ;
+		private referenceCategory _referenceCategory  = default;
 
 		[Category("References")]
 		[Editor(typeof(Editors.UnknownEditor<referenceCategory?>), typeof(Editors.UnknownEditor<referenceCategory?>))]
@@ -1080,7 +1082,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public ObservableCollection<generalAreaViewModel> generalArea  { get; set; } = new ();
 		[Category("NavwarnPreamble")]
 		public ObservableCollection<localityViewModel> locality  { get; set; } = new ();
-		private messageSeriesIdentifierViewModel _messageSeriesIdentifier ;
+		private messageSeriesIdentifierViewModel _messageSeriesIdentifier  = default;
 
 		[Category("NavwarnPreamble")]
 		[ExpandableObject]
@@ -1117,7 +1119,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _intService, value);
 			}
 		}
-		private navwarnTypeGeneral _navwarnTypeGeneral ;
+		private navwarnTypeGeneral _navwarnTypeGeneral  = default;
 
 		[Category("NavwarnPreamble")]
 		[Editor(typeof(Editors.UnknownEditor<navwarnTypeGeneral?>), typeof(Editors.UnknownEditor<navwarnTypeGeneral?>))]
@@ -1132,7 +1134,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Browsable(false)]
 		public navwarnTypeGeneral[] navwarnTypeGeneralList =>  CodeList.navwarnTypeGenerals.ToArray();
-		private DateTime _publicationTime ;
+		private DateTime _publicationTime  = default;
 
 		[Category("NavwarnPreamble")]
 		[Editor(typeof(Editors.UnknownEditor<DateTime?>), typeof(Editors.UnknownEditor<DateTime?>))]
@@ -1250,7 +1252,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public restriction[] restrictionList => [(restriction)7,(restriction)8,(restriction)14,(restriction)25,(restriction)27];
 		[Category("NavwarnPart")]
 		public ObservableCollection<fixedDateRangeViewModel> fixedDateRange  { get; set; } = new ();
-		private warningInformationViewModel _warningInformation ;
+		private warningInformationViewModel _warningInformation  = default;
 
 		[Category("NavwarnPart")]
 		[ExpandableObject]
@@ -1393,7 +1395,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _text, value);
 			}
 		}
-		private int _textOffsetBearing ;
+		private int _textOffsetBearing  = default;
 
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
@@ -1405,7 +1407,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _textOffsetBearing, value);
 			}
 		}
-		private int _textOffsetDistance ;
+		private int _textOffsetDistance  = default;
 
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]

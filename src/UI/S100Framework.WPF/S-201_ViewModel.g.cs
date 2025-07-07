@@ -273,7 +273,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _moireEffect, value);
 			}
 		}
-		private orientationViewModel _orientation ;
+		private orientationViewModel _orientation  = default;
 
 		[Category("directionalCharacter")]
 		[ExpandableObject]
@@ -386,6 +386,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class fixedDateRangeViewModel : ViewModelBase {
 		private String? _dateEnd  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? dateEnd {
 			get {
 				return _dateEnd;
@@ -396,6 +397,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 		private String? _dateStart  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? dateStart {
 			get {
 				return _dateStart;
@@ -633,7 +635,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _orientationUncertainty, value);
 			}
 		}
-		private decimal _orientationValue ;
+		private decimal _orientationValue  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal orientationValue {
@@ -675,9 +677,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class periodicDateRangeViewModel : ViewModelBase {
-		private String _dateEnd ;
+		private String _dateEnd  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
 		public String dateEnd {
 			get {
 				return _dateEnd;
@@ -686,9 +689,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _dateEnd, value);
 			}
 		}
-		private String _dateStart ;
+		private String _dateStart  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
 		public String dateStart {
 			get {
 				return _dateStart;
@@ -739,7 +743,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarBand, value);
 			}
 		}
-		private decimal _waveLengthValue ;
+		private decimal _waveLengthValue  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal waveLengthValue {
@@ -781,7 +785,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class rhythmOfLightViewModel : ViewModelBase {
-		private lightCharacteristic _lightCharacteristic ;
+		private lightCharacteristic _lightCharacteristic  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<lightCharacteristic?>), typeof(Editors.UnknownEditor<lightCharacteristic?>))]
 		[DomainModel.EnumerationAttribute(nameof(lightCharacteristicList), typeof(lightCharacteristic))]
@@ -864,7 +868,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorCharacteristicsViewModel : ViewModelBase {
-		private lightCharacteristic _lightCharacteristic ;
+		private lightCharacteristic _lightCharacteristic  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<lightCharacteristic?>), typeof(Editors.UnknownEditor<lightCharacteristic?>))]
 		[DomainModel.EnumerationAttribute(nameof(lightCharacteristicList), typeof(lightCharacteristic))]
@@ -1024,7 +1028,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitViewModel : ViewModelBase {
-		private sectorLimitOneViewModel _sectorLimitOne ;
+		private sectorLimitOneViewModel _sectorLimitOne  = default;
 
 		[Category("sectorLimit")]
 		[ExpandableObject]
@@ -1036,7 +1040,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sectorLimitOne, value);
 			}
 		}
-		private sectorLimitTwoViewModel _sectorLimitTwo ;
+		private sectorLimitTwoViewModel _sectorLimitTwo  = default;
 
 		[Category("sectorLimit")]
 		[ExpandableObject]
@@ -1085,7 +1089,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitOneViewModel : ViewModelBase {
-		private decimal _sectorBearing ;
+		private decimal _sectorBearing  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal sectorBearing {
@@ -1137,7 +1141,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitTwoViewModel : ViewModelBase {
-		private decimal _sectorBearing ;
+		private decimal _sectorBearing  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal sectorBearing {
@@ -1241,7 +1245,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class signalSequenceViewModel : ViewModelBase {
-		private decimal _signalDuration ;
+		private decimal _signalDuration  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal signalDuration {
@@ -1252,7 +1256,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _signalDuration, value);
 			}
 		}
-		private signalStatus _signalStatus ;
+		private signalStatus _signalStatus  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<signalStatus?>), typeof(Editors.UnknownEditor<signalStatus?>))]
 		[DomainModel.EnumerationAttribute(nameof(signalStatusList), typeof(signalStatus))]
@@ -1377,7 +1381,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CableDimensionsViewModel : ViewModelBase {
-		private decimal _cableLength ;
+		private decimal _cableLength  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal cableLength {
@@ -1388,7 +1392,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _cableLength, value);
 			}
 		}
-		private heightLengthUnits _heightLengthUnits ;
+		private heightLengthUnits _heightLengthUnits  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<heightLengthUnits?>), typeof(Editors.UnknownEditor<heightLengthUnits?>))]
 		[DomainModel.EnumerationAttribute(nameof(heightLengthUnitsList), typeof(heightLengthUnits))]
@@ -1403,7 +1407,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public heightLengthUnits[] heightLengthUnitsList => [(heightLengthUnits)1,(heightLengthUnits)2,(heightLengthUnits)3,(heightLengthUnits)4,(heightLengthUnits)5,(heightLengthUnits)6];
-		private decimal _diameter ;
+		private decimal _diameter  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal diameter {
@@ -1617,7 +1621,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ObscuredSectorViewModel : ViewModelBase {
-		private sectorLimitViewModel _sectorLimit ;
+		private sectorLimitViewModel _sectorLimit  = default;
 
 		[Category("ObscuredSector")]
 		[ExpandableObject]
@@ -1678,7 +1682,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sinkerDimensionsViewModel : ViewModelBase {
-		private heightLengthUnits _heightLengthUnits ;
+		private heightLengthUnits _heightLengthUnits  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<heightLengthUnits?>), typeof(Editors.UnknownEditor<heightLengthUnits?>))]
 		[DomainModel.EnumerationAttribute(nameof(heightLengthUnitsList), typeof(heightLengthUnits))]
@@ -1760,7 +1764,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class positioningMethodViewModel : ViewModelBase {
-		private positioningEquipment _positioningEquipment ;
+		private positioningEquipment _positioningEquipment  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<positioningEquipment?>), typeof(Editors.UnknownEditor<positioningEquipment?>))]
 		[DomainModel.EnumerationAttribute(nameof(positioningEquipmentList), typeof(positioningEquipment))]
@@ -1817,7 +1821,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
-		private decimal _uncertaintyFixed ;
+		private decimal _uncertaintyFixed  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal uncertaintyFixed {
@@ -2012,7 +2016,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalUncertaintyViewModel : ViewModelBase {
-		private decimal _uncertaintyFixed ;
+		private decimal _uncertaintyFixed  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal uncertaintyFixed {
@@ -2708,7 +2712,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public horizontalDatum[] horizontalDatumList => [(horizontalDatum)1,(horizontalDatum)2,(horizontalDatum)3,(horizontalDatum)4,(horizontalDatum)5,(horizontalDatum)6,(horizontalDatum)7,(horizontalDatum)8,(horizontalDatum)9,(horizontalDatum)10,(horizontalDatum)11,(horizontalDatum)12,(horizontalDatum)13,(horizontalDatum)14,(horizontalDatum)15,(horizontalDatum)16,(horizontalDatum)17,(horizontalDatum)18,(horizontalDatum)19,(horizontalDatum)20,(horizontalDatum)21,(horizontalDatum)22,(horizontalDatum)23,(horizontalDatum)24,(horizontalDatum)25,(horizontalDatum)26,(horizontalDatum)27,(horizontalDatum)28,(horizontalDatum)29,(horizontalDatum)30,(horizontalDatum)31,(horizontalDatum)32,(horizontalDatum)33,(horizontalDatum)34,(horizontalDatum)35,(horizontalDatum)36,(horizontalDatum)37,(horizontalDatum)38,(horizontalDatum)39,(horizontalDatum)40,(horizontalDatum)41,(horizontalDatum)42,(horizontalDatum)43,(horizontalDatum)44,(horizontalDatum)45,(horizontalDatum)46,(horizontalDatum)47,(horizontalDatum)48,(horizontalDatum)49,(horizontalDatum)50,(horizontalDatum)51,(horizontalDatum)52,(horizontalDatum)53,(horizontalDatum)54,(horizontalDatum)55,(horizontalDatum)56,(horizontalDatum)57,(horizontalDatum)58,(horizontalDatum)59,(horizontalDatum)60,(horizontalDatum)61,(horizontalDatum)62,(horizontalDatum)63,(horizontalDatum)64,(horizontalDatum)65,(horizontalDatum)66,(horizontalDatum)67,(horizontalDatum)68,(horizontalDatum)69,(horizontalDatum)70,(horizontalDatum)71,(horizontalDatum)72,(horizontalDatum)73,(horizontalDatum)74,(horizontalDatum)75,(horizontalDatum)76,(horizontalDatum)77,(horizontalDatum)78,(horizontalDatum)79,(horizontalDatum)80,(horizontalDatum)81,(horizontalDatum)82,(horizontalDatum)83,(horizontalDatum)84,(horizontalDatum)85,(horizontalDatum)86,(horizontalDatum)87,(horizontalDatum)88,(horizontalDatum)89,(horizontalDatum)90,(horizontalDatum)91,(horizontalDatum)92,(horizontalDatum)93,(horizontalDatum)94,(horizontalDatum)95,(horizontalDatum)96,(horizontalDatum)97,(horizontalDatum)98,(horizontalDatum)99,(horizontalDatum)100,(horizontalDatum)101,(horizontalDatum)102,(horizontalDatum)103,(horizontalDatum)104,(horizontalDatum)105,(horizontalDatum)106,(horizontalDatum)107,(horizontalDatum)108,(horizontalDatum)109,(horizontalDatum)110,(horizontalDatum)111,(horizontalDatum)112,(horizontalDatum)113,(horizontalDatum)114,(horizontalDatum)116,(horizontalDatum)117,(horizontalDatum)118,(horizontalDatum)119,(horizontalDatum)120,(horizontalDatum)121,(horizontalDatum)122,(horizontalDatum)123,(horizontalDatum)124,(horizontalDatum)125,(horizontalDatum)126,(horizontalDatum)127,(horizontalDatum)128,(horizontalDatum)129,(horizontalDatum)130,(horizontalDatum)131];
-		private DateOnly _sourceDate ;
+		private DateOnly _sourceDate  = default;
 
 		[Category("AtoNFixingMethod")]
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
@@ -2771,7 +2775,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AtonStatusInformationViewModel : InformationViewModel<AtonStatusInformation> {
-		private ChangeDetailsViewModel _ChangeDetails ;
+		private ChangeDetailsViewModel _ChangeDetails  = default;
 
 		[Category("AtonStatusInformation")]
 		[ExpandableObject]
@@ -3215,7 +3219,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private visualProminence _visualProminence ;
+		private visualProminence _visualProminence  = default;
 
 		[Category("Landmark")]
 		[Editor(typeof(Editors.UnknownEditor<visualProminence?>), typeof(Editors.UnknownEditor<visualProminence?>))]
@@ -3674,7 +3678,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		private beaconShape _beaconShape ;
+		private beaconShape _beaconShape  = default;
 
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.UnknownEditor<beaconShape?>), typeof(Editors.UnknownEditor<beaconShape?>))]
@@ -3806,7 +3810,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		private categoryOfLateralMark _categoryOfLateralMark ;
+		private categoryOfLateralMark _categoryOfLateralMark  = default;
 
 		[Category("LateralBeacon")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfLateralMark?>), typeof(Editors.UnknownEditor<categoryOfLateralMark?>))]
@@ -4193,7 +4197,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		private buoyShape _buoyShape ;
+		private buoyShape _buoyShape  = default;
 
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
@@ -4298,7 +4302,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		private categoryOfLateralMark _categoryOfLateralMark ;
+		private categoryOfLateralMark _categoryOfLateralMark  = default;
 
 		[Category("LateralBuoy")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfLateralMark?>), typeof(Editors.UnknownEditor<categoryOfLateralMark?>))]
@@ -4622,7 +4626,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("AidsToNavigation")]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
-		private categoryOfNavigationLine _categoryOfNavigationLine ;
+		private categoryOfNavigationLine _categoryOfNavigationLine  = default;
 
 		[Category("NavigationLine")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfNavigationLine?>), typeof(Editors.UnknownEditor<categoryOfNavigationLine?>))]
@@ -4645,7 +4649,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private orientationViewModel _orientation ;
+		private orientationViewModel _orientation  = default;
 
 		[Category("NavigationLine")]
 		[ExpandableObject]
@@ -4965,7 +4969,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private orientationViewModel _orientation ;
+		private orientationViewModel _orientation  = default;
 
 		[Category("RecommendedTrack")]
 		[ExpandableObject]
@@ -5003,7 +5007,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)2,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)4,(techniqueOfVerticalMeasurement)5,(techniqueOfVerticalMeasurement)6,(techniqueOfVerticalMeasurement)7,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)10,(techniqueOfVerticalMeasurement)11,(techniqueOfVerticalMeasurement)12,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)14,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17];
-		private trafficFlow _trafficFlow ;
+		private trafficFlow _trafficFlow  = default;
 
 		[Category("RecommendedTrack")]
 		[Editor(typeof(Editors.UnknownEditor<trafficFlow?>), typeof(Editors.UnknownEditor<trafficFlow?>))]
@@ -5933,7 +5937,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _multiplicityOfFeatures, value);
 			}
 		}
-		private rhythmOfLightViewModel _rhythmOfLight ;
+		private rhythmOfLightViewModel _rhythmOfLight  = default;
 
 		[Category("LightAllAround")]
 		[ExpandableObject]
@@ -6429,7 +6433,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _multiplicityOfFeatures, value);
 			}
 		}
-		private rhythmOfLightViewModel _rhythmOfLight ;
+		private rhythmOfLightViewModel _rhythmOfLight  = default;
 
 		[Category("LightAirObstruction")]
 		[ExpandableObject]
@@ -6860,7 +6864,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public signalGeneration[] signalGenerationList => [(signalGeneration)1,(signalGeneration)2,(signalGeneration)3,(signalGeneration)4,(signalGeneration)5,(signalGeneration)6];
-		private rhythmOfLightViewModel _rhythmOfLight ;
+		private rhythmOfLightViewModel _rhythmOfLight  = default;
 
 		[Category("LightFogDetector")]
 		[ExpandableObject]
@@ -7470,7 +7474,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("Equipment")]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
-		private categoryOfFogSignal _categoryOfFogSignal ;
+		private categoryOfFogSignal _categoryOfFogSignal  = default;
 
 		[Category("FogSignal")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfFogSignal?>), typeof(Editors.UnknownEditor<categoryOfFogSignal?>))]
@@ -8146,7 +8150,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("Equipment")]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
-		private categoryOfRadioStation _categoryOfRadioStation ;
+		private categoryOfRadioStation _categoryOfRadioStation  = default;
 
 		[Category("RadioStation")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfRadioStation?>), typeof(Editors.UnknownEditor<categoryOfRadioStation?>))]
@@ -8520,7 +8524,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private topmarkDaymarkShape _topmarkDaymarkShape ;
+		private topmarkDaymarkShape _topmarkDaymarkShape  = default;
 
 		[Category("Daymark")]
 		[Editor(typeof(Editors.UnknownEditor<topmarkDaymarkShape?>), typeof(Editors.UnknownEditor<topmarkDaymarkShape?>))]
@@ -9264,7 +9268,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("Equipment")]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
-		private categoryOfRadarTransponderBeacon _categoryOfRadarTransponderBeacon ;
+		private categoryOfRadarTransponderBeacon _categoryOfRadarTransponderBeacon  = default;
 
 		[Category("RadarTransponderBeacon")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfRadarTransponderBeacon?>), typeof(Editors.UnknownEditor<categoryOfRadarTransponderBeacon?>))]
@@ -9687,7 +9691,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public status[] statusList => Enum.GetValues<status>();
 
-		private virtualAISAidToNavigationType _virtualAISAidToNavigationType ;
+		private virtualAISAidToNavigationType _virtualAISAidToNavigationType  = default;
 
 		[Category("VirtualAISAidToNavigation")]
 		[Editor(typeof(Editors.UnknownEditor<virtualAISAidToNavigationType?>), typeof(Editors.UnknownEditor<virtualAISAidToNavigationType?>))]
@@ -9985,7 +9989,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public status[] statusList => Enum.GetValues<status>();
 
-		private CategoryOfPhysicalAISAidToNavigation _CategoryOfPhysicalAISAidToNavigation ;
+		private CategoryOfPhysicalAISAidToNavigation _CategoryOfPhysicalAISAidToNavigation  = default;
 
 		[Category("PhysicalAISAidToNavigation")]
 		[Editor(typeof(Editors.UnknownEditor<CategoryOfPhysicalAISAidToNavigation?>), typeof(Editors.UnknownEditor<CategoryOfPhysicalAISAidToNavigation?>))]
@@ -10283,7 +10287,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public status[] statusList => Enum.GetValues<status>();
 
-		private CategoryOfSyntheticAISAidtoNavigation _CategoryOfSyntheticAISAidtoNavigation ;
+		private CategoryOfSyntheticAISAidtoNavigation _CategoryOfSyntheticAISAidtoNavigation  = default;
 
 		[Category("SyntheticAISAidToNavigation")]
 		[Editor(typeof(Editors.UnknownEditor<CategoryOfSyntheticAISAidtoNavigation?>), typeof(Editors.UnknownEditor<CategoryOfSyntheticAISAidtoNavigation?>))]
@@ -10299,7 +10303,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public CategoryOfSyntheticAISAidtoNavigation[] CategoryOfSyntheticAISAidtoNavigationList => [(CategoryOfSyntheticAISAidtoNavigation)1,(CategoryOfSyntheticAISAidtoNavigation)2];
-		private virtualAISAidToNavigationType _virtualAISAidToNavigationType ;
+		private virtualAISAidToNavigationType _virtualAISAidToNavigationType  = default;
 
 		[Category("SyntheticAISAidToNavigation")]
 		[Editor(typeof(Editors.UnknownEditor<virtualAISAidToNavigationType?>), typeof(Editors.UnknownEditor<virtualAISAidToNavigationType?>))]
@@ -10572,7 +10576,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("Equipment")]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
-		private CategoryOfPowerSource _CategoryOfPowerSource ;
+		private CategoryOfPowerSource _CategoryOfPowerSource  = default;
 
 		[Category("PowerSource")]
 		[Editor(typeof(Editors.UnknownEditor<CategoryOfPowerSource?>), typeof(Editors.UnknownEditor<CategoryOfPowerSource?>))]
@@ -10907,7 +10911,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		private beaconShape _beaconShape ;
+		private beaconShape _beaconShape  = default;
 
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.UnknownEditor<beaconShape?>), typeof(Editors.UnknownEditor<beaconShape?>))]
@@ -11407,7 +11411,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		private beaconShape _beaconShape ;
+		private beaconShape _beaconShape  = default;
 
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.UnknownEditor<beaconShape?>), typeof(Editors.UnknownEditor<beaconShape?>))]
@@ -11539,7 +11543,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		private categoryOfCardinalMark _categoryOfCardinalMark ;
+		private categoryOfCardinalMark _categoryOfCardinalMark  = default;
 
 		[Category("CardinalBeacon")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfCardinalMark?>), typeof(Editors.UnknownEditor<categoryOfCardinalMark?>))]
@@ -11926,7 +11930,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		private buoyShape _buoyShape ;
+		private buoyShape _buoyShape  = default;
 
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
@@ -12393,7 +12397,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		private buoyShape _buoyShape ;
+		private buoyShape _buoyShape  = default;
 
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
@@ -12498,7 +12502,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		private categoryOfCardinalMark _categoryOfCardinalMark ;
+		private categoryOfCardinalMark _categoryOfCardinalMark  = default;
 
 		[Category("CardinalBuoy")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfCardinalMark?>), typeof(Editors.UnknownEditor<categoryOfCardinalMark?>))]
@@ -12879,7 +12883,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		private buoyShape _buoyShape ;
+		private buoyShape _buoyShape  = default;
 
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
@@ -12984,7 +12988,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		private categoryOfInstallationBuoy _categoryOfInstallationBuoy ;
+		private categoryOfInstallationBuoy _categoryOfInstallationBuoy  = default;
 
 		[Category("InstallationBuoy")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfInstallationBuoy?>), typeof(Editors.UnknownEditor<categoryOfInstallationBuoy?>))]
@@ -13365,7 +13369,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		private buoyShape _buoyShape ;
+		private buoyShape _buoyShape  = default;
 
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
@@ -13832,7 +13836,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		private buoyShape _buoyShape ;
+		private buoyShape _buoyShape  = default;
 
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
@@ -14368,7 +14372,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private visualProminence _visualProminence ;
+		private visualProminence _visualProminence  = default;
 
 		[Category("Landmark")]
 		[Editor(typeof(Editors.UnknownEditor<visualProminence?>), typeof(Editors.UnknownEditor<visualProminence?>))]
@@ -17854,7 +17858,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sinkerDimensions, value);
 			}
 		}
-		private decimal _weight ;
+		private decimal _weight  = default;
 
 		[Category("SinkerAnchor")]
 		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
@@ -18420,7 +18424,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _CableDimensions, value);
 			}
 		}
-		private categoryOfCable _categoryOfCable ;
+		private categoryOfCable _categoryOfCable  = default;
 
 		[Category("CableSubmarine")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfCable?>), typeof(Editors.UnknownEditor<categoryOfCable?>))]
@@ -19249,7 +19253,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
-		private decimal _weight ;
+		private decimal _weight  = default;
 
 		[Category("CounterWeight")]
 		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
@@ -19534,7 +19538,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private topmarkDaymarkShape _topmarkDaymarkShape ;
+		private topmarkDaymarkShape _topmarkDaymarkShape  = default;
 
 		[Category("Topmark")]
 		[Editor(typeof(Editors.UnknownEditor<topmarkDaymarkShape?>), typeof(Editors.UnknownEditor<topmarkDaymarkShape?>))]
@@ -19886,7 +19890,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		private beaconShape _beaconShape ;
+		private beaconShape _beaconShape  = default;
 
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.UnknownEditor<beaconShape?>), typeof(Editors.UnknownEditor<beaconShape?>))]
@@ -20386,7 +20390,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		private beaconShape _beaconShape ;
+		private beaconShape _beaconShape  = default;
 
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.UnknownEditor<beaconShape?>), typeof(Editors.UnknownEditor<beaconShape?>))]
@@ -20903,7 +20907,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		private buoyShape _buoyShape ;
+		private buoyShape _buoyShape  = default;
 
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
@@ -21370,7 +21374,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		private buoyShape _buoyShape ;
+		private buoyShape _buoyShape  = default;
 
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
@@ -21712,7 +21716,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AtonAggregationViewModel : FeatureViewModel<AtonAggregation> {
-		private CategoryOfAggregation _CategoryOfAggregation ;
+		private CategoryOfAggregation _CategoryOfAggregation  = default;
 
 		[Category("AtonAggregation")]
 		[Editor(typeof(Editors.UnknownEditor<CategoryOfAggregation?>), typeof(Editors.UnknownEditor<CategoryOfAggregation?>))]
@@ -21760,7 +21764,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AtonAssociationViewModel : FeatureViewModel<AtonAssociation> {
-		private CategoryOfAssociation _CategoryOfAssociation ;
+		private CategoryOfAssociation _CategoryOfAssociation  = default;
 
 		[Category("AtonAssociation")]
 		[Editor(typeof(Editors.UnknownEditor<CategoryOfAssociation?>), typeof(Editors.UnknownEditor<CategoryOfAssociation?>))]
@@ -21808,7 +21812,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class QualityOfNonBathymetricDataViewModel : FeatureViewModel<QualityOfNonBathymetricData> {
-		private categoryOfTemporalVariation _categoryOfTemporalVariation ;
+		private categoryOfTemporalVariation _categoryOfTemporalVariation  = default;
 
 		[Category("QualityOfNonBathymetricData")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfTemporalVariation?>), typeof(Editors.UnknownEditor<categoryOfTemporalVariation?>))]
@@ -21846,7 +21850,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _horizontalDistanceUncertainty, value);
 			}
 		}
-		private horizontalPositionUncertaintyViewModel _horizontalPositionUncertainty ;
+		private horizontalPositionUncertaintyViewModel _horizontalPositionUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
 		[ExpandableObject]
@@ -21971,7 +21975,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DataCoverageViewModel : FeatureViewModel<DataCoverage> {
-		private int _maximumDisplayScale ;
+		private int _maximumDisplayScale  = default;
 
 		[Category("DataCoverage")]
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
@@ -21983,7 +21987,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _maximumDisplayScale, value);
 			}
 		}
-		private int _minimumDisplayScale ;
+		private int _minimumDisplayScale  = default;
 
 		[Category("DataCoverage")]
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
@@ -22031,7 +22035,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LocalDirectionOfBuoyageViewModel : FeatureViewModel<LocalDirectionOfBuoyage> {
-		private orientationViewModel _orientation ;
+		private orientationViewModel _orientation  = default;
 
 		[Category("LocalDirectionOfBuoyage")]
 		[ExpandableObject]
@@ -22079,7 +22083,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NavigationalSystemOfMarksViewModel : FeatureViewModel<NavigationalSystemOfMarks> {
-		private marksNavigationalSystemOf _marksNavigationalSystemOf ;
+		private marksNavigationalSystemOf _marksNavigationalSystemOf  = default;
 
 		[Category("NavigationalSystemOfMarks")]
 		[Editor(typeof(Editors.UnknownEditor<marksNavigationalSystemOf?>), typeof(Editors.UnknownEditor<marksNavigationalSystemOf?>))]
@@ -22128,7 +22132,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SoundingDatumViewModel : FeatureViewModel<SoundingDatum> {
-		private verticalDatum _verticalDatum ;
+		private verticalDatum _verticalDatum  = default;
 
 		[Category("SoundingDatum")]
 		[Editor(typeof(Editors.UnknownEditor<verticalDatum?>), typeof(Editors.UnknownEditor<verticalDatum?>))]
@@ -22177,7 +22181,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class VerticalDatumOfDataViewModel : FeatureViewModel<VerticalDatumOfData> {
-		private verticalDatum _verticalDatum ;
+		private verticalDatum _verticalDatum  = default;
 
 		[Category("VerticalDatumOfData")]
 		[Editor(typeof(Editors.UnknownEditor<verticalDatum?>), typeof(Editors.UnknownEditor<verticalDatum?>))]

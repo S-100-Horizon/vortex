@@ -479,7 +479,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class depthsDescriptionViewModel : ViewModelBase {
-		private categoryOfDepthsDescription _categoryOfDepthsDescription ;
+		private categoryOfDepthsDescription _categoryOfDepthsDescription  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<categoryOfDepthsDescription?>), typeof(Editors.UnknownEditor<categoryOfDepthsDescription?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfDepthsDescriptionList), typeof(categoryOfDepthsDescription))]
@@ -644,6 +644,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class fixedDateRangeViewModel : ViewModelBase {
 		private String? _dateStart  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? dateStart {
 			get {
 				return _dateStart;
@@ -654,6 +655,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private String? _dateEnd  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? dateEnd {
 			get {
 				return _dateEnd;
@@ -1024,7 +1026,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
-		private decimal _uncertaintyFixed ;
+		private decimal _uncertaintyFixed  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal uncertaintyFixed {
@@ -1500,7 +1502,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _orientationUncertainty, value);
 			}
 		}
-		private decimal _orientationValue ;
+		private decimal _orientationValue  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal orientationValue {
@@ -1542,9 +1544,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class periodicDateRangeViewModel : ViewModelBase {
-		private String _dateStart ;
+		private String _dateStart  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
 		public String dateStart {
 			get {
 				return _dateStart;
@@ -1553,9 +1556,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _dateStart, value);
 			}
 		}
-		private String _dateEnd ;
+		private String _dateEnd  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
 		public String dateEnd {
 			get {
 				return _dateEnd;
@@ -1806,6 +1810,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class surveyDateRangeViewModel : ViewModelBase {
 		private String? _dateStart  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? dateStart {
 			get {
 				return _dateStart;
@@ -1814,9 +1819,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _dateStart, value);
 			}
 		}
-		private String _dateEnd ;
+		private String _dateEnd  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
 		public String dateEnd {
 			get {
 				return _dateEnd;
@@ -2033,6 +2039,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 		private String? _reportedDate  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -2219,7 +2226,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalUncertaintyViewModel : ViewModelBase {
-		private decimal _uncertaintyFixed ;
+		private decimal _uncertaintyFixed  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal uncertaintyFixed {
@@ -2271,7 +2278,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class vesselsMeasurementsViewModel : ViewModelBase {
-		private comparisonOperator _comparisonOperator ;
+		private comparisonOperator _comparisonOperator  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<comparisonOperator?>), typeof(Editors.UnknownEditor<comparisonOperator?>))]
 		[DomainModel.EnumerationAttribute(nameof(comparisonOperatorList), typeof(comparisonOperator))]
@@ -2286,7 +2293,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Browsable(false)]
 		public comparisonOperator[] comparisonOperatorList => [(comparisonOperator)1,(comparisonOperator)2,(comparisonOperator)3,(comparisonOperator)4,(comparisonOperator)5,(comparisonOperator)6];
-		private vesselsCharacteristics _vesselsCharacteristics ;
+		private vesselsCharacteristics _vesselsCharacteristics  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<vesselsCharacteristics?>), typeof(Editors.UnknownEditor<vesselsCharacteristics?>))]
 		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsList), typeof(vesselsCharacteristics))]
@@ -2301,7 +2308,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Browsable(false)]
 		public vesselsCharacteristics[] vesselsCharacteristicsList => [(vesselsCharacteristics)1,(vesselsCharacteristics)2,(vesselsCharacteristics)3,(vesselsCharacteristics)4,(vesselsCharacteristics)6,(vesselsCharacteristics)7,(vesselsCharacteristics)8,(vesselsCharacteristics)9,(vesselsCharacteristics)10,(vesselsCharacteristics)11,(vesselsCharacteristics)12,(vesselsCharacteristics)13];
-		private decimal _vesselsCharacteristicsValue ;
+		private decimal _vesselsCharacteristicsValue  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
 		public decimal vesselsCharacteristicsValue {
@@ -2312,7 +2319,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _vesselsCharacteristicsValue, value);
 			}
 		}
-		private vesselsCharacteristicsUnit _vesselsCharacteristicsUnit ;
+		private vesselsCharacteristicsUnit _vesselsCharacteristicsUnit  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<vesselsCharacteristicsUnit?>), typeof(Editors.UnknownEditor<vesselsCharacteristicsUnit?>))]
 		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsUnitList), typeof(vesselsCharacteristicsUnit))]
@@ -2696,7 +2703,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class InclusionTypeViewModel : AssociationViewModel {
-		private membership _membership ;
+		private membership _membership  = default;
 
 		[Category("InclusionType")]
 		[Editor(typeof(Editors.UnknownEditor<membership?>), typeof(Editors.UnknownEditor<membership?>))]
@@ -2741,7 +2748,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PermissionTypeViewModel : AssociationViewModel {
-		private categoryOfRelationship _categoryOfRelationship ;
+		private categoryOfRelationship _categoryOfRelationship  = default;
 
 		[Category("PermissionType")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfRelationship?>), typeof(Editors.UnknownEditor<categoryOfRelationship?>))]
@@ -3114,6 +3121,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -3401,6 +3409,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -3410,7 +3419,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		private categoryOfAuthority _categoryOfAuthority ;
+		private categoryOfAuthority _categoryOfAuthority  = default;
 
 		[Category("Authority")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfAuthority?>), typeof(Editors.UnknownEditor<categoryOfAuthority?>))]
@@ -3570,6 +3579,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -3911,6 +3921,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -4202,6 +4213,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -4460,6 +4472,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -4636,6 +4649,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -4646,6 +4660,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 
 		[Category("NonStandardWorkingDay")]
+		[S100TruncatedDateAttribute]
 		public ObservableCollection<String> dateFixed  { get; set; } = new ();
 		[Category("NonStandardWorkingDay")]
 		public ObservableCollection<String> dateVariable  { get; set; } = new ();
@@ -4804,6 +4819,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -4980,6 +4996,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -5156,6 +5173,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -5332,6 +5350,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -5573,6 +5592,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -5763,6 +5783,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -6022,6 +6043,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -6455,6 +6477,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -6765,6 +6788,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -7024,6 +7048,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -7242,6 +7267,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -7501,6 +7527,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -7719,6 +7746,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -7937,6 +7965,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8223,6 +8252,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8486,6 +8516,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8745,6 +8776,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8966,6 +8998,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8980,7 +9013,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 
 
-		private categoryOfMooringWarpingFacility _categoryOfMooringWarpingFacility ;
+		private categoryOfMooringWarpingFacility _categoryOfMooringWarpingFacility  = default;
 
 		[Category("MooringWarpingFacility")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfMooringWarpingFacility?>), typeof(Editors.UnknownEditor<categoryOfMooringWarpingFacility?>))]
@@ -9232,6 +9265,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -9500,6 +9534,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -9759,6 +9794,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -10018,6 +10054,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -10317,6 +10354,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -10576,6 +10614,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -10590,7 +10629,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 
 
-		private categoryOfPortSection _categoryOfPortSection ;
+		private categoryOfPortSection _categoryOfPortSection  = default;
 
 		[Category("WaterwayArea")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfPortSection?>), typeof(Editors.UnknownEditor<categoryOfPortSection?>))]
@@ -10763,7 +10802,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DataCoverageViewModel : FeatureViewModel<DataCoverage> {
-		private int _maximumDisplayScale ;
+		private int _maximumDisplayScale  = default;
 
 		[Category("DataCoverage")]
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
@@ -10775,7 +10814,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _maximumDisplayScale, value);
 			}
 		}
-		private int _minimumDisplayScale ;
+		private int _minimumDisplayScale  = default;
 
 		[Category("DataCoverage")]
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
@@ -10850,7 +10889,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _horizontalDistanceUncertainty, value);
 			}
 		}
-		private horizontalPositionUncertaintyViewModel _horizontalPositionUncertainty ;
+		private horizontalPositionUncertaintyViewModel _horizontalPositionUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
 		[ExpandableObject]
@@ -10969,7 +11008,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SoundingDatumViewModel : FeatureViewModel<SoundingDatum> {
-		private verticalDatum _verticalDatum ;
+		private verticalDatum _verticalDatum  = default;
 
 		[Category("SoundingDatum")]
 		[Editor(typeof(Editors.UnknownEditor<verticalDatum?>), typeof(Editors.UnknownEditor<verticalDatum?>))]
@@ -11033,7 +11072,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class VerticalDatumOfDataViewModel : FeatureViewModel<VerticalDatumOfData> {
-		private verticalDatum _verticalDatum ;
+		private verticalDatum _verticalDatum  = default;
 
 		[Category("VerticalDatumOfData")]
 		[Editor(typeof(Editors.UnknownEditor<verticalDatum?>), typeof(Editors.UnknownEditor<verticalDatum?>))]
@@ -11097,7 +11136,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TextPlacementViewModel : FeatureViewModel<TextPlacement> {
-		private decimal _orientationValue ;
+		private decimal _orientationValue  = default;
 
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
@@ -11120,7 +11159,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _text, value);
 			}
 		}
-		private int _textOffsetMm ;
+		private int _textOffsetMm  = default;
 
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]

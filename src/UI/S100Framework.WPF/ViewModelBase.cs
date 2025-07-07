@@ -1,4 +1,5 @@
-﻿using S100Framework.DomainModel;
+﻿using S100Framework.Catalogues;
+using S100Framework.DomainModel;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -26,6 +27,11 @@ namespace S100Framework.WPF.ViewModel
     public interface ISerializable
     {
         //public string Serialize();
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class S100TruncatedDateAttribute : System.Attribute
+    {
     }
 
     public abstract class ViewModelBase : INotifyPropertyChanged, INotifyDataErrorInfo, IDisposable
@@ -60,6 +66,19 @@ namespace S100Framework.WPF.ViewModel
 
             this.GetType().GetProperties()
                 .Where(p => p.GetCustomAttribute<BrowsableAttribute>() == null && !IsNuallable(p))
+                .ToList()
+                .ForEach(p => {
+                    var value = p.GetValue(this);
+                    if (value == null || (value is string str && string.IsNullOrWhiteSpace(str))) {
+                        this.AddError(p.Name, $"{p.Name} is required.");
+                    }
+                });
+
+            var tt = this.GetType().GetProperties()
+                .Where(p => p.GetCustomAttribute<S100TruncatedDateAttribute>() != null);
+
+            this.GetType().GetProperties()
+                .Where(p => p.GetCustomAttribute<S100TruncatedDateAttribute>() != null)
                 .ToList()
                 .ForEach(p => {
                     var value = p.GetValue(this);
