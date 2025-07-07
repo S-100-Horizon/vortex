@@ -221,37 +221,37 @@ namespace Test100Topology
 
 
             var topology = geodatabase.BuildTopology(filter, (collection) => {
-                var lineStrings = collection.ToArray();        
+                //var lineStrings = collection.ToArray();        
 
-                for (int i = 0; i < lineStrings.Length; i++) {
-                    var boundary1 = lineStrings[i];
-                    for (int j = i + 1; j < lineStrings.Length; j++) {
-                        var boundary2 = lineStrings[j];
+                //for (int i = 0; i < lineStrings.Length; i++) {
+                //    var boundary1 = lineStrings[i];
+                //    for (int j = i + 1; j < lineStrings.Length; j++) {
+                //        var boundary2 = lineStrings[j];
 
-                        if (boundary1.EqualsTopologically(boundary2)) {
-                            ;// System.Diagnostics.Debugger.Break();
-                        }
-                        else if (boundary1.Intersects(boundary2)) {
-                            var intersection = boundary1.Intersection(boundary2);
-                            if (intersection is NetTopologySuite.Geometries.Point) {
-                                //  Don't care
-                            }
-                            else if (intersection is NetTopologySuite.Geometries.MultiPoint) {
-                                //  Don't care
-                            }
-                            else {
-                                System.Diagnostics.Debugger.Break();
+                //        if (boundary1.EqualsTopologically(boundary2)) {
+                //            ;// System.Diagnostics.Debugger.Break();
+                //        }
+                //        else if (boundary1.Intersects(boundary2)) {
+                //            var intersection = boundary1.Intersection(boundary2);
+                //            if (intersection is NetTopologySuite.Geometries.Point) {
+                //                //  Don't care
+                //            }
+                //            else if (intersection is NetTopologySuite.Geometries.MultiPoint) {
+                //                //  Don't care
+                //            }
+                //            else {
+                //                System.Diagnostics.Debugger.Break();
 
-                                using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
-                                    PersistTopology(target, lineStrings);
-                                }
-                            }
-                        }
-                    }
-                }
+                //                using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
+                //                    PersistTopology(target, lineStrings);
+                //                }
+                //            }
+                //        }
+                //    }
+                //}
 
                 using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
-                    PersistTopology(target, lineStrings);
+                    PersistTopology(target, collection);
                 }
             });
 

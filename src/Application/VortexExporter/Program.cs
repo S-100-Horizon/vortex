@@ -706,6 +706,41 @@ namespace ArcGIS.Core.Data
                     }
                 }
 
+                var splitters = new List<S100Framework.YAML.Polyline>();
+                using (var surface = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("surface")).GetName())) {
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('RESTRICTEDAREA'))";
+
+                    using var cursor = surface.Search(queryFilter);
+
+                    while (cursor.MoveNext()) {
+                        var f = (Feature)cursor.Current;
+
+                        var shape = (ArcGIS.Core.Geometry.Polygon)f.GetShape();
+
+                        var name = Convert.ToString(f["name"]);
+                        if (string.IsNullOrEmpty(name))
+                            name = string.Empty;
+
+                        var exteriorRing = shape.GetExteriorRing(0);
+                        var coordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+
+                        var ex = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+                        ex = ex.RemoveRepeatedVertices();
+
+                        splitters.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, ex));
+
+                        if (shape.PartCount > 1) {
+                            foreach (var interiorRing in shape.Parts.Skip(1)) {
+                                coordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+
+                                var linestring = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+                                linestring = linestring.RemoveRepeatedVertices();
+                                splitters.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, linestring));
+                            }
+                        }
+                    }
+                }
+
                 //foreach (var c in polygons) {
                 //    var coordinates = c.ExteriorRing.Coordinates;
 
@@ -724,7 +759,7 @@ namespace ArcGIS.Core.Data
 
                 int count = polygons.Count();
 
-                topology.BuildGroupOne(curves.ToArray(), polygons.ToArray(), interceptor);
+                topology.BuildGroupOne(curves.ToArray(), polygons.ToArray(), splitters.ToArray(), interceptor);
             }
 
             //  Everything else
