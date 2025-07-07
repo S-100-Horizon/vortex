@@ -46,7 +46,7 @@ namespace Test100Topology
 
 
             using var surface = geodatabase.OpenDataset<FeatureClass>("surface");
-            
+
             using var cursor = surface.Search(new QueryFilter {
                 WhereClause = $"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"DK40347E\"%'",
             }, true);
@@ -122,7 +122,7 @@ namespace Test100Topology
         }
 
         [Fact]
-        public void Test_DK40349E() {            
+        public void Test_DK40349E() {
             //  BuildUpArae not closed correctly: S2550982
 
             var replicaPath = Environment.GetEnvironmentVariable("S100FrameworkDatabase") ?? throw new System.ArgumentNullException();
@@ -163,7 +163,7 @@ namespace Test100Topology
 
 
             var topology = geodatabase.BuildTopology(filter, (collection) => {
-                var lineStrings = collection.ToArray();                
+                var lineStrings = collection.ToArray();
 
                 using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
                     PersistTopology(target, lineStrings);
@@ -221,7 +221,34 @@ namespace Test100Topology
 
 
             var topology = geodatabase.BuildTopology(filter, (collection) => {
-                var lineStrings = collection.ToArray();
+                var lineStrings = collection.ToArray();        
+
+                for (int i = 0; i < lineStrings.Length; i++) {
+                    var boundary1 = lineStrings[i];
+                    for (int j = i + 1; j < lineStrings.Length; j++) {
+                        var boundary2 = lineStrings[j];
+
+                        if (boundary1.EqualsTopologically(boundary2)) {
+                            ;// System.Diagnostics.Debugger.Break();
+                        }
+                        else if (boundary1.Intersects(boundary2)) {
+                            var intersection = boundary1.Intersection(boundary2);
+                            if (intersection is NetTopologySuite.Geometries.Point) {
+                                //  Don't care
+                            }
+                            else if (intersection is NetTopologySuite.Geometries.MultiPoint) {
+                                //  Don't care
+                            }
+                            else {
+                                System.Diagnostics.Debugger.Break();
+
+                                using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
+                                    PersistTopology(target, lineStrings);
+                                }
+                            }
+                        }
+                    }
+                }
 
                 using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
                     PersistTopology(target, lineStrings);
@@ -236,7 +263,7 @@ namespace Test100Topology
             System.Diagnostics.Debugger.Break();
         }
 
-        
+
         [Fact]
         public void Test_DK40545E() {
             //  The Skin of the Earth boundary curve is not coincident with the data limit.
@@ -326,8 +353,8 @@ namespace Test100Topology
             using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
                 var dummies = new List<LineString>();
                 S100Framework.YAML.Matrix.AddLineStringsFromGeometry(boundary1, dummies);
-                
-                PersistTopology(target, [.. dummies,.. lineStrings]);
+
+                PersistTopology(target, [.. dummies, .. lineStrings]);
             }
 
             System.Diagnostics.Debugger.Break();
@@ -429,7 +456,7 @@ namespace Test100Topology
 
                         var geometry = boundary1.Intersection(boundary2);
                         if (geometry is Point point) {
-                            if (!(point.EqualsExact(boundary2.StartPoint) || point.EqualsExact(boundary2.EndPoint))) {
+                            if (!(point.EqualsTopologically(boundary2.StartPoint) || point.EqualsTopologically(boundary2.EndPoint))) {
                                 ;
                             }
                         }

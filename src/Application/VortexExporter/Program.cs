@@ -209,6 +209,8 @@ namespace S100Framework.Applications
                             var current = (ArcGIS.Core.Data.Feature)cursor.Current;
                             var name = Convert.ToString(current["name"])!;
 
+                            //if (name.Equals("C2672144")) System.Diagnostics.Debugger.Break();
+
                             // Only map geometry, and keep name seperate so foids remain unique
                             var geometry = name;
 
@@ -587,8 +589,8 @@ namespace ArcGIS.Core.Data
         static SpatialReference spatialReference = SpatialReferenceBuilder.CreateSpatialReference(4326);
 
         //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(10000000)); // Or PrecisionModels.Floating
-        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating)); // Or PrecisionModels.Floating
-        //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(100000000)); // Or PrecisionModels.Floating
+        //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating)); // Or PrecisionModels.Floating
+        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(100000000)); // Or PrecisionModels.Floating
 
         public static S100Framework.YAML.Matrix? BuildTopology(this Geodatabase geodatabase, QueryFilter? queryFilter = default, Action<ICollection<LineString>>? interceptor = default) {
             queryFilter = queryFilter switch {
@@ -630,7 +632,7 @@ namespace ArcGIS.Core.Data
 
             var definitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
 
-            //  Skin of Earth
+            //  Skin of the Earth
             {
                 var curves = new List<S100Framework.YAML.Polyline>();
 
@@ -722,7 +724,7 @@ namespace ArcGIS.Core.Data
 
                 int count = polygons.Count();
 
-                topology.BuildTopology(curves.ToArray(), polygons.ToArray(), interceptor);
+                topology.BuildGroupOne(curves.ToArray(), polygons.ToArray(), interceptor);
             }
 
             //  Everything else
@@ -795,7 +797,7 @@ namespace ArcGIS.Core.Data
 
                 int count = polygons.Count();
 
-                //topology.Build(curves.ToArray(), polygons.ToArray(), interceptor);
+                topology.Build(curves.ToArray(), polygons.ToArray(), interceptor);
             }
 
             Log.Verbose("Topology: #{curves}, #{composites}, #{surfaces}", topology.Curves.Count, topology.CompositeCurves.Count, topology.Surfaces.Count);
