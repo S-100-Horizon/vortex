@@ -514,9 +514,9 @@ namespace Test100Topology
             //    PersistTopology(target, lineStrings);
             //}
 
-            S100Framework.YAML.Matrix.ParallelOptions = new ParallelOptions {
-                MaxDegreeOfParallelism = 1
-            };
+            //S100Framework.YAML.Matrix.ParallelOptions = new ParallelOptions {
+            //    MaxDegreeOfParallelism = 1
+            //};
             S100Framework.YAML.Matrix.Factory = factory;
 
             var matrix = S100Framework.YAML.Matrix.CreateMatrix((collection) => {
