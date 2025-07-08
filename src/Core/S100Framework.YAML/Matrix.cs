@@ -1,4 +1,7 @@
-﻿using GeoAPI.Geometries;
+﻿//#define TheMatrix
+#define TheMatrixReloaded
+
+using GeoAPI.Geometries;
 using NetTopologySuite.Algorithm.Match;
 using NetTopologySuite.EdgeGraph;
 using NetTopologySuite.Geometries;
@@ -88,6 +91,8 @@ namespace S100Framework.YAML
 
     public record Polygon(long ObjectId, string name, LineString ExteriorRing, LineString[] InteriorRings) : Polyline(ObjectId, name, ExteriorRing);
 
+
+#if TheMatrixReloaded
     public interface iGraphBuilder
     {
         iTopologyBuilder BuildGraph(ICollection<S100Framework.YAML.Polygon> polygons);
@@ -108,16 +113,16 @@ namespace S100Framework.YAML
 
         IEnumerable<SurfaceFeature> Surfaces { get; }
 
-        IEnumerable<KeyValuePair<string, string>> Mapping { get; }
+        IDictionary<string, string> Mapping { get; }
     }
 
-    public class Matrix2 : iGraphBuilder, iTopologyBuilder, iMatrix
+    public class Matrix : iGraphBuilder, iTopologyBuilder, iMatrix
     {
         public static ParallelOptions ParallelOptions { get; set; } = new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount };
 
         public static GeometryFactory? Factory { get; set; } = default;
 
-        protected Matrix2() {
+        protected Matrix() {
             //  Default protected constructor
         }
 
@@ -125,9 +130,7 @@ namespace S100Framework.YAML
 
         private Geometry? _nodedNetwork = default;
 
-        private IEnumerable<LineString> _network;
-
-        //private EdgeGraph? _edgeGraph = default;
+        private IEnumerable<LineString> _network = Enumerable.Empty<LineString>();
 
         private ConcurrentBag<(string Name, IEnumerable<LineString> ExteriorRing)> _bagPolygons = new ConcurrentBag<(string Name, IEnumerable<LineString> ExteriorRing)>();
 
@@ -140,7 +143,7 @@ namespace S100Framework.YAML
         private ConcurrentBag<SurfaceFeature> _bagSurfaces = new ConcurrentBag<SurfaceFeature>();
 
         public static iGraphBuilder CreateMatrix(Action<ICollection<LineString>>? interceptor = default) {
-            return new Matrix2() {
+            return new Matrix() {
                 _interceptor = interceptor,
             };
         }
@@ -151,7 +154,7 @@ namespace S100Framework.YAML
 
             //this._nodedNetwork = Matrix2.Factory!.CreateGeometryCollection([.. boundaries]).Union();
 
-            var unionOp = new UnaryUnionOp(boundaries, Matrix2.Factory);
+            var unionOp = new UnaryUnionOp(boundaries, Matrix.Factory);
             this._nodedNetwork = unionOp.Union();
 
             var lineMerger = new LineMerger();
@@ -183,7 +186,7 @@ namespace S100Framework.YAML
             var lineStringsForward = this._network.ToDictionary(e => e, e => e.ToText().Substring("LINESTRING (".Length).TrimEnd(')'));
             var lineStringsReverse = this._network.ToDictionary(e => e, e => e.Reverse().ToText().Substring("LINESTRING (".Length).TrimEnd(')'));
 
-            Parallel.For(0, polygons.Count, Matrix2.ParallelOptions, (i) => {
+            Parallel.For(0, polygons.Count, Matrix.ParallelOptions, (i) => {
                 var polygon = polygons.ElementAt(i);
 
                 //if (polygon.name.Equals("S2678807")) System.Diagnostics.Debugger.Break();
@@ -345,9 +348,9 @@ namespace S100Framework.YAML
 
         IEnumerable<SurfaceFeature> iMatrix.Surfaces => this._bagSurfaces;
 
-        IEnumerable<KeyValuePair<string, string>> iMatrix.Mapping => this._mapping;
+        IDictionary<string, string> iMatrix.Mapping => this._mapping;
 
-        private static void AddLineStringsFromGeometry(Geometry geometry, List<LineString> targetList) {
+        public static void AddLineStringsFromGeometry(Geometry geometry, List<LineString> targetList) {
             if (geometry is LineString line) {
                 if (!line.IsEmpty) {
                     if (!targetList.Any(e => e.EqualsTopologically(line)))
@@ -372,7 +375,9 @@ namespace S100Framework.YAML
             // Point/MultiPoint intersections mean polygons touch only at vertices.
         }
     }
+#endif
 
+#if TheMatrix
     public class Matrix
     {
         public static ParallelOptions ParallelOptions { get; set; } = new ParallelOptions { MaxDegreeOfParallelism = 8 };
@@ -1413,6 +1418,7 @@ namespace S100Framework.YAML
             // Point/MultiPoint intersections mean polygons touch only at vertices.
         }
     }
+#endif
 }
 
 namespace GeoAPI.Geometries

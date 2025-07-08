@@ -514,12 +514,12 @@ namespace Test100Topology
             //    PersistTopology(target, lineStrings);
             //}
 
-            S100Framework.YAML.Matrix2.ParallelOptions = new ParallelOptions {
+            S100Framework.YAML.Matrix.ParallelOptions = new ParallelOptions {
                 MaxDegreeOfParallelism = 1
             };
-            S100Framework.YAML.Matrix2.Factory = factory;
+            S100Framework.YAML.Matrix.Factory = factory;
 
-            var matrix = S100Framework.YAML.Matrix2.CreateMatrix((collection) => {
+            var matrix = S100Framework.YAML.Matrix.CreateMatrix((collection) => {
                 using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
                     PersistTopology(target, collection);
                 }
@@ -556,7 +556,7 @@ namespace Test100Topology
         //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(100000000)); // Or PrecisionModels.Floating
         static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating), srid: 4326); // Or PrecisionModels.Floating        
 
-        private static void PersistTopology(Geodatabase geodatabase, S100Framework.YAML.Matrix result) {
+        private static void PersistTopology(Geodatabase geodatabase, S100Framework.YAML.iMatrix result) {
             {
                 using var topology = geodatabase.OpenDataset<FeatureClass>("topology");
 
