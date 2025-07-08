@@ -525,7 +525,7 @@ namespace Test100Topology
                 }
             });
 
-            var result = matrix.BuildGraph(features).BuildTopology(features);
+            var result = matrix.BuildGraph(features).BuildTopology(features, new S100Framework.YAML.Polyline[0]);
 
             using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
                 PersistTopology(target, result.Curves.Select(e=>e.LineString));

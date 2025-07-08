@@ -699,7 +699,7 @@ namespace ArcGIS.Core.Data
 
             var matrix = S100Framework.YAML.Matrix.CreateMatrix();
 
-            var result = matrix.BuildGraph(polygons).BuildTopology(polygons);
+            var result = matrix.BuildGraph(polygons).BuildTopology(polygons, curves);
 
 
 

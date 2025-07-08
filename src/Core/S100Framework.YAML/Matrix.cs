@@ -100,13 +100,11 @@ namespace S100Framework.YAML
 
     public interface iTopologyBuilder
     {
-        iMatrix BuildTopology(ICollection<S100Framework.YAML.Polygon> polygons);
+        iMatrix BuildTopology(ICollection<S100Framework.YAML.Polygon> polygons, ICollection<S100Framework.YAML.Polyline> polylines);
     }
 
     public interface iMatrix
     {
-        IEnumerable<(string Name, IEnumerable<LineString> ExteriorRing)> Polygons { get; }
-
         IEnumerable<CurveFeature> Curves { get; }
 
         IEnumerable<CompositeCurveFeature> CompositeCurves { get; }
@@ -118,7 +116,7 @@ namespace S100Framework.YAML
 
     public class Matrix : iGraphBuilder, iTopologyBuilder, iMatrix
     {
-        public static ParallelOptions ParallelOptions { get; set; } = new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount };
+        public static ParallelOptions ParallelOptions { get; set; } = new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount > 8 ? 8 : Environment.ProcessorCount };
 
         public static GeometryFactory? Factory { get; set; } = default;
 
@@ -132,7 +130,9 @@ namespace S100Framework.YAML
 
         private IEnumerable<LineString> _network = Enumerable.Empty<LineString>();
 
-        private ConcurrentBag<(string Name, IEnumerable<LineString> ExteriorRing)> _bagPolygons = new ConcurrentBag<(string Name, IEnumerable<LineString> ExteriorRing)>();
+        private ConcurrentBag<(string Name, IEnumerable<LineString> ExteriorRing, List<IEnumerable<LineString>> InteriorRings)> _bagPolygons = new ConcurrentBag<(string Name, IEnumerable<LineString> ExteriorRing, List<IEnumerable<LineString>> InteriorRings)>();
+
+        private ConcurrentBag<(string Name, IEnumerable<LineString> LineStrings)> _bagPolylines = new ConcurrentBag<(string Name, IEnumerable<LineString> LineStrings)>();
 
         private ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)> _hashing = new ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
 
@@ -150,7 +150,9 @@ namespace S100Framework.YAML
 
         iTopologyBuilder iGraphBuilder.BuildGraph(ICollection<S100Framework.YAML.Polygon> polygons) {
             var boundaries = polygons.Select(e => e.ExteriorRing.RemoveRepeatedVertices());//.Union(polygons.SelectMany(e => e.InteriorRings));
-
+            foreach (var polygon in polygons) {
+                boundaries.Concat(polygon.InteriorRings.Select(r => r.RemoveRepeatedVertices()));
+            }
 
             //this._nodedNetwork = Matrix2.Factory!.CreateGeometryCollection([.. boundaries]).Union();
 
@@ -176,7 +178,7 @@ namespace S100Framework.YAML
             return (iTopologyBuilder)this;
         }
 
-        iMatrix iTopologyBuilder.BuildTopology(ICollection<Polygon> polygons) {
+        iMatrix iTopologyBuilder.BuildTopology(ICollection<Polygon> polygons, ICollection<S100Framework.YAML.Polyline> polylines) {
             //var lineStringsForward = ((MultiLineString)this._nodedNetwork!)
             //    .ToDictionary(e => (LineString)e, e => e.ToText().Substring("LINESTRING (".Length).TrimEnd(')'));
 
@@ -191,33 +193,49 @@ namespace S100Framework.YAML
 
                 //if (polygon.name.Equals("S2678807")) System.Diagnostics.Debugger.Break();
 
-                var boundary1 = polygon.ExteriorRing.ToText();
+                IEnumerable<LineString> exteriorRing = Enumerable.Empty<LineString>();
 
-                var hitsForward = lineStringsForward.Where(e => boundary1.Contains(e.Value));
-                var hitsReverse = lineStringsReverse.Where(e => boundary1.Contains(e.Value));
+                if (!polygon.ExteriorRing.IsEmpty) {
+                    var boundary1 = polygon.ExteriorRing.ToText();
 
-                var hits = hitsForward.Concat(hitsReverse).Select(e=>e.Key);
+                    var hitsForward = lineStringsForward.Where(e => boundary1.Contains(e.Value));
+                    var hitsReverse = lineStringsReverse.Where(e => boundary1.Contains(e.Value));
 
-                var difference = polygon.ExteriorRing.SymmetricDifference(polygon.ExteriorRing.Factory.CreateMultiLineString(hits.ToArray()));
+                    var hits = hitsForward.Concat(hitsReverse).Select(e => e.Key);
 
-                if(difference is LineString lineString) {
-                    hits = [.. hits, lineString];
+                    var difference = polygon.ExteriorRing.SymmetricDifference(polygon.ExteriorRing.Factory.CreateMultiLineString(hits.ToArray()));
+
+                    if (difference is LineString lineString) {
+                        hits = [.. hits, lineString];
+                    }
+                    else if (difference is MultiLineString multiLine) {
+                        hits = [.. hits, .. multiLine.Geometries.OfType<LineString>()];
+                    }
+
+                    exteriorRing = hits.Where(e => e.IsValid && !e.IsEmpty);
                 }
-                else if (difference is MultiLineString multiLine) {
-                    hits = [.. hits, .. multiLine.Geometries.OfType<LineString>()];
-                }                
 
-                //if (polygon.name.Equals("S2678807")) {
+                var interiorRings = new List<IEnumerable<LineString>>();
+                foreach (var interior in polygon.InteriorRings) {
+                    var boundary2 = interior.ToText();
 
-                //    this._interceptor?.Invoke([polygon.ExteriorRing]);
+                    var hitsForward = lineStringsForward.Where(e => boundary2.Contains(e.Value));
+                    var hitsReverse = lineStringsReverse.Where(e => boundary2.Contains(e.Value));
 
-                //    LineString[] array = [.. hits];
+                    var hits = hitsForward.Concat(hitsReverse).Select(e => e.Key);
 
-                //    this._interceptor?.Invoke(array);
-                //    this._interceptor?.Invoke([.. this._network]);
-                //}
+                    var differenceInterior = interior.SymmetricDifference(interior.Factory.CreateMultiLineString(hits.ToArray()));
 
-                this._bagPolygons.Add((polygon.name, hits.Where(e=>e.IsValid && !e.IsEmpty)));
+                    if (differenceInterior is LineString lineString) {
+                        hits = [.. hits, lineString];
+                    }
+                    else if (differenceInterior is MultiLineString multiLine) {
+                        hits = [.. hits, .. multiLine.Geometries.OfType<LineString>()];
+                    }
+                    interiorRings.Add(hits.Where(e => e.IsValid && !e.IsEmpty));
+                }
+
+                this._bagPolygons.Add((polygon.name, exteriorRing, interiorRings));
             });
 
             Parallel.ForEach(this._bagPolygons, ParallelOptions, (polygon) => {
@@ -235,9 +253,71 @@ namespace S100Framework.YAML
                         Reverse = true,
                     }, f));
                 }
+                if (polygon.InteriorRings.Any()) {
+                    foreach(var interior in polygon.InteriorRings) {
+                        foreach (var lineString in interior) {
+                            var hash = System.IO.Hashing.XxHash3.HashToUInt64(lineString.AsBinary());
+                            var f = new CurveFeature(lineString);
+                            this._hashing.GetOrAdd(hash, (new FeatureRef {
+                                Id = f.Id,
+                                Reverse = false,
+                            }, f));
+                            hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
+                            this._hashing.GetOrAdd(hash, (new FeatureRef {
+                                Id = f.Id,
+                                Reverse = true,
+                            }, f));
+                        }
+                    }
+                }
             });
 
             _interceptor?.Invoke(this._hashing.Select(e => e.Value.curve.LineString).ToList());
+
+            Parallel.For(0, polylines.Count, Matrix.ParallelOptions, (i) => {
+                var polyline = polylines.ElementAt(i);
+
+                IEnumerable<LineString> lineStrings = Enumerable.Empty<LineString>();
+
+                if (!polyline.LineString.IsEmpty) {
+                    var boundary1 = polyline.LineString.ToText();
+
+                    var hitsForward = lineStringsForward.Where(e => boundary1.Contains(e.Value));
+                    var hitsReverse = lineStringsReverse.Where(e => boundary1.Contains(e.Value));
+
+                    var hits = hitsForward.Concat(hitsReverse).Select(e => e.Key);
+
+                    var difference = polyline.LineString.SymmetricDifference(polyline.LineString.Factory.CreateMultiLineString(hits.ToArray()));
+
+                    if (difference is LineString lineString) {
+                        hits = [.. hits, lineString];
+                    }
+                    else if (difference is MultiLineString multiLine) {
+                        hits = [.. hits, .. multiLine.Geometries.OfType<LineString>()];
+                    }
+
+                    lineStrings = hits.Where(e => e.IsValid && !e.IsEmpty);
+                }
+
+                this._bagPolylines.Add((polyline.name, lineStrings));
+            });
+
+            Parallel.ForEach(this._bagPolylines, ParallelOptions, (Polyline) => {
+                foreach (var lineString in Polyline.LineStrings) {
+                    var hash = System.IO.Hashing.XxHash3.HashToUInt64(lineString.AsBinary());
+
+                    var f = new CurveFeature(lineString);
+                    this._hashing.GetOrAdd(hash, (new FeatureRef {
+                        Id = f.Id,
+                        Reverse = false,
+                    }, f));
+                    hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
+                    this._hashing.GetOrAdd(hash, (new FeatureRef {
+                        Id = f.Id,
+                        Reverse = true,
+                    }, f));
+                }                
+            });
 
 
             Func<IEnumerable<LineString>, LinearRingOrientation, FeatureRef> action = (lineStrings, orientation) => {
@@ -324,23 +404,28 @@ namespace S100Framework.YAML
             Parallel.ForEach(this._bagPolygons, ParallelOptions, (polygon) => {
                 if (!polygon.ExteriorRing.Any()) return;
 
-                if (polygon.Name.Equals("S2678806"))
-                    _interceptor?.Invoke(polygon.ExteriorRing.ToArray());
-
                 FeatureRef exteriorId = action(polygon.ExteriorRing, LinearRingOrientation.Clockwise);
                 var surface = new SurfaceFeature() {
                     Ref = polygon.Name,
                     Exterior = exteriorId,
                 };
-
+                if(polygon.InteriorRings.Any()) {
+                    surface.Interior = polygon.InteriorRings.Select(e => action(e, LinearRingOrientation.CounterClockwise)).ToArray();
+                }
                 this._bagSurfaces.Add(surface);
                 this._mapping.GetOrAdd(polygon.Name, $"S{surface.Id}");
             });
 
+            Parallel.ForEach(this._bagPolylines, ParallelOptions, (polyline) => {
+                if (!polyline.LineStrings.Any()) return;
+
+                FeatureRef curveId = action(polyline.LineStrings, LinearRingOrientation.DontCare);
+                
+                this._mapping.GetOrAdd(polyline.Name, $"C{curveId.Id}");
+            });
+
             return (iMatrix)this;
         }
-
-        IEnumerable<(string Name, IEnumerable<LineString> ExteriorRing)> iMatrix.Polygons => this._bagPolygons;
 
         IEnumerable<CurveFeature> iMatrix.Curves => this._hashing.Select(e => e.Value.curve).DistinctBy(e => e.Id);
 
