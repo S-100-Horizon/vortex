@@ -1,5 +1,6 @@
 ﻿using GeoAPI.Geometries;
 using NetTopologySuite.Algorithm.Match;
+using NetTopologySuite.EdgeGraph;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
 using NetTopologySuite.Operation;
@@ -86,6 +87,291 @@ namespace S100Framework.YAML
     public record Polyline(long ObjectId, string name, LineString LineString);
 
     public record Polygon(long ObjectId, string name, LineString ExteriorRing, LineString[] InteriorRings) : Polyline(ObjectId, name, ExteriorRing);
+
+    public interface iGraphBuilder
+    {
+        iTopologyBuilder BuildGraph(ICollection<S100Framework.YAML.Polygon> polygons);
+    }
+
+    public interface iTopologyBuilder
+    {
+        iMatrix BuildTopology(ICollection<S100Framework.YAML.Polygon> polygons);
+    }
+
+    public interface iMatrix
+    {
+        IEnumerable<(string Name, IEnumerable<LineString> ExteriorRing)> Polygons { get; }
+
+        IEnumerable<CurveFeature> Curves { get; }
+
+        IEnumerable<CompositeCurveFeature> CompositeCurves { get; }
+
+        IEnumerable<SurfaceFeature> Surfaces { get; }
+
+        IEnumerable<KeyValuePair<string, string>> Mapping { get; }
+    }
+
+    public class Matrix2 : iGraphBuilder, iTopologyBuilder, iMatrix
+    {
+        public static ParallelOptions ParallelOptions { get; set; } = new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount };
+
+        public static GeometryFactory? Factory { get; set; } = default;
+
+        protected Matrix2() {
+            //  Default protected constructor
+        }
+
+        private Action<ICollection<LineString>>? _interceptor = default;
+
+        private Geometry? _nodedNetwork = default;
+
+        private IEnumerable<LineString> _network;
+
+        //private EdgeGraph? _edgeGraph = default;
+
+        private ConcurrentBag<(string Name, IEnumerable<LineString> ExteriorRing)> _bagPolygons = new ConcurrentBag<(string Name, IEnumerable<LineString> ExteriorRing)>();
+
+        private ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)> _hashing = new ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
+
+        private ConcurrentDictionary<string, CompositeCurveFeature> _bagCompositeCurves = new ConcurrentDictionary<string, CompositeCurveFeature>();
+
+        private ConcurrentDictionary<string, string> _mapping = new ConcurrentDictionary<string, string>();
+
+        private ConcurrentBag<SurfaceFeature> _bagSurfaces = new ConcurrentBag<SurfaceFeature>();
+
+        public static iGraphBuilder CreateMatrix(Action<ICollection<LineString>>? interceptor = default) {
+            return new Matrix2() {
+                _interceptor = interceptor,
+            };
+        }
+
+        iTopologyBuilder iGraphBuilder.BuildGraph(ICollection<S100Framework.YAML.Polygon> polygons) {
+            var boundaries = polygons.Select(e => e.ExteriorRing.RemoveRepeatedVertices());//.Union(polygons.SelectMany(e => e.InteriorRings));
+
+
+            //this._nodedNetwork = Matrix2.Factory!.CreateGeometryCollection([.. boundaries]).Union();
+
+            var unionOp = new UnaryUnionOp(boundaries, Matrix2.Factory);
+            this._nodedNetwork = unionOp.Union();
+
+            var lineMerger = new LineMerger();
+            lineMerger.Add(this._nodedNetwork);
+            this._network = lineMerger.GetMergedLineStrings().OfType<LineString>();
+
+            //if(this._network.Any(e=>!(e is LineString))) System.Diagnostics.Debugger.Break();
+
+            //_edgeGraph = EdgeGraphBuilder.Build(boundaries);
+
+            //if (this._interceptor != default) {
+            //    var lineStrings = new List<LineString>();
+            //    S100Framework.YAML.Matrix.AddLineStringsFromGeometry(this._nodedNetwork, lineStrings);
+
+            //    //    var text = lineStrings[5912];
+            //    //    _interceptor?.Invoke([text]);
+            //    _interceptor?.Invoke(lineStrings);
+            //}
+            return (iTopologyBuilder)this;
+        }
+
+        iMatrix iTopologyBuilder.BuildTopology(ICollection<Polygon> polygons) {
+            //var lineStringsForward = ((MultiLineString)this._nodedNetwork!)
+            //    .ToDictionary(e => (LineString)e, e => e.ToText().Substring("LINESTRING (".Length).TrimEnd(')'));
+
+            //var lineStringsReverse = ((MultiLineString)this._nodedNetwork!)
+            //    .ToDictionary(e => (LineString)e, e => e.Reverse().ToText().Substring("LINESTRING (".Length).TrimEnd(')'));
+
+            var lineStringsForward = this._network.ToDictionary(e => e, e => e.ToText().Substring("LINESTRING (".Length).TrimEnd(')'));
+            var lineStringsReverse = this._network.ToDictionary(e => e, e => e.Reverse().ToText().Substring("LINESTRING (".Length).TrimEnd(')'));
+
+            Parallel.For(0, polygons.Count, Matrix2.ParallelOptions, (i) => {
+                var polygon = polygons.ElementAt(i);
+
+                //if (polygon.name.Equals("S2678807")) System.Diagnostics.Debugger.Break();
+
+                var boundary1 = polygon.ExteriorRing.ToText();
+
+                var hitsForward = lineStringsForward.Where(e => boundary1.Contains(e.Value));
+                var hitsReverse = lineStringsReverse.Where(e => boundary1.Contains(e.Value));
+
+                var hits = hitsForward.Concat(hitsReverse).Select(e=>e.Key);
+
+                var difference = polygon.ExteriorRing.SymmetricDifference(polygon.ExteriorRing.Factory.CreateMultiLineString(hits.ToArray()));
+
+                if(difference is LineString lineString) {
+                    hits = [.. hits, lineString];
+                }
+                else if (difference is MultiLineString multiLine) {
+                    hits = [.. hits, .. multiLine.Geometries.OfType<LineString>()];
+                }                
+
+                //if (polygon.name.Equals("S2678807")) {
+
+                //    this._interceptor?.Invoke([polygon.ExteriorRing]);
+
+                //    LineString[] array = [.. hits];
+
+                //    this._interceptor?.Invoke(array);
+                //    this._interceptor?.Invoke([.. this._network]);
+                //}
+
+                this._bagPolygons.Add((polygon.name, hits.Where(e=>e.IsValid && !e.IsEmpty)));
+            });
+
+            Parallel.ForEach(this._bagPolygons, ParallelOptions, (polygon) => {
+                foreach (var lineString in polygon.ExteriorRing) {
+                    var hash = System.IO.Hashing.XxHash3.HashToUInt64(lineString.AsBinary());
+
+                    var f = new CurveFeature(lineString);
+                    this._hashing.GetOrAdd(hash, (new FeatureRef {
+                        Id = f.Id,
+                        Reverse = false,
+                    }, f));
+                    hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
+                    this._hashing.GetOrAdd(hash, (new FeatureRef {
+                        Id = f.Id,
+                        Reverse = true,
+                    }, f));
+                }
+            });
+
+            _interceptor?.Invoke(this._hashing.Select(e => e.Value.curve.LineString).ToList());
+
+
+            Func<IEnumerable<LineString>, LinearRingOrientation, FeatureRef> action = (lineStrings, orientation) => {
+                FeatureRef featureRef;
+
+                if (lineStrings.Count() == 1) {
+                    var l = lineStrings.ElementAt(0);
+
+                    if (l.IsRing && orientation != LinearRingOrientation.DontCare) {
+                        var ring = l.Factory.CreateLinearRing(l.Coordinates);
+
+                        l = ring.IsCCW switch {
+                            true => orientation == LinearRingOrientation.CCW ? l : (LineString)l.Reverse(),
+                            false => orientation == LinearRingOrientation.CW ? l : (LineString)l.Reverse(),
+                        };
+                    }
+
+                    var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(l.AsBinary())];
+                    featureRef = hash.fetureRef;
+                }
+                else {
+                    var lineMerger = new LineMerger();
+                    lineMerger.Add(lineStrings);
+
+                    var merged = (LineString)lineMerger.GetMergedLineStrings()[0];
+
+                    if (merged.IsRing && orientation != LinearRingOrientation.DontCare) {
+                        var ring = merged.Factory.CreateLinearRing(merged.Coordinates);
+
+                        merged = ring.IsCCW switch {
+                            true => orientation == LinearRingOrientation.CCW ? merged : (LineString)merged.Reverse(),
+                            false => orientation == LinearRingOrientation.CW ? merged : (LineString)merged.Reverse(),
+                        };
+                    }
+
+                    var lineStringText = merged.ToText();
+
+                    //var ring = origin.ExteriorRing.Factory.CreateLinearRing(((LineString)lineMerger.GetMergedLineStrings()[0]).Coordinates).ToString();
+
+                    //var sorted = new FeatureRef[lineStrings.Count];
+
+                    var sortedList = new SortedList<int, FeatureRef>();
+
+                    for (int i = 0; i < lineStrings.Count(); i++) {
+
+                        var text = lineStrings.ElementAt(i).ToText().Substring("LINESTRING (".Length).TrimEnd(')');
+                        if (lineStringText.Contains(text)) {
+                            var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(lineStrings.ElementAt(i).AsBinary())];
+
+                            sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
+                        }
+                        else {
+                            var reverse = lineStrings.ElementAt(i).Reverse();
+
+                            var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(reverse.AsBinary())];
+
+                            text = reverse.ToText().Substring("LINESTRING (".Length).TrimEnd(')');
+
+                            var index = lineStringText.IndexOf(text);
+                            if (index < 0) System.Diagnostics.Debugger.Break();
+                            sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
+                        }
+                    }
+
+                    var compositeExterior = new CompositeCurveFeature {
+                        Curves = [.. sortedList.Values],
+                    };
+
+                    var key = string.Join(',', sortedList.Select(e => e.Value.Reverse ? $"RC{e.Value.Id}" : $"C{e.Value.Id}"));
+
+                    compositeExterior = this._bagCompositeCurves.GetOrAdd(key, (key) => {
+                        return compositeExterior;
+                    });
+
+                    featureRef = new FeatureRef {
+                        Id = compositeExterior.Id,
+                        Reverse = false,
+                    };
+                }
+
+                return featureRef;
+            };
+
+            Parallel.ForEach(this._bagPolygons, ParallelOptions, (polygon) => {
+                if (!polygon.ExteriorRing.Any()) return;
+
+                if (polygon.Name.Equals("S2678806"))
+                    _interceptor?.Invoke(polygon.ExteriorRing.ToArray());
+
+                FeatureRef exteriorId = action(polygon.ExteriorRing, LinearRingOrientation.Clockwise);
+                var surface = new SurfaceFeature() {
+                    Ref = polygon.Name,
+                    Exterior = exteriorId,
+                };
+
+                this._bagSurfaces.Add(surface);
+                this._mapping.GetOrAdd(polygon.Name, $"S{surface.Id}");
+            });
+
+            return (iMatrix)this;
+        }
+
+        IEnumerable<(string Name, IEnumerable<LineString> ExteriorRing)> iMatrix.Polygons => this._bagPolygons;
+
+        IEnumerable<CurveFeature> iMatrix.Curves => this._hashing.Select(e => e.Value.curve).DistinctBy(e => e.Id);
+
+        IEnumerable<CompositeCurveFeature> iMatrix.CompositeCurves => this._bagCompositeCurves.Values;
+
+        IEnumerable<SurfaceFeature> iMatrix.Surfaces => this._bagSurfaces;
+
+        IEnumerable<KeyValuePair<string, string>> iMatrix.Mapping => this._mapping;
+
+        private static void AddLineStringsFromGeometry(Geometry geometry, List<LineString> targetList) {
+            if (geometry is LineString line) {
+                if (!line.IsEmpty) {
+                    if (!targetList.Any(e => e.EqualsTopologically(line)))
+                        targetList.Add(line.RemoveRepeatedVertices());
+                }
+            }
+            else if (geometry is MultiLineString multiLine) {
+                foreach (var subLine in multiLine.Geometries.OfType<LineString>()) {
+                    if (!subLine.IsEmpty) {
+                        if (!targetList.Any(e => e.EqualsTopologically(subLine)))
+                            targetList.Add(subLine.RemoveRepeatedVertices());
+                    }
+                }
+            }
+            else if (geometry is GeometryCollection collection) // Recursively handle collections if needed
+            {
+                foreach (var geom in collection.Geometries) {
+                    AddLineStringsFromGeometry(geom, targetList);
+                }
+            }
+            // We primarily care about LineString results for shared *edges*.
+            // Point/MultiPoint intersections mean polygons touch only at vertices.
+        }
+    }
 
     public class Matrix
     {
@@ -806,7 +1092,7 @@ namespace S100Framework.YAML
             }
 
             if (interceptor != default) {
-                Validate(matrixPolygons.SelectMany(e => e.LineStringsExterior).ToArray(), interceptor);                
+                Validate(matrixPolygons.SelectMany(e => e.LineStringsExterior).ToArray(), interceptor);
             }
 
             for (var i = 0; i < splitters.Length; i++) {
