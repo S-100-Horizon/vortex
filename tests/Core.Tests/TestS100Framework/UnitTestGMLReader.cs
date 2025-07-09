@@ -1,4 +1,5 @@
-﻿using ArcGIS.Core.Geometry;
+﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Geometry;
 
 using S100Framework.DomainModel.S131.FeatureTypes;
 using System.Globalization;
@@ -7,6 +8,72 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using Xunit.Abstractions;
+
+namespace TestS100Framework
+{
+    public class UnitTestGML
+    {
+        private readonly ITestOutputHelper _output;
+
+        public UnitTestGML(ITestOutputHelper output) {
+            this._output = output;
+
+            ArcGIS.Core.Hosting.Host.Initialize();
+        }
+
+
+        [Fact]
+        public void Test_Database() {
+            var cur = Environment.CurrentDirectory;
+            //FastZip fastZip = new();
+
+            //var output = new IO.DirectoryInfo(@"s100ed6.gdb");
+            //if (output.Exists)
+            //    output.Delete(true);
+
+            //fastZip.ExtractZip("s100ed6.gdb.zip", output.FullName, null);
+
+
+
+            System.Diagnostics.Debugger.Break();
+        }
+
+        [Fact]
+        public void Test_ReadGML() {
+            //// XML Setup
+            //var xdoc = XDocument.Load(Path.Combine(basePath.FullName, productSpecification, "fc.xml"));
+            //var root = xdoc.Root;
+            //var ns = root?.GetNamespaceOfPrefix("S100FC")!;
+            //var nsBase = root?.GetNamespaceOfPrefix("S100Base")!;
+
+            //// Read XML to memory
+            //var featureTypes = xdoc.Descendants(ns + "S100_FC_FeatureType")?.ToDictionary(
+            //        x => x.Element(ns + "code")?.Value!,
+            //        x => x
+            //    );
+
+            //var simpleAttributeTypes = xdoc.Descendants(ns + "S100_FC_SimpleAttribute");
+
+            System.Diagnostics.Debugger.Break();
+        }
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 namespace TestS100Framework
 {
