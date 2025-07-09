@@ -631,75 +631,153 @@ namespace ArcGIS.Core.Data
             var definitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
 
 
-            var polygons = new List<S100Framework.YAML.Polygon>();
-
-            using (var surface = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("surface")).GetName())) {
-                queryFilter.WhereClause = whereClause;  // (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))";
-
-                using var cursor = surface.Search(queryFilter);
-
-                while (cursor.MoveNext()) {
-                    var f = (Feature)cursor.Current;
-
-                    var shape = (ArcGIS.Core.Geometry.Polygon)f.GetShape();
-
-                    var name = Convert.ToString(f["name"]);
-                    if (string.IsNullOrEmpty(name))
-                        name = string.Empty;
-
-                    var exteriorRing = shape.GetExteriorRing(0);
-                    var coordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
-
-                    var ex = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
-                    ex = ex.RemoveRepeatedVertices();
-
-                    if (shape.PartCount > 1) {
-                        var interiorRings = new List<LineString>();
-
-                        foreach (var interiorRing in shape.Parts.Skip(1)) {
-                            coordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
-
-                            var linestring = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
-                            linestring = linestring.RemoveRepeatedVertices();
-                            interiorRings.Add(linestring);
-                        }
-
-                        polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, interiorRings.ToArray()));
-                    }
-                    else {
-                        polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, []));
-                    }
-                }
-            }
-
-            var curves = new List<S100Framework.YAML.Polyline>();
-
-            using (var curve = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("curve")).GetName())) {
-                queryFilter.WhereClause = whereClause;  // (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('COASTLINE','DEPTHCONTOUR','SHORELINECONSTRUCTION'))";
-
-                using var cursor = curve.Search(queryFilter);
-
-                while (cursor.MoveNext()) {
-                    var f = (Feature)cursor.Current;
-
-                    var shape = (ArcGIS.Core.Geometry.Polyline)f.GetShape();
-
-                    var name = Convert.ToString(f["name"]);
-                    if (string.IsNullOrEmpty(name))
-                        name = string.Empty;
-
-                    var coordinates = shape.Points.Select(segment => new Coordinate(segment.X, segment.Y)).ToArray();
-
-                    var linestring = (LineString)factory.CreateLineString([.. coordinates]);
-                    linestring = linestring.RemoveRepeatedVertices();
-
-                    curves.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, linestring));
-                }
-            }
-
             var matrix = S100Framework.YAML.Matrix.CreateMatrix();
 
-            var result = matrix.BuildGraph(polygons).BuildTopology(polygons, curves);
+            iTopologyBuilder? builder = default;
+
+            //  Skin of the Earth
+            {
+                var polygons = new List<S100Framework.YAML.Polygon>();
+
+                using (var surface = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("surface")).GetName())) {
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))";
+
+                    using var cursor = surface.Search(queryFilter);
+
+                    while (cursor.MoveNext()) {
+                        var f = (Feature)cursor.Current;
+
+                        var shape = (ArcGIS.Core.Geometry.Polygon)f.GetShape();
+
+                        var name = Convert.ToString(f["name"]);
+                        if (string.IsNullOrEmpty(name))
+                            name = string.Empty;
+
+                        var exteriorRing = shape.GetExteriorRing(0);
+                        var coordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+
+                        var ex = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+                        ex = ex.RemoveRepeatedVertices();
+
+                        if (shape.PartCount > 1) {
+                            var interiorRings = new List<LineString>();
+
+                            foreach (var interiorRing in shape.Parts.Skip(1)) {
+                                coordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+
+                                var linestring = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+                                linestring = linestring.RemoveRepeatedVertices();
+                                interiorRings.Add(linestring);
+                            }
+
+                            polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, interiorRings.ToArray()));
+                        }
+                        else {
+                            polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, []));
+                        }
+                    }
+                }
+
+                var curves = new List<S100Framework.YAML.Polyline>();
+
+                using (var curve = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("curve")).GetName())) {
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('COASTLINE','DEPTHCONTOUR','SHORELINECONSTRUCTION'))";
+
+                    using var cursor = curve.Search(queryFilter);
+
+                    while (cursor.MoveNext()) {
+                        var f = (Feature)cursor.Current;
+
+                        var shape = (ArcGIS.Core.Geometry.Polyline)f.GetShape();
+
+                        var name = Convert.ToString(f["name"]);
+                        if (string.IsNullOrEmpty(name))
+                            name = string.Empty;
+
+                        var coordinates = shape.Points.Select(segment => new Coordinate(segment.X, segment.Y)).ToArray();
+
+                        var linestring = (LineString)factory.CreateLineString([.. coordinates]);
+                        linestring = linestring.RemoveRepeatedVertices();
+
+                        curves.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, linestring));
+                    }
+                }
+
+                builder = matrix.AddTopologyFeatures(polygons,curves);
+            }
+
+            //  Navigational features
+            {
+                var polygons = new List<S100Framework.YAML.Polygon>();
+
+                using (var surface = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("surface")).GetName())) {
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) NOT IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))";
+
+                    using var cursor = surface.Search(queryFilter);
+
+                    while (cursor.MoveNext()) {
+                        var f = (Feature)cursor.Current;
+
+                        var shape = (ArcGIS.Core.Geometry.Polygon)f.GetShape();
+
+                        var name = Convert.ToString(f["name"]);
+                        if (string.IsNullOrEmpty(name))
+                            name = string.Empty;
+
+                        var exteriorRing = shape.GetExteriorRing(0);
+                        var coordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+
+                        var ex = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+                        ex = ex.RemoveRepeatedVertices();
+
+                        if (shape.PartCount > 1) {
+                            var interiorRings = new List<LineString>();
+
+                            foreach (var interiorRing in shape.Parts.Skip(1)) {
+                                coordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+
+                                var linestring = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+                                linestring = linestring.RemoveRepeatedVertices();
+                                interiorRings.Add(linestring);
+                            }
+
+                            polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, interiorRings.ToArray()));
+                        }
+                        else {
+                            polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, []));
+                        }
+                    }
+                }
+
+                var curves = new List<S100Framework.YAML.Polyline>();
+
+                using (var curve = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("curve")).GetName())) {
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) NOT IN ('COASTLINE','DEPTHCONTOUR','SHORELINECONSTRUCTION'))";
+
+                    using var cursor = curve.Search(queryFilter);
+
+                    while (cursor.MoveNext()) {
+                        var f = (Feature)cursor.Current;
+
+                        var shape = (ArcGIS.Core.Geometry.Polyline)f.GetShape();
+
+                        var name = Convert.ToString(f["name"]);
+                        if (string.IsNullOrEmpty(name))
+                            name = string.Empty;
+
+                        var coordinates = shape.Points.Select(segment => new Coordinate(segment.X, segment.Y)).ToArray();
+
+                        var linestring = (LineString)factory.CreateLineString([.. coordinates]);
+                        linestring = linestring.RemoveRepeatedVertices();
+
+                        curves.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, linestring));
+                    }
+                }
+
+                builder = matrix.AddNavigationalFeatures(polygons, curves);
+            }
+            
+            var result = builder.BuildTopology();
 
 
 

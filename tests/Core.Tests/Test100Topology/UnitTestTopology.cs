@@ -460,63 +460,10 @@ namespace Test100Topology
             var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
 
             var whereClause = $"upper(ps) = 'S-101' AND drawingindex = {Convert.ToInt32(current["drawingindex"])}";
-
-            var filter = new SpatialQueryFilter {
-                WhereClause = $"{whereClause}", // AND (upper(code) IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))",
-                FilterGeometry = shape,
-                SpatialRelationship = SpatialRelationship.Relation,
-                SpatialRelationshipDescription = "T*****FF*",
+           
+            S100Framework.YAML.Matrix.ParallelOptions = new ParallelOptions {
+                MaxDegreeOfParallelism = 1
             };
-
-            var features = LoadFeatures(geodatabase, filter);
-
-
-            ////var boundaries = features.Select(e => e.ExteriorRing);
-
-            ////var unionOp = new UnaryUnionOp(boundaries);
-            ////var nodedLinework = unionOp.Union();
-
-            ////var lineMerger = new LineMerger();
-            ////lineMerger.Add(nodedLinework);
-            ////var mergedLineStrings = lineMerger.GetMergedLineStrings();
-
-            ////var lineStrings = new List<LineString>();
-            ////foreach(var e in mergedLineStrings)
-            ////    S100Framework.YAML.Matrix.AddLineStringsFromGeometry(e, lineStrings);
-
-            ////using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
-            ////    PersistTopology(target, lineStrings);
-            ////}
-
-            //for (int i = 0; i < lineStrings.Count; i++) {
-            //    var boundary1 = lineStrings[i];
-            //    for (int j = i + 1; j < lineStrings.Count; j++) {
-            //        var boundary2 = lineStrings[j];
-
-            //        if (boundary1.EqualsTopologically(boundary2)) {
-            //            ;// System.Diagnostics.Debugger.Break();
-            //        }
-            //        else if (boundary1.Intersects(boundary2)) {
-            //            var intersection = boundary1.Intersection(boundary2);
-            //            if (intersection is NetTopologySuite.Geometries.Point) {
-            //                //  Don't care
-            //            }
-            //            else if (intersection is NetTopologySuite.Geometries.MultiPoint) {
-            //                //  Don't care
-            //            }
-            //            else {
-            //                System.Diagnostics.Debugger.Break();
-            //            }
-            //        }
-            //    }
-            //}
-            //using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
-            //    PersistTopology(target, lineStrings);
-            //}
-
-            //S100Framework.YAML.Matrix.ParallelOptions = new ParallelOptions {
-            //    MaxDegreeOfParallelism = 1
-            //};
             S100Framework.YAML.Matrix.Factory = factory;
 
             var matrix = S100Framework.YAML.Matrix.CreateMatrix((collection) => {
@@ -525,7 +472,28 @@ namespace Test100Topology
                 }
             });
 
-            var result = matrix.BuildGraph(features).BuildTopology(features, new S100Framework.YAML.Polyline[0]);
+            var filterTopology = new SpatialQueryFilter {
+                WhereClause = $"{whereClause} AND (upper(code) IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))",
+                //WhereClause = $"{whereClause}",
+                FilterGeometry = shape,
+                SpatialRelationship = SpatialRelationship.Relation,
+                SpatialRelationshipDescription = "T*****FF*",
+            };
+
+            var filterNavigational = new SpatialQueryFilter {
+                WhereClause = $"{whereClause} AND (upper(code) NOT IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))",
+                //WhereClause = $"{whereClause}",
+                FilterGeometry = shape,
+                SpatialRelationship = SpatialRelationship.Relation,
+                SpatialRelationshipDescription = "T*****FF*",
+            };
+
+            var features = LoadSurface(geodatabase, filterTopology);
+
+            var result = matrix
+                .AddTopologyFeatures(LoadSurface(geodatabase, filterTopology), new S100Framework.YAML.Polyline[0])
+                .AddNavigationalFeatures(LoadSurface(geodatabase, filterNavigational), new S100Framework.YAML.Polyline[0])
+                .BuildTopology();
 
             using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
                 PersistTopology(target, result.Curves.Select(e=>e.LineString));
@@ -553,8 +521,8 @@ namespace Test100Topology
 
         static SpatialReference spatialReference = SpatialReferenceBuilder.CreateSpatialReference(4326);
 
-        //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(100000000)); // Or PrecisionModels.Floating
-        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating), srid: 4326); // Or PrecisionModels.Floating        
+        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(100000000)); // Or PrecisionModels.Floating
+        //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating), srid: 4326); // Or PrecisionModels.Floating        
 
         private static void PersistTopology(Geodatabase geodatabase, S100Framework.YAML.iMatrix result) {
             {
@@ -596,7 +564,7 @@ namespace Test100Topology
             cursor.Flush();
         }
 
-        private static ICollection<S100Framework.YAML.Polygon> LoadFeatures(Geodatabase geodatabase, QueryFilter queryFilter) {
+        private static ICollection<S100Framework.YAML.Polygon> LoadSurface(Geodatabase geodatabase, QueryFilter queryFilter) {
             var polygons = new List<S100Framework.YAML.Polygon>();
             var definitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
             using (var surface = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("surface")).GetName())) {
