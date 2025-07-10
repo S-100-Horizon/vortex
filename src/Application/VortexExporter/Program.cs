@@ -134,6 +134,8 @@ namespace S100Framework.Applications
                     }
                 }
 
+                //Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
+
                 foreach (var e in datasets) {
                     var dataset = e.Dataset;
                     var filter = e.Filter;
@@ -209,13 +211,16 @@ namespace S100Framework.Applications
                             var current = (ArcGIS.Core.Data.Feature)cursor.Current;
                             var name = Convert.ToString(current["name"])!;
 
-                            //if (name.Equals("C2672144")) System.Diagnostics.Debugger.Break();
+                            //if (name.Equals("S12233")) System.Diagnostics.Debugger.Break();
+                            //if (name.Equals(topology.Surfaces.ElementAt(0).Ref)) System.Diagnostics.Debugger.Break();
 
                             // Only map geometry, and keep name seperate so foids remain unique
                             var geometry = name;
 
                             if (topology.Mapping.TryGetValue(name!, out var value))
                                 geometry = value;
+                            else if (!name.StartsWith("P"))
+                                System.Diagnostics.Debugger.Break();
 
                             var shapetype = def.GetShapeType();
 
@@ -706,6 +711,7 @@ namespace ArcGIS.Core.Data
                 builder = matrix.AddTopologyFeatures(polygons,curves);
             }
 
+
             //  Navigational features
             {
                 var polygons = new List<S100Framework.YAML.Polygon>();
@@ -780,6 +786,7 @@ namespace ArcGIS.Core.Data
             var result = builder.BuildTopology();
 
 
+            var x = result.Surfaces.SingleOrDefault(e => e.Ref.Equals("S13129"));
 
 
 #if null
