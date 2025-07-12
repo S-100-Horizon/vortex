@@ -473,6 +473,10 @@ namespace S100Framework.YAML
                 }
             }
 
+            foreach (var curve in curves) {
+                AddLineString(curve.name, curve.LineString);
+            }
+
             var featureToEdges = new Dictionary<string, List<LineString>>();
 
             foreach (var e in edgeToFeatureMap.GroupBy(e => string.Join(',', e.Value))) {
@@ -501,26 +505,6 @@ namespace S100Framework.YAML
                 }
                 this._bagPolygons.Add((surface.name, exteriorRing, interiorRings));
             });
-
-            foreach (var curve in curves) {
-                AddLineString(curve.name, curve.LineString);
-            }
-
-            featureToEdges.Clear();
-
-            foreach (var e in edgeToFeatureMap.GroupBy(e => string.Join(',', e.Value))) {
-                var merger = new LineMerger();
-                merger.Add(e.Select(x => x.Key.LineString));
-
-                var mergedLineStrings = merger.GetMergedLineStrings().OfType<LineString>();
-
-                var hits = e.Key.Split(',', StringSplitOptions.RemoveEmptyEntries);
-                foreach (var p in hits) {
-                    if (!featureToEdges.ContainsKey(p))
-                        featureToEdges.Add(p, new List<LineString>());
-                    featureToEdges[p].AddRange(mergedLineStrings);
-                }
-            }
 
             Parallel.For(0, curves.Count, Matrix.ParallelOptions, (c) => {
                 var curve = curves.ElementAt(c);
