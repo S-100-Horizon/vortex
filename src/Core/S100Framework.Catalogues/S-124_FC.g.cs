@@ -13,10 +13,10 @@ namespace S100Framework.DomainModel.S124 {
 	public static class Summary
 	{
 		public static Version Version => new Version("2.0.0");
-		public static string[] ComplexTypes => ["affectedChartPublications","chartAffected","fixedDateRange","generalArea","information","locality","locationName","messageSeriesIdentifier","navwarnTitle","warningInformation","FeatureReference","FeatureName"];
+		public static string[] ComplexTypes => ["affectedChartPublications","chartAffected","fixedDateRange","generalArea","information","locality","locationName","messageSeriesIdentifier","navwarnTitle","warningInformation","featureReference","featureName","horizontalPositionUncertainty","spatialAccuracy"];
 		public static string[] InformationAssociationTypes => ["navwarnPreambleContent","navwarnReferences"];
 		public static string[] FeatureAssociationTypes => ["TextAssociation","areaAffected"];
-		public static string[] InformationTypes => ["References","NavwarnPreamble"];
+		public static string[] InformationTypes => ["References","NavwarnPreamble","SpatialQuality"];
 		public static string[] FeatureTypes => ["NavwarnPart","NavwarnAreaAffected","TextPlacement"];
 		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
 			Primitives.point => ["NavwarnPart","NavwarnAreaAffected","TextPlacement"],
@@ -134,6 +134,54 @@ namespace S100Framework.DomainModel.S124 {
 		[System.ComponentModel.Description("AnAreaWithinWhichSpeedIsRestricted")]
 		[EnumMember(Value = "Speed Restricted")] 
 		SpeedRestricted = 27,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum qualityOfHorizontalMeasurement : int {
+		[System.ComponentModel.Description("ThePositionSWasWereDeterminedByTheOperationOfMakingMeasurementsForDeterminingTheRelativePositionOfPointsOnAboveOrBeneathTheEarthSSurfaceSurveyImpliesARegularControlledSurveyOfAnyDate")]
+		[EnumMember(Value = "Surveyed")] 
+		Surveyed = 1,
+
+		[System.ComponentModel.Description("SurveyDataIsDoesNotExistOrIsVeryPoor")]
+		[EnumMember(Value = "Unsurveyed")] 
+		Unsurveyed = 2,
+
+		[System.ComponentModel.Description("NotSurveyedToModernStandardsOrDueToItsAgeScaleOrPositionalOrVerticalUncertaintiesIsNotSuitableToTheTypeOfNavigationExpectedInTheArea")]
+		[EnumMember(Value = "Inadequately Surveyed")] 
+		InadequatelySurveyed = 3,
+
+		[System.ComponentModel.Description("APositionThatIsConsideredToBeLessThanThirdOrderAccuracyButIsGenerallyConsideredToBeWithin305MetresOfItsCorrectGeographicLocationAlsoMayApplyToAFeatureWhosePositionDoesNotRemainFixed")]
+		[EnumMember(Value = "Approximate")] 
+		Approximate = 4,
+
+		[System.ComponentModel.Description("OfUncertainPositionTheExpressionIsUsedPrincipallyOnChartsToIndicateThatAWreckShoalEtcHasBeenReportedInVariousPositionsAndNotDefinitelyDeterminedInAny")]
+		[EnumMember(Value = "Position Doubtful")] 
+		PositionDoubtful = 5,
+
+		[System.ComponentModel.Description("AFeatureSPositionHasBeenObtainedFromQuestionableOrUnreliableData")]
+		[EnumMember(Value = "Unreliable")] 
+		Unreliable = 6,
+
+		[System.ComponentModel.Description("AnObjectWhosePositionHasBeenReportedAndItsPositionConfirmedBySomeMeansOtherThanAFormalSurveySuchAsAnIndependentReportOfTheSameObject")]
+		[EnumMember(Value = "Reported (Not Surveyed)")] 
+		ReportedNotSurveyed = 7,
+
+		[System.ComponentModel.Description("AnObjectWhosePositionHasBeenReportedAndItsPositionHasNotBeenConfirmed")]
+		[EnumMember(Value = "Reported (Not Confirmed)")] 
+		ReportedNotConfirmed = 8,
+
+		[System.ComponentModel.Description("TheMostProbablePositionOfAnObjectDeterminedFromIncompleteDataOrDataOfQuestionableAccuracy")]
+		[EnumMember(Value = "Estimated")] 
+		Estimated = 9,
+
+		[System.ComponentModel.Description("APositionThatIsOfAKnownValueSuchAsThePositionOfAnAnchorBerthOrOtherDefinedObject")]
+		[EnumMember(Value = "Precisely Known")] 
+		PreciselyKnown = 10,
+
+		[System.ComponentModel.Description("APositionThatIsComputedFromData")]
+		[EnumMember(Value = "Calculated")] 
+		Calculated = 11,
 	}
 
 	[System.Serializable()]
@@ -1857,7 +1905,7 @@ namespace S100Framework.DomainModel.S124 {
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class FeatureReference {
+		public class featureReference {
 			public List<String> atoNNumber {get;set;} = [];
 
 			public bool ShouldSerializeatoNNumber() { return atoNNumber.Any(); }
@@ -1869,15 +1917,27 @@ namespace S100Framework.DomainModel.S124 {
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class FeatureName {
+		public class featureName {
 			public required String language {get;set;} = string.Empty;
 
-			public required String Name {get;set;} = string.Empty;
+			public required String name {get;set;} = string.Empty;
 
 			[EnumerationValue([1,2,3])]
 			public nameUsage? nameUsage {get;set;} = default;
 
 			public bool ShouldSerializenameUsage() { return nameUsage.HasValue; }
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class horizontalPositionUncertainty {
+			public required decimal uncertaintyFixed {get;set;} = default;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class spatialAccuracy {
+			public required horizontalPositionUncertainty horizontalPositionUncertainty {get;set;} = default;
 		}
 
 		[System.Serializable()]
@@ -2090,6 +2150,34 @@ namespace S100Framework.DomainModel.S124 {
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
 		}
+
+		/// <summary>
+		/// The indication of the quality of the locational information for features in a dataset.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class SpatialQuality : InformationNode, IInformationBindingDefinition {
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
+			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
+
+			public bool ShouldSerializequalityOfHorizontalMeasurement() { return qualityOfHorizontalMeasurement.HasValue; }
+
+			public spatialAccuracy? spatialAccuracy {get;set;} = default;
+
+			public bool ShouldSerializespatialAccuracy() { return spatialAccuracy!=default; }
+
+			[JsonIgnore]
+			public override string Code => nameof(SpatialQuality);
+
+			[JsonIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+		}
 	}
 	namespace FeatureTypes {
 		using FeatureAssociations;
@@ -2113,13 +2201,13 @@ namespace S100Framework.DomainModel.S124 {
 
 			public required warningInformation warningInformation {get;set;} = default;
 
-			public List<FeatureName> FeatureName {get;set;} = [];
+			public List<featureName> featureName {get;set;} = [];
 
-			public bool ShouldSerializeFeatureName() { return FeatureName.Any(); }
+			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
-			public List<FeatureReference> FeatureReference {get;set;} = [];
+			public List<featureReference> featureReference {get;set;} = [];
 
-			public bool ShouldSerializeFeatureReference() { return FeatureReference.Any(); }
+			public bool ShouldSerializefeatureReference() { return featureReference.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(NavwarnPart);
@@ -2286,6 +2374,7 @@ namespace S100Framework.DomainModel.S124 {
 	{
 		[XmlElement("InformationTypes.References", typeof(InformationTypes.References), Order = 1, ElementName = "References")]
 		[XmlElement("InformationTypes.NavwarnPreamble", typeof(InformationTypes.NavwarnPreamble), Order = 1, ElementName = "NavwarnPreamble")]
+		[XmlElement("InformationTypes.SpatialQuality", typeof(InformationTypes.SpatialQuality), Order = 1, ElementName = "SpatialQuality")]
 		[XmlElement("FeatureTypes.NavwarnPart", typeof(FeatureTypes.NavwarnPart), Order = 1, ElementName = "NavwarnPart")]
 		[XmlElement("FeatureTypes.NavwarnAreaAffected", typeof(FeatureTypes.NavwarnAreaAffected), Order = 1, ElementName = "NavwarnAreaAffected")]
 		[XmlElement("FeatureTypes.TextPlacement", typeof(FeatureTypes.TextPlacement), Order = 1, ElementName = "TextPlacement")]
