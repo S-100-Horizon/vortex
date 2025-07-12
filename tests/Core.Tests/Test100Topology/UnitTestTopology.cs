@@ -488,11 +488,9 @@ namespace Test100Topology
                 SpatialRelationshipDescription = "T*****FF*",
             };
 
-            var features = LoadSurface(geodatabase, filterTopology);
-
             var result = matrix
-                .AddTopologyFeatures(LoadSurface(geodatabase, filterTopology), new S100Framework.YAML.Polyline[0])
-                .AddNavigationalFeatures(LoadSurface(geodatabase, filterNavigational), new S100Framework.YAML.Polyline[0])
+                .AddTopologyFeatures(LoadSurface(geodatabase, filterTopology), LoadCurves(geodatabase, filterTopology))
+                .AddNavigationalFeatures(LoadSurface(geodatabase, filterNavigational), LoadCurves(geodatabase, filterNavigational))
                 .BuildTopology();
 
             using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
@@ -604,6 +602,32 @@ namespace Test100Topology
                 }
             }
             return polygons;
+        }
+
+        private static ICollection<S100Framework.YAML.Polyline> LoadCurves(Geodatabase geodatabase, QueryFilter queryFilter) {
+            var polylines = new List<S100Framework.YAML.Polyline>();
+            var definitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
+            using (var surface = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("curve")).GetName())) {
+                using var cursor = surface.Search(queryFilter);
+
+                while (cursor.MoveNext()) {
+                    var f = (Feature)cursor.Current;
+
+                    var shape = (ArcGIS.Core.Geometry.Polyline)f.GetShape();
+
+                    var name = Convert.ToString(f["name"]);
+                    if (string.IsNullOrEmpty(name))
+                        name = string.Empty;
+
+                    var coordinates = shape.Points.Select(segment => new Coordinate(segment.X, segment.Y)).ToArray();
+
+                    var linestring = (LineString)factory.CreateLineString([.. coordinates]);
+                    linestring = linestring.RemoveRepeatedVertices();
+
+                    polylines.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, linestring));                    
+                }
+            }
+            return polylines;
         }
 
         private static string[] wktLines = new string[] {

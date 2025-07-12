@@ -225,7 +225,7 @@ namespace S100Framework.YAML
                 curves = curves.UnionBy(this._curvesNavigational, e => e.name);
             }
 
-            this.BuildX([.. surfaces], [.. curves]);
+            this.Build([.. surfaces], [.. curves]);
 
             Parallel.ForEach(this._bagPolygons, ParallelOptions, (polygon) => {
                 foreach (var lineString in polygon.ExteriorRing) {
@@ -387,21 +387,95 @@ namespace S100Framework.YAML
             Parallel.ForEach(this._bagPolylines, ParallelOptions, (polyline) => {
                 if (!polyline.LineStrings.Any()) return;
 
-                FeatureRef curveId = action(polyline.LineStrings, LinearRingOrientation.DontCare);
+                FeatureRef curveId;
+                if (polyline.LineStrings.Count() == 1) {
+                    var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(polyline.LineStrings.ElementAt(0).AsBinary())];
+                    curveId = hash.fetureRef;
+                }
+                else {
+                    var lineMerger = new LineMerger();
+                    lineMerger.Add(polyline.LineStrings);
 
+                    var mergedLineStrings = lineMerger.GetMergedLineStrings();
+
+                    LineString merged = (LineString)lineMerger.GetMergedLineStrings()[0];
+                    if (mergedLineStrings.Count > 1) {
+                        merged = Matrix.Factory!.CreateLineString(polyline.LineStrings.SelectMany(e => e.Coordinates).ToArray());
+                    }
+
+                    var lineStringText = merged.ToText();
+
+                    var sortedList = new SortedList<int, FeatureRef>();
+                    for (int i = 0; i < polyline.LineStrings.Count(); i++) {
+                        var text = polyline.LineStrings.ElementAt(i).ToText().Substring("LINESTRING (".Length).TrimEnd(')');
+                        if (lineStringText.Contains(text)) {
+                            var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(polyline.LineStrings.ElementAt(i).AsBinary())];
+
+                            sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
+                        }
+                        else {
+                            var reverse = polyline.LineStrings.ElementAt(i).Reverse();
+
+                            var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(reverse.AsBinary())];
+
+                            text = reverse.ToText().Substring("LINESTRING (".Length).TrimEnd(')');
+
+                            var index = lineStringText.IndexOf(text);
+                            if (index < 0) System.Diagnostics.Debugger.Break();
+                            sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
+                        }
+                    }
+
+                    var compositeExterior = new CompositeCurveFeature {
+                        Curves = [.. sortedList.Values],
+                    };
+
+                    var key = string.Join(',', sortedList.Select(e => e.Value.Reverse ? $"RC{e.Value.Id}" : $"C{e.Value.Id}"));
+
+                    compositeExterior = this._bagCompositeCurves.GetOrAdd(key, (key) => {
+                        return compositeExterior;
+                    });
+
+                    curveId = new FeatureRef {
+                        Id = compositeExterior.Id,
+                        Reverse = false,
+                    };
+                }
                 this._mapping.GetOrAdd(polyline.Name, $"C{curveId.Id}");
             });
 
             return this;
         }
 
-        private void BuildX(ICollection<S100Framework.YAML.Polygon> surfaces, ICollection<S100Framework.YAML.Polyline> curves) {
+        private void Build(ICollection<S100Framework.YAML.Polygon> surfaces, ICollection<S100Framework.YAML.Polyline> curves) {
             var minimalEdges = new HashSet<Edge>();
-            var edgeToPolygonsMap = BuildEdgeOwnershipMap(surfaces, minimalEdges);
 
-            var polygonToEdges = new Dictionary<string, List<LineString>>();
+            var edgeToFeatureMap = new Dictionary<Edge, List<string>>();
 
-            foreach (var e in edgeToPolygonsMap.GroupBy(e => string.Join(',', e.Value))) {
+            void AddLineString(string name, LineString lineString) {
+                var coordinates = lineString.Coordinates;
+                for (int i = 0; i < coordinates.Length - 1; i++) {
+                    var edge = new Edge(coordinates[i], coordinates[i + 1]);
+                    minimalEdges.Add(edge);
+
+                    if (!edgeToFeatureMap.ContainsKey(edge)) {
+                        edgeToFeatureMap[edge] = new List<string>();
+                    }
+                    edgeToFeatureMap[edge].Add(name);
+                }
+            }
+
+            foreach (var polygon in surfaces) {
+                AddLineString(polygon.name, polygon.ExteriorRing);
+                if (polygon.InteriorRings.Any()) {
+                    for (int i = 0; i < polygon.InteriorRings.Count(); i++)
+                        AddLineString($"{polygon.name}i{i}", polygon.InteriorRings[i]);
+                }
+            }
+
+            var featureToEdges = new Dictionary<string, List<LineString>>();
+
+            foreach (var e in edgeToFeatureMap.GroupBy(e => string.Join(',', e.Value))) {
                 //if (e.Key.Contains("S2674311")) System.Diagnostics.Debugger.Break();
 
                 var merger = new LineMerger();
@@ -411,33 +485,53 @@ namespace S100Framework.YAML
 
                 var hits = e.Key.Split(',', StringSplitOptions.RemoveEmptyEntries);
                 foreach (var p in hits) {
-                    if (!polygonToEdges.ContainsKey(p))
-                        polygonToEdges.Add(p, new List<LineString>());
-                    polygonToEdges[p].AddRange(mergedLineStrings);
+                    if (!featureToEdges.ContainsKey(p))
+                        featureToEdges.Add(p, new List<LineString>());
+                    featureToEdges[p].AddRange(mergedLineStrings);
                 }
-
             }
 
             Parallel.For(0, surfaces.Count, Matrix.ParallelOptions, (p) => {
-                var polygon = surfaces.ElementAt(p);
+                var surface = surfaces.ElementAt(p);
 
-                IEnumerable<LineString> exteriorRing = polygonToEdges[polygon.name];
+                IEnumerable<LineString> exteriorRing = featureToEdges[surface.name];
                 var interiorRings = new List<IEnumerable<LineString>>();
-                for (int i = 0; i < polygon.InteriorRings.Count(); i++) {
-                    interiorRings.Add(polygonToEdges[$"{polygon.name}i{i}"]);
+                for (int i = 0; i < surface.InteriorRings.Count(); i++) {
+                    interiorRings.Add(featureToEdges[$"{surface.name}i{i}"]);
                 }
-                this._bagPolygons.Add((polygon.name, exteriorRing, interiorRings));
+                this._bagPolygons.Add((surface.name, exteriorRing, interiorRings));
             });
 
+            foreach (var curve in curves) {
+                AddLineString(curve.name, curve.LineString);
+            }
+
+            featureToEdges.Clear();
+
+            foreach (var e in edgeToFeatureMap.GroupBy(e => string.Join(',', e.Value))) {
+                var merger = new LineMerger();
+                merger.Add(e.Select(x => x.Key.LineString));
+
+                var mergedLineStrings = merger.GetMergedLineStrings().OfType<LineString>();
+
+                var hits = e.Key.Split(',', StringSplitOptions.RemoveEmptyEntries);
+                foreach (var p in hits) {
+                    if (!featureToEdges.ContainsKey(p))
+                        featureToEdges.Add(p, new List<LineString>());
+                    featureToEdges[p].AddRange(mergedLineStrings);
+                }
+            }
+
             Parallel.For(0, curves.Count, Matrix.ParallelOptions, (c) => {
-                var polyline = curves.ElementAt(c);
+                var curve = curves.ElementAt(c);
 
-                IEnumerable<LineString> lineStrings = Enumerable.Empty<LineString>();
+                IEnumerable<LineString> lineStrings = featureToEdges[curve.name];
 
-                this._bagPolylines.Add((polyline.name, [polyline.LineString]));
+                this._bagPolylines.Add((curve.name, lineStrings));
             });
         }
 
+#if Traditional
         private void Build(ICollection<S100Framework.YAML.Polygon> surfaces, ICollection<S100Framework.YAML.Polyline> curves, bool gaps = false) {
             //var lineStringsForward = ((MultiLineString)this._nodedNetwork!)
             //    .ToDictionary(e => (LineString)e, e => e.ToText().Substring("LINESTRING (".Length).TrimEnd(')'));
@@ -627,6 +721,7 @@ namespace S100Framework.YAML
                 this._bagPolylines.Add((polyline.name, lineStrings));
             });
         }
+#endif
 
         IEnumerable<CurveFeature> iMatrix.Curves => this._hashing.Select(e => e.Value.curve).DistinctBy(e => e.Id);
 
@@ -658,76 +753,6 @@ namespace S100Framework.YAML
             public override string ToString() => $"EDGE ({Start.X} {Start.Y}, {End.X} {End.Y})";
 
             public LineString LineString => Matrix.Factory!.CreateLineString([Start, End]);
-        }
-
-        /// <summary>
-        /// Represents a maximal (merged) edge in the network.
-        /// It contains its own geometry and a list of the minimal
-        /// edges from the original polygons that compose it.
-        /// </summary>
-        private class MaximalEdge
-        {
-            public NetTopologySuite.Geometries.Coordinate Start { get; }
-            public NetTopologySuite.Geometries.Coordinate End { get; }
-            public List<Edge> ComponentEdges { get; }
-
-            private LineString _lineString;
-
-            public MaximalEdge(NetTopologySuite.Geometries.Coordinate start, NetTopologySuite.Geometries.Coordinate end, List<Edge> componentEdges) {
-                // Ensure canonical ordering for the maximal edge itself
-                if (start.CompareTo(end) < 0) {
-                    Start = start;
-                    End = end;
-                }
-                else {
-                    Start = end;
-                    End = start;
-                }
-                ComponentEdges = componentEdges;
-
-                var merger = new LineMerger();
-                merger.Add(componentEdges.Select(e => e.LineString));
-
-                _lineString = (LineString)merger.GetMergedLineStrings()[0];
-            }
-
-            public override string ToString() {
-                return $"MAXIMAL EDGE ({Start.X} {Start.Y}, {End.X} {End.Y}) [from {ComponentEdges.Count} minimal edges]";
-            }
-
-            public LineString LineString => this._lineString;
-        }
-
-        private const double Epsilon = 1e-9;
-
-        /// <summary>
-        /// Decomposes polygons and builds a map from each minimal edge to the polygon(s) it belongs to.
-        /// </summary>
-        private static Dictionary<Edge, List<string>> BuildEdgeOwnershipMap(IEnumerable<Polygon> polygons, HashSet<Edge> outMinimalEdges) {
-            var edgeToPolygons = new Dictionary<Edge, List<string>>();
-
-            void AddLineString(string name, LineString lineString) {
-                var coordinates = lineString.Coordinates;
-                for (int i = 0; i < coordinates.Length - 1; i++) {
-                    var edge = new Edge(coordinates[i], coordinates[i + 1]);
-                    outMinimalEdges.Add(edge);
-
-                    if (!edgeToPolygons.ContainsKey(edge)) {
-                        edgeToPolygons[edge] = new List<string>();
-                    }
-                    edgeToPolygons[edge].Add(name);
-                }
-            }
-
-            foreach (var polygon in polygons) {
-                AddLineString(polygon.name, polygon.ExteriorRing);
-                if (polygon.InteriorRings.Any()) {
-                    for (int i = 0; i < polygon.InteriorRings.Count(); i++)
-                        AddLineString($"{polygon.name}i{i}", polygon.InteriorRings[i]);
-                }
-            }
-
-            return edgeToPolygons;
         }
 
         public static void AddLineStringsFromGeometry(Geometry geometry, List<LineString> targetList) {
