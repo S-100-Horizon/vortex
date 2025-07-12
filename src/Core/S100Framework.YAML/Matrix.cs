@@ -146,6 +146,8 @@ namespace S100Framework.YAML
         private ICollection<S100Framework.YAML.Polygon> _surfacesNavigational;
         private ICollection<S100Framework.YAML.Polyline> _curvesNavigational;
 
+        private NetTopologySuite.Geometries.Geometry? _geometryCollection;
+
         public static iTopologyBuilder CreateMatrix(Action<ICollection<LineString>>? interceptor = default) {
             return new Matrix() {
                 _interceptor = interceptor,
@@ -186,7 +188,7 @@ namespace S100Framework.YAML
 
             //this._interceptor?.Invoke([.. this._networkTopology]);
 
-
+            this._geometryCollection =  Matrix.Factory!.CreateMultiLineString([.. this._networkTopology]);
 
             //if(this._network.Any(e=>!(e is LineString))) System.Diagnostics.Debugger.Break();
 
@@ -213,6 +215,9 @@ namespace S100Framework.YAML
         iMatrix iTopologyBuilder.BuildTopology() {
             if (this._surfacesTopology.Any() || this._curvesTopology.Any())
                 this.Build(this._surfacesTopology, this._curvesTopology, false);
+
+            _interceptor?.Invoke([.. this._bagPolygons.SelectMany(e => e.ExteriorRing)]);
+
             if (this._surfacesNavigational.Any() || this._curvesNavigational.Any())
                 this.Build(this._surfacesNavigational, this._curvesNavigational, true);
 
@@ -293,6 +298,10 @@ namespace S100Framework.YAML
                     var lineMerger = new LineMerger();
                     lineMerger.Add(lineStrings);
 
+                    var mergedLineStrings = lineMerger.GetMergedLineStrings();
+                    if (mergedLineStrings.Count > 1) {
+                        System.Diagnostics.Debugger.Break();                        
+                    }
                     var merged = (LineString)lineMerger.GetMergedLineStrings()[0];
 
                     if (merged.IsRing && orientation != LinearRingOrientation.DontCare) {
@@ -355,7 +364,7 @@ namespace S100Framework.YAML
             Parallel.ForEach(this._bagPolygons, ParallelOptions, (polygon) => {
                 if (!polygon.ExteriorRing.Any()) return;
 
-                //if (polygon.Name.Equals("S2652886")) System.Diagnostics.Debugger.Break();
+                if (polygon.Name.Equals("S2675929")) System.Diagnostics.Debugger.Break();
 
                 FeatureRef exteriorId = action(polygon.ExteriorRing, LinearRingOrientation.Clockwise);
                 var surface = new SurfaceFeature() {
@@ -395,7 +404,7 @@ namespace S100Framework.YAML
                 var polygon = surfaces.ElementAt(i);
 
                 //if (polygon.name.Equals("S2674462")) System.Diagnostics.Debugger.Break();
-                //if (polygon.name.Equals("S2674460")) System.Diagnostics.Debugger.Break();
+                //if (polygon.name.Equals("S2675929")) System.Diagnostics.Debugger.Break();
 
                 IEnumerable<LineString> exteriorRing = Enumerable.Empty<LineString>();
 
@@ -417,6 +426,79 @@ namespace S100Framework.YAML
                         difference = polygon.ExteriorRing.Difference(polygon.ExteriorRing.Factory.CreateMultiLineString(hits.ToArray()));
                         if (!difference.IsEmpty) {
                             if (gaps) {
+                                //NetTopologySuite.Geometries.Geometry? boundary = polygon.ExteriorRing;
+
+                                //var intersections = boundary.Intersection(this._geometryCollection);
+
+                                //if (!intersections.IsEmpty) {
+                                //    if (intersections is GeometryCollection collection) {
+                                //        intersections = intersections.Factory.CreateMultiLineString(collection.OfType<LineString>().ToArray());
+                                //    }
+
+                                //    if (intersections is NetTopologySuite.Geometries.LineString lineStringIntersection)
+                                //        hits = [.. hits, lineStringIntersection];
+                                //    else if (intersections is NetTopologySuite.Geometries.MultiLineString multiLineStringIntersection)
+                                //        hits = [.. hits, .. multiLineStringIntersection.OfType<LineString>()];
+                                //    else
+                                //        System.Diagnostics.Debugger.Break();
+
+                                //    if (polygon.name.Equals("S2675929"))
+                                //        this._interceptor?.Invoke([.. hits]);
+                                //    difference = boundary.Difference(intersections);                                   
+                                //}
+                                //if (difference is LineString lineStringDifference) {
+                                //    hits = [.. hits, lineStringDifference];
+                                //}
+                                //else if (difference is MultiLineString multiLineStringDifference) {
+                                //    hits = [.. hits, .. multiLineStringDifference.OfType<LineString>()];
+                                //}
+                                //else
+                                //    System.Diagnostics.Debugger.Break();
+
+                                //if (polygon.name.Equals("S2675929"))
+                                //    this._interceptor?.Invoke([.. hits]);
+
+
+                                //for (int b = 0; b < this._networkTopology.Count(); b++) {
+                                //    var boundary2 = this._networkTopology.ElementAt(b);
+                                //    if (boundary.Disjoint(boundary))
+                                //        continue;
+
+                                //    if (boundary.Intersects(boundary2)) {
+                                //        var sharedEdgesGeometry = boundary.Intersection(boundary2);
+                                //        if (sharedEdgesGeometry is NetTopologySuite.Geometries.Point || sharedEdgesGeometry is NetTopologySuite.Geometries.MultiPoint) {
+                                //            continue;
+                                //        }
+                                //        if (sharedEdgesGeometry is GeometryCollection collection) {
+                                //            sharedEdgesGeometry = sharedEdgesGeometry.Factory.CreateMultiLineString(collection.OfType<LineString>().ToArray());
+                                //        }
+                                //        if (sharedEdgesGeometry.IsEmpty) {
+                                //            continue;
+                                //        }
+                                //        if (sharedEdgesGeometry is LineString lineStringIntersects) {
+                                //            hits = [.. hits, lineStringIntersects];
+                                //        }
+                                //        else if (sharedEdgesGeometry is MultiLineString multiLineStringIntersects) {
+                                //            hits = [.. hits, .. multiLineStringIntersects.OfType<LineString>()];
+                                //        }                                        
+
+                                //        boundary = boundary.Difference(sharedEdgesGeometry);
+                                //        if (boundary.IsEmpty)
+                                //            break;
+                                //    }
+                                //}
+                                //if (!boundary.IsEmpty) {
+                                //    if (boundary is LineString lineStringDifference) {
+                                //        hits = [.. hits, lineStringDifference];
+                                //    }
+                                //    else if (boundary is MultiLineString multiLineStringDifference) {
+                                //        hits = [.. hits, .. multiLineStringDifference.OfType<LineString>()];
+                                //    }
+                                //    else
+                                //        System.Diagnostics.Debugger.Break();
+                                //}
+
+
                                 if (difference is NetTopologySuite.Geometries.LineString lineString)
                                     hits = [.. hits, lineString];
                                 else if (difference is NetTopologySuite.Geometries.MultiLineString multiLineString)
@@ -428,7 +510,9 @@ namespace S100Framework.YAML
                                 System.Diagnostics.Debugger.Break();
                         }
                     }
-                    exteriorRing = hits.Where(e => e.IsValid && !e.IsEmpty);
+
+                    hits = hits.Where(e => e.IsValid && !e.IsEmpty).DistinctBy(e => System.IO.Hashing.XxHash3.HashToUInt64(e.ToBinary()));
+                    exteriorRing = hits;
                 }
 
                 var interiorRings = new List<IEnumerable<LineString>>();
@@ -461,7 +545,8 @@ namespace S100Framework.YAML
                                 System.Diagnostics.Debugger.Break();
                         }
                     }
-                    interiorRings.Add(hits.Where(e => e.IsValid && !e.IsEmpty));
+                    hits = hits.Where(e => e.IsValid && !e.IsEmpty).DistinctBy(e => System.IO.Hashing.XxHash3.HashToUInt64(e.ToBinary()));
+                    interiorRings.Add(hits);
                 }
                 this._bagPolygons.Add((polygon.name, exteriorRing, interiorRings));
             });
@@ -492,7 +577,7 @@ namespace S100Framework.YAML
                 }
 
                 this._bagPolylines.Add((polyline.name, lineStrings));
-            });            
+            });
         }
 
         IEnumerable<CurveFeature> iMatrix.Curves => this._hashing.Select(e => e.Value.curve).DistinctBy(e => e.Id);
