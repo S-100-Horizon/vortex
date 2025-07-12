@@ -95,7 +95,6 @@ namespace S100Framework.YAML
     public record Polygon(long ObjectId, string name, LineString ExteriorRing, LineString[] InteriorRings) : Polyline(ObjectId, name, ExteriorRing);
 
 
-#if TheMatrixReloaded
     public interface iTopologyBuilder
     {
         iTopologyBuilder AddTopologyFeatures(ICollection<S100Framework.YAML.Polygon> surfaces, ICollection<S100Framework.YAML.Polyline> curves);
@@ -188,7 +187,7 @@ namespace S100Framework.YAML
 
             //this._interceptor?.Invoke([.. this._networkTopology]);
 
-            this._geometryCollection =  Matrix.Factory!.CreateMultiLineString([.. this._networkTopology]);
+            this._geometryCollection = Matrix.Factory!.CreateMultiLineString([.. this._networkTopology]);
 
             //if(this._network.Any(e=>!(e is LineString))) System.Diagnostics.Debugger.Break();
 
@@ -213,13 +212,20 @@ namespace S100Framework.YAML
         }
 
         iMatrix iTopologyBuilder.BuildTopology() {
-            if (this._surfacesTopology.Any() || this._curvesTopology.Any())
-                this.Build(this._surfacesTopology, this._curvesTopology, false);
+            IEnumerable<S100Framework.YAML.Polygon> surfaces = Enumerable.Empty<S100Framework.YAML.Polygon>();
+            IEnumerable<S100Framework.YAML.Polyline> curves = Enumerable.Empty<S100Framework.YAML.Polyline>();
 
-            _interceptor?.Invoke([.. this._bagPolygons.SelectMany(e => e.ExteriorRing)]);
+            if (this._surfacesTopology.Any() || this._curvesTopology.Any()) {
+                surfaces = surfaces.UnionBy(this._surfacesTopology, e => e.name);
+                curves = curves.UnionBy(this._curvesTopology, e => e.name);
+            }
 
-            if (this._surfacesNavigational.Any() || this._curvesNavigational.Any())
-                this.Build(this._surfacesNavigational, this._curvesNavigational, true);
+            if (this._surfacesNavigational.Any() || this._curvesNavigational.Any()) {
+                surfaces = surfaces.UnionBy(this._surfacesNavigational, e => e.name);
+                curves = curves.UnionBy(this._curvesNavigational, e => e.name);
+            }
+
+            this.BuildX([.. surfaces], [.. curves]);
 
             Parallel.ForEach(this._bagPolygons, ParallelOptions, (polygon) => {
                 foreach (var lineString in polygon.ExteriorRing) {
@@ -300,7 +306,7 @@ namespace S100Framework.YAML
 
                     var mergedLineStrings = lineMerger.GetMergedLineStrings();
                     if (mergedLineStrings.Count > 1) {
-                        System.Diagnostics.Debugger.Break();                        
+                        System.Diagnostics.Debugger.Break();
                     }
                     var merged = (LineString)lineMerger.GetMergedLineStrings()[0];
 
@@ -364,7 +370,7 @@ namespace S100Framework.YAML
             Parallel.ForEach(this._bagPolygons, ParallelOptions, (polygon) => {
                 if (!polygon.ExteriorRing.Any()) return;
 
-                if (polygon.Name.Equals("S2675929")) System.Diagnostics.Debugger.Break();
+                //if (polygon.Name.Equals("S2675929")) System.Diagnostics.Debugger.Break();
 
                 FeatureRef exteriorId = action(polygon.ExteriorRing, LinearRingOrientation.Clockwise);
                 var surface = new SurfaceFeature() {
@@ -389,6 +395,48 @@ namespace S100Framework.YAML
             return this;
         }
 
+        private void BuildX(ICollection<S100Framework.YAML.Polygon> surfaces, ICollection<S100Framework.YAML.Polyline> curves) {
+            var minimalEdges = new HashSet<Edge>();
+            var edgeToPolygonsMap = BuildEdgeOwnershipMap(surfaces, minimalEdges);
+
+            var polygonToEdges = new Dictionary<string, List<LineString>>();
+
+            foreach (var e in edgeToPolygonsMap.GroupBy(e => string.Join(',', e.Value))) {
+                //if (e.Key.Contains("S2674311")) System.Diagnostics.Debugger.Break();
+
+                var merger = new LineMerger();
+                merger.Add(e.Select(x => x.Key.LineString));
+
+                var mergedLineStrings = merger.GetMergedLineStrings().OfType<LineString>();
+
+                var hits = e.Key.Split(',', StringSplitOptions.RemoveEmptyEntries);
+                foreach (var p in hits) {
+                    if (!polygonToEdges.ContainsKey(p))
+                        polygonToEdges.Add(p, new List<LineString>());
+                    polygonToEdges[p].AddRange(mergedLineStrings);
+                }
+
+            }
+
+            Parallel.For(0, surfaces.Count, Matrix.ParallelOptions, (p) => {
+                var polygon = surfaces.ElementAt(p);
+
+                IEnumerable<LineString> exteriorRing = polygonToEdges[polygon.name];
+                var interiorRings = new List<IEnumerable<LineString>>();
+                for (int i = 0; i < polygon.InteriorRings.Count(); i++) {
+                    interiorRings.Add(polygonToEdges[$"{polygon.name}i{i}"]);
+                }
+                this._bagPolygons.Add((polygon.name, exteriorRing, interiorRings));
+            });
+
+            Parallel.For(0, curves.Count, Matrix.ParallelOptions, (c) => {
+                var polyline = curves.ElementAt(c);
+
+                IEnumerable<LineString> lineStrings = Enumerable.Empty<LineString>();
+
+                this._bagPolylines.Add((polyline.name, [polyline.LineString]));
+            });
+        }
 
         private void Build(ICollection<S100Framework.YAML.Polygon> surfaces, ICollection<S100Framework.YAML.Polyline> curves, bool gaps = false) {
             //var lineStringsForward = ((MultiLineString)this._nodedNetwork!)
@@ -588,6 +636,100 @@ namespace S100Framework.YAML
 
         IDictionary<string, string> iMatrix.Mapping => this._mapping;
 
+
+
+
+        private class Edge : IEquatable<Edge>
+        {
+            public NetTopologySuite.Geometries.Coordinate Start { get; }
+            public NetTopologySuite.Geometries.Coordinate End { get; }
+
+            public Edge(NetTopologySuite.Geometries.Coordinate p1, NetTopologySuite.Geometries.Coordinate p2) {
+                if (p1.CompareTo(p2) < 0) { Start = p1; End = p2; }
+                else { Start = p2; End = p1; }
+            }
+
+            public bool Equals(Edge other) {
+                if (other is null) return false;
+                return Start.Equals(other.Start) && End.Equals(other.End);
+            }
+            public override bool Equals(object obj) => Equals(obj as Edge);
+            public override int GetHashCode() => (Start, End).GetHashCode();
+            public override string ToString() => $"EDGE ({Start.X} {Start.Y}, {End.X} {End.Y})";
+
+            public LineString LineString => Matrix.Factory!.CreateLineString([Start, End]);
+        }
+
+        /// <summary>
+        /// Represents a maximal (merged) edge in the network.
+        /// It contains its own geometry and a list of the minimal
+        /// edges from the original polygons that compose it.
+        /// </summary>
+        private class MaximalEdge
+        {
+            public NetTopologySuite.Geometries.Coordinate Start { get; }
+            public NetTopologySuite.Geometries.Coordinate End { get; }
+            public List<Edge> ComponentEdges { get; }
+
+            private LineString _lineString;
+
+            public MaximalEdge(NetTopologySuite.Geometries.Coordinate start, NetTopologySuite.Geometries.Coordinate end, List<Edge> componentEdges) {
+                // Ensure canonical ordering for the maximal edge itself
+                if (start.CompareTo(end) < 0) {
+                    Start = start;
+                    End = end;
+                }
+                else {
+                    Start = end;
+                    End = start;
+                }
+                ComponentEdges = componentEdges;
+
+                var merger = new LineMerger();
+                merger.Add(componentEdges.Select(e => e.LineString));
+
+                _lineString = (LineString)merger.GetMergedLineStrings()[0];
+            }
+
+            public override string ToString() {
+                return $"MAXIMAL EDGE ({Start.X} {Start.Y}, {End.X} {End.Y}) [from {ComponentEdges.Count} minimal edges]";
+            }
+
+            public LineString LineString => this._lineString;
+        }
+
+        private const double Epsilon = 1e-9;
+
+        /// <summary>
+        /// Decomposes polygons and builds a map from each minimal edge to the polygon(s) it belongs to.
+        /// </summary>
+        private static Dictionary<Edge, List<string>> BuildEdgeOwnershipMap(IEnumerable<Polygon> polygons, HashSet<Edge> outMinimalEdges) {
+            var edgeToPolygons = new Dictionary<Edge, List<string>>();
+
+            void AddLineString(string name, LineString lineString) {
+                var coordinates = lineString.Coordinates;
+                for (int i = 0; i < coordinates.Length - 1; i++) {
+                    var edge = new Edge(coordinates[i], coordinates[i + 1]);
+                    outMinimalEdges.Add(edge);
+
+                    if (!edgeToPolygons.ContainsKey(edge)) {
+                        edgeToPolygons[edge] = new List<string>();
+                    }
+                    edgeToPolygons[edge].Add(name);
+                }
+            }
+
+            foreach (var polygon in polygons) {
+                AddLineString(polygon.name, polygon.ExteriorRing);
+                if (polygon.InteriorRings.Any()) {
+                    for (int i = 0; i < polygon.InteriorRings.Count(); i++)
+                        AddLineString($"{polygon.name}i{i}", polygon.InteriorRings[i]);
+                }
+            }
+
+            return edgeToPolygons;
+        }
+
         public static void AddLineStringsFromGeometry(Geometry geometry, List<LineString> targetList) {
             if (geometry is LineString line) {
                 if (!line.IsEmpty) {
@@ -637,7 +779,7 @@ namespace S100Framework.YAML
             return result;
         }
     }
-#endif
+
 
 #if TheMatrix
     public class Matrix
