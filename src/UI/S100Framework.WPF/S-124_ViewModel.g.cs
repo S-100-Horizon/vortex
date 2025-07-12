@@ -35,6 +35,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public static InformationViewModel CreateInformationType(string type, string? name = default) => type switch {
 			"References" => new ReferencesViewModel { Name = name },
 			"NavwarnPreamble" => new NavwarnPreambleViewModel { Name = name },
+			"SpatialQuality" => new SpatialQualityViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
@@ -760,17 +761,17 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// Reference to an object or feature that is external to the dataset.
 	/// </summary>
-	[CategoryOrder("FeatureReference",0)]
+	[CategoryOrder("featureReference",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class FeatureReferenceViewModel : ViewModelBase {
-		[Category("FeatureReference")]
+	public partial class featureReferenceViewModel : ViewModelBase {
+		[Category("featureReference")]
 		public ObservableCollection<String> atoNNumber  { get; set; } = new ();
-		[Category("FeatureReference")]
+		[Category("featureReference")]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
 
-		public FeatureReferenceViewModel Load(FeatureReference instance) {
+		public featureReferenceViewModel Load(featureReference instance) {
 			atoNNumber.Clear();
 			if (instance.atoNNumber is not null) {
 				foreach(var e in instance.atoNNumber)
@@ -785,7 +786,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 		public override string Serialize() {
-			var instance = new FeatureReference {
+			var instance = new featureReference {
 				atoNNumber = this.atoNNumber.ToList(),
 				interoperabilityIdentifier = this.interoperabilityIdentifier.ToList(),
 			};
@@ -793,14 +794,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 		[Browsable(false)]
-		public FeatureReference Model => new () {
+		public featureReference Model => new () {
 			atoNNumber = this.atoNNumber.ToList(),
 			interoperabilityIdentifier = this.interoperabilityIdentifier.ToList(),
 		};
 
 		public override string? ToString() => $"Feature Reference";
 
-		public FeatureReferenceViewModel() : base() {
+		public featureReferenceViewModel() : base() {
 			atoNNumber.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(atoNNumber));
 			};
@@ -812,10 +813,10 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
 	/// </summary>
-	[CategoryOrder("FeatureName",0)]
+	[CategoryOrder("featureName",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class FeatureNameViewModel : ViewModelBase {
+	public partial class featureNameViewModel : ViewModelBase {
 		private String _language  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
@@ -827,15 +828,15 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _language, value);
 			}
 		}
-		private String _Name  = string.Empty;
+		private String _name  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
-		public String Name {
+		public String name {
 			get {
-				return _Name;
+				return _name;
 			}
 			set {
-				SetValue(ref _Name, value);
+				SetValue(ref _name, value);
 			}
 		}
 		private nameUsage? _nameUsage  = default;
@@ -855,30 +856,112 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public nameUsage[] nameUsageList => [(nameUsage)1,(nameUsage)2,(nameUsage)3];
 
 
-		public FeatureNameViewModel Load(FeatureName instance) {
+		public featureNameViewModel Load(featureName instance) {
 			language = instance.language;
-			Name = instance.Name;
+			name = instance.name;
 			nameUsage = instance.nameUsage;
 			return this;
 		}
 
 		public override string Serialize() {
-			var instance = new FeatureName {
+			var instance = new featureName {
 				language = this.language,
-				Name = this.Name,
+				name = this.name,
 				nameUsage = this.nameUsage,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
 		[Browsable(false)]
-		public FeatureName Model => new () {
+		public featureName Model => new () {
 			language = this._language,
-			Name = this._Name,
+			name = this._name,
 			nameUsage = this._nameUsage,
 		};
 
 		public override string? ToString() => $"Feature Name";
+	}
+	/// <summary>
+	/// The best estimate of the accuracy of a position.
+	/// </summary>
+	[CategoryOrder("horizontalPositionUncertainty",0)]
+	[CategoryOrder("InformationBindings",100)]
+	[CategoryOrder("FeatureBindings",200)]
+	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
+		private decimal _uncertaintyFixed  = default;
+
+		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
+		public decimal uncertaintyFixed {
+			get {
+				return _uncertaintyFixed;
+			}
+			set {
+				SetValue(ref _uncertaintyFixed, value);
+			}
+		}
+
+
+		public horizontalPositionUncertaintyViewModel Load(horizontalPositionUncertainty instance) {
+			uncertaintyFixed = instance.uncertaintyFixed;
+			return this;
+		}
+
+		public override string Serialize() {
+			var instance = new horizontalPositionUncertainty {
+				uncertaintyFixed = this.uncertaintyFixed,
+			};
+			return System.Text.Json.JsonSerializer.Serialize(instance);
+		}
+
+		[Browsable(false)]
+		public horizontalPositionUncertainty Model => new () {
+			uncertaintyFixed = this._uncertaintyFixed,
+		};
+
+		public override string? ToString() => $"Horizontal Position Uncertainty";
+	}
+	/// <summary>
+	/// Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.
+	/// </summary>
+	[CategoryOrder("spatialAccuracy",0)]
+	[CategoryOrder("InformationBindings",100)]
+	[CategoryOrder("FeatureBindings",200)]
+	public partial class spatialAccuracyViewModel : ViewModelBase {
+		private horizontalPositionUncertaintyViewModel _horizontalPositionUncertainty  = default;
+
+		[Category("spatialAccuracy")]
+		[ExpandableObject]
+		public horizontalPositionUncertaintyViewModel horizontalPositionUncertainty {
+			get {
+				return _horizontalPositionUncertainty;
+			}
+			set {
+				SetValue(ref _horizontalPositionUncertainty, value);
+			}
+		}
+
+
+		public spatialAccuracyViewModel Load(spatialAccuracy instance) {
+			horizontalPositionUncertainty = new ();
+			if (instance.horizontalPositionUncertainty != default) {
+				horizontalPositionUncertainty.Load(instance.horizontalPositionUncertainty);
+			}
+			return this;
+		}
+
+		public override string Serialize() {
+			var instance = new spatialAccuracy {
+				horizontalPositionUncertainty = this.horizontalPositionUncertainty?.Model,
+			};
+			return System.Text.Json.JsonSerializer.Serialize(instance);
+		}
+
+		[Browsable(false)]
+		public spatialAccuracy Model => new () {
+			horizontalPositionUncertainty = this._horizontalPositionUncertainty?.Model,
+		};
+
+		public override string? ToString() => $"Spatial Accuracy";
 	}
 
 	/// <summary>
@@ -1228,6 +1311,70 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	}
 
 	/// <summary>
+	/// The indication of the quality of the locational information for features in a dataset.
+	/// </summary>
+	[CategoryOrder("SpatialQuality",0)]
+	[CategoryOrder("InformationBindings",100)]
+	[CategoryOrder("FeatureBindings",200)]
+	public partial class SpatialQualityViewModel : InformationViewModel<SpatialQuality> {
+		private qualityOfHorizontalMeasurement? _qualityOfHorizontalMeasurement  = default;
+
+		[Category("SpatialQuality")]
+		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+		[DomainModel.EnumerationAttribute(nameof(qualityOfHorizontalMeasurementList), typeof(qualityOfHorizontalMeasurement))]
+		public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {
+			get {
+				return _qualityOfHorizontalMeasurement;
+			}
+			set {
+				SetValue(ref _qualityOfHorizontalMeasurement, value);
+			}
+		}
+
+		[Browsable(false)]
+		public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)1,(qualityOfHorizontalMeasurement)2,(qualityOfHorizontalMeasurement)3,(qualityOfHorizontalMeasurement)4,(qualityOfHorizontalMeasurement)5,(qualityOfHorizontalMeasurement)6,(qualityOfHorizontalMeasurement)7,(qualityOfHorizontalMeasurement)8,(qualityOfHorizontalMeasurement)9,(qualityOfHorizontalMeasurement)10,(qualityOfHorizontalMeasurement)11];
+		private spatialAccuracyViewModel? _spatialAccuracy  = default;
+
+		[Category("SpatialQuality")]
+		[ExpandableObject]
+		public spatialAccuracyViewModel? spatialAccuracy {
+			get {
+				return _spatialAccuracy;
+			}
+			set {
+				SetValue(ref _spatialAccuracy, value);
+			}
+		}
+
+
+		public override InformationViewModel<SpatialQuality> Load(SpatialQuality instance) {
+			qualityOfHorizontalMeasurement = instance.qualityOfHorizontalMeasurement;
+			spatialAccuracy = new ();
+			if (instance.spatialAccuracy != default) {
+				spatialAccuracy.Load(instance.spatialAccuracy);
+			}
+			return this;
+		}
+
+		public override string Serialize() {
+			var instance = new SpatialQuality {
+				qualityOfHorizontalMeasurement = this.qualityOfHorizontalMeasurement,
+				spatialAccuracy = this.spatialAccuracy?.Model,
+			};
+			return System.Text.Json.JsonSerializer.Serialize(instance);
+		}
+
+		[Browsable(false)]
+		public SpatialQuality Model => new () {
+			qualityOfHorizontalMeasurement = this._qualityOfHorizontalMeasurement,
+			spatialAccuracy = this._spatialAccuracy?.Model,
+		};
+		public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
+
+		public override string? ToString() => $"Spatial Quality";
+	}
+
+	/// <summary>
 	/// Navigational warning information that may be geo-located.
 	/// </summary>
 	[CategoryOrder("NavwarnPart",0)]
@@ -1265,9 +1412,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 		[Category("NavwarnPart")]
-		public ObservableCollection<FeatureNameViewModel> FeatureName  { get; set; } = new ();
+		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("NavwarnPart")]
-		public ObservableCollection<FeatureReferenceViewModel> FeatureReference  { get; set; } = new ();
+		public ObservableCollection<featureReferenceViewModel> featureReference  { get; set; } = new ();
 
 
 		public override FeatureViewModel<NavwarnPart> Load(NavwarnPart instance) {
@@ -1281,15 +1428,15 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			if (instance.warningInformation != default) {
 				warningInformation.Load(instance.warningInformation);
 			}
-			FeatureName.Clear();
-			if (instance.FeatureName is not null) {
-				foreach(var e in instance.FeatureName)
-					FeatureName.Add(new FeatureNameViewModel().Load(e));
+			featureName.Clear();
+			if (instance.featureName is not null) {
+				foreach(var e in instance.featureName)
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
-			FeatureReference.Clear();
-			if (instance.FeatureReference is not null) {
-				foreach(var e in instance.FeatureReference)
-					FeatureReference.Add(new FeatureReferenceViewModel().Load(e));
+			featureReference.Clear();
+			if (instance.featureReference is not null) {
+				foreach(var e in instance.featureReference)
+					featureReference.Add(new featureReferenceViewModel().Load(e));
 			}
 			return this;
 		}
@@ -1299,8 +1446,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				restriction = this.restriction,
 				fixedDateRange = this.fixedDateRange.Select(e => e.Model).ToList(),
 				warningInformation = this.warningInformation?.Model,
-				FeatureName = this.FeatureName.Select(e => e.Model).ToList(),
-				FeatureReference = this.FeatureReference.Select(e => e.Model).ToList(),
+				featureName = this.featureName.Select(e => e.Model).ToList(),
+				featureReference = this.featureReference.Select(e => e.Model).ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -1310,8 +1457,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			restriction = this._restriction,
 			fixedDateRange = this.fixedDateRange.Select(e => e.Model).ToList(),
 			warningInformation = this._warningInformation?.Model,
-			FeatureName = this.FeatureName.Select(e => e.Model).ToList(),
-			FeatureReference = this.FeatureReference.Select(e => e.Model).ToList(),
+			featureName = this.featureName.Select(e => e.Model).ToList(),
+			featureReference = this.featureReference.Select(e => e.Model).ToList(),
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => NavwarnPart._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. NavwarnPart._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
@@ -1324,11 +1471,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			fixedDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(fixedDateRange));
 			};
-			FeatureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(FeatureName));
+			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(featureName));
 			};
-			FeatureReference.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(FeatureReference));
+			featureReference.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(featureReference));
 			};
 		}
 	}
