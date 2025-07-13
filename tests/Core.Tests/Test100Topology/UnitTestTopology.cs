@@ -444,8 +444,11 @@ namespace Test100Topology
 
             using var surface = geodatabase.OpenDataset<FeatureClass>("surface");
 
+            //var dsnm = "DK40751E";
+            var dsnm = "DK40347E";
+
             using var cursor = surface.Search(new QueryFilter {
-                WhereClause = $"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"DK40751E\"%'",
+                WhereClause = $"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"{dsnm}\"%'",
             }, true);
 
             cursor.MoveNext();
@@ -496,23 +499,6 @@ namespace Test100Topology
             using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
                 PersistTopology(target, result.Curves.Select(e=>e.LineString));
             }            
-
-            //var graphBuilder = new EdgeGraphBuilder();
-            //graphBuilder.Add(nodedLinework);
-            //var graph = graphBuilder.GetGraph();
-
-            //var graph = EdgeGraphBuilder.Build(boundaries);            
-
-
-            //foreach(var p in features) {
-            //    var exteriorRing = p.ExteriorRing;
-            //    var edge = graph.FindEdge(exteriorRing[0], exteriorRing[1]);
-            //}
-
-            //int count = 0;
-            //foreach (var edge in graph.GetVertexEdges()) {
-            //    count += 1;
-            //}
 
             System.Diagnostics.Debugger.Break();
         }
