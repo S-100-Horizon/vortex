@@ -95,6 +95,34 @@ namespace S100Framework.YAML
     public record Polygon(long ObjectId, string name, LineString ExteriorRing, LineString[] InteriorRings) : Polyline(ObjectId, name, ExteriorRing);
 
 
+    public class CompositeCurveContainer {
+        private Dictionary<UInt64, CompositeCurveFeature> _feature = new Dictionary<ulong, CompositeCurveFeature>();
+        private Dictionary<string, (UInt64 Id, bool Reverse)> _keys = new Dictionary<string, (ulong, bool)>();
+
+        public ICollection<CompositeCurveFeature> CompositeCurveFeatures => _feature.Values;
+
+        public (UInt64 Id, bool Reverse) AddOrGet(IList<FeatureRef> sortedList) {
+            var keyStraight = string.Join(',', sortedList.Select(e => e.Reverse ? $"RC{e.Id}" : $"C{e.Id}"));
+            var keyReverse = string.Join(',', sortedList.Reverse().Select(e => !e.Reverse ? $"RC{e.Id}" : $"C{e.Id}"));
+
+            var compositeCurve = new CompositeCurveFeature {
+                Curves = [.. sortedList],
+            };
+
+            lock (this) {
+                if (_keys.ContainsKey(keyStraight)) {
+                    var value = _keys[keyStraight];
+                    return (value.Id,value.Reverse);
+                }
+                _feature.Add(compositeCurve.Id, compositeCurve);
+                _keys.Add(keyStraight, (compositeCurve.Id, false));
+                _keys.Add(keyReverse, (compositeCurve.Id, true));
+
+                return (compositeCurve.Id, false);
+            }
+        }
+    }
+
     public interface iTopologyBuilder
     {
         iTopologyBuilder AddTopologyFeatures(ICollection<S100Framework.YAML.Polygon> surfaces, ICollection<S100Framework.YAML.Polyline> curves);
@@ -133,7 +161,7 @@ namespace S100Framework.YAML
 
         private ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)> _hashing = new ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
 
-        private ConcurrentDictionary<string, CompositeCurveFeature> _bagCompositeCurves = new ConcurrentDictionary<string, CompositeCurveFeature>();
+        //private ConcurrentDictionary<string, CompositeCurveFeature> _bagCompositeCurves = new ConcurrentDictionary<string, CompositeCurveFeature>();
 
         private ConcurrentDictionary<string, string> _mapping = new ConcurrentDictionary<string, string>();
 
@@ -146,6 +174,8 @@ namespace S100Framework.YAML
         private ICollection<S100Framework.YAML.Polyline> _curvesNavigational;
 
         private NetTopologySuite.Geometries.Geometry? _geometryCollection;
+
+        private CompositeCurveContainer _compositeCurveContainer = new CompositeCurveContainer();
 
         public static iTopologyBuilder CreateMatrix(Action<ICollection<LineString>>? interceptor = default) {
             return new Matrix() {
@@ -352,19 +382,11 @@ namespace S100Framework.YAML
                         }
                     }
 
-                    var compositeExterior = new CompositeCurveFeature {
-                        Curves = [.. sortedList.Values],
-                    };
-
-                    var key = string.Join(',', sortedList.Select(e => e.Value.Reverse ? $"RC{e.Value.Id}" : $"C{e.Value.Id}"));
-
-                    compositeExterior = this._bagCompositeCurves.GetOrAdd(key, (key) => {
-                        return compositeExterior;
-                    });
+                    var compositeExterior = _compositeCurveContainer.AddOrGet(sortedList.Values);
 
                     featureRef = new FeatureRef {
                         Id = compositeExterior.Id,
-                        Reverse = false,
+                        Reverse = compositeExterior.Reverse,
                     };
                 }
 
@@ -373,8 +395,6 @@ namespace S100Framework.YAML
 
             Parallel.ForEach(this._bagPolygons, ParallelOptions, (polygon) => {
                 if (!polygon.ExteriorRing.Any()) return;
-
-                //if (polygon.Name.Equals("S2675929")) System.Diagnostics.Debugger.Break();
 
                 FeatureRef exteriorId = action(polygon.ExteriorRing, LinearRingOrientation.Clockwise, false);
                 var surface = new SurfaceFeature() {
@@ -392,9 +412,9 @@ namespace S100Framework.YAML
                 if (!polyline.LineStrings.Any()) return;
 
                 FeatureRef curveId = action(polyline.LineStrings, LinearRingOrientation.DontCare, true);
-               
+
                 this._mapping.GetOrAdd(polyline.Name, $"C{curveId.Id}");
-            });
+            });            
 
             return this;
         }
@@ -661,7 +681,7 @@ namespace S100Framework.YAML
 
         IEnumerable<CurveFeature> iMatrix.Curves => this._hashing.Select(e => e.Value.curve).DistinctBy(e => e.Id);
 
-        IEnumerable<CompositeCurveFeature> iMatrix.CompositeCurves => this._bagCompositeCurves.Values;
+        IEnumerable<CompositeCurveFeature> iMatrix.CompositeCurves => this._compositeCurveContainer.CompositeCurveFeatures; // this._bagCompositeCurves.Values;
 
         IEnumerable<SurfaceFeature> iMatrix.Surfaces => this._bagSurfaces;
 
