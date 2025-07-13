@@ -282,7 +282,7 @@ namespace S100Framework.YAML
 
             _interceptor?.Invoke(this._hashing.Where(e => !e.Value.fetureRef.Reverse).Select(e => e.Value.curve.LineString).ToList());
 
-            Func<IEnumerable<LineString>, LinearRingOrientation, FeatureRef> action = (lineStrings, orientation) => {
+            Func<IEnumerable<LineString>, LinearRingOrientation, bool, FeatureRef> action = (lineStrings, orientation, allowMultiLineString) => {
                 FeatureRef featureRef;
 
                 if (lineStrings.Count() == 1) {
@@ -305,30 +305,34 @@ namespace S100Framework.YAML
                     lineMerger.Add(lineStrings);
 
                     var mergedLineStrings = lineMerger.GetMergedLineStrings();
-                    if (mergedLineStrings.Count > 1) {
-                        System.Diagnostics.Debugger.Break();
+
+                    string lineStringText = string.Empty;
+
+                    if (allowMultiLineString && mergedLineStrings.Count > 1) {
+                        var merged = Matrix.Factory!.CreateMultiLineString([.. mergedLineStrings.OfType<LineString>()]);
+
+                        lineStringText = merged.ToText();
                     }
-                    var merged = (LineString)lineMerger.GetMergedLineStrings()[0];
+                    else {
+                        if (mergedLineStrings.Count > 1) System.Diagnostics.Debugger.Break();
 
-                    if (merged.IsRing && orientation != LinearRingOrientation.DontCare) {
-                        var ring = merged.Factory.CreateLinearRing(merged.Coordinates);
+                        var merged = (LineString)mergedLineStrings[0];
 
-                        merged = ring.IsCCW switch {
-                            true => orientation == LinearRingOrientation.CCW ? merged : (LineString)merged.Reverse(),
-                            false => orientation == LinearRingOrientation.CW ? merged : (LineString)merged.Reverse(),
-                        };
+                        if (merged.IsRing && orientation != LinearRingOrientation.DontCare) {
+                            var ring = merged.Factory.CreateLinearRing(merged.Coordinates);
+
+                            merged = ring.IsCCW switch {
+                                true => orientation == LinearRingOrientation.CCW ? merged : (LineString)merged.Reverse(),
+                                false => orientation == LinearRingOrientation.CW ? merged : (LineString)merged.Reverse(),
+                            };
+                        }
+
+                        lineStringText = merged.ToText();
                     }
-
-                    var lineStringText = merged.ToText();
-
-                    //var ring = origin.ExteriorRing.Factory.CreateLinearRing(((LineString)lineMerger.GetMergedLineStrings()[0]).Coordinates).ToString();
-
-                    //var sorted = new FeatureRef[lineStrings.Count];
 
                     var sortedList = new SortedList<int, FeatureRef>();
 
                     for (int i = 0; i < lineStrings.Count(); i++) {
-
                         var text = lineStrings.ElementAt(i).ToText().Substring("LINESTRING (".Length).TrimEnd(')');
                         if (lineStringText.Contains(text)) {
                             var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(lineStrings.ElementAt(i).AsBinary())];
@@ -372,13 +376,13 @@ namespace S100Framework.YAML
 
                 //if (polygon.Name.Equals("S2675929")) System.Diagnostics.Debugger.Break();
 
-                FeatureRef exteriorId = action(polygon.ExteriorRing, LinearRingOrientation.Clockwise);
+                FeatureRef exteriorId = action(polygon.ExteriorRing, LinearRingOrientation.Clockwise, false);
                 var surface = new SurfaceFeature() {
                     Ref = polygon.Name,
                     Exterior = exteriorId,
                 };
                 if (polygon.InteriorRings.Any()) {
-                    surface.Interior = polygon.InteriorRings.Select(e => action(e, LinearRingOrientation.CounterClockwise)).ToArray();
+                    surface.Interior = polygon.InteriorRings.Select(e => action(e, LinearRingOrientation.CounterClockwise, false)).ToArray();
                 }
                 this._bagSurfaces.Add(surface);
                 this._mapping.GetOrAdd(polygon.Name, $"S{surface.Id}");
@@ -387,60 +391,8 @@ namespace S100Framework.YAML
             Parallel.ForEach(this._bagPolylines, ParallelOptions, (polyline) => {
                 if (!polyline.LineStrings.Any()) return;
 
-                FeatureRef curveId;
-                if (polyline.LineStrings.Count() == 1) {
-                    var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(polyline.LineStrings.ElementAt(0).AsBinary())];
-                    curveId = hash.fetureRef;
-                }
-                else {
-                    var lineMerger = new LineMerger();
-                    lineMerger.Add(polyline.LineStrings);
-
-                    var mergedLineStrings = lineMerger.GetMergedLineStrings();
-
-                    LineString merged = (LineString)lineMerger.GetMergedLineStrings()[0];
-                    if (mergedLineStrings.Count > 1) {
-                        merged = Matrix.Factory!.CreateLineString(polyline.LineStrings.SelectMany(e => e.Coordinates).ToArray());
-                    }
-
-                    var lineStringText = merged.ToText();
-
-                    var sortedList = new SortedList<int, FeatureRef>();
-                    for (int i = 0; i < polyline.LineStrings.Count(); i++) {
-                        var text = polyline.LineStrings.ElementAt(i).ToText().Substring("LINESTRING (".Length).TrimEnd(')');
-                        if (lineStringText.Contains(text)) {
-                            var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(polyline.LineStrings.ElementAt(i).AsBinary())];
-
-                            sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
-                        }
-                        else {
-                            var reverse = polyline.LineStrings.ElementAt(i).Reverse();
-
-                            var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(reverse.AsBinary())];
-
-                            text = reverse.ToText().Substring("LINESTRING (".Length).TrimEnd(')');
-
-                            var index = lineStringText.IndexOf(text);
-                            if (index < 0) System.Diagnostics.Debugger.Break();
-                            sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
-                        }
-                    }
-
-                    var compositeExterior = new CompositeCurveFeature {
-                        Curves = [.. sortedList.Values],
-                    };
-
-                    var key = string.Join(',', sortedList.Select(e => e.Value.Reverse ? $"RC{e.Value.Id}" : $"C{e.Value.Id}"));
-
-                    compositeExterior = this._bagCompositeCurves.GetOrAdd(key, (key) => {
-                        return compositeExterior;
-                    });
-
-                    curveId = new FeatureRef {
-                        Id = compositeExterior.Id,
-                        Reverse = false,
-                    };
-                }
+                FeatureRef curveId = action(polyline.LineStrings, LinearRingOrientation.DontCare, true);
+               
                 this._mapping.GetOrAdd(polyline.Name, $"C{curveId.Id}");
             });
 
