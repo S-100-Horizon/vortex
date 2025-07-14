@@ -1,8 +1,8 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -13,16 +13,16 @@ namespace S100Framework.Applications
 
             using var coastlinel = source.OpenDataset<FeatureClass>(source.GetName(tableName));
             Subtypes.Instance.RegisterSubtypes(coastlinel); ;
-            
+
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
-            
+
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = coastlinel.Search(filter, true);
             int recordCount = 0;
-            
+
             while (cursor.MoveNext()) {
                 recordCount += 1;
 
@@ -42,7 +42,7 @@ namespace S100Framework.Applications
 
                 var catcoa = current.CATCOA ?? default;
                 var catslc = current.CATSLC ?? default;
-                
+
 
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
@@ -52,7 +52,7 @@ namespace S100Framework.Applications
                     case 1: { // COALNE_Coastline
                             var instance = new Coastline();
 
-                           if (catcoa != default/* && instance.natureOfSurface == default*/) {
+                            if (catcoa != default/* && instance.natureOfSurface == default*/) {
                                 categoryOfCoastline? e = catcoa switch {
                                     1 => categoryOfCoastline.SteepCoast,
                                     2 => categoryOfCoastline.FlatCoast,
@@ -65,7 +65,7 @@ namespace S100Framework.Applications
                                     9 => null, //CORAL REEF
                                     10 => null, // ICE COAST
                                     11 => null, // SHELLY SHORE
-                                    -32767 =>(categoryOfCoastline)(-1),
+                                    -32767 => (categoryOfCoastline)(-1),
                                     _ => throw new IndexOutOfRangeException($"catcoa to categoryOfCoastLine: {catcoa}")
                                 };
                                 if (e.HasValue) {
@@ -121,7 +121,7 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
@@ -134,10 +134,10 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
                         }
                         break;
-                    case 
+                    case
                     5: { // SLCONS_ShorelineConstruction
                             // Restricted allowable S-101 enumerate values for STATUS.
                             // Reconcile conversion of CATSLC = 6(wharf(quay)) to
@@ -149,7 +149,8 @@ namespace S100Framework.Applications
 
                             if (current.CATSLC.HasValue) {
                                 instance.categoryOfShorelineConstruction = EnumHelper.GetEnumValue<categoryOfShorelineConstruction>(current.CATSLC.Value);
-                            };
+                            }
+                            ;
 
 
                             if (current.COLOUR != default) {

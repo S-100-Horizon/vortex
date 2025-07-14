@@ -586,7 +586,6 @@ namespace ArcGIS.Core.Data
 {
     using GeoAPI.Geometries;
     using NetTopologySuite.Geometries;
-    using System.Collections.Concurrent;
     using System.Linq;
 
     public static class Extension
@@ -708,7 +707,7 @@ namespace ArcGIS.Core.Data
                     }
                 }
 
-                builder = matrix.AddTopologyFeatures(polygons,curves);
+                builder = matrix.AddTopologyFeatures(polygons, curves);
             }
 
 
@@ -782,7 +781,7 @@ namespace ArcGIS.Core.Data
 
                 builder = matrix.AddNavigationalFeatures(polygons, curves);
             }
-            
+
             var result = builder.BuildTopology();
 
 

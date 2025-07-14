@@ -1,24 +1,23 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Geometry;
 using CommandLine;
+using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
+using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.DomainModel.S101.InformationTypes;
+using System.Globalization;
+using System.Text.Json;
+using System.Text.RegularExpressions;
+using VortexLoader;
 using static S100Framework.Applications.VortexLoader;
 using IO = System.IO;
-using ArcGIS.Core.Geometry;
-using System.Text.Json;
-using S100Framework.Applications.S57.esri;
-using System.Text.RegularExpressions;
-using System.Globalization;
-using VortexLoader;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.Applications.Singletons;
-using S100Framework.DomainModel.S101.InformationTypes;
-using System.Text.RegularExpressions;
-using ICSharpCode.SharpZipLib.Zip;
 
 namespace S100Framework.Applications
 {
-    internal static partial class ImporterNIS {
+    internal static partial class ImporterNIS
+    {
 
         internal static readonly JsonSerializerOptions jsonSerializerOptions = new() {
             WriteIndented = false,
@@ -105,7 +104,7 @@ namespace S100Framework.Applications
                 Store = (a) => {
                     destination.ApplyEdits(() => {
                         a.Invoke();
-                    },true);
+                    }, true);
                     return true;
                 };
             }
@@ -173,11 +172,11 @@ namespace S100Framework.Applications
 
                 Logger.Current.Information($"Initializing SpatialRelationResolver");
                 SpatialRelationResolver.Initialize(source);
-                
+
                 Logger.Current.Information($"Initializing SpatialAssociations");
                 SpatialAssociations.Initialize(source);
 
-                relatedEquipment = new RelatedEquipment(source,destination);
+                relatedEquipment = new RelatedEquipment(source, destination);
 
                 if (skinOfEarthOnly) {
                     Logger.Current.Information($"Converting skin of earth only Filter: {filter.WhereClause}");
@@ -331,10 +330,10 @@ namespace S100Framework.Applications
         }
         internal static void SetDrawingIndex(RowBuffer buffer, int comp_scale) {
             _ = comp_scale switch {
-                <22000 => buffer["drawingIndex"] = 5,
-                <90000 => buffer["drawingIndex"] = 4,
-                <180000 => buffer["drawingIndex"] = 3,
-                <700000 => buffer["drawingIndex"] = 2,
+                < 22000 => buffer["drawingIndex"] = 5,
+                < 90000 => buffer["drawingIndex"] = 4,
+                < 180000 => buffer["drawingIndex"] = 3,
+                < 700000 => buffer["drawingIndex"] = 2,
                 _ => buffer["drawingIndex"] = 1
             };
 
@@ -372,7 +371,7 @@ namespace S100Framework.Applications
             if (!String.IsNullOrEmpty(current.SIGGRP)) {
                 string pattern = @"\([^()]*\)";
                 if (!Regex.Match(current.SIGGRP, pattern).Success) {
-                    Logger.Current.DataError(current.OBJECTID ?? -1,current.TableName!,current.LNAM!,$"Cannot parse SIGGRP string: {current.SIGGRP} on {current.GlobalId}");
+                    Logger.Current.DataError(current.OBJECTID ?? -1, current.TableName!, current.LNAM!, $"Cannot parse SIGGRP string: {current.SIGGRP} on {current.GlobalId}");
                     ;
                 }
                 foreach (Match m in Regex.Matches(current.SIGGRP, pattern)) {
@@ -447,7 +446,7 @@ namespace S100Framework.Applications
         }
 
         internal static List<colour> GetColours(string color) {
-            if (color== "-32767") {
+            if (color == "-32767") {
                 return new List<colour>() { (colour)(-1) };
             }
             return EnumHelper.GetEnumValues<colour>(color);
@@ -521,70 +520,70 @@ namespace S100Framework.Applications
         internal static List<status> GetStatus(string statuses) {
             List<status> statusList = new List<status>();
 
-                var featureStatus = statuses.Trim();
+            var featureStatus = statuses.Trim();
 
-                /*
-                 * code	status
-                alias	STATUS
-                _s101name	Status
-                definition	The condition of an object at a given instant in time.
-                valueType	enumeration  listedValues	
+            /*
+             * code	status
+            alias	STATUS
+            _s101name	Status
+            definition	The condition of an object at a given instant in time.
+            valueType	enumeration  listedValues	
 
-                Permanent	            1	IHOREG	Intended to last or function indefinitely.
-                Occasional	            2	IHOREG	Acting on special occasions; happening irregularly.
-                Recommended	            3	IHOREG	Presented as worthy of confidence, acceptance, use, etc.
-                Not in Use	            4	IHOREG	Use has ceased, but the facility still exists intact; disused.
-                Periodic/Intermittent	5	IHOREG	Recurring at intervals.
-                Reserved	            6	IHOREG	Set apart for some specific use.
-                Temporary	            7	IHOREG	Meant to last only for a time.
-                Private	                8	IHOREG	Administered by an individual or corporation, rather than a State or a public body.
-                Mandatory	            9	IHOREG	Compulsory; enforced.
-                Extinguished	        11	IHOREG	No longer lit.
-                Illuminated	            12	IHOREG	Lit by flood lights, strip lights, etc.
-                Historic	            13	IHOREG	Famous in history; of historical interest.
-                Public	                14	IHOREG	Belonging to, available to, used or shared by, the community as a whole and not restricted to private use.
-                Synchronized	        15	IHOREG	Occur at a time, coincide in point of time, be contemporary or simultaneous.
-                Watched	                16	IHOREG	Looked at or observed over a period of time especially so as to be aware of any movement or change.
-                Unwatched	            17	IHOREG	Usually automatic in operation, without any permanently-stationed personnel to superintend it.
-                Existence Doubtful	    18	IHOREG	A feature that has been reported but has not been definitely determined to exist.
-                Buoyed	                28	IHOREG	Marked by buoys.
+            Permanent	            1	IHOREG	Intended to last or function indefinitely.
+            Occasional	            2	IHOREG	Acting on special occasions; happening irregularly.
+            Recommended	            3	IHOREG	Presented as worthy of confidence, acceptance, use, etc.
+            Not in Use	            4	IHOREG	Use has ceased, but the facility still exists intact; disused.
+            Periodic/Intermittent	5	IHOREG	Recurring at intervals.
+            Reserved	            6	IHOREG	Set apart for some specific use.
+            Temporary	            7	IHOREG	Meant to last only for a time.
+            Private	                8	IHOREG	Administered by an individual or corporation, rather than a State or a public body.
+            Mandatory	            9	IHOREG	Compulsory; enforced.
+            Extinguished	        11	IHOREG	No longer lit.
+            Illuminated	            12	IHOREG	Lit by flood lights, strip lights, etc.
+            Historic	            13	IHOREG	Famous in history; of historical interest.
+            Public	                14	IHOREG	Belonging to, available to, used or shared by, the community as a whole and not restricted to private use.
+            Synchronized	        15	IHOREG	Occur at a time, coincide in point of time, be contemporary or simultaneous.
+            Watched	                16	IHOREG	Looked at or observed over a period of time especially so as to be aware of any movement or change.
+            Unwatched	            17	IHOREG	Usually automatic in operation, without any permanently-stationed personnel to superintend it.
+            Existence Doubtful	    18	IHOREG	A feature that has been reported but has not been definitely determined to exist.
+            Buoyed	                28	IHOREG	Marked by buoys.
 
-                */
+            */
 
 
-                if (!string.IsNullOrEmpty(featureStatus)) {
-                    /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
-                        other than the allowable values will not be converted across to S-101. Data Producers are advised to
-                        check any populated values for STATUS on LNDARE and amend appropriately. */
-                    foreach (var c in featureStatus.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
-                        status? e = c.ToLowerInvariant() switch {
-                            "1" => status.Permanent,
-                            "2" => status.Occasional,
-                            "3" => status.Recommended,
-                            "4" => status.NotInUse,
-                            "5" => status.PeriodicIntermittent,
-                            "6" => status.Reserved,
-                            "7" => status.Temporary,
-                            "8" => status.Private,
-                            "9" => status.Mandatory,
-                            "11" =>status.Extinguished,
-                            "12" =>status.Illuminated,
-                            "13" => status.Historic,
-                            "14" => status.Public,
-                            "15" => status.Synchronized,
-                            "16" => status.Watched,
-                            "17" => status.Unwatched,
-                            "18" => status.ExistenceDoubtful,
-                            //"28" => ??, // TODO: what to do? STATUS 28
-                            "-32767" =>(status)(-1),
-                            _ => throw new IndexOutOfRangeException(),
-                        };
-                        if (e.HasValue) {
-                            statusList.Add(e.Value);
-                        }
+            if (!string.IsNullOrEmpty(featureStatus)) {
+                /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
+                    other than the allowable values will not be converted across to S-101. Data Producers are advised to
+                    check any populated values for STATUS on LNDARE and amend appropriately. */
+                foreach (var c in featureStatus.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
+                    status? e = c.ToLowerInvariant() switch {
+                        "1" => status.Permanent,
+                        "2" => status.Occasional,
+                        "3" => status.Recommended,
+                        "4" => status.NotInUse,
+                        "5" => status.PeriodicIntermittent,
+                        "6" => status.Reserved,
+                        "7" => status.Temporary,
+                        "8" => status.Private,
+                        "9" => status.Mandatory,
+                        "11" => status.Extinguished,
+                        "12" => status.Illuminated,
+                        "13" => status.Historic,
+                        "14" => status.Public,
+                        "15" => status.Synchronized,
+                        "16" => status.Watched,
+                        "17" => status.Unwatched,
+                        "18" => status.ExistenceDoubtful,
+                        //"28" => ??, // TODO: what to do? STATUS 28
+                        "-32767" => (status)(-1),
+                        _ => throw new IndexOutOfRangeException(),
+                    };
+                    if (e.HasValue) {
+                        statusList.Add(e.Value);
                     }
-
                 }
+
+            }
             return statusList;
         }
 
@@ -616,7 +615,7 @@ namespace S100Framework.Applications
         //    };
         //}
 
-        
+
 
         public static condition GetCondition(int conditionValue) {
             return conditionValue switch {
@@ -632,7 +631,7 @@ namespace S100Framework.Applications
 
         internal static List<featureName> GetFeatureName(string? objname, string? nobjnme) {
             List<featureName> featureName = new List<featureName>();
-            if (objname != default) { 
+            if (objname != default) {
                 var objnam = objname.Trim();
                 if (!string.IsNullOrEmpty(objnam)) {
                     featureName.Add(new featureName {
@@ -652,7 +651,7 @@ namespace S100Framework.Applications
                     });
                 }
             }
-            
+
             return featureName;
         }
 
@@ -681,8 +680,8 @@ namespace S100Framework.Applications
                         Logger.Current.DataError(current.GetObjectID(), current.GetTable().GetName(), "", $"AddInformation: Cannot find note {filePath}");
                     }
 
-            }
-            else if (!string.IsNullOrEmpty(ntxtds)) {
+                }
+                else if (!string.IsNullOrEmpty(ntxtds)) {
                     string language = "eng";
 
                     var instance = new information {
@@ -710,7 +709,8 @@ namespace S100Framework.Applications
                         };
                         information.Add(instance);
 
-                    } else {
+                    }
+                    else {
                         Logger.Current.DataError(current.GetObjectID(), current.GetTable().GetName(), "", $"AddInformation: Cannot find note {filePath}");
                     }
                 }
@@ -739,7 +739,6 @@ namespace S100Framework.Applications
 
                     foreach (var value in informs) {
                         string? fileLocator = default;
-                        string? fileReference = default;
                         string language = "eng";
 
                         if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
@@ -781,7 +780,6 @@ namespace S100Framework.Applications
 
                     foreach (var value in ninfoms) {
                         string? fileLocator = default;
-                        string? fileReference = default;
                         string language = "dan";
 
                         if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
@@ -857,7 +855,7 @@ namespace S100Framework.Applications
             if (fileReference == default) {
                 return default;
             }
-            
+
             string result = Regex.Replace(fileReference, @"^dk", match => {
                 string matched = match.Value;
 
@@ -869,7 +867,7 @@ namespace S100Framework.Applications
 
                 return replacement;
             }, RegexOptions.IgnoreCase);
-            
+
             return result;
         }
 

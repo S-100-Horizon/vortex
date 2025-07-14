@@ -1,9 +1,8 @@
 ﻿using ArcGIS.Core.Data;
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using ArcGIS.Core.CIM;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
 {
@@ -144,7 +143,7 @@ namespace S100Framework.Applications
                             //buffer["code"] = instance.GetType().Name;
                             //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             //SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
                             //var featureN = featureClass.CreateRow(buffer);
                             //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -279,13 +278,13 @@ SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
                                     visualProminence = default,
                                 };
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
+                                    string subtype = "";
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                            }
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                }
 
 
                                 instance.categoryOfLandmark = [categoryOfLandmark.TriangulationMark];
@@ -458,7 +457,7 @@ SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
                             //buffer["code"] = instance.GetType().Name;
                             //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             //SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
                             //var featureN = featureClass.CreateRow(buffer);
                             //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -513,7 +512,7 @@ SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
                         }
                         break;
 
-                        case 35: { // LNDMRK_Landmark
+                    case 35: { // LNDMRK_Landmark
                             if (current.CATLMK == "19") {
                                 var windturbine = ImporterNIS._converterRegistry.Convert<WindTurbine>(current);
 
@@ -572,10 +571,10 @@ SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
                                 // TODO: verticalClearanceFixed		
 
                                 if (current.VERDAT.HasValue) {
-                                    windturbine.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3); 
+                                    windturbine.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
 
 
-                                    
+
 
                                 }
 

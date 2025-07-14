@@ -1,12 +1,10 @@
 ﻿using ArcGIS.Core.Data;
-using Microsoft.AspNetCore.Mvc;
 using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using System.Globalization;
-using VortexLoader;
-using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -16,7 +14,7 @@ namespace S100Framework.Applications
             var tableName = "AidsToNavigationP";
 
             using var aidstonavigationp = source.OpenDataset<FeatureClass>(source.GetName(tableName));
-            
+
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
 
@@ -29,15 +27,15 @@ namespace S100Framework.Applications
             //filter.WhereClause += " AND globalid in ('{80125E6A-2D84-4FD2-B9C8-BEF5594FA926}', '{048BFCB0-F3B2-4075-9460-B89E1840CA03}')"; // NO SPEC FLOATING LIGHT
 
             using var cursor = aidstonavigationp.Search(filter, true);
-            
+
             //filter.WhereClause = orgWhereClause;
 
             int recordCount = 0;
-            var _slaves = new Dictionary<Guid,string>();
+            var _slaves = new Dictionary<Guid, string>();
 
             while (cursor.MoveNext()) {
                 recordCount += 1;
-                var feature = (Feature)cursor.Current; 
+                var feature = (Feature)cursor.Current;
                 var current = new AidsToNavigationP(feature);
 
                 var objectid = current.OBJECTID ?? default;
@@ -53,7 +51,7 @@ namespace S100Framework.Applications
 
                 if (FeatureRelations.Instance.IsSlave(globalid)) {
                     Subtypes.Instance.TryGetSubtype(tableName, current.FCSUBTYPE.Value, out var subtype);
-                    _slaves.Add(globalid,$"{tableName}::{globalid}::{subtype}");
+                    _slaves.Add(globalid, $"{tableName}::{globalid}::{subtype}");
                     continue;
                 }
 
@@ -162,7 +160,7 @@ namespace S100Framework.Applications
                             }
 
                             var topmark = relatedEquipment?.GetTopMark(current);
-                            
+
 
                             if (topmark != null) {
                                 instance.topmark = topmark;
@@ -198,9 +196,9 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
-                            
+
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
                             #endregion aidstonavigation
@@ -1633,7 +1631,7 @@ namespace S100Framework.Applications
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
-                        } 
+                        }
                         break;
 
                     case 105: { // RTPBCN_RadarTransponderBeacon // SLAVE RIND: 2
@@ -1645,7 +1643,7 @@ namespace S100Framework.Applications
 
                             if (current.SIGGRP != default) {
                                 instance.signalGroup = current.SIGGRP;
-                             }
+                            }
 
                             if (current.RADWAL != default) {
                                 if (TryGetRadarWaveLengths(current.RADWAL, out var lengths)) {
@@ -1698,7 +1696,7 @@ namespace S100Framework.Applications
                             */
 
                             throw new NotImplementedException("Impossible! No stand alone topmarks alloved.");
-                            
+
                         }
                     default:
                         // code block
@@ -1830,7 +1828,8 @@ namespace S100Framework.Applications
                         };
 
                         sectorCharacteristics.Add(sectorCharacteristic);
-                    };
+                    }
+                    ;
                 }
             }
             //}

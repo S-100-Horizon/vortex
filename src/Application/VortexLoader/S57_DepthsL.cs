@@ -1,11 +1,11 @@
 ﻿using ArcGIS.Core.Data;
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.DomainModel.S101.InformationTypes;
 using S100Framework.DomainModel;
+using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S101.InformationAssociations;
+using S100Framework.DomainModel.S101.InformationTypes;
 
 
 namespace S100Framework.Applications

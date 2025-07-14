@@ -1,9 +1,8 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.Applications.Singletons;
-using S100Framework.DomainModel.S501.ComplexAttributes;
 
 namespace S100Framework.Applications
 {
@@ -16,14 +15,14 @@ namespace S100Framework.Applications
             Subtypes.Instance.RegisterSubtypes(tracksAndRoutesA);
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
-            
+
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = tracksAndRoutesA.Search(filter, true);
             int recordCount = 0;
-            
+
             while (cursor.MoveNext()) {
                 recordCount += 1;
 
@@ -54,7 +53,7 @@ namespace S100Framework.Applications
                             if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767) {
                                 instance.depthRangeMinimumValue = current.DRVAL1.Value;
                             }
-                            
+
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
 
@@ -85,24 +84,24 @@ namespace S100Framework.Applications
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
-                            
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
                         }
                         break;
                     case 5: { // FAIRWY_Fairway
@@ -131,18 +130,18 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
                         }
                         break;
                     case 10: { // FERYRT_FerryRoute
@@ -172,18 +171,18 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
                         }
                         break;
                     case 15: { // ISTZNE_InshoreTrafficZone
@@ -208,18 +207,18 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
                         }
                         break;
                     case 20: { // PRCARE_PrecautionaryArea
@@ -245,18 +244,18 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
                         }
                         break;
                     case 25: { // RADRNG_RadarRange
@@ -283,24 +282,24 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
                         }
                         break;
                     case 30: { // RCTLPT_RecommendedTrafficLanePart
                             var instance = new RecommendedTrafficLanePart {
                                 orientationValue = default,
-                            }; 
+                            };
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
@@ -347,7 +346,7 @@ namespace S100Framework.Applications
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
-                            break;
+                        break;
                     case 40: { // RECTRC_RecommendedTrack
                             var instance = new RecommendedTrack {
                                 basedOnFixedMarks = default,
@@ -463,18 +462,18 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
                         }
                         break;
                     case 50: { // TSEZNE_TrafficSeparationZone
@@ -500,22 +499,22 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
                         }
                         break;
                     case 55: { // TSSCRS_TrafficSeparationSchemeCrossing
-                            throw new NotImplementedException($"No TSSCRS_TrafficSeparationSchemeCrossing in DK or GL. {tableName}");        
+                            throw new NotImplementedException($"No TSSCRS_TrafficSeparationSchemeCrossing in DK or GL. {tableName}");
 
                             var instance = new TrafficSeparationSchemeCrossing() {
                             };
@@ -538,18 +537,18 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
                         }
                         break;
                     case 60: { // TSSLPT_TrafficSeparationSchemeLanePart
@@ -592,7 +591,7 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
@@ -602,10 +601,10 @@ namespace S100Framework.Applications
                                 relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
                             }
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
                         }
                         break;
                     case 65: { // TSSRON_TrafficSeparationSchemeRoundabout
@@ -640,7 +639,7 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
@@ -650,14 +649,14 @@ namespace S100Framework.Applications
                                 relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
                             }
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
                         }
                         break;
                     case 70: { // TWRTPT_TwoWayRoutePart
-                            throw new NotImplementedException($"No TWRTPT_TwoWayRoutePart in DK or GL. {tableName}");    
+                            throw new NotImplementedException($"No TWRTPT_TwoWayRoutePart in DK or GL. {tableName}");
 
                             var instance = new TwoWayRoutePart {
                                 orientationValue = default,
@@ -684,18 +683,18 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
-                            
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
                         }
                         break;
                     default:

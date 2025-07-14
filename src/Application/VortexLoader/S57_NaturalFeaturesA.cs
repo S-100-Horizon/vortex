@@ -1,10 +1,8 @@
 ﻿using ArcGIS.Core.Data;
-using NetTopologySuite.Operation.Buffer;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using System;
 
 namespace S100Framework.Applications
 {
@@ -12,7 +10,7 @@ namespace S100Framework.Applications
     {
         private static void S57_NaturalFeaturesA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "NaturalFeaturesA";
-            
+
             using var naturalFeaturesA = source.OpenDataset<FeatureClass>(source.GetName(tableName));
             Subtypes.Instance.RegisterSubtypes(naturalFeaturesA);
 
@@ -22,7 +20,7 @@ namespace S100Framework.Applications
             using var insertSurface = featureClass.CreateInsertCursor();
 
             using var cursor = naturalFeaturesA.Search(filter, true);
-            
+
             var recordCount = 0;
 
             while (cursor.MoveNext()) {
@@ -74,11 +72,11 @@ namespace S100Framework.Applications
 
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
-                            
+
                             AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = ps101;
-                            bufferSurface["code"] = instance.GetType().Name; 
+                            bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(bufferSurface, current.SHAPE);
                             SetDrawingIndex(bufferSurface, current.PLTS_COMP_SCALE!.Value);
@@ -91,7 +89,7 @@ namespace S100Framework.Applications
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-    
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
                         break;
@@ -133,7 +131,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = ps101;
-                            bufferSurface["code"] = instance.GetType().Name; 
+                            bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
 
                             SetShape(bufferSurface, current.SHAPE);
@@ -228,7 +226,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = ps101;
-                            bufferSurface["code"] = instance.GetType().Name; 
+                            bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(bufferSurface, current.SHAPE);
                             SetDrawingIndex(bufferSurface, current.PLTS_COMP_SCALE!.Value);
@@ -263,7 +261,7 @@ namespace S100Framework.Applications
 
                     case 25: {    // SEAARE
                             var instance = new SeaAreaNamedWaterArea();
-                            
+
                             if (current.CATSEA.HasValue) {
                                 instance.categoryOfSeaArea = EnumHelper.GetEnumValue<categoryOfSeaArea>(current.CATSEA.Value);
                             }
@@ -397,7 +395,7 @@ namespace S100Framework.Applications
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
-                            
+
                             AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = ps101;

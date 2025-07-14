@@ -1,17 +1,7 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Internal.CIM;
-using NetTopologySuite.Operation.Buffer;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace S100Framework.Applications
 {

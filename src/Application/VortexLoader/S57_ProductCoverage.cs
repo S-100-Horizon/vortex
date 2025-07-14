@@ -1,8 +1,7 @@
-﻿using ArcGIS.Core.CIM;
-using ArcGIS.Core.Data;
+﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
-using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
 {
@@ -72,7 +71,7 @@ namespace S100Framework.Applications
                     var productCoverage = new ProductCoverage((Feature)cursorCoverage.Current);
                     var catcov = productCoverage.CATCOV ?? default;
                     var plts_comp_scale = productCoverage.PLTS_COMP_SCALE ?? default;
-                    
+
                     //var displayScale = DisplayScale.GetNearestBelowKey(plts_comp_scale) ?? default;
                     var displayScale = DisplayScale.GetDisplayScale(serie) ?? default;
 
@@ -99,14 +98,13 @@ namespace S100Framework.Applications
                                 optimumDisplayScale = default,
                             };
 
-                            
+
 
                             if (displayScale != null) {
                                 dataCoverage.maximumDisplayScale = displayScale.MaximumDisplayScale;
                                 dataCoverage.minimumDisplayScale = displayScale.MinimumDisplayScale.GetValueOrDefault();
                                 dataCoverage.optimumDisplayScale = displayScale.OptimumDisplayScale;
-                            } 
-                            {
+                            } {
                                 var vdat = new VerticalDatumOfData {
                                     verticalDatum = default,
                                 };
@@ -114,7 +112,7 @@ namespace S100Framework.Applications
 
                                 //    TODO: Fix hardcoded vertical datum of dataset -> EnumHelper.GetEnumValue<DomainModel.S101.verticalDatum>(current.VDAT.Value);
                                 if (current.VDAT.HasValue) {
-                                    vdat.verticalDatum = DomainModel.S101.verticalDatum.BalticSeaChartDatum2000; 
+                                    vdat.verticalDatum = DomainModel.S101.verticalDatum.BalticSeaChartDatum2000;
                                 }
 
                                 buffer["ps"] = ps101;
@@ -127,9 +125,8 @@ namespace S100Framework.Applications
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                                 // TODO: Create relations
-                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
-                            } 
-                            {
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+                            } {
                                 buffer["ps"] = ps101;
                                 buffer["code"] = dataCoverage.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage);

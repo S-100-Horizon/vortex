@@ -1,20 +1,15 @@
-﻿using S100Framework.Applications.S57.esri;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.ComplexAttributes;
-using ArcGIS.Core.Data;
+﻿using ArcGIS.Core.Data;
+using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.FeatureTypes;
 
 
 namespace S100Framework.Applications
 {
-    internal static partial class Converters {
-            internal static RadioStation CreateRadioStation(AidsToNavigationP current, Geodatabase source) {
+    internal static partial class Converters
+    {
+        internal static RadioStation CreateRadioStation(AidsToNavigationP current, Geodatabase source) {
             var instance = new RadioStation();
 
             if (current.CALSGN != default) {
@@ -46,7 +41,8 @@ namespace S100Framework.Applications
 
                 if (category != null) {
                     instance.categoryOfRadioStation = EnumHelper.GetEnumValues<categoryOfRadioStation>(category);
-                } else {
+                }
+                else {
                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Radiostation of type {subtype} is not converted.");
                     return null;
                 }

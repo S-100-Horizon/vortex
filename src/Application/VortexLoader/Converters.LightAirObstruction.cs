@@ -1,14 +1,9 @@
-﻿using S100Framework.Applications.S57.esri;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using S100Framework.DomainModel.S101.FeatureTypes;
+﻿using ArcGIS.Core.Data;
+using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
-using ArcGIS.Core.Data;
-using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
 {
@@ -84,10 +79,10 @@ namespace S100Framework.Applications
 
             if (current.VALNMR.HasValue) {
                 instance.valueOfNominalRange = current.VALNMR.Value;
-            }		
+            }
             // todo: mean sea level til baltic.
             instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
-            
+
             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                 string subtype = "";
 

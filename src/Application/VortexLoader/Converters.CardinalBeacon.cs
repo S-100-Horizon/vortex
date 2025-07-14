@@ -1,13 +1,14 @@
-﻿using S100Framework.Applications.S57.esri;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S101;
-using ArcGIS.Core.Data;
+﻿using ArcGIS.Core.Data;
+using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
 {
-    internal static partial class Converters {
-            internal static CardinalBeacon CreateCardinalBeacon(AidsToNavigationP current, Geodatabase source) {
+    internal static partial class Converters
+    {
+        internal static CardinalBeacon CreateCardinalBeacon(AidsToNavigationP current, Geodatabase source) {
             var instance = new CardinalBeacon {
                 beaconShape = default,
                 categoryOfCardinalMark = default,

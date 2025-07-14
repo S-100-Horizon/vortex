@@ -1,7 +1,4 @@
 ﻿using ArcGIS.Core.Geometry;
-using S100Framework.Applications;
-using S100Framework.Applications.S57.esri;
-using System.Formats.Asn1;
 using System.Xml.Linq;
 
 namespace S100Framework.Applications.Singletons

@@ -1,14 +1,5 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Data.UtilityNetwork.Trace;
 using ArcGIS.Core.Geometry;
-using ArcGIS.Desktop.Mapping;
-using S100Framework.Applications.S57.esri;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VortexLoader.Singletons
 {
@@ -20,7 +11,7 @@ namespace VortexLoader.Singletons
             using var cursor = featureClass.Search(filter, false);
 
             IList<Geometry> geometries = new List<Geometry>();
-            
+
             while (cursor.MoveNext()) {
                 var feature = (Feature)cursor.Current;
                 yield return (feature.GetShape());
@@ -51,13 +42,13 @@ namespace VortexLoader.Singletons
                 foreach (var singlePart in result) {
                     yield return singlePart;
                 }
-                
+
             }
         }
 
         internal static IReadOnlyList<Geometry> GetDissolved(FeatureClass sourcePolygons, QueryFilter sourceFilter, FeatureClass clipPolygons, QueryFilter clipFilter) {
             var allSourcePolygons = GeometryEngine.Instance.Union(AllGeometries(sourcePolygons, sourceFilter));
-            var allClipPolygons = GeometryEngine.Instance.Union(AllGeometries(clipPolygons,clipFilter));
+            var allClipPolygons = GeometryEngine.Instance.Union(AllGeometries(clipPolygons, clipFilter));
             var clippedGeom = GeometryEngine.Instance.Intersection(allSourcePolygons, allClipPolygons);
 
             var result = GeometryEngine.Instance.MultipartToSinglePart(clippedGeom);

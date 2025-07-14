@@ -1,9 +1,8 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using System.Xml.Linq;
-using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -16,7 +15,7 @@ namespace S100Framework.Applications
 
             var seabedL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
             Subtypes.Instance.RegisterSubtypes(seabedL);
-            
+
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
 
@@ -25,7 +24,7 @@ namespace S100Framework.Applications
 
             using var cursor = seabedL.Search(filter, true);
             int recordCount = 0;
-            
+
             while (cursor.MoveNext()) {
                 recordCount += 1;
 

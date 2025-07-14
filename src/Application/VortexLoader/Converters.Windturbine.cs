@@ -3,11 +3,6 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace S100Framework.Applications
@@ -72,7 +67,7 @@ namespace S100Framework.Applications
 
             // TODO: verticalClearanceFixed		
 
-            
+
             if (current.VERLEN.HasValue) {
                 instance.verticalLength = current.VERLEN.Value;
 

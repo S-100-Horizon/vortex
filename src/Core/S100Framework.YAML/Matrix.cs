@@ -1,7 +1,6 @@
 ﻿using GeoAPI.Geometries;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Operation.Linemerge;
-using NetTopologySuite.Operation.Union;
 using System.Collections.Concurrent;
 
 namespace S100Framework.YAML
@@ -109,7 +108,8 @@ namespace S100Framework.YAML
         }
     }
 
-    public class CompositeCurveContainer {
+    public class CompositeCurveContainer
+    {
         private Dictionary<UInt64, CompositeCurveFeature> _feature = new Dictionary<ulong, CompositeCurveFeature>();
         private Dictionary<string, (UInt64 Id, bool Reverse)> _keys = new Dictionary<string, (ulong, bool)>();
 
@@ -126,7 +126,7 @@ namespace S100Framework.YAML
             lock (this) {
                 if (_keys.ContainsKey(keyStraight)) {
                     var value = _keys[keyStraight];
-                    return (value.Id,value.Reverse);
+                    return (value.Id, value.Reverse);
                 }
                 _feature.Add(compositeCurve.Id, compositeCurve);
                 _keys.Add(keyStraight, (compositeCurve.Id, false));
@@ -218,7 +218,7 @@ namespace S100Framework.YAML
                 curves = curves.UnionBy(this._curvesNavigational, e => e.name);
             }
 
-            this.Build([.. surfaces], [.. curves]);            
+            this.Build([.. surfaces], [.. curves]);
 
             //_interceptor?.Invoke(this._hashing.Where(e => !e.Value.fetureRef.Reverse).Select(e => e.Value.curve.LineString).ToList());
 
@@ -331,7 +331,7 @@ namespace S100Framework.YAML
                 FeatureRef curveId = action(polyline.LineStrings, LinearRingOrientation.DontCare, true);
 
                 this._mapping.GetOrAdd(polyline.Name, $"C{curveId.Id}");
-            });            
+            });
 
             return this;
         }

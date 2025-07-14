@@ -1,13 +1,8 @@
-﻿using S100Framework.Applications.S57.esri;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S101;
-using ArcGIS.Core.Data;
+﻿using ArcGIS.Core.Data;
+using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
 {
@@ -48,11 +43,11 @@ namespace S100Framework.Applications
 
             if (current.STATUS != default) {
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
-            }		
-            
+            }
+
             // covered by meta feature hence not to be set
             //instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
-            
+
             if (current.VERLEN.HasValue) {
                 instance.verticalLength = current.VERLEN.Value;
             }

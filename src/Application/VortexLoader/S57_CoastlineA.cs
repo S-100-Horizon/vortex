@@ -1,8 +1,8 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -21,7 +21,7 @@ namespace S100Framework.Applications
 
             using var cursor = coastlinea.Search(filter, true);
             int recordCount = 0;
-            
+
             while (cursor.MoveNext()) {
                 recordCount += 1;
 
@@ -49,7 +49,8 @@ namespace S100Framework.Applications
 
                             if (current.CATSLC.HasValue) {
                                 instance.categoryOfShorelineConstruction = EnumHelper.GetEnumValue<categoryOfShorelineConstruction>(current.CATSLC.Value);
-                            };
+                            }
+                            ;
 
 
                             if (current.COLOUR != default) {
@@ -146,7 +147,7 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
@@ -156,10 +157,10 @@ namespace S100Framework.Applications
                                 relatedEquipment?.CreateRelatedAreaEquipment(current, instance, featureN);
                             }
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
-                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
                         }
                         break;
                     default:

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using ArcGIS.Core.Data;
-using Microsoft.Win32;
-using S100Framework.DomainModel.S101.FeatureTypes;
+﻿using ArcGIS.Core.Data;
 
 namespace VortexLoader
 {
@@ -33,7 +29,7 @@ namespace VortexLoader
             throw new InvalidOperationException($"No converter registered from {fromType.Name} to {toType.Name}");
         }
 
-        public object Convert(object value, Type toType, Geodatabase geodatabase= null) {
+        public object Convert(object value, Type toType, Geodatabase geodatabase = null) {
             var fromType = value.GetType();
 
             if (_converters.TryGetValue((fromType, toType), out var converter)) {
@@ -73,32 +69,32 @@ namespace VortexLoader
 
 
 
-    //public class ConverterRegistry
-    //{
-    //    private readonly Dictionary<(Type from, Type to), Func<object, object>> _converters = new();
+//public class ConverterRegistry
+//{
+//    private readonly Dictionary<(Type from, Type to), Func<object, object>> _converters = new();
 
-    //    public void Register<TFrom, TTo>(Func<TFrom, TTo> converter) {
-    //        _converters[(typeof(TFrom), typeof(TTo))] = input => converter((TFrom)input);
-    //    }
+//    public void Register<TFrom, TTo>(Func<TFrom, TTo> converter) {
+//        _converters[(typeof(TFrom), typeof(TTo))] = input => converter((TFrom)input);
+//    }
 
-    //    public TOut Convert<TOut, TIn>(object value) {
-    //        var fromType = typeof(TIn);
-    //        var toType = typeof(TOut);
+//    public TOut Convert<TOut, TIn>(object value) {
+//        var fromType = typeof(TIn);
+//        var toType = typeof(TOut);
 
-    //        if (_converters.TryGetValue((fromType, toType), out var converter)) {
-    //            return (TOut)converter((TIn)value);
-    //        }
+//        if (_converters.TryGetValue((fromType, toType), out var converter)) {
+//            return (TOut)converter((TIn)value);
+//        }
 
-    //        throw new InvalidOperationException($"No converter registered from {fromType.Name} to {toType.Name}");
-    //    }
-    //    public object Convert(object value, Type fromType, Type toType) {
-    //        if (_converters.TryGetValue((fromType, toType), out var converter)) {
-    //            return converter(value);
-    //        }
+//        throw new InvalidOperationException($"No converter registered from {fromType.Name} to {toType.Name}");
+//    }
+//    public object Convert(object value, Type fromType, Type toType) {
+//        if (_converters.TryGetValue((fromType, toType), out var converter)) {
+//            return converter(value);
+//        }
 
-    //        throw new InvalidOperationException($"No converter registered from {fromType.Name} to {toType.Name}");
-    //    }
-    //}
+//        throw new InvalidOperationException($"No converter registered from {fromType.Name} to {toType.Name}");
+//    }
+//}
 
 
 

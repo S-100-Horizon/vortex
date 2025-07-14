@@ -1,14 +1,7 @@
 ﻿using ArcGIS.Core.Data;
-
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using ArcGIS.Core.Data.UtilityNetwork.Trace;
-using S100Framework.DomainModel.S101.ComplexAttributes;
-using Serilog;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
 {
@@ -28,7 +21,7 @@ namespace S100Framework.Applications
 
             using var cursor = militaryFeaturesP.Search(filter, true);
             int recordCount = 0;
-            
+
             while (cursor.MoveNext()) {
                 recordCount += 1;
 
@@ -76,7 +69,7 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
@@ -86,10 +79,10 @@ namespace S100Framework.Applications
                                 relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                             }
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            
+
                         }
                         break;
                     default:

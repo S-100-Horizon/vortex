@@ -27,8 +27,8 @@ namespace S100Framework.Applications
                 WhereClause = $"({whereClause}) AND (fcsubtype = 40)"
             };
 
-            var productCoverageFilter = new QueryFilter() { 
-                WhereClause = $"{whereClause}" 
+            var productCoverageFilter = new QueryFilter() {
+                WhereClause = $"{whereClause}"
             };
 
             var clipped = Geometries.GetDissolvedClipped(metadataA, metadataAWhereFilter, productCoverage, productCoverageFilter);

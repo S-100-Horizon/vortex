@@ -1,9 +1,9 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
+using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
 {
@@ -108,8 +108,6 @@ namespace S100Framework.Applications
                             //var instance = new Bridge();
 
                             bool openingBridge = false;
-                            categoryOfOpeningBridge categoryOfOpeningBridgeValue = default;
-                            bridgeConstruction bridgeConstructionValue = default;
                             List<bridgeFunction> bridgeFunctionValue = new List<bridgeFunction>();
                             int? scaleMinimum = default;
                             List<colour> colours = new();
@@ -126,27 +124,21 @@ namespace S100Framework.Applications
                             }
                             else if (current.CATBRG != default && current.CATBRG == "3") {
                                 openingBridge = true;
-                                categoryOfOpeningBridgeValue = categoryOfOpeningBridge.SwingBridge;
                             }
                             else if (current.CATBRG != default && current.CATBRG == "4") {
                                 openingBridge = true;
-                                categoryOfOpeningBridgeValue = categoryOfOpeningBridge.LiftingBridge;
                             }
                             else if (current.CATBRG != default && current.CATBRG == "5") {
                                 openingBridge = true;
-                                categoryOfOpeningBridgeValue = categoryOfOpeningBridge.BasculeBridge;
                             }
                             else if (current.CATBRG != default && current.CATBRG == "6") {
                                 openingBridge = false;
-                                bridgeConstructionValue = bridgeConstruction.PontoonBridge;
                             }
                             else if (current.CATBRG != default && current.CATBRG == "7") {
                                 openingBridge = true;
-                                categoryOfOpeningBridgeValue = categoryOfOpeningBridge.Drawbridge;
                             }
                             else if (current.CATBRG != default && current.CATBRG == "8") {
                                 openingBridge = false;
-                                bridgeConstructionValue = bridgeConstruction.TransporterBridge;
                             }
                             else if (current.CATBRG != default && current.CATBRG == "9") {
                                 openingBridge = false;
@@ -154,7 +146,6 @@ namespace S100Framework.Applications
                             }
                             else if (current.CATBRG != default && current.CATBRG == "10") {
                                 openingBridge = false;
-                                bridgeConstructionValue = bridgeConstruction.Viaduct;
                             }
                             else if (current.CATBRG != default && current.CATBRG == "11") {
                                 openingBridge = false;
@@ -162,10 +153,8 @@ namespace S100Framework.Applications
                             }
                             else if (current.CATBRG != default && current.CATBRG == "12") {
                                 openingBridge = false;
-                                bridgeConstructionValue = bridgeConstruction.SuspensionBridge;
                             }
                             else if (current.CATBRG != default && current.CATBRG == "-32767") {
-                                bridgeConstructionValue = default;  // bridgeConstruction.Unknown;
                                 openingBridge = false;
                                 Logger.Current.DataError(objectid, tableName, longname, $"CATBRG is unknown hence OpeningBridge unknown - OpeningBridge set to false");
                             }
@@ -216,7 +205,7 @@ namespace S100Framework.Applications
                                         verticalClearanceValue = current.VERCOP.HasValue ? current.VERCOP!.Value : default,
                                         verticalClearanceUnlimited = !current.VERCOP.HasValue,
                                     }
-                                   
+
                                 };
 
                                 instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
@@ -654,7 +643,7 @@ namespace S100Framework.Applications
                             //buffer["code"] = instance.GetType().Name;
                             //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             //SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
                             //var featureN = featureClass.CreateRow(buffer);
                             //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -1015,7 +1004,7 @@ SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
 
                     case 45: { // PYLONS_PylonBridgeSupport
                             var instance = new PylonBridgeSupport {
-                                categoryOfPylon = default,                                
+                                categoryOfPylon = default,
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";

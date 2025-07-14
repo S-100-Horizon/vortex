@@ -1,9 +1,9 @@
-﻿using S100Framework.Applications.S57.esri;
-using S100Framework.DomainModel.S101.FeatureTypes;
+﻿using ArcGIS.Core.Data;
+using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
-using ArcGIS.Core.Data;
-using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
 {
@@ -93,8 +93,8 @@ namespace S100Framework.Applications
 
             if (current.VALNMR.HasValue) {
                 instance.valueOfNominalRange = current.VALNMR.Value;
-            }		
-            
+            }
+
             if (current.VERLEN.HasValue) {
                 instance.verticalLength = current.VERLEN.Value;
                 instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);

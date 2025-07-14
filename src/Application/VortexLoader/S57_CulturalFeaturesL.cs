@@ -1,8 +1,8 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -13,7 +13,7 @@ namespace S100Framework.Applications
 
             using var culturalFeaturesL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
             Subtypes.Instance.RegisterSubtypes(culturalFeaturesL);
-            
+
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
 
             using var buffer = featureClass.CreateRowBuffer();
@@ -486,7 +486,7 @@ namespace S100Framework.Applications
 
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
-                            
+
                             instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
 
                             if (current.CONDTN.HasValue) {
@@ -697,7 +697,7 @@ namespace S100Framework.Applications
                             //buffer["code"] = instance.GetType().Name;
                             //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             //SetShape(buffer, current.SHAPE);
-SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+                            SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
                             //var featureN = featureClass.CreateRow(buffer);
                             //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
