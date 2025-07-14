@@ -1,5 +1,4 @@
-﻿using S100Framework.Catalogues;
-using S100Framework.DomainModel;
+﻿using S100Framework.DomainModel;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -429,8 +428,8 @@ namespace S100Framework.WPF.ViewModel
 
         public T? value {
             get { return _value; }
-            set { 
-                SetValue(ref _value, value); 
+            set {
+                SetValue(ref _value, value);
             }
         }
 

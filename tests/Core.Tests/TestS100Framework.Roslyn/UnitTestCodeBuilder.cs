@@ -1,9 +1,7 @@
 ﻿#define prop
 //#define propfull
 
-using S100Framework.DomainModel;
 using System.IO;
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Xml;
@@ -680,8 +678,9 @@ namespace TestS100Framework
             IsNull      // Explicitly set to a "null" or "not applicable" state
         }
 
-        public enum Colors {
-            Red,Green,Yellow
+        public enum Colors
+        {
+            Red, Green, Yellow
         }
 
         public readonly struct NullableUnknown<T> : IEquatable<NullableUnknown<T>>
@@ -816,7 +815,6 @@ namespace TestS100Framework
 
             [Fact]
             public void Test_NullableUnknown() {
-                Nullable<Colors> colors;
 
                 // Example with int (value type)
                 NullableUnknown<int> age1 = NullableUnknown<int>.FromValue(30);

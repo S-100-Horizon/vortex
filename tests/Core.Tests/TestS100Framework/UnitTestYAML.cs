@@ -1,10 +1,6 @@
-﻿using ArcGIS.Core.Data;
-using JsonFlatten;
-using NetTopologySuite.Index.HPRtree;
+﻿using JsonFlatten;
 using Newtonsoft.Json.Linq;
-using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.YAML;
 using System.Collections;
 using System.Text;
 using System.Text.Json;

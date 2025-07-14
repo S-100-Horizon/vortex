@@ -12,7 +12,7 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 namespace S100Framework.WPF.Editors
 {
     public class S100TruncatedDateEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
-    {        
+    {
         private static readonly Regex _regexInput = new(@"^(\d|-{1,8})$");
 
         //public string? Value { get; set; } = default;
@@ -41,7 +41,7 @@ namespace S100Framework.WPF.Editors
         private void Control_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e) {
             if (string.IsNullOrEmpty(e.Text)) return;
             e.Handled = !_regexInput.IsMatch(e.Text);
-        }     
+        }
     }
 
     public class PartialDateRule : ValidationRule
@@ -276,7 +276,7 @@ namespace S100Framework.WPF.Editors
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
             BindingOperations.SetBinding(editor, TextBox.TextProperty, bindingSelectedItemProperty);
             panel.Children.Add(editor);
-           
+
             panel.Children.Add(radioButtonUnknown);
             return panel;
         }
@@ -322,7 +322,7 @@ namespace S100Framework.WPF.Editors
             radioButtonUnknown.Click += (s, e) => {
                 editor.Text = null;
                 radioButtonUnknown.IsChecked = true;
-            };            
+            };
 
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             //BindingOperations.SetBinding(control, CheckComboBox.SelectedItemProperty, bindingSelectedItemProperty);
@@ -346,7 +346,7 @@ namespace S100Framework.WPF.Editors
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
 
-            var instance = (T)propertyItem.Value;            
+            var instance = (T)propertyItem.Value;
 
             var propertyType = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
 
@@ -422,7 +422,7 @@ namespace S100Framework.WPF.Editors
                 radioButtonUnknown.Checked += (s, e) => {
                     //OnPropertyChanged(nameof(instance));
                 };
-                
+
                 if (propertyType == typeof(decimal) || propertyType == typeof(Decimal)) {
                     var editor = new PropertyGridEditorDecimalUpDown();
                     editor.ValueChanged += (s, e) => {

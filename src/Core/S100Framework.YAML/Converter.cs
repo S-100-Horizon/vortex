@@ -1,14 +1,8 @@
-﻿using NetTopologySuite.Index.HPRtree;
-using S100Framework.Catalogues;
+﻿using S100Framework.Catalogues;
 using S100Framework.DomainModel;
-using System;
 using System.Collections;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
-using System.Runtime.Serialization;
-using System.Security.AccessControl;
 using System.Text.Json.Serialization;
 using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
@@ -420,7 +414,7 @@ namespace S100Framework.YAML
                 if (x == null || y == null)
                     throw new InvalidOperationException("Missing coordinates for Point");
 
-                var point =  new Point(x.Value, y.Value) {
+                var point = new Point(x.Value, y.Value) {
                     Name = name
                 };
 
@@ -482,11 +476,11 @@ namespace S100Framework.YAML
                 if (name == null || coordinates.Count == 0 || depths.Length == 0)
                     throw new InvalidOperationException("Missing name, coordinates or depth for CompositeCurve");
 
-                var pointSet =  new PointSet([.. coordinates], depths) {
+                var pointSet = new PointSet([.. coordinates], depths) {
                     Name = name
                 };
 
-                foreach(var association in associations) {
+                foreach (var association in associations) {
                     pointSet.AddAssociation(association);
                 }
 
