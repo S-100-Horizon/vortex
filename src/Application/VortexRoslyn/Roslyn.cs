@@ -160,6 +160,7 @@ namespace S100Framework.Applications
 
                         builderDomainModel.AppendLine($"\t\t[System.ComponentModel.Description(\"{listedValueDefinition}\")]");
                         builderDomainModel.AppendLine($"\t\t[EnumMember(Value = \"{listedValueLabel}\")] ");
+                        builderDomainModel.AppendLine($"\t\t[XmlEnum(\"{listedValueCode}\")] ");
                         builderDomainModel.AppendLine($"\t\t{literalName} = {listedValueCode},");
                         //builderDomainModel.AppendLine();
                     }
@@ -369,6 +370,8 @@ namespace S100Framework.Applications
                             var prefix = knowTypesPrefix[referenceCode];
                             var postfix = knowTypesPostfix.ContainsKey(referenceCode) ? $" = {knowTypesPostfix[referenceCode]};" : string.Empty;
 
+                            builderDomainModel.AppendLine($"\t\t\t[XmlElement(\"{referenceCode}\")]");
+
                             if (permittedValues is not null) {
                                 builderDomainModel.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                             }
@@ -383,7 +386,7 @@ namespace S100Framework.Applications
                             }
                             else if (lower == 1 && upper.HasValue && upper.Value == 1) {
                                 //if (!knowTypesPrefix[referenceCode].Equals("String")) 2025-07-01
-                                //builderDomainModel.AppendLine($"\t\t\t[Required()]");
+                                //builderDomainModel.AppendLine($"\t\t\t[Required()]");                                
                                 if (supportingUnknown) {
                                     prefix = "required " + prefix + "?";
                                     postfix = " = default;";
@@ -1121,6 +1124,8 @@ namespace S100Framework.Applications
 
                 var prefix = client.KnowTypesPrefix[referenceCode];
                 var postfix = client.KnowTypesPostfix.ContainsKey(referenceCode) ? $" = {client.KnowTypesPostfix[referenceCode]};" : string.Empty;
+
+                builder.AppendLine($"\t\t\t[XmlElement(\"{referenceCode}\")]");
 
                 if (permittedValues is not null) {
                     builder.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
