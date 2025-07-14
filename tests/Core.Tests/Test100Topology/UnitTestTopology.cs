@@ -498,7 +498,13 @@ namespace Test100Topology
 
             using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
                 PersistTopology(target, result.Curves.Select(e=>e.LineString));
-            }            
+            }
+
+            var curves = result.Curves.Count();
+            var compositeCurves = result.CompositeCurves.Count();
+            var surfaces = result.Surfaces.Count();
+
+            this.output.WriteLine($"result: #{curves}, #{compositeCurves}, #{surfaces}");
 
             System.Diagnostics.Debugger.Break();
         }
