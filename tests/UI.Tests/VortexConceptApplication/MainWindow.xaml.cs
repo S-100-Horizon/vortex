@@ -1,10 +1,8 @@
 ﻿//#define S124
 
 using S100Framework.DomainModel;
-using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S124;
 using S100Framework.WPF;
-using S100Framework.WPF.ViewModel.S101;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Reflection;

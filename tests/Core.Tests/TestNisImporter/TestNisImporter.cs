@@ -5,7 +5,6 @@ using ArcGIS.Core.Internal.Geometry;
 using S100Framework.Applications;
 using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using System;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -52,7 +51,7 @@ namespace TestNisImporter
 
         [Fact]
         public void TestRounding() {
-            
+
             Assert.True(RoundToIHO(5.6d) == 5.6d);
         }
         public static double RoundToIHO(double value) {
