@@ -8,11 +8,13 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
 using System.Runtime.Serialization;
+using System.Security.AccessControl;
 using System.Text.Json.Serialization;
 using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
+using RequiredMemberAttribute = System.Runtime.CompilerServices.RequiredMemberAttribute;
 
 using Scalar = YamlDotNet.Core.Events.Scalar;
 
@@ -85,8 +87,11 @@ namespace S100Framework.YAML
                     continue;
 
                 var propertyValue = property.GetValue(obj, null);
+
+                var required = property.GetCustomAttribute<RequiredMemberAttribute>() != null;
+
                 try {
-                    attributes.BuildAttributeItem(propertyValue, property.Name, property.PropertyType, ref propertyId, parentId);
+                    attributes.BuildAttributeItem(propertyValue, property.Name, property.PropertyType, ref propertyId, parentId, required);
                 }
                 catch (Exception ex) {
                     Console.WriteLine(ex.Message);
@@ -95,8 +100,9 @@ namespace S100Framework.YAML
             return attributes;
         }
 
-        private static void BuildAttributeItem(this List<YamlAttributeItem> attributes, object? propertyValue, string propertyName, Type propertyType, ref int propertyId, int? parentId) {
-            if (propertyValue == null)
+        private static void BuildAttributeItem(this List<YamlAttributeItem> attributes, object? propertyValue, string propertyName, Type propertyType, ref int propertyId, int? parentId, bool required = false) {
+            // If the attribute is not required and the value is null, omit from yaml
+            if (!required && propertyValue == null)
                 return;
 
             var typed = Nullable.GetUnderlyingType(propertyType) ?? propertyType;
@@ -147,7 +153,12 @@ namespace S100Framework.YAML
                     break;
 
                 case Type t when typeof(IEnumerable).IsAssignableFrom(t):
-                    if (propertyValue == null) break;
+                    // If the property is a nullable collection, but still required, add it with null value
+                    if (propertyValue == null) {
+                        attributes.Add(new(propertyName, null, null, parentId));
+                        break;
+                    }
+
                     if (propertyValue is not IEnumerable collection) break;
 
                     foreach (var item in collection!) {
@@ -160,7 +171,12 @@ namespace S100Framework.YAML
                     break;
 
                 case Type t when t.IsClass:
-                    if (propertyValue == null) break;
+                    // If the property is a nullable object, but still required, add it with null value
+                    if (propertyValue == null) {
+                        attributes.Add(new(propertyName, null, null, parentId));
+                        break;
+                    }
+
 
                     // Add root object with ID and value = null
                     attributes.Add(new(t.Name, null, propertyId, parentId));
@@ -267,8 +283,8 @@ namespace S100Framework.YAML
                     switch (collectionName) {
                         case "InformationTypes":
                             // To-do Not implemented yet
-                            //var information = AddInformationType(parser);
-                            //dataset.AddInformation(information);
+                            var information = AddInformationType(parser);
+                            dataset.AddInformation(information);
                             break;
                         case "Points":
                             var point = AddPoint(parser);
@@ -368,10 +384,10 @@ namespace S100Framework.YAML
                 return metadata;
             }
 
-            private static Point AddPoint(IParser parser) {
+            private Point AddPoint(IParser parser) {
                 string? name = null;
                 double? x = null, y = null;
-
+                List<Association> associations = [];
                 while (parser.Current is not MappingEnd) {
                     if (parser.Current is Scalar scalarKey) {
                         var key = scalarKey.Value;
@@ -385,6 +401,10 @@ namespace S100Framework.YAML
                         switch (key) {
                             case "Name":
                                 name = value;
+                                break;
+                            case "Association":
+                                var assos = BuildAssociations(parser);
+                                associations.AddRange(assos);
                                 break;
                             case "Location":
                                 var coords = value.Split(",").Select(e => double.Parse(e, CultureInfo.InvariantCulture)).ToArray();
@@ -400,15 +420,21 @@ namespace S100Framework.YAML
                 if (x == null || y == null)
                     throw new InvalidOperationException("Missing coordinates for Point");
 
-                return new Point(x.Value, y.Value) {
+                var point =  new Point(x.Value, y.Value) {
                     Name = name
                 };
+
+                foreach (var association in associations) {
+                    point.AddAssociation(association);
+                }
+                return point;
             }
 
-            private static PointSet AddDepth(IParser parser) {
+            private PointSet AddDepth(IParser parser) {
                 string? name = null;
                 List<Coordinate> coordinates = [];
                 double[] depths = [];
+                List<Association> associations = [];
 
                 while (parser.Current is not MappingEnd) {
                     if (parser.Current is Scalar scalarKey) {
@@ -423,6 +449,10 @@ namespace S100Framework.YAML
                         switch (key) {
                             case "Name":
                                 name = value;
+                                break;
+                            case "Association":
+                                var assos = BuildAssociations(parser);
+                                associations.AddRange(assos);
                                 break;
                             case "Location":
                                 var coords = value.Split(",");
@@ -452,9 +482,15 @@ namespace S100Framework.YAML
                 if (name == null || coordinates.Count == 0 || depths.Length == 0)
                     throw new InvalidOperationException("Missing name, coordinates or depth for CompositeCurve");
 
-                return new PointSet([.. coordinates], depths) {
+                var pointSet =  new PointSet([.. coordinates], depths) {
                     Name = name
                 };
+
+                foreach(var association in associations) {
+                    pointSet.AddAssociation(association);
+                }
+
+                return pointSet;
             }
 
             private static CompositeCurve AddCompositeCurve(IParser parser) {
@@ -477,7 +513,6 @@ namespace S100Framework.YAML
                                 break;
                             case "Components":
                                 components = value;
-
                                 break;
                         }
                     }
@@ -530,10 +565,6 @@ namespace S100Framework.YAML
                                 }
 
                                 break;
-                            case "Hole":
-                                // Should never reach ideally
-                                var f = "exists?";
-                                break;
                         }
                     }
 
@@ -549,10 +580,11 @@ namespace S100Framework.YAML
                 };
             }
 
-            private static Curve AddCurve(IParser parser) {
+            private Curve AddCurve(IParser parser) {
                 string? name = null;
                 string? start = null;
                 string? end = null;
+                List<Association> associations = [];
                 List<Coordinate> vertices = [];
 
                 while (parser.Current is not MappingEnd) {
@@ -575,6 +607,10 @@ namespace S100Framework.YAML
                             case "End":
                                 end = value;
                                 break;
+                            case "Association":
+                                var curveAssociations = BuildAssociations(parser);
+                                associations.AddRange(curveAssociations);
+                                break;
                             case "Vertices":
                                 var coords = value.Split(",");
 
@@ -594,11 +630,15 @@ namespace S100Framework.YAML
                 if (name == null || vertices.Count == 0)
                     throw new InvalidOperationException("Missing name or vertices for Curve");
 
-                // Add start and endpoint?
-                return new Curve([.. vertices]) {
-                    Name = name
+                var curve = new Curve(start, end, [.. vertices]) {
+                    Name = name,
                 };
 
+                foreach (var association in associations) {
+                    curve.AddAssociation(association);
+                }
+
+                return curve;
             }
 
             private Feature AddFeatureAttribute(IParser parser) {
@@ -658,6 +698,44 @@ namespace S100Framework.YAML
                     parser.MoveNext();
                 }
                 return feature;
+            }
+            private Information AddInformationType(IParser parser) {
+                var information = new Information();
+                while (parser.Current is not MappingEnd) {
+                    if (parser.Current is Scalar scalarKey) {
+                        var key = scalarKey.Value;
+
+                        // Check next element
+                        parser.MoveNext();
+
+                        parser.Accept(out Scalar scalarValue);
+
+                        var value = scalarValue?.Value;
+                        switch (key) {
+                            case "Name":
+                                information.Name = value;
+                                break;
+                            case "ID":
+                                information.ID = value;
+                                break;
+                            case "Attributes":
+                                // Keep on parsing.. 
+                                parser.MoveNext();  // SequenceStart
+                                parser.MoveNext();  // MappingStart
+
+                                var attributeList = BuildAttributeList(parser);
+
+                                InformationNode informationNode = BuildInformationNodeObject(attributeList, information.Name);
+
+                                information.Attributes = informationNode;
+
+                                break;
+                        }
+                    }
+
+                    parser.MoveNext();
+                }
+                return information;
             }
 
             private List<Association> BuildAssociations(IParser parser) {
@@ -733,6 +811,115 @@ namespace S100Framework.YAML
                 }
 
                 return attributes;
+            }
+            private static InformationNode BuildInformationNodeObject(List<YamlAttributeItem> attributes, string type) {
+                var informationType = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{type}", true) ?? default;
+
+                var informationNode = Activator.CreateInstance(informationType);
+                var typeInstances = new Dictionary<int, object> { { 0, informationNode } };
+
+                foreach (var attr in attributes) {
+                    var parentId = attr.Parent ?? 0;
+                    var parentInstance = typeInstances[parentId];
+                    var parentType = parentInstance.GetType();
+                    var prop = parentType.GetProperty(attr.Name);
+
+                    if (prop == null)
+                        continue;
+
+                    // Unwrap nullable type
+                    var typed = Nullable.GetUnderlyingType(prop.PropertyType!) ?? prop.PropertyType;
+
+                    object? newInstance;
+
+                    switch (typed) {
+                        case Type t when t == typeof(string): {
+                                if (attr.Value == null) continue;
+                                var convertedValue = attr.Value;
+                                prop.SetValue(parentInstance, convertedValue);
+                                break;
+                            }
+
+                        case Type t when t == typeof(bool): {
+                                if (attr.Value == null) continue;
+                                var booleanValue = Convert.ToInt32(attr.Value) == 1;
+                                prop.SetValue(parentInstance, booleanValue);
+                                break;
+                            }
+
+                        case Type t when t == typeof(decimal): {
+                                if (attr.Value == null) continue;
+                                var decimalValue = decimal.Parse(attr.Value, CultureInfo.InvariantCulture);
+                                prop.SetValue(parentInstance, decimalValue);
+                                break;
+                            }
+
+                        case Type t when t.IsEnum: {
+                                if (attr.Value == null) continue;
+                                var enumValue = Enum.Parse(typed, attr.Value);
+                                prop.SetValue(parentInstance, enumValue);
+                                break;
+                            }
+
+                        case Type t when t.IsPrimitive: {
+                                if (attr.Value == null) continue;
+                                var convertedValue = Convert.ChangeType(attr.Value, typed);
+                                prop.SetValue(parentInstance, convertedValue);
+                                break;
+                            }
+
+                        case Type t when typeof(IEnumerable).IsAssignableFrom(t): {
+                                var list = (System.Collections.IList?)prop.GetValue(parentInstance);
+                                var elementType = typed.GetGenericArguments()[0];
+
+                                if (elementType == typeof(string) || elementType.IsPrimitive || elementType.IsEnum || elementType == typeof(decimal)) {
+                                    if (attr.Value == null) continue;
+
+                                    var convertedItem = elementType.IsEnum
+                                        ? Enum.Parse(elementType, attr.Value)
+                                        : Convert.ChangeType(attr.Value, elementType, CultureInfo.InvariantCulture);
+
+                                    list!.Add(convertedItem);
+                                }
+                                else {
+                                    newInstance = Activator.CreateInstance(elementType)!;
+                                    list!.Add(newInstance);
+
+                                    if (attr.Id.HasValue)
+                                        typeInstances[attr.Id.Value] = newInstance;
+                                }
+                                break;
+                            }
+
+                        case Type t when t.IsClass: {
+                                newInstance = Activator.CreateInstance(typed)!;
+                                prop.SetValue(parentInstance, newInstance);
+
+                                if (attr.Id.HasValue)
+                                    typeInstances[attr.Id.Value] = newInstance;
+                                break;
+                            }
+
+                        case Type t when t == typeof(DateOnly): {
+                                if (attr.Value == null) continue;
+                                var dateOnly = DateOnly.Parse(attr.Value, CultureInfo.InvariantCulture);
+                                prop.SetValue(parentInstance, dateOnly);
+                                break;
+                            }
+
+                        case Type t when t.IsValueType: {
+                                if (attr.Value == null) continue;
+                                var convertedValue = Convert.ChangeType(attr.Value, typed);
+                                prop.SetValue(parentInstance, convertedValue);
+                                break;
+                            }
+
+                        default:
+                            break;
+                    }
+                }
+
+                return informationNode as InformationNode;
             }
             private static FeatureNode BuildFeatureNodeObject(List<YamlAttributeItem> attributes, string type) {
                 var featureType = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{type}", true) ?? default;

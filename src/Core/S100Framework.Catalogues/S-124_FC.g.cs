@@ -13,10 +13,10 @@ namespace S100Framework.DomainModel.S124 {
 	public static class Summary
 	{
 		public static Version Version => new Version("2.0.0");
-		public static string[] ComplexTypes => ["affectedChartPublications","chartAffected","fixedDateRange","generalArea","information","locality","locationName","messageSeriesIdentifier","navwarnTitle","warningInformation","FeatureReference","FeatureName"];
+		public static string[] ComplexTypes => ["affectedChartPublications","chartAffected","fixedDateRange","generalArea","information","locality","locationName","messageSeriesIdentifier","navwarnTitle","warningInformation","featureReference","featureName","horizontalPositionUncertainty","spatialAccuracy"];
 		public static string[] InformationAssociationTypes => ["navwarnPreambleContent","navwarnReferences"];
 		public static string[] FeatureAssociationTypes => ["TextAssociation","areaAffected"];
-		public static string[] InformationTypes => ["References","NavwarnPreamble"];
+		public static string[] InformationTypes => ["References","NavwarnPreamble","SpatialQuality"];
 		public static string[] FeatureTypes => ["NavwarnPart","NavwarnAreaAffected","TextPlacement"];
 		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
 			Primitives.point => ["NavwarnPart","NavwarnAreaAffected","TextPlacement"],
@@ -37,10 +37,12 @@ namespace S100Framework.DomainModel.S124 {
 	public enum nameUsage : int {
 		[System.ComponentModel.Description("TheNameIsIntendedToBeDisplayedWhenTheEndUserSystemIsSetToTheDefaultNameTextDisplaySetting")]
 		[EnumMember(Value = "Default Name Display")] 
+		[XmlEnum("1")] 
 		DefaultNameDisplay = 1,
 
 		[System.ComponentModel.Description("TheNameIsIntendedToBeDisplayedWhenTheEndUserSystemIsSetToAnAlternateNameTextDisplaySettingForExampleAnAlternateLanguage")]
 		[EnumMember(Value = "Alternate Name Display")] 
+		[XmlEnum("2")] 
 		AlternateNameDisplay = 2,
 	}
 
@@ -49,50 +51,62 @@ namespace S100Framework.DomainModel.S124 {
 	public enum warningType : int {
 		[System.ComponentModel.Description("MessageContainingUrgentInformationRelevantToSafeNavigationBroadcastToShipsInALocalAreaInAccordanceWithTheProvisionsOfTheInternationalConventionForTheSafetyOfLifeAtSea1974AsAmendedAdoptedFromS532223LocalWarningMeansANavigationalWarningWhichCoversInshoreWatersOftenWithinTheLimitsOfJurisdictionOfAHarbourOrPortAuthorityAdoptedFromS532210")]
 		[EnumMember(Value = "Local Navigational Warning")] 
+		[XmlEnum("1")] 
 		LocalNavigationalWarning = 1,
 
 		[System.ComponentModel.Description("MessageContainingUrgentInformationRelevantToSafeNavigationBroadcastToShipsInACoastalAreaInAccordanceWithTheProvisionsOfTheInternationalConventionForTheSafetyOfLifeAtSea1974AsAmendedCoastalWarningMeansANavigationalWarningPromulgatedAsPartOfANumberedSeriesByANationalCoordinator")]
 		[EnumMember(Value = "Coastal Navigational Warning")] 
+		[XmlEnum("2")] 
 		CoastalNavigationalWarning = 2,
 
 		[System.ComponentModel.Description("MessageContainingUrgentInformationRelevantToSafeNavigationBroadcastToShipsInASubAreaInAccordanceWithTheProvisionsOfTheInternationalConventionForTheSafetyOfLifeAtSea1974AsAmendedSubAreaWarningMeansANavigationalWarningOrInForceBulletinPromulgatedAsPartOfANumberedSeriesByASubAreaCoordinator")]
 		[EnumMember(Value = "Sub-Area Navigational Warning")] 
+		[XmlEnum("3")] 
 		SubAreaNavigationalWarning = 3,
 
 		[System.ComponentModel.Description("MessageContainingUrgentInformationRelevantToSafeNavigationBroadcastToShipsInANavareaInAccordanceWithTheProvisionsOfTheInternationalConventionForTheSafetyOfLifeAtSea1974AsAmendedNavareaWarningMeansANavigationalWarningPromulgatedAsPartOfANumberedSeriesByANavareaCoordinator")]
 		[EnumMember(Value = "NAVAREA Navigational Warning")] 
+		[XmlEnum("4")] 
 		NavareaNavigationalWarning = 4,
 
 		[System.ComponentModel.Description("AMessageThatIndicatesThatThereAreNoNavigationalWarningsToBeDisseminatedInTheNavarea")]
 		[EnumMember(Value = "NAVAREA No Warning")] 
+		[XmlEnum("5")] 
 		NavareaNoWarning = 5,
 
 		[System.ComponentModel.Description("AMessageThatIndicatesThatThereAreNoNavigationalWarningsToBeDisseminatedInTheSubArea")]
 		[EnumMember(Value = "Sub-Area No Warning")] 
+		[XmlEnum("6")] 
 		SubAreaNoWarning = 6,
 
 		[System.ComponentModel.Description("AMessageThatIndicatesThatThereAreNoNavigationalWarningsToBeDisseminatedInTheCoastalArea")]
 		[EnumMember(Value = "Coastal No Warning")] 
+		[XmlEnum("7")] 
 		CoastalNoWarning = 7,
 
 		[System.ComponentModel.Description("AMessageThatIndicatesThatThereAreNoNavigationalWarningsToBeDisseminatedInTheLocalArea")]
 		[EnumMember(Value = "Local No Warning")] 
+		[XmlEnum("8")] 
 		LocalNoWarning = 8,
 
 		[System.ComponentModel.Description("AListOfSerialNumbersOfNavareaWarningsWhichAreInForce")]
 		[EnumMember(Value = "NAVAREA In-Force Bulletin")] 
+		[XmlEnum("9")] 
 		NavareaInForceBulletin = 9,
 
 		[System.ComponentModel.Description("AListOfSerialNumbersOfSubAreaWarningsWhichAreInForce")]
 		[EnumMember(Value = "Sub-Area In-Force Bulletin")] 
+		[XmlEnum("10")] 
 		SubAreaInForceBulletin = 10,
 
 		[System.ComponentModel.Description("AListOfSerialNumbersOfCoastalWarningsWhichAreInForce")]
 		[EnumMember(Value = "Coastal In-Force Bulletin")] 
+		[XmlEnum("11")] 
 		CoastalInForceBulletin = 11,
 
 		[System.ComponentModel.Description("AListOfSerialNumbersOfLocalWarningsWhichAreInForce")]
 		[EnumMember(Value = "Local In-Force Bulletin")] 
+		[XmlEnum("12")] 
 		LocalInForceBulletin = 12,
 	}
 
@@ -101,14 +115,17 @@ namespace S100Framework.DomainModel.S124 {
 	public enum referenceCategory : int {
 		[System.ComponentModel.Description("CancellationOfWarningWhichIsNoLongerValid")]
 		[EnumMember(Value = "Warning Cancellation")] 
+		[XmlEnum("1")] 
 		WarningCancellation = 1,
 
 		[System.ComponentModel.Description("ReferenceToRelevantWarning")]
 		[EnumMember(Value = "Warning Reference")] 
+		[XmlEnum("2")] 
 		WarningReference = 2,
 
 		[System.ComponentModel.Description("ReferenceToWarningsOrNoticesThatAreConsideredInForce")]
 		[EnumMember(Value = "In-Force")] 
+		[XmlEnum("3")] 
 		InForce = 3,
 	}
 
@@ -117,23 +134,87 @@ namespace S100Framework.DomainModel.S124 {
 	public enum restriction : int {
 		[System.ComponentModel.Description("oneAnAreaShownOnChartsWithinWhichNavigationAndOrAnchoringIsProhibited2InAviationTerminologyASpecifiedAreaWithinTheLandAreasOfAStateOrTerritorialWatersAdjacentTheretoOverWhichTheFlightOfAircraftIsProhibiTed")]
 		[EnumMember(Value = "Entry Prohibited")] 
+		[XmlEnum("7")] 
 		EntryProhibited = 7,
 
 		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichNavigationIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
 		[EnumMember(Value = "Entry Restricted")] 
+		[XmlEnum("8")] 
 		EntryRestricted = 8,
 
 		[System.ComponentModel.Description("AnImoDeclaredRouteingMeasureComprisingAnAreaWithinDefinedLimitsInWhichEitherNavigationIsParticularlyHazardousOrItIsExceptionallyImportantToAvoidCasualtiesAndWhichShouldBeAvoidedByAllShipsOrCertainClassesOfShips")]
 		[EnumMember(Value = "Area To Be Avoided")] 
+		[XmlEnum("14")] 
 		AreaToBeAvoided = 14,
 
 		[System.ComponentModel.Description("AnAreaInWhichAVesselIsProhibitedFromStopping")]
 		[EnumMember(Value = "Stopping Prohibited")] 
+		[XmlEnum("25")] 
 		StoppingProhibited = 25,
 
 		[System.ComponentModel.Description("AnAreaWithinWhichSpeedIsRestricted")]
 		[EnumMember(Value = "Speed Restricted")] 
+		[XmlEnum("27")] 
 		SpeedRestricted = 27,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum qualityOfHorizontalMeasurement : int {
+		[System.ComponentModel.Description("ThePositionSWasWereDeterminedByTheOperationOfMakingMeasurementsForDeterminingTheRelativePositionOfPointsOnAboveOrBeneathTheEarthSSurfaceSurveyImpliesARegularControlledSurveyOfAnyDate")]
+		[EnumMember(Value = "Surveyed")] 
+		[XmlEnum("1")] 
+		Surveyed = 1,
+
+		[System.ComponentModel.Description("SurveyDataIsDoesNotExistOrIsVeryPoor")]
+		[EnumMember(Value = "Unsurveyed")] 
+		[XmlEnum("2")] 
+		Unsurveyed = 2,
+
+		[System.ComponentModel.Description("NotSurveyedToModernStandardsOrDueToItsAgeScaleOrPositionalOrVerticalUncertaintiesIsNotSuitableToTheTypeOfNavigationExpectedInTheArea")]
+		[EnumMember(Value = "Inadequately Surveyed")] 
+		[XmlEnum("3")] 
+		InadequatelySurveyed = 3,
+
+		[System.ComponentModel.Description("APositionThatIsConsideredToBeLessThanThirdOrderAccuracyButIsGenerallyConsideredToBeWithin305MetresOfItsCorrectGeographicLocationAlsoMayApplyToAFeatureWhosePositionDoesNotRemainFixed")]
+		[EnumMember(Value = "Approximate")] 
+		[XmlEnum("4")] 
+		Approximate = 4,
+
+		[System.ComponentModel.Description("OfUncertainPositionTheExpressionIsUsedPrincipallyOnChartsToIndicateThatAWreckShoalEtcHasBeenReportedInVariousPositionsAndNotDefinitelyDeterminedInAny")]
+		[EnumMember(Value = "Position Doubtful")] 
+		[XmlEnum("5")] 
+		PositionDoubtful = 5,
+
+		[System.ComponentModel.Description("AFeatureSPositionHasBeenObtainedFromQuestionableOrUnreliableData")]
+		[EnumMember(Value = "Unreliable")] 
+		[XmlEnum("6")] 
+		Unreliable = 6,
+
+		[System.ComponentModel.Description("AnObjectWhosePositionHasBeenReportedAndItsPositionConfirmedBySomeMeansOtherThanAFormalSurveySuchAsAnIndependentReportOfTheSameObject")]
+		[EnumMember(Value = "Reported (Not Surveyed)")] 
+		[XmlEnum("7")] 
+		ReportedNotSurveyed = 7,
+
+		[System.ComponentModel.Description("AnObjectWhosePositionHasBeenReportedAndItsPositionHasNotBeenConfirmed")]
+		[EnumMember(Value = "Reported (Not Confirmed)")] 
+		[XmlEnum("8")] 
+		ReportedNotConfirmed = 8,
+
+		[System.ComponentModel.Description("TheMostProbablePositionOfAnObjectDeterminedFromIncompleteDataOrDataOfQuestionableAccuracy")]
+		[EnumMember(Value = "Estimated")] 
+		[XmlEnum("9")] 
+		Estimated = 9,
+
+		[System.ComponentModel.Description("APositionThatIsOfAKnownValueSuchAsThePositionOfAnAnchorBerthOrOtherDefinedObject")]
+		[EnumMember(Value = "Precisely Known")] 
+		[XmlEnum("10")] 
+		PreciselyKnown = 10,
+
+		[System.ComponentModel.Description("APositionThatIsComputedFromData")]
+		[EnumMember(Value = "Calculated")] 
+		[XmlEnum("11")] 
+		Calculated = 11,
 	}
 
 	[System.Serializable()]
@@ -1761,15 +1842,19 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class chartAffected {
+			[XmlElement("chartNumber")]
 			public required String chartNumber {get;set;} = string.Empty;
 
+			[XmlElement("chartPlanNumber")]
 			public String? chartPlanNumber {get;set;} = default;
 
 			public bool ShouldSerializechartPlanNumber() { return !string.IsNullOrEmpty(chartPlanNumber); }
 
+			[XmlElement("editionDate")]
 			[XmlIgnore]
 			public required DateOnly editionDate {get;set;} = default;
 
+			[XmlElement("lastNoticeDate")]
 			[XmlIgnore]
 			public DateOnly? lastNoticeDate {get;set;} = default;
 
@@ -1779,18 +1864,22 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class fixedDateRange {
+			[XmlElement("dateEnd")]
 			public String? dateEnd {get;set;} = default;
 
 			public bool ShouldSerializedateEnd() { return !string.IsNullOrEmpty(dateEnd); }
 
+			[XmlElement("dateStart")]
 			public String? dateStart {get;set;} = default;
 
 			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
 
+			[XmlElement("timeOfDayEnd")]
 			public TimeOnly? timeOfDayEnd {get;set;} = default;
 
 			public bool ShouldSerializetimeOfDayEnd() { return timeOfDayEnd.HasValue; }
 
+			[XmlElement("timeOfDayStart")]
 			public TimeOnly? timeOfDayStart {get;set;} = default;
 
 			public bool ShouldSerializetimeOfDayStart() { return timeOfDayStart.HasValue; }
@@ -1799,57 +1888,72 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class information {
+			[XmlElement("language")]
 			public required String language {get;set;} = string.Empty;
 
+			[XmlElement("text")]
 			public required String text {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class locationName {
+			[XmlElement("language")]
 			public required String language {get;set;} = string.Empty;
 
+			[XmlElement("text")]
 			public required String text {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class messageSeriesIdentifier {
+			[XmlElement("agencyResponsibleForProduction")]
 			public required String agencyResponsibleForProduction {get;set;} = string.Empty;
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("nameOfSeries")]
 			public required String nameOfSeries {get;set;} = string.Empty;
 
+			[XmlElement("nationality")]
 			public String? nationality {get;set;} = default;
 
 			public bool ShouldSerializenationality() { return !string.IsNullOrEmpty(nationality); }
 
+			[XmlElement("warningNumber")]
 			public required int warningNumber {get;set;} = default;
 
+			[XmlElement("warningType")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
 			public required warningType warningType {get;set;} = default;
 
+			[XmlElement("year")]
 			public required int year {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class navwarnTitle {
+			[XmlElement("language")]
 			public required String language {get;set;} = string.Empty;
 
+			[XmlElement("text")]
 			public required String text {get;set;} = string.Empty;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class warningInformation {
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("navwarnTypeDetails")]
 			public List<navwarnTypeDetails> navwarnTypeDetails {get;set;} = [];
 
 			public bool ShouldSerializenavwarnTypeDetails() { return navwarnTypeDetails.Any(); }
@@ -1857,11 +1961,13 @@ namespace S100Framework.DomainModel.S124 {
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class FeatureReference {
+		public class featureReference {
+			[XmlElement("atoNNumber")]
 			public List<String> atoNNumber {get;set;} = [];
 
 			public bool ShouldSerializeatoNNumber() { return atoNNumber.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public List<String> interoperabilityIdentifier {get;set;} = [];
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return interoperabilityIdentifier.Any(); }
@@ -1869,11 +1975,14 @@ namespace S100Framework.DomainModel.S124 {
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class FeatureName {
+		public class featureName {
+			[XmlElement("language")]
 			public required String language {get;set;} = string.Empty;
 
-			public required String Name {get;set;} = string.Empty;
+			[XmlElement("name")]
+			public required String name {get;set;} = string.Empty;
 
+			[XmlElement("nameUsage")]
 			[EnumerationValue([1,2,3])]
 			public nameUsage? nameUsage {get;set;} = default;
 
@@ -1882,21 +1991,40 @@ namespace S100Framework.DomainModel.S124 {
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class horizontalPositionUncertainty {
+			[XmlElement("uncertaintyFixed")]
+			public required decimal uncertaintyFixed {get;set;} = default;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class spatialAccuracy {
+			[XmlElement("horizontalPositionUncertainty")]
+			public required horizontalPositionUncertainty horizontalPositionUncertainty {get;set;} = default;
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class affectedChartPublications {
+			[XmlElement("chartAffected")]
 			public chartAffected? chartAffected {get;set;} = default;
 
 			public bool ShouldSerializechartAffected() { return chartAffected!=default; }
 
+			[XmlElement("chartPublicationIdentifier")]
 			public String? chartPublicationIdentifier {get;set;} = default;
 
 			public bool ShouldSerializechartPublicationIdentifier() { return !string.IsNullOrEmpty(chartPublicationIdentifier); }
 
+			[XmlElement("internationalChartAffected")]
 			public String? internationalChartAffected {get;set;} = default;
 
 			public bool ShouldSerializeinternationalChartAffected() { return !string.IsNullOrEmpty(internationalChartAffected); }
 
+			[XmlElement("language")]
 			public required String language {get;set;} = string.Empty;
 
+			[XmlElement("publicationAffected")]
 			public String? publicationAffected {get;set;} = default;
 
 			public bool ShouldSerializepublicationAffected() { return !string.IsNullOrEmpty(publicationAffected); }
@@ -1905,10 +2033,12 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class generalArea {
+			[XmlElement("localityIdentifier")]
 			public String? localityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializelocalityIdentifier() { return !string.IsNullOrEmpty(localityIdentifier); }
 
+			[XmlElement("locationName")]
 			public List<locationName> locationName {get;set;} = [];
 
 			public bool ShouldSerializelocationName() { return locationName.Any(); }
@@ -1917,10 +2047,12 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class locality {
+			[XmlElement("localityIdentifier")]
 			public String? localityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializelocalityIdentifier() { return !string.IsNullOrEmpty(localityIdentifier); }
 
+			[XmlElement("locationName")]
 			public List<locationName> locationName {get;set;} = [];
 
 			public bool ShouldSerializelocationName() { return locationName.Any(); }
@@ -2003,12 +2135,15 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class References : InformationNode, IInformationBindingDefinition {
+			[XmlElement("messageSeriesIdentifier")]
 			public List<messageSeriesIdentifier> messageSeriesIdentifier {get;set;} = [];
 
 			public bool ShouldSerializemessageSeriesIdentifier() { return messageSeriesIdentifier.Any(); }
 
+			[XmlElement("noMessageOnHand")]
 			public required Boolean noMessageOnHand {get;set;} = false;
 
+			[XmlElement("referenceCategory")]
 			[EnumerationValue([1,2,3])]
 			public required referenceCategory referenceCategory {get;set;} = default;
 
@@ -2040,33 +2175,42 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NavwarnPreamble : InformationNode, IInformationBindingDefinition {
+			[XmlElement("affectedChartPublications")]
 			public List<affectedChartPublications> affectedChartPublications {get;set;} = [];
 
 			public bool ShouldSerializeaffectedChartPublications() { return affectedChartPublications.Any(); }
 
+			[XmlElement("generalArea")]
 			public List<generalArea> generalArea {get;set;} = [];
 
 			public bool ShouldSerializegeneralArea() { return generalArea.Any(); }
 
+			[XmlElement("locality")]
 			public List<locality> locality {get;set;} = [];
 
 			public bool ShouldSerializelocality() { return locality.Any(); }
 
+			[XmlElement("messageSeriesIdentifier")]
 			public required messageSeriesIdentifier messageSeriesIdentifier {get;set;} = default;
 
+			[XmlElement("navwarnTitle")]
 			public List<navwarnTitle> navwarnTitle {get;set;} = [];
 
 			public bool ShouldSerializenavwarnTitle() { return navwarnTitle.Any(); }
 
+			[XmlElement("cancellationDate")]
 			public DateTime? cancellationDate {get;set;} = default;
 
 			public bool ShouldSerializecancellationDate() { return cancellationDate.HasValue; }
 
+			[XmlElement("intService")]
 			public required Boolean intService {get;set;} = false;
 
+			[XmlElement("navwarnTypeGeneral")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])]
 			public required navwarnTypeGeneral navwarnTypeGeneral {get;set;} = default;
 
+			[XmlElement("publicationTime")]
 			public required DateTime publicationTime {get;set;} = default;
 
 			[JsonIgnore]
@@ -2090,6 +2234,36 @@ namespace S100Framework.DomainModel.S124 {
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
 		}
+
+		/// <summary>
+		/// The indication of the quality of the locational information for features in a dataset.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class SpatialQuality : InformationNode, IInformationBindingDefinition {
+			[XmlElement("qualityOfHorizontalMeasurement")]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
+			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
+
+			public bool ShouldSerializequalityOfHorizontalMeasurement() { return qualityOfHorizontalMeasurement.HasValue; }
+
+			[XmlElement("spatialAccuracy")]
+			public spatialAccuracy? spatialAccuracy {get;set;} = default;
+
+			public bool ShouldSerializespatialAccuracy() { return spatialAccuracy!=default; }
+
+			[JsonIgnore]
+			public override string Code => nameof(SpatialQuality);
+
+			[JsonIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+		}
 	}
 	namespace FeatureTypes {
 		using FeatureAssociations;
@@ -2102,24 +2276,29 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NavwarnPart : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("restriction")]
 			[EnumerationValue([7,8,14,25,27])]
 			public restriction? restriction {get;set;} = default;
 
 			public bool ShouldSerializerestriction() { return restriction.HasValue; }
 
+			[XmlElement("fixedDateRange")]
 			public List<fixedDateRange> fixedDateRange {get;set;} = [];
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange.Any(); }
 
+			[XmlElement("warningInformation")]
 			public required warningInformation warningInformation {get;set;} = default;
 
-			public List<FeatureName> FeatureName {get;set;} = [];
+			[XmlElement("featureName")]
+			public List<featureName> featureName {get;set;} = [];
 
-			public bool ShouldSerializeFeatureName() { return FeatureName.Any(); }
+			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
-			public List<FeatureReference> FeatureReference {get;set;} = [];
+			[XmlElement("featureReference")]
+			public List<featureReference> featureReference {get;set;} = [];
 
-			public bool ShouldSerializeFeatureReference() { return FeatureReference.Any(); }
+			public bool ShouldSerializefeatureReference() { return featureReference.Any(); }
 
 			[JsonIgnore]
 			public override string Code => nameof(NavwarnPart);
@@ -2224,16 +2403,21 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("text")]
 			public required String text {get;set;} = string.Empty;
 
+			[XmlElement("textOffsetBearing")]
 			public required int textOffsetBearing {get;set;} = default;
 
+			[XmlElement("textOffsetDistance")]
 			public required int textOffsetDistance {get;set;} = default;
 
+			[XmlElement("textRotation")]
 			public required Boolean textRotation {get;set;} = false;
 
 			[JsonIgnore]
@@ -2286,6 +2470,7 @@ namespace S100Framework.DomainModel.S124 {
 	{
 		[XmlElement("InformationTypes.References", typeof(InformationTypes.References), Order = 1, ElementName = "References")]
 		[XmlElement("InformationTypes.NavwarnPreamble", typeof(InformationTypes.NavwarnPreamble), Order = 1, ElementName = "NavwarnPreamble")]
+		[XmlElement("InformationTypes.SpatialQuality", typeof(InformationTypes.SpatialQuality), Order = 1, ElementName = "SpatialQuality")]
 		[XmlElement("FeatureTypes.NavwarnPart", typeof(FeatureTypes.NavwarnPart), Order = 1, ElementName = "NavwarnPart")]
 		[XmlElement("FeatureTypes.NavwarnAreaAffected", typeof(FeatureTypes.NavwarnAreaAffected), Order = 1, ElementName = "NavwarnAreaAffected")]
 		[XmlElement("FeatureTypes.TextPlacement", typeof(FeatureTypes.TextPlacement), Order = 1, ElementName = "TextPlacement")]

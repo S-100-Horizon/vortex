@@ -452,7 +452,6 @@ namespace S100Framework.Applications
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
                             }
 
-
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
