@@ -1,4 +1,5 @@
 ﻿using S100Framework.Catalogues;
+using S100Framework.DomainModel.S131.InformationTypes;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
@@ -44,7 +45,12 @@ namespace S100Framework.GML
                     var prefix = _element.GetPrefixOfNamespace(_element.Name.Namespace)!;
 
                     var type = _featureCatalogue.Assembly!.GetType($"{_featureCatalogue.DefaultNamespace}.InformationTypes.{_element.Name.LocalName}")!;
-                    var serializer = new XmlSerializer(type);
+
+                    var rootAttr = new XmlRootAttribute(_element.Name.LocalName) {
+                        Namespace = _element.Name.Namespace.NamespaceName
+                    };
+
+                    var serializer = new XmlSerializer(type, rootAttr);
                     return serializer.Deserialize(_element.CreateReader())!;
                 }
             }
@@ -73,7 +79,12 @@ namespace S100Framework.GML
                     var prefix = _element.GetPrefixOfNamespace(_element.Name.Namespace)!;
 
                     var type = _featureCatalogue.Assembly!.GetType($"{_featureCatalogue.DefaultNamespace}.FeatureTypes.{_element.Name.LocalName}")!;
-                    var serializer = new XmlSerializer(type);
+
+                    var rootAttr = new XmlRootAttribute(_element.Name.LocalName) {
+                        Namespace = _element.Name.Namespace.NamespaceName
+                    };
+
+                    var serializer = new XmlSerializer(type, rootAttr);
                     return serializer.Deserialize(_element.CreateReader())!;
                 }
             }
@@ -104,11 +115,11 @@ namespace S100Framework.GML
         }
 
         public IEnumerable<object> Members() {
-            var members = this._document.XPathSelectElement($"/{this._prefix}:Dataset/{this._prefix}:members", _namespaceManager);
+            var members = this._document.XPathSelectElement($"/{this._prefix}:Dataset/{this._prefix}:members", _namespaceManager)?.Elements();
             if (members is null)
                 yield break;
 
-            foreach (var member in members!.Elements()) {
+            foreach (var member in members) {
                 var name = member.Name.LocalName;
 
                 if (_featureCatalogue.InformationTypes.Any(e => e.Code.Equals(name))) {

@@ -3,7 +3,7 @@ using ArcGIS.Core.Data;
 using ArcGIS.Core.Data.UtilityNetwork.Trace;
 using ArcGIS.Core.Geometry;
 using ArcGIS.Desktop.Internal.Core.Conda;
-using ArcGIS.Desktop.Internal.Editing.COGO;
+//using ArcGIS.Desktop.Internal.Editing.COGO;
 using S100Framework.Applications;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S201.FeatureTypes;

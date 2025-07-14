@@ -179,8 +179,8 @@ namespace S100Framework.Applications
 
             var members = dataset!.Members().ToArray();
             foreach (var m in members) {
-                if (m is S100Framework.GML.Dataset.InformationType) {
-                    var value = ((S100Framework.GML.Dataset.InformationType)m).Value;
+                if (m is S100Framework.GML.Dataset.InformationType informationType) {
+                    var value = informationType.Value;
 
                     Console.WriteLine($"InformationType: {value.GetType().Name}");
 
@@ -193,8 +193,8 @@ namespace S100Framework.Applications
 
                     tableInformationType.CreateRow(bufferInformationType);
                 }
-                if (m is S100Framework.GML.Dataset.FeatureType) {
-                    var value = ((S100Framework.GML.Dataset.FeatureType)m).Value;
+                if (m is S100Framework.GML.Dataset.FeatureType featureType) {
+                    var value = featureType.Value;
 
                     Console.WriteLine($"FeatureType: {value.GetType().Name}");
 
@@ -219,11 +219,11 @@ namespace S100Framework.Applications
                     if (geometry is MapPoint) {
                         var point = (MapPoint)geometry;
 
-                        if (point.HasZ) {
-                            rowbuffer["z"] = point.Z;
-                            point = MapPointBuilderEx.CreateMapPoint(point.X, point.Y, point.SpatialReference);
-                        }
-                        bufferPoint["shape"] = geometry;
+                        if (point.HasZ == false) 
+                            bufferPoint["shape"] = MapPointBuilderEx.CreateMapPoint(((MapPoint)geometry).X, ((MapPoint)geometry).Y, 0.00, geometry.SpatialReference);
+                        else 
+                            bufferPoint["shape"] = geometry;
+
                         using var row = fcPoint.CreateRow(bufferPoint);
                     }
                     if (geometry is Multipoint) {

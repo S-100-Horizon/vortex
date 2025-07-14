@@ -2,6 +2,7 @@
 using ArcGIS.Core.Geometry;
 using ICSharpCode.SharpZipLib.Zip;
 using S100Framework.DomainModel.S131.FeatureTypes;
+using S100Framework.DomainModel.S131.InformationTypes;
 using System;
 using System.ComponentModel;
 using System.Globalization;
@@ -11,6 +12,7 @@ using System.Text.RegularExpressions;
 
 using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 using System.Xml.XPath;
 using Xunit.Abstractions;
 using IO = System.IO;
@@ -47,11 +49,11 @@ namespace TestS100Framework
 
         [Fact]
         public void Test_ReadGML() {
-            var S201Path = @".\Samples\S201\201CAtestgml_Inline.gml";
-            var S131Path = @".\Samples\S131\131DK00_DKAAL.GML";
+            var S201 = @".\Samples\S201\201CAtestgml_Inline.gml";
+            var S131 = @".\Samples\S131\131DK00_DKAAL.GML";
 
             // XML Setup
-            var xdoc = XDocument.Load(S131Path);
+            var xdoc = XDocument.Load(S131);
             var root = xdoc.Root;
 
             var ns = root!.Name.Namespace;
@@ -69,7 +71,7 @@ namespace TestS100Framework
                 string[] allowedTypes = ["FeatureTypes", "InformationTypes", "SimpleAttributes", "ComplexAttributes"];
 
                 foreach (var element in elements) {
-                    var code = element.Name.LocalName; // e.g. MooringWarpingFacility
+                    var code = element.Name.LocalName; // MooringWarpingFacility
                     foreach (var type in allowedTypes) {
                         var toype = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(prefix, type)}.{code}", false);
                         if (toype != null)
@@ -81,42 +83,30 @@ namespace TestS100Framework
 
             var members = GetMemberTypes(elements);
 
-            foreach (var member in members) {
-                var element = xdoc.Descendants(ns! + member.Name).FirstOrDefault();
-
-                // if namespace == InformationType
-                // Build into object, serialize and write to rowbuffer
-
-                // if namespace == FeatureType
-                // Build into object, serialize and write to rowbuffer
-                // if element has geometry, write to geometry buffer based on the geoemtry type
+            System.Diagnostics.Debugger.Break();
+        }
 
 
+        [Fact]
+        public void Test_DeserializeXML() {
+            var xml = """
+                <AvailablePortServices>
+                  <featureName>
+                    <displayName>true</displayName>
+                    <language>da</language>
+                    <name>Honnørkajen</name>
+                  </featureName>
+                </AvailablePortServices>
+                """;
 
-
-                var g = ";s";
-            }
-
-
-            Console.WriteLine();
+            var reader = new StringReader(xml);
+            var serializer = new XmlSerializer(typeof(AvailablePortServices));
+            var result = (AvailablePortServices)serializer.Deserialize(reader)!;
 
             System.Diagnostics.Debugger.Break();
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -134,33 +124,24 @@ namespace TestS100Framework
 
         [Fact]
         public void Test_S201InlineReader() {
-            var S201Path = @".\Samples\S201\201CAtestgml_Inline.gml";
-            var S131Path = @".\Samples\S131\131DK00_DKAAL.GML";
+            var S201 = @".\Samples\S201\201CAtestgml_Inline.gml";
+            var S131 = @".\Samples\S131\131DK00_DKAAL.GML";
 
-            var dataset = S100Framework.GML.Dataset.Load(S131Path);
-
-            //var members = gml.XPathSelectElement("//*[local-name()='members']");
-            //Assert.NotNull(members);
+            var dataset = S100Framework.GML.Dataset.Load(S131);
 
             foreach (var m in dataset.Members()) {
-                if (m is S100Framework.GML.Dataset.InformationType) {
-                    var informationtype = ((S100Framework.GML.Dataset.InformationType)m);
-
-                    var element = informationtype.XElement;
-                    var value = informationtype.Value;
+                if (m is S100Framework.GML.Dataset.InformationType informationType) {
+                    var element = informationType.XElement;
+                    var value = informationType.Value;
                 }
-                if (m is S100Framework.GML.Dataset.FeatureType) {
-                    var featuretype = ((S100Framework.GML.Dataset.FeatureType)m);
-
-                    var element = featuretype.XElement;
-                    var value = featuretype.Value;
-                    var geometry = featuretype.Shape();
-
+                if (m is S100Framework.GML.Dataset.FeatureType featureType) {
+                    var element = featureType.XElement;
+                    var value = featureType.Value;
+                    var geometry = featureType.Shape();
                 }
             }
 
             System.Diagnostics.Debugger.Break();
-
         }
 
         [Fact]
@@ -202,21 +183,9 @@ namespace TestS100Framework
             yield break;
         }
 
-        //public static S100Framework.FeatureTypeId? FeatureType(this XElement element) {
-        //    var prefix = element.GetPrefixOfNamespace(element.Name.Namespace);
-
-        //    var type = Assembly.GetExecutingAssembly().GetType($"S100Framework.DomainModel.S131.FeatureTypes.{element.Name.LocalName}")!;
-        //    var serializer = new XmlSerializer(type);
-        //    return serializer.Deserialize(element.CreateReader()) as S100Framework.FeatureTypeId;
-        //}
-
         public static Geometry? Geometry(this XElement element) {
             var prefix = element.GetPrefixOfNamespace(element.Name.NamespaceName)!;
             var ns = element.GetNamespaceOfPrefix(prefix)!;
-
-            var g = "ads";
-
-
             
             var geometry = element.Element(XName.Get("geometry", ns.NamespaceName))!;
 
