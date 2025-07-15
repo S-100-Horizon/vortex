@@ -276,9 +276,11 @@ namespace S100Framework.YAML
                     var sortedList = new SortedList<int, FeatureRef>();
 
                     for (int i = 0; i < lineStrings.Count(); i++) {
-                        var text = lineStrings.ElementAt(i).ToText().Substring("LINESTRING (".Length).TrimEnd(')');
+                        var curve = this._curveContainer.AddOrGet(lineStrings.ElementAt(i));
+
+                        var text = lineStrings.ElementAt(i).ToText().Substring("LINESTRING (".Length).TrimEnd(')');                        
                         if (lineStringText.Contains(text)) {
-                            var curve = this._curveContainer.AddOrGet(lineStrings.ElementAt(i));
+                            //var curve = this._curveContainer.AddOrGet(lineStrings.ElementAt(i));
                             sortedList.Add(lineStringText.IndexOf(text), new FeatureRef {
                                 Id = curve.Id,
                                 Reverse = curve.Reverse,
@@ -291,7 +293,7 @@ namespace S100Framework.YAML
 
                             var index = lineStringText.IndexOf(text);
                             if (index < 0) System.Diagnostics.Debugger.Break();
-                            var curve = this._curveContainer.AddOrGet((LineString)reverse);
+                            //var curve = this._curveContainer.AddOrGet((LineString)reverse);
                             sortedList.Add(lineStringText.IndexOf(text), new FeatureRef {
                                 Id = curve.Id,
                                 Reverse = curve.Reverse,
@@ -371,6 +373,8 @@ namespace S100Framework.YAML
             foreach (var e in edgeToFeatureMap.GroupBy(e => string.Join(',', e.Value))) {
                 //if (e.Key.Contains("S2674311")) System.Diagnostics.Debugger.Break();
 
+                //if (e.Any(x => x.Key.LineString.ToText().Equals("LINESTRING (11.7465969 54.8704114, 11.7468865 54.8707256)"))) System.Diagnostics.Debugger.Break();
+
                 var merger = new LineMerger();
                 merger.Add(e.Select(x => x.Key.LineString));
 
@@ -383,6 +387,9 @@ namespace S100Framework.YAML
                     featureToEdges[p].AddRange(mergedLineStrings);
                 }
             }
+
+            //LineString[] array = [.. featureToEdges.SelectMany(e => e.Value)];
+            //this._interceptor?.Invoke(array);
 
             Parallel.For(0, surfaces.Count, Matrix.ParallelOptions, (p) => {
                 var surface = surfaces.ElementAt(p);

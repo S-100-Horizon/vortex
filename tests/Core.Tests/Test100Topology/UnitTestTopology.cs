@@ -508,8 +508,8 @@ namespace Test100Topology
 
         static SpatialReference spatialReference = SpatialReferenceBuilder.CreateSpatialReference(4326);
 
-        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(100000000)); // Or PrecisionModels.Floating
-        //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating), srid: 4326); // Or PrecisionModels.Floating        
+        //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(100000000)); // Or PrecisionModels.Floating
+        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating), srid: 4326); // Or PrecisionModels.Floating        
 
         private static void PersistTopology(Geodatabase geodatabase, S100Framework.YAML.iMatrix result) {
             {
