@@ -2,6 +2,7 @@
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Operation.Linemerge;
 using System.Collections.Concurrent;
+using IO = System.IO;
 
 namespace S100Framework.YAML
 {
@@ -181,6 +182,8 @@ namespace S100Framework.YAML
         private ICollection<S100Framework.YAML.Polygon> _surfacesNavigational;
         private ICollection<S100Framework.YAML.Polyline> _curvesNavigational;
 
+        private ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)> _hashing = new ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
+
         private CurveContainer _curveContainer = new CurveContainer();
         private CompositeCurveContainer _compositeCurveContainer = new CompositeCurveContainer();
 
@@ -220,6 +223,58 @@ namespace S100Framework.YAML
 
             this.Build([.. surfaces], [.. curves]);
 
+
+            Parallel.ForEach(this._bagPolygons, ParallelOptions, (polygon) => {
+                foreach (var lineString in polygon.ExteriorRing) {
+                    var hash = System.IO.Hashing.XxHash3.HashToUInt64(lineString.AsBinary());
+
+                    var f = new CurveFeature(lineString);
+                    var r = this._hashing.GetOrAdd(hash, (new FeatureRef {
+                        Id = f.Id,
+                        Reverse = false,
+                    }, f));
+                    hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
+                    r = this._hashing.GetOrAdd(hash, (new FeatureRef {
+                        Id = f.Id,
+                        Reverse = true,
+                    }, f));
+                }
+                if (polygon.InteriorRings.Any()) {
+                    foreach (var interior in polygon.InteriorRings) {
+                        foreach (var lineString in interior) {
+                            var hash = System.IO.Hashing.XxHash3.HashToUInt64(lineString.AsBinary());
+                            var f = new CurveFeature(lineString);
+                            var r = this._hashing.GetOrAdd(hash, (new FeatureRef {
+                                Id = f.Id,
+                                Reverse = false,
+                            }, f));
+                            hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
+                            r = this._hashing.GetOrAdd(hash, (new FeatureRef {
+                                Id = f.Id,
+                                Reverse = true,
+                            }, f));
+                        }
+                    }
+                }
+            });
+
+            Parallel.ForEach(this._bagPolylines, ParallelOptions, (Polyline) => {
+                foreach (var lineString in Polyline.LineStrings) {
+                    var hash = System.IO.Hashing.XxHash3.HashToUInt64(lineString.AsBinary());
+
+                    var f = new CurveFeature(lineString);
+                    this._hashing.GetOrAdd(hash, (new FeatureRef {
+                        Id = f.Id,
+                        Reverse = false,
+                    }, f));
+                    hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
+                    this._hashing.GetOrAdd(hash, (new FeatureRef {
+                        Id = f.Id,
+                        Reverse = true,
+                    }, f));
+                }
+            });
+
             //_interceptor?.Invoke(this._hashing.Where(e => !e.Value.fetureRef.Reverse).Select(e => e.Value.curve.LineString).ToList());
 
             Func<IEnumerable<LineString>, LinearRingOrientation, bool, FeatureRef> action = (lineStrings, orientation, allowMultiLineString) => {
@@ -237,11 +292,14 @@ namespace S100Framework.YAML
                         };
                     }
 
-                    var curve = this._curveContainer.AddOrGet(l);
-                    featureRef = new FeatureRef {
-                        Id = curve.Id,
-                        Reverse = curve.Reverse,
-                    };
+                    var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(l.AsBinary())];
+                    featureRef = hash.fetureRef;
+
+                    //var curve = this._curveContainer.AddOrGet(l);
+                    //featureRef = new FeatureRef {
+                    //    Id = curve.Id,
+                    //    Reverse = curve.Reverse,
+                    //};
                 }
                 else {
                     var lineMerger = new LineMerger();
@@ -280,24 +338,29 @@ namespace S100Framework.YAML
 
                         var text = lineStrings.ElementAt(i).ToText().Substring("LINESTRING (".Length).TrimEnd(')');                        
                         if (lineStringText.Contains(text)) {
+                            var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(lineStrings.ElementAt(i).AsBinary())];
+
+                            sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
                             //var curve = this._curveContainer.AddOrGet(lineStrings.ElementAt(i));
-                            sortedList.Add(lineStringText.IndexOf(text), new FeatureRef {
-                                Id = curve.Id,
-                                Reverse = curve.Reverse,
-                            });
+                            //sortedList.Add(lineStringText.IndexOf(text), new FeatureRef {
+                            //    Id = curve.Id,
+                            //    Reverse = curve.Reverse,
+                            //});
                         }
                         else {
                             var reverse = lineStrings.ElementAt(i).Reverse();
-
                             text = reverse.ToText().Substring("LINESTRING (".Length).TrimEnd(')');
+
+                            var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(reverse.AsBinary())];
 
                             var index = lineStringText.IndexOf(text);
                             if (index < 0) System.Diagnostics.Debugger.Break();
+                            sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
                             //var curve = this._curveContainer.AddOrGet((LineString)reverse);
-                            sortedList.Add(lineStringText.IndexOf(text), new FeatureRef {
-                                Id = curve.Id,
-                                Reverse = curve.Reverse,
-                            });
+                            //sortedList.Add(lineStringText.IndexOf(text), new FeatureRef {
+                            //    Id = curve.Id,
+                            //    Reverse = curve.Reverse,
+                            //});
                         }
                     }
 
@@ -392,8 +455,7 @@ namespace S100Framework.YAML
             //this._interceptor?.Invoke(array);
 
             Parallel.For(0, surfaces.Count, Matrix.ParallelOptions, (p) => {
-                var surface = surfaces.ElementAt(p);
-
+                var surface = surfaces.ElementAt(p);                
                 IEnumerable<LineString> exteriorRing = featureToEdges[surface.name];
                 var interiorRings = new List<IEnumerable<LineString>>();
                 for (int i = 0; i < surface.InteriorRings.Count(); i++) {
@@ -411,7 +473,8 @@ namespace S100Framework.YAML
             });
         }
 
-        IEnumerable<CurveFeature> iMatrix.Curves => this._curveContainer.CurveFeatures; //this._hashing.Select(e => e.Value.curve).DistinctBy(e => e.Id);
+        IEnumerable<CurveFeature> iMatrix.Curves => this._hashing.Select(e => e.Value.curve).DistinctBy(e => e.Id);
+        //IEnumerable<CurveFeature> iMatrix.Curves => this._curveContainer.CurveFeatures; //this._hashing.Select(e => e.Value.curve).DistinctBy(e => e.Id);
 
         IEnumerable<CompositeCurveFeature> iMatrix.CompositeCurves => this._compositeCurveContainer.CompositeCurveFeatures; // this._bagCompositeCurves.Values;
 
