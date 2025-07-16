@@ -151,7 +151,10 @@ namespace S100Framework.YAML
     {
         public string? Name { get; set; }
 
-        public string? Location => Coordinate is null ? string.Empty : string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", Coordinate.X, Coordinate.Y);
+        public string? Location => Coordinate is null ? string.Empty : 
+            Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(Coordinate.X, Coordinate.Y)).ToText().Substring("Point (".Length).Trim(')').Replace(' ', ',');
+
+        //public string? Location => Coordinate is null ? string.Empty : string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", Coordinate.X, Coordinate.Y);
 
         public ICollection<Association>? Association => _associations.Any() ? _associations : null;
         private ICollection<Association> _associations = new HashSet<Association>();
@@ -167,7 +170,12 @@ namespace S100Framework.YAML
     public class PointSet(Coordinate[] points, double[] depths)
     {
         public string? Name { get; set; }
-        public string? Location => Points is null ? string.Empty : string.Join(",", Points.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.X, e.Y)));
+
+
+        public string? Location => Points is null ? string.Empty :
+            string.Join(',', Points.Select(e => Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(e.X, e.Y)).ToText().Substring("Point (".Length).Trim(')').Replace(' ', ',')));
+
+        //public string? Location => Points is null ? string.Empty : string.Join(",", Points.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.X, e.Y)));
         public string? Z => Depths is null ? string.Empty : string.Join(",", Depths.Select(e => e.ToString(CultureInfo.InvariantCulture)));
 
         public ICollection<Association>? Association => _associations.Any() ? _associations : null;
@@ -217,9 +225,16 @@ namespace S100Framework.YAML
         }
 
 
-        public string? Vertices => Coordinate is null ? string.Empty : string.Join(",", Coordinate.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.X, e.Y)));
-        [YamlIgnore]
-        public string? ReversedVertices => Coordinate is null ? string.Empty : string.Join(",", Coordinate.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.X, e.Y)).Reverse());
+        //factory.CreatePoint(new Coordinate(location[0], location[1])).ToText()
+
+        public string? Vertices => Coordinate is null ? string.Empty :
+            string.Join(',', Coordinate.Select(e => Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(e.X, e.Y)).ToText().Substring("Point (".Length).Trim(')').Replace(' ', ',')));
+
+        //public string? Vertices => Coordinate is null ? string.Empty : string.Join(",", Coordinate.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.X, e.Y)));
+
+        //[YamlIgnore]
+        //public string? ReversedVertices => Coordinate is null ? string.Empty : string.Join(",", Coordinate.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.X, e.Y)).Reverse());
+
         [YamlIgnore]
         public Coordinate[]? Coordinate { get; private set; }
     }

@@ -4,6 +4,7 @@ using GeoAPI.Geometries;
 using ICSharpCode.SharpZipLib.Zip;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
+using System.Globalization;
 using System.Text.Json;
 using Xunit.Abstractions;
 using IO = System.IO;
@@ -494,7 +495,7 @@ namespace Test100Topology
                 .BuildTopology();
 
             using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
-                PersistTopology(target, result.Curves.Select(e => e.LineString));
+                PersistTopology(target, result.Curves);
             }
 
             var curves = result.Curves.Count();
@@ -506,9 +507,20 @@ namespace Test100Topology
             System.Diagnostics.Debugger.Break();
         }
 
+        [Fact]
+        public void Test_Rounding() {
+            var location = new double[2] { 11.892466500000012, 54.97616959999999 };
+
+            var yaml = string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", location[0], location[1]);
+
+            var totext = factory.CreatePoint(new Coordinate(location[0], location[1])).ToText().Substring("Point (".Length).Trim(')').Replace(' ',',');
+
+            System.Diagnostics.Debugger.Break();
+        }
+
         static SpatialReference spatialReference = SpatialReferenceBuilder.CreateSpatialReference(4326);
 
-        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(100000000)); // Or PrecisionModels.Floating
+        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(100000000), srid: 4326); // Or PrecisionModels.Floating
         //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating), srid: 4326); // Or PrecisionModels.Floating        
 
         private static void PersistTopology(Geodatabase geodatabase, S100Framework.YAML.iMatrix result) {
@@ -544,7 +556,36 @@ namespace Test100Topology
             int id = 0;
             foreach (var e in lineStrings) {
                 buffer["id"] = $"{id++}";
-                buffer["shape"] = PolylineBuilderEx.CreatePolyline(e.Coordinates.Select(e => MapPointBuilderEx.CreateMapPoint(e.X, e.Y, spatialReference)), spatialReference);
+                buffer["shape"] = PolylineBuilderEx.CreatePolyline(e.Coordinates.Select(e => MapPointBuilderEx.CreateMapPoint(e.X, e.Y, spatialReference)), spatialReference);                
+                cursor.Insert(buffer);
+
+            }
+            cursor.Flush();
+        }
+
+        private static void PersistTopology(Geodatabase geodatabase, IEnumerable<S100Framework.YAML.CurveFeature> lineStrings) {
+            using var topology = geodatabase.OpenDataset<FeatureClass>("topology");
+
+            topology.DeleteRows(new QueryFilter {
+                WhereClause = "1=1",
+            });
+
+            using var buffer = topology.CreateRowBuffer();
+            using var cursor = topology.CreateInsertCursor();
+
+            int id = 0;
+            foreach (var e in lineStrings) {
+                buffer["id"] = $"{e.Id}";
+
+                var text = e.LineString.ToText().Substring("LINESTRING (".Length).TrimEnd(')');
+
+                var mapPoints = text.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).Select(e => {
+                    var location = e.Split(' ');
+                    return MapPointBuilderEx.CreateMapPoint(Math.Round(double.Parse(location[0], CultureInfo.InvariantCulture),7), Math.Round(double.Parse(location[1], CultureInfo.InvariantCulture), 7), spatialReference);
+                    });
+
+                //buffer["shape"] = PolylineBuilderEx.CreatePolyline(e.Coordinates.Select(e => MapPointBuilderEx.CreateMapPoint(e.X, e.Y, spatialReference)), spatialReference);
+                buffer["shape"] = PolylineBuilderEx.CreatePolyline(mapPoints, spatialReference);
                 cursor.Insert(buffer);
 
             }

@@ -184,7 +184,7 @@ namespace S100Framework.YAML
 
         private ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)> _hashing = new ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
 
-        private CurveContainer _curveContainer = new CurveContainer();
+        //private CurveContainer _curveContainer = new CurveContainer();
         private CompositeCurveContainer _compositeCurveContainer = new CompositeCurveContainer();
 
         public static iTopologyBuilder CreateMatrix(Action<ICollection<LineString>>? interceptor = default) {
@@ -334,7 +334,7 @@ namespace S100Framework.YAML
                     var sortedList = new SortedList<int, FeatureRef>();
 
                     for (int i = 0; i < lineStrings.Count(); i++) {
-                        var curve = this._curveContainer.AddOrGet(lineStrings.ElementAt(i));
+                        //var curve = this._curveContainer.AddOrGet(lineStrings.ElementAt(i));
 
                         var text = lineStrings.ElementAt(i).ToText().Substring("LINESTRING (".Length).TrimEnd(')');                        
                         if (lineStringText.Contains(text)) {
