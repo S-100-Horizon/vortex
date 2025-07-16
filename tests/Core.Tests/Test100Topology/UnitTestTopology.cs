@@ -509,19 +509,20 @@ namespace Test100Topology
 
         [Fact]
         public void Test_Rounding() {
-            var location = new double[2] { 11.892466500000012, 54.97616959999999 };
+            var location = new double[2] { 11.123456789, 54.123456789 };
 
             var yaml = string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", location[0], location[1]);
 
-            var totext = factory.CreatePoint(new Coordinate(location[0], location[1])).ToText().Substring("Point (".Length).Trim(')').Replace(' ',',');
+            var totext = factory.CreatePoint(new Coordinate(factory.PrecisionModel.MakePrecise(location[0]), factory.PrecisionModel.MakePrecise(location[1]))).ToText().Substring("Point (".Length).Trim(')').Replace(' ', ',');
 
             System.Diagnostics.Debugger.Break();
         }
 
         static SpatialReference spatialReference = SpatialReferenceBuilder.CreateSpatialReference(4326);
 
-        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(100000000), srid: 4326); // Or PrecisionModels.Floating
+        //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(100000000), srid: 4326); // Or PrecisionModels.Floating
         //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating), srid: 4326); // Or PrecisionModels.Floating        
+        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(10000000), srid: 4326); // Or PrecisionModels.Floating
 
         private static void PersistTopology(Geodatabase geodatabase, S100Framework.YAML.iMatrix result) {
             {
@@ -556,7 +557,16 @@ namespace Test100Topology
             int id = 0;
             foreach (var e in lineStrings) {
                 buffer["id"] = $"{id++}";
-                buffer["shape"] = PolylineBuilderEx.CreatePolyline(e.Coordinates.Select(e => MapPointBuilderEx.CreateMapPoint(e.X, e.Y, spatialReference)), spatialReference);                
+                var text = e.ToText().Substring("LINESTRING (".Length).TrimEnd(')');
+
+                var mapPoints = text.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).Select(e => {
+                    var location = e.Split(' ');
+                    var mapPoint = MapPointBuilderEx.CreateMapPoint(double.Parse(location[0], CultureInfo.InvariantCulture), double.Parse(location[1], CultureInfo.InvariantCulture), spatialReference);
+                    if (Math.Round(mapPoint.X, 7) != mapPoint.X || Math.Round(mapPoint.Y, 7) != mapPoint.Y) System.Diagnostics.Debugger.Break();
+                    return mapPoint;
+                });
+                //buffer["shape"] = PolylineBuilderEx.CreatePolyline(e.Coordinates.Select(e => MapPointBuilderEx.CreateMapPoint(e.X, e.Y, spatialReference)), spatialReference);                
+                buffer["shape"] = PolylineBuilderEx.CreatePolyline(mapPoints, spatialReference);
                 cursor.Insert(buffer);
 
             }
@@ -581,8 +591,10 @@ namespace Test100Topology
 
                 var mapPoints = text.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).Select(e => {
                     var location = e.Split(' ');
-                    return MapPointBuilderEx.CreateMapPoint(Math.Round(double.Parse(location[0], CultureInfo.InvariantCulture),7), Math.Round(double.Parse(location[1], CultureInfo.InvariantCulture), 7), spatialReference);
-                    });
+                    var mapPoint = MapPointBuilderEx.CreateMapPoint(double.Parse(location[0], CultureInfo.InvariantCulture), double.Parse(location[1], CultureInfo.InvariantCulture), spatialReference);
+                    if (Math.Round(mapPoint.X, 7) != mapPoint.X || Math.Round(mapPoint.Y, 7) != mapPoint.Y) System.Diagnostics.Debugger.Break();
+                    return mapPoint;
+                });
 
                 //buffer["shape"] = PolylineBuilderEx.CreatePolyline(e.Coordinates.Select(e => MapPointBuilderEx.CreateMapPoint(e.X, e.Y, spatialReference)), spatialReference);
                 buffer["shape"] = PolylineBuilderEx.CreatePolyline(mapPoints, spatialReference);
@@ -608,7 +620,7 @@ namespace Test100Topology
                         name = string.Empty;
 
                     var exteriorRing = shape.GetExteriorRing(0);
-                    var coordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+                    var coordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(factory.PrecisionModel.MakePrecise(segment.StartPoint.X), factory.PrecisionModel.MakePrecise(segment.StartPoint.Y))).ToArray();
 
                     var ex = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
                     ex = ex.RemoveRepeatedVertices();
@@ -617,7 +629,7 @@ namespace Test100Topology
                         var interiorRings = new List<LineString>();
 
                         foreach (var interiorRing in shape.Parts.Skip(1)) {
-                            coordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+                            coordinates = interiorRing.Select(segment => new Coordinate(factory.PrecisionModel.MakePrecise(segment.StartPoint.X), factory.PrecisionModel.MakePrecise(segment.StartPoint.Y))).ToArray();
 
                             var linestring = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
                             linestring = linestring.RemoveRepeatedVertices();
@@ -649,7 +661,7 @@ namespace Test100Topology
                     if (string.IsNullOrEmpty(name))
                         name = string.Empty;
 
-                    var coordinates = shape.Points.Select(segment => new Coordinate(segment.X, segment.Y)).ToArray();
+                    var coordinates = shape.Points.Select(segment => new Coordinate(factory.PrecisionModel.MakePrecise(segment.X), factory.PrecisionModel.MakePrecise(segment.Y))).ToArray();
 
                     var linestring = (LineString)factory.CreateLineString([.. coordinates]);
                     linestring = linestring.RemoveRepeatedVertices();

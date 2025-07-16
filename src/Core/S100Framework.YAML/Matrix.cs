@@ -193,16 +193,40 @@ namespace S100Framework.YAML
             };
         }
 
+        private static LineString MakePrecise(LineString lineString) {
+            for (int i = 0; i < lineString.NumPoints; i++) {
+                Matrix.Factory.PrecisionModel.MakePrecise(lineString[i]);
+            }
+            return lineString;
+        }
+
+        private static ICollection<S100Framework.YAML.Polygon> MakePrecise(ICollection<S100Framework.YAML.Polygon> surfaces) {
+            foreach(var p in surfaces) {
+                MakePrecise(p.ExteriorRing);
+
+                foreach (var interior in p.InteriorRings)
+                    MakePrecise(interior);
+            }
+            return surfaces;
+        }
+
+        private static ICollection<S100Framework.YAML.Polyline> MakePrecise(ICollection<S100Framework.YAML.Polyline> curves) {
+            foreach (var c in curves) {
+                MakePrecise(c.LineString);
+            }
+            return curves;
+        }
+
         iTopologyBuilder iTopologyBuilder.AddTopologyFeatures(ICollection<S100Framework.YAML.Polygon> surfaces, ICollection<S100Framework.YAML.Polyline> curves) {
-            this._surfacesTopology = surfaces;
-            this._curvesTopology = curves;
+            this._surfacesTopology = MakePrecise(surfaces);
+            this._curvesTopology = MakePrecise(curves);
 
             return (iTopologyBuilder)this;
         }
 
         iTopologyBuilder iTopologyBuilder.AddNavigationalFeatures(ICollection<Polygon> surfaces, ICollection<S100Framework.YAML.Polyline> curves) {
-            this._surfacesNavigational = surfaces;
-            this._curvesNavigational = curves;
+            this._surfacesNavigational = MakePrecise(surfaces);
+            this._curvesNavigational = MakePrecise(curves);
 
             return (iTopologyBuilder)this;
         }
