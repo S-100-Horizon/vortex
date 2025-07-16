@@ -593,8 +593,8 @@ namespace ArcGIS.Core.Data
         static SpatialReference spatialReference = SpatialReferenceBuilder.CreateSpatialReference(4326);
 
         //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(10000000), srid: 4326); // Or PrecisionModels.Floating
-        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating), srid: 4326); // Or PrecisionModels.Floating
-        //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(100000000), srid: 4326); // Or PrecisionModels.Floating
+        //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating), srid: 4326); // Or PrecisionModels.Floating
+        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(100000000), srid: 4326); // Or PrecisionModels.Floating
 
         public static S100Framework.YAML.iMatrix? BuildTopology(this Geodatabase geodatabase, QueryFilter? queryFilter = default, Action<ICollection<LineString>>? interceptor = default) {
             queryFilter = queryFilter switch {

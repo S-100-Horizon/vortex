@@ -159,7 +159,7 @@ namespace S100Framework.YAML
     {
         public static ParallelOptions ParallelOptions { get; set; } = new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount > 8 ? 8 : Environment.ProcessorCount };
 
-        public static GeometryFactory? Factory { get; set; } = default;
+        public static GeometryFactory Factory { get; set; } = new GeometryFactory(new PrecisionModel(100000000), srid: 4326);
 
         protected Matrix() {
             //  Default protected constructor
@@ -252,7 +252,7 @@ namespace S100Framework.YAML
                     string lineStringText = string.Empty;
 
                     if (allowMultiLineString && mergedLineStrings.Count > 1) {
-                        var merged = Matrix.Factory!.CreateMultiLineString([.. mergedLineStrings.OfType<LineString>()]);
+                        var merged = Matrix.Factory.CreateMultiLineString([.. mergedLineStrings.OfType<LineString>()]);
 
                         lineStringText = merged.ToText();
                     }
@@ -438,7 +438,7 @@ namespace S100Framework.YAML
             public override int GetHashCode() => (Start, End).GetHashCode();
             public override string ToString() => $"EDGE ({Start.X} {Start.Y}, {End.X} {End.Y})";
 
-            public LineString LineString => Matrix.Factory!.CreateLineString([Start, End]);
+            public LineString LineString => Matrix.Factory.CreateLineString([Start, End]);
         }
 
         public static void AddLineStringsFromGeometry(Geometry geometry, List<LineString> targetList) {
