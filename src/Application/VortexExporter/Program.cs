@@ -758,7 +758,7 @@ namespace ArcGIS.Core.Data
                 var singletons = new List<S100Framework.YAML.Polyline>();
 
                 using (var curve = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("curve")).GetName())) {
-                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) NOT IN ('COASTLINE','DEPTHCONTOUR','SHORELINECONSTRUCTION','NAVIGATIONLINE'))";
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) NOT IN ('COASTLINE','DEPTHCONTOUR','SHORELINECONSTRUCTION','NAVIGATIONLINE','RECOMMENDEDTRACK'))";
                     using (var cursor = curve.Search(queryFilter)) {
                         while (cursor.MoveNext()) {
                             var f = (Feature)cursor.Current;
@@ -778,7 +778,7 @@ namespace ArcGIS.Core.Data
                         }
                     }
 
-                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('NAVIGATIONLINE'))";
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('NAVIGATIONLINE','RECOMMENDEDTRACK'))";
                     using (var cursor = curve.Search(queryFilter)) {
                         while (cursor.MoveNext()) {
                             var f = (Feature)cursor.Current;

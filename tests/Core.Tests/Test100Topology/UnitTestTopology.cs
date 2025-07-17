@@ -498,7 +498,7 @@ namespace Test100Topology
             };
 
             var filterCurveNavigational = new SpatialQueryFilter {
-                WhereClause = $"{whereClause} AND (upper(code) NOT IN ('COASTLINE', 'DEPTHCONTOUR', 'SHORELINECONSTRUCTION', 'NAVIGATIONLINE'))",
+                WhereClause = $"{whereClause} AND (upper(code) NOT IN ('COASTLINE', 'DEPTHCONTOUR', 'SHORELINECONSTRUCTION','NAVIGATIONLINE','RECOMMENDEDTRACK'))",
                 //WhereClause = $"{whereClause}",
                 FilterGeometry = shape,
                 SpatialRelationship = SpatialRelationship.Relation,
@@ -506,7 +506,7 @@ namespace Test100Topology
             };
 
             var filterCurveSingleton = new SpatialQueryFilter {
-                WhereClause = $"{whereClause} AND (upper(code) IN ('NAVIGATIONLINE'))",
+                WhereClause = $"{whereClause} AND (upper(code) IN ('NAVIGATIONLINE','RECOMMENDEDTRACK'))",
                 //WhereClause = $"{whereClause}",
                 FilterGeometry = shape,
                 SpatialRelationship = SpatialRelationship.Relation,
