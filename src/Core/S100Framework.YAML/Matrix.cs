@@ -142,6 +142,9 @@ namespace S100Framework.YAML
     {
         iTopologyBuilder AddTopologyFeatures(ICollection<S100Framework.YAML.Polygon> surfaces, ICollection<S100Framework.YAML.Polyline> curves);
         iTopologyBuilder AddNavigationalFeatures(ICollection<S100Framework.YAML.Polygon> surfaces, ICollection<S100Framework.YAML.Polyline> curves);
+
+        iTopologyBuilder AddSingletonFeatures(ICollection<S100Framework.YAML.Polyline> curves);
+
         iMatrix BuildTopology();
     }
 
@@ -181,6 +184,8 @@ namespace S100Framework.YAML
 
         private ICollection<S100Framework.YAML.Polygon> _surfacesNavigational;
         private ICollection<S100Framework.YAML.Polyline> _curvesNavigational;
+
+        private ICollection<S100Framework.YAML.Polyline> _curvesSingleton;
 
         private ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)> _hashing = new ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
 
@@ -231,6 +236,12 @@ namespace S100Framework.YAML
             return (iTopologyBuilder)this;
         }
 
+        iTopologyBuilder iTopologyBuilder.AddSingletonFeatures(ICollection<Polyline> curves) {
+            this._curvesSingleton = MakePrecise(curves);
+
+            return (iTopologyBuilder)this;
+        }
+
         iMatrix iTopologyBuilder.BuildTopology() {
             IEnumerable<S100Framework.YAML.Polygon> surfaces = Enumerable.Empty<S100Framework.YAML.Polygon>();
             IEnumerable<S100Framework.YAML.Polyline> curves = Enumerable.Empty<S100Framework.YAML.Polyline>();
@@ -245,8 +256,26 @@ namespace S100Framework.YAML
                 curves = curves.UnionBy(this._curvesNavigational, e => e.name);
             }
 
-            this.Build([.. surfaces], [.. curves]);
+            this.BuildSharedEdges([.. surfaces], [.. curves]);
 
+            foreach(var curve in this._curvesSingleton) {
+                var hash = System.IO.Hashing.XxHash3.HashToUInt64(curve.LineString.AsBinary());
+
+                var f = new CurveFeature(curve.LineString);
+                this._hashing.GetOrAdd(hash, (new FeatureRef {
+                    Id = f.Id,
+                    Reverse = false,
+                }, f));
+                hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
+                this._hashing.GetOrAdd(hash, (new FeatureRef {
+                    Id = f.Id,
+                    Reverse = true,
+                }, f));
+
+                var featureRef = this._hashing[hash];
+
+                this._mapping.GetOrAdd(curve.name, $"C{featureRef.fetureRef.Id}");
+            }
 
             Parallel.ForEach(this._bagPolygons, ParallelOptions, (polygon) => {
                 foreach (var lineString in polygon.ExteriorRing) {
@@ -425,7 +454,7 @@ namespace S100Framework.YAML
             return this;
         }
 
-        private void Build(ICollection<S100Framework.YAML.Polygon> surfaces, ICollection<S100Framework.YAML.Polyline> curves) {
+        private void BuildSharedEdges(ICollection<S100Framework.YAML.Polygon> surfaces, ICollection<S100Framework.YAML.Polyline> curves) {
             var minimalEdges = new HashSet<Edge>();
 
             var edgeToFeatureMap = new Dictionary<Edge, List<string>>();

@@ -473,7 +473,7 @@ namespace Test100Topology
                 }
             });
 
-            var filterTopology = new SpatialQueryFilter {
+            var filterSurfaceTopology = new SpatialQueryFilter {
                 WhereClause = $"{whereClause} AND (upper(code) IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))",
                 //WhereClause = $"{whereClause}",
                 FilterGeometry = shape,
@@ -481,7 +481,7 @@ namespace Test100Topology
                 SpatialRelationshipDescription = "T*****FF*",
             };
 
-            var filterNavigational = new SpatialQueryFilter {
+            var filterSurfaceNavigational = new SpatialQueryFilter {
                 WhereClause = $"{whereClause} AND (upper(code) NOT IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))",
                 //WhereClause = $"{whereClause}",
                 FilterGeometry = shape,
@@ -489,9 +489,35 @@ namespace Test100Topology
                 SpatialRelationshipDescription = "T*****FF*",
             };
 
+            var filterCurveTopology = new SpatialQueryFilter {
+                WhereClause = $"{whereClause} AND (upper(code) IN ('COASTLINE', 'DEPTHCONTOUR', 'SHORELINECONSTRUCTION'))",
+                //WhereClause = $"{whereClause}",
+                FilterGeometry = shape,
+                SpatialRelationship = SpatialRelationship.Relation,
+                SpatialRelationshipDescription = "T*****FF*",
+            };
+
+            var filterCurveNavigational = new SpatialQueryFilter {
+                WhereClause = $"{whereClause} AND (upper(code) NOT IN ('COASTLINE', 'DEPTHCONTOUR', 'SHORELINECONSTRUCTION', 'NAVIGATIONLINE'))",
+                //WhereClause = $"{whereClause}",
+                FilterGeometry = shape,
+                SpatialRelationship = SpatialRelationship.Relation,
+                SpatialRelationshipDescription = "T*****FF*",
+            };
+
+            var filterCurveSingleton = new SpatialQueryFilter {
+                WhereClause = $"{whereClause} AND (upper(code) IN ('NAVIGATIONLINE'))",
+                //WhereClause = $"{whereClause}",
+                FilterGeometry = shape,
+                SpatialRelationship = SpatialRelationship.Relation,
+                SpatialRelationshipDescription = "T*****FF*",
+            };
+
+
             var result = matrix
-                .AddTopologyFeatures(LoadSurface(geodatabase, filterTopology), LoadCurves(geodatabase, filterTopology))
-                .AddNavigationalFeatures(LoadSurface(geodatabase, filterNavigational), LoadCurves(geodatabase, filterNavigational))
+                .AddTopologyFeatures(LoadSurface(geodatabase, filterSurfaceTopology), LoadCurves(geodatabase, filterCurveTopology))
+                .AddNavigationalFeatures(LoadSurface(geodatabase, filterSurfaceNavigational), LoadCurves(geodatabase, filterCurveNavigational))
+                .AddSingletonFeatures(LoadCurves(geodatabase, filterCurveSingleton))
                 .BuildTopology();
 
             using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
