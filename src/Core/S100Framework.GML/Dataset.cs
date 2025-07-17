@@ -1,9 +1,7 @@
 ﻿using S100Framework.Catalogues;
-using S100Framework.DomainModel.S131.InformationTypes;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Serialization;
 using System.Xml.XPath;
 
 namespace S100Framework.GML
@@ -15,8 +13,9 @@ namespace S100Framework.GML
         private readonly XDocument _document;
 
         private readonly XmlNamespaceManager _namespaceManager;
-        private readonly string _prefix;
         private readonly string _namespace;
+        private readonly string _prefix;
+        private string PrefixHyphen => _prefix.Replace("S", "S-");
 
         private readonly IDictionary<string, string> _namespaces;
 
@@ -42,16 +41,11 @@ namespace S100Framework.GML
 
             public object Value {
                 get {
-                    var prefix = _element.GetPrefixOfNamespace(_element.Name.Namespace)!;
-
                     var type = _featureCatalogue.Assembly!.GetType($"{_featureCatalogue.DefaultNamespace}.InformationTypes.{_element.Name.LocalName}")!;
 
-                    var rootAttr = new XmlRootAttribute(_element.Name.LocalName) {
-                        Namespace = _element.Name.Namespace.NamespaceName
-                    };
+                    var deserialized = GML.Converter.Deserialize(_element, type);
 
-                    var serializer = new XmlSerializer(type, rootAttr);
-                    return serializer.Deserialize(_element.CreateReader())!;
+                    return deserialized;
                 }
             }
         }
@@ -76,16 +70,11 @@ namespace S100Framework.GML
 
             public object Value {
                 get {
-                    var prefix = _element.GetPrefixOfNamespace(_element.Name.Namespace)!;
-
                     var type = _featureCatalogue.Assembly!.GetType($"{_featureCatalogue.DefaultNamespace}.FeatureTypes.{_element.Name.LocalName}")!;
-
-                    var rootAttr = new XmlRootAttribute(_element.Name.LocalName) {
-                        Namespace = _element.Name.Namespace.NamespaceName
-                    };
-
-                    var serializer = new XmlSerializer(type, rootAttr);
-                    return serializer.Deserialize(_element.CreateReader())!;
+           
+                    var deserialized = GML.Converter.Deserialize(_element, type);
+                    
+                    return deserialized;
                 }
             }
 
@@ -115,7 +104,13 @@ namespace S100Framework.GML
         }
 
         public IEnumerable<object> Members() {
-            var members = this._document.XPathSelectElement($"/{this._prefix}:Dataset/{this._prefix}:members", _namespaceManager)?.Elements();
+            var expression = $"//{this._prefix}:*";                            // e.g S127
+            var members = this._document.XPathSelectElements(expression, _namespaceManager);
+
+            // If members only consist of the root, try with hyphenated prefix. e.g. S-127  
+            if (members?.Count() == 1)
+                members = this._document.XPathSelectElements($"//{this.PrefixHyphen}:*", _namespaceManager);
+
             if (members is null)
                 yield break;
 

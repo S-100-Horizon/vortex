@@ -2,34 +2,25 @@
 using ArcGIS.Core.Geometry;
 using ICSharpCode.SharpZipLib.Zip;
 using S100Framework.DomainModel.S131.FeatureTypes;
-using S100Framework.DomainModel.S131.InformationTypes;
-using System;
-using System.ComponentModel;
+using S100Framework.DomainModel.S201.FeatureTypes;
 using System.Globalization;
 using System.IO;
-using System.Reflection;
-using System.Text.RegularExpressions;
-
 using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Serialization;
 using System.Xml.XPath;
 using Xunit.Abstractions;
-using IO = System.IO;
 
 namespace TestS100Framework
 {
-    public class UnitTestGML
+    public class UnitTestGMLReader
     {
         private readonly ITestOutputHelper _output;
 
-        public UnitTestGML(ITestOutputHelper output) {
+        public UnitTestGMLReader(ITestOutputHelper output) {
             this._output = output;
 
             ArcGIS.Core.Hosting.Host.Initialize();
         }
-
-
         [Fact]
         public void Test_SetupDatabase() {
             FastZip fastZip = new();
@@ -49,81 +40,6 @@ namespace TestS100Framework
 
         [Fact]
         public void Test_ReadGML() {
-            var S201 = @".\Samples\S201\201CAtestgml_Inline.gml";
-            var S131 = @".\Samples\S131\131DK00_DKAAL.GML";
-
-            // XML Setup
-            var xdoc = XDocument.Load(S131);
-            var root = xdoc.Root;
-
-            var ns = root!.Name.Namespace;
-            var prefix = root.GetPrefixOfNamespace(ns);
-
-            var productSpecificationHyphen = prefix?.Replace("S", "S-");          // S-131
-
-            var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals(productSpecificationHyphen));
-            var elements = xdoc.Descendants().Where(e => e.Name.Namespace == ns);
-
-            List<Type> GetMemberTypes(IEnumerable<XElement>? elements) {
-                var types = new List<Type>();
-                if (elements == null) return types;
-
-                string[] allowedTypes = ["FeatureTypes", "InformationTypes", "SimpleAttributes", "ComplexAttributes"];
-
-                foreach (var element in elements) {
-                    var code = element.Name.LocalName; // MooringWarpingFacility
-                    foreach (var type in allowedTypes) {
-                        var toype = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(prefix, type)}.{code}", false);
-                        if (toype != null)
-                            types.Add(toype);
-                    }
-                }
-                return types;
-            }
-
-            var members = GetMemberTypes(elements);
-
-            System.Diagnostics.Debugger.Break();
-        }
-
-
-        [Fact]
-        public void Test_DeserializeXML() {
-            var xml = """
-                <AvailablePortServices>
-                  <featureName>
-                    <displayName>true</displayName>
-                    <language>da</language>
-                    <name>Honnørkajen</name>
-                  </featureName>
-                </AvailablePortServices>
-                """;
-
-            var reader = new StringReader(xml);
-            var serializer = new XmlSerializer(typeof(AvailablePortServices));
-            var result = (AvailablePortServices)serializer.Deserialize(reader)!;
-
-            System.Diagnostics.Debugger.Break();
-        }
-    }
-}
-
-
-
-namespace TestS100Framework
-{
-    public class UnitTestGMLReader
-    {
-        private readonly ITestOutputHelper _output;
-
-        public UnitTestGMLReader(ITestOutputHelper output) {
-            this._output = output;
-
-            ArcGIS.Core.Hosting.Host.Initialize();
-        }
-
-        [Fact]
-        public void Test_S201InlineReader() {
             var S201 = @".\Samples\S201\201CAtestgml_Inline.gml";
             var S131 = @".\Samples\S131\131DK00_DKAAL.GML";
 
