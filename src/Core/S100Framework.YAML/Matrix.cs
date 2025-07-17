@@ -2,19 +2,10 @@
 #define TheMatrixReloaded
 
 using GeoAPI.Geometries;
-using NetTopologySuite.Algorithm.Match;
-using NetTopologySuite.EdgeGraph;
 using NetTopologySuite.Geometries;
-using NetTopologySuite.IO;
-using NetTopologySuite.Operation;
-using NetTopologySuite.Operation.Buffer.Validate;
 using NetTopologySuite.Operation.Linemerge;
 using NetTopologySuite.Operation.Union;
-using NetTopologySuite.Simplify;
-using NetTopologySuite.Triangulate;
 using System.Collections.Concurrent;
-using System.Diagnostics;
-using System.Threading.Tasks.Dataflow;
 using IO = System.IO;
 
 namespace S100Framework.YAML
@@ -392,7 +383,7 @@ namespace S100Framework.YAML
                 if (!polyline.LineStrings.Any()) return;
 
                 FeatureRef curveId = action(polyline.LineStrings, LinearRingOrientation.DontCare, true);
-               
+
                 this._mapping.GetOrAdd(polyline.Name, $"C{curveId.Id}");
             });
 

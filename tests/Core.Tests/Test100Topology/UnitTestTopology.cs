@@ -2,11 +2,8 @@ using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using GeoAPI.Geometries;
 using ICSharpCode.SharpZipLib.Zip;
-using NetTopologySuite.EdgeGraph;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
-using NetTopologySuite.Operation.Linemerge;
-using NetTopologySuite.Operation.Union;
 using System.Text.Json;
 using Xunit.Abstractions;
 using IO = System.IO;
@@ -463,7 +460,7 @@ namespace Test100Topology
             var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
 
             var whereClause = $"upper(ps) = 'S-101' AND drawingindex = {Convert.ToInt32(current["drawingindex"])}";
-           
+
             S100Framework.YAML.Matrix.ParallelOptions = new ParallelOptions {
                 MaxDegreeOfParallelism = 1
             };
@@ -497,8 +494,8 @@ namespace Test100Topology
                 .BuildTopology();
 
             using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
-                PersistTopology(target, result.Curves.Select(e=>e.LineString));
-            }            
+                PersistTopology(target, result.Curves.Select(e => e.LineString));
+            }
 
             System.Diagnostics.Debugger.Break();
         }
@@ -564,7 +561,7 @@ namespace Test100Topology
                         name = string.Empty;
 
                     var exteriorRing = shape.GetExteriorRing(0);
-                    var coordinates = exteriorRing.Parts[0].Select(segment =>  new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+                    var coordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
 
                     var ex = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
                     ex = ex.RemoveRepeatedVertices();
@@ -610,7 +607,7 @@ namespace Test100Topology
                     var linestring = (LineString)factory.CreateLineString([.. coordinates]);
                     linestring = linestring.RemoveRepeatedVertices();
 
-                    polylines.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, linestring));                    
+                    polylines.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, linestring));
                 }
             }
             return polylines;

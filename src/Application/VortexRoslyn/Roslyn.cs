@@ -4,7 +4,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Serialization;
 using System.Xml.XPath;
 
 namespace S100Framework.Applications
