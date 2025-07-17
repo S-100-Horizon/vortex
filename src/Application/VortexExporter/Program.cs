@@ -122,7 +122,6 @@ namespace S100Framework.Applications
                             CellName = $"101{electricProduct!.datasetName!}.000",
                             Comment = "Not for navigation!",
                             Edition = 1,
-                            Update = 0,
                             ENCVer = "INT.IHO.S-101.2.0",
                             FCVer = "2.0",
                             verticalDatum = "Baltic Sea Chart Datum 2000,44",
