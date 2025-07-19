@@ -165,7 +165,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+                            ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
@@ -201,7 +201,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+                            ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
@@ -239,7 +239,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-                            ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+                            ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
@@ -278,7 +278,7 @@ namespace S100Framework.Applications
                                 buffer["code"] = seagrass.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(seagrass, jsonSerializerOptions);
                                 SetShape(buffer, current.SHAPE);
-                                SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+                                SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
@@ -318,7 +318,7 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer, current.SHAPE);
-                                SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+                                SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";

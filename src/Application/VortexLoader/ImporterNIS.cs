@@ -81,7 +81,7 @@ namespace S100Framework.Applications
                     }
                 }
                 else {
-                    filter.WhereClause = "";
+                    filter.WhereClause = "PLTS_COMP_SCALE = 22000";
                 }
 
                 if (!string.IsNullOrEmpty(o.NotesPath)) {
@@ -138,8 +138,8 @@ namespace S100Framework.Applications
                     using var curve = destination.OpenDataset<FeatureClass>(destination.GetName("curve"));
                     using var surface = destination.OpenDataset<FeatureClass>(destination.GetName("surface"));
 
-                    using var associationBinding = destination.OpenDataset<Table>(destination.GetName("associationbinding"));
-                    using var attributeBinding = destination.OpenDataset<Table>(destination.GetName("attributebinding"));
+                    //using var associationBinding = destination.OpenDataset<Table>(destination.GetName("associationbinding"));
+                    //using var attributeBinding = destination.OpenDataset<Table>(destination.GetName("attributebinding"));
                     using var featureAssociation = destination.OpenDataset<Table>(destination.GetName("featureassociation"));
                     using var informationAssociation = destination.OpenDataset<Table>(destination.GetName("InformationAssociation"));
                     using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationType"));
@@ -152,10 +152,10 @@ namespace S100Framework.Applications
                     curve.DeleteRows(query);
                     Logger.Current.Information($"Deleting data from destination: {surface.GetName()}");
                     surface.DeleteRows(query);
-                    Logger.Current.Information($"Deleting data from destination: {associationBinding.GetName()}");
-                    associationBinding.DeleteRows(query);
-                    Logger.Current.Information($"Deleting data from destination: {attributeBinding.GetName()}");
-                    attributeBinding.DeleteRows(query);
+                    //Logger.Current.Information($"Deleting data from destination: {associationBinding.GetName()}");
+                    //associationBinding.DeleteRows(query);
+                    //Logger.Current.Information($"Deleting data from destination: {attributeBinding.GetName()}");
+                    //attributeBinding.DeleteRows(query);
                     Logger.Current.Information($"Deleting data from destination: {featureAssociation.GetName()}");
                     featureAssociation.DeleteRows(query);
                     Logger.Current.Information($"Deleting data from destination: {informationAssociation.GetName()}");
@@ -295,7 +295,7 @@ namespace S100Framework.Applications
                 Logger.Current.Information($"Loading sanity checker");
                 SanityChecker.Initialize(destination);
 
-                if (SanityChecker.Instance.Check_DrawingIndex() == 0) {
+                if (SanityChecker.Instance.Check_UsageBand() == 0) {
                     Logger.Current.Information("Drawing index check PASSED");
                 }
                 else {
@@ -328,13 +328,13 @@ namespace S100Framework.Applications
                 buffer["shape"] = shape;
             }
         }
-        internal static void SetDrawingIndex(RowBuffer buffer, int comp_scale) {
+        internal static void SetUsageBand(RowBuffer buffer, int comp_scale) {
             _ = comp_scale switch {
-                < 22000 => buffer["drawingIndex"] = 5,
-                < 90000 => buffer["drawingIndex"] = 4,
-                < 180000 => buffer["drawingIndex"] = 3,
-                < 700000 => buffer["drawingIndex"] = 2,
-                _ => buffer["drawingIndex"] = 1
+                < 22000 => buffer["usageband"] = 5,
+                < 90000 => buffer["usageband"] = 4,
+                < 180000 => buffer["usageband"] = 3,
+                < 700000 => buffer["usageband"] = 2,
+                _ => buffer["usageband"] = 1
             };
 
 
@@ -343,8 +343,8 @@ namespace S100Framework.Applications
             //    GeometryType.Point => null,
             //    GeometryType.Envelope => throw new NotSupportedException("Geometry type: envelope"),
             //    GeometryType.Multipoint => null,
-            //    GeometryType.Polyline => buffer["drawingindex"] = 4,
-            //    GeometryType.Polygon => buffer["drawingindex"] = 4,
+            //    GeometryType.Polyline => buffer["usageband"] = 4,
+            //    GeometryType.Polygon => buffer["usageband"] = 4,
             //    GeometryType.Multipatch => throw new NotSupportedException("Geometry type: multipatch"),
             //    GeometryType.GeometryBag => throw new NotSupportedException("Geometry type: geometrybag"),
             //    _ => throw new NotSupportedException($"Unhandled geometry type {shape.GeometryType}")

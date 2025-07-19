@@ -59,7 +59,7 @@ namespace S100Framework.Applications
                         var mappoint = MapPointBuilderEx.CreateMapPoint(shape.X, shape.Y, Convert.ToDouble(depth), shape.SpatialReference);
 
                         SetShape(bufferPointset, MultipointBuilderEx.CreateMultipoint(mappoint));
-                        SetDrawingIndex(bufferPointset, current.PLTS_COMP_SCALE!.Value);
+                        SetUsageBand(bufferPointset, current.PLTS_COMP_SCALE!.Value);
 
                         if (quasou == default || !string.Equals(quasou, "5", StringComparison.OrdinalIgnoreCase)) {
                             var sounding = new Sounding {

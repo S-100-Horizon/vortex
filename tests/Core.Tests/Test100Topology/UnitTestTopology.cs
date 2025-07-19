@@ -63,7 +63,7 @@ namespace Test100Topology
 
             var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
 
-            var whereClause = $"upper(ps) = 'S-101' AND drawingindex = {Convert.ToInt32(current["drawingindex"])}";
+            var whereClause = $"upper(ps) = 'S-101' AND usageband = {Convert.ToInt32(current["usageband"])}";
 
             //whereClause += " AND name = 'S2557165'";
             //whereClause += " AND name = 'S2557775'";
@@ -150,7 +150,7 @@ namespace Test100Topology
 
             var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
 
-            var whereClause = $"upper(ps) = 'S-101' AND drawingindex = {Convert.ToInt32(current["drawingindex"])}";
+            var whereClause = $"upper(ps) = 'S-101' AND usageband = {Convert.ToInt32(current["usageband"])}";
 
             var filter = new SpatialQueryFilter {
                 WhereClause = whereClause,
@@ -208,7 +208,7 @@ namespace Test100Topology
 
             var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
 
-            var whereClause = $"upper(ps) = 'S-101' AND drawingindex = {Convert.ToInt32(current["drawingindex"])}";
+            var whereClause = $"upper(ps) = 'S-101' AND usageband = {Convert.ToInt32(current["usageband"])}";
 
             var filter = new SpatialQueryFilter {
                 WhereClause = whereClause,
@@ -294,7 +294,7 @@ namespace Test100Topology
 
             var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
 
-            var whereClause = $"upper(ps) = 'S-101' AND drawingindex = {Convert.ToInt32(current["drawingindex"])}";
+            var whereClause = $"upper(ps) = 'S-101' AND usageband = {Convert.ToInt32(current["usageband"])}";
 
             var filter = new SpatialQueryFilter {
                 WhereClause = whereClause,
@@ -460,7 +460,7 @@ namespace Test100Topology
 
             var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
 
-            var whereClause = $"upper(ps) = 'S-101' AND drawingindex = {Convert.ToInt32(current["drawingindex"])}";
+            var whereClause = $"upper(ps) = 'S-101' AND usageband = {Convert.ToInt32(current["usageband"])}";
 
             S100Framework.YAML.Matrix.ParallelOptions = new ParallelOptions {
                 MaxDegreeOfParallelism = 1

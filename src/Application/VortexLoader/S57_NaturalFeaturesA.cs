@@ -79,7 +79,7 @@ namespace S100Framework.Applications
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(bufferSurface, current.SHAPE);
-                            SetDrawingIndex(bufferSurface, current.PLTS_COMP_SCALE!.Value);
+                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
@@ -135,7 +135,7 @@ namespace S100Framework.Applications
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
 
                             SetShape(bufferSurface, current.SHAPE);
-                            SetDrawingIndex(bufferSurface, current.PLTS_COMP_SCALE!.Value);
+                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
 
                             var featureN = featureClass.CreateRow(bufferSurface);
@@ -185,7 +185,7 @@ namespace S100Framework.Applications
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(bufferSurface, current.Shape);
-                            SetDrawingIndex(bufferSurface, current.PLTS_COMP_SCALE!.Value);
+                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
 
                             var featureN = featureClass.CreateRow(bufferSurface);
@@ -229,7 +229,7 @@ namespace S100Framework.Applications
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(bufferSurface, current.SHAPE);
-                            SetDrawingIndex(bufferSurface, current.PLTS_COMP_SCALE!.Value);
+                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
@@ -284,7 +284,7 @@ namespace S100Framework.Applications
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(bufferSurface, current.SHAPE);
-                            SetDrawingIndex(bufferSurface, current.PLTS_COMP_SCALE!.Value);
+                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
@@ -349,7 +349,7 @@ namespace S100Framework.Applications
                             //bufferSurface["code"] = instance.GetType().Name; 
                             //bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             //SetShape(bufferSurface, current.SHAPE);
-                            //SetDrawingIndex(bufferSurface, current.PLTS_COMP_SCALE!.Value);
+                            //SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
                             //var featureN = featureClass.CreateRow(bufferSurface);
                             //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -402,7 +402,7 @@ namespace S100Framework.Applications
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(bufferSurface, current.SHAPE);
-                            SetDrawingIndex(bufferSurface, current.PLTS_COMP_SCALE!.Value);
+                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";

@@ -115,8 +115,8 @@ namespace S100Framework.Applications
                         var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
 
                         var whereClause = "upper(ps) = 'S-101'";
-                        if (!current.IsNull("drawingindex"))
-                            whereClause += $" AND drawingindex = {Convert.ToInt32(current["drawingindex"])}";
+                        if (!current.IsNull("usageband"))
+                            whereClause += $" AND usageband = {Convert.ToInt32(current["usageband"])}";
 
                         datasets.Add((new Dataset {
                             CellName = $"101{electricProduct!.datasetName!}.000",

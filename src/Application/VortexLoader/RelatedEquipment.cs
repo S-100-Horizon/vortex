@@ -174,7 +174,7 @@ namespace S100Framework.Applications
                     buffer["code"] = lightSectored.GetType().Name;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(lightSectored, ImporterNIS.jsonSerializerOptions);
                     ImporterNIS.SetShape(buffer, shape);
-                    ImporterNIS.SetDrawingIndex(buffer, s57master.PLTS_COMP_SCALE.Value);
+                    ImporterNIS.SetUsageBand(buffer, s57master.PLTS_COMP_SCALE.Value);
 
                     var featureN = featureClass.CreateRow(buffer);
                     var equipmentName = Convert.ToString(featureN["name"]);
@@ -213,7 +213,7 @@ namespace S100Framework.Applications
                         buffer["code"] = instance.GetType().Name;
                         buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                         ImporterNIS.SetShape(buffer, shape);
-                        ImporterNIS.SetDrawingIndex(buffer, relatedObject.S57Object.PLTS_COMP_SCALE.Value);
+                        ImporterNIS.SetUsageBand(buffer, relatedObject.S57Object.PLTS_COMP_SCALE.Value);
 
                         var featureN = featureClass.CreateRow(buffer);
                         var equipmentName = Convert.ToString(featureN["name"]);
@@ -274,7 +274,7 @@ namespace S100Framework.Applications
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                 ImporterNIS.SetShape(buffer, s57master.Shape);
-                ImporterNIS.SetDrawingIndex(buffer, s57master.PLTS_COMP_SCALE.Value);
+                ImporterNIS.SetUsageBand(buffer, s57master.PLTS_COMP_SCALE.Value);
 
                 var featureN = featureClass.CreateRow(buffer);
                 var equipmentName = Convert.ToString(featureN["name"]);
@@ -313,7 +313,7 @@ namespace S100Framework.Applications
                     buffer["code"] = instance.GetType().Name;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                     ImporterNIS.SetShape(buffer, s57master.Shape);
-                    ImporterNIS.SetDrawingIndex(buffer, s57master.PLTS_COMP_SCALE.Value);
+                    ImporterNIS.SetUsageBand(buffer, s57master.PLTS_COMP_SCALE.Value);
 
                     var featureN = featureClass.CreateRow(buffer);
                     var equipmentName = Convert.ToString(featureN["name"]);
