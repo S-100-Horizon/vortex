@@ -27,6 +27,10 @@ namespace S100Framework.YAML
 
             this.LineStringText = lineString.ToString();
             this.LineStringReverseText = this.LineStringReverse.ToString();
+
+            if (base.Id == 6039) {
+                System.Diagnostics.Debugger.Break();                
+            }
         }
 
         public LineString LineString { get; set; }

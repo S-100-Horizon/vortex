@@ -757,7 +757,7 @@ namespace ArcGIS.Core.Data
                 var singletons = new List<S100Framework.YAML.Polyline>();
 
                 using (var curve = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("curve")).GetName())) {
-                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) NOT IN ('COASTLINE','DEPTHCONTOUR','SHORELINECONSTRUCTION','NAVIGATIONLINE','RECOMMENDEDTRACK'))";
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) NOT IN ('COASTLINE','DEPTHCONTOUR','SHORELINECONSTRUCTION'))"; //,'NAVIGATIONLINE','RECOMMENDEDTRACK'
                     using (var cursor = curve.Search(queryFilter)) {
                         while (cursor.MoveNext()) {
                             var f = (Feature)cursor.Current;
@@ -798,7 +798,7 @@ namespace ArcGIS.Core.Data
                     }
                 }
 
-                builder = matrix.AddNavigationalFeatures(polygons, curves).AddSingletonFeatures(singletons);
+                builder = matrix.AddNavigationalFeatures(polygons, curves); //.AddSingletonFeatures(singletons);
             }
 
             var result = builder.BuildTopology();
