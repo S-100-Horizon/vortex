@@ -28,9 +28,9 @@ namespace S100Framework.YAML
             this.LineStringText = lineString.ToString();
             this.LineStringReverseText = this.LineStringReverse.ToString();
 
-            if (base.Id == 6039) {
-                System.Diagnostics.Debugger.Break();                
-            }
+            //if (base.Id == 6039) {
+            //    System.Diagnostics.Debugger.Break();                
+            //}
         }
 
         public LineString LineString { get; set; }
@@ -262,23 +262,25 @@ namespace S100Framework.YAML
 
             this.BuildSharedEdges([.. surfaces], [.. curves]);
 
-            foreach(var curve in this._curvesSingleton) {
-                var hash = System.IO.Hashing.XxHash3.HashToUInt64(curve.LineString.AsBinary());
+            if (null != this._curvesSingleton) {
+                foreach (var curve in this._curvesSingleton) {
+                    var hash = System.IO.Hashing.XxHash3.HashToUInt64(curve.LineString.AsBinary());
 
-                var f = new CurveFeature(curve.LineString);
-                this._hashing.GetOrAdd(hash, (new FeatureRef {
-                    Id = f.Id,
-                    Reverse = false,
-                }, f));
-                hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
-                this._hashing.GetOrAdd(hash, (new FeatureRef {
-                    Id = f.Id,
-                    Reverse = true,
-                }, f));
+                    var f = new CurveFeature(curve.LineString);
+                    this._hashing.GetOrAdd(hash, (new FeatureRef {
+                        Id = f.Id,
+                        Reverse = false,
+                    }, f));
+                    hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
+                    this._hashing.GetOrAdd(hash, (new FeatureRef {
+                        Id = f.Id,
+                        Reverse = true,
+                    }, f));
 
-                var featureRef = this._hashing[hash];
+                    var featureRef = this._hashing[hash];
 
-                this._mapping.GetOrAdd(curve.name, $"C{featureRef.fetureRef.Id}");
+                    this._mapping.GetOrAdd(curve.name, $"C{featureRef.fetureRef.Id}");
+                }
             }
 
             Parallel.ForEach(this._bagPolygons, ParallelOptions, (polygon) => {
