@@ -81,6 +81,7 @@ namespace S100Framework.Applications
                     }
                 }
                 else {
+                    _compilationScale = 22000;
                     filter.WhereClause = "PLTS_COMP_SCALE = 22000";
                 }
 
@@ -330,6 +331,7 @@ namespace S100Framework.Applications
         }
         internal static void SetUsageBand(RowBuffer buffer, int comp_scale) {
             _ = comp_scale switch {
+                -1 => throw new InvalidOperationException("compilation scale isn't initialized!"),
                 < 22000 => buffer["usageband"] = 5,
                 < 90000 => buffer["usageband"] = 4,
                 < 180000 => buffer["usageband"] = 3,
