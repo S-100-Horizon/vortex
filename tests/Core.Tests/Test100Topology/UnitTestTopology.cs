@@ -530,6 +530,8 @@ namespace Test100Topology
 
             this.output.WriteLine($"result: #{curves}, #{compositeCurves}, #{surfaces}");
 
+            var masks1 = result.Surfaces.Where(e => e.Masks1 != default);
+
             System.Diagnostics.Debugger.Break();
         }
 

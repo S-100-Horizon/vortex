@@ -75,6 +75,9 @@ namespace S100Framework.YAML
         public string? Ref { get; init; } = default;
 
         public LineString? LineString { get; set; } = default;
+
+        public ICollection<UInt64>? Masks1 { get; set; } = default;
+        public ICollection<UInt64>? Masks2 { get; set; } = default;
     }
 
     public record Polyline(long ObjectId, string Name, string Code, LineString LineString);
@@ -179,6 +182,8 @@ namespace S100Framework.YAML
 
         private ConcurrentBag<SurfaceFeature> _bagSurfaces = new ConcurrentBag<SurfaceFeature>();
 
+        private IDictionary<string, List<LineString>> _featureToEdges;
+
         private ICollection<S100Framework.YAML.Polygon> _surfacesTopology;
         private ICollection<S100Framework.YAML.Polyline> _curvesTopology;
 
@@ -206,7 +211,7 @@ namespace S100Framework.YAML
         }
 
         private static ICollection<S100Framework.YAML.Polygon> MakePrecise(ICollection<S100Framework.YAML.Polygon> surfaces) {
-            foreach(var p in surfaces) {
+            foreach (var p in surfaces) {
                 MakePrecise(p.ExteriorRing);
 
                 foreach (var interior in p.InteriorRings)
@@ -256,6 +261,8 @@ namespace S100Framework.YAML
                 curves = curves.UnionBy(this._curvesNavigational, e => e.Name);
             }
 
+            var dataCoverageObjects = surfaces.Where(e => e.Code.Equals("DataCoverage")).Select(e => e.Name).Distinct();
+
             this.BuildSharedEdges([.. surfaces], [.. curves]);
 
             if (null != this._curvesSingleton) {
@@ -278,6 +285,48 @@ namespace S100Framework.YAML
                     this._mapping.GetOrAdd(curve.Name, $"C{featureRef.fetureRef.Id}");
                 }
             }
+
+            var dataCoveragesHashes = new List<UInt64>();
+
+            foreach (var polygon in this._bagPolygons.Where(e => dataCoverageObjects.Contains(e.Name))) {
+                foreach (var lineString in polygon.ExteriorRing) {
+                    var hash = System.IO.Hashing.XxHash3.HashToUInt64(lineString.AsBinary());
+
+                    var f = new CurveFeature(lineString);
+                    var r = this._hashing.GetOrAdd(hash, (new FeatureRef {
+                        Id = f.Id,
+                        Reverse = false,
+                    }, f));
+                    dataCoveragesHashes.Add(r.curve.Id);
+                    hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
+                    r = this._hashing.GetOrAdd(hash, (new FeatureRef {
+                        Id = f.Id,
+                        Reverse = true,
+                    }, f));
+                    dataCoveragesHashes.Add(r.curve.Id);
+                }
+                if (polygon.InteriorRings.Any()) {
+                    foreach (var interior in polygon.InteriorRings) {
+                        foreach (var lineString in interior) {
+                            var hash = System.IO.Hashing.XxHash3.HashToUInt64(lineString.AsBinary());
+                            var f = new CurveFeature(lineString);
+                            var r = this._hashing.GetOrAdd(hash, (new FeatureRef {
+                                Id = f.Id,
+                                Reverse = false,
+                            }, f));
+                            dataCoveragesHashes.Add(r.curve.Id);
+                            hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
+                            r = this._hashing.GetOrAdd(hash, (new FeatureRef {
+                                Id = f.Id,
+                                Reverse = true,
+                            }, f));
+                            dataCoveragesHashes.Add(r.curve.Id);
+                        }
+                    }
+                }
+            }
+
+            dataCoveragesHashes = dataCoveragesHashes.DistinctBy(e => e).ToList();
 
             Parallel.ForEach(this._bagPolygons, ParallelOptions, (polygon) => {
                 foreach (var lineString in polygon.ExteriorRing) {
@@ -332,8 +381,10 @@ namespace S100Framework.YAML
 
             //_interceptor?.Invoke(this._hashing.Where(e => !e.Value.fetureRef.Reverse).Select(e => e.Value.curve.LineString).ToList());
 
-            Func<IEnumerable<LineString>, LinearRingOrientation, bool, FeatureRef> action = (lineStrings, orientation, allowMultiLineString) => {
+            Func<IEnumerable<LineString>, LinearRingOrientation, bool, (FeatureRef featureRef, ICollection<CurveFeature> masks1)> action = (lineStrings, orientation, allowMultiLineString) => {
                 FeatureRef featureRef;
+                var masks1 = new List<CurveFeature>();
+                var masks2 = new List<CurveFeature>();
 
                 if (lineStrings.Count() == 1) {
                     var l = lineStrings.ElementAt(0);
@@ -348,6 +399,8 @@ namespace S100Framework.YAML
                     }
 
                     var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(l.AsBinary())];
+                    if (dataCoveragesHashes.Contains(hash.curve.Id))
+                        masks1.Add(hash.curve);
                     featureRef = hash.fetureRef;
 
                     //var curve = this._curveContainer.AddOrGet(l);
@@ -391,9 +444,12 @@ namespace S100Framework.YAML
                     for (int i = 0; i < lineStrings.Count(); i++) {
                         //var curve = this._curveContainer.AddOrGet(lineStrings.ElementAt(i));
 
-                        var text = lineStrings.ElementAt(i).ToText().Substring("LINESTRING (".Length).TrimEnd(')');                        
+                        var text = lineStrings.ElementAt(i).ToText().Substring("LINESTRING (".Length).TrimEnd(')');
                         if (lineStringText.Contains(text)) {
                             var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(lineStrings.ElementAt(i).AsBinary())];
+
+                            if (dataCoveragesHashes.Contains(hash.curve.Id))
+                                masks1.Add(hash.curve);
 
                             sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
                             //var curve = this._curveContainer.AddOrGet(lineStrings.ElementAt(i));
@@ -407,6 +463,9 @@ namespace S100Framework.YAML
                             text = reverse.ToText().Substring("LINESTRING (".Length).TrimEnd(')');
 
                             var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(reverse.AsBinary())];
+
+                            if (dataCoveragesHashes.Contains(hash.curve.Id))
+                                masks1.Add(hash.curve);
 
                             var index = lineStringText.IndexOf(text);
                             if (index < 0) System.Diagnostics.Debugger.Break();
@@ -427,19 +486,32 @@ namespace S100Framework.YAML
                     };
                 }
 
-                return featureRef;
+                return (featureRef, masks1);
             };
 
             Parallel.ForEach(this._bagPolygons, ParallelOptions, (polygon) => {
                 if (!polygon.ExteriorRing.Any()) return;
 
-                FeatureRef exteriorId = action(polygon.ExteriorRing, LinearRingOrientation.Clockwise, false);
+                var exteriorId = action(polygon.ExteriorRing, LinearRingOrientation.Clockwise, false);
                 var surface = new SurfaceFeature() {
                     Ref = polygon.Name,
-                    Exterior = exteriorId,
+                    Exterior = exteriorId.featureRef,
                 };
+                if (exteriorId.masks1.Any())
+                    surface.Masks1 = [.. exteriorId.masks1.Select(e => e.Id)];
+
                 if (polygon.InteriorRings.Any()) {
-                    surface.Interior = polygon.InteriorRings.Select(e => action(e, LinearRingOrientation.CounterClockwise, false)).ToArray();
+                    var interiorRings = polygon.InteriorRings.Select(e => action(e, LinearRingOrientation.CounterClockwise, false));
+                    surface.Interior = [.. interiorRings.Select(e => e.featureRef)];
+
+                    //  interior ring can't touch bondary!
+                    //var masks1 = interiorRings.SelectMany(e => e.masks1).Select(e => e.Id).Distinct();
+                    //if (masks1.Any()) {
+                    //    if (surface.Masks1 != default && surface.Masks1.Any())
+                    //        surface.Masks1 = [.. surface.Masks1, .. masks1];
+                    //    else
+                    //        surface.Masks1 = [.. masks1];
+                    //}
                 }
                 this._bagSurfaces.Add(surface);
                 this._mapping.GetOrAdd(polygon.Name, $"S{surface.Id}");
@@ -448,9 +520,9 @@ namespace S100Framework.YAML
             Parallel.ForEach(this._bagPolylines, ParallelOptions, (polyline) => {
                 if (!polyline.LineStrings.Any()) return;
 
-                FeatureRef curveId = action(polyline.LineStrings, LinearRingOrientation.DontCare, true);
+                var curveId = action(polyline.LineStrings, LinearRingOrientation.DontCare, true);
 
-                this._mapping.GetOrAdd(polyline.Name, $"C{curveId.Id}");
+                this._mapping.GetOrAdd(polyline.Name, $"C{curveId.featureRef.Id}");
             });
 
             return this;
@@ -486,7 +558,7 @@ namespace S100Framework.YAML
                 AddLineString(curve.Name, curve.LineString);
             }
 
-            var featureToEdges = new Dictionary<string, List<LineString>>();
+            this._featureToEdges = new Dictionary<string, List<LineString>>();
 
             foreach (var e in edgeToFeatureMap.GroupBy(e => string.Join(',', e.Value))) {
                 //if (e.Key.Contains("S2674311")) System.Diagnostics.Debugger.Break();
@@ -500,9 +572,9 @@ namespace S100Framework.YAML
 
                 var hits = e.Key.Split(',', StringSplitOptions.RemoveEmptyEntries);
                 foreach (var p in hits) {
-                    if (!featureToEdges.ContainsKey(p))
-                        featureToEdges.Add(p, new List<LineString>());
-                    featureToEdges[p].AddRange(mergedLineStrings);
+                    if (!this._featureToEdges.ContainsKey(p))
+                        this._featureToEdges.Add(p, new List<LineString>());
+                    this._featureToEdges[p].AddRange(mergedLineStrings);
                 }
             }
 
@@ -510,11 +582,11 @@ namespace S100Framework.YAML
             //this._interceptor?.Invoke(array);
 
             Parallel.For(0, surfaces.Count, Matrix.ParallelOptions, (p) => {
-                var surface = surfaces.ElementAt(p);                
-                IEnumerable<LineString> exteriorRing = featureToEdges[surface.Name];
+                var surface = surfaces.ElementAt(p);
+                IEnumerable<LineString> exteriorRing = this._featureToEdges[surface.Name];
                 var interiorRings = new List<IEnumerable<LineString>>();
                 for (int i = 0; i < surface.InteriorRings.Count(); i++) {
-                    interiorRings.Add(featureToEdges[$"{surface.Name}i{i}"]);
+                    interiorRings.Add(this._featureToEdges[$"{surface.Name}i{i}"]);
                 }
                 this._bagPolygons.Add((surface.Name, exteriorRing, interiorRings));
             });
@@ -522,7 +594,7 @@ namespace S100Framework.YAML
             Parallel.For(0, curves.Count, Matrix.ParallelOptions, (c) => {
                 var curve = curves.ElementAt(c);
 
-                IEnumerable<LineString> lineStrings = featureToEdges[curve.Name];
+                IEnumerable<LineString> lineStrings = this._featureToEdges[curve.Name];
 
                 this._bagPolylines.Add((curve.Name, lineStrings));
             });
