@@ -27,10 +27,6 @@ namespace S100Framework.YAML
 
             this.LineStringText = lineString.ToString();
             this.LineStringReverseText = this.LineStringReverse.ToString();
-
-            //if (base.Id == 6039) {
-            //    System.Diagnostics.Debugger.Break();                
-            //}
         }
 
         public LineString LineString { get; set; }
@@ -81,9 +77,9 @@ namespace S100Framework.YAML
         public LineString? LineString { get; set; } = default;
     }
 
-    public record Polyline(long ObjectId, string name, LineString LineString);
+    public record Polyline(long ObjectId, string Name, string Code, LineString LineString);
 
-    public record Polygon(long ObjectId, string name, LineString ExteriorRing, LineString[] InteriorRings) : Polyline(ObjectId, name, ExteriorRing);
+    public record Polygon(long ObjectId, string Name, string Code, LineString ExteriorRing, LineString[] InteriorRings) : Polyline(ObjectId, Name, Code, ExteriorRing);
 
 
     public class CurveContainer
@@ -251,13 +247,13 @@ namespace S100Framework.YAML
             IEnumerable<S100Framework.YAML.Polyline> curves = Enumerable.Empty<S100Framework.YAML.Polyline>();
 
             if (this._surfacesTopology.Any() || this._curvesTopology.Any()) {
-                surfaces = surfaces.UnionBy(this._surfacesTopology, e => e.name);
-                curves = curves.UnionBy(this._curvesTopology, e => e.name);
+                surfaces = surfaces.UnionBy(this._surfacesTopology, e => e.Name);
+                curves = curves.UnionBy(this._curvesTopology, e => e.Name);
             }
 
             if (this._surfacesNavigational.Any() || this._curvesNavigational.Any()) {
-                surfaces = surfaces.UnionBy(this._surfacesNavigational, e => e.name);
-                curves = curves.UnionBy(this._curvesNavigational, e => e.name);
+                surfaces = surfaces.UnionBy(this._surfacesNavigational, e => e.Name);
+                curves = curves.UnionBy(this._curvesNavigational, e => e.Name);
             }
 
             this.BuildSharedEdges([.. surfaces], [.. curves]);
@@ -279,7 +275,7 @@ namespace S100Framework.YAML
 
                     var featureRef = this._hashing[hash];
 
-                    this._mapping.GetOrAdd(curve.name, $"C{featureRef.fetureRef.Id}");
+                    this._mapping.GetOrAdd(curve.Name, $"C{featureRef.fetureRef.Id}");
                 }
             }
 
@@ -479,15 +475,15 @@ namespace S100Framework.YAML
             }
 
             foreach (var polygon in surfaces) {
-                AddLineString(polygon.name, polygon.ExteriorRing);
+                AddLineString(polygon.Name, polygon.ExteriorRing);
                 if (polygon.InteriorRings.Any()) {
                     for (int i = 0; i < polygon.InteriorRings.Count(); i++)
-                        AddLineString($"{polygon.name}i{i}", polygon.InteriorRings[i]);
+                        AddLineString($"{polygon.Name}i{i}", polygon.InteriorRings[i]);
                 }
             }
 
             foreach (var curve in curves) {
-                AddLineString(curve.name, curve.LineString);
+                AddLineString(curve.Name, curve.LineString);
             }
 
             var featureToEdges = new Dictionary<string, List<LineString>>();
@@ -515,20 +511,20 @@ namespace S100Framework.YAML
 
             Parallel.For(0, surfaces.Count, Matrix.ParallelOptions, (p) => {
                 var surface = surfaces.ElementAt(p);                
-                IEnumerable<LineString> exteriorRing = featureToEdges[surface.name];
+                IEnumerable<LineString> exteriorRing = featureToEdges[surface.Name];
                 var interiorRings = new List<IEnumerable<LineString>>();
                 for (int i = 0; i < surface.InteriorRings.Count(); i++) {
-                    interiorRings.Add(featureToEdges[$"{surface.name}i{i}"]);
+                    interiorRings.Add(featureToEdges[$"{surface.Name}i{i}"]);
                 }
-                this._bagPolygons.Add((surface.name, exteriorRing, interiorRings));
+                this._bagPolygons.Add((surface.Name, exteriorRing, interiorRings));
             });
 
             Parallel.For(0, curves.Count, Matrix.ParallelOptions, (c) => {
                 var curve = curves.ElementAt(c);
 
-                IEnumerable<LineString> lineStrings = featureToEdges[curve.name];
+                IEnumerable<LineString> lineStrings = featureToEdges[curve.Name];
 
-                this._bagPolylines.Add((curve.name, lineStrings));
+                this._bagPolylines.Add((curve.Name, lineStrings));
             });
         }
 

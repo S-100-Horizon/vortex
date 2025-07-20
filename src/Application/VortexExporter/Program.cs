@@ -673,10 +673,10 @@ namespace ArcGIS.Core.Data
                                 interiorRings.Add(linestring);
                             }
 
-                            polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, interiorRings.ToArray()));
+                            polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, interiorRings.ToArray()));
                         }
                         else {
-                            polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, []));
+                            polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, []));
                         }
                     }
                 }
@@ -701,7 +701,7 @@ namespace ArcGIS.Core.Data
                             var linestring = (LineString)factory.CreateLineString([.. coordinates]);
                             linestring = linestring.RemoveRepeatedVertices();
 
-                            curves.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, linestring));
+                            curves.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, Convert.ToString(f["code"])!, linestring));
                         }
                     }
                 }
@@ -744,10 +744,10 @@ namespace ArcGIS.Core.Data
                                     interiorRings.Add(linestring);
                                 }
 
-                                polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, interiorRings.ToArray()));
+                                polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, interiorRings.ToArray()));
                             }
                             else {
-                                polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, ex, []));
+                                polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, []));
                             }
                         }
                     }                    
@@ -773,7 +773,7 @@ namespace ArcGIS.Core.Data
                             var linestring = (LineString)factory.CreateLineString([.. coordinates]);
                             linestring = linestring.RemoveRepeatedVertices();
 
-                            curves.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, linestring));
+                            curves.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, Convert.ToString(f["code"])!, linestring));
                         }
                     }
 
@@ -793,7 +793,7 @@ namespace ArcGIS.Core.Data
                             var linestring = (LineString)factory.CreateLineString([.. coordinates]);
                             linestring = linestring.RemoveRepeatedVertices();
 
-                            singletons.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, linestring));
+                            singletons.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, Convert.ToString(f["code"])!, linestring));
                         }
                     }
                 }
