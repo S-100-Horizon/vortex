@@ -1,15 +1,5 @@
-﻿using ArcGIS.Core.CIM;
-using ArcGIS.Core.Data;
-using ArcGIS.Core.Data.UtilityNetwork.Trace;
+﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
-using ArcGIS.Desktop.Internal.Core.Conda;
-using ArcGIS.Desktop.Internal.Editing.COGO;
-using S100Framework.Applications;
-using S100Framework.Applications.S57.esri;
-using S100Framework.DomainModel.S201.FeatureTypes;
-using System;
-using System.Globalization;
-using System.Text.RegularExpressions;
 
 namespace S100Framework.Applications.Singletons
 {
@@ -52,7 +42,7 @@ namespace S100Framework.Applications.Singletons
         /// Checks sanity of drawing index for all features accross all datasets
         /// </summary>
         /// <returns>Error Count</returns>
-        public int Check_DrawingIndex() {
+        public int Check_UsageBand() {
             Int32 errorCount = 0;
 
             var featureClasses = new List<string>() {
@@ -71,13 +61,13 @@ namespace S100Framework.Applications.Singletons
                 while (cursor.MoveNext()) {
                     recordCount++;
                     var feature = cursor.Current;
-                    int? drawingIndex = default;
+                    int? usageband = default;
 
-                    if (DBNull.Value != feature["drawingindex"] && feature["drawingindex"] is not null) {
-                        drawingIndex = Convert.ToInt32(feature["drawingindex"]);
+                    if (DBNull.Value != feature["usageband"] && feature["usageband"] is not null) {
+                        usageband = Convert.ToInt32(feature["usageband"]);
                     }
 
-                    if (!drawingIndex.HasValue) {
+                    if (!usageband.HasValue) {
                         errorCount++;
                     }
                 }

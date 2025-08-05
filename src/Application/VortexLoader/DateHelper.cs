@@ -1,22 +1,5 @@
-﻿using ArcGIS.Core.CIM;
-using ArcGIS.Core.Data.UtilityNetwork.Trace;
-using ArcGIS.Core.Data.UtilityNetwork;
-using ArcGIS.Core.Internal.CIM;
-using ArcGIS.Desktop.Editing.Attributes;
-using ArcGIS.Desktop.Internal.Mapping;
-using CommandLine.Text;
-using Microsoft.AspNetCore.DataProtection.KeyManagement;
-using Microsoft.AspNetCore.SignalR;
-using Microsoft.VisualBasic;
-using S100Framework.DomainModel.S101.ComplexAttributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
+﻿using S100Framework.DomainModel.S101.ComplexAttributes;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace S100Framework.Applications
 {

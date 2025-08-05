@@ -1,6 +1,4 @@
-﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Globalization;
 using System.Xml;
 using System.Xml.Linq;

@@ -27,8 +27,8 @@ namespace S100Framework.Applications
                 WhereClause = $"({whereClause}) AND (fcsubtype = 40)"
             };
 
-            var productCoverageFilter = new QueryFilter() { 
-                WhereClause = $"{whereClause}" 
+            var productCoverageFilter = new QueryFilter() {
+                WhereClause = $"{whereClause}"
             };
 
             var clipped = Geometries.GetDissolvedClipped(metadataA, metadataAWhereFilter, productCoverage, productCoverageFilter);
@@ -66,7 +66,7 @@ namespace S100Framework.Applications
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                 SetShape(buffer, item);
-                ImporterNIS.SetDrawingIndex(buffer, _compilationScale);
+                ImporterNIS.SetUsageBand(buffer, _compilationScale);
 
                 var featureN = featureClass.CreateRow(buffer);
                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
@@ -96,7 +96,7 @@ namespace S100Framework.Applications
                         buffer["code"] = instance.GetType().Name;
                         buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                         SetShape(buffer, current.SHAPE);
-                        ImporterNIS.SetDrawingIndex(buffer, current.PLTS_COMP_SCALE!.Value);
+                        ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                         var featureN = featureClass.CreateRow(buffer);
                         var name = Convert.ToString(featureN["name"]) ?? "Unknown name";

@@ -1,15 +1,9 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VortexLoader;
-using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -57,7 +51,7 @@ namespace S100Framework.Applications
 
             if (current.HEIGHT.HasValue) {
                 instance.height = current.HEIGHT.Value;
-                
+
                 // Set by covering meta feature
                 //instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
             }
@@ -90,7 +84,7 @@ namespace S100Framework.Applications
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
             }
 
-            
+
             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                 string subtype = "";
 
@@ -114,7 +108,8 @@ namespace S100Framework.Applications
             AidsToNavigationP current;
             if (lights.Count == 0) {
                 current = structure as AidsToNavigationP;
-            } else {
+            }
+            else {
                 current = lights.First();
             }
             // TODO: evaluate light sectors based on height. Assume same height for now and take data from first.
@@ -166,7 +161,12 @@ namespace S100Framework.Applications
                 instance.periodicDateRange = periodicDateRange;
             }
 
-            instance.sectorCharacteristics = (ImporterNIS.GetSectorCharacteristics(lights));
+            if (lights.Count == 0) {
+                instance.sectorCharacteristics = (ImporterNIS.GetSectorCharacteristics([current]));
+            }
+            else {
+                instance.sectorCharacteristics = (ImporterNIS.GetSectorCharacteristics(lights));
+            }
 
             if (current.SIGGEN != null) {
                 instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);

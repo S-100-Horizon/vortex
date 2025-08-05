@@ -1,23 +1,23 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Geometry;
 using CommandLine;
+using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
+using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.DomainModel.S101.InformationTypes;
+using System.Globalization;
+using System.Text.Json;
+using System.Text.RegularExpressions;
+using VortexLoader;
 using static S100Framework.Applications.VortexLoader;
 using IO = System.IO;
-using ArcGIS.Core.Geometry;
-using System.Text.Json;
-using S100Framework.Applications.S57.esri;
-using System.Text.RegularExpressions;
-using System.Globalization;
-using VortexLoader;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.Applications.Singletons;
-using S100Framework.DomainModel.S101.InformationTypes;
-using System.Text.RegularExpressions;
 
 namespace S100Framework.Applications
 {
-    internal static partial class ImporterNIS {
+    internal static partial class ImporterNIS
+    {
 
         internal static readonly JsonSerializerOptions jsonSerializerOptions = new() {
             WriteIndented = false,
@@ -39,9 +39,6 @@ namespace S100Framework.Applications
         internal static ConverterRegistry _converterRegistry = new ConverterRegistry();
 
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
-
-            
-            //await ExtractLasCommand.ExecuteExtractLasToolAsync();
 
             Logger.Current.Information("Starting");
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
@@ -73,8 +70,6 @@ namespace S100Framework.Applications
 
                     Match match = Regex.Match((string)o.Query, pattern, RegexOptions.IgnoreCase);
 
-                    
-
                     if (match.Success) {
                         string value = match.Groups[1].Value;
                         if (!int.TryParse(value, out _compilationScale)) {
@@ -84,13 +79,10 @@ namespace S100Framework.Applications
                     else {
                         throw new NotSupportedException("PLTS_COMP_SCALE must be part of whereclause! Fix your arguments.");
                     }
-
-
-
-
                 }
                 else {
-                    filter.WhereClause = "";
+                    _compilationScale = 22000;
+                    filter.WhereClause = "PLTS_COMP_SCALE = 22000";
                 }
 
                 if (!string.IsNullOrEmpty(o.NotesPath)) {
@@ -104,11 +96,6 @@ namespace S100Framework.Applications
                 }
             });
 
-
-
-
-
-
             Func<Action, bool> Store = (a) => {
                 a.Invoke();
                 return true;
@@ -118,7 +105,7 @@ namespace S100Framework.Applications
                 Store = (a) => {
                     destination.ApplyEdits(() => {
                         a.Invoke();
-                    },true);
+                    }, true);
                     return true;
                 };
             }
@@ -142,6 +129,7 @@ namespace S100Framework.Applications
             _converterRegistry.Register<AidsToNavigationP, RadioStation>(Converters.CreateRadioStation);
 
             using (Geodatabase source = createGeodatabase()) {
+
                 Store(() => {
                     var query = new QueryFilter {
                         WhereClause = $"1=1",
@@ -151,8 +139,8 @@ namespace S100Framework.Applications
                     using var curve = destination.OpenDataset<FeatureClass>(destination.GetName("curve"));
                     using var surface = destination.OpenDataset<FeatureClass>(destination.GetName("surface"));
 
-                    using var associationBinding = destination.OpenDataset<Table>(destination.GetName("associationbinding"));
-                    using var attributeBinding = destination.OpenDataset<Table>(destination.GetName("attributebinding"));
+                    //using var associationBinding = destination.OpenDataset<Table>(destination.GetName("associationbinding"));
+                    //using var attributeBinding = destination.OpenDataset<Table>(destination.GetName("attributebinding"));
                     using var featureAssociation = destination.OpenDataset<Table>(destination.GetName("featureassociation"));
                     using var informationAssociation = destination.OpenDataset<Table>(destination.GetName("InformationAssociation"));
                     using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationType"));
@@ -165,10 +153,10 @@ namespace S100Framework.Applications
                     curve.DeleteRows(query);
                     Logger.Current.Information($"Deleting data from destination: {surface.GetName()}");
                     surface.DeleteRows(query);
-                    Logger.Current.Information($"Deleting data from destination: {associationBinding.GetName()}");
-                    associationBinding.DeleteRows(query);
-                    Logger.Current.Information($"Deleting data from destination: {attributeBinding.GetName()}");
-                    attributeBinding.DeleteRows(query);
+                    //Logger.Current.Information($"Deleting data from destination: {associationBinding.GetName()}");
+                    //associationBinding.DeleteRows(query);
+                    //Logger.Current.Information($"Deleting data from destination: {attributeBinding.GetName()}");
+                    //attributeBinding.DeleteRows(query);
                     Logger.Current.Information($"Deleting data from destination: {featureAssociation.GetName()}");
                     featureAssociation.DeleteRows(query);
                     Logger.Current.Information($"Deleting data from destination: {informationAssociation.GetName()}");
@@ -185,11 +173,11 @@ namespace S100Framework.Applications
 
                 Logger.Current.Information($"Initializing SpatialRelationResolver");
                 SpatialRelationResolver.Initialize(source);
-                
+
                 Logger.Current.Information($"Initializing SpatialAssociations");
                 SpatialAssociations.Initialize(source);
 
-                relatedEquipment = new RelatedEquipment(source,destination);
+                relatedEquipment = new RelatedEquipment(source, destination);
 
                 if (skinOfEarthOnly) {
                     Logger.Current.Information($"Converting skin of earth only Filter: {filter.WhereClause}");
@@ -215,65 +203,89 @@ namespace S100Framework.Applications
                     */
                     Logger.Current.Information($"Converting all tables: {filter.WhereClause}");
 
-                    Store(() => S101_Routes(source, destination, filter)); 
-
-                    Store(() => S101_SoundingDatum(source, destination, filter)); 
-
-                    Store(() => S57_SoundingsP(source, destination, filter));
-
-                    Store(() => S57_DepthsL(source, destination, filter));
-
-                    Store(() => S57_TidesAndVariationsA(source, destination, filter));
-                    Store(() => S57_TidesAndVariationsL(source, destination, filter));
-                    Store(() => S57_TidesAndVariationsP(source, destination, filter));
-
-                    Store(() => S57_SeabedA(source, destination, filter));
-                    Store(() => S57_SeabedL(source, destination, filter));
-                    Store(() => S57_SeabedP(source, destination, filter));
-
-                    Store(() => S57_CulturalFeaturesL(source, destination, filter));
+                    //filter.WhereClause = "globalid = '{D7DE9631-CF20-4143-B3F4-47BB4A2AE541}'";
+                    //filter.WhereClause = "globalid = '{855B900E-760C-4D68-AE02-8F3CA6FE60DD}'";
+                    //filter.WhereClause = "globalid = '{BAFFC1F3-A89C-4E13-982F-B577E50A06DC}'";
                     Store(() => S57_CulturalFeaturesA(source, destination, filter));
-                    Store(() => S57_CulturalFeaturesP(source, destination, filter));
 
-                    Store(() => S57_CoastlineA(source, destination, filter));
-                    Store(() => S57_CoastlineL(source, destination, filter));
-                    Store(() => S57_CoastlineP(source, destination, filter));
-
-                    Store(() => S57_DangersA(source, destination, filter));
-                    Store(() => S57_DangersL(source, destination, filter));
-                    Store(() => S57_DangersP(source, destination, filter));
-
-                    Store(() => S57_DepthsA(source, destination, filter));
-
-                    Store(() => S57_IcefeaturesA(source, destination, filter));
-
-                    Store(() => S57_MetadataA(source, destination, filter));
-
-                    Store(() => S57_MilitaryFeatureA(source, destination, filter));
-                    Store(() => S57_MilitaryFeaturesP(source, destination, filter));
-
-                    Store(() => S57_NaturalFeaturesA(source, destination, filter));
-                    Store(() => S57_NaturalFeaturesL(source, destination, filter));
-                    Store(() => S57_NaturalFeaturesP(source, destination, filter));
-
-                    Store(() => S57_OffshoreInstallationsA(source, destination, filter));
-                    Store(() => S57_OffshoreInstallationsL(source, destination, filter));
-                    Store(() => S57_OffshoreInstallationsP(source, destination, filter));
-
+                    Logger.Current.Information($"Converting PortsAndServices");
                     Store(() => S57_PortsAndServicesA(source, destination, filter));
                     Store(() => S57_PortsAndServicesL(source, destination, filter));
                     Store(() => S57_PortsAndServicesP(source, destination, filter));
 
+                    //Store(() => S101_RecommendedTracksAndRoutes(source, destination, filter));
+
+                    Logger.Current.Information($"Converting Sounding Datums");
+                    Store(() => S101_SoundingDatum(source, destination, filter));
+
+                    Logger.Current.Information($"Converting Soundings");
+                    Store(() => S57_SoundingsP(source, destination, filter));
+
+                    Logger.Current.Information($"Converting Contours");
+                    Store(() => S57_DepthsL(source, destination, filter));
+
+                    Logger.Current.Information($"Converting Tides And Variations");
+                    Store(() => S57_TidesAndVariationsA(source, destination, filter));
+                    Store(() => S57_TidesAndVariationsL(source, destination, filter));
+                    Store(() => S57_TidesAndVariationsP(source, destination, filter));
+
+                    Logger.Current.Information($"Converting Seabeds");
+                    Store(() => S57_SeabedA(source, destination, filter));
+                    Store(() => S57_SeabedL(source, destination, filter));
+                    Store(() => S57_SeabedP(source, destination, filter));
+
+                    Logger.Current.Information($"Converting Cultural Features");
+                    Store(() => S57_CulturalFeaturesL(source, destination, filter));
+                    Store(() => S57_CulturalFeaturesA(source, destination, filter));
+                    Store(() => S57_CulturalFeaturesP(source, destination, filter));
+
+                    Logger.Current.Information($"Converting CoastLines");
+                    Store(() => S57_CoastlineA(source, destination, filter));
+                    Store(() => S57_CoastlineL(source, destination, filter));
+                    Store(() => S57_CoastlineP(source, destination, filter));
+
+                    Logger.Current.Information($"Converting Dangers");
+                    Store(() => S57_DangersA(source, destination, filter));
+                    Store(() => S57_DangersL(source, destination, filter));
+                    Store(() => S57_DangersP(source, destination, filter));
+
+                    Logger.Current.Information($"Converting Depth Areas");
+                    Store(() => S57_DepthsA(source, destination, filter));
+
+                    Logger.Current.Information($"Converting Ice features");
+                    Store(() => S57_IcefeaturesA(source, destination, filter));
+
+                    Logger.Current.Information($"Converting Metadata");
+                    Store(() => S57_MetadataA(source, destination, filter));
+
+                    Logger.Current.Information($"Converting Military Features");
+                    Store(() => S57_MilitaryFeatureA(source, destination, filter));
+                    Store(() => S57_MilitaryFeaturesP(source, destination, filter));
+
+                    Logger.Current.Information($"Converting Natural Features");
+                    Store(() => S57_NaturalFeaturesA(source, destination, filter));
+                    Store(() => S57_NaturalFeaturesL(source, destination, filter));
+                    Store(() => S57_NaturalFeaturesP(source, destination, filter));
+
+                    Logger.Current.Information($"Converting Offshore Installations");
+                    Store(() => S57_OffshoreInstallationsA(source, destination, filter));
+                    Store(() => S57_OffshoreInstallationsL(source, destination, filter));
+                    Store(() => S57_OffshoreInstallationsP(source, destination, filter));
+
+                    Logger.Current.Information($"Converting Product Coverages");
                     Store(() => S57_ProductCoverage(source, destination, filter));
 
+                    Logger.Current.Information($"Converting Areas And Limits");
                     Store(() => S57_RegulatedAreasAndLimitsA(source, destination, filter));
                     Store(() => S57_RegulatedAreasAndLimitsL(source, destination, filter));
                     Store(() => S57_RegulatedAreasAndLimitsP(source, destination, filter));
 
+                    Logger.Current.Information($"Converting Tracks And Routes");
                     Store(() => S57_TracksAndRoutesA(source, destination, filter));
                     Store(() => S57_TracksAndRoutesL(source, destination, filter));
                     Store(() => S57_TracksAndRoutesP(source, destination, filter));
 
+                    Logger.Current.Information($"Converting Aids to Navigation");
                     Store(() => S57_AidsToNavigationP(source, destination, filter));
 
 
@@ -284,7 +296,7 @@ namespace S100Framework.Applications
                 Logger.Current.Information($"Loading sanity checker");
                 SanityChecker.Initialize(destination);
 
-                if (SanityChecker.Instance.Check_DrawingIndex() == 0) {
+                if (SanityChecker.Instance.Check_UsageBand() == 0) {
                     Logger.Current.Information("Drawing index check PASSED");
                 }
                 else {
@@ -317,13 +329,14 @@ namespace S100Framework.Applications
                 buffer["shape"] = shape;
             }
         }
-        internal static void SetDrawingIndex(RowBuffer buffer, int comp_scale) {
+        internal static void SetUsageBand(RowBuffer buffer, int comp_scale) {
             _ = comp_scale switch {
-                <22000 => buffer["drawingIndex"] = 5,
-                <90000 => buffer["drawingIndex"] = 4,
-                <180000 => buffer["drawingIndex"] = 3,
-                <700000 => buffer["drawingIndex"] = 2,
-                _ => buffer["drawingIndex"] = 1
+                -1 => throw new InvalidOperationException("compilation scale isn't initialized!"),
+                < 22000 => buffer["usageband"] = 5,
+                < 90000 => buffer["usageband"] = 4,
+                < 180000 => buffer["usageband"] = 3,
+                < 700000 => buffer["usageband"] = 2,
+                _ => buffer["usageband"] = 1
             };
 
 
@@ -332,8 +345,8 @@ namespace S100Framework.Applications
             //    GeometryType.Point => null,
             //    GeometryType.Envelope => throw new NotSupportedException("Geometry type: envelope"),
             //    GeometryType.Multipoint => null,
-            //    GeometryType.Polyline => buffer["drawingindex"] = 4,
-            //    GeometryType.Polygon => buffer["drawingindex"] = 4,
+            //    GeometryType.Polyline => buffer["usageband"] = 4,
+            //    GeometryType.Polygon => buffer["usageband"] = 4,
             //    GeometryType.Multipatch => throw new NotSupportedException("Geometry type: multipatch"),
             //    GeometryType.GeometryBag => throw new NotSupportedException("Geometry type: geometrybag"),
             //    _ => throw new NotSupportedException($"Unhandled geometry type {shape.GeometryType}")
@@ -359,7 +372,10 @@ namespace S100Framework.Applications
 
             if (!String.IsNullOrEmpty(current.SIGGRP)) {
                 string pattern = @"\([^()]*\)";
-
+                if (!Regex.Match(current.SIGGRP, pattern).Success) {
+                    Logger.Current.DataError(current.OBJECTID ?? -1, current.TableName!, current.LNAM!, $"Cannot parse SIGGRP string: {current.SIGGRP} on {current.GlobalId}");
+                    ;
+                }
                 foreach (Match m in Regex.Matches(current.SIGGRP, pattern)) {
                     parenthesisParts.Add(m.Value);
                 }
@@ -432,7 +448,7 @@ namespace S100Framework.Applications
         }
 
         internal static List<colour> GetColours(string color) {
-            if (color== "-32767") {
+            if (color == "-32767") {
                 return new List<colour>() { (colour)(-1) };
             }
             return EnumHelper.GetEnumValues<colour>(color);
@@ -497,91 +513,79 @@ namespace S100Framework.Applications
             return colourPat;
         }
 
-        private static orientation GetOrientation(decimal orientation) {
-            return new orientation() {
-                orientationValue = orientation
-            };
-        }
-
-        private static void AddOrientation(decimal? orientationValue, Feature feature) {
-            if (DBNull.Value != feature["ORIENT"]) {
-                var orient = Convert.ToDecimal(feature["ORIENT"]);
-                orientationValue = orient;
-            }
-        }
-
-
         private static status GetSingleStatus(string status) {
             return GetStatus(status)[0];
+
+
         }
 
         internal static List<status> GetStatus(string statuses) {
             List<status> statusList = new List<status>();
 
-                var featureStatus = statuses.Trim();
+            var featureStatus = statuses.Trim();
 
-                /*
-                 * code	status
-                alias	STATUS
-                _s101name	Status
-                definition	The condition of an object at a given instant in time.
-                valueType	enumeration  listedValues	
+            /*
+             * code	status
+            alias	STATUS
+            _s101name	Status
+            definition	The condition of an object at a given instant in time.
+            valueType	enumeration  listedValues	
 
-                Permanent	            1	IHOREG	Intended to last or function indefinitely.
-                Occasional	            2	IHOREG	Acting on special occasions; happening irregularly.
-                Recommended	            3	IHOREG	Presented as worthy of confidence, acceptance, use, etc.
-                Not in Use	            4	IHOREG	Use has ceased, but the facility still exists intact; disused.
-                Periodic/Intermittent	5	IHOREG	Recurring at intervals.
-                Reserved	            6	IHOREG	Set apart for some specific use.
-                Temporary	            7	IHOREG	Meant to last only for a time.
-                Private	                8	IHOREG	Administered by an individual or corporation, rather than a State or a public body.
-                Mandatory	            9	IHOREG	Compulsory; enforced.
-                Extinguished	        11	IHOREG	No longer lit.
-                Illuminated	            12	IHOREG	Lit by flood lights, strip lights, etc.
-                Historic	            13	IHOREG	Famous in history; of historical interest.
-                Public	                14	IHOREG	Belonging to, available to, used or shared by, the community as a whole and not restricted to private use.
-                Synchronized	        15	IHOREG	Occur at a time, coincide in point of time, be contemporary or simultaneous.
-                Watched	                16	IHOREG	Looked at or observed over a period of time especially so as to be aware of any movement or change.
-                Unwatched	            17	IHOREG	Usually automatic in operation, without any permanently-stationed personnel to superintend it.
-                Existence Doubtful	    18	IHOREG	A feature that has been reported but has not been definitely determined to exist.
-                Buoyed	                28	IHOREG	Marked by buoys.
+            Permanent	            1	IHOREG	Intended to last or function indefinitely.
+            Occasional	            2	IHOREG	Acting on special occasions; happening irregularly.
+            Recommended	            3	IHOREG	Presented as worthy of confidence, acceptance, use, etc.
+            Not in Use	            4	IHOREG	Use has ceased, but the facility still exists intact; disused.
+            Periodic/Intermittent	5	IHOREG	Recurring at intervals.
+            Reserved	            6	IHOREG	Set apart for some specific use.
+            Temporary	            7	IHOREG	Meant to last only for a time.
+            Private	                8	IHOREG	Administered by an individual or corporation, rather than a State or a public body.
+            Mandatory	            9	IHOREG	Compulsory; enforced.
+            Extinguished	        11	IHOREG	No longer lit.
+            Illuminated	            12	IHOREG	Lit by flood lights, strip lights, etc.
+            Historic	            13	IHOREG	Famous in history; of historical interest.
+            Public	                14	IHOREG	Belonging to, available to, used or shared by, the community as a whole and not restricted to private use.
+            Synchronized	        15	IHOREG	Occur at a time, coincide in point of time, be contemporary or simultaneous.
+            Watched	                16	IHOREG	Looked at or observed over a period of time especially so as to be aware of any movement or change.
+            Unwatched	            17	IHOREG	Usually automatic in operation, without any permanently-stationed personnel to superintend it.
+            Existence Doubtful	    18	IHOREG	A feature that has been reported but has not been definitely determined to exist.
+            Buoyed	                28	IHOREG	Marked by buoys.
 
-                */
+            */
 
 
-                if (!string.IsNullOrEmpty(featureStatus)) {
-                    /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
-                        other than the allowable values will not be converted across to S-101. Data Producers are advised to
-                        check any populated values for STATUS on LNDARE and amend appropriately. */
-                    foreach (var c in featureStatus.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
-                        status? e = c.ToLowerInvariant() switch {
-                            "1" => status.Permanent,
-                            "2" => status.Occasional,
-                            "3" => status.Recommended,
-                            "4" => status.NotInUse,
-                            "5" => status.PeriodicIntermittent,
-                            "6" => status.Reserved,
-                            "7" => status.Temporary,
-                            "8" => status.Private,
-                            "9" => status.Mandatory,
-                            "11" =>status.Extinguished,
-                            "12" =>status.Illuminated,
-                            "13" => status.Historic,
-                            "14" => status.Public,
-                            "15" => status.Synchronized,
-                            "16" => status.Watched,
-                            "17" => status.Unwatched,
-                            "18" => status.ExistenceDoubtful,
-                            //"28" => ??, // TODO: what to do? STATUS 28
-                            "-32767" =>(status)(-1),
-                            _ => throw new IndexOutOfRangeException(),
-                        };
-                        if (e.HasValue) {
-                            statusList.Add(e.Value);
-                        }
+            if (!string.IsNullOrEmpty(featureStatus)) {
+                /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
+                    other than the allowable values will not be converted across to S-101. Data Producers are advised to
+                    check any populated values for STATUS on LNDARE and amend appropriately. */
+                foreach (var c in featureStatus.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
+                    status? e = c.ToLowerInvariant() switch {
+                        "1" => status.Permanent,
+                        "2" => status.Occasional,
+                        "3" => status.Recommended,
+                        "4" => status.NotInUse,
+                        "5" => status.PeriodicIntermittent,
+                        "6" => status.Reserved,
+                        "7" => status.Temporary,
+                        "8" => status.Private,
+                        "9" => status.Mandatory,
+                        "11" => status.Extinguished,
+                        "12" => status.Illuminated,
+                        "13" => status.Historic,
+                        "14" => status.Public,
+                        "15" => status.Synchronized,
+                        "16" => status.Watched,
+                        "17" => status.Unwatched,
+                        "18" => status.ExistenceDoubtful,
+                        //"28" => ??, // TODO: what to do? STATUS 28
+                        "-32767" => (status)(-1),
+                        _ => throw new IndexOutOfRangeException(),
+                    };
+                    if (e.HasValue) {
+                        statusList.Add(e.Value);
                     }
-
                 }
+
+            }
             return statusList;
         }
 
@@ -613,7 +617,7 @@ namespace S100Framework.Applications
         //    };
         //}
 
-        
+
 
         public static condition GetCondition(int conditionValue) {
             return conditionValue switch {
@@ -629,7 +633,7 @@ namespace S100Framework.Applications
 
         internal static List<featureName> GetFeatureName(string? objname, string? nobjnme) {
             List<featureName> featureName = new List<featureName>();
-            if (objname != default) { 
+            if (objname != default) {
                 var objnam = objname.Trim();
                 if (!string.IsNullOrEmpty(objnam)) {
                     featureName.Add(new featureName {
@@ -649,7 +653,7 @@ namespace S100Framework.Applications
                     });
                 }
             }
-            
+
             return featureName;
         }
 
@@ -678,8 +682,8 @@ namespace S100Framework.Applications
                         Logger.Current.DataError(current.GetObjectID(), current.GetTable().GetName(), "", $"AddInformation: Cannot find note {filePath}");
                     }
 
-            }
-            else if (!string.IsNullOrEmpty(ntxtds)) {
+                }
+                else if (!string.IsNullOrEmpty(ntxtds)) {
                     string language = "eng";
 
                     var instance = new information {
@@ -707,7 +711,8 @@ namespace S100Framework.Applications
                         };
                         information.Add(instance);
 
-                    } else {
+                    }
+                    else {
                         Logger.Current.DataError(current.GetObjectID(), current.GetTable().GetName(), "", $"AddInformation: Cannot find note {filePath}");
                     }
                 }
@@ -736,7 +741,6 @@ namespace S100Framework.Applications
 
                     foreach (var value in informs) {
                         string? fileLocator = default;
-                        string? fileReference = default;
                         string language = "eng";
 
                         if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
@@ -778,7 +782,6 @@ namespace S100Framework.Applications
 
                     foreach (var value in ninfoms) {
                         string? fileLocator = default;
-                        string? fileReference = default;
                         string language = "dan";
 
                         if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
@@ -854,7 +857,7 @@ namespace S100Framework.Applications
             if (fileReference == default) {
                 return default;
             }
-            
+
             string result = Regex.Replace(fileReference, @"^dk", match => {
                 string matched = match.Value;
 
@@ -866,7 +869,7 @@ namespace S100Framework.Applications
 
                 return replacement;
             }, RegexOptions.IgnoreCase);
-            
+
             return result;
         }
 

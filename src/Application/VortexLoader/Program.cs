@@ -1,9 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
-using ArcGIS.Desktop.Mapping;
 
 using CommandLine;
-using System.Data.Common;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Esri = ArcGIS.Core.Hosting.Host;
@@ -23,9 +21,9 @@ namespace S100Framework.Applications
         //  --query "PLTS_COMP_SCALE = 22000"
 
         //private static Serilog.Core.Logger? _logger;
-        
+
         private static Regex _substitute = new(@"^S(?<number>\d+)$", RegexOptions.Singleline | RegexOptions.CultureInvariant | RegexOptions.IgnorePatternWhitespace | RegexOptions.IgnoreCase);
-        
+
         public class Options
         {
             [Option('c', "cmd", Required = true, HelpText = "Command (GML|NIS)")]
@@ -78,20 +76,20 @@ namespace S100Framework.Applications
 
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
-            
+
 
             arguments.WithParsed<Options>(o => {
                 var target = o.Target!;
 
                 if (IO.File.Exists(target) && ".sde".Equals(IO.Path.GetExtension(target), StringComparison.OrdinalIgnoreCase)) {
-                    createGeodatabase = () => { 
+                    createGeodatabase = () => {
                         var geodatabase = new Geodatabase(new DatabaseConnectionFile(new Uri(IO.Path.GetFullPath(target))));
-                        
+
                         return geodatabase;
                     };
                 }
                 else if (IO.Directory.Exists(target) && ".gdb".Equals(IO.Path.GetExtension(target), StringComparison.OrdinalIgnoreCase)) {
-                    createGeodatabase = () => { 
+                    createGeodatabase = () => {
                         var geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(target))));
 
                         return geodatabase;
@@ -116,7 +114,7 @@ namespace S100Framework.Applications
 
                         serviceProps.Version = destinationVersion;
                         geodatabase = new Geodatabase(serviceProps);
-                        
+
                         return geodatabase;
                     };
 
@@ -179,8 +177,8 @@ namespace S100Framework.Applications
 
             var members = dataset!.Members().ToArray();
             foreach (var m in members) {
-                if (m is S100Framework.GML.Dataset.InformationType) {
-                    var value = ((S100Framework.GML.Dataset.InformationType)m).Value;
+                if (m is S100Framework.GML.Dataset.InformationType informationType) {
+                    var value = informationType.Value;
 
                     Console.WriteLine($"InformationType: {value.GetType().Name}");
 
@@ -193,8 +191,8 @@ namespace S100Framework.Applications
 
                     tableInformationType.CreateRow(bufferInformationType);
                 }
-                if (m is S100Framework.GML.Dataset.FeatureType) {
-                    var value = ((S100Framework.GML.Dataset.FeatureType)m).Value;
+                if (m is S100Framework.GML.Dataset.FeatureType featureType) {
+                    var value = featureType.Value;
 
                     Console.WriteLine($"FeatureType: {value.GetType().Name}");
 
@@ -219,11 +217,11 @@ namespace S100Framework.Applications
                     if (geometry is MapPoint) {
                         var point = (MapPoint)geometry;
 
-                        if (point.HasZ) {
-                            rowbuffer["z"] = point.Z;
-                            point = MapPointBuilderEx.CreateMapPoint(point.X, point.Y, point.SpatialReference);
-                        }
-                        bufferPoint["shape"] = geometry;
+                        if (point.HasZ == false) 
+                            bufferPoint["shape"] = MapPointBuilderEx.CreateMapPoint(((MapPoint)geometry).X, ((MapPoint)geometry).Y, 0.00, geometry.SpatialReference);
+                        else 
+                            bufferPoint["shape"] = geometry;
+
                         using var row = fcPoint.CreateRow(bufferPoint);
                     }
                     if (geometry is Multipoint) {

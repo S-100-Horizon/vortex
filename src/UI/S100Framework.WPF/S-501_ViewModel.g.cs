@@ -182,6 +182,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class detectionDateRangeViewModel : ViewModelBase {
 		private String? _lastDetectionYear  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? lastDetectionYear {
 			get {
 				return _lastDetectionYear;
@@ -192,6 +193,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private String? _firstDetectionYear  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? firstDetectionYear {
 			get {
 				return _firstDetectionYear;
@@ -515,6 +517,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class fixedDateRangeViewModel : ViewModelBase {
 		private String? _dateStart  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? dateStart {
 			get {
 				return _dateStart;
@@ -525,6 +528,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private String? _dateEnd  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? dateEnd {
 			get {
 				return _dateEnd;
@@ -837,6 +841,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private String? _reportedDate  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -997,6 +1002,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private String? _reportedDate  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -2002,7 +2008,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class periodicDateRangeViewModel : ViewModelBase {
 		private String _dateStart  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
 		public String dateStart {
 			get {
 				return _dateStart;
@@ -2013,7 +2020,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private String _dateEnd  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
 		public String dateEnd {
 			get {
 				return _dateEnd;
@@ -2024,7 +2032,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private String _periodicDateEnd  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
 		public String periodicDateEnd {
 			get {
 				return _periodicDateEnd;
@@ -2035,7 +2044,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private String _periodicDateStart  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
 		public String periodicDateStart {
 			get {
 				return _periodicDateStart;
@@ -2605,6 +2615,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _editionDate  = default;
 
 		[Category("ReferenceToAPublication")]
+		[S100TruncatedDateAttribute]
 		public String? editionDate {
 			get {
 				return _editionDate;
@@ -3286,6 +3297,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("PatrolArea")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -3662,6 +3674,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("MarineManagementArea")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -4085,6 +4098,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("Road")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -4540,6 +4554,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("MilitaryPracticeArea")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -4754,6 +4769,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("DiscolouredWater")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -4918,6 +4934,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("CardinalBuoy")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -5285,6 +5302,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("SafeWaterBuoy")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -5476,6 +5494,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("RadioStation")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -5899,6 +5918,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("ContiguousZone")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -6044,6 +6064,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("NormalBaseline")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -6207,6 +6228,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("CableArea")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -6579,6 +6601,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("InternalWaters")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -6847,6 +6870,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("Bollard")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -7097,6 +7121,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("Dolphin")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -7447,6 +7472,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("IsolatedDangerBeacon")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8291,6 +8317,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("MaritimeSafetyInformationArea")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8472,6 +8499,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("AirspaceRestriction")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8661,6 +8689,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("Sounding")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8792,6 +8821,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("TrafficSeparationSchemeBoundary")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8946,6 +8976,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _dateDisused  = default;
 
 		[Category("DumpingGround")]
+		[S100TruncatedDateAttribute]
 		public String? dateDisused {
 			get {
 				return _dateDisused;
@@ -9207,6 +9238,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("AirportAirfield")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -9386,6 +9418,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("FoulGround")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -9623,6 +9656,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("LightAirObstruction")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -10339,6 +10373,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("UnderwaterAwashRock")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -10619,6 +10654,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("CableOverhead")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -10930,6 +10966,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("ControlledAirspace")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -11143,6 +11180,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _abandonmentDate  = default;
 
 		[Category("Obstruction")]
+		[S100TruncatedDateAttribute]
 		public String? abandonmentDate {
 			get {
 				return _abandonmentDate;
@@ -11377,6 +11415,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _spuddedDate  = default;
 
 		[Category("Obstruction")]
+		[S100TruncatedDateAttribute]
 		public String? spuddedDate {
 			get {
 				return _spuddedDate;
@@ -11420,6 +11459,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _dateSunk  = default;
 
 		[Category("Obstruction")]
+		[S100TruncatedDateAttribute]
 		public String? dateSunk {
 			get {
 				return _dateSunk;
@@ -11474,6 +11514,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("Obstruction")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -11816,6 +11857,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("FishingGround")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -12062,6 +12104,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("FishingFacility")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -12205,6 +12248,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("NavigationSystem")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -12392,6 +12436,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("TrafficSeparationSchemeCrossing")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -12499,6 +12544,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("TrafficSeparationSchemeLanePart")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -12736,6 +12782,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("TerritorialSeaArea")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -12953,6 +13000,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("LateralBeacon")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -13427,6 +13475,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("SeparationZoneOrLine")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -13609,6 +13658,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("BottomFeature")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -13699,6 +13749,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("ArchipelagicBaseline")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -13984,6 +14035,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("ExclusiveEconomicZone")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -14612,6 +14664,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("CableSubmarine")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -14861,6 +14914,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("Wreck")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -15172,6 +15226,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _dateSunk  = default;
 
 		[Category("Wreck")]
+		[S100TruncatedDateAttribute]
 		public String? dateSunk {
 			get {
 				return _dateSunk;
@@ -15667,6 +15722,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("CompletenessOfProductSpecification")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -16064,6 +16120,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("CardinalBeacon")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -16754,6 +16811,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _dredgedDate  = default;
 
 		[Category("DredgedArea")]
+		[S100TruncatedDateAttribute]
 		public String? dredgedDate {
 			get {
 				return _dredgedDate;
@@ -16983,6 +17041,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("FerryRoute")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -17347,6 +17406,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("ShorelineConstruction")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -17495,6 +17555,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("CautionArea")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -18715,6 +18776,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("LightSectored")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -19603,6 +19665,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("TrafficSeparationSchemeRoundabout")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -20751,6 +20814,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("Coastline")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -20891,6 +20955,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("SeaAreaNamedWaterArea")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -21094,6 +21159,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("Conveyor")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -21435,6 +21501,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("LineOfDelimitation")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -21599,6 +21666,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("StraightTerritorialSeaBaseline")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -21795,6 +21863,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("SafeWaterBeacon")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -22309,6 +22378,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private String? _reportedDate  = default;
 
 		[Category("SpecialPurposeGeneralBeacon")]
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;

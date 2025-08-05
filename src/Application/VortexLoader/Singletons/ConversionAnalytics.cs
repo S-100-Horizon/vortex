@@ -1,12 +1,4 @@
-﻿using S100Framework.DomainModel;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace S100Framework.Applications.Singletons
+﻿namespace S100Framework.Applications.Singletons
 {
 
     internal class ConversionAnalytics
@@ -104,9 +96,9 @@ namespace S100Framework.Applications.Singletons
 
         public static ConversionAnalytics Instance {
             get {
-                    if (_instance == null) {
-                        _instance = new ConversionAnalytics();
-                    }
+                if (_instance == null) {
+                    _instance = new ConversionAnalytics();
+                }
                 return _instance;
             }
         }

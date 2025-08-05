@@ -1,13 +1,4 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Internal.CIM;
-using ArcGIS.Desktop.Editing.Attributes;
-using S100Framework.Applications;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace S100Framework.Applications.Singletons
 {

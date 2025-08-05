@@ -141,12 +141,12 @@ namespace S100Framework.WPF
             this.InformationObject = informationObject;
             this.informationBindingDefinitions = informationObject.informationBindingDefinitions;
 
-            this.InformationObject.PropertyChanged += base.OnPropertyChanged;            
+            this.InformationObject.PropertyChanged += base.OnPropertyChanged;
         }
 
         public informationBindingDefinition[] informationBindingDefinitions { get; private set; }
 
-        public InformationViewModel InformationObject { get; private set; }        
+        public InformationViewModel InformationObject { get; private set; }
     }
 
     public class SelectedFeatureTypeObjectViewModel : SelectedObjectViewModel
@@ -345,7 +345,7 @@ namespace S100Framework.WPF
             PropertyGrid = (PropertyGrid)GetTemplateChild(PART_PropertyGrid);
             PropertyGrid.IsReadOnly = !this.IsEditingEnabled;
 
-            PropertyGrid.PreparePropertyItem += this.PropertyGrid_PreparePropertyItem;            
+            PropertyGrid.PreparePropertyItem += this.PropertyGrid_PreparePropertyItem;
 
             InformationBindingsStackPanel = (StackPanel)GetTemplateChild(PART_InformationBindings);
             InformationBindingsStackPanel.IsEnabled = this.IsEditingEnabled;

@@ -1,9 +1,9 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -23,7 +23,7 @@ namespace S100Framework.Applications
             using var insertPointset = featureClass.CreateInsertCursor();
 
             using var cursor = soundingsP.Search(filter, true);
-            
+
             var recordCount = 0;
 
             while (cursor.MoveNext()) {
@@ -59,7 +59,7 @@ namespace S100Framework.Applications
                         var mappoint = MapPointBuilderEx.CreateMapPoint(shape.X, shape.Y, Convert.ToDouble(depth), shape.SpatialReference);
 
                         SetShape(bufferPointset, MultipointBuilderEx.CreateMultipoint(mappoint));
-                        SetDrawingIndex(bufferPointset, current.PLTS_COMP_SCALE!.Value);
+                        SetUsageBand(bufferPointset, current.PLTS_COMP_SCALE!.Value);
 
                         if (quasou == default || !string.Equals(quasou, "5", StringComparison.OrdinalIgnoreCase)) {
                             var sounding = new Sounding {
@@ -96,7 +96,7 @@ namespace S100Framework.Applications
                             //    }
                             //}
 
-                           
+
                             sounding.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
 
@@ -151,8 +151,8 @@ namespace S100Framework.Applications
                                 relatedEquipment?.CreateRelatedPointEquipment(current, sounding, featureN);
                             }
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); 
-                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(sounding));
 
                             // TODO: Handle Spatialquality
@@ -186,7 +186,7 @@ namespace S100Framework.Applications
                                 instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
                             }
 
-                                
+
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";

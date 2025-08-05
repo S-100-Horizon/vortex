@@ -115,8 +115,8 @@ namespace S100Framework.Applications
                         var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
 
                         var whereClause = "upper(ps) = 'S-101'";
-                        if (!current.IsNull("drawingindex"))
-                            whereClause += $" AND drawingindex = {Convert.ToInt32(current["drawingindex"])}";
+                        if (!current.IsNull("usageband"))
+                            whereClause += $" AND usageband = {Convert.ToInt32(current["usageband"])}";
 
                         datasets.Add((new Dataset {
                             CellName = $"101{electricProduct!.datasetName!}.000",
@@ -134,24 +134,26 @@ namespace S100Framework.Applications
                     }
                 }
 
+                //Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
+
                 foreach (var e in datasets) {
                     var dataset = e.Dataset;
                     var filter = e.Filter;
 
                     var datasetName = dataset.CellName.Split('.')[0];
 
-                    if (datasetName.Equals("101DK40751E")) continue;
-                    if (datasetName.Equals("101DK40545E")) continue;
-                    if (datasetName.Equals("101DK40347E")) continue;
+                    //if (datasetName.Equals("101DK40751E")) continue;
+                    //if (datasetName.Equals("101DK40545E")) continue;
+                    //if (datasetName.Equals("101DK40347E")) continue;
 
                     Log.Information("{dataset}", datasetName);
                     var geometries = new List<(Geometry geometry, string name)>();
 
                     // Build Topology
                     Log.Information("Building topology..");
-                    var topology = source.BuildTopology(filter);
+                    var topology = source.BuildTopology(filter)!;
 
-                    Log.Information("Topology finished! Found {curves} Curves, {composites} CompositeCurves, {surfaces} Surfaces", topology!.Curves.Count, topology.CompositeCurves.Count, topology.Surfaces.Count);
+                    Log.Information("Topology finished! Found {curves} Curves, {composites} CompositeCurves, {surfaces} Surfaces", topology.Curves.Count(), topology.CompositeCurves.Count(), topology.Surfaces.Count());
                     dataset.AddTopology(topology);
 
                     // InformationTypes
@@ -209,11 +211,16 @@ namespace S100Framework.Applications
                             var current = (ArcGIS.Core.Data.Feature)cursor.Current;
                             var name = Convert.ToString(current["name"])!;
 
+                            //if (name.Equals("S12233")) System.Diagnostics.Debugger.Break();
+                            //if (name.Equals(topology.Surfaces.ElementAt(0).Ref)) System.Diagnostics.Debugger.Break();
+
                             // Only map geometry, and keep name seperate so foids remain unique
                             var geometry = name;
 
                             if (topology.Mapping.TryGetValue(name!, out var value))
                                 geometry = value;
+                            else if (!name.StartsWith("P"))
+                                System.Diagnostics.Debugger.Break();
 
                             var shapetype = def.GetShapeType();
 
@@ -439,7 +446,7 @@ namespace S100Framework.YAML
             }
         }
 
-        public static void AddTopology(this Dataset dataset, Matrix theMatrix) {
+        public static void AddTopology(this Dataset dataset, iMatrix theMatrix) {
             // Curves
             CurveFeature? curveFeature = default;
             try {
@@ -455,7 +462,7 @@ namespace S100Framework.YAML
                     var first = dataset?.GetOrCreateStartPoint(coordinates, $"{c.Id}");
                     var last = dataset?.GetOrCreateEndPoint(coordinates, $"{c.Id}");
 
-                    var curve = new Curve(first!, last!, coordinates) {
+                    var curve = new Curve(first?.Name, last?.Name, coordinates) {
                         Name = $"C{c.Id}",
                     };
 
@@ -579,17 +586,16 @@ namespace ArcGIS.Core.Data
 {
     using GeoAPI.Geometries;
     using NetTopologySuite.Geometries;
-    using System.Collections.Concurrent;
     using System.Linq;
 
-    internal static class Extension
+    public static class Extension
     {
         static SpatialReference spatialReference = SpatialReferenceBuilder.CreateSpatialReference(4326);
 
-        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(10000000)); // Or PrecisionModels.Floating
-        //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating)); // Or PrecisionModels.Floating
+        //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating), srid: 4326); // Or PrecisionModels.Floating
+        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(10000000), srid: 4326); // Or PrecisionModels.Floating
 
-        public static S100Framework.YAML.Matrix? BuildTopology(this Geodatabase geodatabase, QueryFilter? queryFilter = default) {
+        public static S100Framework.YAML.iMatrix? BuildTopology(this Geodatabase geodatabase, QueryFilter? queryFilter = default, Action<ICollection<LineString>>? interceptor = default) {
             queryFilter = queryFilter switch {
                 SpatialQueryFilter spatial => new SpatialQueryFilter {
                     FilterGeometry = spatial.FilterGeometry,
@@ -623,13 +629,186 @@ namespace ArcGIS.Core.Data
             var whereClause = queryFilter.WhereClause;
             var prefix = queryFilter.PrefixClause;
 
-            S100Framework.YAML.Matrix topology = new S100Framework.YAML.Matrix {
-                Factory = factory,
-            };
+            S100Framework.YAML.Matrix.Factory = factory;
 
             var definitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
 
-            //  Skin of Earth
+
+            var matrix = S100Framework.YAML.Matrix.CreateMatrix();
+
+            iTopologyBuilder? builder = default;
+
+            //  Skin of the Earth
+            {
+                var polygons = new List<S100Framework.YAML.Polygon>();
+
+                using (var surface = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("surface")).GetName())) {
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))";
+
+                    using var cursor = surface.Search(queryFilter);
+
+                    while (cursor.MoveNext()) {
+                        var f = (Feature)cursor.Current;
+
+                        var shape = (ArcGIS.Core.Geometry.Polygon)f.GetShape();
+
+                        var name = Convert.ToString(f["name"]);
+                        if (string.IsNullOrEmpty(name))
+                            name = string.Empty;
+
+                        var exteriorRing = shape.GetExteriorRing(0);
+                        var coordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+
+                        var ex = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+                        ex = ex.RemoveRepeatedVertices();
+
+                        if (shape.PartCount > 1) {
+                            var interiorRings = new List<LineString>();
+
+                            foreach (var interiorRing in shape.Parts.Skip(1)) {
+                                coordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+
+                                var linestring = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+                                linestring = linestring.RemoveRepeatedVertices();
+                                interiorRings.Add(linestring);
+                            }
+
+                            polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, interiorRings.ToArray()));
+                        }
+                        else {
+                            polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, []));
+                        }
+                    }
+                }
+
+                var curves = new List<S100Framework.YAML.Polyline>();
+
+                using (var curve = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("curve")).GetName())) {
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('COASTLINE','DEPTHCONTOUR','SHORELINECONSTRUCTION'))";
+
+                    using (var cursor = curve.Search(queryFilter)) {
+                        while (cursor.MoveNext()) {
+                            var f = (Feature)cursor.Current;
+
+                            var shape = (ArcGIS.Core.Geometry.Polyline)f.GetShape();
+
+                            var name = Convert.ToString(f["name"]);
+                            if (string.IsNullOrEmpty(name))
+                                name = string.Empty;
+
+                            var coordinates = shape.Points.Select(segment => new Coordinate(segment.X, segment.Y)).ToArray();
+
+                            var linestring = (LineString)factory.CreateLineString([.. coordinates]);
+                            linestring = linestring.RemoveRepeatedVertices();
+
+                            curves.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, Convert.ToString(f["code"])!, linestring));
+                        }
+                    }
+                }
+
+                builder = matrix.AddTopologyFeatures(polygons, curves);
+            }
+
+
+            //  Navigational features
+            {
+                var polygons = new List<S100Framework.YAML.Polygon>();
+
+                using (var surface = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("surface")).GetName())) {
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) NOT IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))";
+
+                    using (var cursor = surface.Search(queryFilter)) {
+                        while (cursor.MoveNext()) {
+                            var f = (Feature)cursor.Current;
+
+                            var shape = (ArcGIS.Core.Geometry.Polygon)f.GetShape();
+
+                            var name = Convert.ToString(f["name"]);
+                            if (string.IsNullOrEmpty(name))
+                                name = string.Empty;
+
+                            var exteriorRing = shape.GetExteriorRing(0);
+                            var coordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+
+                            var ex = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+                            ex = ex.RemoveRepeatedVertices();
+
+                            if (shape.PartCount > 1) {
+                                var interiorRings = new List<LineString>();
+
+                                foreach (var interiorRing in shape.Parts.Skip(1)) {
+                                    coordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+
+                                    var linestring = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+                                    linestring = linestring.RemoveRepeatedVertices();
+                                    interiorRings.Add(linestring);
+                                }
+
+                                polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, interiorRings.ToArray()));
+                            }
+                            else {
+                                polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, []));
+                            }
+                        }
+                    }                    
+                }
+
+                var curves = new List<S100Framework.YAML.Polyline>();
+                var singletons = new List<S100Framework.YAML.Polyline>();
+
+                using (var curve = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("curve")).GetName())) {
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) NOT IN ('COASTLINE','DEPTHCONTOUR','SHORELINECONSTRUCTION'))"; //,'NAVIGATIONLINE','RECOMMENDEDTRACK'
+                    using (var cursor = curve.Search(queryFilter)) {
+                        while (cursor.MoveNext()) {
+                            var f = (Feature)cursor.Current;
+
+                            var shape = (ArcGIS.Core.Geometry.Polyline)f.GetShape();
+
+                            var name = Convert.ToString(f["name"]);
+                            if (string.IsNullOrEmpty(name))
+                                name = string.Empty;
+
+                            var coordinates = shape.Points.Select(segment => new Coordinate(segment.X, segment.Y)).ToArray();
+
+                            var linestring = (LineString)factory.CreateLineString([.. coordinates]);
+                            linestring = linestring.RemoveRepeatedVertices();
+
+                            curves.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, Convert.ToString(f["code"])!, linestring));
+                        }
+                    }
+
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('NAVIGATIONLINE','RECOMMENDEDTRACK'))";
+                    using (var cursor = curve.Search(queryFilter)) {
+                        while (cursor.MoveNext()) {
+                            var f = (Feature)cursor.Current;
+
+                            var shape = (ArcGIS.Core.Geometry.Polyline)f.GetShape();
+
+                            var name = Convert.ToString(f["name"]);
+                            if (string.IsNullOrEmpty(name))
+                                name = string.Empty;
+
+                            var coordinates = shape.Points.Select(segment => new Coordinate(segment.X, segment.Y)).ToArray();
+
+                            var linestring = (LineString)factory.CreateLineString([.. coordinates]);
+                            linestring = linestring.RemoveRepeatedVertices();
+
+                            singletons.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, Convert.ToString(f["code"])!, linestring));
+                        }
+                    }
+                }
+
+                builder = matrix.AddNavigationalFeatures(polygons, curves); //.AddSingletonFeatures(singletons);
+            }
+
+            var result = builder.BuildTopology();
+
+
+            var x = result.Surfaces.SingleOrDefault(e => e.Ref.Equals("S13129"));
+
+
+#if null
+            //  Skin of the Earth
             {
                 var curves = new List<S100Framework.YAML.Polyline>();
 
@@ -703,6 +882,41 @@ namespace ArcGIS.Core.Data
                     }
                 }
 
+                var splitters = new List<S100Framework.YAML.Polyline>();
+                using (var surface = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("surface")).GetName())) {
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('RESTRICTEDAREA','CAUTIONAREA','SPANFIXED','SEAAREANAMEDWATERAREA','SOUNDINGDATUM'))";
+
+                    using var cursor = surface.Search(queryFilter);
+
+                    while (cursor.MoveNext()) {
+                        var f = (Feature)cursor.Current;
+
+                        var shape = (ArcGIS.Core.Geometry.Polygon)f.GetShape();
+
+                        var name = Convert.ToString(f["name"]);
+                        if (string.IsNullOrEmpty(name))
+                            name = string.Empty;
+
+                        var exteriorRing = shape.GetExteriorRing(0);
+                        var coordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+
+                        var ex = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+                        ex = ex.RemoveRepeatedVertices();
+
+                        splitters.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, ex));
+
+                        if (shape.PartCount > 1) {
+                            foreach (var interiorRing in shape.Parts.Skip(1)) {
+                                coordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+
+                                var linestring = (LineString)factory.CreateLineString([.. coordinates, coordinates[0]]);
+                                linestring = linestring.RemoveRepeatedVertices();
+                                splitters.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, linestring));
+                            }
+                        }
+                    }
+                }
+
                 //foreach (var c in polygons) {
                 //    var coordinates = c.ExteriorRing.Coordinates;
 
@@ -721,7 +935,7 @@ namespace ArcGIS.Core.Data
 
                 int count = polygons.Count();
 
-                topology.BuildTopology(curves.ToArray(), polygons.ToArray());
+                topology.BuildGroupOne(curves.ToArray(), polygons.ToArray(), splitters.ToArray(), interceptor);
             }
 
             //  Everything else
@@ -794,11 +1008,11 @@ namespace ArcGIS.Core.Data
 
                 int count = polygons.Count();
 
-                topology.Build(curves.ToArray(), polygons.ToArray());
+                topology.Build(curves.ToArray(), polygons.ToArray(), interceptor);
             }
-
-            Log.Verbose("Topology: #{curves}, #{composites}, #{surfaces}", topology.Curves.Count, topology.CompositeCurves.Count, topology.Surfaces.Count);
-            return topology;
+#endif
+            Log.Verbose("Topology: #{curves}, #{composites}, #{surfaces}", result.Curves.Count(), result.CompositeCurves.Count(), result.Surfaces.Count());
+            return result;
         }
 
     }

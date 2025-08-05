@@ -26,6 +26,10 @@ namespace S100Framework.WPF.ViewModel
         //public string Serialize();
     }
 
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class S100TruncatedDateAttribute : System.Attribute
+    {
+    }
     public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
         [Browsable(false)]

@@ -400,6 +400,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class fixedDateRangeViewModel : ViewModelBase {
 		private String? _dateEnd  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? dateEnd {
 			get {
 				return _dateEnd;
@@ -410,6 +411,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _dateStart  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? dateStart {
 			get {
 				return _dateStart;
@@ -1044,7 +1046,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class periodicDateRangeViewModel : ViewModelBase {
 		private String _dateEnd  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
 		public String dateEnd {
 			get {
 				return _dateEnd;
@@ -1055,7 +1058,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String _dateStart  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
 		public String dateStart {
 			get {
 				return _dateStart;
@@ -1346,6 +1350,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _reportedDate  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -1436,7 +1441,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class surveyDateRangeViewModel : ViewModelBase {
 		private String _dateEnd  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
 		public String dateEnd {
 			get {
 				return _dateEnd;
@@ -1447,6 +1453,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _dateStart  = default;
 
+		[S100TruncatedDateAttribute]
 		public String? dateStart {
 			get {
 				return _dateStart;
@@ -3530,6 +3537,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("NonStandardWorkingDay")]
+		[S100TruncatedDateAttribute]
 		public ObservableCollection<String> dateFixed  { get; set; } = new ();
 		[Category("NonStandardWorkingDay")]
 		public ObservableCollection<String> dateVariable  { get; set; } = new ();

@@ -4,7 +4,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Serialization;
 using System.Xml.XPath;
 
 namespace S100Framework.Applications
@@ -160,6 +159,7 @@ namespace S100Framework.Applications
 
                         builderDomainModel.AppendLine($"\t\t[System.ComponentModel.Description(\"{listedValueDefinition}\")]");
                         builderDomainModel.AppendLine($"\t\t[EnumMember(Value = \"{listedValueLabel}\")] ");
+                        builderDomainModel.AppendLine($"\t\t[XmlEnum(\"{listedValueCode}\")] ");
                         builderDomainModel.AppendLine($"\t\t{literalName} = {listedValueCode},");
                         //builderDomainModel.AppendLine();
                     }
@@ -275,10 +275,12 @@ namespace S100Framework.Applications
 
                     if (e.Element(XName.Get("valueType", scope_S100))!.Value.Equals("s100_truncateddate", StringComparison.OrdinalIgnoreCase)) {
                         editorBuilders.Add(code, (b, lower, upper) => {
+                            b.AppendLine("\t\t[S100TruncatedDateAttribute]");
                             if (lower > 1 || (upper.HasValue && upper.Value > 1))
                                 b.AppendLine($"\t\t[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]");
                             else if (lower == 1 && upper.HasValue && upper.Value == 1)
-                                b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]");
+                                b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]");
+                            //b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]");
                         });
                     }
                     else {
@@ -367,6 +369,8 @@ namespace S100Framework.Applications
                             var prefix = knowTypesPrefix[referenceCode];
                             var postfix = knowTypesPostfix.ContainsKey(referenceCode) ? $" = {knowTypesPostfix[referenceCode]};" : string.Empty;
 
+                            builderDomainModel.AppendLine($"\t\t\t[XmlElement(\"{referenceCode}\")]");
+
                             if (permittedValues is not null) {
                                 builderDomainModel.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                             }
@@ -381,7 +385,7 @@ namespace S100Framework.Applications
                             }
                             else if (lower == 1 && upper.HasValue && upper.Value == 1) {
                                 //if (!knowTypesPrefix[referenceCode].Equals("String")) 2025-07-01
-                                //builderDomainModel.AppendLine($"\t\t\t[Required()]");
+                                //builderDomainModel.AppendLine($"\t\t\t[Required()]");                                
                                 if (supportingUnknown) {
                                     prefix = "required " + prefix + "?";
                                     postfix = " = default;";
@@ -1119,6 +1123,8 @@ namespace S100Framework.Applications
 
                 var prefix = client.KnowTypesPrefix[referenceCode];
                 var postfix = client.KnowTypesPostfix.ContainsKey(referenceCode) ? $" = {client.KnowTypesPostfix[referenceCode]};" : string.Empty;
+
+                builder.AppendLine($"\t\t\t[XmlElement(\"{referenceCode}\")]");
 
                 if (permittedValues is not null) {
                     builder.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");

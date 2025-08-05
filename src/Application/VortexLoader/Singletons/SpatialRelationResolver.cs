@@ -1,8 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
-using S100Framework.Applications;
 using S100Framework.Applications.S57.esri;
-using System;
 
 namespace S100Framework.Applications.Singletons
 {

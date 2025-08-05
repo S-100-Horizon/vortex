@@ -1,26 +1,17 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Geometry;
 using S100Framework.Applications.S57.esri;
-using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
-using System.Linq;
-using S100Framework.DomainModel;
-using ArcGIS.Core.Internal.CIM;
-using ArcGIS.Desktop.Editing.Attributes;
-using System.Text;
+using S100Framework.DomainModel.S101.FeatureTypes;
 using System.Data;
-using System.ComponentModel;
-using VortexLoader;
-using System;
-using ArcGIS.Core.Geometry;
-using Microsoft.AspNetCore.Http.HttpResults;
-using S100Framework.Applications.Singletons;
-using ArcGIS.Core.CIM;
-using S100Framework.DomainModel.S122.ComplexAttributes;
 
 namespace S100Framework.Applications
 {
-    internal class RelatedEquipment {
+    internal class RelatedEquipment
+    {
         Geodatabase _source;
         Geodatabase _target;
 
@@ -160,10 +151,10 @@ namespace S100Framework.Applications
 
             // group structures per location
             var relatedPerLocation = areaRelated
-                    .GroupBy(obj => (X:Math.Round(((MapPoint)obj.S57Object.Shape).X,7), Y:Math.Round(((MapPoint)obj.S57Object.Shape).Y,7), obj.S57Object.Shape.SpatialReference))
+                    .GroupBy(obj => (X: Math.Round(((MapPoint)obj.S57Object.Shape).X, 7), Y: Math.Round(((MapPoint)obj.S57Object.Shape).Y, 7), obj.S57Object.Shape.SpatialReference))
                     .ToDictionary(
-                        group => group.Key,  
-                        group => group.ToList() 
+                        group => group.Key,
+                        group => group.ToList()
                     );
 
             // light sectored
@@ -183,7 +174,7 @@ namespace S100Framework.Applications
                     buffer["code"] = lightSectored.GetType().Name;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(lightSectored, ImporterNIS.jsonSerializerOptions);
                     ImporterNIS.SetShape(buffer, shape);
-                    ImporterNIS.SetDrawingIndex(buffer, s57master.PLTS_COMP_SCALE.Value);
+                    ImporterNIS.SetUsageBand(buffer, s57master.PLTS_COMP_SCALE.Value);
 
                     var featureN = featureClass.CreateRow(buffer);
                     var equipmentName = Convert.ToString(featureN["name"]);
@@ -222,7 +213,7 @@ namespace S100Framework.Applications
                         buffer["code"] = instance.GetType().Name;
                         buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                         ImporterNIS.SetShape(buffer, shape);
-                        ImporterNIS.SetDrawingIndex(buffer, relatedObject.S57Object.PLTS_COMP_SCALE.Value);
+                        ImporterNIS.SetUsageBand(buffer, relatedObject.S57Object.PLTS_COMP_SCALE.Value);
 
                         var featureN = featureClass.CreateRow(buffer);
                         var equipmentName = Convert.ToString(featureN["name"]);
@@ -231,7 +222,7 @@ namespace S100Framework.Applications
                         }
 
                         FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()), new(relatedObject.S101Type, equipmentName), featureN, s101MasterFeature, this._featureAssociation);
-                        
+
 
                         if (relatedObject.S57Object.TableName != null) {
                             ConversionAnalytics.Instance.AddConverted(relatedObject.S57Object.TableName, relatedObject.GlobalId, equipmentName ?? "Unknown equipment name");
@@ -264,7 +255,7 @@ namespace S100Framework.Applications
                 return;
 
             var totalRelated = FeatureRelations.Instance.GetRelated(s57master.GlobalId);
-            
+
             var relatedLightSectored = totalRelated.Where(e => e.S101Type == typeof(LightSectored)).ToList();
 
             var relatedNonSectoredEquipment = totalRelated.Where(e => e.S101Type != typeof(LightSectored)).ToList();
@@ -277,13 +268,13 @@ namespace S100Framework.Applications
             // IF SECTORED LIGHTS
             var related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightSectored), s57master.GlobalId);
             if (related.Count > 0) {
-                var instance = ImporterNIS._converterRegistry.Convert(s57master,typeof(LightSectored));
+                var instance = ImporterNIS._converterRegistry.Convert(s57master, typeof(LightSectored));
 
                 buffer["ps"] = ImporterNIS.ps101;
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                 ImporterNIS.SetShape(buffer, s57master.Shape);
-                ImporterNIS.SetDrawingIndex(buffer, s57master.PLTS_COMP_SCALE.Value);
+                ImporterNIS.SetUsageBand(buffer, s57master.PLTS_COMP_SCALE.Value);
 
                 var featureN = featureClass.CreateRow(buffer);
                 var equipmentName = Convert.ToString(featureN["name"]);
@@ -301,10 +292,10 @@ namespace S100Framework.Applications
                 }
 
                 FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()), new(instance.GetType(), equipmentName), featureN, s101MasterFeature, _featureAssociation);
-                
+
                 // return;
             }
-            
+
             // IF NOT SECTORED LIGHTS
             foreach (PltsSlave relatedObject in relatedNonSectoredEquipment) {
                 if (relatedObject.S101Type == typeof(topmark))
@@ -322,7 +313,7 @@ namespace S100Framework.Applications
                     buffer["code"] = instance.GetType().Name;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                     ImporterNIS.SetShape(buffer, s57master.Shape);
-                    ImporterNIS.SetDrawingIndex(buffer, s57master.PLTS_COMP_SCALE.Value);
+                    ImporterNIS.SetUsageBand(buffer, s57master.PLTS_COMP_SCALE.Value);
 
                     var featureN = featureClass.CreateRow(buffer);
                     var equipmentName = Convert.ToString(featureN["name"]);
@@ -344,7 +335,8 @@ namespace S100Framework.Applications
 
                     Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.S57Object.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
 
-                } else {
+                }
+                else {
                     throw new NotSupportedException("Relation without related object or related object Type information.");
                 }
             }
@@ -658,7 +650,7 @@ namespace S100Framework.Applications
             //    throw new NotSupportedException($"{s57Object.GetType()}");
             //}
 
-            foreach  (var plts in totalRelated) {
+            foreach (var plts in totalRelated) {
                 if (!ConversionAnalytics.Instance.IsConverted(plts.S57Object.GlobalId)) {
                     // TODO: handle missing related - TOMOREDO: REFACTURE!!!
                     ;

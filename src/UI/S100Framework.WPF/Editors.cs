@@ -13,8 +13,6 @@ namespace S100Framework.WPF.Editors
 {
     public class S100TruncatedDateEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
-        private static readonly Regex _regexValidation = new(@"^(\d{4}|-{4})(\d{2}|-{2})(\d{2}|-{2})$");
-
         private static readonly Regex _regexInput = new(@"^(\d|-{1,8})$");
 
         //public string? Value { get; set; } = default;
@@ -44,14 +42,16 @@ namespace S100Framework.WPF.Editors
             if (string.IsNullOrEmpty(e.Text)) return;
             e.Handled = !_regexInput.IsMatch(e.Text);
         }
+    }
 
-        public class PartialDateRule : ValidationRule
-        {
-            public override ValidationResult Validate(object value, CultureInfo cultureInfo) {
-                var s = (value as string) ?? string.Empty;
-                return _regexValidation.IsMatch(s) ? ValidationResult.ValidResult
-                    : new ValidationResult(false, "Must be yyyyMMdd, but yyyy or MM may be all “-”.");
-            }
+    public class PartialDateRule : ValidationRule
+    {
+        private static readonly Regex _regexValidation = new(@"^(\d{4}|-{4})(\d{2}|-{2})(\d{2}|-{2})$");
+
+        public override ValidationResult Validate(object value, CultureInfo cultureInfo) {
+            var s = (value as string) ?? string.Empty;
+            return _regexValidation.IsMatch(s) ? ValidationResult.ValidResult
+                : new ValidationResult(false, "Must be yyyyMMdd, but yyyy, MM or dd may be all \"-\".");
         }
     }
 
@@ -244,9 +244,52 @@ namespace S100Framework.WPF.Editors
 
             var instance = (String?)propertyItem.Value;
 
-            //var panel = new DockPanel {
-            //    LastChildFill = true,
-            //};
+            var panel = new Grid {
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+
+            var radioButtonUnknown = new RadioButton {
+                ToolTip = "[Unknown]",
+                GroupName = "Unknown",
+                IsChecked = string.IsNullOrEmpty(instance),
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(0, 0, 18, 0),
+            };
+            radioButtonUnknown.Checked += (s, e) => {
+                //OnPropertyChanged(nameof(instance));
+            };
+
+            var editor = new PropertyGridEditorTextBox {
+
+                Watermark = "[unknown]",
+            };
+            editor.SelectionChanged += (s, e) => {
+                radioButtonUnknown.IsChecked = string.IsNullOrEmpty(editor.Text);
+            };
+            radioButtonUnknown.Click += (s, e) => {
+                editor.Text = null;
+                radioButtonUnknown.IsChecked = true;
+            };
+
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+            BindingOperations.SetBinding(editor, TextBox.TextProperty, bindingSelectedItemProperty);
+            panel.Children.Add(editor);
+
+            panel.Children.Add(radioButtonUnknown);
+            return panel;
+        }
+    }
+
+    public class UnknownS100TruncatedDateEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    {
+        private static readonly Regex _regexInput = new(@"^(\d|-{1,8})$");
+
+        //public string? Value { get; set; } = default;
+
+        public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
+            var instance = (String?)propertyItem.Value;
 
             var panel = new Grid {
                 HorizontalAlignment = HorizontalAlignment.Stretch,
@@ -256,31 +299,54 @@ namespace S100Framework.WPF.Editors
             var radioButtonUnknown = new RadioButton {
                 ToolTip = "[Unknown]",
                 GroupName = "Unknown",
-                Background = System.Windows.Media.Brushes.Orange,
                 IsChecked = string.IsNullOrEmpty(instance),
-                HorizontalAlignment = HorizontalAlignment.Left,
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(0, 0, 18, 0),
             };
-            //Panel.SetZIndex(radioButtonUnknown, 1);
             radioButtonUnknown.Checked += (s, e) => {
                 //OnPropertyChanged(nameof(instance));
             };
 
-            ITypeEditor editor = new TextBoxEditor();
+            var editor = new WatermarkTextBox {
+                Name = $"_textBox{Guid.NewGuid():N}",
+                MaxLength = 8,
+                KeepWatermarkOnGotFocus = false,
+                Watermark = "yyyyMMdd",
+            };
+            editor.PreviewTextInput += this.Control_PreviewTextInput;
 
+            editor.SelectionChanged += (s, e) => {
+                radioButtonUnknown.IsChecked = string.IsNullOrEmpty(editor.Text);
+            };
+            radioButtonUnknown.Click += (s, e) => {
+                editor.Text = null;
+                radioButtonUnknown.IsChecked = true;
+            };
+
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            //BindingOperations.SetBinding(control, CheckComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+
+            //var bindingSelectedItemProperty = new Binding(nameof(Value)) { Source = this, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            bindingSelectedItemProperty.ValidationRules.Add(new PartialDateRule());
+            BindingOperations.SetBinding(editor, TextBox.TextProperty, bindingSelectedItemProperty);
+            panel.Children.Add(editor);
 
             panel.Children.Add(radioButtonUnknown);
-
             return panel;
         }
-    }
 
+        private void Control_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e) {
+            if (string.IsNullOrEmpty(e.Text)) return;
+            e.Handled = !_regexInput.IsMatch(e.Text);
+        }
+    }
 
     public class UnknownEditor<T> : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
 
             var instance = (T)propertyItem.Value;
-            
 
             var propertyType = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
 
@@ -293,12 +359,11 @@ namespace S100Framework.WPF.Editors
                 var radioButtonUnknown = new RadioButton {
                     ToolTip = "[Unknown]",
                     GroupName = propertyItem.DisplayName,
-                    Background = System.Windows.Media.Brushes.Orange,
-                    HorizontalAlignment = HorizontalAlignment.Left,
+                    HorizontalAlignment = HorizontalAlignment.Right,
+                    VerticalAlignment = VerticalAlignment.Center,
                     IsChecked = instance == null,
-                    Margin = new Thickness(1, 1, 0, 0),
+                    Margin = new Thickness(0, 0, 18, 0),
                 };
-                //Panel.SetZIndex(radioButtonUnknown, 1);
                 radioButtonUnknown.Checked += (s, e) => {
                     //OnPropertyChanged(nameof(instance));
                 };
@@ -325,29 +390,54 @@ namespace S100Framework.WPF.Editors
                 panel.Children.Add(radioButtonUnknown);
                 return panel;
             }
-            else {                
-                if (propertyType == typeof(bool) || propertyType == typeof(Boolean)) {
-                    var panel = new StackPanel {
-                        Orientation = Orientation.Horizontal,
-                        VerticalAlignment = VerticalAlignment.Center,
+            else if (propertyType == typeof(bool) || propertyType == typeof(Boolean)) {
+                var panel = new StackPanel {
+                    Orientation = Orientation.Horizontal,
+                    VerticalAlignment = VerticalAlignment.Center,
+                };
+
+                var editor = new PropertyGridEditorCheckBox();
+
+                editor.IsThreeState = true;
+
+                var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+                BindingOperations.SetBinding(editor, CheckBox.IsCheckedProperty, bindingSelectedItemProperty);
+
+                return editor;
+            }
+            else {
+                var panel = new Grid {
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    VerticalAlignment = VerticalAlignment.Center,
+                };
+
+                var radioButtonUnknown = new RadioButton {
+                    ToolTip = "[Unknown]",
+                    GroupName = propertyItem.DisplayName,
+                    HorizontalAlignment = HorizontalAlignment.Right,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    IsChecked = instance == null,
+                    Margin = new Thickness(0, 0, 18, 0),
+                };
+                radioButtonUnknown.Checked += (s, e) => {
+                    //OnPropertyChanged(nameof(instance));
+                };
+
+                if (propertyType == typeof(decimal) || propertyType == typeof(Decimal)) {
+                    var editor = new PropertyGridEditorDecimalUpDown();
+                    editor.ValueChanged += (s, e) => {
+                        radioButtonUnknown.IsChecked = !editor.Value.HasValue;
                     };
-
-                    var editor = new PropertyGridEditorCheckBox();
-
-                    editor.IsThreeState = true;
-
+                    radioButtonUnknown.Click += (s, e) => {
+                        editor.Value = default;
+                        radioButtonUnknown.IsChecked = true;
+                    };
                     var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
-                    BindingOperations.SetBinding(editor, CheckBox.IsCheckedProperty, bindingSelectedItemProperty);
-
-                    return editor;
-
+                    BindingOperations.SetBinding(editor, TextBox.TextProperty, bindingSelectedItemProperty);
                     panel.Children.Add(editor);
 
-                    var label = new Label {
-                        Content ="<unknown>",
-                    };
-                    panel.Children.Add(label);
-                    
+                    panel.Children.Add(radioButtonUnknown);
+                    return panel;
                 }
                 else
                     System.Diagnostics.Debugger.Break();

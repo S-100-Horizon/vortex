@@ -1,11 +1,8 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Internal.CIM;
-using S100Framework.Applications;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using System.Collections.Generic;
 using System.Data;
 
 namespace S100Framework.Applications.Singletons
@@ -307,14 +304,14 @@ namespace S100Framework.Applications.Singletons
     internal class FeatureRelations
     {
         private static FeatureRelations? _instance;
-//        private static Geodatabase? _source;
-//        private static Geodatabase? _target;
+        //        private static Geodatabase? _source;
+        //        private static Geodatabase? _target;
         private static HashSet<Relation> _relations = new HashSet<Relation>();
         private static Dictionary<Guid, PltsCollection> _pltsCollections = new Dictionary<Guid, PltsCollection>();
         private static Dictionary<Guid, IList<PltsSlave>> _srcObjectToSlaves = new Dictionary<Guid, IList<PltsSlave>>();
         private static Dictionary<string, PLTS_Master_Slaves> _pltsMasterSlaves = new Dictionary<string, PLTS_Master_Slaves>();
 
-        private static Dictionary<(string, string),Relation> _createdRelations = new Dictionary<(string, string),Relation>();
+        private static Dictionary<(string, string), Relation> _createdRelations = new Dictionary<(string, string), Relation>();
 
         private static bool _isInitialized = false;
 
@@ -535,7 +532,7 @@ namespace S100Framework.Applications.Singletons
 
         //}
 
-        private static void  LoadPltsFrels2(Geodatabase source) {
+        private static void LoadPltsFrels2(Geodatabase source) {
             using var pltsFrel = source.OpenDataset<Table>(source.GetName("PLTS_Frel"));
             var frelDestFeatureClasses = new Dictionary<string, IList<PLTS_Frel>>();
 
@@ -731,7 +728,7 @@ namespace S100Framework.Applications.Singletons
             // Legacy - is not in use... to be deleted.
             _relations.Add(relation);
 
-            StoreRelation(master, slave, s101SlaveFeature, s101MasterFeature,featureAssociation);
+            StoreRelation(master, slave, s101SlaveFeature, s101MasterFeature, featureAssociation);
         }
 
         private void StoreRelation(S57Master master, S57Slave slave, Feature s101SlaveFeature, Feature s101MasterFeature, Table featureAssociation) {
@@ -771,7 +768,7 @@ namespace S100Framework.Applications.Singletons
                 s101SlaveFeature["ps"] = ImporterNIS.ps101;
 
                 //                featureAssociationBuffer["code"] = bindingDefinitionForeign.association;
-                
+
                 var featureAssociationBuffer = featureAssociation.CreateRowBuffer();
 
                 featureAssociationBuffer["ps"] = ImporterNIS.ps101;
@@ -838,7 +835,7 @@ namespace S100Framework.Applications.Singletons
             Relation relation = new(master_, slave_);
             //_relationCount++;
             if (_relations.Contains(relation)) {
-                return true; 
+                return true;
             }
             return false;
         }
@@ -860,7 +857,7 @@ namespace S100Framework.Applications.Singletons
             if (relation.Slave == null) {
                 throw new ArgumentNullException("relation slave");
             }
-            
+
             Type TPrimary = relation.Master.S101Type;
             Type TForeign = relation.Slave.S101Type;
 
@@ -889,7 +886,7 @@ namespace S100Framework.Applications.Singletons
                 featureAssociationBuffer["code"] = bindingDefinitionForeign.association;
                 var association = featureAssociation.CreateRow(featureAssociationBuffer);
                 featureAssociationName = (string)association["name"];
-                
+
             }
             {
                 // Create primary end
@@ -943,7 +940,7 @@ namespace S100Framework.Applications.Singletons
             //using var associationBindingInsert = associationBinding.CreateInsertCursor();
 
             var duplicates = _relations
-                .GroupBy(p => new { p = p.Master.Name, s = p.Slave.Name})
+                .GroupBy(p => new { p = p.Master.Name, s = p.Slave.Name })
                 .Where(g => g.Count() > 1)
                 .SelectMany(g => g)
                 .ToList();
@@ -1044,7 +1041,7 @@ namespace S100Framework.Applications.Singletons
             if (other == null) {
                 return false;
             }
-            return this._s101type.Equals(other._s101type)  && this._s101name.Equals(other._s101name);
+            return this._s101type.Equals(other._s101type) && this._s101name.Equals(other._s101name);
         }
 
         // Override Equals (for compatibility with collections like HashSet)
@@ -1060,8 +1057,9 @@ namespace S100Framework.Applications.Singletons
         }
     }
 
-    internal class Relation : IEquatable<Relation> {
-    
+    internal class Relation : IEquatable<Relation>
+    {
+
         S57Master? _master;
         S57Slave? _slave;
 

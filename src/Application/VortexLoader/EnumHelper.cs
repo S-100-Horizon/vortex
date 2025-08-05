@@ -1,13 +1,4 @@
-﻿using ArcGIS.Core.Data.UtilityNetwork.Trace;
-using ArcGIS.Desktop.Core;
-using S100Framework.DomainModel.S101;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace S100Framework.Applications
+﻿namespace S100Framework.Applications
 {
     public static class EnumHelper
     {

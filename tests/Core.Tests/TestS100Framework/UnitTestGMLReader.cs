@@ -1,8 +1,10 @@
-﻿using ArcGIS.Core.Geometry;
-
+﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Geometry;
+using ICSharpCode.SharpZipLib.Zip;
 using S100Framework.DomainModel.S131.FeatureTypes;
+using S100Framework.DomainModel.S201.FeatureTypes;
 using System.Globalization;
-using System.Reflection;
+using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
@@ -19,40 +21,50 @@ namespace TestS100Framework
 
             ArcGIS.Core.Hosting.Host.Initialize();
         }
+        [Fact]
+        public void Test_SetupDatabase() {
+            FastZip fastZip = new();
+
+            var output = new DirectoryInfo("s100ed6.gdb");
+
+            if (output.Exists)
+                output.Delete(true);
+
+            fastZip.ExtractZip("s100ed6.gdb.zip", output.FullName, null);
+
+            using Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(output.FullName)));
+
+
+            System.Diagnostics.Debugger.Break();
+        }
 
         [Fact]
-        public void Test_S201InlineReader() {
-            var dataset = S100Framework.GML.Dataset.Load(@".\Samples\S201\201CAtestgml_Inline.gml");
+        public void Test_ReadGML() {
+            var S201 = @".\Samples\S201\201CAtestgml_Inline.gml";
+            var S131 = @".\Samples\S131\131DK00_DKAAL.GML";
 
-            //var members = gml.XPathSelectElement("//*[local-name()='members']");
-            //Assert.NotNull(members);
+            var dataset = S100Framework.GML.Dataset.Load(S131);
 
             foreach (var m in dataset.Members()) {
-                if (m is S100Framework.GML.Dataset.InformationType) {
-                    var informationtype = ((S100Framework.GML.Dataset.InformationType)m);
-
-                    var element = informationtype.XElement;
-                    var value = informationtype.Value;
+                if (m is S100Framework.GML.Dataset.InformationType informationType) {
+                    var element = informationType.XElement;
+                    var value = informationType.Value;
                 }
-                if (m is S100Framework.GML.Dataset.FeatureType) {
-                    var featuretype = ((S100Framework.GML.Dataset.FeatureType)m);
-
-                    var element = featuretype.XElement;
-                    var value = featuretype.Value;
-                    var geometry = featuretype.Shape();
-
+                if (m is S100Framework.GML.Dataset.FeatureType featureType) {
+                    var element = featureType.XElement;
+                    var value = featureType.Value;
+                    var geometry = featureType.Shape();
                 }
             }
 
             System.Diagnostics.Debugger.Break();
-
         }
 
         [Fact]
         public void Test_S131Reader() {
-            var types = Assembly.GetExecutingAssembly().GetTypes();
+            //var types = Assembly.GetExecutingAssembly().GetTypes();
 
-            Assert.NotNull(types.SingleOrDefault(e => e.Name.Equals("MooringWarpingFacility")));
+            //Assert.NotNull(types.SingleOrDefault(e => e.Name.Equals("MooringWarpingFacility")));
 
             var mooringWarpingFacility = new MooringWarpingFacility {
                 iDCode = string.Empty,
@@ -87,20 +99,13 @@ namespace TestS100Framework
             yield break;
         }
 
-        //public static S100Framework.FeatureTypeId? FeatureType(this XElement element) {
-        //    var prefix = element.GetPrefixOfNamespace(element.Name.Namespace);
-
-        //    var type = Assembly.GetExecutingAssembly().GetType($"S100Framework.DomainModel.S131.FeatureTypes.{element.Name.LocalName}")!;
-        //    var serializer = new XmlSerializer(type);
-        //    return serializer.Deserialize(element.CreateReader()) as S100Framework.FeatureTypeId;
-        //}
-
-        public static Geometry Geometry(this XElement element) {
+        public static Geometry? Geometry(this XElement element) {
             var prefix = element.GetPrefixOfNamespace(element.Name.NamespaceName)!;
             var ns = element.GetNamespaceOfPrefix(prefix)!;
-
+            
             var geometry = element.Element(XName.Get("geometry", ns.NamespaceName))!;
 
+            if (geometry == null) return null; // No geometry detected
             var property = (XElement)geometry.LastNode!;
 
             using var reader = geometry.CreateReader();

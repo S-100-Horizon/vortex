@@ -1,10 +1,6 @@
-﻿using ArcGIS.Core.Data;
-using JsonFlatten;
-using NetTopologySuite.Index.HPRtree;
+﻿using JsonFlatten;
 using Newtonsoft.Json.Linq;
-using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.YAML;
 using System.Collections;
 using System.Text;
 using System.Text.Json;
@@ -59,6 +55,20 @@ namespace TestS100Framework
         }
 
         [Fact]
+        public void Test_Serialize_RequiredAttribute() {
+            var qualityOfBathymetricData = new QualityOfBathymetricData {
+                categoryOfTemporalVariation = null,
+                dataAssessment = null,
+                featuresDetected = null,
+                fullSeafloorCoverageAchieved = null,
+            };
+
+            var yaml = S100Framework.YAML.Converter.Serialize(qualityOfBathymetricData);
+
+            System.Diagnostics.Debugger.Break();
+        }
+
+        [Fact]
         public void Test_Deserialize_Feature() {
             var yamlDataset = @"CellName: 101DK40349E.000
 Comment: Not for navigation!
@@ -73,6 +83,12 @@ Metadata:
     Country: Denmark
     Producer: GST
     ProducerCode: DK00
+InformationTypes:
+  - Name: SpatialQuality
+    ID: I2516971
+    Attributes:
+      - Name: qualityOfHorizontalMeasurement
+        Value: 4
 Points:
   - Name: P4155-0
     Location: 12.2888300,55.0000000
@@ -221,7 +237,7 @@ Features:
                 Name = "P1101",
             };
 
-            var c1201 = new S100Framework.YAML.Curve(p1101, new S100Framework.YAML.Coordinate[]{
+            var c1201 = new S100Framework.YAML.Curve(p1101.Name, new S100Framework.YAML.Coordinate[]{
                         new(-32.1333332,62.5),
                         new(-31.9666666,62.5),
                         new(-31.9666666,62.6666666),
@@ -249,7 +265,7 @@ Features:
                 Name = "P1101",
             };
 
-            var c1201 = new S100Framework.YAML.Curve(p1101, [
+            var c1201 = new S100Framework.YAML.Curve(p1101.Name, [
                         new S100Framework.YAML.Coordinate(-32.1333332,62.5),
                         new S100Framework.YAML.Coordinate(-31.9666666,62.5),
                         new S100Framework.YAML.Coordinate(-31.9666666,62.6666666),

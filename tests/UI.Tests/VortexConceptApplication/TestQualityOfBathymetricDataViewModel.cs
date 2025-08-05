@@ -1,25 +1,12 @@
 ﻿using S100Framework.DomainModel;
-using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.WPF.Converters;
-using S100Framework.WPF.Editors;
 using S100Framework.WPF.ViewModel;
 using S100Framework.WPF.ViewModel.S101;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.DirectoryServices.ActiveDirectory;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using Xceed.Wpf.Toolkit;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
@@ -35,9 +22,24 @@ namespace VortexConceptApplication
 
     public class TestQualityOfBathymetricDataViewModel : QualityOfBathymetricDataViewModel
     {
+        private decimal? _decimal;
+
+        [Category("Test")]
+        [Editor(typeof(S100Framework.WPF.Editors.UnknownEditor<decimal?>), typeof(S100Framework.WPF.Editors.UnknownEditor<decimal?>))]
+        public decimal? Decimal {
+            get {
+                return _decimal;
+            }
+            set {
+                SetValue(ref _decimal, value);
+            }
+        }
+
+
+
         private String _interoperabilityIdentifier2;
 
-        [Category("QualityOfBathymetricData")]
+        [Category("Test")]
         public String interoperabilityIdentifier2 {
             get {
                 return _interoperabilityIdentifier2;
@@ -98,7 +100,7 @@ namespace VortexConceptApplication
             BindingOperations.SetBinding(radioButtonUnknown, RadioButton.IsCheckedProperty, bindingSelectedItemProperty);
 
             var type = typeof(T);
-            
+
             panel.Children.Add(radioButtonNull);
             panel.Children.Add(radioButtonUnknown);
 

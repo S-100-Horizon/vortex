@@ -226,30 +226,37 @@ namespace S100Framework.DomainModel.S101 {
 	public enum beaconShape : int {
 		[System.ComponentModel.Description("AnElongatedWoodOrMetalPoleDrivenIntoTheGroundOrSeabedWhichServesAsANavigationalAidOrASupportForANavigationalAid")]
 		[EnumMember(Value = "Stake, Pole, Perch, Post")] 
+		[XmlEnum("1")] 
 		StakePolePerchPost = 1,
 
 		[System.ComponentModel.Description("ATreeWithoutRootsStuckOrSpoiledIntoTheBottomOfTheSeaToServeAsANavigationalAid")]
 		[EnumMember(Value = "Withy")] 
+		[XmlEnum("2")] 
 		Withy = 2,
 
 		[System.ComponentModel.Description("ASolidStructureOfTheOrderOf10MetresInHeightUsedAsANavigationalAid")]
 		[EnumMember(Value = "Beacon Tower")] 
+		[XmlEnum("3")] 
 		BeaconTower = 3,
 
 		[System.ComponentModel.Description("AStructureConsistingOfStripsOfMetalOrWoodCrossedOrInterlacedToFormAStructureToServeAsAnAidToNavigationOrAsASupportForAnAidToNavigation")]
 		[EnumMember(Value = "Lattice Beacon")] 
+		[XmlEnum("4")] 
 		LatticeBeacon = 4,
 
 		[System.ComponentModel.Description("ALongHeavyTimberSOrSectionSOfSteelWoodConcreteEtcForcedIntoTheSeabedToServeAsAnAidToNavigationOrAsASupportForAnAidToNavigation")]
 		[EnumMember(Value = "Pile Beacon")] 
+		[XmlEnum("5")] 
 		PileBeacon = 5,
 
 		[System.ComponentModel.Description("AMoundOfStonesUsuallyConicalOrPyramidalRaisedAsALandmarkOrToDesignateAPointOfImportanceInSurveying")]
 		[EnumMember(Value = "Cairn")] 
+		[XmlEnum("6")] 
 		Cairn = 6,
 
 		[System.ComponentModel.Description("ATallSparLikeBeaconFittedWithAPermanentlySubmergedBuoyancyChamberTheLowerEndOfTheBodyIsSecuredToSeabedSinkerEitherByAFlexibleJointOrByACableUnderTension")]
 		[EnumMember(Value = "Buoyant Beacon")] 
+		[XmlEnum("7")] 
 		BuoyantBeacon = 7,
 	}
 
@@ -258,22 +265,27 @@ namespace S100Framework.DomainModel.S101 {
 	public enum bridgeConstruction : int {
 		[System.ComponentModel.Description("ATypicallyCurvedStructuralMemberSpanningAnOpeningAndServingAsASupportAsForTheWallOrOtherWeightAboveTheOpening")]
 		[EnumMember(Value = "Arch")] 
+		[XmlEnum("1")] 
 		Arch = 1,
 
 		[System.ComponentModel.Description("AStructureConsistingOfASeriesOfArchesOrTowersSupportingARoadwayWaterwayEtcAcrossADepressionEtc")]
 		[EnumMember(Value = "Viaduct")] 
+		[XmlEnum("2")] 
 		Viaduct = 2,
 
 		[System.ComponentModel.Description("AFixedFloatingBridgeSupportedByPontoons")]
 		[EnumMember(Value = "Pontoon Bridge")] 
+		[XmlEnum("3")] 
 		PontoonBridge = 3,
 
 		[System.ComponentModel.Description("AFixedBridgeConsistingOfEitherARoadwayOrATrussSuspendedFromTwoOrMoreCablesWhichPassOverTowersAndAreAnchoredByBackstaysToAFirmFoundation")]
 		[EnumMember(Value = "Suspension Bridge")] 
+		[XmlEnum("4")] 
 		SuspensionBridge = 4,
 
 		[System.ComponentModel.Description("ConsistsOfTowersOnEachSideOfTheWatercourseConnectedByASystemOfGirdersOnWhichACarriageRuns")]
 		[EnumMember(Value = "Transporter Bridge")] 
+		[XmlEnum("5")] 
 		TransporterBridge = 5,
 	}
 
@@ -282,18 +294,22 @@ namespace S100Framework.DomainModel.S101 {
 	public enum bridgeFunction : int {
 		[System.ComponentModel.Description("OfRelatingToOrDesignedForVehiclesAndEspeciallyMotorVehicles")]
 		[EnumMember(Value = "Vehicular")] 
+		[XmlEnum("1")] 
 		Vehicular = 1,
 
 		[System.ComponentModel.Description("OfRelatingToOrDesignedForVehiclesThatRunOnAGuidingTrackSEspeciallyTrains")]
 		[EnumMember(Value = "Rail")] 
+		[XmlEnum("2")] 
 		Rail = 2,
 
 		[System.ComponentModel.Description("OfRelatingToOrDesignedForWalking")]
 		[EnumMember(Value = "Pedestrian")] 
+		[XmlEnum("3")] 
 		Pedestrian = 3,
 
 		[System.ComponentModel.Description("ABridgeSupportingAnArtificiallyElevatedChannelForTheConveyanceOfWater")]
 		[EnumMember(Value = "Aqueduct")] 
+		[XmlEnum("4")] 
 		Aqueduct = 4,
 	}
 
@@ -302,22 +318,27 @@ namespace S100Framework.DomainModel.S101 {
 	public enum buildingShape : int {
 		[System.ComponentModel.Description("ABuildingHavingManyStoreys")]
 		[EnumMember(Value = "High-Rise Building")] 
+		[XmlEnum("5")] 
 		HighRiseBuilding = 5,
 
 		[System.ComponentModel.Description("APolyhedronOfWhichOneFaceIsAPolygonOfAnyNumberOfSidesAndTheOtherFacesAreTrianglesWithACommonVertex")]
 		[EnumMember(Value = "Pyramid")] 
+		[XmlEnum("6")] 
 		Pyramid = 6,
 
 		[System.ComponentModel.Description("ShapedLikeACylinderWhichIsASolidGeometricalFigureGeneratedByStraightLinesFixedInDirectionAndDescribingWithOneOfItsPointsAClosedCurveEspeciallyACircle")]
 		[EnumMember(Value = "Cylindrical")] 
+		[XmlEnum("7")] 
 		Cylindrical = 7,
 
 		[System.ComponentModel.Description("ShapedLikeASphereWhichIsABodyTheSurfaceOfWhichIsAtAllPointsEquidistantFromTheCentre")]
 		[EnumMember(Value = "Spherical")] 
+		[XmlEnum("8")] 
 		Spherical = 8,
 
 		[System.ComponentModel.Description("AShapeTheSidesOfWhichAreSixEqualSquaresARegularHexahedron")]
 		[EnumMember(Value = "Cubic")] 
+		[XmlEnum("9")] 
 		Cubic = 9,
 	}
 
@@ -326,34 +347,42 @@ namespace S100Framework.DomainModel.S101 {
 	public enum buoyShape : int {
 		[System.ComponentModel.Description("TheUpperPartOfTheBodyAboveTheWaterLineOrTheGreaterPartOfTheSuperstructureHasApproximatelyTheShapeOrTheAppearanceOfAPointedConeWithThePointUpwards")]
 		[EnumMember(Value = "Conical")] 
+		[XmlEnum("1")] 
 		Conical = 1,
 
 		[System.ComponentModel.Description("TheUpperPartOfTheBodyAboveTheWaterLineOrTheGreaterPartOfTheSuperstructureHasTheShapeOfACylinderOrATruncatedConeThatApproximatesToACylinderWithAFlatEndUppermost")]
 		[EnumMember(Value = "Can")] 
+		[XmlEnum("2")] 
 		Can = 2,
 
 		[System.ComponentModel.Description("ShapedLikeASphereWhichIsABodyTheSurfaceOfWhichIsAtAllPointsEquidistantFromTheCentre")]
 		[EnumMember(Value = "Spherical")] 
+		[XmlEnum("3")] 
 		Spherical = 3,
 
 		[System.ComponentModel.Description("TheUpperPartOfTheBodyAboveTheWaterLineOrTheGreaterPartOfTheSuperstructureIsANarrowVerticalStructurePillarOrLatticeTower")]
 		[EnumMember(Value = "Pillar")] 
+		[XmlEnum("4")] 
 		Pillar = 4,
 
 		[System.ComponentModel.Description("TheUpperPartOfTheBodyAboveTheWaterLineOrTheGreaterPartOfTheSuperstructureHasTheFormOfAPoleOrOfAVeryLongCylinderFloatingUpright")]
 		[EnumMember(Value = "Spar")] 
+		[XmlEnum("5")] 
 		Spar = 5,
 
 		[System.ComponentModel.Description("TheUpperPartOfTheBodyAboveTheWaterLineOrTheGreaterPartOfTheSuperstructureHasTheFormOfABarrelOrCylinderFloatingHorizontally")]
 		[EnumMember(Value = "Barrel")] 
+		[XmlEnum("6")] 
 		Barrel = 6,
 
 		[System.ComponentModel.Description("AVeryLargeBuoyDesignedToCarryASignalLightOfHighLuminousIntensityAtAHighElevation")]
 		[EnumMember(Value = "Superbuoy")] 
+		[XmlEnum("7")] 
 		Superbuoy = 7,
 
 		[System.ComponentModel.Description("ASpeciallyConstructedShuttleShapedBuoyWhichIsUsedInIceConditions")]
 		[EnumMember(Value = "Ice Buoy")] 
+		[XmlEnum("8")] 
 		IceBuoy = 8,
 	}
 
@@ -362,34 +391,42 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfAirportAirfield : int {
 		[System.ComponentModel.Description("ALargeMilitaryAirfieldUsuallyEquippedWithAControlTowerHangarsAndAccommodationForTheReceivingAndDischargingOfPassengersOrCargo")]
 		[EnumMember(Value = "Military Aeroplane Airport")] 
+		[XmlEnum("1")] 
 		MilitaryAeroplaneAirport = 1,
 
 		[System.ComponentModel.Description("ALargeAirfieldUsuallyEquippedWithAControlTowerHangarsAndAccommodationForTheReceivingAndDischargingOfPassengersOrCargo")]
 		[EnumMember(Value = "Civil Aeroplane Airport")] 
+		[XmlEnum("2")] 
 		CivilAeroplaneAirport = 2,
 
 		[System.ComponentModel.Description("ALandingPlaceForHelicoptersControlledByTheMilitary")]
 		[EnumMember(Value = "Military Heliport")] 
+		[XmlEnum("3")] 
 		MilitaryHeliport = 3,
 
 		[System.ComponentModel.Description("ALandingPlaceForHelicoptersOftenTheRoofOfABuilding")]
 		[EnumMember(Value = "Civil Heliport")] 
+		[XmlEnum("4")] 
 		CivilHeliport = 4,
 
 		[System.ComponentModel.Description("AnAreaOfLandSetAsideForTheTakeOffAndLandingOfGliders")]
 		[EnumMember(Value = "Glider Airfield")] 
+		[XmlEnum("5")] 
 		GliderAirfield = 5,
 
 		[System.ComponentModel.Description("AnAreaOfLandSetAsideForTheTakeOffAndLandingOfSmallAeroplanes")]
 		[EnumMember(Value = "Small Planes Airfield")] 
+		[XmlEnum("6")] 
 		SmallPlanesAirfield = 6,
 
 		[System.ComponentModel.Description("AnAreaOfLandSetAsideForTheTakeOffAndLandingOfAeroplanesOrHelicoptersInTimesOfEmergency")]
 		[EnumMember(Value = "Emergency Airfield")] 
+		[XmlEnum("8")] 
 		EmergencyAirfield = 8,
 
 		[System.ComponentModel.Description("AnAreaOfLandSetAsideForTheTakeOffAndLandingOfAeroplanesOrHelicoptersInTimesOfSearchAndRescue")]
 		[EnumMember(Value = "Search and Rescue Airfield")] 
+		[XmlEnum("9")] 
 		SearchAndRescueAirfield = 9,
 	}
 
@@ -398,42 +435,52 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfAnchorage : int {
 		[System.ComponentModel.Description("AnAreaInWhichVesselsAnchorOrMayAnchor")]
 		[EnumMember(Value = "Unrestricted Anchorage")] 
+		[XmlEnum("1")] 
 		UnrestrictedAnchorage = 1,
 
 		[System.ComponentModel.Description("AnAreaInWhichVesselsOfDeepDraughtAnchorOrMayAnchor")]
 		[EnumMember(Value = "Deep Water Anchorage")] 
+		[XmlEnum("2")] 
 		DeepWaterAnchorage = 2,
 
 		[System.ComponentModel.Description("AnAreaInWhichTankersAnchorOrMayAnchor")]
 		[EnumMember(Value = "Tanker Anchorage")] 
+		[XmlEnum("3")] 
 		TankerAnchorage = 3,
 
 		[System.ComponentModel.Description("AnAreaWhereAVesselAnchorsWhenSatisfyingQuarantineRegulations")]
 		[EnumMember(Value = "Quarantine Anchorage")] 
+		[XmlEnum("5")] 
 		QuarantineAnchorage = 5,
 
 		[System.ComponentModel.Description("AnAreaInWhichSeaplanesAnchorOrMayAnchor")]
 		[EnumMember(Value = "Seaplane Anchorage")] 
+		[XmlEnum("6")] 
 		SeaplaneAnchorage = 6,
 
 		[System.ComponentModel.Description("AnAreaInWhichYachtsAndSmallBoatsAnchorOrMayAnchor")]
 		[EnumMember(Value = "Small Craft Anchorage")] 
+		[XmlEnum("7")] 
 		SmallCraftAnchorage = 7,
 
 		[System.ComponentModel.Description("AnAreaInWhichVesselsAnchorOrMayAnchorForPeriodsOfUpTo24Hours")]
 		[EnumMember(Value = "Anchorage for Periods Up To 24 Hours")] 
+		[XmlEnum("9")] 
 		AnchorageForPeriodsUpTo24Hours = 9,
 
 		[System.ComponentModel.Description("AnAreaInWhichVesselsMayAnchorForAPeriodOfTimeNotToExceedASpecificLimit")]
 		[EnumMember(Value = "Anchorage for a Limited Period of Time")] 
+		[XmlEnum("10")] 
 		AnchorageForALimitedPeriodOfTime = 10,
 
 		[System.ComponentModel.Description("AnAreaInWhichVesselsAnchorOrMayAnchorWhileWaitingForExampleForAccessToAPortOrBerth")]
 		[EnumMember(Value = "Waiting Anchorage")] 
+		[XmlEnum("14")] 
 		WaitingAnchorage = 14,
 
 		[System.ComponentModel.Description("ALocationNotDefinedByARegulatoryAuthorityThatHasBeenReportedToBeSuitableAndSafeForAnchoring")]
 		[EnumMember(Value = "Reported Anchorage")] 
+		[XmlEnum("15")] 
 		ReportedAnchorage = 15,
 	}
 
@@ -442,26 +489,32 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfBuiltUpArea : int {
 		[System.ComponentModel.Description("AnAreaPredominantlyOccupiedByManMadeStructuresUsedForResidentialCommercialAndIndustrialPurposes")]
 		[EnumMember(Value = "Urban Area")] 
+		[XmlEnum("1")] 
 		UrbanArea = 1,
 
 		[System.ComponentModel.Description("AContinuouslyOccupiedConcentrationOfTentsOrLightweightFixedStructuresForExampleHutsServingAsResidences")]
 		[EnumMember(Value = "Settlement")] 
+		[XmlEnum("2")] 
 		Settlement = 2,
 
 		[System.ComponentModel.Description("ASelfContainedGroupOfHousesAndAssociatedBuildingsUsuallyInACountryArea")]
 		[EnumMember(Value = "Village")] 
+		[XmlEnum("3")] 
 		Village = 3,
 
 		[System.ComponentModel.Description("AnInhabitedPlaceLargerAndMoreRegularlyBuiltAndWithMoreCompleteAndIndependentLocalGovernmentThanAVillageButNotIncorporatedAsACity")]
 		[EnumMember(Value = "Town")] 
+		[XmlEnum("4")] 
 		Town = 4,
 
 		[System.ComponentModel.Description("AMajorTownInhabitedByALargePermanentCommunityWithAllEssentialServices")]
 		[EnumMember(Value = "City")] 
+		[XmlEnum("5")] 
 		City = 5,
 
 		[System.ComponentModel.Description("AComplexForHolidayMakersWithCottagesShopsAndEntertainmentOnSiteWhichIsMainlyPopulatedOnASeasonalBasis")]
 		[EnumMember(Value = "Holiday Village")] 
+		[XmlEnum("6")] 
 		HolidayVillage = 6,
 	}
 
@@ -470,26 +523,32 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfCable : int {
 		[System.ComponentModel.Description("ACableThatTransmitsOrDistributesElectricalPower")]
 		[EnumMember(Value = "Power Line")] 
+		[XmlEnum("1")] 
 		PowerLine = 1,
 
 		[System.ComponentModel.Description("MultipleUnInsulatedCablesUsuallySupportedBySteelLatticeTowersSuchFeaturesAreGenerallyMoreProminentThanNormalPowerLines")]
 		[EnumMember(Value = "Transmission Line")] 
+		[XmlEnum("3")] 
 		TransmissionLine = 3,
 
 		[System.ComponentModel.Description("AChainOrVeryStrongFibreOrWireRopeUsedToAnchorOrMoorVesselsOrBuoys")]
 		[EnumMember(Value = "Mooring Cable")] 
+		[XmlEnum("6")] 
 		MooringCable = 6,
 
 		[System.ComponentModel.Description("AVesselForTransportingPassengersVehiclesAndOrGoodsAcrossAStretchOfWaterEspeciallyAsARegularService")]
 		[EnumMember(Value = "Ferry")] 
+		[XmlEnum("7")] 
 		Ferry = 7,
 
 		[System.ComponentModel.Description("ACableUsedForJoiningComponentsOfComplexMarineStructuresForExampleMooringTrots")]
 		[EnumMember(Value = "Junction Cable")] 
+		[XmlEnum("9")] 
 		JunctionCable = 9,
 
 		[System.ComponentModel.Description("ACableUsedForTheTransmissionAndReceptionOfModulatedCommunicationWavesSignals")]
 		[EnumMember(Value = "Telecommunications Cable")] 
+		[XmlEnum("10")] 
 		TelecommunicationsCable = 10,
 	}
 
@@ -498,14 +557,17 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfCanal : int {
 		[System.ComponentModel.Description("ACanalUsedForNavigationAsPartOfATransportSystem")]
 		[EnumMember(Value = "Transportation")] 
+		[XmlEnum("1")] 
 		Transportation = 1,
 
 		[System.ComponentModel.Description("ACanalUsedToDrainExcessWaterFromSurroundingLand")]
 		[EnumMember(Value = "Drainage")] 
+		[XmlEnum("2")] 
 		Drainage = 2,
 
 		[System.ComponentModel.Description("ACanalUsedToSupplyWaterForThePurposeOfIrrigation")]
 		[EnumMember(Value = "Irrigation")] 
+		[XmlEnum("3")] 
 		Irrigation = 3,
 	}
 
@@ -514,18 +576,22 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfCardinalMark : int {
 		[System.ComponentModel.Description("QuadrantBoundedByTheTrueBearingNwNeTakenFromThePointOfInterestItShouldBePassedToTheNorthSideOfTheMark")]
 		[EnumMember(Value = "North Cardinal Mark")] 
+		[XmlEnum("1")] 
 		NorthCardinalMark = 1,
 
 		[System.ComponentModel.Description("QuadrantBoundedByTheTrueBearingNeSeTakenFromThePointOfInterestItShouldBePassedToTheEastSideOfTheMark")]
 		[EnumMember(Value = "East Cardinal Mark")] 
+		[XmlEnum("2")] 
 		EastCardinalMark = 2,
 
 		[System.ComponentModel.Description("QuadrantBoundedByTheTrueBearingSeSwTakenFromThePointOfInterestItShouldBePassedToTheSouthSideOfTheMark")]
 		[EnumMember(Value = "South Cardinal Mark")] 
+		[XmlEnum("3")] 
 		SouthCardinalMark = 3,
 
 		[System.ComponentModel.Description("QuadrantBoundedByTheTrueBearingSwNwTakenFromThePointOfInterestItShouldBePassedToTheWestSideOfTheMark")]
 		[EnumMember(Value = "West Cardinal Mark")] 
+		[XmlEnum("4")] 
 		WestCardinalMark = 4,
 	}
 
@@ -534,6 +600,7 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfCheckpoint : int {
 		[System.ComponentModel.Description("ServesAsAGovernmentCheckpointWhereCustomsDutiesAreCollectedTheFlowOfGoodsAreRegulatedAndRestrictionsEnforcedAndShipmentsOrVehiclesAreClearedForEnteringOrLeavingACountry")]
 		[EnumMember(Value = "Custom")] 
+		[XmlEnum("1")] 
 		Custom = 1,
 	}
 
@@ -542,26 +609,32 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfCoastline : int {
 		[System.ComponentModel.Description("ACoastBackedByRockOrEarthCliffsGivesAGoodRadarReturnAndIsUsefulForVisualIdentificationFromAConsiderableDistanceOffWhereCliffsAlternateWithLowLyingCoastAlongTheShoreline")]
 		[EnumMember(Value = "Steep Coast")] 
+		[XmlEnum("1")] 
 		SteepCoast = 1,
 
 		[System.ComponentModel.Description("ALevelCoastWithNoObviousTopographicFeatures")]
 		[EnumMember(Value = "Flat Coast")] 
+		[XmlEnum("2")] 
 		FlatCoast = 2,
 
 		[System.ComponentModel.Description("ProjectingSeawardExtensionOfGlacierUsuallyAfloat")]
 		[EnumMember(Value = "Glacier, Seaward End")] 
+		[XmlEnum("6")] 
 		GlacierSeawardEnd = 6,
 
 		[System.ComponentModel.Description("OneOfSeveralGeneraOfTropicalTreesOrShrubsWhichProduceManyPropRootsAndGrowAlongLowLyingCoastsIntoShallowWater")]
 		[EnumMember(Value = "Mangrove")] 
+		[XmlEnum("7")] 
 		Mangrove = 7,
 
 		[System.ComponentModel.Description("AShorelineAreaMadeUpOfSpongyLandSaturatedWithWaterItMayHaveAShallowCoveringOfWaterUsuallyWithAConsiderableAmountOfVegetationAppearingAboveTheSurface")]
 		[EnumMember(Value = "Marshy Shore")] 
+		[XmlEnum("8")] 
 		MarshyShore = 8,
 
 		[System.ComponentModel.Description("AVerticalCliffFormingTheSeawardEdgeOfAnIceShelfRangingInHeightFrom2MetresTo50MetresOrMoreAboveSeaLevel")]
 		[EnumMember(Value = "Ice Coast")] 
+		[XmlEnum("10")] 
 		IceCoast = 10,
 	}
 
@@ -570,18 +643,22 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfConveyor : int {
 		[System.ComponentModel.Description("ATransportationSystemConsistingOfLoadCablesStrungBetweenPylonsOnWhichCarrierUnitsForExampleCarsOrBucketsIntendedToTransportPeopleMaterialAndOrEquipmentAreSuspended")]
 		[EnumMember(Value = "Aerial Cableway")] 
+		[XmlEnum("1")] 
 		AerialCableway = 1,
 
 		[System.ComponentModel.Description("AConveyorAlongWhichMaterialOrPeopleAreTransportedByMeansOfAMovingBelt")]
 		[EnumMember(Value = "Belt Conveyor")] 
+		[XmlEnum("2")] 
 		BeltConveyor = 2,
 
 		[System.ComponentModel.Description("AnArtificialChannelUsuallyAnInclinedChuteOrTroughForCarryingWaterToFurnishPowerTransportLogsDownAMountainsideEtc")]
 		[EnumMember(Value = "Flume")] 
+		[XmlEnum("3")] 
 		Flume = 3,
 
 		[System.ComponentModel.Description("AnyOfVariousMechanicalDevicesForRaisingObjectsOrMaterials")]
 		[EnumMember(Value = "Lift/Elevator")] 
+		[XmlEnum("4")] 
 		LiftElevator = 4,
 	}
 
@@ -590,22 +667,27 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfCrane : int {
 		[System.ComponentModel.Description("AHighSpeedShoreBasedCraneUsedInTheLiftOnLiftOffOperationOfSpeciallyConstructedContainers")]
 		[EnumMember(Value = "Container Crane/Gantry")] 
+		[XmlEnum("2")] 
 		ContainerCraneGantry = 2,
 
 		[System.ComponentModel.Description("ATripodalStructureUsedInDockyardsAndHarboursForSteppingMastsOrLiftingLoadsInToAndOutOfVessels")]
 		[EnumMember(Value = "Sheerlegs")] 
+		[XmlEnum("3")] 
 		Sheerlegs = 3,
 
 		[System.ComponentModel.Description("ACraneMountedOnRailsTrackThatCanMoveUsuallyParallelToTheWharfFaceInOrderToLoadAndUnloadCargoVessels")]
 		[EnumMember(Value = "Travelling Crane")] 
+		[XmlEnum("4")] 
 		TravellingCrane = 4,
 
 		[System.ComponentModel.Description("ATypeOfCraneShapedLikeTheLetterA")]
 		[EnumMember(Value = "A-Frame")] 
+		[XmlEnum("5")] 
 		AFrame = 5,
 
 		[System.ComponentModel.Description("APowerfulTravellingCraneMountedOnAMovableGantryOfLargeSpan")]
 		[EnumMember(Value = "Goliath Crane")] 
+		[XmlEnum("6")] 
 		GoliathCrane = 6,
 	}
 
@@ -614,14 +696,17 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfDam : int {
 		[System.ComponentModel.Description("ADamErectedAcrossARiverToRaiseTheLevelOfTheWaterAFenceOfStakesSetInARiverOrAlongTheShoreAsATrapForFishTheWordIsNowRestrictedToSmallerWorksTheLargerAreCalledDams")]
 		[EnumMember(Value = "Weir")] 
+		[XmlEnum("1")] 
 		Weir = 1,
 
 		[System.ComponentModel.Description("ABarrierToCheckOrConfineAnythingInMotionParticularlyOneConstructedToHoldBackWaterAndRaiseItsLevelToFormAReservoirOrToPreventFlooding")]
 		[EnumMember(Value = "Dam")] 
+		[XmlEnum("2")] 
 		Dam = 2,
 
 		[System.ComponentModel.Description("AnOpeningDamAcrossAChannelWhichWhenRequiredIsClosedToControlFloodWaters")]
 		[EnumMember(Value = "Flood Barrage")] 
+		[XmlEnum("3")] 
 		FloodBarrage = 3,
 	}
 
@@ -630,10 +715,12 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfDock : int {
 		[System.ComponentModel.Description("ADockWhichIsOpenToTheSeaAndInWhichTheWaterLevelIsAffectedByTides")]
 		[EnumMember(Value = "Tidal")] 
+		[XmlEnum("1")] 
 		Tidal = 1,
 
 		[System.ComponentModel.Description("ADockInWhichWaterCanBeMaintainedAtAnyLevelByClosingAGateWhenTheWaterIsAtTheDesiredLevel")]
 		[EnumMember(Value = "Wet Dock")] 
+		[XmlEnum("2")] 
 		WetDock = 2,
 	}
 
@@ -642,18 +729,22 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfDolphin : int {
 		[System.ComponentModel.Description("APostOrGroupOfPostsDrivenIntoTheSeabedOrRiverbedUsedAsAMooringPointForVessels")]
 		[EnumMember(Value = "Mooring Dolphin")] 
+		[XmlEnum("1")] 
 		MooringDolphin = 1,
 
 		[System.ComponentModel.Description("APostOrGroupOfPostsWhichAVesselMaySwingAroundForCompassAdjustment")]
 		[EnumMember(Value = "Deviation Dolphin")] 
+		[XmlEnum("2")] 
 		DeviationDolphin = 2,
 
 		[System.ComponentModel.Description("APostOrGroupOfPostsDrivenIntoTheSeabedOrRiverbedUsedToExtendTheBerthOfAVesselByProvidingExtraMooringPoints")]
 		[EnumMember(Value = "Berthing Dolphin")] 
+		[XmlEnum("3")] 
 		BerthingDolphin = 3,
 
 		[System.ComponentModel.Description("APostOrGroupOfPostsDrivenIntoTheSeabedOrRiverbedUsedToAssistInBerthingOfVesselsByTakingUpSomeBerthingLoadsKeepVesselsFromPressingAgainstThePierStructureOrToProtectStructuresFromPossibleImpactByShips")]
 		[EnumMember(Value = "Fender or Breasting Dolphin")] 
+		[XmlEnum("4")] 
 		FenderOrBreastingDolphin = 4,
 	}
 
@@ -662,22 +753,27 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfDumpingGround : int {
 		[System.ComponentModel.Description("AnAreaAtSeaWhereChemicalWasteIsDumped")]
 		[EnumMember(Value = "Chemical Waste Dumping Ground")] 
+		[XmlEnum("2")] 
 		ChemicalWasteDumpingGround = 2,
 
 		[System.ComponentModel.Description("AnAreaAtSeaWhereNuclearWasteIsDumped")]
 		[EnumMember(Value = "Nuclear Waste Dumping Ground")] 
+		[XmlEnum("3")] 
 		NuclearWasteDumpingGround = 3,
 
 		[System.ComponentModel.Description("AnAreaAtSeaWhereExplosivesAreDumped")]
 		[EnumMember(Value = "Explosives Dumping Ground")] 
+		[XmlEnum("4")] 
 		ExplosivesDumpingGround = 4,
 
 		[System.ComponentModel.Description("ASeaAreaWhereDredgedMaterialIsDeposited")]
 		[EnumMember(Value = "Spoil Ground")] 
+		[XmlEnum("5")] 
 		SpoilGround = 5,
 
 		[System.ComponentModel.Description("AnAreaAtSeaWhereDisusedVesselsAreScuttled")]
 		[EnumMember(Value = "Vessel Dumping Ground")] 
+		[XmlEnum("6")] 
 		VesselDumpingGround = 6,
 	}
 
@@ -686,14 +782,17 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfFence : int {
 		[System.ComponentModel.Description("AManMadeBarrierOfRelativelyLightStructureUsedAsAnEnclosureOrBoundary")]
 		[EnumMember(Value = "Fence")] 
+		[XmlEnum("1")] 
 		Fence = 1,
 
 		[System.ComponentModel.Description("AContinuousGrowthOfShrubberyPlantedAsAFenceABoundaryOrAWindBreak")]
 		[EnumMember(Value = "Hedge")] 
+		[XmlEnum("3")] 
 		Hedge = 3,
 
 		[System.ComponentModel.Description("ASolidManMadeBarrierOfGenerallyHeavyMaterialUsedAsAnEnclosureBoundaryOrForProtection")]
 		[EnumMember(Value = "Wall")] 
+		[XmlEnum("4")] 
 		Wall = 4,
 	}
 
@@ -702,18 +801,22 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfFerry : int {
 		[System.ComponentModel.Description("AFerryWhichMayHaveRoutesThatVaryWithWeatherTideAndTraffic")]
 		[EnumMember(Value = "Free Moving Ferry")] 
+		[XmlEnum("1")] 
 		FreeMovingFerry = 1,
 
 		[System.ComponentModel.Description("AFerryThatFollowsAFixedRouteGuidedByACable")]
 		[EnumMember(Value = "Cable Ferry")] 
+		[XmlEnum("2")] 
 		CableFerry = 2,
 
 		[System.ComponentModel.Description("AWinterTimeFerryWhichCrossesALead")]
 		[EnumMember(Value = "Ice Ferry")] 
+		[XmlEnum("3")] 
 		IceFerry = 3,
 
 		[System.ComponentModel.Description("AHighSpeedWaterVesselForCivilianUse")]
 		[EnumMember(Value = "High Speed Ferry")] 
+		[XmlEnum("5")] 
 		HighSpeedFerry = 5,
 	}
 
@@ -722,18 +825,22 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfFishingFacility : int {
 		[System.ComponentModel.Description("PolesOrStakesPlacedInShallowWaterToOutlineAFishingGroundOrToCatchFish")]
 		[EnumMember(Value = "Fishing Stake")] 
+		[XmlEnum("1")] 
 		FishingStake = 1,
 
 		[System.ComponentModel.Description("AStructureUsuallyPortableForCatchingFish")]
 		[EnumMember(Value = "Fish Trap")] 
+		[XmlEnum("2")] 
 		FishTrap = 2,
 
 		[System.ComponentModel.Description("AFenceOfStakesOrStonesSetInARiverOrAlongTheShoreToTrapFish")]
 		[EnumMember(Value = "Fish Weir")] 
+		[XmlEnum("3")] 
 		FishWeir = 3,
 
 		[System.ComponentModel.Description("ANetBuiltAtSeaForCatchingTunny")]
 		[EnumMember(Value = "Tunny Net")] 
+		[XmlEnum("4")] 
 		TunnyNet = 4,
 	}
 
@@ -742,42 +849,52 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfFogSignal : int {
 		[System.ComponentModel.Description("ASignalProducedByTheFiringOfExplosiveCharges")]
 		[EnumMember(Value = "Explosive")] 
+		[XmlEnum("1")] 
 		Explosive = 1,
 
 		[System.ComponentModel.Description("ADiaphoneUsesCompressedAirAndGenerallyEmitsAPowerfulLowPitchedSoundWhichOftenConcludesWithABriefSoundOfSuddenlyLoweredPitchTermedTheGrunt")]
 		[EnumMember(Value = "Diaphone")] 
+		[XmlEnum("2")] 
 		Diaphone = 2,
 
 		[System.ComponentModel.Description("ATypeOfFogSignalApparatusWhichProducesSoundByVirtueOfThePassageOfAirThroughSlotsOrHolesInARevolvingDisk")]
 		[EnumMember(Value = "Siren")] 
+		[XmlEnum("3")] 
 		Siren = 3,
 
 		[System.ComponentModel.Description("AHornHavingADiaphragmOscillatedByElectricity")]
 		[EnumMember(Value = "Nautophone")] 
+		[XmlEnum("4")] 
 		Nautophone = 4,
 
 		[System.ComponentModel.Description("AReedUsesCompressedAirAndEmitsAWeakHighPitchedSound")]
 		[EnumMember(Value = "Reed")] 
+		[XmlEnum("5")] 
 		Reed = 5,
 
 		[System.ComponentModel.Description("ADiaphragmHornWhichOperatesUnderTheInfluenceOfCompressedAirOrSteam")]
 		[EnumMember(Value = "Tyfon")] 
+		[XmlEnum("6")] 
 		Tyfon = 6,
 
 		[System.ComponentModel.Description("ARingingSoundWithAShortRange")]
 		[EnumMember(Value = "Bell")] 
+		[XmlEnum("7")] 
 		Bell = 7,
 
 		[System.ComponentModel.Description("ADistinctiveSoundMadeByAJetOfAirPassingThroughAnOrificeTheApparatusMayBeOperatedAutomaticallyByHandOrByAirBeingForcedUpATubeByWavesActingOnABuoy")]
 		[EnumMember(Value = "Whistle")] 
+		[XmlEnum("8")] 
 		Whistle = 8,
 
 		[System.ComponentModel.Description("ASoundProducedByVibrationOfADiscWhenStruck")]
 		[EnumMember(Value = "Gong")] 
+		[XmlEnum("9")] 
 		Gong = 9,
 
 		[System.ComponentModel.Description("AHornUsesCompressedAirOrElectricityToVibrateADiaphragmAndExistsInAVarietyOfTypesWhichDifferGreatlyInTheirSoundAndPower")]
 		[EnumMember(Value = "Horn")] 
+		[XmlEnum("10")] 
 		Horn = 10,
 	}
 
@@ -786,34 +903,42 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfFortifiedStructure : int {
 		[System.ComponentModel.Description("ALargeFortifiedBuildingOrStructure")]
 		[EnumMember(Value = "Castle")] 
+		[XmlEnum("1")] 
 		Castle = 1,
 
 		[System.ComponentModel.Description("AFortifiedEnclosureBuildingOrPositionAbleToBeDefendedAgainstAnEnemy")]
 		[EnumMember(Value = "Fort")] 
+		[XmlEnum("2")] 
 		Fort = 2,
 
 		[System.ComponentModel.Description("AFortifiedStructureOnWhichArtilleryIsMounted")]
 		[EnumMember(Value = "Battery")] 
+		[XmlEnum("3")] 
 		Battery = 3,
 
 		[System.ComponentModel.Description("AConcreteStructureStrengthenedToGiveProtectionAgainstEnemyFireWithAperturesToAllowDefensiveGunfire")]
 		[EnumMember(Value = "Blockhouse")] 
+		[XmlEnum("4")] 
 		Blockhouse = 4,
 
 		[System.ComponentModel.Description("ASmallCircularFortWithVeryThickWallsForExampleMartelloTower")]
 		[EnumMember(Value = "Fortified Tower")] 
+		[XmlEnum("5")] 
 		FortifiedTower = 5,
 
 		[System.ComponentModel.Description("AnOutworkOrFieldworkUsuallySquareOrPolygonalAndWithoutFlankingDefences")]
 		[EnumMember(Value = "Redoubt")] 
+		[XmlEnum("6")] 
 		Redoubt = 6,
 
 		[System.ComponentModel.Description("AFortifiedPenToHoldSubmarines")]
 		[EnumMember(Value = "Fortified Submarine Shelter")] 
+		[XmlEnum("8")] 
 		FortifiedSubmarineShelter = 8,
 
 		[System.ComponentModel.Description("AnythingServingAsABulwarkOrDefence")]
 		[EnumMember(Value = "Rampart")] 
+		[XmlEnum("9")] 
 		Rampart = 9,
 	}
 
@@ -822,22 +947,27 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfGate : int {
 		[System.ComponentModel.Description("AnOpeningGateUsedToControlFloodWater")]
 		[EnumMember(Value = "Flood Barrage Gate")] 
+		[XmlEnum("2")] 
 		FloodBarrageGate = 2,
 
 		[System.ComponentModel.Description("ASteelStructureUsedForClosingTheEntranceOfLocksWetAndDryDocks")]
 		[EnumMember(Value = "Caisson")] 
+		[XmlEnum("3")] 
 		Caisson = 3,
 
 		[System.ComponentModel.Description("PairOfMassiveHingedDoorsAtEachEndOfALock")]
 		[EnumMember(Value = "Lock Gate")] 
+		[XmlEnum("4")] 
 		LockGate = 4,
 
 		[System.ComponentModel.Description("AnOpeningGateInADyke")]
 		[EnumMember(Value = "Dyke Gate")] 
+		[XmlEnum("5")] 
 		DykeGate = 5,
 
 		[System.ComponentModel.Description("ASlidingGateOrOtherContrivanceForChangingTheLevelOfABodyOfWaterByControllingTheFlowIntoOrOutOfIt")]
 		[EnumMember(Value = "Sluice")] 
+		[XmlEnum("6")] 
 		Sluice = 6,
 	}
 
@@ -846,58 +976,72 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfHarbourFacility : int {
 		[System.ComponentModel.Description("ATerminalForRollOnRollOffFerries")]
 		[EnumMember(Value = "RoRo Terminal")] 
+		[XmlEnum("1")] 
 		RoroTerminal = 1,
 
 		[System.ComponentModel.Description("ATerminalForPassengerAndVehicleFerries")]
 		[EnumMember(Value = "Ferry Terminal")] 
+		[XmlEnum("3")] 
 		FerryTerminal = 3,
 
 		[System.ComponentModel.Description("AHarbourWithFacilitiesForFishingBoats")]
 		[EnumMember(Value = "Fishing Harbour")] 
+		[XmlEnum("4")] 
 		FishingHarbour = 4,
 
 		[System.ComponentModel.Description("AHarbourFacilityForSmallBoatsYachtsEtcWhereSuppliesRepairsAndVariousServicesAreAvailable")]
 		[EnumMember(Value = "Yacht Harbour/Marina")] 
+		[XmlEnum("5")] 
 		YachtHarbourMarina = 5,
 
 		[System.ComponentModel.Description("ACentreOfOperationsForNavalVessels")]
 		[EnumMember(Value = "Naval Base")] 
+		[XmlEnum("6")] 
 		NavalBase = 6,
 
 		[System.ComponentModel.Description("ATerminalForTheBulkHandlingOfLiquidCargoes")]
 		[EnumMember(Value = "Tanker Terminal")] 
+		[XmlEnum("7")] 
 		TankerTerminal = 7,
 
 		[System.ComponentModel.Description("ATerminalForTheLoadingAndUnloadingOfPassengers")]
 		[EnumMember(Value = "Passenger Terminal")] 
+		[XmlEnum("8")] 
 		PassengerTerminal = 8,
 
 		[System.ComponentModel.Description("APlaceWhereShipsAreBuiltOrRepaired")]
 		[EnumMember(Value = "Shipyard")] 
+		[XmlEnum("9")] 
 		Shipyard = 9,
 
 		[System.ComponentModel.Description("ATerminalWithFacilitiesToLoadUnloadOrStoreShippingContainers")]
 		[EnumMember(Value = "Container Terminal")] 
+		[XmlEnum("10")] 
 		ContainerTerminal = 10,
 
 		[System.ComponentModel.Description("ATerminalForTheHandlingOfBulkMaterialsSuchAsIronOreCoalEtc")]
 		[EnumMember(Value = "Bulk Terminal")] 
+		[XmlEnum("11")] 
 		BulkTerminal = 11,
 
 		[System.ComponentModel.Description("APlatformPoweredBySynchronousElectricMotorsForExampleSyncroliftUsedToLiftVesselsLargerThanBoatsInAndOutOfTheWater")]
 		[EnumMember(Value = "Ship Lift")] 
+		[XmlEnum("12")] 
 		ShipLift = 12,
 
 		[System.ComponentModel.Description("AWheeledVehicleDesignedToLiftAndCarryContainersOrVesselsWithinItsOwnFrameworkItIsUsedForMovingAndSometimesStackingShippingContainersAndVessels")]
 		[EnumMember(Value = "Straddle Carrier")] 
+		[XmlEnum("13")] 
 		StraddleCarrier = 13,
 
 		[System.ComponentModel.Description("AHarbourWithinWhichTheFloatingEquipmentDredgesTugsOfHarbourServicesAreStationed")]
 		[EnumMember(Value = "Service Harbour")] 
+		[XmlEnum("14")] 
 		ServiceHarbour = 14,
 
 		[System.ComponentModel.Description("TheServicesOfAPersonWhoDirectsTheMovementsOfAVesselThroughPilotWatersUsuallyAPersonWhoHasDemonstratedExtensiveKnowledgeOfChannelsAidsToNavigationDangersToNavigationEtcInAParticularAreaAndIsLicensedForThatAreaAreAvailable")]
 		[EnumMember(Value = "Pilotage Service")] 
+		[XmlEnum("15")] 
 		PilotageService = 15,
 	}
 
@@ -906,30 +1050,37 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfHulk : int {
 		[System.ComponentModel.Description("APermanentlyMooredFloatingStructureForExampleAnOldShipThatIsUsedAsARestaurant")]
 		[EnumMember(Value = "Floating Restaurant")] 
+		[XmlEnum("1")] 
 		FloatingRestaurant = 1,
 
 		[System.ComponentModel.Description("AShipOfHistoricalInterestPermanentlyMooredAsATouristAttraction")]
 		[EnumMember(Value = "Historic Ship")] 
+		[XmlEnum("2")] 
 		HistoricShip = 2,
 
 		[System.ComponentModel.Description("APermanentlyMooredFloatingStructureForExampleAnOldShipThatIsUsedAsAMuseum")]
 		[EnumMember(Value = "Floating Museum")] 
+		[XmlEnum("3")] 
 		FloatingMuseum = 3,
 
 		[System.ComponentModel.Description("APermanentlyMooredFloatingStructureForExampleAnOldShipThatIsUsedForAccommodation")]
 		[EnumMember(Value = "Floating Accommodation")] 
+		[XmlEnum("4")] 
 		FloatingAccommodation = 4,
 
 		[System.ComponentModel.Description("APermanentlyMooredFloatingStructureOftenConstructedFromOldShipsUsedAsABreakwater")]
 		[EnumMember(Value = "Floating Breakwater")] 
+		[XmlEnum("5")] 
 		FloatingBreakwater = 5,
 
 		[System.ComponentModel.Description("APermanentlyMooredFloatingStructureSuchAsAnOldShipUsedAsACasinoBoat")]
 		[EnumMember(Value = "Casino")] 
+		[XmlEnum("6")] 
 		Casino = 6,
 
 		[System.ComponentModel.Description("APermanentlyMooredFloatingStructureOftenConstructedFromOldShipsUsedForTrainingPurposes")]
 		[EnumMember(Value = "Training Vessel")] 
+		[XmlEnum("7")] 
 		TrainingVessel = 7,
 	}
 
@@ -938,14 +1089,17 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfIce : int {
 		[System.ComponentModel.Description("SeaIceWhichRemainsFastGenerallyInThePositionWhereOriginallyFormedAndWhichMayAttainAConsiderableThicknessItIsFoundAlongCoastsWhereItIsAttachedToTheShoreOrOverShoalsWhereItMayBeHeldInPositionByIslandsGroundedIcebergsOrGroundedPolarIce")]
 		[EnumMember(Value = "Fast Ice")] 
+		[XmlEnum("1")] 
 		FastIce = 1,
 
 		[System.ComponentModel.Description("AMassOfSnowAndIceContinuouslyMovingFromHigherToLowerGroundOrIfAfloatContinuouslySpreading")]
 		[EnumMember(Value = "Glacier")] 
+		[XmlEnum("5")] 
 		Glacier = 5,
 
 		[System.ComponentModel.Description("SeaIceThatIsMoreThanOneYearOldInContrastToWinterIceTheWmoCodeDefinesPolarIceAsAnySeaIceMoreThanOneYearOldAndMoreThan3MetresThick")]
 		[EnumMember(Value = "Polar Ice")] 
+		[XmlEnum("8")] 
 		PolarIce = 8,
 	}
 
@@ -954,10 +1108,12 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfInstallationBuoy : int {
 		[System.ComponentModel.Description("IncorporatesALargeBuoyWhichRemainsOnTheSurfaceAtAllTimesAndIsMooredBy4OrMoreAnchorsMooringHawsersAndCargoHosesLeadFromATurntableOnTopOfTheBuoySoThatTheBuoyDoesNotTurnAsTheShipSwingsToWindAndStream")]
 		[EnumMember(Value = "Catenary Anchor Leg Mooring")] 
+		[XmlEnum("1")] 
 		CatenaryAnchorLegMooring = 1,
 
 		[System.ComponentModel.Description("ALargeMooringBuoyUsedByTankersToLoadAndUnloadInPortApproachesOrInOffshoreOilAndGasFields")]
 		[EnumMember(Value = "Single Buoy Mooring")] 
+		[XmlEnum("2")] 
 		SingleBuoyMooring = 2,
 	}
 
@@ -966,86 +1122,107 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfLandRegion : int {
 		[System.ComponentModel.Description("ATypeOfBogEspeciallyALowLyingAreaWhollyOrPartlyCoveredWithWaterAndDominatedByGrassLikePlantsGrassesSedgesAndReeds")]
 		[EnumMember(Value = "Fen")] 
+		[XmlEnum("1")] 
 		Fen = 1,
 
 		[System.ComponentModel.Description("AnAreaOfWetOftenSpongyGroundThatIsSubjectToFrequentFloodingOrTidalInundationsButNotConsideredToBeContinuallyUnderWaterItIsCharacterizedByTheGrowthOfNonWoodyPlantsAndByTheLackOfTrees")]
 		[EnumMember(Value = "Marsh")] 
+		[XmlEnum("2")] 
 		Marsh = 2,
 
 		[System.ComponentModel.Description("WetSpongyGroundConsistingOfDecayingVegetationWhichRetainsStagnantWaterTooSoftToBearTheWeightOfAnyHeavyBody")]
 		[EnumMember(Value = "Bog")] 
+		[XmlEnum("3")] 
 		Bog = 3,
 
 		[System.ComponentModel.Description("ATractOfWastelandPeatBogUsuallyCoveredByALowScrubbyGrowthButMayHaveScatteredSmallOpenWaterHoles")]
 		[EnumMember(Value = "Heathland")] 
+		[XmlEnum("4")] 
 		Heathland = 4,
 
 		[System.ComponentModel.Description("ASeriesOfConnectedAndAlignedMountainsOrMountainRidges")]
 		[EnumMember(Value = "Mountain Range")] 
+		[XmlEnum("5")] 
 		MountainRange = 5,
 
 		[System.ComponentModel.Description("LowAndRelativelyLevelLandAtALowerElevationThanAdjoiningAreas")]
 		[EnumMember(Value = "Lowlands")] 
+		[XmlEnum("6")] 
 		Lowlands = 6,
 
 		[System.ComponentModel.Description("ARelativelyNarrowDeepDepressionWithSteepSidesTheBottomOfWhichGenerallyHasAContinuousSlope")]
 		[EnumMember(Value = "Canyon Lands")] 
+		[XmlEnum("7")] 
 		CanyonLands = 7,
 
 		[System.ComponentModel.Description("APieceOfLandSetAsideForCropsWhichArePeriodicallyFloodedForExampleRicePaddy")]
 		[EnumMember(Value = "Paddy Field")] 
+		[XmlEnum("8")] 
 		PaddyField = 8,
 
 		[System.ComponentModel.Description("OfOrPertainingToTheScienceOrPracticeOfCultivatingTheSoilAndRearingAnimals")]
 		[EnumMember(Value = "Agricultural Land")] 
+		[XmlEnum("9")] 
 		AgriculturalLand = 9,
 
 		[System.ComponentModel.Description("AnOpenGrassyPlainWithFewOrNoTreesInATropicalOrSubtropicalRegionATractCoveredMainlyByGrassesThatHaveLittleOrNoWoodyTissue")]
 		[EnumMember(Value = "Savanna/Grassland")] 
+		[XmlEnum("10")] 
 		SavannaGrassland = 10,
 
 		[System.ComponentModel.Description("APieceOfGroundKeptForOrnamentAndOrRecreationOrMaintainedInItsNaturalStateAsAPublicPropertyOrArea")]
 		[EnumMember(Value = "Parkland")] 
+		[XmlEnum("11")] 
 		Parkland = 11,
 
 		[System.ComponentModel.Description("AnAreaOfSpongyLandSaturatedWithWaterItMayHaveAShallowCoveringOfWaterUsuallyWithAConsiderableAmountOfVegetationAppearingAboveTheSurface")]
 		[EnumMember(Value = "Swamp")] 
+		[XmlEnum("12")] 
 		Swamp = 12,
 
 		[System.ComponentModel.Description("TheSlidingDownOfAMassOfLandOnAMountainOrCliffSideLandWhichHasSoFallen")]
 		[EnumMember(Value = "Landslide")] 
+		[XmlEnum("13")] 
 		Landslide = 13,
 
 		[System.ComponentModel.Description("TheSubstanceThatResultsFromTheCoolingOfMoltenRock")]
 		[EnumMember(Value = "Lava Flow")] 
+		[XmlEnum("14")] 
 		LavaFlow = 14,
 
 		[System.ComponentModel.Description("ShallowPoolsOfBrackishWaterUsedForTheNaturalEvaporationOfSeaWaterToObtainSalt")]
 		[EnumMember(Value = "Salt Pan")] 
+		[XmlEnum("15")] 
 		SaltPan = 15,
 
 		[System.ComponentModel.Description("AnyAccumulationOfLooseMaterialDepositedByAGlacier")]
 		[EnumMember(Value = "Moraine")] 
+		[XmlEnum("16")] 
 		Moraine = 16,
 
 		[System.ComponentModel.Description("BowlShapedCavityAtTheSummitOrOnTheSideOfAVolcano")]
 		[EnumMember(Value = "Crater")] 
+		[XmlEnum("17")] 
 		Crater = 17,
 
 		[System.ComponentModel.Description("ANaturalSubterraneanChamberOrSeriesOfChambersOpenToTheEarthSSurface")]
 		[EnumMember(Value = "Cave")] 
+		[XmlEnum("18")] 
 		Cave = 18,
 
 		[System.ComponentModel.Description("AnyHighTowerOrSpireShapedPillarOfRockAloneOrCrestingASummit")]
 		[EnumMember(Value = "Rock Column or Pinnacle")] 
+		[XmlEnum("19")] 
 		RockColumnOrPinnacle = 19,
 
 		[System.ComponentModel.Description("ASmallInsularFeatureUsuallyWithScantVegetationUsuallyOfSandOrCoralOftenAppliedToSmallerCoralShoals")]
 		[EnumMember(Value = "Cay")] 
+		[XmlEnum("20")] 
 		Cay = 20,
 
 		[System.ComponentModel.Description("AWatercourseThatIsPermanentlyDryOrDryExceptForTheRainySeason")]
 		[EnumMember(Value = "Wadi")] 
+		[XmlEnum("21")] 
 		Wadi = 21,
 	}
 
@@ -1054,106 +1231,132 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfLandmark : int {
 		[System.ComponentModel.Description("AMoundOfStonesUsuallyConicalOrPyramidalRaisedAsALandmarkOrToDesignateAPointOfImportanceInSurveying")]
 		[EnumMember(Value = "Cairn")] 
+		[XmlEnum("1")] 
 		Cairn = 1,
 
 		[System.ComponentModel.Description("ASiteAndAssociatedStructuresDevotedToTheBurialOfTheDead")]
 		[EnumMember(Value = "Cemetery")] 
+		[XmlEnum("2")] 
 		Cemetery = 2,
 
 		[System.ComponentModel.Description("AVerticalStructureContainingAPassageOrFlueForDischargingSmokeAndGasesOfCombustion")]
 		[EnumMember(Value = "Chimney")] 
+		[XmlEnum("3")] 
 		Chimney = 3,
 
 		[System.ComponentModel.Description("AParabolicAerialForTheReceiptAndTransmissionOfHighFrequencyRadioSignals")]
 		[EnumMember(Value = "Dish Aerial")] 
+		[XmlEnum("4")] 
 		DishAerial = 4,
 
 		[System.ComponentModel.Description("AStaffOrPoleOnWhichFlagsAreRaised")]
 		[EnumMember(Value = "Flagstaff")] 
+		[XmlEnum("5")] 
 		Flagstaff = 5,
 
 		[System.ComponentModel.Description("ATallStructureUsedForBurningOffWasteOilOrGas")]
 		[EnumMember(Value = "Flare Stack")] 
+		[XmlEnum("6")] 
 		FlareStack = 6,
 
 		[System.ComponentModel.Description("ARelativelyTallStructureUsuallyHeldVerticalByGuyLines")]
 		[EnumMember(Value = "Mast")] 
+		[XmlEnum("7")] 
 		Mast = 7,
 
 		[System.ComponentModel.Description("ATaperedFabricSleeveMountedSoAsToCatchAndSwingWithTheWindThusIndicatingTheWindDirection")]
 		[EnumMember(Value = "Windsock")] 
+		[XmlEnum("8")] 
 		Windsock = 8,
 
 		[System.ComponentModel.Description("AStructureErectedAndOrMaintainedAsAMemorialToAPersonAndOrEvent")]
 		[EnumMember(Value = "Monument")] 
+		[XmlEnum("9")] 
 		Monument = 9,
 
 		[System.ComponentModel.Description("ACylindricalOrSlightlyTaperingBodyOfConsiderablyGreaterLengthThanDiameterErectedVertically")]
 		[EnumMember(Value = "Column/Pillar")] 
+		[XmlEnum("10")] 
 		ColumnPillar = 10,
 
 		[System.ComponentModel.Description("ASlabOfMetalUsuallyOrnamentedErectedAsAMemorialToAPersonOrEvent")]
 		[EnumMember(Value = "Memorial Plaque")] 
+		[XmlEnum("11")] 
 		MemorialPlaque = 11,
 
 		[System.ComponentModel.Description("ATaperingShaftUsuallyOfStoneOrConcreteSquareOrRectangularInSectionWithAPyramidalApex")]
 		[EnumMember(Value = "Obelisk")] 
+		[XmlEnum("12")] 
 		Obelisk = 12,
 
 		[System.ComponentModel.Description("ARepresentationOfALivingBeingSculpturedMouldedOrCastInAVarietyOfMaterialsForExampleMarbleMetalOrPlaster")]
 		[EnumMember(Value = "Statue")] 
+		[XmlEnum("13")] 
 		Statue = 13,
 
 		[System.ComponentModel.Description("AMonumentOrOtherStructureInFormOfACross")]
 		[EnumMember(Value = "Cross")] 
+		[XmlEnum("14")] 
 		Cross = 14,
 
 		[System.ComponentModel.Description("ALandmarkComprisingAHemisphericalOrSpheroidalShapedStructure")]
 		[EnumMember(Value = "Dome")] 
+		[XmlEnum("15")] 
 		Dome = 15,
 
 		[System.ComponentModel.Description("ADeviceUsedForDirectingARadarBeamThroughASearchPattern")]
 		[EnumMember(Value = "Radar Scanner")] 
+		[XmlEnum("16")] 
 		RadarScanner = 16,
 
 		[System.ComponentModel.Description("ARelativelyTallNarrowStructureThatMayEitherStandAloneOrMayFormPartOfAnotherStructure")]
 		[EnumMember(Value = "Tower")] 
+		[XmlEnum("17")] 
 		Tower = 17,
 
 		[System.ComponentModel.Description("ASystemOfVanesAttachedToATowerAndDrivenByWindExcludingWindTurbines")]
 		[EnumMember(Value = "Windmill")] 
+		[XmlEnum("18")] 
 		Windmill = 18,
 
 		[System.ComponentModel.Description("ATallConicalOrPyramidShapedStructureOftenBuiltOnTheRoofOrTowerOfABuildingEspeciallyAChurchOrMosque")]
 		[EnumMember(Value = "Spire/Minaret")] 
+		[XmlEnum("20")] 
 		SpireMinaret = 20,
 
 		[System.ComponentModel.Description("AnIsolatedRockyFormationOrASingleLargeStone")]
 		[EnumMember(Value = "Large Rock or Boulder on Land")] 
+		[XmlEnum("21")] 
 		LargeRockOrBoulderOnLand = 21,
 
 		[System.ComponentModel.Description("ARecoverablePointOnTheEarthWhoseGeographicPositionHasBeenDeterminedByAngularMethodsWithGeodeticInstrumentsATriangulationPointIsASelectedPointWhichHasBeenMarkedWithAStationMarkOrItIsAConspicuousNaturalOrArtificialFeature")]
 		[EnumMember(Value = "Triangulation Mark")] 
+		[XmlEnum("22")] 
 		TriangulationMark = 22,
 
 		[System.ComponentModel.Description("AMarkerIdentifyingTheLocationOfASurveyedBoundaryLine")]
 		[EnumMember(Value = "Boundary Mark")] 
+		[XmlEnum("23")] 
 		BoundaryMark = 23,
 
 		[System.ComponentModel.Description("WheelsWithPassengerCarsMountedExternalToTheRimAndIndependentlyRotatedByElectricMotors")]
 		[EnumMember(Value = "Observation Wheel")] 
+		[XmlEnum("24")] 
 		ObservationWheel = 24,
 
 		[System.ComponentModel.Description("AFormOfDecorativeGatewayOrPortalConsistingOfTwoUprightWoodenPostsConnectedAtTheTopByTwoHorizontalCrosspiecesCommonlyFoundAtTheEntranceToShintoTemples")]
 		[EnumMember(Value = "Torii")] 
+		[XmlEnum("25")] 
 		Torii = 25,
 
 		[System.ComponentModel.Description("AStructureErectedOverADepressionOrAnObstacleSuchAsABodyOfWaterRailroadEtcToProvideARoadwayForVehiclesOrPedestrians")]
 		[EnumMember(Value = "Bridge")] 
+		[XmlEnum("26")] 
 		Bridge = 26,
 
 		[System.ComponentModel.Description("ABarrierToCheckOrConfineAnythingInMotionParticularlyOneConstructedToHoldBackWaterAndRaiseItsLevelToFormAReservoirOrToPreventFlooding")]
 		[EnumMember(Value = "Dam")] 
+		[XmlEnum("27")] 
 		Dam = 27,
 	}
 
@@ -1162,18 +1365,22 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfLateralMark : int {
 		[System.ComponentModel.Description("IndicatesThePortBoundaryOfANavigationalChannelOrSuggestedRouteWhenProceedingInTheConventionalDirectionOfBuoyage")]
 		[EnumMember(Value = "Port-Hand Lateral Mark")] 
+		[XmlEnum("1")] 
 		PortHandLateralMark = 1,
 
 		[System.ComponentModel.Description("IndicatesTheStarboardBoundaryOfANavigationalChannelOrSuggestedRouteWhenProceedingInTheConventionalDirectionOfBuoyage")]
 		[EnumMember(Value = "Starboard-Hand Lateral Mark")] 
+		[XmlEnum("2")] 
 		StarboardHandLateralMark = 2,
 
 		[System.ComponentModel.Description("AtAPointWhereAChannelDividesWhenProceedingInTheConventionalDirectionOfBuoyageThePreferredChannelOrPrimaryRouteIsIndicatedByAModifiedPortHandLateralMark")]
 		[EnumMember(Value = "Preferred Channel to Starboard Lateral Mark")] 
+		[XmlEnum("3")] 
 		PreferredChannelToStarboardLateralMark = 3,
 
 		[System.ComponentModel.Description("AtAPointWhereAChannelDividesWhenProceedingInTheConventionalDirectionOfBuoyageThePreferredChannelOrPrimaryRouteIsIndicatedByAModifiedStarboardHandLateralMark")]
 		[EnumMember(Value = "Preferred Channel to Port Lateral Mark")] 
+		[XmlEnum("4")] 
 		PreferredChannelToPortLateralMark = 4,
 	}
 
@@ -1182,58 +1389,72 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfLight : int {
 		[System.ComponentModel.Description("ALightAssociatedWithOtherLightsSoAsToFormALeadingLineToBeFollowed")]
 		[EnumMember(Value = "Leading Light")] 
+		[XmlEnum("4")] 
 		LeadingLight = 4,
 
 		[System.ComponentModel.Description("AnAeroLightIsEstablishedForAeronauticalNavigationAndMayBeOfHigherPowerThanMarineLightsAndVisibleFromWellOffshore")]
 		[EnumMember(Value = "Aero Light")] 
+		[XmlEnum("5")] 
 		AeroLight = 5,
 
 		[System.ComponentModel.Description("ABroadBeamLightUsedToIlluminateAStructureOrArea")]
 		[EnumMember(Value = "Flood Light")] 
+		[XmlEnum("8")] 
 		FloodLight = 8,
 
 		[System.ComponentModel.Description("ALightWhoseSourceHasALinearFormGenerallyHorizontalWhichCanReachALengthOfSeveralMetres")]
 		[EnumMember(Value = "Strip Light")] 
+		[XmlEnum("9")] 
 		StripLight = 9,
 
 		[System.ComponentModel.Description("ALightPlacedOnOrNearTheSupportOfAMainLightAndHavingASpecialUseInNavigation")]
 		[EnumMember(Value = "Subsidiary Light")] 
+		[XmlEnum("10")] 
 		SubsidiaryLight = 10,
 
 		[System.ComponentModel.Description("APowerfulLightFocusedSoAsToIlluminateASmallArea")]
 		[EnumMember(Value = "Spotlight")] 
+		[XmlEnum("11")] 
 		Spotlight = 11,
 
 		[System.ComponentModel.Description("TermUsedWithLeadingLightsToDescribeThePositionOfTheLightOnTheLeadAsViewedFromSeaward")]
 		[EnumMember(Value = "Front")] 
+		[XmlEnum("12")] 
 		Front = 12,
 
 		[System.ComponentModel.Description("TermUsedWithLeadingLightsToDescribeThePositionOfTheLightOnTheLeadAsViewedFromSeaward")]
 		[EnumMember(Value = "Rear")] 
+		[XmlEnum("13")] 
 		Rear = 13,
 
 		[System.ComponentModel.Description("TermUsedWithLeadingLightsToDescribeThePositionOfTheLightOnTheLeadAsViewedFromSeaward")]
 		[EnumMember(Value = "Lower")] 
+		[XmlEnum("14")] 
 		Lower = 14,
 
 		[System.ComponentModel.Description("TermUsedWithLeadingLightsToDescribeThePositionOfTheLightOnTheLeadAsViewedFromSeaward")]
 		[EnumMember(Value = "Upper")] 
+		[XmlEnum("15")] 
 		Upper = 15,
 
 		[System.ComponentModel.Description("ALightAvailableAsABackupToAMainLightWhichWillBeIlluminatedShouldTheMainLightFail")]
 		[EnumMember(Value = "Emergency")] 
+		[XmlEnum("17")] 
 		Emergency = 17,
 
 		[System.ComponentModel.Description("ALightWhichEnablesItsApproximateBearingToBeObtainedWithoutTheUseOfACompass")]
 		[EnumMember(Value = "Bearing Light")] 
+		[XmlEnum("18")] 
 		BearingLight = 18,
 
 		[System.ComponentModel.Description("AGroupOfLightsOfIdenticalCharacterAndAlmostIdenticalPositionThatAreDisposedHorizontally")]
 		[EnumMember(Value = "Horizontally Disposed")] 
+		[XmlEnum("19")] 
 		HorizontallyDisposed = 19,
 
 		[System.ComponentModel.Description("AGroupOfLightsOfIdenticalCharacterAndAlmostIdenticalPositionThatAreDisposedVertically")]
 		[EnumMember(Value = "Vertically Disposed")] 
+		[XmlEnum("20")] 
 		VerticallyDisposed = 20,
 	}
 
@@ -1242,22 +1463,27 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfMarineFarmCulture : int {
 		[System.ComponentModel.Description("HardShelledAnimalsForExampleCrabsOrLobsters")]
 		[EnumMember(Value = "Crustaceans")] 
+		[XmlEnum("1")] 
 		Crustaceans = 1,
 
 		[System.ComponentModel.Description("ATwoPartHingedExternalShellCoveringThatContainsASoftBodiedInvertebrate")]
 		[EnumMember(Value = "Edible Bivalve Molluscs")] 
+		[XmlEnum("2")] 
 		EdibleBivalveMolluscs = 2,
 
 		[System.ComponentModel.Description("VertebrateColdBloodedAnimalWithGillsLivingInWater")]
 		[EnumMember(Value = "Fish")] 
+		[XmlEnum("3")] 
 		Fish = 3,
 
 		[System.ComponentModel.Description("TheGeneralNameForMarinePlantsOfTheAlgaeClassWhichGrowInLongNarrowRibbons")]
 		[EnumMember(Value = "Seaweed")] 
+		[XmlEnum("4")] 
 		Seaweed = 4,
 
 		[System.ComponentModel.Description("AnAreaWherePearlsAreArtificiallyCultivated")]
 		[EnumMember(Value = "Pearl Culture Farm")] 
+		[XmlEnum("5")] 
 		PearlCultureFarm = 5,
 	}
 
@@ -1266,22 +1492,27 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfMilitaryPracticeArea : int {
 		[System.ComponentModel.Description("AnAreaWithinWhichExercisesAreCarriedOutWithTorpedoes")]
 		[EnumMember(Value = "Torpedo Exercise Area")] 
+		[XmlEnum("2")] 
 		TorpedoExerciseArea = 2,
 
 		[System.ComponentModel.Description("AnAreaWithinWhichSubmarineExercisesAreCarriedOut")]
 		[EnumMember(Value = "Submarine Exercise Area")] 
+		[XmlEnum("3")] 
 		SubmarineExerciseArea = 3,
 
 		[System.ComponentModel.Description("AreasForBombingAndMissileExercises")]
 		[EnumMember(Value = "Firing Danger Area")] 
+		[XmlEnum("4")] 
 		FiringDangerArea = 4,
 
 		[System.ComponentModel.Description("AnAreaWithinWhichMineLayingExercisesAreCarriedOut")]
 		[EnumMember(Value = "Mine-Laying Practice Area")] 
+		[XmlEnum("5")] 
 		MineLayingPracticeArea = 5,
 
 		[System.ComponentModel.Description("AnAreaForShootingPistolsRiflesAndMachineGunsEtcAtATarget")]
 		[EnumMember(Value = "Small Arms Firing Range")] 
+		[XmlEnum("6")] 
 		SmallArmsFiringRange = 6,
 	}
 
@@ -1290,14 +1521,17 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfMooringArea : int {
 		[System.ComponentModel.Description("AnAreaInWhichYachtsAndSmallBoatsMoor")]
 		[EnumMember(Value = "Small Craft Mooring Area")] 
+		[XmlEnum("1")] 
 		SmallCraftMooringArea = 1,
 
 		[System.ComponentModel.Description("AnAreaSetAsideForTheMooringOfVisitingVessels")]
 		[EnumMember(Value = "Mooring Area for Visitors")] 
+		[XmlEnum("2")] 
 		MooringAreaForVisitors = 2,
 
 		[System.ComponentModel.Description("AnAreaSetAsideForTheMooringOfTankers")]
 		[EnumMember(Value = "Mooring Area for Tankers")] 
+		[XmlEnum("3")] 
 		MooringAreaForTankers = 3,
 	}
 
@@ -1306,14 +1540,17 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfNavigationLine : int {
 		[System.ComponentModel.Description("AStraightLineThatMarksTheBoundaryBetweenASafeAndADangerousAreaOrThatPassesClearOfANavigationalDanger")]
 		[EnumMember(Value = "Clearing Line")] 
+		[XmlEnum("1")] 
 		ClearingLine = 1,
 
 		[System.ComponentModel.Description("ALinePassingThroughOneOrMoreFixedMarks")]
 		[EnumMember(Value = "Transit Line")] 
+		[XmlEnum("2")] 
 		TransitLine = 2,
 
 		[System.ComponentModel.Description("ALinePassingThroughOneOrMoreClearlyDefinedObjectsAlongThePathOfWhichAVesselCanApproachSafelyUpToACertainDistanceOff")]
 		[EnumMember(Value = "Leading Line Bearing a Recommended Track")] 
+		[XmlEnum("3")] 
 		LeadingLineBearingARecommendedTrack = 3,
 	}
 
@@ -1322,86 +1559,107 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfObstruction : int {
 		[System.ComponentModel.Description("ATreeBranchOrBrokenPileEmbeddedInTheOceanFloorRiverOrLakeBottomAndNotVisibleOnTheSurfaceFormingTherebyAHazardToVessels")]
 		[EnumMember(Value = "Snag/Stump")] 
+		[XmlEnum("1")] 
 		SnagStump = 1,
 
 		[System.ComponentModel.Description("ASubmarineStructureProjectingSomeDistanceAboveTheSeabedAndCappingATemporarilyAbandonedOrSuspendedOilOrGasWell")]
 		[EnumMember(Value = "Wellhead")] 
+		[XmlEnum("2")] 
 		Wellhead = 2,
 
 		[System.ComponentModel.Description("AStructureOnAnOutfallThroughWhichLiquidsAreDischargedTheStructureWillUsuallyProjectAboveTheLevelOfTheOutfallAndCanBeAnObstructionToNavigation")]
 		[EnumMember(Value = "Diffuser")] 
+		[XmlEnum("3")] 
 		Diffuser = 3,
 
 		[System.ComponentModel.Description("APermanentMarineStructureUsuallyDesignedToSupportOrElevatePipelinesEspeciallyAStructureEnclosingAScreeningDeviceAtTheOffshoreEndOfAPotableWaterIntakePipeTheStructureIsCommonlyAHeavyTimberEnclosureThatHasBeenSunkenWithRocksOrOtherDebris")]
 		[EnumMember(Value = "Crib")] 
+		[XmlEnum("4")] 
 		Crib = 4,
 
 		[System.ComponentModel.Description("AreasEstablishedByPrivateInterestsUsuallySportFishermenToSimulateNaturalReefsAndWrecksThatAttractFishTheReefsAreConstructedByDumpingAssortedJunkInAreasWhichMayBeOfVerySmallExtentOrMayStretchAConsiderableDistanceAlongADepthContour")]
 		[EnumMember(Value = "Fish Haven")] 
+		[XmlEnum("5")] 
 		FishHaven = 5,
 
 		[System.ComponentModel.Description("AnAreaOfNumerousUnidentifiedDangersToNavigationTheAreaServesAsAWarningToTheMarinerThatAllDangersAreNotIdentifiedIndividuallyAndThatNavigationThroughTheAreaMayBeHazardous")]
 		[EnumMember(Value = "Foul Area")] 
+		[XmlEnum("6")] 
 		FoulArea = 6,
 
 		[System.ComponentModel.Description("FloatingBarriersAnchoredToTheBottomUsedToDeflectThePathOfFloatingIceInOrderToPreventTheObstructionOfLocksIntakesEtcAndToPreventDamageToBridgePiersAndOtherStructures")]
 		[EnumMember(Value = "Ice Boom")] 
+		[XmlEnum("8")] 
 		IceBoom = 8,
 
 		[System.ComponentModel.Description("EquipmentSuchAsAnchorsConcreteBlocksChainsAndCablesEtcUsedToPositionFloatingStructuresSuchAsTrotAndMooringBuoysEtc")]
 		[EnumMember(Value = "Ground Tackle")] 
+		[XmlEnum("9")] 
 		GroundTackle = 9,
 
 		[System.ComponentModel.Description("AFloatingBarrierUsedToProtectARiverOrHarbourMouthOrToCreateAShelteredAreaForStoragePurposes")]
 		[EnumMember(Value = "Boom")] 
+		[XmlEnum("10")] 
 		Boom = 10,
 
 		[System.ComponentModel.Description("ADeviceToExtractEnergyFromTheSurfaceMotionOfOceanWavesOrFromPressureFluctuationsBelowTheSurface")]
 		[EnumMember(Value = "Wave Energy Device")] 
+		[XmlEnum("12")] 
 		WaveEnergyDevice = 12,
 
 		[System.ComponentModel.Description("ASubmergedDeviceNotBeingAShipTogetherWithItsAppurtenantEquipmentDeployedAtSeaEssentiallyForThePurposeOfCollectingStoringOrTransmittingSamplesOrDataRelatingToTheMarineEnvironment")]
 		[EnumMember(Value = "Subsurface Ocean Data Acquisition System")] 
+		[XmlEnum("13")] 
 		SubsurfaceOceanDataAcquisitionSystem = 13,
 
 		[System.ComponentModel.Description("AManMadeStructureThatMayMimicSomeOfTheCharacteristicsOfANaturalReefIntendedToAttractSeaLife")]
 		[EnumMember(Value = "Artificial Reef")] 
+		[XmlEnum("14")] 
 		ArtificialReef = 14,
 
 		[System.ComponentModel.Description("AStructurePlacedOnTheSeafloorBelowADrillingRigToGuideTheDrill")]
 		[EnumMember(Value = "Template")] 
+		[XmlEnum("15")] 
 		Template = 15,
 
 		[System.ComponentModel.Description("ALargeSteelStructureUpTo20MetresInHeightAboveTheSeafloorOrASteelFrameSecuredToTheSeafloorWithPilesToAnchorTheEndOfASubmarinePipelineForDeliveryToAProductionPlatform")]
 		[EnumMember(Value = "Manifold")] 
+		[XmlEnum("16")] 
 		Manifold = 16,
 
 		[System.ComponentModel.Description("AHillOfSoilCoveredIcePushedUpByHydrostaticPressureInAnAreaOfPermafrostThatIsLocatedUnderwater")]
 		[EnumMember(Value = "Submerged Pingo")] 
+		[XmlEnum("17")] 
 		SubmergedPingo = 17,
 
 		[System.ComponentModel.Description("TheDistributedRemainsOfAPlatform")]
 		[EnumMember(Value = "Remains of Platform")] 
+		[XmlEnum("18")] 
 		RemainsOfPlatform = 18,
 
 		[System.ComponentModel.Description("AnInstrumentUsedForScientificPurposes")]
 		[EnumMember(Value = "Scientific Instrument")] 
+		[XmlEnum("19")] 
 		ScientificInstrument = 19,
 
 		[System.ComponentModel.Description("AnyOfVariousMachinesHavingARotorUsuallyWithVanesOrBladesDrivenByThePressureMomentumOrReactiveThrustOfAMovingFluidAsSteamWaterHotGasesOrAirEitherOccurringInTheFormOfFreeJetsOrAsAFluidPassingThroughAndEntirelyFillingAHousingAroundTheRotorAndIsLocatedUnderwater")]
 		[EnumMember(Value = "Underwater Turbine")] 
+		[XmlEnum("20")] 
 		UnderwaterTurbine = 20,
 
 		[System.ComponentModel.Description("AnActiveSeabedVolcanoWhichMayBeSubmergedOrProjectingAboveTheWaterAtTheChartSoundingDatum")]
 		[EnumMember(Value = "Active Submarine Volcano")] 
+		[XmlEnum("21")] 
 		ActiveSubmarineVolcano = 21,
 
 		[System.ComponentModel.Description("ASubmergedNetPlacedAroundBeachesToReduceSharkAttacksOnSwimmers")]
 		[EnumMember(Value = "Shark Net")] 
+		[XmlEnum("22")] 
 		SharkNet = 22,
 
 		[System.ComponentModel.Description("OneOfSeveralGeneraOfTropicalTreesOrShrubsWhichProduceManyPropRootsAndGrowAlongLowLyingCoastsIntoShallowWater")]
 		[EnumMember(Value = "Mangrove")] 
+		[XmlEnum("23")] 
 		Mangrove = 23,
 	}
 
@@ -1410,46 +1668,57 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfOffshorePlatform : int {
 		[System.ComponentModel.Description("ATemporaryMobileStructureEitherFixedOrFloatingUsedInTheExplorationStagesOfOilAndGasFields")]
 		[EnumMember(Value = "Oil Rig")] 
+		[XmlEnum("1")] 
 		OilRig = 1,
 
 		[System.ComponentModel.Description("ATermUsedToIndicateAPermanentOffshoreStructureEquippedToControlTheFlowOfOilOrGasItDoesNotIncludeEntirelySubmarineStructures")]
 		[EnumMember(Value = "Production Platform")] 
+		[XmlEnum("2")] 
 		ProductionPlatform = 2,
 
 		[System.ComponentModel.Description("APlatformFromWhichOneSSurroundingsOrEventsCanBeObservedNotedOrRecordedSuchAsForScientificStudy")]
 		[EnumMember(Value = "Observation/Research Platform")] 
+		[XmlEnum("3")] 
 		ObservationResearchPlatform = 3,
 
 		[System.ComponentModel.Description("AMetalLatticeTowerBuoyantAtOneEndAndAttachedAtTheOtherByAUniversalJointToAConcreteFilledBaseOnTheSeabedThePlatformMayBeFittedWithAHelicopterPlatformEmergencyAccommodationAndHawserHoseRetrieval")]
 		[EnumMember(Value = "Articulated Loading Platform")] 
+		[XmlEnum("4")] 
 		ArticulatedLoadingPlatform = 4,
 
 		[System.ComponentModel.Description("ARigidFrameOrTubeWithABuoyancyDeviceAtItsUpperEndSecuredAtItsLowerEndToAUniversalJointOnALargeSteelOrConcreteBaseRestingOnTheSeabedAndAtItsUpperEndToAMooringBuoyByAChainOrWire")]
 		[EnumMember(Value = "Single Anchor Leg Mooring")] 
+		[XmlEnum("5")] 
 		SingleAnchorLegMooring = 5,
 
 		[System.ComponentModel.Description("APlatformSecuredToTheSeabedAndSurmountedByATurntableToWhichShipsMoor")]
 		[EnumMember(Value = "Mooring Tower")] 
+		[XmlEnum("6")] 
 		MooringTower = 6,
 
 		[System.ComponentModel.Description("AManMadeStructureUsuallyBuiltForTheExplorationOrExploitationOfMarineResourcesMarineScientificResearchTidalObservationsEtc")]
 		[EnumMember(Value = "Artificial Island")] 
+		[XmlEnum("7")] 
 		ArtificialIsland = 7,
 
 		[System.ComponentModel.Description("AnOffshoreFacilityConsistingOfAMooredTankerBargeByWhichTheProductIsExtractedStoredAndExported")]
 		[EnumMember(Value = "Floating Production, Storage and Off-Loading Vessel")] 
+		[XmlEnum("8")] 
 		FloatingProductionStorageAndOffLoadingVessel = 8,
 
 		[System.ComponentModel.Description("APlatformUsedPrimarilyForEatingSleepingAndRecreationPurposes")]
 		[EnumMember(Value = "Accommodation Platform")] 
+		[XmlEnum("9")] 
 		AccommodationPlatform = 9,
 
 		[System.ComponentModel.Description("AFloatingStructureWithControlRoomPowerAndStorageFacilitiesAttachedToTheSeabedByAFlexiblePipelineAndCables")]
 		[EnumMember(Value = "Navigation, Communication and Control Buoy")] 
+		[XmlEnum("10")] 
 		NavigationCommunicationAndControlBuoy = 10,
 
 		[System.ComponentModel.Description("AFloatingStructureAnchoredToTheSeabedForStoringOil")]
 		[EnumMember(Value = "Floating Oil Tank")] 
+		[XmlEnum("11")] 
 		FloatingOilTank = 11,
 	}
 
@@ -1458,26 +1727,32 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfOffshoreProductionArea : int {
 		[System.ComponentModel.Description("ACollectionOfWindTurbinesThatAreCollocatedAndAreOrganizedAsASinglePowerGenerationUnit")]
 		[EnumMember(Value = "Wind Farm")] 
+		[XmlEnum("1")] 
 		WindFarm = 1,
 
 		[System.ComponentModel.Description("ACollectionOfCollocatedDevicesWhichHarnessWaveEnergyAndAreOrganizedAsASinglePowerGenerationUnit")]
 		[EnumMember(Value = "Wave Farm")] 
+		[XmlEnum("2")] 
 		WaveFarm = 2,
 
 		[System.ComponentModel.Description("ACollectionOfCollocatedDevicesWhichHarnessCurrentForExampleTidalEnergyAndAreOrganizedAsASinglePowerGenerationUnit")]
 		[EnumMember(Value = "Current Farm")] 
+		[XmlEnum("3")] 
 		CurrentFarm = 3,
 
 		[System.ComponentModel.Description("ACollectionOfCollocatedLargeCapacityTanksInWhichPetroleumNaturalGasOrLiquidPetrochemicalsAreStored")]
 		[EnumMember(Value = "Tank Farm")] 
+		[XmlEnum("4")] 
 		TankFarm = 4,
 
 		[System.ComponentModel.Description("AnAreaInWhichMaterialsFormingOrUnderTheSeabedAreRemoved")]
 		[EnumMember(Value = "Seabed Material Extraction Area")] 
+		[XmlEnum("5")] 
 		SeabedMaterialExtractionArea = 5,
 
 		[System.ComponentModel.Description("ALargeScalePhotovoltaicSystemPvSystemDesignedForTheSupplyOfMerchantPowerIntoTheElectricityGridTheyAreDifferentiatedFromMostBuildingMountedAndOtherDecentralisedSolarPowerApplicationsBecauseTheySupplyPowerAtTheUtilityLevelRatherThanToALocalUserOrUsersTheGenericExpressionUtilityScaleSolarIsSometimesUsedToDescribeThisTypeOfProject")]
 		[EnumMember(Value = "Solar Farm")] 
+		[XmlEnum("6")] 
 		SolarFarm = 6,
 	}
 
@@ -1486,10 +1761,12 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfOilBarrier : int {
 		[System.ComponentModel.Description("APipeWithHolesFromWhichAirBlowsWhenTheAirBubblesReachTheSurfaceTheyFormABarrierWhichPreventsTheSpreadOfOil")]
 		[EnumMember(Value = "Oil Retention (High Pressure Pipe)")] 
+		[XmlEnum("1")] 
 		OilRetentionHighPressurePipe = 1,
 
 		[System.ComponentModel.Description("AFloatingTubeShapedStructureWithACurtain2MetreHangingUnderItBelowTheSurfaceWhichPreventsTheSpreadOfOil")]
 		[EnumMember(Value = "Floating Oil Barrier")] 
+		[XmlEnum("2")] 
 		FloatingOilBarrier = 2,
 	}
 
@@ -1498,18 +1775,22 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfOpeningBridge : int {
 		[System.ComponentModel.Description("AMovableBridgeOrSpanThereofWhichRotatesInAHorizontalPlaneAboutAVerticalPivotToAllowThePassageOfVessels")]
 		[EnumMember(Value = "Swing Bridge")] 
+		[XmlEnum("3")] 
 		SwingBridge = 3,
 
 		[System.ComponentModel.Description("AMovableBridgeOrSpanThereofWhichIsCapableOfBeingLiftedVerticallyToAllowVesselsToPassBeneath")]
 		[EnumMember(Value = "Lifting Bridge")] 
+		[XmlEnum("4")] 
 		LiftingBridge = 4,
 
 		[System.ComponentModel.Description("ACounterpoiseBridgeRotatedInAVerticalPlaneAboutAnAxisAtOneOrBothEnds")]
 		[EnumMember(Value = "Bascule Bridge")] 
+		[XmlEnum("5")] 
 		BasculeBridge = 5,
 
 		[System.ComponentModel.Description("AGeneralNameForBridgesOfWhichPartOrTheEntireSpanOfTheBridgeMayBeRaisedOrDrawnAsideToAllowShipsToPassThrough")]
 		[EnumMember(Value = "Drawbridge")] 
+		[XmlEnum("7")] 
 		Drawbridge = 7,
 	}
 
@@ -1518,30 +1799,37 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfPile : int {
 		[System.ComponentModel.Description("AnElongatedWoodOrMetalPoleEmbeddedInTheSeabedToServeAsAMarkerOrSupport")]
 		[EnumMember(Value = "Stake")] 
+		[XmlEnum("1")] 
 		Stake = 1,
 
 		[System.ComponentModel.Description("AVerticalPieceOfTimberMetalOrConcreteForcedIntoTheEarthOrSeabed")]
 		[EnumMember(Value = "Post")] 
+		[XmlEnum("3")] 
 		Post = 3,
 
 		[System.ComponentModel.Description("ASingleStructureComprising3OrMorePilesHeldTogetherSectionsOfHeavyTimberSteelOrConcreteAndForcedIntoTheEarthOrSeabed")]
 		[EnumMember(Value = "Tripodal")] 
+		[XmlEnum("4")] 
 		Tripodal = 4,
 
 		[System.ComponentModel.Description("ANumberOfPilesUsuallyInAStraightLineAndUsuallyConnectedOrBoltedTogether")]
 		[EnumMember(Value = "Piling")] 
+		[XmlEnum("5")] 
 		Piling = 5,
 
 		[System.ComponentModel.Description("ANumberOfPilesUsuallyInAStraightLineButNotConnectedByStructuralMembers")]
 		[EnumMember(Value = "Area of Piles")] 
+		[XmlEnum("6")] 
 		AreaOfPiles = 6,
 
 		[System.ComponentModel.Description("AVerticalHollowCylinderOfMetalWoodOrOtherMaterialForcedIntoTheEarthOrSeabed")]
 		[EnumMember(Value = "Pipe")] 
+		[XmlEnum("7")] 
 		Pipe = 7,
 
 		[System.ComponentModel.Description("APostWhereToWhichSomethingSuchAsACraftCanBeMoored")]
 		[EnumMember(Value = "Mooring Post")] 
+		[XmlEnum("8")] 
 		MooringPost = 8,
 	}
 
@@ -1550,14 +1838,17 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfPilotBoardingPlace : int {
 		[System.ComponentModel.Description("PilotBoardsFromACruisingVessel")]
 		[EnumMember(Value = "Boarding by Pilot-Cruising Vessel")] 
+		[XmlEnum("1")] 
 		BoardingByPilotCruisingVessel = 1,
 
 		[System.ComponentModel.Description("PilotBoardsByHelicopterWhichComesOutFromTheShore")]
 		[EnumMember(Value = "Boarding by Helicopter")] 
+		[XmlEnum("2")] 
 		BoardingByHelicopter = 2,
 
 		[System.ComponentModel.Description("PilotEmbarksFromAVesselOrDisembarksToAVesselWhichComesOutFromTheShoreOnRequest")]
 		[EnumMember(Value = "Pilot Comes Out from Shore")] 
+		[XmlEnum("3")] 
 		PilotComesOutFromShore = 3,
 	}
 
@@ -1566,26 +1857,32 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfPipelinePipe : int {
 		[System.ComponentModel.Description("APipeGenerallyASewerOrDrainagePipeDischargingIntoTheSeaOrARiver")]
 		[EnumMember(Value = "Outfall Pipe")] 
+		[XmlEnum("2")] 
 		OutfallPipe = 2,
 
 		[System.ComponentModel.Description("APipeTakingWaterFromARiverOrOtherBodyOfWaterToDriveAMillOrSupplyACanalWaterworksEtc")]
 		[EnumMember(Value = "Intake Pipe")] 
+		[XmlEnum("3")] 
 		IntakePipe = 3,
 
 		[System.ComponentModel.Description("APipeInASewageSystemForCarryingWaterOrSewageToADisposalArea")]
 		[EnumMember(Value = "Sewer")] 
+		[XmlEnum("4")] 
 		Sewer = 4,
 
 		[System.ComponentModel.Description("ASubmergedPipeFromWhichWarmWaterBubblesPreventingTheSurroundingWaterFromFreezing")]
 		[EnumMember(Value = "Bubbler System")] 
+		[XmlEnum("5")] 
 		BubblerSystem = 5,
 
 		[System.ComponentModel.Description("APipeUsedForTransportSupplyOfGasOrLiquidProduct")]
 		[EnumMember(Value = "Supply Pipe")] 
+		[XmlEnum("6")] 
 		SupplyPipe = 6,
 
 		[System.ComponentModel.Description("AHighPressureSubSurfacePipelineUsuallyOnTheSeafloorWithHolesEmittingACurtainOfAirBubblesItsUsesIncludeThePreventionOfAcousticTransmissionThroughTheWaterPreventingTheSpreadOfSurfaceDebrisOrFloatingLiquidsControllingTheMovementOfFish")]
 		[EnumMember(Value = "Bubble Curtain")] 
+		[XmlEnum("7")] 
 		BubbleCurtain = 7,
 	}
 
@@ -1594,10 +1891,12 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfPreference : int {
 		[System.ComponentModel.Description("ThePreferredFirstChoiceUsedInNormalConditions")]
 		[EnumMember(Value = "Primary")] 
+		[XmlEnum("1")] 
 		Primary = 1,
 
 		[System.ComponentModel.Description("ThePreferredChoiceInExtraordinaryConditions")]
 		[EnumMember(Value = "Alternate")] 
+		[XmlEnum("2")] 
 		Alternate = 2,
 	}
 
@@ -1606,50 +1905,62 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfProductionArea : int {
 		[System.ComponentModel.Description("AnOpenAirExcavationForTheExtractionOfStoneIntendedPrincipallyForUseInConstruction")]
 		[EnumMember(Value = "Quarry")] 
+		[XmlEnum("1")] 
 		Quarry = 1,
 
 		[System.ComponentModel.Description("AnExcavationMadeInTheTerrainForThePurposeOfExtractingAndOrExploitingNaturalResources")]
 		[EnumMember(Value = "Mine")] 
+		[XmlEnum("2")] 
 		Mine = 2,
 
 		[System.ComponentModel.Description("AReserveStockOfMaterialEquipmentOrOtherSupplies")]
 		[EnumMember(Value = "Stockpile")] 
+		[XmlEnum("3")] 
 		Stockpile = 3,
 
 		[System.ComponentModel.Description("AFacilityIncludingOneOrMoreBuildingsAndEquipmentUsedForPowerGeneration")]
 		[EnumMember(Value = "Power Station Area")] 
+		[XmlEnum("4")] 
 		PowerStationArea = 4,
 
 		[System.ComponentModel.Description("AFacilityWherePetroleumAndOrPetroleumProductsAreRefined")]
 		[EnumMember(Value = "Refinery Area")] 
+		[XmlEnum("5")] 
 		RefineryArea = 5,
 
 		[System.ComponentModel.Description("AnOpenTractForTheStorageOfWoodenLumberAndTimbers")]
 		[EnumMember(Value = "Timber Yard")] 
+		[XmlEnum("6")] 
 		TimberYard = 6,
 
 		[System.ComponentModel.Description("AGroupOfBuildingsWhereGoodsAreManufactured")]
 		[EnumMember(Value = "Factory Area")] 
+		[XmlEnum("7")] 
 		FactoryArea = 7,
 
 		[System.ComponentModel.Description("ACollectionOfCollocatedLargeCapacityTanksInWhichPetroleumNaturalGasOrLiquidPetrochemicalsAreStored")]
 		[EnumMember(Value = "Tank Farm")] 
+		[XmlEnum("8")] 
 		TankFarm = 8,
 
 		[System.ComponentModel.Description("ACollectionOfWindTurbinesThatAreCollocatedAndAreOrganizedAsASinglePowerGenerationUnit")]
 		[EnumMember(Value = "Wind Farm")] 
+		[XmlEnum("9")] 
 		WindFarm = 9,
 
 		[System.ComponentModel.Description("HillOfRefuseFromAMineIndustrialPlantEtcOnLand")]
 		[EnumMember(Value = "Slag Heap/Spoil Heap")] 
+		[XmlEnum("10")] 
 		SlagHeapSpoilHeap = 10,
 
 		[System.ComponentModel.Description("APlantWhereProductionTakesPlace")]
 		[EnumMember(Value = "Production Plant")] 
+		[XmlEnum("11")] 
 		ProductionPlant = 11,
 
 		[System.ComponentModel.Description("ALargeScalePhotovoltaicSystemPvSystemDesignedForTheSupplyOfMerchantPowerIntoTheElectricityGridTheyAreDifferentiatedFromMostBuildingMountedAndOtherDecentralisedSolarPowerApplicationsBecauseTheySupplyPowerAtTheUtilityLevelRatherThanToALocalUserOrUsersTheGenericExpressionUtilityScaleSolarIsSometimesUsedToDescribeThisTypeOfProject")]
 		[EnumMember(Value = "Solar Farm")] 
+		[XmlEnum("12")] 
 		SolarFarm = 12,
 	}
 
@@ -1658,26 +1969,32 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfPylon : int {
 		[System.ComponentModel.Description("APylonOrPoleThatSupportsOneOrMorePowerLines")]
 		[EnumMember(Value = "Power Transmission Pylon/Pole")] 
+		[XmlEnum("1")] 
 		PowerTransmissionPylonPole = 1,
 
 		[System.ComponentModel.Description("APylonOrPoleThatSupportsOneOrMoreCommunicationLines")]
 		[EnumMember(Value = "Telephone/Telegraph Pylon/Pole")] 
+		[XmlEnum("2")] 
 		TelephoneTelegraphPylonPole = 2,
 
 		[System.ComponentModel.Description("ATowerOrPylonSupportingSteelCablesWhichConveyCarsBucketsOrOtherSuspendedCarrierUnits")]
 		[EnumMember(Value = "Aerial Cableway Pylon")] 
+		[XmlEnum("3")] 
 		AerialCablewayPylon = 3,
 
 		[System.ComponentModel.Description("ATowerAndOrPylonFromWhichTheDeckOfABridgeIsSuspended")]
 		[EnumMember(Value = "Bridge Pylon/Tower")] 
+		[XmlEnum("4")] 
 		BridgePylonTower = 4,
 
 		[System.ComponentModel.Description("APillarOrAbutmentThatSupportsABridgeSpan")]
 		[EnumMember(Value = "Bridge Pier")] 
+		[XmlEnum("5")] 
 		BridgePier = 5,
 
 		[System.ComponentModel.Description("ATowerOrPylonSupportingASuspendedPipelineOrPipelines")]
 		[EnumMember(Value = "Pipeline Pylon")] 
+		[XmlEnum("6")] 
 		PipelinePylon = 6,
 	}
 
@@ -1686,10 +2003,12 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfRadarStation : int {
 		[System.ComponentModel.Description("ARadarStationEstablishedForTrafficSurveillance")]
 		[EnumMember(Value = "Radar Surveillance Station")] 
+		[XmlEnum("1")] 
 		RadarSurveillanceStation = 1,
 
 		[System.ComponentModel.Description("AShoreBasedStationWhichTheMarinerCanContactByRadioToObtainAPosition")]
 		[EnumMember(Value = "Coast Radar Station")] 
+		[XmlEnum("2")] 
 		CoastRadarStation = 2,
 	}
 
@@ -1698,14 +2017,17 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfRadarTransponderBeacon : int {
 		[System.ComponentModel.Description("ARadarMarkerBeaconWhichContinuouslyTransmitsASignalAppearingAsARadialLineOnARadarScreenTheLineIndicatingTheDirectionOfTheBeaconRamarksAreIntendedPrimarilyForMarineUseTheNameRamarkIsDerivedFromTheWordsRadarMarker")]
 		[EnumMember(Value = "Ramark, Radar Beacon Transmitting Continuously")] 
+		[XmlEnum("1")] 
 		RamarkRadarBeaconTransmittingContinuously = 1,
 
 		[System.ComponentModel.Description("ARadarBeaconWhichReturnsACodedSignalWhichProvidesIdentificationOfTheBeaconAsWellAsRangeAndBearingTheRangeAndBearingAreIndicatedByTheLocationOfTheFirstCharacterReceivedOnTheRadarScreenTheNameRaconIsDerivedFromTheWordsRadarBeacon")]
 		[EnumMember(Value = "Racon, Radar Transponder Beacon")] 
+		[XmlEnum("2")] 
 		RaconRadarTransponderBeacon = 2,
 
 		[System.ComponentModel.Description("ARadarBeaconThatMayBeUsedInConjunctionWithAtLeastOneOtherRadarBeaconToIndicateALeadingLine")]
 		[EnumMember(Value = "Leading Racon/Radar Transponder Beacon")] 
+		[XmlEnum("3")] 
 		LeadingRaconRadarTransponderBeacon = 3,
 	}
 
@@ -1714,26 +2036,32 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfRadioStation : int {
 		[System.ComponentModel.Description("ARadioStationIntendedToDetermineOnlyTheDirectionOfOtherStationsByMeansOfTransmissionFromTheLatter")]
 		[EnumMember(Value = "Radio Direction-Finding Station")] 
+		[XmlEnum("5")] 
 		RadioDirectionFindingStation = 5,
 
 		[System.ComponentModel.Description("DifferentialGnssIsImplementedByPlacingAGnssMonitorReceiverAtAPreciselyKnownLocationInsteadOfComputingANavigationFixTheMonitorDeterminesTheRangeErrorToEveryGnssSatelliteItCanTrackTheseRangingErrorsAreThenTransmittedToLocalUsersWhereTheyAreAppliedAsCorrectionsBeforeComputingTheNavigationResult")]
 		[EnumMember(Value = "Differential GNSS")] 
+		[XmlEnum("10")] 
 		DifferentialGnss = 10,
 
 		[System.ComponentModel.Description("AnElectronicPositionFixingSystemUsedMainlyByAircraft")]
 		[EnumMember(Value = "Toran")] 
+		[XmlEnum("11")] 
 		Toran = 11,
 
 		[System.ComponentModel.Description("ALowFrequencyElectronicPositionFixingSystemUsingPulsedTransmissionsAt100Khz")]
 		[EnumMember(Value = "Chaika")] 
+		[XmlEnum("14")] 
 		Chaika = 14,
 
 		[System.ComponentModel.Description("TheEquipmentNeededAtOneStationToCarryOnTwoWayVoiceCommunicationByRadioWavesOnly")]
 		[EnumMember(Value = "Radio Telephone Station")] 
+		[XmlEnum("19")] 
 		RadioTelephoneStation = 19,
 
 		[System.ComponentModel.Description("AnAisShoreStationForUseByCompetentAuthoritiesToProvideAisServiceManageTheDataLinkAndEnableEffectiveShipToShoreShoreToShipTransmissionOfInformation")]
 		[EnumMember(Value = "AIS Base Station")] 
+		[XmlEnum("20")] 
 		AisBaseStation = 20,
 	}
 
@@ -1742,30 +2070,37 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfRescueStation : int {
 		[System.ComponentModel.Description("APlaceWhereEquipmentForSavingLifeAtSeaIsMaintainedTheTypeOfLifeboatMayVaryFromFastLongDistanceBoatsToInflatableInshoreBoats")]
 		[EnumMember(Value = "Rescue Station with Lifeboat")] 
+		[XmlEnum("1")] 
 		RescueStationWithLifeboat = 1,
 
 		[System.ComponentModel.Description("ALifeSavingStationEquippedWithLineCarryingRocketApparatus")]
 		[EnumMember(Value = "Rescue Station with Rocket")] 
+		[XmlEnum("2")] 
 		RescueStationWithRocket = 2,
 
 		[System.ComponentModel.Description("ShelterOrProtectionFromDangerOrDistressAtSea")]
 		[EnumMember(Value = "Refuge for Shipwrecked Mariners")] 
+		[XmlEnum("4")] 
 		RefugeForShipwreckedMariners = 4,
 
 		[System.ComponentModel.Description("ShelterOrProtectionFromDangerInAreasExposedToExtremeAndSuddenTidesOrTidalStreams")]
 		[EnumMember(Value = "Refuge for Intertidal Area Walkers")] 
+		[XmlEnum("5")] 
 		RefugeForIntertidalAreaWalkers = 5,
 
 		[System.ComponentModel.Description("APlaceWhereALifeboatIsMooredReadyForUse")]
 		[EnumMember(Value = "Lifeboat Lying at a Mooring")] 
+		[XmlEnum("6")] 
 		LifeboatLyingAtAMooring = 6,
 
 		[System.ComponentModel.Description("ARadioStationReservedForEmergencySituationsMightAlsoBeAPublicTelephone")]
 		[EnumMember(Value = "Aid Radio Station")] 
+		[XmlEnum("7")] 
 		AidRadioStation = 7,
 
 		[System.ComponentModel.Description("APlaceWhereFirstAidEquipmentIsAvailable")]
 		[EnumMember(Value = "First Aid Equipment")] 
+		[XmlEnum("8")] 
 		FirstAidEquipment = 8,
 	}
 
@@ -1774,98 +2109,122 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfRestrictedArea : int {
 		[System.ComponentModel.Description("TheAreaAroundAnOffshoreInstallationWithinWhichVesselsAreProhibitedFromEnteringWithoutPermissionSpecialRegulationsProtectInstallationsWithinASafetyZoneAndVesselsOfAllNationalitiesAreRequiredToRespectTheZone")]
 		[EnumMember(Value = "Offshore Safety Zone")] 
+		[XmlEnum("1")] 
 		OffshoreSafetyZone = 1,
 
 		[System.ComponentModel.Description("ATractOfLandOrWaterManagedSoAsToPreserveItsFloraFaunaPhysicalFeaturesEtc")]
 		[EnumMember(Value = "Nature Reserve")] 
+		[XmlEnum("4")] 
 		NatureReserve = 4,
 
 		[System.ComponentModel.Description("APlaceWhereBirdsAreBredAndProtected")]
 		[EnumMember(Value = "Bird Sanctuary")] 
+		[XmlEnum("5")] 
 		BirdSanctuary = 5,
 
 		[System.ComponentModel.Description("APlaceWhereWildAnimalsOrBirdsHuntedForSportOrFoodAreKeptUndisturbedForPrivateUse")]
 		[EnumMember(Value = "Game Reserve")] 
+		[XmlEnum("6")] 
 		GameReserve = 6,
 
 		[System.ComponentModel.Description("APlaceWhereSealsAreProtected")]
 		[EnumMember(Value = "Seal Sanctuary")] 
+		[XmlEnum("7")] 
 		SealSanctuary = 7,
 
 		[System.ComponentModel.Description("AnAreaUsuallyAboutTwoCablesDiameterWithinWhichShipsMagneticFieldsMayBeMeasuredSensingInstrumentsAndCablesAreInstalledOnTheSeabedInTheRangeAndThereAreCablesLeadingFromTheRangeToAControlPositionAshore")]
 		[EnumMember(Value = "Degaussing Range")] 
+		[XmlEnum("8")] 
 		DegaussingRange = 8,
 
 		[System.ComponentModel.Description("AnAreaControlledByTheMilitaryInWhichRestrictionsMayApply")]
 		[EnumMember(Value = "Military Area")] 
+		[XmlEnum("9")] 
 		MilitaryArea = 9,
 
 		[System.ComponentModel.Description("AnAreaAroundCertainWrecksOfHistoricalImportanceToProtectTheWrecksFromUnauthorizedInterferenceByDivingSalvageOrDepositionIncludingAnchoring")]
 		[EnumMember(Value = "Historic Wreck Area")] 
+		[XmlEnum("10")] 
 		HistoricWreckArea = 10,
 
 		[System.ComponentModel.Description("AnAreaAroundANavigationalAidWhichVesselsAreProhibitedFromEntering")]
 		[EnumMember(Value = "Navigational Aid Safety Zone")] 
+		[XmlEnum("12")] 
 		NavigationalAidSafetyZone = 12,
 
 		[System.ComponentModel.Description("AnAreaLaidAndMaintainedWithExplosiveMinesForDefenceOrPracticePurposes")]
 		[EnumMember(Value = "Minefield")] 
+		[XmlEnum("14")] 
 		Minefield = 14,
 
 		[System.ComponentModel.Description("AnAreaInWhichPeopleMaySwimAndThereforeVesselMovementMayBeRestricted")]
 		[EnumMember(Value = "Swimming Area")] 
+		[XmlEnum("18")] 
 		SwimmingArea = 18,
 
 		[System.ComponentModel.Description("AnAreaReservedForVesselsWaitingToEnterAHarbour")]
 		[EnumMember(Value = "Waiting Area")] 
+		[XmlEnum("19")] 
 		WaitingArea = 19,
 
 		[System.ComponentModel.Description("AnAreaWhereMarineResearchTakesPlace")]
 		[EnumMember(Value = "Research Area")] 
+		[XmlEnum("20")] 
 		ResearchArea = 20,
 
 		[System.ComponentModel.Description("AnAreaWhereDredgingIsTakingPlace")]
 		[EnumMember(Value = "Dredging Area")] 
+		[XmlEnum("21")] 
 		DredgingArea = 21,
 
 		[System.ComponentModel.Description("APlaceWhereFishIncludingShellfishAndCrustaceansAreProtected")]
 		[EnumMember(Value = "Fish Sanctuary")] 
+		[XmlEnum("22")] 
 		FishSanctuary = 22,
 
 		[System.ComponentModel.Description("ATractOfLandOrWaterManagedSoAsToPreserveTheRelationOfPlantsAndLivingCreaturesToEachOtherAndToTheirSurroundings")]
 		[EnumMember(Value = "Ecological Reserve")] 
+		[XmlEnum("23")] 
 		EcologicalReserve = 23,
 
 		[System.ComponentModel.Description("AnAreaInWhichAVesselsSpeedMustBeReducedInOrderToReduceTheSizeOfTheWakeItProduces")]
 		[EnumMember(Value = "No Wake Area")] 
+		[XmlEnum("24")] 
 		NoWakeArea = 24,
 
 		[System.ComponentModel.Description("AnAreaWhereVesselsTurn")]
 		[EnumMember(Value = "Swinging Area")] 
+		[XmlEnum("25")] 
 		SwingingArea = 25,
 
 		[System.ComponentModel.Description("AGenericTermWhichMayBeUsedToDescribeAWideRangeOfAreasConsideredSensitiveForAVarietyOfEnvironmentalReasons")]
 		[EnumMember(Value = "Environmentally Sensitive Sea Area")] 
+		[XmlEnum("27")] 
 		EnvironmentallySensitiveSeaArea = 27,
 
 		[System.ComponentModel.Description("AnAreaThatNeedsSpecialProtectionThroughActionByImoBecauseOfItsSignificanceForRegionalEcologicalSocioEconomicOrScientificReasonsAndBecauseItMayBeVulnerableToDamageByInternationalShippingActivities")]
 		[EnumMember(Value = "Particularly Sensitive Sea Area")] 
+		[XmlEnum("28")] 
 		ParticularlySensitiveSeaArea = 28,
 
 		[System.ComponentModel.Description("AnAreaNearAFairwayWhereVesselsCanGoToClearTheWayOrMakeAnAboutTurnAndPossiblyReturnToAWaitingAreaWhenNauticalConditionsImposeIt")]
 		[EnumMember(Value = "Disengagement Area")] 
+		[XmlEnum("29")] 
 		DisengagementArea = 29,
 
 		[System.ComponentModel.Description("AnAreaInWhichDefenceLawAndTreatyEnforcementAndCounterTerrorismActivitiesThatFallWithinThePortAndMaritimeDomainApply")]
 		[EnumMember(Value = "Port Security Area")] 
+		[XmlEnum("30")] 
 		PortSecurityArea = 30,
 
 		[System.ComponentModel.Description("APlaceWhereCoralIsProtected")]
 		[EnumMember(Value = "Coral Sanctuary")] 
+		[XmlEnum("31")] 
 		CoralSanctuary = 31,
 
 		[System.ComponentModel.Description("AnAreaWithinWhichRecreationalActivitiesRegularlyTakePlaceAndThereforeVesselMovementMayBeRestricted")]
 		[EnumMember(Value = "Recreation Area")] 
+		[XmlEnum("32")] 
 		RecreationArea = 32,
 	}
 
@@ -1874,26 +2233,32 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfRoad : int {
 		[System.ComponentModel.Description("ALimitedAccessDualCarriagewayRoadSpeciallyDesignedForFastLongDistanceTrafficAndSubjectToSpecialRegulationsConcerningItsUseItMayHaveMoreThanTwoLanes")]
 		[EnumMember(Value = "Motorway")] 
+		[XmlEnum("1")] 
 		Motorway = 1,
 
 		[System.ComponentModel.Description("AHardSurfacedMetalledRoadAMainThroughRoute")]
 		[EnumMember(Value = "Major Road")] 
+		[XmlEnum("2")] 
 		MajorRoad = 2,
 
 		[System.ComponentModel.Description("ASecondaryRoadForLocalTraffic")]
 		[EnumMember(Value = "Minor Road")] 
+		[XmlEnum("3")] 
 		MinorRoad = 3,
 
 		[System.ComponentModel.Description("TrackARoughPathOrWayFormedByUsePathAWayOrTrackLaidDownForWalkingOrMadeByContinualTreading")]
 		[EnumMember(Value = "Track/Path")] 
+		[XmlEnum("4")] 
 		TrackPath = 4,
 
 		[System.ComponentModel.Description("AMainRoadInAnUrbanAreaForThroughTraffic")]
 		[EnumMember(Value = "Major Street")] 
+		[XmlEnum("5")] 
 		MajorStreet = 5,
 
 		[System.ComponentModel.Description("ASecondaryRoadInAnUrbanAreaForLocalTraffic")]
 		[EnumMember(Value = "Minor Street")] 
+		[XmlEnum("6")] 
 		MinorStreet = 6,
 	}
 
@@ -1902,14 +2267,17 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfSchedule : int {
 		[System.ComponentModel.Description("TheServiceOfficeIsOpenFullyMannedAndOperatingNormallyOrTheAreaIsAccessibleAsUsual")]
 		[EnumMember(Value = "Normal Operation")] 
+		[XmlEnum("1")] 
 		NormalOperation = 1,
 
 		[System.ComponentModel.Description("TheServiceOfficeOrAreaIsClosed")]
 		[EnumMember(Value = "Closure")] 
+		[XmlEnum("2")] 
 		Closure = 2,
 
 		[System.ComponentModel.Description("TheServiceIsAvailableButNotManned")]
 		[EnumMember(Value = "Unmanned Operation")] 
+		[XmlEnum("3")] 
 		UnmannedOperation = 3,
 	}
 
@@ -1918,222 +2286,277 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfSeaArea : int {
 		[System.ComponentModel.Description("ANaturalOrArtificialPassageOrChannelThroughShoalsOrSteepBanksOrAcrossALineOfBanksLyingBetweenTwoChannels")]
 		[EnumMember(Value = "Gat")] 
+		[XmlEnum("2")] 
 		Gat = 2,
 
 		[System.ComponentModel.Description("AnElevationOfTheSeafloorAtDepthsGenerallyLessThan200MButSufficientForSafeSurfaceNavigationCommonlyFoundOnTheContinentalShelfOrNearAnIsland")]
 		[EnumMember(Value = "Bank")] 
+		[XmlEnum("3")] 
 		Bank = 3,
 
 		[System.ComponentModel.Description("InOceanographyAnObsoleteTermWhichWasGenerallyRestrictedToDepthsGreaterThan6000M")]
 		[EnumMember(Value = "Deep")] 
+		[XmlEnum("4")] 
 		Deep = 4,
 
 		[System.ComponentModel.Description("AWideIndentationInTheCoastlineGenerallySmallerThanAGulfAndLargerThanACoveForThePurposesOfTheUnitedNationsConventionOnTheLawOfTheSeaABayIsAWellMarkedIndentationWhosePenetrationIsInSuchProportionToTheWidthOfItsMouthAsToContainLandLockedWatersAndConstituteMoreThanAMereCurvatureOfTheCoast")]
 		[EnumMember(Value = "Bay")] 
+		[XmlEnum("5")] 
 		Bay = 5,
 
 		[System.ComponentModel.Description("ALongDeepAsymmetricalDepressionWithRelativelySteepSidesThatIsAssociatedWithSubduction")]
 		[EnumMember(Value = "Trench")] 
+		[XmlEnum("6")] 
 		Trench = 6,
 
 		[System.ComponentModel.Description("ADepressionOfTheSeafloorMoreOrLessEquidimensionalInPlanAndOfVariableExtent")]
 		[EnumMember(Value = "Basin")] 
+		[XmlEnum("7")] 
 		Basin = 7,
 
 		[System.ComponentModel.Description("ALevelTractOfLandAsTheBedOfADryLakeOrAnAreaFrequentlyUncoveredAtLowTideUsuallyInPlural")]
 		[EnumMember(Value = "Mud Flats")] 
+		[XmlEnum("8")] 
 		MudFlats = 8,
 
 		[System.ComponentModel.Description("AShallowElevationComposedOfConsolidatedMaterialThatMayConstituteAHazardToSurfaceNavigation")]
 		[EnumMember(Value = "Reef")] 
+		[XmlEnum("9")] 
 		Reef = 9,
 
 		[System.ComponentModel.Description("ARockyFormationContinuousWithAndFringingTheShore")]
 		[EnumMember(Value = "Ledge")] 
+		[XmlEnum("10")] 
 		Ledge = 10,
 
 		[System.ComponentModel.Description("AnElongatedNarrowSteepSidedDepressionThatGenerallyDeepensDownSlope")]
 		[EnumMember(Value = "Canyon")] 
+		[XmlEnum("11")] 
 		Canyon = 11,
 
 		[System.ComponentModel.Description("ANavigableNarrowPartOfABayStraitRiverEtc")]
 		[EnumMember(Value = "Narrows")] 
+		[XmlEnum("12")] 
 		Narrows = 12,
 
 		[System.ComponentModel.Description("AShallowElevationComposedOfUnconsolidatedMaterialThatMayConstituteAHazardToSurfaceNavigation")]
 		[EnumMember(Value = "Shoal")] 
+		[XmlEnum("13")] 
 		Shoal = 13,
 
 		[System.ComponentModel.Description("ADistinctElevationWithARoundedProfileLessThan1000mAboveTheSurroundingReliefAsMeasuredFromTheDeepestIsobathThatSurroundsMostOfTheFeature")]
 		[EnumMember(Value = "Knoll")] 
+		[XmlEnum("14")] 
 		Knoll = 14,
 
 		[System.ComponentModel.Description("AnElongatedElevationOfVaryingComplexityAndSizeGenerallyHavingSteepSides")]
 		[EnumMember(Value = "Ridge")] 
+		[XmlEnum("15")] 
 		Ridge = 15,
 
 		[System.ComponentModel.Description("ADistinctGenerallyEquidimensionalElevationGreaterThan1000mAboveTheSurroundingReliefAsMeasuredFromTheDeepestIsobathThatSurroundsMostOfTheFeature")]
 		[EnumMember(Value = "Seamount")] 
+		[XmlEnum("16")] 
 		Seamount = 16,
 
 		[System.ComponentModel.Description("AnyHighTowerOrSpireShapedPillarOrRockOrCoralAloneOrCrestingASummitItMayExtendAboveTheSurfaceOfTheWaterItMayOrMayNotBeAHazardToSurfaceNavigation")]
 		[EnumMember(Value = "Pinnacle")] 
+		[XmlEnum("17")] 
 		Pinnacle = 17,
 
 		[System.ComponentModel.Description("AnExtensiveFlatGentlySlopingOrNearlyLevelRegionAtAbyssalDepths")]
 		[EnumMember(Value = "Abyssal Plain")] 
+		[XmlEnum("18")] 
 		AbyssalPlain = 18,
 
 		[System.ComponentModel.Description("ALargeRelativelyFlatElevationThatIsHigherThanTheSurroundingReliefWithOneOrMoreRelativelySteepSides")]
 		[EnumMember(Value = "Plateau")] 
+		[XmlEnum("19")] 
 		Plateau = 19,
 
 		[System.ComponentModel.Description("ASubordinateRidgeProtrudingFromALargerFeature")]
 		[EnumMember(Value = "Spur")] 
+		[XmlEnum("20")] 
 		Spur = 20,
 
 		[System.ComponentModel.Description("TheFlatOrGentlySlopingRegionAdjacentToAContinentOrAroundAnIslandThatExtendsFromTheLowWaterLineToADepthGenerallyAbout200mWhereThereIsAMarkedIncreaseInDownwardSlope")]
 		[EnumMember(Value = "Shelf")] 
+		[XmlEnum("21")] 
 		Shelf = 21,
 
 		[System.ComponentModel.Description("ALongDepressionGenerallyWideAndFlatBottomedWithSymmetricalAndParallelSides")]
 		[EnumMember(Value = "Trough")] 
+		[XmlEnum("22")] 
 		Trough = 22,
 
 		[System.ComponentModel.Description("ABroadPassOrColInARidgeRiseOrOtherElevation")]
 		[EnumMember(Value = "Saddle")] 
+		[XmlEnum("23")] 
 		Saddle = 23,
 
 		[System.ComponentModel.Description("AnIsolatedSmallElevationOnTheDeepSeafloor")]
 		[EnumMember(Value = "Abyssal Hill")] 
+		[XmlEnum("24")] 
 		AbyssalHill = 24,
 
 		[System.ComponentModel.Description("AGentlyDippingSlopeWithASmoothSurfaceCommonlyFoundAroundGroupsOfIslandsAndSeamounts")]
 		[EnumMember(Value = "Apron")] 
+		[XmlEnum("25")] 
 		Apron = 25,
 
 		[System.ComponentModel.Description("AGentleSlopeWithAGenerallySmoothSurfaceOfTheSeafloorCharacteristicallyFoundAroundGroupsOfIslandsOrSeamounts")]
 		[EnumMember(Value = "Archipelagic Apron")] 
+		[XmlEnum("26")] 
 		ArchipelagicApron = 26,
 
 		[System.ComponentModel.Description("ARegionAdjacentToAContinentNormallyOccupiedByOrBorderingAShelfAndSometimesEmergingAsIslandsThatIsIrregularOrBlockyInPlanOrProfileWithDepthsWellInExcessOfThoseTypicalOfAShelf")]
 		[EnumMember(Value = "Borderland")] 
+		[XmlEnum("27")] 
 		Borderland = 27,
 
 		[System.ComponentModel.Description("TheZoneGenerallyConsistingOfShelfSlopeAndContinentalRiseSeparatingTheContinentFromTheDeepSeafloorOrAbyssalPlainOrPlainOccasionallyATrenchMayBePresentInPlaceOfAContinentalRise")]
 		[EnumMember(Value = "Continental Margin")] 
+		[XmlEnum("28")] 
 		ContinentalMargin = 28,
 
 		[System.ComponentModel.Description("AGentleSlopeRisingFromTheOceanicDepthsTowardsTheFootOfAContinentalSlope")]
 		[EnumMember(Value = "Continental Rise")] 
+		[XmlEnum("29")] 
 		ContinentalRise = 29,
 
 		[System.ComponentModel.Description("AnElongatedCharacteristicallyLinearSteepSlopeSeparatingHorizontalOrGentlySlopingAreasOfTheSeafloor")]
 		[EnumMember(Value = "Escarpment")] 
+		[XmlEnum("30")] 
 		Escarpment = 30,
 
 		[System.ComponentModel.Description("ARelativelySmoothDepositionalFeatureContinuouslyDeepeningAwayFromASedimentSourceCommonlyLocatedAtTheLowerTerminationOfACanyonOrCanyonSystem")]
 		[EnumMember(Value = "Fan")] 
+		[XmlEnum("31")] 
 		Fan = 31,
 
 		[System.ComponentModel.Description("ALongNarrowZoneOfIrregularTopographyFormedByTheMovementOfTectonicPlatesAssociatedWithAnOffsetOfASpreadingRidgeAxisCharacterizedBySteepSidedAndOrAsymmetricalRidgesTroughsOrEscarpments")]
 		[EnumMember(Value = "Fracture Zone")] 
+		[XmlEnum("32")] 
 		FractureZone = 32,
 
 		[System.ComponentModel.Description("ANarrowBreakInARidgeRiseOrOtherElevation")]
 		[EnumMember(Value = "Gap")] 
+		[XmlEnum("33")] 
 		Gap = 33,
 
 		[System.ComponentModel.Description("ASeamountHavingAComparativelySmoothFlatTop")]
 		[EnumMember(Value = "Guyot")] 
+		[XmlEnum("34")] 
 		Guyot = 34,
 
 		[System.ComponentModel.Description("ADistinctElevationGenerallyOfIrregularShapeLessThan1000mAboveTheSurroundingReliefAsMeasuredFromTheDeepestIsobathThatSurroundsMostOfTheFeature")]
 		[EnumMember(Value = "Hill")] 
+		[XmlEnum("35")] 
 		Hill = 35,
 
 		[System.ComponentModel.Description("ADepressionOfLimitedExtentWithAllSidesRisingSteeplyFromARelativelyFlatBottom")]
 		[EnumMember(Value = "Hole")] 
+		[XmlEnum("36")] 
 		Hole = 36,
 
 		[System.ComponentModel.Description("ADepositionalEmbankmentBorderingACanyonValleyOrSeaChannel")]
 		[EnumMember(Value = "Levee")] 
+		[XmlEnum("37")] 
 		Levee = 37,
 
 		[System.ComponentModel.Description("TheAxialDepressionOfTheMidOceanicRidgeSystem")]
 		[EnumMember(Value = "Median Valley")] 
+		[XmlEnum("38")] 
 		MedianValley = 38,
 
 		[System.ComponentModel.Description("AnAnnularOrPartiallyAnnularDepressionCommonlyLocatedAtTheBaseOfSeamountsIslandsAndOtherIsolatedElevations")]
 		[EnumMember(Value = "Moat")] 
+		[XmlEnum("39")] 
 		Moat = 39,
 
 		[System.ComponentModel.Description("ANaturalElevationOfTheEarthSSurfaceRisingMoreOrLessAbruptlyFromTheSurroundingLevelAndAttainingAnAltitudeWhichRelativelyToAdjacentElevationsIsImpressiveOrNotable")]
 		[EnumMember(Value = "Mountains")] 
+		[XmlEnum("40")] 
 		Mountains = 40,
 
 		[System.ComponentModel.Description("AConicalOrPointedElevationOnALargerFeatureSuchAsASeamount")]
 		[EnumMember(Value = "Peak")] 
+		[XmlEnum("41")] 
 		Peak = 41,
 
 		[System.ComponentModel.Description("AGeographicallyDistinctRegionWithANumberOfSharedPhysiographicCharacteristicsThatContrastWithThoseInTheSurroundingAreasThisTermShouldBeModifiedWithTheGenericTermThatBestDescribesTheMajorityOfFeaturesInTheRegionForExampleSeamountInBajaCaliforniaSeamountProvince")]
 		[EnumMember(Value = "Province")] 
+		[XmlEnum("42")] 
 		Province = 42,
 
 		[System.ComponentModel.Description("ABroadElevationThatGenerallyRisesGentlyAndSmoothlyFromTheSurroundingRelief")]
 		[EnumMember(Value = "Rise")] 
+		[XmlEnum("43")] 
 		Rise = 43,
 
 		[System.ComponentModel.Description("AnElongatedMeanderingDepressionUsuallyOccurringOnAGentlySlopingPlainOrFan")]
 		[EnumMember(Value = "Sea Channel")] 
+		[XmlEnum("44")] 
 		SeaChannel = 44,
 
 		[System.ComponentModel.Description("SeveralSeamountsInLinearOrArcuateAlignment")]
 		[EnumMember(Value = "Seamount Chain")] 
+		[XmlEnum("45")] 
 		SeamountChain = 45,
 
 		[System.ComponentModel.Description("TheLineAlongWhichThereIsAMarkedIncreaseInSlopeAtTheSeawardMarginOfAShelf")]
 		[EnumMember(Value = "Shelf-Edge")] 
+		[XmlEnum("46")] 
 		ShelfEdge = 46,
 
 		[System.ComponentModel.Description("ARelativelyShallowBarrierBetweenBasinsThatMayInhibitWaterMovement")]
 		[EnumMember(Value = "Sill")] 
+		[XmlEnum("47")] 
 		Sill = 47,
 
 		[System.ComponentModel.Description("TheSlopingRegionThatDeepensFromAShelfToThePointWhereThereIsAGeneralDecreaseInGradient")]
 		[EnumMember(Value = "Slope")] 
+		[XmlEnum("48")] 
 		Slope = 48,
 
 		[System.ComponentModel.Description("AFlatOrGentlySlopingRegionGenerallyLongAndNarrowBoundedAlongOneEdgeByASteeperDescendingSlopeAndAlongTheOtherByASteeperAscendingSlope")]
 		[EnumMember(Value = "Terrace")] 
+		[XmlEnum("49")] 
 		Terrace = 49,
 
 		[System.ComponentModel.Description("AnElongatedDepressionThatGenerallyWidensAndDeepensDownSlope")]
 		[EnumMember(Value = "Valley")] 
+		[XmlEnum("50")] 
 		Valley = 50,
 
 		[System.ComponentModel.Description("AnArtificialWaterwayWithNoFlowOrAControlledFlowUsedForNavigationOrForDrainingOrIrrigatingLandDitch")]
 		[EnumMember(Value = "Canal")] 
+		[XmlEnum("51")] 
 		Canal = 51,
 
 		[System.ComponentModel.Description("ALargeBodyOfWaterEntirelySurroundedByLand")]
 		[EnumMember(Value = "Lake")] 
+		[XmlEnum("52")] 
 		Lake = 52,
 
 		[System.ComponentModel.Description("ARelativelyLargeNaturalStreamOfWater")]
 		[EnumMember(Value = "River")] 
+		[XmlEnum("53")] 
 		River = 53,
 
 		[System.ComponentModel.Description("AStraightSectionOfARiverEspeciallyANavigableRiverBetweenTwoBendsOrAnArmOfTheSeaExtendingIntoTheLand")]
 		[EnumMember(Value = "Reach")] 
+		[XmlEnum("54")] 
 		Reach = 54,
 
 		[System.ComponentModel.Description("ALowFlatIslandOfSandCoralEtcAwashOrSubmergedAtHighWater")]
 		[EnumMember(Value = "Intertidal Cay")] 
+		[XmlEnum("55")] 
 		IntertidalCay = 55,
 
 		[System.ComponentModel.Description("ASeabedVolcanoSubmergedAtTheChartSoundingDatumWhichMayOrMayNotBeActive")]
 		[EnumMember(Value = "Submarine Volcano")] 
+		[XmlEnum("56")] 
 		SubmarineVolcano = 56,
 	}
 
@@ -2142,82 +2565,102 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfShorelineConstruction : int {
 		[System.ComponentModel.Description("AStructureProtectingAShoreAreaHarbourAnchorageOrBasinFromWaves")]
 		[EnumMember(Value = "Breakwater")] 
+		[XmlEnum("1")] 
 		Breakwater = 1,
 
 		[System.ComponentModel.Description("ALowArtificialWallLikeStructureOfDurableMaterialExtendingFromTheLandToSeawardForAParticularPurposeSuchAsToProtectTheCoastOrToForceACurrentToScourAChannel")]
 		[EnumMember(Value = "Groyne")] 
+		[XmlEnum("2")] 
 		Groyne = 2,
 
 		[System.ComponentModel.Description("AFormOfBreakwaterAlongsideWhichVesselsMayLieOnTheShelteredSideOnlyInSomeCasesItMayLieEntirelyWithinAnArtificialHarbourPermittingVesselsToLieAlongBothSides")]
 		[EnumMember(Value = "Mole")] 
+		[XmlEnum("3")] 
 		Mole = 3,
 
 		[System.ComponentModel.Description("ALongNarrowStructureExtendingIntoTheWaterToAffordABerthingPlaceForVesselsToServeAsAPromenadeEtc")]
 		[EnumMember(Value = "Pier (Jetty)")] 
+		[XmlEnum("4")] 
 		PierJetty = 4,
 
 		[System.ComponentModel.Description("APierBuiltOnlyForRecreationalPurposes")]
 		[EnumMember(Value = "Promenade Pier")] 
+		[XmlEnum("5")] 
 		PromenadePier = 5,
 
 		[System.ComponentModel.Description("AStructureServingAsABerthingPlaceForVessels")]
 		[EnumMember(Value = "Wharf")] 
+		[XmlEnum("6")] 
 		Wharf = 6,
 
 		[System.ComponentModel.Description("AWallOrBankOftenSubmergedBuiltToDirectOrConfineTheFlowOfARiverOrTidalCurrentOrToPromoteAScourAction")]
 		[EnumMember(Value = "Training Wall")] 
+		[XmlEnum("7")] 
 		TrainingWall = 7,
 
 		[System.ComponentModel.Description("ALayerOfBrokenRockCobblesBouldersOrFragmentsOfSufficientSizeToResistTheErosiveForcesOfFlowingWaterAndWaveAction")]
 		[EnumMember(Value = "Rip Rap")] 
+		[XmlEnum("8")] 
 		RipRap = 8,
 
 		[System.ComponentModel.Description("FacingOfStoneOrOtherMaterialEitherPermanentOrTemporaryPlacedAlongTheEdgeOfAStreamRiverOrCanalToStabilizeTheBankAndToProtectItFromTheErosiveActionOfTheStream")]
 		[EnumMember(Value = "Revetment")] 
+		[XmlEnum("9")] 
 		Revetment = 9,
 
 		[System.ComponentModel.Description("AnEmbankmentOrWallForProtectionAgainstWavesOrTidalActionAlongAShoreOrWaterFront")]
 		[EnumMember(Value = "Sea Wall")] 
+		[XmlEnum("10")] 
 		SeaWall = 10,
 
 		[System.ComponentModel.Description("StepsAtTheShorelineAsTheConnectionBetweenLandAndWaterOnDifferentLevels")]
 		[EnumMember(Value = "Landing Steps")] 
+		[XmlEnum("11")] 
 		LandingSteps = 11,
 
 		[System.ComponentModel.Description("ASlopingStructureWhichMayIncludeRailsThatCanEitherBeUsedAsALandingPlaceAtVariableWaterLevelsForSmallVesselsLandingShipsOrAFerryBoatOrForHaulingACradleCarryingAVessel")]
 		[EnumMember(Value = "Ramp")] 
+		[XmlEnum("12")] 
 		Ramp = 12,
 
 		[System.ComponentModel.Description("ThePreparedAndUsuallyReinforcedInclinedSurfaceOnWhichKeelAndBilgeBlocksAreLaidForSupportingAVesselUnderConstruction")]
 		[EnumMember(Value = "Slipway")] 
+		[XmlEnum("13")] 
 		Slipway = 13,
 
 		[System.ComponentModel.Description("AProtectiveStructureDesignedToCushionTheImpactOfAVesselAndPreventDamage")]
 		[EnumMember(Value = "Fender")] 
+		[XmlEnum("14")] 
 		Fender = 14,
 
 		[System.ComponentModel.Description("AWharfConsistingOfASolidWallOfConcreteMasonryWoodEtcSuchThatTheWaterCannotCirculateFreelyUnderTheWharfTheTypeOfConstructionAffectsShipHandlingForExampleASolidFaceWharfMayGiveShelterFromTidalStreamsButUnderCertainCircumstancesACushionOfWaterMayBuildUpBetweenSuchAWharfAndAShipAttemptingToBerthAtItCausingDifficultiesInShipHandling")]
 		[EnumMember(Value = "Solid Face Wharf")] 
+		[XmlEnum("15")] 
 		SolidFaceWharf = 15,
 
 		[System.ComponentModel.Description("AWharfSupportedOnPilesOrOtherStructuresWhichAllowFreeCirculationOfWaterUnderTheWharf")]
 		[EnumMember(Value = "Open Face Wharf")] 
+		[XmlEnum("16")] 
 		OpenFaceWharf = 16,
 
 		[System.ComponentModel.Description("AnInclinedPlaneUsedToDumpLogsIntoTheWaterForTransportOrToHaulLogsOutOfTheWaterForProcessing")]
 		[EnumMember(Value = "Log Ramp")] 
+		[XmlEnum("17")] 
 		LogRamp = 17,
 
 		[System.ComponentModel.Description("AnArtificialPoolOrSwimmingEnclosureEspeciallyOneInTheOpenAirWhichMayBeConstructedOfWireMeshOrHeavyNettingSupportedByCablesBuoysOrPilesForSwimmingIn")]
 		[EnumMember(Value = "Swimming Facility")] 
+		[XmlEnum("20")] 
 		SwimmingFacility = 20,
 
 		[System.ComponentModel.Description("AWharfApproximatelyParallelToTheShorelineAndAccommodatingShipsOnOneSideOnlyTheOtherSideBeingAttachedToTheShoreItIsUsuallyOfSolidConstructionAsContrastedWithTheOpenPileConstructionUsuallyUsedForPiers")]
 		[EnumMember(Value = "Quay")] 
+		[XmlEnum("22")] 
 		Quay = 22,
 
 		[System.ComponentModel.Description("ASectionOfWallDesignatedForTyingUpVesselsAwaitingTransitBollardsAndMooringDevicesAreAvailableForBothLargeAndSmallShips")]
 		[EnumMember(Value = "Tie-Up Wall")] 
+		[XmlEnum("23")] 
 		TieUpWall = 23,
 	}
 
@@ -2226,42 +2669,52 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfSignalStationTraffic : int {
 		[System.ComponentModel.Description("ASignalStationForTheControlOfVesselsWithinAPort")]
 		[EnumMember(Value = "Port Control")] 
+		[XmlEnum("1")] 
 		PortControl = 1,
 
 		[System.ComponentModel.Description("ASignalStationForTheControlOfVesselsEnteringOrLeavingAPort")]
 		[EnumMember(Value = "Port Entry and Departure")] 
+		[XmlEnum("2")] 
 		PortEntryAndDeparture = 2,
 
 		[System.ComponentModel.Description("ASignalStationDisplayingInternationalPortTrafficSignals")]
 		[EnumMember(Value = "International Port Traffic")] 
+		[XmlEnum("3")] 
 		InternationalPortTraffic = 3,
 
 		[System.ComponentModel.Description("ASignalStationForTheControlOfVesselsWhenBerthing")]
 		[EnumMember(Value = "Berthing Signal Station")] 
+		[XmlEnum("4")] 
 		BerthingSignalStation = 4,
 
 		[System.ComponentModel.Description("ASignalStationForTheControlOfVesselsEnteringOrLeavingADock")]
 		[EnumMember(Value = "Dock")] 
+		[XmlEnum("5")] 
 		Dock = 5,
 
 		[System.ComponentModel.Description("ASignalStationForTheControlOfVesselsEnteringOrLeavingALock")]
 		[EnumMember(Value = "Lock")] 
+		[XmlEnum("6")] 
 		Lock = 6,
 
 		[System.ComponentModel.Description("ASignalStationForTheControlOfVesselsWishingToPassThroughAFloodControlBarrage")]
 		[EnumMember(Value = "Flood Barrage Station")] 
+		[XmlEnum("7")] 
 		FloodBarrageStation = 7,
 
 		[System.ComponentModel.Description("ASignalStationForTheControlOfVesselsWishingToPassUnderABridge")]
 		[EnumMember(Value = "Bridge Passage")] 
+		[XmlEnum("8")] 
 		BridgePassage = 8,
 
 		[System.ComponentModel.Description("ASignalStationIndicatingWhenDredgingIsInProgress")]
 		[EnumMember(Value = "Dredging")] 
+		[XmlEnum("9")] 
 		Dredging = 9,
 
 		[System.ComponentModel.Description("VisualSignalLightsPlacedInAWaterwayToIndicateToShippingTheMovementsAuthorizedAtTheTimeAtWhichTheyAreShown")]
 		[EnumMember(Value = "Traffic Control Light")] 
+		[XmlEnum("10")] 
 		TrafficControlLight = 10,
 	}
 
@@ -2270,62 +2723,77 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfSignalStationWarning : int {
 		[System.ComponentModel.Description("ASignalOrMessageWarningOfThePresenceOfADangerToNavigation")]
 		[EnumMember(Value = "Danger")] 
+		[XmlEnum("1")] 
 		Danger = 1,
 
 		[System.ComponentModel.Description("ASignalOrMessageWarningOfThePresenceOfAMaritimeObstruction")]
 		[EnumMember(Value = "Maritime Obstruction")] 
+		[XmlEnum("2")] 
 		MaritimeObstruction = 2,
 
 		[System.ComponentModel.Description("ASignalOrMessageWarningOfThePresenceOfACable")]
 		[EnumMember(Value = "Cable")] 
+		[XmlEnum("3")] 
 		Cable = 3,
 
 		[System.ComponentModel.Description("ASignalOrMessageWarningOfActivityInAMilitaryPracticeArea")]
 		[EnumMember(Value = "Military Practice")] 
+		[XmlEnum("4")] 
 		MilitaryPractice = 4,
 
 		[System.ComponentModel.Description("AStationThatMayReceiveOrTransmitDistressSignals")]
 		[EnumMember(Value = "Distress")] 
+		[XmlEnum("5")] 
 		Distress = 5,
 
 		[System.ComponentModel.Description("AVisualSignalDisplayedToIndicateAWeatherForecast")]
 		[EnumMember(Value = "Weather")] 
+		[XmlEnum("6")] 
 		Weather = 6,
 
 		[System.ComponentModel.Description("ASignalOrMessageConveyingInformationAboutStormConditions")]
 		[EnumMember(Value = "Storm")] 
+		[XmlEnum("7")] 
 		Storm = 7,
 
 		[System.ComponentModel.Description("ASignalOrMessageConveyingInformationAboutIceConditions")]
 		[EnumMember(Value = "Ice Warning")] 
+		[XmlEnum("8")] 
 		IceWarning = 8,
 
 		[System.ComponentModel.Description("AnAccurateSignalMarkingASpecifiedTimeOrTimeIntervalItIsUsedPrimarilyForDeterminingErrorsOfTimepiecesSuchSignalsAreUsuallySentFromAnObservatoryByRadioButVisualSignalsAreUsedAtSomePorts")]
 		[EnumMember(Value = "Time")] 
+		[XmlEnum("9")] 
 		Time = 9,
 
 		[System.ComponentModel.Description("ASignalOrMessageConveyingInformationOnTidalConditionsInTheAreaInQuestion")]
 		[EnumMember(Value = "Tide")] 
+		[XmlEnum("10")] 
 		Tide = 10,
 
 		[System.ComponentModel.Description("ASignalOrMessageConveyingInformationOnConditionOfTidalCurrentsInTheAreaInQuestion")]
 		[EnumMember(Value = "Tidal Stream")] 
+		[XmlEnum("11")] 
 		TidalStream = 11,
 
 		[System.ComponentModel.Description("ADeviceForMeasuringTheHeightOfTideAGraduatedStaffInAShelteredAreaWhereVisualObservationsCanBeMadeOrItMayConsistOfAnElaborateRecordingInstrumentMakingAContinuousGraphicRecordOfTideHeightAgainstTimeSuchAnInstrumentIsUsuallyActuatedByAFloatInAPipeCommunicatingWithTheSeaThroughASmallHoleWhichFiltersOutShorterWaves")]
 		[EnumMember(Value = "Tide Gauge")] 
+		[XmlEnum("12")] 
 		TideGauge = 12,
 
 		[System.ComponentModel.Description("AVisualScaleWhichDirectlyShowsTheHeightOfTheWaterAboveChartDatumOrALocalDatum")]
 		[EnumMember(Value = "Tide Scale")] 
+		[XmlEnum("13")] 
 		TideScale = 13,
 
 		[System.ComponentModel.Description("ASignalOrMessageWarningOfDivingActivity")]
 		[EnumMember(Value = "Diving")] 
+		[XmlEnum("14")] 
 		Diving = 14,
 
 		[System.ComponentModel.Description("ADeviceForMeasuringAndConveyingInformationAboutTheWaterLevelNonTidalInTheAreaInQuestion")]
 		[EnumMember(Value = "Water Level Gauge")] 
+		[XmlEnum("15")] 
 		WaterLevelGauge = 15,
 	}
 
@@ -2334,18 +2802,22 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfSiloTank : int {
 		[System.ComponentModel.Description("ALargeStorageStructureUsedForStoringLooseMaterials")]
 		[EnumMember(Value = "Silo in General")] 
+		[XmlEnum("1")] 
 		SiloInGeneral = 1,
 
 		[System.ComponentModel.Description("AFixedStructureForStoringLiquids")]
 		[EnumMember(Value = "Tank in General")] 
+		[XmlEnum("2")] 
 		TankInGeneral = 2,
 
 		[System.ComponentModel.Description("AStorageBuildingForGrainUsuallyATallFrameMetalOrConcreteStructureWithAnEspeciallyCompartmentedInterior")]
 		[EnumMember(Value = "Grain Elevator")] 
+		[XmlEnum("3")] 
 		GrainElevator = 3,
 
 		[System.ComponentModel.Description("ATowerSupportingAnElevatedStorageTankOfWater")]
 		[EnumMember(Value = "Water Tower")] 
+		[XmlEnum("4")] 
 		WaterTower = 4,
 	}
 
@@ -2354,30 +2826,37 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfSlope : int {
 		[System.ComponentModel.Description("AnExcavationThroughHighGroundForARoadCanalEtc")]
 		[EnumMember(Value = "Cutting")] 
+		[XmlEnum("1")] 
 		Cutting = 1,
 
 		[System.ComponentModel.Description("AManMadeRaisedLongMoundOfEarthOrOtherMaterial")]
 		[EnumMember(Value = "Embankment")] 
+		[XmlEnum("2")] 
 		Embankment = 2,
 
 		[System.ComponentModel.Description("AMoundRidgeOrHillOfDriftedMaterialOnTheSeaCoastOrInADesert")]
 		[EnumMember(Value = "Dune")] 
+		[XmlEnum("3")] 
 		Dune = 3,
 
 		[System.ComponentModel.Description("ASmallIsolatedElevationSmallerThanAMountain")]
 		[EnumMember(Value = "Hill")] 
+		[XmlEnum("4")] 
 		Hill = 4,
 
 		[System.ComponentModel.Description("ADomeShapedHillFormedInAPermafrostAreaWhenTheHydrostaticPressureOfFreezingGroundWaterCausesTheUpheavalOfALayerOfFrozenGround")]
 		[EnumMember(Value = "Pingo")] 
+		[XmlEnum("5")] 
 		Pingo = 5,
 
 		[System.ComponentModel.Description("LandRisingAbruptlyForAConsiderableDistanceAboveTheWaterOrSurroundingLand")]
 		[EnumMember(Value = "Cliff")] 
+		[XmlEnum("6")] 
 		Cliff = 6,
 
 		[System.ComponentModel.Description("AMassOfDetritusFormingAPrecipitousStrongSlopeUponAMountainSideAlsoTheMaterialComposingSuchASlope")]
 		[EnumMember(Value = "Scree")] 
+		[XmlEnum("7")] 
 		Scree = 7,
 	}
 
@@ -2386,130 +2865,162 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfSmallCraftFacility : int {
 		[System.ComponentModel.Description("ABerthSetAsideForTheUseOfVisitingVessels")]
 		[EnumMember(Value = "Visitors Berth")] 
+		[XmlEnum("1")] 
 		VisitorsBerth = 1,
 
 		[System.ComponentModel.Description("AClubForMarinersGenerallyAssociatedWithOtherSmallCraftFacilities")]
 		[EnumMember(Value = "Nautical Club")] 
+		[XmlEnum("2")] 
 		NauticalClub = 2,
 
 		[System.ComponentModel.Description("AHoistForLiftingBoatsOutOfTheWater")]
 		[EnumMember(Value = "Boat Hoist")] 
+		[XmlEnum("3")] 
 		BoatHoist = 3,
 
 		[System.ComponentModel.Description("APlaceWhereSailsAreMadeOrMayBeTakenForRepair")]
 		[EnumMember(Value = "Sailmaker")] 
+		[XmlEnum("4")] 
 		Sailmaker = 4,
 
 		[System.ComponentModel.Description("APlaceOnShoreWhereBoatsMayBeBuiltStoredAndRepaired")]
 		[EnumMember(Value = "Boatyard")] 
+		[XmlEnum("5")] 
 		Boatyard = 5,
 
 		[System.ComponentModel.Description("APublicHouseProvidingFoodDrinkAndAccommodation")]
 		[EnumMember(Value = "Public Inn")] 
+		[XmlEnum("6")] 
 		PublicInn = 6,
 
 		[System.ComponentModel.Description("ACommercialEstablishmentServingFood")]
 		[EnumMember(Value = "Restaurant")] 
+		[XmlEnum("7")] 
 		Restaurant = 7,
 
 		[System.ComponentModel.Description("ADealerInShipsSupplies")]
 		[EnumMember(Value = "Chandler")] 
+		[XmlEnum("8")] 
 		Chandler = 8,
 
 		[System.ComponentModel.Description("APlaceWhereFoodAndOtherSuchSuppliesAreAvailable")]
 		[EnumMember(Value = "Provisions")] 
+		[XmlEnum("9")] 
 		Provisions = 9,
 
 		[System.ComponentModel.Description("APlaceWhereADoctorIsAvailableToProvideMedicalAttention")]
 		[EnumMember(Value = "Doctor")] 
+		[XmlEnum("10")] 
 		Doctor = 10,
 
 		[System.ComponentModel.Description("APlaceWhereMedicalDrugsAreDispensed")]
 		[EnumMember(Value = "Pharmacy")] 
+		[XmlEnum("11")] 
 		Pharmacy = 11,
 
 		[System.ComponentModel.Description("APlaceWhereFreshWaterIsAvailable")]
 		[EnumMember(Value = "Water Tap")] 
+		[XmlEnum("12")] 
 		WaterTap = 12,
 
 		[System.ComponentModel.Description("APlaceWhereFuelIsAvailable")]
 		[EnumMember(Value = "Fuel Station")] 
+		[XmlEnum("13")] 
 		FuelStation = 13,
 
 		[System.ComponentModel.Description("APlaceWhereAConnectionToAnElectricalSupplyIsAvailable")]
 		[EnumMember(Value = "Electricity Outlet")] 
+		[XmlEnum("14")] 
 		ElectricityOutlet = 14,
 
 		[System.ComponentModel.Description("APlaceWhereBottledGasIsAvailable")]
 		[EnumMember(Value = "Bottle Gas")] 
+		[XmlEnum("15")] 
 		BottleGas = 15,
 
 		[System.ComponentModel.Description("APlaceWhereShowersAreAvailable")]
 		[EnumMember(Value = "Showers")] 
+		[XmlEnum("16")] 
 		Showers = 16,
 
 		[System.ComponentModel.Description("APlaceWhereThereAreFacilitiesForWashingClothes")]
 		[EnumMember(Value = "Launderette")] 
+		[XmlEnum("17")] 
 		Launderette = 17,
 
 		[System.ComponentModel.Description("APlaceWhereToiletsAreAvailableForPublicUse")]
 		[EnumMember(Value = "Public Toilets")] 
+		[XmlEnum("18")] 
 		PublicToilets = 18,
 
 		[System.ComponentModel.Description("APlaceWhereMailMayBePosted")]
 		[EnumMember(Value = "Post Box")] 
+		[XmlEnum("19")] 
 		PostBox = 19,
 
 		[System.ComponentModel.Description("APlaceWhereATelephoneIsAvailableForPublicUse")]
 		[EnumMember(Value = "Public Telephone")] 
+		[XmlEnum("20")] 
 		PublicTelephone = 20,
 
 		[System.ComponentModel.Description("APlaceWhereRefuseMayBeDumped")]
 		[EnumMember(Value = "Refuse Bin")] 
+		[XmlEnum("21")] 
 		RefuseBin = 21,
 
 		[System.ComponentModel.Description("APlaceWhereCarsMayBeParked")]
 		[EnumMember(Value = "Car Park")] 
+		[XmlEnum("22")] 
 		CarPark = 22,
 
 		[System.ComponentModel.Description("APlaceOnShoreWhereBoatsAndOrTrailersMayBeParked")]
 		[EnumMember(Value = "Parking for Boats and Trailers")] 
+		[XmlEnum("23")] 
 		ParkingForBoatsAndTrailers = 23,
 
 		[System.ComponentModel.Description("APlaceWhereCaravansMayBeParkedOrWhereCaravanAccommodationIsProvided")]
 		[EnumMember(Value = "Caravan Site")] 
+		[XmlEnum("24")] 
 		CaravanSite = 24,
 
 		[System.ComponentModel.Description("APlaceWhereVisitorsMayPitchTentsAndCamp")]
 		[EnumMember(Value = "Camping Site")] 
+		[XmlEnum("25")] 
 		CampingSite = 25,
 
 		[System.ComponentModel.Description("APlaceWhereSewageMayBePumpedOffAVessel")]
 		[EnumMember(Value = "Sewage Pump-Out Station")] 
+		[XmlEnum("26")] 
 		SewagePumpOutStation = 26,
 
 		[System.ComponentModel.Description("APlaceWhereATelephoneIsAvailableForEmergencyUseOnly")]
 		[EnumMember(Value = "Emergency Telephone")] 
+		[XmlEnum("27")] 
 		EmergencyTelephone = 27,
 
 		[System.ComponentModel.Description("APlaceWhereBoatsMayBeLandedOrLaunched")]
 		[EnumMember(Value = "Landing/Launching Place for Boats")] 
+		[XmlEnum("28")] 
 		LandingLaunchingPlaceForBoats = 28,
 
 		[System.ComponentModel.Description("APlaceWhereVesselsMayBerthForThePurposeOfCareening")]
 		[EnumMember(Value = "Scrubbing Berth")] 
+		[XmlEnum("30")] 
 		ScrubbingBerth = 30,
 
 		[System.ComponentModel.Description("APlaceWherePeopleMayGoToEatAPicnic")]
 		[EnumMember(Value = "Picnic Area")] 
+		[XmlEnum("31")] 
 		PicnicArea = 31,
 
 		[System.ComponentModel.Description("APlaceWhereMechanicalRepairsCanBeUndertakenToEnginesOrOtherVesselEquipment")]
 		[EnumMember(Value = "Mechanics Workshop")] 
+		[XmlEnum("32")] 
 		MechanicsWorkshop = 32,
 
 		[System.ComponentModel.Description("APlaceWhereAVesselIsPatrolledByASecurityServiceOrStoredInASecureLockup")]
 		[EnumMember(Value = "Guard and/or Security Service")] 
+		[XmlEnum("33")] 
 		GuardAndOrSecurityService = 33,
 	}
 
@@ -2518,246 +3029,307 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfSpecialPurposeMark : int {
 		[System.ComponentModel.Description("AMarkUsedToIndicateAFiringDangerAreaUsuallyAtSea")]
 		[EnumMember(Value = "Firing Danger Mark")] 
+		[XmlEnum("1")] 
 		FiringDangerMark = 1,
 
 		[System.ComponentModel.Description("AnyObjectTowardWhichSomethingIsDirectedTheDistinctiveMarkingOrInstrumentationOfAGroundPointToAidItsIdentificationOnAPhotograph")]
 		[EnumMember(Value = "Target Mark")] 
+		[XmlEnum("2")] 
 		TargetMark = 2,
 
 		[System.ComponentModel.Description("AMarkMarkingThePositionOfAShipWhichIsUsedAsATargetDuringSomeMilitaryExercise")]
 		[EnumMember(Value = "Marker Ship Mark")] 
+		[XmlEnum("3")] 
 		MarkerShipMark = 3,
 
 		[System.ComponentModel.Description("AMarkUsedToIndicateADegaussingRange")]
 		[EnumMember(Value = "Degaussing Range Mark")] 
+		[XmlEnum("4")] 
 		DegaussingRangeMark = 4,
 
 		[System.ComponentModel.Description("AMarkOfRelevanceToBarges")]
 		[EnumMember(Value = "Barge Mark")] 
+		[XmlEnum("5")] 
 		BargeMark = 5,
 
 		[System.ComponentModel.Description("AMarkUsedToIndicateThePositionOfSubmarineCablesOrThePointAtWhichTheyRunOnToTheLand")]
 		[EnumMember(Value = "Cable Mark")] 
+		[XmlEnum("6")] 
 		CableMark = 6,
 
 		[System.ComponentModel.Description("AMarkUsedToIndicateTheLimitOfASpoilGround")]
 		[EnumMember(Value = "Spoil Ground Mark")] 
+		[XmlEnum("7")] 
 		SpoilGroundMark = 7,
 
 		[System.ComponentModel.Description("AMarkUsedToIndicateThePositionOfAnOutfallOrThePointAtWhichItLeavesTheLand")]
 		[EnumMember(Value = "Outfall Mark")] 
+		[XmlEnum("8")] 
 		OutfallMark = 8,
 
 		[System.ComponentModel.Description("OceanDataAcquisitionSystem")]
 		[EnumMember(Value = "ODAS")] 
+		[XmlEnum("9")] 
 		Odas = 9,
 
 		[System.ComponentModel.Description("AMarkUsedToRecordDataForScientificPurposes")]
 		[EnumMember(Value = "Recording Mark")] 
+		[XmlEnum("10")] 
 		RecordingMark = 10,
 
 		[System.ComponentModel.Description("AMarkUsedToIndicateASeaplaneAnchorage")]
 		[EnumMember(Value = "Seaplane Anchorage Mark")] 
+		[XmlEnum("11")] 
 		SeaplaneAnchorageMark = 11,
 
 		[System.ComponentModel.Description("AMarkUsedToIndicateARecreationZone")]
 		[EnumMember(Value = "Recreation Zone Mark")] 
+		[XmlEnum("12")] 
 		RecreationZoneMark = 12,
 
 		[System.ComponentModel.Description("AMarkIndicatingAMooringOrMoorings")]
 		[EnumMember(Value = "Mooring Mark")] 
+		[XmlEnum("14")] 
 		MooringMark = 14,
 
 		[System.ComponentModel.Description("ALargeBuoyDesignedToTakeThePlaceOfALightshipWhereConstructionOfAnOffshoreLightStationIsNotFeasible")]
 		[EnumMember(Value = "LANBY")] 
+		[XmlEnum("15")] 
 		Lanby = 15,
 
 		[System.ComponentModel.Description("AidsToNavigationOrOtherIndicatorsSoLocatedAsToIndicateThePathToBeFollowedLeadingMarksIdentifyALeadingLineWhenTheyAreInTransit")]
 		[EnumMember(Value = "Leading Mark")] 
+		[XmlEnum("16")] 
 		LeadingMark = 16,
 
 		[System.ComponentModel.Description("AMarkFormingPartOfATransitIndicatingOneEndOfAMeasuredDistance")]
 		[EnumMember(Value = "Measured Distance Mark")] 
+		[XmlEnum("17")] 
 		MeasuredDistanceMark = 17,
 
 		[System.ComponentModel.Description("ANoticeBoardOrSignIndicatingInformationToTheMariner")]
 		[EnumMember(Value = "Notice Mark")] 
+		[XmlEnum("18")] 
 		NoticeMark = 18,
 
 		[System.ComponentModel.Description("AMarkIndicatingATrafficSeparationScheme")]
 		[EnumMember(Value = "TSS Mark")] 
+		[XmlEnum("19")] 
 		TssMark = 19,
 
 		[System.ComponentModel.Description("AMarkIndicatingAnAnchoringProhibitedArea")]
 		[EnumMember(Value = "Anchoring Prohibited Mark")] 
+		[XmlEnum("20")] 
 		AnchoringProhibitedMark = 20,
 
 		[System.ComponentModel.Description("AMarkIndicatingThatBerthingIsProhibited")]
 		[EnumMember(Value = "Berthing Prohibited Mark")] 
+		[XmlEnum("21")] 
 		BerthingProhibitedMark = 21,
 
 		[System.ComponentModel.Description("AMarkIndicatingThatOvertakingIsProhibited")]
 		[EnumMember(Value = "Overtaking Prohibited Mark")] 
+		[XmlEnum("22")] 
 		OvertakingProhibitedMark = 22,
 
 		[System.ComponentModel.Description("AMarkIndicatingAOneWayRoute")]
 		[EnumMember(Value = "Two-Way Traffic Prohibited Mark")] 
+		[XmlEnum("23")] 
 		TwoWayTrafficProhibitedMark = 23,
 
 		[System.ComponentModel.Description("AMarkIndicatingThatVesselsMustNotGenerateExcessiveWake")]
 		[EnumMember(Value = "Reduced Wake Mark")] 
+		[XmlEnum("24")] 
 		ReducedWakeMark = 24,
 
 		[System.ComponentModel.Description("AMarkIndicatingThatASpeedLimitApplies")]
 		[EnumMember(Value = "Speed Limit Mark")] 
+		[XmlEnum("25")] 
 		SpeedLimitMark = 25,
 
 		[System.ComponentModel.Description("AMarkIndicatingThePlaceWhereTheBowOfAShipMustStopWhenTrafficLightsShowRed")]
 		[EnumMember(Value = "Stop Mark")] 
+		[XmlEnum("26")] 
 		StopMark = 26,
 
 		[System.ComponentModel.Description("AMarkIndicatingThatSpecialCautionMustBeExercisedInTheVicinityOfTheMark")]
 		[EnumMember(Value = "General Warning Mark")] 
+		[XmlEnum("27")] 
 		GeneralWarningMark = 27,
 
 		[System.ComponentModel.Description("AMarkIndicatingThatAShipShouldSoundItsSirenOrHorn")]
 		[EnumMember(Value = "Sound Ship's Siren Mark")] 
+		[XmlEnum("28")] 
 		SoundShipSSirenMark = 28,
 
 		[System.ComponentModel.Description("AMarkIndicatingTheMinimumVerticalSpaceAvailableForPassage")]
 		[EnumMember(Value = "Restricted Vertical Clearance Mark")] 
+		[XmlEnum("29")] 
 		RestrictedVerticalClearanceMark = 29,
 
 		[System.ComponentModel.Description("AMarkIndicatingTheMaximumDraughtOfVesselPermitted")]
 		[EnumMember(Value = "Maximum Vessel's Draught Mark")] 
+		[XmlEnum("30")] 
 		MaximumVesselSDraughtMark = 30,
 
 		[System.ComponentModel.Description("AMarkIndicatingTheMinimumHorizontalSpaceAvailableForPassage")]
 		[EnumMember(Value = "Restricted Horizontal Clearance Mark")] 
+		[XmlEnum("31")] 
 		RestrictedHorizontalClearanceMark = 31,
 
 		[System.ComponentModel.Description("AMarkWarningOfStrongCurrents")]
 		[EnumMember(Value = "Strong Current Warning Mark")] 
+		[XmlEnum("32")] 
 		StrongCurrentWarningMark = 32,
 
 		[System.ComponentModel.Description("AMarkIndicatingThatBerthingIsAllowed")]
 		[EnumMember(Value = "Berthing Permitted Mark")] 
+		[XmlEnum("33")] 
 		BerthingPermittedMark = 33,
 
 		[System.ComponentModel.Description("AMarkIndicatingAnOverheadPowerCable")]
 		[EnumMember(Value = "Overhead Power Cable Mark")] 
+		[XmlEnum("34")] 
 		OverheadPowerCableMark = 34,
 
 		[System.ComponentModel.Description("AMarkIndicatingTheGradientOfTheSlopeOfADredgeChannelEdge")]
 		[EnumMember(Value = "Channel Edge Gradient Mark")] 
+		[XmlEnum("35")] 
 		ChannelEdgeGradientMark = 35,
 
 		[System.ComponentModel.Description("AMarkIndicatingThePresenceOfATelephone")]
 		[EnumMember(Value = "Telephone Mark")] 
+		[XmlEnum("36")] 
 		TelephoneMark = 36,
 
 		[System.ComponentModel.Description("AMarkIndicatingThatAFerryRouteCrossesTheShipRouteOftenUsedWithASoundShipSSirenMark")]
 		[EnumMember(Value = "Ferry Crossing Mark")] 
+		[XmlEnum("37")] 
 		FerryCrossingMark = 37,
 
 		[System.ComponentModel.Description("AMarkUsedToIndicateThePositionOfSubmarinePipelinesOrThePointAtWhichTheyRunOnToTheLand")]
 		[EnumMember(Value = "Pipeline Mark")] 
+		[XmlEnum("39")] 
 		PipelineMark = 39,
 
 		[System.ComponentModel.Description("AMarkIndicatingAnAnchorageArea")]
 		[EnumMember(Value = "Anchorage Mark")] 
+		[XmlEnum("40")] 
 		AnchorageMark = 40,
 
 		[System.ComponentModel.Description("AMarkUsedToIndicateAClearingLine")]
 		[EnumMember(Value = "Clearing Mark")] 
+		[XmlEnum("41")] 
 		ClearingMark = 41,
 
 		[System.ComponentModel.Description("AMarkIndicatingTheLocationAtWhichARestrictionOrRequirementExists")]
 		[EnumMember(Value = "Control Mark")] 
+		[XmlEnum("42")] 
 		ControlMark = 42,
 
 		[System.ComponentModel.Description("AMarkIndicatingThatDivingMayTakePlaceInTheVicinity")]
 		[EnumMember(Value = "Diving Mark")] 
+		[XmlEnum("43")] 
 		DivingMark = 43,
 
 		[System.ComponentModel.Description("AMarkProvidingOrIndicatingAPlaceOfSafety")]
 		[EnumMember(Value = "Refuge Beacon")] 
+		[XmlEnum("44")] 
 		RefugeBeacon = 44,
 
 		[System.ComponentModel.Description("AMarkIndicatingAFoulGround")]
 		[EnumMember(Value = "Foul Ground Mark")] 
+		[XmlEnum("45")] 
 		FoulGroundMark = 45,
 
 		[System.ComponentModel.Description("AMarkInstalledForUseByYachtsmen")]
 		[EnumMember(Value = "Yachting Mark")] 
+		[XmlEnum("46")] 
 		YachtingMark = 46,
 
 		[System.ComponentModel.Description("AMarkIndicatingAnAreaWhereHelicoptersMayLand")]
 		[EnumMember(Value = "Heliport Mark")] 
+		[XmlEnum("47")] 
 		HeliportMark = 47,
 
 		[System.ComponentModel.Description("AMarkIndicatingALocationAtWhichAGnssPositionHasBeenAccuratelyDetermined")]
 		[EnumMember(Value = "GNSS Mark")] 
+		[XmlEnum("48")] 
 		GnssMark = 48,
 
 		[System.ComponentModel.Description("AMarkIndicatingAnAreaWhereSeaplanesLand")]
 		[EnumMember(Value = "Seaplane Landing Mark")] 
+		[XmlEnum("49")] 
 		SeaplaneLandingMark = 49,
 
 		[System.ComponentModel.Description("AMarkIndicatingThatEntryIsProhibited")]
 		[EnumMember(Value = "Entry Prohibited Mark")] 
+		[XmlEnum("50")] 
 		EntryProhibitedMark = 50,
 
 		[System.ComponentModel.Description("AMarkIndicatingThatWorkGenerallyConstructionIsInProgress")]
 		[EnumMember(Value = "Work in Progress Mark")] 
+		[XmlEnum("51")] 
 		WorkInProgressMark = 51,
 
 		[System.ComponentModel.Description("AMarkWhoseDetailedCharacteristicsAreUnknown")]
 		[EnumMember(Value = "Mark With Unknown Purpose")] 
+		[XmlEnum("52")] 
 		MarkWithUnknownPurpose = 52,
 
 		[System.ComponentModel.Description("AMarkIndicatingABoreholeThatProducesOrIsCapableOfProducingOilOrNaturalGas")]
 		[EnumMember(Value = "Wellhead Mark")] 
+		[XmlEnum("53")] 
 		WellheadMark = 53,
 
 		[System.ComponentModel.Description("AMarkIndicatingThePointAtWhichAChannelDividesSeparatelyIntoTwoChannels")]
 		[EnumMember(Value = "Channel Separation Mark")] 
+		[XmlEnum("54")] 
 		ChannelSeparationMark = 54,
 
 		[System.ComponentModel.Description("AMarkIndicatingTheExistenceOfAFishMusselOysterOrPearlFarmCulture")]
 		[EnumMember(Value = "Marine Farm Mark")] 
+		[XmlEnum("55")] 
 		MarineFarmMark = 55,
 
 		[System.ComponentModel.Description("AMarkIndicatingTheExistenceOrTheExtentOfAnArtificialReef")]
 		[EnumMember(Value = "Artificial Reef Mark")] 
+		[XmlEnum("56")] 
 		ArtificialReefMark = 56,
 
 		[System.ComponentModel.Description("AMarkUsedYearRoundThatMayBeSubmergedWhenIcePassesThroughTheArea")]
 		[EnumMember(Value = "Ice Mark")] 
+		[XmlEnum("57")] 
 		IceMark = 57,
 
 		[System.ComponentModel.Description("AMarkUsedToDefineTheBoundaryOfANatureReserve")]
 		[EnumMember(Value = "Nature Reserve Mark")] 
+		[XmlEnum("58")] 
 		NatureReserveMark = 58,
 
 		[System.ComponentModel.Description("AFishAggregatingOrAggregationDeviceFadIsAManMadeObjectUsedToAttractOceanGoingPelagicFishSuchAsMarlinTunaAndMahiMahiDolphinFishTheyUsuallyConsistOfBuoysOrFloatsTetheredToTheOceanFloorWithConcreteBlocksOrAdrift")]
 		[EnumMember(Value = "Fish Aggregating Device")] 
+		[XmlEnum("59")] 
 		FishAggregatingDevice = 59,
 
 		[System.ComponentModel.Description("AMarkUsedToIndicateTheExistenceOfAWreck")]
 		[EnumMember(Value = "Wreck Mark")] 
+		[XmlEnum("60")] 
 		WreckMark = 60,
 
 		[System.ComponentModel.Description("AMarkUsedToIndicateTheExistenceOfACustomsCheckpoint")]
 		[EnumMember(Value = "Customs Mark")] 
+		[XmlEnum("61")] 
 		CustomsMark = 61,
 
 		[System.ComponentModel.Description("AMarkUsedToIndicateTheExistenceOfACauseway")]
 		[EnumMember(Value = "Causeway Mark")] 
+		[XmlEnum("62")] 
 		CausewayMark = 62,
 
 		[System.ComponentModel.Description("ASurfaceFollowingBuoyUsedToMeasureWaveActivity")]
 		[EnumMember(Value = "Wave Recorder")] 
+		[XmlEnum("63")] 
 		WaveRecorder = 63,
 	}
 
@@ -2766,26 +3338,32 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfTemporalVariation : int {
 		[System.ComponentModel.Description("IndicationOfThePossibleImpactOfASignificantEventForExampleHurricaneEarthquakeVolcanicEruptionLandslideEtcWhichIsConsideredLikelyToHaveChangedTheSeafloorOrLandscapeSignificantly")]
 		[EnumMember(Value = "Extreme Event")] 
+		[XmlEnum("1")] 
 		ExtremeEvent = 1,
 
 		[System.ComponentModel.Description("ContinuousOrFrequentChangeForExampleRiverSiltationSandWavesSeasonalStormsIcebergsEtcThatIsLikelyToResultInNewSignificantShoaling")]
 		[EnumMember(Value = "Likely to Change and Significant Shoaling Expected")] 
+		[XmlEnum("2")] 
 		LikelyToChangeAndSignificantShoalingExpected = 2,
 
 		[System.ComponentModel.Description("ContinuousOrFrequentChangeForExampleSandWaveShiftSeasonalStormsIcebergsEtcThatIsNotLikelyToResultInNewSignificantShoaling")]
 		[EnumMember(Value = "Likely to Change But Significant Shoaling Not Expected")] 
+		[XmlEnum("3")] 
 		LikelyToChangeButSignificantShoalingNotExpected = 3,
 
 		[System.ComponentModel.Description("ContinuousOrFrequentChangeToNonBathymetricFeaturesForExampleRiverSiltationGlacierCreepRecessionSandDunesBuoysMarineFarmsEtc")]
 		[EnumMember(Value = "Likely to Change")] 
+		[XmlEnum("4")] 
 		LikelyToChange = 4,
 
 		[System.ComponentModel.Description("SignificantChangeToTheSeafloorIsNotExpected")]
 		[EnumMember(Value = "Unlikely to Change")] 
+		[XmlEnum("5")] 
 		UnlikelyToChange = 5,
 
 		[System.ComponentModel.Description("NotHavingBeenAssessed")]
 		[EnumMember(Value = "Unassessed")] 
+		[XmlEnum("6")] 
 		Unassessed = 6,
 	}
 
@@ -2794,22 +3372,27 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfStructure : int {
 		[System.ComponentModel.Description("ABuildingOrShedUsuallyBuiltPartlyOverWaterForShelteringABoatOrBoats")]
 		[EnumMember(Value = "Boathouse")] 
+		[XmlEnum("1")] 
 		Boathouse = 1,
 
 		[System.ComponentModel.Description("ACoveredOrPartiallyCoveredTerminalForTheHandlingOfBulkMaterialsSuchAsIronOreCoalEtc")]
 		[EnumMember(Value = "Covered Bulk Terminal")] 
+		[XmlEnum("2")] 
 		CoveredBulkTerminal = 2,
 
 		[System.ComponentModel.Description("ACoveredOrPartiallyCoveredStructureServingAsABerthingPlaceForVessels")]
 		[EnumMember(Value = "Covered Wharf")] 
+		[XmlEnum("3")] 
 		CoveredWharf = 3,
 
 		[System.ComponentModel.Description("ACoveredOrPartiallyCoveredTerminalWithinWhichTheFloatingEquipmentDredgesTugsOfHarbourServicesAreBerthedAndServiced")]
 		[EnumMember(Value = "Covered Service Terminal")] 
+		[XmlEnum("4")] 
 		CoveredServiceTerminal = 4,
 
 		[System.ComponentModel.Description("ACoveredOrPartiallyCoveredTerminalForTheLoadingAndUnloadingOfPassengers")]
 		[EnumMember(Value = "Covered Passenger Terminal")] 
+		[XmlEnum("5")] 
 		CoveredPassengerTerminal = 5,
 	}
 
@@ -2818,14 +3401,17 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfTidalStream : int {
 		[System.ComponentModel.Description("TheHorizontalMovementOfWaterAssociatedWithTheRisingTideFloodStreamsGenerallySetTowardsTheShoreOrInTheDirectionOfTheTideProgression")]
 		[EnumMember(Value = "Flood Stream")] 
+		[XmlEnum("1")] 
 		FloodStream = 1,
 
 		[System.ComponentModel.Description("TheHorizontalMovementOfWaterAssociatedWithFallingTideEbbStreamsGenerallySetSeawardOrInTheOppositeDirectionToTheTideProgression")]
 		[EnumMember(Value = "Ebb Stream")] 
+		[XmlEnum("2")] 
 		EbbStream = 2,
 
 		[System.ComponentModel.Description("AnyOtherHorizontalMovementOfWaterAssociatedWithTidesForExampleRotaryFlow")]
 		[EnumMember(Value = "Other Tidal Flow")] 
+		[XmlEnum("3")] 
 		OtherTidalFlow = 3,
 	}
 
@@ -2834,58 +3420,72 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfVegetation : int {
 		[System.ComponentModel.Description("AShrubOrClumpOfShrubsWithStemsOfModerateLength")]
 		[EnumMember(Value = "Bush")] 
+		[XmlEnum("3")] 
 		Bush = 3,
 
 		[System.ComponentModel.Description("AWoodWithTreesThatShedTheirLeavesAnnually")]
 		[EnumMember(Value = "Deciduous Wood")] 
+		[XmlEnum("4")] 
 		DeciduousWood = 4,
 
 		[System.ComponentModel.Description("AWoodWithEvergreenTreesOfAGroupUsuallyBearingConesIncludingYewsCedarsAndRedwoods")]
 		[EnumMember(Value = "Coniferous Wood")] 
+		[XmlEnum("5")] 
 		ConiferousWood = 5,
 
 		[System.ComponentModel.Description("GrowingTreesDenselyOccupyingATractOfLand")]
 		[EnumMember(Value = "Wood in General (inc Mixed Wood)")] 
+		[XmlEnum("6")] 
 		WoodInGeneralIncMixedWood = 6,
 
 		[System.ComponentModel.Description("AnyOfVariousWaterOrMarshPlantsWithAFirmStemConciseOxfordEnglishDictionary")]
 		[EnumMember(Value = "Reed")] 
+		[XmlEnum("11")] 
 		Reed = 11,
 
 		[System.ComponentModel.Description("AnIndividualWoodyPerennialPlantTypicallyHavingASingleStemOrTrunkGrowingToAConsiderableHeightAndBearingLateralBranchesAtSomeDistanceFromTheGround")]
 		[EnumMember(Value = "Tree in General")] 
+		[XmlEnum("13")] 
 		TreeInGeneral = 13,
 
 		[System.ComponentModel.Description("HavingGreenFoliageAllTheYearRound")]
 		[EnumMember(Value = "Evergreen Tree")] 
+		[XmlEnum("14")] 
 		EvergreenTree = 14,
 
 		[System.ComponentModel.Description("AConeBearingNeedleLeavedOrScaleLeavedEvergreenTree")]
 		[EnumMember(Value = "Coniferous Tree")] 
+		[XmlEnum("15")] 
 		ConiferousTree = 15,
 
 		[System.ComponentModel.Description("ATropicalOrSubTropicalTreeShrubOrVineHavingATallUnbranchedColumnarTrunkTheTrunkIsCrownedByATuftOrLargePleatedFanOrFeatherShapedLeavesWithStoutSheathingAndOftenPricklyPetiolesStalksThePersistentBasesOfWhichFrequentlyClotheTheTrunk")]
 		[EnumMember(Value = "Palm Tree")] 
+		[XmlEnum("16")] 
 		PalmTree = 16,
 
 		[System.ComponentModel.Description("ARarePalmTreeWithRegularBranchingInvolvingEqualOrSubEqualDivisionOfTheApexThatResultsInForking")]
 		[EnumMember(Value = "Nipa Palm Tree")] 
+		[XmlEnum("17")] 
 		NipaPalmTree = 17,
 
 		[System.ComponentModel.Description("ATreeCharacterizedBySlenderGreenOftenDroopingBranchesThatAreDeeplyGroovedAndThatBearAtIntervalsWhorlsOfTineLeaves")]
 		[EnumMember(Value = "Casuarina Tree")] 
+		[XmlEnum("18")] 
 		CasuarinaTree = 18,
 
 		[System.ComponentModel.Description("AnInstanceOfALargeGenusOfMostlyVeryLargeTrees90Metres")]
 		[EnumMember(Value = "Eucalypt Tree")] 
+		[XmlEnum("19")] 
 		EucalyptTree = 19,
 
 		[System.ComponentModel.Description("ShedsItsLeavesEachYearAtTheEndOfThePeriodOfGrowth")]
 		[EnumMember(Value = "Deciduous Tree")] 
+		[XmlEnum("20")] 
 		DeciduousTree = 20,
 
 		[System.ComponentModel.Description("CasuarinaEquisetifoliaTheMostWidespreadAndWellKnownMemberOfTheFamilyCasuarinaceae")]
 		[EnumMember(Value = "Filao Tree")] 
+		[XmlEnum("22")] 
 		FilaoTree = 22,
 	}
 
@@ -2894,22 +3494,27 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfWaterTurbulence : int {
 		[System.ComponentModel.Description("AWaveBreakingOnTheShoreOverAReefEtcBreakersMayBeRoughlyClassifiedIntoThreeKindsAlthoughTheCategoriesMayOverlapSpillingBreakersBreakGraduallyOverAConsiderableDistancePlungingBreakersTendToCurlOverAndBreakWithACrashAndSurgingBreakersPeakUpButThenInsteadOfSpillingOrPlungingTheySurgeUpOnTheBeachFaceTheFrenchWordBrisantIsAlsoUsedForTheObstacleCausingTheBreakingOfTheWave")]
 		[EnumMember(Value = "Breakers")] 
+		[XmlEnum("1")] 
 		Breakers = 1,
 
 		[System.ComponentModel.Description("CircularMovementsOfWaterUsuallyFormedWhereCurrentsPassObstructionsBetweenTwoAdjacentCurrentsFlowingCounterToEachOtherOrAlongTheEdgeOfAPermanentCurrent")]
 		[EnumMember(Value = "Eddies")] 
+		[XmlEnum("2")] 
 		Eddies = 2,
 
 		[System.ComponentModel.Description("ShortBreakingWavesOccurringWhenAStrongCurrentPassesOverAShoalOrOtherSubmarineObstructionOrMeetsAContraryCurrentOrWind")]
 		[EnumMember(Value = "Overfalls")] 
+		[XmlEnum("3")] 
 		Overfalls = 3,
 
 		[System.ComponentModel.Description("SmallWavesFormedOnTheSurfaceOfWaterByTheMeetingOfOpposingTidalCurrentsOrByATidalCurrentCrossingAnIrregularBottomVerticalOscillationRatherThanProgressiveWavesIsCharacteristicOfTideRips")]
 		[EnumMember(Value = "Tide Rips")] 
+		[XmlEnum("4")] 
 		TideRips = 4,
 
 		[System.ComponentModel.Description("AWaveThatFormsOverASubmergedOffshoreReefOrRockSometimesInVeryCalmWeatherOrAtHighTideNearlySwellingButInOtherConditionsBreakingHeavilyAndProducingADangerousStretchOfBrokenWaterTheReefOrRockItself")]
 		[EnumMember(Value = "Bombora")] 
+		[XmlEnum("5")] 
 		Bombora = 5,
 	}
 
@@ -2918,14 +3523,17 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfWeedKelp : int {
 		[System.ComponentModel.Description("AGiantPlantSometimes60MetresLongWithNoRootsItIsAnchoredByHoldFastsOrTendrilsUpTo10MetresLongThatClingToRockGasFilledBubblesOnFrondsActAsFloatsKeepingTheKelpJustBelowTheSurface")]
 		[EnumMember(Value = "Kelp")] 
+		[XmlEnum("1")] 
 		Kelp = 1,
 
 		[System.ComponentModel.Description("TheGeneralNameForMarinePlantsOfTheAlgaeClassWhichGrowInLongNarrowRibbons")]
 		[EnumMember(Value = "Seaweed")] 
+		[XmlEnum("2")] 
 		Seaweed = 2,
 
 		[System.ComponentModel.Description("ACertainTypeOfSeaweedOrMoreGenerallyALargeFloatingMassOfThisSeaweed")]
 		[EnumMember(Value = "Sargasso")] 
+		[XmlEnum("4")] 
 		Sargasso = 4,
 	}
 
@@ -2934,22 +3542,27 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfWreck : int {
 		[System.ComponentModel.Description("AWreckWhichIsNotConsideredToBeDangerousToSurfaceNavigation")]
 		[EnumMember(Value = "Non-Dangerous Wreck")] 
+		[XmlEnum("1")] 
 		NonDangerousWreck = 1,
 
 		[System.ComponentModel.Description("AWreckSubmergedAtSuchADepthAsToBeConsideredDangerousToSurfaceNavigation")]
 		[EnumMember(Value = "Dangerous Wreck")] 
+		[XmlEnum("2")] 
 		DangerousWreck = 2,
 
 		[System.ComponentModel.Description("ASubstantivelyDecayedWreckOverWhichItIsSafeToNavigateButWhichShouldBeAvoidedForAnchoringTakingTheGroundOrGroundFishing")]
 		[EnumMember(Value = "Distributed Remains of Wreck")] 
+		[XmlEnum("3")] 
 		DistributedRemainsOfWreck = 3,
 
 		[System.ComponentModel.Description("WreckOfWhichOnlyTheMastSIsVisibleAtTheSoundingDatumIndicated")]
 		[EnumMember(Value = "Wreck Showing Mast/Masts")] 
+		[XmlEnum("4")] 
 		WreckShowingMastMasts = 4,
 
 		[System.ComponentModel.Description("WreckOfWhichAnyPortionOfTheHullOrSuperstructureIsVisibleAtTheSoundingDatumIndicated")]
 		[EnumMember(Value = "Wreck Showing Any Portion of Hull or Superstructure")] 
+		[XmlEnum("5")] 
 		WreckShowingAnyPortionOfHullOrSuperstructure = 5,
 	}
 
@@ -2958,26 +3571,32 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfZoneOfConfidenceInData : int {
 		[System.ComponentModel.Description("PositionalAccuracy5Metres5DepthDepthAccuracy05Metre1DepthFullAreaSearchUndertakenSignificantSeafloorFeaturesDetectedAndDepthsMeasuredControlledSystematicSurveyHighPositionAndDepthAccuracyAchievedUsingDgpsOrAMinimumThreeHighQualityLinesOfPositionLopAndAMultibeamChannelOrMechanicalSweepSystem")]
 		[EnumMember(Value = "Zone of Confidence A1")] 
+		[XmlEnum("1")] 
 		ZoneOfConfidenceA1 = 1,
 
 		[System.ComponentModel.Description("PositionalAccuracy20MetresDepthAccuracy10Metre2DepthFullAreaSearchUndertakenSignificantSeafloorFeaturesDetectedAndDepthsMeasuredControlledSystematicSurveyAchievingPositionAndDepthAccuracyLessThanZocA1AndUsingAModernSurveyEchosounderAndASonarOrMechanicalSweepSystem")]
 		[EnumMember(Value = "Zone of Confidence A2")] 
+		[XmlEnum("2")] 
 		ZoneOfConfidenceA2 = 2,
 
 		[System.ComponentModel.Description("PositionalAccuracy50MetresDepthAccuracy10Metre2DepthFullAreaSearchNotAchievedUnchartedFeaturesHazardousToSurfaceNavigationAreNotExpectedButMayExistControlledSystematicSurveyAchievingSimilarDepthButLesserPositionAccuraciesThanZoca2UsingAModernSurveyEchosounderButNoSonarOrMechanicalSweepSystem")]
 		[EnumMember(Value = "Zone of Confidence B")] 
+		[XmlEnum("3")] 
 		ZoneOfConfidenceB = 3,
 
 		[System.ComponentModel.Description("PositionalAccuracy500MetresDepthAccuracy20Metre5DepthFullAreaSearchNotAchievedDepthAnomaliesMayBeExpectedLowAccuracySurveyOrDataCollectedOnAnOpportunityBasisSuchAsSoundingsOnPassage")]
 		[EnumMember(Value = "Zone of Confidence C")] 
+		[XmlEnum("4")] 
 		ZoneOfConfidenceC = 4,
 
 		[System.ComponentModel.Description("PositionalAccuracyWorseThanZocCDepthAccuracyWorseThanZocCFullAreaSearchNotAchievedLargeDepthAnomaliesMayBeExpectedPoorQualityDataOrDataThatCannotBeQualityAssessedDueToLackOfInformation")]
 		[EnumMember(Value = "Zone of Confidence D")] 
+		[XmlEnum("5")] 
 		ZoneOfConfidenceD = 5,
 
 		[System.ComponentModel.Description("TheQualityOfTheBathymetricDataHasYetToBeAssessed")]
 		[EnumMember(Value = "Zone of Confidence U")] 
+		[XmlEnum("6")] 
 		ZoneOfConfidenceU = 6,
 	}
 
@@ -2986,54 +3605,67 @@ namespace S100Framework.DomainModel.S101 {
 	public enum colour : int {
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "White")] 
+		[XmlEnum("1")] 
 		White = 1,
 
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Black")] 
+		[XmlEnum("2")] 
 		Black = 2,
 
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Red")] 
+		[XmlEnum("3")] 
 		Red = 3,
 
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Green")] 
+		[XmlEnum("4")] 
 		Green = 4,
 
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Blue")] 
+		[XmlEnum("5")] 
 		Blue = 5,
 
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Yellow")] 
+		[XmlEnum("6")] 
 		Yellow = 6,
 
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Grey")] 
+		[XmlEnum("7")] 
 		Grey = 7,
 
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Brown")] 
+		[XmlEnum("8")] 
 		Brown = 8,
 
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Amber")] 
+		[XmlEnum("9")] 
 		Amber = 9,
 
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Violet")] 
+		[XmlEnum("10")] 
 		Violet = 10,
 
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Orange")] 
+		[XmlEnum("11")] 
 		Orange = 11,
 
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Magenta")] 
+		[XmlEnum("12")] 
 		Magenta = 12,
 
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "Pink")] 
+		[XmlEnum("13")] 
 		Pink = 13,
 	}
 
@@ -3042,26 +3674,32 @@ namespace S100Framework.DomainModel.S101 {
 	public enum colourPattern : int {
 		[System.ComponentModel.Description("StraightBandsOrStripesOfDifferingColoursOrientedHorizontally")]
 		[EnumMember(Value = "Horizontal Stripes")] 
+		[XmlEnum("1")] 
 		HorizontalStripes = 1,
 
 		[System.ComponentModel.Description("StraightBandsOrStripesOfDifferingColoursOrientedVertically")]
 		[EnumMember(Value = "Vertical Stripes")] 
+		[XmlEnum("2")] 
 		VerticalStripes = 2,
 
 		[System.ComponentModel.Description("StraightBandsOrStripesOfDifferingColoursOrientedDiagonallyThatIsNotHorizontallyOrVertically")]
 		[EnumMember(Value = "Diagonal Stripes")] 
+		[XmlEnum("3")] 
 		DiagonalStripes = 3,
 
 		[System.ComponentModel.Description("OftenReferredToAsCheckerPlateWhereAlternateColoursAreUsedToCreateSquaresSimilarToAChessOrDraughtBoardThePatternMayBeStraightOrDiagonal")]
 		[EnumMember(Value = "Squared")] 
+		[XmlEnum("4")] 
 		Squared = 4,
 
 		[System.ComponentModel.Description("StraightBandsOrStripesOfDifferingColoursOrientedInAnUnknownDirection")]
 		[EnumMember(Value = "Stripes (Direction Unknown)")] 
+		[XmlEnum("5")] 
 		StripesDirectionUnknown = 5,
 
 		[System.ComponentModel.Description("ABandOrStripeOfColourWhichIsDisplayedAroundTheOuterEdgeOfTheFeatureWhichMayAlsoFormABorderToAnInnerPatternOrPlainColour")]
 		[EnumMember(Value = "Border Stripe")] 
+		[XmlEnum("6")] 
 		BorderStripe = 6,
 	}
 
@@ -3070,22 +3708,27 @@ namespace S100Framework.DomainModel.S101 {
 	public enum condition : int {
 		[System.ComponentModel.Description("BeingBuiltButNotYetCapableOfFunction")]
 		[EnumMember(Value = "Under Construction")] 
+		[XmlEnum("1")] 
 		UnderConstruction = 1,
 
 		[System.ComponentModel.Description("AStructureInADecayedOrDeterioratedConditionResultingFromNeglectOrDisuseOrADamagedStructureInNeedOfRepair")]
 		[EnumMember(Value = "Ruined")] 
+		[XmlEnum("2")] 
 		Ruined = 2,
 
 		[System.ComponentModel.Description("AnAreaOfTheSeaALakeOrTheNavigablePartOfARiverThatIsBeingReclaimedAsLandUsuallyByTheDumpingOfEarthAndOtherMaterial")]
 		[EnumMember(Value = "Under Reclamation")] 
+		[XmlEnum("3")] 
 		UnderReclamation = 3,
 
 		[System.ComponentModel.Description("AWindmillOrWindTurbineFromWhichTheVanesOrTurbineBladesAreMissing")]
 		[EnumMember(Value = "Wingless")] 
+		[XmlEnum("4")] 
 		Wingless = 4,
 
 		[System.ComponentModel.Description("DetailedPlanningHasBeenCompletedButConstructionHasNotBeenInitiated")]
 		[EnumMember(Value = "Planned Construction")] 
+		[XmlEnum("5")] 
 		PlannedConstruction = 5,
 	}
 
@@ -3094,14 +3737,17 @@ namespace S100Framework.DomainModel.S101 {
 	public enum dataAssessment : int {
 		[System.ComponentModel.Description("TheQualityOfTheBathymetricDataHasBeenAssessed")]
 		[EnumMember(Value = "Assessed")] 
+		[XmlEnum("1")] 
 		Assessed = 1,
 
 		[System.ComponentModel.Description("TheQualityOfOceanicBathymetricDataDepthsDeeperThan200MetresHasBeenAssessedHoweverDetailsAreNotRequired")]
 		[EnumMember(Value = "Assessed (Oceanic)")] 
+		[XmlEnum("2")] 
 		AssessedOceanic = 2,
 
 		[System.ComponentModel.Description("NotHavingBeenAssessed")]
 		[EnumMember(Value = "Unassessed")] 
+		[XmlEnum("3")] 
 		Unassessed = 3,
 	}
 
@@ -3110,30 +3756,37 @@ namespace S100Framework.DomainModel.S101 {
 	public enum dayOfWeek : int {
 		[System.ComponentModel.Description("TheDayOfTheWeekFollowingSaturdayAndPrecedingMonday")]
 		[EnumMember(Value = "Sunday")] 
+		[XmlEnum("1")] 
 		Sunday = 1,
 
 		[System.ComponentModel.Description("TheDayOfTheWeekFollowingSundayAndPrecedingTuesday")]
 		[EnumMember(Value = "Monday")] 
+		[XmlEnum("2")] 
 		Monday = 2,
 
 		[System.ComponentModel.Description("TheDayOfTheWeekFollowingMondayAndPrecedingWednesday")]
 		[EnumMember(Value = "Tuesday")] 
+		[XmlEnum("3")] 
 		Tuesday = 3,
 
 		[System.ComponentModel.Description("TheDayOfTheWeekFollowingTuesdayAndPrecedingThursday")]
 		[EnumMember(Value = "Wednesday")] 
+		[XmlEnum("4")] 
 		Wednesday = 4,
 
 		[System.ComponentModel.Description("TheDayOfTheWeekFollowingWednesdayAndPrecedingFriday")]
 		[EnumMember(Value = "Thursday")] 
+		[XmlEnum("5")] 
 		Thursday = 5,
 
 		[System.ComponentModel.Description("TheDayOfTheWeekFollowingThursdayAndPrecedingSaturday")]
 		[EnumMember(Value = "Friday")] 
+		[XmlEnum("6")] 
 		Friday = 6,
 
 		[System.ComponentModel.Description("TheDayOfTheWeekFollowingFridayAndPrecedingSunday")]
 		[EnumMember(Value = "Saturday")] 
+		[XmlEnum("7")] 
 		Saturday = 7,
 	}
 
@@ -3142,22 +3795,27 @@ namespace S100Framework.DomainModel.S101 {
 	public enum distanceUnitOfMeasurement : int {
 		[System.ComponentModel.Description("TheBasicUnitOfLengthInTheInternationalSystemOfUnitsSiSystem")]
 		[EnumMember(Value = "Metres")] 
+		[XmlEnum("1")] 
 		Metres = 1,
 
 		[System.ComponentModel.Description("ACommonUnitOfLinearMeasureInEnglishSpeakingCountriesEqualTo3FeetOr36InchesAndEquivalentTo09144Metre")]
 		[EnumMember(Value = "Yards")] 
+		[XmlEnum("2")] 
 		Yards = 2,
 
 		[System.ComponentModel.Description("AUnitOfLengthTheCommonMeasureOfDistancesEqualTo1000MetresAndEquivalentTo32808FeetOr0621Mile")]
 		[EnumMember(Value = "Kilometres")] 
+		[XmlEnum("3")] 
 		Kilometres = 3,
 
 		[System.ComponentModel.Description("AUnitEqualTo5280Feet")]
 		[EnumMember(Value = "Statute Miles")] 
+		[XmlEnum("4")] 
 		StatuteMiles = 4,
 
 		[System.ComponentModel.Description("AUnitOfLengthEqualTo1852MetresThisValueWasApprovedByTheInternationalHydrographicConferenceOf1929AndHasBeenAdoptedByNearlyAllMaritimeStates")]
 		[EnumMember(Value = "Nautical Miles")] 
+		[XmlEnum("5")] 
 		NauticalMiles = 5,
 	}
 
@@ -3166,18 +3824,22 @@ namespace S100Framework.DomainModel.S101 {
 	public enum exhibitionConditionOfLight : int {
 		[System.ComponentModel.Description("ALightShownThroughoutThe24HoursWithoutChangeOfCharacter")]
 		[EnumMember(Value = "Light Shown Without Change of Character")] 
+		[XmlEnum("1")] 
 		LightShownWithoutChangeOfCharacter = 1,
 
 		[System.ComponentModel.Description("ALightWhichIsOnlyExhibitedByDay")]
 		[EnumMember(Value = "Daytime Light")] 
+		[XmlEnum("2")] 
 		DaytimeLight = 2,
 
 		[System.ComponentModel.Description("ALightWhichIsExhibitedInFogOrConditionsOfReducedVisibility")]
 		[EnumMember(Value = "Fog Light")] 
+		[XmlEnum("3")] 
 		FogLight = 3,
 
 		[System.ComponentModel.Description("ALightWhichIsOnlyExhibitedAtNight")]
 		[EnumMember(Value = "Night Light")] 
+		[XmlEnum("4")] 
 		NightLight = 4,
 	}
 
@@ -3186,14 +3848,17 @@ namespace S100Framework.DomainModel.S101 {
 	public enum expositionOfSounding : int {
 		[System.ComponentModel.Description("TheDepthCorrespondsToTheDepthRangeOfTheSurroundingDepthAreaThatIsTheDepthIsNotShoalerThanTheMinimumDepthOfTheSurroundingDepthAreaOrDeeperThanTheMaximumDepthOfTheSurroundingDepthArea")]
 		[EnumMember(Value = "Within the Range of Depth of the Surrounding Depth Area")] 
+		[XmlEnum("1")] 
 		WithinTheRangeOfDepthOfTheSurroundingDepthArea = 1,
 
 		[System.ComponentModel.Description("TheDepthIsShoalerThanTheMinimumDepthOfTheSurroundingDepthArea")]
 		[EnumMember(Value = "Shoaler Than the Range of Depth of the Surrounding Depth Area")] 
+		[XmlEnum("2")] 
 		ShoalerThanTheRangeOfDepthOfTheSurroundingDepthArea = 2,
 
 		[System.ComponentModel.Description("TheDepthIsDeeperThanTheMaximumDepthOfTheSurroundingDepthArea")]
 		[EnumMember(Value = "Deeper Than the Range of Depth of the Surrounding Depth Area")] 
+		[XmlEnum("3")] 
 		DeeperThanTheRangeOfDepthOfTheSurroundingDepthArea = 3,
 	}
 
@@ -3202,186 +3867,232 @@ namespace S100Framework.DomainModel.S101 {
 	public enum function : int {
 		[System.ComponentModel.Description("ALocalOfficialWhoHasChargeOfMooringAndBerthingOfVesselsCollectingHarbourFeesEtc")]
 		[EnumMember(Value = "Harbour-Masters Office")] 
+		[XmlEnum("2")] 
 		HarbourMastersOffice = 2,
 
 		[System.ComponentModel.Description("ServesAsAGovernmentOfficeWhereCustomsDutiesAreCollectedTheFlowOfGoodsAreRegulatedAndRestrictionsEnforcedAndShipmentsOrVehiclesAreClearedForEnteringOrLeavingACountry")]
 		[EnumMember(Value = "Customs Office")] 
+		[XmlEnum("3")] 
 		CustomsOffice = 3,
 
 		[System.ComponentModel.Description("TheOfficeWhichIsChargedWithTheAdministrationOfHealthLawsAndSanitaryInspections")]
 		[EnumMember(Value = "Health Office")] 
+		[XmlEnum("4")] 
 		HealthOffice = 4,
 
 		[System.ComponentModel.Description("AnInstitutionOrEstablishmentProvidingMedicalOrSurgicalTreatmentForTheIllOrWounded")]
 		[EnumMember(Value = "Hospital")] 
+		[XmlEnum("5")] 
 		Hospital = 5,
 
 		[System.ComponentModel.Description("ThePublicDepartmentAgencyOrOrganisationResponsiblePrimarilyForTheCollectionTransmissionAndDistributionOfMail")]
 		[EnumMember(Value = "Post Office")] 
+		[XmlEnum("6")] 
 		PostOffice = 6,
 
 		[System.ComponentModel.Description("AnEstablishmentEspeciallyOfAComfortableOrLuxuriousKindWherePayingVisitorsAreProvidedWithAccommodationMealsAndOtherServices")]
 		[EnumMember(Value = "Hotel")] 
+		[XmlEnum("7")] 
 		Hotel = 7,
 
 		[System.ComponentModel.Description("ABuildingWithPlatformsWhereTrainsArriveLoadDischargeAndDepart")]
 		[EnumMember(Value = "Railway Station")] 
+		[XmlEnum("8")] 
 		RailwayStation = 8,
 
 		[System.ComponentModel.Description("TheHeadquartersOfALocalPoliceForceAndThatIsWhereThoseUnderArrestAreFirstCharged")]
 		[EnumMember(Value = "Police Station")] 
+		[XmlEnum("9")] 
 		PoliceStation = 9,
 
 		[System.ComponentModel.Description("TheHeadquartersOfALocalWaterPoliceForce")]
 		[EnumMember(Value = "Water-Police Station")] 
+		[XmlEnum("10")] 
 		WaterPoliceStation = 10,
 
 		[System.ComponentModel.Description("TheOfficeOrHeadquartersOfPilotsThePlaceWhereTheServicesOfAPilotMayBeObtained")]
 		[EnumMember(Value = "Pilot Office")] 
+		[XmlEnum("11")] 
 		PilotOffice = 11,
 
 		[System.ComponentModel.Description("ADistinctiveStructureOrPlaceOnShoreFromWhichPersonnelKeepWatchUponEventsAtSeaOrAlongTheCoast")]
 		[EnumMember(Value = "Pilot Lookout")] 
+		[XmlEnum("12")] 
 		PilotLookout = 12,
 
 		[System.ComponentModel.Description("AnOfficeForCustodyDepositLoanExchangeOrIssueOfMoney")]
 		[EnumMember(Value = "Bank Office")] 
+		[XmlEnum("13")] 
 		BankOffice = 13,
 
 		[System.ComponentModel.Description("TheQuartersOfAnExecutiveOfficerDirectorManagerEtcWithResponsibilityForAnAdministrativeArea")]
 		[EnumMember(Value = "Headquarters for District Control")] 
+		[XmlEnum("14")] 
 		HeadquartersForDistrictControl = 14,
 
 		[System.ComponentModel.Description("ABuildingOrPartOfABuildingForStorageOfWaresOrGoods")]
 		[EnumMember(Value = "Transit Shed/Warehouse")] 
+		[XmlEnum("15")] 
 		TransitShedWarehouse = 15,
 
 		[System.ComponentModel.Description("ABuildingOrBuildingsWithEquipmentForManufacturingAWorkshop")]
 		[EnumMember(Value = "Factory")] 
+		[XmlEnum("16")] 
 		Factory = 16,
 
 		[System.ComponentModel.Description("AStationaryPlantContainingApparatusForLargeScaleConversionOfSomeFormOfEnergySuchAsHydraulicSteamChemicalOrNuclearEnergyIntoElectricalEnergy")]
 		[EnumMember(Value = "Power Station")] 
+		[XmlEnum("17")] 
 		PowerStation = 17,
 
 		[System.ComponentModel.Description("ABuildingForTheManagementOfAffairs")]
 		[EnumMember(Value = "Administrative")] 
+		[XmlEnum("18")] 
 		Administrative = 18,
 
 		[System.ComponentModel.Description("AnEstablishmentForTeachingAndLearningForExampleSchoolCollegeUniversityEtc")]
 		[EnumMember(Value = "Educational Facility")] 
+		[XmlEnum("19")] 
 		EducationalFacility = 19,
 
 		[System.ComponentModel.Description("ABuildingForPublicChristianWorship")]
 		[EnumMember(Value = "Church")] 
+		[XmlEnum("20")] 
 		Church = 20,
 
 		[System.ComponentModel.Description("APlaceForChristianWorshipOtherThanAParishCathedralOrChurchEspeciallyOneAttachedToAPrivateHouseOrInstitution")]
 		[EnumMember(Value = "Chapel")] 
+		[XmlEnum("21")] 
 		Chapel = 21,
 
 		[System.ComponentModel.Description("ABuildingForPublicJewishWorship")]
 		[EnumMember(Value = "Temple")] 
+		[XmlEnum("22")] 
 		Temple = 22,
 
 		[System.ComponentModel.Description("AHinduOrBuddhistTempleOrSacredBuilding")]
 		[EnumMember(Value = "Pagoda")] 
+		[XmlEnum("23")] 
 		Pagoda = 23,
 
 		[System.ComponentModel.Description("ABuildingForPublicShintoWorship")]
 		[EnumMember(Value = "Shinto Shrine")] 
+		[XmlEnum("24")] 
 		ShintoShrine = 24,
 
 		[System.ComponentModel.Description("ABuildingForPublicBuddhistWorship")]
 		[EnumMember(Value = "Buddhist Temple")] 
+		[XmlEnum("25")] 
 		BuddhistTemple = 25,
 
 		[System.ComponentModel.Description("AMuslimPlaceOfWorship")]
 		[EnumMember(Value = "Mosque")] 
+		[XmlEnum("26")] 
 		Mosque = 26,
 
 		[System.ComponentModel.Description("AShrineMarkingTheBurialPlaceOfAMuslimHolyMan")]
 		[EnumMember(Value = "Marabout")] 
+		[XmlEnum("27")] 
 		Marabout = 27,
 
 		[System.ComponentModel.Description("KeepingAWatchUponEventsAtSeaOrAlongTheCoast")]
 		[EnumMember(Value = "Lookout")] 
+		[XmlEnum("28")] 
 		Lookout = 28,
 
 		[System.ComponentModel.Description("TransmittingAndOrReceivingElectronicCommunicationSignals")]
 		[EnumMember(Value = "Communication")] 
+		[XmlEnum("29")] 
 		Communication = 29,
 
 		[System.ComponentModel.Description("ASystemForReproducingOnAScreenVisualImagesTransmittedUsuallyWithSoundByRadioSignals")]
 		[EnumMember(Value = "Television")] 
+		[XmlEnum("30")] 
 		Television = 30,
 
 		[System.ComponentModel.Description("TransmittingAndOrReceivingRadioFrequencyElectromagneticWavesAsAMeansOfCommunication")]
 		[EnumMember(Value = "Radio")] 
+		[XmlEnum("31")] 
 		Radio = 31,
 
 		[System.ComponentModel.Description("AMethodSystemOrTechniqueOfUsingBeamedReflectedAndTimedRadioWavesForDetectingLocatingOrTrackingObjectsAndForMeasuringAltitudes")]
 		[EnumMember(Value = "Radar")] 
+		[XmlEnum("32")] 
 		Radar = 32,
 
 		[System.ComponentModel.Description("AStructureServingAsASupportForOneOrMoreLights")]
 		[EnumMember(Value = "Light Support")] 
+		[XmlEnum("33")] 
 		LightSupport = 33,
 
 		[System.ComponentModel.Description("BroadcastingAndReceivingSignalsUsingMicrowaves")]
 		[EnumMember(Value = "Microwave")] 
+		[XmlEnum("34")] 
 		Microwave = 34,
 
 		[System.ComponentModel.Description("GenerationOfChilledLiquidAndOrGasForCoolingPurposes")]
 		[EnumMember(Value = "Cooling")] 
+		[XmlEnum("35")] 
 		Cooling = 35,
 
 		[System.ComponentModel.Description("APlaceFromWhichTheSurroundingsCanBeObservedButAtWhichAWatchIsNotHabituallyMaintained")]
 		[EnumMember(Value = "Observation")] 
+		[XmlEnum("36")] 
 		Observation = 36,
 
 		[System.ComponentModel.Description("AVisualTimeSignalInTheFormOfABall")]
 		[EnumMember(Value = "Timeball")] 
+		[XmlEnum("37")] 
 		Timeball = 37,
 
 		[System.ComponentModel.Description("InstrumentForMeasuringTimeAndRecordingHours")]
 		[EnumMember(Value = "Clock")] 
+		[XmlEnum("38")] 
 		Clock = 38,
 
 		[System.ComponentModel.Description("UsedToControlTheFlowOfTrafficWithinASpecifiedRangeOfAnInstallation")]
 		[EnumMember(Value = "Control")] 
+		[XmlEnum("39")] 
 		Control = 39,
 
 		[System.ComponentModel.Description("EquipmentOrStructureToSecureAnAirship")]
 		[EnumMember(Value = "Airship Mooring")] 
+		[XmlEnum("40")] 
 		AirshipMooring = 40,
 
 		[System.ComponentModel.Description("AnArenaForHoldingAndViewingEvents")]
 		[EnumMember(Value = "Stadium")] 
+		[XmlEnum("41")] 
 		Stadium = 41,
 
 		[System.ComponentModel.Description("ABuildingWhereBusesAndCoachesRegularlyStopToTakeOnAndOrLetOffPassengersEspeciallyForLongDistanceTravel")]
 		[EnumMember(Value = "Bus Station")] 
+		[XmlEnum("42")] 
 		BusStation = 42,
 
 		[System.ComponentModel.Description("AUnitResponsibleForPromotingEfficientOrganizationOfSearchAndRescueServicesAndForCoordinatingTheConductOfSearchAndRescueOperationsWithinASearchAndRescueRegion")]
 		[EnumMember(Value = "Sea Rescue Control")] 
+		[XmlEnum("44")] 
 		SeaRescueControl = 44,
 
 		[System.ComponentModel.Description("ABuildingDesignedAndEquippedForMakingObservationsOfAstronomicalMeteorologicalOrOtherNaturalPhenomena")]
 		[EnumMember(Value = "Observatory")] 
+		[XmlEnum("45")] 
 		Observatory = 45,
 
 		[System.ComponentModel.Description("ABuildingOrStructureUsedToCrushOre")]
 		[EnumMember(Value = "Ore Crusher")] 
+		[XmlEnum("46")] 
 		OreCrusher = 46,
 
 		[System.ComponentModel.Description("ABuildingOrShedUsuallyBuiltPartlyOverWaterForShelteringABoatOrBoats")]
 		[EnumMember(Value = "Boathouse")] 
+		[XmlEnum("47")] 
 		Boathouse = 47,
 
 		[System.ComponentModel.Description("AFacilityToMoveSolidsLiquidsOrGasesByMeansOfPressureOrSuction")]
 		[EnumMember(Value = "Pumping Station")] 
+		[XmlEnum("48")] 
 		PumpingStation = 48,
 	}
 
@@ -3390,14 +4101,17 @@ namespace S100Framework.DomainModel.S101 {
 	public enum jurisdiction : int {
 		[System.ComponentModel.Description("InvolvingMoreThanOneCountryCoveringMoreThanOneNationalArea")]
 		[EnumMember(Value = "International")] 
+		[XmlEnum("1")] 
 		International = 1,
 
 		[System.ComponentModel.Description("AnAreaAdministeredOrControlledByASingleNation")]
 		[EnumMember(Value = "National")] 
+		[XmlEnum("2")] 
 		National = 2,
 
 		[System.ComponentModel.Description("AnAreaSmallerThanTheNationInWhichItLies")]
 		[EnumMember(Value = "National Sub-Division")] 
+		[XmlEnum("3")] 
 		NationalSubDivision = 3,
 	}
 
@@ -3406,90 +4120,112 @@ namespace S100Framework.DomainModel.S101 {
 	public enum lightCharacteristic : int {
 		[System.ComponentModel.Description("ASignalLightThatShowsContinuouslyInAnyGivenDirectionWithConstantLuminousIntensityAndColour")]
 		[EnumMember(Value = "Fixed")] 
+		[XmlEnum("1")] 
 		Fixed = 1,
 
 		[System.ComponentModel.Description("ARhythmicLightInWhichTheTotalDurationOfLightInAPeriodIsClearlyShorterThanTheTotalDurationOfDarknessAndAllTheAppearancesOfLightAreOfEqualDuration")]
 		[EnumMember(Value = "Flashing")] 
+		[XmlEnum("2")] 
 		Flashing = 2,
 
 		[System.ComponentModel.Description("ASingleFlashingLightInWhichAnAppearanceOfLightOfNotLessThanTwoSecondsDurationIsRegularlyRepeated")]
 		[EnumMember(Value = "Long-Flashing")] 
+		[XmlEnum("3")] 
 		LongFlashing = 3,
 
 		[System.ComponentModel.Description("ARhythmicLightInWhichFlashesAreRepeatedAtARateOfNotLessThan50FlashesPerMinutesButLessThan80FlashesPerMinutesItMayBeContinuousQuickFlashingAQuickFlashingLightInWhichAFlashIsRegularlyRepeatedGroupQuickFlashingAQuickFlashingLightInWhichAGroupOfTwoOrMoreFlashesWhichAreSpecifiedInNumberIsRegularlyRepeated")]
 		[EnumMember(Value = "Quick-Flashing")] 
+		[XmlEnum("4")] 
 		QuickFlashing = 4,
 
 		[System.ComponentModel.Description("ARhythmicLightInWhichFlashesAreRepeatedAtARateOfNotLessThan80FlashesPerMinuteButLessThan160FlashesPerMinuteItMayBeContinuousVeryQuickFlashingAVeryQuickFlashingLightInWhichAFlashIsRegularlyRepeatedGroupVeryQuickFlashingAVeryQuickFlashingLightInWhichAGroupOfTwoOrMoreFlashesWhichAreSpecifiedInNumberIsRegularlyRepeated")]
 		[EnumMember(Value = "Very Quick-Flashing")] 
+		[XmlEnum("5")] 
 		VeryQuickFlashing = 5,
 
 		[System.ComponentModel.Description("ARhythmicLightInWhichFlashesAreRegularlyRepeatedAtARateOfNotLessThan160FlashesPerMinute")]
 		[EnumMember(Value = "Continuous Ultra Quick-Flashing")] 
+		[XmlEnum("6")] 
 		ContinuousUltraQuickFlashing = 6,
 
 		[System.ComponentModel.Description("ALightWithAllDurationsOfLightAndDarknessEqual")]
 		[EnumMember(Value = "Isophased")] 
+		[XmlEnum("7")] 
 		Isophased = 7,
 
 		[System.ComponentModel.Description("ARhythmicLightInWhichTheTotalDurationOfLightInAPeriodIsClearlyLongerThanTheTotalDurationOfDarknessAndAllTheEclipsesAreOfEqualDurationItMayBeSingleOccultingAnOccultingLightInWhichAnEclipseIsRegularlyRepeatedGroupOccultingAnOccultingLightInWhichAGroupOfTwoOrMoreEclipsesWhichAreSpecifiedInNumberIsRegularlyRepeatedCompositeGroupOccultingAnOccultingLightInWhichASequenceOfGroupsOfOneOrMoreEclipsesWhichAreSpecifiedInNumberIsRegularlyRepeatedAndTheGroupsCompriseDifferentNumbersOfEclipses")]
 		[EnumMember(Value = "Occulting")] 
+		[XmlEnum("8")] 
 		Occulting = 8,
 
 		[System.ComponentModel.Description("ALightInWhichTheUltraQuickFlashes160OrMorePerMinuteAreInterruptedAtRegularIntervalsByEclipsesOfLongDuration")]
 		[EnumMember(Value = "Interrupted Ultra Quick-Flashing")] 
+		[XmlEnum("11")] 
 		InterruptedUltraQuickFlashing = 11,
 
 		[System.ComponentModel.Description("ARhythmicLightInWhichAppearancesOfLightOfTwoClearlyDifferentDurationsAreGroupedToRepresentACharacterOrCharactersInTheMorseCode")]
 		[EnumMember(Value = "Morse")] 
+		[XmlEnum("12")] 
 		Morse = 12,
 
 		[System.ComponentModel.Description("ARhythmicLightInWhichAFixedLightIsCombinedWithAFlashingLightOfHigherLuminousIntensity")]
 		[EnumMember(Value = "Fixed and Flash")] 
+		[XmlEnum("13")] 
 		FixedAndFlash = 13,
 
 		[System.ComponentModel.Description("ARhythmicLightInWhichAFlashingLightIsCombinedWithALongFlashingLightOfHigherLuminousIntensity")]
 		[EnumMember(Value = "Flash and Long-Flash")] 
+		[XmlEnum("14")] 
 		FlashAndLongFlash = 14,
 
 		[System.ComponentModel.Description("ARhythmicLightInWhichAnOccultingLightIsCombinedWithAFlashingLightOfHigherLuminousIntensity")]
 		[EnumMember(Value = "Occulting and Flash")] 
+		[XmlEnum("15")] 
 		OccultingAndFlash = 15,
 
 		[System.ComponentModel.Description("ARhythmicLightInWhichAFixedLightIsCombinedWithALongFlashingLightOfHigherLuminousIntensity")]
 		[EnumMember(Value = "Fixed and Long-Flash")] 
+		[XmlEnum("16")] 
 		FixedAndLongFlash = 16,
 
 		[System.ComponentModel.Description("AnAlternatingLightInWhichTheTotalDurationOfLightInEachPeriodIsClearlyLongerThanTheTotalDurationOfDarknessAndInWhichTheIntervalsOfDarknessOccultationsAreAllOfEqualDuration")]
 		[EnumMember(Value = "Occulting Alternating")] 
+		[XmlEnum("17")] 
 		OccultingAlternating = 17,
 
 		[System.ComponentModel.Description("AnAlternatingSingleFlashingLightInWhichAnAppearanceOfLightOfNotLessThanTwoSecondsDurationIsRegularlyRepeated")]
 		[EnumMember(Value = "Long-Flash Alternating")] 
+		[XmlEnum("18")] 
 		LongFlashAlternating = 18,
 
 		[System.ComponentModel.Description("AnAlternatingRhythmicLightInWhichTheTotalDurationOfLightInAPeriodIsClearlyShorterThanTheTotalDurationOfDarknessAndAllTheAppearancesOfLightAreOfEqualDuration")]
 		[EnumMember(Value = "Flash Alternating")] 
+		[XmlEnum("19")] 
 		FlashAlternating = 19,
 
 		[System.ComponentModel.Description("ARhythmicLightInWhichAGroupOfQuickFlashesIsFollowedByOneOrMoreLongFlashesInARegularlyRepeatedSequenceWithARegularPeriodicity")]
 		[EnumMember(Value = "Quick-Flash Plus Long-Flash")] 
+		[XmlEnum("25")] 
 		QuickFlashPlusLongFlash = 25,
 
 		[System.ComponentModel.Description("ARhythmicLightInWhichAGroupOfVeryQuickFlashesIsFollowedByOneOrMoreLongFlashesInARegularlyRepeatedSequenceWithARegularPeriodicity")]
 		[EnumMember(Value = "Very Quick-Flash Plus Long-Flash")] 
+		[XmlEnum("26")] 
 		VeryQuickFlashPlusLongFlash = 26,
 
 		[System.ComponentModel.Description("ARhythmicLightInWhichAGroupOfUltraQuickFlashesIsFollowedByOneOrMoreLongFlashesInARegularlyRepeatedSequenceWithARegularPeriodicity")]
 		[EnumMember(Value = "Ultra Quick-Flash Plus Long-Flash")] 
+		[XmlEnum("27")] 
 		UltraQuickFlashPlusLongFlash = 27,
 
 		[System.ComponentModel.Description("ASignalLightThatShowsContinuouslyInAnyGivenDirectionTwoOrMoreColoursInARegularlyRepeatedSequenceWithARegularPeriodicity")]
 		[EnumMember(Value = "Alternating")] 
+		[XmlEnum("28")] 
 		Alternating = 28,
 
 		[System.ComponentModel.Description("ARhythmicLightInWhichAFixedLightIsCombinedWithAFlashingLightOfHigherLuminousIntensityAndDifferentColour")]
 		[EnumMember(Value = "Fixed and Alternating Flashing")] 
+		[XmlEnum("29")] 
 		FixedAndAlternatingFlashing = 29,
 	}
 
@@ -3498,38 +4234,47 @@ namespace S100Framework.DomainModel.S101 {
 	public enum lightVisibility : int {
 		[System.ComponentModel.Description("NonMarineLightsWithAHigherPowerThanMarineLightsAndVisibleFromWellOffShoreOftenAeroLights")]
 		[EnumMember(Value = "High Intensity")] 
+		[XmlEnum("1")] 
 		HighIntensity = 1,
 
 		[System.ComponentModel.Description("NonMarineLightsWithLowerPowerThanMarineLights")]
 		[EnumMember(Value = "Low Intensity")] 
+		[XmlEnum("2")] 
 		LowIntensity = 2,
 
 		[System.ComponentModel.Description("ADecreaseInTheApparentIntensityOfALightWhichMayOccurInTheCaseOfPartialObstructions")]
 		[EnumMember(Value = "Faint")] 
+		[XmlEnum("3")] 
 		Faint = 3,
 
 		[System.ComponentModel.Description("ALightInASectorIsIntensifiedThatIsHasLongerRangeThanOtherSectors")]
 		[EnumMember(Value = "Intensified")] 
+		[XmlEnum("4")] 
 		Intensified = 4,
 
 		[System.ComponentModel.Description("ALightInASectorIsUnintensifiedThatIsHasShorterRangeThanOtherSectors")]
 		[EnumMember(Value = "Unintensified")] 
+		[XmlEnum("5")] 
 		Unintensified = 5,
 
 		[System.ComponentModel.Description("ALightSectorIsDeliberatelyReducedInIntensityForExampleToReduceItsEffectOnABuiltUpArea")]
 		[EnumMember(Value = "Visibility Deliberately Restricted")] 
+		[XmlEnum("6")] 
 		VisibilityDeliberatelyRestricted = 6,
 
 		[System.ComponentModel.Description("SaidOfTheArcOfALightSectorDesignatedByItsLimitingBearingsInWhichTheLightIsNotVisibleFromSeaward")]
 		[EnumMember(Value = "Obscured")] 
+		[XmlEnum("7")] 
 		Obscured = 7,
 
 		[System.ComponentModel.Description("ThisValueSpecifiesThatPartsOfTheSectorAreObscured")]
 		[EnumMember(Value = "Partially Obscured")] 
+		[XmlEnum("8")] 
 		PartiallyObscured = 8,
 
 		[System.ComponentModel.Description("LightsThatMustBeInLineToBeVisible")]
 		[EnumMember(Value = "Visible in Line of Range")] 
+		[XmlEnum("9")] 
 		VisibleInLineOfRange = 9,
 	}
 
@@ -3538,10 +4283,12 @@ namespace S100Framework.DomainModel.S101 {
 	public enum referenceDirection : int {
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "East")] 
+		[XmlEnum("5")] 
 		East = 5,
 
 		[System.ComponentModel.Description("")]
 		[EnumMember(Value = "West")] 
+		[XmlEnum("13")] 
 		West = 13,
 	}
 
@@ -3550,18 +4297,22 @@ namespace S100Framework.DomainModel.S101 {
 	public enum marksNavigationalSystemOf : int {
 		[System.ComponentModel.Description("NavigationalAidsConformToTheInternationalAssociationOfLighthouseAuthoritiesIalaASystem")]
 		[EnumMember(Value = "IALA A")] 
+		[XmlEnum("1")] 
 		IalaA = 1,
 
 		[System.ComponentModel.Description("NavigationalAidsConformToTheInternationalAssociationOfLighthouseAuthoritiesIalaBSystem")]
 		[EnumMember(Value = "IALA B")] 
+		[XmlEnum("2")] 
 		IalaB = 2,
 
 		[System.ComponentModel.Description("NavigationalAidsDoNotConformToAnyDefinedSystem")]
 		[EnumMember(Value = "no system")] 
+		[XmlEnum("9")] 
 		NoSystem = 9,
 
 		[System.ComponentModel.Description("NavigationalAidsAsRequiredInInternationalNationalOrRegionalRegulationsThatContainTheSameNavigationalAidsAsTheEuropeanCodeForInlandWaterwaysOfUneceOrIfThereIsNoRegulationForAWaterwayNavigationalAidsAsRecommendedInTheEuropeanCodeForInlandWaterwaysOfUnece")]
 		[EnumMember(Value = "main European inland waterway marking system")] 
+		[XmlEnum("11")] 
 		MainEuropeanInlandWaterwayMarkingSystem = 11,
 	}
 
@@ -3570,10 +4321,12 @@ namespace S100Framework.DomainModel.S101 {
 	public enum nameUsage : int {
 		[System.ComponentModel.Description("TheNameIsIntendedToBeDisplayedWhenTheEndUserSystemIsSetToTheDefaultNameTextDisplaySetting")]
 		[EnumMember(Value = "Default Name Display")] 
+		[XmlEnum("1")] 
 		DefaultNameDisplay = 1,
 
 		[System.ComponentModel.Description("TheNameIsIntendedToBeDisplayedWhenTheEndUserSystemIsSetToAnAlternateNameTextDisplaySettingForExampleAnAlternateLanguage")]
 		[EnumMember(Value = "Alternate Name Display")] 
+		[XmlEnum("2")] 
 		AlternateNameDisplay = 2,
 	}
 
@@ -3582,42 +4335,52 @@ namespace S100Framework.DomainModel.S101 {
 	public enum natureOfConstruction : int {
 		[System.ComponentModel.Description("ConstructedOfStonesOrBricksUsuallyQuarriedShapedAndMortared")]
 		[EnumMember(Value = "Masonry")] 
+		[XmlEnum("1")] 
 		Masonry = 1,
 
 		[System.ComponentModel.Description("ConstructedOfConcreteAMaterialMadeOfSandAndGravelThatIsUnitedByCementIntoAHardenedMassUsedForRoadsFoundationsEtc")]
 		[EnumMember(Value = "Concreted")] 
+		[XmlEnum("2")] 
 		Concreted = 2,
 
 		[System.ComponentModel.Description("ConstructedFromLargeStonesOrBlocksOfConcreteOftenPlacedLooselyForProtectionAgainstWavesOrWaterTurbulence")]
 		[EnumMember(Value = "Loose Boulders")] 
+		[XmlEnum("3")] 
 		LooseBoulders = 3,
 
 		[System.ComponentModel.Description("ConstructedWithASurfaceOfHardMaterialUsuallyATermAppliedToRoadsSurfacedWithAsphaltOrConcrete")]
 		[EnumMember(Value = "Hard Surfaced")] 
+		[XmlEnum("4")] 
 		HardSurfaced = 4,
 
 		[System.ComponentModel.Description("ConstructedWithNoExtraProtectionUsuallyATermAppliedToRoadsNotSurfacedWithAHardMaterial")]
 		[EnumMember(Value = "Unsurfaced")] 
+		[XmlEnum("5")] 
 		Unsurfaced = 5,
 
 		[System.ComponentModel.Description("ConstructedFromWood")]
 		[EnumMember(Value = "Wooden")] 
+		[XmlEnum("6")] 
 		Wooden = 6,
 
 		[System.ComponentModel.Description("ConstructedFromMetal")]
 		[EnumMember(Value = "Metal")] 
+		[XmlEnum("7")] 
 		Metal = 7,
 
 		[System.ComponentModel.Description("ConstructedFromAPlasticMaterialStrengthenedWithFibresOfGlass")]
 		[EnumMember(Value = "Glass Reinforced Plastic")] 
+		[XmlEnum("8")] 
 		GlassReinforcedPlastic = 8,
 
 		[System.ComponentModel.Description("AStructureOfCrossedWoodenOrMetalStripsUsuallyArrangedToFormADiagonalPatternOfOpenSpacesBetweenTheStrips")]
 		[EnumMember(Value = "Latticed")] 
+		[XmlEnum("11")] 
 		Latticed = 11,
 
 		[System.ComponentModel.Description("oneAnyArtificialOrNaturalSubstanceHavingSimilarPropertiesAndCompositionAsFusedBoraxObsidianOrTheLike2SomethingMadeOfSuchASubstanceAsAWindowpane")]
 		[EnumMember(Value = "Glass")] 
+		[XmlEnum("12")] 
 		Glass = 12,
 	}
 
@@ -3626,54 +4389,67 @@ namespace S100Framework.DomainModel.S101 {
 	public enum natureOfSurface : int {
 		[System.ComponentModel.Description("SoftWetEarth")]
 		[EnumMember(Value = "Mud")] 
+		[XmlEnum("1")] 
 		Mud = 1,
 
 		[System.ComponentModel.Description("ParticlesOfLessThan0002mmStiffStickyEarthThatBecomesHardWhenBaked")]
 		[EnumMember(Value = "Clay")] 
+		[XmlEnum("2")] 
 		Clay = 2,
 
 		[System.ComponentModel.Description("AnUnconsolidatedSedimentWhoseParticlesRangeInSizeFrom00039To00625MillimetresInDiameterBetweenClayAndSandSize")]
 		[EnumMember(Value = "Silt")] 
+		[XmlEnum("3")] 
 		Silt = 3,
 
 		[System.ComponentModel.Description("LooseMaterialConsistingOfSmallButEasilyDistinguishableSeparateGrainsBetween00625And2000MillimetresInDiameter")]
 		[EnumMember(Value = "Sand")] 
+		[XmlEnum("4")] 
 		Sand = 4,
 
 		[System.ComponentModel.Description("AGeneralTermForRockAndRockFragmentsRangingInSizeFromPebblesAndGravelToBouldersOrLargeRockMasses")]
 		[EnumMember(Value = "Stone")] 
+		[XmlEnum("5")] 
 		Stone = 5,
 
 		[System.ComponentModel.Description("ParticlesOf2040mmSmallStonesWithCoarseSand")]
 		[EnumMember(Value = "Gravel")] 
+		[XmlEnum("6")] 
 		Gravel = 6,
 
 		[System.ComponentModel.Description("ASmallStoneWornSmoothAndRoundedByTheActionOfWaterSandIceEtcRangingInDiameterBetween4And64Millimetres")]
 		[EnumMember(Value = "Pebbles")] 
+		[XmlEnum("7")] 
 		Pebbles = 7,
 
 		[System.ComponentModel.Description("ANaturallyRoundedStoneLargerThanAPebble")]
 		[EnumMember(Value = "Cobbles")] 
+		[XmlEnum("8")] 
 		Cobbles = 8,
 
 		[System.ComponentModel.Description("AnyFormationOfNaturalOriginThatConstitutesAnIntegralPartOfTheLithosphereTheNaturalOccurringMaterialThatFormsFirmHardAndSolidMasses")]
 		[EnumMember(Value = "Rock")] 
+		[XmlEnum("9")] 
 		Rock = 9,
 
 		[System.ComponentModel.Description("TheFluidOrSemiFluidMatterFlowingFromAVolcanoTheSubstanceThatResultsFromTheCoolingOfTheMoltenRockPartOfTheOceanBedIsComposedOfLava")]
 		[EnumMember(Value = "Lava")] 
+		[XmlEnum("11")] 
 		Lava = 11,
 
 		[System.ComponentModel.Description("HardCalcareousSkeletonsOfManyTribesOfMarinePolyps")]
 		[EnumMember(Value = "Coral")] 
+		[XmlEnum("14")] 
 		Coral = 14,
 
 		[System.ComponentModel.Description("TheHardOutsideCoveringOfAnAnimalPartOfTheOceanBedIsComposedOfNumerousShellsOfMarineAnimals")]
 		[EnumMember(Value = "Shells")] 
+		[XmlEnum("17")] 
 		Shells = 17,
 
 		[System.ComponentModel.Description("ARoundedRockWithDiameterOf256MillimetresOrLarger")]
 		[EnumMember(Value = "Boulder")] 
+		[XmlEnum("18")] 
 		Boulder = 18,
 	}
 
@@ -3682,42 +4458,52 @@ namespace S100Framework.DomainModel.S101 {
 	public enum natureOfSurfaceQualifyingTerms : int {
 		[System.ComponentModel.Description("FallsWithinTheSmallestSizeContinuumForAParticularNatureOfSurfaceTerm")]
 		[EnumMember(Value = "Fine")] 
+		[XmlEnum("1")] 
 		Fine = 1,
 
 		[System.ComponentModel.Description("FallsWithinTheModerateSizeContinuumForAParticularNatureOfSurfaceTerm")]
 		[EnumMember(Value = "Medium")] 
+		[XmlEnum("2")] 
 		Medium = 2,
 
 		[System.ComponentModel.Description("FallsWithinTheLargestSizeContinuumForAParticularNatureOfSurfaceTerm")]
 		[EnumMember(Value = "Coarse")] 
+		[XmlEnum("3")] 
 		Coarse = 3,
 
 		[System.ComponentModel.Description("FracturedOrInPieces")]
 		[EnumMember(Value = "Broken")] 
+		[XmlEnum("4")] 
 		Broken = 4,
 
 		[System.ComponentModel.Description("HavingAnAdhesiveOrGlueLikeProperty")]
 		[EnumMember(Value = "Sticky")] 
+		[XmlEnum("5")] 
 		Sticky = 5,
 
 		[System.ComponentModel.Description("NotHardOrFirm")]
 		[EnumMember(Value = "Soft")] 
+		[XmlEnum("6")] 
 		Soft = 6,
 
 		[System.ComponentModel.Description("NotPliantThickResistantToFlow")]
 		[EnumMember(Value = "Stiff")] 
+		[XmlEnum("7")] 
 		Stiff = 7,
 
 		[System.ComponentModel.Description("ComposedOfOrContainingMaterialEjectedFromAVolcano")]
 		[EnumMember(Value = "Volcanic")] 
+		[XmlEnum("8")] 
 		Volcanic = 8,
 
 		[System.ComponentModel.Description("ComposedOfOrContainingCalciumOrCalciumCarbonate")]
 		[EnumMember(Value = "Calcareous")] 
+		[XmlEnum("9")] 
 		Calcareous = 9,
 
 		[System.ComponentModel.Description("FirmUsuallyRefersToAnAreaOfTheSeafloorNotCoveredByUnconsolidatedSediment")]
 		[EnumMember(Value = "Hard")] 
+		[XmlEnum("10")] 
 		Hard = 10,
 	}
 
@@ -3726,14 +4512,17 @@ namespace S100Framework.DomainModel.S101 {
 	public enum pilotMovement : int {
 		[System.ComponentModel.Description("ThePlaceWhereVesselsNotBeingNavigatedAccordingToAPilotSInstructionsPickUpAPilotWhileInTransitFromSeaToAPortOrConstrictedWatersForFutureNavigationUnderPilotInstructions")]
 		[EnumMember(Value = "Embarkation")] 
+		[XmlEnum("1")] 
 		Embarkation = 1,
 
 		[System.ComponentModel.Description("ThePlaceWhereVesselsBeingNavigatedUnderAPilotSInstructionsInTransitFromSeaToAPortOrConstrictedWatersDropThePilotAndProceedWithoutBeingSubjectToPilotInstructions")]
 		[EnumMember(Value = "Disembarkation")] 
+		[XmlEnum("2")] 
 		Disembarkation = 2,
 
 		[System.ComponentModel.Description("ThePlaceWhereVesselsBeingNavigatedUnderAPilotSInstructionsDropOffThePilotAndPickUpADifferentPilotForFutureNavigationUnderPilotSInstructions")]
 		[EnumMember(Value = "Pilot Change")] 
+		[XmlEnum("3")] 
 		PilotChange = 3,
 	}
 
@@ -3742,102 +4531,127 @@ namespace S100Framework.DomainModel.S101 {
 	public enum product : int {
 		[System.ComponentModel.Description("AThickSlipperyLiquidThatWillNotDissolveInWaterUsuallyPetroleumBasedInTheContextOfStorageTanks")]
 		[EnumMember(Value = "Oil")] 
+		[XmlEnum("1")] 
 		Oil = 1,
 
 		[System.ComponentModel.Description("ASubstanceWithParticlesThatCanMoveFreelyUsuallyAFuelSubstanceInTheContextOfStorageTanks")]
 		[EnumMember(Value = "Gas")] 
+		[XmlEnum("2")] 
 		Gas = 2,
 
 		[System.ComponentModel.Description("AColourlessOdourlessTastelessLiquidThatIsACompoundOfHydrogenAndOxygen")]
 		[EnumMember(Value = "Water")] 
+		[XmlEnum("3")] 
 		Water = 3,
 
 		[System.ComponentModel.Description("AGeneralTermForRockAndRockFragmentsRangingInSizeFromPebblesAndGravelToBouldersOrLargeRockMasses")]
 		[EnumMember(Value = "Stone")] 
+		[XmlEnum("4")] 
 		Stone = 4,
 
 		[System.ComponentModel.Description("AHardBlackMineralThatIsBurnedAsFuel")]
 		[EnumMember(Value = "Coal")] 
+		[XmlEnum("5")] 
 		Coal = 5,
 
 		[System.ComponentModel.Description("ASolidRockOrMineralFromWhichMetalIsObtained")]
 		[EnumMember(Value = "Ore")] 
+		[XmlEnum("6")] 
 		Ore = 6,
 
 		[System.ComponentModel.Description("AnySubstanceObtainedByOrUsedInAChemicalProcess")]
 		[EnumMember(Value = "Chemicals")] 
+		[XmlEnum("7")] 
 		Chemicals = 7,
 
 		[System.ComponentModel.Description("WaterThatIsSuitableForHumanConsumption")]
 		[EnumMember(Value = "Drinking Water")] 
+		[XmlEnum("8")] 
 		DrinkingWater = 8,
 
 		[System.ComponentModel.Description("AWhiteFluidSecretedByFemaleMammalsAsFoodForTheirYoung")]
 		[EnumMember(Value = "Milk")] 
+		[XmlEnum("9")] 
 		Milk = 9,
 
 		[System.ComponentModel.Description("AMineralFromWhichAluminumIsObtained")]
 		[EnumMember(Value = "Bauxite")] 
+		[XmlEnum("10")] 
 		Bauxite = 10,
 
 		[System.ComponentModel.Description("ASolidSubstanceObtainedAfterGasAndTarHaveBeenExtractedFromCoalUsedAsAFuel")]
 		[EnumMember(Value = "Coke")] 
+		[XmlEnum("11")] 
 		Coke = 11,
 
 		[System.ComponentModel.Description("AnOblongLumpOfCastIronMetal")]
 		[EnumMember(Value = "Iron Ingots")] 
+		[XmlEnum("12")] 
 		IronIngots = 12,
 
 		[System.ComponentModel.Description("SodiumChlorideObtainedFromMinesOrByTheEvaporationOfSeaWater")]
 		[EnumMember(Value = "Salt")] 
+		[XmlEnum("13")] 
 		Salt = 13,
 
 		[System.ComponentModel.Description("LooseMaterialConsistingOfSmallButEasilyDistinguishableSeparateGrainsBetween00625And2000MillimetresInDiameter")]
 		[EnumMember(Value = "Sand")] 
+		[XmlEnum("14")] 
 		Sand = 14,
 
 		[System.ComponentModel.Description("WoodPreparedForUseInBuildingOrCarpentry")]
 		[EnumMember(Value = "Timber")] 
+		[XmlEnum("15")] 
 		Timber = 15,
 
 		[System.ComponentModel.Description("PowderyFragmentsOfWoodMadeInSawingTimberOrCoarseChipsProducedForUseInManufacturingPressedBoard")]
 		[EnumMember(Value = "Sawdust/Wood Chips")] 
+		[XmlEnum("16")] 
 		SawdustWoodChips = 16,
 
 		[System.ComponentModel.Description("DiscardedMetalSuitableForBeingReprocessed")]
 		[EnumMember(Value = "Scrap Metal")] 
+		[XmlEnum("17")] 
 		ScrapMetal = 17,
 
 		[System.ComponentModel.Description("NaturalGasThatHasBeenLiquefiedForEaseOfTransportByCoolingTheGasTo162Celsius")]
 		[EnumMember(Value = "Liquefied Natural Gas")] 
+		[XmlEnum("18")] 
 		LiquefiedNaturalGas = 18,
 
 		[System.ComponentModel.Description("ACompressedGasConsistingOfFlammableLightHydrocarbonsAndDerivedFromPetroleum")]
 		[EnumMember(Value = "Liquefied Petroleum Gas")] 
+		[XmlEnum("19")] 
 		LiquefiedPetroleumGas = 19,
 
 		[System.ComponentModel.Description("TheFermentedJuiceOfGrapes")]
 		[EnumMember(Value = "Wine")] 
+		[XmlEnum("20")] 
 		Wine = 20,
 
 		[System.ComponentModel.Description("ASubstanceMadeOfPowderedLimeAndClayMixedWithWater")]
 		[EnumMember(Value = "Cement")] 
+		[XmlEnum("21")] 
 		Cement = 21,
 
 		[System.ComponentModel.Description("ASmallHardSeedEspeciallyThatOfAnyCerealPlantSuchAsWheatRiceCornRyeEtc")]
 		[EnumMember(Value = "Grain")] 
+		[XmlEnum("22")] 
 		Grain = 22,
 
 		[System.ComponentModel.Description("ElectricChargeOrCurrent")]
 		[EnumMember(Value = "Electricity")] 
+		[XmlEnum("23")] 
 		Electricity = 23,
 
 		[System.ComponentModel.Description("TheSolidFormOfWater")]
 		[EnumMember(Value = "Ice")] 
+		[XmlEnum("24")] 
 		Ice = 24,
 
 		[System.ComponentModel.Description("ParticlesOfLessThan0002mmStiffStickyEarthThatBecomesHardWhenBaked")]
 		[EnumMember(Value = "Clay")] 
+		[XmlEnum("25")] 
 		Clay = 25,
 	}
 
@@ -3846,6 +4660,7 @@ namespace S100Framework.DomainModel.S101 {
 	public enum qualityOfHorizontalMeasurement : int {
 		[System.ComponentModel.Description("APositionThatIsConsideredToBeLessThanThirdOrderAccuracyButIsGenerallyConsideredToBeWithin305MetresOfItsCorrectGeographicLocationAlsoMayApplyToAFeatureWhosePositionDoesNotRemainFixed")]
 		[EnumMember(Value = "Approximate")] 
+		[XmlEnum("4")] 
 		Approximate = 4,
 	}
 
@@ -3854,42 +4669,52 @@ namespace S100Framework.DomainModel.S101 {
 	public enum qualityOfVerticalMeasurement : int {
 		[System.ComponentModel.Description("TheDepthFromTheChartDatumToTheSeabedOrToTheTopOfADryingFeatureIsKnown")]
 		[EnumMember(Value = "Depth Known")] 
+		[XmlEnum("1")] 
 		DepthKnown = 1,
 
 		[System.ComponentModel.Description("TheDepthFromChartDatumToTheSeabedOrTheShoalestDepthOfTheFeatureIsUnknown")]
 		[EnumMember(Value = "Depth or Least Depth Unknown")] 
+		[XmlEnum("2")] 
 		DepthOrLeastDepthUnknown = 2,
 
 		[System.ComponentModel.Description("ADepthThatMayBeLessThanIndicated")]
 		[EnumMember(Value = "Doubtful Sounding")] 
+		[XmlEnum("3")] 
 		DoubtfulSounding = 3,
 
 		[System.ComponentModel.Description("ADepthThatIsConsideredToBeAnUnreliableValue")]
 		[EnumMember(Value = "Unreliable Sounding")] 
+		[XmlEnum("4")] 
 		UnreliableSounding = 4,
 
 		[System.ComponentModel.Description("TheShoalestDepthOverAFeatureIsOfKnownValue")]
 		[EnumMember(Value = "Least Depth Known")] 
+		[XmlEnum("6")] 
 		LeastDepthKnown = 6,
 
 		[System.ComponentModel.Description("TheLeastDepthOverAFeatureIsUnknownButThereIsConsideredToBeSafeClearanceAtThisDepth")]
 		[EnumMember(Value = "Least Depth Unknown, Safe Clearance at Value Shown")] 
+		[XmlEnum("7")] 
 		LeastDepthUnknownSafeClearanceAtValueShown = 7,
 
 		[System.ComponentModel.Description("DepthValueObtainedFromAReportButNotFullySurveyed")]
 		[EnumMember(Value = "Value Reported (Not Surveyed)")] 
+		[XmlEnum("8")] 
 		ValueReportedNotSurveyed = 8,
 
 		[System.ComponentModel.Description("DepthValueObtainedFromAReportWhichItHasNotBeenPossibleToConfirm")]
 		[EnumMember(Value = "Value Reported (Not Confirmed)")] 
+		[XmlEnum("9")] 
 		ValueReportedNotConfirmed = 9,
 
 		[System.ComponentModel.Description("TheDepthAtWhichAChannelIsKeptByHumanInfluenceUsuallyByDredging")]
 		[EnumMember(Value = "Maintained Depth")] 
+		[XmlEnum("10")] 
 		MaintainedDepth = 10,
 
 		[System.ComponentModel.Description("DepthsMayBeAlteredByHumanInfluenceButWillNotBeRoutinelyMaintained")]
 		[EnumMember(Value = "Not Regularly Maintained")] 
+		[XmlEnum("11")] 
 		NotRegularlyMaintained = 11,
 	}
 
@@ -3898,10 +4723,12 @@ namespace S100Framework.DomainModel.S101 {
 	public enum referenceTide : int {
 		[System.ComponentModel.Description("TheHighestLevelReachedAtAPlaceByTheWaterSurfaceInOneOscillation")]
 		[EnumMember(Value = "High Water")] 
+		[XmlEnum("1")] 
 		HighWater = 1,
 
 		[System.ComponentModel.Description("TheLowestLevelReachedAtAPlaceByTheWaterSurfaceInOneOscillation")]
 		[EnumMember(Value = "Low Water")] 
+		[XmlEnum("2")] 
 		LowWater = 2,
 	}
 
@@ -3910,14 +4737,17 @@ namespace S100Framework.DomainModel.S101 {
 	public enum referenceTideType : int {
 		[System.ComponentModel.Description("TheTidesOfIncreasedRangeOccurringNearTheTimesOfFullMoonAndNewMoon")]
 		[EnumMember(Value = "Springs")] 
+		[XmlEnum("1")] 
 		Springs = 1,
 
 		[System.ComponentModel.Description("TheTidesOfDecreasedRangeOccurringNearTheTimesOfFirstAndLastQuarter")]
 		[EnumMember(Value = "Neaps")] 
+		[XmlEnum("2")] 
 		Neaps = 2,
 
 		[System.ComponentModel.Description("TheTidesOfMeanRangeOccurringBetweenSpringAndNeapTides")]
 		[EnumMember(Value = "Mean")] 
+		[XmlEnum("3")] 
 		Mean = 3,
 	}
 
@@ -3926,118 +4756,147 @@ namespace S100Framework.DomainModel.S101 {
 	public enum restriction : int {
 		[System.ComponentModel.Description("AnAreaWithinWhichAnchoringIsNotPermitted")]
 		[EnumMember(Value = "Anchoring Prohibited")] 
+		[XmlEnum("1")] 
 		AnchoringProhibited = 1,
 
 		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichAnchoringIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
 		[EnumMember(Value = "Anchoring Restricted")] 
+		[XmlEnum("2")] 
 		AnchoringRestricted = 2,
 
 		[System.ComponentModel.Description("AnAreaWithinWhichFishingIsNotPermitted")]
 		[EnumMember(Value = "Fishing Prohibited")] 
+		[XmlEnum("3")] 
 		FishingProhibited = 3,
 
 		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichFishingIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
 		[EnumMember(Value = "Fishing Restricted")] 
+		[XmlEnum("4")] 
 		FishingRestricted = 4,
 
 		[System.ComponentModel.Description("AnAreaWithinWhichTrawlingIsNotPermitted")]
 		[EnumMember(Value = "Trawling Prohibited")] 
+		[XmlEnum("5")] 
 		TrawlingProhibited = 5,
 
 		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichTrawlingIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
 		[EnumMember(Value = "Trawling Restricted")] 
+		[XmlEnum("6")] 
 		TrawlingRestricted = 6,
 
 		[System.ComponentModel.Description("AnAreaWithinWhichNavigationAndOrAnchoringIsProhibited")]
 		[EnumMember(Value = "Entry Prohibited")] 
+		[XmlEnum("7")] 
 		EntryProhibited = 7,
 
 		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichNavigationIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
 		[EnumMember(Value = "Entry Restricted")] 
+		[XmlEnum("8")] 
 		EntryRestricted = 8,
 
 		[System.ComponentModel.Description("AnAreaWithinWhichDredgingIsNotPermitted")]
 		[EnumMember(Value = "Dredging Prohibited")] 
+		[XmlEnum("9")] 
 		DredgingProhibited = 9,
 
 		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichDredgingIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
 		[EnumMember(Value = "Dredging Restricted")] 
+		[XmlEnum("10")] 
 		DredgingRestricted = 10,
 
 		[System.ComponentModel.Description("AnAreaWithinWhichDivingIsNotPermitted")]
 		[EnumMember(Value = "Diving Prohibited")] 
+		[XmlEnum("11")] 
 		DivingProhibited = 11,
 
 		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichDivingIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
 		[EnumMember(Value = "Diving Restricted")] 
+		[XmlEnum("12")] 
 		DivingRestricted = 12,
 
 		[System.ComponentModel.Description("MarinersMustAdjustTheSpeedOfTheirVesselsToReduceTheWaveOrWashWhichMayCauseErosionOrDisturbMooredVessels")]
 		[EnumMember(Value = "No Wake")] 
+		[XmlEnum("13")] 
 		NoWake = 13,
 
 		[System.ComponentModel.Description("AnImoDeclaredRouteingMeasureComprisingAnAreaWithinDefinedLimitsInWhichEitherNavigationIsParticularlyHazardousOrItIsExceptionallyImportantToAvoidCasualtiesAndWhichShouldBeAvoidedByAllShipsOrCertainClassesOfShips")]
 		[EnumMember(Value = "Area To Be Avoided")] 
+		[XmlEnum("14")] 
 		AreaToBeAvoided = 14,
 
 		[System.ComponentModel.Description("TheErectionOfPermanentOrTemporaryFixedStructuresOrArtificialIslandsIsProhibited")]
 		[EnumMember(Value = "Construction Prohibited")] 
+		[XmlEnum("15")] 
 		ConstructionProhibited = 15,
 
 		[System.ComponentModel.Description("AnAreaWithinWhichDischargingOrDumpingIsProhibited")]
 		[EnumMember(Value = "Discharging Prohibited")] 
+		[XmlEnum("16")] 
 		DischargingProhibited = 16,
 
 		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAnAppropriateAuthorityWithinWhichDischargingOrDumpingIsRestrictedInAccordanceWithSpecifiedConditions")]
 		[EnumMember(Value = "Discharging Restricted")] 
+		[XmlEnum("17")] 
 		DischargingRestricted = 17,
 
 		[System.ComponentModel.Description("AnAreaWithinWhichIndustrialOrMineralExplorationAndDevelopmentAreProhibited")]
 		[EnumMember(Value = "Industrial or Mineral Exploration/Development Prohibited")] 
+		[XmlEnum("18")] 
 		IndustrialOrMineralExplorationDevelopmentProhibited = 18,
 
 		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAnAppropriateAuthorityWithinWhichIndustrialOrMineralExplorationAndDevelopmentIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
 		[EnumMember(Value = "Industrial or Mineral Exploration/Development Restricted")] 
+		[XmlEnum("19")] 
 		IndustrialOrMineralExplorationDevelopmentRestricted = 19,
 
 		[System.ComponentModel.Description("AnAreaWithinWhichExcavatingAHoleOnTheSeabedWithADrillIsProhibited")]
 		[EnumMember(Value = "Drilling Prohibited")] 
+		[XmlEnum("20")] 
 		DrillingProhibited = 20,
 
 		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAnAppropriateAuthorityWithinWhichExcavatingAHoleOnTheSeabedWithADrillIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
 		[EnumMember(Value = "Drilling Restricted")] 
+		[XmlEnum("21")] 
 		DrillingRestricted = 21,
 
 		[System.ComponentModel.Description("AnAreaWithinWhichTheRemovalOfHistoricalArtefactsIsProhibited")]
 		[EnumMember(Value = "Removal of Historical Artefacts Prohibited")] 
+		[XmlEnum("22")] 
 		RemovalOfHistoricalArtefactsProhibited = 22,
 
 		[System.ComponentModel.Description("AnAreaInWhichCargoTranshipmentLighteningIsProhibited")]
 		[EnumMember(Value = "Cargo Transhipment (Lightening) Prohibited")] 
+		[XmlEnum("23")] 
 		CargoTranshipmentLighteningProhibited = 23,
 
 		[System.ComponentModel.Description("AnAreaInWhichTheDraggingOfAnythingAlongTheSeabedForExampleBottomTrawlingIsProhibited")]
 		[EnumMember(Value = "Dragging Prohibited")] 
+		[XmlEnum("24")] 
 		DraggingProhibited = 24,
 
 		[System.ComponentModel.Description("AnAreaInWhichAVesselIsProhibitedFromStopping")]
 		[EnumMember(Value = "Stopping Prohibited")] 
+		[XmlEnum("25")] 
 		StoppingProhibited = 25,
 
 		[System.ComponentModel.Description("AnAreaInWhichLandingIsProhibited")]
 		[EnumMember(Value = "Landing Prohibited")] 
+		[XmlEnum("26")] 
 		LandingProhibited = 26,
 
 		[System.ComponentModel.Description("AnAreaWithinWhichSpeedIsRestricted")]
 		[EnumMember(Value = "Speed Restricted")] 
+		[XmlEnum("27")] 
 		SpeedRestricted = 27,
 
 		[System.ComponentModel.Description("AnAreaInWhichSwimmingIsProhibited")]
 		[EnumMember(Value = "Swimming Prohibited")] 
+		[XmlEnum("39")] 
 		SwimmingProhibited = 39,
 
 		[System.ComponentModel.Description("AnAreaWithinWhichAnyVesselPropelledByMachineryIsProhibited")]
 		[EnumMember(Value = "Power-Driven Vessels Prohibited")] 
+		[XmlEnum("42")] 
 		PowerDrivenVesselsProhibited = 42,
 	}
 
@@ -4046,26 +4905,32 @@ namespace S100Framework.DomainModel.S101 {
 	public enum signalGeneration : int {
 		[System.ComponentModel.Description("SignalGenerationIsInitiatedByASelfRegulatingMechanismSuchAsATimerOrLightSensor")]
 		[EnumMember(Value = "Automatically")] 
+		[XmlEnum("1")] 
 		Automatically = 1,
 
 		[System.ComponentModel.Description("TheSignalIsGeneratedByTheMotionOfTheSeaSurfaceSuchAsABellInABuoy")]
 		[EnumMember(Value = "By Wave Action")] 
+		[XmlEnum("2")] 
 		ByWaveAction = 2,
 
 		[System.ComponentModel.Description("TheSignalIsGeneratedByAManuallyOperatedMechanismSuchAsAHandCrankedSiren")]
 		[EnumMember(Value = "By Hand")] 
+		[XmlEnum("3")] 
 		ByHand = 3,
 
 		[System.ComponentModel.Description("TheSignalIsGeneratedByTheMotionOfAirSuchAsAWindDrivenWhistle")]
 		[EnumMember(Value = "By Wind")] 
+		[XmlEnum("4")] 
 		ByWind = 4,
 
 		[System.ComponentModel.Description("ActivatedByRadioSignal")]
 		[EnumMember(Value = "Radio Activated")] 
+		[XmlEnum("5")] 
 		RadioActivated = 5,
 
 		[System.ComponentModel.Description("ActivatedByMakingACallToAMannedStation")]
 		[EnumMember(Value = "Call Activated")] 
+		[XmlEnum("6")] 
 		CallActivated = 6,
 	}
 
@@ -4074,10 +4939,12 @@ namespace S100Framework.DomainModel.S101 {
 	public enum signalStatus : int {
 		[System.ComponentModel.Description("TheIndicationOfAnElementOfASignalSequenceBeingAPeriodOfLightOrSound")]
 		[EnumMember(Value = "Lit/Sound")] 
+		[XmlEnum("1")] 
 		LitSound = 1,
 
 		[System.ComponentModel.Description("TheIndicationOfAnElementOfASignalSequenceBeingAPeriodOfEclipseOrSilence")]
 		[EnumMember(Value = "Eclipsed/Silent")] 
+		[XmlEnum("2")] 
 		EclipsedSilent = 2,
 	}
 
@@ -4086,14 +4953,17 @@ namespace S100Framework.DomainModel.S101 {
 	public enum speedUnits : int {
 		[System.ComponentModel.Description("AUnitOfSpeedExpressingTheNumberOfKilometresTravelledInOneHour")]
 		[EnumMember(Value = "Kilometres Per Hour")] 
+		[XmlEnum("2")] 
 		KilometresPerHour = 2,
 
 		[System.ComponentModel.Description("AnImperialAndUnitedStatesCustomaryUnitOfSpeedExpressingTheNumberOfStatuteMilesCoveredInOneHour")]
 		[EnumMember(Value = "Miles Per Hour")] 
+		[XmlEnum("3")] 
 		MilesPerHour = 3,
 
 		[System.ComponentModel.Description("ANauticalUnitOfSpeedOneKnotIsOneNauticalMilePerHourTheNameIsDerivedFromTheKnotsInTheLogLine")]
 		[EnumMember(Value = "Knots")] 
+		[XmlEnum("4")] 
 		Knots = 4,
 	}
 
@@ -4102,74 +4972,92 @@ namespace S100Framework.DomainModel.S101 {
 	public enum status : int {
 		[System.ComponentModel.Description("IntendedToLastOrFunctionIndefinitely")]
 		[EnumMember(Value = "Permanent")] 
+		[XmlEnum("1")] 
 		Permanent = 1,
 
 		[System.ComponentModel.Description("ActingOnSpecialOccasionsHappeningIrregularly")]
 		[EnumMember(Value = "Occasional")] 
+		[XmlEnum("2")] 
 		Occasional = 2,
 
 		[System.ComponentModel.Description("PresentedAsWorthyOfConfidenceAcceptanceUseEtc")]
 		[EnumMember(Value = "Recommended")] 
+		[XmlEnum("3")] 
 		Recommended = 3,
 
 		[System.ComponentModel.Description("UseHasCeasedButTheFacilityStillExistsIntactDisused")]
 		[EnumMember(Value = "Not in Use")] 
+		[XmlEnum("4")] 
 		NotInUse = 4,
 
 		[System.ComponentModel.Description("RecurringAtIntervals")]
 		[EnumMember(Value = "Periodic/Intermittent")] 
+		[XmlEnum("5")] 
 		PeriodicIntermittent = 5,
 
 		[System.ComponentModel.Description("SetApartForSomeSpecificUse")]
 		[EnumMember(Value = "Reserved")] 
+		[XmlEnum("6")] 
 		Reserved = 6,
 
 		[System.ComponentModel.Description("MeantToLastOnlyForATime")]
 		[EnumMember(Value = "Temporary")] 
+		[XmlEnum("7")] 
 		Temporary = 7,
 
 		[System.ComponentModel.Description("AdministeredByAnIndividualOrCorporationRatherThanAStateOrAPublicBody")]
 		[EnumMember(Value = "Private")] 
+		[XmlEnum("8")] 
 		Private = 8,
 
 		[System.ComponentModel.Description("CompulsoryEnforced")]
 		[EnumMember(Value = "Mandatory")] 
+		[XmlEnum("9")] 
 		Mandatory = 9,
 
 		[System.ComponentModel.Description("NoLongerLit")]
 		[EnumMember(Value = "Extinguished")] 
+		[XmlEnum("11")] 
 		Extinguished = 11,
 
 		[System.ComponentModel.Description("LitByFloodLightsStripLightsEtc")]
 		[EnumMember(Value = "Illuminated")] 
+		[XmlEnum("12")] 
 		Illuminated = 12,
 
 		[System.ComponentModel.Description("FamousInHistoryOfHistoricalInterest")]
 		[EnumMember(Value = "Historic")] 
+		[XmlEnum("13")] 
 		Historic = 13,
 
 		[System.ComponentModel.Description("BelongingToAvailableToUsedOrSharedByTheCommunityAsAWholeAndNotRestrictedToPrivateUse")]
 		[EnumMember(Value = "Public")] 
+		[XmlEnum("14")] 
 		Public = 14,
 
 		[System.ComponentModel.Description("OccurAtATimeCoincideInPointOfTimeBeContemporaryOrSimultaneous")]
 		[EnumMember(Value = "Synchronized")] 
+		[XmlEnum("15")] 
 		Synchronized = 15,
 
 		[System.ComponentModel.Description("LookedAtOrObservedOverAPeriodOfTimeEspeciallySoAsToBeAwareOfAnyMovementOrChange")]
 		[EnumMember(Value = "Watched")] 
+		[XmlEnum("16")] 
 		Watched = 16,
 
 		[System.ComponentModel.Description("UsuallyAutomaticInOperationWithoutAnyPermanentlyStationedPersonnelToSuperintendIt")]
 		[EnumMember(Value = "Unwatched")] 
+		[XmlEnum("17")] 
 		Unwatched = 17,
 
 		[System.ComponentModel.Description("AFeatureThatHasBeenReportedButHasNotBeenDefinitelyDeterminedToExist")]
 		[EnumMember(Value = "Existence Doubtful")] 
+		[XmlEnum("18")] 
 		ExistenceDoubtful = 18,
 
 		[System.ComponentModel.Description("MarkedByBuoys")]
 		[EnumMember(Value = "Buoyed")] 
+		[XmlEnum("28")] 
 		Buoyed = 28,
 	}
 
@@ -4178,50 +5066,62 @@ namespace S100Framework.DomainModel.S101 {
 	public enum surveyType : int {
 		[System.ComponentModel.Description("ASurveyMadeDueToLackOfTimeOrFacilitiesToALowerDegreeOfAccuracyAndDetailThanTheChosenScaleWouldNormallyIndicate")]
 		[EnumMember(Value = "Reconnaissance/Sketch Survey")] 
+		[XmlEnum("1")] 
 		ReconnaissanceSketchSurvey = 1,
 
 		[System.ComponentModel.Description("AThoroughSurveyUsuallyConductedWithReferenceToGuidelines")]
 		[EnumMember(Value = "Controlled Survey")] 
+		[XmlEnum("2")] 
 		ControlledSurvey = 2,
 
 		[System.ComponentModel.Description("ASurveyPrincipallyAimedAtTheInvestigationOfUnderwaterObstructionsAndDangers")]
 		[EnumMember(Value = "Examination Survey")] 
+		[XmlEnum("4")] 
 		ExaminationSurvey = 4,
 
 		[System.ComponentModel.Description("ASurveyWhereSoundingsAreAcquiredByVesselsOnPassage")]
 		[EnumMember(Value = "Passage Survey")] 
+		[XmlEnum("5")] 
 		PassageSurvey = 5,
 
 		[System.ComponentModel.Description("ASurveyWhereFeaturesHaveBeenPositionedAndDelimitedUsingRemoteSensingTechniques")]
 		[EnumMember(Value = "Remotely Sensed")] 
+		[XmlEnum("6")] 
 		RemotelySensed = 6,
 
 		[System.ComponentModel.Description("ASurveyAchieving100CoverageUsingSystematicControlledTechniquesProvidingFullSeafloorCoverageOrFullCoverageToADefinedDepthAndAnInvestigationOfAllContacts")]
 		[EnumMember(Value = "Full Coverage")] 
+		[XmlEnum("7")] 
 		FullCoverage = 7,
 
 		[System.ComponentModel.Description("AControlledSurveyButFullCoverageMayNotHaveBeenAchieved")]
 		[EnumMember(Value = "Systematic Survey")] 
+		[XmlEnum("8")] 
 		SystematicSurvey = 8,
 
 		[System.ComponentModel.Description("ASurveyOfLowerQualityThanAFullCoverageAndSystematicSurveySuchSurveysMayBeFurtherCategorizedAsReconnaissanceSketchTrackPassageRemotelySensedAndSpotSoundingSurveys")]
 		[EnumMember(Value = "Non-Systematic Survey")] 
+		[XmlEnum("9")] 
 		NonSystematicSurvey = 9,
 
 		[System.ComponentModel.Description("NotSurveyedToModernStandardsOrDueToItsAgeScaleOrPositionalOrVerticalUncertaintiesIsNotSuitableToTheTypeOfNavigationExpectedInTheArea")]
 		[EnumMember(Value = "Inadequately Surveyed")] 
+		[XmlEnum("10")] 
 		InadequatelySurveyed = 10,
 
 		[System.ComponentModel.Description("ASurveyThatUsesARegularForExampleGridOrIrregularPatternOfSoundingsObtainedOneAtATimeAndNormallyWithVeryWideSpacing")]
 		[EnumMember(Value = "Spot-Sounding Survey")] 
+		[XmlEnum("11")] 
 		SpotSoundingSurvey = 11,
 
 		[System.ComponentModel.Description("AControlledSystematicSurveyToStandardAccuracyUsingModernSurveyEchoSounderWithSonarSweep")]
 		[EnumMember(Value = "Acoustically Swept Survey")] 
+		[XmlEnum("12")] 
 		AcousticallySweptSurvey = 12,
 
 		[System.ComponentModel.Description("SweptAreasWhereTheClearanceDepthIsAccuratelyKnownButTheActualSeabedDepthIsNotAccuratelyKnown")]
 		[EnumMember(Value = "Mechanically Swept Survey")] 
+		[XmlEnum("13")] 
 		MechanicallySweptSurvey = 13,
 	}
 
@@ -4230,18 +5130,22 @@ namespace S100Framework.DomainModel.S101 {
 	public enum updateType : int {
 		[System.ComponentModel.Description("ToPutOrIntroduceIntoTheBodyOfSomething")]
 		[EnumMember(Value = "Insert")] 
+		[XmlEnum("1")] 
 		Insert = 1,
 
 		[System.ComponentModel.Description("ToEliminateEspeciallyByRemovingCuttingOutOrErasing")]
 		[EnumMember(Value = "Delete")] 
+		[XmlEnum("2")] 
 		Delete = 2,
 
 		[System.ComponentModel.Description("ToMakeBasicOrFundamentalChangesToTheCharacteristicsOfSomethingOftenToGiveANewOrientationToOrToServeANewEnd")]
 		[EnumMember(Value = "Modify")] 
+		[XmlEnum("3")] 
 		Modify = 3,
 
 		[System.ComponentModel.Description("ToChangeThePlaceOrPositionOfSomething")]
 		[EnumMember(Value = "Move")] 
+		[XmlEnum("4")] 
 		Move = 4,
 	}
 
@@ -4250,62 +5154,77 @@ namespace S100Framework.DomainModel.S101 {
 	public enum techniqueOfVerticalMeasurement : int {
 		[System.ComponentModel.Description("TheDepthWasMeasuredByUsingAnInstrumentThatDeterminesDepthOfWaterByMeasuringTheTimeIntervalBetweenEmissionOfASonicOrUltrasonicSignalAndReturnOfItsEchoFromTheBottom")]
 		[EnumMember(Value = "Found by Echo Sounder")] 
+		[XmlEnum("1")] 
 		FoundByEchoSounder = 1,
 
 		[System.ComponentModel.Description("TheDepthWasComputedFromARecordProducedByActiveSonarInWhichFixedAcousticBeamsAreDirectedIntoTheWaterPerpendicularlyToTheDirectionOfTravelToScanTheSeabedAndGenerateARecordOfTheSeabedConfiguration")]
 		[EnumMember(Value = "Found by Side Scan Sonar")] 
+		[XmlEnum("2")] 
 		FoundBySideScanSonar = 2,
 
 		[System.ComponentModel.Description("TheDepthWasMeasuredByUsingAWideSwathEchoSounderThatUsesMultipleBeamsToMeasureDepthsDirectlyBelowAndTransverseToTheShipSTrack")]
 		[EnumMember(Value = "Found by Multi Beam")] 
+		[XmlEnum("3")] 
 		FoundByMultiBeam = 3,
 
 		[System.ComponentModel.Description("TheDepthWasDeterminedByAPersonSkilledInThePracticeOfDiving")]
 		[EnumMember(Value = "Found by Diver")] 
+		[XmlEnum("4")] 
 		FoundByDiver = 4,
 
 		[System.ComponentModel.Description("TheDepthWasMeasuredByUsingALineGraduatedWithAttachedMarksAndFastenedToASoundingLead")]
 		[EnumMember(Value = "Found by Lead Line")] 
+		[XmlEnum("5")] 
 		FoundByLeadLine = 5,
 
 		[System.ComponentModel.Description("TheGivenAreaHasBeenSweptUsingASystemComprisedOfMultipleEchoSounderTransducersAttachedToBoomsDeployedFromTheSurveyVessel")]
 		[EnumMember(Value = "Swept by Vertical Acoustic System")] 
+		[XmlEnum("8")] 
 		SweptByVerticalAcousticSystem = 8,
 
 		[System.ComponentModel.Description("TheDepthWasDeterminedByUsingAnInstrumentThatComparesElectromagneticSignals")]
 		[EnumMember(Value = "Found by Electromagnetic Sensor")] 
+		[XmlEnum("9")] 
 		FoundByElectromagneticSensor = 9,
 
 		[System.ComponentModel.Description("TheScienceOrArtOfObtainingReliableMeasurementsFromPhotographs")]
 		[EnumMember(Value = "Photogrammetry")] 
+		[XmlEnum("10")] 
 		Photogrammetry = 10,
 
 		[System.ComponentModel.Description("TheDepthWasDeterminedByUsingInstrumentsPlacedAboardAnArtificialSatellite")]
 		[EnumMember(Value = "Satellite Imagery")] 
+		[XmlEnum("11")] 
 		SatelliteImagery = 11,
 
 		[System.ComponentModel.Description("TheDepthWasDeterminedByUsingLevellingTechniquesToFindTheElevationOfThePointRelativeToADatum")]
 		[EnumMember(Value = "Found by Levelling")] 
+		[XmlEnum("12")] 
 		FoundByLevelling = 12,
 
 		[System.ComponentModel.Description("TheGivenAreaWasDeterminedToBeFreeFromNavigationalDangersToACertainDepthByTowingASideScanSonar")]
 		[EnumMember(Value = "Swept by Side Scan Sonar")] 
+		[XmlEnum("13")] 
 		SweptBySideScanSonar = 13,
 
 		[System.ComponentModel.Description("TheDepthWasMeasuredByUsingAnInstrumentThatMeasuresDistanceByEmittingTimedPulsesOfLaserLightAndMeasuringTheTimeBetweenEmissionAndReceptionOfTheReflectedPulses")]
 		[EnumMember(Value = "Found by LIDAR")] 
+		[XmlEnum("15")] 
 		FoundByLidar = 15,
 
 		[System.ComponentModel.Description("ARadarWithASyntheticApertureAntennaWhichIsComposedOfALargeNumberOfElementaryTransducingElementsTheSignalsAreElectronicallyCombinedIntoAResultingSignalEquivalentToThatOfASingleAntennaOfAGivenApertureInAGivenDirection")]
 		[EnumMember(Value = "Synthetic Aperture Radar")] 
+		[XmlEnum("16")] 
 		SyntheticApertureRadar = 16,
 
 		[System.ComponentModel.Description("TermUsedToDescribeTheImageryDerivedFromSubdividingTheElectromagneticSpectrumIntoVeryNarrowBandwidthsTheseNarrowBandwidthsMayBeCombinedWithOrSubtractedFromEachOtherInVariousWaysToFormImagesUsefulInPreciseTerrainOrTargetAnalysis")]
 		[EnumMember(Value = "Hyperspectral Imagery")] 
+		[XmlEnum("17")] 
 		HyperspectralImagery = 17,
 
 		[System.ComponentModel.Description("TheGivenAreaWasDeterminedToBeFreeFromNavigationalDangersToACertainDepthByTowingALineOrObjectBelowTheSurfaceAtTheDesiredDepthOrLeastDepthSAndPositionSWithinAnAreaWasIdentifiedUsingTheSameTechnique")]
 		[EnumMember(Value = "Mechanically Swept")] 
+		[XmlEnum("18")] 
 		MechanicallySwept = 18,
 	}
 
@@ -4314,34 +5233,42 @@ namespace S100Framework.DomainModel.S101 {
 	public enum telecommunicationService : int {
 		[System.ComponentModel.Description("TheTransferOrExchangeOfInformationByUsingSoundsThatAreBeingMadeByMouthAndThroatWhenSpeaking")]
 		[EnumMember(Value = "Voice")] 
+		[XmlEnum("1")] 
 		Voice = 1,
 
 		[System.ComponentModel.Description("ASystemOfTransmittingAndReproducingGraphicMatterAsPrintingOrStillPicturesByMeansOfSignalsSentOverTelephoneLines")]
 		[EnumMember(Value = "Facsimile")] 
+		[XmlEnum("2")] 
 		Facsimile = 2,
 
 		[System.ComponentModel.Description("ShortMessageServiceIsAFormOfTextMessagingCommunicationOnPhonesAndMobilePhones")]
 		[EnumMember(Value = "SMS")] 
+		[XmlEnum("3")] 
 		Sms = 3,
 
 		[System.ComponentModel.Description("ARepresentationOfFactsConceptsOrInstructionsInAFormalisedMannerSuitableForCommunicationInterpretationOrProcessing")]
 		[EnumMember(Value = "Data")] 
+		[XmlEnum("4")] 
 		Data = 4,
 
 		[System.ComponentModel.Description("DataThatIsConstantlyReceivedByAndPresentedToAnEndUserWhileBeingDeliveredByAProvider")]
 		[EnumMember(Value = "Streamed Data")] 
+		[XmlEnum("5")] 
 		StreamedData = 5,
 
 		[System.ComponentModel.Description("ASystemOfCommunicationInWhichMessagesAreSentOverLongDistancesByUsingATelephoneSystemAndArePrintedByUsingASpecialMachineCalledATeletypewriter")]
 		[EnumMember(Value = "Telex")] 
+		[XmlEnum("6")] 
 		Telex = 6,
 
 		[System.ComponentModel.Description("AnApparatusSystemOrProcessForCommunicationAtADistanceByElectricTransmissionOverWire")]
 		[EnumMember(Value = "Telegraph")] 
+		[XmlEnum("7")] 
 		Telegraph = 7,
 
 		[System.ComponentModel.Description("MessagesAndOtherDataExchangedBetweenIndividualsUsingComputersInANetwork")]
 		[EnumMember(Value = "Email")] 
+		[XmlEnum("8")] 
 		Email = 8,
 	}
 
@@ -4350,10 +5277,12 @@ namespace S100Framework.DomainModel.S101 {
 	public enum textType : int {
 		[System.ComponentModel.Description("TheIndividualNameOfAFeature")]
 		[EnumMember(Value = "Name")] 
+		[XmlEnum("1")] 
 		Name = 1,
 
 		[System.ComponentModel.Description("ADistinguishingTraitQualityOrPropertyOfAFeatureClass")]
 		[EnumMember(Value = "Feature Characteristic")] 
+		[XmlEnum("2")] 
 		FeatureCharacteristic = 2,
 	}
 
@@ -4362,134 +5291,167 @@ namespace S100Framework.DomainModel.S101 {
 	public enum topmarkDaymarkShape : int {
 		[System.ComponentModel.Description("IsWhereTheVertexPointsUp")]
 		[EnumMember(Value = "Cone (Point Up)")] 
+		[XmlEnum("1")] 
 		ConePointUp = 1,
 
 		[System.ComponentModel.Description("IsWhereTheVertexPointsDown")]
 		[EnumMember(Value = "Cone (Point Down)")] 
+		[XmlEnum("2")] 
 		ConePointDown = 2,
 
 		[System.ComponentModel.Description("ACurvedSurfaceAllPointsOfWhichAreEquidistantFromAFixedPointWithinCalledTheCentre")]
 		[EnumMember(Value = "Sphere")] 
+		[XmlEnum("3")] 
 		Sphere = 3,
 
 		[System.ComponentModel.Description("TwoSpheresOneAboveTheOtherTwoBlackSpheresAreCommonlyUsedAsAnInternationalAssociationOfLighthouseAuthoritiesIalaTopmarkIsolatedDanger")]
 		[EnumMember(Value = "2 Spheres")] 
+		[XmlEnum("4")] 
 		twoSpheres = 4,
 
 		[System.ComponentModel.Description("ASolidGeometricalFigureGeneratedByStraightLinesFixedInDirectionAndDescribingWithOneOfPointAClosedCurveEspeciallyACircleInWhichCaseTheFigureIsCircularCylinderItsEndsBeingParallelCircles")]
 		[EnumMember(Value = "Cylinder")] 
+		[XmlEnum("5")] 
 		Cylinder = 5,
 
 		[System.ComponentModel.Description("UsuallyOfRectangularShapeMadeFromTimberOrMetalAndUsedToProvideAContrastWithTheNaturalBackgroundOfADaymarkTheActualDaymarkIsOftenPaintedOnToThisBoard")]
 		[EnumMember(Value = "Board")] 
+		[XmlEnum("6")] 
 		Board = 6,
 
 		[System.ComponentModel.Description("HavingAShapeOrACrossSectionLikeTheCapitalLetterX")]
 		[EnumMember(Value = "X-Shaped")] 
+		[XmlEnum("7")] 
 		XShaped = 7,
 
 		[System.ComponentModel.Description("ACrossWithOneVerticalMemberAndOneHorizontalMemberThatIsSimilarInShapeToTheCharacter")]
 		[EnumMember(Value = "Upright Cross")] 
+		[XmlEnum("8")] 
 		UprightCross = 8,
 
 		[System.ComponentModel.Description("ACubeStandingOnOneOfItsVertexesACubeIsASolidContainedBySixEqualSquaresARegularHexahedron")]
 		[EnumMember(Value = "Cube (Point Up)")] 
+		[XmlEnum("9")] 
 		CubePointUp = 9,
 
 		[System.ComponentModel.Description("twoConesOneAboveTheOtherWithTheirVerticesTogetherInTheCentre")]
 		[EnumMember(Value = "2 Cones (Point to Point)")] 
+		[XmlEnum("10")] 
 		twoConesPointToPoint = 10,
 
 		[System.ComponentModel.Description("twoConesOneAboveTheOtherWithTheirBasesTogetherInTheCentreAndTheirVerticesPointingUpAndDown")]
 		[EnumMember(Value = "2 Cones (Base to Base)")] 
+		[XmlEnum("11")] 
 		twoConesBaseToBase = 11,
 
 		[System.ComponentModel.Description("APlaneFigureHavingFourEqualSidesAndEqualOppositeAnglesTwoAcuteAndTwoObtuseAnObliqueEquilateralParallelogram")]
 		[EnumMember(Value = "Rhombus")] 
+		[XmlEnum("12")] 
 		Rhombus = 12,
 
 		[System.ComponentModel.Description("twoConesOneAboveTheOtherWithTheirVerticesPointingUp")]
 		[EnumMember(Value = "2 Cones (Points Upward)")] 
+		[XmlEnum("13")] 
 		twoConesPointsUpward = 13,
 
 		[System.ComponentModel.Description("twoConesOneAboveTheOtherWithTheirVerticesPointingDown")]
 		[EnumMember(Value = "2 Cones (Points Downward)")] 
+		[XmlEnum("14")] 
 		twoConesPointsDownward = 14,
 
 		[System.ComponentModel.Description("ABundleOfRodsOrTwigsABesomPointUpIsWhereTheThickerUntiedEndOfTheBesomIsAtTheBottom")]
 		[EnumMember(Value = "Besom (Point Up)")] 
+		[XmlEnum("15")] 
 		BesomPointUp = 15,
 
 		[System.ComponentModel.Description("ABundleOfRodsOrTwigsABesomPointDownIsWhereTheThinnerTiedEndOfTheBesomIsAtTheBottom")]
 		[EnumMember(Value = "Besom (Point Down)")] 
+		[XmlEnum("16")] 
 		BesomPointDown = 16,
 
 		[System.ComponentModel.Description("AFlagMountedOnAShortPole")]
 		[EnumMember(Value = "Flag")] 
+		[XmlEnum("17")] 
 		Flag = 17,
 
 		[System.ComponentModel.Description("ASphereLocatedAboveARhombus")]
 		[EnumMember(Value = "Sphere Over a Rhombus")] 
+		[XmlEnum("18")] 
 		SphereOverARhombus = 18,
 
 		[System.ComponentModel.Description("APlaneFigureWithFourRightAnglesAndFourEqualStraightSides")]
 		[EnumMember(Value = "Square")] 
+		[XmlEnum("19")] 
 		Square = 19,
 
 		[System.ComponentModel.Description("AHorizontalRectangleIsWhereTheTwoLongerOppositeSidesAreStandingHorizontally")]
 		[EnumMember(Value = "Rectangle (Horizontal)")] 
+		[XmlEnum("20")] 
 		RectangleHorizontal = 20,
 
 		[System.ComponentModel.Description("AVerticalRectangleIsWhereTheTwoLongerOppositeSidesAreStandingVertically")]
 		[EnumMember(Value = "Rectangle (Vertical)")] 
+		[XmlEnum("21")] 
 		RectangleVertical = 21,
 
 		[System.ComponentModel.Description("AQuadrilateralHavingOnePairOfOppositeSidesParallelAndWhichStandsOnItsLongerParallelSide")]
 		[EnumMember(Value = "Trapezium (Up)")] 
+		[XmlEnum("22")] 
 		TrapeziumUp = 22,
 
 		[System.ComponentModel.Description("AQuadrilateralHavingOnePairOfOppositeSidesParallelAndWhichStandsOnItsShorterParallelSide")]
 		[EnumMember(Value = "Trapezium (Down)")] 
+		[XmlEnum("23")] 
 		TrapeziumDown = 23,
 
 		[System.ComponentModel.Description("AFigureHavingThreeAnglesAndThreeSidesAndWhichHasAVertexAtTheTop")]
 		[EnumMember(Value = "Triangle (Point Up)")] 
+		[XmlEnum("24")] 
 		TrianglePointUp = 24,
 
 		[System.ComponentModel.Description("AFigureHavingThreeAnglesAndThreeSidesAndWhichHasASideAtTheTop")]
 		[EnumMember(Value = "Triangle (Point Down)")] 
+		[XmlEnum("25")] 
 		TrianglePointDown = 25,
 
 		[System.ComponentModel.Description("APerfectlyRoundPlaneFigureWhoseCircumferenceIsEverywhereEquidistantFromItsCentre")]
 		[EnumMember(Value = "Circle")] 
+		[XmlEnum("26")] 
 		Circle = 26,
 
 		[System.ComponentModel.Description("TwoUprightCrossesGenerallyVerticallyDisposedOneAboveTheOther")]
 		[EnumMember(Value = "Two Upright Crosses (One Over the Other)")] 
+		[XmlEnum("27")] 
 		TwoUprightCrossesOneOverTheOther = 27,
 
 		[System.ComponentModel.Description("HavingAShapeLikeTheCapitalLetterT")]
 		[EnumMember(Value = "T-Shape")] 
+		[XmlEnum("28")] 
 		TShape = 28,
 
 		[System.ComponentModel.Description("ATriangleVertexUppermostLocatedAboveACircle")]
 		[EnumMember(Value = "Triangle Pointing Up Over a Circle")] 
+		[XmlEnum("29")] 
 		TrianglePointingUpOverACircle = 29,
 
 		[System.ComponentModel.Description("AnUprightCrossLocatedAboveACircle")]
 		[EnumMember(Value = "Upright Cross Over a Circle")] 
+		[XmlEnum("30")] 
 		UprightCrossOverACircle = 30,
 
 		[System.ComponentModel.Description("ARhombusLocatedAboveACircle")]
 		[EnumMember(Value = "Rhombus Over a Circle")] 
+		[XmlEnum("31")] 
 		RhombusOverACircle = 31,
 
 		[System.ComponentModel.Description("ACircleLocatedOverATriangleVertexUppermost")]
 		[EnumMember(Value = "Circle Over a Triangle Pointing Up")] 
+		[XmlEnum("32")] 
 		CircleOverATrianglePointingUp = 32,
 
 		[System.ComponentModel.Description("AnUncommonAndOrNonStandardizedShapeAsTextuallyDescribedUsingAnAssociatedAttribute")]
 		[EnumMember(Value = "Other Shape (See Shape Information)")] 
+		[XmlEnum("33")] 
 		OtherShapeSeeShapeInformation = 33,
 	}
 
@@ -4498,18 +5460,22 @@ namespace S100Framework.DomainModel.S101 {
 	public enum trafficFlow : int {
 		[System.ComponentModel.Description("TrafficFlowInAGeneralDirectionTowardAPortOrSimilarDestination")]
 		[EnumMember(Value = "Inbound")] 
+		[XmlEnum("1")] 
 		Inbound = 1,
 
 		[System.ComponentModel.Description("TrafficFlowInAGeneralDirectionAwayFromAPortOrSimilarPointOfOrigin")]
 		[EnumMember(Value = "Outbound")] 
+		[XmlEnum("2")] 
 		Outbound = 2,
 
 		[System.ComponentModel.Description("TrafficFlowInOneGeneralDirectionOnly")]
 		[EnumMember(Value = "One-Way")] 
+		[XmlEnum("3")] 
 		OneWay = 3,
 
 		[System.ComponentModel.Description("TrafficFlowInTwoGenerallyOppositeDirections")]
 		[EnumMember(Value = "Two-Way")] 
+		[XmlEnum("4")] 
 		TwoWay = 4,
 	}
 
@@ -4518,126 +5484,157 @@ namespace S100Framework.DomainModel.S101 {
 	public enum verticalDatum : int {
 		[System.ComponentModel.Description("TheAverageHeightOfTheLowWatersOfSpringTidesThisLevelIsUsedAsATidalDatumInSomeAreas")]
 		[EnumMember(Value = "Mean Low Water Springs")] 
+		[XmlEnum("1")] 
 		MeanLowWaterSprings = 1,
 
 		[System.ComponentModel.Description("TheAverageHeightOfLowerLowWaterSpringsAtAPlace")]
 		[EnumMember(Value = "Mean Lower Low Water Springs")] 
+		[XmlEnum("2")] 
 		MeanLowerLowWaterSprings = 2,
 
 		[System.ComponentModel.Description("TheAverageHeightOfTheSurfaceOfTheSeaAtATideStationForAllStagesOfTheTideOverA19YearPeriodUsuallyDeterminedFromHourlyHeightReadingsMeasuredFromAFixedPredeterminedReferenceLevel")]
 		[EnumMember(Value = "Mean Sea Level")] 
+		[XmlEnum("3")] 
 		MeanSeaLevel = 3,
 
 		[System.ComponentModel.Description("AnArbitraryLevelConformingToTheLowestTideObservedAtAPlaceOrSomewhatLower")]
 		[EnumMember(Value = "Lowest Low Water")] 
+		[XmlEnum("4")] 
 		LowestLowWater = 4,
 
 		[System.ComponentModel.Description("TheAverageHeightOfAllLowWatersAtAPlaceOverA19YearPeriod")]
 		[EnumMember(Value = "Mean Low Water")] 
+		[XmlEnum("5")] 
 		MeanLowWater = 5,
 
 		[System.ComponentModel.Description("AnArbitraryLevelConformingToTheLowestWaterLevelObservedAtAPlaceAtSpringTidesDuringAPeriodOfTimeShorterThan19Years")]
 		[EnumMember(Value = "Lowest Low Water Springs")] 
+		[XmlEnum("6")] 
 		LowestLowWaterSprings = 6,
 
 		[System.ComponentModel.Description("AnArbitraryLevelUsuallyWithin03mFromThatOfMeanLowWaterSpringsMlws")]
 		[EnumMember(Value = "Approximate Mean Low Water Springs")] 
+		[XmlEnum("7")] 
 		ApproximateMeanLowWaterSprings = 7,
 
 		[System.ComponentModel.Description("AnArbitraryTidalDatumApproximatingTheLevelOfTheMeanOfTheLowerLowWaterAtSpringTidesItWasFirstUsedInWatersSurroundingIndia")]
 		[EnumMember(Value = "Indian Spring Low Water")] 
+		[XmlEnum("8")] 
 		IndianSpringLowWater = 8,
 
 		[System.ComponentModel.Description("AnArbitraryLevelApproximatingThatOfMeanLowWaterSpringsMlws")]
 		[EnumMember(Value = "Low Water Springs")] 
+		[XmlEnum("9")] 
 		LowWaterSprings = 9,
 
 		[System.ComponentModel.Description("AnArbitraryLevelUsuallyWithin03mFromThatOfLowestAstronomicalTideLat")]
 		[EnumMember(Value = "Approximate Lowest Astronomical Tide")] 
+		[XmlEnum("10")] 
 		ApproximateLowestAstronomicalTide = 10,
 
 		[System.ComponentModel.Description("AnArbitraryLevelApproximatingTheLowestWaterLevelObservedAtAPlaceUsuallyEquivalentToTheIndianSpringLowWaterIslw")]
 		[EnumMember(Value = "Nearly Lowest Low Water")] 
+		[XmlEnum("11")] 
 		NearlyLowestLowWater = 11,
 
 		[System.ComponentModel.Description("TheAverageHeightOfTheLowerLowWatersAtAPlaceOverA19YearPeriod")]
 		[EnumMember(Value = "Mean Lower Low Water")] 
+		[XmlEnum("12")] 
 		MeanLowerLowWater = 12,
 
 		[System.ComponentModel.Description("TheLowestLevelReachedAtAPlaceByTheWaterSurfaceInOneOscillation")]
 		[EnumMember(Value = "Low Water")] 
+		[XmlEnum("13")] 
 		LowWater = 13,
 
 		[System.ComponentModel.Description("AnArbitraryLevelUsuallyWithin03mFromThatOfMeanLowWaterMlw")]
 		[EnumMember(Value = "Approximate Mean Low Water")] 
+		[XmlEnum("14")] 
 		ApproximateMeanLowWater = 14,
 
 		[System.ComponentModel.Description("AnArbitraryLevelUsuallyWithin03mFromThatOfMeanLowerLowWaterMllw")]
 		[EnumMember(Value = "Approximate Mean Lower Low Water")] 
+		[XmlEnum("15")] 
 		ApproximateMeanLowerLowWater = 15,
 
 		[System.ComponentModel.Description("TheAverageHeightOfAllHighWatersAtAPlaceOverA19YearPeriod")]
 		[EnumMember(Value = "Mean High Water")] 
+		[XmlEnum("16")] 
 		MeanHighWater = 16,
 
 		[System.ComponentModel.Description("TheAverageHeightOfTheHighWatersOfSpringTides")]
 		[EnumMember(Value = "Mean High Water Springs")] 
+		[XmlEnum("17")] 
 		MeanHighWaterSprings = 17,
 
 		[System.ComponentModel.Description("TheHighestLevelReachedAtAPlaceByTheWaterSurfaceInOneOscillation")]
 		[EnumMember(Value = "High Water")] 
+		[XmlEnum("18")] 
 		HighWater = 18,
 
 		[System.ComponentModel.Description("AnArbitraryLevelUsuallyWithin03mFromThatOfMeanSeaLevelMsl")]
 		[EnumMember(Value = "Approximate Mean Sea Level")] 
+		[XmlEnum("19")] 
 		ApproximateMeanSeaLevel = 19,
 
 		[System.ComponentModel.Description("AnArbitraryLevelApproximatingThatOfMeanHighWaterSpringsMhws")]
 		[EnumMember(Value = "High Water Springs")] 
+		[XmlEnum("20")] 
 		HighWaterSprings = 20,
 
 		[System.ComponentModel.Description("TheAverageHeightOfHigherHighWatersAtAPlaceOverA19YearPeriod")]
 		[EnumMember(Value = "Mean Higher High Water")] 
+		[XmlEnum("21")] 
 		MeanHigherHighWater = 21,
 
 		[System.ComponentModel.Description("TheLevelOfLowWaterSpringsNearTheTimeOfAnEquinox")]
 		[EnumMember(Value = "Equinoctial Spring Low Water")] 
+		[XmlEnum("22")] 
 		EquinoctialSpringLowWater = 22,
 
 		[System.ComponentModel.Description("TheLowestTideLevelWhichCanBePredictedToOccurUnderAverageMeteorologicalConditionsAndUnderAnyCombinationOfAstronomicalConditions")]
 		[EnumMember(Value = "Lowest Astronomical Tide")] 
+		[XmlEnum("23")] 
 		LowestAstronomicalTide = 23,
 
 		[System.ComponentModel.Description("AnArbitraryDatumDefinedByALocalHarbourAuthorityFromWhichLevelsAndTidalHeightsAreMeasuredByThisAuthority")]
 		[EnumMember(Value = "Local Datum")] 
+		[XmlEnum("24")] 
 		LocalDatum = 24,
 
 		[System.ComponentModel.Description("AVerticalReferenceSystemWithItsZeroBasedOnTheMeanWaterLevelAtRimouskiPointeAuPReQuebecOverThePeriod1970To1988")]
 		[EnumMember(Value = "International Great Lakes Datum 1985")] 
+		[XmlEnum("25")] 
 		InternationalGreatLakesDatum1985 = 25,
 
 		[System.ComponentModel.Description("TheAverageOfAllHourlyWaterLevelsOverTheAvailablePeriodOfRecord")]
 		[EnumMember(Value = "Mean Water Level")] 
+		[XmlEnum("26")] 
 		MeanWaterLevel = 26,
 
 		[System.ComponentModel.Description("TheAverageOfTheLowestLowWatersOneFromEachOf19YearsOfObservations")]
 		[EnumMember(Value = "Lower Low Water Large Tide")] 
+		[XmlEnum("27")] 
 		LowerLowWaterLargeTide = 27,
 
 		[System.ComponentModel.Description("TheAverageOfTheHighestHighWatersOneFromEachOf19YearsOfObservations")]
 		[EnumMember(Value = "Higher High Water Large Tide")] 
+		[XmlEnum("28")] 
 		HigherHighWaterLargeTide = 28,
 
 		[System.ComponentModel.Description("AnArbitraryLevelApproximatingTheHighestWaterLevelObservedAtAPlaceUsuallyEquivalentToTheHighWaterSprings")]
 		[EnumMember(Value = "Nearly Highest High Water")] 
+		[XmlEnum("29")] 
 		NearlyHighestHighWater = 29,
 
 		[System.ComponentModel.Description("TheHighestTidalLevelWhichCanBePredictedToOccurUnderAverageMeteorologicalConditionsAndUnderAnyCombinationOfAstronomicalConditions")]
 		[EnumMember(Value = "Highest Astronomical Tide")] 
+		[XmlEnum("30")] 
 		HighestAstronomicalTide = 30,
 
 		[System.ComponentModel.Description("TheDatumRefersToEachBalticCountrySRealizationOfTheEuropeanVerticalReferenceSystemEvrsWithLandUpliftEpoch2000WhichIsConnectedToTheNormaalAmsterdamsPeilNap")]
 		[EnumMember(Value = "Baltic Sea Chart Datum 2000")] 
+		[XmlEnum("44")] 
 		BalticSeaChartDatum2000 = 44,
 	}
 
@@ -4646,50 +5643,62 @@ namespace S100Framework.DomainModel.S101 {
 	public enum virtualAISAidToNavigationType : int {
 		[System.ComponentModel.Description("IndicatesThatItShouldBePassedToTheNorthSideOfTheAid")]
 		[EnumMember(Value = "North Cardinal")] 
+		[XmlEnum("1")] 
 		NorthCardinal = 1,
 
 		[System.ComponentModel.Description("IndicatesThatItShouldBePassedToTheEastSideOfTheAid")]
 		[EnumMember(Value = "East Cardinal")] 
+		[XmlEnum("2")] 
 		EastCardinal = 2,
 
 		[System.ComponentModel.Description("IndicatesThatItShouldBePassedToTheSouthSideOfTheAid")]
 		[EnumMember(Value = "South Cardinal")] 
+		[XmlEnum("3")] 
 		SouthCardinal = 3,
 
 		[System.ComponentModel.Description("IndicatesThatItShouldBePassedToTheWestSideOfTheAid")]
 		[EnumMember(Value = "West Cardinal")] 
+		[XmlEnum("4")] 
 		WestCardinal = 4,
 
 		[System.ComponentModel.Description("IndicatesThePortBoundaryOfANavigationalChannelOrSuggestedRouteWhenProceedingInTheConventionalDirectionOfBuoyageInTheIalaASystem")]
 		[EnumMember(Value = "Port Lateral (IALA A)")] 
+		[XmlEnum("5")] 
 		PortLateralIalaA = 5,
 
 		[System.ComponentModel.Description("IndicatesTheStarboardBoundaryOfANavigationalChannelOrSuggestedRouteWhenProceedingInTheConventionalDirectionOfBuoyageInTheIalaASystem")]
 		[EnumMember(Value = "Starboard Lateral (IALA A)")] 
+		[XmlEnum("6")] 
 		StarboardLateralIalaA = 6,
 
 		[System.ComponentModel.Description("IndicatesThePortBoundaryOfANavigationalChannelOrSuggestedRouteWhenProceedingInTheConventionalDirectionOfBuoyageInTheIalaBSystem")]
 		[EnumMember(Value = "Port Lateral (IALA B)")] 
+		[XmlEnum("7")] 
 		PortLateralIalaB = 7,
 
 		[System.ComponentModel.Description("IndicatesTheStarboardBoundaryOfANavigationalChannelOrSuggestedRouteWhenProceedingInTheConventionalDirectionOfBuoyageInTheIalaBSystem")]
 		[EnumMember(Value = "Starboard Lateral (IALA B)")] 
+		[XmlEnum("8")] 
 		StarboardLateralIalaB = 8,
 
 		[System.ComponentModel.Description("AMarkUsedAloneToIndicateADangerousReefOrShoalTheMarkMayBePassedOnEitherHand")]
 		[EnumMember(Value = "Isolated Danger")] 
+		[XmlEnum("9")] 
 		IsolatedDanger = 9,
 
 		[System.ComponentModel.Description("IndicatesThatThereIsNavigableWaterAroundTheMark")]
 		[EnumMember(Value = "Safe Water")] 
+		[XmlEnum("10")] 
 		SafeWater = 10,
 
 		[System.ComponentModel.Description("ASpecialPurposeAidIsPrimarilyUsedToIndicateAnAreaOrFeatureTheNatureOfWhichIsApparentFromReferenceToAChartSailingDirectionsOrNoticeToMariners")]
 		[EnumMember(Value = "Special Purpose")] 
+		[XmlEnum("11")] 
 		SpecialPurpose = 11,
 
 		[System.ComponentModel.Description("AMarkUsedToIndicateTheExistenceOfARecentWreck")]
 		[EnumMember(Value = "Emergency Wreck Marking")] 
+		[XmlEnum("12")] 
 		EmergencyWreckMarking = 12,
 	}
 
@@ -4698,14 +5707,17 @@ namespace S100Framework.DomainModel.S101 {
 	public enum visualProminence : int {
 		[System.ComponentModel.Description("TermAppliedToAnObjectEitherNaturalOrArtificialWhichIsDistinctlyAndNotablyVisibleFromSeaward")]
 		[EnumMember(Value = "Visually Conspicuous")] 
+		[XmlEnum("1")] 
 		VisuallyConspicuous = 1,
 
 		[System.ComponentModel.Description("AnObjectThatMayBeVisibleFromSeawardButCannotBeUsedAsAFixingMarkAndIsNotConspicuous")]
 		[EnumMember(Value = "Not Visually Conspicuous")] 
+		[XmlEnum("2")] 
 		NotVisuallyConspicuous = 2,
 
 		[System.ComponentModel.Description("ObjectsWhichAreEasilyIdentifiableButDoNotJustifyBeingClassedAsConspicuous")]
 		[EnumMember(Value = "Prominent")] 
+		[XmlEnum("3")] 
 		Prominent = 3,
 	}
 
@@ -4714,30 +5726,37 @@ namespace S100Framework.DomainModel.S101 {
 	public enum waterLevelEffect : int {
 		[System.ComponentModel.Description("PartiallyCoveredAndPartiallyDryAtHighWater")]
 		[EnumMember(Value = "Partly Submerged at High Water")] 
+		[XmlEnum("1")] 
 		PartlySubmergedAtHighWater = 1,
 
 		[System.ComponentModel.Description("NotCoveredAtHighWaterUnderAverageMeteorologicalConditions")]
 		[EnumMember(Value = "Always Dry")] 
+		[XmlEnum("2")] 
 		AlwaysDry = 2,
 
 		[System.ComponentModel.Description("RemainsCoveredByWaterAtAllTimesUnderAverageMeteorologicalConditions")]
 		[EnumMember(Value = "Always Under Water/Submerged")] 
+		[XmlEnum("3")] 
 		AlwaysUnderWaterSubmerged = 3,
 
 		[System.ComponentModel.Description("ExpressionIntendedToIndicateAnAreaOfAReefOrOtherProjectionFromTheBottomOfABodyOfWaterWhichPeriodicallyExtendsAboveAndIsSubmergedBelowTheSurfaceAlsoReferredToAsDriesOrUncovers")]
 		[EnumMember(Value = "Covers and Uncovers")] 
+		[XmlEnum("4")] 
 		CoversAndUncovers = 4,
 
 		[System.ComponentModel.Description("FlushWithOrWashedByTheWavesAtLowWaterUnderAverageMeteorologicalConditions")]
 		[EnumMember(Value = "Awash")] 
+		[XmlEnum("5")] 
 		Awash = 5,
 
 		[System.ComponentModel.Description("AnAreaPeriodicallyCoveredByFloodWaterExcludingTidalWaters")]
 		[EnumMember(Value = "Subject to Inundation or Flooding")] 
+		[XmlEnum("6")] 
 		SubjectToInundationOrFlooding = 6,
 
 		[System.ComponentModel.Description("RestingOrMovingOnTheSurfaceOfALiquidWithoutSinking")]
 		[EnumMember(Value = "Floating")] 
+		[XmlEnum("7")] 
 		Floating = 7,
 	}
 
@@ -4746,62 +5765,77 @@ namespace S100Framework.DomainModel.S101 {
 	public enum categoryOfCargo : int {
 		[System.ComponentModel.Description("UnpackedHomogenousCargoPouredLooseInACertainSpaceOfAVesselForExampleOilOrGrain")]
 		[EnumMember(Value = "Bulk")] 
+		[XmlEnum("1")] 
 		Bulk = 1,
 
 		[System.ComponentModel.Description("OneOfANumberOfStandardSizedCargoCarryingUnitsSecuredUsingStandardCornerAttachmentsAndBar")]
 		[EnumMember(Value = "Container")] 
+		[XmlEnum("2")] 
 		Container = 2,
 
 		[System.ComponentModel.Description("BreakBulkCargoNormallyLoadedByCrane")]
 		[EnumMember(Value = "General")] 
+		[XmlEnum("3")] 
 		General = 3,
 
 		[System.ComponentModel.Description("AnyCargoLoadedByPipeline")]
 		[EnumMember(Value = "Liquid")] 
+		[XmlEnum("4")] 
 		Liquid = 4,
 
 		[System.ComponentModel.Description("AFeePayingTraveller")]
 		[EnumMember(Value = "Passenger")] 
+		[XmlEnum("5")] 
 		Passenger = 5,
 
 		[System.ComponentModel.Description("LiveAnimalsCarriedInBulk")]
 		[EnumMember(Value = "Livestock")] 
+		[XmlEnum("6")] 
 		Livestock = 6,
 
 		[System.ComponentModel.Description("DangerousOrHazardousCargoAsDescribedByTheImoInternationalMaritimeDangerousGoodsCode")]
 		[EnumMember(Value = "Dangerous or Hazardous")] 
+		[XmlEnum("7")] 
 		DangerousOrHazardous = 7,
 
 		[System.ComponentModel.Description("IndivisibleHeavyItemsOfWeightGenerallyOver100TonsAndWidthOrHeightGreaterThan100Metres")]
 		[EnumMember(Value = "Heavy Lift")] 
+		[XmlEnum("8")] 
 		HeavyLift = 8,
 
 		[System.ComponentModel.Description("MaterialCarriedByAShipToEnsureItsStability")]
 		[EnumMember(Value = "Ballast")] 
+		[XmlEnum("9")] 
 		Ballast = 9,
 
 		[System.ComponentModel.Description("CommodityCargoThatIsTransportedUnpackagedInLargeQuantitiesTheseTypesOfGoodsUsuallyNeedToBeKeptDryDuringTheWholeTransportationPeriod")]
 		[EnumMember(Value = "Dry Bulk Cargo")] 
+		[XmlEnum("10")] 
 		DryBulkCargo = 10,
 
 		[System.ComponentModel.Description("LiquidsOrGasesThatAreTransportedInBulkAndCarriedUnpackaged")]
 		[EnumMember(Value = "Liquid Bulk Cargo")] 
+		[XmlEnum("11")] 
 		LiquidBulkCargo = 11,
 
 		[System.ComponentModel.Description("CargoTransportedInRefrigeratedContainersGenerallyPerishableCommoditiesWhichRequireTemperatureControlledTransportationSuchAsFruitMeatFishVegetablesDairyProductsAndOtherFoods")]
 		[EnumMember(Value = "Reefer Container Cargo")] 
+		[XmlEnum("12")] 
 		ReeferContainerCargo = 12,
 
 		[System.ComponentModel.Description("WheeledCargoSuchAsCarsBussesTrucksAgriculturalVehiclesAndCranesThatAreDrivenOnAndOffTheShipOnTheirOwnWheelsOrUsingAPlatformVehicleSuchAsASelfPropelledModularTransporter")]
 		[EnumMember(Value = "Ro-Ro Cargo")] 
+		[XmlEnum("13")] 
 		RoRoCargo = 13,
 
 		[System.ComponentModel.Description("ProjectCargoIsATermUsedToBroadlyDescribeTheNationalOrInternationalTransportationOfLargeHeavyHighValueOrCriticalToTheProjectTheyAreIntendedForPiecesOfEquipmentAlsoCommonlyReferredToAsHeavyLiftThisIncludesShipmentsMadeOfVariousComponentsWhichNeedDisassemblyForShipmentAndReassemblyAfterDelivery")]
 		[EnumMember(Value = "Project Cargo")] 
+		[XmlEnum("14")] 
 		ProjectCargo = 14,
 
 		[System.ComponentModel.Description("GoodsThatAreStowedOnBoardShipInIndividuallyCountedUnitsAndNotInIntermodalContainersNorInBulkAsWithOilOrGrain")]
 		[EnumMember(Value = "Break Bulk Cargo")] 
+		[XmlEnum("15")] 
 		BreakBulkCargo = 15,
 	}
 
@@ -4813,10 +5847,13 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class featureName {
+			[XmlElement("language")]
 			public required String? language {get;set;} = default;
 
+			[XmlElement("name")]
 			public required String? name {get;set;} = default;
 
+			[XmlElement("nameUsage")]
 			[EnumerationValue([1,2])]
 			public nameUsage? nameUsage {get;set;} = default;
 
@@ -4826,10 +5863,13 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class featuresDetected {
+			[XmlElement("leastDepthOfDetectedFeaturesMeasured")]
 			public required Boolean? leastDepthOfDetectedFeaturesMeasured {get;set;} = default;
 
+			[XmlElement("significantFeaturesDetected")]
 			public required Boolean? significantFeaturesDetected {get;set;} = default;
 
+			[XmlElement("sizeOfFeaturesDetected")]
 			public decimal? sizeOfFeaturesDetected {get;set;} = default;
 
 			public bool ShouldSerializesizeOfFeaturesDetected() { return sizeOfFeaturesDetected.HasValue; }
@@ -4838,10 +5878,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class fixedDateRange {
+			[XmlElement("dateEnd")]
 			public String? dateEnd {get;set;} = default;
 
 			public bool ShouldSerializedateEnd() { return !string.IsNullOrEmpty(dateEnd); }
 
+			[XmlElement("dateStart")]
 			public String? dateStart {get;set;} = default;
 
 			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
@@ -4850,18 +5892,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class frequencyPair {
+			[XmlElement("frequencyShoreStationReceives")]
 			public int? frequencyShoreStationReceives {get;set;} = default;
 
 			public bool ShouldSerializefrequencyShoreStationReceives() { return frequencyShoreStationReceives.HasValue; }
 
+			[XmlElement("frequencyShoreStationTransmits")]
 			public required int? frequencyShoreStationTransmits {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class horizontalClearanceFixed {
+			[XmlElement("horizontalClearanceValue")]
 			public required decimal? horizontalClearanceValue {get;set;} = default;
 
+			[XmlElement("horizontalDistanceUncertainty")]
 			public decimal? horizontalDistanceUncertainty {get;set;} = default;
 
 			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
@@ -4870,8 +5916,10 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class horizontalClearanceOpen {
+			[XmlElement("horizontalClearanceValue")]
 			public required decimal? horizontalClearanceValue {get;set;} = default;
 
+			[XmlElement("horizontalDistanceUncertainty")]
 			public decimal? horizontalDistanceUncertainty {get;set;} = default;
 
 			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
@@ -4880,8 +5928,10 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class horizontalPositionUncertainty {
+			[XmlElement("uncertaintyFixed")]
 			public required decimal? uncertaintyFixed {get;set;} = default;
 
+			[XmlElement("uncertaintyVariableFactor")]
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
 
 			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
@@ -4890,20 +5940,25 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class information {
+			[XmlElement("fileLocator")]
 			public String? fileLocator {get;set;} = default;
 
 			public bool ShouldSerializefileLocator() { return !string.IsNullOrEmpty(fileLocator); }
 
+			[XmlElement("fileReference")]
 			public String? fileReference {get;set;} = default;
 
 			public bool ShouldSerializefileReference() { return !string.IsNullOrEmpty(fileReference); }
 
+			[XmlElement("headline")]
 			public String? headline {get;set;} = default;
 
 			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 
+			[XmlElement("language")]
 			public required String? language {get;set;} = default;
 
+			[XmlElement("text")]
 			public String? text {get;set;} = default;
 
 			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
@@ -4912,21 +5967,26 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class measuredDistanceValue {
+			[XmlElement("distanceUnitOfMeasurement")]
 			[EnumerationValue([1,2,3,4,5])]
 			public required distanceUnitOfMeasurement? distanceUnitOfMeasurement {get;set;} = default;
 
+			[XmlElement("referenceLocation")]
 			public String? referenceLocation {get;set;} = default;
 
 			public bool ShouldSerializereferenceLocation() { return !string.IsNullOrEmpty(referenceLocation); }
 
+			[XmlElement("waterwayDistance")]
 			public required decimal? waterwayDistance {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class multiplicityOfFeatures {
+			[XmlElement("multiplicityKnown")]
 			public required Boolean? multiplicityKnown {get;set;} = default;
 
+			[XmlElement("numberOfFeatures")]
 			public int? numberOfFeatures {get;set;} = default;
 
 			public bool ShouldSerializenumberOfFeatures() { return numberOfFeatures.HasValue; }
@@ -4935,12 +5995,15 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class onlineResource {
+			[XmlElement("headline")]
 			public String? headline {get;set;} = default;
 
 			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 
+			[XmlElement("linkage")]
 			public required String? linkage {get;set;} = default;
 
+			[XmlElement("nameOfResource")]
 			public String? nameOfResource {get;set;} = default;
 
 			public bool ShouldSerializenameOfResource() { return !string.IsNullOrEmpty(nameOfResource); }
@@ -4949,44 +6012,54 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class orientation {
+			[XmlElement("orientationUncertainty")]
 			public decimal? orientationUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
+			[XmlElement("orientationValue")]
 			public required decimal? orientationValue {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
+			[XmlElement("dateEnd")]
 			public required String? dateEnd {get;set;} = default;
 
+			[XmlElement("dateStart")]
 			public required String? dateStart {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class radarWaveLength {
+			[XmlElement("radarBand")]
 			public required String? radarBand {get;set;} = default;
 
+			[XmlElement("waveLengthValue")]
 			public required decimal? waveLengthValue {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorInformation {
+			[XmlElement("language")]
 			public String? language {get;set;} = default;
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
+			[XmlElement("text")]
 			public required String? text {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitOne {
+			[XmlElement("sectorBearing")]
 			public required decimal? sectorBearing {get;set;} = default;
 
+			[XmlElement("sectorLineLength")]
 			public decimal? sectorLineLength {get;set;} = default;
 
 			public bool ShouldSerializesectorLineLength() { return sectorLineLength.HasValue; }
@@ -4995,8 +6068,10 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitTwo {
+			[XmlElement("sectorBearing")]
 			public required decimal? sectorBearing {get;set;} = default;
 
+			[XmlElement("sectorLineLength")]
 			public decimal? sectorLineLength {get;set;} = default;
 
 			public bool ShouldSerializesectorLineLength() { return sectorLineLength.HasValue; }
@@ -5005,18 +6080,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class shapeInformation {
+			[XmlElement("language")]
 			public String? language {get;set;} = default;
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
+			[XmlElement("text")]
 			public required String? text {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class signalSequence {
+			[XmlElement("signalDuration")]
 			public required decimal? signalDuration {get;set;} = default;
 
+			[XmlElement("signalStatus")]
 			[EnumerationValue([1,2])]
 			public required signalStatus? signalStatus {get;set;} = default;
 		}
@@ -5024,8 +6103,10 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class speed {
+			[XmlElement("speedMaximum")]
 			public required decimal? speedMaximum {get;set;} = default;
 
+			[XmlElement("speedMinimum")]
 			public decimal? speedMinimum {get;set;} = default;
 
 			public bool ShouldSerializespeedMinimum() { return speedMinimum.HasValue; }
@@ -5034,16 +6115,19 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class surfaceCharacteristics {
+			[XmlElement("natureOfSurface")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,14,17,18])]
 			public natureOfSurface? natureOfSurface {get;set;} = default;
 
 			public bool ShouldSerializenatureOfSurface() { return natureOfSurface.HasValue; }
 
+			[XmlElement("natureOfSurfaceQualifyingTerms")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
 			public List<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTerms {get;set;} = [];
 
 			public bool ShouldSerializenatureOfSurfaceQualifyingTerms() { return natureOfSurfaceQualifyingTerms.Any(); }
 
+			[XmlElement("underlyingLayer")]
 			public int? underlyingLayer {get;set;} = default;
 
 			public bool ShouldSerializeunderlyingLayer() { return underlyingLayer.HasValue; }
@@ -5052,8 +6136,10 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class surveyDateRange {
+			[XmlElement("dateEnd")]
 			public required String? dateEnd {get;set;} = default;
 
+			[XmlElement("dateStart")]
 			public String? dateStart {get;set;} = default;
 
 			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
@@ -5062,12 +6148,15 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class telecommunications {
+			[XmlElement("contactInstructions")]
 			public String? contactInstructions {get;set;} = default;
 
 			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
 
+			[XmlElement("telecommunicationIdentifier")]
 			public required String? telecommunicationIdentifier {get;set;} = default;
 
+			[XmlElement("telecommunicationService")]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public telecommunicationService? telecommunicationService {get;set;} = default;
 
@@ -5077,29 +6166,36 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class tidalStreamValue {
+			[XmlElement("orientation")]
 			public required orientation? orientation {get;set;} = default;
 
+			[XmlElement("speedMaximum")]
 			public required decimal? speedMaximum {get;set;} = default;
 
+			[XmlElement("timeRelativeToTide")]
 			public required decimal? timeRelativeToTide {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class timeIntervalsByDayOfWeek {
+			[XmlElement("dayOfWeek")]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public List<dayOfWeek> dayOfWeek {get;set;} = [];
 
 			public bool ShouldSerializedayOfWeek() { return dayOfWeek.Any(); }
 
+			[XmlElement("dayOfWeekIsRange")]
 			public Boolean? dayOfWeekIsRange {get;set;} = default;
 
 			public bool ShouldSerializedayOfWeekIsRange() { return dayOfWeekIsRange.HasValue; }
 
+			[XmlElement("timeOfDayStart")]
 			public List<TimeOnly> timeOfDayStart {get;set;} = [];
 
 			public bool ShouldSerializetimeOfDayStart() { return timeOfDayStart.Any(); }
 
+			[XmlElement("timeOfDayEnd")]
 			public List<TimeOnly> timeOfDayEnd {get;set;} = [];
 
 			public bool ShouldSerializetimeOfDayEnd() { return timeOfDayEnd.Any(); }
@@ -5108,19 +6204,23 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class topmark {
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("topmarkDaymarkShape")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33])]
 			public required topmarkDaymarkShape? topmarkDaymarkShape {get;set;} = default;
 
+			[XmlElement("shapeInformation")]
 			public List<shapeInformation> shapeInformation {get;set;} = [];
 
 			public bool ShouldSerializeshapeInformation() { return shapeInformation.Any(); }
@@ -5129,8 +6229,10 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class valueOfLocalMagneticAnomaly {
+			[XmlElement("magneticAnomalyValue")]
 			public required decimal? magneticAnomalyValue {get;set;} = default;
 
+			[XmlElement("referenceDirection")]
 			[EnumerationValue([5,13])]
 			public referenceDirection? referenceDirection {get;set;} = default;
 
@@ -5140,8 +6242,10 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class verticalUncertainty {
+			[XmlElement("uncertaintyFixed")]
 			public required decimal? uncertaintyFixed {get;set;} = default;
 
+			[XmlElement("uncertaintyVariableFactor")]
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
 
 			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
@@ -5150,11 +6254,14 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class vesselSpeedLimit {
+			[XmlElement("speedLimit")]
 			public required decimal? speedLimit {get;set;} = default;
 
+			[XmlElement("speedUnits")]
 			[EnumerationValue([2,3,4])]
 			public required speedUnits? speedUnits {get;set;} = default;
 
+			[XmlElement("vesselClass")]
 			public String? vesselClass {get;set;} = default;
 
 			public bool ShouldSerializevesselClass() { return !string.IsNullOrEmpty(vesselClass); }
@@ -5163,17 +6270,21 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class zoneOfConfidence {
+			[XmlElement("categoryOfZoneOfConfidenceInData")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public required categoryOfZoneOfConfidenceInData? categoryOfZoneOfConfidenceInData {get;set;} = default;
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("horizontalPositionUncertainty")]
 			public horizontalPositionUncertainty? horizontalPositionUncertainty {get;set;} = default;
 
 			public bool ShouldSerializehorizontalPositionUncertainty() { return horizontalPositionUncertainty!=default; }
 
+			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
@@ -5182,27 +6293,33 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class directionalCharacter {
+			[XmlElement("moireEffect")]
 			public Boolean? moireEffect {get;set;} = default;
 
 			public bool ShouldSerializemoireEffect() { return moireEffect.HasValue; }
 
+			[XmlElement("orientation")]
 			public required orientation? orientation {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class rhythmOfLight {
+			[XmlElement("lightCharacteristic")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,25,26,27,28,29])]
 			public required lightCharacteristic? lightCharacteristic {get;set;} = default;
 
+			[XmlElement("signalGroup")]
 			public List<String> signalGroup {get;set;} = [];
 
 			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
 
+			[XmlElement("signalPeriod")]
 			public decimal? signalPeriod {get;set;} = default;
 
 			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
+			[XmlElement("signalSequence")]
 			public List<signalSequence> signalSequence {get;set;} = [];
 
 			public bool ShouldSerializesignalSequence() { return signalSequence.Any(); }
@@ -5211,11 +6328,13 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class scheduleByDayOfWeek {
+			[XmlElement("categoryOfSchedule")]
 			[EnumerationValue([1,2,3])]
 			public categoryOfSchedule? categoryOfSchedule {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfSchedule() { return categoryOfSchedule.HasValue; }
 
+			[XmlElement("timeIntervalsByDayOfWeek")]
 			public List<timeIntervalsByDayOfWeek> timeIntervalsByDayOfWeek {get;set;} = [];
 
 			public bool ShouldSerializetimeIntervalsByDayOfWeek() { return timeIntervalsByDayOfWeek.Any(); }
@@ -5224,22 +6343,27 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimit {
+			[XmlElement("sectorLimitOne")]
 			public required sectorLimitOne? sectorLimitOne {get;set;} = default;
 
+			[XmlElement("sectorLimitTwo")]
 			public required sectorLimitTwo? sectorLimitTwo {get;set;} = default;
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class spatialAccuracy {
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("horizontalPositionUncertainty")]
 			public horizontalPositionUncertainty? horizontalPositionUncertainty {get;set;} = default;
 
 			public bool ShouldSerializehorizontalPositionUncertainty() { return horizontalPositionUncertainty!=default; }
 
+			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
@@ -5248,16 +6372,20 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class tidalStreamPanelValues {
+			[XmlElement("referenceTide")]
 			[EnumerationValue([1,2])]
 			public required referenceTide? referenceTide {get;set;} = default;
 
+			[XmlElement("referenceTideType")]
 			[EnumerationValue([1,2,3])]
 			public required referenceTideType? referenceTideType {get;set;} = default;
 
+			[XmlElement("streamDepth")]
 			public decimal? streamDepth {get;set;} = default;
 
 			public bool ShouldSerializestreamDepth() { return streamDepth.HasValue; }
 
+			[XmlElement("tidalStreamValue")]
 			public List<tidalStreamValue> tidalStreamValue {get;set;} = [];
 
 			public bool ShouldSerializetidalStreamValue() { return tidalStreamValue.Any(); }
@@ -5266,8 +6394,10 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class verticalClearanceClosed {
+			[XmlElement("verticalClearanceValue")]
 			public required decimal? verticalClearanceValue {get;set;} = default;
 
+			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
@@ -5276,8 +6406,10 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class verticalClearanceFixed {
+			[XmlElement("verticalClearanceValue")]
 			public required decimal? verticalClearanceValue {get;set;} = default;
 
+			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
@@ -5286,12 +6418,15 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class verticalClearanceOpen {
+			[XmlElement("verticalClearanceUnlimited")]
 			public required Boolean? verticalClearanceUnlimited {get;set;} = default;
 
+			[XmlElement("verticalClearanceValue")]
 			public decimal? verticalClearanceValue {get;set;} = default;
 
 			public bool ShouldSerializeverticalClearanceValue() { return verticalClearanceValue.HasValue; }
 
+			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
@@ -5300,8 +6435,10 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class verticalClearanceSafe {
+			[XmlElement("verticalClearanceValue")]
 			public required decimal? verticalClearanceValue {get;set;} = default;
 
+			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
@@ -5310,32 +6447,39 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class lightSector {
+			[XmlElement("colour")]
 			[EnumerationValue([1,3,4,5,6,9,10,11])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("directionalCharacter")]
 			public directionalCharacter? directionalCharacter {get;set;} = default;
 
 			public bool ShouldSerializedirectionalCharacter() { return directionalCharacter!=default; }
 
+			[XmlElement("lightVisibility")]
 			[EnumerationValue([1,2,3,4,5,6,8,9])]
 			public List<lightVisibility> lightVisibility {get;set;} = [];
 
 			public bool ShouldSerializelightVisibility() { return lightVisibility.Any(); }
 
+			[XmlElement("sectorLimit")]
 			public sectorLimit? sectorLimit {get;set;} = default;
 
 			public bool ShouldSerializesectorLimit() { return sectorLimit!=default; }
 
+			[XmlElement("valueOfNominalRange")]
 			public decimal? valueOfNominalRange {get;set;} = default;
 
 			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
 
+			[XmlElement("sectorInformation")]
 			public List<sectorInformation> sectorInformation {get;set;} = [];
 
 			public bool ShouldSerializesectorInformation() { return sectorInformation.Any(); }
 
+			[XmlElement("sectorArcExtension")]
 			public Boolean? sectorArcExtension {get;set;} = default;
 
 			public bool ShouldSerializesectorArcExtension() { return sectorArcExtension.HasValue; }
@@ -5344,21 +6488,26 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorCharacteristics {
+			[XmlElement("lightCharacteristic")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,25,26,27,28,29])]
 			public required lightCharacteristic? lightCharacteristic {get;set;} = default;
 
+			[XmlElement("lightSector")]
 			public List<lightSector> lightSector {get;set;} = [];
 
 			public bool ShouldSerializelightSector() { return lightSector.Any(); }
 
+			[XmlElement("signalGroup")]
 			public List<String> signalGroup {get;set;} = [];
 
 			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
 
+			[XmlElement("signalPeriod")]
 			public decimal? signalPeriod {get;set;} = default;
 
 			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
+			[XmlElement("signalSequence")]
 			public List<signalSequence> signalSequence {get;set;} = [];
 
 			public bool ShouldSerializesignalSequence() { return signalSequence.Any(); }
@@ -5623,34 +6772,42 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ContactDetails : InformationNode, IInformationBindingDefinition {
+			[XmlElement("callSign")]
 			public String? callSign {get;set;} = default;
 
 			public bool ShouldSerializecallSign() { return !string.IsNullOrEmpty(callSign); }
 
+			[XmlElement("communicationChannel")]
 			public List<String> communicationChannel {get;set;} = [];
 
 			public bool ShouldSerializecommunicationChannel() { return communicationChannel.Any(); }
 
+			[XmlElement("contactInstructions")]
 			public String? contactInstructions {get;set;} = default;
 
 			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("frequencyPair")]
 			public List<frequencyPair> frequencyPair {get;set;} = [];
 
 			public bool ShouldSerializefrequencyPair() { return frequencyPair.Any(); }
 
+			[XmlElement("mMSICode")]
 			public String? mMSICode {get;set;} = default;
 
 			public bool ShouldSerializemMSICode() { return !string.IsNullOrEmpty(mMSICode); }
 
+			[XmlElement("onlineResource")]
 			public List<onlineResource> onlineResource {get;set;} = [];
 
 			public bool ShouldSerializeonlineResource() { return onlineResource.Any(); }
 
+			[XmlElement("telecommunications")]
 			public List<telecommunications> telecommunications {get;set;} = [];
 
 			public bool ShouldSerializetelecommunications() { return telecommunications.Any(); }
@@ -5674,18 +6831,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ServiceHours : InformationNode, IInformationBindingDefinition {
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("scheduleByDayOfWeek")]
 			public List<scheduleByDayOfWeek> scheduleByDayOfWeek {get;set;} = [];
 
 			public bool ShouldSerializescheduleByDayOfWeek() { return scheduleByDayOfWeek.Any(); }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -5709,22 +6870,27 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NonStandardWorkingDay : InformationNode, IInformationBindingDefinition {
+			[XmlElement("dateFixed")]
 			public List<String> dateFixed {get;set;} = [];
 
 			public bool ShouldSerializedateFixed() { return dateFixed.Any(); }
 
+			[XmlElement("dateVariable")]
 			public List<String> dateVariable {get;set;} = [];
 
 			public bool ShouldSerializedateVariable() { return dateVariable.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -5748,18 +6914,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NauticalInformation : InformationNode, IInformationBindingDefinition {
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -5783,11 +6953,13 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpatialQuality : InformationNode, IInformationBindingDefinition {
+			[XmlElement("qualityOfHorizontalMeasurement")]
 			[EnumerationValue([4])]
 			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
 
 			public bool ShouldSerializequalityOfHorizontalMeasurement() { return qualityOfHorizontalMeasurement.HasValue; }
 
+			[XmlElement("spatialAccuracy")]
 			public List<spatialAccuracy> spatialAccuracy {get;set;} = [];
 
 			public bool ShouldSerializespatialAccuracy() { return spatialAccuracy.Any(); }
@@ -5816,33 +6988,41 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class QualityOfNonBathymetricData : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfTemporalVariation")]
 			[EnumerationValue([1,4])]
 			public categoryOfTemporalVariation? categoryOfTemporalVariation {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfTemporalVariation() { return categoryOfTemporalVariation.HasValue; }
 
+			[XmlElement("horizontalDistanceUncertainty")]
 			public decimal? horizontalDistanceUncertainty {get;set;} = default;
 
 			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
 
+			[XmlElement("horizontalPositionUncertainty")]
 			public required horizontalPositionUncertainty? horizontalPositionUncertainty {get;set;} = default;
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("orientationUncertainty")]
 			public decimal? orientationUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
+			[XmlElement("surveyDateRange")]
 			public surveyDateRange? surveyDateRange {get;set;} = default;
 
 			public bool ShouldSerializesurveyDateRange() { return surveyDateRange!=default; }
 
+			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -5890,20 +7070,26 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("drawingIndex")]
 			public int? drawingIndex {get;set;} = default;
 
 			public bool ShouldSerializedrawingIndex() { return drawingIndex.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("maximumDisplayScale")]
 			public required int? maximumDisplayScale {get;set;} = default;
 
+			[XmlElement("minimumDisplayScale")]
 			public required int? minimumDisplayScale {get;set;} = default;
 
+			[XmlElement("optimumDisplayScale")]
 			public required int? optimumDisplayScale {get;set;} = default;
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -5943,13 +7129,16 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NavigationalSystemOfMarks : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("marksNavigationalSystemOf")]
 			[EnumerationValue([1,2,9,11])]
 			public required marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -5997,19 +7186,24 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LocalDirectionOfBuoyage : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("marksNavigationalSystemOf")]
 			[EnumerationValue([1,2,9,11])]
 			public required marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
+			[XmlElement("orientationValue")]
 			public required decimal? orientationValue {get;set;} = default;
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -6057,36 +7251,46 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class QualityOfBathymetricData : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfTemporalVariation")]
 			[EnumerationValue([1,2,3,5,6])]
 			public required categoryOfTemporalVariation? categoryOfTemporalVariation {get;set;} = default;
 
+			[XmlElement("dataAssessment")]
 			[EnumerationValue([1,2,3])]
 			public required dataAssessment? dataAssessment {get;set;} = default;
 
+			[XmlElement("depthRangeMaximumValue")]
 			public decimal? depthRangeMaximumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMaximumValue() { return depthRangeMaximumValue.HasValue; }
 
+			[XmlElement("depthRangeMinimumValue")]
 			public decimal? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
+			[XmlElement("featuresDetected")]
 			public required featuresDetected? featuresDetected {get;set;} = default;
 
+			[XmlElement("fullSeafloorCoverageAchieved")]
 			public required Boolean? fullSeafloorCoverageAchieved {get;set;} = default;
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("surveyDateRange")]
 			public surveyDateRange? surveyDateRange {get;set;} = default;
 
 			public bool ShouldSerializesurveyDateRange() { return surveyDateRange!=default; }
 
+			[XmlElement("zoneOfConfidence")]
 			public List<zoneOfConfidence> zoneOfConfidence {get;set;} = [];
 
 			public bool ShouldSerializezoneOfConfidence() { return zoneOfConfidence.Any(); }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -6143,13 +7347,16 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SoundingDatum : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("verticalDatum")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,19,22,23,24,25,26,27,44])]
 			public required verticalDatum? verticalDatum {get;set;} = default;
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -6197,13 +7404,16 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class VerticalDatumOfData : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("verticalDatum")]
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public required verticalDatum? verticalDatum {get;set;} = default;
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -6251,74 +7461,92 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class QualityOfSurvey : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("depthRangeMaximumValue")]
 			public decimal? depthRangeMaximumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMaximumValue() { return depthRangeMaximumValue.HasValue; }
 
+			[XmlElement("depthRangeMinimumValue")]
 			public decimal? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
+			[XmlElement("featuresDetected")]
 			public featuresDetected? featuresDetected {get;set;} = default;
 
 			public bool ShouldSerializefeaturesDetected() { return featuresDetected!=default; }
 
+			[XmlElement("fullSeafloorCoverageAchieved")]
 			public Boolean? fullSeafloorCoverageAchieved {get;set;} = default;
 
 			public bool ShouldSerializefullSeafloorCoverageAchieved() { return fullSeafloorCoverageAchieved.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("lineSpacingMaximum")]
 			public int? lineSpacingMaximum {get;set;} = default;
 
 			public bool ShouldSerializelineSpacingMaximum() { return lineSpacingMaximum.HasValue; }
 
+			[XmlElement("lineSpacingMinimum")]
 			public int? lineSpacingMinimum {get;set;} = default;
 
 			public bool ShouldSerializelineSpacingMinimum() { return lineSpacingMinimum.HasValue; }
 
+			[XmlElement("measurementDistanceMaximum")]
 			public int? measurementDistanceMaximum {get;set;} = default;
 
 			public bool ShouldSerializemeasurementDistanceMaximum() { return measurementDistanceMaximum.HasValue; }
 
+			[XmlElement("measurementDistanceMinimum")]
 			public int? measurementDistanceMinimum {get;set;} = default;
 
 			public bool ShouldSerializemeasurementDistanceMinimum() { return measurementDistanceMinimum.HasValue; }
 
+			[XmlElement("qualityOfHorizontalMeasurement")]
 			[EnumerationValue([4])]
 			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
 
 			public bool ShouldSerializequalityOfHorizontalMeasurement() { return qualityOfHorizontalMeasurement.HasValue; }
 
+			[XmlElement("qualityOfVerticalMeasurement")]
 			[EnumerationValue([1,2,3,4,6,7,8,9,10,11])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
 
+			[XmlElement("scaleValueMaximum")]
 			public int? scaleValueMaximum {get;set;} = default;
 
 			public bool ShouldSerializescaleValueMaximum() { return scaleValueMaximum.HasValue; }
 
+			[XmlElement("scaleValueMinimum")]
 			public int? scaleValueMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleValueMinimum() { return scaleValueMinimum.HasValue; }
 
+			[XmlElement("surveyAuthority")]
 			public required String? surveyAuthority {get;set;} = default;
 
+			[XmlElement("surveyDateRange")]
 			public required surveyDateRange? surveyDateRange {get;set;} = default;
 
+			[XmlElement("surveyType")]
 			[EnumerationValue([1,2,4,5,6,7,8,9,10,11,12,13])]
 			public List<surveyType> surveyType {get;set;} = [];
 
 			public bool ShouldSerializesurveyType() { return surveyType.Any(); }
 
+			[XmlElement("techniqueOfVerticalMeasurement")]
 			[EnumerationValue([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -6375,27 +7603,34 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class UpdateInformation : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("updateNumber")]
 			public required int? updateNumber {get;set;} = default;
 
+			[XmlElement("updateType")]
 			[EnumerationValue([1,2,3,4])]
 			public required updateType? updateType {get;set;} = default;
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("source")]
 			public String? source {get;set;} = default;
 
 			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -6476,20 +7711,26 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MagneticVariation : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("referenceYearForMagneticVariation")]
 			public required String? referenceYearForMagneticVariation {get;set;} = default;
 
+			[XmlElement("valueOfAnnualChangeInMagneticVariation")]
 			public required decimal? valueOfAnnualChangeInMagneticVariation {get;set;} = default;
 
+			[XmlElement("valueOfMagneticVariation")]
 			public required decimal? valueOfMagneticVariation {get;set;} = default;
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -6555,26 +7796,32 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LocalMagneticAnomaly : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("valueOfLocalMagneticAnomaly")]
 			public List<valueOfLocalMagneticAnomaly> valueOfLocalMagneticAnomaly {get;set;} = [];
 
 			public bool ShouldSerializevalueOfLocalMagneticAnomaly() { return valueOfLocalMagneticAnomaly.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -6648,46 +7895,56 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Coastline : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfCoastline")]
 			[EnumerationValue([1,2,6,7,8,10])]
 			public categoryOfCoastline? categoryOfCoastline {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfCoastline() { return categoryOfCoastline.HasValue; }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,6,7,8,11,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("elevation")]
 			public decimal? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfSurface")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,14,17])]
 			public List<natureOfSurface> natureOfSurface {get;set;} = [];
 
 			public bool ShouldSerializenatureOfSurface() { return natureOfSurface.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -6761,32 +8018,39 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LandArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("condition")]
 			[EnumerationValue([1,3,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([18])]
 			public status? status {get;set;} = default;
 
 			public bool ShouldSerializestatus() { return status.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -6868,18 +8132,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class IslandGroup : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -6960,25 +8228,31 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LandElevation : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("elevation")]
 			public required decimal? elevation {get;set;} = default;
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -7052,23 +8326,28 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class River : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("status")]
 			[EnumerationValue([5])]
 			public status? status {get;set;} = default;
 
 			public bool ShouldSerializestatus() { return status.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -7142,22 +8421,27 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Rapids : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -7231,27 +8515,33 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Waterfall : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -7325,27 +8615,33 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Lake : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("elevation")]
 			public decimal? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("status")]
 			[EnumerationValue([5])]
 			public status? status {get;set;} = default;
 
 			public bool ShouldSerializestatus() { return status.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -7410,33 +8706,40 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LandRegion : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfLandRegion")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])]
 			public List<categoryOfLandRegion> categoryOfLandRegion {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfLandRegion() { return categoryOfLandRegion.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfSurface")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,14,17,18])]
 			public List<natureOfSurface> natureOfSurface {get;set;} = [];
 
 			public bool ShouldSerializenatureOfSurface() { return natureOfSurface.Any(); }
 
+			[XmlElement("waterLevelEffect")]
 			[EnumerationValue([1,6])]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
 			public bool ShouldSerializewaterLevelEffect() { return waterLevelEffect.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -7510,38 +8813,47 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Vegetation : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfVegetation")]
 			[EnumerationValue([3,4,5,6,11,13,14,15,16,17,18,19,20,22])]
 			public required categoryOfVegetation? categoryOfVegetation {get;set;} = default;
 
+			[XmlElement("elevation")]
 			public decimal? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -7615,51 +8927,63 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class IceArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfIce")]
 			[EnumerationValue([1,5,8])]
 			public required categoryOfIce? categoryOfIce {get;set;} = default;
 
+			[XmlElement("elevation")]
 			public decimal? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,5,18])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -7724,42 +9048,51 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SlopingGround : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfSlope")]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public categoryOfSlope? categoryOfSlope {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfSlope() { return categoryOfSlope.HasValue; }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,6,7,8,11,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfSurface")]
 			[EnumerationValue([4,5,6,7,9,11])]
 			public List<natureOfSurface> natureOfSurface {get;set;} = [];
 
 			public bool ShouldSerializenatureOfSurface() { return natureOfSurface.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -7833,46 +9166,56 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SlopeTopline : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfSlope")]
 			[EnumerationValue([1,2,6])]
 			public categoryOfSlope? categoryOfSlope {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfSlope() { return categoryOfSlope.HasValue; }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,6,7,8,11,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("elevation")]
 			public decimal? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfSurface")]
 			[EnumerationValue([4,5,6,7,9,11])]
 			public List<natureOfSurface> natureOfSurface {get;set;} = [];
 
 			public bool ShouldSerializenatureOfSurface() { return natureOfSurface.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -7946,18 +9289,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Tideway : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -8031,53 +9378,65 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class BuiltUpArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfBuiltUpArea")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public categoryOfBuiltUpArea? categoryOfBuiltUpArea {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfBuiltUpArea() { return categoryOfBuiltUpArea.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
+			[XmlElement("inTheWater")]
 			public Boolean? inTheWater {get;set;} = default;
 
 			public bool ShouldSerializeinTheWater() { return inTheWater.HasValue; }
@@ -8151,90 +9510,110 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Building : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("buildingShape")]
 			[EnumerationValue([5,6,7,8,9])]
 			public buildingShape? buildingShape {get;set;} = default;
 
 			public bool ShouldSerializebuildingShape() { return buildingShape.HasValue; }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("elevation")]
 			public decimal? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("function")]
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,46,47,48])]
 			public List<function> function {get;set;} = [];
 
 			public bool ShouldSerializefunction() { return function.Any(); }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("multiplicityOfFeatures")]
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,6,7,8,12])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([4,7,8,12,13,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
+			[XmlElement("inTheWater")]
 			public Boolean? inTheWater {get;set;} = default;
 
 			public bool ShouldSerializeinTheWater() { return inTheWater.HasValue; }
@@ -8332,41 +9711,50 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AirportAirfield : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfAirportAirfield")]
 			[EnumerationValue([1,2,3,4,5,6,8,9])]
 			public List<categoryOfAirportAirfield> categoryOfAirportAirfield {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfAirportAirfield() { return categoryOfAirportAirfield.Any(); }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,3,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,6,7,8,12,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -8440,41 +9828,50 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Runway : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,3,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,4,5,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,6,7,8,12,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -8548,41 +9945,50 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Helipad : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,3,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,4,5,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,6,7,8,12,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -8664,87 +10070,106 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Bridge : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("bridgeConstruction")]
 			[EnumerationValue([1,2,3,4,5])]
 			public bridgeConstruction? bridgeConstruction {get;set;} = default;
 
 			public bool ShouldSerializebridgeConstruction() { return bridgeConstruction.HasValue; }
 
+			[XmlElement("bridgeFunction")]
 			[EnumerationValue([1,2,3,4])]
 			public List<bridgeFunction> bridgeFunction {get;set;} = [];
 
 			public bool ShouldSerializebridgeFunction() { return bridgeFunction.Any(); }
 
+			[XmlElement("categoryOfOpeningBridge")]
 			[EnumerationValue([3,4,5,7])]
 			public categoryOfOpeningBridge? categoryOfOpeningBridge {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfOpeningBridge() { return categoryOfOpeningBridge.HasValue; }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,6,7,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("openingBridge")]
 			public Boolean? openingBridge {get;set;} = default;
 
 			public bool ShouldSerializeopeningBridge() { return openingBridge.HasValue; }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,7,12])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -8842,33 +10267,41 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpanFixed : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("horizontalClearanceFixed")]
 			public horizontalClearanceFixed? horizontalClearanceFixed {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceFixed() { return horizontalClearanceFixed!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("verticalClearanceFixed")]
 			public required verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
 
+			[XmlElement("verticalDatum")]
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -8966,35 +10399,44 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpanOpening : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("horizontalClearanceFixed")]
 			public horizontalClearanceFixed? horizontalClearanceFixed {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceFixed() { return horizontalClearanceFixed!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("verticalClearanceClosed")]
 			public required verticalClearanceClosed? verticalClearanceClosed {get;set;} = default;
 
+			[XmlElement("verticalClearanceOpen")]
 			public required verticalClearanceOpen? verticalClearanceOpen {get;set;} = default;
 
+			[XmlElement("verticalDatum")]
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -9092,94 +10534,115 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Conveyor : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfConveyor")]
 			[EnumerationValue([1,2,3,4])]
 			public categoryOfConveyor? categoryOfConveyor {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfConveyor() { return categoryOfConveyor.HasValue; }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("liftingCapacity")]
 			public decimal? liftingCapacity {get;set;} = default;
 
 			public bool ShouldSerializeliftingCapacity() { return liftingCapacity.HasValue; }
 
+			[XmlElement("multiplicityOfFeatures")]
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
+			[XmlElement("product")]
 			[EnumerationValue([4,5,6,10,11,12,13,14,15,16,17,21,22,25])]
 			public List<product> product {get;set;} = [];
 
 			public bool ShouldSerializeproduct() { return product.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([4,12])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalClearanceFixed")]
 			public verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
 
 			public bool ShouldSerializeverticalClearanceFixed() { return verticalClearanceFixed!=default; }
 
+			[XmlElement("verticalDatum")]
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -9269,71 +10732,87 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CableOverhead : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfCable")]
 			[EnumerationValue([1,3,10])]
 			public categoryOfCable? categoryOfCable {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfCable() { return categoryOfCable.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("iceFactor")]
 			public decimal? iceFactor {get;set;} = default;
 
 			public bool ShouldSerializeiceFactor() { return iceFactor.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("multiplicityOfFeatures")]
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,5,7,12,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalClearanceFixed")]
 			public verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
 
 			public bool ShouldSerializeverticalClearanceFixed() { return verticalClearanceFixed!=default; }
 
+			[XmlElement("verticalClearanceSafe")]
 			public verticalClearanceSafe? verticalClearanceSafe {get;set;} = default;
 
 			public bool ShouldSerializeverticalClearanceSafe() { return verticalClearanceSafe!=default; }
 
+			[XmlElement("verticalDatum")]
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -9415,68 +10894,83 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PipelineOverhead : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfPipelinePipe")]
 			[EnumerationValue([2,3,4,6])]
 			public categoryOfPipelinePipe? categoryOfPipelinePipe {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfPipelinePipe() { return categoryOfPipelinePipe.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("multiplicityOfFeatures")]
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
+			[XmlElement("product")]
 			[EnumerationValue([1,2,3,7,8,9,18,19,20,22])]
 			public List<product> product {get;set;} = [];
 
 			public bool ShouldSerializeproduct() { return product.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,7,12])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalClearanceFixed")]
 			public verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
 
 			public bool ShouldSerializeverticalClearanceFixed() { return verticalClearanceFixed!=default; }
 
+			[XmlElement("verticalDatum")]
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -9566,84 +11060,103 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PylonBridgeSupport : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfPylon")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public required categoryOfPylon? categoryOfPylon {get;set;} = default;
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("multiplicityOfFeatures")]
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,6,7,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([4,12])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("waterLevelEffect")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
 			public bool ShouldSerializewaterLevelEffect() { return waterLevelEffect.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -9749,73 +11262,89 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FenceWall : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfFence")]
 			[EnumerationValue([1,3,4])]
 			public categoryOfFence? categoryOfFence {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfFence() { return categoryOfFence.HasValue; }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("elevation")]
 			public decimal? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,3,6,7,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,7,12,13])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -9889,36 +11418,44 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Railway : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,6,12,13,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -9992,42 +11529,51 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Road : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfRoad")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public categoryOfRoad? categoryOfRoad {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfRoad() { return categoryOfRoad.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([4,5])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,6,7,8,12,13,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -10101,49 +11647,60 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Tunnel : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("horizontalClearanceFixed")]
 			public horizontalClearanceFixed? horizontalClearanceFixed {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceFixed() { return horizontalClearanceFixed!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,3,4,6,8,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalClearanceFixed")]
 			public verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
 
 			public bool ShouldSerializeverticalClearanceFixed() { return verticalClearanceFixed!=default; }
 
+			[XmlElement("verticalDatum")]
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -10217,93 +11774,114 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Landmark : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfLandmark")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22,23,24,25,26,27])]
 			public List<categoryOfLandmark> categoryOfLandmark {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfLandmark() { return categoryOfLandmark.Any(); }
 
+			[XmlElement("categoryOfSpecialPurposeMark")]
 			[EnumerationValue([16,17,41])]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfSpecialPurposeMark() { return categoryOfSpecialPurposeMark.Any(); }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,4,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("elevation")]
 			public decimal? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("function")]
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,46,47,48])]
 			public List<function> function {get;set;} = [];
 
 			public bool ShouldSerializefunction() { return function.Any(); }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("multiplicityOfFeatures")]
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,3,6,7,8,11,12])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([2,4,5,7,8,12,13,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public required visualProminence? visualProminence {get;set;} = default;
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
+			[XmlElement("inTheWater")]
 			public Boolean? inTheWater {get;set;} = default;
 
 			public bool ShouldSerializeinTheWater() { return inTheWater.HasValue; }
@@ -10409,95 +11987,116 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SiloTank : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("buildingShape")]
 			[EnumerationValue([5,6,7,8,9])]
 			public buildingShape? buildingShape {get;set;} = default;
 
 			public bool ShouldSerializebuildingShape() { return buildingShape.HasValue; }
 
+			[XmlElement("categoryOfSiloTank")]
 			[EnumerationValue([1,2,3,4])]
 			public categoryOfSiloTank? categoryOfSiloTank {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfSiloTank() { return categoryOfSiloTank.HasValue; }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("elevation")]
 			public decimal? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("multiplicityOfFeatures")]
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,6,7,8])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("product")]
 			[EnumerationValue([1,2,3,5,7,8,9,13,14,16,18,19,20,21,22,24])]
 			public List<product> product {get;set;} = [];
 
 			public bool ShouldSerializeproduct() { return product.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([4,12,13])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
+			[XmlElement("inTheWater")]
 			public Boolean? inTheWater {get;set;} = default;
 
 			public bool ShouldSerializeinTheWater() { return inTheWater.HasValue; }
@@ -10595,98 +12194,120 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class WindTurbine : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,4,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("elevation")]
 			public decimal? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("multiplicityOfFeatures")]
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([2,6,7,8,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,7,8,12,13,14,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalClearanceFixed")]
 			public verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
 
 			public bool ShouldSerializeverticalClearanceFixed() { return verticalClearanceFixed!=default; }
 
+			[XmlElement("verticalDatum")]
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("waterLevelEffect")]
 			[EnumerationValue([2,7])]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
 			public bool ShouldSerializewaterLevelEffect() { return waterLevelEffect.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
+			[XmlElement("inTheWater")]
 			public Boolean? inTheWater {get;set;} = default;
 
 			public bool ShouldSerializeinTheWater() { return inTheWater.HasValue; }
@@ -10776,67 +12397,82 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FortifiedStructure : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfFortifiedStructure")]
 			[EnumerationValue([1,2,3,4,5,6,8,9])]
 			public categoryOfFortifiedStructure? categoryOfFortifiedStructure {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfFortifiedStructure() { return categoryOfFortifiedStructure.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,3,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([4,7,8,12,13,14,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
+			[XmlElement("inTheWater")]
 			public Boolean? inTheWater {get;set;} = default;
 
 			public bool ShouldSerializeinTheWater() { return inTheWater.HasValue; }
@@ -10934,69 +12570,85 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ProductionStorageArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfProductionArea")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
 			public required categoryOfProductionArea? categoryOfProductionArea {get;set;} = default;
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,3,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("elevation")]
 			public decimal? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("product")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,25])]
 			public List<product> product {get;set;} = [];
 
 			public bool ShouldSerializeproduct() { return product.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([4,12])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -11070,28 +12722,34 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Checkpoint : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfCheckpoint")]
 			[EnumerationValue([1])]
 			public categoryOfCheckpoint? categoryOfCheckpoint {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfCheckpoint() { return categoryOfCheckpoint.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,5,7,9,12])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -11165,75 +12823,92 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Hulk : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfHulk")]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public List<categoryOfHulk> categoryOfHulk {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfHulk() { return categoryOfHulk.Any(); }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("horizontalLength")]
 			public decimal? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
+			[XmlElement("horizontalWidth")]
 			public decimal? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -11323,72 +12998,88 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Pile : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfPile")]
 			[EnumerationValue([1,3,4,5,6,7,8])]
 			public categoryOfPile? categoryOfPile {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfPile() { return categoryOfPile.HasValue; }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,6,7,8,12,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -11494,53 +13185,65 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Dyke : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,3,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -11614,90 +13317,110 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ShorelineConstruction : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfShorelineConstruction")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,20,22,23])]
 			public categoryOfShorelineConstruction? categoryOfShorelineConstruction {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfShorelineConstruction() { return categoryOfShorelineConstruction.HasValue; }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,3,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("horizontalClearanceFixed")]
 			public horizontalClearanceFixed? horizontalClearanceFixed {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceFixed() { return horizontalClearanceFixed!=default; }
 
+			[XmlElement("horizontalLength")]
 			public decimal? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
+			[XmlElement("horizontalWidth")]
 			public decimal? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,3,4,6,7,8,12,13,14,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("waterLevelEffect")]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
 			public bool ShouldSerializewaterLevelEffect() { return waterLevelEffect.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -11787,103 +13510,127 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class StructureOverNavigableWater : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfStructure")]
 			[EnumerationValue([1,2,3,4,5])]
 			public List<categoryOfStructure> categoryOfStructure {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfStructure() { return categoryOfStructure.Any(); }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("horizontalClearanceFixed")]
 			public required horizontalClearanceFixed? horizontalClearanceFixed {get;set;} = default;
 
+			[XmlElement("horizontalLength")]
 			public decimal? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
+			[XmlElement("horizontalWidth")]
 			public decimal? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,6,7,8,11,12])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("product")]
 			[EnumerationValue([7,12,13,21,22,25])]
 			public product? product {get;set;} = default;
 
 			public bool ShouldSerializeproduct() { return product.HasValue; }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,5,7,8,12,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalClearanceFixed")]
 			public required verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
 
+			[XmlElement("verticalDatum")]
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -11972,42 +13719,51 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Causeway : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,3,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,7,8,12,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("waterLevelEffect")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
 			public bool ShouldSerializewaterLevelEffect() { return waterLevelEffect.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -12081,49 +13837,60 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Canal : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfCanal")]
 			[EnumerationValue([1,2,3])]
 			public categoryOfCanal? categoryOfCanal {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfCanal() { return categoryOfCanal.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,3,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("horizontalClearanceFixed")]
 			public horizontalClearanceFixed? horizontalClearanceFixed {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceFixed() { return horizontalClearanceFixed!=default; }
 
+			[XmlElement("horizontalWidth")]
 			public decimal? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,3,4,5,6,8,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -12197,26 +13964,33 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DistanceMark : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("distanceMarkVisible")]
 			public required Boolean? distanceMarkVisible {get;set;} = default;
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("measuredDistanceValue")]
 			public required measuredDistanceValue? measuredDistanceValue {get;set;} = default;
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -12298,64 +14072,78 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Gate : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfGate")]
 			[EnumerationValue([2,3,4,5,6])]
 			public categoryOfGate? categoryOfGate {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfGate() { return categoryOfGate.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("depthRangeMinimumValue")]
 			public decimal? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("horizontalClearanceOpen")]
 			public horizontalClearanceOpen? horizontalClearanceOpen {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceOpen() { return horizontalClearanceOpen!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("qualityOfVerticalMeasurement")]
 			[EnumerationValue([2,3,4,6,7])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,6,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalClearanceOpen")]
 			public verticalClearanceOpen? verticalClearanceOpen {get;set;} = default;
 
 			public bool ShouldSerializeverticalClearanceOpen() { return verticalClearanceOpen!=default; }
 
+			[XmlElement("verticalDatum")]
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
+			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -12429,74 +14217,90 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Dam : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfDam")]
 			[EnumerationValue([1,2,3])]
 			public categoryOfDam? categoryOfDam {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfDam() { return categoryOfDam.HasValue; }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,3,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,3,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,6,7,8,14,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("waterLevelEffect")]
 			[EnumerationValue([1,2,3,6])]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
 			public bool ShouldSerializewaterLevelEffect() { return waterLevelEffect.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -12570,89 +14374,109 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Crane : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfCrane")]
 			[EnumerationValue([2,3,4,5,6])]
 			public categoryOfCrane? categoryOfCrane {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfCrane() { return categoryOfCrane.HasValue; }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("liftingCapacity")]
 			public decimal? liftingCapacity {get;set;} = default;
 
 			public bool ShouldSerializeliftingCapacity() { return liftingCapacity.HasValue; }
 
+			[XmlElement("orientation")]
 			public orientation? orientation {get;set;} = default;
 
 			public bool ShouldSerializeorientation() { return orientation!=default; }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("radius")]
 			public decimal? radius {get;set;} = default;
 
 			public bool ShouldSerializeradius() { return radius.HasValue; }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,6,12])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalClearanceFixed")]
 			public verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
 
 			public bool ShouldSerializeverticalClearanceFixed() { return verticalClearanceFixed!=default; }
 
+			[XmlElement("verticalDatum")]
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
+			[XmlElement("inTheWater")]
 			public Boolean? inTheWater {get;set;} = default;
 
 			public bool ShouldSerializeinTheWater() { return inTheWater.HasValue; }
@@ -12742,61 +14566,75 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Berth : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfCargo")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfCargo() { return categoryOfCargo.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("horizontalClearanceLength")]
 			public decimal? horizontalClearanceLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceLength() { return horizontalClearanceLength.HasValue; }
 
+			[XmlElement("horizontalClearanceWidth")]
 			public decimal? horizontalClearanceWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceWidth() { return horizontalClearanceWidth.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("maximumPermittedDraught")]
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
+			[XmlElement("minimumBerthDepth")]
 			public decimal? minimumBerthDepth {get;set;} = default;
 
 			public bool ShouldSerializeminimumBerthDepth() { return minimumBerthDepth.HasValue; }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("qualityOfVerticalMeasurement")]
 			[EnumerationValue([1,2])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,5,7,9,12])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -12878,85 +14716,104 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Dolphin : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfDolphin")]
 			[EnumerationValue([1,2,3,4])]
 			public List<categoryOfDolphin> categoryOfDolphin {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfDolphin() { return categoryOfDolphin.Any(); }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("elevation")]
 			public decimal? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,12,14,18])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -13054,44 +14911,54 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Bollard : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,3,4,6,7,8,12,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -13173,69 +15040,85 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DryDock : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,3,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("depthRangeMinimumValue")]
 			public decimal? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
+			[XmlElement("elevation")]
 			public decimal? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("horizontalClearanceLength")]
 			public decimal? horizontalClearanceLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceLength() { return horizontalClearanceLength.HasValue; }
 
+			[XmlElement("horizontalClearanceWidth")]
 			public decimal? horizontalClearanceWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceWidth() { return horizontalClearanceWidth.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("horizontalLength")]
 			public decimal? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
+			[XmlElement("horizontalWidth")]
 			public decimal? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
+			[XmlElement("maximumPermittedDraught")]
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
+			[XmlElement("qualityOfVerticalMeasurement")]
 			[EnumerationValue([2,3,4,6,7,8,9])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,6,8,12,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -13300,87 +15183,107 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FloatingDock : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("depthRangeMinimumValue")]
 			public decimal? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("horizontalClearanceLength")]
 			public decimal? horizontalClearanceLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceLength() { return horizontalClearanceLength.HasValue; }
 
+			[XmlElement("horizontalClearanceWidth")]
 			public decimal? horizontalClearanceWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceWidth() { return horizontalClearanceWidth.HasValue; }
 
+			[XmlElement("horizontalLength")]
 			public decimal? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
+			[XmlElement("horizontalWidth")]
 			public decimal? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("liftingCapacity")]
 			public decimal? liftingCapacity {get;set;} = default;
 
 			public bool ShouldSerializeliftingCapacity() { return liftingCapacity.HasValue; }
 
+			[XmlElement("maximumPermittedDraught")]
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,6,7,8,12])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -13470,53 +15373,65 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Pontoon : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,6,7,8,12,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -13614,57 +15529,70 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DockArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfDock")]
 			[EnumerationValue([1,2])]
 			public categoryOfDock? categoryOfDock {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfDock() { return categoryOfDock.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,3,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("horizontalClearanceFixed")]
 			public horizontalClearanceFixed? horizontalClearanceFixed {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceFixed() { return horizontalClearanceFixed!=default; }
 
+			[XmlElement("horizontalClearanceLength")]
 			public decimal? horizontalClearanceLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceLength() { return horizontalClearanceLength.HasValue; }
 
+			[XmlElement("horizontalClearanceWidth")]
 			public decimal? horizontalClearanceWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceWidth() { return horizontalClearanceWidth.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("maximumPermittedDraught")]
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,6,8,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -13729,45 +15657,55 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Gridiron : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("horizontalLength")]
 			public decimal? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
+			[XmlElement("horizontalWidth")]
 			public decimal? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,6,7,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,6,8,14,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("waterLevelEffect")]
 			[EnumerationValue([1,4,5])]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
 			public bool ShouldSerializewaterLevelEffect() { return waterLevelEffect.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -13832,43 +15770,53 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LockBasin : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("horizontalClearanceFixed")]
 			public horizontalClearanceFixed? horizontalClearanceFixed {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceFixed() { return horizontalClearanceFixed!=default; }
 
+			[XmlElement("horizontalLength")]
 			public decimal? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
+			[XmlElement("horizontalWidth")]
 			public decimal? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,6,8,13,14,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -13933,22 +15881,27 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MooringTrot : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -14021,23 +15974,28 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SeaAreaNamedWaterArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfSeaArea")]
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56])]
 			public categoryOfSeaArea? categoryOfSeaArea {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfSeaArea() { return categoryOfSeaArea.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -14111,29 +16069,37 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TidalStreamFloodEbb : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfTidalStream")]
 			[EnumerationValue([1,2,3])]
 			public required categoryOfTidalStream? categoryOfTidalStream {get;set;} = default;
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("orientation")]
 			public required orientation? orientation {get;set;} = default;
 
+			[XmlElement("speed")]
 			public required speed? speed {get;set;} = default;
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -14207,35 +16173,44 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CurrentNonGravitational : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("orientation")]
 			public required orientation? orientation {get;set;} = default;
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("speed")]
 			public required speed? speed {get;set;} = default;
 
+			[XmlElement("status")]
 			[EnumerationValue([5])]
 			public status? status {get;set;} = default;
 
 			public bool ShouldSerializestatus() { return status.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -14309,21 +16284,26 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class WaterTurbulence : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfWaterTurbulence")]
 			[EnumerationValue([1,2,3,4,5])]
 			public required categoryOfWaterTurbulence? categoryOfWaterTurbulence {get;set;} = default;
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -14397,28 +16377,35 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TidalStreamPanelData : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("stationName")]
 			public required String? stationName {get;set;} = default;
 
+			[XmlElement("stationNumber")]
 			public String? stationNumber {get;set;} = default;
 
 			public bool ShouldSerializestationNumber() { return !string.IsNullOrEmpty(stationNumber); }
 
+			[XmlElement("tidalStreamPanelValues")]
 			public List<tidalStreamPanelValues> tidalStreamPanelValues {get;set;} = [];
 
 			public bool ShouldSerializetidalStreamPanelValues() { return tidalStreamPanelValues.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -14492,37 +16479,45 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Sounding : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("qualityOfVerticalMeasurement")]
 			[EnumerationValue([1,3,4,8,9])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([18])]
 			public status? status {get;set;} = default;
 
 			public bool ShouldSerializestatus() { return status.HasValue; }
 
+			[XmlElement("techniqueOfVerticalMeasurement")]
 			[EnumerationValue([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -14596,51 +16591,63 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DredgedArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("depthRangeMinimumValue")]
 			public required decimal? depthRangeMinimumValue {get;set;} = default;
 
+			[XmlElement("depthRangeMaximumValue")]
 			public decimal? depthRangeMaximumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMaximumValue() { return depthRangeMaximumValue.HasValue; }
 
+			[XmlElement("dredgedDate")]
 			public String? dredgedDate {get;set;} = default;
 
 			public bool ShouldSerializedredgedDate() { return !string.IsNullOrEmpty(dredgedDate); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("maximumPermittedDraught")]
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
+			[XmlElement("qualityOfVerticalMeasurement")]
 			[EnumerationValue([10,11])]
 			public qualityOfVerticalMeasurement? qualityOfVerticalMeasurement {get;set;} = default;
 
 			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.HasValue; }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,3,4,5,6,8,11,12,13,16,17,18,19,20,21,23,25,27,39])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("techniqueOfVerticalMeasurement")]
 			[EnumerationValue([1,2,3,8,9,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
+			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -14713,20 +16720,25 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SweptArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("depthRangeMinimumValue")]
 			public required decimal? depthRangeMinimumValue {get;set;} = default;
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("sweptDate")]
 			public String? sweptDate {get;set;} = default;
 
 			public bool ShouldSerializesweptDate() { return !string.IsNullOrEmpty(sweptDate); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -14799,16 +16811,20 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DepthContour : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("valueOfDepthContour")]
 			public required decimal? valueOfDepthContour {get;set;} = default;
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -14874,14 +16890,18 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DepthArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("depthRangeMinimumValue")]
 			public required decimal? depthRangeMinimumValue {get;set;} = default;
 
+			[XmlElement("depthRangeMaximumValue")]
 			public required decimal? depthRangeMaximumValue {get;set;} = default;
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -14938,19 +16958,23 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DepthNoBottomFound : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("techniqueOfVerticalMeasurement")]
 			[EnumerationValue([1,2,3,5,8,9,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -15016,10 +17040,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class UnsurveyedArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -15076,27 +17102,33 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SeabedArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("surfaceCharacteristics")]
 			public List<surfaceCharacteristics> surfaceCharacteristics {get;set;} = [];
 
 			public bool ShouldSerializesurfaceCharacteristics() { return surfaceCharacteristics.Any(); }
 
+			[XmlElement("waterLevelEffect")]
 			[EnumerationValue([3,4,5])]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
 			public bool ShouldSerializewaterLevelEffect() { return waterLevelEffect.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -15170,23 +17202,28 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class WeedKelp : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfWeedKelp")]
 			[EnumerationValue([1,2,4])]
 			public categoryOfWeedKelp? categoryOfWeedKelp {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfWeedKelp() { return categoryOfWeedKelp.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -15260,18 +17297,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Seagrass : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -15345,18 +17386,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Sandwave : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -15422,18 +17467,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Spring : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -15507,60 +17556,74 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class UnderwaterAwashRock : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("expositionOfSounding")]
 			[EnumerationValue([1,2])]
 			public expositionOfSounding? expositionOfSounding {get;set;} = default;
 
 			public bool ShouldSerializeexpositionOfSounding() { return expositionOfSounding.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfSurface")]
 			[EnumerationValue([14])]
 			public natureOfSurface? natureOfSurface {get;set;} = default;
 
 			public bool ShouldSerializenatureOfSurface() { return natureOfSurface.HasValue; }
 
+			[XmlElement("qualityOfVerticalMeasurement")]
 			[EnumerationValue([1,2,3,4,6,7,8,9])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([18])]
 			public status? status {get;set;} = default;
 
 			public bool ShouldSerializestatus() { return status.HasValue; }
 
+			[XmlElement("techniqueOfVerticalMeasurement")]
 			[EnumerationValue([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
+			[XmlElement("valueOfSounding")]
 			public required decimal? valueOfSounding {get;set;} = default;
 
+			[XmlElement("waterLevelEffect")]
 			[EnumerationValue([3,4,5])]
 			public required waterLevelEffect? waterLevelEffect {get;set;} = default;
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("defaultClearanceDepth")]
 			public decimal? defaultClearanceDepth {get;set;} = default;
 
 			public bool ShouldSerializedefaultClearanceDepth() { return defaultClearanceDepth.HasValue; }
 
+			[XmlElement("surroundingDepth")]
 			public required decimal? surroundingDepth {get;set;} = default;
 
 			[JsonIgnore]
@@ -15632,79 +17695,97 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Wreck : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfWreck")]
 			[EnumerationValue([1,2,3,4,5])]
 			public categoryOfWreck? categoryOfWreck {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfWreck() { return categoryOfWreck.HasValue; }
 
+			[XmlElement("expositionOfSounding")]
 			[EnumerationValue([1,2,3])]
 			public expositionOfSounding? expositionOfSounding {get;set;} = default;
 
 			public bool ShouldSerializeexpositionOfSounding() { return expositionOfSounding.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("qualityOfVerticalMeasurement")]
 			[EnumerationValue([1,2,3,4,6,7,8,9])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([7,13,18])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("techniqueOfVerticalMeasurement")]
 			[EnumerationValue([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
+			[XmlElement("valueOfSounding")]
 			public decimal? valueOfSounding {get;set;} = default;
 
 			public bool ShouldSerializevalueOfSounding() { return valueOfSounding.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("waterLevelEffect")]
 			[EnumerationValue([1,2,3,4,5])]
 			public required waterLevelEffect? waterLevelEffect {get;set;} = default;
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
+			[XmlElement("defaultClearanceDepth")]
 			public decimal? defaultClearanceDepth {get;set;} = default;
 
 			public bool ShouldSerializedefaultClearanceDepth() { return defaultClearanceDepth.HasValue; }
 
+			[XmlElement("surroundingDepth")]
 			public required decimal? surroundingDepth {get;set;} = default;
 
 			[JsonIgnore]
@@ -15784,89 +17865,109 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Obstruction : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfObstruction")]
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,12,13,14,15,16,17,18,19,20,21,22,23])]
 			public categoryOfObstruction? categoryOfObstruction {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfObstruction() { return categoryOfObstruction.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("expositionOfSounding")]
 			[EnumerationValue([1,2,3])]
 			public expositionOfSounding? expositionOfSounding {get;set;} = default;
 
 			public bool ShouldSerializeexpositionOfSounding() { return expositionOfSounding.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("maximumPermittedDraught")]
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
+			[XmlElement("natureOfSurface")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,14,17,18])]
 			public List<natureOfSurface> natureOfSurface {get;set;} = [];
 
 			public bool ShouldSerializenatureOfSurface() { return natureOfSurface.Any(); }
 
+			[XmlElement("product")]
 			[EnumerationValue([1,2,3,8,23])]
 			public List<product> product {get;set;} = [];
 
 			public bool ShouldSerializeproduct() { return product.Any(); }
 
+			[XmlElement("qualityOfVerticalMeasurement")]
 			[EnumerationValue([1,2,3,4,6,7,8,9])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,5,7,8,13,18,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("techniqueOfVerticalMeasurement")]
 			[EnumerationValue([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
+			[XmlElement("valueOfSounding")]
 			public decimal? valueOfSounding {get;set;} = default;
 
 			public bool ShouldSerializevalueOfSounding() { return valueOfSounding.HasValue; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("waterLevelEffect")]
 			[EnumerationValue([1,2,3,4,5,7])]
 			public required waterLevelEffect? waterLevelEffect {get;set;} = default;
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("defaultClearanceDepth")]
 			public decimal? defaultClearanceDepth {get;set;} = default;
 
 			public bool ShouldSerializedefaultClearanceDepth() { return defaultClearanceDepth.HasValue; }
 
+			[XmlElement("surroundingDepth")]
 			public required decimal? surroundingDepth {get;set;} = default;
 
 			[JsonIgnore]
@@ -15946,45 +18047,55 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FoulGround : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("qualityOfVerticalMeasurement")]
 			[EnumerationValue([1,2,3,4,6,7,8,9])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([13,18,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("techniqueOfVerticalMeasurement")]
 			[EnumerationValue([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
+			[XmlElement("valueOfSounding")]
 			public decimal? valueOfSounding {get;set;} = default;
 
 			public bool ShouldSerializevalueOfSounding() { return valueOfSounding.HasValue; }
 
+			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -16058,18 +18169,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DiscolouredWater : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -16135,45 +18250,55 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FishingFacility : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfFishingFacility")]
 			[EnumerationValue([1,2,3,4])]
 			public categoryOfFishingFacility? categoryOfFishingFacility {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfFishingFacility() { return categoryOfFishingFacility.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,5,6,7,8,12,18,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -16263,74 +18388,91 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MarineFarmCulture : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfMarineFarmCulture")]
 			[EnumerationValue([1,2,3,4,5])]
 			public categoryOfMarineFarmCulture? categoryOfMarineFarmCulture {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfMarineFarmCulture() { return categoryOfMarineFarmCulture.HasValue; }
 
+			[XmlElement("expositionOfSounding")]
 			[EnumerationValue([1,2])]
 			public expositionOfSounding? expositionOfSounding {get;set;} = default;
 
 			public bool ShouldSerializeexpositionOfSounding() { return expositionOfSounding.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("qualityOfVerticalMeasurement")]
 			[EnumerationValue([1,2,3,4,6,7,8,9])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,6,7,8,14,16,17,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("valueOfSounding")]
 			public decimal? valueOfSounding {get;set;} = default;
 
 			public bool ShouldSerializevalueOfSounding() { return valueOfSounding.HasValue; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("waterLevelEffect")]
 			[EnumerationValue([1,2,3,4,5,7])]
 			public required waterLevelEffect? waterLevelEffect {get;set;} = default;
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -16404,81 +18546,99 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class OffshorePlatform : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfOffshorePlatform")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			public categoryOfOffshorePlatform? categoryOfOffshorePlatform {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfOffshorePlatform() { return categoryOfOffshorePlatform.HasValue; }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("flareStack")]
 			public Boolean? flareStack {get;set;} = default;
 
 			public bool ShouldSerializeflareStack() { return flareStack.HasValue; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("product")]
 			[EnumerationValue([1,2,3,18,19,23])]
 			public List<product> product {get;set;} = [];
 
 			public bool ShouldSerializeproduct() { return product.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,7,8,12,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -16568,41 +18728,50 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CableSubmarine : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("buriedDepth")]
 			public decimal? buriedDepth {get;set;} = default;
 
 			public bool ShouldSerializeburiedDepth() { return buriedDepth.HasValue; }
 
+			[XmlElement("categoryOfCable")]
 			[EnumerationValue([1,6,7,9,10])]
 			public categoryOfCable? categoryOfCable {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfCable() { return categoryOfCable.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,13,18])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -16684,41 +18853,50 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CableArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfCable")]
 			[EnumerationValue([1,7,10])]
 			public List<categoryOfCable> categoryOfCable {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfCable() { return categoryOfCable.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,16,17,18,20,23,24,25,27,39])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,7,13])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -16783,71 +18961,87 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PipelineSubmarineOnLand : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("buriedDepth")]
 			public decimal? buriedDepth {get;set;} = default;
 
 			public bool ShouldSerializeburiedDepth() { return buriedDepth.HasValue; }
 
+			[XmlElement("categoryOfPipelinePipe")]
 			[EnumerationValue([2,3,4,5,6,7])]
 			public List<categoryOfPipelinePipe> categoryOfPipelinePipe {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfPipelinePipe() { return categoryOfPipelinePipe.Any(); }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("depthRangeMinimumValue")]
 			public decimal? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
+			[XmlElement("depthRangeMaximumValue")]
 			public decimal? depthRangeMaximumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMaximumValue() { return depthRangeMaximumValue.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("multiplicityOfFeatures")]
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
+			[XmlElement("product")]
 			[EnumerationValue([1,2,3,7,8,9,18,19])]
 			public List<product> product {get;set;} = [];
 
 			public bool ShouldSerializeproduct() { return product.Any(); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,3,4,5,8,9,11,12,13,14,16,17,18,20,23,24,25,26,39])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,7,12])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -16921,46 +19115,56 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SubmarinePipelineArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfPipelinePipe")]
 			[EnumerationValue([2,3,4,5,6])]
 			public List<categoryOfPipelinePipe> categoryOfPipelinePipe {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfPipelinePipe() { return categoryOfPipelinePipe.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("product")]
 			[EnumerationValue([1,2,3,7,8,18,19])]
 			public List<product> product {get;set;} = [];
 
 			public bool ShouldSerializeproduct() { return product.Any(); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,7])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -17034,77 +19238,94 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class OffshoreProductionArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfOffshoreProductionArea")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public categoryOfOffshoreProductionArea? categoryOfOffshoreProductionArea {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfOffshoreProductionArea() { return categoryOfOffshoreProductionArea.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,4,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("product")]
 			[EnumerationValue([1,2,4,6,10,14,23])]
 			public List<product> product {get;set;} = [];
 
 			public bool ShouldSerializeproduct() { return product.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,7,8,12,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("waterLevelEffect")]
 			[EnumerationValue([2,3,4,7])]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
 			public bool ShouldSerializewaterLevelEffect() { return waterLevelEffect.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -17169,36 +19390,45 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NavigationLine : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfNavigationLine")]
 			[EnumerationValue([1,2,3])]
 			public required categoryOfNavigationLine? categoryOfNavigationLine {get;set;} = default;
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("measuredDistance")]
 			public int? measuredDistance {get;set;} = default;
 
 			public bool ShouldSerializemeasuredDistance() { return measuredDistance.HasValue; }
 
+			[XmlElement("orientation")]
 			public required orientation? orientation {get;set;} = default;
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,5,7,8,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -17272,60 +19502,75 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RecommendedTrack : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("basedOnFixedMarks")]
 			public required Boolean? basedOnFixedMarks {get;set;} = default;
 
+			[XmlElement("depthRangeMinimumValue")]
 			public decimal? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("maximumPermittedDraught")]
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
+			[XmlElement("orientationValue")]
 			public required decimal? orientationValue {get;set;} = default;
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("qualityOfVerticalMeasurement")]
 			[EnumerationValue([1,2,6])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,5,6,8,9,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("techniqueOfVerticalMeasurement")]
 			[EnumerationValue([1,2,3,8,9,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
+			[XmlElement("trafficFlow")]
 			[EnumerationValue([1,2,3,4])]
 			public required trafficFlow? trafficFlow {get;set;} = default;
 
+			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -17415,26 +19660,32 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RangeSystem : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("maximumPermittedDraught")]
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -17532,62 +19783,76 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Fairway : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("depthRangeMinimumValue")]
 			public decimal? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("maximumPermittedDraught")]
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
+			[XmlElement("orientationValue")]
 			public decimal? orientationValue {get;set;} = default;
 
 			public bool ShouldSerializeorientationValue() { return orientationValue.HasValue; }
 
+			[XmlElement("qualityOfVerticalMeasurement")]
 			[EnumerationValue([1,2,6])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,27,39])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,3,6,7,9,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("trafficFlow")]
 			[EnumerationValue([1,2,3,4])]
 			public trafficFlow? trafficFlow {get;set;} = default;
 
 			public bool ShouldSerializetrafficFlow() { return trafficFlow.HasValue; }
 
+			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -17668,30 +19933,37 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FairwaySystem : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("maximumPermittedDraught")]
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -17772,60 +20044,74 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RecommendedRouteCentreline : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("basedOnFixedMarks")]
 			public required Boolean? basedOnFixedMarks {get;set;} = default;
 
+			[XmlElement("depthRangeMinimumValue")]
 			public decimal? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("orientationValue")]
 			public decimal? orientationValue {get;set;} = default;
 
 			public bool ShouldSerializeorientationValue() { return orientationValue.HasValue; }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("qualityOfVerticalMeasurement")]
 			[EnumerationValue([1,2,3,4,6])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,5,6,9])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("techniqueOfVerticalMeasurement")]
 			[EnumerationValue([1,3,8,9,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
+			[XmlElement("trafficFlow")]
 			[EnumerationValue([1,2,3,4])]
 			public trafficFlow? trafficFlow {get;set;} = default;
 
 			public bool ShouldSerializetrafficFlow() { return trafficFlow.HasValue; }
 
+			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -17915,50 +20201,62 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TwoWayRoutePart : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("basedOnFixedMarks")]
 			public Boolean? basedOnFixedMarks {get;set;} = default;
 
 			public bool ShouldSerializebasedOnFixedMarks() { return basedOnFixedMarks.HasValue; }
 
+			[XmlElement("depthRangeMinimumValue")]
 			public decimal? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("orientationValue")]
 			public required decimal? orientationValue {get;set;} = default;
 
+			[XmlElement("qualityOfVerticalMeasurement")]
 			[EnumerationValue([1,2,3,4,6])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,3,6,9])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("techniqueOfVerticalMeasurement")]
 			[EnumerationValue([1,3,5,8,9,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
+			[XmlElement("trafficFlow")]
 			[EnumerationValue([1,2,3,4])]
 			public required trafficFlow? trafficFlow {get;set;} = default;
 
+			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -18031,26 +20329,32 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TwoWayRoute : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("maximumPermittedDraught")]
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -18139,25 +20443,31 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RecommendedTrafficLanePart : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("orientationValue")]
 			public required decimal? orientationValue {get;set;} = default;
 
+			[XmlElement("status")]
 			[EnumerationValue([1,6,9])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -18223,56 +20533,70 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DeepWaterRouteCentreline : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("basedOnFixedMarks")]
 			public required Boolean? basedOnFixedMarks {get;set;} = default;
 
+			[XmlElement("depthRangeMinimumValue")]
 			public decimal? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("iMOAdopted")]
 			public Boolean? iMOAdopted {get;set;} = default;
 
 			public bool ShouldSerializeiMOAdopted() { return iMOAdopted.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("orientationValue")]
 			public required decimal? orientationValue {get;set;} = default;
 
+			[XmlElement("qualityOfVerticalMeasurement")]
 			[EnumerationValue([1,2,3,4,6,7])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,3,6,9])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("techniqueOfVerticalMeasurement")]
 			[EnumerationValue([1,3,5,8,9,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
+			[XmlElement("trafficFlow")]
 			[EnumerationValue([1,2,3,4])]
 			public required trafficFlow? trafficFlow {get;set;} = default;
 
+			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -18362,61 +20686,76 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DeepWaterRoutePart : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("depthRangeMinimumValue")]
 			public required decimal? depthRangeMinimumValue {get;set;} = default;
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("iMOAdopted")]
 			public Boolean? iMOAdopted {get;set;} = default;
 
 			public bool ShouldSerializeiMOAdopted() { return iMOAdopted.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("orientationValue")]
 			public required decimal? orientationValue {get;set;} = default;
 
+			[XmlElement("qualityOfVerticalMeasurement")]
 			[EnumerationValue([1,2,3,4,6,7])]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,3,6,9,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("techniqueOfVerticalMeasurement")]
 			[EnumerationValue([1,3,5,8,9,13,15,16,17,18])]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
+			[XmlElement("trafficFlow")]
 			[EnumerationValue([1,2,3,4])]
 			public required trafficFlow? trafficFlow {get;set;} = default;
 
+			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -18497,26 +20836,32 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DeepWaterRoute : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("iMOAdopted")]
 			public Boolean? iMOAdopted {get;set;} = default;
 
 			public bool ShouldSerializeiMOAdopted() { return iMOAdopted.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -18605,32 +20950,39 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InshoreTrafficZone : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,3,6,9,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -18695,40 +21047,49 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PrecautionaryArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("iMOAdopted")]
 			public Boolean? iMOAdopted {get;set;} = default;
 
 			public bool ShouldSerializeiMOAdopted() { return iMOAdopted.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,14,16,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,9,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -18810,36 +21171,44 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TrafficSeparationSchemeLanePart : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("orientationValue")]
 			public decimal? orientationValue {get;set;} = default;
 
 			public bool ShouldSerializeorientationValue() { return orientationValue.HasValue; }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,3,6,9,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -18904,23 +21273,28 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SeparationZoneOrLine : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,3,9,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -18994,23 +21368,28 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TrafficSeparationSchemeBoundary : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,3,9,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -19084,32 +21463,39 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TrafficSeparationSchemeCrossing : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,3,6,9])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -19174,32 +21560,39 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TrafficSeparationSchemeRoundabout : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,3,6,9])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -19264,30 +21657,37 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TrafficSeparationScheme : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("iMOAdopted")]
 			public Boolean? iMOAdopted {get;set;} = default;
 
 			public bool ShouldSerializeiMOAdopted() { return iMOAdopted.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("maximumPermittedDraught")]
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -19384,26 +21784,32 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ArchipelagicSeaLaneArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("nationality")]
 			public String? nationality {get;set;} = default;
 
 			public bool ShouldSerializenationality() { return !string.IsNullOrEmpty(nationality); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -19476,26 +21882,32 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ArchipelagicSeaLaneAxis : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("nationality")]
 			public String? nationality {get;set;} = default;
 
 			public bool ShouldSerializenationality() { return !string.IsNullOrEmpty(nationality); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -19577,24 +21989,30 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ArchipelagicSeaLane : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("nationality")]
 			public required String? nationality {get;set;} = default;
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -19683,42 +22101,52 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadioCallingInPoint : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("communicationChannel")]
 			public List<String> communicationChannel {get;set;} = [];
 
 			public bool ShouldSerializecommunicationChannel() { return communicationChannel.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("orientationValue")]
 			public List<decimal> orientationValue {get;set;} = [];
 
 			public bool ShouldSerializeorientationValue() { return orientationValue.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,3,4,5,6,7,9])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("trafficFlow")]
 			[EnumerationValue([1,2,3,4])]
 			public required trafficFlow? trafficFlow {get;set;} = default;
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -19792,36 +22220,44 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FerryRoute : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfFerry")]
 			[EnumerationValue([1,2,3,5])]
 			public List<categoryOfFerry> categoryOfFerry {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfFerry() { return categoryOfFerry.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,6,7,8,9,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -19895,25 +22331,31 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadarLine : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("orientationValue")]
 			public required decimal? orientationValue {get;set;} = default;
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,3,4,7])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -19987,31 +22429,38 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadarRange : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("communicationChannel")]
 			public List<String> communicationChannel {get;set;} = [];
 
 			public bool ShouldSerializecommunicationChannel() { return communicationChannel.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,7])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -20076,48 +22525,59 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadarStation : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("callSign")]
 			public String? callSign {get;set;} = default;
 
 			public bool ShouldSerializecallSign() { return !string.IsNullOrEmpty(callSign); }
 
+			[XmlElement("categoryOfRadarStation")]
 			[EnumerationValue([1,2])]
 			public List<categoryOfRadarStation> categoryOfRadarStation {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfRadarStation() { return categoryOfRadarStation.Any(); }
 
+			[XmlElement("communicationChannel")]
 			public List<String> communicationChannel {get;set;} = [];
 
 			public bool ShouldSerializecommunicationChannel() { return communicationChannel.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,7,8])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("valueOfMaximumRange")]
 			public decimal? valueOfMaximumRange {get;set;} = default;
 
 			public bool ShouldSerializevalueOfMaximumRange() { return valueOfMaximumRange.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -20191,50 +22651,61 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AnchorageArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfAnchorage")]
 			[EnumerationValue([1,2,3,5,6,7,9,10,14,15])]
 			public List<categoryOfAnchorage> categoryOfAnchorage {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfAnchorage() { return categoryOfAnchorage.Any(); }
 
+			[XmlElement("categoryOfCargo")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfCargo() { return categoryOfCargo.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,23,24,27,39])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,3,5,6,7,8,9,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -20308,53 +22779,65 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MooringArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfMooringArea")]
 			[EnumerationValue([1,2,3])]
 			public List<categoryOfMooringArea> categoryOfMooringArea {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfMooringArea() { return categoryOfMooringArea.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("maximumPermittedDraught")]
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
+			[XmlElement("maximumPermittedVesselLength")]
 			public decimal? maximumPermittedVesselLength {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedVesselLength() { return maximumPermittedVesselLength.HasValue; }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,23,24,25,27,39,42])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,3,5,6,7,8,9,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
@@ -20428,45 +22911,55 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AnchorBerth : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfAnchorage")]
 			[EnumerationValue([1,2,3,5,6,7,9,10,14])]
 			public List<categoryOfAnchorage> categoryOfAnchorage {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfAnchorage() { return categoryOfAnchorage.Any(); }
 
+			[XmlElement("categoryOfCargo")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfCargo() { return categoryOfCargo.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("radius")]
 			public decimal? radius {get;set;} = default;
 
 			public bool ShouldSerializeradius() { return radius.HasValue; }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -20540,36 +23033,44 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SeaplaneLandingArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,27,39])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -20643,41 +23144,50 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DumpingGround : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfDumpingGround")]
 			[EnumerationValue([2,3,4,5,6])]
 			public List<categoryOfDumpingGround> categoryOfDumpingGround {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfDumpingGround() { return categoryOfDumpingGround.Any(); }
 
+			[XmlElement("dateDisused")]
 			public String? dateDisused {get;set;} = default;
 
 			public bool ShouldSerializedateDisused() { return !string.IsNullOrEmpty(dateDisused); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,6,7])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -20751,49 +23261,60 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MilitaryPracticeArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfMilitaryPracticeArea")]
 			[EnumerationValue([2,3,4,5,6])]
 			public List<categoryOfMilitaryPracticeArea> categoryOfMilitaryPracticeArea {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfMilitaryPracticeArea() { return categoryOfMilitaryPracticeArea.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("nationality")]
 			public String? nationality {get;set;} = default;
 
 			public bool ShouldSerializenationality() { return !string.IsNullOrEmpty(nationality); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,5,6,7,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -20867,33 +23388,41 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AdministrationArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("inDispute")]
 			public Boolean? inDispute {get;set;} = default;
 
 			public bool ShouldSerializeinDispute() { return inDispute.HasValue; }
 
+			[XmlElement("jurisdiction")]
 			[EnumerationValue([1,2,3])]
 			public required jurisdiction? jurisdiction {get;set;} = default;
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("nationality")]
 			public List<String> nationality {get;set;} = [];
 
 			public bool ShouldSerializenationality() { return nationality.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -20967,40 +23496,49 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CargoTranshipmentArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,22,24,27,39])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,3,5,6,7,9])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -21074,40 +23612,49 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CautionArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("condition")]
 			[EnumerationValue([1,3,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([5,7])]
 			public status? status {get;set;} = default;
 
 			public bool ShouldSerializestatus() { return status.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -21189,34 +23736,42 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InformationArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -21290,26 +23845,32 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ContiguousZone : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("inDispute")]
 			public Boolean? inDispute {get;set;} = default;
 
 			public bool ShouldSerializeinDispute() { return inDispute.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("nationality")]
 			public List<String> nationality {get;set;} = [];
 
 			public bool ShouldSerializenationality() { return nationality.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -21375,22 +23936,27 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ContinentalShelfArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("nationality")]
 			public List<String> nationality {get;set;} = [];
 
 			public bool ShouldSerializenationality() { return nationality.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -21464,16 +24030,20 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CustomZone : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("nationality")]
 			public required String? nationality {get;set;} = default;
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -21530,22 +24100,27 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ExclusiveEconomicZone : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("inDispute")]
 			public Boolean? inDispute {get;set;} = default;
 
 			public bool ShouldSerializeinDispute() { return inDispute.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("nationality")]
 			public List<String> nationality {get;set;} = [];
 
 			public bool ShouldSerializenationality() { return nationality.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -21611,25 +24186,31 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FisheryZone : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("nationality")]
 			public required String? nationality {get;set;} = default;
 
+			[XmlElement("status")]
 			[EnumerationValue([1,5,6,7])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -21694,36 +24275,44 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FishingGround : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,4,5,6,8,9,10,11,12,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,5,6,7,8,14,16,17,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -21788,23 +24377,28 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FreePortArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,6,8,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -21869,23 +24463,28 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class HarbourAreaAdministrative : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,6,8,14])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -21950,27 +24549,33 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LogPond : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,5,6,7,8])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -22044,41 +24649,50 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class OilBarrier : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfOilBarrier")]
 			[EnumerationValue([1,2])]
 			public categoryOfOilBarrier? categoryOfOilBarrier {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfOilBarrier() { return categoryOfOilBarrier.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,7,8])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -22152,16 +24766,20 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class StraightTerritorialSeaBaseline : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("nationality")]
 			public required String? nationality {get;set;} = default;
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -22227,31 +24845,38 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TerritorialSeaArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("inDispute")]
 			public Boolean? inDispute {get;set;} = default;
 
 			public bool ShouldSerializeinDispute() { return inDispute.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("nationality")]
 			public List<String> nationality {get;set;} = [];
 
 			public bool ShouldSerializenationality() { return nationality.Any(); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([2,4,6,8,9,10,12,17,18,19,20,21,22,23,24,27])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -22317,31 +24942,38 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SubmarineTransitLane : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("nationality")]
 			public String? nationality {get;set;} = default;
 
 			public bool ShouldSerializenationality() { return !string.IsNullOrEmpty(nationality); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -22406,22 +25038,27 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PilotageDistrict : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("communicationChannel")]
 			public List<String> communicationChannel {get;set;} = [];
 
 			public bool ShouldSerializecommunicationChannel() { return communicationChannel.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -22494,30 +25131,37 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CollisionRegulationsLimit : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("regulationCitation")]
 			public String? regulationCitation {get;set;} = default;
 
 			public bool ShouldSerializeregulationCitation() { return !string.IsNullOrEmpty(regulationCitation); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -22591,22 +25235,27 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MarinePollutionRegulationsArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("regulationCitation")]
 			public String? regulationCitation {get;set;} = default;
 
 			public bool ShouldSerializeregulationCitation() { return !string.IsNullOrEmpty(regulationCitation); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -22671,45 +25320,55 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RestrictedArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfRestrictedArea")]
 			[EnumerationValue([1,4,5,6,7,8,9,10,12,14,18,19,20,21,22,23,24,25,27,28,29,30,31,32])]
 			public List<categoryOfRestrictedArea> categoryOfRestrictedArea {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfRestrictedArea() { return categoryOfRestrictedArea.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39,42])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,3,4,5,6,7,9,18,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -22790,92 +25449,113 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightAllAround : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfLight")]
 			[EnumerationValue([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfLight() { return categoryOfLight.Any(); }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,3,4,5,6,9,10,11])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("exhibitionConditionOfLight")]
 			[EnumerationValue([1,2,3,4])]
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
 			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("flareBearing")]
 			public int? flareBearing {get;set;} = default;
 
 			public bool ShouldSerializeflareBearing() { return flareBearing.HasValue; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("lightVisibility")]
 			[EnumerationValue([1,2])]
 			public lightVisibility? lightVisibility {get;set;} = default;
 
 			public bool ShouldSerializelightVisibility() { return lightVisibility.HasValue; }
 
+			[XmlElement("majorLight")]
 			public Boolean? majorLight {get;set;} = default;
 
 			public bool ShouldSerializemajorLight() { return majorLight.HasValue; }
 
+			[XmlElement("marksNavigationalSystemOf")]
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
+			[XmlElement("multiplicityOfFeatures")]
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("rhythmOfLight")]
 			public required rhythmOfLight? rhythmOfLight {get;set;} = default;
 
+			[XmlElement("signalGeneration")]
 			[EnumerationValue([5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
 			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,6,7,8,11,14,15,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("valueOfNominalRange")]
 			public decimal? valueOfNominalRange {get;set;} = default;
 
 			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
 
+			[XmlElement("verticalDatum")]
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -22973,68 +25653,83 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightSectored : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfLight")]
 			[EnumerationValue([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfLight() { return categoryOfLight.Any(); }
 
+			[XmlElement("exhibitionConditionOfLight")]
 			[EnumerationValue([1,2,3,4])]
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
 			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("marksNavigationalSystemOf")]
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
+			[XmlElement("multiplicityOfFeatures")]
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("sectorCharacteristics")]
 			public List<sectorCharacteristics> sectorCharacteristics {get;set;} = [];
 
 			public bool ShouldSerializesectorCharacteristics() { return sectorCharacteristics.Any(); }
 
+			[XmlElement("signalGeneration")]
 			[EnumerationValue([5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
 			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,6,7,8,11,14,15,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalDatum")]
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -23132,62 +25827,76 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightFogDetector : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("colour")]
 			[EnumerationValue([1,3,4,5,6,9,10,11])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("flareBearing")]
 			public int? flareBearing {get;set;} = default;
 
 			public bool ShouldSerializeflareBearing() { return flareBearing.HasValue; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("rhythmOfLight")]
 			public rhythmOfLight? rhythmOfLight {get;set;} = default;
 
 			public bool ShouldSerializerhythmOfLight() { return rhythmOfLight!=default; }
 
+			[XmlElement("signalGeneration")]
 			[EnumerationValue([5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
 			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,6,7,8,11,14,15,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalDatum")]
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -23269,71 +25978,87 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightAirObstruction : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("colour")]
 			[EnumerationValue([1,3,4,5,6,9,10,11])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("exhibitionConditionOfLight")]
 			[EnumerationValue([1,2,3,4])]
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
 			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("flareBearing")]
 			public int? flareBearing {get;set;} = default;
 
 			public bool ShouldSerializeflareBearing() { return flareBearing.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("lightVisibility")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<lightVisibility> lightVisibility {get;set;} = [];
 
 			public bool ShouldSerializelightVisibility() { return lightVisibility.Any(); }
 
+			[XmlElement("multiplicityOfFeatures")]
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("rhythmOfLight")]
 			public rhythmOfLight? rhythmOfLight {get;set;} = default;
 
 			public bool ShouldSerializerhythmOfLight() { return rhythmOfLight!=default; }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,6,7,8,11,14,15,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("valueOfNominalRange")]
 			public decimal? valueOfNominalRange {get;set;} = default;
 
 			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
 
+			[XmlElement("verticalDatum")]
 			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -23415,73 +26140,90 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LateralBuoy : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("buoyShape")]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public required buoyShape? buoyShape {get;set;} = default;
 
+			[XmlElement("categoryOfLateralMark")]
 			[EnumerationValue([1,2,3,4])]
 			public required categoryOfLateralMark? categoryOfLateralMark {get;set;} = default;
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("marksNavigationalSystemOf")]
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([6,7,8,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,5,7,8,18])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("topmark")]
 			public topmark? topmark {get;set;} = default;
 
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -23579,73 +26321,90 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CardinalBuoy : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("buoyShape")]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public required buoyShape? buoyShape {get;set;} = default;
 
+			[XmlElement("categoryOfCardinalMark")]
 			[EnumerationValue([1,2,3,4])]
 			public required categoryOfCardinalMark? categoryOfCardinalMark {get;set;} = default;
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("marksNavigationalSystemOf")]
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([6,7,8,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,5,7,8,18])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("topmark")]
 			public topmark? topmark {get;set;} = default;
 
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -23743,70 +26502,86 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class IsolatedDangerBuoy : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("buoyShape")]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public required buoyShape? buoyShape {get;set;} = default;
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("marksNavigationalSystemOf")]
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([6,7,8,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,5,7,8,18])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("topmark")]
 			public topmark? topmark {get;set;} = default;
 
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -23904,70 +26679,86 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SafeWaterBuoy : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("buoyShape")]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public required buoyShape? buoyShape {get;set;} = default;
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("marksNavigationalSystemOf")]
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([6,7,8,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,5,7,8,18])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("topmark")]
 			public topmark? topmark {get;set;} = default;
 
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -24065,75 +26856,92 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpecialPurposeGeneralBuoy : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("buoyShape")]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public required buoyShape? buoyShape {get;set;} = default;
 
+			[XmlElement("categoryOfSpecialPurposeMark")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,14,15,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,42,43,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63])]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfSpecialPurposeMark() { return categoryOfSpecialPurposeMark.Any(); }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("marksNavigationalSystemOf")]
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([6,7,8,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,5,7,8,18])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("topmark")]
 			public topmark? topmark {get;set;} = default;
 
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -24231,61 +27039,75 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class EmergencyWreckMarkingBuoy : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("buoyShape")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public required buoyShape? buoyShape {get;set;} = default;
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("marksNavigationalSystemOf")]
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([6,7,8,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("topmark")]
 			public topmark? topmark {get;set;} = default;
 
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -24375,72 +27197,88 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InstallationBuoy : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("buoyShape")]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public required buoyShape? buoyShape {get;set;} = default;
 
+			[XmlElement("categoryOfInstallationBuoy")]
 			[EnumerationValue([1,2])]
 			public categoryOfInstallationBuoy? categoryOfInstallationBuoy {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfInstallationBuoy() { return categoryOfInstallationBuoy.HasValue; }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([7,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("product")]
 			[EnumerationValue([1,2,18,19])]
 			public List<product> product {get;set;} = [];
 
 			public bool ShouldSerializeproduct() { return product.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,7,8,18])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -24522,69 +27360,85 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MooringBuoy : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("buoyShape")]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public required buoyShape? buoyShape {get;set;} = default;
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("maximumPermittedDraught")]
 			public decimal? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
+			[XmlElement("maximumPermittedVesselLength")]
 			public decimal? maximumPermittedVesselLength {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedVesselLength() { return maximumPermittedVesselLength.HasValue; }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([7,8,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,7,8,18])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visitorsMooring")]
 			public Boolean? visitorsMooring {get;set;} = default;
 
 			public bool ShouldSerializevisitorsMooring() { return visitorsMooring.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -24682,95 +27536,117 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LateralBeacon : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("beaconShape")]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public required beaconShape? beaconShape {get;set;} = default;
 
+			[XmlElement("categoryOfLateralMark")]
 			[EnumerationValue([1,2,3,4])]
 			public required categoryOfLateralMark? categoryOfLateralMark {get;set;} = default;
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("elevation")]
 			public decimal? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("marksNavigationalSystemOf")]
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,6,7,8])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("topmark")]
 			public topmark? topmark {get;set;} = default;
 
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -24876,95 +27752,117 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CardinalBeacon : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("beaconShape")]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public required beaconShape? beaconShape {get;set;} = default;
 
+			[XmlElement("categoryOfCardinalMark")]
 			[EnumerationValue([1,2,3,4])]
 			public required categoryOfCardinalMark? categoryOfCardinalMark {get;set;} = default;
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("elevation")]
 			public decimal? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("marksNavigationalSystemOf")]
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,6,7,8])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("topmark")]
 			public topmark? topmark {get;set;} = default;
 
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -25070,92 +27968,113 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class IsolatedDangerBeacon : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("beaconShape")]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public required beaconShape? beaconShape {get;set;} = default;
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("elevation")]
 			public decimal? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("marksNavigationalSystemOf")]
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,6,7,8])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("topmark")]
 			public topmark? topmark {get;set;} = default;
 
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -25261,92 +28180,113 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SafeWaterBeacon : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("beaconShape")]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public required beaconShape? beaconShape {get;set;} = default;
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("elevation")]
 			public decimal? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("marksNavigationalSystemOf")]
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,6,7,8])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("topmark")]
 			public topmark? topmark {get;set;} = default;
 
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -25452,97 +28392,119 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpecialPurposeGeneralBeacon : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("beaconShape")]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public required beaconShape? beaconShape {get;set;} = default;
 
+			[XmlElement("categoryOfSpecialPurposeMark")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,10,11,12,14,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,60,61,62,63])]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfSpecialPurposeMark() { return categoryOfSpecialPurposeMark.Any(); }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("elevation")]
 			public decimal? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("marksNavigationalSystemOf")]
 			[EnumerationValue([1,2,9,11])]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,6,7,8])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,7,8,12,18])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("topmark")]
 			public topmark? topmark {get;set;} = default;
 
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -25648,78 +28610,96 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Daymark : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfSpecialPurposeMark")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,10,11,12,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,60,61,62,63])]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfSpecialPurposeMark() { return categoryOfSpecialPurposeMark.Any(); }
 
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("elevation")]
 			public decimal? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,4,6,7,8,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,5,7,8,12])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("topmarkDaymarkShape")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33])]
 			public required topmarkDaymarkShape? topmarkDaymarkShape {get;set;} = default;
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("shapeInformation")]
 			public List<shapeInformation> shapeInformation {get;set;} = [];
 
 			public bool ShouldSerializeshapeInformation() { return shapeInformation.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -25833,75 +28813,92 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightFloat : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("horizontalLength")]
 			public decimal? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
+			[XmlElement("horizontalWidth")]
 			public decimal? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([6,7,11])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,7,8,14,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("topmark")]
 			public topmark? topmark {get;set;} = default;
 
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -25999,71 +28996,87 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightVessel : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("colour")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("horizontalLength")]
 			public decimal? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
+			[XmlElement("horizontalWidth")]
 			public decimal? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("radarConspicuous")]
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,7,8,14,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("verticalLength")]
 			public decimal? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
+			[XmlElement("visualProminence")]
 			[EnumerationValue([1,2,3])]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -26161,41 +29174,50 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Retroreflector : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("colour")]
 			[EnumerationValue([1,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			[XmlElement("colourPattern")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,8])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -26269,31 +29291,38 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadarReflector : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,8])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -26367,59 +29396,73 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FogSignal : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfFogSignal")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
 			public required categoryOfFogSignal? categoryOfFogSignal {get;set;} = default;
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("signalFrequency")]
 			public int? signalFrequency {get;set;} = default;
 
 			public bool ShouldSerializesignalFrequency() { return signalFrequency.HasValue; }
 
+			[XmlElement("signalGeneration")]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
 			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
 
+			[XmlElement("signalGroup")]
 			public String? signalGroup {get;set;} = default;
 
 			public bool ShouldSerializesignalGroup() { return !string.IsNullOrEmpty(signalGroup); }
 
+			[XmlElement("signalPeriod")]
 			public decimal? signalPeriod {get;set;} = default;
 
 			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
+			[XmlElement("signalSequence")]
 			public List<signalSequence> signalSequence {get;set;} = [];
 
 			public bool ShouldSerializesignalSequence() { return signalSequence.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,7,8,15])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("valueOfMaximumRange")]
 			public decimal? valueOfMaximumRange {get;set;} = default;
 
 			public bool ShouldSerializevalueOfMaximumRange() { return valueOfMaximumRange.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -26501,39 +29544,48 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PhysicalAISAidToNavigation : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("estimatedRangeOfTransmission")]
 			public decimal? estimatedRangeOfTransmission {get;set;} = default;
 
 			public bool ShouldSerializeestimatedRangeOfTransmission() { return estimatedRangeOfTransmission.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("mMSICode")]
 			public String? mMSICode {get;set;} = default;
 
 			public bool ShouldSerializemMSICode() { return !string.IsNullOrEmpty(mMSICode); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,5,7])]
 			public status? status {get;set;} = default;
 
 			public bool ShouldSerializestatus() { return status.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -26615,42 +29667,52 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class VirtualAISAidToNavigation : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("estimatedRangeOfTransmission")]
 			public decimal? estimatedRangeOfTransmission {get;set;} = default;
 
 			public bool ShouldSerializeestimatedRangeOfTransmission() { return estimatedRangeOfTransmission.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("mMSICode")]
 			public String? mMSICode {get;set;} = default;
 
 			public bool ShouldSerializemMSICode() { return !string.IsNullOrEmpty(mMSICode); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,5,7])]
 			public status? status {get;set;} = default;
 
 			public bool ShouldSerializestatus() { return status.HasValue; }
 
+			[XmlElement("virtualAISAidToNavigationType")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
 			public required virtualAISAidToNavigationType? virtualAISAidToNavigationType {get;set;} = default;
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -26724,52 +29786,64 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadioStation : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("callSign")]
 			public String? callSign {get;set;} = default;
 
 			public bool ShouldSerializecallSign() { return !string.IsNullOrEmpty(callSign); }
 
+			[XmlElement("categoryOfRadioStation")]
 			[EnumerationValue([5,10,11,14,19,20])]
 			public List<categoryOfRadioStation> categoryOfRadioStation {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfRadioStation() { return categoryOfRadioStation.Any(); }
 
+			[XmlElement("communicationChannel")]
 			public List<String> communicationChannel {get;set;} = [];
 
 			public bool ShouldSerializecommunicationChannel() { return communicationChannel.Any(); }
 
+			[XmlElement("estimatedRangeOfTransmission")]
 			public decimal? estimatedRangeOfTransmission {get;set;} = default;
 
 			public bool ShouldSerializeestimatedRangeOfTransmission() { return estimatedRangeOfTransmission.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("frequencyPair")]
 			public frequencyPair? frequencyPair {get;set;} = default;
 
 			public bool ShouldSerializefrequencyPair() { return frequencyPair!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,7,8])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -26843,54 +29917,67 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadarTransponderBeacon : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfRadarTransponderBeacon")]
 			[EnumerationValue([1,2,3])]
 			public required categoryOfRadarTransponderBeacon? categoryOfRadarTransponderBeacon {get;set;} = default;
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("radarWaveLength")]
 			public List<radarWaveLength> radarWaveLength {get;set;} = [];
 
 			public bool ShouldSerializeradarWaveLength() { return radarWaveLength.Any(); }
 
+			[XmlElement("sectorLimit")]
 			public sectorLimit? sectorLimit {get;set;} = default;
 
 			public bool ShouldSerializesectorLimit() { return sectorLimit!=default; }
 
+			[XmlElement("signalGroup")]
 			public String? signalGroup {get;set;} = default;
 
 			public bool ShouldSerializesignalGroup() { return !string.IsNullOrEmpty(signalGroup); }
 
+			[XmlElement("signalSequence")]
 			public List<signalSequence> signalSequence {get;set;} = [];
 
 			public bool ShouldSerializesignalSequence() { return signalSequence.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,7,8])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("valueOfMaximumRange")]
 			public decimal? valueOfMaximumRange {get;set;} = default;
 
 			public bool ShouldSerializevalueOfMaximumRange() { return valueOfMaximumRange.HasValue; }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -26980,54 +30067,66 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PilotBoardingPlace : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfPilotBoardingPlace")]
 			[EnumerationValue([1,2,3])]
 			public categoryOfPilotBoardingPlace? categoryOfPilotBoardingPlace {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfPilotBoardingPlace() { return categoryOfPilotBoardingPlace.HasValue; }
 
+			[XmlElement("categoryOfPreference")]
 			[EnumerationValue([1,2])]
 			public categoryOfPreference? categoryOfPreference {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfPreference() { return categoryOfPreference.HasValue; }
 
+			[XmlElement("communicationChannel")]
 			public List<String> communicationChannel {get;set;} = [];
 
 			public bool ShouldSerializecommunicationChannel() { return communicationChannel.Any(); }
 
+			[XmlElement("destination")]
 			public List<String> destination {get;set;} = [];
 
 			public bool ShouldSerializedestination() { return destination.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("pilotMovement")]
 			[EnumerationValue([1,2,3])]
 			public List<pilotMovement> pilotMovement {get;set;} = [];
 
 			public bool ShouldSerializepilotMovement() { return pilotMovement.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,5,6,9,16,17,28])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -27109,18 +30208,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class VesselTrafficServiceArea : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -27185,39 +30288,48 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CoastGuardStation : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("communicationChannel")]
 			public List<String> communicationChannel {get;set;} = [];
 
 			public bool ShouldSerializecommunicationChannel() { return communicationChannel.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("isMRCC")]
 			public Boolean? isMRCC {get;set;} = default;
 
 			public bool ShouldSerializeisMRCC() { return isMRCC.HasValue; }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,5,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -27291,40 +30403,49 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SignalStationWarning : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfSignalStationWarning")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 			public List<categoryOfSignalStationWarning> categoryOfSignalStationWarning {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfSignalStationWarning() { return categoryOfSignalStationWarning.Any(); }
 
+			[XmlElement("communicationChannel")]
 			public List<String> communicationChannel {get;set;} = [];
 
 			public bool ShouldSerializecommunicationChannel() { return communicationChannel.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,7,8,12,14,15,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -27406,40 +30527,49 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SignalStationTraffic : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfSignalStationTraffic")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
 			public List<categoryOfSignalStationTraffic> categoryOfSignalStationTraffic {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfSignalStationTraffic() { return categoryOfSignalStationTraffic.Any(); }
 
+			[XmlElement("communicationChannel")]
 			public List<String> communicationChannel {get;set;} = [];
 
 			public bool ShouldSerializecommunicationChannel() { return communicationChannel.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,7,8,12,14,15,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -27521,40 +30651,49 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RescueStation : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfRescueStation")]
 			[EnumerationValue([1,2,4,5,6,7,8])]
 			public List<categoryOfRescueStation> categoryOfRescueStation {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfRescueStation() { return categoryOfRescueStation.Any(); }
 
+			[XmlElement("communicationChannel")]
 			public List<String> communicationChannel {get;set;} = [];
 
 			public bool ShouldSerializecommunicationChannel() { return communicationChannel.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,4,5,7,8,14,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -27628,72 +30767,88 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class HarbourFacility : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfHarbourFacility")]
 			[EnumerationValue([1,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 			public List<categoryOfHarbourFacility> categoryOfHarbourFacility {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfHarbourFacility() { return categoryOfHarbourFacility.Any(); }
 
+			[XmlElement("communicationChannel")]
 			public List<String> communicationChannel {get;set;} = [];
 
 			public bool ShouldSerializecommunicationChannel() { return communicationChannel.Any(); }
 
+			[XmlElement("condition")]
 			[EnumerationValue([1,2,3,5])]
 			public condition? condition {get;set;} = default;
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("natureOfConstruction")]
 			[EnumerationValue([1,2,3,6,7])]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("product")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,25])]
 			public product? product {get;set;} = default;
 
 			public bool ShouldSerializeproduct() { return product.HasValue; }
 
+			[XmlElement("reportedDate")]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
+			[XmlElement("restriction")]
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,23,24,27])]
 			public List<restriction> restriction {get;set;} = [];
 
 			public bool ShouldSerializerestriction() { return restriction.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,4,5,6,7,8,9,12,13,14,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("vesselSpeedLimit")]
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			public bool ShouldSerializevesselSpeedLimit() { return vesselSpeedLimit.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -27767,36 +30922,44 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SmallCraftFacility : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfSmallCraftFacility")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33])]
 			public List<categoryOfSmallCraftFacility> categoryOfSmallCraftFacility {get;set;} = [];
 
 			public bool ShouldSerializecategoryOfSmallCraftFacility() { return categoryOfSmallCraftFacility.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
+			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
+			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
+			[XmlElement("status")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,12,14,16,17])]
 			public List<status> status {get;set;} = [];
 
 			public bool ShouldSerializestatus() { return status.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
+			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
+			[XmlElement("pictorialRepresentation")]
 			public String? pictorialRepresentation {get;set;} = default;
 
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
@@ -27870,19 +31033,24 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("textOffsetBearing")]
 			public required int? textOffsetBearing {get;set;} = default;
 
+			[XmlElement("textOffsetDistance")]
 			public required int? textOffsetDistance {get;set;} = default;
 
+			[XmlElement("textRotation")]
 			public Boolean? textRotation {get;set;} = default;
 
 			public bool ShouldSerializetextRotation() { return textRotation.HasValue; }
 
+			[XmlElement("textType")]
 			[EnumerationValue([1,2])]
 			public List<textType> textType {get;set;} = [];
 
 			public bool ShouldSerializetextType() { return textType.Any(); }
 
+			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
@@ -27939,10 +31107,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Chart1Feature : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("drawingInstruction")]
 			public List<String> drawingInstruction {get;set;} = [];
 
 			public bool ShouldSerializedrawingInstruction() { return drawingInstruction.Any(); }
 
+			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }

@@ -514,27 +514,44 @@ namespace VortexProAppModule
 
                     var ps = Convert.ToString(inspector["ps"]);
                     if (!string.IsNullOrEmpty(ps)) {
-                        return ps.ToUpperInvariant();
+                        return [ps.ToUpperInvariant()];
                     }
 
-                    if (!string.IsNullOrEmpty(tableNames.Item2)) {
-                        return _catalogues.SingleOrDefault(e => e.Equals(tableNames.Item2, StringComparison.OrdinalIgnoreCase) || e.Replace("-", string.Empty).Equals(tableNames.Item2, StringComparison.OrdinalIgnoreCase));
-                    }
+                    using var configuration = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "configuration"));
 
-                    return geodatabase.GetConnector() switch {
-                        FileGeodatabaseConnectionPath fileGeodatabase => _catalogues.SingleOrDefault(e => e.Equals(IO.Path.GetFileNameWithoutExtension(fileGeodatabase.Path.AbsolutePath), StringComparison.OrdinalIgnoreCase) || e.Replace("-", string.Empty).Equals(IO.Path.GetFileNameWithoutExtension(fileGeodatabase.Path.AbsolutePath), StringComparison.InvariantCultureIgnoreCase)),
-                        _ => null,
-                    };
+                    string[] catalogues = new string[0];
+
+                    using var cursor = configuration.Search(null, true);
+                    while (cursor.MoveNext()) {
+                        catalogues = [.. catalogues, Convert.ToString(cursor.Current["ps"])];
+                    }
+                    if (catalogues.Any())
+                        return catalogues;
+                    return _catalogues;
+
+
+                    //if (!string.IsNullOrEmpty(tableNames.Item2)) {
+                    //    return _catalogues.SingleOrDefault(e => e.Equals(tableNames.Item2, StringComparison.OrdinalIgnoreCase) || e.Replace("-", string.Empty).Equals(tableNames.Item2, StringComparison.OrdinalIgnoreCase));
+                    //}
+
+                    //return geodatabase.GetConnector() switch {
+                    //    FileGeodatabaseConnectionPath fileGeodatabase => _catalogues.SingleOrDefault(e => e.Equals(IO.Path.GetFileNameWithoutExtension(fileGeodatabase.Path.AbsolutePath), StringComparison.OrdinalIgnoreCase) || e.Replace("-", string.Empty).Equals(IO.Path.GetFileNameWithoutExtension(fileGeodatabase.Path.AbsolutePath), StringComparison.InvariantCultureIgnoreCase)),
+                    //    _ => null,
+                    //};
                 }, TaskCreationOptions.None);
 
                 System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                    if (!string.IsNullOrEmpty(catalogue)) {
-                        Schemas.Clear();
-                        Schemas.Add(catalogue);
+                    Schemas.Clear();
+                    if (catalogue.Any()) {                        
+                        Schemas.AddRange(catalogue);
                     }
-                    else {
+                    //if (!string.IsNullOrEmpty(catalogue)) {
+                    //    Schemas.Clear();
+                    //    Schemas.Add(catalogue);
+                    //}
+                    //else {
 
-                    }
+                    //}
                 });
 
                 this.SelectedProperty = await QueuedTask.Run((Func<S100Framework.WPF.ViewModel.ViewModelBase>)(() => {
