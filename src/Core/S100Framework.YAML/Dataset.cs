@@ -302,6 +302,7 @@ namespace S100Framework.YAML
         public string Foid { get; set; } = default!;
         public FeatureNode? Attributes { get; set; }
         public string? Geometry { get; set; }
+        public string? Masks { get; set; }
 
         public ICollection<Association>? Association => _associations.Any() ? _associations : null;
         private ICollection<Association> _associations = new HashSet<Association>();

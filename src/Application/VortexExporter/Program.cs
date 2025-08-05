@@ -211,16 +211,11 @@ namespace S100Framework.Applications
                             var current = (ArcGIS.Core.Data.Feature)cursor.Current;
                             var name = Convert.ToString(current["name"])!;
 
-                            //if (name.Equals("S12233")) System.Diagnostics.Debugger.Break();
-                            //if (name.Equals(topology.Surfaces.ElementAt(0).Ref)) System.Diagnostics.Debugger.Break();
-
                             // Only map geometry, and keep name seperate so foids remain unique
                             var geometry = name;
 
                             if (topology.Mapping.TryGetValue(name!, out var value))
                                 geometry = value;
-                            else if (!name.StartsWith("P"))
-                                System.Diagnostics.Debugger.Break();
 
                             var shapetype = def.GetShapeType();
 
@@ -246,11 +241,21 @@ namespace S100Framework.Applications
 
                                 var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
 
+                                // Surface Masks
+                                var topologySurface = topology.Surfaces.FirstOrDefault(e => e.Ref!.Equals(name, StringComparison.InvariantCultureIgnoreCase));
+
+                                // Build comma seperated string of masks, with :1 or :2 indicating which mask it is. Should be null/omitted if empty.
+                                var masks = new[] {
+                                    topologySurface?.Masks1?.Select(e => $"C{e}:1"),
+                                    topologySurface?.Masks2?.Select(e => $"C{e}:2")
+                                }.Where(m => m != null).SelectMany(m => m!);
+
                                 var feature = new YAML.Feature {
                                     Name = code,
                                     Foid = foid,
                                     Prim = prim,
                                     Geometry = geometry,
+                                    Masks = masks.Any() ? string.Join(",", masks) : null
                                 };
 
                                 // Only emit attributes if feature contains any non-static properties
@@ -513,7 +518,6 @@ namespace S100Framework.YAML
 
                     var surface = new Surface(exteriorRing) {
                         InteriorRings = interiorRings,
-                        //Name = s.Ref
                         Name = $"S{s?.Id}",
                     };
 
@@ -750,7 +754,7 @@ namespace ArcGIS.Core.Data
                                 polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, []));
                             }
                         }
-                    }                    
+                    }
                 }
 
                 var curves = new List<S100Framework.YAML.Polyline>();
