@@ -1,6 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using CommandLine;
+using NetTopologySuite.Utilities;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
@@ -206,6 +207,13 @@ namespace S100Framework.Applications
                     //filter.WhereClause = "globalid = '{D7DE9631-CF20-4143-B3F4-47BB4A2AE541}'";
                     //filter.WhereClause = "globalid = '{855B900E-760C-4D68-AE02-8F3CA6FE60DD}'";
                     //filter.WhereClause = "globalid = '{BAFFC1F3-A89C-4E13-982F-B577E50A06DC}'";
+
+                    //filter.WhereClause = "globalid = '{1F1D8B58-4959-4202-80F5-6CA4DD47D209}'";
+
+                    Logger.Current.Information($"Converting Sounding Datums");
+                    Store(() => S101_SoundingDatum(source, destination, filter));
+
+
                     Store(() => S57_CulturalFeaturesA(source, destination, filter));
 
                     Logger.Current.Information($"Converting PortsAndServices");
@@ -215,8 +223,6 @@ namespace S100Framework.Applications
 
                     //Store(() => S101_RecommendedTracksAndRoutes(source, destination, filter));
 
-                    Logger.Current.Information($"Converting Sounding Datums");
-                    Store(() => S101_SoundingDatum(source, destination, filter));
 
                     Logger.Current.Information($"Converting Soundings");
                     Store(() => S57_SoundingsP(source, destination, filter));

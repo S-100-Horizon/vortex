@@ -44,10 +44,15 @@ namespace S100Framework.Applications
 
                 switch (fcSubtype) {
                     case 1: { // DWRTPT_DeepWaterRoutePart
+
+                            var orientationValue = current.ORIENT!.Value;
+                            var depthValue = current.DRVAL1!.Value;
+                            var trafficFlow = EnumHelper.GetEnumValue<trafficFlow>(current.TRAFIC!.Value);
+
                             var instance = new DeepWaterRoutePart {
-                                depthRangeMinimumValue = default,
-                                orientationValue = default,
-                                trafficFlow = default,
+                                depthRangeMinimumValue = depthValue,
+                                orientationValue = orientationValue,
+                                trafficFlow = trafficFlow,
                             };
 
                             if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767) {

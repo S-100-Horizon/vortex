@@ -23,15 +23,16 @@ namespace S100Framework.Applications
             using var insert = featureClass.CreateInsertCursor();
 
             var whereClause = filter.WhereClause.Clone();
-            var metadataAWhereFilter = new QueryFilter() {
+
+            var M_Qual_WhereFilter = new QueryFilter() {
                 WhereClause = $"({whereClause}) AND (fcsubtype = 40)"
             };
 
             var productCoverageFilter = new QueryFilter() {
-                WhereClause = $"{whereClause}"
+                WhereClause = "CATCOV = 1" //$"{whereClause}"
             };
 
-            var clipped = Geometries.GetDissolvedClipped(metadataA, metadataAWhereFilter, productCoverage, productCoverageFilter);
+            var clipped = Geometries.GetDissolvedClipped(metadataA, M_Qual_WhereFilter, productCoverage, productCoverageFilter);
 
             //// Cut out V_DAT
             //metadataAWhereFilter = new QueryFilter() {
@@ -40,17 +41,18 @@ namespace S100Framework.Applications
             //var removedSubtype55 = Geometries.GetDissolvedClipped(result, metadataA, metadataAWhereFilter);
 
             // Cut out M_SDAT - // Will be added again
-            metadataAWhereFilter = new QueryFilter() {
+            var M_SDAT_WhereFilterS = new QueryFilter() {
                 WhereClause = $"({whereClause}) AND (fcsubtype = 45)"
             };
 
-            var m_sdatCount = metadataA.GetCount(metadataAWhereFilter);
+            var m_sdatCount = metadataA.GetCount(M_SDAT_WhereFilterS);
 
             if (m_sdatCount > 0) {
-                clipped = Geometries.GetDissolvedClipped(clipped, metadataA, metadataAWhereFilter);
+                clipped = Geometries.GetDissolvedClipped(clipped, metadataA, M_SDAT_WhereFilterS);
             }
 
             // Store clipped
+
             foreach (var item in clipped) {
                 if (item.IsEmpty) {
                     continue;
@@ -76,7 +78,7 @@ namespace S100Framework.Applications
             // Add M_SDATs
             if (m_sdatCount > 0) {
                 {
-                    using var cursor = metadataA.Search(metadataAWhereFilter, false);
+                    using var cursor = metadataA.Search(M_SDAT_WhereFilterS, false);
 
                     while (cursor.MoveNext()) {
                         var feature = (Feature)cursor.Current;

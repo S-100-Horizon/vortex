@@ -37,11 +37,14 @@ namespace VortexLoader.Singletons
             var allClipPolygons = GeometryEngine.Instance.Union(AllGeometries(clipPolygons, clipFilter));
 
             foreach (var polygon in AllGeometries(clipPolygons, clipFilter)) {
-                var clippedGeom = GeometryEngine.Instance.Intersection(allSourcePolygons, polygon);
-                var result = GeometryEngine.Instance.MultipartToSinglePart(clippedGeom);
-                foreach (var singlePart in result) {
-                    yield return singlePart;
-                }
+                var clippedGeom = GeometryEngine.Instance.Intersection(allSourcePolygons, polygon).Clone();
+
+                yield return clippedGeom;
+
+                //var result = GeometryEngine.Instance.MultipartToSinglePart(clippedGeom);
+                //foreach (var singlePart in result) {
+                //    yield return singlePart;
+                //}
 
             }
         }
