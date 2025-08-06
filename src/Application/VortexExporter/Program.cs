@@ -115,7 +115,7 @@ namespace S100Framework.Applications
                         var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
 
                         var whereClause = "upper(ps) = 'S-101'";
-                        if (!current.IsNull("usageband"))
+                        if (current.FindField("usageband") != -1 && !current.IsNull("usageband"))
                             whereClause += $" AND usageband = {Convert.ToInt32(current["usageband"])}";
 
                         datasets.Add((new Dataset {
@@ -264,52 +264,45 @@ namespace S100Framework.Applications
 
                                 // Information Associations
                                 if (!current.IsNull("informationbindings")) {
-                                    using var document = JsonDocument.Parse(Convert.ToString(current["informationbindings"])!);
-                                    var root = document.RootElement;
+                                    var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]?>(Convert.ToString(current["informationbindings"])!);
 
-                                    var association = root.GetProperty("association").GetString()!;
-                                    var role = root.GetProperty("role").GetString()!;
-                                    var informationId = root.GetProperty("informationId").GetString()!;
+                                    if (informationBindings != default && informationBindings.Any()) {
+                                        foreach (var binding in informationBindings) {
+                                            var asso = new YAML.Association {
+                                                Name = binding.association,
+                                                Role = binding.role,
+                                                To = binding.informationId!,
+                                            };
 
-                                    var asso = new YAML.Association {
-                                        Name = association,
-                                        Role = role,
-                                        To = informationId,
-                                    };
+                                            // Special case for SpatialAssociation
+                                            if (prim != Primitive.Surface && asso.Name.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase)) {
+                                                var curve = dataset?.Curves?.FirstOrDefault(e => e.Name == geometry);
 
-                                    // Special case for SpatialAssociation
-                                    if (prim != Primitive.Surface && association.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase)) {
-                                        var curve = dataset?.Curves?.FirstOrDefault(e => e.Name == geometry);
-
-                                        curve?.AddAssociation(asso);
-                                    }
-                                    else {
-                                        feature?.AddAssociation(asso);
+                                                curve?.AddAssociation(asso);
+                                            }
+                                            else {
+                                                feature?.AddAssociation(asso);
+                                            }
+                                        }
                                     }
                                 }
 
                                 // Feature Associations
                                 if (!current.IsNull("featurebindings")) {
-                                    using var document = JsonDocument.Parse(Convert.ToString(current["featurebindings"])!);
-                                    var root = document.RootElement;
+                                    var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]?>(Convert.ToString(current["featurebindings"])!);
 
-                                    if (root.ValueKind == JsonValueKind.Array) {
-                                        foreach (var element in root.EnumerateArray()) {
-                                            var roleType = element.GetProperty("roleType").GetString();
+                                    if (featureBindings != default && featureBindings.Any()) {
+                                        foreach (var binding in featureBindings) {
+                                            var roleType = binding.roleType;
 
                                             // Skip association roleType for now
                                             if (roleType == "association")
                                                 continue;
 
-                                            var association = element.GetProperty("association").GetString()!;
-                                            var role = element.GetProperty("role").GetString()!;
-                                            var featureId = element.GetProperty("featureId").GetString()!;
-
-
                                             var asso = new YAML.Association {
-                                                Name = association,
-                                                Role = role,
-                                                To = $"110:{featureId[1..]}:1"
+                                                Name = binding.association,
+                                                Role = binding.role,
+                                                To = $"110:{binding.featureId![1..]}:1"
                                             };
 
                                             feature?.AddFeatureAssociation(asso);
