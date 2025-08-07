@@ -2,6 +2,9 @@
 using ArcGIS.Core.Geometry;
 
 using CommandLine;
+using S100Framework.Catalogues;
+//using S100Framework.YAML;
+using Serilog;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Esri = ArcGIS.Core.Hosting.Host;
@@ -26,7 +29,7 @@ namespace S100Framework.Applications
 
         public class Options
         {
-            [Option('c', "cmd", Required = true, HelpText = "Command (GML|NIS)")]
+            [Option('c', "cmd", Required = true, HelpText = "Command (GML|NIS|YAML)")]
             public string Command { get; set; } = string.Empty;
 
             [Option('d', "dataset", Required = false, HelpText = "")]
@@ -129,10 +132,134 @@ namespace S100Framework.Applications
             var result = command switch {
                 "GML" => ImporterGML(target, arguments),
                 "NIS" => ImporterNIS.Load(target, arguments),
+                "YAML" => ImporterYAML(target, arguments),
                 _ => throw new System.ArgumentNullException(nameof(command)),
             };
         }
+        private static bool ImporterYAML(Geodatabase geodatabase, ParserResult<Options> arguments) {
+            S100Framework.YAML.Dataset? dataset = null;
 
+            bool append = false;
+
+            var productSpecification = "S-101"; // Default product specification
+
+            var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals(productSpecification));
+
+            arguments.WithParsed<Options>(o => {
+                if (o.Append) {
+                    append = o.Append;
+                }
+
+                if (!IO.File.Exists(o.Dataset))
+                    throw new FileNotFoundException(o.Dataset);
+
+                var yaml = IO.File.ReadAllText(o.Dataset);
+                dataset = S100Framework.YAML.Converter.Deserialize<S100Framework.YAML.Dataset>(yaml);
+            });
+
+            if (dataset is null)
+                throw new InvalidProgramException();
+
+            using var tableInformationType = geodatabase.OpenDataset<Table>("informationtype");
+
+            using var fcPoint = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("point"));
+            using var fcPointSet = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("pointset"));
+            using var fcCurve = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("curve"));
+            using var fcSurface = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("surface"));
+
+            using var bufferInformationType = tableInformationType.CreateRowBuffer();
+            using var bufferPoint = fcPoint.CreateRowBuffer();
+            using var bufferPointSet = fcPointSet.CreateRowBuffer();
+            using var bufferCurve = fcCurve.CreateRowBuffer();
+            using var bufferSurface = fcSurface.CreateRowBuffer();
+
+            if (!append) {
+                var filter = new QueryFilter {
+                    WhereClause = $"ps = '{productSpecification}'",
+                };
+                tableInformationType.DeleteRows(filter);
+                fcPoint.DeleteRows(filter);
+                fcPointSet.DeleteRows(filter);
+                fcCurve.DeleteRows(filter);
+                fcSurface.DeleteRows(filter);
+            }
+
+            foreach (var feature in dataset.Features!) {
+                // 1) Cast feature.Attributes to S101 Model
+                var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{feature.Attributes.Code}", true) ?? default;
+
+                if (type == default) {
+                    Log.Error("Could not get type: {type} for feature: {name}", feature.Attributes.Code, feature.Name);
+                    continue;
+                }
+
+                // 2) Serialize to JSON
+                var json = System.Text.Json.JsonSerializer.Serialize(feature.Attributes, type);
+
+
+                // 3) Find corresponding geometry and cast it to ArcGIS.Core.Geometry
+                var geometry = dataset.GetFeatureShape(feature);
+
+
+                // 4) Append row to table
+                var rowbuffer = geometry switch {
+                    MapPoint => bufferPoint,
+                    Multipoint => bufferPointSet,
+                    Polyline => bufferCurve,
+                    Polygon => bufferSurface,
+                    _ => throw new NotImplementedException(),
+                };
+
+
+                rowbuffer["ps"] = productSpecification;
+                rowbuffer["code"] = feature.Name;
+                rowbuffer["json"] = json;
+
+                if (geometry is MapPoint) {
+                    var point = (MapPoint)geometry;
+
+                    if (point.HasZ == false)
+                        bufferPoint["shape"] = MapPointBuilderEx.CreateMapPoint(((MapPoint)geometry).X, ((MapPoint)geometry).Y, 0.00, geometry.SpatialReference);
+                    else
+                        bufferPoint["shape"] = geometry;
+
+                    using var row = fcPoint.CreateRow(bufferPoint);
+                }
+                if (geometry is Multipoint) {
+                    bufferPointSet["shape"] = geometry;
+                    using var row = fcPointSet.CreateRow(bufferPointSet);
+                }
+                if (geometry is Polyline) {
+                    bufferCurve["shape"] = geometry;
+                    using var row = fcCurve.CreateRow(bufferCurve);
+                }
+                if (geometry is Polygon) {
+                    bufferSurface["shape"] = geometry;
+                    using var row = fcSurface.CreateRow(bufferSurface);
+                }
+            }
+
+            foreach (var informationType in dataset.InformationTypes!) {
+                // 1) Cast feature.Attributes to S101 Model
+                var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{informationType!.Attributes!.Code}", true) ?? default;
+                if (type == default) {
+                    Log.Error("Could not get type: {type} for informationType: {name}", informationType.Attributes.Code, informationType.Name);
+                    continue;
+                }
+
+                // 2) Serialize to JSON
+                var json = System.Text.Json.JsonSerializer.Serialize(informationType.Attributes, type);
+
+                // Write to table
+                var rowbuffer = bufferInformationType;
+                rowbuffer["ps"] = productSpecification;
+                rowbuffer["code"] = informationType.Name;
+                rowbuffer["json"] = json;
+                tableInformationType.CreateRow(bufferInformationType);
+            }
+
+            return true;
+        }
         private static bool ImporterGML(Geodatabase geodatabase, ParserResult<Options> arguments) {
             S100Framework.GML.Dataset? dataset = null;
 
@@ -217,9 +344,9 @@ namespace S100Framework.Applications
                     if (geometry is MapPoint) {
                         var point = (MapPoint)geometry;
 
-                        if (point.HasZ == false) 
+                        if (point.HasZ == false)
                             bufferPoint["shape"] = MapPointBuilderEx.CreateMapPoint(((MapPoint)geometry).X, ((MapPoint)geometry).Y, 0.00, geometry.SpatialReference);
-                        else 
+                        else
                             bufferPoint["shape"] = geometry;
 
                         using var row = fcPoint.CreateRow(bufferPoint);
@@ -240,6 +367,27 @@ namespace S100Framework.Applications
             }
 
             return true;
+        }
+    }
+
+    public static class YAMLExtensions
+    {
+        public static ArcGIS.Core.Geometry.Geometry GetFeatureShape(this S100Framework.YAML.Dataset dataset, S100Framework.YAML.Feature feature) {
+            S100Framework.YAML.Geometry geometry = feature.Prim switch {
+                S100Framework.YAML.Primitive.Point => dataset.Points!.FirstOrDefault(e => e.Name == feature.Geometry)!,
+                S100Framework.YAML.Primitive.Curve => dataset.Curves!.FirstOrDefault(e => e.Name == feature.Geometry)!,
+                S100Framework.YAML.Primitive.Surface => dataset.Surfaces!.FirstOrDefault(e => e.Name == feature.Geometry)!,
+                _ => throw new NotImplementedException($"Primitive {feature.Prim} is not supported."),
+            };
+
+            // TODO: Implement conversion from S100Framework.YAML.Geometry to ArcGIS.Core.Geometry.Geometry
+            // Get Underlying coordinates. E.g. Surface => composite curves => curve[] => Coordinates
+            // Switch case on geometry and build ArcGIS.Core.Geometry object
+            // Figure out how to detect PointSets (Depths)...
+
+
+            throw new NotImplementedException($"GetFeatureShape not yet implemented.");
+            return default;
         }
     }
 }

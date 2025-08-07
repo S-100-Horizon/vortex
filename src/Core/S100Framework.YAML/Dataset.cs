@@ -147,43 +147,28 @@ namespace S100Framework.YAML
         public string ProducerCode { get; set; } = "DK00";
     }
 
-    public class Point(double x, double y)
+    public abstract class Geometry
     {
         public string? Name { get; set; }
-
-        public string? Location => Coordinate is null ? string.Empty : 
-            Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(Coordinate.X, Coordinate.Y)).ToText().Substring("Point (".Length).Trim(')').Replace(' ', ',');
-
-        //public string? Location => Coordinate is null ? string.Empty : string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", Coordinate.X, Coordinate.Y);
-
         public ICollection<Association>? Association => _associations.Any() ? _associations : null;
         private ICollection<Association> _associations = new HashSet<Association>();
-        public Point AddAssociation(Association association) {
-            _associations.Add(association);
-            return this;
-        }
+        public void AddAssociation(Association association) => _associations.Add(association);
+    }
 
-        [YamlIgnore]
+    public class Point(double x, double y) : Geometry
+    {
+        public string? Location => Coordinate is null ? string.Empty :
+            Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(Coordinate.X, Coordinate.Y)).ToText().Substring("Point (".Length).Trim(')').Replace(' ', ',');
+
         public Coordinate? Coordinate { get; private set; } = new Coordinate(x, y);
     }
 
-    public class PointSet(Coordinate[] points, double[] depths)
+    public class PointSet(Coordinate[] points, double[] depths) : Geometry
     {
-        public string? Name { get; set; }
-
-
         public string? Location => Points is null ? string.Empty :
             string.Join(',', Points.Select(e => Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(e.X, e.Y)).ToText().Substring("Point (".Length).Trim(')').Replace(' ', ',')));
 
-        //public string? Location => Points is null ? string.Empty : string.Join(",", Points.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.X, e.Y)));
         public string? Z => Depths is null ? string.Empty : string.Join(",", Depths.Select(e => e.ToString(CultureInfo.InvariantCulture)));
-
-        public ICollection<Association>? Association => _associations.Any() ? _associations : null;
-        private ICollection<Association> _associations = new HashSet<Association>();
-        public PointSet AddAssociation(Association association) {
-            _associations.Add(association);
-            return this;
-        }
 
         [YamlIgnore]
         public double[] Depths { get; private set; } = depths;
@@ -192,7 +177,7 @@ namespace S100Framework.YAML
         public Coordinate[] Points { get; private set; } = points;
     }
 
-    public class Curve
+    public class Curve : Geometry
     {
         private string? _start;
         private string? _end;
@@ -212,34 +197,18 @@ namespace S100Framework.YAML
             Coordinate = vertices;
         }
 
-        public string? Name { get; set; }
-
         public string? Start => _start;
 
         public string? End => _end;
-        public ICollection<Association>? Association => _associations.Any() ? _associations : null;
-        private ICollection<Association> _associations = new HashSet<Association>();
-        public Curve AddAssociation(Association association) {
-            _associations.Add(association);
-            return this;
-        }
-
-
-        //factory.CreatePoint(new Coordinate(location[0], location[1])).ToText()
 
         public string? Vertices => Coordinate is null ? string.Empty :
             string.Join(',', Coordinate.Select(e => Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(e.X, e.Y)).ToText().Substring("Point (".Length).Trim(')').Replace(' ', ',')));
-
-        //public string? Vertices => Coordinate is null ? string.Empty : string.Join(",", Coordinate.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.X, e.Y)));
-
-        //[YamlIgnore]
-        //public string? ReversedVertices => Coordinate is null ? string.Empty : string.Join(",", Coordinate.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.X, e.Y)).Reverse());
 
         [YamlIgnore]
         public Coordinate[]? Coordinate { get; private set; }
     }
 
-    public class CompositeCurve
+    public class CompositeCurve : Geometry
     {
         public CompositeCurve(string components) {
             Curves = components.Split(",");
@@ -248,13 +217,6 @@ namespace S100Framework.YAML
         public CompositeCurve(string[] curves) {
             Curves = curves;
         }
-        public string? Name { get; set; }
-        public ICollection<Association>? Association => _associations.Any() ? _associations : null;
-        private ICollection<Association> _associations = new HashSet<Association>();
-        public CompositeCurve AddAssociation(Association association) {
-            _associations.Add(association);
-            return this;
-        }
 
         public string Components => string.Join(",", Curves);
 
@@ -262,24 +224,14 @@ namespace S100Framework.YAML
         public string[] Curves { get; set; } = [];
     }
 
-    public class Surface(string exterior)
+    public class Surface(string exterior) : Geometry
     {
-        public string? Name { get; set; }
-
         public string Exterior { get; set; } = exterior;
 
         [YamlIgnore]
         public string[]? InteriorRings { get; set; }
 
-        public ICollection<Association>? Association => _associations.Any() ? _associations : null;
-        private ICollection<Association> _associations = new HashSet<Association>();
-        public Surface AddAssociation(Association association) {
-            _associations.Add(association);
-            return this;
-        }
-
         public dynamic[]? Interior => InteriorRings?.Length == 0 ? null : InteriorRings?.Select(e => new { Hole = e }).ToArray();
-
     }
 
     public class Coordinate(double x, double y)
