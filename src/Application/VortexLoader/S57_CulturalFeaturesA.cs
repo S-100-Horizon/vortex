@@ -198,13 +198,13 @@ namespace S100Framework.Applications
                             if (openingBridge) {
                                 var instance = new SpanOpening() {
                                     verticalClearanceClosed = new verticalClearanceClosed() {
-
-                                        verticalClearanceValue = current.VERCCL.HasValue ? current.VERCCL!.Value : default,
+                                        verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default
                                     }
                                     ,
                                     verticalClearanceOpen = new verticalClearanceOpen() {
-                                        verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP!.Value : default,
-                                        verticalClearanceUnlimited = !current.VERCOP.HasValue,
+                                        verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default,
+                                        //Where VERCOP has a value or is populated with an empty (null) value, vertical clearance unlimited will be populated as False.
+                                        verticalClearanceUnlimited = !current.VERCOP.HasValue || current.VERCOP.Value == default
                                     }
 
                                 };
