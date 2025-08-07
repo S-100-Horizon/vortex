@@ -523,7 +523,9 @@ namespace VortexProAppModule
 
                     using var cursor = configuration.Search(null, true);
                     while (cursor.MoveNext()) {
-                        catalogues = [.. catalogues, Convert.ToString(cursor.Current["ps"])];
+                        var settings = JsonSerializer.Deserialize<Settings.Editor>(Convert.ToString(cursor.Current["json"]));
+                        if (!settings.ExcludeInEditor)
+                            catalogues = [.. catalogues, Convert.ToString(cursor.Current["ps"])];
                     }
                     if (catalogues.Any())
                         return catalogues;
@@ -542,7 +544,7 @@ namespace VortexProAppModule
 
                 System.Windows.Application.Current.Dispatcher.Invoke(() => {
                     Schemas.Clear();
-                    if (catalogue.Any()) {                        
+                    if (catalogue.Any()) {
                         Schemas.AddRange(catalogue);
                     }
                     //if (!string.IsNullOrEmpty(catalogue)) {

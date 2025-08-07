@@ -147,7 +147,7 @@ namespace S100Framework.Applications
                     //if (datasetName.Equals("101DK40347E")) continue;
 
                     Log.Information("{dataset}", datasetName);
-                    var geometries = new List<(Geometry geometry, string name)>();
+                    var geometries = new List<(ArcGIS.Core.Geometry.Geometry geometry, string name)>();
 
                     // Build Topology
                     Log.Information("Building topology..");

@@ -634,7 +634,7 @@ namespace S100Framework.YAML
             public LineString LineString => Matrix.Factory.CreateLineString([Start, End]);
         }
 
-        public static void AddLineStringsFromGeometry(Geometry geometry, List<LineString> targetList) {
+        public static void AddLineStringsFromGeometry(NetTopologySuite.Geometries.Geometry geometry, List<LineString> targetList) {
             if (geometry is LineString line) {
                 if (!line.IsEmpty) {
                     if (!targetList.Any(e => e.EqualsTopologically(line)))
