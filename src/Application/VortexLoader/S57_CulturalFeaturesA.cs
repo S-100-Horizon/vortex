@@ -198,11 +198,12 @@ namespace S100Framework.Applications
                             if (openingBridge) {
                                 var instance = new SpanOpening() {
                                     verticalClearanceClosed = new verticalClearanceClosed() {
+
                                         verticalClearanceValue = current.VERCCL.HasValue ? current.VERCCL!.Value : default,
                                     }
                                     ,
                                     verticalClearanceOpen = new verticalClearanceOpen() {
-                                        verticalClearanceValue = current.VERCOP.HasValue ? current.VERCOP!.Value : default,
+                                        verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP!.Value : default,
                                         verticalClearanceUnlimited = !current.VERCOP.HasValue,
                                     }
 
@@ -210,7 +211,7 @@ namespace S100Framework.Applications
 
                                 instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
                                     horizontalClearanceValue = current.HORCLR.HasValue ? current.HORCLR!.Value : default,
-                                    horizontalDistanceUncertainty = current.HORACC.HasValue ? current.HORACC!.Value : default
+                                    horizontalDistanceUncertainty = current.HORACC.HasValue ? current.HORACC!.Value : default,
                                 };
 
 
