@@ -160,6 +160,7 @@ namespace S100Framework.YAML
         public string? Location => Coordinate is null ? string.Empty :
             Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(Coordinate.X, Coordinate.Y)).ToText().Substring("Point (".Length).Trim(')').Replace(' ', ',');
 
+        [YamlIgnore]
         public Coordinate? Coordinate { get; private set; } = new Coordinate(x, y);
     }
 
