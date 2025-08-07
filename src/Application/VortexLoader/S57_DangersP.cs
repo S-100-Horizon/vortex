@@ -164,7 +164,6 @@ namespace S100Framework.Applications
                                     }
                                 }
 
-
                                 if (current.STATUS != default) {
                                     instance.status = GetStatus(current.STATUS);
                                 }
