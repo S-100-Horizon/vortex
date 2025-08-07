@@ -194,28 +194,13 @@ namespace S100Framework.Applications
                                 // Foul ground
                                 var instance = new FoulGround();
 
-                                //instance.verticalUncertainty = 
-                                if (current.STATUS != default) {
-                                    instance.status = GetStatus(current.STATUS);
+                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                                // TODO: interoperabilityIdentifier
+
+                                if (current.QUASOU != default) {
+                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
                                 }
-
-
-                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
-                                    instance.valueOfSounding = current.VALSOU.Value;
-                                }
-
-
-                                if (current.TECSOU != null) {
-                                    instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
-                                }
-
-
-                                if (current.SOUACC.HasValue) {
-                                    instance.verticalUncertainty = new() {
-                                        uncertaintyFixed = current.SOUACC.Value
-                                    };
-                                }
-
 
                                 if (current.SORDAT != default) {
                                     if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
@@ -227,6 +212,24 @@ namespace S100Framework.Applications
                                 }
 
 
+                                if (current.STATUS != default) {
+                                    instance.status = GetStatus(current.STATUS);
+                                }
+
+                                if (current.TECSOU != null) {
+                                    instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                                }
+
+                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
+                                    instance.valueOfSounding = current.VALSOU.Value;
+                                }
+
+                                if (current.SOUACC.HasValue) {
+                                    instance.verticalUncertainty = new() {
+                                        uncertaintyFixed = current.SOUACC.Value
+                                    };
+                                }
+
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                     string subtype = "";
 
@@ -235,9 +238,6 @@ namespace S100Framework.Applications
 
                                     instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
-
-
-                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;

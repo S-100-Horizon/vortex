@@ -42,7 +42,7 @@ namespace S100Framework.Applications.Singletons
         /// Checks sanity of drawing index for all features accross all datasets
         /// </summary>
         /// <returns>Error Count</returns>
-        public int Check_UsageBand() {
+        public int Check_GetUsageBandErrorCount() {
             Int32 errorCount = 0;
 
             var featureClasses = new List<string>() {

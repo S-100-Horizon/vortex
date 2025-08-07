@@ -302,7 +302,7 @@ namespace S100Framework.Applications
                 Logger.Current.Information($"Loading sanity checker");
                 SanityChecker.Initialize(destination);
 
-                if (SanityChecker.Instance.Check_UsageBand() == 0) {
+                if (SanityChecker.Instance.Check_GetUsageBandErrorCount() == 0) {
                     Logger.Current.Information("Drawing index check PASSED");
                 }
                 else {

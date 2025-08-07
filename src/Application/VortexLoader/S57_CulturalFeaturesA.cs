@@ -206,7 +206,6 @@ namespace S100Framework.Applications
                                         //Where VERCOP has a value or is populated with an empty (null) value, vertical clearance unlimited will be populated as False.
                                         verticalClearanceUnlimited = !current.VERCOP.HasValue || current.VERCOP.Value == default
                                     }
-
                                 };
 
                                 instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
