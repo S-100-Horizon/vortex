@@ -25,10 +25,14 @@ namespace VortexLoader.Singletons
 
             foreach (var polygon in AllGeometries(clipPolygons, clipFilter)) {
                 var clippedGeom = GeometryEngine.Instance.Intersection(allSourcePolygons, polygon);
-                var result = GeometryEngine.Instance.MultipartToSinglePart(clippedGeom);
-                foreach (var singlePart in result) {
-                    yield return singlePart;
-                }
+
+                yield return clippedGeom;
+
+                // TODO: Multipart polygons not supported. MultipartToSinglePart collapses coincident vertices.
+                //var result = GeometryEngine.Instance.MultipartToSinglePart(clippedGeom);
+                //foreach (var singlePart in result) {
+                //    yield return singlePart;
+                //}
             }
         }
 
