@@ -1875,12 +1875,12 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
 
 			[XmlElement("timeOfDayEnd")]
-			public TimeOnly? timeOfDayEnd {get;set;} = default;
+			public S100Framework.DomainModel.S100.Time? timeOfDayEnd {get;set;} = default;
 
 			public bool ShouldSerializetimeOfDayEnd() { return timeOfDayEnd.HasValue; }
 
 			[XmlElement("timeOfDayStart")]
-			public TimeOnly? timeOfDayStart {get;set;} = default;
+			public S100Framework.DomainModel.S100.Time? timeOfDayStart {get;set;} = default;
 
 			public bool ShouldSerializetimeOfDayStart() { return timeOfDayStart.HasValue; }
 		}

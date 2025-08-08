@@ -5,7 +5,6 @@ using S100Framework.DomainModel;
 using S100Framework.YAML;
 using Serilog;
 using System.Diagnostics;
-using System.Text.Json;
 using Dataset = S100Framework.YAML.Dataset;
 using Esri = ArcGIS.Core.Hosting.Host;
 using IO = System.IO;

@@ -1484,7 +1484,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializesubjectDescription() { return !string.IsNullOrEmpty(subjectDescription); }
 
 			[XmlElement("observationTime")]
-			public TimeOnly? observationTime {get;set;} = default;
+			public S100Framework.DomainModel.S100.Time? observationTime {get;set;} = default;
 
 			public bool ShouldSerializeobservationTime() { return observationTime.HasValue; }
 
@@ -1584,12 +1584,12 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializedateEnd() { return !string.IsNullOrEmpty(dateEnd); }
 
 			[XmlElement("timeOfDayStart")]
-			public TimeOnly? timeOfDayStart {get;set;} = default;
+			public S100Framework.DomainModel.S100.Time? timeOfDayStart {get;set;} = default;
 
 			public bool ShouldSerializetimeOfDayStart() { return timeOfDayStart.HasValue; }
 
 			[XmlElement("timeOfDayEnd")]
-			public TimeOnly? timeOfDayEnd {get;set;} = default;
+			public S100Framework.DomainModel.S100.Time? timeOfDayEnd {get;set;} = default;
 
 			public bool ShouldSerializetimeOfDayEnd() { return timeOfDayEnd.HasValue; }
 		}
@@ -1857,12 +1857,12 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializedayOfWeekIsRange() { return dayOfWeekIsRange.HasValue; }
 
 			[XmlElement("timeOfDayStart")]
-			public List<TimeOnly> timeOfDayStart {get;set;} = [];
+			public List<S100Framework.DomainModel.S100.Time> timeOfDayStart {get;set;} = [];
 
 			public bool ShouldSerializetimeOfDayStart() { return timeOfDayStart.Any(); }
 
 			[XmlElement("timeOfDayEnd")]
-			public List<TimeOnly> timeOfDayEnd {get;set;} = [];
+			public List<S100Framework.DomainModel.S100.Time> timeOfDayEnd {get;set;} = [];
 
 			public bool ShouldSerializetimeOfDayEnd() { return timeOfDayEnd.Any(); }
 		}
@@ -1886,7 +1886,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializeminutePastEveryHour() { return minutePastEveryHour.HasValue; }
 
 			[XmlElement("transmissionTime")]
-			public List<TimeOnly> transmissionTime {get;set;} = [];
+			public List<S100Framework.DomainModel.S100.Time> transmissionTime {get;set;} = [];
 
 			public bool ShouldSerializetransmissionTime() { return transmissionTime.Any(); }
 		}
