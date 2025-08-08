@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using S100Framework.DomainModel.S100;
+using System.Collections;
 using System.Globalization;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -125,6 +126,12 @@ namespace S100Framework.GML
                         property.SetValue(instance, timeOnlyValue);
                         break;
 
+                    // Ensure valid S-101 TimeOfDay objects
+                    case var t when t == typeof(Time):
+                        Time? timeOfDayValue = isNil ? null : Time.Parse(element.Value);
+                        property.SetValue(instance, timeOfDayValue);
+                        break;
+
                     case var t when t == typeof(Guid):
                         Guid? uuidValue = isNil ? (Guid?)null : Guid.Parse(element.Value, CultureInfo.InvariantCulture);
                         property.SetValue(instance, uuidValue);
@@ -235,6 +242,10 @@ namespace S100Framework.GML
                                 var tTimeOnlyValue = TimeOnly.Parse(element.Value, CultureInfo.InvariantCulture);
                                 collection!.Add(tTimeOnlyValue);
                                 break;
+                            case var tt when tt == typeof(Time):
+                                var tTimeOfDayValue = Time.Parse(element.Value);
+                                collection!.Add(tTimeOfDayValue);
+                                break;
                             case var tt when tt == typeof(Guid):
                                 var tUuidValue = Guid.Parse(element.Value, CultureInfo.InvariantCulture);
                                 collection!.Add(tUuidValue);
@@ -278,7 +289,7 @@ namespace S100Framework.GML
                         System.Diagnostics.Debugger.Break(); break;
                 }
             }
-            catch (Exception) {
+            catch (Exception ex) {
                 // Never dont stop!
                 System.Diagnostics.Debugger.Break();
             }
