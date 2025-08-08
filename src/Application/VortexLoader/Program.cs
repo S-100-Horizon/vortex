@@ -1,9 +1,8 @@
-﻿using ArcGIS.Core.Data;
+﻿using ArcGIS.Core.CIM;
+using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
-
 using CommandLine;
-using S100Framework.Catalogues;
-//using S100Framework.YAML;
+using S100Framework.DomainModel;
 using Serilog;
 using System.Text.Json;
 using System.Text.RegularExpressions;
@@ -186,22 +185,20 @@ namespace S100Framework.Applications
 
             foreach (var feature in dataset.Features!) {
                 // 1) Cast feature.Attributes to S101 Model
-                var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{feature.Attributes.Code}", true) ?? default;
+                var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{feature.Name}", true) ?? default;
 
                 if (type == default) {
-                    Log.Error("Could not get type: {type} for feature: {name}", feature.Attributes.Code, feature.Name);
+                    Log.Error("Could not get type: {name}", feature.Name);
                     continue;
                 }
 
-                // 2) Serialize to JSON
+                // Serialize to JSON
                 var json = System.Text.Json.JsonSerializer.Serialize(feature.Attributes, type);
 
-
-                // 3) Find corresponding geometry and cast it to ArcGIS.Core.Geometry
+                //  Find corresponding geometry and cast it to ArcGIS.Core.Geometry
                 var geometry = dataset.GetFeatureShape(feature);
 
-
-                // 4) Append row to table
+                // Append row to table
                 var rowbuffer = geometry switch {
                     MapPoint => bufferPoint,
                     Multipoint => bufferPointSet,
@@ -210,14 +207,45 @@ namespace S100Framework.Applications
                     _ => throw new NotImplementedException(),
                 };
 
+                // Feature Association
+                if (feature.FeatureAssociation != null && feature.FeatureAssociation.Count != 0) {
+                    var featureAssociations = feature.FeatureAssociation.Select(e => new featureBinding {
+                        association = e.Name,
+                        role = e.Role,
+                        featureId = feature.Geometry,
+                        //roleType = ??,         Skip for now
+                    });
 
+                    var featureAssociationJSON = JsonSerializer.Serialize(featureAssociations);
+
+                    rowbuffer["featurebindings"] = featureAssociationJSON;
+                }
+
+                // Information Association
+                if (feature.Association != null && feature.Association.Count != 0) {
+                    var informationAssociations = feature.Association.Select(e => new informationBinding {
+                        association = e.Name,
+                        role = e.Role,
+                        informationId = e.To,
+                        //roleType = ??,        Skip for now
+                    });
+
+                    var informationAssociationJSON = JsonSerializer.Serialize(informationAssociations);
+
+                    rowbuffer["informationbindings"] = informationAssociationJSON;
+                }
+
+                // Set Usageband
+                var match = Regex.Match(dataset.CellName, @"DK(\d)");
+
+                if (match.Success) 
+                    rowbuffer["usageband"] = match.Groups[1].Value[0];
+                
                 rowbuffer["ps"] = productSpecification;
                 rowbuffer["code"] = feature.Name;
                 rowbuffer["json"] = json;
 
-                if (geometry is MapPoint) {
-                    var point = (MapPoint)geometry;
-
+                if (geometry is MapPoint point) {
                     if (point.HasZ == false)
                         bufferPoint["shape"] = MapPointBuilderEx.CreateMapPoint(((MapPoint)geometry).X, ((MapPoint)geometry).Y, 0.00, geometry.SpatialReference);
                     else
@@ -373,21 +401,177 @@ namespace S100Framework.Applications
     public static class YAMLExtensions
     {
         public static ArcGIS.Core.Geometry.Geometry GetFeatureShape(this S100Framework.YAML.Dataset dataset, S100Framework.YAML.Feature feature) {
-            S100Framework.YAML.Geometry geometry = feature.Prim switch {
-                S100Framework.YAML.Primitive.Point => dataset.Points!.FirstOrDefault(e => e.Name == feature.Geometry)!,
-                S100Framework.YAML.Primitive.Curve => dataset.Curves!.FirstOrDefault(e => e.Name == feature.Geometry)!,
-                S100Framework.YAML.Primitive.Surface => dataset.Surfaces!.FirstOrDefault(e => e.Name == feature.Geometry)!,
-                _ => throw new NotImplementedException($"Primitive {feature.Prim} is not supported."),
-            };
+            switch (feature.Prim) {
+                case YAML.Primitive.Point: {
+                        var depth = dataset?.Depths?.FirstOrDefault(e => e.Name == feature.Geometry);
 
-            // TODO: Implement conversion from S100Framework.YAML.Geometry to ArcGIS.Core.Geometry.Geometry
-            // Get Underlying coordinates. E.g. Surface => composite curves => curve[] => Coordinates
-            // Switch case on geometry and build ArcGIS.Core.Geometry object
-            // Figure out how to detect PointSets (Depths)...
+                        // If point is depth
+                        if (depth != default) {
+                            var mapPoints = new List<MapPoint>();
+
+                            for (int i = 0; i < depth.Points.Length; i++) {
+                                var coord = depth.Points[i];
+                                var z = depth.Depths[i];
+
+                                var point = MapPointBuilderEx.CreateMapPoint(coord.X, coord.Y, z);
+                                mapPoints.Add(point);
+                            }
+
+                            return MultipointBuilderEx.CreateMultipoint(mapPoints);
+                        }
+                        // Point is simply a point
+                        else {
+                            var point = dataset.Points!.FirstOrDefault(e => e.Name == feature.Geometry);
+
+                            return MapPointBuilderEx.CreateMapPoint(point.Coordinate!.X, point.Coordinate.Y);
+                        }
+                    }
+                case YAML.Primitive.Curve: {
+                        var points = new List<MapPoint>();
+                        var compositeExist = dataset.FindCompositeCurve(feature.Geometry);
+
+                        // If feature references a composite curve
+                        if (compositeExist != default) {
+                            var curvesInComposite = feature.Geometry.StartsWith('R') ? compositeExist.Curves.Reverse() : compositeExist.Curves;
+                            foreach (var curveName in curvesInComposite) {
+                                var curve = dataset.FindCurve(curveName);
+
+                                if (curve.Coordinate == null || curve.Coordinate.Length == 0)
+                                    continue;
+
+                                var coords = curveName?.StartsWith('R') == true ? curve.Coordinate.Reverse() : curve.Coordinate;
+
+                                foreach (var c in coords) {
+                                    var point = MapPointBuilderEx.CreateMapPoint(c.X, c.Y);
+                                    points.Add(point);
+                                }
+                            }
+                        }
+                        else {
+                            var curve = dataset.Curves!.FirstOrDefault(e => e.Name == feature.Geometry) ?? throw new InvalidOperationException($"Curve with name {feature.Geometry} not found in dataset.");
+
+                            foreach (var c in curve.Coordinate!) {
+                                var point = MapPointBuilderEx.CreateMapPoint(c.X, c.Y);
+                                points.Add(point);
+                            }
+                        }
 
 
-            throw new NotImplementedException($"GetFeatureShape not yet implemented.");
-            return default;
+
+                        return PolylineBuilderEx.CreatePolyline(points);
+                    }
+                case YAML.Primitive.Surface: {
+                        var surface = dataset.Surfaces!.FirstOrDefault(e => e.Name == feature.Geometry) ?? throw new InvalidOperationException($"Surface with name {feature.Geometry} not found in dataset.");
+
+                        // Build Exterior ring
+                        var compositeExist = dataset.FindCompositeCurve(surface.Exterior);
+                        var exteriorPoints = new List<MapPoint>();
+
+                        // If exterior ring is a composite curve, iterate these and build. If reverse curve, also reverse the coordinates.
+                        if (compositeExist != default) {
+                            var curvesInComposite = surface.Exterior.StartsWith('R') ? compositeExist.Curves.Reverse() : compositeExist.Curves;
+                            foreach (var curveName in curvesInComposite) {
+                                var curve = dataset.FindCurve(curveName);
+
+                                if (curve.Coordinate == null || curve.Coordinate.Length == 0)
+                                    continue;
+
+                                var coords = curveName?.StartsWith('R') == true ? curve.Coordinate.Reverse() : curve.Coordinate;
+
+                                foreach (var c in coords) {
+                                    var point = MapPointBuilderEx.CreateMapPoint(c.X, c.Y);
+                                    exteriorPoints.Add(point);
+                                }
+                            }
+                        }
+                        else {
+                            var curve = dataset.FindCurve(surface.Exterior);
+
+                            var coords = curve.Name?.StartsWith('R') == true
+                                  ? curve.Coordinate.Reverse()
+                                  : curve.Coordinate;
+
+                            foreach (var c in coords) {
+                                var point = MapPointBuilderEx.CreateMapPoint(c.X, c.Y);
+                                exteriorPoints.Add(point);
+                            }
+                        }
+
+                        var polyline = PolylineBuilderEx.CreatePolyline(exteriorPoints);
+
+                        var polygonBuilder = new PolygonBuilderEx(polyline);
+
+
+                        // Interior Rings
+                        if (surface.InteriorRings is not null) {
+                            var interiorRings = new List<Polyline>();
+
+                            // Iterate all interior rings
+                            foreach (var interiorCurveName in surface.InteriorRings) {
+                                var interiorCompositeExist = dataset.FindCompositeCurve(interiorCurveName);
+                                var interiorPoints = new List<MapPoint>();
+
+                                // If interior ring is a composite curve, iterate these and build. If reverse curve, also reverse the coordinates.
+                                if (interiorCompositeExist != default) {
+                                    var curvesInComposite = surface.Exterior.StartsWith('R') ? compositeExist.Curves.Reverse() : compositeExist.Curves;
+                                    foreach (var curveName in curvesInComposite) {
+                                        var curve = dataset.FindCurve(curveName);
+
+                                        if (curve.Coordinate == null || curve.Coordinate.Length == 0)
+                                            continue;
+
+                                        var coords = curveName?.StartsWith('R') == true ? curve.Coordinate.Reverse() : curve.Coordinate;
+
+                                        foreach (var c in coords) {
+                                            var point = MapPointBuilderEx.CreateMapPoint(c.X, c.Y);
+                                            interiorPoints.Add(point);
+                                        }
+                                    }
+                                }
+                                else {
+                                    var curve = dataset.FindCurve(interiorCurveName);
+
+                                    if (curve.Coordinate == null || curve.Coordinate.Length == 0)
+                                        continue;
+
+                                    var coords = interiorCurveName?.StartsWith('R') == true ? curve.Coordinate.Reverse() : curve.Coordinate;
+
+                                    foreach (var c in coords) {
+                                        var point = MapPointBuilderEx.CreateMapPoint(c.X, c.Y);
+                                        interiorPoints.Add(point);
+                                    }
+                                }
+
+                                var interiorRing = PolylineBuilderEx.CreatePolyline(interiorPoints);
+                                interiorRings.Add(interiorRing);
+                            }
+
+
+                            foreach (var ring in interiorRings) {
+                                var segments = ring.Parts.First().ToList(); // get segments from the first part
+                                polygonBuilder.AddPart(segments);
+                            }
+                        }
+
+                        return polygonBuilder.ToGeometry();
+                    }
+                default: {
+                        throw new InvalidOperationException($"Unsupported Primtive type detected: {feature.Prim}");
+                    }
+            }
+        }
+
+        public static S100Framework.YAML.Curve FindCurve(this S100Framework.YAML.Dataset dataset, string name) {
+            // Trim the 'R' to find the actual curve
+            var trimmed = name.StartsWith('R') ? name[1..] : name;
+
+            return dataset?.Curves?.FirstOrDefault(e => e.Name == trimmed)!;
+        }
+        public static S100Framework.YAML.CompositeCurve FindCompositeCurve(this S100Framework.YAML.Dataset dataset, string name) {
+            // Trim the 'R' to find the actual curve
+            var trimmed = name.StartsWith('R') ? name[1..] : name;
+
+            return dataset?.CompositeCurves?.FirstOrDefault(e => e.Name == trimmed)!;
         }
     }
 }
