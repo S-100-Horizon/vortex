@@ -266,9 +266,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _dateStart, value);
 			}
 		}
-		private TimeOnly? _timeOfDayEnd  = default;
+		private S100Framework.DomainModel.S100.Time? _timeOfDayEnd  = default;
 
-		public TimeOnly? timeOfDayEnd {
+		public S100Framework.DomainModel.S100.Time? timeOfDayEnd {
 			get {
 				return _timeOfDayEnd;
 			}
@@ -276,9 +276,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _timeOfDayEnd, value);
 			}
 		}
-		private TimeOnly? _timeOfDayStart  = default;
+		private S100Framework.DomainModel.S100.Time? _timeOfDayStart  = default;
 
-		public TimeOnly? timeOfDayStart {
+		public S100Framework.DomainModel.S100.Time? timeOfDayStart {
 			get {
 				return _timeOfDayStart;
 			}

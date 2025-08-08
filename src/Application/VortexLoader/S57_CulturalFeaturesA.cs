@@ -10,18 +10,38 @@ namespace S100Framework.Applications
     internal static partial class ImporterNIS
     {
         private static void S57_CulturalFeaturesA(Geodatabase source, Geodatabase target, QueryFilter filter) {
+
             var tableName = "CulturalFeaturesA";
 
             using var culturalFeaturesA = source.OpenDataset<FeatureClass>(source.GetName(tableName));
             Subtypes.Instance.RegisterSubtypes(culturalFeaturesA);
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
-
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
+            // Bridges
+
+            Bridges.Initialize(source);
+            
+            foreach (var bridge in Bridges.Instance.BridgeElements()) {
+                var instance = new Bridge();
+
+                buffer["ps"] = ps101;
+                buffer["code"] = instance.GetType().Name;
+                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                SetShape(buffer, bridge.DissolvedGeometry);
+                SetUsageBand(buffer, ImporterNIS._compilationScale);
+
+                var featureN = featureClass.CreateRow(buffer);
+                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                bridge.Name = name;
+            }
+
             using var cursor = culturalFeaturesA.Search(filter, true);
             int recordCount = 0;
+
 
             while (cursor.MoveNext()) {
                 recordCount += 1;
@@ -106,6 +126,11 @@ namespace S100Framework.Applications
 
                     case 5: { // BRIDGE_Bridge  // SPANS
                             //var instance = new Bridge();
+
+                            var relatedBridge = Bridges.Instance.GetBridgeElementsContainingOID(current.OBJECTID!.Value);
+
+
+
 
                             bool openingBridge = false;
                             List<bridgeFunction> bridgeFunctionValue = new List<bridgeFunction>();
@@ -198,19 +223,19 @@ namespace S100Framework.Applications
                             if (openingBridge) {
                                 var instance = new SpanOpening() {
                                     verticalClearanceClosed = new verticalClearanceClosed() {
-                                        verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default
+                                        verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default(decimal?)
                                     }
                                     ,
                                     verticalClearanceOpen = new verticalClearanceOpen() {
-                                        verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default,
+                                        verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default(decimal?),
                                         //Where VERCOP has a value or is populated with an empty (null) value, vertical clearance unlimited will be populated as False.
-                                        verticalClearanceUnlimited = !current.VERCOP.HasValue || current.VERCOP.Value == default
+                                        verticalClearanceUnlimited = !current.VERCOP.HasValue || current.VERCOP.Value == default(decimal)
                                     }
                                 };
 
                                 instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
-                                    horizontalClearanceValue = current.HORCLR.HasValue ? current.HORCLR!.Value : default,
-                                    horizontalDistanceUncertainty = current.HORACC.HasValue ? current.HORACC!.Value : default,
+                                    horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767m ? current.HORCLR!.Value : default(decimal?),
+                                    horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767m ? current.HORACC!.Value : default(decimal?),
                                 };
 
 
@@ -236,13 +261,13 @@ namespace S100Framework.Applications
                             if (!openingBridge) {
                                 var instance = new SpanFixed() {
                                     verticalClearanceFixed = new verticalClearanceFixed() {
-                                        verticalClearanceValue = current.VERCCL.HasValue ? current.VERCCL!.Value : default,
+                                        verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default(decimal?),
                                     }
                                 };
 
                                 instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
-                                    horizontalClearanceValue = current.HORCLR.HasValue ? current.HORCLR!.Value : default,
-                                    horizontalDistanceUncertainty = current.HORACC.HasValue ? current.HORACC!.Value : default
+                                    horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767m ? current.HORCLR!.Value : default(decimal?),
+                                    horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767m ? current.HORACC!.Value : default(decimal?)
                                 };
 
                                 AddInformation(instance.information, feature);
@@ -265,9 +290,6 @@ namespace S100Framework.Applications
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
 
                             }
-
-
-                            // TODO: Bridge - outer ring of all features in the bridge
 
                         }
                         break;
@@ -1003,6 +1025,10 @@ namespace S100Framework.Applications
                         break;
 
                     case 45: { // PYLONS_PylonBridgeSupport
+
+                            var relatedBridge = Bridges.Instance.GetBridgeElementsContainingOID(current.OBJECTID!.Value);
+
+
                             var instance = new PylonBridgeSupport {
                                 categoryOfPylon = default,
                             };
@@ -1042,6 +1068,8 @@ namespace S100Framework.Applications
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                            //FeatureRelations.Instance.AddRelation(new(typeof(Bridge), relatedBridge, new(instance.GetType(), name), featureN, s101MasterFeature, _featureAssociation);
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);

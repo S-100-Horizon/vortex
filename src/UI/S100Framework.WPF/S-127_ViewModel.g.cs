@@ -1726,9 +1726,9 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("timeIntervalsByDayOfWeek")]
-		public ObservableCollection<TimeOnly> timeOfDayStart  { get; set; } = new ();
+		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayStart  { get; set; } = new ();
 		[Category("timeIntervalsByDayOfWeek")]
-		public ObservableCollection<TimeOnly> timeOfDayEnd  { get; set; } = new ();
+		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayEnd  { get; set; } = new ();
 
 
 		public timeIntervalsByDayOfWeekViewModel Load(timeIntervalsByDayOfWeek instance) {

@@ -2786,10 +2786,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _issueDate, value);
 			}
 		}
-		private TimeOnly? _issueTime  = default;
+		private S100Framework.DomainModel.S100.Time? _issueTime  = default;
 
 		[Category("ElectronicProduct")]
-		public TimeOnly? issueTime {
+		public S100Framework.DomainModel.S100.Time? issueTime {
 			get {
 				return _issueTime;
 			}

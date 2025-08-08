@@ -330,7 +330,9 @@ namespace S100Framework.Applications
                                     instance.status = GetStatus(current.STATUS);
                                 }
 
-                                // TODO: techniqueOfVerticalMeasurement
+                                if (current.TECSOU != null) {
+                                    instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                                }
 
                                 if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
                                     instance.valueOfSounding = current.VALSOU.Value;
@@ -358,6 +360,7 @@ namespace S100Framework.Applications
                                 AddInformation(instance.information, feature);
 
                                 // TODO: defaultClearanceDepth
+                                
 
                                 foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
                                     var drval1 = depthArea.DRVAL1 ?? default;

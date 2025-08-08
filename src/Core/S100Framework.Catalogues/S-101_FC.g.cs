@@ -6191,12 +6191,12 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializedayOfWeekIsRange() { return dayOfWeekIsRange.HasValue; }
 
 			[XmlElement("timeOfDayStart")]
-			public List<TimeOnly> timeOfDayStart {get;set;} = [];
+			public List<S100Framework.DomainModel.S100.Time> timeOfDayStart {get;set;} = [];
 
 			public bool ShouldSerializetimeOfDayStart() { return timeOfDayStart.Any(); }
 
 			[XmlElement("timeOfDayEnd")]
-			public List<TimeOnly> timeOfDayEnd {get;set;} = [];
+			public List<S100Framework.DomainModel.S100.Time> timeOfDayEnd {get;set;} = [];
 
 			public bool ShouldSerializetimeOfDayEnd() { return timeOfDayEnd.Any(); }
 		}
