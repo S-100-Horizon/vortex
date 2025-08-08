@@ -8,5 +8,6 @@ namespace S100Framework.Settings
 {
     internal class NauticalProducts
     {
+        public string ConnectionFile { get; set; } = string.Empty;
     }
 }
