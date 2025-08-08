@@ -2162,7 +2162,7 @@ namespace S100Framework.DomainModel.S128 {
 			public required DateOnly issueDate {get;set;} = default;
 
 			[XmlElement("issueTime")]
-			public TimeOnly? issueTime {get;set;} = default;
+			public S100Framework.DomainModel.S100.Time? issueTime {get;set;} = default;
 
 			public bool ShouldSerializeissueTime() { return issueTime.HasValue; }
 

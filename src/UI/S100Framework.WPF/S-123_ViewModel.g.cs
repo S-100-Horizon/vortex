@@ -321,9 +321,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _subjectDescription, value);
 			}
 		}
-		private TimeOnly? _observationTime  = default;
+		private S100Framework.DomainModel.S100.Time? _observationTime  = default;
 
-		public TimeOnly? observationTime {
+		public S100Framework.DomainModel.S100.Time? observationTime {
 			get {
 				return _observationTime;
 			}
@@ -675,9 +675,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _dateEnd, value);
 			}
 		}
-		private TimeOnly? _timeOfDayStart  = default;
+		private S100Framework.DomainModel.S100.Time? _timeOfDayStart  = default;
 
-		public TimeOnly? timeOfDayStart {
+		public S100Framework.DomainModel.S100.Time? timeOfDayStart {
 			get {
 				return _timeOfDayStart;
 			}
@@ -685,9 +685,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _timeOfDayStart, value);
 			}
 		}
-		private TimeOnly? _timeOfDayEnd  = default;
+		private S100Framework.DomainModel.S100.Time? _timeOfDayEnd  = default;
 
-		public TimeOnly? timeOfDayEnd {
+		public S100Framework.DomainModel.S100.Time? timeOfDayEnd {
 			get {
 				return _timeOfDayEnd;
 			}
@@ -2000,9 +2000,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			}
 		}
 		[Category("timeIntervalsByDayOfWeek")]
-		public ObservableCollection<TimeOnly> timeOfDayStart  { get; set; } = new ();
+		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayStart  { get; set; } = new ();
 		[Category("timeIntervalsByDayOfWeek")]
-		public ObservableCollection<TimeOnly> timeOfDayEnd  { get; set; } = new ();
+		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayEnd  { get; set; } = new ();
 
 
 		public timeIntervalsByDayOfWeekViewModel Load(timeIntervalsByDayOfWeek instance) {
@@ -2095,7 +2095,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			}
 		}
 		[Category("timesOfTransmission")]
-		public ObservableCollection<TimeOnly> transmissionTime  { get; set; } = new ();
+		public ObservableCollection<S100Framework.DomainModel.S100.Time> transmissionTime  { get; set; } = new ();
 
 
 		public timesOfTransmissionViewModel Load(timesOfTransmission instance) {
