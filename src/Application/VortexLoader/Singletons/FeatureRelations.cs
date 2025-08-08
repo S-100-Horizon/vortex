@@ -704,6 +704,10 @@ namespace S100Framework.Applications.Singletons
             ;
         }
 
+        internal List<Relation> GetRelationsFor(string name) {
+            return _relations.Where(o => o.Master!.Name == name).ToList();
+        }
+
         internal bool HasSlaves(Guid globalId) {
             return _srcObjectToSlaves.ContainsKey(globalId);
         }
@@ -765,8 +769,8 @@ namespace S100Framework.Applications.Singletons
                     return;
                     //throw new NotSupportedException(msg);
                 }
-                s101SlaveFeature["ps"] = ImporterNIS.ps101;
-
+                
+                // s101SlaveFeature["ps"] = ImporterNIS.ps101;
                 //                featureAssociationBuffer["code"] = bindingDefinitionForeign.association;
 
                 var featureAssociationBuffer = featureAssociation.CreateRowBuffer();
@@ -839,16 +843,16 @@ namespace S100Framework.Applications.Singletons
             }
             return false;
         }
+#if null
+        //internal void AddAssociation(S57Master master, S57Slave slave) {
 
-        internal void AddAssociation(S57Master master, S57Slave slave) {
-
-        }
-        public class TemplateFactory
-        {
-            public T CreateEmptyInstance<T>() where T : new() {
-                return new T();
-            }
-        }
+        //}
+        //public class TemplateFactory
+        //{
+        //    public T CreateEmptyInstance<T>() where T : new() {
+        //        return new T();
+        //    }
+        //}
 
         internal void CreateRelation(Relation relation, Table featureAssociation, RowBuffer featureAssociationBuffer, Table associationBinding, RowBuffer associationBindingBuffer) {
             if (relation.Master == null) {
@@ -951,6 +955,7 @@ namespace S100Framework.Applications.Singletons
                 }
 
                 CreateRelation(relation, featureAssociation, featureAssociationBuffer, associationBinding, associationBindingBuffer);
+#endif
 #if null
                 if (relation?.Master?.Type.ToLower() == typeof(LateralBuoy).Name.ToLower()) {
                     if (relation?.Slave?.Type.ToLower() == typeof(Daymark).Name.ToLower()) {
@@ -985,9 +990,11 @@ namespace S100Framework.Applications.Singletons
                     }
                 }
 #endif
-            }
-        }
+#if null
 
+    }
+        }
+#endif
     }
 
     internal class S57Master : IEquatable<S57Master>
@@ -1062,6 +1069,7 @@ namespace S100Framework.Applications.Singletons
 
         S57Master? _master;
         S57Slave? _slave;
+        bool _stored = false;
 
         public Relation(S57Master master, S57Slave slave) {
             this.Master = master;
@@ -1070,6 +1078,7 @@ namespace S100Framework.Applications.Singletons
 
         internal S57Master? Master { get => this._master; set => this._master = value; }
         internal S57Slave? Slave { get => this._slave; set => this._slave = value; }
+        internal bool Stored { get => this._stored; set => this._stored = value; }
 
         // Implement IEquatable<MyObject>
         public bool Equals(Relation other) {
