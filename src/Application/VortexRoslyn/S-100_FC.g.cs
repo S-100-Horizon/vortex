@@ -1,5 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace S100Framework.Catalogues
@@ -105,7 +111,6 @@ namespace S100Framework.DomainModel.S100
         public DateTime datasetReferenceDate { get; set; }
 
         [XmlElement(Order = 8)]
-        [DefaultValue("eng")]
         public string datasetLanguage { get; set; } = "eng";
 
         [XmlElement(Order = 9)]
@@ -127,5 +132,108 @@ namespace S100Framework.DomainModel.S100
     {
         [XmlElement(Order = 0)]
         public DataSetIdentification DatasetIdentificationInformation { get; set; }
+    }
+
+    [Serializable]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+    public abstract class MembersBase
+    {
+        public abstract List<object> elements { get; set; }
+    }
+
+    [JsonConverter(typeof(TimeJsonConverter))]
+    public readonly struct Time
+    {
+        // represent the number of ticks map to the time of the day. 1 ticks = 100-nanosecond in time measurements.
+        private readonly long _ticks;
+
+        // MinTimeTicks is the ticks for the midnight time 00:00:00.000 AM
+        private const long MinTimeTicks = 0;
+
+        // MaxTimeTicks is the max tick value for the time in the day. It is calculated using DateTime.Today.AddTicks(-1).TimeOfDay.Ticks +1 to include 24:00.
+        private const long MaxTimeTicks = 863_999_999_999 + 1;
+
+        public const long MinutesPerHour = TicksPerHour / TicksPerMinute;                           //              60
+
+        /// <summary>
+        /// Represents the smallest possible value of TimeOfDay.
+        /// </summary>
+        public static Time MinValue => new Time((ulong)MinTimeTicks);
+
+        /// <summary>
+        /// Represents the largest possible value of TimeOfDay.
+        /// </summary>
+        public static Time MaxValue => new Time((ulong)MaxTimeTicks);
+
+        /// <summary>
+        /// Initializes a new instance of the TimeOfDay structure to the specified hour and the minute.
+        /// </summary>
+        /// <param name="hour">The hours (0 through 23).</param>
+        /// <param name="minute">The minutes (0 through 59).</param>
+        public Time(int hour, int minute) : this(Time.TimeToTicks(hour, minute)) { }
+
+        /// <summary>
+        /// Initializes a new instance of the TimeOfDay structure using a specified number of ticks.
+        /// </summary>
+        /// <param name="ticks">A time of day expressed in the number of 100-nanosecond units since 00:00:00.0000000.</param>
+        public Time(long ticks) {
+            if ((ulong)ticks > MaxTimeTicks) {
+                throw new ArgumentOutOfRangeException(nameof(ticks), "Ticks must be between 0 and and TimeOfDay.MaxValue.Ticks.");
+            }
+
+            _ticks = ticks;
+        }
+
+        public int Hours => _ticks == MaxTimeTicks ? 24 : (int)(_ticks / TicksPerHour % HoursPerDay);
+
+        public int Minutes => (int)(_ticks / TicksPerMinute % MinutesPerHour);
+
+        // exist to bypass the check in the public constructor.
+        internal Time(ulong ticks) => _ticks = (long)ticks;
+
+        internal const int MicrosecondsPerMillisecond = 1000;
+        private const long TicksPerMicrosecond = 10;
+        private const long TicksPerMillisecond = TicksPerMicrosecond * MicrosecondsPerMillisecond;
+
+        private const int HoursPerDay = 24;
+        private const long TicksPerSecond = TicksPerMillisecond * 1000;
+        private const long TicksPerMinute = TicksPerSecond * 60;
+        private const long TicksPerHour = TicksPerMinute * 60;
+        private const long TicksPerDay = TicksPerHour * HoursPerDay;
+
+        // Return the tick count corresponding to the given hour, minute, second.
+        // Will check the if the parameters are valid.
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static ulong TimeToTicks(int hour, int minute) {
+            if ((uint)hour > 24 || (uint)minute >= 60) {
+                throw new System.ArgumentOutOfRangeException(null, "Hour and Minute parameters describe an un-representable TimeOfDay.");
+            }
+
+            int totalSeconds = hour * 3600 + minute * 60;
+            return (uint)totalSeconds * (ulong)TicksPerSecond;
+        }
+
+        internal DateTime ToDateTime() => new DateTime(_ticks);
+
+        internal TimeSpan ToTimeSpan() => new TimeSpan(_ticks);
+
+        public override string ToString() => $"{Hours:00}:{Minutes:00}";
+    }
+
+    public class TimeJsonConverter : JsonConverter<Time>
+    {
+        public override Time Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
+            if (reader.TokenType == JsonTokenType.String) {
+                string? timeString = reader.GetString();
+                var values = timeString.Split(':');
+                if (values.Length == 2 && int.TryParse(values[0], out int hours) && int.TryParse(values[1], out int minutes))
+                    return new Time(int.Parse(values[0]), int.Parse(values[1]));
+            }
+            throw new JsonException("Expected time in 'hh:mm' format.");
+        }
+
+        public override void Write(Utf8JsonWriter writer, Time value, JsonSerializerOptions options) {
+            writer.WriteStringValue(value.ToString());
+        }
     }
 }

@@ -4,6 +4,7 @@
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Windows.Media.Animation;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
@@ -507,6 +508,55 @@ namespace TestS100Framework
                 //var deserialized = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence>(json);
 
                 //Assert.Equivalent(instance, deserialized);
+            }
+
+            [Fact]
+            public void Test_Time() {
+                int HoursPerDay = 24;
+                long TicksPerMicrosecond = 10;
+                int MicrosecondsPerMillisecond = 1000;
+                long TicksPerMillisecond = TicksPerMicrosecond * MicrosecondsPerMillisecond;
+                long TicksPerSecond = TicksPerMillisecond * 1000;
+                long TicksPerMinute = TicksPerSecond * 60;
+                long TicksPerHour = TicksPerMinute * 60;
+                long TicksPerDay = TicksPerHour * HoursPerDay;
+
+                var timeOnly = new TimeOnly(06, 00);
+                var json = System.Text.Json.JsonSerializer.Serialize(timeOnly);
+
+                var value1 = 216000000000L;
+
+                var value2 = value1 == (863_999_999_999 + 1) ? 24 : (int)(value1 / TicksPerHour % HoursPerDay);
+
+
+                var time1 = new S100Framework.DomainModel.S100.Time(06, 00);
+                var time2 = new S100Framework.DomainModel.S100.Time(23, 32);
+                var time3 = new S100Framework.DomainModel.S100.Time(24, 00);
+                var time4 = new S100Framework.DomainModel.S100.Time(11, 32);
+
+                var json1 = System.Text.Json.JsonSerializer.Serialize(time1);
+                var json2 = System.Text.Json.JsonSerializer.Serialize(time2);
+                var json3 = System.Text.Json.JsonSerializer.Serialize(time3);
+
+                Assert.Equal(time1, System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S100.Time>(json1));
+                Assert.Equal(time2, System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S100.Time>(json2));
+                Assert.Equal(time3, System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S100.Time>(json3));
+
+                System.Diagnostics.Debugger.Break();
+            }
+
+            [Fact]
+            public void Test_Default() {
+                var decimalValue1 = default(decimal?);
+                decimal? decimalValue2 = default;
+
+                var spanFixed = new S100Framework.DomainModel.S101.FeatureTypes.SpanFixed {
+                    verticalClearanceFixed = new S100Framework.DomainModel.S101.ComplexAttributes.verticalClearanceFixed {
+                        verticalClearanceValue = default,
+                    }
+                };
+
+                System.Diagnostics.Debugger.Break();
             }
 
             //[Fact]
