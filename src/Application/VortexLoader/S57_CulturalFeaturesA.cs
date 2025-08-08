@@ -4,6 +4,7 @@ using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.DomainModel.S122.ComplexAttributes;
 
 namespace S100Framework.Applications
 {
@@ -17,6 +18,8 @@ namespace S100Framework.Applications
             Subtypes.Instance.RegisterSubtypes(culturalFeaturesA);
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
+            using var featureAssociation = target.OpenDataset<Table>(target.GetName("featureassociation"));
+
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
@@ -37,7 +40,17 @@ namespace S100Framework.Applications
                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                 bridge.Name = name;
+
+                // Create association to use in bridge relations
+                var featureAssociationBuffer = featureAssociation.CreateRowBuffer();
+
+                featureAssociationBuffer["ps"] = ImporterNIS.ps101;
+                featureAssociationBuffer["code"] = "BridgeAggregation";
+                var association = featureAssociation.CreateRow(featureAssociationBuffer);
+                string featureAssociationName = (string)association["name"];
+                bridge.BridgeAggregationName = featureAssociationName;
             }
+
 
             using var cursor = culturalFeaturesA.Search(filter, true);
             int recordCount = 0;
@@ -127,10 +140,11 @@ namespace S100Framework.Applications
                     case 5: { // BRIDGE_Bridge  // SPANS
                             //var instance = new Bridge();
 
-                            var relatedBridge = Bridges.Instance.GetBridgeElementsContainingOID(current.OBJECTID!.Value);
+                            var relatedBridges = Bridges.Instance.GetBridgeElementsContainingOID(current.TableName!, current.OBJECTID!.Value);
+                            if (relatedBridges.Count() != 1)
+                                throw new NotSupportedException("Multiple bridges share elements");
 
-
-
+                            var relatedBridge = relatedBridges[0];
 
                             bool openingBridge = false;
                             List<bridgeFunction> bridgeFunctionValue = new List<bridgeFunction>();
@@ -238,10 +252,8 @@ namespace S100Framework.Applications
                                     horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767m ? current.HORACC!.Value : default(decimal?),
                                 };
 
-
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
-
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer, current.SHAPE);
@@ -250,9 +262,23 @@ namespace S100Framework.Applications
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                    relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
-                                }
+                                //if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                //    relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
+                                //}
+                                Bridges.Instance.AddRelation(relatedBridge.Name, name, typeof(SpanOpening));
+                                
+                                // Create link to bridge
+                                List<DomainModel.featureBinding> bindings = new List<DomainModel.featureBinding>();
+                                bindings.Add(new() {
+                                    association = "BridgeAggregation",
+                                    associationId = relatedBridge.BridgeAggregationName,
+                                    featureId = relatedBridge.Name,
+                                    role = "theComponent",
+                                    roleType = "association"
+                                });
+
+                                featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings);
+                                featureN.Store();
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
@@ -281,9 +307,25 @@ namespace S100Framework.Applications
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                    relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
-                                }
+                                //if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                //    relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
+                                //}
+                                
+                                Bridges.Instance.AddRelation(relatedBridge.Name, name, typeof(SpanFixed));
+                                // Create link to bridge
+                                List<DomainModel.featureBinding> bindings = new List<DomainModel.featureBinding>();
+                                bindings.Add(new() {
+                                    association = "BridgeAggregation",
+                                    associationId = relatedBridge.BridgeAggregationName,
+                                    featureId = relatedBridge.Name,
+                                    role = "theComponent",
+                                    roleType = "association"
+                                });
+
+                                featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings);
+                                featureN.Store();
+
+
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
@@ -1026,7 +1068,11 @@ namespace S100Framework.Applications
 
                     case 45: { // PYLONS_PylonBridgeSupport
 
-                            var relatedBridge = Bridges.Instance.GetBridgeElementsContainingOID(current.OBJECTID!.Value);
+                            var relatedBridges = Bridges.Instance.GetBridgeElementsContainingOID(current.TableName!, current.OBJECTID!.Value);
+                            if (relatedBridges.Count() != 1)
+                                throw new NotSupportedException("Multiple bridges share elements");
+
+                            var relatedBridge = relatedBridges[0];
 
 
                             var instance = new PylonBridgeSupport {
@@ -1071,9 +1117,25 @@ namespace S100Framework.Applications
 
                             //FeatureRelations.Instance.AddRelation(new(typeof(Bridge), relatedBridge, new(instance.GetType(), name), featureN, s101MasterFeature, _featureAssociation);
 
-                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
-                            }
+                            //if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                            //    relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
+                            //}
+
+                            // TODO: Create relation
+                            Bridges.Instance.AddRelation(relatedBridge.Name, name, typeof(PylonBridgeSupport));
+                            // Create link to bridge
+                            List<DomainModel.featureBinding> bindings = new List<DomainModel.featureBinding>();
+                            bindings.Add(new() {
+                                association = "BridgeAggregation",
+                                associationId = relatedBridge.BridgeAggregationName,
+                                featureId = relatedBridge.Name,
+                                role = "theCollection",
+                                roleType = "aggregation"
+                            });
+
+                            featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings);
+                            featureN.Store();
+
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
@@ -1265,6 +1327,10 @@ namespace S100Framework.Applications
                         break;
                 }
             }
+
+
+            Bridges.Instance.CreateRelations();
+
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
     }

@@ -296,7 +296,6 @@ namespace S100Framework.Applications
                     Logger.Current.Information($"Converting Aids to Navigation");
                     Store(() => S57_AidsToNavigationP(source, destination, filter));
 
-
                     //Store(() => FeatureRelations.Instance.CreateRelations(destination));
                 }
 
@@ -311,11 +310,9 @@ namespace S100Framework.Applications
                     Logger.Current.Error("Drawing index check FAILED. Check for missing drawing indexes in data.");
                 }
 
-
                 Logger.Current.Information("Done");
                 return true;
             }
-
         }
 
         internal static string GetNation(string nation) {
