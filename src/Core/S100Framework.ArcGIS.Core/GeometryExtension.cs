@@ -118,9 +118,16 @@ namespace ArcGIS.Core.Geometry
                             }
                         }
 
-                        if (interior.Any())
-                            ;
-                        return PolygonBuilderEx.CreatePolygon(exterior);
+                        // Populate exterior ring
+                        var polygonBuilder = new PolygonBuilderEx(exterior);
+
+                        // Populate interior rings
+                        foreach (var ring in interior) {
+                            var segments = ring.Parts.First();
+                            polygonBuilder.AddPart(segments);
+                        }
+
+                        return polygonBuilder.ToGeometry();
                     }
             }
             throw new NotImplementedException();

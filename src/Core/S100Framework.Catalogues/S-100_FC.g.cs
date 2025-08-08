@@ -216,7 +216,7 @@ namespace S100Framework.DomainModel.S100
 
         public static Time Parse(string s) {
             var values = s.Split(':');
-            if (values.Length == 2 && int.TryParse(values[0], out int hours) && int.TryParse(values[1], out int minutes))
+            if (values.Length >= 2 && int.TryParse(values[0], out int hours) && int.TryParse(values[1], out int minutes))
                 return new Time(int.Parse(values[0]), int.Parse(values[1]));
             throw new JsonException("Expected time in 'hh:mm' format.");
         }
