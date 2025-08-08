@@ -207,15 +207,32 @@ namespace S100Framework.Applications.Singletons
 
         internal void CreateRelations() {
 
-            // Store all bridge relations
-            foreach (var bridge in _instance!.BridgeElements()) {
-                // Create relations for each bridge
-                var bindings = _instance!.GetBindings(bridge.Name);
-                // Todo: write all aggregations
-                ;
+            using var surface = _geodatabase.OpenDataset<FeatureClass>(_geodatabase.GetName("surface"));
 
+            using (var cursor = surface.Search(new QueryFilter() { WhereClause = "code = 'Bridge'" })) {
+                while (cursor.MoveNext()) {
+                    using (var row = (Feature)cursor.Current) {
+                        long oid = row.GetObjectID();
+                        var shape = row.GetShape();
+                        //S100Framework.DomainModel.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"])!);
+                        var bindings = _instance!.GetBindings(row["name"].ToString());
 
+                    }
+                }
             }
+
+
+
+
+            //// Store all bridge relations
+            //foreach (var bridge in _instance!.BridgeElements()) {
+            //    // Create relations for each bridge
+            //    var bindings = _instance!.GetBindings(bridge.Name);
+            //    // Todo: write all aggregations
+            //    ;
+
+
+            //}
         }
 
         internal static Bridges Instance {
