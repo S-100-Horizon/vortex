@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace S100Framework.Settings
 {
-    internal class NauticalProducts
+    public class NauticalProducts
     {
         public string ConnectionFile { get; set; } = string.Empty;
     }

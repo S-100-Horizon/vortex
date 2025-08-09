@@ -550,11 +550,11 @@ namespace TestS100Framework
                 var decimalValue1 = default(decimal?);
                 decimal? decimalValue2 = default;
 
-                var spanFixed = new S100Framework.DomainModel.S101.FeatureTypes.SpanFixed {
-                    verticalClearanceFixed = new S100Framework.DomainModel.S101.ComplexAttributes.verticalClearanceFixed {
-                        verticalClearanceValue = default,
-                    }
-                };
+                //var spanFixed = new S100Framework.DomainModel.S101.FeatureTypes.SpanFixed {
+                //    verticalClearanceFixed = new S100Framework.DomainModel.S101.ComplexAttributes.verticalClearanceFixed {
+                //        verticalClearanceValue = default,
+                //    }
+                //};
 
                 System.Diagnostics.Debugger.Break();
             }
