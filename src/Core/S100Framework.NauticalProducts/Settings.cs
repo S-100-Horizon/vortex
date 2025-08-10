@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ArcGIS.Core.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace S100Framework.Settings
 {
     public class NauticalProducts
     {
-        public string ConnectionFile { get; set; } = string.Empty;
+        public Connection[] Connections { get; set; } = [];
     }
+
+    public record Connection(string ProductSpecification, Uri ConnectionFile);
 }
