@@ -30,8 +30,9 @@ namespace S100Framework.Applications
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-            if (current.HEIGHT.HasValue) {
+            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                 instance.height = current.HEIGHT.Value;
+
             }
 
             // DODO: Interoperability identifier
@@ -67,12 +68,17 @@ namespace S100Framework.Applications
             }
 
 
-            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
+            if (current.VALSOU.HasValue) {
                 instance.valueOfSounding = current.VALSOU.Value;
+            } else if (current.VALSOU.HasValue && current.VALSOU.Value == -32767m) {
+                instance.valueOfSounding = default(decimal?);
             }
 
             if (current.VERLEN.HasValue) {
                 instance.verticalLength = current.VERLEN.Value;
+            }
+            else if (current.VERLEN.HasValue && current.VERLEN.Value == -32767m) {
+                instance.verticalLength = default(decimal?);
             }
 
             if (current.WATLEV.HasValue) {

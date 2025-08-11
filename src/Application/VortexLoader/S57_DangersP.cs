@@ -172,8 +172,11 @@ namespace S100Framework.Applications
                                     instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
                                 }
 
-                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
+                                if (current.VALSOU.HasValue) {
                                     instance.valueOfSounding = current.VALSOU.Value;
+                                }
+                                else if (current.VALSOU.HasValue && current.VALSOU.Value == -32767m) {
+                                    instance.valueOfSounding = default(decimal?);
                                 }
 
                                 if (current.SOUACC.HasValue) {
@@ -305,8 +308,11 @@ namespace S100Framework.Applications
                                 instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
                             }
 
-                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
+                            if (current.VALSOU.HasValue) {
                                 instance.valueOfSounding = current.VALSOU.Value;
+                            }
+                            else if (current.VALSOU.HasValue && current.VALSOU.Value == -32767m) {
+                                instance.valueOfSounding = default(decimal?);
                             }
 
                             //      S57
@@ -413,8 +419,11 @@ namespace S100Framework.Applications
                                 waterLevelEffect = default,
                             };
 
-                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
+                            if (current.VALSOU.HasValue) {
                                 instance.valueOfSounding = current.VALSOU.Value;
+                            }
+                            else if (current.VALSOU.HasValue && current.VALSOU.Value == -32767m) {
+                                instance.valueOfSounding = default(decimal?);
                             }
 
                             // action point #42 Attributes converted correctly but the combination of both is prohibited in S-101 (DCEG 13.5). Ignore/ drop CATWRK when VALSOU is populated on conversion.
