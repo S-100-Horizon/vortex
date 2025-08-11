@@ -420,7 +420,7 @@ namespace S100Framework.Applications
                                     instance.fullSeafloorCoverageAchieved = false;
                                     instance.zoneOfConfidence = new() {
                                         new zoneOfConfidence() {
-                                            categoryOfZoneOfConfidenceInData = categoryOfZoneOfConfidenceInData.ZoneOfConfidenceC,
+                                            categoryOfZoneOfConfidenceInData = categoryOfZoneOfConfidenceInData.ZoneOfConfidenceU,
                                         }
                                     };
 
