@@ -2,6 +2,7 @@
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using VortexLoader;
 
 namespace S100Framework.Applications
 {
@@ -10,7 +11,11 @@ namespace S100Framework.Applications
         internal static SignalStationTraffic CreateSignalStationTraffic(PortsAndServicesP current, int? scaleMinimum, Geodatabase source) {
 
             var instance = new SignalStationTraffic();
-            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+
+            if (scaleMinimum.HasValue) {
+                instance.scaleMinimum = scaleMinimum;
+            }
+            else if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                 string subtype = "";
 
                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))

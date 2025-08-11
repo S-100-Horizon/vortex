@@ -128,6 +128,7 @@ namespace S100Framework.Applications
             _converterRegistry.Register<CulturalFeaturesP, WindTurbine>(Converters.CreateWindturbine);
             _converterRegistry.Register<PortsAndServicesP, SignalStationTraffic>(Converters.CreateSignalStationTraffic);
             _converterRegistry.Register<AidsToNavigationP, RadioStation>(Converters.CreateRadioStation);
+            _converterRegistry.Register<AidsToNavigationP, Retroreflector>(Converters.CreateRetroreflector);
 
             using (Geodatabase source = createGeodatabase()) {
 

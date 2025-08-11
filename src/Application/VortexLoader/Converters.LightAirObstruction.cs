@@ -83,7 +83,10 @@ namespace S100Framework.Applications
             // todo: mean sea level til baltic.
             instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
 
-            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+            if (scaleMinimum.HasValue) {
+                instance.scaleMinimum = scaleMinimum;
+            }
+            else if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                 string subtype = "";
 
                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))

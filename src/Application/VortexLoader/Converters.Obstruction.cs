@@ -85,7 +85,10 @@ namespace S100Framework.Applications
                 instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
             }
 
-            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+            if (scaleMinimum.HasValue) {
+                instance.scaleMinimum = scaleMinimum;
+            }
+            else if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                 string subtype = "";
 
                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))

@@ -204,7 +204,7 @@ namespace S100Framework.Applications
 
 
                     if (relatedObject.S57Object != null && relatedObject.S101Type != null) {
-                        var instance = ImporterNIS._converterRegistry.Convert(relatedObject.S57Object, relatedObject.S101Type);
+                        var instance = ImporterNIS._converterRegistry.Convert(relatedObject.S57Object, relatedObject.S101Type,scaleMinimum);
 
                         if (instance == null)
                             return;
@@ -303,7 +303,7 @@ namespace S100Framework.Applications
 
 
                 if (relatedObject.S57Object != null && relatedObject.S101Type != null) {
-                    var instance = ImporterNIS._converterRegistry.Convert(relatedObject.S57Object, relatedObject.S101Type);
+                    var instance = ImporterNIS._converterRegistry.Convert(relatedObject.S57Object, relatedObject.S101Type, scaleMinimum);
 
                     if (instance == null) {
                         return;

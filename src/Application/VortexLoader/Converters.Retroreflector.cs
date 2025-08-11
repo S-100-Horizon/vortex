@@ -9,7 +9,7 @@ namespace S100Framework.Applications
 {
     internal static partial class Converters
     {
-        internal static Retroreflector CreateRetroreflector(AidsToNavigationP current, Geodatabase source) {
+        internal static Retroreflector CreateRetroreflector(AidsToNavigationP current, int? scaleMinimum, Geodatabase source) {
             var instance = new Retroreflector();
 
             if (current.COLOUR != default) {
@@ -40,7 +40,10 @@ namespace S100Framework.Applications
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
             }
 
-            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+            if (scaleMinimum.HasValue) {
+                instance.scaleMinimum = scaleMinimum;
+            }
+            else if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                 string subtype = "";
 
                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
