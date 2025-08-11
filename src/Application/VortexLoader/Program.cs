@@ -238,9 +238,9 @@ namespace S100Framework.Applications
                 // Set Usageband
                 var match = Regex.Match(dataset.CellName, @"DK(\d)");
 
-                if (match.Success) 
+                if (match.Success)
                     rowbuffer["usageband"] = match.Groups[1].Value[0];
-                
+
                 rowbuffer["ps"] = productSpecification;
                 rowbuffer["code"] = feature.Name;
                 rowbuffer["json"] = json;
@@ -331,6 +331,8 @@ namespace S100Framework.Applications
             }
 
             var members = dataset!.Members().ToArray();
+
+            var lookupDict = new Dictionary<string, Geometry>();
             foreach (var m in members) {
                 if (m is S100Framework.GML.Dataset.InformationType informationType) {
                     var value = informationType.Value;
@@ -349,17 +351,14 @@ namespace S100Framework.Applications
                 if (m is S100Framework.GML.Dataset.FeatureType featureType) {
                     var value = featureType.Value;
 
-                    Console.WriteLine($"FeatureType: {value.GetType().Name}");
+                    var (type, geometry) = featureType.Shape(lookupDict);
+                    
 
-                    var geometry = ((S100Framework.GML.Dataset.FeatureType)m).Shape();
-                    if (geometry is null)
-                        continue;
-
-                    var rowbuffer = geometry switch {
-                        MapPoint => bufferPoint,
-                        Multipoint => bufferPointSet,
-                        Polyline => bufferCurve,
-                        Polygon => bufferSurface,
+                    var rowbuffer = type switch {
+                        GeometryType.Point => bufferPoint,
+                        GeometryType.Multipoint => bufferPoint,
+                        GeometryType.Polyline => bufferCurve,
+                        GeometryType.Polygon => bufferSurface,
                         _ => throw new NotImplementedException(),
                     };
 
@@ -369,27 +368,29 @@ namespace S100Framework.Applications
                     rowbuffer["code"] = value.GetType().Name;
                     rowbuffer["json"] = json;
 
-                    if (geometry is MapPoint) {
-                        var point = (MapPoint)geometry;
-
+                    if (geometry is MapPoint point) {
                         if (point.HasZ == false)
-                            bufferPoint["shape"] = MapPointBuilderEx.CreateMapPoint(((MapPoint)geometry).X, ((MapPoint)geometry).Y, 0.00, geometry.SpatialReference);
+                            bufferPoint["shape"] = MapPointBuilderEx.CreateMapPoint(point.X, point.Y, 0.00, geometry.SpatialReference);
                         else
-                            bufferPoint["shape"] = geometry;
+                            bufferPoint["shape"] = point;
 
                         using var row = fcPoint.CreateRow(bufferPoint);
                     }
-                    if (geometry is Multipoint) {
-                        bufferPointSet["shape"] = geometry;
+                    else if (geometry is Multipoint multipoint) {
+                        bufferPointSet["shape"] = multipoint;
                         using var row = fcPointSet.CreateRow(bufferPointSet);
                     }
-                    if (geometry is Polyline) {
-                        bufferCurve["shape"] = geometry;
+                    else if (geometry is Polyline curve) {
+                        bufferCurve["shape"] = curve;
                         using var row = fcCurve.CreateRow(bufferCurve);
                     }
-                    if (geometry is Polygon) {
-                        bufferSurface["shape"] = geometry;
+                    else if (geometry is Polygon polygon) {
+                        bufferSurface["shape"] = polygon;
                         using var row = fcSurface.CreateRow(bufferSurface);
+                    }
+                    else if(geometry is null) {
+                        //Log.Error("Geometry for feature {name} is null.", featureType.Identifier);
+                        continue;
                     }
                 }
             }
