@@ -10,7 +10,7 @@ namespace S100Framework.Applications
 {
     internal static partial class Converters
     {
-        internal static RadarTransponderBeacon CreateRadarTransponderBeacon(AidsToNavigationP current, Geodatabase source) {
+        internal static RadarTransponderBeacon CreateRadarTransponderBeacon(AidsToNavigationP current, int? scaleMinimum, Geodatabase source) {
             var instance = new RadarTransponderBeacon {
                 categoryOfRadarTransponderBeacon = default,
             };

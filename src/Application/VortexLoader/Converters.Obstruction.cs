@@ -9,7 +9,7 @@ namespace S100Framework.Applications
     internal static partial class Converters
     {
 
-        internal static Obstruction CreateObstruction(DangersP current, Geodatabase source) {
+        internal static Obstruction CreateObstruction(DangersP current, int? scaleMinimum, Geodatabase source) {
 
             var instance = new Obstruction {
                 surroundingDepth = default,
@@ -93,9 +93,6 @@ namespace S100Framework.Applications
 
                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
             }
-
-
-
 
             return instance;
         }

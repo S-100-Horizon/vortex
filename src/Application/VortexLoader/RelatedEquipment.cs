@@ -142,7 +142,7 @@ namespace S100Framework.Applications
             throw new NotImplementedException();
         }
 
-        internal void CreateRelatedAreaEquipment(S57Object s57master, FeatureNode s101master, Feature s101MasterFeature) {
+        internal void CreateRelatedAreaEquipment(S57Object s57master, FeatureNode s101master, Feature s101MasterFeature, int? scaleMinimum) {
             var areaRelated = FeatureRelations.Instance.GetRelated(s57master.GlobalId);
 
             var tableName = _target.GetName("point");
@@ -168,7 +168,7 @@ namespace S100Framework.Applications
 
                 // Sectoredlights
                 if (relatedLightSectored.Count > 0) {
-                    var lightSectored = Converters.CreateLightSectored(relatedLightSectored, _source);
+                    var lightSectored = Converters.CreateLightSectored(relatedLightSectored, scaleMinimum, _source);
 
                     buffer["ps"] = ImporterNIS.ps101;
                     buffer["code"] = lightSectored.GetType().Name;
@@ -241,7 +241,7 @@ namespace S100Framework.Applications
         }
 
         // S57Object s57master, FeatureNode s101master, Feature s101MasterFeature
-        internal void CreateRelatedPointEquipment(S57Object s57master, FeatureNode s101master, Feature s101MasterFeature) {
+        internal void CreateRelatedPointEquipment(S57Object s57master, FeatureNode s101master, Feature s101MasterFeature, int? scaleMinimum) {
 
             var key = (s57master.TableName.ToLower(), s57master.FcSubtype.Value, s57master.GlobalId);
             if (_converted.Contains(key)) {
@@ -268,7 +268,7 @@ namespace S100Framework.Applications
             // IF SECTORED LIGHTS
             var related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightSectored), s57master.GlobalId);
             if (related.Count > 0) {
-                var instance = ImporterNIS._converterRegistry.Convert(s57master, typeof(LightSectored));
+                var instance = ImporterNIS._converterRegistry.Convert(s57master, typeof(LightSectored), scaleMinimum);
 
                 buffer["ps"] = ImporterNIS.ps101;
                 buffer["code"] = instance.GetType().Name;

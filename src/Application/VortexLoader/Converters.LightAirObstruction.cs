@@ -29,7 +29,7 @@ namespace S100Framework.Applications
 			"C:\Program Files\s100compiler\s100compiler.exe" -C 101DK40545E -d C:\Temp\s100\results -f C:\Temp\101DK40545E.yaml -c C:\Temp\s100\FeatureCatalogue.xml
 		*/
 
-        internal static LightAirObstruction CreateLightAirObstruction(AidsToNavigationP current, Geodatabase source) {
+        internal static LightAirObstruction CreateLightAirObstruction(AidsToNavigationP current, int? scaleMinimum, Geodatabase source) {
             var instance = new LightAirObstruction();
 
             if (current.COLOUR != default) {

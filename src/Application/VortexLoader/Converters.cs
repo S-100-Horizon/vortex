@@ -7,33 +7,33 @@ namespace VortexLoader
     public class ConverterRegistry
     {
         // The extra object is an additional parameter to the converter
-        private readonly Dictionary<(Type from, Type to), Func<object, Geodatabase, object>> _converters = new();
+        private readonly Dictionary<(Type from, Type to), Func<object, int?, Geodatabase, object>> _converters = new();
 
-        public void Register<TFrom, TTo>(Func<TFrom, Geodatabase, TTo> converter) {
+        public void Register<TFrom, TTo>(Func<TFrom, int?, Geodatabase, TTo> converter) {
             if (converter == null) {
                 throw new ArgumentNullException(nameof(converter));
             }
 
-            _converters[(typeof(TFrom), typeof(TTo))] = (input, extra) => converter((TFrom)input, extra);
+            _converters[(typeof(TFrom), typeof(TTo))] = (input, scaleMinimum,  geodatabase) => converter((TFrom)input, scaleMinimum, geodatabase);
         }
 
 
-        public TOut Convert<TOut>(object value, Geodatabase geodatabase = null) {
+        public TOut Convert<TOut>(object value, int? scaleMinimum = default(int?), Geodatabase geodatabase = null) {
             var fromType = value.GetType();
             var toType = typeof(TOut);
 
             if (_converters.TryGetValue((fromType, toType), out var converter)) {
-                return (TOut)converter(value, geodatabase);
+                return (TOut)converter(value, scaleMinimum, geodatabase);
             }
 
             throw new InvalidOperationException($"No converter registered from {fromType.Name} to {toType.Name}");
         }
 
-        public object Convert(object value, Type toType, Geodatabase geodatabase = null) {
+        public object Convert(object value, Type toType, int? scaleMinimum = default(int?), Geodatabase geodatabase = null) {
             var fromType = value.GetType();
 
             if (_converters.TryGetValue((fromType, toType), out var converter)) {
-                return converter(value, geodatabase);
+                return converter(value, scaleMinimum, geodatabase);
             }
 
             //return null;

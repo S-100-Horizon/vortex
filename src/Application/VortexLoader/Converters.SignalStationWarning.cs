@@ -9,7 +9,7 @@ namespace S100Framework.Applications
     internal static partial class Converters
     {
 
-        internal static SignalStationWarning CreateSignalStationWarning(PortsAndServicesP current, Geodatabase source) {
+        internal static SignalStationWarning CreateSignalStationWarning(PortsAndServicesP current, int? scaleMinimum, Geodatabase source) {
 
             var instance = new SignalStationWarning();
 

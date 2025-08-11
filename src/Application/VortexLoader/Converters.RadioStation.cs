@@ -9,7 +9,7 @@ namespace S100Framework.Applications
 {
     internal static partial class Converters
     {
-        internal static RadioStation CreateRadioStation(AidsToNavigationP current, Geodatabase source) {
+        internal static RadioStation CreateRadioStation(AidsToNavigationP current, int? scaleMinimum, Geodatabase source) {
             var instance = new RadioStation();
 
             if (current.CALSGN != default) {

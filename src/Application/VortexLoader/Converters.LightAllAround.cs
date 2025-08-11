@@ -10,7 +10,7 @@ namespace S100Framework.Applications
     internal static partial class Converters
     {
 
-        internal static LightAllAround CreateLightAllAround(AidsToNavigationP current, Geodatabase source) {
+        internal static LightAllAround CreateLightAllAround(AidsToNavigationP current, int? scaleMinimum, Geodatabase source) {
             var instance = new LightAllAround {
                 rhythmOfLight = default,
             };

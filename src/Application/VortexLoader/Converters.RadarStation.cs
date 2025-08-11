@@ -9,7 +9,7 @@ namespace S100Framework.Applications
 {
     internal static partial class Converters
     {
-        internal static RadarStation CreateRadarStation(AidsToNavigationP current, Geodatabase source) {
+        internal static RadarStation CreateRadarStation(AidsToNavigationP current, int? scaleMinimum, Geodatabase source) {
             var instance = new RadarStation();
 
             if (current.CALSGN != default) {

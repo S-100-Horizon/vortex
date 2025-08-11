@@ -7,7 +7,7 @@ namespace S100Framework.Applications
 {
     internal static partial class Converters
     {
-        internal static SignalStationTraffic CreateSignalStationTraffic(PortsAndServicesP current, Geodatabase source) {
+        internal static SignalStationTraffic CreateSignalStationTraffic(PortsAndServicesP current, int? scaleMinimum, Geodatabase source) {
 
             var instance = new SignalStationTraffic();
             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {

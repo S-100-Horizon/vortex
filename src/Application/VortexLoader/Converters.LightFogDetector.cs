@@ -8,7 +8,7 @@ namespace S100Framework.Applications
 {
     internal static partial class Converters
     {
-        internal static LightFogDetector CreateLightFogDetector(AidsToNavigationP current, Geodatabase source) {
+        internal static LightFogDetector CreateLightFogDetector(AidsToNavigationP current, int? scaleMinimum, Geodatabase source) {
             var instance = new LightFogDetector();
 
             if (current.COLOUR != default) {

@@ -9,7 +9,7 @@ namespace S100Framework.Applications
     internal static partial class Converters
     {
 
-        internal static Daymark CreateDaymark(AidsToNavigationP current, Geodatabase source) {
+        internal static Daymark CreateDaymark(AidsToNavigationP current, int? scaleMinimum, Geodatabase source) {
             var instance = new Daymark {
                 topmarkDaymarkShape = default,
             };

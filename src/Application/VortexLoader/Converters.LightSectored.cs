@@ -10,7 +10,7 @@ namespace S100Framework.Applications
     internal static partial class Converters
     {
 
-        internal static LightSectored CreateLightSectored(IList<PltsSlave> slaves, Geodatabase source) {
+        internal static LightSectored CreateLightSectored(IList<PltsSlave> slaves, int? scaleMinimum, Geodatabase source) {
             var instance = new LightSectored();
 
             var lights = new List<AidsToNavigationP>();
@@ -101,7 +101,7 @@ namespace S100Framework.Applications
 
 
 
-        internal static LightSectored CreateLightSectored(S57Object structure, Geodatabase source) {
+        internal static LightSectored CreateLightSectored(S57Object structure, int? scaleMinimum, Geodatabase source) {
             var instance = new LightSectored();
 
             var lights = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightSectored), structure.GlobalId);

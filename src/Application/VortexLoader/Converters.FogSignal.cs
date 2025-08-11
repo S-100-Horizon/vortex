@@ -8,7 +8,7 @@ namespace S100Framework.Applications
 {
     internal static partial class Converters
     {
-        internal static FogSignal CreateFogSignal(S57Object structure, Geodatabase source) {
+        internal static FogSignal CreateFogSignal(S57Object structure, int? scaleMinimum, Geodatabase source) {
 
             var instance = new FogSignal {
                 categoryOfFogSignal = default,

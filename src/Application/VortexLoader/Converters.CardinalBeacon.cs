@@ -8,7 +8,7 @@ namespace S100Framework.Applications
 {
     internal static partial class Converters
     {
-        internal static CardinalBeacon CreateCardinalBeacon(AidsToNavigationP current, Geodatabase source) {
+        internal static CardinalBeacon CreateCardinalBeacon(AidsToNavigationP current, int? scaleMinimum, Geodatabase source) {
             var instance = new CardinalBeacon {
                 beaconShape = default,
                 categoryOfCardinalMark = default,
