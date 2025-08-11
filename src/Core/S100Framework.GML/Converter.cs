@@ -286,12 +286,13 @@ namespace S100Framework.GML
                         break;
 
                     default:
-                        System.Diagnostics.Debugger.Break(); break;
+                        //System.Diagnostics.Debugger.Break();
+                        break;
                 }
             }
             catch (Exception ex) {
                 // Never dont stop!
-                System.Diagnostics.Debugger.Break();
+                //System.Diagnostics.Debugger.Break();
             }
         }
     }

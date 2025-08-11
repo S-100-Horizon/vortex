@@ -67,7 +67,6 @@ namespace S100Framework.GML
             }
 
             public string Identifier => _element.Attribute(XName.Get("id", _element.GetNamespaceOfPrefix("gml")!.NamespaceName))!.Value;
-
             public object Value {
                 get {
                     var type = _featureCatalogue.Assembly!.GetType($"{_featureCatalogue.DefaultNamespace}.FeatureTypes.{_element.Name.LocalName}")!;
@@ -77,8 +76,8 @@ namespace S100Framework.GML
                     return deserialized;
                 }
             }
-
-            public XElement? Geometry => _element.Element(XName.Get("geometry", _namespace.NamespaceName))!;
+           
+            public XElement? Geometry => _element.Elements().FirstOrDefault(e => e.Name.LocalName == "geometry");
         }
 
         public static Dataset Load(string uri) {
