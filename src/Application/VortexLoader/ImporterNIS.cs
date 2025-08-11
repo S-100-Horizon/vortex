@@ -303,12 +303,13 @@ namespace S100Framework.Applications
                 Logger.Current.Information($"Loading sanity checker");
                 SanityChecker.Initialize(destination);
 
-                if (SanityChecker.Instance.Check_GetUsageBandErrorCount() == 0) {
-                    Logger.Current.Information("Drawing index check PASSED");
-                }
-                else {
-                    Logger.Current.Error("Drawing index check FAILED. Check for missing drawing indexes in data.");
-                }
+                string status = null;
+
+                status = SanityChecker.Instance.Check_GetUsageBandErrorCount() == 0 ? "PASSED" : "FAILED";
+                Logger.Current.Information($"No Empty drawing index in S-101: {status}");
+
+                status = SanityChecker.Instance.Check_GetEsriUnknown32767ErrorCount() == 0 ? "PASSED" : "FAILED";
+                Logger.Current.Information($"No ESRI unknown values (-31767) in S-101: {status}");
 
                 Logger.Current.Information("Done");
                 return true;
