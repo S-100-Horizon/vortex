@@ -285,20 +285,62 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 15: { // DYKCON_Dyke
-                            var instance = new Dyke() {
-                            };
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
+                            var instance = new Dyke(); var instance = new Dyke();
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
-
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.NATCON != default) {
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                            }
+
+                            if (current.CONRAD.HasValue) {
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
+                            }
+
+                            if (current.SORDAT != default) {
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                    instance.reportedDate = current.SORDAT;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
+                            if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
+                                instance.verticalLength = current.VERLEN.Value;
+                            }
+                            else {
+                                instance.verticalLength = default(decimal?);
+                            }
+
+                            if (current.CONVIS.HasValue) {
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
+
                             AddInformation(instance.information, feature);
+
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
