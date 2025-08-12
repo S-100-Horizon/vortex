@@ -77,7 +77,7 @@ namespace TestNauticalProducts
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Framework.Settings.NauticalProducts {
                     Connections = [new Connection("S-101", new Uri(IO.Path.GetFullPath("s101.gdb")))],
                 });
-                table.CreateRow(buffer).Store();
+                table.CreateRow(buffer);
             }
 
             var productManager = await S100Framework.NauticalProducts.ProductManager.CreateInstanceAsync(() => {
@@ -105,7 +105,20 @@ namespace TestNauticalProducts
             var productManager = await S100Framework.NauticalProducts.ProductManager.CreateInstanceAsync(() => {
                 var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s128ed7.gdb")));
 
-                return new Geodatabase(connectionFile);
+                var geodatabase = new Geodatabase(connectionFile);
+
+                using (var table = geodatabase.OpenDataset<Table>("configuration")) {
+
+                    using var buffer = table.CreateRowBuffer();
+                    buffer["ps"] = "S-128";
+                    buffer["code"] = nameof(S100Framework.Settings.NauticalProducts);
+                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Framework.Settings.NauticalProducts {
+                        Connections = [new Connection("S-101", new Uri(IO.Path.GetFullPath(Environment.GetEnvironmentVariable("S100-Horizon-S101-Database")!)))],
+                    });
+                    table.CreateRow(buffer);                   
+                }
+
+                return geodatabase;
             });
             Assert.NotNull(productManager);
 
@@ -167,12 +180,36 @@ namespace TestNauticalProducts
 
                         var cover = (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons);
 
-                        tasks.Add(productManager.NauticalProductManager.CreateElectronicProductAsync(name, specificUsage, cover));
+                        tasks.Add(productManager.ElectronicProductManager.CreateElectronicProductAsync(name, specificUsage, cover));
                     }
 
                     Task.WaitAll([.. tasks]);
                 }
             });
+        }
+
+        [Fact]
+        public async Task Test_Export() {
+            var s101 = Environment.GetEnvironmentVariable("S100-Horizon-S101-Database");
+            Assert.False(string.IsNullOrEmpty(s101));
+
+            FastZip fastZip = new();
+
+            var zipFileS128 = new IO.DirectoryInfo(@"s128ed7.gdb");
+
+            if (zipFileS128.Exists) {
+                zipFileS128.Delete(true);
+            }
+            fastZip.ExtractZip("s128ed7.gdb.zip", zipFileS128.FullName, null);
+
+            var productManager = await S100Framework.NauticalProducts.ProductManager.CreateInstanceAsync(() => {
+                var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s128ed7.gdb")));
+
+                return new Geodatabase(connectionFile);
+            });
+            Assert.NotNull(productManager);
+
+            await productManager.ElectronicProductManager.CreateNewEditionAsync("S-101", "101DK0040347E");
         }
     }
 }

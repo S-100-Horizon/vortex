@@ -1,11 +1,12 @@
-﻿using System.Collections.Concurrent;
+﻿using S100Framework.YAML;
+using System.Collections.Concurrent;
 using System.Globalization;
 using System.Xml;
 using System.Xml.Linq;
 
 namespace ArcGIS.Core.Geometry
 {
-    public static class GeometryExtension
+    public static class GeometryExtensions
     {
         private static ConcurrentDictionary<int, SpatialReference> _spatialReferences = new();
 
@@ -126,6 +127,39 @@ namespace ArcGIS.Core.Geometry
             throw new NotImplementedException();
         }
 
+        public static void AddGeometry(this Dataset dataset, ArcGIS.Core.Geometry.Geometry geometry, string name) {
+            switch (geometry) {
+                case ArcGIS.Core.Geometry.MapPoint point: {                              // Point
+                        var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Coordinate?.X == point.X && e?.Coordinate?.Y == point.Y);
+                        // Create point if not exist
+                        if (datasetPoint == default) {
+                            var p = new Point(point.X, point.Y) {
+                                Name = $"{name}"
+                            };
+
+                            dataset?.AddPoint(p);
+                        }
+                        else {
+                            dataset?.UpdateFeatureReferences(name, datasetPoint.Name!);
+                        }
+                        break;
+                    }
+                case ArcGIS.Core.Geometry.Multipoint multiPoint: {   // Depths
+                        var points = multiPoint.Points.Select(e => new Coordinate(e.X, e.Y)).ToArray();
+
+                        var depths = multiPoint.Points.Select(e => Math.Round(e.Z, 7)).ToArray();
+
+                        var pointSet = new PointSet(points, depths) { Name = name };
+                        dataset.AddPointSet(pointSet);
+                        break;
+                    }
+                case ArcGIS.Core.Geometry.Polyline polyline:        // Curves are handled in Topology
+                case ArcGIS.Core.Geometry.Polygon polygon:          // Surfaces are handled in Topology
+                    break;
+                default:
+                    throw new ArgumentException($"Unsupported geometry type: {geometry.GeometryType}");
+            }
+        }
         private static Polyline ReadLinearRing(XmlReader reader, SpatialReference spatialReference) {
             while (reader.Read()) {
                 if (reader.NodeType == System.Xml.XmlNodeType.Element) {

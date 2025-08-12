@@ -4,7 +4,7 @@ using NetTopologySuite.Operation.Linemerge;
 using System.Collections.Concurrent;
 using IO = System.IO;
 
-namespace S100Framework.YAML
+namespace S100Framework.Topology
 {
     public class FeatureRef
     {
@@ -141,17 +141,17 @@ namespace S100Framework.YAML
         }
     }
 
-    public interface iTopologyBuilder
+    public interface ITopologyBuilder
     {
-        iTopologyBuilder AddTopologyFeatures(ICollection<S100Framework.YAML.Polygon> surfaces, ICollection<S100Framework.YAML.Polyline> curves);
-        iTopologyBuilder AddNavigationalFeatures(ICollection<S100Framework.YAML.Polygon> surfaces, ICollection<S100Framework.YAML.Polyline> curves);
+        ITopologyBuilder AddTopologyFeatures(ICollection<S100Framework.Topology.Polygon> surfaces, ICollection<S100Framework.Topology.Polyline> curves);
+        ITopologyBuilder AddNavigationalFeatures(ICollection<S100Framework.Topology.Polygon> surfaces, ICollection<S100Framework.Topology.Polyline> curves);
 
-        iTopologyBuilder AddSingletonFeatures(ICollection<S100Framework.YAML.Polyline> curves);
+        ITopologyBuilder AddSingletonFeatures(ICollection<S100Framework.Topology.Polyline> curves);
 
-        iMatrix BuildTopology();
+        IMatrix BuildTopology();
     }
 
-    public interface iMatrix
+    public interface IMatrix
     {
         IEnumerable<CurveFeature> Curves { get; }
 
@@ -162,7 +162,7 @@ namespace S100Framework.YAML
         IDictionary<string, string> Mapping { get; }
     }
 
-    public class Matrix : iTopologyBuilder, iMatrix
+    public class Matrix : ITopologyBuilder, IMatrix
     {
         public static ParallelOptions ParallelOptions { get; set; } = new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount > 8 ? 8 : Environment.ProcessorCount };
 
@@ -184,20 +184,20 @@ namespace S100Framework.YAML
 
         private IDictionary<string, List<LineString>> _featureToEdges;
 
-        private ICollection<S100Framework.YAML.Polygon> _surfacesTopology;
-        private ICollection<S100Framework.YAML.Polyline> _curvesTopology;
+        private ICollection<S100Framework.Topology.Polygon> _surfacesTopology;
+        private ICollection<S100Framework.Topology.Polyline> _curvesTopology;
 
-        private ICollection<S100Framework.YAML.Polygon> _surfacesNavigational;
-        private ICollection<S100Framework.YAML.Polyline> _curvesNavigational;
+        private ICollection<S100Framework.Topology.Polygon> _surfacesNavigational;
+        private ICollection<S100Framework.Topology.Polyline> _curvesNavigational;
 
-        private ICollection<S100Framework.YAML.Polyline> _curvesSingleton;
+        private ICollection<S100Framework.Topology.Polyline> _curvesSingleton;
 
         private ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)> _hashing = new ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
 
         //private CurveContainer _curveContainer = new CurveContainer();
         private CompositeCurveContainer _compositeCurveContainer = new CompositeCurveContainer();
 
-        public static iTopologyBuilder CreateMatrix(Action<ICollection<LineString>>? interceptor = default) {
+        public static ITopologyBuilder CreateMatrix(Action<ICollection<LineString>>? interceptor = default) {
             return new Matrix() {
                 _interceptor = interceptor,
             };
@@ -210,7 +210,7 @@ namespace S100Framework.YAML
             return lineString;
         }
 
-        private static ICollection<S100Framework.YAML.Polygon> MakePrecise(ICollection<S100Framework.YAML.Polygon> surfaces) {
+        private static ICollection<S100Framework.Topology.Polygon> MakePrecise(ICollection<S100Framework.Topology.Polygon> surfaces) {
             foreach (var p in surfaces) {
                 MakePrecise(p.ExteriorRing);
 
@@ -220,36 +220,36 @@ namespace S100Framework.YAML
             return surfaces;
         }
 
-        private static ICollection<S100Framework.YAML.Polyline> MakePrecise(ICollection<S100Framework.YAML.Polyline> curves) {
+        private static ICollection<S100Framework.Topology.Polyline> MakePrecise(ICollection<S100Framework.Topology.Polyline> curves) {
             foreach (var c in curves) {
                 MakePrecise(c.LineString);
             }
             return curves;
         }
 
-        iTopologyBuilder iTopologyBuilder.AddTopologyFeatures(ICollection<S100Framework.YAML.Polygon> surfaces, ICollection<S100Framework.YAML.Polyline> curves) {
+        ITopologyBuilder ITopologyBuilder.AddTopologyFeatures(ICollection<S100Framework.Topology.Polygon> surfaces, ICollection<S100Framework.Topology.Polyline> curves) {
             this._surfacesTopology = MakePrecise(surfaces);
             this._curvesTopology = MakePrecise(curves);
 
-            return (iTopologyBuilder)this;
+            return (ITopologyBuilder)this;
         }
 
-        iTopologyBuilder iTopologyBuilder.AddNavigationalFeatures(ICollection<Polygon> surfaces, ICollection<S100Framework.YAML.Polyline> curves) {
+        ITopologyBuilder ITopologyBuilder.AddNavigationalFeatures(ICollection<Polygon> surfaces, ICollection<S100Framework.Topology.Polyline> curves) {
             this._surfacesNavigational = MakePrecise(surfaces);
             this._curvesNavigational = MakePrecise(curves);
 
-            return (iTopologyBuilder)this;
+            return (ITopologyBuilder)this;
         }
 
-        iTopologyBuilder iTopologyBuilder.AddSingletonFeatures(ICollection<Polyline> curves) {
+        ITopologyBuilder ITopologyBuilder.AddSingletonFeatures(ICollection<Polyline> curves) {
             this._curvesSingleton = MakePrecise(curves);
 
-            return (iTopologyBuilder)this;
+            return (ITopologyBuilder)this;
         }
 
-        iMatrix iTopologyBuilder.BuildTopology() {
-            IEnumerable<S100Framework.YAML.Polygon> surfaces = Enumerable.Empty<S100Framework.YAML.Polygon>();
-            IEnumerable<S100Framework.YAML.Polyline> curves = Enumerable.Empty<S100Framework.YAML.Polyline>();
+        IMatrix ITopologyBuilder.BuildTopology() {
+            IEnumerable<S100Framework.Topology.Polygon> surfaces = Enumerable.Empty<S100Framework.Topology.Polygon>();
+            IEnumerable<S100Framework.Topology.Polyline> curves = Enumerable.Empty<S100Framework.Topology.Polyline>();
 
             if (this._surfacesTopology.Any() || this._curvesTopology.Any()) {
                 surfaces = surfaces.UnionBy(this._surfacesTopology, e => e.Name);
@@ -528,7 +528,7 @@ namespace S100Framework.YAML
             return this;
         }
 
-        private void BuildSharedEdges(ICollection<S100Framework.YAML.Polygon> surfaces, ICollection<S100Framework.YAML.Polyline> curves) {
+        private void BuildSharedEdges(ICollection<S100Framework.Topology.Polygon> surfaces, ICollection<S100Framework.Topology.Polyline> curves) {
             var minimalEdges = new HashSet<Edge>();
 
             var edgeToFeatureMap = new Dictionary<Edge, List<string>>();
@@ -600,14 +600,14 @@ namespace S100Framework.YAML
             });
         }
 
-        IEnumerable<CurveFeature> iMatrix.Curves => this._hashing.Select(e => e.Value.curve).DistinctBy(e => e.Id);
+        IEnumerable<CurveFeature> IMatrix.Curves => this._hashing.Select(e => e.Value.curve).DistinctBy(e => e.Id);
         //IEnumerable<CurveFeature> iMatrix.Curves => this._curveContainer.CurveFeatures; //this._hashing.Select(e => e.Value.curve).DistinctBy(e => e.Id);
 
-        IEnumerable<CompositeCurveFeature> iMatrix.CompositeCurves => this._compositeCurveContainer.CompositeCurveFeatures; // this._bagCompositeCurves.Values;
+        IEnumerable<CompositeCurveFeature> IMatrix.CompositeCurves => this._compositeCurveContainer.CompositeCurveFeatures; // this._bagCompositeCurves.Values;
 
-        IEnumerable<SurfaceFeature> iMatrix.Surfaces => this._bagSurfaces;
+        IEnumerable<SurfaceFeature> IMatrix.Surfaces => this._bagSurfaces;
 
-        IDictionary<string, string> iMatrix.Mapping => this._mapping;
+        IDictionary<string, string> IMatrix.Mapping => this._mapping;
 
 
         private class Edge : IEquatable<Edge>
@@ -680,28 +680,4 @@ namespace S100Framework.YAML
     }
 }
 
-namespace GeoAPI.Geometries
-{
-    using NetTopologySuite.Geometries;
-
-    public static class Extension
-    {
-        public static LineString RemoveRepeatedVertices(this LineString lineString) {
-            var coordinates = lineString.Coordinates.RemoveRepeatedVertices();
-            if (coordinates.Length != lineString.Count)
-                return (LineString)lineString.Factory.CreateLineString(coordinates.ToArray());
-            return lineString;
-        }
-
-        public static Coordinate[] RemoveRepeatedVertices(this Coordinate[] coordinates) {
-            var _ = new List<Coordinate> { coordinates[0] };
-
-            for (int i = 1; i < coordinates.Length; i++) {
-                if (coordinates[i - 1].Equals(coordinates[i])) continue;
-                _.Add(coordinates[i]);
-            }
-            return _.ToArray();
-        }
-    }
-}
 
