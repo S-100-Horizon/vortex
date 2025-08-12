@@ -4398,6 +4398,10 @@ namespace S100Framework.DomainModel.S123 {
 	{
 		[XmlElement(Order = 1)]
 		public Members? members { get; set; } = default;
+
+		[JsonIgnore]
+		[XmlAttribute("schemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
+		public override string SchemaLocation { get; set; } = "http://www.iho.int/S123/1.1 123_1.1.0.xsd";
 	}
 
 	[XmlType(Namespace = "http://www.iho.int/S123/1.1", TypeName = "members")]
