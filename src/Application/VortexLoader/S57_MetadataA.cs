@@ -48,6 +48,8 @@ namespace S100Framework.Applications
                 if (current.PUBREF != default) {
                     //if (System.Diagnostics.Debugger.IsAttached)
                     //System.Diagnostics.Debugger.Break();
+
+
                 }
 
 
@@ -161,6 +163,9 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
+                            if (current.PUBREF != default) {
+                                ;
+                            }
 
                             if (current.SORDAT != default) {
                                 if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {

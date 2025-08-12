@@ -43,11 +43,13 @@ namespace S100Framework.Applications
             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
             if (dateRange != default) {
                 instance.fixedDateRange = dateRange;
-            }
-
-            if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value;
-            }
+            }                            
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                                instance.height = current.HEIGHT.Value;
+                            }
+                            else {
+                                instance.height = default(decimal?);
+                            }
 
             // TODO: interoperabilityidentifier
 

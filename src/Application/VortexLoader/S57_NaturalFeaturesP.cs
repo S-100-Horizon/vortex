@@ -317,10 +317,12 @@ namespace S100Framework.Applications
 
                             if (current.ELEVAT.HasValue) {
                                 instance.elevation = current.ELEVAT.Value;
-                            }
-
-                            if (current.HEIGHT.HasValue) {
+                            }                            
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
+                            }
+                            else {
+                                instance.height = default(decimal?);
                             }
 
                             if (current.VERLEN.HasValue) {

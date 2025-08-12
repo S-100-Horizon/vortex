@@ -121,10 +121,12 @@ namespace S100Framework.Applications
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
-                            }
-
-                            if (current.HEIGHT.HasValue) {
+                            }                            
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
+                            }
+                            else {
+                                instance.height = default(decimal?);
                             }
 
                             // TODO: interoperabilityidentifier
@@ -248,10 +250,12 @@ namespace S100Framework.Applications
                                 instance.fixedDateRange = dateRange;
                             }
 
-                            // TODO: interoperabilityidentifier
-
-                            if (current.HEIGHT.HasValue) {
+                            // TODO: interoperabilityidentifier                            
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
+                            }
+                            else {
+                                instance.height = default(decimal?);
                             }
 
                             if (current.MARSYS.HasValue) {
@@ -365,10 +369,12 @@ namespace S100Framework.Applications
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
-                            }
-
-                            if (current.HEIGHT.HasValue) {
+                            }                            
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
+                            }
+                            else {
+                                instance.height = default(decimal?);
                             }
 
                             // TODO: interoperabilityidentifier
@@ -488,10 +494,12 @@ namespace S100Framework.Applications
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
-                            }
-
-                            if (current.HEIGHT.HasValue) {
+                            }                            
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
+                            }
+                            else {
+                                instance.height = default(decimal?);
                             }
 
                             // TODO: interoperabilityidentifier
@@ -1516,10 +1524,12 @@ namespace S100Framework.Applications
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
-                            }
-
-                            if (current.HEIGHT.HasValue) {
+                            }                            
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
+                            }
+                            else {
+                                instance.height = default(decimal?);
                             }
 
                             // TODO: interoperabilityidentifier

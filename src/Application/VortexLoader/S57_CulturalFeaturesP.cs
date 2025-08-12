@@ -657,10 +657,12 @@ namespace S100Framework.Applications
 
                             if (current.FUNCTN != null) {
                                 instance.function = EnumHelper.GetEnumValues<function>(current.FUNCTN);
-                            }
-
-                            if (current.HEIGHT.HasValue) {
+                            }                            
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
+                            }
+                            else {
+                                instance.height = default(decimal?);
                             }
 
                             // TODO: interoperabilityIdentifier

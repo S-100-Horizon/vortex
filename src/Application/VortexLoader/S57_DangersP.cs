@@ -172,10 +172,10 @@ namespace S100Framework.Applications
                                     instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
                                 }
 
-                                if (current.VALSOU.HasValue) {
+                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
                                     instance.valueOfSounding = current.VALSOU.Value;
                                 }
-                                else if (current.VALSOU.HasValue && current.VALSOU.Value == -32767m) {
+                                else {
                                     instance.valueOfSounding = default(decimal?);
                                 }
 
@@ -308,10 +308,10 @@ namespace S100Framework.Applications
                                 instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
                             }
 
-                            if (current.VALSOU.HasValue) {
+                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
                                 instance.valueOfSounding = current.VALSOU.Value;
                             }
-                            else if (current.VALSOU.HasValue && current.VALSOU.Value == -32767m) {
+                            else {
                                 instance.valueOfSounding = default(decimal?);
                             }
 
@@ -419,10 +419,10 @@ namespace S100Framework.Applications
                                 waterLevelEffect = default,
                             };
 
-                            if (current.VALSOU.HasValue) {
+                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
                                 instance.valueOfSounding = current.VALSOU.Value;
                             }
-                            else if (current.VALSOU.HasValue && current.VALSOU.Value == -32767m) {
+                            else {
                                 instance.valueOfSounding = default(decimal?);
                             }
 
@@ -436,10 +436,12 @@ namespace S100Framework.Applications
                                 instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                            if (current.HEIGHT.HasValue) {
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);                            
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
+                            }
+                            else {
+                                instance.height = default(decimal?);
                             }
 
                             // TODO: interoperabilityIdentifier

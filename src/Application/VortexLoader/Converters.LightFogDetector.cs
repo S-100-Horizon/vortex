@@ -22,11 +22,13 @@ namespace S100Framework.Applications
                 instance.fixedDateRange = dateRange;
             }
 
-            // flareBearing is not populated. New field.
-
-            if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value;
-            }
+            // flareBearing is not populated. New field.                            
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                                instance.height = current.HEIGHT.Value;
+                            }
+                            else {
+                                instance.height = default(decimal?);
+                            }
 
             // DODO: Interoperability identifier
 
@@ -50,11 +52,13 @@ namespace S100Framework.Applications
 
             if (current.VERLEN.HasValue) {
                 instance.verticalLength = current.VERLEN.Value;
-            }
-
-            if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value;
-            }
+            }                            
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                                instance.height = current.HEIGHT.Value;
+                            }
+                            else {
+                                instance.height = default(decimal?);
+                            }
 
             if (scaleMinimum.HasValue) {
                 instance.scaleMinimum = scaleMinimum;

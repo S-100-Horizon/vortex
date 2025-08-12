@@ -68,9 +68,10 @@ namespace S100Framework.Applications
             }
 
 
-            if (current.VALSOU.HasValue) {
+            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
                 instance.valueOfSounding = current.VALSOU.Value;
-            } else if (current.VALSOU.HasValue && current.VALSOU.Value == -32767m) {
+            }
+            else {
                 instance.valueOfSounding = default(decimal?);
             }
 

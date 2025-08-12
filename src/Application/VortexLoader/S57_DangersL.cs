@@ -125,10 +125,10 @@ namespace S100Framework.Applications
                                 }
 
 
-                                if (current.VALSOU.HasValue) {
+                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
                                     instance.valueOfSounding = current.VALSOU.Value;
                                 }
-                                else if (current.VALSOU.HasValue && current.VALSOU.Value == -32767m) {
+                                else {
                                     instance.valueOfSounding = default(decimal?);
                                 }
 
@@ -188,11 +188,13 @@ namespace S100Framework.Applications
                                     instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
                                 }
 
-                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                                if (current.HEIGHT.HasValue) {
-                                    instance.height = current.HEIGHT.Value;
-                                }
+                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);                            
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                                instance.height = current.HEIGHT.Value;
+                            }
+                            else {
+                                instance.height = default(decimal?);
+                            }
 
                                 // DODO: Interoperability identifier
 
@@ -227,10 +229,10 @@ namespace S100Framework.Applications
                                 }
 
 
-                                if (current.VALSOU.HasValue) {
+                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
                                     instance.valueOfSounding = current.VALSOU.Value;
                                 }
-                                else if (current.VALSOU.HasValue && current.VALSOU.Value == -32767m) {
+                                else {
                                     instance.valueOfSounding = default(decimal?);
                                 }
 

@@ -212,6 +212,9 @@ namespace S100Framework.Applications
                     //filter.WhereClause = "globalid = '{1F1D8B58-4959-4202-80F5-6CA4DD47D209}'";
 
                     Logger.Current.Information($"Converting Sounding Datums");
+
+
+
                     Store(() => S57_CulturalFeaturesA(source, destination, filter));
 
                     Store(() => S101_SoundingDatum(source, destination, filter));
@@ -237,6 +240,11 @@ namespace S100Framework.Applications
                     Store(() => S57_TidesAndVariationsA(source, destination, filter));
                     Store(() => S57_TidesAndVariationsL(source, destination, filter));
                     Store(() => S57_TidesAndVariationsP(source, destination, filter));
+
+                    Logger.Current.Information($"Converting Areas And Limits");
+                    Store(() => S57_RegulatedAreasAndLimitsA(source, destination, filter));
+                    Store(() => S57_RegulatedAreasAndLimitsL(source, destination, filter));
+                    Store(() => S57_RegulatedAreasAndLimitsP(source, destination, filter));
 
                     Logger.Current.Information($"Converting Seabeds");
                     Store(() => S57_SeabedA(source, destination, filter));
@@ -284,10 +292,7 @@ namespace S100Framework.Applications
                     Logger.Current.Information($"Converting Product Coverages");
                     Store(() => S57_ProductCoverage(source, destination, filter));
 
-                    Logger.Current.Information($"Converting Areas And Limits");
-                    Store(() => S57_RegulatedAreasAndLimitsA(source, destination, filter));
-                    Store(() => S57_RegulatedAreasAndLimitsL(source, destination, filter));
-                    Store(() => S57_RegulatedAreasAndLimitsP(source, destination, filter));
+
 
                     Logger.Current.Information($"Converting Tracks And Routes");
                     Store(() => S57_TracksAndRoutesA(source, destination, filter));
@@ -298,6 +303,7 @@ namespace S100Framework.Applications
                     Store(() => S57_AidsToNavigationP(source, destination, filter));
 
                     //Store(() => FeatureRelations.Instance.CreateRelations(destination));
+
                 }
 
 

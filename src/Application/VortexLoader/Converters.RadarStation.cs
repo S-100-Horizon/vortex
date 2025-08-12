@@ -24,11 +24,13 @@ namespace S100Framework.Applications
                 instance.communicationChannel = ImporterNIS.GetCommunicationChannel(current.COMCHA);
             }
 
-            instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-            if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value;
-            }
+            instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);                            
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                                instance.height = current.HEIGHT.Value;
+                            }
+                            else {
+                                instance.height = default(decimal?);
+                            }
 
             // TODO: interoperabilityidentifier
 

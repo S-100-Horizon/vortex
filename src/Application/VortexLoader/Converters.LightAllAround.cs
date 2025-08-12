@@ -34,11 +34,13 @@ namespace S100Framework.Applications
                 instance.fixedDateRange = dateRange;
             }
 
-            // flareBearing is not populated. New field.
-
-            if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value;
-            }
+            // flareBearing is not populated. New field.                            
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                                instance.height = current.HEIGHT.Value;
+                            }
+                            else {
+                                instance.height = default(decimal?);
+                            }
 
             // TODO: interoperabilityidentifier
 

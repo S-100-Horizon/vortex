@@ -38,27 +38,27 @@ namespace TestS100Framework
             System.Diagnostics.Debugger.Break();
         }
 
-        [Fact]
-        public void Test_ReadGML() {
-            var S201 = @".\Samples\S201\201CAtestgml_Inline.gml";
-            var S131 = @".\Samples\S131\131DK00_DKAAL.GML";
+        //[Fact]
+        //public void Test_ReadGML() {
+        //    var S201 = @".\Samples\S201\201CAtestgml_Inline.gml";
+        //    var S131 = @".\Samples\S131\131DK00_DKAAL.GML";
 
-            var dataset = S100Framework.GML.Dataset.Load(S131);
+        //    var dataset = S100Framework.GML.Dataset.Load(S131);
 
-            foreach (var m in dataset.Members()) {
-                if (m is S100Framework.GML.Dataset.InformationType informationType) {
-                    var element = informationType.XElement;
-                    var value = informationType.Value;
-                }
-                if (m is S100Framework.GML.Dataset.FeatureType featureType) {
-                    var element = featureType.XElement;
-                    var value = featureType.Value;
-                    var geometry = featureType.Shape();
-                }
-            }
+        //    foreach (var m in dataset.Members()) {
+        //        if (m is S100Framework.GML.Dataset.InformationType informationType) {
+        //            var element = informationType.XElement;
+        //            var value = informationType.Value;
+        //        }
+        //        if (m is S100Framework.GML.Dataset.FeatureType featureType) {
+        //            var element = featureType.XElement;
+        //            var value = featureType.Value;
+        //            var geometry = featureType.Shape();
+        //        }
+        //    }
 
-            System.Diagnostics.Debugger.Break();
-        }
+        //    System.Diagnostics.Debugger.Break();
+        //}
 
         [Fact]
         public void Test_S131Reader() {

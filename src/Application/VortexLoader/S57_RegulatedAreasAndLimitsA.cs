@@ -782,12 +782,13 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            if (current.VALSOU.HasValue) {
+                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
                                 instance.valueOfSounding = current.VALSOU.Value;
                             }
-                            else if (current.VALSOU.HasValue && current.VALSOU.Value == -32767m) {
+                            else {
                                 instance.valueOfSounding = default(decimal?);
                             }
+
 
                             if (current.VERLEN.HasValue) {
                                 instance.verticalLength = current.VERLEN.Value;

@@ -49,10 +49,12 @@ namespace S100Framework.Applications
 
             // flareBearing is not populated. New field.
 
-            // DODO: Interoperability identifier
-
-            if (current.HEIGHT.HasValue) {
+            // TODO: Interoperability identifier                            
+            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                 instance.height = current.HEIGHT.Value;
+            }
+            else {
+                instance.height = default(decimal?);
             }
 
             if (current.LITVIS != null) {

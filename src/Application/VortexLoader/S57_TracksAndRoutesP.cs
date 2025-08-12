@@ -56,12 +56,9 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-
-
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
-
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
@@ -96,13 +93,9 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-
-
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
-
-
 
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -128,11 +121,9 @@ namespace S100Framework.Applications
                                 trafficFlow = default,
                             };
 
-
                             if (current.TRAFIC.HasValue) {
                                 instance.trafficFlow = EnumHelper.GetEnumValue<trafficFlow>(current.TRAFIC.Value);
                             }
-
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -142,8 +133,6 @@ namespace S100Framework.Applications
 
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
-
-
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
