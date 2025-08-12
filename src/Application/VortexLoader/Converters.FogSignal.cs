@@ -47,6 +47,7 @@ namespace S100Framework.Applications
             if (current.SIGGRP != default) {
                 instance.signalGroup = current.SIGGRP;
             }
+
             if (current.SIGPER != default) {
                 instance.signalPeriod = current.SIGPER == -32767 ? null : current.SIGPER;
             }
