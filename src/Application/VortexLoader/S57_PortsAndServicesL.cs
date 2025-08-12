@@ -285,7 +285,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 15: { // DYKCON_Dyke
-                            var instance = new Dyke(); var instance = new Dyke();
+                            var instance = new Dyke(); 
+                            
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
