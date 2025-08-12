@@ -95,8 +95,8 @@ namespace S100Framework.Applications
                         break;
 
                     case 5: { // CBLOHD_CableOverhead
-                            var instance = new CableOverhead() {
-                            };
+                            var instance = new CableOverhead();
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -122,6 +122,9 @@ namespace S100Framework.Applications
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             AddInformation(instance.information, feature);
+
+
+
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
