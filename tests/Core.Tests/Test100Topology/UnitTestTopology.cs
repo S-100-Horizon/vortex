@@ -8,6 +8,8 @@ using System.Globalization;
 using System.Text.Json;
 using Xunit.Abstractions;
 using IO = System.IO;
+using S100Framework.Topology;
+using S100Framework.NauticalProducts;
 
 namespace Test100Topology
 {
@@ -77,7 +79,7 @@ namespace Test100Topology
             };
 
 
-            S100Framework.YAML.Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
+            S100Framework.Topology.Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
 
 
             var topology = geodatabase.BuildTopology(filter, (collection) => {
@@ -160,7 +162,7 @@ namespace Test100Topology
             };
 
 
-            S100Framework.YAML.Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
+            S100Framework.Topology.Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
 
 
             var topology = geodatabase.BuildTopology(filter, (collection) => {
@@ -218,7 +220,7 @@ namespace Test100Topology
             };
 
 
-            S100Framework.YAML.Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
+            S100Framework.Topology.Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
 
 
             var topology = geodatabase.BuildTopology(filter, (collection) => {
@@ -304,7 +306,7 @@ namespace Test100Topology
             };
 
 
-            S100Framework.YAML.Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
+            S100Framework.Topology.Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
 
 
             var topology = geodatabase.BuildTopology(filter, (collection) => {
@@ -335,7 +337,7 @@ namespace Test100Topology
 
             using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
                 var dummies = new List<LineString>();
-                S100Framework.YAML.Matrix.AddLineStringsFromGeometry(boundary1, dummies);
+                S100Framework.Topology.Matrix.AddLineStringsFromGeometry(boundary1, dummies);
                 PersistTopology(target, [.. dummies, boundary2]);
             }
 
@@ -353,7 +355,7 @@ namespace Test100Topology
 
             using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
                 var dummies = new List<LineString>();
-                S100Framework.YAML.Matrix.AddLineStringsFromGeometry(boundary1, dummies);
+                S100Framework.Topology.Matrix.AddLineStringsFromGeometry(boundary1, dummies);
 
                 PersistTopology(target, [.. dummies, .. lineStrings]);
             }
@@ -462,12 +464,12 @@ namespace Test100Topology
 
             var whereClause = $"upper(ps) = 'S-101' AND usageband = {Convert.ToInt32(current["usageband"])}";
 
-            S100Framework.YAML.Matrix.ParallelOptions = new ParallelOptions {
+            S100Framework.Topology.Matrix.ParallelOptions = new ParallelOptions {
                 MaxDegreeOfParallelism = 1
             };
-            S100Framework.YAML.Matrix.Factory = factory;
+            S100Framework.Topology.Matrix.Factory = factory;
 
-            var matrix = S100Framework.YAML.Matrix.CreateMatrix((collection) => {
+            var matrix = S100Framework.Topology.Matrix.CreateMatrix((collection) => {
                 using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
                     PersistTopology(target, collection);
                 }
@@ -553,7 +555,7 @@ namespace Test100Topology
         static GeometryFactory factory = new GeometryFactory(new PrecisionModel(10000000), srid: 4326); // Or PrecisionModels.Floating
         //static GeometryFactory factory = new GeometryFactory(new PrecisionModel(100000000), srid: 4326); // Or PrecisionModels.Floating
 
-        private static void PersistTopology(Geodatabase geodatabase, S100Framework.YAML.iMatrix result) {
+        private static void PersistTopology(Geodatabase geodatabase, S100Framework.Topology.IMatrix result) {
             {
                 using var topology = geodatabase.OpenDataset<FeatureClass>("topology");
 
@@ -602,7 +604,7 @@ namespace Test100Topology
             cursor.Flush();
         }
 
-        private static void PersistTopology(Geodatabase geodatabase, IEnumerable<S100Framework.YAML.CurveFeature> lineStrings) {
+        private static void PersistTopology(Geodatabase geodatabase, IEnumerable<S100Framework.Topology.CurveFeature> lineStrings) {
             using var topology = geodatabase.OpenDataset<FeatureClass>("topology");
 
             topology.DeleteRows(new QueryFilter {
@@ -633,8 +635,8 @@ namespace Test100Topology
             cursor.Flush();
         }
 
-        private static ICollection<S100Framework.YAML.Polygon> LoadSurface(Geodatabase geodatabase, QueryFilter queryFilter) {
-            var polygons = new List<S100Framework.YAML.Polygon>();
+        private static ICollection<S100Framework.Topology.Polygon> LoadSurface(Geodatabase geodatabase, QueryFilter queryFilter) {
+            var polygons = new List<S100Framework.Topology.Polygon>();
             var definitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
             using (var surface = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("surface")).GetName())) {
                 using var cursor = surface.Search(queryFilter);
@@ -665,18 +667,18 @@ namespace Test100Topology
                             interiorRings.Add(linestring);
                         }
 
-                        polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, interiorRings.ToArray()));
+                        polygons.Add(new S100Framework.Topology.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, interiorRings.ToArray()));
                     }
                     else {
-                        polygons.Add(new S100Framework.YAML.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, []));
+                        polygons.Add(new S100Framework.Topology.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, []));
                     }
                 }
             }
             return polygons;
         }
 
-        private static ICollection<S100Framework.YAML.Polyline> LoadCurves(Geodatabase geodatabase, QueryFilter queryFilter) {
-            var polylines = new List<S100Framework.YAML.Polyline>();
+        private static ICollection<S100Framework.Topology.Polyline> LoadCurves(Geodatabase geodatabase, QueryFilter queryFilter) {
+            var polylines = new List<S100Framework.Topology.Polyline>();
             var definitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
             using (var surface = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("curve")).GetName())) {
                 using var cursor = surface.Search(queryFilter);
@@ -695,7 +697,7 @@ namespace Test100Topology
                     var linestring = (LineString)factory.CreateLineString([.. coordinates]);
                     linestring = linestring.RemoveRepeatedVertices();
 
-                    polylines.Add(new S100Framework.YAML.Polyline(f.GetObjectID(), name, Convert.ToString(f["code"])!, linestring));
+                    polylines.Add(new S100Framework.Topology.Polyline(f.GetObjectID(), name, Convert.ToString(f["code"])!, linestring));
                 }
             }
             return polylines;

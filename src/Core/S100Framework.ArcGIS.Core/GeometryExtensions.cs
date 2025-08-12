@@ -1,47 +1,34 @@
-﻿using ArcGIS.Core.Data.UtilityNetwork;
+﻿using S100Framework.YAML;
 using System.Collections.Concurrent;
 using System.Globalization;
-using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 
 namespace ArcGIS.Core.Geometry
 {
-    public static class GeometryExtension
+    public static class GeometryExtensions
     {
         private static ConcurrentDictionary<int, SpatialReference> _spatialReferences = new();
 
-        private static XNamespace xlink = "http://www.w3.org/1999/xlink";
-
-        public static (ArcGIS.Core.Geometry.GeometryType?, Geometry?) Shape(this S100Framework.GML.Dataset.FeatureType element, Dictionary<string, Geometry> lookupDict) {
+        public static Geometry? Shape(this S100Framework.GML.Dataset.FeatureType element) {
             var geometry = element.Geometry;
             if (geometry is null)
-                return (null, null);
+                return null;
 
-            var property = geometry.Elements().First();
-
-
-            var id = "";
-
-            GeometryType type;
+            var property = (XElement)geometry.LastNode!;
 
             using var reader = geometry.CreateReader();
 
             switch (property.Name.LocalName?.ToLowerInvariant()) {
                 case "pointproperty": {
                         SpatialReference? spatialReference = default;
-                        id = property.Attribute(XName.Get("id", property.GetNamespaceOfPrefix("gml")!.NamespaceName))?.Value;
-                        type = GeometryType.Point;
+
                         while (reader.Read()) {
                             if (reader.NodeType == System.Xml.XmlNodeType.Element) {
                                 //  s100
                                 if (reader.IsStartElement("S100:Point")) {
                                     var srsName = reader.GetAttribute("srsName");
-                                    id = reader.GetAttribute("gml:id");
-
-                                    var wkid = ReadWKID(srsName);
-
-                                    //var wkid = string.IsNullOrEmpty(srsName) ? 4326 : int.Parse(srsName.Split('/', StringSplitOptions.RemoveEmptyEntries).Last());
+                                    var wkid = string.IsNullOrEmpty(srsName) ? 4326 : int.Parse(srsName.Split('/', StringSplitOptions.RemoveEmptyEntries).Last());
                                     spatialReference = _spatialReferences.GetOrAdd(wkid, (e) => {
                                         return SpatialReferenceBuilder.CreateSpatialReference(e);
                                     });
@@ -67,7 +54,7 @@ namespace ArcGIS.Core.Geometry
                                                 spatialReference),
                                         _ => throw new InvalidOperationException(),
                                     };
-                                    return (type, p);
+                                    return p;
                                 }
                                 else if (reader.IsStartElement("gml:coordinates")) {
                                     var coords = reader.ReadElementContentAsString().Split(' ', StringSplitOptions.RemoveEmptyEntries);
@@ -81,18 +68,14 @@ namespace ArcGIS.Core.Geometry
                 case "curveproperty": {
                         SpatialReference? spatialReference = default;
 
-                        var segments = new List<Polyline>();
-                        type = GeometryType.Polyline;
+                        List<Polyline> segments = new List<Polyline>();
+
                         while (reader.Read()) {
                             if (reader.NodeType == System.Xml.XmlNodeType.Element) {
                                 //  s100
                                 if (reader.IsStartElement("S100:Curve")) {
                                     var srsName = reader.GetAttribute("srsName");
-
-                                    var wkid = ReadWKID(srsName);
-
-                                    id = reader.GetAttribute("gml:id");
-
+                                    var wkid = string.IsNullOrEmpty(srsName) ? 4326 : int.Parse(srsName.Split('/', StringSplitOptions.RemoveEmptyEntries).Last());
                                     spatialReference = _spatialReferences.GetOrAdd(wkid, (e) => {
                                         return SpatialReferenceBuilder.CreateSpatialReference(e);
                                     });
@@ -105,31 +88,25 @@ namespace ArcGIS.Core.Geometry
                                 }
                             }
                         }
-                        return (type, PolylineBuilderEx.CreatePolyline(segments));
+                        return PolylineBuilderEx.CreatePolyline(segments);
                     }
 
                 case "surfaceproperty": {
                         SpatialReference? spatialReference = default;
 
                         Polyline? exterior = default;
-                        var interior = new List<Polyline>();
-                        type = GeometryType.Polygon;
+                        List<Polyline> interior = new List<Polyline>();
+
                         while (reader.Read()) {
                             if (reader.NodeType == System.Xml.XmlNodeType.Element) {
                                 //  s100
-                                if (reader.IsStartElement("S100:Surface") || reader.IsStartElement("S100:Polygon")) {
+                                if (reader.IsStartElement("S100:Surface")) {
                                     var srsName = reader.GetAttribute("srsName");
-
-                                    var wkid = ReadWKID(srsName);
-
-                                    id = reader.GetAttribute("gml:id");
-
-                                    //var wkid = string.IsNullOrEmpty(srsName) ? 4326 : int.Parse(srsName.Split('/', StringSplitOptions.RemoveEmptyEntries).Last());
+                                    var wkid = string.IsNullOrEmpty(srsName) ? 4326 : int.Parse(srsName.Split('/', StringSplitOptions.RemoveEmptyEntries).Last());
                                     spatialReference = _spatialReferences.GetOrAdd(wkid, (e) => {
                                         return SpatialReferenceBuilder.CreateSpatialReference(e);
                                     });
                                 }
-                 
 
                                 //  gml
                                 if (reader.IsStartElement("gml:exterior")) {
@@ -139,19 +116,8 @@ namespace ArcGIS.Core.Geometry
                                     var ring = ReadLinearRing(reader, spatialReference!);
                                     interior.Add(ring);
                                 }
-                                else if (property.Attribute(xlink + "href") != null) {
-                                  
-                                    var referenceId = property.Attribute(xlink + "href")?.Value.Replace("#", "");
-                                    var gmt = lookupDict[referenceId];
-
-                                    return (type, gmt);
-                                }
                             }
                         }
-
-                        // Null geometry..
-                        if (exterior == null)
-                            return (type, null);
 
                         // Populate exterior ring
                         var polygonBuilder = new PolygonBuilderEx(exterior);
@@ -162,27 +128,50 @@ namespace ArcGIS.Core.Geometry
                             polygonBuilder.AddPart(segments);
                         }
 
-                        var geometryRes = polygonBuilder.ToGeometry();
-
-                        if (!string.IsNullOrEmpty(id))
-                            lookupDict.Add(id, geometryRes);
-
-                        return (type, geometryRes);
-                    }
-                default: {
-                        throw new InvalidOperationException();
+                        return polygonBuilder.ToGeometry();
                     }
             }
-            return (type, null);
+            throw new NotImplementedException();
         }
 
+        public static void AddGeometry(this Dataset dataset, ArcGIS.Core.Geometry.Geometry geometry, string name) {
+            switch (geometry) {
+                case ArcGIS.Core.Geometry.MapPoint point: {                              // Point
+                        var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Coordinate?.X == point.X && e?.Coordinate?.Y == point.Y);
+                        // Create point if not exist
+                        if (datasetPoint == default) {
+                            var p = new Point(point.X, point.Y) {
+                                Name = $"{name}"
+                            };
+
+                            dataset?.AddPoint(p);
+                        }
+                        else {
+                            dataset?.UpdateFeatureReferences(name, datasetPoint.Name!);
+                        }
+                        break;
+                    }
+                case ArcGIS.Core.Geometry.Multipoint multiPoint: {   // Depths
+                        var points = multiPoint.Points.Select(e => new Coordinate(e.X, e.Y)).ToArray();
+
+                        var depths = multiPoint.Points.Select(e => Math.Round(e.Z, 7)).ToArray();
+
+                        var pointSet = new PointSet(points, depths) { Name = name };
+                        dataset.AddPointSet(pointSet);
+                        break;
+                    }
+                case ArcGIS.Core.Geometry.Polyline polyline:        // Curves are handled in Topology
+                case ArcGIS.Core.Geometry.Polygon polygon:          // Surfaces are handled in Topology
+                    break;
+                default:
+                    throw new ArgumentException($"Unsupported geometry type: {geometry.GeometryType}");
+            }
+        }
         private static Polyline ReadLinearRing(XmlReader reader, SpatialReference spatialReference) {
             while (reader.Read()) {
                 if (reader.NodeType == System.Xml.XmlNodeType.Element) {
                     if (reader.IsStartElement("gml:posList")) {
-                        var content = reader.ReadElementContentAsString();
-
-                        var coords = content.Replace('\n', ' ').Replace('\t', ' ').Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                        var coords = reader.ReadElementContentAsString().Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
                         var points = new MapPoint[coords.Length / 2];
                         for (int i = 0; i < coords.Length; i += 2) {
@@ -199,21 +188,5 @@ namespace ArcGIS.Core.Geometry
             throw new NotImplementedException();
         }
 
-        private static int ReadWKID(string? srsName) {
-            //var slash = srsName?
-            //   .Split('/', StringSplitOptions.RemoveEmptyEntries)
-            //   .LastOrDefault();
-
-            //var wkid = int.TryParse(
-            //    slash ?? srsName?
-            //        .Split(':', StringSplitOptions.RemoveEmptyEntries)
-            //        .LastOrDefault(),
-            //    out var parsed
-            //) ? parsed : 4326;
-
-            //return wkid;
-
-            return 4326;
-        }
     }
 }

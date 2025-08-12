@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VortexProAppModule.Settings
+namespace S100Framework.Settings
 {
     internal class Editor
     {
