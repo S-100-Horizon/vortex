@@ -1,6 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
@@ -46,22 +47,38 @@ namespace S100Framework.Applications
                 switch (fcSubtype) {
                     case 1: { // CBLARE_CableArea
                             var instance = new CableArea();
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            if (current.CATCBL.HasValue) {
+                                instance.categoryOfCable = EnumHelper.GetEnumValues<categoryOfCable>(current.CATCBL.Value);
                             }
 
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.RESTRN != default) {
+                                instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
+                            }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            // TODO: vesselspeedlimit
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
                             AddInformation(instance.information, feature);
+
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
