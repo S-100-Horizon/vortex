@@ -294,16 +294,11 @@ namespace S100Framework.NauticalProducts
                             var current = (ArcGIS.Core.Data.Feature)cursor.Current;
                             var name = Convert.ToString(current["name"])!;
 
-                            //if (name.Equals("S12233")) System.Diagnostics.Debugger.Break();
-                            //if (name.Equals(topology.Surfaces.ElementAt(0).Ref)) System.Diagnostics.Debugger.Break();
-
                             // Only map geometry, and keep name seperate so foids remain unique
                             var geometry = name;
 
                             if (topology.Mapping.TryGetValue(name!, out var value))
                                 geometry = value;
-                            else if (!name.StartsWith("P"))
-                                System.Diagnostics.Debugger.Break();
 
                             var shapetype = def.GetShapeType();
 
@@ -329,11 +324,21 @@ namespace S100Framework.NauticalProducts
 
                                 var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
 
+                                // Surface Masks
+                                var topologySurface = topology.Surfaces.FirstOrDefault(e => e.Ref!.Equals(name, StringComparison.InvariantCultureIgnoreCase));
+
+                                // Build comma seperated string of masks, with :1 or :2 indicating which mask it is. Should be null/omitted if empty.
+                                var masks = new[] {
+                                    topologySurface?.Masks1?.Select(e => $"C{e}:1"),
+                                    topologySurface?.Masks2?.Select(e => $"C{e}:2")
+                                }.Where(m => m != null).SelectMany(m => m!);
+
                                 var feature = new YAML.Feature {
                                     Name = code,
                                     Foid = foid,
                                     Prim = prim,
                                     Geometry = geometry,
+                                    Masks = masks.Any() ? string.Join(",", masks) : null
                                 };
 
                                 // Only emit attributes if feature contains any non-static properties
@@ -342,52 +347,45 @@ namespace S100Framework.NauticalProducts
 
                                 // Information Associations
                                 if (!current.IsNull("informationbindings")) {
-                                    using var document = JsonDocument.Parse(Convert.ToString(current["informationbindings"])!);
-                                    var root = document.RootElement;
+                                    var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]?>(Convert.ToString(current["informationbindings"])!);
 
-                                    var association = root.GetProperty("association").GetString()!;
-                                    var role = root.GetProperty("role").GetString()!;
-                                    var informationId = root.GetProperty("informationId").GetString()!;
+                                    if (informationBindings != default && informationBindings.Any()) {
+                                        foreach (var binding in informationBindings) {
+                                            var asso = new YAML.Association {
+                                                Name = binding.association,
+                                                Role = binding.role,
+                                                To = binding.informationId!,
+                                            };
 
-                                    var asso = new YAML.Association {
-                                        Name = association,
-                                        Role = role,
-                                        To = informationId,
-                                    };
+                                            // Special case for SpatialAssociation
+                                            if (prim != Primitive.Surface && asso.Name.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase)) {
+                                                var curve = dataset?.Curves?.FirstOrDefault(e => e.Name == geometry);
 
-                                    // Special case for SpatialAssociation
-                                    if (prim != Primitive.Surface && association.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase)) {
-                                        var curve = dataset?.Curves?.FirstOrDefault(e => e.Name == geometry);
-
-                                        curve?.AddAssociation(asso);
-                                    }
-                                    else {
-                                        feature?.AddAssociation(asso);
+                                                curve?.AddAssociation(asso);
+                                            }
+                                            else {
+                                                feature?.AddAssociation(asso);
+                                            }
+                                        }
                                     }
                                 }
 
                                 // Feature Associations
                                 if (!current.IsNull("featurebindings")) {
-                                    using var document = JsonDocument.Parse(Convert.ToString(current["featurebindings"])!);
-                                    var root = document.RootElement;
+                                    var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]?>(Convert.ToString(current["featurebindings"])!);
 
-                                    if (root.ValueKind == JsonValueKind.Array) {
-                                        foreach (var element in root.EnumerateArray()) {
-                                            var roleType = element.GetProperty("roleType").GetString();
+                                    if (featureBindings != default && featureBindings.Any()) {
+                                        foreach (var binding in featureBindings) {
+                                            var roleType = binding.roleType;
 
                                             // Skip association roleType for now
                                             if (roleType == "association")
                                                 continue;
 
-                                            var association = element.GetProperty("association").GetString()!;
-                                            var role = element.GetProperty("role").GetString()!;
-                                            var featureId = element.GetProperty("featureId").GetString()!;
-
-
                                             var asso = new YAML.Association {
-                                                Name = association,
-                                                Role = role,
-                                                To = $"110:{featureId[1..]}:1"
+                                                Name = binding.association,
+                                                Role = binding.role,
+                                                To = $"110:{binding.featureId![1..]}:1"
                                             };
 
                                             feature?.AddFeatureAssociation(asso);
@@ -401,7 +399,7 @@ namespace S100Framework.NauticalProducts
                             }
                             catch (Exception ex) {
                                 Log.Error(ex, ex.Message);
-                                continue;
+                                throw;
                             }
                         }
                     }
