@@ -92,9 +92,12 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            // TODO: maximumPermittedDraught
+                            // TODO: maximumPermittedDraught -> INFORM
 
-                            // TODO: minimumBerthDepth
+                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m) {
+                                instance.minimumBerthDepth = current.DRVAL1.Value;
+                            }
+
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
                             if (periodicDateRange != default) {
