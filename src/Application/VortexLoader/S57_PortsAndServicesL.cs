@@ -221,8 +221,37 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 10: { // CAUSWY_Causeway
-                            var instance = new Causeway() {
-                            };
+                            var instance = new Causeway();
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.NATCON != default) {
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                            }
+
+                            if (current.SORDAT != default) {
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                    instance.reportedDate = current.SORDAT;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            if (current.WATLEV.HasValue) {
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                            }
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -232,16 +261,8 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-
-                            if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
+
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
