@@ -2339,6 +2339,10 @@ namespace S100Framework.DomainModel.S128 {
 	{
 		[XmlElement(Order = 1)]
 		public Members? members { get; set; } = default;
+
+		[JsonIgnore]
+		[XmlAttribute("schemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
+		public override string SchemaLocation { get; set; } = "http://www.iho.int/S128/2.0 128_2.0.0.xsd";
 	}
 
 	[XmlType(Namespace = "http://www.iho.int/S128/2.0", TypeName = "members")]
