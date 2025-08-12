@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.20348.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -18,6 +18,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\S100Framework.ArcGIS.Core\S100Framework.ArcGIS.Core.csproj" />
     <ProjectReference Include="..\..\Core\S100Framework.Catalogues\S100Framework.Catalogues.csproj" />
+    <ProjectReference Include="..\..\Core\S100Framework.NauticalProducts\S100Framework.NauticalProducts.csproj" />
+    <ProjectReference Include="..\..\Core\S100Framework.Topology\S100Framework.Topology.csproj" />
     <ProjectReference Include="..\..\Core\S100Framework.YAML\S100Framework.YAML.csproj" />
   </ItemGroup>
 

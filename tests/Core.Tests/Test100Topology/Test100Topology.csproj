@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.20348.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
@@ -19,7 +19,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Application\VortexExporter\VortexExporter.csproj" />
+    <ProjectReference Include="..\..\..\src\Core\S100Framework.ArcGIS.Core\S100Framework.ArcGIS.Core.csproj" />
     <ProjectReference Include="..\..\..\src\Core\S100Framework.Catalogues\S100Framework.Catalogues.csproj" />
+    <ProjectReference Include="..\..\..\src\Core\S100Framework.NauticalProducts\S100Framework.NauticalProducts.csproj" />
+    <ProjectReference Include="..\..\..\src\Core\S100Framework.Topology\S100Framework.Topology.csproj" />
     <ProjectReference Include="..\..\..\src\Core\S100Framework.YAML\S100Framework.YAML.csproj" />
   </ItemGroup>
 
