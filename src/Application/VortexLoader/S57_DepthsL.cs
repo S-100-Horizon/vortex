@@ -23,33 +23,19 @@ namespace S100Framework.Applications
         private static void S57_DepthsL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DepthsL";
 
-
-
-
-
-
             using var depthsl = source.OpenDataset<FeatureClass>(source.GetName("DepthsL"));
             Subtypes.Instance.RegisterSubtypes(depthsl);
 
             //using var plts_spatialattributel = source.OpenDataset<FeatureClass>(source.GetName("PLTS_SpatialAttributeL"));
             //using var informationtype = target.OpenDataset<Table>(target.GetName("informationType"));
-
-
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
-
-
-
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
-
-
-
 
             using var cursor = depthsl.Search(filter, true);
             int recordCount = 0;
 
             var informationBinding = CreateAssociationSpatialQuality(target);
-
 
             while (cursor.MoveNext()) {
 
@@ -91,7 +77,6 @@ namespace S100Framework.Applications
 
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
-
 
                             /*
                                QUAPOS = 1 (surveyed) -> will not be converted
@@ -218,7 +203,7 @@ namespace S100Framework.Applications
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
 
-        private static informationBinding CreateAssociationSpatialQuality(Geodatabase target) {
+        private static List<informationBinding> CreateAssociationSpatialQuality(Geodatabase target) {
             // create spatial quality
             SpatialQuality spatialQuality101 = new SpatialQuality();
 
@@ -255,7 +240,7 @@ namespace S100Framework.Applications
                 roleType = roleType.association.ToString()
             };
 
-            return /*informationAssociationName, spatialQuality101,*/ informationBinding;
+            return /*informationAssociationName, spatialQuality101,*/ [informationBinding];
 
 
         }

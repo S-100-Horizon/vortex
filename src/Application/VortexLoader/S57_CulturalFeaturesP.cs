@@ -774,6 +774,9 @@ namespace S100Framework.Applications
                         break;
 
                     case 45: { // PYLONS_PylonBridgeSupport
+
+
+
                             var instance = new PylonBridgeSupport {
                                 categoryOfPylon = default,
                             };
@@ -814,9 +817,10 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
-                            }
+                            //if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                            //    relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
+                            //}
+                            //Bridges.Instance.AddRelation(relatedBridge.Name, name, typeof(Pylo));
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 

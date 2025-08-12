@@ -145,20 +145,41 @@ namespace S100Framework.Applications
 
                             // Foul ground
                             if (current.CATOBS.HasValue && current.CATOBS.Value == 7) {
-                                var foulground = new FoulGround();
+                                var instance = new FoulGround();
 
-                                if (current.SOUACC.HasValue) {
-                                    foulground.verticalUncertainty = new() {
-                                        uncertaintyFixed = current.SOUACC.Value
-                                    };
+                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                                // TODO: interoperabilityIdentifier
+
+                                if (current.QUASOU != default) {
+                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                }
+
+                                if (current.SORDAT != default) {
+                                    if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                        instance.reportedDate = current.SORDAT;
+                                    }
+                                    else {
+                                        Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    }
                                 }
 
                                 if (current.STATUS != default) {
-                                    foulground.status = GetStatus(current.STATUS);
+                                    instance.status = GetStatus(current.STATUS);
+                                }
+
+                                if (current.TECSOU != null) {
+                                    instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
                                 }
 
                                 if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
-                                    foulground.valueOfSounding = current.VALSOU.Value;
+                                    instance.valueOfSounding = current.VALSOU.Value;
+                                }
+
+                                if (current.SOUACC.HasValue) {
+                                    instance.verticalUncertainty = new() {
+                                        uncertaintyFixed = current.SOUACC.Value
+                                    };
                                 }
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -167,16 +188,14 @@ namespace S100Framework.Applications
                                     if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                         throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                    foulground.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
-                                foulground.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                                AddInformation(foulground.information, feature);
+                                AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
 
-                                buffer["code"] = foulground.GetType().Name;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(foulground);
+                                buffer["code"] = instance.GetType().Name;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                                 SetShape(buffer, current.SHAPE);
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -185,10 +204,10 @@ namespace S100Framework.Applications
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, nameN);
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                    relatedEquipment?.CreateRelatedPointEquipment(current, foulground, featureN);
+                                    relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN);
                                 }
 
-                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(foulground));
+                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
 
                                 break;
                             }

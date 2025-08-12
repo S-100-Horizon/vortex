@@ -10,18 +10,52 @@ namespace S100Framework.Applications
     internal static partial class ImporterNIS
     {
         private static void S57_CulturalFeaturesA(Geodatabase source, Geodatabase target, QueryFilter filter) {
+            var createBridgesAndRelations = false;
+
             var tableName = "CulturalFeaturesA";
 
             using var culturalFeaturesA = source.OpenDataset<FeatureClass>(source.GetName(tableName));
             Subtypes.Instance.RegisterSubtypes(culturalFeaturesA);
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
+            using var featureAssociation = target.OpenDataset<Table>(target.GetName("featureassociation"));
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
+            // Bridges
+            if (createBridgesAndRelations) {
+                Bridges.Initialize(source);
+
+
+                foreach (var bridge in Bridges.Instance.BridgeElements()) {
+                    var instance = new Bridge();
+
+                    buffer["ps"] = ps101;
+                    buffer["code"] = instance.GetType().Name;
+                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                    SetShape(buffer, bridge.DissolvedGeometry);
+                    SetUsageBand(buffer, ImporterNIS._compilationScale);
+
+                    var featureN = featureClass.CreateRow(buffer);
+                    var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                    bridge.Name = name;
+
+                    // Create association to use in bridge relations
+                    var featureAssociationBuffer = featureAssociation.CreateRowBuffer();
+
+                    featureAssociationBuffer["ps"] = ImporterNIS.ps101;
+                    featureAssociationBuffer["code"] = "BridgeAggregation";
+                    var association = featureAssociation.CreateRow(featureAssociationBuffer);
+                    string featureAssociationName = (string)association["name"];
+                    bridge.BridgeAggregationName = featureAssociationName;
+                }
+            }
+
             using var cursor = culturalFeaturesA.Search(filter, true);
             int recordCount = 0;
+
 
             while (cursor.MoveNext()) {
                 recordCount += 1;
@@ -106,6 +140,18 @@ namespace S100Framework.Applications
 
                     case 5: { // BRIDGE_Bridge  // SPANS
                             //var instance = new Bridge();
+
+                            BridgeElement relatedBridge = null;
+
+                            if (createBridgesAndRelations) {
+                                var relatedBridges = Bridges.Instance.GetBridgeElementsContainingOID(current.TableName!, current.OBJECTID!.Value);
+                                if (relatedBridges.Count() != 1) {
+                                    throw new NotSupportedException("Unsupported number bridge relations. Must be 1");
+                                }
+                                relatedBridge = relatedBridges[0];
+                            }
+
+                            
 
                             bool openingBridge = false;
                             List<bridgeFunction> bridgeFunctionValue = new List<bridgeFunction>();
@@ -198,25 +244,23 @@ namespace S100Framework.Applications
                             if (openingBridge) {
                                 var instance = new SpanOpening() {
                                     verticalClearanceClosed = new verticalClearanceClosed() {
-                                        verticalClearanceValue = current.VERCCL.HasValue ? current.VERCCL!.Value : default,
+                                        verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default(decimal?)
                                     }
                                     ,
                                     verticalClearanceOpen = new verticalClearanceOpen() {
-                                        verticalClearanceValue = current.VERCOP.HasValue ? current.VERCOP!.Value : default,
-                                        verticalClearanceUnlimited = !current.VERCOP.HasValue,
+                                        verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default(decimal?),
+                                        //Where VERCOP has a value or is populated with an empty (null) value, vertical clearance unlimited will be populated as False.
+                                        verticalClearanceUnlimited = !current.VERCOP.HasValue || current.VERCOP.Value == default(decimal)
                                     }
-
                                 };
 
                                 instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
-                                    horizontalClearanceValue = current.HORCLR.HasValue ? current.HORCLR!.Value : default,
-                                    horizontalDistanceUncertainty = current.HORACC.HasValue ? current.HORACC!.Value : default
+                                    horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767m ? current.HORCLR!.Value : default(decimal?),
+                                    horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767m ? current.HORACC!.Value : default(decimal?),
                                 };
-
 
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
-
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer, current.SHAPE);
@@ -225,8 +269,25 @@ namespace S100Framework.Applications
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                    relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
+                                //if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                //    relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
+                                //}
+                                if (createBridgesAndRelations) {
+                                    Bridges.Instance.AddRelation(relatedBridge.Name, name, typeof(SpanOpening));
+
+
+                                    // Create link to bridge
+                                    List<DomainModel.featureBinding> bindings = new List<DomainModel.featureBinding>();
+                                    bindings.Add(new() {
+                                        association = "BridgeAggregation",
+                                        associationId = relatedBridge.BridgeAggregationName,
+                                        featureId = relatedBridge.Name,
+                                        role = "theCollection",
+                                        roleType = "aggregation"
+                                    });
+
+                                    featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings);
+                                    featureN.Store();
                                 }
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -234,15 +295,23 @@ namespace S100Framework.Applications
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             }
                             if (!openingBridge) {
+                                if (createBridgesAndRelations) {
+                                    var relatedBridges = Bridges.Instance.GetBridgeElementsContainingOID(current.TableName!, current.OBJECTID!.Value);
+                                    if (relatedBridges.Count() != 1) {
+                                        throw new NotSupportedException("Unsupported number bridge relations. Must be 1");
+                                    }
+                                    relatedBridge = relatedBridges[0];
+                                }
+
                                 var instance = new SpanFixed() {
                                     verticalClearanceFixed = new verticalClearanceFixed() {
-                                        verticalClearanceValue = current.VERCCL.HasValue ? current.VERCCL!.Value : default,
+                                        verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default(decimal?),
                                     }
                                 };
 
                                 instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
-                                    horizontalClearanceValue = current.HORCLR.HasValue ? current.HORCLR!.Value : default,
-                                    horizontalDistanceUncertainty = current.HORACC.HasValue ? current.HORACC!.Value : default
+                                    horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767m ? current.HORCLR!.Value : default(decimal?),
+                                    horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767m ? current.HORACC!.Value : default(decimal?)
                                 };
 
                                 AddInformation(instance.information, feature);
@@ -256,8 +325,24 @@ namespace S100Framework.Applications
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                    relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
+                                //if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                //    relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
+                                //}
+                                if (createBridgesAndRelations) {
+                                    Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanFixed));
+                                    // Create link to bridge
+                                    List<DomainModel.featureBinding> bindings = new List<DomainModel.featureBinding>();
+                                    bindings.Add(new() {
+                                        association = "BridgeAggregation",
+                                        associationId = relatedBridge.BridgeAggregationName,
+                                        featureId = relatedBridge.Name,
+                                        role = "theCollection",
+                                        roleType = "aggregation"
+                                    });
+
+                                    featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings);
+                                    featureN.Store();
+
                                 }
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -265,9 +350,6 @@ namespace S100Framework.Applications
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
 
                             }
-
-
-                            // TODO: Bridge - outer ring of all features in the bridge
 
                         }
                         break;
@@ -1003,6 +1085,17 @@ namespace S100Framework.Applications
                         break;
 
                     case 45: { // PYLONS_PylonBridgeSupport
+
+                            BridgeElement? relatedBridge = default;
+
+                            if (createBridgesAndRelations) {
+                                var relatedBridges = Bridges.Instance.GetBridgeElementsContainingOID(current.TableName!, current.OBJECTID!.Value);
+                                if (relatedBridges.Count() != 1)
+                                    throw new NotSupportedException("Multiple bridges share elements");
+
+                                relatedBridge = relatedBridges[0];
+                            }
+
                             var instance = new PylonBridgeSupport {
                                 categoryOfPylon = default,
                             };
@@ -1043,8 +1136,27 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
+                            //FeatureRelations.Instance.AddRelation(new(typeof(Bridge), relatedBridge, new(instance.GetType(), name), featureN, s101MasterFeature, _featureAssociation);
+
+                            //if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                            //    relatedEquipment.CreateRelatedAreaEquipment(current, instance, featureN);
+                            //}
+
+                            if (createBridgesAndRelations) {
+
+                                Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(PylonBridgeSupport));
+                                // Create link to bridge
+                                List<DomainModel.featureBinding> bindings = new List<DomainModel.featureBinding>();
+                                bindings.Add(new() {
+                                    association = "BridgeAggregation",
+                                    associationId = relatedBridge.BridgeAggregationName,
+                                    featureId = relatedBridge.Name,
+                                    role = "theCollection",
+                                    roleType = "aggregation"
+                                });
+
+                                featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings);
+                                featureN.Store();
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -1237,6 +1349,11 @@ namespace S100Framework.Applications
                         break;
                 }
             }
+
+            if (createBridgesAndRelations) {
+                Bridges.Instance.CreateRelations();
+            }
+
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
     }

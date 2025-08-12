@@ -1,5 +1,6 @@
 ﻿using S100Framework.Catalogues;
 using S100Framework.DomainModel;
+using S100Framework.DomainModel.S100;
 using System.Collections;
 using System.Globalization;
 using System.Reflection;
@@ -125,6 +126,16 @@ namespace S100Framework.YAML
                         throw new InvalidOperationException($"String could not be parsed into DateOnly: {dateString} for property: {propertyName}");
 
                     attributes.Add(new(propertyName, dateString, null, parentId));
+
+                    break;
+
+                // Ensure valid S-101 TimeOfDay objects
+                case Type t when t == typeof(Time):
+                    var timeString = propertyValue.ToString();
+
+                    var timeOfDay = Time.Parse(timeString);
+
+                    attributes.Add(new(propertyName, timeOfDay.ToString(), null, parentId));
 
                     break;
 

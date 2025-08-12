@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text.Json;
@@ -212,6 +213,13 @@ namespace S100Framework.DomainModel.S100
         internal TimeSpan ToTimeSpan() => new TimeSpan(_ticks);
 
         public override string ToString() => $"{Hours:00}:{Minutes:00}";
+
+        public static Time Parse(string s) {
+            var values = s.Split(':');
+            if (values.Length >= 2 && int.TryParse(values[0], out int hours) && int.TryParse(values[1], out int minutes))
+                return new Time(int.Parse(values[0]), int.Parse(values[1]));
+            throw new JsonException("Expected time in 'hh:mm' format.");
+        }
     }
 
     public class TimeJsonConverter : JsonConverter<Time>

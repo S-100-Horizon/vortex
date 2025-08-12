@@ -168,6 +168,8 @@ namespace S100Framework.Topology
 
         public static GeometryFactory Factory { get; set; } = new GeometryFactory(new PrecisionModel(100000000), srid: 4326);
 
+        public static string[] Mask1FeatureTypes { get; set; } = ["DataCoverage"];
+
         protected Matrix() {
             //  Default protected constructor
         }
@@ -261,7 +263,7 @@ namespace S100Framework.Topology
                 curves = curves.UnionBy(this._curvesNavigational, e => e.Name);
             }
 
-            var dataCoverageObjects = surfaces.Where(e => e.Code.Equals("DataCoverage")).Select(e => e.Name).Distinct();
+            var mask1Objects = surfaces.Where(e => Matrix.Mask1FeatureTypes.Contains(e.Code)).Select(e => e.Name).Distinct();
 
             this.BuildSharedEdges([.. surfaces], [.. curves]);
 
@@ -286,9 +288,9 @@ namespace S100Framework.Topology
                 }
             }
 
-            var dataCoveragesHashes = new List<UInt64>();
+            var mask1Hashes = new List<UInt64>();
 
-            foreach (var polygon in this._bagPolygons.Where(e => dataCoverageObjects.Contains(e.Name))) {
+            foreach (var polygon in this._bagPolygons.Where(e => mask1Objects.Contains(e.Name))) {
                 foreach (var lineString in polygon.ExteriorRing) {
                     var hash = System.IO.Hashing.XxHash3.HashToUInt64(lineString.AsBinary());
 
@@ -297,13 +299,13 @@ namespace S100Framework.Topology
                         Id = f.Id,
                         Reverse = false,
                     }, f));
-                    dataCoveragesHashes.Add(r.curve.Id);
+                    mask1Hashes.Add(r.curve.Id);
                     hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
                     r = this._hashing.GetOrAdd(hash, (new FeatureRef {
                         Id = f.Id,
                         Reverse = true,
                     }, f));
-                    dataCoveragesHashes.Add(r.curve.Id);
+                    mask1Hashes.Add(r.curve.Id);
                 }
                 if (polygon.InteriorRings.Any()) {
                     foreach (var interior in polygon.InteriorRings) {
@@ -314,19 +316,19 @@ namespace S100Framework.Topology
                                 Id = f.Id,
                                 Reverse = false,
                             }, f));
-                            dataCoveragesHashes.Add(r.curve.Id);
+                            mask1Hashes.Add(r.curve.Id);
                             hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
                             r = this._hashing.GetOrAdd(hash, (new FeatureRef {
                                 Id = f.Id,
                                 Reverse = true,
                             }, f));
-                            dataCoveragesHashes.Add(r.curve.Id);
+                            mask1Hashes.Add(r.curve.Id);
                         }
                     }
                 }
             }
 
-            dataCoveragesHashes = dataCoveragesHashes.DistinctBy(e => e).ToList();
+            mask1Hashes = mask1Hashes.DistinctBy(e => e).ToList();
 
             Parallel.ForEach(this._bagPolygons, ParallelOptions, (polygon) => {
                 foreach (var lineString in polygon.ExteriorRing) {
@@ -399,7 +401,7 @@ namespace S100Framework.Topology
                     }
 
                     var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(l.AsBinary())];
-                    if (dataCoveragesHashes.Contains(hash.curve.Id))
+                    if (mask1Hashes.Contains(hash.curve.Id))
                         masks1.Add(hash.curve);
                     featureRef = hash.fetureRef;
 
@@ -448,7 +450,7 @@ namespace S100Framework.Topology
                         if (lineStringText.Contains(text)) {
                             var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(lineStrings.ElementAt(i).AsBinary())];
 
-                            if (dataCoveragesHashes.Contains(hash.curve.Id))
+                            if (mask1Hashes.Contains(hash.curve.Id))
                                 masks1.Add(hash.curve);
 
                             sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
@@ -464,7 +466,7 @@ namespace S100Framework.Topology
 
                             var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(reverse.AsBinary())];
 
-                            if (dataCoveragesHashes.Contains(hash.curve.Id))
+                            if (mask1Hashes.Contains(hash.curve.Id))
                                 masks1.Add(hash.curve);
 
                             var index = lineStringText.IndexOf(text);
@@ -497,9 +499,10 @@ namespace S100Framework.Topology
                     Ref = polygon.Name,
                     Exterior = exteriorId.featureRef,
                 };
-                if (exteriorId.masks1.Any())
-                    surface.Masks1 = [.. exteriorId.masks1.Select(e => e.Id)];
-
+                if (!mask1Objects.Contains(polygon.Name)) {
+                    if (exteriorId.masks1.Any())
+                        surface.Masks1 = [.. exteriorId.masks1.Select(e => e.Id)];
+                }
                 if (polygon.InteriorRings.Any()) {
                     var interiorRings = polygon.InteriorRings.Select(e => action(e, LinearRingOrientation.CounterClockwise, false));
                     surface.Interior = [.. interiorRings.Select(e => e.featureRef)];
@@ -631,7 +634,7 @@ namespace S100Framework.Topology
             public LineString LineString => Matrix.Factory.CreateLineString([Start, End]);
         }
 
-        public static void AddLineStringsFromGeometry(Geometry geometry, List<LineString> targetList) {
+        public static void AddLineStringsFromGeometry(NetTopologySuite.Geometries.Geometry geometry, List<LineString> targetList) {
             if (geometry is LineString line) {
                 if (!line.IsEmpty) {
                     if (!targetList.Any(e => e.EqualsTopologically(line)))

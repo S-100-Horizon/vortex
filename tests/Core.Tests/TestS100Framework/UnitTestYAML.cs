@@ -198,6 +198,16 @@ Features:
             System.Diagnostics.Debugger.Break();
         }
 
+        [Fact]
+        public void Test_101DKLALAL() {
+            var fullDatasetPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"101DKLALAL.yaml");
+            var yamlDataset = System.IO.File.ReadAllText(fullDatasetPath);
+
+            var deserialized = S100Framework.YAML.Converter.Deserialize<S100Framework.YAML.Dataset>(yamlDataset);
+
+            System.Diagnostics.Debugger.Break();
+        }
+
 
         [Fact]
         public void Test_Dataset() {

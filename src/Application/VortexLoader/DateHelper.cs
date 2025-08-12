@@ -5,7 +5,9 @@ namespace S100Framework.Applications
 {
     public static class DateHelper
     {
-        public static readonly Regex regexTruncatedDateValidation = new(@"^(\d{4}|-{4})(\d{2}|-{2})(\d{2}|-{2})$");
+        //public static readonly Regex regexTruncatedDateValidation = new(@"^(\d{4}|-{4})(\d{2}|-{2})(\d{2}|-{2})$");
+        public static readonly Regex regexTruncatedDateValidation = new(@"^--(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])$");
+
 
         public static bool TryConvertToDateOnly(string? dateString, out DateOnly dateOnly) {
             if (dateString == null) {
@@ -32,8 +34,8 @@ namespace S100Framework.Applications
                     if (regexTruncatedDateValidation.IsMatch(end) && regexTruncatedDateValidation.IsMatch(start)) {
                         value = new List<periodicDateRange>() {
                                 new periodicDateRange() {
-                                    dateStart = start,
-                                    dateEnd = end
+                                    dateStart = $"--{start}",
+                                    dateEnd = $"--{end}"
                                 }
                             };
                         return true;
