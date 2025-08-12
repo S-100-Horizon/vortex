@@ -269,7 +269,7 @@ namespace S100Framework.NauticalProducts
                     }
                 }
 
-                var geometries = new List<(Geometry geometry, string name)>();
+                var geometries = new List<(ArcGIS.Core.Geometry.Geometry geometry, string name)>();
 
                 //  Features
                 foreach (var def in connection.GetDefinitions<FeatureClassDefinition>()) {
