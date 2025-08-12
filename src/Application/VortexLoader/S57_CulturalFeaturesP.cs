@@ -159,8 +159,42 @@ namespace S100Framework.Applications
                         break;
 
                     case 10: { // BUAARE_BuiltUpArea
-                            var instance = new BuiltUpArea() {
-                            };
+                            var instance = new BuiltUpArea();
+                            if (current.CATBUA.HasValue) {
+                                instance.categoryOfBuiltUpArea = EnumHelper.GetEnumValue<categoryOfBuiltUpArea>(current.CATBUA.Value);
+                            }
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                                instance.height = current.HEIGHT.Value;
+                            }
+                            else {
+                                instance.height = default(decimal?);
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.CONRAD.HasValue) {
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
+                            }
+
+                            if (current.SORDAT != default) {
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                    instance.reportedDate = current.SORDAT;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
+                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                            }
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -170,13 +204,22 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
+                            AddInformation(instance.information, feature);
 
-                            if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            AddInformation(instance.information, feature);
+                            /*
+                                S - 101 includes the system attribute in the water to indicate that a building that is located offshore is to
+                                be included in ECDIS Base display.This attribute is populated automatically during the conversion
+                                process based on the underlying Skin of the Earth feature.As such, there is no requirement to include
+                                an ECDIS Base display feature coincident with the S - 101 Building feature so as to ensure display of a
+                                feature at the position of the building in ECDIS Base display.Data Producers should consider removing
+                                these features from their S-101 data during the conversion process.
+                            */
+                            // TODO: InTheWater
+
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
