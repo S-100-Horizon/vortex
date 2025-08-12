@@ -190,7 +190,6 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
