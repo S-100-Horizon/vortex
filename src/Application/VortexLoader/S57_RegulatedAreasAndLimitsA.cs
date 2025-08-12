@@ -846,7 +846,7 @@ namespace S100Framework.Applications
                                     instance.categoryOfRestrictedArea = EnumHelper.GetEnumValues<categoryOfRestrictedArea>(current.CATREA);
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, longname, $"Cannot convert Water Skiing Area to restricted area. CATREA: 26 not ");
+                                    Logger.Current.DataError(current.OBJECTID!.Value, tableName, longname, $"Cannot convert Water Skiing Area to restricted area. CATREA: 26 not ");
                                 }
                             }
 
