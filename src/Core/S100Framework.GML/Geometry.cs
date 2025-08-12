@@ -1,75 +1,211 @@
-﻿using System.Text;
+﻿
+using NetTopologySuite.IO;
+using System.Globalization;
 using System.Xml;
 using System.Xml.Linq;
-
-namespace NetTopologySuite.Geometries
+namespace S100Framework.GML
 {
-    public static class Extension
+    public static class Extensions
     {
-        private static readonly XNamespace gml = "http://www.opengis.net/gml/3.2";
-        private static readonly XNamespace s100 = "http://www.iho.int/S100/gml";
-        //private static readonly XNamespace s128 = "http://www.iho.int/S128/gml";
+        private static readonly XNamespace xlink = "http://www.w3.org/1999/xlink";
+        public static string[][]? Coordinates(this S100Framework.GML.Dataset.FeatureType element) {
+            var geometry = element.Geometry;
 
-        /// <summary>
-        /// Creates a complete <S128:geometry> element from an NTS Polygon.
-        /// </summary>
-        public static XElement? ToGMLFeatureS100(this Polygon polygon, string gmlId, XmlQualifiedName ns, string srsName = "EPSG:4326") {
-            if (polygon == null || polygon.IsEmpty) {
+            if (geometry == null)
                 return default;
+
+            var property = geometry.Elements().First();
+
+            var coordinates = new List<string[]>();
+
+            using var reader = geometry.CreateReader();
+
+            switch (property.Name.LocalName.ToLowerInvariant()) {
+                case "pointproperty": {
+                        string[] coordinate = [];
+                        while (reader.Read()) {
+                            if (reader.NodeType == System.Xml.XmlNodeType.Element) {
+                                //  s100
+                                if (reader.IsStartElement("S100:Point")) {
+                                    element.GeometryIdentifier = reader.GetAttribute("gml:id");
+                                }
+
+                                //  gml
+                                if (reader.IsStartElement("gml:coord")) {
+                                    var content = reader.ReadElementContentAsString().Replace('\n', ' ').Replace('\t', ' ');
+                                    coordinate = content.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                                    break;
+                                }
+                                else if (reader.IsStartElement("gml:pos")) {
+                                    var content = reader.ReadElementContentAsString().Replace('\n', ' ').Replace('\t', ' ');
+                                    coordinate = content.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                                }
+                                else if (reader.IsStartElement("gml:coordinates")) {
+                                    var content = reader.ReadElementContentAsString().Replace('\n', ' ').Replace('\t', ' ');
+                                    coordinate = content.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                                }
+                            }
+                        }
+                        coordinates.Add(coordinate);
+                    }
+                    break;
+
+
+                case "curveproperty": {
+                        var segments = new List<string[]>();
+
+                        while (reader.Read()) {
+                            if (reader.NodeType == System.Xml.XmlNodeType.Element) {
+                                //  s100
+                                if (reader.IsStartElement("S100:Curve")) {
+                                    element.GeometryIdentifier = reader.GetAttribute("gml:id");
+                                }
+
+                                if (reader.IsStartElement("gml:posList")) {
+                                    var segment = reader.ReadElementContentAsString().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                                    segments.Add(segment);
+                                }
+                            }
+                        }
+
+                        coordinates = [.. segments];
+                    }
+                    break;
+
+                case "surfaceproperty": {
+                        string[] exterior = [];
+                        var interior = new List<string[]>();
+
+                        while (reader.Read()) {
+                            if (reader.NodeType == System.Xml.XmlNodeType.Element) {
+                                //  s100
+                                if (reader.IsStartElement("S100:Surface") || reader.IsStartElement("S100:Polygon")) {
+                                    var srsName = reader.GetAttribute("srsName");
+
+                                    element.GeometryIdentifier = reader.GetAttribute("gml:id");
+                                }
+
+                                //  gml
+                                if (reader.IsStartElement("gml:exterior")) {
+                                    var ring = ReadLinearRing(reader);
+                                    exterior = ring;
+                                }
+                                else if (reader.IsStartElement("gml:interior")) {
+                                    var ring = ReadLinearRing(reader);
+                                    interior.Add(ring);
+                                }
+                                else if (property.Attribute(xlink + "href") != null) {
+                                    var referenceId = property.Attribute(xlink + "href")?.Value.Replace("#", "");
+
+                                    element.GeometryIdentifier = referenceId;
+                                }
+                            }
+                        }
+
+                        // Null geometry..
+                        if (exterior == null)
+                            return default;
+
+                        // Populate exterior ring
+                        coordinates.Add(exterior);
+
+                        // Populate interior rings
+                        foreach (var ring in interior) {
+                            coordinates.Add(ring);
+                        }
+                    }
+                    break;
+                default: {
+                        throw new InvalidOperationException();
+                    }
             }
-
-            // The core GML part is built first (same logic as before)
-            var polygonPatch = new XElement(gml + "PolygonPatch",
-                new XElement(gml + "exterior",
-                    new XElement(gml + "LinearRing",
-                        new XElement(gml + "posList", CoordinatesToPosList(polygon.ExteriorRing.Coordinates))
-                    )
-                )
-            );
-
-            // Add interior rings if they exist
-            foreach (var interiorRing in polygon.InteriorRings) {
-                polygonPatch.Add(
-                    new XElement(gml + "interior",
-                        new XElement(gml + "LinearRing",
-                            new XElement(gml + "posList", CoordinatesToPosList(interiorRing.Coordinates))
-                        )
-                    )
-                );
-            }
-
-            // 2. Assemble the final structure using the correct namespaces and prefixes.
-            var s128Geometry = new XElement("geometry",
-                new XAttribute(XNamespace.Xmlns + ns.Name, ns.Namespace),
-                new XAttribute(XNamespace.Xmlns + "S100", s100.NamespaceName),
-                new XAttribute(XNamespace.Xmlns + "gml", gml.NamespaceName),
-
-                new XElement(s100 + "surfaceProperty",
-                    new XElement(s100 + "Surface",
-                        // 3. Add the namespaced attribute 'gml:id'
-                        new XAttribute(gml + "id", gmlId),
-                        new XAttribute("srsName", srsName),
-                        new XElement(gml + "patches",
-                            polygonPatch // <-- Insert the GML patch we built earlier
-                        )
-                    )
-                )
-            );
-
-            return s128Geometry;
-            //return s128Geometry.ToString(SaveOptions.None);
+            return [.. coordinates];
         }
 
-        /// <summary>
-        /// Helper function to convert an array of NTS Coordinates to a GML posList string.
-        /// Format: "x1 y1 x2 y2 x3 y3..."
-        /// </summary>
-        private static string CoordinatesToPosList(Coordinate[] coordinates) {
-            var sb = new StringBuilder();
-            foreach (var coord in coordinates) {
-                sb.Append($"{coord.Y} {coord.X} ");
+
+        private static string[] ReadLinearRing(XmlReader reader) {
+            string[] coords = [];
+            while (reader.Read()) {
+                if (reader.NodeType == System.Xml.XmlNodeType.Element) {
+                    if (reader.IsStartElement("gml:posList")) {
+                        coords = reader.ReadElementContentAsString().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                    }
+                }
             }
-            return sb.ToString().Trim();
+            return coords;
         }
     }
 }
+
+
+//    namespace NetTopologySuite.Geometries
+//{
+//    public static class Extension
+//    {
+//        private static readonly XNamespace gml = "http://www.opengis.net/gml/3.2";
+//        private static readonly XNamespace s100 = "http://www.iho.int/S100/gml";
+//        //private static readonly XNamespace s128 = "http://www.iho.int/S128/gml";
+
+//        /// <summary>
+//        /// Creates a complete <S128:geometry> element from an NTS Polygon.
+//        /// </summary>
+//        public static XElement? ToGMLFeatureS100(this Polygon polygon, string gmlId, XmlQualifiedName ns, string srsName = "EPSG:4326") {
+//            if (polygon == null || polygon.IsEmpty) {
+//                return default;
+//            }
+
+//            // The core GML part is built first (same logic as before)
+//            var polygonPatch = new XElement(gml + "PolygonPatch",
+//                new XElement(gml + "exterior",
+//                    new XElement(gml + "LinearRing",
+//                        new XElement(gml + "posList", CoordinatesToPosList(polygon.ExteriorRing.Coordinates))
+//                    )
+//                )
+//            );
+
+//            // Add interior rings if they exist
+//            foreach (var interiorRing in polygon.InteriorRings) {
+//                polygonPatch.Add(
+//                    new XElement(gml + "interior",
+//                        new XElement(gml + "LinearRing",
+//                            new XElement(gml + "posList", CoordinatesToPosList(interiorRing.Coordinates))
+//                        )
+//                    )
+//                );
+//            }
+
+//            // 2. Assemble the final structure using the correct namespaces and prefixes.
+//            var s128Geometry = new XElement("geometry",
+//                new XAttribute(XNamespace.Xmlns + ns.Name, ns.Namespace),
+//                new XAttribute(XNamespace.Xmlns + "S100", s100.NamespaceName),
+//                new XAttribute(XNamespace.Xmlns + "gml", gml.NamespaceName),
+
+//                new XElement(s100 + "surfaceProperty",
+//                    new XElement(s100 + "Surface",
+//                        // 3. Add the namespaced attribute 'gml:id'
+//                        new XAttribute(gml + "id", gmlId),
+//                        new XAttribute("srsName", srsName),
+//                        new XElement(gml + "patches",
+//                            polygonPatch // <-- Insert the GML patch we built earlier
+//                        )
+//                    )
+//                )
+//            );
+
+//            return s128Geometry;
+//            //return s128Geometry.ToString(SaveOptions.None);
+//        }
+
+//        /// <summary>
+//        /// Helper function to convert an array of NTS Coordinates to a GML posList string.
+//        /// Format: "x1 y1 x2 y2 x3 y3..."
+//        /// </summary>
+//        private static string CoordinatesToPosList(Coordinate[] coordinates) {
+//            var sb = new StringBuilder();
+//            foreach (var coord in coordinates) {
+//                sb.Append($"{coord.Y} {coord.X} ");
+//            }
+//            return sb.ToString().Trim();
+//        }
+//    }
+//}

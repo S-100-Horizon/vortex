@@ -67,6 +67,8 @@ namespace S100Framework.GML
             }
 
             public string Identifier => _element.Attribute(XName.Get("id", _element.GetNamespaceOfPrefix("gml")!.NamespaceName))!.Value;
+            public string? GeometryIdentifier;
+            public string GeometryType => Geometry?.Elements().FirstOrDefault()?.Name.LocalName.ToLower() ?? throw new InvalidDataException("No geometry type found for the element.");  // e.g. pointproperty, curveproperty, surfaceproperty
             public object Value {
                 get {
                     var type = _featureCatalogue.Assembly!.GetType($"{_featureCatalogue.DefaultNamespace}.FeatureTypes.{_element.Name.LocalName}")!;

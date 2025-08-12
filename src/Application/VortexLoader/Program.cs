@@ -3,6 +3,7 @@ using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.DomainModel;
+using S100Framework.GML;
 using Serilog;
 using System.Text.Json;
 using System.Text.RegularExpressions;
@@ -330,9 +331,10 @@ namespace S100Framework.Applications
                 fcSurface.DeleteRows(filter);
             }
 
-            var members = dataset!.Members().ToArray();
+            var members = dataset.Members();
 
-            var lookupDict = new Dictionary<string, Geometry>();
+            var referencedGeometry = new Dictionary<string, string[][]>();
+
             foreach (var m in members) {
                 if (m is S100Framework.GML.Dataset.InformationType informationType) {
                     var value = informationType.Value;
@@ -351,14 +353,12 @@ namespace S100Framework.Applications
                 if (m is S100Framework.GML.Dataset.FeatureType featureType) {
                     var value = featureType.Value;
 
-                    var (type, geometry) = featureType.Shape(lookupDict);
-                    
+                    var geometryType = featureType.GeometryType;
 
-                    var rowbuffer = type switch {
-                        GeometryType.Point => bufferPoint,
-                        GeometryType.Multipoint => bufferPoint,
-                        GeometryType.Polyline => bufferCurve,
-                        GeometryType.Polygon => bufferSurface,
+                    var rowbuffer = geometryType switch {
+                        "pointproperty" => bufferPoint,
+                        "curveproperty" => bufferCurve,
+                        "surfaceproperty" => bufferSurface,
                         _ => throw new NotImplementedException(),
                     };
 
@@ -367,6 +367,26 @@ namespace S100Framework.Applications
                     rowbuffer["ps"] = dataset.ProductSpecification;
                     rowbuffer["code"] = value.GetType().Name;
                     rowbuffer["json"] = json;
+
+                    // Geometry
+                    var coordinates = featureType.Coordinates();
+
+                    if (coordinates == null || coordinates[0].Length == 0) {
+                        if (string.IsNullOrEmpty(featureType.GeometryIdentifier))
+                            continue;
+
+                        var found = referencedGeometry.TryGetValue(featureType.GeometryIdentifier, out var coords);
+
+                        if (!found)
+                            continue;
+
+                        coordinates = coords;
+                    }
+                    else if (!string.IsNullOrEmpty(featureType.GeometryIdentifier)) {
+                        _ = referencedGeometry.TryAdd(featureType.GeometryIdentifier!, coordinates);
+                    }
+
+                    var geometry = GeometryExtensions.BuildGeometry(geometryType, coordinates!);
 
                     if (geometry is MapPoint point) {
                         if (point.HasZ == false)
@@ -387,10 +407,6 @@ namespace S100Framework.Applications
                     else if (geometry is Polygon polygon) {
                         bufferSurface["shape"] = polygon;
                         using var row = fcSurface.CreateRow(bufferSurface);
-                    }
-                    else if(geometry is null) {
-                        //Log.Error("Geometry for feature {name} is null.", featureType.Identifier);
-                        continue;
                     }
                 }
             }
