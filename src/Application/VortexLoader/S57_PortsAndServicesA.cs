@@ -58,24 +58,67 @@ namespace S100Framework.Applications
                     case 1: { // BERTHS_Berth
                             throw new NotImplementedException($"No BERTHS_Berth in DK or GL. {tableName}");
 
-                            var instance = new Berth() {
-                            };
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
+                            var instance = new Berth();
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            // TODO: Category of Berth
+                            /* S-57 ENC to S-101 Conversion Guidance ed 1.2.0
+                                The attribute category of cargo has been introduced in S-101 to encode the type of vessel cargo
+                                allowed at the berth, in particular the fact that a berth is a berth for dangerous or hazardous cargo
+                                (category of cargo = 7). This information is encoded in S-57 on BERTHS using the attribute
+                                INFORM (see clause 2.3). In order for this information to be converted across to S-101, the text
+                                string encoded in INFORM on the BERTHS should be in a standardised format, such as Dangerous
+                                or hazardous cargo.                            */
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
+                            // TODO: horizontalClearanceLength
 
+                            if (current.HORCLR.HasValue) {
+                                instance.horizontalClearanceWidth = current.HORCLR.Value;
+                            }
+
+                            if (current.HORCLR.HasValue) {
+                                instance.horizontalClearanceWidth = current.HORCLR.Value;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            // TODO: maximumPermittedDraught
+
+                            // TODO: minimumBerthDepth
+
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
+                            }
+
+                            if (current.QUASOU != default) {
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                            }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (current.SOUACC.HasValue) {
+                                instance.verticalUncertainty = new() {
+                                    uncertaintyFixed = current.SOUACC.Value
+                                };
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
