@@ -133,6 +133,10 @@ namespace S100Framework.DomainModel.S100
     {
         [XmlElement(Order = 0)]
         public DataSetIdentification DatasetIdentificationInformation { get; set; }
+
+        [JsonIgnore]
+        [XmlAttribute("schemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
+        public abstract string SchemaLocation { get; set; }
     }
 
     [Serializable]

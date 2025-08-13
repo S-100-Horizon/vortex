@@ -1,5 +1,6 @@
 ﻿using Pluralize.NET.Core;
 using S100Framework.DomainModel;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
@@ -677,7 +678,7 @@ namespace S100Framework.Applications
 
                         featureTypes.Add(code);
                         knownTypes.Add(code);
-                        knowTypesPrefix.Add(code, code);
+                        knowTypesPrefix.Add(code, code);                        
 
                         var s = BuildClass(e, new BuildClassClient {
                             ProductSpecification = productSpecification,
@@ -701,6 +702,13 @@ namespace S100Framework.Applications
                                 builder.AppendLine("\t\t\t[XmlAnyElement]");
                                 builder.AppendLine("\t\t\tpublic XmlElement[]? Geometry { get; set; } = default;");
                             }
+                            
+                            //if (superType == null) {
+                            //    builder.AppendLine();
+                            //    builder.AppendLine("\t\t\t[JsonIgnore]");
+                            //    builder.AppendLine("\t\t\t[XmlAttribute(\"schemaLocation\", Namespace = \"http://www.w3.org/2001/XMLSchema-instance\")]");
+                            //    builder.AppendLine($"\t\t\tpublic string SchemaLocation = \"http://www.iho.int/{productId}/{version} {productId.Substring(1)}_{versionNumber}.xsd\";");
+                            //}
                         });
 
                         builderDomainModel.AppendLine(s);
@@ -713,7 +721,9 @@ namespace S100Framework.Applications
 
 
             //  --- GML -------------------------------------------------------------------------
-            var xmlTypeNamespace = $"Namespace = \"http://www.iho.int/{productId}/{versionNumber.Remove(versionNumber.LastIndexOf('.'))}\"";
+            var version = versionNumber.Remove(versionNumber.LastIndexOf('.'));
+            var xmlTypeNamespace = $"Namespace = \"http://www.iho.int/{productId}/{version}\"";
+
             builderDomainModel.AppendLine("");
             builderDomainModel.AppendLine($"\t[XmlType({xmlTypeNamespace})]");
             builderDomainModel.AppendLine("\tpublic class Dataset : S100Framework.DomainModel.S100.DatasetBase");
@@ -721,6 +731,11 @@ namespace S100Framework.Applications
 
             builderDomainModel.AppendLine("\t\t[XmlElement(Order = 1)]");
             builderDomainModel.AppendLine("\t\tpublic Members? members { get; set; } = default;");
+
+            builderDomainModel.AppendLine();
+            builderDomainModel.AppendLine("\t\t[JsonIgnore]");
+            builderDomainModel.AppendLine("\t\t[XmlAttribute(\"schemaLocation\", Namespace = \"http://www.w3.org/2001/XMLSchema-instance\")]");
+            builderDomainModel.AppendLine($"\t\tpublic override string SchemaLocation {{ get; set; }} = \"http://www.iho.int/{productId}/{version} {productId.Substring(1)}_{versionNumber}.xsd\";");
 
             builderDomainModel.AppendLine("\t}");
             builderDomainModel.AppendLine("");
