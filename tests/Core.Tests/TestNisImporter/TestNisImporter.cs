@@ -671,11 +671,12 @@ namespace TestNisImporter
 
         [Fact]
         public void BuildImportS57ToGeodatabaseScripts() {
-            var root = new IO.DirectoryInfo(@"c:\temp\ENC\");
+            var root = new IO.DirectoryInfo(@"c:\temp\ENC");
 
             var python = new StringBuilder();
 
             foreach (var enc in root.EnumerateDirectories()) {
+                if (enc.Name.Contains("cancel", StringComparison.InvariantCultureIgnoreCase)) continue;
                 var command = ImportS57ToGeodatabase(enc, "geodatabase.gdb", (e) => true);
 
                 python.AppendLine(command);
@@ -688,6 +689,10 @@ namespace TestNisImporter
             var tasks = new List<string>();
 
             var regex = new Regex(@"\d{3}$");
+
+            if(!folder.GetFiles("*.000", SearchOption.TopDirectoryOnly).Any()) {
+                folder = folder.GetDirectories().OrderByDescending(e => e.Name).First();
+            }
 
             foreach (var file in folder.GetFiles("*.000").OrderBy(e => IO.Path.GetFileNameWithoutExtension(e.FullName))) {
                 var name = IO.Path.GetFileNameWithoutExtension(file.FullName);
