@@ -153,7 +153,8 @@ namespace S100Framework.Applications
                                 relatedBridge = relatedBridges[0];
                             }
 
-                            
+
+
 
                             bool openingBridge = false;
                             List<bridgeFunction> bridgeFunctionValue = new List<bridgeFunction>();
@@ -163,6 +164,8 @@ namespace S100Framework.Applications
                             condition? conditionValue = default;
                             List<status> statusValue = new();
                             List<natureOfConstruction> natureOfConstructionValues = new();
+                            var horclr = current.HORCLR ?? default;
+                            var horacc = current.HORACC ?? default;
 
                             if (current.CATBRG != default && current.CATBRG == "1") {
                                 openingBridge = false;
@@ -266,11 +269,19 @@ namespace S100Framework.Applications
                                     }
                                 };
 
-
                                 instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
                                     horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767m ? current.HORCLR!.Value : default(decimal?),
                                     horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767m ? current.HORACC!.Value : default(decimal?),
                                 };
+
+
+                                DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                                if (dateRange != default) {
+                                    instance.fixedDateRange = dateRange;
+                                }
+
+                                instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
+
 
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
@@ -329,8 +340,14 @@ namespace S100Framework.Applications
                                 };
 
                                 AddInformation(instance.information, feature);
-                                buffer["ps"] = ps101;
 
+                                if (current.PICREP != default) {
+                                    instance.pictorialRepresentation = current.PICREP;
+                                }
+
+                                
+
+                                buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer, current.SHAPE);
@@ -621,8 +638,10 @@ namespace S100Framework.Applications
                                     uncertaintyFixed = current.VERACC.HasValue ? current.VERACC.Value : default(decimal?),
                                     uncertaintyVariableFactor = default(decimal?)
                                 },
-                                verticalClearanceValue = current.VERCOP.HasValue ? current.VERCOP.Value : default(decimal?),
+                                //verticalClearanceValue = current.VERCOP.HasValue ? current.VERCOP.Value : default(decimal?),
+                                verticalClearanceValue = current.VERCCL.HasValue ? current.VERCCL.Value : default(decimal?),
                             };
+
 
                             instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
 
@@ -759,8 +778,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 30: { // FORSTC_FortifiedStructure
-                            var instance = new FortifiedStructure() {
-                            };
+                            var instance = new FortifiedStructure();
 
                             if (current.CATFOR.HasValue) {
                                 instance.categoryOfFortifiedStructure = EnumHelper.GetEnumValue<categoryOfFortifiedStructure>(current.CATFOR.Value);
@@ -771,6 +789,7 @@ namespace S100Framework.Applications
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);                            
+
                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
                             }
@@ -818,13 +837,13 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            //TODO: inTheWater
-
                             AddInformation(instance.information, feature);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
                             }
+                            
+                            //TODO: inTheWater
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -872,8 +891,11 @@ namespace S100Framework.Applications
                                     windturbine.fixedDateRange = dateRange;
                                 }
 
-                                if (current.HEIGHT.HasValue) {
+                                if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                     windturbine.height = current.HEIGHT.Value;
+                                }
+                                else {
+                                    windturbine.height = default(decimal?);
                                 }
 
                                 // TODO: interoperabilityIdentifier

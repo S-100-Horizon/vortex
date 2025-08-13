@@ -225,15 +225,9 @@ namespace S100Framework.Applications
                     case 15: { // CRANES_Cranes
                             var instance = new Crane();
 
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
-
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            if (current.CATCRN.HasValue) {
+                                instance.categoryOfCrane = EnumHelper.GetEnumValue<categoryOfCrane>(current.CATCRN.Value);
                             }
-
 
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
@@ -247,16 +241,86 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                                instance.height = current.HEIGHT.Value;
+                            }
+                            else {
+                                instance.height = default(decimal?);
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.LIFCAP.HasValue) {
+                                instance.liftingCapacity = current.LIFCAP.Value;
+                            }
+
+                            if (current.ORIENT.HasValue) {
+                                instance.orientation = new() {
+                                    orientationValue = current.ORIENT.HasValue && current.ORIENT.Value != -32767m ? current.ORIENT : default(decimal?),
+                                    orientationUncertainty = default(decimal?)
+                                };
+                            }
+
+                            if (current.CONRAD.HasValue) {
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
+                            }
+
+                            if (current.RADIUS.HasValue && current.RADIUS.Value != -32767m) {
+                                instance.radius = current.RADIUS.Value;
+                            }
+                            else {
+                                instance.radius = default(decimal?);
+                            }
+
+
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
+                            instance.verticalClearanceFixed = new() {
+                                verticalUncertainty = new() {
+                                    uncertaintyFixed = current.VERACC.HasValue ? current.VERACC.Value : default(decimal?),
+                                    uncertaintyVariableFactor = default(decimal?)
+                                },
+                                // TODO: verticalClearanceValue
+                                verticalClearanceValue = default(decimal?)
+                                // verticalClearanceValue = current.VERCOP.HasValue ? current.VERCOP.Value : default(decimal?),
+                            };
+
                             instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
 
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
+                                instance.verticalLength = current.VERLEN.Value;
+                            }
+                            else {
+                                instance.verticalLength = default(decimal?);
+                            }
+
+
+                            if (current.CONVIS.HasValue) {
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                            }
+
+
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
 
                             AddInformation(instance.information, feature);
+
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
+
+                            //TODO: inTheWater
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
@@ -319,27 +383,65 @@ namespace S100Framework.Applications
                         break;
                     case 25: { // GATCON_Gate
                             var instance = new Gate();
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            if (current.CATGAT.HasValue) {
+                                instance.categoryOfGate = EnumHelper.GetEnumValue<categoryOfGate>(current.CATGAT.Value);
                             }
-
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m) {
+                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            instance.horizontalClearanceOpen = new horizontalClearanceOpen() {
+                                horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767m ? current.HORCLR!.Value : default(decimal?),
+                                horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767m ? current.HORACC!.Value : default(decimal?),
+                            };
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.NATCON != default) {
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                            }
+
+                            if (current.QUASOU != default) {
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                            instance.verticalClearanceOpen = new() {
+                                verticalUncertainty = new() {
+                                    uncertaintyFixed = current.VERACC.HasValue ? current.VERACC.Value : default(decimal?),
+                                    uncertaintyVariableFactor = default(decimal?)
+                                },
+                                verticalClearanceValue = current.VERCLR.HasValue ? current.VERCLR.Value : default(decimal?),
+                                verticalClearanceUnlimited = !current.VERCLR.HasValue || current.VERCLR.Value == default(decimal)
+                            };
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
+
+
+                            if (current.SOUACC.HasValue) {
+                                instance.verticalUncertainty = new() {
+                                    uncertaintyFixed = current.SOUACC.Value
+                                };
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -403,28 +505,62 @@ namespace S100Framework.Applications
                     case 35: { // HRBFAC_HarbourFacility
                             var instance = new HarbourFacility();
 
-                            if (current.CATHAF != null && current.CATHAF != "-32767") {
+                            if (current.CATHAF != default) {
                                 instance.categoryOfHarbourFacility = EnumHelper.GetEnumValues<categoryOfHarbourFacility>(current.CATHAF);
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
-
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            if (current.COMCHA != default) {
+                                instance.communicationChannel = GetCommunicationChannel(current.COMCHA);
                             }
-
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.NATCON != default) {
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                            }
+
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
+                            }
+
+                            // TODO: product
+
+                            if (current.SORDAT != default) {
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                    instance.reportedDate = current.SORDAT;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
+                            // TODO: restriction
+
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            // TODO: vesselspeedlimit
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 

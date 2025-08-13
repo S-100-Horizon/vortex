@@ -633,9 +633,14 @@ namespace S100Framework.Applications
                                     windturbine.fixedDateRange = dateRange;
                                 }
 
-                                if (current.HEIGHT.HasValue) {
+
+                                if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                     windturbine.height = current.HEIGHT.Value;
                                 }
+                                else {
+                                    windturbine.height = default(decimal?);
+                                }
+
 
                                 // TODO: interoperabilityIdentifier
 
@@ -1043,8 +1048,12 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.HEIGHT.HasValue) {
+
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
+                            }
+                            else {
+                                instance.height = default(decimal?);
                             }
 
                             // TODO: interoperabilityIdentifier

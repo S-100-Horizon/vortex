@@ -101,7 +101,6 @@ namespace S100Framework.Applications
                     case 5: { // FERYRT_FerryRoute
                             var instance = new FerryRoute();
 
-
                             if (current.CATFRY.HasValue) {
                                 instance.categoryOfFerry = EnumHelper.GetEnumValues<categoryOfFerry>(current.CATFRY.Value);
                             }
@@ -176,13 +175,13 @@ namespace S100Framework.Applications
                             }
 
 
-                            if (current.ORIENT.HasValue) {
-                                instance.orientation = new DomainModel.S101.ComplexAttributes.orientation() {
-                                    orientationValue = current.ORIENT.Value,
-                                    // TODO: oriantationUncertainty
-                                    //orientationUncertainty = ,
-                                };
-                            }
+                                        if (current.ORIENT.HasValue) {
+                                            instance.orientation = new DomainModel.S101.ComplexAttributes.orientation() {
+                                                orientationValue = current.ORIENT.Value,
+                                                // TODO: oriantationUncertainty
+                                                //orientationUncertainty = ,
+                                            };
+                                        }
 
 
                             AddInformation(instance.information, feature);
