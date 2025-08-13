@@ -498,10 +498,8 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
@@ -522,8 +520,57 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 30: { // DRYDOC_DryDock
-                            var instance = new DryDock() {
-                            };
+                            var instance = new DryDock();
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m) {
+                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                            }
+
+                            // TODO: elevation ??? 
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            // TODO: horizontalClearanceLength
+
+                            if (current.HORCLR.HasValue) {
+                                instance.horizontalClearanceWidth = current.HORCLR.Value;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.HORLEN.HasValue) {
+                                instance.horizontalLength = current.HORLEN.Value;
+                            }
+
+                            if (current.HORWID.HasValue) {
+                                instance.horizontalWidth = current.HORWID.Value;
+                            }
+
+                            // TODO: maximumPermittedDraught
+
+                            if (current.QUASOU != default) {
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            if (current.SOUACC.HasValue) {
+                                instance.verticalUncertainty = new() {
+                                    uncertaintyFixed = current.SOUACC.Value
+                                };
+                            }
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -533,16 +580,6 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-
-
-                            if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
