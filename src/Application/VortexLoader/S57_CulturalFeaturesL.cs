@@ -206,13 +206,16 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
+
                             instance.verticalClearanceFixed = new() {
                                 verticalUncertainty = new() {
-                                    uncertaintyFixed = current.VERACC.HasValue ? current.VERACC.Value : default(decimal?),
+                                    uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767m ? current.VERACC.Value : default(decimal?),
                                     uncertaintyVariableFactor = default(decimal?)
                                 },
-                                verticalClearanceValue = current.VERCCL.HasValue ? current.VERCCL.Value : default(decimal?),
+                                //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP.Value : default(decimal?),
+                                verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL.Value : default(decimal?),
                             };
+
 
                             instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
 

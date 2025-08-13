@@ -122,6 +122,9 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
+                            }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
@@ -162,6 +165,9 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
+                            }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
@@ -203,6 +209,9 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
+                            }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
@@ -211,21 +220,32 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 15: { // ISTZNE_InshoreTrafficZone
-                            var instance = new InshoreTrafficZone() {
-                            };
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
+                            var instance = new InshoreTrafficZone();
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.RESTRN != default) {
+                                instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
+                            }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
+
+                            // TODO: vesselspeedlimit
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -238,6 +258,9 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
+                            }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
@@ -257,8 +280,6 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-
-
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
@@ -275,6 +296,9 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             // TODO: Create relations
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
+                            }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
