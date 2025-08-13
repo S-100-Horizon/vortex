@@ -1,9 +1,11 @@
-﻿using ArcGIS.Core.Data;
+﻿using ArcGIS.Core.CIM;
+using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System.ComponentModel;
 
 namespace S100Framework.Applications
 {
@@ -241,6 +243,16 @@ namespace S100Framework.Applications
 
 
                             // Span
+                            /*
+                                For opening bridges/bridge spans the attribute VERCOP is only mandatory where there is a limited
+                                vertical clearance when the bridge is open. Where VERCOP is not present for an opening
+                                bridge/bridge span, the mandatory complex attribute vertical clearance open, mandatory subattribute vertical clearance unlimited will be populated as True during the automated conversion
+                                process. Where VERCOP has a value or is populated with an empty (null) value, vertical clearance
+                                unlimited will be populated as False.
+                            */
+
+                            
+
                             if (openingBridge) {
                                 var instance = new SpanOpening() {
                                     verticalClearanceClosed = new verticalClearanceClosed() {
@@ -253,6 +265,7 @@ namespace S100Framework.Applications
                                         verticalClearanceUnlimited = !current.VERCOP.HasValue || current.VERCOP.Value == default(decimal)
                                     }
                                 };
+
 
                                 instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
                                     horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767m ? current.HORCLR!.Value : default(decimal?),
@@ -294,6 +307,7 @@ namespace S100Framework.Applications
 
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             }
+
                             if (!openingBridge) {
                                 if (createBridgesAndRelations) {
                                     var relatedBridges = Bridges.Instance.GetBridgeElementsContainingOID(current.TableName!, current.OBJECTID!.Value);
@@ -544,7 +558,6 @@ namespace S100Framework.Applications
                     case 20: { // CONVYR_Conveyor
                             var instance = new Conveyor();
 
-
                             if (current.CATCON.HasValue) {
                                 instance.categoryOfConveyor = EnumHelper.GetEnumValue<categoryOfConveyor>(current.CATCON.Value);
                             }
@@ -565,8 +578,9 @@ namespace S100Framework.Applications
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
-                            }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            }
+
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
@@ -589,7 +603,6 @@ namespace S100Framework.Applications
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
-
                             if (current.SORDAT != default) {
                                 if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
                                     instance.reportedDate = current.SORDAT;
@@ -603,13 +616,14 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
+                            instance.verticalClearanceFixed = new() {
+                                verticalUncertainty = new() {
+                                    uncertaintyFixed = current.VERACC.HasValue ? current.VERACC.Value : default(decimal?),
+                                    uncertaintyVariableFactor = default(decimal?)
+                                },
+                                verticalClearanceValue = current.VERCOP.HasValue ? current.VERCOP.Value : default(decimal?),
+                            };
 
-                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var value);
-                            if (dateRange != default) {
-                                instance.fixedDateRange = value;
-                            }
-
-                            // TODO: verticalClearanceFixed		
                             instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
 
                             if (current.VERLEN.HasValue) {
@@ -636,7 +650,6 @@ namespace S100Framework.Applications
                             }
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);

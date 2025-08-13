@@ -146,8 +146,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 10: { // CONVYR_Conveyor
-                            var instance = new Conveyor() {
-                            };
+                            var instance = new Conveyor();
 
                             if (current.CATCON.HasValue) {
                                 instance.categoryOfConveyor = EnumHelper.GetEnumValue<categoryOfConveyor>(current.CATCON.Value);
@@ -169,8 +168,9 @@ namespace S100Framework.Applications
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
-                            }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            }
+
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
@@ -193,7 +193,6 @@ namespace S100Framework.Applications
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
-
                             if (current.SORDAT != default) {
                                 if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
                                     instance.reportedDate = current.SORDAT;
@@ -207,13 +206,14 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
+                            instance.verticalClearanceFixed = new() {
+                                verticalUncertainty = new() {
+                                    uncertaintyFixed = current.VERACC.HasValue ? current.VERACC.Value : default(decimal?),
+                                    uncertaintyVariableFactor = default(decimal?)
+                                },
+                                verticalClearanceValue = current.VERCOP.HasValue ? current.VERCOP.Value : default(decimal?),
+                            };
 
-                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var value);
-                            if (dateRange != default) {
-                                instance.fixedDateRange = value;
-                            }
-
-                            // TODO: verticalClearanceFixed		
                             instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
 
                             if (current.VERLEN.HasValue) {
@@ -233,8 +233,12 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
+
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
+
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;

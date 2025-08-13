@@ -218,14 +218,6 @@ namespace S100Framework.Applications
 
                             //CONDTN, EXPSOU, NATCON, NATQUA, NATSUR, PRODCT, VERLEN, WATLEV
 
-                            /*
-                                OBSTRN of geometric primitive area or line with attribute INFORM = Submerged weir will be
-                                converted to an instance of the S-101 Feature _s101type Dam (see clause 4.8.5). Where this is the case,
-                                the attributes CATOBS, EXPSOU, NATQUA, NATSUR, PRODCT, QUASOU, SOUACC, TECSOU
-                                and VALSOU will not be converted. It is considered that these attributes are not relevant for Dam in
-                                S-101.
-                            */
-
                             var obstruction = new Obstruction {
                                 surroundingDepth = default,
                                 waterLevelEffect = default,

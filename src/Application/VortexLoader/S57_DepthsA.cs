@@ -103,7 +103,7 @@ namespace S100Framework.Applications
 
                             // TODO: InteroperabilityIdentifier
 
-                            // TODO: maximumPermittedDraught - Not converted
+                            // TODO: maximumPermittedDraught - From INFORM - No instances in GST - Not converted
 
 
                             // The S-57 attribute QUASOU for DEPARE will not be converted. It is considered that this attribute is

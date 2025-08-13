@@ -91,7 +91,7 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            // TODO: maximumPermittedDraught
+                            // TODO: maximumPermittedDraught - From INFORM - No instances in GST - Not converted
 
                             // TODO: minimumBerthDepth
 
@@ -980,7 +980,7 @@ namespace S100Framework.Applications
 
                                 // TODO: interoperabilityIdentifier
 
-                                // TODO: maximumPermittedDraught
+                                // TODO: maximumPermittedDraught - From INFORM - No instances in GST - Not converted
 
                                 // TODO: maximumPermittedVesselLength
 

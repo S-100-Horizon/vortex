@@ -380,7 +380,7 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            // TODO: maximumPermittedDraught
+                            // TODO: maximumPermittedDraught - From INFORM - No instances in GST - Not converted
 
                             if (current.ORIENT.HasValue) {
                                 instance.orientationValue = current.ORIENT.Value;

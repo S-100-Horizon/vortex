@@ -92,7 +92,7 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            // TODO: maximumPermittedDraught -> INFORM
+                            // TODO: maximumPermittedDraught - From INFORM - No instances in GST - Not converted
 
                             if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m) {
                                 instance.minimumBerthDepth = current.DRVAL1.Value;
@@ -1357,7 +1357,7 @@ namespace S100Framework.Applications
 
                                 // TODO: interoperabilityIdentifier
 
-                                // TODO: maximumPermittedDraught
+                                // TODO: maximumPermittedDraught - From INFORM - No instances in GST - Not converted
 
                                 // TODO: maximumPermittedVesselLength
 
