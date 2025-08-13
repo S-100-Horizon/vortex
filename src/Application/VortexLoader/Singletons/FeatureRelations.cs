@@ -1,4 +1,5 @@
 ﻿using ArcGIS.Core.Data;
+using NetTopologySuite.GeometriesGraph;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101.ComplexAttributes;
@@ -693,6 +694,36 @@ namespace S100Framework.Applications.Singletons
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
                             idIndex[currentGlobalId].S57Object = new OffshoreInstallationsL((Feature)cursorRelated.Current);
+                        }
+                    }
+                    else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("depthsa")) {
+                        if (idIndex.ContainsKey(currentGlobalId)) {
+                            loadedRelatedObjectsCount++;
+                            idIndex[currentGlobalId].S57Object = new DepthsA((Feature)cursorRelated.Current);
+                        }
+                    }
+                    else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("portsandservicesl")) {
+                        if (idIndex.ContainsKey(currentGlobalId)) {
+                            loadedRelatedObjectsCount++;
+                            idIndex[currentGlobalId].S57Object = new PortsAndServicesL((Feature)cursorRelated.Current);
+                        }
+                    }
+                    else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("dangersa")) {
+                        if (idIndex.ContainsKey(currentGlobalId)) {
+                            loadedRelatedObjectsCount++;
+                            idIndex[currentGlobalId].S57Object = new DangersA((Feature)cursorRelated.Current);
+                        }
+                    }
+                    else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("regulatedareasandlimitsa")) {
+                        if (idIndex.ContainsKey(currentGlobalId)) {
+                            loadedRelatedObjectsCount++;
+                            idIndex[currentGlobalId].S57Object = new RegulatedAreasAndLimitsA((Feature)cursorRelated.Current);
+                        }
+                    }
+                    else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("offshoreinstallationsa")) {
+                        if (idIndex.ContainsKey(currentGlobalId)) {
+                            loadedRelatedObjectsCount++;
+                            idIndex[currentGlobalId].S57Object = new OffshoreInstallationsA((Feature)cursorRelated.Current);
                         }
                     }
                     else {
