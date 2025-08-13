@@ -5853,9 +5853,13 @@ namespace S100Framework.DomainModel.S101 {
 			[XmlElement("name")]
 			public required String? name {get;set;} = default;
 
-			[XmlElement("nameUsage")]
+			[XmlIgnore]
 			[EnumerationValue([1,2])]
 			public nameUsage? nameUsage {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("nameUsage")]
+			public SerializableEnumeration<nameUsage>? nameUsageElement { get { return nameUsage; } set { } }
 
 			public bool ShouldSerializenameUsage() { return nameUsage.HasValue; }
 		}
@@ -5967,9 +5971,13 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class measuredDistanceValue {
-			[XmlElement("distanceUnitOfMeasurement")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5])]
 			public required distanceUnitOfMeasurement? distanceUnitOfMeasurement {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("distanceUnitOfMeasurement")]
+			public SerializableEnumeration<distanceUnitOfMeasurement> distanceUnitOfMeasurementElement { get { return distanceUnitOfMeasurement; } set { } }
 
 			[XmlElement("referenceLocation")]
 			public String? referenceLocation {get;set;} = default;
@@ -6095,9 +6103,13 @@ namespace S100Framework.DomainModel.S101 {
 			[XmlElement("signalDuration")]
 			public required decimal? signalDuration {get;set;} = default;
 
-			[XmlElement("signalStatus")]
+			[XmlIgnore]
 			[EnumerationValue([1,2])]
 			public required signalStatus? signalStatus {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("signalStatus")]
+			public SerializableEnumeration<signalStatus> signalStatusElement { get { return signalStatus; } set { } }
 		}
 
 		[System.Serializable()]
@@ -6115,15 +6127,23 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class surfaceCharacteristics {
-			[XmlElement("natureOfSurface")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,14,17,18])]
 			public natureOfSurface? natureOfSurface {get;set;} = default;
 
+			[JsonIgnore]
+			[XmlElement("natureOfSurface")]
+			public SerializableEnumeration<natureOfSurface>? natureOfSurfaceElement { get { return natureOfSurface; } set { } }
+
 			public bool ShouldSerializenatureOfSurface() { return natureOfSurface.HasValue; }
 
-			[XmlElement("natureOfSurfaceQualifyingTerms")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
 			public List<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTerms {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("natureOfSurfaceQualifyingTerms")]
+			public SerializableEnumeration<natureOfSurfaceQualifyingTerms>[] natureOfSurfaceQualifyingTermsElement { get { return [.. natureOfSurfaceQualifyingTerms]; } set { } }
 
 			public bool ShouldSerializenatureOfSurfaceQualifyingTerms() { return natureOfSurfaceQualifyingTerms.Any(); }
 
@@ -6156,9 +6176,13 @@ namespace S100Framework.DomainModel.S101 {
 			[XmlElement("telecommunicationIdentifier")]
 			public required String? telecommunicationIdentifier {get;set;} = default;
 
-			[XmlElement("telecommunicationService")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public telecommunicationService? telecommunicationService {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("telecommunicationService")]
+			public SerializableEnumeration<telecommunicationService>? telecommunicationServiceElement { get { return telecommunicationService; } set { } }
 
 			public bool ShouldSerializetelecommunicationService() { return telecommunicationService.HasValue; }
 		}
@@ -6179,9 +6203,13 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class timeIntervalsByDayOfWeek {
-			[XmlElement("dayOfWeek")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public List<dayOfWeek> dayOfWeek {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("dayOfWeek")]
+			public SerializableEnumeration<dayOfWeek>[] dayOfWeekElement { get { return [.. dayOfWeek]; } set { } }
 
 			public bool ShouldSerializedayOfWeek() { return dayOfWeek.Any(); }
 
@@ -6204,21 +6232,33 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class topmark {
-			[XmlElement("colour")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
-			[XmlElement("colourPattern")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public colourPattern? colourPattern {get;set;} = default;
 
+			[JsonIgnore]
+			[XmlElement("colourPattern")]
+			public SerializableEnumeration<colourPattern>? colourPatternElement { get { return colourPattern; } set { } }
+
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
-			[XmlElement("topmarkDaymarkShape")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33])]
 			public required topmarkDaymarkShape? topmarkDaymarkShape {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("topmarkDaymarkShape")]
+			public SerializableEnumeration<topmarkDaymarkShape> topmarkDaymarkShapeElement { get { return topmarkDaymarkShape; } set { } }
 
 			[XmlElement("shapeInformation")]
 			public List<shapeInformation> shapeInformation {get;set;} = [];
@@ -6232,9 +6272,13 @@ namespace S100Framework.DomainModel.S101 {
 			[XmlElement("magneticAnomalyValue")]
 			public required decimal? magneticAnomalyValue {get;set;} = default;
 
-			[XmlElement("referenceDirection")]
+			[XmlIgnore]
 			[EnumerationValue([5,13])]
 			public referenceDirection? referenceDirection {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("referenceDirection")]
+			public SerializableEnumeration<referenceDirection>? referenceDirectionElement { get { return referenceDirection; } set { } }
 
 			public bool ShouldSerializereferenceDirection() { return referenceDirection.HasValue; }
 		}
@@ -6257,9 +6301,13 @@ namespace S100Framework.DomainModel.S101 {
 			[XmlElement("speedLimit")]
 			public required decimal? speedLimit {get;set;} = default;
 
-			[XmlElement("speedUnits")]
+			[XmlIgnore]
 			[EnumerationValue([2,3,4])]
 			public required speedUnits? speedUnits {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("speedUnits")]
+			public SerializableEnumeration<speedUnits> speedUnitsElement { get { return speedUnits; } set { } }
 
 			[XmlElement("vesselClass")]
 			public String? vesselClass {get;set;} = default;
@@ -6270,9 +6318,13 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class zoneOfConfidence {
-			[XmlElement("categoryOfZoneOfConfidenceInData")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public required categoryOfZoneOfConfidenceInData? categoryOfZoneOfConfidenceInData {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfZoneOfConfidenceInData")]
+			public SerializableEnumeration<categoryOfZoneOfConfidenceInData> categoryOfZoneOfConfidenceInDataElement { get { return categoryOfZoneOfConfidenceInData; } set { } }
 
 			[XmlElement("fixedDateRange")]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -6305,9 +6357,13 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class rhythmOfLight {
-			[XmlElement("lightCharacteristic")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,25,26,27,28,29])]
 			public required lightCharacteristic? lightCharacteristic {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("lightCharacteristic")]
+			public SerializableEnumeration<lightCharacteristic> lightCharacteristicElement { get { return lightCharacteristic; } set { } }
 
 			[XmlElement("signalGroup")]
 			public List<String> signalGroup {get;set;} = [];
@@ -6328,9 +6384,13 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class scheduleByDayOfWeek {
-			[XmlElement("categoryOfSchedule")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public categoryOfSchedule? categoryOfSchedule {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfSchedule")]
+			public SerializableEnumeration<categoryOfSchedule>? categoryOfScheduleElement { get { return categoryOfSchedule; } set { } }
 
 			public bool ShouldSerializecategoryOfSchedule() { return categoryOfSchedule.HasValue; }
 
@@ -6372,13 +6432,21 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class tidalStreamPanelValues {
-			[XmlElement("referenceTide")]
+			[XmlIgnore]
 			[EnumerationValue([1,2])]
 			public required referenceTide? referenceTide {get;set;} = default;
 
-			[XmlElement("referenceTideType")]
+			[JsonIgnore]
+			[XmlElement("referenceTide")]
+			public SerializableEnumeration<referenceTide> referenceTideElement { get { return referenceTide; } set { } }
+
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public required referenceTideType? referenceTideType {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("referenceTideType")]
+			public SerializableEnumeration<referenceTideType> referenceTideTypeElement { get { return referenceTideType; } set { } }
 
 			[XmlElement("streamDepth")]
 			public decimal? streamDepth {get;set;} = default;
@@ -6447,9 +6515,13 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class lightSector {
-			[XmlElement("colour")]
+			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,9,10,11])]
 			public List<colour> colour {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
@@ -6458,9 +6530,13 @@ namespace S100Framework.DomainModel.S101 {
 
 			public bool ShouldSerializedirectionalCharacter() { return directionalCharacter!=default; }
 
-			[XmlElement("lightVisibility")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,8,9])]
 			public List<lightVisibility> lightVisibility {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("lightVisibility")]
+			public SerializableEnumeration<lightVisibility>[] lightVisibilityElement { get { return [.. lightVisibility]; } set { } }
 
 			public bool ShouldSerializelightVisibility() { return lightVisibility.Any(); }
 
@@ -6488,9 +6564,13 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorCharacteristics {
-			[XmlElement("lightCharacteristic")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,25,26,27,28,29])]
 			public required lightCharacteristic? lightCharacteristic {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("lightCharacteristic")]
+			public SerializableEnumeration<lightCharacteristic> lightCharacteristicElement { get { return lightCharacteristic; } set { } }
 
 			[XmlElement("lightSector")]
 			public List<lightSector> lightSector {get;set;} = [];

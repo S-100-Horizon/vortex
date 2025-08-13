@@ -372,7 +372,10 @@ namespace S100Framework.Applications
                             var prefix = knowTypesPrefix[referenceCode];
                             var postfix = knowTypesPostfix.ContainsKey(referenceCode) ? $" = {knowTypesPostfix[referenceCode]};" : string.Empty;
 
-                            builderDomainModel.AppendLine($"\t\t\t[XmlElement(\"{referenceCode}\")]");
+                            if(enumTypes.Contains(referenceCode))
+                                builderDomainModel.AppendLine($"\t\t\t[XmlIgnore]");
+                            else
+                                builderDomainModel.AppendLine($"\t\t\t[XmlElement(\"{referenceCode}\")]");
 
                             if (permittedValues is not null) {
                                 builderDomainModel.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
@@ -416,6 +419,18 @@ namespace S100Framework.Applications
                                 builderDomainModel.AppendLine($"\t\t\t\tget {{ return {referenceCode}.ToDateTime(TimeOnly.MinValue); }}");
                                 builderDomainModel.AppendLine($"\t\t\t\tset {{ {referenceCode} = DateOnly.FromDateTime(value); }}");
                                 builderDomainModel.AppendLine("\t\t\t}");
+                            }
+                            if (enumTypes.Contains(referenceCode)) {
+                                builderDomainModel.AppendLine();
+                                builderDomainModel.AppendLine("\t\t\t[JsonIgnore]");
+                                builderDomainModel.AppendLine($"\t\t\t[XmlElement(\"{referenceCode}\")]");
+
+                                if (lower == 0 && upper.HasValue && upper.Value == 1)
+                                    builderDomainModel.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>? {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
+                                else if (lower == 1 && upper.HasValue && upper.Value == 1)
+                                    builderDomainModel.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}> {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
+                                else
+                                    builderDomainModel.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>[] {referenceCode}Element {{ get {{ return [.. {referenceCode}]; }} set {{ }} }}");
                             }
 
                             if (lower == 0 && upper.HasValue && upper.Value == 1) {

@@ -2524,9 +2524,13 @@ namespace S100Framework.DomainModel.S127 {
 
 			public bool ShouldSerializenoticeTimeText() { return !string.IsNullOrEmpty(noticeTimeText); }
 
-			[XmlElement("operation")]
+			[XmlIgnore]
 			[EnumerationValue([1,2])]
 			public operation? operation {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("operation")]
+			public SerializableEnumeration<operation>? operationElement { get { return operation; } set { } }
 
 			public bool ShouldSerializeoperation() { return operation.HasValue; }
 		}
@@ -2557,9 +2561,13 @@ namespace S100Framework.DomainModel.S127 {
 
 			public bool ShouldSerializeonlineResourceDescription() { return !string.IsNullOrEmpty(onlineResourceDescription); }
 
-			[XmlElement("onlineFunction")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			public onlineFunction? onlineFunction {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("onlineFunction")]
+			public SerializableEnumeration<onlineFunction>? onlineFunctionElement { get { return onlineFunction; } set { } }
 
 			public bool ShouldSerializeonlineFunction() { return onlineFunction.HasValue; }
 
@@ -2615,9 +2623,13 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sourceIndication {
-			[XmlElement("categoryOfAuthority")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 			public categoryOfAuthority? categoryOfAuthority {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfAuthority")]
+			public SerializableEnumeration<categoryOfAuthority>? categoryOfAuthorityElement { get { return categoryOfAuthority; } set { } }
 
 			public bool ShouldSerializecategoryOfAuthority() { return categoryOfAuthority.HasValue; }
 
@@ -2636,9 +2648,13 @@ namespace S100Framework.DomainModel.S127 {
 
 			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
-			[XmlElement("sourceType")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("sourceType")]
+			public SerializableEnumeration<sourceType>? sourceTypeElement { get { return sourceType; } set { } }
 
 			public bool ShouldSerializesourceType() { return sourceType.HasValue; }
 
@@ -2663,9 +2679,13 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class textContent {
-			[XmlElement("categoryOfText")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public categoryOfText? categoryOfText {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfText")]
+			public SerializableEnumeration<categoryOfText>? categoryOfTextElement { get { return categoryOfText; } set { } }
 
 			public bool ShouldSerializecategoryOfText() { return categoryOfText.HasValue; }
 
@@ -2688,9 +2708,13 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class timeIntervalsByDayOfWeek {
-			[XmlElement("dayOfWeek")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public List<dayOfWeek> dayOfWeek {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("dayOfWeek")]
+			public SerializableEnumeration<dayOfWeek>[] dayOfWeekElement { get { return [.. dayOfWeek]; } set { } }
 
 			public bool ShouldSerializedayOfWeek() { return dayOfWeek.Any(); }
 
@@ -2728,9 +2752,13 @@ namespace S100Framework.DomainModel.S127 {
 
 			public bool ShouldSerializeunderKeelAllowanceVariableDraughtBased() { return underKeelAllowanceVariableDraughtBased.HasValue; }
 
-			[XmlElement("operation")]
+			[XmlIgnore]
 			[EnumerationValue([1,2])]
 			public operation? operation {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("operation")]
+			public SerializableEnumeration<operation>? operationElement { get { return operation; } set { } }
 
 			public bool ShouldSerializeoperation() { return operation.HasValue; }
 		}
@@ -2738,28 +2766,44 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class vesselsMeasurements {
-			[XmlElement("comparisonOperator")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public required comparisonOperator comparisonOperator {get;set;} = default;
 
-			[XmlElement("vesselsCharacteristics")]
+			[JsonIgnore]
+			[XmlElement("comparisonOperator")]
+			public SerializableEnumeration<comparisonOperator> comparisonOperatorElement { get { return comparisonOperator; } set { } }
+
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			public required vesselsCharacteristics vesselsCharacteristics {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("vesselsCharacteristics")]
+			public SerializableEnumeration<vesselsCharacteristics> vesselsCharacteristicsElement { get { return vesselsCharacteristics; } set { } }
 
 			[XmlElement("vesselsCharacteristicsValue")]
 			public required decimal vesselsCharacteristicsValue {get;set;} = default;
 
-			[XmlElement("vesselsCharacteristicsUnit")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
 			public required vesselsCharacteristicsUnit vesselsCharacteristicsUnit {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("vesselsCharacteristicsUnit")]
+			public SerializableEnumeration<vesselsCharacteristicsUnit> vesselsCharacteristicsUnitElement { get { return vesselsCharacteristicsUnit; } set { } }
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class bearingInformation {
-			[XmlElement("cardinalDirection")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			public cardinalDirection? cardinalDirection {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("cardinalDirection")]
+			public SerializableEnumeration<cardinalDirection>? cardinalDirectionElement { get { return cardinalDirection; } set { } }
 
 			public bool ShouldSerializecardinalDirection() { return cardinalDirection.HasValue; }
 
@@ -2817,9 +2861,13 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class scheduleByDayOfWeek {
-			[XmlElement("categoryOfSchedule")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public categoryOfSchedule? categoryOfSchedule {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfSchedule")]
+			public SerializableEnumeration<categoryOfSchedule>? categoryOfScheduleElement { get { return categoryOfSchedule; } set { } }
 
 			public bool ShouldSerializecategoryOfSchedule() { return categoryOfSchedule.HasValue; }
 
@@ -2832,21 +2880,33 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class radiocommunications {
-			[XmlElement("categoryOfCommunicationPreference")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
 
+			[JsonIgnore]
+			[XmlElement("categoryOfCommunicationPreference")]
+			public SerializableEnumeration<categoryOfCommunicationPreference>? categoryOfCommunicationPreferenceElement { get { return categoryOfCommunicationPreference; } set { } }
+
 			public bool ShouldSerializecategoryOfCommunicationPreference() { return categoryOfCommunicationPreference.HasValue; }
 
-			[XmlElement("categoryOfMaritimeBroadcast")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19])]
 			public List<categoryOfMaritimeBroadcast> categoryOfMaritimeBroadcast {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("categoryOfMaritimeBroadcast")]
+			public SerializableEnumeration<categoryOfMaritimeBroadcast>[] categoryOfMaritimeBroadcastElement { get { return [.. categoryOfMaritimeBroadcast]; } set { } }
+
 			public bool ShouldSerializecategoryOfMaritimeBroadcast() { return categoryOfMaritimeBroadcast.Any(); }
 
-			[XmlElement("categoryOfRadioMethods")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])]
 			public List<categoryOfRadioMethods> categoryOfRadioMethods {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("categoryOfRadioMethods")]
+			public SerializableEnumeration<categoryOfRadioMethods>[] categoryOfRadioMethodsElement { get { return [.. categoryOfRadioMethods]; } set { } }
 
 			public bool ShouldSerializecategoryOfRadioMethods() { return categoryOfRadioMethods.Any(); }
 
@@ -2884,9 +2944,13 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class telecommunications {
-			[XmlElement("categoryOfCommunicationPreference")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfCommunicationPreference")]
+			public SerializableEnumeration<categoryOfCommunicationPreference>? categoryOfCommunicationPreferenceElement { get { return categoryOfCommunicationPreference; } set { } }
 
 			public bool ShouldSerializecategoryOfCommunicationPreference() { return categoryOfCommunicationPreference.HasValue; }
 
@@ -2903,9 +2967,13 @@ namespace S100Framework.DomainModel.S127 {
 
 			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
 
-			[XmlElement("telecommunicationService")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public List<telecommunicationService> telecommunicationService {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("telecommunicationService")]
+			public SerializableEnumeration<telecommunicationService>[] telecommunicationServiceElement { get { return [.. telecommunicationService]; } set { } }
 
 			public bool ShouldSerializetelecommunicationService() { return telecommunicationService.Any(); }
 

@@ -4985,9 +4985,13 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlElement("signalDuration")]
 			public required decimal signalDuration {get;set;} = default;
 
-			[XmlElement("signalStatus")]
+			[XmlIgnore]
 			[EnumerationValue([1,2])]
 			public required signalStatus signalStatus {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("signalStatus")]
+			public SerializableEnumeration<signalStatus> signalStatusElement { get { return signalStatus; } set { } }
 		}
 
 		[System.Serializable()]
@@ -4996,9 +5000,13 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlElement("cableLength")]
 			public required decimal cableLength {get;set;} = default;
 
-			[XmlElement("heightLengthUnits")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public required heightLengthUnits heightLengthUnits {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("heightLengthUnits")]
+			public SerializableEnumeration<heightLengthUnits> heightLengthUnitsElement { get { return heightLengthUnits; } set { } }
 
 			[XmlElement("diameter")]
 			public required decimal diameter {get;set;} = default;
@@ -5007,51 +5015,83 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class ChangeDetails {
-			[XmlElement("atonCommissioning")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public atonCommissioning? atonCommissioning {get;set;} = default;
 
+			[JsonIgnore]
+			[XmlElement("atonCommissioning")]
+			public SerializableEnumeration<atonCommissioning>? atonCommissioningElement { get { return atonCommissioning; } set { } }
+
 			public bool ShouldSerializeatonCommissioning() { return atonCommissioning.HasValue; }
 
-			[XmlElement("atonRemoval")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
 			public atonRemoval? atonRemoval {get;set;} = default;
 
+			[JsonIgnore]
+			[XmlElement("atonRemoval")]
+			public SerializableEnumeration<atonRemoval>? atonRemovalElement { get { return atonRemoval; } set { } }
+
 			public bool ShouldSerializeatonRemoval() { return atonRemoval.HasValue; }
 
-			[XmlElement("atonReplacement")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			public atonReplacement? atonReplacement {get;set;} = default;
 
+			[JsonIgnore]
+			[XmlElement("atonReplacement")]
+			public SerializableEnumeration<atonReplacement>? atonReplacementElement { get { return atonReplacement; } set { } }
+
 			public bool ShouldSerializeatonReplacement() { return atonReplacement.HasValue; }
 
-			[XmlElement("fixedAtonChange")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			public fixedAtonChange? fixedAtonChange {get;set;} = default;
 
+			[JsonIgnore]
+			[XmlElement("fixedAtonChange")]
+			public SerializableEnumeration<fixedAtonChange>? fixedAtonChangeElement { get { return fixedAtonChange; } set { } }
+
 			public bool ShouldSerializefixedAtonChange() { return fixedAtonChange.HasValue; }
 
-			[XmlElement("floatingAtonChange")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26])]
 			public floatingAtonChange? floatingAtonChange {get;set;} = default;
 
+			[JsonIgnore]
+			[XmlElement("floatingAtonChange")]
+			public SerializableEnumeration<floatingAtonChange>? floatingAtonChangeElement { get { return floatingAtonChange; } set { } }
+
 			public bool ShouldSerializefloatingAtonChange() { return floatingAtonChange.HasValue; }
 
-			[XmlElement("audibleSignalAtonChange")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			public audibleSignalAtonChange? audibleSignalAtonChange {get;set;} = default;
 
+			[JsonIgnore]
+			[XmlElement("audibleSignalAtonChange")]
+			public SerializableEnumeration<audibleSignalAtonChange>? audibleSignalAtonChangeElement { get { return audibleSignalAtonChange; } set { } }
+
 			public bool ShouldSerializeaudibleSignalAtonChange() { return audibleSignalAtonChange.HasValue; }
 
-			[XmlElement("lightedAtonChange")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24])]
 			public lightedAtonChange? lightedAtonChange {get;set;} = default;
 
+			[JsonIgnore]
+			[XmlElement("lightedAtonChange")]
+			public SerializableEnumeration<lightedAtonChange>? lightedAtonChangeElement { get { return lightedAtonChange; } set { } }
+
 			public bool ShouldSerializelightedAtonChange() { return lightedAtonChange.HasValue; }
 
-			[XmlElement("electronicAtonChange")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30])]
 			public electronicAtonChange? electronicAtonChange {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("electronicAtonChange")]
+			public SerializableEnumeration<electronicAtonChange>? electronicAtonChangeElement { get { return electronicAtonChange; } set { } }
 
 			public bool ShouldSerializeelectronicAtonChange() { return electronicAtonChange.HasValue; }
 		}
@@ -5059,9 +5099,13 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sinkerDimensions {
-			[XmlElement("heightLengthUnits")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public required heightLengthUnits heightLengthUnits {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("heightLengthUnits")]
+			public SerializableEnumeration<heightLengthUnits> heightLengthUnitsElement { get { return heightLengthUnits; } set { } }
 
 			[XmlElement("horizontalLength")]
 			public decimal? horizontalLength {get;set;} = default;
@@ -5082,9 +5126,13 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class positioningMethod {
-			[XmlElement("positioningEquipment")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			public required positioningEquipment positioningEquipment {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("positioningEquipment")]
+			public SerializableEnumeration<positioningEquipment> positioningEquipmentElement { get { return positioningEquipment; } set { } }
 
 			[XmlElement("NMEAString")]
 			public required String NMEAString {get;set;} = string.Empty;
@@ -5168,9 +5216,13 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class rhythmOfLight {
-			[XmlElement("lightCharacteristic")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,12,13,14,15,16,17,18,19,20,25,26,27,28,29,30,31,32,33,34,35])]
 			public required lightCharacteristic lightCharacteristic {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("lightCharacteristic")]
+			public SerializableEnumeration<lightCharacteristic> lightCharacteristicElement { get { return lightCharacteristic; } set { } }
 
 			[XmlElement("signalGroup")]
 			public List<String> signalGroup {get;set;} = [];
@@ -5232,9 +5284,13 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class lightSector {
-			[XmlElement("colour")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			public List<colour> colour {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
@@ -5243,9 +5299,13 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializedirectionalCharacter() { return directionalCharacter!=default; }
 
-			[XmlElement("lightVisibility")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			public List<lightVisibility> lightVisibility {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("lightVisibility")]
+			public SerializableEnumeration<lightVisibility>[] lightVisibilityElement { get { return [.. lightVisibility]; } set { } }
 
 			public bool ShouldSerializelightVisibility() { return lightVisibility.Any(); }
 
@@ -5273,9 +5333,13 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorCharacteristics {
-			[XmlElement("lightCharacteristic")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,12,13,14,15,16,17,18,19,20,25,26,27,28,29,30,31,32,33,34,35])]
 			public required lightCharacteristic lightCharacteristic {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("lightCharacteristic")]
+			public SerializableEnumeration<lightCharacteristic> lightCharacteristicElement { get { return lightCharacteristic; } set { } }
 
 			[XmlElement("lightSector")]
 			public List<lightSector> lightSector {get;set;} = [];

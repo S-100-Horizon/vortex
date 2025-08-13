@@ -1927,9 +1927,13 @@ namespace S100Framework.DomainModel.S124 {
 			[XmlElement("warningNumber")]
 			public required int warningNumber {get;set;} = default;
 
-			[XmlElement("warningType")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
 			public required warningType warningType {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("warningType")]
+			public SerializableEnumeration<warningType> warningTypeElement { get { return warningType; } set { } }
 
 			[XmlElement("year")]
 			public required int year {get;set;} = default;
@@ -1982,9 +1986,13 @@ namespace S100Framework.DomainModel.S124 {
 			[XmlElement("name")]
 			public required String name {get;set;} = string.Empty;
 
-			[XmlElement("nameUsage")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public nameUsage? nameUsage {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("nameUsage")]
+			public SerializableEnumeration<nameUsage>? nameUsageElement { get { return nameUsage; } set { } }
 
 			public bool ShouldSerializenameUsage() { return nameUsage.HasValue; }
 		}

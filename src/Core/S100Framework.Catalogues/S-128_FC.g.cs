@@ -1083,8 +1083,12 @@ namespace S100Framework.DomainModel.S128 {
 			[XmlElement("name")]
 			public required String name {get;set;} = string.Empty;
 
-			[XmlElement("nameUsage")]
+			[XmlIgnore]
 			public nameUsage? nameUsage {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("nameUsage")]
+			public SerializableEnumeration<nameUsage>? nameUsageElement { get { return nameUsage; } set { } }
 
 			public bool ShouldSerializenameUsage() { return nameUsage.HasValue; }
 		}
@@ -1178,9 +1182,13 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class printSize {
-			[XmlElement("iSO216")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public iSO216? iSO216 {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("iSO216")]
+			public SerializableEnumeration<iSO216>? iSO216Element { get { return iSO216; } set { } }
 
 			public bool ShouldSerializeiSO216() { return iSO216.HasValue; }
 
@@ -1240,9 +1248,13 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sourceIndication {
-			[XmlElement("categoryOfAuthority")]
+			[XmlIgnore]
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19])]
 			public categoryOfAuthority? categoryOfAuthority {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfAuthority")]
+			public SerializableEnumeration<categoryOfAuthority>? categoryOfAuthorityElement { get { return categoryOfAuthority; } set { } }
 
 			public bool ShouldSerializecategoryOfAuthority() { return categoryOfAuthority.HasValue; }
 
@@ -1262,9 +1274,13 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
-			[XmlElement("sourceType")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14,15])]
 			public sourceType? sourceType {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("sourceType")]
+			public SerializableEnumeration<sourceType>? sourceTypeElement { get { return sourceType; } set { } }
 
 			public bool ShouldSerializesourceType() { return sourceType.HasValue; }
 
@@ -1283,9 +1299,13 @@ namespace S100Framework.DomainModel.S128 {
 			[XmlElement("telecommunicationIdentifier")]
 			public required String telecommunicationIdentifier {get;set;} = string.Empty;
 
-			[XmlElement("telecommunicationService")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public List<telecommunicationService> telecommunicationService {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("telecommunicationService")]
+			public SerializableEnumeration<telecommunicationService>[] telecommunicationServiceElement { get { return [.. telecommunicationService]; } set { } }
 
 			public bool ShouldSerializetelecommunicationService() { return telecommunicationService.Any(); }
 		}
@@ -1293,9 +1313,13 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class timeIntervalOfCycle {
-			[XmlElement("typeOfTimeIntervalUnit")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			public List<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("typeOfTimeIntervalUnit")]
+			public SerializableEnumeration<typeOfTimeIntervalUnit>[] typeOfTimeIntervalUnitElement { get { return [.. typeOfTimeIntervalUnit]; } set { } }
 
 			public bool ShouldSerializetypeOfTimeIntervalUnit() { return typeOfTimeIntervalUnit.Any(); }
 
@@ -1362,13 +1386,21 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializecomment() { return !string.IsNullOrEmpty(comment); }
 
-			[XmlElement("digitalSignatureReference")]
+			[XmlIgnore]
 			[EnumerationValue([8])]
 			public required digitalSignatureReference digitalSignatureReference {get;set;} = default;
 
-			[XmlElement("digitalSignatureValue")]
+			[JsonIgnore]
+			[XmlElement("digitalSignatureReference")]
+			public SerializableEnumeration<digitalSignatureReference> digitalSignatureReferenceElement { get { return digitalSignatureReference; } set { } }
+
+			[XmlIgnore]
 			[EnumerationValue([1,2])]
 			public digitalSignatureValue? digitalSignatureValue {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("digitalSignatureValue")]
+			public SerializableEnumeration<digitalSignatureValue>? digitalSignatureValueElement { get { return digitalSignatureValue; } set { } }
 
 			public bool ShouldSerializedigitalSignatureValue() { return digitalSignatureValue.HasValue; }
 
@@ -1394,13 +1426,21 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializeotherDataTypeDescription() { return !string.IsNullOrEmpty(otherDataTypeDescription); }
 
-			[XmlElement("supportFileFormat")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,100])]
 			public required supportFileFormat supportFileFormat {get;set;} = default;
 
-			[XmlElement("supportFilePurpose")]
+			[JsonIgnore]
+			[XmlElement("supportFileFormat")]
+			public SerializableEnumeration<supportFileFormat> supportFileFormatElement { get { return supportFileFormat; } set { } }
+
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public required supportFilePurpose supportFilePurpose {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("supportFilePurpose")]
+			public SerializableEnumeration<supportFilePurpose> supportFilePurposeElement { get { return supportFilePurpose; } set { } }
 
 			[XmlElement("defaultLocale")]
 			public required defaultLocale defaultLocale {get;set;} = default;
