@@ -776,8 +776,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 30: { // FORSTC_FortifiedStructure
-                            var instance = new FortifiedStructure() {
-                            };
+                            var instance = new FortifiedStructure();
 
                             if (current.CATFOR.HasValue) {
                                 instance.categoryOfFortifiedStructure = EnumHelper.GetEnumValue<categoryOfFortifiedStructure>(current.CATFOR.Value);
@@ -788,6 +787,7 @@ namespace S100Framework.Applications
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);                            
+
                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
                             }
@@ -835,13 +835,13 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            //TODO: inTheWater
-
                             AddInformation(instance.information, feature);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
                             }
+                            
+                            //TODO: inTheWater
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
