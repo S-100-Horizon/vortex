@@ -286,8 +286,8 @@ namespace S100Framework.Applications
                                     uncertaintyVariableFactor = default(decimal?)
                                 },
                                 // TODO: verticalClearanceValue
-                                verticalClearanceValue = default(decimal?)
-                                // verticalClearanceValue = current.VERCOP.HasValue ? current.VERCOP.Value : default(decimal?),
+                                //verticalClearanceValue = default(decimal?)
+                                verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR.Value : default(decimal?),
                             };
 
                             instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);

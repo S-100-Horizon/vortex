@@ -633,8 +633,6 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-
-
                             instance.verticalClearanceFixed = new() {
                                 verticalUncertainty = new() {
                                     uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767m ? current.VERACC.Value : default(decimal?),
