@@ -259,13 +259,13 @@ namespace S100Framework.Applications
                             if (openingBridge) {
                                 var instance = new SpanOpening() {
                                     verticalClearanceClosed = new verticalClearanceClosed() {
-                                        verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default(decimal?)
+                                        verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR!.Value : default(decimal?)
                                     }
                                     ,
                                     verticalClearanceOpen = new verticalClearanceOpen() {
-                                        verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default(decimal?),
+                                        verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR!.Value : default(decimal?),
                                         //Where VERCOP has a value or is populated with an empty (null) value, vertical clearance unlimited will be populated as False.
-                                        verticalClearanceUnlimited = !current.VERCOP.HasValue || current.VERCOP.Value == default(decimal)
+                                        verticalClearanceUnlimited = !current.VERCLR.HasValue || current.VERCLR.Value == default(decimal)
                                     }
                                 };
 
@@ -330,7 +330,7 @@ namespace S100Framework.Applications
 
                                 var instance = new SpanFixed() {
                                     verticalClearanceFixed = new verticalClearanceFixed() {
-                                        verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default(decimal?),
+                                        verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR!.Value : default(decimal?),
                                     }
                                 };
 
@@ -639,10 +639,9 @@ namespace S100Framework.Applications
                                     uncertaintyVariableFactor = default(decimal?)
                                 },
                                 //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP.Value : default(decimal?),
-                                verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL.Value : default(decimal?),
+                                verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR.Value : default(decimal?),
+                                
                             };
-
-
 
                             instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
 
@@ -931,7 +930,7 @@ namespace S100Framework.Applications
                                         uncertaintyVariableFactor = default(decimal?)
                                     },
                                     //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP.Value : default(decimal?),
-                                    verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL.Value : default(decimal?),
+                                    verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR.Value : default(decimal?),
                                 };
 
 

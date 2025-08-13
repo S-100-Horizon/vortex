@@ -213,7 +213,7 @@ namespace S100Framework.Applications
                                     uncertaintyVariableFactor = default(decimal?)
                                 },
                                 //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP.Value : default(decimal?),
-                                verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL.Value : default(decimal?),
+                                verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR.Value : default(decimal?),
                             };
 
 

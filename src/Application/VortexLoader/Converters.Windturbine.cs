@@ -67,14 +67,18 @@ namespace S100Framework.Applications
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
             }
 
+
             instance.verticalClearanceFixed = new() {
                 verticalUncertainty = new() {
                     uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767m ? current.VERACC.Value : default(decimal?),
                     uncertaintyVariableFactor = default(decimal?)
                 },
+                //verticalClearanceValue = default(decimal?)
                 //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP.Value : default(decimal?),
-                verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL.Value : default(decimal?),
+                verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR.Value : default(decimal?),
+                //verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL.Value : default(decimal?),
             };
+
 
 
             if (current.VERLEN.HasValue) {
