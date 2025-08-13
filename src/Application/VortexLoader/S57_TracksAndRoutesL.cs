@@ -176,13 +176,13 @@ namespace S100Framework.Applications
                             }
 
 
-                            if (current.ORIENT.HasValue) {
-                                instance.orientation = new DomainModel.S101.ComplexAttributes.orientation() {
-                                    orientationValue = current.ORIENT.Value,
-                                    // TODO: oriantationUncertainty
-                                    //orientationUncertainty = ,
-                                };
-                            }
+                                        if (current.ORIENT.HasValue) {
+                                            instance.orientation = new DomainModel.S101.ComplexAttributes.orientation() {
+                                                orientationValue = current.ORIENT.Value,
+                                                // TODO: oriantationUncertainty
+                                                //orientationUncertainty = ,
+                                            };
+                                        }
 
 
                             AddInformation(instance.information, feature);
