@@ -1562,9 +1562,13 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ProductMapping : FeatureAssociation {
-			[XmlElement("categoryOfProductMapping")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			public required categoryOfProductMapping categoryOfProductMapping {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfProductMapping")]
+			public SerializableEnumeration<categoryOfProductMapping> categoryOfProductMappingElement { get { return categoryOfProductMapping; } set { } }
 
 			[JsonIgnore]
 			public override string Code => nameof(ProductMapping);
@@ -1896,8 +1900,12 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializeagencyResponsibleForProduction() { return !string.IsNullOrEmpty(agencyResponsibleForProduction); }
 
-			[XmlElement("catalogueElementClassification")]
+			[XmlIgnore]
 			public List<catalogueElementClassification> catalogueElementClassification {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("catalogueElementClassification")]
+			public SerializableEnumeration<catalogueElementClassification>[] catalogueElementClassificationElement { get { return [.. catalogueElementClassification]; } set { } }
 
 			public bool ShouldSerializecatalogueElementClassification() { return catalogueElementClassification.Any(); }
 
@@ -1911,8 +1919,12 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializeclassification() { return !string.IsNullOrEmpty(classification); }
 
-			[XmlElement("iMOMaritimeService")]
+			[XmlIgnore]
 			public List<iMOMaritimeService> iMOMaritimeService {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("iMOMaritimeService")]
+			public SerializableEnumeration<iMOMaritimeService>[] iMOMaritimeServiceElement { get { return [.. iMOMaritimeService]; } set { } }
 
 			public bool ShouldSerializeiMOMaritimeService() { return iMOMaritimeService.Any(); }
 
@@ -2025,9 +2037,13 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializecompilationScale() { return compilationScale.Any(); }
 
-			[XmlElement("distributionStatus")]
+			[XmlIgnore]
 			[EnumerationValue([1,2])]
 			public distributionStatus? distributionStatus {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("distributionStatus")]
+			public SerializableEnumeration<distributionStatus>? distributionStatusElement { get { return distributionStatus; } set { } }
 
 			public bool ShouldSerializedistributionStatus() { return distributionStatus.HasValue; }
 
@@ -2046,9 +2062,13 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializeminimumDisplayScale() { return minimumDisplayScale.HasValue; }
 
-			[XmlElement("navigationPurpose")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public List<navigationPurpose> navigationPurpose {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("navigationPurpose")]
+			public SerializableEnumeration<navigationPurpose>[] navigationPurposeElement { get { return [.. navigationPurpose]; } set { } }
 
 			public bool ShouldSerializenavigationPurpose() { return navigationPurpose.Any(); }
 
@@ -2072,9 +2092,13 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializeproductNumber() { return !string.IsNullOrEmpty(productNumber); }
 
-			[XmlElement("specificUsage")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public specificUsage? specificUsage {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("specificUsage")]
+			public SerializableEnumeration<specificUsage>? specificUsageElement { get { return specificUsage; } set { } }
 
 			public bool ShouldSerializespecificUsage() { return specificUsage.HasValue; }
 
@@ -2094,9 +2118,13 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializehorizontalDatumEPSGCode() { return horizontalDatumEPSGCode != default; }
 
-			[XmlElement("verticalDatum")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45])]
 			public verticalDatum? verticalDatum {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("verticalDatum")]
+			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
 
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
@@ -2166,9 +2194,13 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializeissueTime() { return issueTime.HasValue; }
 
-			[XmlElement("typeOfProductFormat")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
 			public required typeOfProductFormat typeOfProductFormat {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("typeOfProductFormat")]
+			public SerializableEnumeration<typeOfProductFormat> typeOfProductFormatElement { get { return typeOfProductFormat; } set { } }
 
 			[XmlElement("productSpecification")]
 			public productSpecification? productSpecification {get;set;} = default;
@@ -2284,15 +2316,23 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializeserviceName() { return !string.IsNullOrEmpty(serviceName); }
 
-			[XmlElement("serviceStatus")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			public serviceStatus? serviceStatus {get;set;} = default;
 
+			[JsonIgnore]
+			[XmlElement("serviceStatus")]
+			public SerializableEnumeration<serviceStatus>? serviceStatusElement { get { return serviceStatus; } set { } }
+
 			public bool ShouldSerializeserviceStatus() { return serviceStatus.HasValue; }
 
-			[XmlElement("typeOfProductFormat")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
 			public required typeOfProductFormat typeOfProductFormat {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("typeOfProductFormat")]
+			public SerializableEnumeration<typeOfProductFormat> typeOfProductFormatElement { get { return typeOfProductFormat; } set { } }
 
 			[XmlElement("serviceSpecification")]
 			public serviceSpecification? serviceSpecification {get;set;} = default;

@@ -3095,9 +3095,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InclusionType : InformationAssociation {
-			[XmlElement("membership")]
+			[XmlIgnore]
 			[EnumerationValue([1,2])]
 			public required membership membership {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("membership")]
+			public SerializableEnumeration<membership> membershipElement { get { return membership; } set { } }
 
 			[JsonIgnore]
 			public override string Code => nameof(InclusionType);
@@ -3109,9 +3113,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PermissionType : InformationAssociation {
-			[XmlElement("categoryOfRelationship")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public required categoryOfRelationship categoryOfRelationship {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfRelationship")]
+			public SerializableEnumeration<categoryOfRelationship> categoryOfRelationshipElement { get { return categoryOfRelationship; } set { } }
 
 			[JsonIgnore]
 			public override string Code => nameof(PermissionType);
@@ -3258,9 +3266,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
-			[XmlElement("sourceType")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("sourceType")]
+			public SerializableEnumeration<sourceType>? sourceTypeElement { get { return sourceType; } set { } }
 
 			public bool ShouldSerializesourceType() { return sourceType.HasValue; }
 
@@ -3297,9 +3309,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class AbstractRxN : InformationType {
-			[XmlElement("categoryOfAuthority")]
+			[XmlIgnore]
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			public categoryOfAuthority? categoryOfAuthority {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfAuthority")]
+			public SerializableEnumeration<categoryOfAuthority>? categoryOfAuthorityElement { get { return categoryOfAuthority; } set { } }
 
 			public bool ShouldSerializecategoryOfAuthority() { return categoryOfAuthority.HasValue; }
 
@@ -3355,15 +3371,23 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializeinBallast() { return inBallast.HasValue; }
 
-			[XmlElement("categoryOfCargo")]
+			[XmlIgnore]
 			[EnumerationValue([2,5,6,7,8,10,11,12,13,14,15])]
 			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("categoryOfCargo")]
+			public SerializableEnumeration<categoryOfCargo>[] categoryOfCargoElement { get { return [.. categoryOfCargo]; } set { } }
+
 			public bool ShouldSerializecategoryOfCargo() { return categoryOfCargo.Any(); }
 
-			[XmlElement("categoryOfDangerousOrHazardousCargo")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])]
 			public List<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("categoryOfDangerousOrHazardousCargo")]
+			public SerializableEnumeration<categoryOfDangerousOrHazardousCargo>[] categoryOfDangerousOrHazardousCargoElement { get { return [.. categoryOfDangerousOrHazardousCargo]; } set { } }
 
 			public bool ShouldSerializecategoryOfDangerousOrHazardousCargo() { return categoryOfDangerousOrHazardousCargo.Any(); }
 
@@ -3373,15 +3397,23 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializecategoryOfVessel() { return categoryOfVessel != default; }
 
-			[XmlElement("categoryOfVesselRegistry")]
+			[XmlIgnore]
 			[EnumerationValue([1,2])]
 			public categoryOfVesselRegistry? categoryOfVesselRegistry {get;set;} = default;
 
+			[JsonIgnore]
+			[XmlElement("categoryOfVesselRegistry")]
+			public SerializableEnumeration<categoryOfVesselRegistry>? categoryOfVesselRegistryElement { get { return categoryOfVesselRegistry; } set { } }
+
 			public bool ShouldSerializecategoryOfVesselRegistry() { return categoryOfVesselRegistry.HasValue; }
 
-			[XmlElement("logicalConnectives")]
+			[XmlIgnore]
 			[EnumerationValue([1,2])]
 			public logicalConnectives? logicalConnectives {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("logicalConnectives")]
+			public SerializableEnumeration<logicalConnectives>? logicalConnectivesElement { get { return logicalConnectives; } set { } }
 
 			public bool ShouldSerializelogicalConnectives() { return logicalConnectives.HasValue; }
 
@@ -3442,9 +3474,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Authority : InformationType {
-			[XmlElement("categoryOfAuthority")]
+			[XmlIgnore]
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			public required categoryOfAuthority categoryOfAuthority {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfAuthority")]
+			public SerializableEnumeration<categoryOfAuthority> categoryOfAuthorityElement { get { return categoryOfAuthority; } set { } }
 
 			[XmlElement("textContent")]
 			public textContent? textContent {get;set;} = default;
@@ -3497,33 +3533,53 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AvailablePortServices : InformationType {
-			[XmlElement("firefightingService")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public List<firefightingService> firefightingService {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("firefightingService")]
+			public SerializableEnumeration<firefightingService>[] firefightingServiceElement { get { return [.. firefightingService]; } set { } }
+
 			public bool ShouldSerializefirefightingService() { return firefightingService.Any(); }
 
-			[XmlElement("medicalService")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5])]
 			public List<medicalService> medicalService {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("medicalService")]
+			public SerializableEnumeration<medicalService>[] medicalServiceElement { get { return [.. medicalService]; } set { } }
+
 			public bool ShouldSerializemedicalService() { return medicalService.Any(); }
 
-			[XmlElement("repairService")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
 			public List<repairService> repairService {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("repairService")]
+			public SerializableEnumeration<repairService>[] repairServiceElement { get { return [.. repairService]; } set { } }
+
 			public bool ShouldSerializerepairService() { return repairService.Any(); }
 
-			[XmlElement("technicalPortService")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			public List<technicalPortService> technicalPortService {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("technicalPortService")]
+			public SerializableEnumeration<technicalPortService>[] technicalPortServiceElement { get { return [.. technicalPortService]; } set { } }
+
 			public bool ShouldSerializetechnicalPortService() { return technicalPortService.Any(); }
 
-			[XmlElement("shipSanitationControl")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public List<shipSanitationControl> shipSanitationControl {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("shipSanitationControl")]
+			public SerializableEnumeration<shipSanitationControl>[] shipSanitationControlElement { get { return [.. shipSanitationControl]; } set { } }
 
 			public bool ShouldSerializeshipSanitationControl() { return shipSanitationControl.Any(); }
 
@@ -3533,15 +3589,23 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializetransportConnection() { return transportConnection.Any(); }
 
-			[XmlElement("berthingAssistance")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public List<berthingAssistance> berthingAssistance {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("berthingAssistance")]
+			public SerializableEnumeration<berthingAssistance>[] berthingAssistanceElement { get { return [.. berthingAssistance]; } set { } }
+
 			public bool ShouldSerializeberthingAssistance() { return berthingAssistance.Any(); }
 
-			[XmlElement("cargoService")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			public List<cargoService> cargoService {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("cargoService")]
+			public SerializableEnumeration<cargoService>[] cargoServiceElement { get { return [.. cargoService]; } set { } }
 
 			public bool ShouldSerializecargoService() { return cargoService.Any(); }
 
@@ -3551,15 +3615,23 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializesecuritySafetyEmergencyService() { return securitySafetyEmergencyService.Any(); }
 
-			[XmlElement("wasteDisposalService")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24])]
 			public List<wasteDisposalService> wasteDisposalService {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("wasteDisposalService")]
+			public SerializableEnumeration<wasteDisposalService>[] wasteDisposalServiceElement { get { return [.. wasteDisposalService]; } set { } }
+
 			public bool ShouldSerializewasteDisposalService() { return wasteDisposalService.Any(); }
 
-			[XmlElement("supplyService")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
 			public List<supplyService> supplyService {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("supplyService")]
+			public SerializableEnumeration<supplyService>[] supplyServiceElement { get { return [.. supplyService]; } set { } }
 
 			public bool ShouldSerializesupplyService() { return supplyService.Any(); }
 
@@ -3602,9 +3674,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializecallSign() { return !string.IsNullOrEmpty(callSign); }
 
-			[XmlElement("categoryOfCommunicationPreference")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfCommunicationPreference")]
+			public SerializableEnumeration<categoryOfCommunicationPreference>? categoryOfCommunicationPreferenceElement { get { return categoryOfCommunicationPreference; } set { } }
 
 			public bool ShouldSerializecategoryOfCommunicationPreference() { return categoryOfCommunicationPreference.HasValue; }
 
@@ -3916,9 +3992,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpatialQuality : InformationNode, IInformationBindingDefinition {
-			[XmlElement("qualityOfHorizontalMeasurement")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("qualityOfHorizontalMeasurement")]
+			public SerializableEnumeration<qualityOfHorizontalMeasurement>? qualityOfHorizontalMeasurementElement { get { return qualityOfHorizontalMeasurement; } set { } }
 
 			public bool ShouldSerializequalityOfHorizontalMeasurement() { return qualityOfHorizontalMeasurement.HasValue; }
 
@@ -3991,9 +4071,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
-			[XmlElement("sourceType")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("sourceType")]
+			public SerializableEnumeration<sourceType>? sourceTypeElement { get { return sourceType; } set { } }
 
 			public bool ShouldSerializesourceType() { return sourceType.HasValue; }
 
@@ -4304,9 +4388,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
-			[XmlElement("iSPSLevel")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("iSPSLevel")]
+			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
 
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 
@@ -4392,9 +4480,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializecathodicProtectionSystem() { return cathodicProtectionSystem.HasValue; }
 
-			[XmlElement("categoryOfBerthLocation")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			public categoryOfBerthLocation? categoryOfBerthLocation {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfBerthLocation")]
+			public SerializableEnumeration<categoryOfBerthLocation>? categoryOfBerthLocationElement { get { return categoryOfBerthLocation; } set { } }
 
 			public bool ShouldSerializecategoryOfBerthLocation() { return categoryOfBerthLocation.HasValue; }
 
@@ -4433,9 +4525,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
-			[XmlElement("methodOfSecuring")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
 			public methodOfSecuring? methodOfSecuring {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("methodOfSecuring")]
+			public SerializableEnumeration<methodOfSecuring>? methodOfSecuringElement { get { return methodOfSecuring; } set { } }
 
 			public bool ShouldSerializemethodOfSecuring() { return methodOfSecuring.HasValue; }
 
@@ -4627,9 +4723,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
-			[XmlElement("iSPSLevel")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("iSPSLevel")]
+			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
 
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 
@@ -4758,9 +4858,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
-			[XmlElement("iSPSLevel")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("iSPSLevel")]
+			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
 
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 
@@ -4929,15 +5033,23 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializeapplicableLoadLineZone() { return !string.IsNullOrEmpty(applicableLoadLineZone); }
 
-			[XmlElement("iSPSLevel")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
+			[JsonIgnore]
+			[XmlElement("iSPSLevel")]
+			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
+
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 
-			[XmlElement("categoryOfHarbourFacility")]
+			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 			public List<categoryOfHarbourFacility> categoryOfHarbourFacility {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("categoryOfHarbourFacility")]
+			public SerializableEnumeration<categoryOfHarbourFacility>[] categoryOfHarbourFacilityElement { get { return [.. categoryOfHarbourFacility]; } set { } }
 
 			public bool ShouldSerializecategoryOfHarbourFacility() { return categoryOfHarbourFacility.Any(); }
 
@@ -5015,21 +5127,33 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class HarbourAreaSection : Layout {
-			[XmlElement("categoryOfPortSection")]
+			[XmlIgnore]
 			[EnumerationValue([1,3,8,9,11,12])]
 			public categoryOfPortSection? categoryOfPortSection {get;set;} = default;
 
+			[JsonIgnore]
+			[XmlElement("categoryOfPortSection")]
+			public SerializableEnumeration<categoryOfPortSection>? categoryOfPortSectionElement { get { return categoryOfPortSection; } set { } }
+
 			public bool ShouldSerializecategoryOfPortSection() { return categoryOfPortSection.HasValue; }
 
-			[XmlElement("categoryOfHarbourFacility")]
+			[XmlIgnore]
 			[EnumerationValue([4,5,6,9,14,15,16,17])]
 			public List<categoryOfHarbourFacility> categoryOfHarbourFacility {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("categoryOfHarbourFacility")]
+			public SerializableEnumeration<categoryOfHarbourFacility>[] categoryOfHarbourFacilityElement { get { return [.. categoryOfHarbourFacility]; } set { } }
+
 			public bool ShouldSerializecategoryOfHarbourFacility() { return categoryOfHarbourFacility.Any(); }
 
-			[XmlElement("iSPSLevel")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("iSPSLevel")]
+			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
 
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 
@@ -5146,9 +5270,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
-			[XmlElement("iSPSLevel")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("iSPSLevel")]
+			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
 
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 
@@ -5204,9 +5332,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class HarbourFacility : HarbourPhysicalInfrastructure {
-			[XmlElement("categoryOfHarbourFacility")]
+			[XmlIgnore]
 			[EnumerationValue([12,13])]
 			public List<categoryOfHarbourFacility> categoryOfHarbourFacility {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("categoryOfHarbourFacility")]
+			public SerializableEnumeration<categoryOfHarbourFacility>[] categoryOfHarbourFacilityElement { get { return [.. categoryOfHarbourFacility]; } set { } }
 
 			public bool ShouldSerializecategoryOfHarbourFacility() { return categoryOfHarbourFacility.Any(); }
 
@@ -5254,9 +5386,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MooringWarpingFacility : Layout {
-			[XmlElement("categoryOfMooringWarpingFacility")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public required categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfMooringWarpingFacility")]
+			public SerializableEnumeration<categoryOfMooringWarpingFacility> categoryOfMooringWarpingFacilityElement { get { return categoryOfMooringWarpingFacility; } set { } }
 
 			[XmlElement("iDCode")]
 			public required String iDCode {get;set;} = string.Empty;
@@ -5434,9 +5570,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
-			[XmlElement("iSPSLevel")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("iSPSLevel")]
+			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
 
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 
@@ -5507,9 +5647,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
-			[XmlElement("iSPSLevel")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("iSPSLevel")]
+			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
 
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 
@@ -5570,21 +5714,33 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializeportFacilityNumber() { return !string.IsNullOrEmpty(portFacilityNumber); }
 
-			[XmlElement("categoryOfHarbourFacility")]
+			[XmlIgnore]
 			[EnumerationValue([1,3,5,7,8,10,11])]
 			public categoryOfHarbourFacility? categoryOfHarbourFacility {get;set;} = default;
 
+			[JsonIgnore]
+			[XmlElement("categoryOfHarbourFacility")]
+			public SerializableEnumeration<categoryOfHarbourFacility>? categoryOfHarbourFacilityElement { get { return categoryOfHarbourFacility; } set { } }
+
 			public bool ShouldSerializecategoryOfHarbourFacility() { return categoryOfHarbourFacility.HasValue; }
 
-			[XmlElement("categoryOfCargo")]
+			[XmlIgnore]
 			[EnumerationValue([2,5,6,7,8,10,11,12,13,14,15])]
 			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("categoryOfCargo")]
+			public SerializableEnumeration<categoryOfCargo>[] categoryOfCargoElement { get { return [.. categoryOfCargo]; } set { } }
+
 			public bool ShouldSerializecategoryOfCargo() { return categoryOfCargo.Any(); }
 
-			[XmlElement("product")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,20,21,22])]
 			public List<product> product {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("product")]
+			public SerializableEnumeration<product>[] productElement { get { return [.. product]; } set { } }
 
 			public bool ShouldSerializeproduct() { return product.Any(); }
 
@@ -5695,9 +5851,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
-			[XmlElement("iSPSLevel")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("iSPSLevel")]
+			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
 
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 
@@ -5753,9 +5913,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class WaterwayArea : Layout {
-			[XmlElement("categoryOfPortSection")]
+			[XmlIgnore]
 			[EnumerationValue([1,3,8,9,11,12])]
 			public required categoryOfPortSection categoryOfPortSection {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfPortSection")]
+			public SerializableEnumeration<categoryOfPortSection> categoryOfPortSectionElement { get { return categoryOfPortSection; } set { } }
 
 			[XmlElement("depthsDescription")]
 			public depthsDescription? depthsDescription {get;set;} = default;
@@ -5865,9 +6029,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class QualityOfNonBathymetricData : FeatureNode, IFeatureBindingDefinition {
-			[XmlElement("categoryOfTemporalVariation")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public categoryOfTemporalVariation? categoryOfTemporalVariation {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfTemporalVariation")]
+			public SerializableEnumeration<categoryOfTemporalVariation>? categoryOfTemporalVariationElement { get { return categoryOfTemporalVariation; } set { } }
 
 			public bool ShouldSerializecategoryOfTemporalVariation() { return categoryOfTemporalVariation.HasValue; }
 
@@ -5934,9 +6102,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SoundingDatum : FeatureNode, IFeatureBindingDefinition {
-			[XmlElement("verticalDatum")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,19,22,23,24,25,26,27,44])]
 			public required verticalDatum verticalDatum {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("verticalDatum")]
+			public SerializableEnumeration<verticalDatum> verticalDatumElement { get { return verticalDatum; } set { } }
 
 			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
@@ -5978,9 +6150,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class VerticalDatumOfData : FeatureNode, IFeatureBindingDefinition {
-			[XmlElement("verticalDatum")]
+			[XmlIgnore]
 			[EnumerationValue([3,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			public required verticalDatum verticalDatum {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("verticalDatum")]
+			public SerializableEnumeration<verticalDatum> verticalDatumElement { get { return verticalDatum; } set { } }
 
 			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
@@ -6033,9 +6209,13 @@ namespace S100Framework.DomainModel.S131 {
 			[XmlElement("textOffsetMm")]
 			public required int textOffsetMm {get;set;} = default;
 
-			[XmlElement("textType")]
+			[XmlIgnore]
 			[EnumerationValue([1])]
 			public textType? textType {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("textType")]
+			public SerializableEnumeration<textType>? textTypeElement { get { return textType; } set { } }
 
 			public bool ShouldSerializetextType() { return textType.HasValue; }
 

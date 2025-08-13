@@ -2143,9 +2143,13 @@ namespace S100Framework.DomainModel.S124 {
 			[XmlElement("noMessageOnHand")]
 			public required Boolean noMessageOnHand {get;set;} = false;
 
-			[XmlElement("referenceCategory")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public required referenceCategory referenceCategory {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("referenceCategory")]
+			public SerializableEnumeration<referenceCategory> referenceCategoryElement { get { return referenceCategory; } set { } }
 
 			[JsonIgnore]
 			public override string Code => nameof(References);
@@ -2241,9 +2245,13 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpatialQuality : InformationNode, IInformationBindingDefinition {
-			[XmlElement("qualityOfHorizontalMeasurement")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("qualityOfHorizontalMeasurement")]
+			public SerializableEnumeration<qualityOfHorizontalMeasurement>? qualityOfHorizontalMeasurementElement { get { return qualityOfHorizontalMeasurement; } set { } }
 
 			public bool ShouldSerializequalityOfHorizontalMeasurement() { return qualityOfHorizontalMeasurement.HasValue; }
 
@@ -2276,9 +2284,13 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NavwarnPart : FeatureNode, IFeatureBindingDefinition {
-			[XmlElement("restriction")]
+			[XmlIgnore]
 			[EnumerationValue([7,8,14,25,27])]
 			public restriction? restriction {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("restriction")]
+			public SerializableEnumeration<restriction>? restrictionElement { get { return restriction; } set { } }
 
 			public bool ShouldSerializerestriction() { return restriction.HasValue; }
 

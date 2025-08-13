@@ -280,22 +280,22 @@ namespace S100Framework.DomainModel
         public static bool operator !=(Tristate<T> left, Tristate<T> right) => !left.Equals(right);
     }
 
-    public class SerializableEnumerable<T> : IXmlSerializable where T : notnull
+    public class SerializableEnumeration<T> : IXmlSerializable where T : notnull
     {
         private T _value;
 
         // Implicit conversions to and from the underlying enum for ease of use
-        public static implicit operator T(SerializableEnumerable<T> o) {
+        public static implicit operator T(SerializableEnumeration<T> o) {
             return o._value;
         }
 
-        public static implicit operator SerializableEnumerable<T>(T o) {
-            return new SerializableEnumerable<T>(o);
+        public static implicit operator SerializableEnumeration<T>(T o) {
+            return new SerializableEnumeration<T>(o);
         }
 
-        public SerializableEnumerable() { }
+        public SerializableEnumeration() { }
 
-        public SerializableEnumerable(T value) {
+        public SerializableEnumeration(T value) {
             this._value = value;
         }
 
