@@ -4,6 +4,7 @@ using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using S100Framework.DomainModel.S128;
 using S100Framework.Settings;
+using S100Framework.YAML;
 using System.Diagnostics;
 using System.Text.Json;
 using Xunit.Abstractions;
@@ -170,7 +171,7 @@ namespace TestNauticalProducts
 
                         var polygons = new List<ArcGIS.Core.Geometry.Polygon>();
                         while (coverage.MoveNext()) {
-                            var current = (Feature)coverage.Current;
+                            var current = (ArcGIS.Core.Data.Feature)coverage.Current;
                             var polygon = (ArcGIS.Core.Geometry.Polygon)current.GetShape();
 
                             polygons.Add(polygon);
@@ -209,7 +210,11 @@ namespace TestNauticalProducts
             });
             Assert.NotNull(productManager);
 
-            await productManager.ElectronicProductManager.CreateNewEditionAsync("S-101", "101DK0040347E");
+            var dataset = await productManager.ElectronicProductManager.CreateNewEditionAsync("S-101", "101DK0040347E");
+
+            var yaml = dataset.Serialize();
+
+            System.Diagnostics.Debugger.Break();
         }
     }
 }

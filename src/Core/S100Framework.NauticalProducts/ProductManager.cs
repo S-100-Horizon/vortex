@@ -30,9 +30,9 @@ namespace S100Framework.NauticalProducts
 
         Task CreateElectronicProductAsync(string name, S100Framework.DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary, int edition, int update, byte[] zipfile);
 
-        Task CreateNewEditionAsync(string ps, string name);
+        Task<YAML.Dataset> CreateNewEditionAsync(string ps, string name);
 
-        Task CreateNewUpdateAsync(string ps, string name);
+        Task<YAML.Dataset> CreateNewUpdateAsync(string ps, string name);
     }
 
     public interface IProductManager
@@ -178,7 +178,7 @@ namespace S100Framework.NauticalProducts
             throw new NotImplementedException();
         }
 
-        async Task IElectronicProductManager.CreateNewEditionAsync(string ps, string name) {
+        async Task<YAML.Dataset> IElectronicProductManager.CreateNewEditionAsync(string ps, string name) {
             if (string.IsNullOrEmpty(ps))
                 throw new System.ArgumentNullException(nameof(ps));
             ps = ps.ToUpperInvariant();
@@ -208,7 +208,7 @@ namespace S100Framework.NauticalProducts
 
             var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
 
-            await this._taskFactory.StartNew(() => {
+            return await this._taskFactory.StartNew(() => {
                 ArcGIS.Core.Geometry.Polygon shape;
 
                 using (var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"))) {
@@ -412,11 +412,13 @@ namespace S100Framework.NauticalProducts
                     Log.Verbose("Adding {geometryType} with ID: {name}", geometry.GeometryType, name);
                 }
 
+                return dataset!;
+
                 var yaml = S100Framework.YAML.Converter.Serialize(dataset!);
             });
         }
 
-        Task IElectronicProductManager.CreateNewUpdateAsync(string ps, string name) {
+        Task<YAML.Dataset> IElectronicProductManager.CreateNewUpdateAsync(string ps, string name) {
             throw new NotImplementedException();
         }
 
