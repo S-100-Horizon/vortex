@@ -293,6 +293,8 @@ namespace S100Framework.DomainModel
             return new SerializableEnumerable<T>(o);
         }
 
+        public SerializableEnumerable() { }
+
         public SerializableEnumerable(T value) {
             this._value = value;
         }
@@ -309,7 +311,7 @@ namespace S100Framework.DomainModel
 
         public void WriteXml(XmlWriter writer) {
             // Write the 'code' attribute with the integer value of the enum
-            writer.WriteAttributeString("code", $"{this._value}");
+            writer.WriteAttributeString("code", $"{Convert.ToInt32(this._value)}");
 
             // Get the EnumMemberAttribute value for the text content
             var memberInfo = typeof(T).GetMember($"{this._value}").FirstOrDefault();
