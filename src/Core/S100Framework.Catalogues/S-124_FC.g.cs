@@ -1850,11 +1850,16 @@ namespace S100Framework.DomainModel.S124 {
 
 			public bool ShouldSerializechartPlanNumber() { return !string.IsNullOrEmpty(chartPlanNumber); }
 
-			[XmlElement("editionDate")]
 			[XmlIgnore]
 			public required DateOnly editionDate {get;set;} = default;
 
-			[XmlElement("lastNoticeDate")]
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "editionDate")]
+			public DateTime editionDateField {
+				get { return editionDate.ToDateTime(TimeOnly.MinValue); }
+				set { editionDate = DateOnly.FromDateTime(value); }
+			}
+
 			[XmlIgnore]
 			public DateOnly? lastNoticeDate {get;set;} = default;
 

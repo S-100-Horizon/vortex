@@ -374,6 +374,8 @@ namespace S100Framework.Applications
 
                             if(enumTypes.Contains(referenceCode))
                                 builderDomainModel.AppendLine($"\t\t\t[XmlIgnore]");
+                            else if (prefix.Equals("DateOnly"))
+                                builderDomainModel.AppendLine("\t\t\t[XmlIgnore]");
                             else
                                 builderDomainModel.AppendLine($"\t\t\t[XmlElement(\"{referenceCode}\")]");
 
@@ -381,9 +383,9 @@ namespace S100Framework.Applications
                                 builderDomainModel.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                             }
 
-                            if (prefix.Equals("DateOnly")) {
-                                builderDomainModel.AppendLine("\t\t\t[XmlIgnore]");
-                            }
+                            //if (prefix.Equals("DateOnly")) {
+                            //    builderDomainModel.AppendLine("\t\t\t[XmlIgnore]");
+                            //}
 
                             if (lower == 0 && upper.HasValue && upper.Value == 1) {
                                 prefix += "?";
@@ -411,7 +413,7 @@ namespace S100Framework.Applications
                             }
                             builderDomainModel.AppendLine($"\t\t\tpublic {prefix} {referenceCode} {{get;set;}}{postfix}");
 
-                            if (prefix.Equals("DateOnly")) {
+                            if (prefix.Equals("DateOnly") || prefix.Equals("required DateOnly")) {
                                 builderDomainModel.AppendLine();
                                 builderDomainModel.AppendLine("\t\t\t[JsonIgnore]");
                                 builderDomainModel.AppendLine($"\t\t\t[System.Xml.Serialization.XmlElementAttribute(DataType = \"date\", ElementName = \"{referenceCode}\")]");
@@ -1164,6 +1166,8 @@ namespace S100Framework.Applications
                 if (client.KnownEnumTypes.Contains(referenceCode)) {
                     builder.AppendLine($"\t\t\t[XmlIgnore]");
                 }
+                else if (prefix.Equals("DateOnly"))
+                    builder.AppendLine("\t\t\t[XmlIgnore]");
                 else
                     builder.AppendLine($"\t\t\t[XmlElement(\"{referenceCode}\")]");
 
@@ -1171,9 +1175,9 @@ namespace S100Framework.Applications
                     builder.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                 }
 
-                if (prefix.Equals("DateOnly")) {
-                    builder.AppendLine("\t\t\t[XmlIgnore]");
-                }
+                //if (prefix.Equals("DateOnly")) {
+                //    builder.AppendLine("\t\t\t[XmlIgnore]");
+                //}
 
                 if (lower == 0 && upper.HasValue && upper.Value == 1) {
                     prefix += "?";
@@ -1201,7 +1205,7 @@ namespace S100Framework.Applications
                 }
                 builder.AppendLine($"\t\t\tpublic {prefix} {referenceCode} {{get;set;}}{postfix}");
 
-                if (prefix.Equals("DateOnly")) {
+                if (prefix.Equals("DateOnly") || prefix.Equals("required DateOnly")) {
                     builder.AppendLine();
                     builder.AppendLine("\t\t\t[JsonIgnore]");
                     builder.AppendLine($"\t\t\t[System.Xml.Serialization.XmlElementAttribute(DataType = \"date\", ElementName = \"{referenceCode}\")]");

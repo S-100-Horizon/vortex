@@ -1201,9 +1201,15 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class productSpecification {
-			[XmlElement("editionDate")]
 			[XmlIgnore]
 			public required DateOnly editionDate {get;set;} = default;
+
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "editionDate")]
+			public DateTime editionDateField {
+				get { return editionDate.ToDateTime(TimeOnly.MinValue); }
+				set { editionDate = DateOnly.FromDateTime(value); }
+			}
 
 			[XmlElement("iSSN")]
 			public String? iSSN {get;set;} = default;
@@ -1220,9 +1226,15 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class supportFileSpecification {
-			[XmlElement("editionDate")]
 			[XmlIgnore]
 			public required DateOnly editionDate {get;set;} = default;
+
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "editionDate")]
+			public DateTime editionDateField {
+				get { return editionDate.ToDateTime(TimeOnly.MinValue); }
+				set { editionDate = DateOnly.FromDateTime(value); }
+			}
 
 			[XmlElement("name")]
 			public required String name {get;set;} = string.Empty;
@@ -1234,9 +1246,15 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class serviceSpecification {
-			[XmlElement("editionDate")]
 			[XmlIgnore]
 			public required DateOnly editionDate {get;set;} = default;
+
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "editionDate")]
+			public DateTime editionDateField {
+				get { return editionDate.ToDateTime(TimeOnly.MinValue); }
+				set { editionDate = DateOnly.FromDateTime(value); }
+			}
 
 			[XmlElement("name")]
 			public required String name {get;set;} = string.Empty;
@@ -1263,7 +1281,6 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializecountryName() { return !string.IsNullOrEmpty(countryName); }
 
-			[XmlElement("reportedDate")]
 			[XmlIgnore]
 			public DateOnly? reportedDate {get;set;} = default;
 
@@ -1415,7 +1432,6 @@ namespace S100Framework.DomainModel.S128 {
 			[XmlElement("fileName")]
 			public required String fileName {get;set;} = string.Empty;
 
-			[XmlElement("issueDate")]
 			[XmlIgnore]
 			public DateOnly? issueDate {get;set;} = default;
 
@@ -1452,15 +1468,20 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class timeIntervalOfProduct {
-			[XmlElement("expirationDate")]
 			[XmlIgnore]
 			public DateOnly? expirationDate {get;set;} = default;
 
 			public bool ShouldSerializeexpirationDate() { return expirationDate.HasValue; }
 
-			[XmlElement("issueDate")]
 			[XmlIgnore]
 			public required DateOnly issueDate {get;set;} = default;
+
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "issueDate")]
+			public DateTime issueDateField {
+				get { return issueDate.ToDateTime(TimeOnly.MinValue); }
+				set { issueDate = DateOnly.FromDateTime(value); }
+			}
 
 			[XmlElement("issuanceCycle")]
 			public issuanceCycle? issuanceCycle {get;set;} = default;
@@ -1471,9 +1492,15 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class referenceToNM {
-			[XmlElement("publicationDate")]
 			[XmlIgnore]
 			public required DateOnly publicationDate {get;set;} = default;
+
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "publicationDate")]
+			public DateTime publicationDateField {
+				get { return publicationDate.ToDateTime(TimeOnly.MinValue); }
+				set { publicationDate = DateOnly.FromDateTime(value); }
+			}
 
 			[XmlElement("weekOfYear")]
 			public weekOfYear? weekOfYear {get;set;} = default;
@@ -2142,7 +2169,6 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializespecificUsage() { return specificUsage.HasValue; }
 
-			[XmlElement("updateDate")]
 			[XmlIgnore]
 			public DateOnly? updateDate {get;set;} = default;
 
@@ -2225,9 +2251,15 @@ namespace S100Framework.DomainModel.S128 {
 
 			public bool ShouldSerializedatasetName() { return !string.IsNullOrEmpty(datasetName); }
 
-			[XmlElement("issueDate")]
 			[XmlIgnore]
 			public required DateOnly issueDate {get;set;} = default;
+
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "issueDate")]
+			public DateTime issueDateField {
+				get { return issueDate.ToDateTime(TimeOnly.MinValue); }
+				set { issueDate = DateOnly.FromDateTime(value); }
+			}
 
 			[XmlElement("issueTime")]
 			public S100Framework.DomainModel.S100.Time? issueTime {get;set;} = default;
@@ -2282,9 +2314,15 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PhysicalProduct : NavigationalProduct {
-			[XmlElement("editionDate")]
 			[XmlIgnore]
 			public required DateOnly editionDate {get;set;} = default;
+
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "editionDate")]
+			public DateTime editionDateField {
+				get { return editionDate.ToDateTime(TimeOnly.MinValue); }
+				set { editionDate = DateOnly.FromDateTime(value); }
+			}
 
 			[XmlElement("iSBN")]
 			public String? iSBN {get;set;} = default;

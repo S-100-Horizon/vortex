@@ -2049,7 +2049,6 @@ namespace S100Framework.DomainModel.S123 {
 
 			public bool ShouldSerializepictureCaption() { return !string.IsNullOrEmpty(pictureCaption); }
 
-			[XmlElement("sourceDate")]
 			[XmlIgnore]
 			public DateOnly? sourceDate {get;set;} = default;
 

@@ -5709,9 +5709,15 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializehorizontalDatum() { return horizontalDatum.HasValue; }
 
-			[XmlElement("sourceDate")]
 			[XmlIgnore]
 			public required DateOnly sourceDate {get;set;} = default;
+
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "sourceDate")]
+			public DateTime sourceDateField {
+				get { return sourceDate.ToDateTime(TimeOnly.MinValue); }
+				set { sourceDate = DateOnly.FromDateTime(value); }
+			}
 
 			[XmlElement("positioningProcedure")]
 			public required String positioningProcedure {get;set;} = string.Empty;
@@ -5853,7 +5859,6 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
-			[XmlElement("sourceDate")]
 			[XmlIgnore]
 			public DateOnly? sourceDate {get;set;} = default;
 
@@ -5884,7 +5889,6 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializeaToNMaintenanceRecord() { return !string.IsNullOrEmpty(aToNMaintenanceRecord); }
 
-			[XmlElement("installationDate")]
 			[XmlIgnore]
 			public DateOnly? installationDate {get;set;} = default;
 
