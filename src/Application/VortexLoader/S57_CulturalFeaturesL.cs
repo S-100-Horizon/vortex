@@ -305,13 +305,18 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            if (current.VERLEN.HasValue) {
+
+                            if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
                                 instance.verticalLength = current.VERLEN.Value;
+                            }
+                            else {
+                                instance.verticalLength = default(decimal?);
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
                                 instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
+
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
