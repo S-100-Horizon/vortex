@@ -101,7 +101,6 @@ namespace S100Framework.Applications
                     case 5: { // FERYRT_FerryRoute
                             var instance = new FerryRoute();
 
-
                             if (current.CATFRY.HasValue) {
                                 instance.categoryOfFerry = EnumHelper.GetEnumValues<categoryOfFerry>(current.CATFRY.Value);
                             }
