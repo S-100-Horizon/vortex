@@ -210,8 +210,6 @@ namespace S100Framework.Applications
                                 Logger.Current.DataError(objectid, tableName, longname, $"CATBRG is unknown hence OpeningBridge unknown - OpeningBridge set to false");
                             }
 
-
-
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -254,18 +252,25 @@ namespace S100Framework.Applications
                                 unlimited will be populated as False.
                             */
 
-                            
+                            verticalUncertainty verticalUncertaintyValue = null;
 
                             if (openingBridge) {
+                                if (current.VERACC.HasValue && current.VERACC.Value != -32767m) {
+                                    verticalUncertaintyValue = new verticalUncertainty() {
+                                        uncertaintyFixed = current.VERACC.Value,
+                                    };
+                                }
+
                                 var instance = new SpanOpening() {
                                     verticalClearanceClosed = new verticalClearanceClosed() {
-                                        verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR!.Value : default(decimal?)
+                                        verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default(decimal?),
+                                        verticalUncertainty = verticalUncertaintyValue,
                                     }
                                     ,
                                     verticalClearanceOpen = new verticalClearanceOpen() {
-                                        verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR!.Value : default(decimal?),
+                                        verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP!.Value : default(decimal?),
                                         //Where VERCOP has a value or is populated with an empty (null) value, vertical clearance unlimited will be populated as False.
-                                        verticalClearanceUnlimited = !current.VERCLR.HasValue || current.VERCLR.Value == default(decimal)
+                                        verticalClearanceUnlimited = !(current.VERCOP.HasValue || current.VERCOP!.Value == default(decimal))
                                     }
                                 };
 
@@ -281,7 +286,6 @@ namespace S100Framework.Applications
                                 }
 
                                 instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
-
 
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
@@ -320,6 +324,12 @@ namespace S100Framework.Applications
                             }
 
                             if (!openingBridge) {
+                                if (current.VERACC.HasValue && current.VERACC.Value != -32767m) {
+                                    verticalUncertaintyValue = new verticalUncertainty() {
+                                        uncertaintyFixed = current.VERACC.Value,
+                                    };
+                                }
+
                                 if (createBridgesAndRelations) {
                                     var relatedBridges = Bridges.Instance.GetBridgeElementsContainingOID(current.TableName!, current.OBJECTID!.Value);
                                     if (relatedBridges.Count() != 1) {
@@ -331,7 +341,9 @@ namespace S100Framework.Applications
                                 var instance = new SpanFixed() {
                                     verticalClearanceFixed = new verticalClearanceFixed() {
                                         verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR!.Value : default(decimal?),
+                                        verticalUncertainty = verticalUncertaintyValue
                                     }
+                                   
                                 };
 
                                 instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
@@ -344,8 +356,6 @@ namespace S100Framework.Applications
                                 if (current.PICREP != default) {
                                     instance.pictorialRepresentation = current.PICREP;
                                 }
-
-                                
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
@@ -1019,7 +1029,8 @@ namespace S100Framework.Applications
                             if (current.FUNCTN != null) {
                                 instance.function = EnumHelper.GetEnumValues<function>(current.FUNCTN);
                             }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
@@ -1073,6 +1084,8 @@ namespace S100Framework.Applications
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
                             }
+
+                            //TODO: inTheWater
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;

@@ -677,19 +677,13 @@ namespace S100Framework.Applications
                                     verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR.Value : default(decimal?),
                                 };
 
-
                                 if (current.VERDAT.HasValue) {
                                     windturbine.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
-
-
-
-
                                 }
 
                                 if (current.VERLEN.HasValue) {
                                     windturbine.verticalLength = current.VERLEN.Value;
                                 }
-
 
                                 if (current.CONVIS.HasValue) {
                                     windturbine.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
@@ -764,8 +758,9 @@ namespace S100Framework.Applications
 
                             if (current.FUNCTN != null) {
                                 instance.function = EnumHelper.GetEnumValues<function>(current.FUNCTN);
-                            }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            }
+
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
@@ -819,6 +814,8 @@ namespace S100Framework.Applications
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
                             }
+
+                            //TODO: inTheWater
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -884,8 +881,6 @@ namespace S100Framework.Applications
                         break;
 
                     case 45: { // PYLONS_PylonBridgeSupport
-
-
 
                             var instance = new PylonBridgeSupport {
                                 categoryOfPylon = default,

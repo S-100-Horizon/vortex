@@ -491,51 +491,6 @@ namespace S100Framework.Applications
 
                     case 30: { // LNDMRK_Landmark
                             throw new NotImplementedException($"No LNDMRK_Landmark in DK | GL. {tableName}");
-                            //var instance = new Landmark() {
-                            //};
-                            //if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                            //    string subtype = "";
-
-                            //    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                            //        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                            //    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                            //}
-
-                            //if (current.COLOUR != default) {
-                            //    instance.colour = GetColours(current.COLOUR);
-                            //}
-
-                            //if (current.COLPAT != default) {
-                            //    instance.colourPattern = GetColourPattern(current.COLPAT);
-                            //}
-
-                            //if (current.CONDTN.HasValue) {
-                            //    instance.condition = GetCondition(current.CONDTN.Value);
-                            //}
-
-                            //if (current.STATUS != default) {
-                            //    instance.status = GetStatus(current.STATUS);
-                            //}
-
-                            //instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            //AddInformation(instance.information, feature);
-                            //buffer["ps"] = ps101;
-
-                            //buffer["code"] = instance.GetType().Name;
-                            //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            //SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
-                            //var featureN = featureClass.CreateRow(buffer);
-                            //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
-                            //if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                            //    relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
-                            //}
-
-                            //ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
-
-                            //Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
                         break;
 
