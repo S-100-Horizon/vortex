@@ -1,6 +1,7 @@
 ﻿
 using NetTopologySuite.IO;
 using System.Globalization;
+using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 namespace S100Framework.GML
@@ -8,6 +9,7 @@ namespace S100Framework.GML
     public static class Extensions
     {
         private static readonly XNamespace xlink = "http://www.w3.org/1999/xlink";
+
         public static string[][]? Coordinates(this S100Framework.GML.Dataset.FeatureType element) {
             var geometry = element.Geometry;
 
@@ -138,74 +140,72 @@ namespace S100Framework.GML
 }
 
 
-//    namespace NetTopologySuite.Geometries
-//{
-//    public static class Extension
-//    {
-//        private static readonly XNamespace gml = "http://www.opengis.net/gml/3.2";
-//        private static readonly XNamespace s100 = "http://www.iho.int/S100/gml";
-//        //private static readonly XNamespace s128 = "http://www.iho.int/S128/gml";
+namespace NetTopologySuite.Geometries
+{
+    public static class Extension
+    {
+        private static readonly XNamespace gml = "http://www.opengis.net/gml/3.2";
+        private static readonly XNamespace s100 = "http://www.iho.int/s100gml/5.0";
+        //private static readonly XNamespace s128 = "http://www.iho.int/S128/gml";
 
-//        /// <summary>
-//        /// Creates a complete <S128:geometry> element from an NTS Polygon.
-//        /// </summary>
-//        public static XElement? ToGMLFeatureS100(this Polygon polygon, string gmlId, XmlQualifiedName ns, string srsName = "EPSG:4326") {
-//            if (polygon == null || polygon.IsEmpty) {
-//                return default;
-//            }
+        /// <summary>
+        /// Creates a complete <S128:geometry> element from an NTS Polygon.
+        /// </summary>
+        public static XElement? ToGMLFeatureS100(this Polygon polygon, string gmlId, XmlQualifiedName ns, string srsName = "EPSG:4326") {
+            if (polygon == null || polygon.IsEmpty) {
+                return default;
+            }
 
-//            // The core GML part is built first (same logic as before)
-//            var polygonPatch = new XElement(gml + "PolygonPatch",
-//                new XElement(gml + "exterior",
-//                    new XElement(gml + "LinearRing",
-//                        new XElement(gml + "posList", CoordinatesToPosList(polygon.ExteriorRing.Coordinates))
-//                    )
-//                )
-//            );
+            // The core GML part is built first (same logic as before)
+            var polygonPatch = new XElement(gml + "PolygonPatch",
+                new XElement(gml + "exterior",
+                    new XElement(gml + "LinearRing",
+                        new XElement(gml + "posList", CoordinatesToPosList(polygon.ExteriorRing.Coordinates))
+                    )
+                )
+            );
 
-//            // Add interior rings if they exist
-//            foreach (var interiorRing in polygon.InteriorRings) {
-//                polygonPatch.Add(
-//                    new XElement(gml + "interior",
-//                        new XElement(gml + "LinearRing",
-//                            new XElement(gml + "posList", CoordinatesToPosList(interiorRing.Coordinates))
-//                        )
-//                    )
-//                );
-//            }
+            // Add interior rings if they exist
+            foreach (var interiorRing in polygon.InteriorRings) {
+                polygonPatch.Add(
+                    new XElement(gml + "interior",
+                        new XElement(gml + "LinearRing",
+                            new XElement(gml + "posList", CoordinatesToPosList(interiorRing.Coordinates))
+                        )
+                    )
+                );
+            }
 
-//            // 2. Assemble the final structure using the correct namespaces and prefixes.
-//            var s128Geometry = new XElement("geometry",
-//                new XAttribute(XNamespace.Xmlns + ns.Name, ns.Namespace),
-//                new XAttribute(XNamespace.Xmlns + "S100", s100.NamespaceName),
-//                new XAttribute(XNamespace.Xmlns + "gml", gml.NamespaceName),
+            // 2. Assemble the final structure using the correct namespaces and prefixes.
+            XNamespace s128 = XNamespace.Get(ns.Namespace);
 
-//                new XElement(s100 + "surfaceProperty",
-//                    new XElement(s100 + "Surface",
-//                        // 3. Add the namespaced attribute 'gml:id'
-//                        new XAttribute(gml + "id", gmlId),
-//                        new XAttribute("srsName", srsName),
-//                        new XElement(gml + "patches",
-//                            polygonPatch // <-- Insert the GML patch we built earlier
-//                        )
-//                    )
-//                )
-//            );
+            var root = new XElement(s128 + "root",
+                                new XAttribute(XNamespace.Xmlns + "S128", s128),
+                                new XAttribute("S100", s100),
+                                new XAttribute("gml", gml),
+                                new XElement(s128 + "geometry",
+                                    new XElement(s100 + "surfaceProperty",
+                                    new XElement(s100 + "Surface",
+                                        new XAttribute(gml + "id", gmlId),
+                                        new XAttribute("srsName", srsName),
+                                        new XElement(gml + "patches",
+                                            polygonPatch
+                                        )
+                                    ))));
 
-//            return s128Geometry;
-//            //return s128Geometry.ToString(SaveOptions.None);
-//        }
+            return root.Elements().First();
+        }
 
-//        /// <summary>
-//        /// Helper function to convert an array of NTS Coordinates to a GML posList string.
-//        /// Format: "x1 y1 x2 y2 x3 y3..."
-//        /// </summary>
-//        private static string CoordinatesToPosList(Coordinate[] coordinates) {
-//            var sb = new StringBuilder();
-//            foreach (var coord in coordinates) {
-//                sb.Append($"{coord.Y} {coord.X} ");
-//            }
-//            return sb.ToString().Trim();
-//        }
-//    }
-//}
+        /// <summary>
+        /// Helper function to convert an array of NTS Coordinates to a GML posList string.
+        /// Format: "x1 y1 x2 y2 x3 y3..."
+        /// </summary>
+        private static string CoordinatesToPosList(Coordinate[] coordinates) {
+            var sb = new StringBuilder();
+            foreach (var coord in coordinates) {
+                sb.Append($"{coord.Y} {coord.X} ");
+            }
+            return sb.ToString().Trim();
+        }
+    }
+}
