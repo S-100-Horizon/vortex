@@ -1850,11 +1850,16 @@ namespace S100Framework.DomainModel.S124 {
 
 			public bool ShouldSerializechartPlanNumber() { return !string.IsNullOrEmpty(chartPlanNumber); }
 
-			[XmlElement("editionDate")]
 			[XmlIgnore]
 			public required DateOnly editionDate {get;set;} = default;
 
-			[XmlElement("lastNoticeDate")]
+			[JsonIgnore]
+			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "editionDate")]
+			public DateTime editionDateField {
+				get { return editionDate.ToDateTime(TimeOnly.MinValue); }
+				set { editionDate = DateOnly.FromDateTime(value); }
+			}
+
 			[XmlIgnore]
 			public DateOnly? lastNoticeDate {get;set;} = default;
 
@@ -1927,9 +1932,13 @@ namespace S100Framework.DomainModel.S124 {
 			[XmlElement("warningNumber")]
 			public required int warningNumber {get;set;} = default;
 
-			[XmlElement("warningType")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
 			public required warningType warningType {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("warningType")]
+			public SerializableEnumeration<warningType> warningTypeElement { get { return warningType; } set { } }
 
 			[XmlElement("year")]
 			public required int year {get;set;} = default;
@@ -1982,9 +1991,13 @@ namespace S100Framework.DomainModel.S124 {
 			[XmlElement("name")]
 			public required String name {get;set;} = string.Empty;
 
-			[XmlElement("nameUsage")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public nameUsage? nameUsage {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("nameUsage")]
+			public SerializableEnumeration<nameUsage>? nameUsageElement { get { return nameUsage; } set { } }
 
 			public bool ShouldSerializenameUsage() { return nameUsage.HasValue; }
 		}
@@ -2127,6 +2140,7 @@ namespace S100Framework.DomainModel.S124 {
 namespace S100Framework.DomainModel.S124 {
 	using ComplexAttributes;
 	using InformationAssociations;
+		using System.Xml.Linq;
 
 	namespace InformationTypes {
 		/// <summary>
@@ -2143,9 +2157,13 @@ namespace S100Framework.DomainModel.S124 {
 			[XmlElement("noMessageOnHand")]
 			public required Boolean noMessageOnHand {get;set;} = false;
 
-			[XmlElement("referenceCategory")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public required referenceCategory referenceCategory {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("referenceCategory")]
+			public SerializableEnumeration<referenceCategory> referenceCategoryElement { get { return referenceCategory; } set { } }
 
 			[JsonIgnore]
 			public override string Code => nameof(References);
@@ -2241,9 +2259,13 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpatialQuality : InformationNode, IInformationBindingDefinition {
-			[XmlElement("qualityOfHorizontalMeasurement")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("qualityOfHorizontalMeasurement")]
+			public SerializableEnumeration<qualityOfHorizontalMeasurement>? qualityOfHorizontalMeasurementElement { get { return qualityOfHorizontalMeasurement; } set { } }
 
 			public bool ShouldSerializequalityOfHorizontalMeasurement() { return qualityOfHorizontalMeasurement.HasValue; }
 
@@ -2269,6 +2291,7 @@ namespace S100Framework.DomainModel.S124 {
 		using FeatureAssociations;
 		using InformationTypes;
 		using System.Xml;
+		using System.Xml.Linq;
 
 		/// <summary>
 		/// Navigational warning information that may be geo-located.
@@ -2276,9 +2299,13 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NavwarnPart : FeatureNode, IFeatureBindingDefinition {
-			[XmlElement("restriction")]
+			[XmlIgnore]
 			[EnumerationValue([7,8,14,25,27])]
 			public restriction? restriction {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("restriction")]
+			public SerializableEnumeration<restriction>? restrictionElement { get { return restriction; } set { } }
 
 			public bool ShouldSerializerestriction() { return restriction.HasValue; }
 
@@ -2351,7 +2378,7 @@ namespace S100Framework.DomainModel.S124 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -2394,7 +2421,7 @@ namespace S100Framework.DomainModel.S124 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -2454,11 +2481,12 @@ namespace S100Framework.DomainModel.S124 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 	}
 
 	[XmlType(Namespace = "http://www.iho.int/S124/2.0")]
+	[XmlRoot(Namespace = "http://www.iho.int/S124/2.0")]
 	public class Dataset : S100Framework.DomainModel.S100.DatasetBase
 	{
 		[XmlElement(Order = 1)]

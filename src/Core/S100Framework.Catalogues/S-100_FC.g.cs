@@ -131,7 +131,11 @@ namespace S100Framework.DomainModel.S100
     [Serializable]
     public abstract class DatasetBase
     {
-        [XmlElement(Order = 0)]
+        [JsonIgnore]
+        [XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+        public string gmlId { get; set; }
+
+        [XmlElement(Order = 0, Namespace = "http://www.iho.int/s100gml/5.0")]
         public DataSetIdentification DatasetIdentificationInformation { get; set; }
 
         [JsonIgnore]

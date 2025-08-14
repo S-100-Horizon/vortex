@@ -140,5 +140,10 @@
                 return datasetPoint;
             }
         }
+
+        public static string Serialize(this Dataset? dataset) {
+            if ((dataset == null)) return string.Empty;
+            return S100Framework.YAML.Converter.Serialize(dataset);
+        }
     }
 }
