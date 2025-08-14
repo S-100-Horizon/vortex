@@ -5639,6 +5639,7 @@ namespace S100Framework.DomainModel.S501 {
 
 namespace S100Framework.DomainModel.S501 {
 	using ComplexAttributes;
+		using System.Xml.Linq;
 
 	namespace InformationTypes {
 		/// <summary>
@@ -5682,6 +5683,7 @@ namespace S100Framework.DomainModel.S501 {
 	}
 	namespace FeatureTypes {
 		using System.Xml;
+		using System.Xml.Linq;
 
 		/// <summary>
 		/// An installation buoy is a buoy used for loading tankers with gas or oil.
@@ -5833,7 +5835,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5889,7 +5891,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5992,7 +5994,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6080,7 +6082,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6165,7 +6167,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6303,7 +6305,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6371,7 +6373,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6421,7 +6423,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6526,7 +6528,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6591,7 +6593,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6774,7 +6776,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6824,7 +6826,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6985,7 +6987,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7138,7 +7140,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7253,7 +7255,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7328,7 +7330,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7418,7 +7420,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7491,7 +7493,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7596,7 +7598,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7681,7 +7683,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7766,7 +7768,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7839,7 +7841,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -7929,7 +7931,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -8087,7 +8089,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -8162,7 +8164,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -8350,7 +8352,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -8493,7 +8495,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -8588,7 +8590,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -8648,7 +8650,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -8753,7 +8755,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -8848,7 +8850,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -8923,7 +8925,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -9008,7 +9010,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -9158,7 +9160,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -9253,7 +9255,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -9426,7 +9428,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -9564,7 +9566,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -9730,7 +9732,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -9865,7 +9867,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -9980,7 +9982,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -10318,7 +10320,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -10413,7 +10415,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -10513,7 +10515,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -10598,7 +10600,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -10688,7 +10690,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -10783,7 +10785,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -10888,7 +10890,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -11079,7 +11081,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -11159,7 +11161,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -11234,7 +11236,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -11309,7 +11311,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -11387,7 +11389,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -11450,7 +11452,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -11530,7 +11532,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -11630,7 +11632,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -11685,7 +11687,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -11795,7 +11797,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -11910,7 +11912,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -12213,7 +12215,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -12288,7 +12290,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -12356,7 +12358,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -12446,7 +12448,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -12632,7 +12634,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -12772,7 +12774,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -12855,7 +12857,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -12953,7 +12955,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -13058,7 +13060,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -13241,7 +13243,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -13326,7 +13328,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -13455,7 +13457,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -13531,7 +13533,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -13600,7 +13602,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -13673,7 +13675,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -13831,7 +13833,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -13999,7 +14001,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -14044,7 +14046,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -14144,7 +14146,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -14300,7 +14302,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -14390,7 +14392,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -14509,7 +14511,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -14654,7 +14656,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -14845,7 +14847,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -14960,7 +14962,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -15045,7 +15047,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -15085,7 +15087,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -15260,7 +15262,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -15350,7 +15352,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -15428,7 +15430,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -15611,7 +15613,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -15804,11 +15806,12 @@ namespace S100Framework.DomainModel.S501 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 	}
 
 	[XmlType(Namespace = "http://www.iho.int/S501/0.0")]
+	[XmlRoot(Namespace = "http://www.iho.int/S501/0.0")]
 	public class Dataset : S100Framework.DomainModel.S100.DatasetBase
 	{
 		[XmlElement(Order = 1)]

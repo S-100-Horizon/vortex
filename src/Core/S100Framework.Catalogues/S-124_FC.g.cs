@@ -2140,6 +2140,7 @@ namespace S100Framework.DomainModel.S124 {
 namespace S100Framework.DomainModel.S124 {
 	using ComplexAttributes;
 	using InformationAssociations;
+		using System.Xml.Linq;
 
 	namespace InformationTypes {
 		/// <summary>
@@ -2290,6 +2291,7 @@ namespace S100Framework.DomainModel.S124 {
 		using FeatureAssociations;
 		using InformationTypes;
 		using System.Xml;
+		using System.Xml.Linq;
 
 		/// <summary>
 		/// Navigational warning information that may be geo-located.
@@ -2376,7 +2378,7 @@ namespace S100Framework.DomainModel.S124 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -2419,7 +2421,7 @@ namespace S100Framework.DomainModel.S124 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -2479,11 +2481,12 @@ namespace S100Framework.DomainModel.S124 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 	}
 
 	[XmlType(Namespace = "http://www.iho.int/S124/2.0")]
+	[XmlRoot(Namespace = "http://www.iho.int/S124/2.0")]
 	public class Dataset : S100Framework.DomainModel.S100.DatasetBase
 	{
 		[XmlElement(Order = 1)]

@@ -7,7 +7,7 @@ namespace NetTopologySuite.Geometries
     public static class Extension
     {
         private static readonly XNamespace gml = "http://www.opengis.net/gml/3.2";
-        private static readonly XNamespace s100 = "http://www.iho.int/S100/gml";
+        private static readonly XNamespace s100 = "http://www.iho.int/s100gml/5.0";
         //private static readonly XNamespace s128 = "http://www.iho.int/S128/gml";
 
         /// <summary>
@@ -39,24 +39,42 @@ namespace NetTopologySuite.Geometries
             }
 
             // 2. Assemble the final structure using the correct namespaces and prefixes.
-            var s128Geometry = new XElement("geometry",
-                new XAttribute(XNamespace.Xmlns + ns.Name, ns.Namespace),
-                new XAttribute(XNamespace.Xmlns + "S100", s100.NamespaceName),
-                new XAttribute(XNamespace.Xmlns + "gml", gml.NamespaceName),
+            //var s128Geometry = new XElement(XNamespace.Get(ns.Namespace) + "geometry",
+            //    //new XAttribute(XNamespace.Xmlns + ns.Name, ns.Namespace),
+            //    //new XAttribute(XNamespace.Xmlns + "S100", s100.NamespaceName),
+            //    //new XAttribute(XNamespace.Xmlns + "gml", gml.NamespaceName),
 
-                new XElement(s100 + "surfaceProperty",
-                    new XElement(s100 + "Surface",
-                        // 3. Add the namespaced attribute 'gml:id'
-                        new XAttribute(gml + "id", gmlId),
-                        new XAttribute("srsName", srsName),
-                        new XElement(gml + "patches",
-                            polygonPatch // <-- Insert the GML patch we built earlier
-                        )
-                    )
-                )
-            );
+            //    new XElement(s100 + "surfaceProperty",
+            //        new XElement(s100 + "Surface",
+            //            // 3. Add the namespaced attribute 'gml:id'
+            //            new XAttribute(gml + "id", gmlId),
+            //            new XAttribute("srsName", srsName),
+            //            new XElement(gml + "patches",
+            //                polygonPatch // <-- Insert the GML patch we built earlier
+            //            )
+            //        )
+            //    )
+            //);
 
-            return s128Geometry;
+            XNamespace s128 = XNamespace.Get(ns.Namespace);
+
+            var root = new XElement(s128 + "root",
+                                new XAttribute(XNamespace.Xmlns + "S128", s128),
+                                new XAttribute("S100", s100),   //XNamespace.Xmlns + "S100", s100.NamespaceName),
+                                new XAttribute("gml", gml), //XNamespace.Xmlns + "gml", gml.NamespaceName),
+                                new XElement(s128 + "geometry",
+                                    new XElement(s100 + "surfaceProperty",
+                                    new XElement(s100 + "Surface",
+                                        new XAttribute(gml + "id", gmlId),
+                                        new XAttribute("srsName", srsName),
+                                        new XElement(gml + "patches",
+                                            polygonPatch
+                                        )
+                                    ))));
+
+            return root.Elements().First();
+
+            //return s128Geometry;
             //return s128Geometry.ToString(SaveOptions.None);
         }
 

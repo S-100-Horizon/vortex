@@ -581,6 +581,7 @@ namespace S100Framework.Applications
             builderDomainModel.AppendLine("\tusing ComplexAttributes;");
             if (productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager).Any())
                 builderDomainModel.AppendLine("\tusing InformationAssociations;");
+            builderDomainModel.AppendLine("\t\tusing System.Xml.Linq;");
             builderDomainModel.AppendLine();
 
             //  --- S100_FC_InformationType -----------------------------------------------------
@@ -662,6 +663,7 @@ namespace S100Framework.Applications
                     if (productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager).Any())
                         builderDomainModel.AppendLine("\t\tusing InformationTypes;");
                     builderDomainModel.AppendLine("\t\tusing System.Xml;");
+                    builderDomainModel.AppendLine("\t\tusing System.Xml.Linq;");
                     builderDomainModel.AppendLine();
                 }
 
@@ -721,7 +723,7 @@ namespace S100Framework.Applications
                                 builder.AppendLine();
                                 builder.AppendLine("\t\t\t[JsonIgnore]");
                                 builder.AppendLine("\t\t\t[XmlAnyElement]");
-                                builder.AppendLine("\t\t\tpublic XmlElement[]? Geometry { get; set; } = default;");
+                                builder.AppendLine("\t\t\tpublic XElement[]? Geometry { get; set; } = default;");
                             }
 
                             //if (superType == null) {
@@ -747,6 +749,7 @@ namespace S100Framework.Applications
 
             builderDomainModel.AppendLine("");
             builderDomainModel.AppendLine($"\t[XmlType({xmlTypeNamespace})]");
+            builderDomainModel.AppendLine($"\t[XmlRoot({xmlTypeNamespace})]");
             builderDomainModel.AppendLine("\tpublic class Dataset : S100Framework.DomainModel.S100.DatasetBase");
             builderDomainModel.AppendLine("\t{");
 

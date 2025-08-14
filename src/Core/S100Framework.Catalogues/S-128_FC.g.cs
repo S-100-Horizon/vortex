@@ -1658,6 +1658,7 @@ namespace S100Framework.DomainModel.S128 {
 namespace S100Framework.DomainModel.S128 {
 	using ComplexAttributes;
 	using InformationAssociations;
+		using System.Xml.Linq;
 
 	namespace InformationTypes {
 		/// <summary>
@@ -1955,6 +1956,7 @@ namespace S100Framework.DomainModel.S128 {
 		using FeatureAssociations;
 		using InformationTypes;
 		using System.Xml;
+		using System.Xml.Linq;
 
 		/// <summary>
 		/// An element within a catalogue of elements.
@@ -2305,7 +2307,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -2375,7 +2377,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -2448,11 +2450,12 @@ namespace S100Framework.DomainModel.S128 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 	}
 
 	[XmlType(Namespace = "http://www.iho.int/S128/2.0")]
+	[XmlRoot(Namespace = "http://www.iho.int/S128/2.0")]
 	public class Dataset : S100Framework.DomainModel.S100.DatasetBase
 	{
 		[XmlElement(Order = 1)]

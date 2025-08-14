@@ -2403,6 +2403,7 @@ namespace S100Framework.DomainModel.S122 {
 namespace S100Framework.DomainModel.S122 {
 	using ComplexAttributes;
 	using InformationAssociations;
+		using System.Xml.Linq;
 
 	namespace InformationTypes {
 		/// <summary>
@@ -2930,6 +2931,7 @@ namespace S100Framework.DomainModel.S122 {
 	namespace FeatureTypes {
 		using InformationTypes;
 		using System.Xml;
+		using System.Xml.Linq;
 
 		/// <summary>
 		/// Generalized feature type which carries all the common attributes.
@@ -3085,7 +3087,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -3176,7 +3178,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -3228,7 +3230,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -3263,7 +3265,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -3298,11 +3300,12 @@ namespace S100Framework.DomainModel.S122 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 	}
 
 	[XmlType(Namespace = "http://www.iho.int/S122/1.2")]
+	[XmlRoot(Namespace = "http://www.iho.int/S122/1.2")]
 	public class Dataset : S100Framework.DomainModel.S100.DatasetBase
 	{
 		[XmlElement(Order = 1)]
