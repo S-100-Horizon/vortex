@@ -7,25 +7,30 @@ namespace VortexLoader.Singletons
     internal class Geometries
     {
 
-        private static IEnumerable<Geometry> AllGeometries(FeatureClass featureClass, QueryFilter filter) {
+        private static IList<Geometry> AllGeometries(FeatureClass featureClass, QueryFilter filter) {
             using var cursor = featureClass.Search(filter, false);
 
             IList<Geometry> geometries = new List<Geometry>();
 
             while (cursor.MoveNext()) {
                 var feature = (Feature)cursor.Current;
-                yield return (feature.GetShape());
+                geometries.Add(feature.GetShape());
             }
-
+            return geometries;
         }
 
         internal static IEnumerable<Geometry> GetDissolvedClipped(IEnumerable<Geometry> sourcePolygons, FeatureClass clipPolygons, QueryFilter clipFilter) {
             var allSourcePolygons = GeometryEngine.Instance.Union(sourcePolygons);
             var allClipPolygons = GeometryEngine.Instance.Union(AllGeometries(clipPolygons, clipFilter));
 
-            foreach (var polygon in AllGeometries(clipPolygons, clipFilter)) {
-                var clippedGeom = GeometryEngine.Instance.Intersection(allSourcePolygons, polygon);
+            var geometries = AllGeometries(clipPolygons, clipFilter);
 
+            int currentCount = 0;
+            int totalCount = geometries.Count;
+
+            foreach (var polygon in geometries) {
+                var clippedGeom = GeometryEngine.Instance.Intersection(allSourcePolygons, polygon);
+                currentCount++;
                 yield return clippedGeom;
 
                 // TODO: Multipart polygons not supported. MultipartToSinglePart collapses coincident vertices.
@@ -40,16 +45,19 @@ namespace VortexLoader.Singletons
             var allSourcePolygons = GeometryEngine.Instance.Union(AllGeometries(sourcePolygons, sourceFilter));
             var allClipPolygons = GeometryEngine.Instance.Union(AllGeometries(clipPolygons, clipFilter));
 
-            foreach (var polygon in AllGeometries(clipPolygons, clipFilter)) {
+            var geometries = AllGeometries(clipPolygons, clipFilter);
+
+            int currentCount = 0;
+            int totalCount = geometries.Count;
+
+            foreach (var polygon in geometries) {
                 var clippedGeom = GeometryEngine.Instance.Intersection(allSourcePolygons, polygon).Clone();
-
+                currentCount++;
                 yield return clippedGeom;
-
                 //var result = GeometryEngine.Instance.MultipartToSinglePart(clippedGeom);
                 //foreach (var singlePart in result) {
                 //    yield return singlePart;
                 //}
-
             }
         }
 
