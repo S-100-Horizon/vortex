@@ -7,10 +7,10 @@ namespace VortexLoader.Singletons
     internal class Geometries
     {
 
-        private static IList<Geometry> AllGeometries(FeatureClass featureClass, QueryFilter filter) {
+        internal static List<Geometry> AllGeometries(FeatureClass featureClass, QueryFilter filter) {
             using var cursor = featureClass.Search(filter, false);
 
-            IList<Geometry> geometries = new List<Geometry>();
+            List<Geometry> geometries = new List<Geometry>();
 
             while (cursor.MoveNext()) {
                 var feature = (Feature)cursor.Current;
@@ -19,19 +19,19 @@ namespace VortexLoader.Singletons
             return geometries;
         }
 
-        internal static IEnumerable<Geometry> GetDissolvedClipped(IEnumerable<Geometry> sourcePolygons, FeatureClass clipPolygons, QueryFilter clipFilter) {
+        internal static List<Geometry> GetDissolvedClipped(IEnumerable<Geometry> sourcePolygons, FeatureClass clipPolygons, QueryFilter clipFilter) {
             var allSourcePolygons = GeometryEngine.Instance.Union(sourcePolygons);
             var allClipPolygons = GeometryEngine.Instance.Union(AllGeometries(clipPolygons, clipFilter));
 
             var geometries = AllGeometries(clipPolygons, clipFilter);
-
+            var result = new List<Geometry>();
             int currentCount = 0;
             int totalCount = geometries.Count;
 
             foreach (var polygon in geometries) {
                 var clippedGeom = GeometryEngine.Instance.Intersection(allSourcePolygons, polygon);
                 currentCount++;
-                yield return clippedGeom;
+                result.Add(clippedGeom);
 
                 // TODO: Multipart polygons not supported. MultipartToSinglePart collapses coincident vertices.
                 //var result = GeometryEngine.Instance.MultipartToSinglePart(clippedGeom);
@@ -39,26 +39,29 @@ namespace VortexLoader.Singletons
                 //    yield return singlePart;
                 //}
             }
+            return result;
         }
 
-        internal static IEnumerable<Geometry> GetDissolvedClipped(FeatureClass sourcePolygons, QueryFilter sourceFilter, FeatureClass clipPolygons, QueryFilter clipFilter) {
+        internal static List<Geometry> GetDissolvedClipped(FeatureClass sourcePolygons, QueryFilter sourceFilter, FeatureClass clipPolygons, QueryFilter clipFilter) {
             var allSourcePolygons = GeometryEngine.Instance.Union(AllGeometries(sourcePolygons, sourceFilter));
             var allClipPolygons = GeometryEngine.Instance.Union(AllGeometries(clipPolygons, clipFilter));
 
             var geometries = AllGeometries(clipPolygons, clipFilter);
-
+            var result = new List<Geometry>();
             int currentCount = 0;
             int totalCount = geometries.Count;
 
             foreach (var polygon in geometries) {
                 var clippedGeom = GeometryEngine.Instance.Intersection(allSourcePolygons, polygon).Clone();
                 currentCount++;
-                yield return clippedGeom;
+                //yield return clippedGeom;
+                result.Add(clippedGeom);
                 //var result = GeometryEngine.Instance.MultipartToSinglePart(clippedGeom);
                 //foreach (var singlePart in result) {
                 //    yield return singlePart;
                 //}
             }
+            return result;
         }
 
         internal static IReadOnlyList<Geometry> GetDissolved(FeatureClass sourcePolygons, QueryFilter sourceFilter, FeatureClass clipPolygons, QueryFilter clipFilter) {
