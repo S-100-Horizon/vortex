@@ -62,7 +62,7 @@ namespace S100Framework.GML
                                 }
 
                                 if (reader.IsStartElement("gml:posList")) {
-                                    var segment = reader.ReadElementContentAsString().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                                    var segment = reader.ReadElementContentAsString().Replace('\n', ' ').Replace('\t', ' ').Split(' ', StringSplitOptions.RemoveEmptyEntries);
                                     segments.Add(segment);
                                 }
                             }
@@ -128,7 +128,7 @@ namespace S100Framework.GML
             while (reader.Read()) {
                 if (reader.NodeType == System.Xml.XmlNodeType.Element) {
                     if (reader.IsStartElement("gml:posList")) {
-                        coords = reader.ReadElementContentAsString().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                        coords = reader.ReadElementContentAsString().Replace('\n', ' ').Replace('\t', ' ').Split(' ', StringSplitOptions.RemoveEmptyEntries);
                     }
                 }
             }

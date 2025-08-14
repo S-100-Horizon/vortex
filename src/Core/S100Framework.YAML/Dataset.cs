@@ -150,7 +150,9 @@ namespace S100Framework.YAML
 
     public abstract class Geometry
     {
+        [YamlMember(Order = 0)]
         public string? Name { get; set; }
+        [YamlMember(Order = 9)]
         public ICollection<Association>? Association => _associations.Any() ? _associations : null;
         private ICollection<Association> _associations = new HashSet<Association>();
         public void AddAssociation(Association association) => _associations.Add(association);
@@ -158,6 +160,7 @@ namespace S100Framework.YAML
 
     public class Point(double x, double y) : Geometry
     {
+        [YamlMember(Order = 1)]
         public string? Location => Coordinate is null ? string.Empty :
             Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(Coordinate.X, Coordinate.Y)).ToText().Substring("Point (".Length).Trim(')').Replace(' ', ',');
         
@@ -167,9 +170,11 @@ namespace S100Framework.YAML
 
     public class PointSet(Coordinate[] points, double[] depths) : Geometry
     {
+        [YamlMember(Order = 1)]
         public string? Location => Points is null ? string.Empty :
             string.Join(',', Points.Select(e => Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(e.X, e.Y)).ToText().Substring("Point (".Length).Trim(')').Replace(' ', ',')));
 
+        [YamlMember(Order = 2)]
         public string? Z => Depths is null ? string.Empty : string.Join(",", Depths.Select(e => e.ToString(CultureInfo.InvariantCulture)));
 
         [YamlIgnore]
@@ -198,11 +203,11 @@ namespace S100Framework.YAML
 
             Coordinate = vertices;
         }
-
+        [YamlMember(Order = 1)]
         public string? Start => _start;
-
+        [YamlMember(Order = 2)]
         public string? End => _end;
-
+        [YamlMember(Order = 3)]
         public string? Vertices => Coordinate is null ? string.Empty :
             string.Join(',', Coordinate.Select(e => Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(e.X, e.Y)).ToText().Substring("Point (".Length).Trim(')').Replace(' ', ',')));
 
@@ -219,7 +224,7 @@ namespace S100Framework.YAML
         public CompositeCurve(string[] curves) {
             Curves = curves;
         }
-
+        [YamlMember(Order = 1)]
         public string Components => string.Join(",", Curves);
 
         [YamlIgnore]
@@ -228,10 +233,12 @@ namespace S100Framework.YAML
 
     public class Surface(string exterior) : Geometry
     {
+        [YamlMember(Order = 1)]
         public string Exterior { get; set; } = exterior;
 
         [YamlIgnore]
         public string[]? InteriorRings { get; set; }
+        [YamlMember(Order = 2)]
 
         public dynamic[]? Interior => InteriorRings?.Length == 0 ? null : InteriorRings?.Select(e => new { Hole = e }).ToArray();
     }
