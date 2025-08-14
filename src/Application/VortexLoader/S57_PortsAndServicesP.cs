@@ -64,13 +64,15 @@ namespace S100Framework.Applications
 
 
                             // TODO: Category of Berth
-                            /* S-57 ENC to S-101 Conversion Guidance ed 1.2.0
+                            /* S-57 ENC to S-101 Conversion Guidance ed 1.2.0
+
                                 The attribute category of cargo has been introduced in S-101 to encode the type of vessel cargo
                                 allowed at the berth, in particular the fact that a berth is a berth for dangerous or hazardous cargo
                                 (category of cargo = 7). This information is encoded in S-57 on BERTHS using the attribute
                                 INFORM (see clause 2.3). In order for this information to be converted across to S-101, the text
                                 string encoded in INFORM on the BERTHS should be in a standardised format, such as Dangerous
-                                or hazardous cargo.                            */
+                                or hazardous cargo.
+                            */
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
@@ -423,7 +425,7 @@ namespace S100Framework.Applications
                                     uncertaintyVariableFactor = default(decimal?)
                                 },
                                 verticalClearanceValue = current.VERCLR.HasValue ? current.VERCLR.Value : default(decimal?),
-                                verticalClearanceUnlimited = !current.VERCLR.HasValue || current.VERCLR.Value == default(decimal)
+                                verticalClearanceUnlimited = current.VERCLR.HasValue ? !(current.VERCLR!.Value == default(decimal)) : null
                             };
 
                             instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
@@ -692,7 +694,6 @@ namespace S100Framework.Applications
                             if (catmor == 1 || catmor == 2) {
                                 var instance = new Dolphin();
 
-
                                 if (catmor == 1) {
                                     instance.categoryOfDolphin = new() { categoryOfDolphin.MooringDolphin };
                                 }
@@ -712,18 +713,20 @@ namespace S100Framework.Applications
                                     instance.condition = GetCondition(current.CONDTN.Value);
                                 }
 
+                                // elevation is new 
+
                                 instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                                 DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                                 if (dateRange != default) {
                                     instance.fixedDateRange = dateRange;
-                                }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
-                                instance.height = current.HEIGHT.Value;
-                            }
-                            else {
-                                instance.height = default(decimal?);
-                            }
+                                }
+                                if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                                    instance.height = current.HEIGHT.Value;
+                                }
+                                else {
+                                    instance.height = default(decimal?);
+                                }
 
                                 // TODO: interoperabilityIdentifier
 

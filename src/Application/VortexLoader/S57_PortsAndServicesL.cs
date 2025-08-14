@@ -511,7 +511,7 @@ namespace S100Framework.Applications
                                     uncertaintyVariableFactor = default(decimal?)
                                 },
                                 verticalClearanceValue = current.VERCLR.HasValue ? current.VERCLR.Value : default(decimal?),
-                                verticalClearanceUnlimited = !current.VERCLR.HasValue || current.VERCLR.Value == default(decimal)
+                                verticalClearanceUnlimited = current.VERCLR.HasValue ? !(current.VERCLR!.Value == default(decimal)) : null
                             };
 
 
@@ -560,7 +560,6 @@ namespace S100Framework.Applications
                             if (catmor == 1 || catmor == 2) {
                                 var instance = new Dolphin();
 
-
                                 if (catmor == 1) {
                                     instance.categoryOfDolphin = new() { categoryOfDolphin.MooringDolphin };
                                 }
@@ -580,18 +579,20 @@ namespace S100Framework.Applications
                                     instance.condition = GetCondition(current.CONDTN.Value);
                                 }
 
+                                // elevation is new 
+
                                 instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                                 DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                                 if (dateRange != default) {
                                     instance.fixedDateRange = dateRange;
-                                }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
-                                instance.height = current.HEIGHT.Value;
-                            }
-                            else {
-                                instance.height = default(decimal?);
-                            }
+                                }
+                                if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                                    instance.height = current.HEIGHT.Value;
+                                }
+                                else {
+                                    instance.height = default(decimal?);
+                                }
 
                                 // TODO: interoperabilityIdentifier
 
@@ -645,7 +646,6 @@ namespace S100Framework.Applications
                                 if (current.PICREP != default) {
                                     instance.pictorialRepresentation = current.PICREP;
                                 }
-
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
