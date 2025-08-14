@@ -216,6 +216,10 @@ namespace S100Framework.Applications
 
                     //Logger.Current.Information($"Converting S101_RecommendedTracksAndRoutes");
                     //Store(() => S101_RecommendedTracksAndRoutes(source, destination, filter));
+                    Logger.Current.Information($"Converting Cultural Features");
+                    Store(() => S57_CulturalFeaturesA(source, destination, filter));
+                    Store(() => S57_CulturalFeaturesL(source, destination, filter));
+                    Store(() => S57_CulturalFeaturesP(source, destination, filter));
 
                     Logger.Current.Information($"Converting Sounding Datums");
                     Store(() => S101_SoundingDatum(source, destination, filter));
@@ -246,10 +250,6 @@ namespace S100Framework.Applications
                     Store(() => S57_SeabedL(source, destination, filter));
                     Store(() => S57_SeabedP(source, destination, filter));
 
-                    Logger.Current.Information($"Converting Cultural Features");
-                    Store(() => S57_CulturalFeaturesA(source, destination, filter)); 
-                    Store(() => S57_CulturalFeaturesL(source, destination, filter));
-                    Store(() => S57_CulturalFeaturesP(source, destination, filter));
 
                     Logger.Current.Information($"Converting CoastLines");
                     Store(() => S57_CoastlineA(source, destination, filter));

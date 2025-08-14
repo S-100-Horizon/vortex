@@ -82,7 +82,7 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer, productCoverage.SHAPE);
-                                ImporterNIS.SetUsageBand(buffer, productCoverage.PLTS_COMP_SCALE.Value);
+                                ImporterNIS.SetUsageBand(buffer, productCoverage!.PLTS_COMP_SCALE!.Value);
 
 
 
@@ -97,8 +97,6 @@ namespace S100Framework.Applications
                                 minimumDisplayScale = default,
                                 optimumDisplayScale = default,
                             };
-
-
 
                             if (displayScale != null) {
                                 dataCoverage.maximumDisplayScale = displayScale.MaximumDisplayScale;

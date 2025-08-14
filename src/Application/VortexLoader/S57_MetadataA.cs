@@ -466,12 +466,26 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 50: { // M_SREL_SurveyReliability
-                            throw new NotImplementedException($"No M_SREL_SurveyReliability in DK or GL. {tableName}");
-
                             var instance = new QualityOfSurvey {
                                 surveyAuthority = default,
                                 surveyDateRange = default,
                             };
+
+                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m) {
+                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                            }
+                            if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767m) {
+                                instance.depthRangeMaximumValue = current.DRVAL2.Value;
+                            }
+
+                            if (current.SDISMX.HasValue && current.SDISMX.Value != .32767m) {
+                                if (current.SDISMX.Value % 1 == 0) {
+                                    instance.measurementDistanceMaximum = Convert.ToInt32(current.SDISMX.Value);
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID!.Value, current.LNAM ?? "Empty LNAM", current.TableName ?? "Unknown tablename", $"SDISMX on M_SREL: value is {current.SDISMX}");
+                                }
+                            }
 
                             AddInformation(instance.information, feature);
 
