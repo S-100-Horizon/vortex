@@ -25,7 +25,7 @@ namespace S100Framework.Applications.Singletons
     {
         private static Scamin? _instance;
         private static readonly Dictionary<string, ScaminFile> _scaminFiles = new();
-        private static readonly List<NamedPolygon> _polygons = new();
+        internal static readonly List<NamedPolygon> _polygons = new();
         private static readonly object _lock = new object();
 
         private Scamin(string pathToScaminFiles) {
@@ -49,13 +49,15 @@ namespace S100Framework.Applications.Singletons
 
             AddPolygon("SCAMIN_GST_Grønland.xml", new List<Coordinate2D>
             {
-                new(58.0858105,83.9901370),
-                new(0.7072854,  84.3437797),
-                new(8.6642457,  72.2315178),
-                new(42.4371219,54.9914371),
-                new(76.2984087,74.6186059),
-                new(76.2099980,78.8623181),
-                new(58.0858105,83.9901370)
+                new(-22.4155794, 84.4901456),
+                new(-8.7395659,  83.1641702),
+                new(-10.8451051, 75.0614524),
+                new(-25.3660133, 67.1312766),
+                new(-38.0642680, 55.4914457),
+                new(-47.4617647, 55.8032143),
+                new(-71.8371442, 72.7315264),
+                new(-79.7941045, 84.8437883),
+                new(-22.4155794, 84.4901456)
             }, sr);
 
             foreach (var filePath in Directory.GetFiles(pathToScaminFiles, "*.xml")) {
@@ -75,6 +77,10 @@ namespace S100Framework.Applications.Singletons
                 }
                 return _instance;
             }
+        }
+
+        internal List<NamedPolygon> Polygons {
+            get => _polygons;
         }
 
         public int? GetMinimumScale(Geometry geometry, string subtypeName/*, string relatedStructureName*/, int compilationScale, bool isRelatedToStructure = false) {
