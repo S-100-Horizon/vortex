@@ -103,7 +103,7 @@ namespace S100Framework.Applications
 
                             // TODO: InteroperabilityIdentifier
 
-                            // TODO: maximumPermittedDraught - Not converted
+                            // TODO: maximumPermittedDraught - From INFORM - No instances in GST - Not converted
 
 
                             // The S-57 attribute QUASOU for DEPARE will not be converted. It is considered that this attribute is
@@ -198,7 +198,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
 
@@ -224,7 +224,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN, default);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, default);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);

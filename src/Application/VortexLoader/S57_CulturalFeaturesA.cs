@@ -1,9 +1,11 @@
-﻿using ArcGIS.Core.Data;
+﻿using ArcGIS.Core.CIM;
+using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System.ComponentModel;
 
 namespace S100Framework.Applications
 {
@@ -129,7 +131,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -151,7 +153,8 @@ namespace S100Framework.Applications
                                 relatedBridge = relatedBridges[0];
                             }
 
-                            
+
+
 
                             bool openingBridge = false;
                             List<bridgeFunction> bridgeFunctionValue = new List<bridgeFunction>();
@@ -161,6 +164,8 @@ namespace S100Framework.Applications
                             condition? conditionValue = default;
                             List<status> statusValue = new();
                             List<natureOfConstruction> natureOfConstructionValues = new();
+                            var horclr = current.HORCLR ?? default;
+                            var horacc = current.HORACC ?? default;
 
                             if (current.CATBRG != default && current.CATBRG == "1") {
                                 openingBridge = false;
@@ -205,8 +210,6 @@ namespace S100Framework.Applications
                                 Logger.Current.DataError(objectid, tableName, longname, $"CATBRG is unknown hence OpeningBridge unknown - OpeningBridge set to false");
                             }
 
-
-
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -241,16 +244,33 @@ namespace S100Framework.Applications
 
 
                             // Span
+                            /*
+                                For opening bridges/bridge spans the attribute VERCOP is only mandatory where there is a limited
+                                vertical clearance when the bridge is open. Where VERCOP is not present for an opening
+                                bridge/bridge span, the mandatory complex attribute vertical clearance open, mandatory subattribute vertical clearance unlimited will be populated as True during the automated conversion
+                                process. Where VERCOP has a value or is populated with an empty (null) value, vertical clearance
+                                unlimited will be populated as False.
+                            */
+
+                            verticalUncertainty verticalUncertaintyValue = null;
+
                             if (openingBridge) {
+                                if (current.VERACC.HasValue && current.VERACC.Value != -32767m) {
+                                    verticalUncertaintyValue = new verticalUncertainty() {
+                                        uncertaintyFixed = current.VERACC.Value,
+                                    };
+                                }
+
                                 var instance = new SpanOpening() {
                                     verticalClearanceClosed = new verticalClearanceClosed() {
-                                        verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default(decimal?)
+                                        verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default(decimal?),
+                                        verticalUncertainty = verticalUncertaintyValue,
                                     }
                                     ,
                                     verticalClearanceOpen = new verticalClearanceOpen() {
-                                        verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default(decimal?),
+                                        verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP!.Value : default(decimal?),
                                         //Where VERCOP has a value or is populated with an empty (null) value, vertical clearance unlimited will be populated as False.
-                                        verticalClearanceUnlimited = !current.VERCOP.HasValue || current.VERCOP.Value == default(decimal)
+                                        verticalClearanceUnlimited = !(current.VERCOP.HasValue || current.VERCOP!.Value == default(decimal))
                                     }
                                 };
 
@@ -258,6 +278,14 @@ namespace S100Framework.Applications
                                     horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767m ? current.HORCLR!.Value : default(decimal?),
                                     horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767m ? current.HORACC!.Value : default(decimal?),
                                 };
+
+
+                                DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                                if (dateRange != default) {
+                                    instance.fixedDateRange = dateRange;
+                                }
+
+                                instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
 
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
@@ -294,7 +322,14 @@ namespace S100Framework.Applications
 
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             }
+
                             if (!openingBridge) {
+                                if (current.VERACC.HasValue && current.VERACC.Value != -32767m) {
+                                    verticalUncertaintyValue = new verticalUncertainty() {
+                                        uncertaintyFixed = current.VERACC.Value,
+                                    };
+                                }
+
                                 if (createBridgesAndRelations) {
                                     var relatedBridges = Bridges.Instance.GetBridgeElementsContainingOID(current.TableName!, current.OBJECTID!.Value);
                                     if (relatedBridges.Count() != 1) {
@@ -305,8 +340,10 @@ namespace S100Framework.Applications
 
                                 var instance = new SpanFixed() {
                                     verticalClearanceFixed = new verticalClearanceFixed() {
-                                        verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default(decimal?),
+                                        verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR!.Value : default(decimal?),
+                                        verticalUncertainty = verticalUncertaintyValue
                                     }
+                                   
                                 };
 
                                 instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
@@ -315,8 +352,12 @@ namespace S100Framework.Applications
                                 };
 
                                 AddInformation(instance.information, feature);
-                                buffer["ps"] = ps101;
 
+                                if (current.PICREP != default) {
+                                    instance.pictorialRepresentation = current.PICREP;
+                                }
+
+                                buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer, current.SHAPE);
@@ -430,7 +471,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -532,7 +573,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -543,7 +584,6 @@ namespace S100Framework.Applications
 
                     case 20: { // CONVYR_Conveyor
                             var instance = new Conveyor();
-
 
                             if (current.CATCON.HasValue) {
                                 instance.categoryOfConveyor = EnumHelper.GetEnumValue<categoryOfConveyor>(current.CATCON.Value);
@@ -565,8 +605,9 @@ namespace S100Framework.Applications
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
-                            }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            }
+
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
@@ -589,7 +630,6 @@ namespace S100Framework.Applications
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
-
                             if (current.SORDAT != default) {
                                 if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
                                     instance.reportedDate = current.SORDAT;
@@ -603,13 +643,16 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
+                            instance.verticalClearanceFixed = new() {
+                                verticalUncertainty = new() {
+                                    uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767m ? current.VERACC.Value : default(decimal?),
+                                    uncertaintyVariableFactor = default(decimal?)
+                                },
+                                //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP.Value : default(decimal?),
+                                verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR.Value : default(decimal?),
+                                
+                            };
 
-                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var value);
-                            if (dateRange != default) {
-                                instance.fixedDateRange = value;
-                            }
-
-                            // TODO: verticalClearanceFixed		
                             instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
 
                             if (current.VERLEN.HasValue) {
@@ -636,7 +679,6 @@ namespace S100Framework.Applications
                             }
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
@@ -646,7 +688,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -736,7 +778,7 @@ namespace S100Framework.Applications
                             //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             //if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                            //    relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                            //    relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             //}
 
                             //ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -746,8 +788,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 30: { // FORSTC_FortifiedStructure
-                            var instance = new FortifiedStructure() {
-                            };
+                            var instance = new FortifiedStructure();
 
                             if (current.CATFOR.HasValue) {
                                 instance.categoryOfFortifiedStructure = EnumHelper.GetEnumValue<categoryOfFortifiedStructure>(current.CATFOR.Value);
@@ -758,6 +799,7 @@ namespace S100Framework.Applications
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);                            
+
                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
                             }
@@ -805,13 +847,13 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            //TODO: inTheWater
-
                             AddInformation(instance.information, feature);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
                             }
+                            
+                            //TODO: inTheWater
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -823,7 +865,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -859,8 +901,11 @@ namespace S100Framework.Applications
                                     windturbine.fixedDateRange = dateRange;
                                 }
 
-                                if (current.HEIGHT.HasValue) {
+                                if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                     windturbine.height = current.HEIGHT.Value;
+                                }
+                                else {
+                                    windturbine.height = default(decimal?);
                                 }
 
                                 // TODO: interoperabilityIdentifier
@@ -888,7 +933,16 @@ namespace S100Framework.Applications
                                     windturbine.status = GetStatus(current.STATUS);
                                 }
 
-                                // TODO: verticalClearanceFixed		
+
+                                windturbine.verticalClearanceFixed = new() {
+                                    verticalUncertainty = new() {
+                                        uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767m ? current.VERACC.Value : default(decimal?),
+                                        uncertaintyVariableFactor = default(decimal?)
+                                    },
+                                    //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP.Value : default(decimal?),
+                                    verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR.Value : default(decimal?),
+                                };
+
 
 
                                 if (current.VERLEN.HasValue) {
@@ -975,7 +1029,8 @@ namespace S100Framework.Applications
                             if (current.FUNCTN != null) {
                                 instance.function = EnumHelper.GetEnumValues<function>(current.FUNCTN);
                             }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
@@ -1030,6 +1085,8 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation = current.PICREP;
                             }
 
+                            //TODO: inTheWater
+
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
@@ -1040,7 +1097,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -1084,7 +1141,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -1207,7 +1264,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -1249,7 +1306,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -1400,7 +1457,7 @@ namespace S100Framework.Applications
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);

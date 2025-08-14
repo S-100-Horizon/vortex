@@ -177,7 +177,7 @@ namespace S100Framework.Applications
                 SpatialRelationResolver.Initialize(source);
 
                 Logger.Current.Information($"Initializing SpatialAssociations");
-                SpatialAssociations.Initialize(source);
+                SpatialAssociations.Initialize(source, filter);
 
                 relatedEquipment = new RelatedEquipment(source, destination);
 

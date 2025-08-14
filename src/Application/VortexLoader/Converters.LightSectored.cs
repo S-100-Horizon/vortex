@@ -49,12 +49,14 @@ namespace S100Framework.Applications
                 instance.fixedDateRange = dateRange;
             }
 
-            if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value;
 
-                // Set by covering meta feature
-                //instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                instance.height = current.HEIGHT.Value;
             }
+            else {
+                instance.height = default(decimal?);
+            }
+
 
             // TODO: interoperabilityidentifier
 
@@ -136,11 +138,12 @@ namespace S100Framework.Applications
                 instance.fixedDateRange = dateRange;
             }
 
-            if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value;
 
-                // Set by covering meta feature
-                //instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                instance.height = current.HEIGHT.Value;
+            }
+            else {
+                instance.height = default(decimal?);
             }
 
             // TODO: interoperabilityidentifier

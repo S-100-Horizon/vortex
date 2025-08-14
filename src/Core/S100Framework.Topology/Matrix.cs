@@ -492,6 +492,8 @@ namespace S100Framework.Topology
             };
 
             Parallel.ForEach(this._bagPolygons, ParallelOptions, (polygon) => {
+                //if (polygon.Name.Equals("S1650280")) System.Diagnostics.Debugger.Break();
+
                 if (!polygon.ExteriorRing.Any()) return;
 
                 var exteriorId = action(polygon.ExteriorRing, LinearRingOrientation.Clockwise, false);
@@ -499,10 +501,10 @@ namespace S100Framework.Topology
                     Ref = polygon.Name,
                     Exterior = exteriorId.featureRef,
                 };
-                if (!mask1Objects.Contains(polygon.Name)) {
+                //if (!mask1Objects.Contains(polygon.Name)) {
                     if (exteriorId.masks1.Any())
                         surface.Masks1 = [.. exteriorId.masks1.Select(e => e.Id)];
-                }
+                //}
                 if (polygon.InteriorRings.Any()) {
                     var interiorRings = polygon.InteriorRings.Select(e => action(e, LinearRingOrientation.CounterClockwise, false));
                     surface.Interior = [.. interiorRings.Select(e => e.featureRef)];

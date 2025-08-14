@@ -1,6 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using S100Framework.Applications.S57.esri;
+using S100Framework.DomainModel.S128.ComplexAttributes;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
@@ -17,23 +18,36 @@ namespace S100Framework.Applications.Singletons
 
         private static Geodatabase _geodatabase;
 
+        private static string _whereClause;
+
         private static Dictionary<string, (Guid globalId, int qualityOfPrecision, Geometry Shape)> _spatialAttributesL = new Dictionary<string, (Guid globalId, int qualityOfPrecision, Geometry Shape)>();
 
-        private SpatialAssociations(Geodatabase geodatabase) {
+        private SpatialAssociations(Geodatabase geodatabase, QueryFilter filter) {
             _geodatabase = geodatabase ?? throw new ArgumentNullException(nameof(geodatabase));
+            _spatialAttributesL.Clear();
 
             using var plts_spatialattributelTable = _geodatabase.OpenDataset<FeatureClass>(_geodatabase.GetName("PLTS_SpatialAttributeL"));
 
-            using var cursor = plts_spatialattributelTable.Search(null, true);
+            using var cursor = plts_spatialattributelTable.Search(filter, true);
 
             int recordCount = 0;
-
+            int errorCount = 0;
             while (cursor.MoveNext()) {
                 recordCount += 1;
                 var feature = (Feature)cursor.Current;
                 var plts_spatialattributel = new PLTS_SpatialAttributeL(feature);
 
                 var wkt = ToWktWithDecimals(feature.GetShape(), 7);
+
+                if (_spatialAttributesL.ContainsKey(wkt)) {
+                    errorCount++;
+                    Console.WriteLine($"{plts_spatialattributel.OBJECTID!.Value}::{plts_spatialattributel.LNAM}::{plts_spatialattributel.GlobalId}");
+                    Logger.Current.DataError(plts_spatialattributel.OBJECTID!.Value, "PLTS_SpatialAttributeL", plts_spatialattributel.LNAM, $"Duplicate geometry. Ignoring this element");
+                    //throw new Exception("Multiple spatialattributeL in same band");
+                    continue;
+                    
+                }
+
                 _spatialAttributesL.Add(wkt, (plts_spatialattributel.GLOBALID, plts_spatialattributel.P_QUAPOS.Value, plts_spatialattributel.SHAPE));
             }
             ;
@@ -73,14 +87,14 @@ namespace S100Framework.Applications.Singletons
             return intersects;
         }
 
-        internal static void Initialize(Geodatabase geodatabase) {
+        internal static void Initialize(Geodatabase geodatabase, QueryFilter filter) {
             if (_instance != null) {
                 throw new InvalidOperationException("SpatialAssociations has already been initialized.");
             }
 
             lock (_lock) {
                 if (_instance == null) {
-                    _instance = new SpatialAssociations(geodatabase);
+                    _instance = new SpatialAssociations(geodatabase, filter);
                 }
             }
         }

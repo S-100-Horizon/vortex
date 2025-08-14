@@ -1,3 +1,6 @@
+using System.Runtime.Serialization;
+using System.Xml;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 
 namespace S100Framework.DomainModel
@@ -163,4 +166,49 @@ namespace S100Framework.DomainModel
         curve,
         surface,
     }
+
+
+
+    public class SerializableEnumerable<T> : IXmlSerializable where T : notnull
+    {
+        private T _value;
+
+        // Implicit conversions to and from the underlying enum for ease of use
+        public static implicit operator T(SerializableEnumerable<T> o) {
+            return o._value;
+        }
+
+        public static implicit operator SerializableEnumerable<T>(T o) {
+            return new SerializableEnumerable<T>(o);
+        }
+        
+        public SerializableEnumerable(T value) {
+            this._value = value;
+        }
+
+        public XmlSchema GetSchema() {
+            return null;
+        }
+
+        public void ReadXml(XmlReader reader) {
+            // Not implemented as the primary focus is on serialization for this example.
+            // For deserialization, you would read the attribute and text and convert back to the enum.
+            throw new NotImplementedException();
+        }
+
+        public void WriteXml(XmlWriter writer) {
+            // Write the 'code' attribute with the integer value of the enum
+            writer.WriteAttributeString("code", $"{this._value}");
+
+            // Get the EnumMemberAttribute value for the text content
+            var memberInfo = typeof(T).GetMember($"{this._value}").FirstOrDefault();
+            if (memberInfo != null) {
+                var enumMemberAttribute = memberInfo.GetCustomAttributes(typeof(EnumMemberAttribute), false).FirstOrDefault() as EnumMemberAttribute;
+                if (enumMemberAttribute != null) {
+                    writer.WriteString(enumMemberAttribute.Value);
+                }
+            }
+        }
+    }
+
 }
