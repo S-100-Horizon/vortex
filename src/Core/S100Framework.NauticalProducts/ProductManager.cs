@@ -26,13 +26,15 @@ namespace S100Framework.NauticalProducts
 
     public interface IElectronicProductManager
     {
-        Task CreateElectronicProductAsync(string name, S100Framework.DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary);
+        Task CreateElectronicProductAsync(string ps, string name, S100Framework.DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary);
 
-        Task CreateElectronicProductAsync(string name, S100Framework.DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary, int edition, int update, byte[] zipfile);
+        Task CreateElectronicProductAsync(string ps, string name, S100Framework.DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary, int edition, int update, byte[] zipfile);
 
         Task<YAML.Dataset> CreateNewEditionAsync(string ps, string name);
 
         Task<YAML.Dataset> CreateNewUpdateAsync(string ps, string name);
+
+        ElectronicProduct ElectronicProduct(string ps, string name);
     }
 
     public interface IProductManager
@@ -60,6 +62,11 @@ namespace S100Framework.NauticalProducts
         private string _ownerName = string.Empty;
 
         private IDictionary<string, Geodatabase> _connections = new Dictionary<string, Geodatabase>();
+
+        record ElectronicProductKey(string ps, string name)
+        {
+            public override string ToString() => $"{this.ps}::{this.name}";
+        }
 
         private ConcurrentDictionary<string, S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct> _electronicProducts = new ConcurrentDictionary<string, S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct>();
 
@@ -138,11 +145,16 @@ namespace S100Framework.NauticalProducts
             });
         }
 
-        Task IElectronicProductManager.CreateElectronicProductAsync(string name, DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary) {
+        Task IElectronicProductManager.CreateElectronicProductAsync(string ps, string name, DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary) {
             if (string.IsNullOrEmpty(name))
                 throw new System.ArgumentNullException(nameof(name));
+            if (string.IsNullOrEmpty(ps))
+                throw new System.ArgumentNullException(nameof(ps));
 
+            ps = ps.ToUpperInvariant();
             name = name.ToUpperInvariant();
+
+            var key = new ElectronicProductKey(ps, name);
 
             return this._taskFactory.StartNew(() => {
                 if (this._electronicProducts.ContainsKey(name))
@@ -174,7 +186,7 @@ namespace S100Framework.NauticalProducts
 
         }
 
-        Task IElectronicProductManager.CreateElectronicProductAsync(string name, DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary, int edition, int update, byte[] zipfile) {
+        Task IElectronicProductManager.CreateElectronicProductAsync(string ps, string name, DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary, int edition, int update, byte[] zipfile) {
             throw new NotImplementedException();
         }
 
@@ -193,40 +205,51 @@ namespace S100Framework.NauticalProducts
                 throw new System.ArgumentException(nameof(name));
 
             var connection = this._connections[ps]!;
-            var electricProduct = this._electronicProducts[name];
-
-            var whereClause = "upper(ps) = 'S-101'";
-
-            whereClause += electricProduct.specificUsage switch {
-                DomainModel.S128.specificUsage.NavigationalPurposeOverview => $" AND usageband = 1",
-                DomainModel.S128.specificUsage.NavigationalPurposeGeneral => $" AND usageband = 2",
-                DomainModel.S128.specificUsage.NavigationalPurposeCoastal => $" AND usageband = 3",
-                DomainModel.S128.specificUsage.NavigationalPurposeApproach => $" AND usageband = 4",
-                DomainModel.S128.specificUsage.NavigationalPurposeHarbour => $" AND usageband = 5",
-                _ => "",
-            };
 
             var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
 
-            return await this._taskFactory.StartNew(() => {
-                ArcGIS.Core.Geometry.Polygon shape;
+            var dataset = await this._taskFactory.StartNew(() => {
+                using var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"));
+                ArcGIS.Core.Data.Row row128;
 
-                using (var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"))) {
-                    using var cursor = surface.Search(new QueryFilter {
-                        WhereClause = $"json LIKE '%\"datasetName\":\"{electricProduct!.datasetName!}\"%'",
-                    }, true);
+                using var cursorS128 = surface.Search(new QueryFilter {
+                    WhereClause = $"json LIKE '%\"datasetName\":\"{name}\"%'",
+                }, false);
 
-                    cursor.MoveNext();
+                cursorS128.MoveNext();
 
-                    Debug.Assert(cursor.Current != null);
+                Debug.Assert(cursorS128.Current != null);
 
-                    shape = (ArcGIS.Core.Geometry.Polygon)((ArcGIS.Core.Data.Feature)cursor.Current).GetShape();
-                }
+                row128 = cursorS128.Current;
+
+                if (row128.IsNull("json"))
+                    throw new System.ArgumentNullException(nameof(name));
+
+                var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<ElectronicProduct>(Convert.ToString(row128["json"])!)!;
+
+                electronicProduct.editionNumber += 1;
+                electronicProduct.updateNumber = 0;
+                electronicProduct.issueDate = DateOnly.FromDateTime(DateTime.Now);
+
+                var whereClause = "upper(ps) = 'S-101'";
+
+                whereClause += electronicProduct.specificUsage switch {
+                    DomainModel.S128.specificUsage.NavigationalPurposeOverview => $" AND usageband = 1",
+                    DomainModel.S128.specificUsage.NavigationalPurposeGeneral => $" AND usageband = 2",
+                    DomainModel.S128.specificUsage.NavigationalPurposeCoastal => $" AND usageband = 3",
+                    DomainModel.S128.specificUsage.NavigationalPurposeApproach => $" AND usageband = 4",
+                    DomainModel.S128.specificUsage.NavigationalPurposeHarbour => $" AND usageband = 5",
+                    _ => "",
+                };
+
+                ArcGIS.Core.Geometry.Polygon shapeCoverage;
+
+                shapeCoverage = (ArcGIS.Core.Geometry.Polygon)((ArcGIS.Core.Data.Feature)cursorS128.Current).GetShape();
 
                 var dataset = new S100Framework.YAML.Dataset {
-                    CellName = $"{electricProduct!.datasetName!}.000",
-                    Comment = electricProduct.notForNavigation ? "Not for navigation!" : string.Empty,
-                    Edition = (uint?)electricProduct.editionNumber++,
+                    CellName = $"{electronicProduct!.datasetName!}.000",
+                    Comment = electronicProduct.notForNavigation ? "Not for navigation!" : string.Empty,
+                    Edition = (uint?)electronicProduct.editionNumber,
                     ENCVer = "INT.IHO.S-101.2.0",
                     FCVer = "2.0",
                     verticalDatum = "Baltic Sea Chart Datum 2000,44",
@@ -234,7 +257,7 @@ namespace S100Framework.NauticalProducts
 
                 //  Topology                
                 var filter = new SpatialQueryFilter {
-                    FilterGeometry = shape,
+                    FilterGeometry = shapeCoverage,
                     SpatialRelationship = SpatialRelationship.Relation,
                     SpatialRelationshipDescription = "T*****FF*",
                     WhereClause = whereClause,
@@ -271,7 +294,7 @@ namespace S100Framework.NauticalProducts
 
                 var geometries = new List<(ArcGIS.Core.Geometry.Geometry geometry, string name)>();
 
-                //  Features
+                //  FeatureTypes
                 foreach (var def in connection.GetDefinitions<FeatureClassDefinition>()) {
                     var tableName = def.GetAliasName();
 
@@ -289,9 +312,9 @@ namespace S100Framework.NauticalProducts
                     }
 
                     using (var fc = connection.OpenDataset<FeatureClass>(def.GetName())) {
-                        using var cursor = fc.Search(filter, true);
-                        while (cursor.MoveNext()) {
-                            var current = (ArcGIS.Core.Data.Feature)cursor.Current;
+                        using var featureCursor = fc.Search(filter, true);
+                        while (featureCursor.MoveNext()) {
+                            var current = (ArcGIS.Core.Data.Feature)featureCursor.Current;
                             var name = Convert.ToString(current["name"])!;
 
                             // Only map geometry, and keep name seperate so foids remain unique
@@ -412,15 +435,23 @@ namespace S100Framework.NauticalProducts
                     Log.Verbose("Adding {geometryType} with ID: {name}", geometry.GeometryType, name);
                 }
 
-                return dataset!;
+                row128["json"] = System.Text.Json.JsonSerializer.Serialize(electronicProduct);
+                row128.Store();
+                row128.Dispose();
 
-                var yaml = S100Framework.YAML.Converter.Serialize(dataset!);
+                this._electronicProducts[name] = electronicProduct;
+
+                return dataset!;
             });
+
+            return dataset;
         }
 
         Task<YAML.Dataset> IElectronicProductManager.CreateNewUpdateAsync(string ps, string name) {
             throw new NotImplementedException();
         }
+
+        ElectronicProduct IElectronicProductManager.ElectronicProduct(string ps, string name) => this._electronicProducts[name.ToUpperInvariant()];
 
         public void Dispose() {
             if (!this._disposed) {

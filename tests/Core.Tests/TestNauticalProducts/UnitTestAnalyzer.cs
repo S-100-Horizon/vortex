@@ -210,7 +210,9 @@ namespace TestNauticalProducts
             });
             Assert.NotNull(productManager);
 
-            var dataset = await productManager.ElectronicProductManager.CreateNewEditionAsync("S-101", "101DK0040347E");
+            
+
+            var dataset = await productManager.ElectronicProductManager.CreateNewEditionAsync("S-101", "101DK0040349E");
 
             var yaml = dataset.Serialize();
 
