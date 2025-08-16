@@ -138,7 +138,7 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.Applications.Roslyn.Build(s100, true, true);
+                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.ISO8211, true);
 
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
@@ -154,7 +154,7 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.Applications.Roslyn.Build(s100);
+                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.GML);
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
                 File.WriteAllText(@".\..\..\..\S-122_FC.cs", content.DomainModel, Encoding.UTF8);
@@ -172,7 +172,7 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.Applications.Roslyn.Build(s100);
+                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.GML);
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
                 File.WriteAllText(@".\..\..\..\S-123_FC.cs", content.DomainModel, Encoding.UTF8);
@@ -190,7 +190,7 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.Applications.Roslyn.Build(s100);
+                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.GML);
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
                 File.WriteAllText(@".\..\..\..\S-124_FC.cs", content.DomainModel, Encoding.UTF8);
@@ -206,7 +206,7 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.Applications.Roslyn.Build(s100);
+                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.GML);
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
                 File.WriteAllText(@".\..\..\..\S-127_FC.cs", content.DomainModel, Encoding.UTF8);
@@ -222,7 +222,7 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.Applications.Roslyn.Build(s100);
+                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.GML);
 
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S128/2.0");
 
@@ -236,7 +236,7 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.Applications.Roslyn.Build(s100);
+                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.GML);
 
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S131/1.0");
 
@@ -250,7 +250,7 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.Applications.Roslyn.Build(s100);
+                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.GML);
 
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S100FC/5.0");
 
@@ -265,7 +265,7 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.Applications.Roslyn.Build(s100);
+                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.ISO8211, false);
 
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 

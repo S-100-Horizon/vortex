@@ -59,7 +59,7 @@ namespace S100Framework.Applications
             }
 
 
-            var result = Roslyn.Build(productSpecification);
+            var result = Roslyn.Build(productSpecification, Roslyn.ProductFormat.ISO8211);
 
             var navigator = productSpecification.CreateNavigator();
             navigator.MoveToFollowing(XPathNodeType.Element);
