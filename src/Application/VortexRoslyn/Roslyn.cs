@@ -17,7 +17,14 @@ namespace S100Framework.Applications
 
         private static ICollection<Primitives> spatialAssociationPrimitives = [Primitives.curve, Primitives.pointSet, Primitives.point];
 
-        public static (string DomainModel, string ViewModel) Build(XDocument productSpecification, bool supportingSpatialAssociation = false, bool supportingUnknown = false) {
+        public enum ProductFormat : int
+        {
+            GML = 1,
+            HDF5 = 5,
+            ISO8211 = 8211
+        }
+
+        public static (string DomainModel, string ViewModel) Build(XDocument productSpecification, ProductFormat productFormat, bool supportingSpatialAssociation = false) {
             var navigator = productSpecification.CreateNavigator();
             navigator.MoveToFollowing(XPathNodeType.Element);
             var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
@@ -447,7 +454,7 @@ namespace S100Framework.Applications
                                         };
                                         constructor.AppendLine($"\t{referenceCode}{p}");
                                     }
-                                    else if (supportingUnknown) {
+                                    else if (productFormat == ProductFormat.ISO8211) {
                                         constructor.AppendLine($"\t{referenceCode} = default,");
                                     }
                                     else {
@@ -458,8 +465,7 @@ namespace S100Framework.Applications
                                     constructor.AppendLine($"\t{referenceCode} = {objectConstructors[referenceCode].ToString("\t\t\t")},");
                                 }
 
-                                //if (!knowTypesPrefix[referenceCode].Equals("String")) 2025-07-01
-                                if (supportingUnknown && !complexTypes.Contains(referenceCode)) {
+                                if (productFormat == ProductFormat.ISO8211 && !complexTypes.Contains(referenceCode)) {
                                     prefix = "required " + prefix + "?";
                                     postfix = " = default;";
                                 }
@@ -470,7 +476,6 @@ namespace S100Framework.Applications
                                             "String" or "string" => " = string.Empty;",
                                             "Boolean" or "bool" => " = false;",
                                             _ => objectConstructors.ContainsKey(referenceCode) ? $" = {objectConstructors[referenceCode].ToString("\t\t\t")};" : " = default;",
-                                            //_ => enumTypes.Contains(referenceCode) ? string.Empty : objectConstructors.ContainsKey(referenceCode) ? $" = {objectConstructors[referenceCode].ToString("\t\t\t")};" : " = default;",
                                         };
                                     }
                                 }
@@ -498,7 +503,7 @@ namespace S100Framework.Applications
                                 if (lower == 0 && upper.HasValue && upper.Value == 1)
                                     builderDomainModel.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>? {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
                                 else if (lower == 1 && upper.HasValue && upper.Value == 1) {
-                                    if (supportingUnknown)
+                                    if (productFormat == ProductFormat.ISO8211)
                                         builderDomainModel.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>? {referenceCode}Element {{ get {{ return {referenceCode}.HasValue ? {referenceCode} : default; }} set {{ }} }}");
                                     else
                                         builderDomainModel.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}> {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
@@ -590,7 +595,7 @@ namespace S100Framework.Applications
                         FeatureAssociationsLookup = featureAssociationsLookup,
                         ShouldSerialize = shouldSerialize,
                         SupportingSpatialAssociation = supportingSpatialAssociation,
-                        SupportingUnknown = supportingUnknown,
+                        ProductFormat = productFormat,
                     });
 
                     builderDomainModel.AppendLine(s);
@@ -636,7 +641,7 @@ namespace S100Framework.Applications
                             FeatureAssociationsLookup = featureAssociationsLookup,
                             ShouldSerialize = shouldSerialize,
                             SupportingSpatialAssociation = supportingSpatialAssociation,
-                            SupportingUnknown = supportingUnknown,
+                            ProductFormat = productFormat,
                         });
 
                         builderDomainModel.AppendLine(s);
@@ -717,12 +722,14 @@ namespace S100Framework.Applications
                             FeatureAssociationsLookup = featureAssociationsLookup,
                             ShouldSerialize = shouldSerialize,
                             SupportingSpatialAssociation = supportingSpatialAssociation,
-                            SupportingUnknown = supportingUnknown,
+                            ProductFormat = productFormat,
                         }, (builder) => {
                             builder.AppendLine();
-                            //builder.AppendLine("\t\t\t[JsonIgnore]");
-                            //builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
-                            //builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
+                            if (productFormat == ProductFormat.GML) {
+                                builder.AppendLine("\t\t\t[JsonIgnore]");
+                                builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
+                                builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
+                            }
                         });
 
                         builderDomainModel.AppendLine(s);
@@ -795,14 +802,16 @@ namespace S100Framework.Applications
                             FeatureAssociationsLookup = featureAssociationsLookup,
                             ShouldSerialize = shouldSerialize,
                             SupportingSpatialAssociation = supportingSpatialAssociation,
-                            SupportingUnknown = supportingUnknown,
+                            ProductFormat = productFormat,
                         }, (builder) => {
-                            //builder.AppendLine();
-                            //builder.AppendLine("\t\t\t[JsonIgnore]");
-                            //builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
-                            //builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
-
                             if (!(e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value))) {
+                                if (productFormat == ProductFormat.GML) {
+                                    builder.AppendLine();
+                                    builder.AppendLine("\t\t\t[JsonIgnore]");
+                                    builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
+                                    builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
+                                }
+
                                 builder.AppendLine();
                                 builder.AppendLine("\t\t\t[JsonIgnore]");
                                 builder.AppendLine("\t\t\t[XmlAnyElement]");
@@ -878,7 +887,7 @@ namespace S100Framework.Applications
                 EnumerationTypes = enumTypes,
                 CodeListTypes = codelistTypes,
                 ComplexTypes = complexTypes,
-                SupportingUnknown = supportingUnknown,
+                ProductFormat = productFormat,
                 InformationAssociationsLookup = informationAssociationsLookup,
                 FeatureAssociationsLookup = featureAssociationsLookup,
                 Editors = editorBuilders,
@@ -896,7 +905,7 @@ namespace S100Framework.Applications
             public required IReadOnlyCollection<string> EnumerationTypes { get; init; }
             public required IReadOnlyCollection<string> CodeListTypes { get; init; }
             public required IReadOnlyCollection<string> ComplexTypes { get; init; }
-            public required bool SupportingUnknown { get; init; }
+            public required ProductFormat ProductFormat { get; init; }
             public required IReadOnlyDictionary<string, ICollection<string>> InformationAssociationsLookup { get; init; }
             public required IReadOnlyDictionary<string, ICollection<string>> FeatureAssociationsLookup { get; init; }
 
@@ -975,7 +984,7 @@ namespace S100Framework.Applications
                         CodeListTypes = client.CodeListTypes,
                         EnumerationTypes = client.EnumerationTypes,
                         ComplexTypes = client.ComplexTypes,
-                        SupportingUnknown = client.SupportingUnknown,
+                        ProductFormat = client.ProductFormat,
                         BaseClass = "ViewModelBase",
                         LoadPrefix = $"{code}ViewModel",
                         Editors = client.Editors,
@@ -1010,7 +1019,7 @@ namespace S100Framework.Applications
                         EnumerationTypes = client.EnumerationTypes,
                         CodeListTypes = client.CodeListTypes,
                         ComplexTypes = client.ComplexTypes,
-                        SupportingUnknown = client.SupportingUnknown,
+                        ProductFormat = client.ProductFormat,
                         BaseClass = "AssociationViewModel",
                         LoadPrefix = $"{code}ViewModel",
                         Editors = client.Editors,
@@ -1047,7 +1056,7 @@ namespace S100Framework.Applications
                         EnumerationTypes = client.EnumerationTypes,
                         CodeListTypes = client.CodeListTypes,
                         ComplexTypes = client.ComplexTypes,
-                        SupportingUnknown = client.SupportingUnknown,
+                        ProductFormat = client.ProductFormat,
                         BaseClass = "AssociationViewModel",
                         LoadPrefix = $"{code}ViewModel",
                         Editors = client.Editors,
@@ -1084,7 +1093,7 @@ namespace S100Framework.Applications
                         EnumerationTypes = client.EnumerationTypes,
                         CodeListTypes = client.CodeListTypes,
                         ComplexTypes = client.ComplexTypes,
-                        SupportingUnknown = client.SupportingUnknown,
+                        ProductFormat = client.ProductFormat,
                         BaseClass = $"InformationViewModel<{code}>",
                         LoadPrefix = $"override InformationViewModel<{code}>",
                         Editors = client.Editors,
@@ -1123,7 +1132,7 @@ namespace S100Framework.Applications
                         EnumerationTypes = client.EnumerationTypes,
                         CodeListTypes = client.CodeListTypes,
                         ComplexTypes = client.ComplexTypes,
-                        SupportingUnknown = client.SupportingUnknown,
+                        ProductFormat = client.ProductFormat,
                         BaseClass = $"FeatureViewModel<{code}>",
                         LoadPrefix = $"override FeatureViewModel<{code}>",
                         Editors = client.Editors,
@@ -1189,7 +1198,7 @@ namespace S100Framework.Applications
 
             public required bool SupportingSpatialAssociation { get; init; }
 
-            public required bool SupportingUnknown { get; init; }
+            public required ProductFormat ProductFormat { get; init; }
         }
 
         private static string BuildClass(XElement e, BuildClassClient client, Action<StringBuilder>? postBuilder = default) {
@@ -1278,7 +1287,7 @@ namespace S100Framework.Applications
                 else if (lower == 1 && upper.HasValue && upper.Value == 1) {
                     //if (!client.KnowTypesPrefix[referenceCode].Equals("String"))
                     //builder.AppendLine($"\t\t\t[Required()]");
-                    if (client.SupportingUnknown && !client.ComplexTypes.Contains(referenceCode)) {
+                    if (client.ProductFormat == ProductFormat.ISO8211 && !client.ComplexTypes.Contains(referenceCode)) {
                         prefix = "required " + prefix + "?";
                         postfix = " = default;";
                     }
@@ -1318,7 +1327,7 @@ namespace S100Framework.Applications
                     if (lower == 0 && upper.HasValue && upper.Value == 1)
                         builder.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>? {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
                     else if (lower == 1 && upper.HasValue && upper.Value == 1) {
-                        if (client.SupportingUnknown)
+                        if (client.ProductFormat == ProductFormat.ISO8211)
                             builder.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>? {referenceCode}Element {{ get {{ return {referenceCode}.HasValue ? {referenceCode} : default; }} set {{ }} }}");
                         else
                             builder.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}> {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
@@ -1505,7 +1514,7 @@ namespace S100Framework.Applications
 
             public required IReadOnlyCollection<string> ComplexTypes { get; init; }
 
-            public required bool SupportingUnknown { get; init; }
+            public required ProductFormat ProductFormat { get; init; }
 
             public required string BaseClass { get; init; }
 
@@ -1554,7 +1563,7 @@ namespace S100Framework.Applications
                 BuildViewModelClassClient = client,
                 XmlNamespaceManager = xmlNamespaceManager,
                 XPathNavigator = navigator,
-                SupportingUnknown = client.SupportingUnknown,
+                ProductFormat = client.ProductFormat,
             });
 
             serializeBuilder.AppendLine("\t\t\t};");
@@ -1602,7 +1611,7 @@ namespace S100Framework.Applications
 
             public required XPathNavigator XPathNavigator { get; init; }
 
-            public required bool SupportingUnknown { get; init; }
+            public required ProductFormat ProductFormat { get; init; }
         }
 
         private static void BuildViewModelClassAttribute(string code, XElement e, StringBuilder builder, StringBuilder loadBuilder, StringBuilder serializeBuilder, StringBuilder modelBuilder, StringBuilder constructorBuilder, BuildViewModelClassAttributeClient client) {
@@ -1641,7 +1650,7 @@ namespace S100Framework.Applications
                     postfix = " = default;";
                 }
                 else if (lower == 1 && upper.HasValue && upper.Value == 1) {
-                    if (client.SupportingUnknown) {
+                    if (client.ProductFormat == ProductFormat.ISO8211) {
                         prefix += "?";
                         postfix = " = default;";
                     }

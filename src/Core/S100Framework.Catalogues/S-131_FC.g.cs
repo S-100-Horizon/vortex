@@ -3677,6 +3677,9 @@ namespace S100Framework.DomainModel.S131 {
 				},
 			];
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -3733,6 +3736,9 @@ namespace S100Framework.DomainModel.S131 {
 				},
 			];
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -3840,6 +3846,9 @@ namespace S100Framework.DomainModel.S131 {
 				},
 			];
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -3898,6 +3907,9 @@ namespace S100Framework.DomainModel.S131 {
 				},
 			];
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4028,6 +4040,9 @@ namespace S100Framework.DomainModel.S131 {
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4120,6 +4135,9 @@ namespace S100Framework.DomainModel.S131 {
 				},
 			];
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4188,6 +4206,9 @@ namespace S100Framework.DomainModel.S131 {
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4215,6 +4236,9 @@ namespace S100Framework.DomainModel.S131 {
 				},
 			];
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4248,6 +4272,9 @@ namespace S100Framework.DomainModel.S131 {
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4266,6 +4293,9 @@ namespace S100Framework.DomainModel.S131 {
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4284,6 +4314,9 @@ namespace S100Framework.DomainModel.S131 {
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4302,6 +4335,9 @@ namespace S100Framework.DomainModel.S131 {
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4348,6 +4384,9 @@ namespace S100Framework.DomainModel.S131 {
 				},
 			];
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4381,6 +4420,9 @@ namespace S100Framework.DomainModel.S131 {
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 		}
 	}
 	namespace FeatureTypes {
@@ -4721,6 +4763,10 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 		}
@@ -4795,6 +4841,10 @@ namespace S100Framework.DomainModel.S131 {
 					featureTypes = [nameof(HarbourAreaSection)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 
 			[JsonIgnore]
 			[XmlAnyElement]
@@ -4958,6 +5008,10 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 		}
@@ -5053,6 +5107,10 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 		}
@@ -5138,6 +5196,10 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 		}
@@ -5184,6 +5246,10 @@ namespace S100Framework.DomainModel.S131 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 
 			[JsonIgnore]
 			[XmlAnyElement]
@@ -5262,6 +5328,10 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 		}
@@ -5310,6 +5380,10 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 		}
@@ -5356,6 +5430,10 @@ namespace S100Framework.DomainModel.S131 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 
 			[JsonIgnore]
 			[XmlAnyElement]
@@ -5464,6 +5542,10 @@ namespace S100Framework.DomainModel.S131 {
 					featureTypes = [nameof(HarbourAreaSection)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 
 			[JsonIgnore]
 			[XmlAnyElement]
@@ -5593,6 +5675,10 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 		}
@@ -5669,6 +5755,10 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 		}
@@ -5720,6 +5810,10 @@ namespace S100Framework.DomainModel.S131 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 
 			[JsonIgnore]
 			[XmlAnyElement]
@@ -5808,6 +5902,10 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 		}
@@ -5889,6 +5987,10 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 		}
@@ -5965,6 +6067,10 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 		}
@@ -6039,6 +6145,10 @@ namespace S100Framework.DomainModel.S131 {
 					featureTypes = [nameof(HarbourAreaSection)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 
 			[JsonIgnore]
 			[XmlAnyElement]
@@ -6167,6 +6277,10 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 		}
@@ -6243,6 +6357,10 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 		}
@@ -6317,6 +6435,10 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 		}
@@ -6355,6 +6477,10 @@ namespace S100Framework.DomainModel.S131 {
 
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 
 			[JsonIgnore]
 			[XmlAnyElement]
@@ -6431,6 +6557,10 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 		}
@@ -6478,6 +6608,10 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 		}
@@ -6523,6 +6657,10 @@ namespace S100Framework.DomainModel.S131 {
 
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 
 			[JsonIgnore]
 			[XmlAnyElement]
@@ -6591,6 +6729,10 @@ namespace S100Framework.DomainModel.S131 {
 					featureTypes = [nameof(FeatureType)],
 				},
 			];
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
 
 			[JsonIgnore]
 			[XmlAnyElement]
