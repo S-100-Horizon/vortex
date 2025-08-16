@@ -490,6 +490,7 @@ namespace S100Framework.Applications
                                 builderDomainModel.AppendLine();
                                 builderDomainModel.AppendLine("\t\t\t[JsonIgnore]");
                                 builderDomainModel.AppendLine($"\t\t\t[System.Xml.Serialization.XmlElementAttribute(DataType = \"date\", ElementName = \"{referenceCode}\")]");
+                                builderDomainModel.AppendLine($"\t\t\t[EditorBrowsable(EditorBrowsableState.Never)]");
                                 builderDomainModel.AppendLine($"\t\t\tpublic DateTime {referenceCode}Field {{");
                                 builderDomainModel.AppendLine($"\t\t\t\tget {{ return {referenceCode}.ToDateTime(TimeOnly.MinValue); }}");
                                 builderDomainModel.AppendLine($"\t\t\t\tset {{ {referenceCode} = DateOnly.FromDateTime(value); }}");
@@ -1314,6 +1315,7 @@ namespace S100Framework.Applications
                     builder.AppendLine();
                     builder.AppendLine("\t\t\t[JsonIgnore]");
                     builder.AppendLine($"\t\t\t[System.Xml.Serialization.XmlElementAttribute(DataType = \"date\", ElementName = \"{referenceCode}\")]");
+                    builder.AppendLine($"\t\t\t[EditorBrowsable(EditorBrowsableState.Never)]");
                     builder.AppendLine($"\t\t\tpublic DateTime {referenceCode}Field {{");
                     builder.AppendLine($"\t\t\t\tget {{ return {referenceCode}.ToDateTime(TimeOnly.MinValue); }}");
                     builder.AppendLine($"\t\t\t\tset {{ {referenceCode} = DateOnly.FromDateTime(value); }}");
