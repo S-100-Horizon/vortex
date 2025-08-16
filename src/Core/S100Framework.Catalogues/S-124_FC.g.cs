@@ -32,191 +32,212 @@ namespace S100Framework.DomainModel.S124 {
 		};
 	}
 
+	/// <summary>
+	/// Classification of the type and display level of the name of a feature in an end-user system.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum nameUsage : int {
-		[System.ComponentModel.Description("TheNameIsIntendedToBeDisplayedWhenTheEndUserSystemIsSetToTheDefaultNameTextDisplaySetting")]
+		[System.ComponentModel.Description("The name is intended to be displayed when the end-user system is set to the default name/text display setting.")]
 		[EnumMember(Value = "Default Name Display")] 
 		[XmlEnum("1")] 
 		DefaultNameDisplay = 1,
 
-		[System.ComponentModel.Description("TheNameIsIntendedToBeDisplayedWhenTheEndUserSystemIsSetToAnAlternateNameTextDisplaySettingForExampleAnAlternateLanguage")]
+		[System.ComponentModel.Description("The name is intended to be displayed when the end-user system is set to an alternate name/text display setting, for example an alternate language.")]
 		[EnumMember(Value = "Alternate Name Display")] 
 		[XmlEnum("2")] 
 		AlternateNameDisplay = 2,
 	}
 
+	/// <summary>
+	/// The scope of the MSI warning - NAVAREA, sub-area, etc.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum warningType : int {
-		[System.ComponentModel.Description("MessageContainingUrgentInformationRelevantToSafeNavigationBroadcastToShipsInALocalAreaInAccordanceWithTheProvisionsOfTheInternationalConventionForTheSafetyOfLifeAtSea1974AsAmendedAdoptedFromS532223LocalWarningMeansANavigationalWarningWhichCoversInshoreWatersOftenWithinTheLimitsOfJurisdictionOfAHarbourOrPortAuthorityAdoptedFromS532210")]
+		[System.ComponentModel.Description("Message containing urgent information relevant to safe navigation broadcast to ships in a local area, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended.(Adopted from S-53, 2.2.23)  Local warning means a navigational warning which covers inshore waters, often within the limits of jurisdiction of a harbour or port authority. (Adopted from S-53, 2.2.10)")]
 		[EnumMember(Value = "Local Navigational Warning")] 
 		[XmlEnum("1")] 
 		LocalNavigationalWarning = 1,
 
-		[System.ComponentModel.Description("MessageContainingUrgentInformationRelevantToSafeNavigationBroadcastToShipsInACoastalAreaInAccordanceWithTheProvisionsOfTheInternationalConventionForTheSafetyOfLifeAtSea1974AsAmendedCoastalWarningMeansANavigationalWarningPromulgatedAsPartOfANumberedSeriesByANationalCoordinator")]
+		[System.ComponentModel.Description("Message containing urgent information relevant to safe navigation broadcast to ships in a coastal  area, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended.  Coastal warning means a navigational warning promulgated as part of a numbered series by a National Coordinator.")]
 		[EnumMember(Value = "Coastal Navigational Warning")] 
 		[XmlEnum("2")] 
 		CoastalNavigationalWarning = 2,
 
-		[System.ComponentModel.Description("MessageContainingUrgentInformationRelevantToSafeNavigationBroadcastToShipsInASubAreaInAccordanceWithTheProvisionsOfTheInternationalConventionForTheSafetyOfLifeAtSea1974AsAmendedSubAreaWarningMeansANavigationalWarningOrInForceBulletinPromulgatedAsPartOfANumberedSeriesByASubAreaCoordinator")]
+		[System.ComponentModel.Description("Message containing urgent information relevant to safe navigation broadcast to ships in a sub-area, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended.  Sub-area warning means a navigational warning or in-force bulletin promulgated as part of a numbered series by a Sub-area Coordinator.")]
 		[EnumMember(Value = "Sub-Area Navigational Warning")] 
 		[XmlEnum("3")] 
 		SubAreaNavigationalWarning = 3,
 
-		[System.ComponentModel.Description("MessageContainingUrgentInformationRelevantToSafeNavigationBroadcastToShipsInANavareaInAccordanceWithTheProvisionsOfTheInternationalConventionForTheSafetyOfLifeAtSea1974AsAmendedNavareaWarningMeansANavigationalWarningPromulgatedAsPartOfANumberedSeriesByANavareaCoordinator")]
+		[System.ComponentModel.Description("Message containing urgent information relevant to safe navigation broadcast to ships in a NAVAREA, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended.  NAVAREA warning means a navigational warning promulgated as part of a numbered series by a NAVAREA Coordinator.")]
 		[EnumMember(Value = "NAVAREA Navigational Warning")] 
 		[XmlEnum("4")] 
 		NavareaNavigationalWarning = 4,
 
-		[System.ComponentModel.Description("AMessageThatIndicatesThatThereAreNoNavigationalWarningsToBeDisseminatedInTheNavarea")]
+		[System.ComponentModel.Description("A message that indicates that there are no navigational warnings to be disseminated in the NAVAREA.")]
 		[EnumMember(Value = "NAVAREA No Warning")] 
 		[XmlEnum("5")] 
 		NavareaNoWarning = 5,
 
-		[System.ComponentModel.Description("AMessageThatIndicatesThatThereAreNoNavigationalWarningsToBeDisseminatedInTheSubArea")]
+		[System.ComponentModel.Description("A message that indicates that there are no navigational warnings to be disseminated in the sub-area.")]
 		[EnumMember(Value = "Sub-Area No Warning")] 
 		[XmlEnum("6")] 
 		SubAreaNoWarning = 6,
 
-		[System.ComponentModel.Description("AMessageThatIndicatesThatThereAreNoNavigationalWarningsToBeDisseminatedInTheCoastalArea")]
+		[System.ComponentModel.Description("A message that indicates that there are no navigational warnings to be disseminated in the coastal area.")]
 		[EnumMember(Value = "Coastal No Warning")] 
 		[XmlEnum("7")] 
 		CoastalNoWarning = 7,
 
-		[System.ComponentModel.Description("AMessageThatIndicatesThatThereAreNoNavigationalWarningsToBeDisseminatedInTheLocalArea")]
+		[System.ComponentModel.Description("A message that indicates that there are no navigational warnings to be disseminated in the local area.")]
 		[EnumMember(Value = "Local No Warning")] 
 		[XmlEnum("8")] 
 		LocalNoWarning = 8,
 
-		[System.ComponentModel.Description("AListOfSerialNumbersOfNavareaWarningsWhichAreInForce")]
+		[System.ComponentModel.Description("A list of serial numbers of NAVAREA warnings which are in- force.")]
 		[EnumMember(Value = "NAVAREA In-Force Bulletin")] 
 		[XmlEnum("9")] 
 		NavareaInForceBulletin = 9,
 
-		[System.ComponentModel.Description("AListOfSerialNumbersOfSubAreaWarningsWhichAreInForce")]
+		[System.ComponentModel.Description("A list of serial numbers of sub-area warnings which are in-force.")]
 		[EnumMember(Value = "Sub-Area In-Force Bulletin")] 
 		[XmlEnum("10")] 
 		SubAreaInForceBulletin = 10,
 
-		[System.ComponentModel.Description("AListOfSerialNumbersOfCoastalWarningsWhichAreInForce")]
+		[System.ComponentModel.Description("A list of serial numbers of coastal warnings which are in- force.")]
 		[EnumMember(Value = "Coastal In-Force Bulletin")] 
 		[XmlEnum("11")] 
 		CoastalInForceBulletin = 11,
 
-		[System.ComponentModel.Description("AListOfSerialNumbersOfLocalWarningsWhichAreInForce")]
+		[System.ComponentModel.Description("A list of serial numbers of local warnings which are in- force.")]
 		[EnumMember(Value = "Local In-Force Bulletin")] 
 		[XmlEnum("12")] 
 		LocalInForceBulletin = 12,
 	}
 
+	/// <summary>
+	/// Category of reference.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum referenceCategory : int {
-		[System.ComponentModel.Description("CancellationOfWarningWhichIsNoLongerValid")]
+		[System.ComponentModel.Description("Cancellation of warning which is no longer valid.")]
 		[EnumMember(Value = "Warning Cancellation")] 
 		[XmlEnum("1")] 
 		WarningCancellation = 1,
 
-		[System.ComponentModel.Description("ReferenceToRelevantWarning")]
+		[System.ComponentModel.Description("Reference to relevant warning.")]
 		[EnumMember(Value = "Warning Reference")] 
 		[XmlEnum("2")] 
 		WarningReference = 2,
 
-		[System.ComponentModel.Description("ReferenceToWarningsOrNoticesThatAreConsideredInForce")]
+		[System.ComponentModel.Description("Reference to warnings or notices that are considered in-force.")]
 		[EnumMember(Value = "In-Force")] 
 		[XmlEnum("3")] 
 		InForce = 3,
 	}
 
+	/// <summary>
+	/// The official legal statute of each kind of restricted area.
+	/// </summary>
+	/// <remarks>
+	/// Defines the kind of restriction(s), for example, the restriction for 'a game preserve' may be 'entry prohibited', the restriction for an 'anchoring prohibition' is 'anchoring prohibited'. The complete information about the restriction(s), actually held in handbooks or other publications, may be encoded using an Information type.
+	/// </remarks>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum restriction : int {
-		[System.ComponentModel.Description("oneAnAreaShownOnChartsWithinWhichNavigationAndOrAnchoringIsProhibited2InAviationTerminologyASpecifiedAreaWithinTheLandAreasOfAStateOrTerritorialWatersAdjacentTheretoOverWhichTheFlightOfAircraftIsProhibiTed")]
+		[System.ComponentModel.Description("[1] An area shown on charts within which navigation and/or anchoring is prohibited. [2] In aviation terminology, a specified area within the land areas of a state or territorial waters adjacent thereto over which the flight of aircraft is prohibi­ted.")]
 		[EnumMember(Value = "Entry Prohibited")] 
 		[XmlEnum("7")] 
 		EntryProhibited = 7,
 
-		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichNavigationIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
+		[System.ComponentModel.Description("A specified area designated by appropriate authority, within which navigation is restricted in accordance with certain specified conditions.")]
 		[EnumMember(Value = "Entry Restricted")] 
 		[XmlEnum("8")] 
 		EntryRestricted = 8,
 
-		[System.ComponentModel.Description("AnImoDeclaredRouteingMeasureComprisingAnAreaWithinDefinedLimitsInWhichEitherNavigationIsParticularlyHazardousOrItIsExceptionallyImportantToAvoidCasualtiesAndWhichShouldBeAvoidedByAllShipsOrCertainClassesOfShips")]
+		[System.ComponentModel.Description("An IMO declared routeing measure comprising an area within defined limits in which either navigation is particularly hazardous or it is exceptionally important to avoid casualties and which should be avoided by all ships, or certain classes of ships.")]
 		[EnumMember(Value = "Area To Be Avoided")] 
 		[XmlEnum("14")] 
 		AreaToBeAvoided = 14,
 
-		[System.ComponentModel.Description("AnAreaInWhichAVesselIsProhibitedFromStopping")]
+		[System.ComponentModel.Description("An area in which a vessel is prohibited from stopping.")]
 		[EnumMember(Value = "Stopping Prohibited")] 
 		[XmlEnum("25")] 
 		StoppingProhibited = 25,
 
-		[System.ComponentModel.Description("AnAreaWithinWhichSpeedIsRestricted")]
+		[System.ComponentModel.Description("An area within which speed is restricted.")]
 		[EnumMember(Value = "Speed Restricted")] 
 		[XmlEnum("27")] 
 		SpeedRestricted = 27,
 	}
 
+	/// <summary>
+	/// The degree of reliability attributed to a position.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum qualityOfHorizontalMeasurement : int {
-		[System.ComponentModel.Description("ThePositionSWasWereDeterminedByTheOperationOfMakingMeasurementsForDeterminingTheRelativePositionOfPointsOnAboveOrBeneathTheEarthSSurfaceSurveyImpliesARegularControlledSurveyOfAnyDate")]
+		[System.ComponentModel.Description("The position(s) was(were) determined by the operation of making measurements for determining the relative position of points on, above or beneath the earth's surface. Survey implies a regular, controlled survey of any date.")]
 		[EnumMember(Value = "Surveyed")] 
 		[XmlEnum("1")] 
 		Surveyed = 1,
 
-		[System.ComponentModel.Description("SurveyDataIsDoesNotExistOrIsVeryPoor")]
+		[System.ComponentModel.Description("Survey data is does not exist or is very poor.")]
 		[EnumMember(Value = "Unsurveyed")] 
 		[XmlEnum("2")] 
 		Unsurveyed = 2,
 
-		[System.ComponentModel.Description("NotSurveyedToModernStandardsOrDueToItsAgeScaleOrPositionalOrVerticalUncertaintiesIsNotSuitableToTheTypeOfNavigationExpectedInTheArea")]
+		[System.ComponentModel.Description("Not surveyed to modern standards; or due to its age, scale, or positional or vertical uncertainties is not suitable to the type of navigation expected in the area.")]
 		[EnumMember(Value = "Inadequately Surveyed")] 
 		[XmlEnum("3")] 
 		InadequatelySurveyed = 3,
 
-		[System.ComponentModel.Description("APositionThatIsConsideredToBeLessThanThirdOrderAccuracyButIsGenerallyConsideredToBeWithin305MetresOfItsCorrectGeographicLocationAlsoMayApplyToAFeatureWhosePositionDoesNotRemainFixed")]
+		[System.ComponentModel.Description("A position that is considered to be less than third-order accuracy, but is generally considered to be within 30.5 metres of its correct geographic location. Also may apply to a feature whose position does not remain fixed.")]
 		[EnumMember(Value = "Approximate")] 
 		[XmlEnum("4")] 
 		Approximate = 4,
 
-		[System.ComponentModel.Description("OfUncertainPositionTheExpressionIsUsedPrincipallyOnChartsToIndicateThatAWreckShoalEtcHasBeenReportedInVariousPositionsAndNotDefinitelyDeterminedInAny")]
+		[System.ComponentModel.Description("Of uncertain position. The expression is used principally on charts to indicate that a wreck, shoal, etc., has been reported in various positions and not definitely determined in any.")]
 		[EnumMember(Value = "Position Doubtful")] 
 		[XmlEnum("5")] 
 		PositionDoubtful = 5,
 
-		[System.ComponentModel.Description("AFeatureSPositionHasBeenObtainedFromQuestionableOrUnreliableData")]
+		[System.ComponentModel.Description("A feature's position has been obtained from questionable or unreliable data.")]
 		[EnumMember(Value = "Unreliable")] 
 		[XmlEnum("6")] 
 		Unreliable = 6,
 
-		[System.ComponentModel.Description("AnObjectWhosePositionHasBeenReportedAndItsPositionConfirmedBySomeMeansOtherThanAFormalSurveySuchAsAnIndependentReportOfTheSameObject")]
+		[System.ComponentModel.Description("An object whose position has been reported and its position confirmed by some means other than a formal survey such as an independent report of the same object.")]
 		[EnumMember(Value = "Reported (Not Surveyed)")] 
 		[XmlEnum("7")] 
 		ReportedNotSurveyed = 7,
 
-		[System.ComponentModel.Description("AnObjectWhosePositionHasBeenReportedAndItsPositionHasNotBeenConfirmed")]
+		[System.ComponentModel.Description("An object whose position has been reported and its position has not been confirmed.")]
 		[EnumMember(Value = "Reported (Not Confirmed)")] 
 		[XmlEnum("8")] 
 		ReportedNotConfirmed = 8,
 
-		[System.ComponentModel.Description("TheMostProbablePositionOfAnObjectDeterminedFromIncompleteDataOrDataOfQuestionableAccuracy")]
+		[System.ComponentModel.Description("The most probable position of an object determined from incomplete data or data of questionable accuracy.")]
 		[EnumMember(Value = "Estimated")] 
 		[XmlEnum("9")] 
 		Estimated = 9,
 
-		[System.ComponentModel.Description("APositionThatIsOfAKnownValueSuchAsThePositionOfAnAnchorBerthOrOtherDefinedObject")]
+		[System.ComponentModel.Description("A position that is of a known value, such as the position of an anchor berth or other defined object.")]
 		[EnumMember(Value = "Precisely Known")] 
 		[XmlEnum("10")] 
 		PreciselyKnown = 10,
 
-		[System.ComponentModel.Description("APositionThatIsComputedFromData")]
+		[System.ComponentModel.Description("A position that is computed from data.")]
 		[EnumMember(Value = "Calculated")] 
 		[XmlEnum("11")] 
 		Calculated = 11,
 	}
 
+	/// <summary>
+	/// Detailed type of a warning or hazard.
+	/// </summary>
 	[System.Serializable()]
 	public class navwarnTypeDetails
 	{
@@ -225,6 +246,9 @@ namespace S100Framework.DomainModel.S124 {
 		public required int code { get; set; }
 	}
 
+	/// <summary>
+	/// General type of a navigational warning or navigational hazard.
+	/// </summary>
 	[System.Serializable()]
 	public class navwarnTypeGeneral
 	{
@@ -1839,6 +1863,9 @@ namespace S100Framework.DomainModel.S124 {
 	}
 
 	namespace ComplexAttributes {
+		/// <summary>
+		/// Name or number of affected national paper chart or ENC.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class chartAffected {
@@ -1866,6 +1893,12 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializelastNoticeDate() { return lastNoticeDate.HasValue; }
 		}
 
+		/// <summary>
+		/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
+		/// </summary>
+		/// <remarks>
+		/// Dates must be encoded in the format YYYYMMDD; using 4 digits for the calendar year (YYYY) and, optionally, 2 digits for the month (MM) (for example April = 04) and 2 digits for the day (DD). When no specific month and/or day is required/known, the values are replaced with dashes (-). The date range of a recurring event or occurrence must be encoded using periodicDateRange.
+		/// </remarks>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class fixedDateRange {
@@ -1890,6 +1923,12 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializetimeOfDayStart() { return timeOfDayStart.HasValue; }
 		}
 
+		/// <summary>
+		/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
+		/// </summary>
+		/// <remarks>
+		/// At least one of the sub-attributes file reference or text must be populated.The sub-attribute file reference is generally used for long text strings or those that require formatting, however, there is no restriction on the type of text (except for lexical level) that can be held in files referenced by sub-attribute file reference.
+		/// </remarks>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class information {
@@ -1900,6 +1939,9 @@ namespace S100Framework.DomainModel.S124 {
 			public required String text {get;set;} = string.Empty;
 		}
 
+		/// <summary>
+		/// Name of an area locality as defined by a competent authority.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class locationName {
@@ -1910,6 +1952,9 @@ namespace S100Framework.DomainModel.S124 {
 			public required String text {get;set;} = string.Empty;
 		}
 
+		/// <summary>
+		/// Message series identification of the warning or notice.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class messageSeriesIdentifier {
@@ -1934,7 +1979,7 @@ namespace S100Framework.DomainModel.S124 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
-			public required warningType warningType {get;set;} = default;
+			public required warningType warningType {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("warningType")]
@@ -1944,6 +1989,9 @@ namespace S100Framework.DomainModel.S124 {
 			public required int year {get;set;} = default;
 		}
 
+		/// <summary>
+		/// Title of the navigational warning.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class navwarnTitle {
@@ -1954,6 +2002,9 @@ namespace S100Framework.DomainModel.S124 {
 			public required String text {get;set;} = string.Empty;
 		}
 
+		/// <summary>
+		/// Detailed information about a warning.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class warningInformation {
@@ -1968,6 +2019,9 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializenavwarnTypeDetails() { return navwarnTypeDetails.Any(); }
 		}
 
+		/// <summary>
+		/// Reference to an object or feature that is external to the dataset.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class featureReference {
@@ -1982,6 +2036,9 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return interoperabilityIdentifier.Any(); }
 		}
 
+		/// <summary>
+		/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class featureName {
@@ -2002,6 +2059,9 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializenameUsage() { return nameUsage.HasValue; }
 		}
 
+		/// <summary>
+		/// The best estimate of the accuracy of a position.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class horizontalPositionUncertainty {
@@ -2009,13 +2069,21 @@ namespace S100Framework.DomainModel.S124 {
 			public required decimal uncertaintyFixed {get;set;} = default;
 		}
 
+		/// <summary>
+		/// Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class spatialAccuracy {
 			[XmlElement("horizontalPositionUncertainty")]
-			public required horizontalPositionUncertainty horizontalPositionUncertainty {get;set;} = default;
+			public required horizontalPositionUncertainty horizontalPositionUncertainty {get;set;} = new horizontalPositionUncertainty {
+				uncertaintyFixed = default,
+			};
 		}
 
+		/// <summary>
+		/// Identifies paper charts, ENCs or publications that are affected by the information.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class affectedChartPublications {
@@ -2043,6 +2111,9 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializepublicationAffected() { return !string.IsNullOrEmpty(publicationAffected); }
 		}
 
+		/// <summary>
+		/// The general area used to identify which broad geographic region the message affects. The geographical name which is selected for the general area should be one that can be found on charts and in nautical publications. (S-53, 6).
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class generalArea {
@@ -2057,6 +2128,9 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializelocationName() { return locationName.Any(); }
 		}
 
+		/// <summary>
+		/// Name and/or identifier of an area locality.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class locality {
@@ -2099,6 +2173,7 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class navwarnPreambleContent : InformationAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(navwarnPreambleContent);
 		}
 
@@ -2109,6 +2184,7 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class navwarnReferences : InformationAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(navwarnReferences);
 		}
 	}
@@ -2121,6 +2197,7 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextAssociation : FeatureAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(TextAssociation);
 		}
 
@@ -2131,6 +2208,7 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class areaAffected : FeatureAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(areaAffected);
 		}
 	}
@@ -2159,16 +2237,18 @@ namespace S100Framework.DomainModel.S124 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
-			public required referenceCategory referenceCategory {get;set;} = default;
+			public required referenceCategory referenceCategory {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("referenceCategory")]
 			public SerializableEnumeration<referenceCategory> referenceCategoryElement { get { return referenceCategory; } set { } }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(References);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => References._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -2182,9 +2262,6 @@ namespace S100Framework.DomainModel.S124 {
 				},
 			];
 
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -2209,7 +2286,13 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializelocality() { return locality.Any(); }
 
 			[XmlElement("messageSeriesIdentifier")]
-			public required messageSeriesIdentifier messageSeriesIdentifier {get;set;} = default;
+			public required messageSeriesIdentifier messageSeriesIdentifier {get;set;} = new messageSeriesIdentifier {
+				agencyResponsibleForProduction = string.Empty,
+				nameOfSeries = string.Empty,
+				warningNumber = default,
+				warningType = Enum.GetValues<warningType>()[0],
+				year = default,
+			};
 
 			[XmlElement("navwarnTitle")]
 			public List<navwarnTitle> navwarnTitle {get;set;} = [];
@@ -2232,9 +2315,11 @@ namespace S100Framework.DomainModel.S124 {
 			public required DateTime publicationTime {get;set;} = default;
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(NavwarnPreamble);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => NavwarnPreamble._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -2248,9 +2333,6 @@ namespace S100Framework.DomainModel.S124 {
 				},
 			];
 
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -2275,16 +2357,15 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializespatialAccuracy() { return spatialAccuracy!=default; }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(SpatialQuality);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 		}
 	}
 	namespace FeatureTypes {
@@ -2315,7 +2396,8 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange.Any(); }
 
 			[XmlElement("warningInformation")]
-			public required warningInformation warningInformation {get;set;} = default;
+			public required warningInformation warningInformation {get;set;} = new warningInformation {
+			};
 
 			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
@@ -2328,9 +2410,11 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializefeatureReference() { return featureReference.Any(); }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(NavwarnPart);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => NavwarnPart._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -2345,6 +2429,7 @@ namespace S100Framework.DomainModel.S124 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => NavwarnPart._featureBindingDefinitions;
 
 			[JsonIgnore]
@@ -2373,10 +2458,6 @@ namespace S100Framework.DomainModel.S124 {
 			];
 
 			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
-
-			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 		}
@@ -2388,14 +2469,17 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NavwarnAreaAffected : FeatureNode, IFeatureBindingDefinition {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(NavwarnAreaAffected);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => NavwarnAreaAffected._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => NavwarnAreaAffected._featureBindingDefinitions;
 
 			[JsonIgnore]
@@ -2414,10 +2498,6 @@ namespace S100Framework.DomainModel.S124 {
 					featureTypes = [nameof(NavwarnPart)],
 				},
 			];
-
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 
 			[JsonIgnore]
 			[XmlAnyElement]
@@ -2448,14 +2528,17 @@ namespace S100Framework.DomainModel.S124 {
 			public required Boolean textRotation {get;set;} = false;
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(TextPlacement);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 
 			[JsonIgnore]
@@ -2474,10 +2557,6 @@ namespace S100Framework.DomainModel.S124 {
 					featureTypes = [nameof(NavwarnPart)],
 				},
 			];
-
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 
 			[JsonIgnore]
 			[XmlAnyElement]
