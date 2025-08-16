@@ -53,6 +53,11 @@ namespace S100Framework.DomainModel
     }
 
 
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class RequiredAttribute : System.Attribute
+    {
+    }
+
     public interface IInformationBindingDefinition
     {
         informationBindingDefinition[] informationBindingDefinitions { get; }
@@ -166,8 +171,114 @@ namespace S100Framework.DomainModel
         curve,
         surface,
     }
+}
 
 
+namespace S100Framework.DomainModel
+{
+    public enum TristateStatus
+    {
+        [EnumMember(Value = "<unknown>")]
+        Unknown,    // Default state, or explicitly unknown
+
+        [EnumMember(Value = "<value>>")]
+        Value,   // Contains a valid value (which could be null for reference types)
+
+        [EnumMember(Value = "<null>")]
+        Null      // Explicitly set to a "null" or "not applicable" state
+    }
+
+    public struct Tristate<T> : IEquatable<Tristate<T>>
+    {
+        private T? _value;
+        private TristateStatus _status = TristateStatus.Null;
+
+        public TristateStatus Status {
+            get { return _status; }
+            set {
+                if (value == _status) return;
+                _status = value;
+                _value = _status switch {
+                    TristateStatus.Null => default,
+                    TristateStatus.Unknown => default,
+                    _ => _value,
+                };
+            }
+        }
+
+        public static Tristate<T> Null { get; } = new Tristate<T>(TristateStatus.Null);
+        public static Tristate<T> Unknown { get; } = new Tristate<T>(TristateStatus.Unknown);
+
+        private Tristate(TristateStatus status) {
+            if (status == TristateStatus.Value)
+                throw new ArgumentException("This constructor is for Null/Unknown states only.");
+
+            Status = status;
+            _value = default;
+        }
+
+        public Tristate(T value) {
+            if (value == null) {
+                Status = TristateStatus.Null;
+                _value = default(T);
+            }
+            else {
+                Status = TristateStatus.Value;
+                _value = value;
+            }
+        }
+
+        public bool HasValue => Status == TristateStatus.Value;
+        public bool IsNull => Status == TristateStatus.Null;
+        public bool IsUnknown => Status == TristateStatus.Unknown;
+
+        public T? Value {
+            get {
+                if (!HasValue) {
+                    return default;
+                    throw new InvalidOperationException("Tristate does not have a value.");
+                }
+                return _value!;
+            }
+            set {
+                System.Diagnostics.Debugger.Break();
+            }
+        }
+
+        public static implicit operator Tristate<T>(T value) => new Tristate<T>(value);
+
+        //public override string ToString() {
+        //    return this.Status switch {
+        //        //TristateStatus.Value => _value.ToString(),
+        //        TristateStatus.Null => "[Null]",
+        //        TristateStatus.Unknown => "[Unknown]",
+        //        _ => string.Empty
+        //    };
+        //}
+
+        public override bool Equals(object obj) => obj is Tristate<T> other && Equals(other);
+
+        public bool Equals(Tristate<T> other) {
+            if (Status != other.Status) return false;
+            if (!HasValue) return true; // Both are Null or both are Unknown
+            return System.Collections.Generic.EqualityComparer<T>.Default.Equals(_value, other._value);
+        }
+
+        public override int GetHashCode() {
+            unchecked // Overflow is fine, just wrap
+            {
+                int hash = 17;
+                hash = hash * 23 + Status.GetHashCode();
+                if (HasValue) {
+                    hash = hash * 23 + _value.GetHashCode();
+                }
+                return hash;
+            }
+        }
+
+        public static bool operator ==(Tristate<T> left, Tristate<T> right) => left.Equals(right);
+        public static bool operator !=(Tristate<T> left, Tristate<T> right) => !left.Equals(right);
+    }
 
     public class SerializableEnumeration<T> : IXmlSerializable where T : notnull
     {
@@ -181,7 +292,9 @@ namespace S100Framework.DomainModel
         public static implicit operator SerializableEnumeration<T>(T o) {
             return new SerializableEnumeration<T>(o);
         }
-        
+
+        public SerializableEnumeration() { }
+
         public SerializableEnumeration(T value) {
             this._value = value;
         }
@@ -198,7 +311,7 @@ namespace S100Framework.DomainModel
 
         public void WriteXml(XmlWriter writer) {
             // Write the 'code' attribute with the integer value of the enum
-            writer.WriteAttributeString("code", $"{this._value}");
+            writer.WriteAttributeString("code", $"{Convert.ToInt32(this._value)}");
 
             // Get the EnumMemberAttribute value for the text content
             var memberInfo = typeof(T).GetMember($"{this._value}").FirstOrDefault();

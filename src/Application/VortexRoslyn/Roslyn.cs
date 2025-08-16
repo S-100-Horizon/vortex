@@ -125,6 +125,8 @@ namespace S100Framework.Applications
                 { "String?", (code) => $"!string.IsNullOrEmpty({code})" },
             };
 
+            var objectConstructors = new Dictionary<string, StringBuilder>();
+
             //  --- S100_FC_SimpleAttributes ----------------------------------------------------
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_SimpleAttribute", xmlNamespaceManager);
@@ -132,6 +134,8 @@ namespace S100Framework.Applications
                 //  Enumerations
                 foreach (var e in elements.Where(e => e.Element(XName.Get("valueType", scope_S100))!.Value.Equals("enumeration"))) {
                     var name = e.Element(XName.Get("name", scope_S100))!.Value;
+                    var definition = e.Element(XName.Get("definition", scope_S100))!.Value.TrimEnd(Environment.NewLine.ToArray());
+                    var remarks = e.Element(XName.Get("remarks", scope_S100))?.Value.TrimEnd(Environment.NewLine.ToArray());
                     var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
                     knownTypes.Add(code);
@@ -141,6 +145,17 @@ namespace S100Framework.Applications
                     shouldSerialize.Add($"{code}?", (code) => {
                         return $"{code}.HasValue";
                     });
+
+                    if (!string.IsNullOrEmpty(definition)) {
+                        builderDomainModel.AppendLine($"\t/// <summary>");
+                        builderDomainModel.AppendLine($"\t/// {definition}");
+                        builderDomainModel.AppendLine($"\t/// </summary>");
+                    }
+                    if (!string.IsNullOrEmpty(remarks)) {
+                        builderDomainModel.AppendLine($"\t/// <remarks>");
+                        builderDomainModel.AppendLine($"\t/// {remarks}");
+                        builderDomainModel.AppendLine($"\t/// </remarks>");
+                    }
 
                     builderDomainModel.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
                     builderDomainModel.AppendLine("\t[System.Serializable()]");
@@ -158,7 +173,9 @@ namespace S100Framework.Applications
 
                         var literalName = RemoveSpecialChars(listedValueLabel);
 
-                        listedValueDefinition = RemoveSpecialChars(listedValueDefinition).Replace("\"", "\\\"");
+                        //listedValueDefinition = RemoveSpecialChars(listedValueDefinition).Replace("\"", "\\\"");
+
+                        listedValueDefinition = listedValueDefinition.Replace("\"", "\\\"").Replace(Environment.NewLine, " ").Replace("\n", " "); ;
 
                         builderDomainModel.AppendLine($"\t\t[System.ComponentModel.Description(\"{listedValueDefinition}\")]");
                         builderDomainModel.AppendLine($"\t\t[EnumMember(Value = \"{listedValueLabel}\")] ");
@@ -192,7 +209,20 @@ namespace S100Framework.Applications
                 {
                     foreach (var e in elements.Where(e => e.Element(XName.Get("valueType", scope_S100))!.Value.Equals("S100_CodeList"))) {
                         var name = e.Element(XName.Get("name", scope_S100))!.Value;
+                        var definition = e.Element(XName.Get("definition", scope_S100))!.Value.TrimEnd(Environment.NewLine.ToArray());
+                        var remarks = e.Element(XName.Get("remarks", scope_S100))?.Value.TrimEnd(Environment.NewLine.ToArray());
                         var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+                        if (!string.IsNullOrEmpty(definition)) {
+                            builderDomainModel.AppendLine($"\t/// <summary>");
+                            builderDomainModel.AppendLine($"\t/// {definition}");
+                            builderDomainModel.AppendLine($"\t/// </summary>");
+                        }
+                        if (!string.IsNullOrEmpty(remarks)) {
+                            builderDomainModel.AppendLine($"\t/// <remarks>");
+                            builderDomainModel.AppendLine($"\t/// {remarks}");
+                            builderDomainModel.AppendLine($"\t/// </remarks>");
+                        }
 
                         builderDomainModel.AppendLine("\t[System.Serializable()]");
                         builderDomainModel.AppendLine($"\tpublic class {code}");
@@ -334,6 +364,8 @@ namespace S100Framework.Applications
 
                     foreach (var e in elements) {
                         var name = e.Element(XName.Get("name", scope_S100))!.Value;
+                        var definition = e.Element(XName.Get("definition", scope_S100))!.Value.TrimEnd(Environment.NewLine.ToArray());
+                        var remarks = e.Element(XName.Get("remarks", scope_S100))?.Value.TrimEnd(Environment.NewLine.ToArray());
                         var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
                         if (complexTypes.Contains(code))
@@ -352,10 +384,23 @@ namespace S100Framework.Applications
                             return $"{code}!=default";
                         });
 
+                        if (!string.IsNullOrEmpty(definition)) {
+                            builderDomainModel.AppendLine($"\t\t/// <summary>");
+                            builderDomainModel.AppendLine($"\t\t/// {definition}");
+                            builderDomainModel.AppendLine($"\t\t/// </summary>");
+                        }
+                        if (!string.IsNullOrEmpty(remarks)) {
+                            builderDomainModel.AppendLine($"\t\t/// <remarks>");
+                            builderDomainModel.AppendLine($"\t\t/// {remarks}");
+                            builderDomainModel.AppendLine($"\t\t/// </remarks>");
+                        }
                         builderDomainModel.AppendLine("\t\t[System.Serializable()]");
                         builderDomainModel.AppendLine("\t\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
 
                         builderDomainModel.AppendLine($"\t\tpublic class {code} {{");
+
+                        var constructor = new StringBuilder();
+                        constructor.AppendLine($"new {code} {{");
 
                         var isFirst = true;
                         foreach (var attributeBinding in e.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager)) {
@@ -372,7 +417,7 @@ namespace S100Framework.Applications
                             var prefix = knowTypesPrefix[referenceCode];
                             var postfix = knowTypesPostfix.ContainsKey(referenceCode) ? $" = {knowTypesPostfix[referenceCode]};" : string.Empty;
 
-                            if(enumTypes.Contains(referenceCode))
+                            if (enumTypes.Contains(referenceCode))
                                 builderDomainModel.AppendLine($"\t\t\t[XmlIgnore]");
                             else if (prefix.Equals("DateOnly"))
                                 builderDomainModel.AppendLine("\t\t\t[XmlIgnore]");
@@ -392,19 +437,42 @@ namespace S100Framework.Applications
                                 postfix = " = default;";
                             }
                             else if (lower == 1 && upper.HasValue && upper.Value == 1) {
+                                if (!objectConstructors.ContainsKey(referenceCode)) {
+                                    if (!enumTypes.Contains(referenceCode)) {
+                                        var p = knowTypesPrefix[referenceCode] switch {
+                                            "String" or "string" => " = string.Empty,",
+                                            "Boolean" or "bool" => " = false,",
+                                            //_ => enumTypes.Contains(referenceCode) ? $" = Enum.GetValues<{referenceCode}>()[0]," : " = default,"
+                                            _ => " = default,"
+                                        };
+                                        constructor.AppendLine($"\t{referenceCode}{p}");
+                                    }
+                                    else if (supportingUnknown) {
+                                        constructor.AppendLine($"\t{referenceCode} = default,");
+                                    }
+                                    else {
+                                        constructor.AppendLine($"\t{referenceCode} = Enum.GetValues<{referenceCode}>()[0],");
+                                    }
+                                }
+                                else {
+                                    constructor.AppendLine($"\t{referenceCode} = {objectConstructors[referenceCode].ToString("\t\t\t")},");
+                                }
+
                                 //if (!knowTypesPrefix[referenceCode].Equals("String")) 2025-07-01
-                                //builderDomainModel.AppendLine($"\t\t\t[Required()]");                                
-                                if (supportingUnknown) {
+                                if (supportingUnknown && !complexTypes.Contains(referenceCode)) {
                                     prefix = "required " + prefix + "?";
                                     postfix = " = default;";
                                 }
                                 else {
                                     prefix = "required " + prefix;
-                                    postfix = knowTypesPrefix[referenceCode] switch {
-                                        "String" or "string" => " = string.Empty;",
-                                        "Boolean" or "bool" => " = false;",
-                                        _ => " = default;",
-                                    };
+                                    if (!enumTypes.Contains(referenceCode)) {
+                                        postfix = knowTypesPrefix[referenceCode] switch {
+                                            "String" or "string" => " = string.Empty;",
+                                            "Boolean" or "bool" => " = false;",
+                                            _ => objectConstructors.ContainsKey(referenceCode) ? $" = {objectConstructors[referenceCode].ToString("\t\t\t")};" : " = default;",
+                                            //_ => enumTypes.Contains(referenceCode) ? string.Empty : objectConstructors.ContainsKey(referenceCode) ? $" = {objectConstructors[referenceCode].ToString("\t\t\t")};" : " = default;",
+                                        };
+                                    }
                                 }
                             }
                             else {
@@ -429,8 +497,12 @@ namespace S100Framework.Applications
 
                                 if (lower == 0 && upper.HasValue && upper.Value == 1)
                                     builderDomainModel.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>? {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
-                                else if (lower == 1 && upper.HasValue && upper.Value == 1)
-                                    builderDomainModel.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}> {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
+                                else if (lower == 1 && upper.HasValue && upper.Value == 1) {
+                                    if (supportingUnknown)
+                                        builderDomainModel.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>? {referenceCode}Element {{ get {{ return {referenceCode}.HasValue ? {referenceCode} : default; }} set {{ }} }}");
+                                    else
+                                        builderDomainModel.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}> {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
+                                }
                                 else
                                     builderDomainModel.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>[] {referenceCode}Element {{ get {{ return [.. {referenceCode}]; }} set {{ }} }}");
                             }
@@ -447,6 +519,9 @@ namespace S100Framework.Applications
 
                         builderDomainModel.AppendLine("\t\t}");
                         builderDomainModel.AppendLine();
+
+                        constructor.Append("}");
+                        objectConstructors.Add(code, constructor);
                     }
 
                 } while (notFinished);
@@ -509,6 +584,8 @@ namespace S100Framework.Applications
                         KnownEnumTypes = enumTypes,
                         KnowTypesPrefix = knowTypesPrefix,
                         KnowTypesPostfix = knowTypesPostfix,
+                        ComplexTypes = complexTypes,
+                        ObjectConstructors = objectConstructors,
                         InformationAssociationsLookup = informationAssociationsLookup,
                         FeatureAssociationsLookup = featureAssociationsLookup,
                         ShouldSerialize = shouldSerialize,
@@ -553,6 +630,8 @@ namespace S100Framework.Applications
                             KnownEnumTypes = enumTypes,
                             KnowTypesPrefix = knowTypesPrefix,
                             KnowTypesPostfix = knowTypesPostfix,
+                            ComplexTypes = complexTypes,
+                            ObjectConstructors = objectConstructors,
                             InformationAssociationsLookup = informationAssociationsLookup,
                             FeatureAssociationsLookup = featureAssociationsLookup,
                             ShouldSerialize = shouldSerialize,
@@ -632,6 +711,8 @@ namespace S100Framework.Applications
                             KnownEnumTypes = enumTypes,
                             KnowTypesPrefix = knowTypesPrefix,
                             KnowTypesPostfix = knowTypesPostfix,
+                            ComplexTypes = complexTypes,
+                            ObjectConstructors = objectConstructors,
                             InformationAssociationsLookup = informationAssociationsLookup,
                             FeatureAssociationsLookup = featureAssociationsLookup,
                             ShouldSerialize = shouldSerialize,
@@ -639,9 +720,9 @@ namespace S100Framework.Applications
                             SupportingUnknown = supportingUnknown,
                         }, (builder) => {
                             builder.AppendLine();
-                            builder.AppendLine("\t\t\t[JsonIgnore]");
-                            builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
-                            builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
+                            //builder.AppendLine("\t\t\t[JsonIgnore]");
+                            //builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
+                            //builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
                         });
 
                         builderDomainModel.AppendLine(s);
@@ -708,16 +789,18 @@ namespace S100Framework.Applications
                             KnownEnumTypes = enumTypes,
                             KnowTypesPrefix = knowTypesPrefix,
                             KnowTypesPostfix = knowTypesPostfix,
+                            ComplexTypes = complexTypes,
+                            ObjectConstructors = objectConstructors,
                             InformationAssociationsLookup = informationAssociationsLookup,
                             FeatureAssociationsLookup = featureAssociationsLookup,
                             ShouldSerialize = shouldSerialize,
                             SupportingSpatialAssociation = supportingSpatialAssociation,
                             SupportingUnknown = supportingUnknown,
                         }, (builder) => {
-                            builder.AppendLine();
-                            builder.AppendLine("\t\t\t[JsonIgnore]");
-                            builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
-                            builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
+                            //builder.AppendLine();
+                            //builder.AppendLine("\t\t\t[JsonIgnore]");
+                            //builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
+                            //builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
 
                             if (!(e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value))) {
                                 builder.AppendLine();
@@ -1095,6 +1178,10 @@ namespace S100Framework.Applications
             public required IReadOnlyDictionary<string, string> KnowTypesPrefix { get; init; }
             public required IReadOnlyDictionary<string, string> KnowTypesPostfix { get; init; }
 
+            public required IReadOnlyCollection<string> ComplexTypes { get; init; }
+
+            public required IReadOnlyDictionary<string, StringBuilder> ObjectConstructors { get; init; }
+
             public required IDictionary<string, ICollection<string>> InformationAssociationsLookup { get; init; }
             public required IDictionary<string, ICollection<string>> FeatureAssociationsLookup { get; init; }
 
@@ -1151,6 +1238,8 @@ namespace S100Framework.Applications
             //builder.AppendLine($"\t\t{xmlType}");
             builder.AppendLine($"\t\tpublic {encapsulation} class {code} : {inheritance} {{");
 
+            //if (code.Equals("DistanceMark")) System.Diagnostics.Debugger.Break();
+
             var isFirst = true;
             foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                 if (!isFirst)
@@ -1189,17 +1278,21 @@ namespace S100Framework.Applications
                 else if (lower == 1 && upper.HasValue && upper.Value == 1) {
                     //if (!client.KnowTypesPrefix[referenceCode].Equals("String"))
                     //builder.AppendLine($"\t\t\t[Required()]");
-                    if (client.SupportingUnknown) {
+                    if (client.SupportingUnknown && !client.ComplexTypes.Contains(referenceCode)) {
                         prefix = "required " + prefix + "?";
                         postfix = " = default;";
                     }
                     else {
                         prefix = "required " + prefix;
-                        postfix = client.KnowTypesPrefix[referenceCode] switch {
-                            "String" or "string" => " = string.Empty;",
-                            "Boolean" or "bool" => " = false;",
-                            _ => " = default;",
-                        };
+                        if (!client.KnownEnumTypes.Contains(referenceCode)) {
+                            postfix = client.KnowTypesPrefix[referenceCode] switch {
+                                "String" or "string" => " = string.Empty;",
+                                "Boolean" or "bool" => " = false;",
+                                _ => client.ObjectConstructors.ContainsKey(referenceCode) ? $" = {client.ObjectConstructors[referenceCode].ToString("\t\t\t")};" : " = default;",
+                                //_ => client.KnownEnumTypes.Contains(referenceCode) ? string.Empty : client.ObjectConstructors.ContainsKey(referenceCode) ? $" = {client.ObjectConstructors[referenceCode].ToString("\t\t\t")};" : " = default;",
+                                // client.ComplexTypes.Contains(referenceCode) 
+                            };
+                        }
                     }
                 }
                 else {
@@ -1224,8 +1317,12 @@ namespace S100Framework.Applications
 
                     if (lower == 0 && upper.HasValue && upper.Value == 1)
                         builder.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>? {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
-                    else if (lower == 1 && upper.HasValue && upper.Value == 1)
-                        builder.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}> {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
+                    else if (lower == 1 && upper.HasValue && upper.Value == 1) {
+                        if (client.SupportingUnknown)
+                            builder.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>? {referenceCode}Element {{ get {{ return {referenceCode}.HasValue ? {referenceCode} : default; }} set {{ }} }}");
+                        else
+                            builder.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}> {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
+                    }
                     else
                         builder.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>[] {referenceCode}Element {{ get {{ return [.. {referenceCode}]; }} set {{ }} }}");
                 }
@@ -1243,11 +1340,13 @@ namespace S100Framework.Applications
             if (!isFirst)
                 builder.AppendLine();
             builder.AppendLine("\t\t\t[JsonIgnore]");
+            builder.AppendLine("\t\t\t[XmlIgnore]");
             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
 
             if (new string[] { "S100_FC_InformationType", "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
                 builder.AppendLine();
                 builder.AppendLine("\t\t\t[JsonIgnore]");
+                builder.AppendLine("\t\t\t[XmlIgnore]");
                 if (superType != null)
                     builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => [..{superType!.Value}._informationBindingDefinitions, ..{code}._informationBindingDefinitions];");
                 else
@@ -1322,6 +1421,7 @@ namespace S100Framework.Applications
             if (new string[] { "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
                 builder.AppendLine();
                 builder.AppendLine("\t\t\t[JsonIgnore]");
+                builder.AppendLine("\t\t\t[XmlIgnore]");
                 if (superType != null)
                     builder.AppendLine($"\t\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => [..{superType!.Value}._featureBindingDefinitions, ..{code}._featureBindingDefinitions];");
                 else
