@@ -4,10 +4,6 @@ using S100Framework.Applications.S57.esri;
 
 namespace VortexLoader.Singletons
 {
-    internal class GeometryResult {
-        public Geometry? Geometry { get; set; }
-        public Dictionary<string, object>? FieldName_FieldValue { get; set; } = [];
-    }
     //https://pro.arcgis.com/en/pro-app/3.3/sdk/api-reference/topic22112.html
     internal class Geometries
     {
@@ -51,26 +47,21 @@ namespace VortexLoader.Singletons
             return geometryResult;
         }
 
-        internal static List<T> AllGeometriesWithFields<T>(FeatureClass featureClass, QueryFilter filter) where T : S57Object {
+        internal static List<T> Features<T>(FeatureClass featureClass, QueryFilter filter) where T : S57Object {
             using var cursor = featureClass.Search(filter, false);
-
             List<T> result = new List<T>();
-
             while (cursor.MoveNext()) {
                 var feature = (Feature)cursor.Current;
                 var val = Activator.CreateInstance(typeof(T), feature) as T;
                 result.Add(val);
             }
-
             return result;
-
         }
 
         internal static List<Geometry> AllGeometries(FeatureClass featureClass, QueryFilter filter) {
             using var cursor = featureClass.Search(filter, false);
             List<Geometry> geometries = new List<Geometry>();
             while (cursor.MoveNext()) {
-                var result = new GeometryResult();
                 var feature = (Feature)cursor.Current;
                 geometries.Add(feature.GetShape());
             }

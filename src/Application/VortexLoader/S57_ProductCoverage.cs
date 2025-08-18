@@ -15,7 +15,7 @@ namespace S100Framework.Applications
             using var productCoverageFeatureClass = source.OpenDataset<FeatureClass>(source.GetName("ProductCoverage"));
             using var metadataAFeatureClass = source.OpenDataset<FeatureClass>(source.GetName("MetaDataA"));
 
-            var allM_CSCL = Geometries.AllGeometriesWithFields<MetaDataA>(metadataAFeatureClass, new() { WhereClause = $"{filter.WhereClause} AND fcsubtype = 20" });
+            var allM_CSCL = Geometries.Features<MetaDataA>(metadataAFeatureClass, new() { WhereClause = $"{filter.WhereClause} AND fcsubtype = 20" });
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
