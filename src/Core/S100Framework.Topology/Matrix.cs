@@ -447,18 +447,16 @@ namespace S100Framework.Topology
                         //var curve = this._curveContainer.AddOrGet(lineStrings.ElementAt(i));
 
                         var text = lineStrings.ElementAt(i).ToText().Substring("LINESTRING (".Length).TrimEnd(')');
-                        if (lineStringText.Contains(text)) {
+
+                        if (Matrix.ContainsSegment(lineStringText, text)) {
+                            //if (lineStringText.Contains(text)) {
                             var hash = this._hashing[IO.Hashing.XxHash3.HashToUInt64(lineStrings.ElementAt(i).AsBinary())];
 
                             if (mask1Hashes.Contains(hash.curve.Id))
                                 masks1.Add(hash.curve);
 
-                            sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
-                            //var curve = this._curveContainer.AddOrGet(lineStrings.ElementAt(i));
-                            //sortedList.Add(lineStringText.IndexOf(text), new FeatureRef {
-                            //    Id = curve.Id,
-                            //    Reverse = curve.Reverse,
-                            //});
+                            //sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
+                            sortedList.Add(Matrix.IndexOfSegment(lineStringText,text), hash.fetureRef);
                         }
                         else {
                             var reverse = lineStrings.ElementAt(i).Reverse();
@@ -470,13 +468,8 @@ namespace S100Framework.Topology
                                 masks1.Add(hash.curve);
 
                             var index = lineStringText.IndexOf(text);
-                            if (index < 0) System.Diagnostics.Debugger.Break();
-                            sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
-                            //var curve = this._curveContainer.AddOrGet((LineString)reverse);
-                            //sortedList.Add(lineStringText.IndexOf(text), new FeatureRef {
-                            //    Id = curve.Id,
-                            //    Reverse = curve.Reverse,
-                            //});
+                            //sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
+                            sortedList.Add(Matrix.IndexOfSegment(lineStringText, text), hash.fetureRef);
                         }
                     }
 
@@ -502,8 +495,8 @@ namespace S100Framework.Topology
                     Exterior = exteriorId.featureRef,
                 };
                 //if (!mask1Objects.Contains(polygon.Name)) {
-                    if (exteriorId.masks1.Any())
-                        surface.Masks1 = [.. exteriorId.masks1.Select(e => e.Id)];
+                if (exteriorId.masks1.Any())
+                    surface.Masks1 = [.. exteriorId.masks1.Select(e => e.Id)];
                 //}
                 if (polygon.InteriorRings.Any()) {
                     var interiorRings = polygon.InteriorRings.Select(e => action(e, LinearRingOrientation.CounterClockwise, false));
@@ -522,9 +515,10 @@ namespace S100Framework.Topology
                 this._mapping.GetOrAdd(polygon.Name, $"S{surface.Id}");
             });
 
+            //ParallelOptions.MaxDegreeOfParallelism = 1;
             Parallel.ForEach(this._bagPolylines, ParallelOptions, (polyline) => {
                 if (!polyline.LineStrings.Any()) return;
-
+                //if (polyline.Name.Equals("C1775043")) System.Diagnostics.Debugger.Break();
                 var curveId = action(polyline.LineStrings, LinearRingOrientation.DontCare, true);
 
                 this._mapping.GetOrAdd(polyline.Name, $"C{curveId.featureRef.Id}");
@@ -566,7 +560,7 @@ namespace S100Framework.Topology
             this._featureToEdges = new Dictionary<string, List<LineString>>();
 
             foreach (var e in edgeToFeatureMap.GroupBy(e => string.Join(',', e.Value))) {
-                //if (e.Key.Contains("S2674311")) System.Diagnostics.Debugger.Break();
+                //if (e.Key.Contains("S1799633")) System.Diagnostics.Debugger.Break();
 
                 //if (e.Any(x => x.Key.LineString.ToText().Equals("LINESTRING (11.7465969 54.8704114, 11.7468865 54.8707256)"))) System.Diagnostics.Debugger.Break();
 
@@ -614,6 +608,31 @@ namespace S100Framework.Topology
 
         IDictionary<string, string> IMatrix.Mapping => this._mapping;
 
+        private static bool ContainsSegment(string lineString, string segment) {
+            if (lineString.Equals(segment)) return true;
+
+            if (lineString.Contains(segment + ",")) return true;
+            if (lineString.Contains(", " + segment)) return true;
+
+            //  MultiLineString
+            if (lineString.Contains(segment + ")")) return true;
+            if (lineString.Contains("), " + segment)) return true;
+
+            return false;
+        }
+
+        private static int IndexOfSegment(string lineString, string segment) {
+            if (lineString.Equals(segment)) return 0;
+
+            if (lineString.Contains(segment + ",")) return lineString.IndexOf(segment + ",");
+            if (lineString.Contains(", " + segment)) return lineString.IndexOf(", " + segment);
+
+            //  MultiLineString
+            if (lineString.Contains(segment + ")")) return lineString.IndexOf(segment + "),");
+            if (lineString.Contains("), " + segment)) return lineString.IndexOf("), " + segment);
+
+            throw new IndexOutOfRangeException();
+        }
 
         private class Edge : IEquatable<Edge>
         {

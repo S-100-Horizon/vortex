@@ -197,7 +197,9 @@ namespace S100Framework.YAML
                         var propType = propInfo.PropertyType;
                         propType = Nullable.GetUnderlyingType(propType) ?? propType;
 
-                        attributes.BuildAttributeItem(propVal, objectName, propType, ref propertyId, parentId);
+                        var r = propInfo.GetCustomAttribute<UnknownValueAttribute>() != null;
+
+                        attributes.BuildAttributeItem(propVal, objectName, propType, ref propertyId, parentId, r);
                     }
 
                     break;
