@@ -4,6 +4,7 @@ using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using S100Framework.DomainModel.S128;
 using S100Framework.Settings;
+using S100Framework.YAML;
 using System.Diagnostics;
 using System.Text.Json;
 using Xunit.Abstractions;
@@ -135,6 +136,12 @@ namespace TestNauticalProducts
                     createGeodatabase = () => { return new Geodatabase(new FileGeodatabaseConnectionPath(connectionFile)); };
                 }
 
+                var productSpecification = new S100Framework.DomainModel.S128.ComplexAttributes.productSpecification {
+                    editionDate = S100Framework.DomainModel.S101.Summary.VersionDate,
+                    name = S100Framework.DomainModel.S101.Summary.Name,
+                    version = S100Framework.DomainModel.S101.Summary.Version.ToString(),                    
+                };
+
                 var tasks = new List<Task>();
 
                 using var geodatabase = createGeodatabase();
@@ -170,7 +177,7 @@ namespace TestNauticalProducts
 
                         var polygons = new List<ArcGIS.Core.Geometry.Polygon>();
                         while (coverage.MoveNext()) {
-                            var current = (Feature)coverage.Current;
+                            var current = (ArcGIS.Core.Data.Feature)coverage.Current;
                             var polygon = (ArcGIS.Core.Geometry.Polygon)current.GetShape();
 
                             polygons.Add(polygon);
@@ -180,7 +187,7 @@ namespace TestNauticalProducts
 
                         var cover = (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons);
 
-                        tasks.Add(productManager.ElectronicProductManager.CreateElectronicProductAsync(name, specificUsage, cover));
+                        tasks.Add(productManager.ElectronicProductManager.CreateElectronicProductAsync(name, productSpecification, specificUsage, cover));
                     }
 
                     Task.WaitAll([.. tasks]);
@@ -209,7 +216,13 @@ namespace TestNauticalProducts
             });
             Assert.NotNull(productManager);
 
-            await productManager.ElectronicProductManager.CreateNewEditionAsync("S-101", "101DK0040347E");
+            
+
+            var dataset = await productManager.ElectronicProductManager.CreateNewEditionAsync("101DK0040349E");
+
+            var yaml = dataset.Serialize();
+
+            System.Diagnostics.Debugger.Break();
         }
     }
 }

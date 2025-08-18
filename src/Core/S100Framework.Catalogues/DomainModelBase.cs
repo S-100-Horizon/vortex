@@ -46,6 +46,12 @@ namespace S100Framework.DomainModel
         }
     }
 
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class UnknownValueAttribute : System.Attribute
+    {
+
+    }
+
     [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]
     public class SpatialAssocationAttribute : System.Attribute
     {
@@ -280,20 +286,22 @@ namespace S100Framework.DomainModel
         public static bool operator !=(Tristate<T> left, Tristate<T> right) => !left.Equals(right);
     }
 
-    public class SerializableEnumerable<T> : IXmlSerializable where T : notnull
+    public class SerializableEnumeration<T> : IXmlSerializable where T : notnull
     {
         private T _value;
 
         // Implicit conversions to and from the underlying enum for ease of use
-        public static implicit operator T(SerializableEnumerable<T> o) {
+        public static implicit operator T(SerializableEnumeration<T> o) {
             return o._value;
         }
 
-        public static implicit operator SerializableEnumerable<T>(T o) {
-            return new SerializableEnumerable<T>(o);
+        public static implicit operator SerializableEnumeration<T>(T o) {
+            return new SerializableEnumeration<T>(o);
         }
 
-        public SerializableEnumerable(T value) {
+        public SerializableEnumeration() { }
+
+        public SerializableEnumeration(T value) {
             this._value = value;
         }
 
@@ -309,7 +317,7 @@ namespace S100Framework.DomainModel
 
         public void WriteXml(XmlWriter writer) {
             // Write the 'code' attribute with the integer value of the enum
-            writer.WriteAttributeString("code", $"{this._value}");
+            writer.WriteAttributeString("code", $"{Convert.ToInt32(this._value)}");
 
             // Get the EnumMemberAttribute value for the text content
             var memberInfo = typeof(T).GetMember($"{this._value}").FirstOrDefault();

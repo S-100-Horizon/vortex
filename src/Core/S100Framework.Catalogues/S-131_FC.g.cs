@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Immutable;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
@@ -12,7 +13,11 @@ using System.Xml.Serialization;
 namespace S100Framework.DomainModel.S131 {
 	public static class Summary
 	{
+		public static string Name => "Feature Catalogue for S-131";
+		public static string Scope => "Global coverage of maritime areas";
+		public static string ProductId => "S-131";
 		public static Version Version => new Version("1.0.0");
+		public static DateOnly VersionDate => DateOnly.ParseExact("2023-03-15", "yyyy-MM-dd");
 		public static string[] ComplexTypes => ["bearingInformation","cargoServicesDescription","constructionInformation","contactAddress","depthsDescription","facilitiesLayoutDescription","featureName","fixedDateRange","frequencyPair","generalHarbourInformation","generalPortDescription","graphic","horizontalPositionUncertainty","information","landmarkDescription","limitsDescription","majorLightDescription","markedBy","offshoreMarkDescription","onlineResource","orientation","periodicDateRange","rxNCode","scheduleByDayOfWeek","spatialAccuracy","surveyDateRange","telecommunications","textContent","timeIntervalsByDayOfWeek","usefulMarkDescription","verticalUncertainty","vesselsMeasurements","weatherResource"];
 		public static string[] InformationAssociationTypes => ["AdditionalInformation","AuthorityContact","AuthorityHours","AssociatedRxN","ExceptionalWorkday","ServiceControl","ServiceContact","LocationHours","RelatedOrganisation","InclusionType","PermissionType","SpatialAssociation","LimitEntrance","ServiceAvailability"];
 		public static string[] FeatureAssociationTypes => ["TextAssociation","Subsection","Infrastructure","PrimaryAuxiliaryFacility","Demarcation","JurisdictionalLimit","LayoutDivision"];
@@ -60,1870 +65,2017 @@ namespace S100Framework.DomainModel.S131 {
 		};
 	}
 
+	/// <summary>
+	/// Classification of assistance for mooring or anchoring operations.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum berthingAssistance : int {
-		[System.ComponentModel.Description("InformationAboutAssistanceOrArrangementsForAServiceRelatedToBerthingOperations")]
+		[System.ComponentModel.Description("Information about assistance or arrangements for a service related to berthing operations.")]
 		[EnumMember(Value = "Berthing Information")] 
 		[XmlEnum("1")] 
 		BerthingInformation = 1,
 
-		[System.ComponentModel.Description("PersonnelSpecializingInTheMooringAndUnmooringOfVessels")]
+		[System.ComponentModel.Description("Personnel specializing in the mooring and unmooring of vessels.")]
 		[EnumMember(Value = "Line Personnel")] 
 		[XmlEnum("2")] 
 		LinePersonnel = 2,
 
-		[System.ComponentModel.Description("ABoatWhichAssistsTheSecurementOfAVesselToABerthOrMooringWithRopesOrAnchor")]
+		[System.ComponentModel.Description("A boat which assists the securement of a vessel to a berth or mooring with ropes or anchor.")]
 		[EnumMember(Value = "Mooring Boat")] 
 		[XmlEnum("3")] 
 		MooringBoat = 3,
 
-		[System.ComponentModel.Description("ALocomotiveForMovingVessels")]
+		[System.ComponentModel.Description("A locomotive for moving vessels.")]
 		[EnumMember(Value = "Mule")] 
 		[XmlEnum("4")] 
 		Mule = 4,
 
-		[System.ComponentModel.Description("APowerfulSmallBoatDesignedToPullOrPushLargerShipsOrPowerlessBarges")]
+		[System.ComponentModel.Description("A powerful small boat designed to pull or push larger ships or powerless barges.")]
 		[EnumMember(Value = "Tugboat")] 
 		[XmlEnum("5")] 
 		Tugboat = 5,
 
-		[System.ComponentModel.Description("AShipEquippedToMakeAndMaintainAChannelThroughIce")]
+		[System.ComponentModel.Description("A ship equipped to make and maintain a channel through ice.")]
 		[EnumMember(Value = "Icebreaking Ship")] 
 		[XmlEnum("6")] 
 		IcebreakingShip = 6,
 	}
 
+	/// <summary>
+	/// Principal and intermediate compass points.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum cardinalDirection : int {
-		[System.ComponentModel.Description("three487501125DegreesTrueNorth")]
+		[System.ComponentModel.Description("348.75-011.25 degrees (true north).")]
 		[EnumMember(Value = "North")] 
 		[XmlEnum("1")] 
 		North = 1,
 
-		[System.ComponentModel.Description("zero1125zero3375Degrees")]
+		[System.ComponentModel.Description("011.25 - 033.75 degrees.")]
 		[EnumMember(Value = "North Northeast")] 
 		[XmlEnum("2")] 
 		NorthNortheast = 2,
 
-		[System.ComponentModel.Description("zero3375zero5625Degrees")]
+		[System.ComponentModel.Description("033.75 - 056.25 degrees.")]
 		[EnumMember(Value = "Northeast")] 
 		[XmlEnum("3")] 
 		Northeast = 3,
 
-		[System.ComponentModel.Description("zero5625zero7875Degrees")]
+		[System.ComponentModel.Description("056.25-078.75 degrees.")]
 		[EnumMember(Value = "East Northeast")] 
 		[XmlEnum("4")] 
 		EastNortheast = 4,
 
-		[System.ComponentModel.Description("zero78751zero125Degrees")]
+		[System.ComponentModel.Description("078.75-101.25 degrees.")]
 		[EnumMember(Value = "East")] 
 		[XmlEnum("5")] 
 		East = 5,
 
-		[System.ComponentModel.Description("one0one25one2375Degrees")]
+		[System.ComponentModel.Description("101.25-123.75 degrees.")]
 		[EnumMember(Value = "East Southeast")] 
 		[XmlEnum("6")] 
 		EastSoutheast = 6,
 
-		[System.ComponentModel.Description("one2375one4625Degrees")]
+		[System.ComponentModel.Description("123.75-146.25 degrees.")]
 		[EnumMember(Value = "Southeast")] 
 		[XmlEnum("7")] 
 		Southeast = 7,
 
-		[System.ComponentModel.Description("one4625one6875Degrees")]
+		[System.ComponentModel.Description("146.25-168.75 degrees.")]
 		[EnumMember(Value = "South Southeast")] 
 		[XmlEnum("8")] 
 		SouthSoutheast = 8,
 
-		[System.ComponentModel.Description("one6875one9one25Degrees")]
+		[System.ComponentModel.Description("168.75-191.25 degrees.")]
 		[EnumMember(Value = "South")] 
 		[XmlEnum("9")] 
 		South = 9,
 
-		[System.ComponentModel.Description("one9one252one375Degrees")]
+		[System.ComponentModel.Description("191.25-213.75 degrees.")]
 		[EnumMember(Value = "South Southwest")] 
 		[XmlEnum("10")] 
 		SouthSouthwest = 10,
 
-		[System.ComponentModel.Description("two1375two36two5Degrees")]
+		[System.ComponentModel.Description("213.75-236.25 degrees.")]
 		[EnumMember(Value = "Southwest")] 
 		[XmlEnum("11")] 
 		Southwest = 11,
 
-		[System.ComponentModel.Description("two36two5two5875Degrees")]
+		[System.ComponentModel.Description("236.25-258.75 degrees.")]
 		[EnumMember(Value = "West Southwest")] 
 		[XmlEnum("12")] 
 		WestSouthwest = 12,
 
-		[System.ComponentModel.Description("two5875two81two5Degrees")]
+		[System.ComponentModel.Description("258.75-281.25 degrees.")]
 		[EnumMember(Value = "West")] 
 		[XmlEnum("13")] 
 		West = 13,
 
-		[System.ComponentModel.Description("two81two530375Degrees")]
+		[System.ComponentModel.Description("281.25-303.75 degrees.")]
 		[EnumMember(Value = "West Northwest")] 
 		[XmlEnum("14")] 
 		WestNorthwest = 14,
 
-		[System.ComponentModel.Description("three0three75three2625Degrees")]
+		[System.ComponentModel.Description("303.75 - 326.25 degrees.")]
 		[EnumMember(Value = "Northwest")] 
 		[XmlEnum("15")] 
 		Northwest = 15,
 
-		[System.ComponentModel.Description("three2625three4875Degrees")]
+		[System.ComponentModel.Description("326.25 - 348.75 degrees.")]
 		[EnumMember(Value = "North Northwest")] 
 		[XmlEnum("16")] 
 		NorthNorthwest = 16,
 	}
 
+	/// <summary>
+	/// Classification of services related to the goods or items carried by vessels.
+	/// </summary>
+	/// <remarks>
+	/// Defines an enumeration or codelist listing specific services.
+	/// </remarks>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum cargoService : int {
-		[System.ComponentModel.Description("TheLoadingUnloadingMovingOrHandlingOfCargoShipSStoresGearOrOtherMaterialsIntoInOnOrOutOfAnyVessel")]
+		[System.ComponentModel.Description("The loading, unloading, moving or handling of cargo, ship's stores, gear, or other materials, into, in, on, or out of any vessel.")]
 		[EnumMember(Value = "Stevedoring")] 
 		[XmlEnum("1")] 
 		Stevedoring = 1,
 
-		[System.ComponentModel.Description("InspectionEvaluationOrMonitoringOfTheQuantityStowageLoadingAndUnloadingAndConditionOfCargoAndTheEffectsOfCargoesOnVesselStabilityAndSafety")]
+		[System.ComponentModel.Description("Inspection, evaluation or monitoring of the quantity, stowage, loading and unloading, and condition of cargo, and the effects of cargoes on vessel stability and safety.")]
 		[EnumMember(Value = "Cargo Surveying")] 
 		[XmlEnum("2")] 
 		CargoSurveying = 2,
 
-		[System.ComponentModel.Description("TheSecurementOfCargoToTheShipSStructureAndOrOtherCargo")]
+		[System.ComponentModel.Description("The securement of cargo to the ship's structure and/or other cargo.")]
 		[EnumMember(Value = "Cargo Lashing")] 
 		[XmlEnum("3")] 
 		CargoLashing = 3,
 
-		[System.ComponentModel.Description("DeterminationOfTheQuantityOfCertainTypesOfBulkCargoByAssessmentOfItsEffectOnDisplacementWhenLoadedInAVessel")]
+		[System.ComponentModel.Description("Determination of the quantity of certain types of bulk cargo by assessment of its effect on displacement when loaded in a vessel.")]
 		[EnumMember(Value = "Draught Survey")] 
 		[XmlEnum("4")] 
 		DraughtSurvey = 4,
 	}
 
+	/// <summary>
+	/// The type of person, government agency or organisation granted powers of managing or controlling access to and/or activity in an area.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfAuthority : int {
-		[System.ComponentModel.Description("TheAdministrationToPreventOrDetectAndProsecuteViolationsOfRulesAndRegulationsAtInternationalBoundaries")]
+		[System.ComponentModel.Description("The administration to prevent or detect and prosecute violations of rules and regulations at international boundaries.")]
 		[EnumMember(Value = "Border Control")] 
 		[XmlEnum("2")] 
 		BorderControl = 2,
 
-		[System.ComponentModel.Description("TheDepartmentOfGovernmentOrCivilForceChargedWithMaintainingPublicOrder")]
+		[System.ComponentModel.Description("The department of government, or civil force, charged with maintaining public order.")]
 		[EnumMember(Value = "Police")] 
 		[XmlEnum("3")] 
 		Police = 3,
 
-		[System.ComponentModel.Description("PersonOrCorporationOwnersOfOrEntrustedWithOrInvestedWithThePowerOfManagingAPortMayBeCalledAHarbourBoardPortTrustPortCommissionHarbourCommissionMarineDepartment")]
+		[System.ComponentModel.Description("Person or corporation, owners of, or entrusted with or invested with the power of managing a port. May be called a Harbour Board, Port Trust, Port Commission, Harbour Commission, Marine Department.")]
 		[EnumMember(Value = "Port")] 
 		[XmlEnum("4")] 
 		Port = 4,
 
-		[System.ComponentModel.Description("TheAuthorityControllingPeopleEnteringACountry")]
+		[System.ComponentModel.Description("The authority controlling people entering a country.")]
 		[EnumMember(Value = "Immigration")] 
 		[XmlEnum("5")] 
 		Immigration = 5,
 
-		[System.ComponentModel.Description("TheAuthorityWithResponsibilityForCheckingTheValidityOfTheHealthDeclarationOfAVesselAndForDeclaringFreePratique")]
+		[System.ComponentModel.Description("The authority with responsibility for checking the validity of the health declaration of a vessel and for declaring free pratique.")]
 		[EnumMember(Value = "Health")] 
 		[XmlEnum("6")] 
 		Health = 6,
 
-		[System.ComponentModel.Description("OrganizationKeepingWatchOnShippingAndCoastalWatersAccordingToGovernmentalLawNormallyTheAuthorityWithResponsibilityForSearchAndRescue")]
+		[System.ComponentModel.Description("Organization keeping watch on shipping and coastal waters according to governmental law; normally the authority with responsibility for search and rescue.")]
 		[EnumMember(Value = "Coast Guard")] 
 		[XmlEnum("7")] 
 		CoastGuard = 7,
 
-		[System.ComponentModel.Description("TheAuthorityWithResponsibilityForPreventingInfectionOfTheAgricultureOfACountryAndForTheProtectionOfTheAgriculturalInterestsOfACountry")]
+		[System.ComponentModel.Description("The authority with responsibility for preventing infection of the agriculture of a country and for the protection of the agricultural interests of a country.")]
 		[EnumMember(Value = "Agricultural")] 
 		[XmlEnum("8")] 
 		Agricultural = 8,
 
-		[System.ComponentModel.Description("AMilitaryAuthorityWhichProvidesControlOfAccessToOrApprovalForTransitThroughDesignatedAreasOrAirspace")]
+		[System.ComponentModel.Description("A military authority which provides control of access to or approval for transit through designated areas or airspace.")]
 		[EnumMember(Value = "Military")] 
 		[XmlEnum("9")] 
 		Military = 9,
 
-		[System.ComponentModel.Description("APrivateOrPubliclyOwnedCompanyOrCommercialEnterpriseWhichExercisesControlOfFacilitiesForExampleACalibrationArea")]
+		[System.ComponentModel.Description("A private or publicly owned company or commercial enterprise which exercises control of facilities, for example a calibration area.")]
 		[EnumMember(Value = "Private Company")] 
 		[XmlEnum("10")] 
 		PrivateCompany = 10,
 
-		[System.ComponentModel.Description("AGovernmentalOrMilitaryForceWithJurisdictionInTerritorialWatersExamplesCouldIncludeGendarmerieMaritimeCarabinierieAndGuardiaCivil")]
+		[System.ComponentModel.Description("A governmental or military force with jurisdiction in territorial waters. Examples could include Gendarmerie Maritime, Carabinierie, and Guardia Civil.")]
 		[EnumMember(Value = "Maritime Police")] 
 		[XmlEnum("11")] 
 		MaritimePolice = 11,
 
-		[System.ComponentModel.Description("AnAuthorityWithResponsibilityForTheProtectionOfTheEnvironment")]
+		[System.ComponentModel.Description("An authority with responsibility for the protection of the environment.")]
 		[EnumMember(Value = "Environmental")] 
 		[XmlEnum("12")] 
 		Environmental = 12,
 
-		[System.ComponentModel.Description("AnAuthorityWithResponsibilityForTheControlOfFisheries")]
+		[System.ComponentModel.Description("An authority with responsibility for the control of fisheries.")]
 		[EnumMember(Value = "Fishery")] 
 		[XmlEnum("13")] 
 		Fishery = 13,
 
-		[System.ComponentModel.Description("AnAuthorityWithResponsibilityForTheControlAndMovementOfMoney")]
+		[System.ComponentModel.Description("An authority with responsibility for the control and movement of money.")]
 		[EnumMember(Value = "Finance")] 
 		[XmlEnum("14")] 
 		Finance = 14,
 
-		[System.ComponentModel.Description("ANationalOrRegionalAuthorityChargedWithAdministrationOfMaritimeAffairs")]
+		[System.ComponentModel.Description("A national or regional authority charged with administration of maritime affairs.")]
 		[EnumMember(Value = "Maritime")] 
 		[XmlEnum("15")] 
 		Maritime = 15,
 
-		[System.ComponentModel.Description("TheAgencyOrEstablishmentForCollectingDutiesTolls")]
+		[System.ComponentModel.Description("The agency or establishment for collecting duties, tolls.")]
 		[EnumMember(Value = "Customs")] 
 		[XmlEnum("16")] 
 		Customs = 16,
 	}
 
+	/// <summary>
+	/// Classification of a berth according to the method of describing its location or extent.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfBerthLocation : int {
-		[System.ComponentModel.Description("AWharfOrQuayWithReferencePositionSGivenByOneOrMoreMetreMarks")]
+		[System.ComponentModel.Description("A wharf or quay with reference position(s) given by one or more metre marks.")]
 		[EnumMember(Value = "Wharf Reference Metre Mark")] 
 		[XmlEnum("1")] 
 		WharfReferenceMetreMark = 1,
 
-		[System.ComponentModel.Description("AWharfOrQuayWithReferencePositionSGivenByOneOrMorePointOrPointsInGeographicCoordinates")]
+		[System.ComponentModel.Description("A wharf or quay with reference position(s) given by one or more point or points in geographic coordinates.")]
 		[EnumMember(Value = "Wharf Reference Position")] 
 		[XmlEnum("2")] 
 		WharfReferencePosition = 2,
 
-		[System.ComponentModel.Description("ALongNarrowStructureExtendingIntoTheWaterToAffordABerthingPlaceForVesselsToServeAsAPromenadeEtc")]
+		[System.ComponentModel.Description("A long, narrow structure extending into the water to afford a berthing place for vessels, to serve as a promenade, etc.")]
 		[EnumMember(Value = "Pier (Jetty)")] 
 		[XmlEnum("3")] 
 		PierJetty = 3,
 
-		[System.ComponentModel.Description("MooringUsingTheVesselSAnchorsAndBuoysToSecureTheVesselAtMultiplePoints")]
+		[System.ComponentModel.Description("Mooring using the vessel's anchors and buoys to secure the vessel at multiple points.")]
 		[EnumMember(Value = "Conventional Mooring")] 
 		[XmlEnum("4")] 
 		ConventionalMooring = 4,
 	}
 
+	/// <summary>
+	/// Classification of the different types of cargo that a ship may be carrying.
+	/// </summary>
+	/// <remarks>
+	/// If item 7 is used, the nature of dangerous or hazardous cargoes can be amplified with category of dangerous or hazardous cargo.
+	/// </remarks>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfCargo : int {
-		[System.ComponentModel.Description("OneOfANumberOfStandardSizedCargoCarryingUnitsSecuredUsingStandardCornerAttachmentsAndBar")]
+		[System.ComponentModel.Description("One of a number of standard sized cargo carrying units, secured using standard corner attachments and bar.")]
 		[EnumMember(Value = "Container")] 
 		[XmlEnum("2")] 
 		Container = 2,
 
-		[System.ComponentModel.Description("AFeePayingTraveller")]
+		[System.ComponentModel.Description("A fee paying traveller.")]
 		[EnumMember(Value = "Passenger")] 
 		[XmlEnum("5")] 
 		Passenger = 5,
 
-		[System.ComponentModel.Description("LiveAnimalsCarriedInBulk")]
+		[System.ComponentModel.Description("Live animals carried in bulk.")]
 		[EnumMember(Value = "Livestock")] 
 		[XmlEnum("6")] 
 		Livestock = 6,
 
-		[System.ComponentModel.Description("DangerousOrHazardousCargoAsDescribedByTheImoInternationalMaritimeDangerousGoodsCode")]
+		[System.ComponentModel.Description("Dangerous or hazardous cargo as described by the IMO International Maritime Dangerous Goods code.")]
 		[EnumMember(Value = "Dangerous or Hazardous")] 
 		[XmlEnum("7")] 
 		DangerousOrHazardous = 7,
 
-		[System.ComponentModel.Description("IndivisibleHeavyItemsOfWeightGenerallyOver100TonsAndWidthOrHeightGreaterThan100Metres")]
+		[System.ComponentModel.Description("Indivisible heavy items of weight generally over 100 tons, and width or height greater than 100 metres.")]
 		[EnumMember(Value = "Heavy Lift")] 
 		[XmlEnum("8")] 
 		HeavyLift = 8,
 
-		[System.ComponentModel.Description("CommodityCargoThatIsTransportedUnpackagedInLargeQuantitiesTheseTypesOfGoodsUsuallyNeedToBeKeptDryDuringTheWholeTransportationPeriod")]
+		[System.ComponentModel.Description("Commodity cargo that is transported unpackaged in large quantities. These types of goods usually need to be kept dry during the whole transportation period.")]
 		[EnumMember(Value = "Dry Bulk Cargo")] 
 		[XmlEnum("10")] 
 		DryBulkCargo = 10,
 
-		[System.ComponentModel.Description("LiquidsOrGasesThatAreTransportedInBulkAndCarriedUnpackaged")]
+		[System.ComponentModel.Description("Liquids or gases that are transported in bulk and carried unpackaged.")]
 		[EnumMember(Value = "Liquid Bulk Cargo")] 
 		[XmlEnum("11")] 
 		LiquidBulkCargo = 11,
 
-		[System.ComponentModel.Description("CargoTransportedInRefrigeratedContainersGenerallyPerishableCommoditiesWhichRequireTemperatureControlledTransportationSuchAsFruitMeatFishVegetablesDairyProductsAndOtherFoods")]
+		[System.ComponentModel.Description("Cargo transported in refrigerated containers, generally perishable commodities which require temperature-controlled transportation, such as fruit, meat, fish, vegetables, dairy products and other foods.")]
 		[EnumMember(Value = "Reefer Container Cargo")] 
 		[XmlEnum("12")] 
 		ReeferContainerCargo = 12,
 
-		[System.ComponentModel.Description("WheeledCargoSuchAsCarsBussesTrucksAgriculturalVehiclesAndCranesThatAreDrivenOnAndOffTheShipOnTheirOwnWheelsOrUsingAPlatformVehicleSuchAsASelfPropelledModularTransporter")]
+		[System.ComponentModel.Description("Wheeled cargo, such as cars, busses, trucks, agricultural vehicles and cranes, that are driven on and off the ship on their own wheels or using a platform vehicle, such as a self-propelled modular transporter.")]
 		[EnumMember(Value = "Ro-Ro Cargo")] 
 		[XmlEnum("13")] 
 		RoRoCargo = 13,
 
-		[System.ComponentModel.Description("ProjectCargoIsATermUsedToBroadlyDescribeTheNationalOrInternationalTransportationOfLargeHeavyHighValueOrCriticalToTheProjectTheyAreIntendedForPiecesOfEquipmentAlsoCommonlyReferredToAsHeavyLiftThisIncludesShipmentsMadeOfVariousComponentsWhichNeedDisassemblyForShipmentAndReassemblyAfterDelivery")]
+		[System.ComponentModel.Description("Project cargo is a term used to broadly describe the national or international transportation of large, heavy, high value, or critical (to the project they are intended for) pieces of equipment. Also commonly referred to as heavy lift, this includes shipments made of various components which need disassembly for shipment and reassembly after delivery.")]
 		[EnumMember(Value = "Project Cargo")] 
 		[XmlEnum("14")] 
 		ProjectCargo = 14,
 
-		[System.ComponentModel.Description("GoodsThatAreStowedOnBoardShipInIndividuallyCountedUnitsAndNotInIntermodalContainersNorInBulkAsWithOilOrGrain")]
+		[System.ComponentModel.Description("Goods that are stowed on board ship in individually counted units, and not in intermodal containers nor in bulk as with oil or grain.")]
 		[EnumMember(Value = "Break Bulk Cargo")] 
 		[XmlEnum("15")] 
 		BreakBulkCargo = 15,
 	}
 
+	/// <summary>
+	/// Classification of frequencies, VHF channels, telephone numbers, or other means of communication based on preference.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfCommunicationPreference : int {
-		[System.ComponentModel.Description("TheFirstChoiceChannelOrFrequencyToBeUsedWhenCallingARadioStation")]
+		[System.ComponentModel.Description("The first choice channel or frequency to be used when calling a radio station.")]
 		[EnumMember(Value = "Preferred Calling")] 
 		[XmlEnum("1")] 
 		PreferredCalling = 1,
 
-		[System.ComponentModel.Description("AChannelOrFrequencyToBeUsedForCallingARadioStationWhenThePreferredChannelOrFrequencyIsBusyOrIsSufferingFromInterference")]
+		[System.ComponentModel.Description("A channel or frequency to be used for calling a radio station when the preferred channel or frequency is busy or is suffering from interference.")]
 		[EnumMember(Value = "Alternate Calling")] 
 		[XmlEnum("2")] 
 		AlternateCalling = 2,
 
-		[System.ComponentModel.Description("TheFirstChoiceChannelOrFrequencyToBeUsedWhenWorkingWithARadioStation")]
+		[System.ComponentModel.Description("The first choice channel or frequency to be used when working with a radio station.")]
 		[EnumMember(Value = "Preferred Working")] 
 		[XmlEnum("3")] 
 		PreferredWorking = 3,
 
-		[System.ComponentModel.Description("AChannelOrFrequencyToBeUsedForWorkingWithARadioStationWhenThePreferredWorkingChannelOrFrequencyIsBusyOrIsSufferingFromInterference")]
+		[System.ComponentModel.Description("A channel or frequency to be used for working with a radio station when the preferred working channel or frequency is busy or is suffering from interference.")]
 		[EnumMember(Value = "Alternate Working")] 
 		[XmlEnum("4")] 
 		AlternateWorking = 4,
 	}
 
+	/// <summary>
+	/// Classification of dangerous goods or hazardous materials based on the International Maritime Dangerous Goods Code (IMDG Code).
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfDangerousOrHazardousCargo : int {
-		[System.ComponentModel.Description("ExplosivesDivision1SubstancesAndArticlesWhichHaveAMassExplosionHazard")]
+		[System.ComponentModel.Description("Explosives, Division 1: Substances and articles which have a mass explosion hazard.")]
 		[EnumMember(Value = "IMDG Code Class 1 Div. 1.1")] 
 		[XmlEnum("1")] 
 		ImdgCodeClass1Div11 = 1,
 
-		[System.ComponentModel.Description("ExplosivesDivision2SubstancesAndArticlesWhichHaveAProjectionHazardButNotAMassExplosionHazard")]
+		[System.ComponentModel.Description("Explosives, Division 2: Substances and articles which have a projection hazard but not a mass explosion hazard.")]
 		[EnumMember(Value = "IMDG Code Class 1 Div. 1.2")] 
 		[XmlEnum("2")] 
 		ImdgCodeClass1Div12 = 2,
 
-		[System.ComponentModel.Description("ExplosivesDivision3SubstancesAndArticlesWhichHaveAFireHazardAndEitherAMinorBlastHazardOrAMinorProjectionHazardOrBothButNotAMassExplosionHazard")]
+		[System.ComponentModel.Description("Explosives, Division 3: Substances and articles which have a fire hazard and either a minor blast hazard or a minor projection hazard or both, but not a mass explosion hazard.")]
 		[EnumMember(Value = "IMDG Code Class 1 Div. 1.3")] 
 		[XmlEnum("3")] 
 		ImdgCodeClass1Div13 = 3,
 
-		[System.ComponentModel.Description("ExplosivesDivision4SubstancesAndArticlesWhichPresentNoSignificantHazard")]
+		[System.ComponentModel.Description("Explosives, Division 4: Substances and articles which present no significant hazard.")]
 		[EnumMember(Value = "IMDG Code Class 1 Div. 1.4")] 
 		[XmlEnum("4")] 
 		ImdgCodeClass1Div14 = 4,
 
-		[System.ComponentModel.Description("ExplosivesDivision5VeryInsensitiveSubstancesWhichHaveAMassExplosionHazard")]
+		[System.ComponentModel.Description("Explosives, Division 5: Very insensitive substances which have a mass explosion hazard.")]
 		[EnumMember(Value = "IMDG Code Class 1 Div. 1.5")] 
 		[XmlEnum("5")] 
 		ImdgCodeClass1Div15 = 5,
 
-		[System.ComponentModel.Description("ExplosivesDivision6ExtremelyInsensitiveArticlesWhichDoNotHaveAMassExplosionHazard")]
+		[System.ComponentModel.Description("Explosives, Division 6: Extremely insensitive articles which do not have a mass explosion hazard.")]
 		[EnumMember(Value = "IMDG Code Class 1 Div. 1.6")] 
 		[XmlEnum("6")] 
 		ImdgCodeClass1Div16 = 6,
 
-		[System.ComponentModel.Description("GasesFlammableGases")]
+		[System.ComponentModel.Description("Gases, flammable gases.")]
 		[EnumMember(Value = "IMDG Code Class 2 Div. 2.1")] 
 		[XmlEnum("7")] 
 		ImdgCodeClass2Div21 = 7,
 
-		[System.ComponentModel.Description("GasesNonFlammableNonToxicGases")]
+		[System.ComponentModel.Description("Gases, non-flammable, non-toxic gases.")]
 		[EnumMember(Value = "IMDG Code Class 2 Div. 2.2")] 
 		[XmlEnum("8")] 
 		ImdgCodeClass2Div22 = 8,
 
-		[System.ComponentModel.Description("GasesToxicGases")]
+		[System.ComponentModel.Description("Gases, toxic gases.")]
 		[EnumMember(Value = "IMDG Code Class 2 Div. 2.3")] 
 		[XmlEnum("9")] 
 		ImdgCodeClass2Div23 = 9,
 
-		[System.ComponentModel.Description("FlammableLiquids")]
+		[System.ComponentModel.Description("Flammable liquids.")]
 		[EnumMember(Value = "IMDG Code Class 3")] 
 		[XmlEnum("10")] 
 		ImdgCodeClass3 = 10,
 
-		[System.ComponentModel.Description("FlammableSolidsSelfReactiveSubstancesAndDesensitizedExplosives")]
+		[System.ComponentModel.Description("Flammable solids, self-reactive substances and desensitized explosives.")]
 		[EnumMember(Value = "IMDG Code Class 4 Div. 4.1")] 
 		[XmlEnum("11")] 
 		ImdgCodeClass4Div41 = 11,
 
-		[System.ComponentModel.Description("SubstancesLiableToSpontaneousCombustion")]
+		[System.ComponentModel.Description("Substances liable to spontaneous combustion.")]
 		[EnumMember(Value = "IMDG Code Class 4 Div. 4.2")] 
 		[XmlEnum("12")] 
 		ImdgCodeClass4Div42 = 12,
 
-		[System.ComponentModel.Description("SubstancesWhichInContactWithWaterEmitFlammableGases")]
+		[System.ComponentModel.Description("Substances which, in contact with water, emit flammable gases.")]
 		[EnumMember(Value = "IMDG Code Class 4 Div. 4.3")] 
 		[XmlEnum("13")] 
 		ImdgCodeClass4Div43 = 13,
 
-		[System.ComponentModel.Description("OxidizingSubstances")]
+		[System.ComponentModel.Description("Oxidizing substances.")]
 		[EnumMember(Value = "IMDG Code Class 5 Div. 5.1")] 
 		[XmlEnum("14")] 
 		ImdgCodeClass5Div51 = 14,
 
-		[System.ComponentModel.Description("OrganicPeroxides")]
+		[System.ComponentModel.Description("Organic peroxides.")]
 		[EnumMember(Value = "IMDG Code Class 5 Div. 5.2")] 
 		[XmlEnum("15")] 
 		ImdgCodeClass5Div52 = 15,
 
-		[System.ComponentModel.Description("ToxicSubstances")]
+		[System.ComponentModel.Description("Toxic substances.")]
 		[EnumMember(Value = "IMDG Code Class 6 Div. 6.1")] 
 		[XmlEnum("16")] 
 		ImdgCodeClass6Div61 = 16,
 
-		[System.ComponentModel.Description("InfectiousSubstances")]
+		[System.ComponentModel.Description("Infectious substances.")]
 		[EnumMember(Value = "IMDG Code Class 6 Div. 6.2")] 
 		[XmlEnum("17")] 
 		ImdgCodeClass6Div62 = 17,
 
-		[System.ComponentModel.Description("RadioactiveMaterial")]
+		[System.ComponentModel.Description("Radioactive material.")]
 		[EnumMember(Value = "IMDG Code Class 7")] 
 		[XmlEnum("18")] 
 		ImdgCodeClass7 = 18,
 
-		[System.ComponentModel.Description("CorrosiveSubstances")]
+		[System.ComponentModel.Description("Corrosive substances.")]
 		[EnumMember(Value = "IMDG Code Class 8")] 
 		[XmlEnum("19")] 
 		ImdgCodeClass8 = 19,
 
-		[System.ComponentModel.Description("MiscellaneousDangerousSubstancesAndArticles")]
+		[System.ComponentModel.Description("Miscellaneous dangerous substances and articles.")]
 		[EnumMember(Value = "IMDG Code Class 9")] 
 		[XmlEnum("20")] 
 		ImdgCodeClass9 = 20,
 
-		[System.ComponentModel.Description("HarmfulSubstancesAreThoseSubstancesWhichAreIdentifiedAsMarinePollutantsInTheInternationalMaritimeDangerousGoodsCodeImdgCodePackagedFormIsDefinedAsTheFormsOfContainmentSpecifiedForHarmfulSubstancesInTheImdgCode")]
+		[System.ComponentModel.Description("Harmful substances are those substances which are identified as marine pollutants in the International Maritime Dangerous Goods Code (IMDG Code). Packaged form is defined as the forms of containment specified for harmful substances in the IMDG Code.")]
 		[EnumMember(Value = "Harmful Substances in Packaged Form")] 
 		[XmlEnum("21")] 
 		HarmfulSubstancesInPackagedForm = 21,
 	}
 
+	/// <summary>
+	/// Classification of significant aspects of depths about which information is provided.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfDepthsDescription : int {
-		[System.ComponentModel.Description("AShallowElevationComposedOfUnconsolidatedMaterialThatMayConstituteAHazardToSurfaceNavigation")]
+		[System.ComponentModel.Description("A shallow elevation composed of unconsolidated material that may constitute a hazard to surface navigation.")]
 		[EnumMember(Value = "Shoal")] 
 		[XmlEnum("1")] 
 		Shoal = 1,
 
-		[System.ComponentModel.Description("GeneralInformationAboutTheVerticalDistanceFromTheWaterSurfaceToTheBottom")]
+		[System.ComponentModel.Description("General information about the vertical distance from the water surface to the bottom.")]
 		[EnumMember(Value = "General Depth")] 
 		[XmlEnum("2")] 
 		GeneralDepth = 2,
 
-		[System.ComponentModel.Description("TheLeastDepthInTheApproachOrChannelToAnAreaSuchAsAPortOrAnchorageGoverningTheMaximumDraftOfVesselsThatCanEnter")]
+		[System.ComponentModel.Description("The least depth in the approach or channel to an area, such as a port or anchorage, governing the maximum draft of vessels that can enter.")]
 		[EnumMember(Value = "Controlling Depth")] 
 		[XmlEnum("3")] 
 		ControllingDepth = 3,
 	}
 
+	/// <summary>
+	/// Classification of harbour use.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfHarbourFacility : int {
-		[System.ComponentModel.Description("ATerminalForRollOnRollOffFerries")]
+		[System.ComponentModel.Description("A terminal for roll-on roll-off ferries.")]
 		[EnumMember(Value = "RoRo Terminal")] 
 		[XmlEnum("1")] 
 		RoroTerminal = 1,
 
-		[System.ComponentModel.Description("ATerminalForPassengerAndVehicleFerries")]
+		[System.ComponentModel.Description("A terminal for passenger and vehicle ferries.")]
 		[EnumMember(Value = "Ferry Terminal")] 
 		[XmlEnum("3")] 
 		FerryTerminal = 3,
 
-		[System.ComponentModel.Description("AHarbourWithFacilitiesForFishingBoats")]
+		[System.ComponentModel.Description("A harbour with facilities for fishing boats.")]
 		[EnumMember(Value = "Fishing Harbour")] 
 		[XmlEnum("4")] 
 		FishingHarbour = 4,
 
-		[System.ComponentModel.Description("AHarbourFacilityForSmallBoatsYachtsEtcWhereSuppliesRepairsAndVariousServicesAreAvailable")]
+		[System.ComponentModel.Description("A harbour facility for small boats, yachts, etc., where supplies, repairs, and various services are available.")]
 		[EnumMember(Value = "Yacht Harbour/Marina")] 
 		[XmlEnum("5")] 
 		YachtHarbourMarina = 5,
 
-		[System.ComponentModel.Description("ACentreOfOperationsForNavalVessels")]
+		[System.ComponentModel.Description("A centre of operations for naval vessels.")]
 		[EnumMember(Value = "Naval Base")] 
 		[XmlEnum("6")] 
 		NavalBase = 6,
 
-		[System.ComponentModel.Description("ATerminalForTheBulkHandlingOfLiquidCargoes")]
+		[System.ComponentModel.Description("A terminal for the bulk handling of liquid cargoes.")]
 		[EnumMember(Value = "Tanker Terminal")] 
 		[XmlEnum("7")] 
 		TankerTerminal = 7,
 
-		[System.ComponentModel.Description("ATerminalForTheLoadingAndUnloadingOfPassengers")]
+		[System.ComponentModel.Description("A terminal for the loading and unloading of passengers.")]
 		[EnumMember(Value = "Passenger Terminal")] 
 		[XmlEnum("8")] 
 		PassengerTerminal = 8,
 
-		[System.ComponentModel.Description("APlaceWhereShipsAreBuiltOrRepaired")]
+		[System.ComponentModel.Description("A place where ships are built or repaired.")]
 		[EnumMember(Value = "Shipyard")] 
 		[XmlEnum("9")] 
 		Shipyard = 9,
 
-		[System.ComponentModel.Description("ATerminalWithFacilitiesToLoadUnloadOrStoreShippingContainers")]
+		[System.ComponentModel.Description("A terminal with facilities to load/unload or store shipping containers.")]
 		[EnumMember(Value = "Container Terminal")] 
 		[XmlEnum("10")] 
 		ContainerTerminal = 10,
 
-		[System.ComponentModel.Description("ATerminalForTheHandlingOfBulkMaterialsSuchAsIronOreCoalEtc")]
+		[System.ComponentModel.Description("A terminal for the handling of bulk materials such as iron ore, coal, etc.")]
 		[EnumMember(Value = "Bulk Terminal")] 
 		[XmlEnum("11")] 
 		BulkTerminal = 11,
 
-		[System.ComponentModel.Description("APlatformPoweredBySynchronousElectricMotorsForExampleSyncroliftUsedToLiftVesselsLargerThanBoatsInAndOutOfTheWater")]
+		[System.ComponentModel.Description("A platform powered by synchronous electric motors (for example syncrolift) used to lift vessels (larger than boats) in and out of the water.")]
 		[EnumMember(Value = "Ship Lift")] 
 		[XmlEnum("12")] 
 		ShipLift = 12,
 
-		[System.ComponentModel.Description("AWheeledVehicleDesignedToLiftAndCarryContainersOrVesselsWithinItsOwnFrameworkItIsUsedForMovingAndSometimesStackingShippingContainersAndVessels")]
+		[System.ComponentModel.Description("A wheeled vehicle designed to lift and carry containers or vessels within its own framework. It is used for moving, and sometimes stacking, shipping containers and vessels.")]
 		[EnumMember(Value = "Straddle Carrier")] 
 		[XmlEnum("13")] 
 		StraddleCarrier = 13,
 
-		[System.ComponentModel.Description("AHarbourWithinWhichTheFloatingEquipmentDredgesTugsOfHarbourServicesAreStationed")]
+		[System.ComponentModel.Description("A harbour within which the floating equipment (dredges, tugs ...) of harbour services are stationed.")]
 		[EnumMember(Value = "Service Harbour")] 
 		[XmlEnum("14")] 
 		ServiceHarbour = 14,
 
-		[System.ComponentModel.Description("TheServicesOfAPersonWhoDirectsTheMovementsOfAVesselThroughPilotWatersUsuallyAPersonWhoHasDemonstratedExtensiveKnowledgeOfChannelsAidsToNavigationDangersToNavigationEtcInAParticularAreaAndIsLicensedForThatAreaAreAvailable")]
+		[System.ComponentModel.Description("The services of a person who directs the movements of a vessel through pilot waters, usually a person who has demonstrated extensive knowledge of channels, aids to navigation, dangers to navigation, etc., in a particular area and is licensed for that area, are available.")]
 		[EnumMember(Value = "Pilotage Service")] 
 		[XmlEnum("15")] 
 		PilotageService = 15,
 
-		[System.ComponentModel.Description("APlaceWhereMechanicalServicesOrRepairsCanBeUndertakenToEnginesOrOtherVesselEquipment")]
+		[System.ComponentModel.Description("A place where mechanical services or repairs can be undertaken to engines or other vessel equipment.")]
 		[EnumMember(Value = "Service and Repair")] 
 		[XmlEnum("16")] 
 		ServiceAndRepair = 16,
 
-		[System.ComponentModel.Description("AMedicalControlCenterLocatedInAnIsolatedSpotAshoreWherePatientsWithContagiousDiseasesFromVesselInQuarantineAreTaken")]
+		[System.ComponentModel.Description("A medical control center located in an isolated spot ashore where patients with contagious diseases from vessel in quarantine are taken.")]
 		[EnumMember(Value = "Quarantine Station")] 
 		[XmlEnum("17")] 
 		QuarantineStation = 17,
 	}
 
+	/// <summary>
+	/// A place or structure to which a vessel can be secured.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfMooringWarpingFacility : int {
-		[System.ComponentModel.Description("APostOrGroupOfPostsUsedForMooringOrWarpingAVesselOrAsAnAidToNavigationTheDolphinMayBeInTheWaterOnAWharfOrOnTheBeach")]
+		[System.ComponentModel.Description("A post or group of posts, used for mooring or warping a vessel, or as an aid to navigation. The dolphin may be in the water, on a wharf or on the beach.")]
 		[EnumMember(Value = "Dolphin")] 
 		[XmlEnum("1")] 
 		Dolphin = 1,
 
-		[System.ComponentModel.Description("APostOrGroupOfPostsWhichAVesselMaySwingAroundForCompassAdjustment")]
+		[System.ComponentModel.Description("A post or group of posts, which a vessel may swing around for compass adjustment.")]
 		[EnumMember(Value = "Deviation Dolphin")] 
 		[XmlEnum("2")] 
 		DeviationDolphin = 2,
 
-		[System.ComponentModel.Description("SmallShapedPostMountedOnAWharfOrDolphinUsedToSecureShipSLines")]
+		[System.ComponentModel.Description("Small shaped post, mounted on a wharf or dolphin used to secure ship's lines.")]
 		[EnumMember(Value = "Bollard")] 
 		[XmlEnum("3")] 
 		Bollard = 3,
 
-		[System.ComponentModel.Description("ASectionOfWallDesignatedForTyingUpVesselsAwaitingTransitBollardsAndMooringDevicesAreAvailableForBothLargeAndSmallShips")]
+		[System.ComponentModel.Description("A section of wall designated for tying-up vessels awaiting transit. Bollards and mooring devices are available for both large and small ships.")]
 		[EnumMember(Value = "Tie-Up Wall")] 
 		[XmlEnum("4")] 
 		TieUpWall = 4,
 
-		[System.ComponentModel.Description("ALongHeavyTimberOrSectionOfSteelWoodConcreteEtcForcedIntoTheSeabedToServeAsAMooringFacility")]
+		[System.ComponentModel.Description("A long heavy timber or section of steel, wood, concrete, etc., forced into the seabed to serve as a mooring facility.")]
 		[EnumMember(Value = "Post or Pile")] 
 		[XmlEnum("5")] 
 		PostOrPile = 5,
 
-		[System.ComponentModel.Description("AChainOrVeryStrongFibreOrWireRopeUsedToAnchorOrMoorVesselsOrBuoys")]
+		[System.ComponentModel.Description("A chain or very strong fibre or wire rope used to anchor or moor vessels or buoys.")]
 		[EnumMember(Value = "Mooring Cable")] 
 		[XmlEnum("6")] 
 		MooringCable = 6,
 
-		[System.ComponentModel.Description("ABuoySecuredToTheBottomByPermanentMooringsWithMeansForMooringAVesselByUseOfItsAnchorChainOrMooringLines")]
+		[System.ComponentModel.Description("A buoy secured to the bottom by permanent moorings with means for mooring a vessel by use of its anchor chain or mooring lines.")]
 		[EnumMember(Value = "Mooring Buoy")] 
 		[XmlEnum("7")] 
 		MooringBuoy = 7,
 	}
 
+	/// <summary>
+	/// Classification of subdivisions of a port or harbour area by usage.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfPortSection : int {
-		[System.ComponentModel.Description("TheMainNavigableChannelInAHarbourOrItsApproachesForVesselsOfLargerSize")]
+		[System.ComponentModel.Description("The main navigable channel in a harbour or its approaches, for vessels of larger size.")]
 		[EnumMember(Value = "Port Fairway")] 
 		[XmlEnum("1")] 
 		PortFairway = 1,
 
-		[System.ComponentModel.Description("ABodyOfWaterAtABerthOrAnchorBerthOfAdequateDimensionsToAllowAVesselToMakeFastToTheShoreMooringBuoysBerthingDolphinsOrToAnchor")]
+		[System.ComponentModel.Description("A body of water at a berth or anchor berth, of adequate dimensions to allow a vessel to make fast to the shore, mooring buoys, berthing dolphins or to anchor.")]
 		[EnumMember(Value = "Berth Pocket")] 
 		[XmlEnum("3")] 
 		BerthPocket = 3,
 
-		[System.ComponentModel.Description("AnAreaInWhichSeaPlanesAnchorOrMayAnchor")]
+		[System.ComponentModel.Description("An area in which sea-planes anchor or may anchor.")]
 		[EnumMember(Value = "Seaplane Anchorage")] 
 		[XmlEnum("8")] 
 		SeaplaneAnchorage = 8,
 
-		[System.ComponentModel.Description("AnAreaOfWaterOrChannelEnlargementOfIncreasedDepthComparedToAdjacentAreasWhereTheDepthIsMaintainedByDredgingOperations")]
+		[System.ComponentModel.Description("An area of water or channel enlargement of increased depth compared to adjacent areas, where the depth is maintained by dredging operations.")]
 		[EnumMember(Value = "Dredged Basin")] 
 		[XmlEnum("9")] 
 		DredgedBasin = 9,
 
-		[System.ComponentModel.Description("TheAreaAroundAPortFacilityOrHarbourInstallationWithinWhichVesselsAreProhibitedFromEnteringWithoutPermission")]
+		[System.ComponentModel.Description("The area around a port facility or harbour installation within which vessels are prohibited from entering without permission.")]
 		[EnumMember(Value = "Port Safety Zone")] 
 		[XmlEnum("11")] 
 		PortSafetyZone = 11,
 
-		[System.ComponentModel.Description("AGeneralBerthForUseByVesselsForShortTermWaitingUntilALoadingOrDischargingBerthIsAvailable")]
+		[System.ComponentModel.Description("A general berth for use by vessels for short term waiting until a loading or discharging berth is available.")]
 		[EnumMember(Value = "Lay-by Berth")] 
 		[XmlEnum("12")] 
 		LayByBerth = 12,
 	}
 
+	/// <summary>
+	/// Expresses constraints or requirements on vessel actions or activities in relation to a geographic feature, facility, or service.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfRelationship : int {
-		[System.ComponentModel.Description("UseOfFacilityWaterwayOrServiceIsForbidden")]
+		[System.ComponentModel.Description("Use of facility, waterway or service is forbidden.")]
 		[EnumMember(Value = "Prohibited")] 
 		[XmlEnum("1")] 
 		Prohibited = 1,
 
-		[System.ComponentModel.Description("UseOfFacilityWaterwayOrServiceIsNotRecommended")]
+		[System.ComponentModel.Description("Use of facility, waterway or service is not recommended.")]
 		[EnumMember(Value = "Not Recommended")] 
 		[XmlEnum("2")] 
 		NotRecommended = 2,
 
-		[System.ComponentModel.Description("UseOfFacilityWaterwayOrServiceIsPermittedButNotRequired")]
+		[System.ComponentModel.Description("Use of facility, waterway, or service is permitted but not required.")]
 		[EnumMember(Value = "Permitted")] 
 		[XmlEnum("3")] 
 		Permitted = 3,
 
-		[System.ComponentModel.Description("UseOfFacilityWaterwayOrServiceIsRecommended")]
+		[System.ComponentModel.Description("Use of facility, waterway, or service is recommended.")]
 		[EnumMember(Value = "Recommended")] 
 		[XmlEnum("4")] 
 		Recommended = 4,
 
-		[System.ComponentModel.Description("UseOfFacilityWaterwayOrServiceIsRequired")]
+		[System.ComponentModel.Description("Use of facility, waterway, or service is required.")]
 		[EnumMember(Value = "Required")] 
 		[XmlEnum("5")] 
 		Required = 5,
 
-		[System.ComponentModel.Description("UseOfFacilityWaterwayOrServiceIsNotRequired")]
+		[System.ComponentModel.Description("Use of facility, waterway, or service is not required.")]
 		[EnumMember(Value = "Not Required")] 
 		[XmlEnum("6")] 
 		NotRequired = 6,
 	}
 
+	/// <summary>
+	/// The type of schedule, for instance opening, closure, etc.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfSchedule : int {
-		[System.ComponentModel.Description("TheServiceOfficeIsOpenFullyMannedAndOperatingNormallyOrTheAreaIsAccessibleAsUsual")]
+		[System.ComponentModel.Description("The service, office, is open, fully manned, and operating normally, or the area is accessible as usual.")]
 		[EnumMember(Value = "Normal Operation")] 
 		[XmlEnum("1")] 
 		NormalOperation = 1,
 
-		[System.ComponentModel.Description("TheServiceOfficeOrAreaIsClosed")]
+		[System.ComponentModel.Description("The service, office, or area is closed.")]
 		[EnumMember(Value = "Closure")] 
 		[XmlEnum("2")] 
 		Closure = 2,
 
-		[System.ComponentModel.Description("TheServiceIsAvailableButNotManned")]
+		[System.ComponentModel.Description("The service is available but not manned.")]
 		[EnumMember(Value = "Unmanned Operation")] 
 		[XmlEnum("3")] 
 		UnmannedOperation = 3,
 	}
 
+	/// <summary>
+	/// An assessment of the likelihood of change over time.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfTemporalVariation : int {
-		[System.ComponentModel.Description("IndicationOfThePossibleImpactOfASignificantEventForExampleHurricaneEarthquakeVolcanicEruptionLandslideEtcWhichIsConsideredLikelyToHaveChangedTheSeafloorOrLandscapeSignificantly")]
+		[System.ComponentModel.Description("Indication of the possible impact of a significant event (for example hurricane, earthquake, volcanic eruption, landslide, etc), which is considered likely to have changed the seafloor or landscape significantly.")]
 		[EnumMember(Value = "Extreme Event")] 
 		[XmlEnum("1")] 
 		ExtremeEvent = 1,
 
-		[System.ComponentModel.Description("ContinuousOrFrequentChangeForExampleRiverSiltationSandWavesSeasonalStormsIceBergsEtcThatIsLikelyToResultInNewSignificantShoaling")]
+		[System.ComponentModel.Description("Continuous or frequent change (for example river siltation, sand waves, seasonal storms, ice bergs, etc) that is likely to result in new significant shoaling.")]
 		[EnumMember(Value = "Likely to Change and Significant Shoaling Expected")] 
 		[XmlEnum("2")] 
 		LikelyToChangeAndSignificantShoalingExpected = 2,
 
-		[System.ComponentModel.Description("ContinuousOrFrequentChangeForExampleSandWaveShiftSeasonalStormsIceBergsEtcThatIsNotLikelyToResultInNewSignificantShoaling")]
+		[System.ComponentModel.Description("Continuous or frequent change (for example sand wave shift, seasonal storms, ice bergs, etc) that is not likely to result in new significant shoaling.")]
 		[EnumMember(Value = "Likely to Change But Significant Shoaling Not Expected")] 
 		[XmlEnum("3")] 
 		LikelyToChangeButSignificantShoalingNotExpected = 3,
 
-		[System.ComponentModel.Description("ContinuousOrFrequentChangeToNonBathymetricFeaturesForExampleRiverSiltationGlacierCreepRecessionSandDunesBuoysMarineFarmsEtc")]
+		[System.ComponentModel.Description("Continuous or frequent change to non-bathymetric features (for example river siltation, glacier creep/recession, sand dunes, buoys, marine farms, etc).")]
 		[EnumMember(Value = "Likely to Change")] 
 		[XmlEnum("4")] 
 		LikelyToChange = 4,
 
-		[System.ComponentModel.Description("SignificantChangeToTheSeafloorIsNotExpected")]
+		[System.ComponentModel.Description("Significant change to the seafloor is not expected.")]
 		[EnumMember(Value = "Unlikely to Change")] 
 		[XmlEnum("5")] 
 		UnlikelyToChange = 5,
 
-		[System.ComponentModel.Description("NotHavingBeenAssessed")]
+		[System.ComponentModel.Description("Not having been assessed.")]
 		[EnumMember(Value = "Unassessed")] 
 		[XmlEnum("6")] 
 		Unassessed = 6,
 	}
 
+	/// <summary>
+	/// Classification of completeness of textual information in relation to the source material from which it is derived.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfText : int {
-		[System.ComponentModel.Description("AStatementSummarizingTheImportantPointsOfAText")]
+		[System.ComponentModel.Description("A statement summarizing the important points of a text.")]
 		[EnumMember(Value = "Abstract or Summary")] 
 		[XmlEnum("1")] 
 		AbstractOrSummary = 1,
 
-		[System.ComponentModel.Description("AnExcerptOrExcerptsFromAText")]
+		[System.ComponentModel.Description("An excerpt or excerpts from a text.")]
 		[EnumMember(Value = "Extract")] 
 		[XmlEnum("2")] 
 		Extract = 2,
 
-		[System.ComponentModel.Description("TheWholeText")]
+		[System.ComponentModel.Description("The whole text.")]
 		[EnumMember(Value = "Full Text")] 
 		[XmlEnum("3")] 
 		FullText = 3,
 	}
 
+	/// <summary>
+	/// The locality of vessel registration or enrolment relative to the nationality of a port, territorial sea, administrative area, exclusive zone or other location.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfVesselRegistry : int {
-		[System.ComponentModel.Description("TheVesselIsRegisteredOrEnrolledUnderTheSameNationalFlagAsThePortHarbourTerritorialSeaExclusiveEconomicZoneOrAdministrativeAreaInWhichTheObjectThatPossessesThisAttributeAppliesOrIsLocated")]
+		[System.ComponentModel.Description("The vessel is registered or enrolled under the same national flag as the port, harbour, territorial sea, exclusive economic zone, or administrative area in which the object that possesses this attribute applies or is located.")]
 		[EnumMember(Value = "Domestic")] 
 		[XmlEnum("1")] 
 		Domestic = 1,
 
-		[System.ComponentModel.Description("TheVesselIsRegisteredOrEnrolledUnderANationalFlagDifferentFromThePortHarbourTerritorialSeaExclusiveEconomicZoneOrOtherAdministrativeAreaInWhichTheObjectThatPossessesThisAttributeAppliesOrIsLocated")]
+		[System.ComponentModel.Description("The vessel is registered or enrolled under a national flag different from the port, harbour, territorial sea, exclusive economic zone, or other administrative area in which the object that possesses this attribute applies or is located.")]
 		[EnumMember(Value = "Foreign")] 
 		[XmlEnum("2")] 
 		Foreign = 2,
 	}
 
+	/// <summary>
+	/// Numerical comparison.
+	/// </summary>
+	/// <remarks>
+	/// Provides the relation between the value given in the model and the real ship's value.
+	/// </remarks>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum comparisonOperator : int {
-		[System.ComponentModel.Description("TheValueOfTheLeftValueIsGreaterThanThatOfTheRight")]
+		[System.ComponentModel.Description("The value of the left value is greater than that of the right.")]
 		[EnumMember(Value = "Greater Than")] 
 		[XmlEnum("1")] 
 		GreaterThan = 1,
 
-		[System.ComponentModel.Description("TheValueOfTheLeftExpressionIsGreaterThanOrEqualToThatOfTheRight")]
+		[System.ComponentModel.Description("The value of the left expression is greater than or equal to that of the right.")]
 		[EnumMember(Value = "Greater Than or Equal To")] 
 		[XmlEnum("2")] 
 		GreaterThanOrEqualTo = 2,
 
-		[System.ComponentModel.Description("TheValueOfTheLeftExpressionIsLessThanThatOfTheRight")]
+		[System.ComponentModel.Description("The value of the left expression is less than that of the right.")]
 		[EnumMember(Value = "Less Than")] 
 		[XmlEnum("3")] 
 		LessThan = 3,
 
-		[System.ComponentModel.Description("TheValueOfTheLeftExpressionIsLessThanOrEqualToThatOfTheRight")]
+		[System.ComponentModel.Description("The value of the left expression is less than or equal to that of the right.")]
 		[EnumMember(Value = "Less Than or Equal To")] 
 		[XmlEnum("4")] 
 		LessThanOrEqualTo = 4,
 
-		[System.ComponentModel.Description("TheTwoValuesAreEquivalent")]
+		[System.ComponentModel.Description("The two values are equivalent.")]
 		[EnumMember(Value = "Equal To")] 
 		[XmlEnum("5")] 
 		EqualTo = 5,
 
-		[System.ComponentModel.Description("TheTwoValuesAreNotEquivalent")]
+		[System.ComponentModel.Description("The two values are not equivalent.")]
 		[EnumMember(Value = "Not Equal To")] 
 		[XmlEnum("6")] 
 		NotEqualTo = 6,
 	}
 
+	/// <summary>
+	/// The various conditions of buildings and other constructions.
+	/// </summary>
+	/// <remarks>
+	/// The default 'condition' should be considered to be completed, undamaged and working normally.
+	/// </remarks>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum condition : int {
-		[System.ComponentModel.Description("BeingBuiltButNotYetCapableOfFunction")]
+		[System.ComponentModel.Description("Being built but not yet capable of function.")]
 		[EnumMember(Value = "Under Construction")] 
 		[XmlEnum("1")] 
 		UnderConstruction = 1,
 
-		[System.ComponentModel.Description("AStructureInADecayedOrDeterioratedConditionResultingFromNeglectOrDisuseOrADamagedStructureInNeedOfRepair")]
+		[System.ComponentModel.Description("A structure in a decayed or deteriorated condition resulting from neglect or disuse, or a damaged structure in need of repair.")]
 		[EnumMember(Value = "Ruined")] 
 		[XmlEnum("2")] 
 		Ruined = 2,
 
-		[System.ComponentModel.Description("AnAreaOfTheSeaALakeOrTheNavigablePartOfARiverThatIsBeingReclaimedAsLandUsuallyByTheDumpingOfEarthAndOtherMaterial")]
+		[System.ComponentModel.Description("An area of the sea, a lake or the navigable part of a river that is being reclaimed as land, usually by the dumping of earth and other material.")]
 		[EnumMember(Value = "Under Reclamation")] 
 		[XmlEnum("3")] 
 		UnderReclamation = 3,
 
-		[System.ComponentModel.Description("DetailedPlanningHasBeenCompletedButConstructionHasNotBeenInitiated")]
+		[System.ComponentModel.Description("Detailed planning has been completed but construction has not been initiated.")]
 		[EnumMember(Value = "Planned Construction")] 
 		[XmlEnum("5")] 
 		PlannedConstruction = 5,
 	}
 
+	/// <summary>
+	/// Any one of seven days in a week.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum dayOfWeek : int {
-		[System.ComponentModel.Description("TheFirstDayOfTheWeek")]
+		[System.ComponentModel.Description("The first day of the week.")]
 		[EnumMember(Value = "Sunday")] 
 		[XmlEnum("1")] 
 		Sunday = 1,
 
-		[System.ComponentModel.Description("TheSecondDayOfTheWeek")]
+		[System.ComponentModel.Description("The second day of the week.")]
 		[EnumMember(Value = "Monday")] 
 		[XmlEnum("2")] 
 		Monday = 2,
 
-		[System.ComponentModel.Description("TheThirdDayOfTheWeek")]
+		[System.ComponentModel.Description("The third day of the week.")]
 		[EnumMember(Value = "Tuesday")] 
 		[XmlEnum("3")] 
 		Tuesday = 3,
 
-		[System.ComponentModel.Description("TheFourthDayOfTheWeek")]
+		[System.ComponentModel.Description("The fourth day of the week.")]
 		[EnumMember(Value = "Wednesday")] 
 		[XmlEnum("4")] 
 		Wednesday = 4,
 
-		[System.ComponentModel.Description("TheFifthDayOfTheWeek")]
+		[System.ComponentModel.Description("The fifth day of the week.")]
 		[EnumMember(Value = "Thursday")] 
 		[XmlEnum("5")] 
 		Thursday = 5,
 
-		[System.ComponentModel.Description("TheSixthDayOfTheWeek")]
+		[System.ComponentModel.Description("The sixth day of the week.")]
 		[EnumMember(Value = "Friday")] 
 		[XmlEnum("6")] 
 		Friday = 6,
 
-		[System.ComponentModel.Description("TheSeventhDayOfTheWeek")]
+		[System.ComponentModel.Description("The seventh day of the week.")]
 		[EnumMember(Value = "Saturday")] 
 		[XmlEnum("7")] 
 		Saturday = 7,
 	}
 
+	/// <summary>
+	/// Whether a vessel must use a shore-based or other resource to obtain up-to-date information.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum dynamicResource : int {
-		[System.ComponentModel.Description("TheInformationIsStaticOrASourceOfUpToDateInformationIsUnavailableOrUnknown")]
+		[System.ComponentModel.Description("The information is static, or a source of up-to-date information is unavailable or unknown.")]
 		[EnumMember(Value = "Static")] 
 		[XmlEnum("1")] 
 		Static = 1,
 
-		[System.ComponentModel.Description("AnExternalSourceOfUpToDateInformationIsAvailableAndInteractionWithItToObtainUpToDateInformationIsRequired")]
+		[System.ComponentModel.Description("An external source of up-to-date information is available and interaction with it to obtain up-to-date information is required.")]
 		[EnumMember(Value = "Mandatory External Dynamic")] 
 		[XmlEnum("2")] 
 		MandatoryExternalDynamic = 2,
 
-		[System.ComponentModel.Description("AnExternalSourceOfUpToDateInformationIsAvailableButInteractionWithItToObtainUpToDateInformationIsNotRequired")]
+		[System.ComponentModel.Description("An external source of up-to-date information is available but interaction with it to obtain up-to-date information is not required.")]
 		[EnumMember(Value = "Optional External Dynamic")] 
 		[XmlEnum("3")] 
 		OptionalExternalDynamic = 3,
 
-		[System.ComponentModel.Description("UpToDateInformationMayBeComputedUsingOnlyOnboardResources")]
+		[System.ComponentModel.Description("Up-to-date information may be computed using only onboard resources.")]
 		[EnumMember(Value = "Onboard Dynamic")] 
 		[XmlEnum("4")] 
 		OnboardDynamic = 4,
 	}
 
+	/// <summary>
+	/// Services for combating fires, provided by different methods.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum firefightingService : int {
-		[System.ComponentModel.Description("PersonnelAndEquipmentThatAreCapableOfCombatingAFireFromAshore")]
+		[System.ComponentModel.Description("Personnel and equipment that are capable of combating a fire from ashore.")]
 		[EnumMember(Value = "Shore-Based Firefighting")] 
 		[XmlEnum("1")] 
 		ShoreBasedFirefighting = 1,
 
-		[System.ComponentModel.Description("TrainedFirefightingPersonnelWithTheCapabilityOfBoardingAndCombatingAFireOnAVessel")]
+		[System.ComponentModel.Description("Trained firefighting personnel with the capability of boarding and combating a fire on a vessel.")]
 		[EnumMember(Value = "Onboard Firefighting")] 
 		[XmlEnum("2")] 
 		OnboardFirefighting = 2,
 
-		[System.ComponentModel.Description("SpecialisedWatercraftWithFirefightingApparatusDesignedForFightingShorelineAndShipboardFires")]
+		[System.ComponentModel.Description("Specialised watercraft with firefighting apparatus designed for fighting shoreline and shipboard fires")]
 		[EnumMember(Value = "Firefighting Boat")] 
 		[XmlEnum("3")] 
 		FirefightingBoat = 3,
 	}
 
+	/// <summary>
+	/// Classification of ISPS security levels according to the ISPS Code.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum iSPSLevel : int {
-		[System.ComponentModel.Description("TheLevelForWhichMinimumAppropriateProtectiveSecurityMeasuresShallBeMaintainedAtAllTimes")]
+		[System.ComponentModel.Description("The level for which minimum appropriate protective security measures shall be maintained at all times.")]
 		[EnumMember(Value = "ISPS Level 1")] 
 		[XmlEnum("1")] 
 		IspsLevel1 = 1,
 
-		[System.ComponentModel.Description("TheLevelForWhichAppropriateAdditionalProtectiveSecurityMeasuresShallBeMaintainedForAPeriodOfTimeAsAResultOfHeightenedRiskOfASecurityIncident")]
+		[System.ComponentModel.Description("The level for which appropriate additional protective security measures shall be maintained for a period of time as a result of heightened risk of a security incident.")]
 		[EnumMember(Value = "ISPS Level 2")] 
 		[XmlEnum("2")] 
 		IspsLevel2 = 2,
 
-		[System.ComponentModel.Description("TheLevelForWhichFurtherSpecificProtectiveSecurityMeasuresShallBeMaintainedForALimitedPeriodOfTimeWhenASecurityIncidentIsProbableOrImminentAlthoughItMayNotBePossibleToIdentifyTheSpecificTarget")]
+		[System.ComponentModel.Description("The level for which further specific protective security measures shall be maintained for a limited period of time when a security incident is probable or imminent, although it may not be possible to identify the specific target.")]
 		[EnumMember(Value = "ISPS Level 3")] 
 		[XmlEnum("3")] 
 		IspsLevel3 = 3,
 	}
 
+	/// <summary>
+	/// Expresses whether all the constraints described by its co-attributes must be satisfied, or only one such constraint need be satisfied.
+	/// </summary>
+	/// <remarks>
+	/// Is intended to be used with co-attributes that encode limits on vessel dimensions, type of cargo, and other characteristics. The combination of constraints described by logicalConnectives and its co-attributes defines a subset of vessels to which information described by a feature or information type instance applies (or does not apply, is required, recommended, etc.). The relationship between the vessel subset and the information is indicated by an association - see PermissionType and InclusionType). The two listed values of logicalConnective are two of the basic operations of Boolean logic. The third basic operation (not) is not used.
+	/// </remarks>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum logicalConnectives : int {
-		[System.ComponentModel.Description("AllTheConditionsDescribedByTheOtherAttributesOfTheObjectOrSubAttributesOfTheSameComplexAttributeAreTrue")]
+		[System.ComponentModel.Description("All the conditions described by the other attributes of the object, or sub-attributes of the same complex attribute, are true.")]
 		[EnumMember(Value = "Logical Conjunction")] 
 		[XmlEnum("1")] 
 		LogicalConjunction = 1,
 
-		[System.ComponentModel.Description("AtLeastOneOfTheConditionsDescribedByTheOtherAttributesOfTheObjectOrSubAttributesOfTheSameComplexAttributesIsTrue")]
+		[System.ComponentModel.Description("At least one of the conditions described by the other attributes of the object, or sub-attributes of the same complex attributes, is true.")]
 		[EnumMember(Value = "Logical Disjunction")] 
 		[XmlEnum("2")] 
 		LogicalDisjunction = 2,
 	}
 
+	/// <summary>
+	/// Services for the prevention or treatment of, or response to injury or illness.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum medicalService : int {
-		[System.ComponentModel.Description("AVehicleForConveyingTheSickOrInjuredToOrFromAHospital")]
+		[System.ComponentModel.Description("A vehicle for conveying the sick or injured to or from a hospital.")]
 		[EnumMember(Value = "Ambulance")] 
 		[XmlEnum("1")] 
 		Ambulance = 1,
 
-		[System.ComponentModel.Description("DisinfectionOrPurificationWithFumes")]
+		[System.ComponentModel.Description("Disinfection or purification with fumes.")]
 		[EnumMember(Value = "Fumigation")] 
 		[XmlEnum("2")] 
 		Fumigation = 2,
 
-		[System.ComponentModel.Description("APlaceWhereADoctorIsAvailableToProvideMedicalAttention")]
+		[System.ComponentModel.Description("A place where a doctor is available to provide medical attention.")]
 		[EnumMember(Value = "Doctor")] 
 		[XmlEnum("3")] 
 		Doctor = 3,
 
-		[System.ComponentModel.Description("TheIsolationOfPatientsWithContagiousDiseases")]
+		[System.ComponentModel.Description("The isolation of patients with contagious diseases.")]
 		[EnumMember(Value = "Quarantine")] 
 		[XmlEnum("4")] 
 		Quarantine = 4,
 
-		[System.ComponentModel.Description("APlaceWhereSubstancesIntendedToProcureImmunityAgainstOneOrSeveralDiseasesAreAdministered")]
+		[System.ComponentModel.Description("A place where substances intended to procure immunity against one or several diseases are administered.")]
 		[EnumMember(Value = "Vaccination Centre")] 
 		[XmlEnum("5")] 
 		VaccinationCentre = 5,
 	}
 
+	/// <summary>
+	/// Indicates whether a vessel is included or excluded from the regulation/restriction/recommendation/nautical information.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum membership : int {
-		[System.ComponentModel.Description("VesselsWithTheseCharacteristicsAreIncludedInTheRegulationRestrictionRecommendationNauticalInformation")]
+		[System.ComponentModel.Description("Vessels with these characteristics are included in the regulation/restriction/recommendation/nautical information.")]
 		[EnumMember(Value = "Included")] 
 		[XmlEnum("1")] 
 		Included = 1,
 
-		[System.ComponentModel.Description("VesselsWithTheseCharacteristicsAreExcludedFromTheRegulationRestrictionRecommendationNauticalInformation")]
+		[System.ComponentModel.Description("Vessels with these characteristics are excluded from the regulation/restriction/recommendation/nautical information.")]
 		[EnumMember(Value = "Excluded")] 
 		[XmlEnum("2")] 
 		Excluded = 2,
 	}
 
+	/// <summary>
+	/// The process, arrangement or scheme of attachment used to secure a vessel to a berth.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum methodOfSecuring : int {
-		[System.ComponentModel.Description("VesselIsSecuredPerpendicularToTheWharfWithBowToSeaward")]
+		[System.ComponentModel.Description("Vessel is secured perpendicular to the wharf with bow to seaward.")]
 		[EnumMember(Value = "Bow to Seaward")] 
 		[XmlEnum("1")] 
 		BowToSeaward = 1,
 
-		[System.ComponentModel.Description("VesselIsSecuredPerpendicularToTheWharfWithSternToTheSeaward")]
+		[System.ComponentModel.Description("Vessel is secured perpendicular to the wharf with stern to the seaward.")]
 		[EnumMember(Value = "Stern to Seaward")] 
 		[XmlEnum("2")] 
 		SternToSeaward = 2,
 
-		[System.ComponentModel.Description("TheVesselIsSecuredPerpendicularToTheWharf")]
+		[System.ComponentModel.Description("The vessel is secured perpendicular to the wharf.")]
 		[EnumMember(Value = "Mediterranean Mooring")] 
 		[XmlEnum("3")] 
 		MediterraneanMooring = 3,
 
-		[System.ComponentModel.Description("MooringMethodProcedureUsedDuringOnshoreWindConditionsWithoutATug")]
+		[System.ComponentModel.Description("Mooring method/procedure used during onshore wind conditions without a tug.")]
 		[EnumMember(Value = "Baltic Mooring")] 
 		[XmlEnum("4")] 
 		BalticMooring = 4,
 
-		[System.ComponentModel.Description("MooringByManeuveringAheadAndAsternWhileDroppingAnchorsToSecureTheVesselWithReducedSwingingRoom")]
+		[System.ComponentModel.Description("Mooring by maneuvering ahead and astern while dropping anchors to secure the vessel with reduced swinging room.")]
 		[EnumMember(Value = "Running Mooring")] 
 		[XmlEnum("5")] 
 		RunningMooring = 5,
 
-		[System.ComponentModel.Description("MooringByUsingMainlyWindAndTideToPositionTheVesselWhileDroppingAnchorsToSecureTheVesselWithReducedSwingingRoomMakesLimitedUseOfTheEngineToPositionTheVessel")]
+		[System.ComponentModel.Description("Mooring by using mainly wind and tide to position the vessel while dropping anchors to secure the vessel with reduced swinging room. Makes limited use of the engine to position the vessel.")]
 		[EnumMember(Value = "Standing Mooring")] 
 		[XmlEnum("6")] 
 		StandingMooring = 6,
 
-		[System.ComponentModel.Description("AMooringStructureUsedByTankersToLoadAndUnloadInPortApproachesOrInOffshoreOilAndGasFieldsTheSizeOfTheStructureCanVaryBetweenALargeMooringBuoyAndAMannedFloatingStructure")]
+		[System.ComponentModel.Description("A mooring structure used by tankers to load and unload in port approaches or in offshore oil and gas fields. The size of the structure can vary between a large mooring buoy and a manned floating structure.")]
 		[EnumMember(Value = "Single Point Mooring")] 
 		[XmlEnum("7")] 
 		SinglePointMooring = 7,
 
-		[System.ComponentModel.Description("MooringUsingTheVesselSAnchorsAndBuoysToSecureTheVesselAtMultiplePoints")]
+		[System.ComponentModel.Description("Mooring using the vessel's anchors and buoys to secure the vessel at multiple points.")]
 		[EnumMember(Value = "Conventional Mooring")] 
 		[XmlEnum("8")] 
 		ConventionalMooring = 8,
 
-		[System.ComponentModel.Description("MooringAlongsideAnotherVessel")]
+		[System.ComponentModel.Description("Mooring alongside another vessel.")]
 		[EnumMember(Value = "Ship-to-Ship Mooring")] 
 		[XmlEnum("9")] 
 		ShipToShipMooring = 9,
 
-		[System.ComponentModel.Description("MooringSystemSupportedByASpiderBuoy")]
+		[System.ComponentModel.Description("Mooring system supported by a spider buoy.")]
 		[EnumMember(Value = "Spider Buoy Mooring")] 
 		[XmlEnum("10")] 
 		SpiderBuoyMooring = 10,
 	}
 
+	/// <summary>
+	/// Code for function performed by the online resource.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum onlineFunction : int {
-		[System.ComponentModel.Description("OnlineInstructionsForTransferringDataFromOneStorageDeviceOrSystemToAnother")]
+		[System.ComponentModel.Description("Online instructions for transferring data from one storage device or system to another.")]
 		[EnumMember(Value = "Download")] 
 		[XmlEnum("1")] 
 		Download = 1,
 
-		[System.ComponentModel.Description("OnlineInstructionsForRequestingTheResourceFromTheProvider")]
+		[System.ComponentModel.Description("Online instructions for requesting the resource from the provider.")]
 		[EnumMember(Value = "Offline Access")] 
 		[XmlEnum("3")] 
 		OfflineAccess = 3,
 
-		[System.ComponentModel.Description("OnlineOrderProcessForObtainingTheResource")]
+		[System.ComponentModel.Description("Online order process for obtaining the resource.")]
 		[EnumMember(Value = "Order")] 
 		[XmlEnum("4")] 
 		Order = 4,
 
-		[System.ComponentModel.Description("ToMakePainstakingInvestigationOrExamination")]
+		[System.ComponentModel.Description("To make painstaking investigation or examination.")]
 		[EnumMember(Value = "Search")] 
 		[XmlEnum("5")] 
 		Search = 5,
 
-		[System.ComponentModel.Description("CompleteMetadataProvided")]
+		[System.ComponentModel.Description("Complete metadata provided.")]
 		[EnumMember(Value = "Complete Metadata")] 
 		[XmlEnum("6")] 
 		CompleteMetadata = 6,
 
-		[System.ComponentModel.Description("BrowseGraphicProvided")]
+		[System.ComponentModel.Description("Browse graphic provided.")]
 		[EnumMember(Value = "Browse Graphic")] 
 		[XmlEnum("7")] 
 		BrowseGraphic = 7,
 
-		[System.ComponentModel.Description("OnlineResourceUploadCapabilityProvided")]
+		[System.ComponentModel.Description("Online resource upload capability provided.")]
 		[EnumMember(Value = "Upload")] 
 		[XmlEnum("8")] 
 		Upload = 8,
 
-		[System.ComponentModel.Description("OnlineEmailServiceProvided")]
+		[System.ComponentModel.Description("Online email service provided.")]
 		[EnumMember(Value = "Email Service")] 
 		[XmlEnum("9")] 
 		EmailService = 9,
 
-		[System.ComponentModel.Description("OnlineBrowsingProvided")]
+		[System.ComponentModel.Description("Online browsing provided.")]
 		[EnumMember(Value = "Browsing")] 
 		[XmlEnum("10")] 
 		Browsing = 10,
 
-		[System.ComponentModel.Description("OnlineFileAccessProvided")]
+		[System.ComponentModel.Description("Online file access provided.")]
 		[EnumMember(Value = "File Access")] 
 		[XmlEnum("11")] 
 		FileAccess = 11,
 	}
 
+	/// <summary>
+	/// The various substances which are transported, stored or exploited.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum product : int {
-		[System.ComponentModel.Description("AThickSlipperyLiquidThatWillNotDissolveInWaterUsuallyPetroleumBasedInTheContextOfStorageTanks")]
+		[System.ComponentModel.Description("A thick, slippery liquid that will not dissolve in water, usually petroleum based in the context of storage tanks.")]
 		[EnumMember(Value = "Oil")] 
 		[XmlEnum("1")] 
 		Oil = 1,
 
-		[System.ComponentModel.Description("ASubstanceWithParticlesThatCanMoveFreelyUsuallyAFuelSubstanceInTheContextOfStorageTanks")]
+		[System.ComponentModel.Description("A substance with particles that can move freely, usually a fuel substance in the context of storage tanks.")]
 		[EnumMember(Value = "Gas")] 
 		[XmlEnum("2")] 
 		Gas = 2,
 
-		[System.ComponentModel.Description("AGeneralTermForRockAndRockFragmentsRangingInSizeFromPebblesAndGravelToBouldersOrLargeRockMasses")]
+		[System.ComponentModel.Description("A general term for rock and rock fragments ranging in size from pebbles and gravel to boulders or large rock masses.")]
 		[EnumMember(Value = "Stone")] 
 		[XmlEnum("4")] 
 		Stone = 4,
 
-		[System.ComponentModel.Description("AHardBlackMineralThatIsBurnedAsFuel")]
+		[System.ComponentModel.Description("A hard black mineral that is burned as fuel.")]
 		[EnumMember(Value = "Coal")] 
 		[XmlEnum("5")] 
 		Coal = 5,
 
-		[System.ComponentModel.Description("ASolidRockOrMineralFromWhichMetalIsObtained")]
+		[System.ComponentModel.Description("A solid rock or mineral from which metal is obtained.")]
 		[EnumMember(Value = "Ore")] 
 		[XmlEnum("6")] 
 		Ore = 6,
 
-		[System.ComponentModel.Description("AnySubstanceObtainedByOrUsedInAChemicalProcess")]
+		[System.ComponentModel.Description("Any substance obtained by or used in a chemical process.")]
 		[EnumMember(Value = "Chemicals")] 
 		[XmlEnum("7")] 
 		Chemicals = 7,
 
-		[System.ComponentModel.Description("AWhiteFluidSecretedByFemaleMammalsAsFoodForTheirYoung")]
+		[System.ComponentModel.Description("A white fluid secreted by female mammals as food for their young.")]
 		[EnumMember(Value = "Milk")] 
 		[XmlEnum("9")] 
 		Milk = 9,
 
-		[System.ComponentModel.Description("AMineralFromWhichAluminumIsObtained")]
+		[System.ComponentModel.Description("A mineral from which aluminum is obtained.")]
 		[EnumMember(Value = "Bauxite")] 
 		[XmlEnum("10")] 
 		Bauxite = 10,
 
-		[System.ComponentModel.Description("ASolidSubstanceObtainedAfterGasAndTarHaveBeenExtractedFromCoalUsedAsAFuel")]
+		[System.ComponentModel.Description("A solid substance obtained after gas and tar have been extracted from coal, used as a fuel.")]
 		[EnumMember(Value = "Coke")] 
 		[XmlEnum("11")] 
 		Coke = 11,
 
-		[System.ComponentModel.Description("AnOblongLumpOfCastIronMetal")]
+		[System.ComponentModel.Description("An oblong lump of cast iron metal.")]
 		[EnumMember(Value = "Iron Ingots")] 
 		[XmlEnum("12")] 
 		IronIngots = 12,
 
-		[System.ComponentModel.Description("SodiumChlorideObtainedFromMinesOrByTheEvaporationOfSeaWater")]
+		[System.ComponentModel.Description("Sodium chloride obtained from mines or by the evaporation of sea water.")]
 		[EnumMember(Value = "Salt")] 
 		[XmlEnum("13")] 
 		Salt = 13,
 
-		[System.ComponentModel.Description("LooseMaterialConsistingOfSmallButEasilyDistinguishableSeparateGrainsBetween00625And2000MillimetresInDiameter")]
+		[System.ComponentModel.Description("Loose material consisting of small but easily distinguishable, separate grains, between 0.0625 and 2.000 millimetres in diameter.")]
 		[EnumMember(Value = "Sand")] 
 		[XmlEnum("14")] 
 		Sand = 14,
 
-		[System.ComponentModel.Description("WoodPreparedForUseInBuildingOrCarpentry")]
+		[System.ComponentModel.Description("Wood prepared for use in building or carpentry.")]
 		[EnumMember(Value = "Timber")] 
 		[XmlEnum("15")] 
 		Timber = 15,
 
-		[System.ComponentModel.Description("PowderyFragmentsOfWoodMadeInSawingTimberOrCoarseChipsProducedForUseInManufacturingPressedBoard")]
+		[System.ComponentModel.Description("Powdery fragments of wood made in sawing timber or coarse chips produced for use in manufacturing pressed board.")]
 		[EnumMember(Value = "Sawdust/Wood Chips")] 
 		[XmlEnum("16")] 
 		SawdustWoodChips = 16,
 
-		[System.ComponentModel.Description("DiscardedMetalSuitableForBeingReprocessed")]
+		[System.ComponentModel.Description("Discarded metal suitable for being reprocessed.")]
 		[EnumMember(Value = "Scrap Metal")] 
 		[XmlEnum("17")] 
 		ScrapMetal = 17,
 
-		[System.ComponentModel.Description("NaturalGasThatHasBeenLiquefiedForEaseOfTransportByCoolingTheGasTo162Celsius")]
+		[System.ComponentModel.Description("Natural gas that has been liquefied for ease of transport by cooling the gas to -162 Celsius.")]
 		[EnumMember(Value = "Liquefied Natural Gas")] 
 		[XmlEnum("18")] 
 		LiquefiedNaturalGas = 18,
 
-		[System.ComponentModel.Description("ACompressedGasConsistingOfFlammableLightHydrocarbonsAndDerivedFromPetroleum")]
+		[System.ComponentModel.Description("A compressed gas consisting of flammable light hydrocarbons and derived from petroleum.")]
 		[EnumMember(Value = "Liquefied Petroleum Gas")] 
 		[XmlEnum("19")] 
 		LiquefiedPetroleumGas = 19,
 
-		[System.ComponentModel.Description("TheFermentedJuiceOfGrapes")]
+		[System.ComponentModel.Description("The fermented juice of grapes.")]
 		[EnumMember(Value = "Wine")] 
 		[XmlEnum("20")] 
 		Wine = 20,
 
-		[System.ComponentModel.Description("ASubstanceMadeOfPowderedLimeAndClayMixedWithWater")]
+		[System.ComponentModel.Description("A substance made of powdered lime and clay, mixed with water.")]
 		[EnumMember(Value = "Cement")] 
 		[XmlEnum("21")] 
 		Cement = 21,
 
-		[System.ComponentModel.Description("ASmallHardSeedEspeciallyThatOfAnyCerealPlantSuchAsWheatRiceCornRyeEtc")]
+		[System.ComponentModel.Description("A small hard seed, especially that of any cereal plant such as wheat, rice, corn, rye etc.")]
 		[EnumMember(Value = "Grain")] 
 		[XmlEnum("22")] 
 		Grain = 22,
 	}
 
+	/// <summary>
+	/// The degree of reliability attributed to a position.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum qualityOfHorizontalMeasurement : int {
-		[System.ComponentModel.Description("ThePositionSWasWereDeterminedByTheOperationOfMakingMeasurementsForDeterminingTheRelativePositionOfPointsOnAboveOrBeneathTheEarthSSurfaceSurveyImpliesARegularControlledSurveyOfAnyDate")]
+		[System.ComponentModel.Description("The position(s) was(were) determined by the operation of making measurements for determining the relative position of points on, above or beneath the earth's surface. Survey implies a regular, controlled survey of any date.")]
 		[EnumMember(Value = "Surveyed")] 
 		[XmlEnum("1")] 
 		Surveyed = 1,
 
-		[System.ComponentModel.Description("SurveyDataIsDoesNotExistOrIsVeryPoor")]
+		[System.ComponentModel.Description("Survey data is does not exist or is very poor.")]
 		[EnumMember(Value = "Unsurveyed")] 
 		[XmlEnum("2")] 
 		Unsurveyed = 2,
 
-		[System.ComponentModel.Description("NotSurveyedToModernStandardsOrDueToItsAgeScaleOrPositionalOrVerticalUncertaintiesIsNotSuitableToTheTypeOfNavigationExpectedInTheArea")]
+		[System.ComponentModel.Description("Not surveyed to modern standards; or due to its age, scale, or positional or vertical uncertainties is not suitable to the type of navigation expected in the area.")]
 		[EnumMember(Value = "Inadequately Surveyed")] 
 		[XmlEnum("3")] 
 		InadequatelySurveyed = 3,
 
-		[System.ComponentModel.Description("APositionThatIsConsideredToBeLessThanThirdOrderAccuracyButIsGenerallyConsideredToBeWithin305MetresOfItsCorrectGeographicLocationAlsoMayApplyToAnObjectWhosePositionDoesNotRemainFixed")]
+		[System.ComponentModel.Description("A position that is considered to be less than third-order accuracy, but is generally considered to be within 30.5 metres of its correct geographic location. Also may apply to an object whose position does not remain fixed.")]
 		[EnumMember(Value = "Approximate")] 
 		[XmlEnum("4")] 
 		Approximate = 4,
 
-		[System.ComponentModel.Description("OfUncertainPositionTheExpressionIsUsedPrincipallyOnChartsToIndicateThatAWreckShoalEtcHasBeenReportedInVariousPositionsAndNotDefinitelyDeterminedInAny")]
+		[System.ComponentModel.Description("Of uncertain position. The expression is used principally on charts to indicate that a wreck, shoal, etc., has been reported in various positions and not definitely determined in any.")]
 		[EnumMember(Value = "Position Doubtful")] 
 		[XmlEnum("5")] 
 		PositionDoubtful = 5,
 
-		[System.ComponentModel.Description("AFeatureSPositionHasBeenObtainedFromQuestionableOrUnreliableData")]
+		[System.ComponentModel.Description("A feature's position has been obtained from questionable or unreliable data.")]
 		[EnumMember(Value = "Unreliable")] 
 		[XmlEnum("6")] 
 		Unreliable = 6,
 
-		[System.ComponentModel.Description("AnObjectWhosePositionHasBeenReportedAndItsPositionConfirmedBySomeMeansOtherThanAFormalSurveySuchAsAnIndependentReportOfTheSameObject")]
+		[System.ComponentModel.Description("An object whose position has been reported and its position confirmed by some means other than a formal survey such as an independent report of the same object.")]
 		[EnumMember(Value = "Reported (Not Surveyed)")] 
 		[XmlEnum("7")] 
 		ReportedNotSurveyed = 7,
 
-		[System.ComponentModel.Description("AnObjectWhosePositionHasBeenReportedAndItsPositionHasNotBeenConfirmed")]
+		[System.ComponentModel.Description("An object whose position has been reported and its position has not been confirmed.")]
 		[EnumMember(Value = "Reported (Not Confirmed)")] 
 		[XmlEnum("8")] 
 		ReportedNotConfirmed = 8,
 
-		[System.ComponentModel.Description("TheMostProbablePositionOfAnObjectDeterminedFromIncompleteDataOrDataOfQuestionableAccuracy")]
+		[System.ComponentModel.Description("The most probable position of an object determined from incomplete data or data of questionable accuracy.")]
 		[EnumMember(Value = "Estimated")] 
 		[XmlEnum("9")] 
 		Estimated = 9,
 
-		[System.ComponentModel.Description("APositionThatIsOfAKnownValueSuchAsThePositionOfAnAnchorBerthOrOtherDefinedObject")]
+		[System.ComponentModel.Description("A position that is of a known value, such as the position of an anchor berth or other defined object.")]
 		[EnumMember(Value = "Precisely Known")] 
 		[XmlEnum("10")] 
 		PreciselyKnown = 10,
 
-		[System.ComponentModel.Description("APositionThatIsComputedFromData")]
+		[System.ComponentModel.Description("A position that is computed from data.")]
 		[EnumMember(Value = "Calculated")] 
 		[XmlEnum("11")] 
 		Calculated = 11,
 	}
 
+	/// <summary>
+	/// Work or maintenance activities whereby vessels or equipment are restored to working order, renovated, or improved in condition.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum repairService : int {
-		[System.ComponentModel.Description("TheProcessOfNeutralizingOrReducingToAMinimumTheMagneticEffectsTheVesselItselfExertsOnAMagneticCompassItIsBasedOnThePrincipleThatTheMagneticEffectOfTheIronAndSteelOfTheVesselCanBeCounterbalancedByMeansOfMagnetsAndSoftIronPlacedNearTheCompassAlsoCalledCompassAdjustmentCompassCompensationOrMagneticCompensation")]
+		[System.ComponentModel.Description("The process of neutralizing or reducing to a minimum the magnetic effects the vessel itself exerts on a magnetic compass. It is based on the principle that the magnetic effect of the iron and steel of the vessel can be counterbalanced by means of magnets and soft iron placed near the compass. Also called compass adjustment, compass compensation, or magnetic compensation.")]
 		[EnumMember(Value = "Compensation of Magnetic Compass")] 
 		[XmlEnum("1")] 
 		CompensationOfMagneticCompass = 1,
 
-		[System.ComponentModel.Description("UnderwaterInspectionAndRepairPerformedByDivers")]
+		[System.ComponentModel.Description("Underwater inspection and repair performed by divers.")]
 		[EnumMember(Value = "Diver Service")] 
 		[XmlEnum("2")] 
 		DiverService = 2,
 
-		[System.ComponentModel.Description("RepairsToEqipmentInstalledOnTheShipSBridge")]
+		[System.ComponentModel.Description("Repairs to eqipment installed on the ship's bridge.")]
 		[EnumMember(Value = "Bridge Equipment Repair")] 
 		[XmlEnum("3")] 
 		BridgeEquipmentRepair = 3,
 
-		[System.ComponentModel.Description("RepairOfAnEngineOrMachineParts")]
+		[System.ComponentModel.Description("Repair of an engine or machine parts.")]
 		[EnumMember(Value = "Engine Repair")] 
 		[XmlEnum("4")] 
 		EngineRepair = 4,
 
-		[System.ComponentModel.Description("RepairOfMarineElectronicInstruments")]
+		[System.ComponentModel.Description("Repair of marine electronic instruments.")]
 		[EnumMember(Value = "Electronic Equipment Repair")] 
 		[XmlEnum("5")] 
 		ElectronicEquipmentRepair = 5,
 
-		[System.ComponentModel.Description("RepairsToTheShipSBodyFrameOrSuperstructure")]
+		[System.ComponentModel.Description("Repairs to the ship's body, frame, or superstructure.")]
 		[EnumMember(Value = "Hull Repair")] 
 		[XmlEnum("6")] 
 		HullRepair = 6,
 
-		[System.ComponentModel.Description("RepairsToEquipmentUsedInTheActOfNavigatingAShip")]
+		[System.ComponentModel.Description("Repairs to equipment used in the act of navigating a ship.")]
 		[EnumMember(Value = "Navigational Equipment Repair")] 
 		[XmlEnum("7")] 
 		NavigationalEquipmentRepair = 7,
 
-		[System.ComponentModel.Description("RepairsToPropellerHubAndBlades")]
+		[System.ComponentModel.Description("Repairs to propeller hub and blades.")]
 		[EnumMember(Value = "Propeller Repair")] 
 		[XmlEnum("8")] 
 		PropellerRepair = 8,
 
-		[System.ComponentModel.Description("RepairsToEquipmentUsedInSalvageOperations")]
+		[System.ComponentModel.Description("Repairs to equipment used in salvage operations.")]
 		[EnumMember(Value = "Salvage Gear Repair")] 
 		[XmlEnum("9")] 
 		SalvageGearRepair = 9,
 
-		[System.ComponentModel.Description("RepairsToDriveShaftsUsedForTransmittingMechanicalPowerAndTorqueToAPropeller")]
+		[System.ComponentModel.Description("Repairs to drive shafts used for transmitting mechanical power and torque to a propeller.")]
 		[EnumMember(Value = "Shaft Repair")] 
 		[XmlEnum("10")] 
 		ShaftRepair = 10,
 	}
 
+	/// <summary>
+	/// Application of measures to ensure that a vessel is free of disease and disease risks, or issue of completion or exemption certificates for such measures.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum shipSanitationControl : int {
-		[System.ComponentModel.Description("CapableOfApplyingMeasuresToEnsureThatAVesselIsFreeOfDiseaseAndDiseaseRisksButCannotIssueACertificate")]
+		[System.ComponentModel.Description("Capable of applying measures to ensure that a vessel is free of disease and disease risks, but cannot issue a certificate.")]
 		[EnumMember(Value = "Sanitation Measures Only")] 
 		[XmlEnum("1")] 
 		SanitationMeasuresOnly = 1,
 
-		[System.ComponentModel.Description("TheCompetentAuthorityCanIssueAShipSanitationControlCertificateAfterSatisfactorilyCompletingOrSupervisingTheCompletionOfShipSanitationControlMeasures")]
+		[System.ComponentModel.Description("The competent authority can issue a Ship Sanitation Control Certificate after satisfactorily completing or supervising the completion of ship sanitation control measures.")]
 		[EnumMember(Value = "Issue SSCC")] 
 		[XmlEnum("2")] 
 		IssueSscc = 2,
 
-		[System.ComponentModel.Description("TheCompetentAuthorityMayIssueAShipSanitationControlExemptionCertificateIfItIsSatisfiedThatTheShipIsFreeOfInfectionAndContaminationIncludingVectorsAndReservoirs")]
+		[System.ComponentModel.Description("The competent authority may issue a Ship Sanitation Control Exemption Certificate if it is satisfied that the ship is free of infection and contamination, including vectors and reservoirs.")]
 		[EnumMember(Value = "Issue SSCEC")] 
 		[XmlEnum("3")] 
 		IssueSscec = 3,
 	}
 
+	/// <summary>
+	/// Type of the source.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum sourceType : int {
-		[System.ComponentModel.Description("TreatyConventionOrInternationalAgreementLawOrRegulationIssuedByANationalOrOtherAuthority")]
+		[System.ComponentModel.Description("Treaty, convention, or international agreement; law or regulation issued by a national or other authority.")]
 		[EnumMember(Value = "Law or Regulation")] 
 		[XmlEnum("1")] 
 		LawOrRegulation = 1,
 
-		[System.ComponentModel.Description("PublicationNotHavingTheForceOfLawIssuedByAnInternationalOrganisationOrANationalOrLocalAdministration")]
+		[System.ComponentModel.Description("Publication not having the force of law, issued by an international organisation or a national or local administration.")]
 		[EnumMember(Value = "Official Publication")] 
 		[XmlEnum("2")] 
 		OfficialPublication = 2,
 
-		[System.ComponentModel.Description("ReportedByMarinerSAndConfirmedByAnotherSource")]
+		[System.ComponentModel.Description("Reported by mariner(s) and confirmed by another source.")]
 		[EnumMember(Value = "Mariner Report, Confirmed")] 
 		[XmlEnum("7")] 
 		MarinerReportConfirmed = 7,
 
-		[System.ComponentModel.Description("ReportedByMarinerSButNotConfirmed")]
+		[System.ComponentModel.Description("Reported by mariner(s) but not confirmed.")]
 		[EnumMember(Value = "Mariner Report, Not Confirmed")] 
 		[XmlEnum("8")] 
 		MarinerReportNotConfirmed = 8,
 
-		[System.ComponentModel.Description("ShippingAndOtherIndustryPublicationsIncludingGraphicsChartsAndWebSites")]
+		[System.ComponentModel.Description("Shipping and other industry publications, including graphics, charts and web sites.")]
 		[EnumMember(Value = "Industry Publications and Reports")] 
 		[XmlEnum("9")] 
 		IndustryPublicationsAndReports = 9,
 
-		[System.ComponentModel.Description("InformationObtainedFromSatelliteImages")]
+		[System.ComponentModel.Description("Information obtained from satellite images.")]
 		[EnumMember(Value = "Remotely Sensed Images")] 
 		[XmlEnum("10")] 
 		RemotelySensedImages = 10,
 
-		[System.ComponentModel.Description("InformationObtainedFromPhotographs")]
+		[System.ComponentModel.Description("Information obtained from photographs.")]
 		[EnumMember(Value = "Photographs")] 
 		[XmlEnum("11")] 
 		Photographs = 11,
 
-		[System.ComponentModel.Description("InformationObtainedFromProductsIssuedByHydrographicOffices")]
+		[System.ComponentModel.Description("Information obtained from products issued by Hydrographic Offices.")]
 		[EnumMember(Value = "Products Issued by HO Services")] 
 		[XmlEnum("12")] 
 		ProductsIssuedByHoServices = 12,
 
-		[System.ComponentModel.Description("InformationObtainedFromNewsMedia")]
+		[System.ComponentModel.Description("Information obtained from news media.")]
 		[EnumMember(Value = "News Media")] 
 		[XmlEnum("13")] 
 		NewsMedia = 13,
 
-		[System.ComponentModel.Description("InformationObtainedFromTheAnalysisOfTrafficData")]
+		[System.ComponentModel.Description("Information obtained from the analysis of traffic data.")]
 		[EnumMember(Value = "Traffic Data")] 
 		[XmlEnum("14")] 
 		TrafficData = 14,
 	}
 
+	/// <summary>
+	/// Classification of services for the provision of materials, goods, utilities, or personal services to vessels, passengers, or crew.
+	/// </summary>
+	/// <remarks>
+	/// Describes an enumeration or codelist listing specific services.
+	/// </remarks>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum supplyService : int {
-		[System.ComponentModel.Description("TheProvisionOfShoresideElectricalPowerToAShipAtBerthWhileItsMainAndAuxiliaryEnginesAreShutDown")]
+		[System.ComponentModel.Description("The provision of shoreside electrical power to a ship at berth while its main and auxiliary engines are shut down.")]
 		[EnumMember(Value = "Shore Power")] 
 		[XmlEnum("1")] 
 		ShorePower = 1,
 
-		[System.ComponentModel.Description("TransferOfFuelOilToTheFuelCompartmentsOfAShip")]
+		[System.ComponentModel.Description("Transfer of fuel oil to the fuel compartments of a ship.")]
 		[EnumMember(Value = "Fuel Oil Bunkering")] 
 		[XmlEnum("2")] 
 		FuelOilBunkering = 2,
 
-		[System.ComponentModel.Description("TransferOfLiquefiedNaturalGasToTheFuelCompartmentsOfAShip")]
+		[System.ComponentModel.Description("Transfer of liquefied natural gas to the fuel compartments of a ship.")]
 		[EnumMember(Value = "LNG Bunkering")] 
 		[XmlEnum("3")] 
 		LngBunkering = 3,
 
-		[System.ComponentModel.Description("SubstancesCapableOfReducingFrictionHeatAndWearWhenIntroducedAsAFilmBetweenSolidSurfaces")]
+		[System.ComponentModel.Description("Substances capable of reducing friction, heat, and wear when introduced as a film between solid surfaces.")]
 		[EnumMember(Value = "Lubricants")] 
 		[XmlEnum("4")] 
 		Lubricants = 4,
 
-		[System.ComponentModel.Description("TheGasIntoWhichWaterIsChangedByBoiling")]
+		[System.ComponentModel.Description("The gas into which water is changed by boiling.")]
 		[EnumMember(Value = "Steam")] 
 		[XmlEnum("5")] 
 		Steam = 5,
 
-		[System.ComponentModel.Description("WaterWhichCanBeUsedForDrinkingAndFoodPreparation")]
+		[System.ComponentModel.Description("Water which can be used for drinking and food preparation.")]
 		[EnumMember(Value = "Potable Water")] 
 		[XmlEnum("6")] 
 		PotableWater = 6,
 
-		[System.ComponentModel.Description("AUniversalHoseConnectionForTheSupplyOfWaterForFightingFires")]
+		[System.ComponentModel.Description("A universal hose connection for the supply of water for fighting fires.")]
 		[EnumMember(Value = "International Shore Connection")] 
 		[XmlEnum("7")] 
 		InternationalShoreConnection = 7,
 
-		[System.ComponentModel.Description("APlaceWhereFoodAndOtherSuchSuppliesAreAvailable")]
+		[System.ComponentModel.Description("A place where food and other such supplies are available.")]
 		[EnumMember(Value = "Provisions")] 
 		[XmlEnum("8")] 
 		Provisions = 8,
 
-		[System.ComponentModel.Description("ADealerInShipsSupplies")]
+		[System.ComponentModel.Description("A dealer in ships' supplies.")]
 		[EnumMember(Value = "Chandler")] 
 		[XmlEnum("9")] 
 		Chandler = 9,
 
-		[System.ComponentModel.Description("APlaceWhereMechanicalRepairsCanBeUndertakenToEnginesOrOtherVesselEquipment")]
+		[System.ComponentModel.Description("A place where mechanical repairs can be undertaken to engines or other vessel equipment.")]
 		[EnumMember(Value = "Mechanics Workshop")] 
 		[XmlEnum("10")] 
 		MechanicsWorkshop = 10,
 	}
 
+	/// <summary>
+	/// Services for the adjustment of vessel equipment or for assessments pertaining to cargo, compliance with regulations, safety, or security.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum technicalPortService : int {
-		[System.ComponentModel.Description("TheProcessOfNeutralizingOrReducingToAMinimumTheMagneticEffectsTheVesselItselfExertsOnAMagneticCompassItIsBasedOnThePrincipleThatTheMagneticEffectOfTheIronAndSteelOfTheVesselCanBeCounterbalancedByMeansOfMagnetsAndSoftIronPlacedNearTheCompassAlsoCalledCompassAdjustmentCompassCompensationOrMagneticCompensation")]
+		[System.ComponentModel.Description("The process of neutralizing or reducing to a minimum the magnetic effects the vessel itself exerts on a magnetic compass. It is based on the principle that the magnetic effect of the iron and steel of the vessel can be counterbalanced by means of magnets and soft iron placed near the compass. Also called compass adjustment, compass compensation, or magnetic compensation.")]
 		[EnumMember(Value = "Compensation of Magnetic Compass")] 
 		[XmlEnum("1")] 
 		CompensationOfMagneticCompass = 1,
 
-		[System.ComponentModel.Description("NeutralizationOfTheStrengthOfTheMagneticFieldOfAVesselByMeansOfSuitablyArrangedElectricCoilsPermanentlyInstalledInTheVesselSeeAlsoDegaussingCable")]
+		[System.ComponentModel.Description("Neutralization of the strength of the magnetic field of a vessel, by means of suitably arranged electric coils permanently installed in the vessel. See also Degaussing Cable.")]
 		[EnumMember(Value = "Degaussing")] 
 		[XmlEnum("2")] 
 		Degaussing = 2,
 
-		[System.ComponentModel.Description("InspectionEvaluationOrMonitoringOfTheQuantityStowageLoadingAndUnloadingAndConditionOfCargoAndTheEffectsOfCargoesOnVesselStabilityAndSafety")]
+		[System.ComponentModel.Description("Inspection, evaluation or monitoring of the quantity, stowage, loading and unloading, and condition of cargo, and the effects of cargoes on vessel stability and safety.")]
 		[EnumMember(Value = "Cargo Surveying")] 
 		[XmlEnum("3")] 
 		CargoSurveying = 3,
 
-		[System.ComponentModel.Description("AssessmentOfQualityAndComplianceWithApplicableLawRegulationsAndSafetyStandards")]
+		[System.ComponentModel.Description("Assessment of quality and compliance with applicable law, regulations, and safety standards.")]
 		[EnumMember(Value = "Vetting")] 
 		[XmlEnum("4")] 
 		Vetting = 4,
 	}
 
+	/// <summary>
+	/// Classification of methods of communication over a distance by electrical, electronic, or electromagnetic means.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum telecommunicationService : int {
-		[System.ComponentModel.Description("TheTransferOrExchangeOfInformationByUsingSoundsThatAreBeingMadeByMouthAndThroatWhenSpeaking")]
+		[System.ComponentModel.Description("The transfer or exchange of information by using sounds that are being made by mouth and throat when speaking.")]
 		[EnumMember(Value = "Voice")] 
 		[XmlEnum("1")] 
 		Voice = 1,
 
-		[System.ComponentModel.Description("ASystemOfTransmittingAndReproducingGraphicMatterAsPrintingOrStillPicturesByMeansOfSignalsSentOverTelephoneLines")]
+		[System.ComponentModel.Description("A system of transmitting and reproducing graphic matter (as printing or still pictures) by means of signals sent over telephone lines.")]
 		[EnumMember(Value = "Facsimile")] 
 		[XmlEnum("2")] 
 		Facsimile = 2,
 
-		[System.ComponentModel.Description("ShortMessageServiceIsAFormOfTextMessagingCommunicationOnPhonesAndMobilePhones")]
+		[System.ComponentModel.Description("Short Message Service is a form of text messaging communication on phones and mobile phones.")]
 		[EnumMember(Value = "SMS")] 
 		[XmlEnum("3")] 
 		Sms = 3,
 
-		[System.ComponentModel.Description("ARepresentationOfFactsConceptsOrInstructionsInAFormalisedMannerSuitableForCommunicationInterpretationOrProcessing")]
+		[System.ComponentModel.Description("A representation of facts, concepts or instructions in a formalised manner suitable for communication, interpretation or processing.")]
 		[EnumMember(Value = "Data")] 
 		[XmlEnum("4")] 
 		Data = 4,
 
-		[System.ComponentModel.Description("DataThatIsConstantlyReceivedByAndPresentedToAnEndUserWhileBeingDeliveredByAProvider")]
+		[System.ComponentModel.Description("Data that is constantly received by and presented to an end-user while being delivered by a provider.")]
 		[EnumMember(Value = "Streamed Data")] 
 		[XmlEnum("5")] 
 		StreamedData = 5,
 
-		[System.ComponentModel.Description("ASystemOfCommunicationInWhichMessagesAreSentOverLongDistancesByUsingATelephoneSystemAndArePrintedByUsingASpecialMachineCalledATeletypewriter")]
+		[System.ComponentModel.Description("A system of communication in which messages are sent over long distances by using a telephone system and are printed by using a special machine (called a teletypewriter).")]
 		[EnumMember(Value = "Telex")] 
 		[XmlEnum("6")] 
 		Telex = 6,
 
-		[System.ComponentModel.Description("AnApparatusSystemOrProcessForCommunicationAtADistanceByElectricTransmissionOverWire")]
+		[System.ComponentModel.Description("An apparatus, system or process for communication at a distance by electric transmission over wire.")]
 		[EnumMember(Value = "Telegraph")] 
 		[XmlEnum("7")] 
 		Telegraph = 7,
 
-		[System.ComponentModel.Description("MessagesAndOtherDataExchangedBetweenIndividualsUsingComputersInANetwork")]
+		[System.ComponentModel.Description("Messages and other data exchanged between individuals using computers in a network.")]
 		[EnumMember(Value = "Email")] 
 		[XmlEnum("8")] 
 		Email = 8,
 	}
 
+	/// <summary>
+	/// The attribute from which a text string is derived.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum textType : int {
-		[System.ComponentModel.Description("TheIndividualNameOfAFeature")]
+		[System.ComponentModel.Description("The individual name of a feature.")]
 		[EnumMember(Value = "Name")] 
 		[XmlEnum("1")] 
 		Name = 1,
 	}
 
+	/// <summary>
+	/// The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum verticalDatum : int {
-		[System.ComponentModel.Description("TheAverageHeightOfTheLowWatersOfSpringTidesThisLevelIsUsedAsATidalDatumInSomeAreasAlsoCalledSpringLowWater")]
+		[System.ComponentModel.Description("The average height of the low waters of spring tides. This level is used as a tidal datum in some areas. Also called spring low water.")]
 		[EnumMember(Value = "Mean Low Water Springs")] 
 		[XmlEnum("1")] 
 		MeanLowWaterSprings = 1,
 
-		[System.ComponentModel.Description("TheAverageHeightOfLowerLowWaterSpringsAtAPlace")]
+		[System.ComponentModel.Description("The average height of lower low water springs at a place.")]
 		[EnumMember(Value = "Mean Lower Low Water Springs")] 
 		[XmlEnum("2")] 
 		MeanLowerLowWaterSprings = 2,
 
-		[System.ComponentModel.Description("TheAverageHeightOfTheSurfaceOfTheSeaAtATideStationForAllStagesOfTheTideOverA19YearPeriodUsuallyDeterminedFromHourlyHeightReadingsMeasuredFromAFixedPredeterminedReferenceLevel")]
+		[System.ComponentModel.Description("The average height of the surface of the sea at a tide station for all stages of the tide over a 19-year period, usually determined from hourly height readings measured from a fixed predetermined reference level.")]
 		[EnumMember(Value = "Mean Sea Level")] 
 		[XmlEnum("3")] 
 		MeanSeaLevel = 3,
 
-		[System.ComponentModel.Description("AnArbitraryLevelConformingToTheLowestTideObservedAtAPlaceOrSomeWhatLower")]
+		[System.ComponentModel.Description("An arbitrary level conforming to the lowest tide observed at a place, or some what lower.")]
 		[EnumMember(Value = "Lowest Low Water")] 
 		[XmlEnum("4")] 
 		LowestLowWater = 4,
 
-		[System.ComponentModel.Description("TheAverageHeightOfAllLowWatersAtAPlaceOverA19YearPeriod")]
+		[System.ComponentModel.Description("The average height of all low waters at a place over a 19-year period.")]
 		[EnumMember(Value = "Mean Low Water")] 
 		[XmlEnum("5")] 
 		MeanLowWater = 5,
 
-		[System.ComponentModel.Description("AnArbitraryLevelConformingToTheLowestWaterLevelObservedAtAPlaceAtSpringTidesDuringAPeriodOfTimeShorterThan19Years")]
+		[System.ComponentModel.Description("An arbitrary level conforming to the lowest water level observed at a place at spring tides during a period of time shorter than 19 years.")]
 		[EnumMember(Value = "Lowest Low Water Springs")] 
 		[XmlEnum("6")] 
 		LowestLowWaterSprings = 6,
 
-		[System.ComponentModel.Description("AnArbitraryLevelUsuallyWithin03mFromThatOfMeanLowWaterSpringsMlws")]
+		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Low Water Springs (MLWS).")]
 		[EnumMember(Value = "Approximate Mean Low Water Springs")] 
 		[XmlEnum("7")] 
 		ApproximateMeanLowWaterSprings = 7,
 
-		[System.ComponentModel.Description("AnArbitraryTidalDatumApproximatingTheLevelOfTheMeanOfTheLowerLowWaterAtSpringTidesItWasFirstUsedInWatersSurroundingIndia")]
+		[System.ComponentModel.Description("An arbitrary tidal datum approximating the level of the mean of the lower low water at spring tides. It was first used in waters surrounding India.")]
 		[EnumMember(Value = "Indian Spring Low Water")] 
 		[XmlEnum("8")] 
 		IndianSpringLowWater = 8,
 
-		[System.ComponentModel.Description("AnArbitraryLevelApproximatingThatOfMeanLowWaterSpringsMlws")]
+		[System.ComponentModel.Description("An arbitrary level, approximating that of mean low water springs (MLWS).")]
 		[EnumMember(Value = "Low Water Springs")] 
 		[XmlEnum("9")] 
 		LowWaterSprings = 9,
 
-		[System.ComponentModel.Description("AnArbitraryLevelUsuallyWithin03mFromThatOfLowestAstronomicalTideLat")]
+		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Lowest Astronomical Tide (LAT).")]
 		[EnumMember(Value = "Approximate Lowest Astronomical Tide")] 
 		[XmlEnum("10")] 
 		ApproximateLowestAstronomicalTide = 10,
 
-		[System.ComponentModel.Description("AnArbitraryLevelApproximatingTheLowestWaterLevelObservedAtAPlaceUsuallyEquivalentToTheIndianSpringLowWaterIslw")]
+		[System.ComponentModel.Description("An arbitrary level approximating the lowest water level observed at a place, usually equivalent to the Indian Spring Low Water (ISLW).")]
 		[EnumMember(Value = "Nearly Lowest Low Water")] 
 		[XmlEnum("11")] 
 		NearlyLowestLowWater = 11,
 
-		[System.ComponentModel.Description("TheAverageHeightOfTheLowerLowWatersAtAPlaceOverA19YearPeriod")]
+		[System.ComponentModel.Description("The average height of the lower low waters at a place over a 19-year period.")]
 		[EnumMember(Value = "Mean Lower Low Water")] 
 		[XmlEnum("12")] 
 		MeanLowerLowWater = 12,
 
-		[System.ComponentModel.Description("TheLowestLevelReachedAtAPlaceByTheWaterSurfaceInOneOscillationAlsoCalledLowTide")]
+		[System.ComponentModel.Description("The lowest level reached at a place by the water surface in one oscillation. Also called low tide.")]
 		[EnumMember(Value = "Low Water")] 
 		[XmlEnum("13")] 
 		LowWater = 13,
 
-		[System.ComponentModel.Description("AnArbitraryLevelUsuallyWithin03mFromThatOfMeanLowWaterMlw")]
+		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Low Water (MLW).")]
 		[EnumMember(Value = "Approximate Mean Low Water")] 
 		[XmlEnum("14")] 
 		ApproximateMeanLowWater = 14,
 
-		[System.ComponentModel.Description("AnArbitraryLevelUsuallyWithin03mFromThatOfMeanLowerLowWaterMllw")]
+		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Lower Low Water (MLLW).")]
 		[EnumMember(Value = "Approximate Mean Lower Low Water")] 
 		[XmlEnum("15")] 
 		ApproximateMeanLowerLowWater = 15,
 
-		[System.ComponentModel.Description("TheAverageHeightOfAllHighWatersAtAPlaceOverA19YearPeriod")]
+		[System.ComponentModel.Description("The average height of all high waters at a place over a 19-year period.")]
 		[EnumMember(Value = "Mean High Water")] 
 		[XmlEnum("16")] 
 		MeanHighWater = 16,
 
-		[System.ComponentModel.Description("TheAverageHeightOfTheHighWatersOfSpringTidesAlsoCalledSpringHighWater")]
+		[System.ComponentModel.Description("The average height of the high waters of spring tides. Also called spring high water.")]
 		[EnumMember(Value = "Mean High Water Springs")] 
 		[XmlEnum("17")] 
 		MeanHighWaterSprings = 17,
 
-		[System.ComponentModel.Description("TheHighestLevelReachedAtAPlaceByTheWaterSurfaceInOneOscillation")]
+		[System.ComponentModel.Description("The highest level reached at a place by the water surface in one oscillation.")]
 		[EnumMember(Value = "High Water")] 
 		[XmlEnum("18")] 
 		HighWater = 18,
 
-		[System.ComponentModel.Description("AnArbitraryLevelUsuallyWithin03mFromThatOfMeanSeaLevelMsl")]
+		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Sea Level (MSL).")]
 		[EnumMember(Value = "Approximate Mean Sea Level")] 
 		[XmlEnum("19")] 
 		ApproximateMeanSeaLevel = 19,
 
-		[System.ComponentModel.Description("AnArbitraryLevelApproximatingThatOfMeanHighWaterSpringsMhws")]
+		[System.ComponentModel.Description("An arbitrary level, approximating that of mean high water springs (MHWS).")]
 		[EnumMember(Value = "High Water Springs")] 
 		[XmlEnum("20")] 
 		HighWaterSprings = 20,
 
-		[System.ComponentModel.Description("TheAverageHeightOfHigherHighWatersAtAPlaceOverA19YearPeriod")]
+		[System.ComponentModel.Description("The average height of higher high waters at a place over a 19-year period.")]
 		[EnumMember(Value = "Mean Higher High Water")] 
 		[XmlEnum("21")] 
 		MeanHigherHighWater = 21,
 
-		[System.ComponentModel.Description("TheLevelOfLowWaterSpringsNearTheTimeOfAnEquinox")]
+		[System.ComponentModel.Description("The level of low water springs near the time of an equinox.")]
 		[EnumMember(Value = "Equinoctial Spring Low Water")] 
 		[XmlEnum("22")] 
 		EquinoctialSpringLowWater = 22,
 
-		[System.ComponentModel.Description("TheLowestTideLevelWhichCanBePredictedToOccurUnderAverageMeteorologicalConditionsAndUnderAnyCombinationOfAstronomicalConditions")]
+		[System.ComponentModel.Description("The lowest tide level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.")]
 		[EnumMember(Value = "Lowest Astronomical Tide")] 
 		[XmlEnum("23")] 
 		LowestAstronomicalTide = 23,
 
-		[System.ComponentModel.Description("AnArbitraryDatumDefinedByALocalHarbourAuthorityFromWhichLevelsAndTidalHeightsAreMeasuredByThisAuthority")]
+		[System.ComponentModel.Description("An arbitrary datum defined by a local harbour authority, from which levels and tidal heights are measured by this authority.")]
 		[EnumMember(Value = "Local Datum")] 
 		[XmlEnum("24")] 
 		LocalDatum = 24,
 
-		[System.ComponentModel.Description("AVerticalReferenceSystemWithItsZeroBasedOnTheMeanWaterLevelAtRimouskiPointeAuPereQuebecOverThePeriod1970To1988")]
+		[System.ComponentModel.Description("A vertical reference system with its zero based on the mean water level at Rimouski/Pointe-au-Pere, Quebec, over the period 1970 to 1988.")]
 		[EnumMember(Value = "International Great Lakes Datum 1985")] 
 		[XmlEnum("25")] 
 		InternationalGreatLakesDatum1985 = 25,
 
-		[System.ComponentModel.Description("TheAverageOfAllHourlyWaterLevelsOverTheAvailablePeriodOfRecord")]
+		[System.ComponentModel.Description("The average of all hourly water levels over the available period of record.")]
 		[EnumMember(Value = "Mean Water Level")] 
 		[XmlEnum("26")] 
 		MeanWaterLevel = 26,
 
-		[System.ComponentModel.Description("TheAverageOfTheLowestLowWatersOneFromEachOf19YearsOfObservations")]
+		[System.ComponentModel.Description("The average of the lowest low waters, one from each of 19 years of observations.")]
 		[EnumMember(Value = "Lower Low Water Large Tide")] 
 		[XmlEnum("27")] 
 		LowerLowWaterLargeTide = 27,
 
-		[System.ComponentModel.Description("TheAverageOfTheHighestHighWatersOneFromEachOf19YearsOfObservations")]
+		[System.ComponentModel.Description("The average of the highest high waters, one from each of 19 years of observations.")]
 		[EnumMember(Value = "Higher High Water Large Tide")] 
 		[XmlEnum("28")] 
 		HigherHighWaterLargeTide = 28,
 
-		[System.ComponentModel.Description("AnArbitraryLevelApproximatingTheHighestWaterLevelObservedAtAPlaceUsuallyEquivalentToTheHighWaterSprings")]
+		[System.ComponentModel.Description("An arbitrary level approximating the highest water level observed at a place, usually equivalent to the high water springs.")]
 		[EnumMember(Value = "Nearly Highest High Water")] 
 		[XmlEnum("29")] 
 		NearlyHighestHighWater = 29,
 
-		[System.ComponentModel.Description("TheHighestTidalLevelWhichCanBePredictedToOccurUnderAverageMeteorologicalConditionsAndUnderAnyCombinationOfAstronomicalConditions")]
+		[System.ComponentModel.Description("The highest tidal level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.")]
 		[EnumMember(Value = "Highest Astronomical Tide")] 
 		[XmlEnum("30")] 
 		HighestAstronomicalTide = 30,
 
-		[System.ComponentModel.Description("TheDatumRefersToEachBalticCountrySRealizationOfTheEuropeanVerticalReferenceSystemEvrsWithLandUpliftEpoch2000WhichIsConnectedToTheNormaalAmsterdamsPeilNap")]
+		[System.ComponentModel.Description("The datum refers to each Baltic country's realization of the European Vertical Reference System (EVRS) with land-uplift epoch 2000, which is connected to the Normaal Amsterdams Peil (NAP).")]
 		[EnumMember(Value = "Baltic Sea Chart Datum 2000")] 
 		[XmlEnum("44")] 
 		BalticSeaChartDatum2000 = 44,
 	}
 
+	/// <summary>
+	/// Characteristics of vessels.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum vesselsCharacteristics : int {
-		[System.ComponentModel.Description("TheMaximumLengthOfTheShip")]
+		[System.ComponentModel.Description("The maximum length of the ship.")]
 		[EnumMember(Value = "Length Overall")] 
 		[XmlEnum("1")] 
 		LengthOverall = 1,
 
-		[System.ComponentModel.Description("TheShipSLengthMeasuredAtTheWaterline")]
+		[System.ComponentModel.Description("The ship's length measured at the waterline.")]
 		[EnumMember(Value = "Length at Waterline")] 
 		[XmlEnum("2")] 
 		LengthAtWaterline = 2,
 
-		[System.ComponentModel.Description("TheWidthOrBeamOfTheVessel")]
+		[System.ComponentModel.Description("The width or beam of the vessel.")]
 		[EnumMember(Value = "Breadth")] 
 		[XmlEnum("3")] 
 		Breadth = 3,
 
-		[System.ComponentModel.Description("TheDepthOfWaterNecessaryToFloatAVesselFullyLoaded")]
+		[System.ComponentModel.Description("The depth of water necessary to float a vessel fully loaded.")]
 		[EnumMember(Value = "Draught")] 
 		[XmlEnum("4")] 
 		Draught = 4,
 
-		[System.ComponentModel.Description("AMeasurementOfTheWeightOfTheVesselUsuallyUsedForWarshipsMerchantShipsAreUsuallyMeasuredBasedOnTheVolumeOfCargoSpaceSeeTonnageDisplacementIsExpressedEitherInLongTonsOf2240PoundsOrMetricTonnesOf1000KgSinceTheTwoUnitsAreVeryCloseInSize2240Pounds1016KgAnd1000Kg2205PoundsItIsCommonNotToDistinguishBetweenThemToPreserveSecrecyNationsSometimesMisstateAWarshipSDisplacement")]
+		[System.ComponentModel.Description("A measurement of the weight of the vessel, usually used for warships. (Merchant ships are usually measured based on the volume of cargo space; see tonnage). Displacement is expressed either in long tons of 2,240 pounds or metric tonnes of 1,000 kg. Since the two units are very close in size (2,240 pounds = 1,016 kg and 1,000 kg = 2,205 pounds), it is common not to distinguish between them. To preserve secrecy, nations sometimes misstate a warship's displacement.")]
 		[EnumMember(Value = "Displacement Tonnage")] 
 		[XmlEnum("6")] 
 		DisplacementTonnage = 6,
 
-		[System.ComponentModel.Description("TheWeightOfTheShipExcludingCargoFuelBallastStoresPassengersAndCrewButWithWaterInTheBoilersToSteamingLevel")]
+		[System.ComponentModel.Description("The weight of the ship excluding cargo, fuel, ballast, stores, passengers, and crew, but with water in the boilers to steaming level.")]
 		[EnumMember(Value = "Displacement Tonnage, Light")] 
 		[XmlEnum("7")] 
 		DisplacementTonnageLight = 7,
 
-		[System.ComponentModel.Description("TheWeightOfTheShipIncludingCargoPassengersFuelWaterStoresDunnageAndSuchOtherItemsNecessaryForUseOnAVoyageWhichBringsTheVesselDownToHerLoadDraft")]
+		[System.ComponentModel.Description("The weight of the ship including cargo, passengers, fuel, water, stores, dunnage and such other items necessary for use on a voyage, which brings the vessel down to her load draft.")]
 		[EnumMember(Value = "Displacement Tonnage, Loaded")] 
 		[XmlEnum("8")] 
 		DisplacementTonnageLoaded = 8,
 
-		[System.ComponentModel.Description("TheDifferenceBetweenDisplacementLightAndDisplacementLoadedAMeasureOfTheShipSTotalCarryingCapacity")]
+		[System.ComponentModel.Description("The difference between displacement, light and displacement, loaded. A measure of the ship's total carrying capacity.")]
 		[EnumMember(Value = "Deadweight Tonnage")] 
 		[XmlEnum("9")] 
 		DeadweightTonnage = 9,
 
-		[System.ComponentModel.Description("TheEntireInternalCubicCapacityOfTheShipExpressedInTonsOf100CubicFeetToTheTonExceptCertainSpacesWithAreExemptedSuchAsPeakAndOtherTanksForWaterBallastOpenForecastleBridgeAndPoopAccessOfHatchwaysCertainLightAndAirSpacesDomesOfSkylightsCondenserAnchorGearSteeringGearWheelHouseGalleyAndCabinForPassengers")]
+		[System.ComponentModel.Description("The entire internal cubic capacity of the ship expressed in tons of 100 cubic feet to the ton, except certain spaces with are exempted such as: peak and other tanks for water ballast, open forecastle bridge and poop, access of hatchways, certain light and air spaces, domes of skylights, condenser, anchor gear, steering gear, wheel house, galley and cabin for passengers.")]
 		[EnumMember(Value = "Gross Tonnage")] 
 		[XmlEnum("10")] 
 		GrossTonnage = 10,
 
-		[System.ComponentModel.Description("ObtainedFromTheGrossTonnageByDeductingCrewAndNavigatingSpacesAndAllowancesForPropulsionMachinery")]
+		[System.ComponentModel.Description("Obtained from the gross tonnage by deducting crew and navigating spaces and allowances for propulsion machinery.")]
 		[EnumMember(Value = "Net Tonnage")] 
 		[XmlEnum("11")] 
 		NetTonnage = 11,
 
-		[System.ComponentModel.Description("ThePanamaCanalUniversalMeasurementSystemPcUmsIsBasedOnNetTonnageModifiedForPanamaCanalPurposesPcUmsIsBasedOnAMathematicalFormulaToCalculateAVesselSTotalVolumeAPcUmsNetTonIsEquivalentTo100CubicFeetOfCapacity")]
+		[System.ComponentModel.Description("The Panama Canal/Universal Measurement System (PC/UMS) is based on net tonnage, modified for Panama Canal purposes. PC/UMS is based on a mathematical formula to calculate a vessel's total volume; a PC/UMS net ton is equivalent to 100 cubic feet of capacity.")]
 		[EnumMember(Value = "Panama Canal/Universal Measurement System Net Tonnage")] 
 		[XmlEnum("12")] 
 		PanamaCanalUniversalMeasurementSystemNetTonnage = 12,
 
-		[System.ComponentModel.Description("TheSuezCanalNetTonnageScntIsDerivedWithANumberOfModificationsFromTheFormerNetRegisterTonnageOfTheMoorsomSystemAndWasEstablishedByTheInternationalCommissionOfConstantinopleInItsProtocolOf18December1873ItIsStillInUseAsAmendedByTheRulesOfNavigationOfTheSuezCanalAuthorityAndIsRegisteredInTheSuezCanalTonnageCertificate")]
+		[System.ComponentModel.Description("The Suez Canal Net Tonnage (SCNT) is derived with a number of modifications from the former net register tonnage of the Moorsom System and was established by the International Commission of Constantinople in its Protocol of 18 December 1873. It is still in use, as amended by the Rules of Navigation of the Suez Canal Authority, and is registered in the Suez Canal Tonnage Certificate.")]
 		[EnumMember(Value = "Suez Canal Net Tonnage")] 
 		[XmlEnum("13")] 
 		SuezCanalNetTonnage = 13,
 	}
 
+	/// <summary>
+	/// The unit used for vessel characteristics attribute.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum vesselsCharacteristicsUnit : int {
-		[System.ComponentModel.Description("TheBasicUnitOfLengthInTheInternationalSystemOfUnitsSiSystem")]
+		[System.ComponentModel.Description("The basic unit of length in the International System of Units (SI) system.")]
 		[EnumMember(Value = "Metres")] 
 		[XmlEnum("1")] 
 		Metres = 1,
 
-		[System.ComponentModel.Description("TheTonneOrMetricTonUSOftenRedundantlyReferredToAsAMetricTonneIsAUnitOfMassEqualTo1000Kg2205LbOrApproximatelyTheMassOfOneCubicMetreOfWaterAtFourDegreesCelsiusItIsSometimesAbbreviatedAsMtInTheUnitedStatesButThisConflictsWithOtherSiSymbolsTheTonneIsNotAUnitInTheInternationalSystemOfUnitsSiButIsAcceptedForUseWithTheSiInSiUnitsAndPrefixesTheTonneIsAMegagramMgTheImperialAndUsCustomaryUnitsComparableToTheTonneAreBothSpelledTonInEnglishThoughTheyDifferInMassPronunciationOfTonneTheWordUsedInTheUkAndTonIsUsuallyIdenticalButIsNotTooConfusingUnlessAccuracyIsImportantAsTheTonneAndUkLongTonDifferByOnly16")]
+		[System.ComponentModel.Description("The tonne or metric ton (U.S.), often redundantly referred to as a metric tonne, is a unit of mass equal to 1,000 kg (2,205 lb) or approximately the mass of one cubic metre of water at four degrees Celsius. It is sometimes abbreviated as mt in the United States, but this conflicts with other SI symbols. The tonne is not a unit in the International System of Units (SI), but is accepted for use with the SI. In SI units and prefixes, the tonne is a megagram (Mg). The Imperial and US customary units comparable to the tonne are both spelled ton in English, though they differ in mass. Pronunciation of tonne (the word used in the UK) and ton is usually identical, but is not too confusing unless accuracy is important as the tonne and UK long ton differ by only 1.6.")]
 		[EnumMember(Value = "Metric Ton")] 
 		[XmlEnum("3")] 
 		MetricTon = 3,
 
-		[System.ComponentModel.Description("LongTonWeightTonOrImperialTonIsTheNameForTheUnitCalledTheTonInTheAvoirdupoisOrImperialSystemOfMeasurementsAsUsedInTheUnitedKingdomAndSeveralOtherCommonwealthCountriesItHasBeenMostlyReplacedByTheTonneAndInTheUnitedStatesByTheShortTonOneLongTonIsEqualTo2240Pounds1016KgOr35CubicFeet09911MOfSaltWaterWithADensityOf64LbFt1025GMlItHasSomeLimitedUseInTheUnitedStatesMostCommonlyInMeasuringTheDisplacementOfShipsAndWasTheUnitPrescribedForWarshipsByTheWashingtonNavalTreatyForExampleBattleshipsWereLimitedToAMassOf35000LongTons36000T39000St")]
+		[System.ComponentModel.Description("Long ton (weight ton or imperial ton) is the name for the unit called the \"ton\" in the avoirdupois or Imperial system of measurements, as used in the United Kingdom and several other Commonwealth countries. It has been mostly replaced by the tonne, and in the United States by the short ton. One long ton is equal to 2,240 pounds (1,016 kg) or 35 cubic feet (0.9911 m) of salt water with a density of 64 lb/ft (1.025 g/ml). It has some limited use in the United States, most commonly in measuring the displacement of ships, and was the unit prescribed for warships by the Washington Naval Treaty for example battleships were limited to a mass of 35,000 long tons (36,000 t; 39,000 ST).")]
 		[EnumMember(Value = "Ton")] 
 		[XmlEnum("4")] 
 		Ton = 4,
 
-		[System.ComponentModel.Description("AUnitOfWeightEqualTo2000Pounds90718474KgInTheUnitedStatesItIsOftenCalledSimplyTonWithoutDistinguishingItFromTheMetricTonTonne1000KilogramsOrTheLongTon2240Pounds10160469088KilogramsRatherTheOtherTwoAreSpecificallyNotedThereAreHoweverSomeUsApplicationsForWhichUnspecifiedTonsNormallyMeansLongTonsForExampleNavyShipsOrMetricTonsWorldGrainProductionFiguresBothTheLongAndShortTonAreDefinedAs20HundredweightsButAHundredweightIs100Pounds45359237KgInTheUsSystemShortOrNetHundredweightAnd112Pounds5080234544KgInTheImperialSystemLongOrGrossHundredweight")]
+		[System.ComponentModel.Description("A unit of weight equal to 2,000 pounds (907.18474 kg). In the United States it is often called simply ton without distinguishing it from the metric ton (tonne, 1,000 kilograms) or the long ton (2,240 pounds / 1,016.0469088 kilograms); rather, the other two are specifically noted. There are, however, some US applications for which unspecified tons normally means long tons (for example, Navy ships) or metric tons (world grain production figures). Both the long and short ton are defined as 20 hundredweights, but a hundredweight is 100 pounds (45.359237 kg) in the US system (short or net hundredweight) and 112 pounds (50.80234544 kg) in the Imperial system (long or gross hundredweight).")]
 		[EnumMember(Value = "Short Ton")] 
 		[XmlEnum("5")] 
 		ShortTon = 5,
 
-		[System.ComponentModel.Description("GrossTonnageGtIsAFunctionOfTheVolumeOfAllShipSEnclosedSpacesFromKeelToFunnelMeasuredToTheOutsideOfTheHullFramingThereIsASlidingScaleFactorSoGtIsAKindOfCapacityDerivedIndexThatIsUsedToRankAShipForPurposesOfDeterminingManningSafetyAndOtherStatutoryRequirementsAndIsExpressedSimplyAsGtWhichIsAUnitlessEntityEvenThoughItsDerivationIsTiedToTheCubicMeterUnitOfVolumetricCapacityTonnageMeasurementsAreNowGovernedByAnImoConventionInternationalConventionOnTonnageMeasurementOfShips1969LondonRulesWhichAppliesToAllShipsBuiltAfterJuly1982InAccordanceWithTheConventionTheCorrectTermToUseNowIsGtWhichIsAFunctionOfTheMouldedVolumeOfAllEnclosedSpacesOfTheShip")]
+		[System.ComponentModel.Description("Gross tonnage (GT) is a function of the volume of all ship's enclosed spaces (from keel to funnel) measured to the outside of the hull framing. There is a sliding scale factor. So GT is a kind of capacity-derived index that is used to rank a ship for purposes of determining manning, safety and other statutory requirements and is expressed simply as GT, which is a unitless entity, even though its derivation is tied to the cubic meter unit of volumetric capacity.Tonnage measurements are now governed by an IMO Convention (International Convention on Tonnage Measurement of Ships, 1969 (London-Rules)), which applies to all ships built after July 1982. In accordance with the Convention, the correct term to use now is GT, which is a function of the moulded volume of all enclosed spaces of the ship.")]
 		[EnumMember(Value = "Gross Ton")] 
 		[XmlEnum("6")] 
 		GrossTon = 6,
 
-		[System.ComponentModel.Description("NetTonnageNtIsBasedOnACalculationOfTheVolumeOfAllCargoSpacesOfTheShipItIndicatesAVesselsEarningSpaceAndIsAFunctionOfTheMouldedVolumeOfAllCargoSpacesOfTheShip")]
+		[System.ComponentModel.Description("Net tonnage (NT) is based on a calculation of the volume of all cargo spaces of the ship. It indicates a vessels earning space and is a function of the moulded volume of all cargo spaces of the ship.")]
 		[EnumMember(Value = "Net Ton")] 
 		[XmlEnum("7")] 
 		NetTon = 7,
 
-		[System.ComponentModel.Description("TheSuezCanalNetTonnageScntIsDerivedWithANumberOfModificationsFromTheFormerNetRegisterTonnageOfTheMoorsomSystemAndWasEstablishedByTheInternationalCommissionOfConstantinopleInItsProtocolOf18December1873ItIsStillInUseAsAmendedByTheRulesOfNavigationOfTheSuezCanalAuthorityAndIsRegisteredInTheSuezCanalTonnageCertificate")]
+		[System.ComponentModel.Description("The Suez Canal Net Tonnage (SCNT) is derived with a number of modifications from the former net register tonnage of the Moorsom System and was established by the International Commission of Constantinople in its Protocol of 18 December 1873. It is still in use, as amended by the Rules of Navigation of the Suez Canal Authority, and is registered in the Suez Canal Tonnage Certificate.")]
 		[EnumMember(Value = "Suez Canal Net Tonnage")] 
 		[XmlEnum("9")] 
 		SuezCanalNetTonnage = 9,
 	}
 
+	/// <summary>
+	/// Service for the reception of residues, polluting substances, refuse, oily wastes, and by-products from ships.
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum wasteDisposalService : int {
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveOilRelatedWasteResidueOfTheTypeOilyBilgeWaterAsSpecifiedInMarpolAnnexI")]
+		[System.ComponentModel.Description("The service with facility to receive oil related waste/residue of the type \"Oily bilge water\" as specified in MARPOL Annex I.")]
 		[EnumMember(Value = "MARPOL Annex I Oily Bilge Water")] 
 		[XmlEnum("1")] 
 		MarpolAnnexIOilyBilgeWater = 1,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveOilRelatedWasteResidueOfTheTypeOilyResiduesSludgeAsSpecifiedInMarpolAnnexI")]
+		[System.ComponentModel.Description("The service with facility to receive oil related waste/residue of the type \"Oily Residues (sludge)\" as specified in MARPOL Annex I.")]
 		[EnumMember(Value = "MARPOL Annex I Oily Residues")] 
 		[XmlEnum("2")] 
 		MarpolAnnexIOilyResidues = 2,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveOilRelatedWasteResidueOfTheTypeOilyTankWashingsSlopsAsSpecifiedInMarpolAnnexI")]
+		[System.ComponentModel.Description("The service with facility to receive oil related waste/residue of the type \"Oily tank washings (slops)\" as specified in MARPOL Annex I.")]
 		[EnumMember(Value = "MARPOL Annex I Oily Tank Washings")] 
 		[XmlEnum("3")] 
 		MarpolAnnexIOilyTankWashings = 3,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveOilRelatedWasteResidueOfTheTypeDirtyBallastWaterAsSpecifiedInMarpolAnnexI")]
+		[System.ComponentModel.Description("The service with facility to receive oil related waste/residue of the type \"Dirty ballast water\" as specified in MARPOL Annex I.")]
 		[EnumMember(Value = "MARPOL Annex I Dirty Ballast Water")] 
 		[XmlEnum("4")] 
 		MarpolAnnexIDirtyBallastWater = 4,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveOilRelatedWasteResidueOfTheTypeScaleAndSludgeFromTankCleaningAsSpecifiedInMarpolAnnexI")]
+		[System.ComponentModel.Description("The service with facility to receive oil related waste/residue of the type \"Scale and sludge from tank cleaning\" as specified in MARPOL Annex I.")]
 		[EnumMember(Value = "MARPOL Annex I Scale and Sludge from Tank Cleaning")] 
 		[XmlEnum("5")] 
 		MarpolAnnexIScaleAndSludgeFromTankCleaning = 5,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveOilRelatedWasteResidueOfTheTypeOtherAsSpecifiedInMarpolAnnexI")]
+		[System.ComponentModel.Description("The service with facility to receive oil related waste/residue of the type \"Other\" as specified in MARPOL Annex I.")]
 		[EnumMember(Value = "MARPOL Annex I Other Oily Waste")] 
 		[XmlEnum("6")] 
 		MarpolAnnexIOtherOilyWaste = 6,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveChemicalNoxiousLiquidSubstancesRelatedWasteResidueOfTheTypeCategoryXAsSpecifiedInMarpolAnnexIi")]
+		[System.ComponentModel.Description("The service with facility to receive chemical/Noxious liquid substances related waste/residue of the type \"Category X\" as specified in MARPOL Annex II.")]
 		[EnumMember(Value = "MARPOL Annex II Category X")] 
 		[XmlEnum("7")] 
 		MarpolAnnexIiCategoryX = 7,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveChemicalNoxiousLiquidSubstancesRelatedWasteResidueOfTheTypeCategoryYAsSpecifiedInMarpolAnnexIi")]
+		[System.ComponentModel.Description("The service with facility to receive chemical/Noxious liquid substances related waste/residue of the type \"Category Y\" as specified in MARPOL Annex II.")]
 		[EnumMember(Value = "MARPOL Annex II Category Y")] 
 		[XmlEnum("8")] 
 		MarpolAnnexIiCategoryY = 8,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveChemicalNoxiousLiquidSubstancesRelatedWasteResidueOfTheTypeCategoryZAsSpecifiedInMarpolAnnexIi")]
+		[System.ComponentModel.Description("The service with facility to receive chemical/Noxious liquid substances related waste/residue of the type \"Category Z\" as specified in MARPOL Annex II.")]
 		[EnumMember(Value = "MARPOL Annex II Category Z")] 
 		[XmlEnum("9")] 
 		MarpolAnnexIiCategoryZ = 9,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveChemicalNoxiousLiquidSubstancesRelatedWasteResidueOfTheTypeOtherSubstanceAsSpecifiedInMarpolAnnexIi")]
+		[System.ComponentModel.Description("The service with facility to receive chemical/Noxious liquid substances related waste/residue of the type \"Other substance\" as specified in MARPOL Annex II.")]
 		[EnumMember(Value = "MARPOL Annex II Category OS")] 
 		[XmlEnum("10")] 
 		MarpolAnnexIiCategoryOs = 10,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveWasteResidueOfTheTypeSewageAsSpecifiedInMarpolAnnexIv")]
+		[System.ComponentModel.Description("The service with facility to receive waste/residue of the type \"Sewage\" as specified in MARPOL Annex IV.")]
 		[EnumMember(Value = "MARPOL Annex IV Sewage")] 
 		[XmlEnum("11")] 
 		MarpolAnnexIvSewage = 11,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveGarbageRelatedWasteResidueOfTheTypePlasticsAsSpecifiedInMarpolAnnexV")]
+		[System.ComponentModel.Description("The service with facility to receive garbage related waste/residue of the type \"Plastics\", as specified in MARPOL Annex V")]
 		[EnumMember(Value = "MARPOL Annex V Plastics")] 
 		[XmlEnum("12")] 
 		MarpolAnnexVPlastics = 12,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveGarbageRelatedWasteResidueOfTheTypeFoodWastesAsSpecifiedInMarpolAnnexV")]
+		[System.ComponentModel.Description("The service with facility to receive garbage related waste/residue of the type \"Food wastes\", as specified in MARPOL Annex V")]
 		[EnumMember(Value = "MARPOL Annex V Food Wastes")] 
 		[XmlEnum("13")] 
 		MarpolAnnexVFoodWastes = 13,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveGarbageRelatedWasteResidueOfTheTypeDomesticWastesAsSpecifiedInMarpolAnnexV")]
+		[System.ComponentModel.Description("The service with facility to receive garbage related waste/residue of the type \"Domestic wastes\", as specified in MARPOL Annex V")]
 		[EnumMember(Value = "MARPOL Annex V Domestic Wastes")] 
 		[XmlEnum("14")] 
 		MarpolAnnexVDomesticWastes = 14,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveGarbageRelatedWasteResidueOfTheTypeCookingOilAsSpecifiedInMarpolAnnexV")]
+		[System.ComponentModel.Description("The service with facility to receive garbage related waste/residue of the type \"Cooking oil\", as specified in MARPOL Annex V")]
 		[EnumMember(Value = "MARPOL Annex V Cooking Oil")] 
 		[XmlEnum("15")] 
 		MarpolAnnexVCookingOil = 15,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveGarbageRelatedWasteResidueOfTheTypeIncineratorAshesAsSpecifiedInMarpolAnnexV")]
+		[System.ComponentModel.Description("The service with facility to receive garbage related waste/residue of the type \"Incinerator ashes\", as specified in MARPOL Annex V")]
 		[EnumMember(Value = "MARPOL Annex V Incinerator Ashes")] 
 		[XmlEnum("16")] 
 		MarpolAnnexVIncineratorAshes = 16,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveGarbageRelatedWasteResidueOfTheTypeOperationalWastesAsSpecifiedInMarpolAnnexV")]
+		[System.ComponentModel.Description("The service with facility to receive garbage related waste/residue of the type \"Operational wastes\", as specified in MARPOL Annex V")]
 		[EnumMember(Value = "MARPOL Annex V Operational Wastes")] 
 		[XmlEnum("17")] 
 		MarpolAnnexVOperationalWastes = 17,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveGarbageRelatedWasteResidueOfTheTypeAnimalCarcassesAsSpecifiedInMarpolAnnexV")]
+		[System.ComponentModel.Description("The service with facility to receive garbage related waste/residue of the type \"Animal carcasses\", as specified in MARPOL Annex V")]
 		[EnumMember(Value = "MARPOL Annex V Animal Carcasses")] 
 		[XmlEnum("18")] 
 		MarpolAnnexVAnimalCarcasses = 18,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveGarbageRelatedWasteResidueOfTheTypeFishingGearAsSpecifiedInMarpolAnnexV")]
+		[System.ComponentModel.Description("The service with facility to receive garbage related waste/residue of the type \"Fishing gear\", as specified in MARPOL Annex V")]
 		[EnumMember(Value = "MARPOL Annex V Fishing Gear")] 
 		[XmlEnum("19")] 
 		MarpolAnnexVFishingGear = 19,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveGarbageRelatedWasteResidueOfTheTypeEWasteAsSpecifiedInMarpolAnnexV")]
+		[System.ComponentModel.Description("The service with facility to receive garbage related waste/residue of the type \"E-waste\", as specified in MARPOL Annex V")]
 		[EnumMember(Value = "MARPOL Annex V E-Waste")] 
 		[XmlEnum("20")] 
 		MarpolAnnexVEWaste = 20,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveGarbageRelatedWasteResidueOfTheTypeCargoResiduesNotDeterminedToBeHarmfulToTheMarineEnvironmentAsSpecifiedInMarpolAnnexV")]
+		[System.ComponentModel.Description("The service with facility to receive garbage related waste/residue of the type \"Cargo residues not determined to be harmful to the marine environment\", as specified in MARPOL Annex V")]
 		[EnumMember(Value = "MARPOL Annex V Cargo Residues - non-HME")] 
 		[XmlEnum("21")] 
 		MarpolAnnexVCargoResiduesNonHme = 21,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveGarbageRelatedWasteResidueOfTheTypeCargoResiduesHarmfulToTheMarineEnvironmentAsSpecifiedInMarpolAnnexV")]
+		[System.ComponentModel.Description("The service with facility to receive garbage related waste/residue of the type \"Cargo residues harmful to the marine environment\", as specified in MARPOL Annex V")]
 		[EnumMember(Value = "MARPOL Annex V Cargo Residues - HME")] 
 		[XmlEnum("22")] 
 		MarpolAnnexVCargoResiduesHme = 22,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveAirPollutionRelatedWasteResidueOfTheTypeOzoneDepletingSubstancesAsSpecifiedInMarpolAnnexVi")]
+		[System.ComponentModel.Description("The service with facility to receive air pollution related waste/residue of the type \"Ozone-depleting substances\" as specified in MARPOL Annex VI.")]
 		[EnumMember(Value = "MARPOL Annex VI Ozone-Depleting Substances")] 
 		[XmlEnum("23")] 
 		MarpolAnnexViOzoneDepletingSubstances = 23,
 
-		[System.ComponentModel.Description("TheServiceWithFacilityToReceiveAirPollutionRelatedWasteResidueOfTheTypeExhaustGasCleaningResiduesAsSpecifiedInMarpolAnnexVi")]
+		[System.ComponentModel.Description("The service with facility to receive air pollution related waste/residue of the type \"Exhaust gas-cleaning residues\" as specified in MARPOL Annex VI.")]
 		[EnumMember(Value = "MARPOL Annex VI Exhaust Gas-Cleaning Residues")] 
 		[XmlEnum("24")] 
 		MarpolAnnexViExhaustGasCleaningResidues = 24,
 	}
 
+	/// <summary>
+	/// The action or activity of a vessel.
+	/// </summary>
+	/// <remarks>
+	/// codeListType=open enumeration; encoding=other: [something]
+	/// </remarks>
 	[System.Serializable()]
 	public class actionOrActivity
 	{
@@ -1932,6 +2084,12 @@ namespace S100Framework.DomainModel.S131 {
 		public required int code { get; set; }
 	}
 
+	/// <summary>
+	/// The principal subject matter of regulations, restrictions, recommendations or nautical information.
+	/// </summary>
+	/// <remarks>
+	/// codeListType=open enumeration; encoding=other: [something]
+	/// </remarks>
 	[System.Serializable()]
 	public class categoryOfRxN
 	{
@@ -1940,6 +2098,12 @@ namespace S100Framework.DomainModel.S131 {
 		public required int code { get; set; }
 	}
 
+	/// <summary>
+	/// Classification of vessels by function or use.
+	/// </summary>
+	/// <remarks>
+	/// codeListType=open enumeration; encoding=other: [something]
+	/// </remarks>
 	[System.Serializable()]
 	public class categoryOfVessel
 	{
@@ -1948,6 +2112,12 @@ namespace S100Framework.DomainModel.S131 {
 		public required int code { get; set; }
 	}
 
+	/// <summary>
+	/// Protective services, law enforcement, or services for responding to sudden danger.
+	/// </summary>
+	/// <remarks>
+	/// codelistType=openEnumeration
+	/// </remarks>
 	[System.Serializable()]
 	public class securitySafetyEmergencyService
 	{
@@ -1956,6 +2126,12 @@ namespace S100Framework.DomainModel.S131 {
 		public required int code { get; set; }
 	}
 
+	/// <summary>
+	/// Classification of services for the conveyance of persons and/or goods, according to means of transport, nature of path, or representative installation.
+	/// </summary>
+	/// <remarks>
+	/// codelistType=openEnumeration
+	/// </remarks>
 	[System.Serializable()]
 	public class transportConnection
 	{
@@ -2303,6 +2479,9 @@ namespace S100Framework.DomainModel.S131 {
 	}
 
 	namespace ComplexAttributes {
+		/// <summary>
+		/// Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class contactAddress {
@@ -2332,6 +2511,9 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializepostalCode() { return !string.IsNullOrEmpty(postalCode); }
 		}
 
+		/// <summary>
+		/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class featureName {
@@ -2346,9 +2528,15 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			[XmlElement("name")]
-			public required String name {get;set;} = string.Empty;
+			public String name {get;set;} = string.Empty;
 		}
 
+		/// <summary>
+		/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
+		/// </summary>
+		/// <remarks>
+		/// Dates must be encoded in the format YYYYMMDD; using 4 digits for the calendar year (YYYY) and, optionally, 2 digits for the month (MM) (for example April = 04) and 2 digits for the day (DD). When no specific month and/or day is required/known, the values are replaced with dashes (-). The date range of a recurring event or occurrence must be encoded using periodicDateRange.
+		/// </remarks>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class fixedDateRange {
@@ -2363,6 +2551,9 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializedateEnd() { return !string.IsNullOrEmpty(dateEnd); }
 		}
 
+		/// <summary>
+		/// A pair of frequencies for transmitting and receiving radio signals. The shore station transmits and receives on the frequencies indicated.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class frequencyPair {
@@ -2382,11 +2573,17 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializecontactInstructions() { return contactInstructions.Any(); }
 		}
 
+		/// <summary>
+		/// The best estimate of the accuracy of a position.
+		/// </summary>
+		/// <remarks>
+		/// The expected input is the maximum of the two-dimensional error. The error is assumed to be positive and negative.
+		/// </remarks>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class horizontalPositionUncertainty {
 			[XmlElement("uncertaintyFixed")]
-			public required decimal uncertaintyFixed {get;set;} = default;
+			public decimal uncertaintyFixed {get;set;} = default;
 
 			[XmlElement("uncertaintyVariableFactor")]
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
@@ -2394,6 +2591,12 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
 		}
 
+		/// <summary>
+		/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
+		/// </summary>
+		/// <remarks>
+		/// At least one of the sub-attributes file reference or text must be populated.The sub-attribute file reference is generally used for long text strings or those that require formatting, however, there is no restriction on the type of text (except for lexical level) that can be held in files referenced by sub-attribute file reference.
+		/// </remarks>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class information {
@@ -2423,11 +2626,14 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
 		}
 
+		/// <summary>
+		/// Information about online sources from which a resource or data can be obtained.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class onlineResource {
 			[XmlElement("onlineResourceLinkageURL")]
-			public required String onlineResourceLinkageURL {get;set;} = string.Empty;
+			public String onlineResourceLinkageURL {get;set;} = string.Empty;
 
 			[XmlElement("protocol")]
 			public String? protocol {get;set;} = default;
@@ -2449,9 +2655,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializeonlineResourceDescription() { return !string.IsNullOrEmpty(onlineResourceDescription); }
 
-			[XmlElement("onlineFunction")]
+			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,7,8,9,10,11])]
 			public onlineFunction? onlineFunction {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("onlineFunction")]
+			public SerializableEnumeration<onlineFunction>? onlineFunctionElement { get { return onlineFunction; } set { } }
 
 			public bool ShouldSerializeonlineFunction() { return onlineFunction.HasValue; }
 
@@ -2461,6 +2671,9 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeprotocolRequest() { return !string.IsNullOrEmpty(protocolRequest); }
 		}
 
+		/// <summary>
+		/// (1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class orientation {
@@ -2470,19 +2683,25 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[XmlElement("orientationValue")]
-			public required decimal orientationValue {get;set;} = default;
+			public decimal orientationValue {get;set;} = default;
 		}
 
+		/// <summary>
+		/// The active period of a recurring event or occurrence.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
 			[XmlElement("dateStart")]
-			public required String dateStart {get;set;} = string.Empty;
+			public String dateStart {get;set;} = string.Empty;
 
 			[XmlElement("dateEnd")]
-			public required String dateEnd {get;set;} = string.Empty;
+			public String dateEnd {get;set;} = string.Empty;
 		}
 
+		/// <summary>
+		/// A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class rxNCode {
@@ -2504,6 +2723,9 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeheadline() { return headline.Any(); }
 		}
 
+		/// <summary>
+		/// The complex attribute describes the period of the hydrographic survey, as the time between its sub-attributes.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class surveyDateRange {
@@ -2513,15 +2735,25 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
 
 			[XmlElement("dateEnd")]
-			public required String dateEnd {get;set;} = string.Empty;
+			public String dateEnd {get;set;} = string.Empty;
 		}
 
+		/// <summary>
+		/// Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.
+		/// </summary>
+		/// <remarks>
+		/// Exactly one of sub-attributes onlineResource or information must be completed in one instance of textContent. Product specifications may restrict the use or content of onlineResource for security. For example, a product specification may forbid populating onlineResource. Product specification authors must consider whether applications using the data product may be prevented from accessing off-system resources by security policies.
+		/// </remarks>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class textContent {
-			[XmlElement("categoryOfText")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public categoryOfText? categoryOfText {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfText")]
+			public SerializableEnumeration<categoryOfText>? categoryOfTextElement { get { return categoryOfText; } set { } }
 
 			public bool ShouldSerializecategoryOfText() { return categoryOfText.HasValue; }
 
@@ -2540,9 +2772,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
-			[XmlElement("sourceType")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("sourceType")]
+			public SerializableEnumeration<sourceType>? sourceTypeElement { get { return sourceType; } set { } }
 
 			public bool ShouldSerializesourceType() { return sourceType.HasValue; }
 
@@ -2552,12 +2788,19 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 		}
 
+		/// <summary>
+		/// The regular weekly operation times of a service or schedule.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class timeIntervalsByDayOfWeek {
-			[XmlElement("dayOfWeek")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			public List<dayOfWeek> dayOfWeek {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("dayOfWeek")]
+			public SerializableEnumeration<dayOfWeek>[] dayOfWeekElement { get { return [.. dayOfWeek]; } set { } }
 
 			public bool ShouldSerializedayOfWeek() { return dayOfWeek.Any(); }
 
@@ -2577,6 +2820,9 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetimeOfDayEnd() { return timeOfDayEnd.Any(); }
 		}
 
+		/// <summary>
+		/// Description of Aids to Navigation or prominent marks which are usually clearly visible and identifiable enough to be used in determining location or direction.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class usefulMarkDescription {
@@ -2586,11 +2832,17 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 		}
 
+		/// <summary>
+		/// The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.
+		/// </summary>
+		/// <remarks>
+		/// Encodes the vertical uncertainty associated with any vertical measurement.
+		/// </remarks>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class verticalUncertainty {
 			[XmlElement("uncertaintyFixed")]
-			public required decimal uncertaintyFixed {get;set;} = default;
+			public decimal uncertaintyFixed {get;set;} = default;
 
 			[XmlElement("uncertaintyVariableFactor")]
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
@@ -2598,25 +2850,46 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
 		}
 
+		/// <summary>
+		/// Values, discovered by measuring, that correspond to vessels characteristics.
+		/// </summary>
+		/// <remarks>
+		/// Combines (i) specifications of vessels' measurable characteristics (length, beam, tonnages, etc.), (ii) limit values for the specified characteristics (with units), (iii) arithmetical comparison operators (greater than, etc.), and (iv) logical operators (AND/OR) to define a subset of vessels characterized by the specified ranges. For example, the combination (draught, 10.5, metres, greaterThan) describes "vessels with draught greater than 10.5 metres".
+		/// </remarks>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class vesselsMeasurements {
-			[XmlElement("comparisonOperator")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
-			public required comparisonOperator comparisonOperator {get;set;} = default;
+			public comparisonOperator comparisonOperator {get;set;}
 
-			[XmlElement("vesselsCharacteristics")]
+			[JsonIgnore]
+			[XmlElement("comparisonOperator")]
+			public SerializableEnumeration<comparisonOperator> comparisonOperatorElement { get { return comparisonOperator; } set { } }
+
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,6,7,8,9,10,11,12,13])]
-			public required vesselsCharacteristics vesselsCharacteristics {get;set;} = default;
+			public vesselsCharacteristics vesselsCharacteristics {get;set;}
+
+			[JsonIgnore]
+			[XmlElement("vesselsCharacteristics")]
+			public SerializableEnumeration<vesselsCharacteristics> vesselsCharacteristicsElement { get { return vesselsCharacteristics; } set { } }
 
 			[XmlElement("vesselsCharacteristicsValue")]
-			public required decimal vesselsCharacteristicsValue {get;set;} = default;
+			public decimal vesselsCharacteristicsValue {get;set;} = default;
 
-			[XmlElement("vesselsCharacteristicsUnit")]
+			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,7,9])]
-			public required vesselsCharacteristicsUnit vesselsCharacteristicsUnit {get;set;} = default;
+			public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {get;set;}
+
+			[JsonIgnore]
+			[XmlElement("vesselsCharacteristicsUnit")]
+			public SerializableEnumeration<vesselsCharacteristicsUnit> vesselsCharacteristicsUnitElement { get { return vesselsCharacteristicsUnit; } set { } }
 		}
 
+		/// <summary>
+		/// Links for relevant weather related information.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class weatherResource {
@@ -2625,9 +2898,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializeonlineResource() { return onlineResource!=default; }
 
-			[XmlElement("dynamicResource")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			public dynamicResource? dynamicResource {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("dynamicResource")]
+			public SerializableEnumeration<dynamicResource>? dynamicResourceElement { get { return dynamicResource; } set { } }
 
 			public bool ShouldSerializedynamicResource() { return dynamicResource.HasValue; }
 
@@ -2637,12 +2914,19 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetextContent() { return textContent!=default; }
 		}
 
+		/// <summary>
+		/// A bearing is the direction one object is from another object.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class bearingInformation {
-			[XmlElement("cardinalDirection")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			public cardinalDirection? cardinalDirection {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("cardinalDirection")]
+			public SerializableEnumeration<cardinalDirection>? cardinalDirectionElement { get { return cardinalDirection; } set { } }
 
 			public bool ShouldSerializecardinalDirection() { return cardinalDirection.HasValue; }
 
@@ -2667,6 +2951,12 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeorientation() { return orientation!=default; }
 		}
 
+		/// <summary>
+		/// Description of services related to the goods or items carried by vessels.
+		/// </summary>
+		/// <remarks>
+		/// Textual or narrative description of cargo services.
+		/// </remarks>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class cargoServicesDescription {
@@ -2676,6 +2966,9 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 		}
 
+		/// <summary>
+		/// A description of construction or other development in a location where the work will affect vessel operations such as navigation, maneuvering or docking/berthing.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class constructionInformation {
@@ -2684,14 +2977,18 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
-			[XmlElement("condition")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,5])]
 			public condition? condition {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("condition")]
+			public SerializableEnumeration<condition>? conditionElement { get { return condition; } set { } }
 
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
 			[XmlElement("development")]
-			public required String development {get;set;} = string.Empty;
+			public String development {get;set;} = string.Empty;
 
 			[XmlElement("locationByText")]
 			public String? locationByText {get;set;} = default;
@@ -2704,12 +3001,19 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 		}
 
+		/// <summary>
+		/// Textual description of the characteristics and notable matters pertaining to depths in an area.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class depthsDescription {
-			[XmlElement("categoryOfDepthsDescription")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
-			public required categoryOfDepthsDescription categoryOfDepthsDescription {get;set;} = default;
+			public categoryOfDepthsDescription categoryOfDepthsDescription {get;set;}
+
+			[JsonIgnore]
+			[XmlElement("categoryOfDepthsDescription")]
+			public SerializableEnumeration<categoryOfDepthsDescription> categoryOfDepthsDescriptionElement { get { return categoryOfDepthsDescription; } set { } }
 
 			[XmlElement("textContent")]
 			public List<textContent> textContent {get;set;} = [];
@@ -2717,6 +3021,9 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 		}
 
+		/// <summary>
+		/// Textual description of the layout of port facilities.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class facilitiesLayoutDescription {
@@ -2726,6 +3033,12 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 		}
 
+		/// <summary>
+		/// General, introductory information about the port.
+		/// </summary>
+		/// <remarks>
+		/// General statement about the port, including social/political aspects, which could have an impact on the mariner’s/company’s safety or professional reputation. The information covered by this should be confined to information not contained in any other place in the data.
+		/// </remarks>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class generalPortDescription {
@@ -2735,6 +3048,9 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 		}
 
+		/// <summary>
+		/// Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class graphic {
@@ -2748,7 +3064,6 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializepictureCaption() { return !string.IsNullOrEmpty(pictureCaption); }
 
-			[XmlElement("sourceDate")]
 			[XmlIgnore]
 			public DateOnly? sourceDate {get;set;} = default;
 
@@ -2765,6 +3080,9 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializebearingInformation() { return bearingInformation!=default; }
 		}
 
+		/// <summary>
+		/// Textual description of selected landmarks that have significance in an area.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class landmarkDescription {
@@ -2774,6 +3092,9 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 		}
 
+		/// <summary>
+		/// Description of the area covered by the information specified.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class limitsDescription {
@@ -2783,6 +3104,9 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 		}
 
+		/// <summary>
+		/// A description of navigationally significant lights essential for marking landfalls, offshore dangers, shipping routes, port access channels or protection of the marine environment.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class majorLightDescription {
@@ -2792,6 +3116,9 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 		}
 
+		/// <summary>
+		/// Description of the aids to navigation used to mark an area or object.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class markedBy {
@@ -2801,6 +3128,9 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 		}
 
+		/// <summary>
+		/// Description of aids to navigation or prominent marks located away from the shore.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class offshoreMarkDescription {
@@ -2810,12 +3140,19 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 		}
 
+		/// <summary>
+		/// The nature and timings of a daily schedule by days of the week.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class scheduleByDayOfWeek {
-			[XmlElement("categoryOfSchedule")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public categoryOfSchedule? categoryOfSchedule {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfSchedule")]
+			public SerializableEnumeration<categoryOfSchedule>? categoryOfScheduleElement { get { return categoryOfSchedule; } set { } }
 
 			public bool ShouldSerializecategoryOfSchedule() { return categoryOfSchedule.HasValue; }
 
@@ -2825,6 +3162,9 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetimeIntervalsByDayOfWeek() { return timeIntervalsByDayOfWeek.Any(); }
 		}
 
+		/// <summary>
+		/// Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.
+		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class spatialAccuracy {
@@ -2844,17 +3184,27 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 		}
 
+		/// <summary>
+		/// A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.
+		/// </summary>
+		/// <remarks>
+		/// If no value is populated for the sub-attribute telecommunication service, this means the service is by voice communication. If no value is populated for the sub-attribute telecommunication carrier, this means the service is by land line communication.
+		/// </remarks>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class telecommunications {
-			[XmlElement("categoryOfCommunicationPreference")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfCommunicationPreference")]
+			public SerializableEnumeration<categoryOfCommunicationPreference>? categoryOfCommunicationPreferenceElement { get { return categoryOfCommunicationPreference; } set { } }
 
 			public bool ShouldSerializecategoryOfCommunicationPreference() { return categoryOfCommunicationPreference.HasValue; }
 
 			[XmlElement("telecommunicationIdentifier")]
-			public required String telecommunicationIdentifier {get;set;} = string.Empty;
+			public String telecommunicationIdentifier {get;set;} = string.Empty;
 
 			[XmlElement("telecommunicationCarrier")]
 			public String? telecommunicationCarrier {get;set;} = default;
@@ -2866,9 +3216,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
 
-			[XmlElement("telecommunicationService")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public List<telecommunicationService> telecommunicationService {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("telecommunicationService")]
+			public SerializableEnumeration<telecommunicationService>[] telecommunicationServiceElement { get { return [.. telecommunicationService]; } set { } }
 
 			public bool ShouldSerializetelecommunicationService() { return telecommunicationService.Any(); }
 
@@ -2878,6 +3232,12 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializescheduleByDayOfWeek() { return scheduleByDayOfWeek!=default; }
 		}
 
+		/// <summary>
+		/// General information about the port or harbour area.
+		/// </summary>
+		/// <remarks>
+		/// Describes a collection of information designed to give a general overview of harbour related Information.
+		/// </remarks>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class generalHarbourInformation {
@@ -3006,6 +3366,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AdditionalInformation : InformationAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(AdditionalInformation);
 		}
 
@@ -3016,6 +3377,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AuthorityContact : InformationAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(AuthorityContact);
 		}
 
@@ -3026,6 +3388,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AuthorityHours : InformationAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(AuthorityHours);
 		}
 
@@ -3036,6 +3399,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AssociatedRxN : InformationAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(AssociatedRxN);
 		}
 
@@ -3046,6 +3410,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ExceptionalWorkday : InformationAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(ExceptionalWorkday);
 		}
 
@@ -3056,6 +3421,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ServiceControl : InformationAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(ServiceControl);
 		}
 
@@ -3066,6 +3432,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ServiceContact : InformationAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(ServiceContact);
 		}
 
@@ -3076,6 +3443,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LocationHours : InformationAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(LocationHours);
 		}
 
@@ -3086,6 +3454,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RelatedOrganisation : InformationAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(RelatedOrganisation);
 		}
 
@@ -3095,11 +3464,16 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InclusionType : InformationAssociation {
-			[XmlElement("membership")]
+			[XmlIgnore]
 			[EnumerationValue([1,2])]
-			public required membership membership {get;set;} = default;
+			public membership membership {get;set;}
 
 			[JsonIgnore]
+			[XmlElement("membership")]
+			public SerializableEnumeration<membership> membershipElement { get { return membership; } set { } }
+
+			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(InclusionType);
 		}
 
@@ -3109,11 +3483,16 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PermissionType : InformationAssociation {
-			[XmlElement("categoryOfRelationship")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
-			public required categoryOfRelationship categoryOfRelationship {get;set;} = default;
+			public categoryOfRelationship categoryOfRelationship {get;set;}
 
 			[JsonIgnore]
+			[XmlElement("categoryOfRelationship")]
+			public SerializableEnumeration<categoryOfRelationship> categoryOfRelationshipElement { get { return categoryOfRelationship; } set { } }
+
+			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(PermissionType);
 		}
 
@@ -3124,6 +3503,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpatialAssociation : InformationAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(SpatialAssociation);
 		}
 
@@ -3134,6 +3514,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LimitEntrance : InformationAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(LimitEntrance);
 		}
 
@@ -3144,6 +3525,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ServiceAvailability : InformationAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(ServiceAvailability);
 		}
 	}
@@ -3156,6 +3538,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextAssociation : FeatureAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(TextAssociation);
 		}
 
@@ -3166,6 +3549,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Subsection : FeatureAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(Subsection);
 		}
 
@@ -3176,6 +3560,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Infrastructure : FeatureAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(Infrastructure);
 		}
 
@@ -3186,6 +3571,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PrimaryAuxiliaryFacility : FeatureAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(PrimaryAuxiliaryFacility);
 		}
 
@@ -3196,6 +3582,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Demarcation : FeatureAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(Demarcation);
 		}
 
@@ -3206,6 +3593,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class JurisdictionalLimit : FeatureAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(JurisdictionalLimit);
 		}
 
@@ -3216,6 +3604,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LayoutDivision : FeatureAssociation {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(LayoutDivision);
 		}
 	}
@@ -3225,6 +3614,7 @@ namespace S100Framework.DomainModel.S131 {
 namespace S100Framework.DomainModel.S131 {
 	using ComplexAttributes;
 	using InformationAssociations;
+		using System.Xml.Linq;
 
 	namespace InformationTypes {
 		/// <summary>
@@ -3258,9 +3648,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
-			[XmlElement("sourceType")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("sourceType")]
+			public SerializableEnumeration<sourceType>? sourceTypeElement { get { return sourceType; } set { } }
 
 			public bool ShouldSerializesourceType() { return sourceType.HasValue; }
 
@@ -3270,9 +3664,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(InformationType);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => InformationType._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -3297,9 +3693,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class AbstractRxN : InformationType {
-			[XmlElement("categoryOfAuthority")]
+			[XmlIgnore]
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			public categoryOfAuthority? categoryOfAuthority {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfAuthority")]
+			public SerializableEnumeration<categoryOfAuthority>? categoryOfAuthorityElement { get { return categoryOfAuthority; } set { } }
 
 			public bool ShouldSerializecategoryOfAuthority() { return categoryOfAuthority.HasValue; }
 
@@ -3314,9 +3714,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(AbstractRxN);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..AbstractRxN._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -3355,15 +3757,23 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializeinBallast() { return inBallast.HasValue; }
 
-			[XmlElement("categoryOfCargo")]
+			[XmlIgnore]
 			[EnumerationValue([2,5,6,7,8,10,11,12,13,14,15])]
 			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("categoryOfCargo")]
+			public SerializableEnumeration<categoryOfCargo>[] categoryOfCargoElement { get { return [.. categoryOfCargo]; } set { } }
+
 			public bool ShouldSerializecategoryOfCargo() { return categoryOfCargo.Any(); }
 
-			[XmlElement("categoryOfDangerousOrHazardousCargo")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])]
 			public List<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("categoryOfDangerousOrHazardousCargo")]
+			public SerializableEnumeration<categoryOfDangerousOrHazardousCargo>[] categoryOfDangerousOrHazardousCargoElement { get { return [.. categoryOfDangerousOrHazardousCargo]; } set { } }
 
 			public bool ShouldSerializecategoryOfDangerousOrHazardousCargo() { return categoryOfDangerousOrHazardousCargo.Any(); }
 
@@ -3373,15 +3783,23 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializecategoryOfVessel() { return categoryOfVessel != default; }
 
-			[XmlElement("categoryOfVesselRegistry")]
+			[XmlIgnore]
 			[EnumerationValue([1,2])]
 			public categoryOfVesselRegistry? categoryOfVesselRegistry {get;set;} = default;
 
+			[JsonIgnore]
+			[XmlElement("categoryOfVesselRegistry")]
+			public SerializableEnumeration<categoryOfVesselRegistry>? categoryOfVesselRegistryElement { get { return categoryOfVesselRegistry; } set { } }
+
 			public bool ShouldSerializecategoryOfVesselRegistry() { return categoryOfVesselRegistry.HasValue; }
 
-			[XmlElement("logicalConnectives")]
+			[XmlIgnore]
 			[EnumerationValue([1,2])]
 			public logicalConnectives? logicalConnectives {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("logicalConnectives")]
+			public SerializableEnumeration<logicalConnectives>? logicalConnectivesElement { get { return logicalConnectives; } set { } }
 
 			public bool ShouldSerializelogicalConnectives() { return logicalConnectives.HasValue; }
 
@@ -3406,9 +3824,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializevesselsMeasurements() { return vesselsMeasurements.Any(); }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(Applicability);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..Applicability._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -3442,9 +3862,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Authority : InformationType {
-			[XmlElement("categoryOfAuthority")]
+			[XmlIgnore]
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
-			public required categoryOfAuthority categoryOfAuthority {get;set;} = default;
+			public categoryOfAuthority categoryOfAuthority {get;set;}
+
+			[JsonIgnore]
+			[XmlElement("categoryOfAuthority")]
+			public SerializableEnumeration<categoryOfAuthority> categoryOfAuthorityElement { get { return categoryOfAuthority; } set { } }
 
 			[XmlElement("textContent")]
 			public textContent? textContent {get;set;} = default;
@@ -3452,9 +3876,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetextContent() { return textContent!=default; }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(Authority);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..Authority._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -3497,33 +3923,53 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AvailablePortServices : InformationType {
-			[XmlElement("firefightingService")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public List<firefightingService> firefightingService {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("firefightingService")]
+			public SerializableEnumeration<firefightingService>[] firefightingServiceElement { get { return [.. firefightingService]; } set { } }
+
 			public bool ShouldSerializefirefightingService() { return firefightingService.Any(); }
 
-			[XmlElement("medicalService")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5])]
 			public List<medicalService> medicalService {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("medicalService")]
+			public SerializableEnumeration<medicalService>[] medicalServiceElement { get { return [.. medicalService]; } set { } }
+
 			public bool ShouldSerializemedicalService() { return medicalService.Any(); }
 
-			[XmlElement("repairService")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
 			public List<repairService> repairService {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("repairService")]
+			public SerializableEnumeration<repairService>[] repairServiceElement { get { return [.. repairService]; } set { } }
+
 			public bool ShouldSerializerepairService() { return repairService.Any(); }
 
-			[XmlElement("technicalPortService")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			public List<technicalPortService> technicalPortService {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("technicalPortService")]
+			public SerializableEnumeration<technicalPortService>[] technicalPortServiceElement { get { return [.. technicalPortService]; } set { } }
+
 			public bool ShouldSerializetechnicalPortService() { return technicalPortService.Any(); }
 
-			[XmlElement("shipSanitationControl")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public List<shipSanitationControl> shipSanitationControl {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("shipSanitationControl")]
+			public SerializableEnumeration<shipSanitationControl>[] shipSanitationControlElement { get { return [.. shipSanitationControl]; } set { } }
 
 			public bool ShouldSerializeshipSanitationControl() { return shipSanitationControl.Any(); }
 
@@ -3533,15 +3979,23 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializetransportConnection() { return transportConnection.Any(); }
 
-			[XmlElement("berthingAssistance")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public List<berthingAssistance> berthingAssistance {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("berthingAssistance")]
+			public SerializableEnumeration<berthingAssistance>[] berthingAssistanceElement { get { return [.. berthingAssistance]; } set { } }
+
 			public bool ShouldSerializeberthingAssistance() { return berthingAssistance.Any(); }
 
-			[XmlElement("cargoService")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			public List<cargoService> cargoService {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("cargoService")]
+			public SerializableEnumeration<cargoService>[] cargoServiceElement { get { return [.. cargoService]; } set { } }
 
 			public bool ShouldSerializecargoService() { return cargoService.Any(); }
 
@@ -3551,15 +4005,23 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializesecuritySafetyEmergencyService() { return securitySafetyEmergencyService.Any(); }
 
-			[XmlElement("wasteDisposalService")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24])]
 			public List<wasteDisposalService> wasteDisposalService {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("wasteDisposalService")]
+			public SerializableEnumeration<wasteDisposalService>[] wasteDisposalServiceElement { get { return [.. wasteDisposalService]; } set { } }
+
 			public bool ShouldSerializewasteDisposalService() { return wasteDisposalService.Any(); }
 
-			[XmlElement("supplyService")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
 			public List<supplyService> supplyService {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("supplyService")]
+			public SerializableEnumeration<supplyService>[] supplyServiceElement { get { return [.. supplyService]; } set { } }
 
 			public bool ShouldSerializesupplyService() { return supplyService.Any(); }
 
@@ -3574,9 +4036,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(AvailablePortServices);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..AvailablePortServices._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -3602,9 +4066,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializecallSign() { return !string.IsNullOrEmpty(callSign); }
 
-			[XmlElement("categoryOfCommunicationPreference")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfCommunicationPreference")]
+			public SerializableEnumeration<categoryOfCommunicationPreference>? categoryOfCommunicationPreferenceElement { get { return categoryOfCommunicationPreference; } set { } }
 
 			public bool ShouldSerializecategoryOfCommunicationPreference() { return categoryOfCommunicationPreference.HasValue; }
 
@@ -3654,9 +4122,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetelecommunications() { return telecommunications.Any(); }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(ContactDetails);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..ContactDetails._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -3732,9 +4202,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(Entrance);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..Entrance._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -3751,9 +4223,11 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NauticalInformation : AbstractRxN {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(NauticalInformation);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..AbstractRxN._informationBindingDefinitions, ..NauticalInformation._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -3794,9 +4268,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(NonStandardWorkingDay);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..NonStandardWorkingDay._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -3813,9 +4289,11 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Recommendations : AbstractRxN {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(Recommendations);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..AbstractRxN._informationBindingDefinitions, ..Recommendations._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -3832,9 +4310,11 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Regulations : AbstractRxN {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(Regulations);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..AbstractRxN._informationBindingDefinitions, ..Regulations._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -3851,9 +4331,11 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Restrictions : AbstractRxN {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(Restrictions);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..AbstractRxN._informationBindingDefinitions, ..Restrictions._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -3880,9 +4362,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(ServiceHours);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..ServiceHours._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -3916,9 +4400,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpatialQuality : InformationNode, IInformationBindingDefinition {
-			[XmlElement("qualityOfHorizontalMeasurement")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("qualityOfHorizontalMeasurement")]
+			public SerializableEnumeration<qualityOfHorizontalMeasurement>? qualityOfHorizontalMeasurementElement { get { return qualityOfHorizontalMeasurement; } set { } }
 
 			public bool ShouldSerializequalityOfHorizontalMeasurement() { return qualityOfHorizontalMeasurement.HasValue; }
 
@@ -3928,9 +4416,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializespatialAccuracy() { return spatialAccuracy.Any(); }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(SpatialQuality);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
@@ -3944,6 +4434,7 @@ namespace S100Framework.DomainModel.S131 {
 		using FeatureAssociations;
 		using InformationTypes;
 		using System.Xml;
+		using System.Xml.Linq;
 
 		/// <summary>
 		/// Generalized feature type which carries all the common attributes.
@@ -3991,9 +4482,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
-			[XmlElement("sourceType")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			public sourceType? sourceType {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("sourceType")]
+			public SerializableEnumeration<sourceType>? sourceTypeElement { get { return sourceType; } set { } }
 
 			public bool ShouldSerializesourceType() { return sourceType.HasValue; }
 
@@ -4008,9 +4503,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(FeatureType);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => FeatureType._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -4043,6 +4540,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => FeatureType._featureBindingDefinitions;
 
 			[JsonIgnore]
@@ -4061,10 +4559,6 @@ namespace S100Framework.DomainModel.S131 {
 					featureTypes = [nameof(TextPlacement)],
 				},
 			];
-
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4074,9 +4568,11 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class OrganizationContactArea : FeatureType {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(OrganizationContactArea);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..OrganizationContactArea._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -4091,6 +4587,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..OrganizationContactArea._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -4101,10 +4598,6 @@ namespace S100Framework.DomainModel.S131 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
-
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4114,9 +4607,11 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class SupervisedArea : OrganizationContactArea {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(SupervisedArea);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..OrganizationContactArea._informationBindingDefinitions, ..SupervisedArea._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -4131,6 +4626,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..OrganizationContactArea._featureBindingDefinitions, ..SupervisedArea._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -4141,10 +4637,6 @@ namespace S100Framework.DomainModel.S131 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
-
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4159,14 +4651,17 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeverticalClearanceValue() { return verticalClearanceValue.HasValue; }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(HarbourPhysicalInfrastructure);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..SupervisedArea._informationBindingDefinitions, ..HarbourPhysicalInfrastructure._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..SupervisedArea._featureBindingDefinitions, ..HarbourPhysicalInfrastructure._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -4185,10 +4680,6 @@ namespace S100Framework.DomainModel.S131 {
 					featureTypes = [nameof(HarbourAreaSection),nameof(Terminal)],
 				},
 			];
-
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4198,14 +4689,17 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class Layout : SupervisedArea {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(Layout);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..SupervisedArea._informationBindingDefinitions, ..Layout._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..SupervisedArea._featureBindingDefinitions, ..Layout._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -4216,10 +4710,6 @@ namespace S100Framework.DomainModel.S131 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
-
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 		}
 
 		/// <summary>
@@ -4229,9 +4719,11 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AnchorBerth : Layout {
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(AnchorBerth);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..AnchorBerth._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -4255,6 +4747,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..AnchorBerth._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -4280,7 +4773,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -4304,16 +4797,22 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
-			[XmlElement("iSPSLevel")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("iSPSLevel")]
+			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
 
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(AnchorageArea);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..AnchorageArea._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -4328,6 +4827,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..AnchorageArea._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -4353,7 +4853,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -4392,9 +4892,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializecathodicProtectionSystem() { return cathodicProtectionSystem.HasValue; }
 
-			[XmlElement("categoryOfBerthLocation")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			public categoryOfBerthLocation? categoryOfBerthLocation {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfBerthLocation")]
+			public SerializableEnumeration<categoryOfBerthLocation>? categoryOfBerthLocationElement { get { return categoryOfBerthLocation; } set { } }
 
 			public bool ShouldSerializecategoryOfBerthLocation() { return categoryOfBerthLocation.HasValue; }
 
@@ -4433,14 +4937,18 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
-			[XmlElement("methodOfSecuring")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
 			public methodOfSecuring? methodOfSecuring {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("methodOfSecuring")]
+			public SerializableEnumeration<methodOfSecuring>? methodOfSecuringElement { get { return methodOfSecuring; } set { } }
 
 			public bool ShouldSerializemethodOfSecuring() { return methodOfSecuring.HasValue; }
 
 			[XmlElement("uNLocationCode")]
-			public required String uNLocationCode {get;set;} = string.Empty;
+			public String uNLocationCode {get;set;} = string.Empty;
 
 			[XmlElement("terminalIdentifier")]
 			public String? terminalIdentifier {get;set;} = default;
@@ -4448,9 +4956,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeterminalIdentifier() { return !string.IsNullOrEmpty(terminalIdentifier); }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(Berth);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..Berth._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -4474,6 +4984,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..Berth._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -4507,7 +5018,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -4562,14 +5073,17 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(BerthPosition);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..BerthPosition._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..BerthPosition._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -4603,7 +5117,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -4627,16 +5141,22 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
-			[XmlElement("iSPSLevel")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("iSPSLevel")]
+			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
 
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(DockArea);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..DockArea._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -4660,6 +5180,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..DockArea._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -4685,7 +5206,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -4700,9 +5221,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializesillDepth() { return sillDepth.HasValue; }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(DryDock);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..DryDock._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -4717,6 +5240,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..DryDock._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -4734,7 +5258,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -4758,16 +5282,22 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
-			[XmlElement("iSPSLevel")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("iSPSLevel")]
+			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
 
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(DumpingGround);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..DumpingGround._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -4782,6 +5312,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..DumpingGround._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -4807,7 +5338,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -4822,9 +5353,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializesillDepth() { return sillDepth.HasValue; }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(FloatingDock);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..FloatingDock._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -4839,6 +5372,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FloatingDock._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -4856,7 +5390,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -4871,9 +5405,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializesillDepth() { return sillDepth.HasValue; }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(Gridiron);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..Gridiron._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -4888,6 +5424,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..Gridiron._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -4905,7 +5442,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -4929,15 +5466,23 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializeapplicableLoadLineZone() { return !string.IsNullOrEmpty(applicableLoadLineZone); }
 
-			[XmlElement("iSPSLevel")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
+			[JsonIgnore]
+			[XmlElement("iSPSLevel")]
+			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
+
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 
-			[XmlElement("categoryOfHarbourFacility")]
+			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 			public List<categoryOfHarbourFacility> categoryOfHarbourFacility {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("categoryOfHarbourFacility")]
+			public SerializableEnumeration<categoryOfHarbourFacility>[] categoryOfHarbourFacilityElement { get { return [.. categoryOfHarbourFacility]; } set { } }
 
 			public bool ShouldSerializecategoryOfHarbourFacility() { return categoryOfHarbourFacility.Any(); }
 
@@ -4947,9 +5492,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializegeneralHarbourInformation() { return generalHarbourInformation!=default; }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(HarbourAreaAdministrative);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..HarbourAreaAdministrative._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -4973,6 +5520,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..HarbourAreaAdministrative._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -5006,7 +5554,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5015,21 +5563,33 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class HarbourAreaSection : Layout {
-			[XmlElement("categoryOfPortSection")]
+			[XmlIgnore]
 			[EnumerationValue([1,3,8,9,11,12])]
 			public categoryOfPortSection? categoryOfPortSection {get;set;} = default;
 
+			[JsonIgnore]
+			[XmlElement("categoryOfPortSection")]
+			public SerializableEnumeration<categoryOfPortSection>? categoryOfPortSectionElement { get { return categoryOfPortSection; } set { } }
+
 			public bool ShouldSerializecategoryOfPortSection() { return categoryOfPortSection.HasValue; }
 
-			[XmlElement("categoryOfHarbourFacility")]
+			[XmlIgnore]
 			[EnumerationValue([4,5,6,9,14,15,16,17])]
 			public List<categoryOfHarbourFacility> categoryOfHarbourFacility {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("categoryOfHarbourFacility")]
+			public SerializableEnumeration<categoryOfHarbourFacility>[] categoryOfHarbourFacilityElement { get { return [.. categoryOfHarbourFacility]; } set { } }
+
 			public bool ShouldSerializecategoryOfHarbourFacility() { return categoryOfHarbourFacility.Any(); }
 
-			[XmlElement("iSPSLevel")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("iSPSLevel")]
+			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
 
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 
@@ -5039,9 +5599,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializefacilitiesLayoutDescription() { return facilitiesLayoutDescription!=default; }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(HarbourAreaSection);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..HarbourAreaSection._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -5065,6 +5627,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..HarbourAreaSection._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -5122,7 +5685,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5146,16 +5709,22 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
-			[XmlElement("iSPSLevel")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("iSPSLevel")]
+			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
 
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(HarbourBasin);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..HarbourBasin._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -5170,6 +5739,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..HarbourBasin._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -5195,7 +5765,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5204,16 +5774,22 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class HarbourFacility : HarbourPhysicalInfrastructure {
-			[XmlElement("categoryOfHarbourFacility")]
+			[XmlIgnore]
 			[EnumerationValue([12,13])]
 			public List<categoryOfHarbourFacility> categoryOfHarbourFacility {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("categoryOfHarbourFacility")]
+			public SerializableEnumeration<categoryOfHarbourFacility>[] categoryOfHarbourFacilityElement { get { return [.. categoryOfHarbourFacility]; } set { } }
 
 			public bool ShouldSerializecategoryOfHarbourFacility() { return categoryOfHarbourFacility.Any(); }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(HarbourFacility);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..HarbourFacility._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -5228,6 +5804,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..HarbourFacility._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -5245,7 +5822,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5254,12 +5831,16 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MooringWarpingFacility : Layout {
-			[XmlElement("categoryOfMooringWarpingFacility")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
-			public required categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility {get;set;} = default;
+			public categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility {get;set;}
+
+			[JsonIgnore]
+			[XmlElement("categoryOfMooringWarpingFacility")]
+			public SerializableEnumeration<categoryOfMooringWarpingFacility> categoryOfMooringWarpingFacilityElement { get { return categoryOfMooringWarpingFacility; } set { } }
 
 			[XmlElement("iDCode")]
-			public required String iDCode {get;set;} = string.Empty;
+			public String iDCode {get;set;} = string.Empty;
 
 			[XmlElement("bollardDescription")]
 			public String? bollardDescription {get;set;} = default;
@@ -5277,9 +5858,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeheavingLinesFromShore() { return heavingLinesFromShore.HasValue; }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(MooringWarpingFacility);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..MooringWarpingFacility._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -5303,6 +5886,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..MooringWarpingFacility._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -5328,7 +5912,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5368,9 +5952,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeusefulMarkDescription() { return usefulMarkDescription.Any(); }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(OuterLimit);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..OuterLimit._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -5385,6 +5971,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..OuterLimit._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -5410,7 +5997,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5434,16 +6021,22 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
-			[XmlElement("iSPSLevel")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("iSPSLevel")]
+			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
 
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(PilotBoardingPlace);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..PilotBoardingPlace._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -5458,6 +6051,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..PilotBoardingPlace._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -5483,7 +6077,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5507,16 +6101,22 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
-			[XmlElement("iSPSLevel")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("iSPSLevel")]
+			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
 
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(SeaplaneLandingArea);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..SeaplaneLandingArea._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -5531,6 +6131,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..SeaplaneLandingArea._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -5556,7 +6157,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5570,21 +6171,33 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializeportFacilityNumber() { return !string.IsNullOrEmpty(portFacilityNumber); }
 
-			[XmlElement("categoryOfHarbourFacility")]
+			[XmlIgnore]
 			[EnumerationValue([1,3,5,7,8,10,11])]
 			public categoryOfHarbourFacility? categoryOfHarbourFacility {get;set;} = default;
 
+			[JsonIgnore]
+			[XmlElement("categoryOfHarbourFacility")]
+			public SerializableEnumeration<categoryOfHarbourFacility>? categoryOfHarbourFacilityElement { get { return categoryOfHarbourFacility; } set { } }
+
 			public bool ShouldSerializecategoryOfHarbourFacility() { return categoryOfHarbourFacility.HasValue; }
 
-			[XmlElement("categoryOfCargo")]
+			[XmlIgnore]
 			[EnumerationValue([2,5,6,7,8,10,11,12,13,14,15])]
 			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
 
+			[JsonIgnore]
+			[XmlElement("categoryOfCargo")]
+			public SerializableEnumeration<categoryOfCargo>[] categoryOfCargoElement { get { return [.. categoryOfCargo]; } set { } }
+
 			public bool ShouldSerializecategoryOfCargo() { return categoryOfCargo.Any(); }
 
-			[XmlElement("product")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,20,21,22])]
 			public List<product> product {get;set;} = [];
+
+			[JsonIgnore]
+			[XmlElement("product")]
+			public SerializableEnumeration<product>[] productElement { get { return [.. product]; } set { } }
 
 			public bool ShouldSerializeproduct() { return product.Any(); }
 
@@ -5604,9 +6217,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeuNLocationCode() { return !string.IsNullOrEmpty(uNLocationCode); }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(Terminal);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..Terminal._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -5630,6 +6245,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..Terminal._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -5671,7 +6287,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5695,16 +6311,22 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
-			[XmlElement("iSPSLevel")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("iSPSLevel")]
+			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
 
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(TurningBasin);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..TurningBasin._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -5719,6 +6341,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..TurningBasin._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -5744,7 +6367,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5753,9 +6376,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class WaterwayArea : Layout {
-			[XmlElement("categoryOfPortSection")]
+			[XmlIgnore]
 			[EnumerationValue([1,3,8,9,11,12])]
-			public required categoryOfPortSection categoryOfPortSection {get;set;} = default;
+			public categoryOfPortSection categoryOfPortSection {get;set;}
+
+			[JsonIgnore]
+			[XmlElement("categoryOfPortSection")]
+			public SerializableEnumeration<categoryOfPortSection> categoryOfPortSectionElement { get { return categoryOfPortSection; } set { } }
 
 			[XmlElement("depthsDescription")]
 			public depthsDescription? depthsDescription {get;set;} = default;
@@ -5773,9 +6400,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(WaterwayArea);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..WaterwayArea._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
@@ -5790,6 +6419,7 @@ namespace S100Framework.DomainModel.S131 {
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..WaterwayArea._featureBindingDefinitions];
 
 			[JsonIgnore]
@@ -5815,7 +6445,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5825,20 +6455,23 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("maximumDisplayScale")]
-			public required int maximumDisplayScale {get;set;} = default;
+			public int maximumDisplayScale {get;set;} = default;
 
 			[XmlElement("minimumDisplayScale")]
-			public required int minimumDisplayScale {get;set;} = default;
+			public int minimumDisplayScale {get;set;} = default;
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(DataCoverage);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
 
 			[JsonIgnore]
@@ -5856,7 +6489,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5865,9 +6498,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class QualityOfNonBathymetricData : FeatureNode, IFeatureBindingDefinition {
-			[XmlElement("categoryOfTemporalVariation")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			public categoryOfTemporalVariation? categoryOfTemporalVariation {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("categoryOfTemporalVariation")]
+			public SerializableEnumeration<categoryOfTemporalVariation>? categoryOfTemporalVariationElement { get { return categoryOfTemporalVariation; } set { } }
 
 			public bool ShouldSerializecategoryOfTemporalVariation() { return categoryOfTemporalVariation.HasValue; }
 
@@ -5877,7 +6514,9 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
 
 			[XmlElement("horizontalPositionUncertainty")]
-			public required horizontalPositionUncertainty horizontalPositionUncertainty {get;set;} = default;
+			public horizontalPositionUncertainty horizontalPositionUncertainty {get;set;} = new horizontalPositionUncertainty {
+				uncertaintyFixed = default,
+			};
 
 			[XmlElement("orientationUncertainty")]
 			public decimal? orientationUncertainty {get;set;} = default;
@@ -5900,14 +6539,17 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(QualityOfNonBathymetricData);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
 
 			[JsonIgnore]
@@ -5925,7 +6567,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5934,9 +6576,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SoundingDatum : FeatureNode, IFeatureBindingDefinition {
-			[XmlElement("verticalDatum")]
+			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,19,22,23,24,25,26,27,44])]
-			public required verticalDatum verticalDatum {get;set;} = default;
+			public verticalDatum verticalDatum {get;set;}
+
+			[JsonIgnore]
+			[XmlElement("verticalDatum")]
+			public SerializableEnumeration<verticalDatum> verticalDatumElement { get { return verticalDatum; } set { } }
 
 			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
@@ -5944,14 +6590,17 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(SoundingDatum);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => SoundingDatum._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => SoundingDatum._featureBindingDefinitions;
 
 			[JsonIgnore]
@@ -5969,7 +6618,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -5978,9 +6627,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class VerticalDatumOfData : FeatureNode, IFeatureBindingDefinition {
-			[XmlElement("verticalDatum")]
+			[XmlIgnore]
 			[EnumerationValue([3,16,17,18,19,20,21,24,25,26,28,29,30,44])]
-			public required verticalDatum verticalDatum {get;set;} = default;
+			public verticalDatum verticalDatum {get;set;}
+
+			[JsonIgnore]
+			[XmlElement("verticalDatum")]
+			public SerializableEnumeration<verticalDatum> verticalDatumElement { get { return verticalDatum; } set { } }
 
 			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
@@ -5988,14 +6641,17 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(VerticalDatumOfData);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => VerticalDatumOfData._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => VerticalDatumOfData._featureBindingDefinitions;
 
 			[JsonIgnore]
@@ -6013,7 +6669,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 
 		/// <summary>
@@ -6023,7 +6679,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("orientationValue")]
-			public required decimal orientationValue {get;set;} = default;
+			public decimal orientationValue {get;set;} = default;
 
 			[XmlElement("text")]
 			public String? text {get;set;} = default;
@@ -6031,11 +6687,15 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
 
 			[XmlElement("textOffsetMm")]
-			public required int textOffsetMm {get;set;} = default;
+			public int textOffsetMm {get;set;} = default;
 
-			[XmlElement("textType")]
+			[XmlIgnore]
 			[EnumerationValue([1])]
 			public textType? textType {get;set;} = default;
+
+			[JsonIgnore]
+			[XmlElement("textType")]
+			public SerializableEnumeration<textType>? textTypeElement { get { return textType; } set { } }
 
 			public bool ShouldSerializetextType() { return textType.HasValue; }
 
@@ -6045,14 +6705,17 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override string Code => nameof(TextPlacement);
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
 			[JsonIgnore]
+			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 
 			[JsonIgnore]
@@ -6078,11 +6741,12 @@ namespace S100Framework.DomainModel.S131 {
 
 			[JsonIgnore]
 			[XmlAnyElement]
-			public XmlElement[]? Geometry { get; set; } = default;
+			public XElement[]? Geometry { get; set; } = default;
 		}
 	}
 
 	[XmlType(Namespace = "http://www.iho.int/S131/1.0")]
+	[XmlRoot(Namespace = "http://www.iho.int/S131/1.0")]
 	public class Dataset : S100Framework.DomainModel.S100.DatasetBase
 	{
 		[XmlElement(Order = 1)]

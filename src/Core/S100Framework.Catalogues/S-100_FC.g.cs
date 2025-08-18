@@ -131,7 +131,11 @@ namespace S100Framework.DomainModel.S100
     [Serializable]
     public abstract class DatasetBase
     {
-        [XmlElement(Order = 0)]
+        [JsonIgnore]
+        [XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+        public string gmlId { get; set; }
+
+        [XmlElement(Order = 0, Namespace = "http://www.iho.int/s100gml/5.0")]
         public DataSetIdentification DatasetIdentificationInformation { get; set; }
 
         [JsonIgnore]
@@ -230,7 +234,7 @@ namespace S100Framework.DomainModel.S100
     {
         public override Time Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
             if (reader.TokenType == JsonTokenType.String) {
-                string? timeString = reader.GetString();
+                var timeString = reader.GetString();
                 var values = timeString.Split(':');
                 if (values.Length == 2 && int.TryParse(values[0], out int hours) && int.TryParse(values[1], out int minutes))
                     return new Time(int.Parse(values[0]), int.Parse(values[1]));
