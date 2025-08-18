@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Immutable;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
@@ -12,7 +13,11 @@ using System.Xml.Serialization;
 namespace S100Framework.DomainModel.S127 {
 	public static class Summary
 	{
+		public static string Name => "Feature Catalogue for S-127";
+		public static string Scope => "Global coverage of maritime areas";
+		public static string ProductId => "S-127";
 		public static Version Version => new Version("2.0.0");
+		public static DateOnly VersionDate => DateOnly.ParseExact("2022-12-30", "yyyy-MM-dd");
 		public static string[] ComplexTypes => ["bearingInformation","contactAddress","featureName","fixedDateRange","frequencyPair","graphic","horizontalPositionUncertainty","information","noticeTime","onlineResource","orientation","scheduleByDayOfWeek","periodicDateRange","radiocommunications","rxNCode","sourceIndication","surveyDateRange","telecommunications","textContent","timeIntervalsByDayOfWeek","underKeelAllowance","vesselsMeasurements"];
 		public static string[] InformationAssociationTypes => ["AdditionalInformation","AuthorityContact","AuthorityHours","AssociatedRxN","ExceptionalWorkday","InclusionType","PermissionType","RelatedOrganisation","ReportingAuthority","ReportingRequirement","ServiceContact","ServiceControl","SpatialAssociation","LocationHours","TrafficServiceReport"];
 		public static string[] FeatureAssociationTypes => ["ServiceProvisionArea","PilotageDistrictAssociation","TextAssociation","TrafficControlServiceAggregation"];
@@ -2616,7 +2621,7 @@ namespace S100Framework.DomainModel.S127 {
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			[XmlElement("name")]
-			public required String name {get;set;} = string.Empty;
+			public String name {get;set;} = string.Empty;
 		}
 
 		/// <summary>
@@ -2671,7 +2676,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class horizontalPositionUncertainty {
 			[XmlElement("uncertaintyFixed")]
-			public required decimal uncertaintyFixed {get;set;} = default;
+			public decimal uncertaintyFixed {get;set;} = default;
 		}
 
 		/// <summary>
@@ -2743,7 +2748,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class onlineResource {
 			[XmlElement("linkage")]
-			public required String linkage {get;set;} = string.Empty;
+			public String linkage {get;set;} = string.Empty;
 
 			[XmlElement("protocol")]
 			public String? protocol {get;set;} = default;
@@ -2793,7 +2798,7 @@ namespace S100Framework.DomainModel.S127 {
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[XmlElement("orientationValue")]
-			public required decimal orientationValue {get;set;} = default;
+			public decimal orientationValue {get;set;} = default;
 		}
 
 		/// <summary>
@@ -2806,10 +2811,10 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
 			[XmlElement("dateEnd")]
-			public required String dateEnd {get;set;} = string.Empty;
+			public String dateEnd {get;set;} = string.Empty;
 
 			[XmlElement("dateStart")]
-			public required String dateStart {get;set;} = string.Empty;
+			public String dateStart {get;set;} = string.Empty;
 		}
 
 		/// <summary>
@@ -2890,7 +2895,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class surveyDateRange {
 			[XmlElement("dateEnd")]
-			public required String dateEnd {get;set;} = string.Empty;
+			public String dateEnd {get;set;} = string.Empty;
 
 			[XmlElement("dateStart")]
 			public String? dateStart {get;set;} = default;
@@ -3008,7 +3013,7 @@ namespace S100Framework.DomainModel.S127 {
 		public class vesselsMeasurements {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
-			public required comparisonOperator comparisonOperator {get;set;}
+			public comparisonOperator comparisonOperator {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("comparisonOperator")]
@@ -3016,18 +3021,18 @@ namespace S100Framework.DomainModel.S127 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
-			public required vesselsCharacteristics vesselsCharacteristics {get;set;}
+			public vesselsCharacteristics vesselsCharacteristics {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("vesselsCharacteristics")]
 			public SerializableEnumeration<vesselsCharacteristics> vesselsCharacteristicsElement { get { return vesselsCharacteristics; } set { } }
 
 			[XmlElement("vesselsCharacteristicsValue")]
-			public required decimal vesselsCharacteristicsValue {get;set;} = default;
+			public decimal vesselsCharacteristicsValue {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
-			public required vesselsCharacteristicsUnit vesselsCharacteristicsUnit {get;set;}
+			public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("vesselsCharacteristicsUnit")]
@@ -3212,7 +3217,7 @@ namespace S100Framework.DomainModel.S127 {
 			public bool ShouldSerializecategoryOfCommunicationPreference() { return categoryOfCommunicationPreference.HasValue; }
 
 			[XmlElement("telecommunicationIdentifier")]
-			public required String telecommunicationIdentifier {get;set;} = string.Empty;
+			public String telecommunicationIdentifier {get;set;} = string.Empty;
 
 			[XmlElement("telecommunicationCarrier")]
 			public String? telecommunicationCarrier {get;set;} = default;
@@ -3374,7 +3379,7 @@ namespace S100Framework.DomainModel.S127 {
 		public partial class InclusionType : InformationAssociation {
 			[XmlIgnore]
 			[EnumerationValue([1,2])]
-			public required membership membership {get;set;}
+			public membership membership {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("membership")]
@@ -3393,7 +3398,7 @@ namespace S100Framework.DomainModel.S127 {
 		public partial class PermissionType : InformationAssociation {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
-			public required categoryOfRelationship categoryOfRelationship {get;set;}
+			public categoryOfRelationship categoryOfRelationship {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("categoryOfRelationship")]
@@ -3788,7 +3793,7 @@ namespace S100Framework.DomainModel.S127 {
 		public partial class Authority : InformationType {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
-			public required categoryOfAuthority categoryOfAuthority {get;set;}
+			public categoryOfAuthority categoryOfAuthority {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("categoryOfAuthority")]
@@ -4082,7 +4087,7 @@ namespace S100Framework.DomainModel.S127 {
 			public bool ShouldSerializecategoryOfShipReport() { return categoryOfShipReport.Any(); }
 
 			[XmlElement("iMOFormatForReporting")]
-			public required Boolean iMOFormatForReporting {get;set;} = false;
+			public Boolean iMOFormatForReporting {get;set;} = false;
 
 			[XmlElement("noticeTime")]
 			public List<noticeTime> noticeTime {get;set;} = [];
@@ -4594,7 +4599,7 @@ namespace S100Framework.DomainModel.S127 {
 		public partial class ISPSCodeSecurityLevel : OrganizationContactArea {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
-			public required iSPSLevel iSPSLevel {get;set;}
+			public iSPSLevel iSPSLevel {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("iSPSLevel")]
@@ -4644,7 +4649,7 @@ namespace S100Framework.DomainModel.S127 {
 			public bool ShouldSerializeserviceAccessProcedure() { return !string.IsNullOrEmpty(serviceAccessProcedure); }
 
 			[XmlElement("requirementsForMaintenanceOfListeningWatch")]
-			public required String requirementsForMaintenanceOfListeningWatch {get;set;} = string.Empty;
+			public String requirementsForMaintenanceOfListeningWatch {get;set;} = string.Empty;
 
 			[JsonIgnore]
 			[XmlIgnore]
@@ -4944,7 +4949,7 @@ namespace S100Framework.DomainModel.S127 {
 			public bool ShouldSerializepilotRequest() { return !string.IsNullOrEmpty(pilotRequest); }
 
 			[XmlElement("remotePilot")]
-			public required Boolean remotePilot {get;set;} = false;
+			public Boolean remotePilot {get;set;} = false;
 
 			[XmlElement("noticeTime")]
 			public noticeTime? noticeTime {get;set;} = default;
@@ -5304,7 +5309,7 @@ namespace S100Framework.DomainModel.S127 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
-			public required trafficFlow trafficFlow {get;set;}
+			public trafficFlow trafficFlow {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("trafficFlow")]
@@ -5510,7 +5515,7 @@ namespace S100Framework.DomainModel.S127 {
 		public partial class RouteingMeasure : FeatureType {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
-			public required categoryOfRouteingMeasure categoryOfRouteingMeasure {get;set;}
+			public categoryOfRouteingMeasure categoryOfRouteingMeasure {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("categoryOfRouteingMeasure")]
@@ -5580,7 +5585,7 @@ namespace S100Framework.DomainModel.S127 {
 			public bool ShouldSerializeserviceAccessProcedure() { return !string.IsNullOrEmpty(serviceAccessProcedure); }
 
 			[XmlElement("requirementsForMaintenanceOfListeningWatch")]
-			public required String requirementsForMaintenanceOfListeningWatch {get;set;} = string.Empty;
+			public String requirementsForMaintenanceOfListeningWatch {get;set;} = string.Empty;
 
 			[JsonIgnore]
 			[XmlIgnore]
@@ -5881,7 +5886,7 @@ namespace S100Framework.DomainModel.S127 {
 		public partial class UnderKeelClearanceManagementArea : ReportableServiceArea {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
-			public required dynamicResource dynamicResource {get;set;}
+			public dynamicResource dynamicResource {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("dynamicResource")]
@@ -5941,7 +5946,7 @@ namespace S100Framework.DomainModel.S127 {
 			public bool ShouldSerializeserviceAccessProcedure() { return !string.IsNullOrEmpty(serviceAccessProcedure); }
 
 			[XmlElement("requirementsForMaintenanceOfListeningWatch")]
-			public required String requirementsForMaintenanceOfListeningWatch {get;set;} = string.Empty;
+			public String requirementsForMaintenanceOfListeningWatch {get;set;} = string.Empty;
 
 			[JsonIgnore]
 			[XmlIgnore]
@@ -6015,7 +6020,7 @@ namespace S100Framework.DomainModel.S127 {
 		public partial class WaterwayArea : SupervisedArea {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
-			public required dynamicResource dynamicResource {get;set;}
+			public dynamicResource dynamicResource {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("dynamicResource")]
@@ -6150,10 +6155,10 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("maximumDisplayScale")]
-			public required int maximumDisplayScale {get;set;} = default;
+			public int maximumDisplayScale {get;set;} = default;
 
 			[XmlElement("minimumDisplayScale")]
-			public required int minimumDisplayScale {get;set;} = default;
+			public int minimumDisplayScale {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlIgnore]
@@ -6268,7 +6273,7 @@ namespace S100Framework.DomainModel.S127 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
-			public required textJustification textJustification {get;set;}
+			public textJustification textJustification {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("textJustification")]

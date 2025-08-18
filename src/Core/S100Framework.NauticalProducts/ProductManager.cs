@@ -26,15 +26,15 @@ namespace S100Framework.NauticalProducts
 
     public interface IElectronicProductManager
     {
-        Task CreateElectronicProductAsync(string ps, string name, S100Framework.DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary);
+        Task CreateElectronicProductAsync(string name, DomainModel.S128.ComplexAttributes.productSpecification productSpecification, S100Framework.DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary);
 
-        Task CreateElectronicProductAsync(string ps, string name, S100Framework.DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary, int edition, int update, byte[] zipfile);
+        Task CreateElectronicProductAsync(string name, DomainModel.S128.ComplexAttributes.productSpecification productSpecification, S100Framework.DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary, int edition, int update, byte[] zipfile);
 
-        Task<YAML.Dataset> CreateNewEditionAsync(string ps, string name);
+        Task<YAML.Dataset> CreateNewEditionAsync(string name);
 
-        Task<YAML.Dataset> CreateNewUpdateAsync(string ps, string name);
+        Task<YAML.Dataset> CreateNewUpdateAsync(string name);
 
-        ElectronicProduct ElectronicProduct(string ps, string name);
+        ElectronicProduct ElectronicProduct(string name);
     }
 
     public interface IProductManager
@@ -145,16 +145,13 @@ namespace S100Framework.NauticalProducts
             });
         }
 
-        Task IElectronicProductManager.CreateElectronicProductAsync(string ps, string name, DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary) {
+        Task IElectronicProductManager.CreateElectronicProductAsync(string name, DomainModel.S128.ComplexAttributes.productSpecification productSpecification, DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary) {
             if (string.IsNullOrEmpty(name))
                 throw new System.ArgumentNullException(nameof(name));
-            if (string.IsNullOrEmpty(ps))
-                throw new System.ArgumentNullException(nameof(ps));
 
-            ps = ps.ToUpperInvariant();
             name = name.ToUpperInvariant();
 
-            var key = new ElectronicProductKey(ps, name);
+            var key = new ElectronicProductKey(productSpecification.name, name);
 
             return this._taskFactory.StartNew(() => {
                 if (this._electronicProducts.ContainsKey(name))
@@ -173,6 +170,7 @@ namespace S100Framework.NauticalProducts
                         editionNumber = 0,
                         agencyResponsibleForProduction = "Danish Geodata Agency",
                         specificUsage = specificUsage,
+                        productSpecification = productSpecification,
                     };
 
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(electronicProduct);
@@ -186,25 +184,19 @@ namespace S100Framework.NauticalProducts
 
         }
 
-        Task IElectronicProductManager.CreateElectronicProductAsync(string ps, string name, DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary, int edition, int update, byte[] zipfile) {
+        Task IElectronicProductManager.CreateElectronicProductAsync(string name, DomainModel.S128.ComplexAttributes.productSpecification productSpecification, DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary, int edition, int update, byte[] zipfile) {
             throw new NotImplementedException();
         }
 
-        async Task<YAML.Dataset> IElectronicProductManager.CreateNewEditionAsync(string ps, string name) {
-            if (string.IsNullOrEmpty(ps))
-                throw new System.ArgumentNullException(nameof(ps));
-            ps = ps.ToUpperInvariant();
-
+        async Task<YAML.Dataset> IElectronicProductManager.CreateNewEditionAsync(string name) {
             if (string.IsNullOrEmpty(name))
                 throw new System.ArgumentNullException(nameof(name));
             name = name.ToUpperInvariant();
 
-            if (!this._connections.ContainsKey(ps))
-                throw new System.ArgumentException(nameof(ps));
             if (!this._electronicProducts.ContainsKey(name))
                 throw new System.ArgumentException(nameof(name));
 
-            var connection = this._connections[ps]!;
+            var connection = this._connections[this._electronicProducts[name].productSpecification!.name]!;
 
             var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
 
@@ -447,11 +439,11 @@ namespace S100Framework.NauticalProducts
             return dataset;
         }
 
-        Task<YAML.Dataset> IElectronicProductManager.CreateNewUpdateAsync(string ps, string name) {
+        Task<YAML.Dataset> IElectronicProductManager.CreateNewUpdateAsync(string name) {
             throw new NotImplementedException();
         }
 
-        ElectronicProduct IElectronicProductManager.ElectronicProduct(string ps, string name) => this._electronicProducts[name.ToUpperInvariant()];
+        ElectronicProduct IElectronicProductManager.ElectronicProduct(string name) => this._electronicProducts[name.ToUpperInvariant()];
 
         public void Dispose() {
             if (!this._disposed) {

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Immutable;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
@@ -12,7 +13,11 @@ using System.Xml.Serialization;
 namespace S100Framework.DomainModel.S123 {
 	public static class Summary
 	{
+		public static string Name => "Marine Radio Services";
+		public static string Scope => "Global";
+		public static string ProductId => "S-123";
 		public static Version Version => new Version("1.1.0");
+		public static DateOnly VersionDate => DateOnly.ParseExact("2025-01-25", "yyyy-MM-dd");
 		public static string[] ComplexTypes => ["areaA3ServiceDescription","bearingInformation","broadcastContent","contactAddress","coverageIndication","featureName","fixedDateRange","frequencyPair","frequencyRange","graphic","horizontalPositionUncertainty","information","onlineResource","orientation","periodicDateRange","radioChannelDetails","radiocommunicationIdentifier","rxNCode","scheduleByDayOfWeek","sectorLimit","sectorLimitOne","sectorLimitTwo","spatialAccuracy","surveyDateRange","telecommunications","textContent","timeIntervalsByDayOfWeek","timesOfTransmission","verticalUncertainty","vesselMeasurementsSpecification"];
 		public static string[] InformationAssociationTypes => ["AdditionalInformation","AssociatedRxN","AuthorityContact","AuthorityHours","AvailableQoS","BroadcastService","BroadcastTransmission","ConnectivityService","ExceptionalWorkday","InclusionType","LocationHours","PermissionType","RadioServiceControl","relatedOrganisation","ServiceContact","ServiceCoordination","SpatialAssociation","TransmissionService"];
 		public static string[] FeatureAssociationTypes => ["coreAggregation","fuzzyZoneAggregation","ServiceProvisionArea","TextAssociation"];
@@ -1706,10 +1711,10 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class featureName {
 			[XmlElement("language")]
-			public required String language {get;set;} = string.Empty;
+			public String language {get;set;} = string.Empty;
 
 			[XmlElement("name")]
-			public required String name {get;set;} = string.Empty;
+			public String name {get;set;} = string.Empty;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
@@ -1764,7 +1769,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializefrequencyShoreStationReceives() { return frequencyShoreStationReceives.HasValue; }
 
 			[XmlElement("frequencyShoreStationTransmits")]
-			public required int frequencyShoreStationTransmits {get;set;} = default;
+			public int frequencyShoreStationTransmits {get;set;} = default;
 		}
 
 		/// <summary>
@@ -1791,7 +1796,7 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class horizontalPositionUncertainty {
 			[XmlElement("uncertaintyFixed")]
-			public required decimal uncertaintyFixed {get;set;} = default;
+			public decimal uncertaintyFixed {get;set;} = default;
 
 			[XmlElement("uncertaintyVariableFactor")]
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
@@ -1824,7 +1829,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 
 			[XmlElement("language")]
-			public required String language {get;set;} = string.Empty;
+			public String language {get;set;} = string.Empty;
 
 			[XmlElement("text")]
 			public String? text {get;set;} = default;
@@ -1844,7 +1849,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 
 			[XmlElement("linkage")]
-			public required String linkage {get;set;} = string.Empty;
+			public String linkage {get;set;} = string.Empty;
 
 			[XmlElement("nameOfResource")]
 			public String? nameOfResource {get;set;} = default;
@@ -1864,7 +1869,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[XmlElement("orientationValue")]
-			public required decimal orientationValue {get;set;} = default;
+			public decimal orientationValue {get;set;} = default;
 		}
 
 		/// <summary>
@@ -1874,10 +1879,10 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
 			[XmlElement("dateStart")]
-			public required String dateStart {get;set;} = string.Empty;
+			public String dateStart {get;set;} = string.Empty;
 
 			[XmlElement("dateEnd")]
-			public required String dateEnd {get;set;} = string.Empty;
+			public String dateEnd {get;set;} = string.Empty;
 		}
 
 		/// <summary>
@@ -1897,7 +1902,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializefrequencyPair() { return frequencyPair.Any(); }
 
 			[XmlElement("transmissionOfTrafficLists")]
-			public required Boolean transmissionOfTrafficLists {get;set;} = false;
+			public Boolean transmissionOfTrafficLists {get;set;} = false;
 
 			[XmlElement("hoursOfWatch")]
 			public String? hoursOfWatch {get;set;} = default;
@@ -1956,7 +1961,7 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitOne {
 			[XmlElement("sectorBearing")]
-			public required decimal sectorBearing {get;set;} = default;
+			public decimal sectorBearing {get;set;} = default;
 
 			[XmlElement("sectorLineLength")]
 			public decimal? sectorLineLength {get;set;} = default;
@@ -1971,7 +1976,7 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitTwo {
 			[XmlElement("sectorBearing")]
-			public required decimal sectorBearing {get;set;} = default;
+			public decimal sectorBearing {get;set;} = default;
 
 			[XmlElement("sectorLineLength")]
 			public decimal? sectorLineLength {get;set;} = default;
@@ -1991,7 +1996,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
 
 			[XmlElement("dateEnd")]
-			public required String dateEnd {get;set;} = string.Empty;
+			public String dateEnd {get;set;} = string.Empty;
 		}
 
 		/// <summary>
@@ -2009,7 +2014,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
 
 			[XmlElement("telecommunicationIdentifier")]
-			public required String telecommunicationIdentifier {get;set;} = string.Empty;
+			public String telecommunicationIdentifier {get;set;} = string.Empty;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
@@ -2128,7 +2133,7 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class verticalUncertainty {
 			[XmlElement("uncertaintyFixed")]
-			public required decimal uncertaintyFixed {get;set;} = default;
+			public decimal uncertaintyFixed {get;set;} = default;
 
 			[XmlElement("uncertaintyVariableFactor")]
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
@@ -2147,18 +2152,18 @@ namespace S100Framework.DomainModel.S123 {
 		public class vesselMeasurementsSpecification {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,6,7,8,9,10,11,12,13])]
-			public required vesselsCharacteristics vesselsCharacteristics {get;set;}
+			public vesselsCharacteristics vesselsCharacteristics {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("vesselsCharacteristics")]
 			public SerializableEnumeration<vesselsCharacteristics> vesselsCharacteristicsElement { get { return vesselsCharacteristics; } set { } }
 
 			[XmlElement("vesselsCharacteristicsValue")]
-			public required decimal vesselsCharacteristicsValue {get;set;} = default;
+			public decimal vesselsCharacteristicsValue {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,7,9])]
-			public required vesselsCharacteristicsUnit vesselsCharacteristicsUnit {get;set;}
+			public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("vesselsCharacteristicsUnit")]
@@ -2166,7 +2171,7 @@ namespace S100Framework.DomainModel.S123 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
-			public required comparisonOperator comparisonOperator {get;set;}
+			public comparisonOperator comparisonOperator {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("comparisonOperator")]
@@ -2202,12 +2207,12 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimit {
 			[XmlElement("sectorLimitOne")]
-			public required sectorLimitOne sectorLimitOne {get;set;} = new sectorLimitOne {
+			public sectorLimitOne sectorLimitOne {get;set;} = new sectorLimitOne {
 				sectorBearing = default,
 			};
 
 			[XmlElement("sectorLimitTwo")]
-			public required sectorLimitTwo sectorLimitTwo {get;set;} = new sectorLimitTwo {
+			public sectorLimitTwo sectorLimitTwo {get;set;} = new sectorLimitTwo {
 				sectorBearing = default,
 			};
 		}
@@ -2268,7 +2273,7 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class graphic {
 			[XmlElement("pictorialRepresentation")]
-			public required String pictorialRepresentation {get;set;} = string.Empty;
+			public String pictorialRepresentation {get;set;} = string.Empty;
 
 			[XmlElement("pictureCaption")]
 			public String? pictureCaption {get;set;} = default;
@@ -2469,7 +2474,7 @@ namespace S100Framework.DomainModel.S123 {
 		public partial class InclusionType : InformationAssociation {
 			[XmlIgnore]
 			[EnumerationValue([1,2])]
-			public required membership membership {get;set;}
+			public membership membership {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("membership")]
@@ -2499,7 +2504,7 @@ namespace S100Framework.DomainModel.S123 {
 		public partial class PermissionType : InformationAssociation {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
-			public required categoryOfRelationship categoryOfRelationship {get;set;}
+			public categoryOfRelationship categoryOfRelationship {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("categoryOfRelationship")]
@@ -3694,7 +3699,7 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class GMDSSArea : FeatureType {
 			[XmlElement("idNAVAREA")]
-			public required String idNAVAREA {get;set;} = string.Empty;
+			public String idNAVAREA {get;set;} = string.Empty;
 
 			[XmlElement("nationality")]
 			public String? nationality {get;set;} = default;
@@ -3703,7 +3708,7 @@ namespace S100Framework.DomainModel.S123 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
-			public required categoryOfGMDSSArea categoryOfGMDSSArea {get;set;}
+			public categoryOfGMDSSArea categoryOfGMDSSArea {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("categoryOfGMDSSArea")]
@@ -3853,7 +3858,7 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MetArea : FeatureType {
 			[XmlElement("idMETAREA")]
-			public required String idMETAREA {get;set;} = string.Empty;
+			public String idMETAREA {get;set;} = string.Empty;
 
 			[XmlElement("onlineResource")]
 			public List<onlineResource> onlineResource {get;set;} = [];
@@ -3952,7 +3957,7 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NavArea : FeatureType {
 			[XmlElement("idNAVAREA")]
-			public required String idNAVAREA {get;set;} = string.Empty;
+			public String idNAVAREA {get;set;} = string.Empty;
 
 			[XmlElement("onlineResource")]
 			public List<onlineResource> onlineResource {get;set;} = [];
@@ -4052,17 +4057,17 @@ namespace S100Framework.DomainModel.S123 {
 		public partial class NavtexServiceArea : FeatureType {
 			[XmlIgnore]
 			[EnumerationValue([1,2])]
-			public required typeOfNAVTEXService typeOfNAVTEXService {get;set;}
+			public typeOfNAVTEXService typeOfNAVTEXService {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("typeOfNAVTEXService")]
 			public SerializableEnumeration<typeOfNAVTEXService> typeOfNAVTEXServiceElement { get { return typeOfNAVTEXService; } set { } }
 
 			[XmlElement("idNAVAREA")]
-			public required String idNAVAREA {get;set;} = string.Empty;
+			public String idNAVAREA {get;set;} = string.Empty;
 
 			[XmlElement("transmitterIdentificationCharacter")]
-			public required String transmitterIdentificationCharacter {get;set;} = string.Empty;
+			public String transmitterIdentificationCharacter {get;set;} = string.Empty;
 
 			[XmlElement("nationality")]
 			public String? nationality {get;set;} = default;
@@ -4344,7 +4349,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializestatus() { return status.HasValue; }
 
 			[XmlElement("radiocommunicationIdentifier")]
-			public required radiocommunicationIdentifier radiocommunicationIdentifier {get;set;} = new radiocommunicationIdentifier {
+			public radiocommunicationIdentifier radiocommunicationIdentifier {get;set;} = new radiocommunicationIdentifier {
 			};
 
 			[XmlElement("sectorLimit")]
@@ -4459,7 +4464,7 @@ namespace S100Framework.DomainModel.S123 {
 		public partial class WeatherForecastAndWarningArea : FeatureType {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
-			public required categoryOfForecastOrWarningArea categoryOfForecastOrWarningArea {get;set;}
+			public categoryOfForecastOrWarningArea categoryOfForecastOrWarningArea {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("categoryOfForecastOrWarningArea")]
@@ -4661,10 +4666,10 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("maximumDisplayScale")]
-			public required int maximumDisplayScale {get;set;} = default;
+			public int maximumDisplayScale {get;set;} = default;
 
 			[XmlElement("minimumDisplayScale")]
-			public required int minimumDisplayScale {get;set;} = default;
+			public int minimumDisplayScale {get;set;} = default;
 
 			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
@@ -4798,10 +4803,10 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("textOffsetBearing")]
-			public required int textOffsetBearing {get;set;} = default;
+			public int textOffsetBearing {get;set;} = default;
 
 			[XmlElement("textOffsetDistance")]
-			public required int textOffsetDistance {get;set;} = default;
+			public int textOffsetDistance {get;set;} = default;
 
 			[XmlElement("textRotation")]
 			public Boolean? textRotation {get;set;} = default;

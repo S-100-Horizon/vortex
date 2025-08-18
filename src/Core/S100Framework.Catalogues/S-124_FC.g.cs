@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Immutable;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
@@ -12,7 +13,11 @@ using System.Xml.Serialization;
 namespace S100Framework.DomainModel.S124 {
 	public static class Summary
 	{
+		public static string Name => "Navigational Warnings";
+		public static string Scope => "Global";
+		public static string ProductId => "S-124";
 		public static Version Version => new Version("2.0.0");
+		public static DateOnly VersionDate => DateOnly.ParseExact("2024-10-30", "yyyy-MM-dd");
 		public static string[] ComplexTypes => ["affectedChartPublications","chartAffected","fixedDateRange","generalArea","information","locality","locationName","messageSeriesIdentifier","navwarnTitle","warningInformation","featureReference","featureName","horizontalPositionUncertainty","spatialAccuracy"];
 		public static string[] InformationAssociationTypes => ["navwarnPreambleContent","navwarnReferences"];
 		public static string[] FeatureAssociationTypes => ["TextAssociation","areaAffected"];
@@ -1870,7 +1875,7 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class chartAffected {
 			[XmlElement("chartNumber")]
-			public required String chartNumber {get;set;} = string.Empty;
+			public String chartNumber {get;set;} = string.Empty;
 
 			[XmlElement("chartPlanNumber")]
 			public String? chartPlanNumber {get;set;} = default;
@@ -1878,10 +1883,11 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializechartPlanNumber() { return !string.IsNullOrEmpty(chartPlanNumber); }
 
 			[XmlIgnore]
-			public required DateOnly editionDate {get;set;} = default;
+			public DateOnly editionDate {get;set;} = default;
 
 			[JsonIgnore]
 			[System.Xml.Serialization.XmlElementAttribute(DataType = "date", ElementName = "editionDate")]
+			[EditorBrowsable(EditorBrowsableState.Never)]
 			public DateTime editionDateField {
 				get { return editionDate.ToDateTime(TimeOnly.MinValue); }
 				set { editionDate = DateOnly.FromDateTime(value); }
@@ -1933,10 +1939,10 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class information {
 			[XmlElement("language")]
-			public required String language {get;set;} = string.Empty;
+			public String language {get;set;} = string.Empty;
 
 			[XmlElement("text")]
-			public required String text {get;set;} = string.Empty;
+			public String text {get;set;} = string.Empty;
 		}
 
 		/// <summary>
@@ -1946,10 +1952,10 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class locationName {
 			[XmlElement("language")]
-			public required String language {get;set;} = string.Empty;
+			public String language {get;set;} = string.Empty;
 
 			[XmlElement("text")]
-			public required String text {get;set;} = string.Empty;
+			public String text {get;set;} = string.Empty;
 		}
 
 		/// <summary>
@@ -1959,7 +1965,7 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class messageSeriesIdentifier {
 			[XmlElement("agencyResponsibleForProduction")]
-			public required String agencyResponsibleForProduction {get;set;} = string.Empty;
+			public String agencyResponsibleForProduction {get;set;} = string.Empty;
 
 			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -1967,7 +1973,7 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("nameOfSeries")]
-			public required String nameOfSeries {get;set;} = string.Empty;
+			public String nameOfSeries {get;set;} = string.Empty;
 
 			[XmlElement("nationality")]
 			public String? nationality {get;set;} = default;
@@ -1975,18 +1981,18 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializenationality() { return !string.IsNullOrEmpty(nationality); }
 
 			[XmlElement("warningNumber")]
-			public required int warningNumber {get;set;} = default;
+			public int warningNumber {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
-			public required warningType warningType {get;set;}
+			public warningType warningType {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("warningType")]
 			public SerializableEnumeration<warningType> warningTypeElement { get { return warningType; } set { } }
 
 			[XmlElement("year")]
-			public required int year {get;set;} = default;
+			public int year {get;set;} = default;
 		}
 
 		/// <summary>
@@ -1996,10 +2002,10 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class navwarnTitle {
 			[XmlElement("language")]
-			public required String language {get;set;} = string.Empty;
+			public String language {get;set;} = string.Empty;
 
 			[XmlElement("text")]
-			public required String text {get;set;} = string.Empty;
+			public String text {get;set;} = string.Empty;
 		}
 
 		/// <summary>
@@ -2043,10 +2049,10 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class featureName {
 			[XmlElement("language")]
-			public required String language {get;set;} = string.Empty;
+			public String language {get;set;} = string.Empty;
 
 			[XmlElement("name")]
-			public required String name {get;set;} = string.Empty;
+			public String name {get;set;} = string.Empty;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
@@ -2066,7 +2072,7 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class horizontalPositionUncertainty {
 			[XmlElement("uncertaintyFixed")]
-			public required decimal uncertaintyFixed {get;set;} = default;
+			public decimal uncertaintyFixed {get;set;} = default;
 		}
 
 		/// <summary>
@@ -2076,7 +2082,7 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class spatialAccuracy {
 			[XmlElement("horizontalPositionUncertainty")]
-			public required horizontalPositionUncertainty horizontalPositionUncertainty {get;set;} = new horizontalPositionUncertainty {
+			public horizontalPositionUncertainty horizontalPositionUncertainty {get;set;} = new horizontalPositionUncertainty {
 				uncertaintyFixed = default,
 			};
 		}
@@ -2103,7 +2109,7 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializeinternationalChartAffected() { return !string.IsNullOrEmpty(internationalChartAffected); }
 
 			[XmlElement("language")]
-			public required String language {get;set;} = string.Empty;
+			public String language {get;set;} = string.Empty;
 
 			[XmlElement("publicationAffected")]
 			public String? publicationAffected {get;set;} = default;
@@ -2233,11 +2239,11 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializemessageSeriesIdentifier() { return messageSeriesIdentifier.Any(); }
 
 			[XmlElement("noMessageOnHand")]
-			public required Boolean noMessageOnHand {get;set;} = false;
+			public Boolean noMessageOnHand {get;set;} = false;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
-			public required referenceCategory referenceCategory {get;set;}
+			public referenceCategory referenceCategory {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("referenceCategory")]
@@ -2289,7 +2295,7 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializelocality() { return locality.Any(); }
 
 			[XmlElement("messageSeriesIdentifier")]
-			public required messageSeriesIdentifier messageSeriesIdentifier {get;set;} = new messageSeriesIdentifier {
+			public messageSeriesIdentifier messageSeriesIdentifier {get;set;} = new messageSeriesIdentifier {
 				agencyResponsibleForProduction = string.Empty,
 				nameOfSeries = string.Empty,
 				warningNumber = default,
@@ -2308,14 +2314,14 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializecancellationDate() { return cancellationDate.HasValue; }
 
 			[XmlElement("intService")]
-			public required Boolean intService {get;set;} = false;
+			public Boolean intService {get;set;} = false;
 
 			[XmlElement("navwarnTypeGeneral")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])]
-			public required navwarnTypeGeneral navwarnTypeGeneral {get;set;} = default;
+			public navwarnTypeGeneral navwarnTypeGeneral {get;set;} = default;
 
 			[XmlElement("publicationTime")]
-			public required DateTime publicationTime {get;set;} = default;
+			public DateTime publicationTime {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlIgnore]
@@ -2405,7 +2411,7 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange.Any(); }
 
 			[XmlElement("warningInformation")]
-			public required warningInformation warningInformation {get;set;} = new warningInformation {
+			public warningInformation warningInformation {get;set;} = new warningInformation {
 			};
 
 			[XmlElement("featureName")]
@@ -2533,16 +2539,16 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
 			[XmlElement("text")]
-			public required String text {get;set;} = string.Empty;
+			public String text {get;set;} = string.Empty;
 
 			[XmlElement("textOffsetBearing")]
-			public required int textOffsetBearing {get;set;} = default;
+			public int textOffsetBearing {get;set;} = default;
 
 			[XmlElement("textOffsetDistance")]
-			public required int textOffsetDistance {get;set;} = default;
+			public int textOffsetDistance {get;set;} = default;
 
 			[XmlElement("textRotation")]
-			public required Boolean textRotation {get;set;} = false;
+			public Boolean textRotation {get;set;} = false;
 
 			[JsonIgnore]
 			[XmlIgnore]

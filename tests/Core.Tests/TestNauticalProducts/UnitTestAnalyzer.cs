@@ -136,6 +136,12 @@ namespace TestNauticalProducts
                     createGeodatabase = () => { return new Geodatabase(new FileGeodatabaseConnectionPath(connectionFile)); };
                 }
 
+                var productSpecification = new S100Framework.DomainModel.S128.ComplexAttributes.productSpecification {
+                    editionDate = S100Framework.DomainModel.S101.Summary.VersionDate,
+                    name = S100Framework.DomainModel.S101.Summary.Name,
+                    version = S100Framework.DomainModel.S101.Summary.Version.ToString(),                    
+                };
+
                 var tasks = new List<Task>();
 
                 using var geodatabase = createGeodatabase();
@@ -181,7 +187,7 @@ namespace TestNauticalProducts
 
                         var cover = (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons);
 
-                        tasks.Add(productManager.ElectronicProductManager.CreateElectronicProductAsync(name, specificUsage, cover));
+                        tasks.Add(productManager.ElectronicProductManager.CreateElectronicProductAsync(name, productSpecification, specificUsage, cover));
                     }
 
                     Task.WaitAll([.. tasks]);
@@ -212,7 +218,7 @@ namespace TestNauticalProducts
 
             
 
-            var dataset = await productManager.ElectronicProductManager.CreateNewEditionAsync("S-101", "101DK0040349E");
+            var dataset = await productManager.ElectronicProductManager.CreateNewEditionAsync("101DK0040349E");
 
             var yaml = dataset.Serialize();
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Immutable;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
@@ -12,7 +13,11 @@ using System.Xml.Serialization;
 namespace S100Framework.DomainModel.S122 {
 	public static class Summary
 	{
+		public static string Name => "Marine Protected Area";
+		public static string Scope => "";
+		public static string ProductId => "S-122";
 		public static Version Version => new Version("1.2.1");
+		public static DateOnly VersionDate => DateOnly.ParseExact("2024-09-16", "yyyy-MM-dd");
 		public static string[] ComplexTypes => ["bearingInformation","contactAddress","featureName","fixedDateRange","frequencyPair","graphic","information","onlineResource","orientation","periodicDateRange","rxNCode","scheduleByDayOfWeek","sectorLimit","sectorLimitOne","sectorLimitTwo","telecommunications","textContent","timeIntervalsByDayOfWeek","vesselsMeasurements","designation"];
 		public static string[] InformationAssociationTypes => ["AssociatedRxN","ExceptionalWorkday","ProtectedAreaAuthority","ServiceControl","RelatedOrganisation","PermissionType","InclusionType","AuthorityContact","AuthorityHours","additionalInformation"];
 		public static string[] FeatureAssociationTypes => [];
@@ -1907,10 +1912,10 @@ namespace S100Framework.DomainModel.S122 {
 			public bool ShouldSerializedisplayName() { return displayName.HasValue; }
 
 			[XmlElement("language")]
-			public required String language {get;set;} = string.Empty;
+			public String language {get;set;} = string.Empty;
 
 			[XmlElement("name")]
-			public required String name {get;set;} = string.Empty;
+			public String name {get;set;} = string.Empty;
 		}
 
 		/// <summary>
@@ -1992,7 +1997,7 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class onlineResource {
 			[XmlElement("onlineResourceLinkageURL")]
-			public required String onlineResourceLinkageURL {get;set;} = string.Empty;
+			public String onlineResourceLinkageURL {get;set;} = string.Empty;
 
 			[XmlElement("protocol")]
 			public String? protocol {get;set;} = default;
@@ -2041,7 +2046,7 @@ namespace S100Framework.DomainModel.S122 {
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[XmlElement("orientationValue")]
-			public required decimal orientationValue {get;set;} = default;
+			public decimal orientationValue {get;set;} = default;
 		}
 
 		/// <summary>
@@ -2051,10 +2056,10 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
 			[XmlElement("dateStart")]
-			public required String dateStart {get;set;} = string.Empty;
+			public String dateStart {get;set;} = string.Empty;
 
 			[XmlElement("dateEnd")]
-			public required String dateEnd {get;set;} = string.Empty;
+			public String dateEnd {get;set;} = string.Empty;
 		}
 
 		/// <summary>
@@ -2086,7 +2091,7 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitOne {
 			[XmlElement("sectorBearing")]
-			public required decimal sectorBearing {get;set;} = default;
+			public decimal sectorBearing {get;set;} = default;
 
 			[XmlElement("sectorLineLength")]
 			public int? sectorLineLength {get;set;} = default;
@@ -2101,7 +2106,7 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitTwo {
 			[XmlElement("sectorBearing")]
-			public required decimal sectorBearing {get;set;} = default;
+			public decimal sectorBearing {get;set;} = default;
 
 			[XmlElement("sectorLineLength")]
 			public int? sectorLineLength {get;set;} = default;
@@ -2192,18 +2197,18 @@ namespace S100Framework.DomainModel.S122 {
 		public class vesselsMeasurements {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,6,7,8,9,10,11,12,13])]
-			public required vesselsCharacteristics vesselsCharacteristics {get;set;}
+			public vesselsCharacteristics vesselsCharacteristics {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("vesselsCharacteristics")]
 			public SerializableEnumeration<vesselsCharacteristics> vesselsCharacteristicsElement { get { return vesselsCharacteristics; } set { } }
 
 			[XmlElement("vesselsCharacteristicsValue")]
-			public required decimal vesselsCharacteristicsValue {get;set;} = default;
+			public decimal vesselsCharacteristicsValue {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([3,4,5,6,7,9])]
-			public required vesselsCharacteristicsUnit vesselsCharacteristicsUnit {get;set;}
+			public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("vesselsCharacteristicsUnit")]
@@ -2211,7 +2216,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
-			public required comparisonOperator comparisonOperator {get;set;}
+			public comparisonOperator comparisonOperator {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("comparisonOperator")]
@@ -2346,12 +2351,12 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimit {
 			[XmlElement("sectorLimitOne")]
-			public required sectorLimitOne sectorLimitOne {get;set;} = new sectorLimitOne {
+			public sectorLimitOne sectorLimitOne {get;set;} = new sectorLimitOne {
 				sectorBearing = default,
 			};
 
 			[XmlElement("sectorLimitTwo")]
-			public required sectorLimitTwo sectorLimitTwo {get;set;} = new sectorLimitTwo {
+			public sectorLimitTwo sectorLimitTwo {get;set;} = new sectorLimitTwo {
 				sectorBearing = default,
 			};
 		}
@@ -2386,7 +2391,7 @@ namespace S100Framework.DomainModel.S122 {
 			public bool ShouldSerializetelecomCarrier() { return !string.IsNullOrEmpty(telecomCarrier); }
 
 			[XmlElement("telecommunicationIdentifier")]
-			public required String telecommunicationIdentifier {get;set;} = string.Empty;
+			public String telecommunicationIdentifier {get;set;} = string.Empty;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
@@ -2511,7 +2516,7 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PermissionType : InformationAssociation {
 			[XmlIgnore]
-			public required categoryOfRelationship categoryOfRelationship {get;set;}
+			public categoryOfRelationship categoryOfRelationship {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("categoryOfRelationship")]
@@ -2529,7 +2534,7 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InclusionType : InformationAssociation {
 			[XmlIgnore]
-			public required membership membership {get;set;}
+			public membership membership {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("membership")]
@@ -2794,7 +2799,7 @@ namespace S100Framework.DomainModel.S122 {
 		public partial class Authority : InformationType {
 			[XmlIgnore]
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
-			public required categoryOfAuthority categoryOfAuthority {get;set;}
+			public categoryOfAuthority categoryOfAuthority {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("categoryOfAuthority")]
@@ -2999,7 +3004,7 @@ namespace S100Framework.DomainModel.S122 {
 			public bool ShouldSerializescheduleByDayOfWeek() { return scheduleByDayOfWeek.Any(); }
 
 			[XmlElement("information")]
-			public required information information {get;set;} = new information {
+			public information information {get;set;} = new information {
 			};
 
 			[JsonIgnore]
@@ -3159,7 +3164,7 @@ namespace S100Framework.DomainModel.S122 {
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 
 			[XmlElement("interoperabilityIdentifier")]
-			public required String interoperabilityIdentifier {get;set;} = string.Empty;
+			public String interoperabilityIdentifier {get;set;} = string.Empty;
 
 			[XmlElement("source")]
 			public String? source {get;set;} = default;
@@ -3299,7 +3304,7 @@ namespace S100Framework.DomainModel.S122 {
 		public partial class MarineProtectedArea : FeatureType {
 			[XmlElement("categoryOfMarineProtectedArea")]
 			[EnumerationValue([1,2,3,4,5,6,7])]
-			public required categoryOfMarineProtectedArea categoryOfMarineProtectedArea {get;set;} = default;
+			public categoryOfMarineProtectedArea categoryOfMarineProtectedArea {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,4,5,6,7,8,9,10,12,14,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33])]
@@ -3313,7 +3318,7 @@ namespace S100Framework.DomainModel.S122 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
-			public required jurisdiction jurisdiction {get;set;}
+			public jurisdiction jurisdiction {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("jurisdiction")]
@@ -3393,7 +3398,7 @@ namespace S100Framework.DomainModel.S122 {
 		public partial class VesselTrafficServiceArea : FeatureType {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5])]
-			public required categoryOfVesselTrafficService categoryOfVesselTrafficService {get;set;}
+			public categoryOfVesselTrafficService categoryOfVesselTrafficService {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("categoryOfVesselTrafficService")]

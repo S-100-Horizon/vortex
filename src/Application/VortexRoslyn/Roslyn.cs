@@ -35,6 +35,7 @@ namespace S100Framework.Applications
 
             var productId = productSpecification.XPathSelectElement("//S100FC:productId", xmlNamespaceManager)!.Value.Replace("-", string.Empty).ToUpperInvariant();
             var versionNumber = productSpecification.XPathSelectElement("//S100FC:versionNumber", xmlNamespaceManager)!.Value;
+            var versionDate = productSpecification.XPathSelectElement("//S100FC:versionDate", xmlNamespaceManager)!.Value;
 
             var scope_S100 = scopes["S100FC"];
 
@@ -43,6 +44,7 @@ namespace S100Framework.Applications
 
             builderDomainModel.AppendLine("using System;");
             builderDomainModel.AppendLine("using System.Collections.Immutable;");
+            builderDomainModel.AppendLine("using System.ComponentModel;");
             builderDomainModel.AppendLine("using System.Linq;");
             builderDomainModel.AppendLine("using System.Runtime.Serialization;");
             builderDomainModel.AppendLine("using System.Text.Json.Serialization;");
@@ -56,7 +58,13 @@ namespace S100Framework.Applications
 
             builderDomainModel.AppendLine("\tpublic static class Summary");
             builderDomainModel.AppendLine("\t{");
+            builderDomainModel.AppendLine($"\t\tpublic static string Name => \"{productSpecification.XPathSelectElement("//S100FC:name", xmlNamespaceManager)!.Value}\";");
+            builderDomainModel.AppendLine($"\t\tpublic static string Scope => \"{productSpecification.XPathSelectElement("//S100FC:scope", xmlNamespaceManager)!.Value}\";");
+            //builderDomainModel.AppendLine($"\t\tpublic static string FieldOfApplication => \"{productSpecification.XPathSelectElement("//S100FC:fieldOfApplication", xmlNamespaceManager)!.Value}\";");
+            builderDomainModel.AppendLine($"\t\tpublic static string ProductId => \"{productSpecification.XPathSelectElement("//S100FC:productId", xmlNamespaceManager)!.Value}\";");
             builderDomainModel.AppendLine($"\t\tpublic static Version Version => new Version(\"{versionNumber}\");");
+            builderDomainModel.AppendLine($"\t\tpublic static DateOnly VersionDate => DateOnly.ParseExact(\"{versionDate}\", \"yyyy-MM-dd\");");
+
             var indexInformation = builderDomainModel.Length;
             {
                 var names = productSpecification.XPathSelectElements("//S100FC:S100_FC_ComplexAttribute", xmlNamespaceManager).Select(e => e.Element(XName.Get("code", scope_S100))!.Value);
@@ -466,11 +474,13 @@ namespace S100Framework.Applications
                                 }
 
                                 if (productFormat == ProductFormat.ISO8211 && !complexTypes.Contains(referenceCode)) {
-                                    prefix = "required " + prefix + "?";
+                                    //prefix = "required " + prefix + "?";
+                                    builderDomainModel.AppendLine("\t\t\t[UnknownValue]");
+                                    prefix = prefix + "?";
                                     postfix = " = default;";
                                 }
                                 else {
-                                    prefix = "required " + prefix;
+                                    //prefix = "required " + prefix;                                    
                                     if (!enumTypes.Contains(referenceCode)) {
                                         postfix = knowTypesPrefix[referenceCode] switch {
                                             "String" or "string" => " = string.Empty;",
@@ -909,7 +919,6 @@ namespace S100Framework.Applications
             public required ProductFormat ProductFormat { get; init; }
             public required IReadOnlyDictionary<string, ICollection<string>> InformationAssociationsLookup { get; init; }
             public required IReadOnlyDictionary<string, ICollection<string>> FeatureAssociationsLookup { get; init; }
-
             public required IReadOnlyDictionary<string, Action<StringBuilder, int, int?>> Editors { get; init; }
         }
 
@@ -1187,18 +1196,12 @@ namespace S100Framework.Applications
             public required IReadOnlyCollection<string> KnownEnumTypes { get; init; }
             public required IReadOnlyDictionary<string, string> KnowTypesPrefix { get; init; }
             public required IReadOnlyDictionary<string, string> KnowTypesPostfix { get; init; }
-
             public required IReadOnlyCollection<string> ComplexTypes { get; init; }
-
             public required IReadOnlyDictionary<string, StringBuilder> ObjectConstructors { get; init; }
-
             public required IDictionary<string, ICollection<string>> InformationAssociationsLookup { get; init; }
             public required IDictionary<string, ICollection<string>> FeatureAssociationsLookup { get; init; }
-
             public required IDictionary<string, Func<string, string>> ShouldSerialize { get; init; }
-
             public required bool SupportingSpatialAssociation { get; init; }
-
             public required ProductFormat ProductFormat { get; init; }
         }
 
@@ -1289,11 +1292,13 @@ namespace S100Framework.Applications
                     //if (!client.KnowTypesPrefix[referenceCode].Equals("String"))
                     //builder.AppendLine($"\t\t\t[Required()]");
                     if (client.ProductFormat == ProductFormat.ISO8211 && !client.ComplexTypes.Contains(referenceCode)) {
-                        prefix = "required " + prefix + "?";
+                        //prefix = "required " + prefix + "?";
+                        prefix = prefix + "?";
+                        builder.AppendLine("\t\t\t[UnknownValue]");
                         postfix = " = default;";
                     }
                     else {
-                        prefix = "required " + prefix;
+                        //prefix = "required " + prefix;
                         if (!client.KnownEnumTypes.Contains(referenceCode)) {
                             postfix = client.KnowTypesPrefix[referenceCode] switch {
                                 "String" or "string" => " = string.Empty;",
@@ -1509,19 +1514,12 @@ namespace S100Framework.Applications
             public required IReadOnlyCollection<string> KnownTypes { get; init; }
             public required IReadOnlyDictionary<string, string> KnowTypesPrefix { get; init; }
             public required IReadOnlyDictionary<string, string> KnowTypesPostfix { get; init; }
-
             public required IReadOnlyCollection<string> EnumerationTypes { get; init; }
-
             public required IReadOnlyCollection<string> CodeListTypes { get; init; }
-
             public required IReadOnlyCollection<string> ComplexTypes { get; init; }
-
             public required ProductFormat ProductFormat { get; init; }
-
             public required string BaseClass { get; init; }
-
             public required string LoadPrefix { get; init; }
-
             public required IReadOnlyDictionary<string, Action<StringBuilder, int, int?>> Editors { get; init; }
         }
 
@@ -1610,9 +1608,7 @@ namespace S100Framework.Applications
         {
             public required BuildViewModelClassClient BuildViewModelClassClient { get; init; }
             public required XmlNamespaceManager XmlNamespaceManager { get; init; }
-
             public required XPathNavigator XPathNavigator { get; init; }
-
             public required ProductFormat ProductFormat { get; init; }
         }
 

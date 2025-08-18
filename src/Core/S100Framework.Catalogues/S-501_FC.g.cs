@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Immutable;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
@@ -12,7 +13,11 @@ using System.Xml.Serialization;
 namespace S100Framework.DomainModel.S501 {
 	public static class Summary
 	{
+		public static string Name => "Additional Military Layers";
+		public static string Scope => "Specialist maritime geospatial information for Defence.";
+		public static string ProductId => "S-501";
 		public static Version Version => new Version("0.0.5");
+		public static DateOnly VersionDate => DateOnly.ParseExact("2024-08-09", "yyyy-MM-dd");
 		public static string[] ComplexTypes => ["qRouteChannelWidth","detectionDateRange","multiplicityOfFeatures","onlineResource","topmark","featureName","fixedDateRange","altitudeRange","altitude","rythmOfLight","verticalClearanceSafe","lastSourceInformation","information","firstSourceInformation","horizontalClearanceFixed","verticalUncertainty","frequencyPair","vesselMeasurementsSpecification","surfaceCharacteristics","magneticInformation","speed","verticalClearanceFixed","sourceIdentification","horizontalPositionUncertainty","sectorCharacteristics","orientation","directionHeading","flightLevel","vesselSpeedLimit","periodicDateRange","shapeInformation","lightSector","signalSequence","sectorInformation","directionalCharacter","sectorLimit","sectorLimitTwo","sectorLimitOne"];
 		public static string[] InformationAssociationTypes => [];
 		public static string[] FeatureAssociationTypes => [];
@@ -5229,7 +5234,8 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class qRouteChannelWidth {
 			[XmlElement("rightQRouteWidth")]
-			public required decimal? rightQRouteWidth {get;set;} = default;
+			[UnknownValue]
+			public decimal? rightQRouteWidth {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5261,7 +5267,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializenumberOfFeatures() { return numberOfFeatures.HasValue; }
 
 			[XmlElement("multiplicityKnown")]
-			public required Boolean? multiplicityKnown {get;set;} = default;
+			[UnknownValue]
+			public Boolean? multiplicityKnown {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5276,7 +5283,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 
 			[XmlElement("linkage")]
-			public required String? linkage {get;set;} = default;
+			[UnknownValue]
+			public String? linkage {get;set;} = default;
 
 			[XmlElement("nameOfResource")]
 			public String? nameOfResource {get;set;} = default;
@@ -5301,10 +5309,12 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializenameUsage() { return nameUsage.HasValue; }
 
 			[XmlElement("name")]
-			public required String? name {get;set;} = default;
+			[UnknownValue]
+			public String? name {get;set;} = default;
 
 			[XmlElement("language")]
-			public required String? language {get;set;} = default;
+			[UnknownValue]
+			public String? language {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5331,10 +5341,12 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class altitudeRange {
 			[XmlElement("minimumAltitude")]
-			public required int? minimumAltitude {get;set;} = default;
+			[UnknownValue]
+			public int? minimumAltitude {get;set;} = default;
 
 			[XmlElement("maximumAltitude")]
-			public required int? maximumAltitude {get;set;} = default;
+			[UnknownValue]
+			public int? maximumAltitude {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5344,10 +5356,12 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class altitude {
 			[XmlElement("minimumAltitude")]
-			public required int? minimumAltitude {get;set;} = default;
+			[UnknownValue]
+			public int? minimumAltitude {get;set;} = default;
 
 			[XmlElement("maximumAltitude")]
-			public required int? maximumAltitude {get;set;} = default;
+			[UnknownValue]
+			public int? maximumAltitude {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5389,7 +5403,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 
 			[XmlElement("language")]
-			public required String? language {get;set;} = default;
+			[UnknownValue]
+			public String? language {get;set;} = default;
 
 			[XmlElement("fileLocator")]
 			public String? fileLocator {get;set;} = default;
@@ -5415,7 +5430,8 @@ namespace S100Framework.DomainModel.S501 {
 		public class firstSourceInformation {
 			[XmlIgnore]
 			[EnumerationValue([501,502,503,504,506,509])]
-			public required firstSensor? firstSensor {get;set;} = default;
+			[UnknownValue]
+			public firstSensor? firstSensor {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("firstSensor")]
@@ -5439,7 +5455,8 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class horizontalClearanceFixed {
 			[XmlElement("horizontalClearanceValue")]
-			public required decimal? horizontalClearanceValue {get;set;} = default;
+			[UnknownValue]
+			public decimal? horizontalClearanceValue {get;set;} = default;
 
 			[XmlElement("horizontalDistanceUncertainty")]
 			public decimal? horizontalDistanceUncertainty {get;set;} = default;
@@ -5459,7 +5476,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
 
 			[XmlElement("uncertaintyFixed")]
-			public required decimal? uncertaintyFixed {get;set;} = default;
+			[UnknownValue]
+			public decimal? uncertaintyFixed {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5474,7 +5492,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializefrequencyShoreStationReceives() { return frequencyShoreStationReceives.HasValue; }
 
 			[XmlElement("frequencyShoreStationTransmits")]
-			public required int? frequencyShoreStationTransmits {get;set;} = default;
+			[UnknownValue]
+			public int? frequencyShoreStationTransmits {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5484,11 +5503,13 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class vesselMeasurementsSpecification {
 			[XmlElement("vesselsCharacteristicsValue")]
-			public required decimal? vesselsCharacteristicsValue {get;set;} = default;
+			[UnknownValue]
+			public decimal? vesselsCharacteristicsValue {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,6,10,11])]
-			public required vesselsCharacteristics? vesselsCharacteristics {get;set;} = default;
+			[UnknownValue]
+			public vesselsCharacteristics? vesselsCharacteristics {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("vesselsCharacteristics")]
@@ -5496,7 +5517,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,7])]
-			public required vesselsCharacteristicsUnit? vesselsCharacteristicsUnit {get;set;} = default;
+			[UnknownValue]
+			public vesselsCharacteristicsUnit? vesselsCharacteristicsUnit {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("vesselsCharacteristicsUnit")]
@@ -5568,7 +5590,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([501,502,503,504])]
-			public required magneticAnomalyDetectorSignature? magneticAnomalyDetectorSignature {get;set;} = default;
+			[UnknownValue]
+			public magneticAnomalyDetectorSignature? magneticAnomalyDetectorSignature {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("magneticAnomalyDetectorSignature")]
@@ -5587,7 +5610,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializespeedMinimum() { return speedMinimum.HasValue; }
 
 			[XmlElement("speedMaximum")]
-			public required decimal? speedMaximum {get;set;} = default;
+			[UnknownValue]
+			public decimal? speedMaximum {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5602,7 +5626,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
 			[XmlElement("verticalClearanceValue")]
-			public required decimal? verticalClearanceValue {get;set;} = default;
+			[UnknownValue]
+			public decimal? verticalClearanceValue {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5627,7 +5652,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeproductionAgency() { return !string.IsNullOrEmpty(productionAgency); }
 
 			[XmlElement("sourceID")]
-			public required String? sourceID {get;set;} = default;
+			[UnknownValue]
+			public String? sourceID {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5637,7 +5663,8 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class horizontalPositionUncertainty {
 			[XmlElement("uncertaintyFixed")]
-			public required decimal? uncertaintyFixed {get;set;} = default;
+			[UnknownValue]
+			public decimal? uncertaintyFixed {get;set;} = default;
 
 			[XmlElement("uncertaintyVariableFactor")]
 			public decimal? uncertaintyVariableFactor {get;set;} = default;
@@ -5652,7 +5679,8 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class orientation {
 			[XmlElement("orientationValue")]
-			public required decimal? orientationValue {get;set;} = default;
+			[UnknownValue]
+			public decimal? orientationValue {get;set;} = default;
 
 			[XmlElement("orientationUncertainty")]
 			public decimal? orientationUncertainty {get;set;} = default;
@@ -5667,10 +5695,12 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class directionHeading {
 			[XmlElement("headingDownBearing")]
-			public required decimal? headingDownBearing {get;set;} = default;
+			[UnknownValue]
+			public decimal? headingDownBearing {get;set;} = default;
 
 			[XmlElement("headingUpBearing")]
-			public required decimal? headingUpBearing {get;set;} = default;
+			[UnknownValue]
+			public decimal? headingUpBearing {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5680,10 +5710,12 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class flightLevel {
 			[XmlElement("minimumFlightLevel")]
-			public required int? minimumFlightLevel {get;set;} = default;
+			[UnknownValue]
+			public int? minimumFlightLevel {get;set;} = default;
 
 			[XmlElement("maximumFlightLevel")]
-			public required int? maximumFlightLevel {get;set;} = default;
+			[UnknownValue]
+			public int? maximumFlightLevel {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5694,7 +5726,8 @@ namespace S100Framework.DomainModel.S501 {
 		public class vesselSpeedLimit {
 			[XmlIgnore]
 			[EnumerationValue([2,3,4])]
-			public required speedUnits? speedUnits {get;set;} = default;
+			[UnknownValue]
+			public speedUnits? speedUnits {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("speedUnits")]
@@ -5706,7 +5739,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializevesselClass() { return !string.IsNullOrEmpty(vesselClass); }
 
 			[XmlElement("speedLimit")]
-			public required decimal? speedLimit {get;set;} = default;
+			[UnknownValue]
+			public decimal? speedLimit {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5716,16 +5750,20 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange {
 			[XmlElement("dateStart")]
-			public required String? dateStart {get;set;} = default;
+			[UnknownValue]
+			public String? dateStart {get;set;} = default;
 
 			[XmlElement("dateEnd")]
-			public required String? dateEnd {get;set;} = default;
+			[UnknownValue]
+			public String? dateEnd {get;set;} = default;
 
 			[XmlElement("periodicDateEnd")]
-			public required String? periodicDateEnd {get;set;} = default;
+			[UnknownValue]
+			public String? periodicDateEnd {get;set;} = default;
 
 			[XmlElement("periodicDateStart")]
-			public required String? periodicDateStart {get;set;} = default;
+			[UnknownValue]
+			public String? periodicDateStart {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5735,7 +5773,8 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class shapeInformation {
 			[XmlElement("text")]
-			public required String? text {get;set;} = default;
+			[UnknownValue]
+			public String? text {get;set;} = default;
 
 			[XmlElement("language")]
 			public String? language {get;set;} = default;
@@ -5751,14 +5790,16 @@ namespace S100Framework.DomainModel.S501 {
 		public class signalSequence {
 			[XmlIgnore]
 			[EnumerationValue([1,2])]
-			public required signalStatus? signalStatus {get;set;} = default;
+			[UnknownValue]
+			public signalStatus? signalStatus {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("signalStatus")]
 			public SerializableEnumeration<signalStatus>? signalStatusElement { get { return signalStatus.HasValue ? signalStatus : default; } set { } }
 
 			[XmlElement("signalDuration")]
-			public required decimal? signalDuration {get;set;} = default;
+			[UnknownValue]
+			public decimal? signalDuration {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5768,7 +5809,8 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorInformation {
 			[XmlElement("text")]
-			public required String? text {get;set;} = default;
+			[UnknownValue]
+			public String? text {get;set;} = default;
 
 			[XmlElement("language")]
 			public String? language {get;set;} = default;
@@ -5783,7 +5825,7 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class directionalCharacter {
 			[XmlElement("orientation")]
-			public required orientation orientation {get;set;} = new orientation {
+			public orientation orientation {get;set;} = new orientation {
 				orientationValue = default,
 			};
 
@@ -5805,7 +5847,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializesectorLineLength() { return sectorLineLength.HasValue; }
 
 			[XmlElement("sectorBearing")]
-			public required decimal? sectorBearing {get;set;} = default;
+			[UnknownValue]
+			public decimal? sectorBearing {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5820,7 +5863,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializesectorLineLength() { return sectorLineLength.HasValue; }
 
 			[XmlElement("sectorBearing")]
-			public required decimal? sectorBearing {get;set;} = default;
+			[UnknownValue]
+			public decimal? sectorBearing {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5831,7 +5875,8 @@ namespace S100Framework.DomainModel.S501 {
 		public class topmark {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33])]
-			public required topmarkDaymarkShape? topmarkDaymarkShape {get;set;} = default;
+			[UnknownValue]
+			public topmarkDaymarkShape? topmarkDaymarkShape {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("topmarkDaymarkShape")]
@@ -5886,7 +5931,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,25,26,27,28,29])]
-			public required lightCharacteristic? lightCharacteristic {get;set;} = default;
+			[UnknownValue]
+			public lightCharacteristic? lightCharacteristic {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("lightCharacteristic")]
@@ -5905,7 +5951,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
 			[XmlElement("verticalClearanceValue")]
-			public required decimal? verticalClearanceValue {get;set;} = default;
+			[UnknownValue]
+			public decimal? verticalClearanceValue {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5915,12 +5962,12 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimit {
 			[XmlElement("sectorLimitOne")]
-			public required sectorLimitOne sectorLimitOne {get;set;} = new sectorLimitOne {
+			public sectorLimitOne sectorLimitOne {get;set;} = new sectorLimitOne {
 				sectorBearing = default,
 			};
 
 			[XmlElement("sectorLimitTwo")]
-			public required sectorLimitTwo sectorLimitTwo {get;set;} = new sectorLimitTwo {
+			public sectorLimitTwo sectorLimitTwo {get;set;} = new sectorLimitTwo {
 				sectorBearing = default,
 			};
 		}
@@ -6000,7 +6047,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,25,26,27,28,29])]
-			public required lightCharacteristic? lightCharacteristic {get;set;} = default;
+			[UnknownValue]
+			public lightCharacteristic? lightCharacteristic {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("lightCharacteristic")]
@@ -6150,7 +6198,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
-			public required buoyShape? buoyShape {get;set;} = default;
+			[UnknownValue]
+			public buoyShape? buoyShape {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("buoyShape")]
@@ -6221,7 +6270,8 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DepthArea : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("depthRangeMaximumValue")]
-			public required decimal? depthRangeMaximumValue {get;set;} = default;
+			[UnknownValue]
+			public decimal? depthRangeMaximumValue {get;set;} = default;
 
 			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -6234,7 +6284,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[XmlElement("depthRangeMinimumValue")]
-			public required decimal? depthRangeMinimumValue {get;set;} = default;
+			[UnknownValue]
+			public decimal? depthRangeMinimumValue {get;set;} = default;
 
 			[XmlElement("sourceIdentification")]
 			public sourceIdentification? sourceIdentification {get;set;} = default;
@@ -6337,7 +6388,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
-			public required trafficFlow? trafficFlow {get;set;} = default;
+			[UnknownValue]
+			public trafficFlow? trafficFlow {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("trafficFlow")]
@@ -6399,7 +6451,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([501,502])]
-			public required categoryOfPatrolArea? categoryOfPatrolArea {get;set;} = default;
+			[UnknownValue]
+			public categoryOfPatrolArea? categoryOfPatrolArea {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("categoryOfPatrolArea")]
@@ -6580,7 +6633,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,2])]
-			public required jurisdiction? jurisdiction {get;set;} = default;
+			[UnknownValue]
+			public jurisdiction? jurisdiction {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("jurisdiction")]
@@ -6701,7 +6755,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializesourceIdentification() { return sourceIdentification!=default; }
 
 			[XmlElement("valueOfDepthContour")]
-			public required decimal? valueOfDepthContour {get;set;} = default;
+			[UnknownValue]
+			public decimal? valueOfDepthContour {get;set;} = default;
 
 			[XmlElement("agencyResponsibleForProduction")]
 			public String? agencyResponsibleForProduction {get;set;} = default;
@@ -6975,7 +7030,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializealtitudeRange() { return altitudeRange!=default; }
 
 			[XmlElement("depthRestriction")]
-			public required String? depthRestriction {get;set;} = default;
+			[UnknownValue]
+			public String? depthRestriction {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1])]
@@ -7202,7 +7258,8 @@ namespace S100Framework.DomainModel.S501 {
 		public partial class CardinalBuoy : FeatureNode, IFeatureBindingDefinition {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
-			public required categoryOfCardinalMark? categoryOfCardinalMark {get;set;} = default;
+			[UnknownValue]
+			public categoryOfCardinalMark? categoryOfCardinalMark {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("categoryOfCardinalMark")]
@@ -7235,7 +7292,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
-			public required buoyShape? buoyShape {get;set;} = default;
+			[UnknownValue]
+			public buoyShape? buoyShape {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("buoyShape")]
@@ -7362,7 +7420,8 @@ namespace S100Framework.DomainModel.S501 {
 		public partial class SafeWaterBuoy : FeatureNode, IFeatureBindingDefinition {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
-			public required buoyShape? buoyShape {get;set;} = default;
+			[UnknownValue]
+			public buoyShape? buoyShape {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("buoyShape")]
@@ -7805,7 +7864,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[XmlElement("nationality")]
-			public required String? nationality {get;set;} = default;
+			[UnknownValue]
+			public String? nationality {get;set;} = default;
 
 			[XmlElement("agencyResponsibleForProduction")]
 			public String? agencyResponsibleForProduction {get;set;} = default;
@@ -8145,7 +8205,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
-			public required jurisdiction? jurisdiction {get;set;} = default;
+			[UnknownValue]
+			public jurisdiction? jurisdiction {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("jurisdiction")]
@@ -8316,7 +8377,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
-			public required categoryOfDolphin? categoryOfDolphin {get;set;} = default;
+			[UnknownValue]
+			public categoryOfDolphin? categoryOfDolphin {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("categoryOfDolphin")]
@@ -8547,7 +8609,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
-			public required beaconShape? beaconShape {get;set;} = default;
+			[UnknownValue]
+			public beaconShape? beaconShape {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("beaconShape")]
@@ -8769,7 +8832,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
-			public required buoyShape? buoyShape {get;set;} = default;
+			[UnknownValue]
+			public buoyShape? buoyShape {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("buoyShape")]
@@ -9607,7 +9671,8 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightAirObstruction : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("pictorialRepresentation")]
-			public required String? pictorialRepresentation {get;set;} = default;
+			[UnknownValue]
+			public String? pictorialRepresentation {get;set;} = default;
 
 			[XmlElement("valueOfNominalRange")]
 			public decimal? valueOfNominalRange {get;set;} = default;
@@ -9845,7 +9910,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
-			public required buoyShape? buoyShape {get;set;} = default;
+			[UnknownValue]
+			public buoyShape? buoyShape {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("buoyShape")]
@@ -9916,7 +9982,8 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class UnderwaterAwashRock : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("valueOfSounding")]
-			public required decimal? valueOfSounding {get;set;} = default;
+			[UnknownValue]
+			public decimal? valueOfSounding {get;set;} = default;
 
 			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
@@ -9930,7 +9997,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([3,4,5])]
-			public required waterLevelEffect? waterLevelEffect {get;set;} = default;
+			[UnknownValue]
+			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("waterLevelEffect")]
@@ -10610,7 +10678,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,7])]
-			public required waterLevelEffect? waterLevelEffect {get;set;} = default;
+			[UnknownValue]
+			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("waterLevelEffect")]
@@ -11236,7 +11305,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
-			public required beaconShape? beaconShape {get;set;} = default;
+			[UnknownValue]
+			public beaconShape? beaconShape {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("beaconShape")]
@@ -11259,7 +11329,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
-			public required categoryOfLateralMark? categoryOfLateralMark {get;set;} = default;
+			[UnknownValue]
+			public categoryOfLateralMark? categoryOfLateralMark {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("categoryOfLateralMark")]
@@ -11667,7 +11738,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeinDispute() { return inDispute.HasValue; }
 
 			[XmlElement("nationality")]
-			public required String? nationality {get;set;} = default;
+			[UnknownValue]
+			public String? nationality {get;set;} = default;
 
 			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
@@ -11749,7 +11821,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[XmlElement("valueOfSounding")]
-			public required decimal? valueOfSounding {get;set;} = default;
+			[UnknownValue]
+			public decimal? valueOfSounding {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlIgnore]
@@ -12362,7 +12435,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5])]
-			public required waterLevelEffect? waterLevelEffect {get;set;} = default;
+			[UnknownValue]
+			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("waterLevelEffect")]
@@ -12623,7 +12697,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([501,502])]
-			public required categoryOfCompleteness? categoryOfCompleteness {get;set;} = default;
+			[UnknownValue]
+			public categoryOfCompleteness? categoryOfCompleteness {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("categoryOfCompleteness")]
@@ -12804,7 +12879,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,5,6,7])]
-			public required beaconShape? beaconShape {get;set;} = default;
+			[UnknownValue]
+			public beaconShape? beaconShape {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("beaconShape")]
@@ -12817,7 +12893,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
-			public required categoryOfCardinalMark? categoryOfCardinalMark {get;set;} = default;
+			[UnknownValue]
+			public categoryOfCardinalMark? categoryOfCardinalMark {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("categoryOfCardinalMark")]
@@ -13102,7 +13179,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("nationality")]
-			public required String? nationality {get;set;} = default;
+			[UnknownValue]
+			public String? nationality {get;set;} = default;
 
 			[XmlElement("nationalMaritimeAuthority")]
 			public List<String> nationalMaritimeAuthority {get;set;} = [];
@@ -13224,7 +13302,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
 			[XmlElement("depthRangeMinimumValue")]
-			public required decimal? depthRangeMinimumValue {get;set;} = default;
+			[UnknownValue]
+			public decimal? depthRangeMinimumValue {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,8,11,12,13,16,17,18,19,20,21,23,25,27,39])]
@@ -13476,7 +13555,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
-			public required waterLevelEffect? waterLevelEffect {get;set;} = default;
+			[UnknownValue]
+			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("waterLevelEffect")]
@@ -13662,7 +13742,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
-			public required trafficFlow? trafficFlow {get;set;} = default;
+			[UnknownValue]
+			public trafficFlow? trafficFlow {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("trafficFlow")]
@@ -13689,7 +13770,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("depthRangeMinimumValue")]
-			public required decimal? depthRangeMinimumValue {get;set;} = default;
+			[UnknownValue]
+			public decimal? depthRangeMinimumValue {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,3,5,8,9,13,15,16,17,18])]
@@ -13717,7 +13799,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("orientationValue")]
-			public required decimal? orientationValue {get;set;} = default;
+			[UnknownValue]
+			public decimal? orientationValue {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
@@ -13789,7 +13872,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
 			[XmlElement("orientation")]
-			public required orientation orientation {get;set;} = new orientation {
+			public orientation orientation {get;set;} = new orientation {
 				orientationValue = default,
 			};
 
@@ -13804,7 +13887,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("speed")]
-			public required speed speed {get;set;} = new speed {
+			public speed speed {get;set;} = new speed {
 				speedMaximum = default,
 			};
 
@@ -13873,10 +13956,12 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializecategoryOfCoverage() { return categoryOfCoverage.HasValue; }
 
 			[XmlElement("optimumDisplayScale")]
-			public required int? optimumDisplayScale {get;set;} = default;
+			[UnknownValue]
+			public int? optimumDisplayScale {get;set;} = default;
 
 			[XmlElement("minimumDisplayScale")]
-			public required int? minimumDisplayScale {get;set;} = default;
+			[UnknownValue]
+			public int? minimumDisplayScale {get;set;} = default;
 
 			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
@@ -13884,7 +13969,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[XmlElement("maximumDisplayScale")]
-			public required int? maximumDisplayScale {get;set;} = default;
+			[UnknownValue]
+			public int? maximumDisplayScale {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlIgnore]
@@ -13937,7 +14023,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([3,4,5])]
-			public required waterLevelEffect? waterLevelEffect {get;set;} = default;
+			[UnknownValue]
+			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("waterLevelEffect")]
@@ -13999,7 +14086,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
-			public required buoyShape? buoyShape {get;set;} = default;
+			[UnknownValue]
+			public buoyShape? buoyShape {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("buoyShape")]
@@ -14215,7 +14303,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[XmlElement("pictorialRepresentation")]
-			public required String? pictorialRepresentation {get;set;} = default;
+			[UnknownValue]
+			public String? pictorialRepresentation {get;set;} = default;
 
 			[XmlElement("height")]
 			public decimal? height {get;set;} = default;
@@ -14511,7 +14600,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
-			public required categoryOfLateralMark? categoryOfLateralMark {get;set;} = default;
+			[UnknownValue]
+			public categoryOfLateralMark? categoryOfLateralMark {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("categoryOfLateralMark")]
@@ -14534,7 +14624,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
-			public required buoyShape? buoyShape {get;set;} = default;
+			[UnknownValue]
+			public buoyShape? buoyShape {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("buoyShape")]
@@ -14714,7 +14805,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
 
 			[XmlElement("orientationValue")]
-			public required decimal? orientationValue {get;set;} = default;
+			[UnknownValue]
+			public decimal? orientationValue {get;set;} = default;
 
 			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
@@ -14723,7 +14815,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
-			public required trafficFlow? trafficFlow {get;set;} = default;
+			[UnknownValue]
+			public trafficFlow? trafficFlow {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("trafficFlow")]
@@ -14775,7 +14868,8 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
 			[XmlElement("basedOnFixedMarks")]
-			public required Boolean? basedOnFixedMarks {get;set;} = default;
+			[UnknownValue]
+			public Boolean? basedOnFixedMarks {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,3,5,8,9,13,15,16,17,18])]
@@ -15021,7 +15115,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
 			[XmlElement("multiplicityOfFeatures")]
-			public required multiplicityOfFeatures multiplicityOfFeatures {get;set;} = new multiplicityOfFeatures {
+			public multiplicityOfFeatures multiplicityOfFeatures {get;set;} = new multiplicityOfFeatures {
 				multiplicityKnown = false,
 			};
 
@@ -15101,7 +15195,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializecategoryOfLight() { return categoryOfLight.Any(); }
 
 			[XmlElement("rythmOfLight")]
-			public required rythmOfLight rythmOfLight {get;set;} = new rythmOfLight {
+			public rythmOfLight rythmOfLight {get;set;} = new rythmOfLight {
 				lightCharacteristic = default,
 			};
 
@@ -15660,7 +15754,8 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class StraightTerritorialSeaBaseline : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("nationality")]
-			public required String? nationality {get;set;} = default;
+			[UnknownValue]
+			public String? nationality {get;set;} = default;
 
 			[XmlElement("sourceIdentification")]
 			public sourceIdentification? sourceIdentification {get;set;} = default;
@@ -15818,7 +15913,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
-			public required beaconShape? beaconShape {get;set;} = default;
+			[UnknownValue]
+			public beaconShape? beaconShape {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("beaconShape")]
@@ -16005,7 +16101,8 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
-			public required beaconShape? beaconShape {get;set;} = default;
+			[UnknownValue]
+			public beaconShape? beaconShape {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlElement("beaconShape")]
