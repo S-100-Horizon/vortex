@@ -211,8 +211,13 @@ namespace S100Framework.Applications
 
                     //filter.WhereClause = "globalid = '{1F1D8B58-4959-4202-80F5-6CA4DD47D209}'";
 
+                    Logger.Current.Information($"Converting Sounding Datums");
+                    Store(() => S101_SoundingDatum(source, destination, filter));
 
 
+
+                    Logger.Current.Information($"Converting Product Coverages");
+                    Store(() => S57_ProductCoverage(source, destination, filter));
 
                     //Logger.Current.Information($"Converting S101_RecommendedTracksAndRoutes");
                     //Store(() => S101_RecommendedTracksAndRoutes(source, destination, filter));
@@ -220,9 +225,6 @@ namespace S100Framework.Applications
                     Store(() => S57_CulturalFeaturesA(source, destination, filter));
                     Store(() => S57_CulturalFeaturesL(source, destination, filter));
                     Store(() => S57_CulturalFeaturesP(source, destination, filter));
-
-                    Logger.Current.Information($"Converting Sounding Datums");
-                    Store(() => S101_SoundingDatum(source, destination, filter));
 
                     Logger.Current.Information($"Converting PortsAndServices");
                     Store(() => S57_PortsAndServicesA(source, destination, filter));
@@ -284,8 +286,6 @@ namespace S100Framework.Applications
                     Store(() => S57_OffshoreInstallationsL(source, destination, filter));
                     Store(() => S57_OffshoreInstallationsP(source, destination, filter));
 
-                    Logger.Current.Information($"Converting Product Coverages");
-                    Store(() => S57_ProductCoverage(source, destination, filter));
 
                     Logger.Current.Information($"Converting Tracks And Routes");
                     Store(() => S57_TracksAndRoutesA(source, destination, filter));
