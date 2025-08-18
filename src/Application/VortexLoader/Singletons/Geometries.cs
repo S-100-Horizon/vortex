@@ -1,18 +1,76 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
+using S100Framework.Applications.S57.esri;
 
 namespace VortexLoader.Singletons
 {
+    internal class GeometryResult {
+        public Geometry? Geometry { get; set; }
+        public Dictionary<string, object>? FieldName_FieldValue { get; set; } = [];
+    }
     //https://pro.arcgis.com/en/pro-app/3.3/sdk/api-reference/topic22112.html
     internal class Geometries
     {
 
-        internal static List<Geometry> AllGeometries(FeatureClass featureClass, QueryFilter filter) {
+        internal static List<Geometry> EraseTouchingParts(
+            List<Geometry> inputPolygons,
+            List<Geometry> clipPolygons) {
+            var geometryResult = new List<Geometry>();
+
+            foreach (var inputPolygon in inputPolygons) {
+                Geometry modifiedPolygon = inputPolygon;
+
+                var intersectingClipPolygons = clipPolygons
+                    .Where(c => GeometryEngine.Instance.Intersects(c, inputPolygon))
+                    .ToList();
+
+                foreach (var clipPolygon in intersectingClipPolygons) {
+                    if (clipPolygon.GeometryType != GeometryType.Polygon)
+                        continue;
+
+                    var clipPoly = (Polygon)clipPolygon;
+
+                    //var boundaryPolyline = new Polyline(clipPoly.Parts[0].Points);
+
+                    var intersection = GeometryEngine.Instance.Intersection(modifiedPolygon, clipPoly);
+
+                    if (intersection == null || intersection.IsEmpty)
+                        continue;
+
+                    modifiedPolygon = GeometryEngine.Instance.Difference(modifiedPolygon, intersection);
+
+                    if (modifiedPolygon == null || modifiedPolygon.IsEmpty)
+                        break;
+                }
+
+                if (!(modifiedPolygon == null || modifiedPolygon.IsEmpty)){
+                    geometryResult.Add(modifiedPolygon);
+                }
+            }
+
+            return geometryResult;
+        }
+
+        internal static List<T> AllGeometriesWithFields<T>(FeatureClass featureClass, QueryFilter filter) where T : S57Object {
             using var cursor = featureClass.Search(filter, false);
 
-            List<Geometry> geometries = new List<Geometry>();
+            List<T> result = new List<T>();
 
             while (cursor.MoveNext()) {
+                var feature = (Feature)cursor.Current;
+                var val = Activator.CreateInstance(typeof(T), feature) as T;
+                result.Add(val);
+            }
+
+            return result;
+
+        }
+
+        internal static List<Geometry> AllGeometries(FeatureClass featureClass, QueryFilter filter) {
+            using var cursor = featureClass.Search(filter, false);
+            List<Geometry> geometries = new List<Geometry>();
+            while (cursor.MoveNext()) {
+                var result = new GeometryResult();
                 var feature = (Feature)cursor.Current;
                 geometries.Add(feature.GetShape());
             }

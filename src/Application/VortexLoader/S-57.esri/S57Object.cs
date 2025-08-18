@@ -1,4 +1,5 @@
-﻿using ArcGIS.Core.Geometry;
+﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Geometry;
 
 namespace S100Framework.Applications.S57.esri
 {
@@ -9,6 +10,5 @@ namespace S100Framework.Applications.S57.esri
         public string? TableName { get; set; }
         public int? PLTS_COMP_SCALE { get; set; }
         public int? FcSubtype { get; set; }
-
     }
 }

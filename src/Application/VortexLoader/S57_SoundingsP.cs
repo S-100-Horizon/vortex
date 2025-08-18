@@ -34,7 +34,7 @@ namespace S100Framework.Applications
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
-
+                
                 if (ConversionAnalytics.Instance.IsConverted(globalid)) {
                     continue;
                 }
