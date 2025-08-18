@@ -12,7 +12,7 @@ namespace S100Framework.Applications
     {
 
 
-    private static void S101_SoundingDatum(Geodatabase source, Geodatabase target, QueryFilter filter) {
+        private static void S101_SoundingDatum(Geodatabase source, Geodatabase target, QueryFilter filter) {
 
             var metadataATableName = "MetaDataA";
             var productCoverageTableName = "ProductCoverage";
@@ -40,12 +40,18 @@ namespace S100Framework.Applications
 
             // Take all M_QUAL and cut out M_SDAT
 
-            var all_M_QUAL = Geometries.AllGeometries(metadataA, M_Qual_WhereFilter);
-            var all_M_SDAT = Geometries.AllGeometries(metadataA, M_SDAT_WhereFilter);
+            //var all_M_QUAL = Geometries.AllGeometries(metadataA, M_Qual_WhereFilter);
+            //var all_M_SDAT = Geometries.AllGeometries(metadataA, M_SDAT_WhereFilter);
 
-            var polygons = Geometries.EraseTouchingParts(all_M_QUAL, all_M_SDAT);
+            var all_M_QUAL_geometries = Geometries.AllGeometries(metadataA, M_Qual_WhereFilter, ["verdat"]);
+            var all_M_SDAT_geometries = Geometries.AllGeometries(metadataA, M_SDAT_WhereFilter, ["verdat"]);
+            var all_M_QUAL_dissolved = Geometries.GetDissolvedClipped(metadataA, M_Qual_WhereFilter, productCoverage, productCoverageFilter);
 
-            foreach (var item in polygons) {
+            var all_dissolved_M_QUALs_without_M_SDATs = Geometries.EraseTouchingParts(all_M_QUAL_dissolved, [.. all_M_SDAT_geometries.Select(e => e.Geometry)]);
+
+            // Store all dissolved m_quals
+            foreach (var item in all_dissolved_M_QUALs_without_M_SDATs) {
+
                 if (item.IsEmpty) {
                     continue;
                 }
@@ -64,12 +70,11 @@ namespace S100Framework.Applications
 
                 var featureN = featureClass.CreateRow(buffer);
                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
             }
 
-            
-            foreach (var item in all_M_SDAT) {
-                if (item.IsEmpty) {
+            // Add all M_SDATs
+            foreach (var item in all_M_SDAT_geometries) {
+                if (item.Geometry!.IsEmpty) {
                     continue;
                 }
 
@@ -77,12 +82,12 @@ namespace S100Framework.Applications
                     verticalDatum = default,
                 };
 
-                instance.verticalDatum = DomainModel.S101.verticalDatum.BalticSeaChartDatum2000;
+                instance.verticalDatum = EnumHelper.GetEnumValue<DomainModel.S101.verticalDatum>(item.FieldName_FieldValue["verdat"]);
 
                 buffer["ps"] = ps101;
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                SetShape(buffer, item);
+                SetShape(buffer, item.Geometry);
                 ImporterNIS.SetUsageBand(buffer, _compilationScale);
 
                 var featureN = featureClass.CreateRow(buffer);

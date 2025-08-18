@@ -4,6 +4,10 @@ using S100Framework.Applications.S57.esri;
 
 namespace VortexLoader.Singletons
 {
+    internal class GeometryResult {
+        public Geometry? Geometry { get; set; }
+        public Dictionary<string, object>? FieldName_FieldValue { get; set; } = [];
+    }
     //https://pro.arcgis.com/en/pro-app/3.3/sdk/api-reference/topic22112.html
     internal class Geometries
     {
@@ -46,6 +50,56 @@ namespace VortexLoader.Singletons
 
             return geometryResult;
         }
+        //internal static List<GeometryResult> EraseTouchingParts(
+        //    List<GeometryResult> inputPolygons,
+        //    List<GeometryResult> clipPolygons) {
+        //    var geometryResult = new List<GeometryResult>();
+
+        //    foreach (var inputPolygon in inputPolygons) {
+        //        Geometry modifiedPolygon = inputPolygon.Geometry!;
+
+        //        var intersectingClipPolygons = clipPolygons
+        //            .Where(c => GeometryEngine.Instance.Intersects(c.Geometry, inputPolygon.Geometry))
+        //            .ToList();
+
+        //        ;
+
+        //        foreach (var clipPolygon in intersectingClipPolygons) {
+        //            if (clipPolygon.Geometry!.GeometryType != GeometryType.Polygon)
+        //                continue;
+
+        //            var clipPoly = (Polygon)clipPolygon.Geometry!;
+
+        //            //var boundaryPolyline = new Polyline(clipPoly.Parts[0].Points);
+
+        //            var intersection = GeometryEngine.Instance.Intersection(modifiedPolygon, clipPoly);
+
+        //            if (intersection == null || intersection.IsEmpty)
+        //                continue;
+
+        //            modifiedPolygon = GeometryEngine.Instance.Difference(modifiedPolygon, intersection);
+
+        //            //if (modifiedPolygon == null || modifiedPolygon.IsEmpty)
+        //            //    break;
+
+        //            if (!(modifiedPolygon == null || modifiedPolygon.IsEmpty)) {
+        //                geometryResult.Add(new GeometryResult() {
+        //                    Geometry = modifiedPolygon,
+        //                    FieldName_FieldValue = 
+        //                });
+        //            }
+
+        //        }
+
+        //        //if (!(modifiedPolygon == null || modifiedPolygon.IsEmpty)) {
+        //        //    geometryResult.Add(new GeometryResult() {
+        //        //        Geometry = modifiedPolygon
+        //        //    });
+        //        //}
+        //    }
+
+        //    return geometryResult;
+        //}
 
         internal static List<T> Features<T>(FeatureClass featureClass, QueryFilter filter) where T : S57Object {
             using var cursor = featureClass.Search(filter, false);
@@ -64,6 +118,32 @@ namespace VortexLoader.Singletons
             while (cursor.MoveNext()) {
                 var feature = (Feature)cursor.Current;
                 geometries.Add(feature.GetShape());
+            }
+            return geometries;
+        }
+        internal static List<GeometryResult> AllGeometries(FeatureClass featureClass, QueryFilter filter, List<string> fieldsToReturn) {
+            using var cursor = featureClass.Search(filter, false);
+            List<GeometryResult> geometries = new List<GeometryResult>();
+
+            List<int> indices = new List<int>();
+
+            foreach (var fieldName in fieldsToReturn) {
+                indices.Add(cursor.FindField(fieldName));
+            }
+
+            
+            while (cursor.MoveNext()) {
+                var feature = (Feature)cursor.Current;
+
+                var result = new GeometryResult();
+                result.Geometry = feature.GetShape();
+                int idx = 0;
+                foreach (var index in indices) {
+                    
+                    result.FieldName_FieldValue!.Add(fieldsToReturn[idx], cursor.Current[index]);
+                    idx++;
+                }
+                geometries.Add(result);
             }
             return geometries;
         }
