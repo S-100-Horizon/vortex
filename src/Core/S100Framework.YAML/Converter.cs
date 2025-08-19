@@ -191,6 +191,9 @@ namespace S100Framework.YAML
                     var properties = t.GetProperties();
 
                     foreach (var propInfo in properties) {
+                        if (propInfo.GetCustomAttribute<JsonIgnoreAttribute>(true) != null)   // Include JsonIgnore to YAML serialization
+                            continue;
+
                         var propVal = propInfo.GetValue(propertyValue);
                         var objectName = propInfo.Name;
 

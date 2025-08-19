@@ -3,10 +3,11 @@
     using S100Framework.Topology;
     using Serilog;
     using System.Collections.Concurrent;
+    using System.Globalization;
     using System.Linq;
 
     public static class Extensions
-    {        
+    {
         public static void AddTopology(this Dataset dataset, IMatrix theMatrix) {
             // Curves
             CurveFeature? curveFeature = default;
@@ -17,7 +18,6 @@
 
                 foreach (var c in theMatrix.Curves) {
                     curveFeature = c;
-
                     var coordinates = c.LineString.Coordinates.Select(e => new Coordinate(e.X, e.Y)).ToArray();
 
                     var first = dataset?.GetOrCreateStartPoint(coordinates, $"{c.Id}");
@@ -93,21 +93,27 @@
             }
 
             foreach (var feature in dataset?.Features?.Where(e => e.Geometry == original) ?? []) {
-                Log.Verbose("  - Updating feature geometry reference with original {original} and target: {target}", original, target);
+                Log.Information("Updating feature geometry reference with original {original} and target: {target}", original, target);
                 feature.Geometry = target;
 
                 // Associations
-                foreach (var ass in feature?.FeatureAssociation ?? []) {
-                    if (ass?.To?.Contains(original) ?? false) {
-                        Log.Verbose("  - Updating feature association reference with original {original} and target: {target}", original, target);
-                        ass.To = ass?.To?.Replace(original, target)!;
-                    }
+                if (feature.FeatureAssociation == null || feature.FeatureAssociation.Count == 0)
+                    continue;
+
+                foreach (var asso in feature.FeatureAssociation.Where(e => e.To.Contains(original))) {
+                    Log.Information("Updating feature association reference with original {original} and target: {target}", original, target);
+                    asso.To = asso?.To?.Replace(original, target)!;
                 }
             }
         }
 
         public static Point GetOrCreateStartPoint(this Dataset dataset, Coordinate[] curve, string name, int identifier = 0) {
-            var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Coordinate!.X == curve[0].X && e.Coordinate!.Y == curve[0].Y);
+            var pointLocation = string.Format(
+                  CultureInfo.InvariantCulture,
+                  "{0:0.#######},{1:0.#######}", curve[0].X, curve[0].Y
+              );
+
+            var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Location == pointLocation);
 
             if (datasetPoint == default) {
                 var point = new Point(curve[0].X, curve[0].Y) {
@@ -124,12 +130,16 @@
         }
 
         public static Point GetOrCreateEndPoint(this Dataset dataset, Coordinate[] curve, string name, int identifier = 1) {
-            var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Coordinate!.X == curve[^1].X && e.Coordinate!.Y == curve[^1].Y);
+            var pointLocation = string.Format(
+                CultureInfo.InvariantCulture,
+                "{0:0.#######},{1:0.#######}", curve[^1].X, curve[^1].Y
+            );
+
+            var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Location == pointLocation);
 
             if (datasetPoint == default) {
-                var pointName = $"P{name}-{identifier}";
                 var point = new Point(curve[^1].X, curve[^1].Y) {
-                    Name = pointName
+                    Name = $"P{name}-{identifier}"
                 };
 
                 dataset!.AddPoint(point);
