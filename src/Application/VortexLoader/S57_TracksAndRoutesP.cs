@@ -45,27 +45,43 @@ namespace S100Framework.Applications
                     case 1: { // PRCARE_PrecautionaryArea
                             throw new NotImplementedException($"No PRCARE_PrecautionaryArea in DK or GL. {tableName}");
 
-                            var instance = new PrecautionaryArea() {
-                            };
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
+                            var instance = new PrecautionaryArea();
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            // TODO: imoAdopted
+                            instance.iMOAdopted = null;
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.RESTRN != default) {
+                                instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            // TODO: vesselspeedlimit
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
+
                             AddInformation(instance.information, feature);
+                            
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["version"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["version"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
