@@ -428,7 +428,7 @@ namespace S100Framework.Applications
                                 verticalClearanceUnlimited = current.VERCLR.HasValue ? !(current.VERCLR!.Value == default(decimal)) : null
                             };
 
-                            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
+                            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
 
                             if (current.SOUACC.HasValue) {
                                 instance.verticalUncertainty = new() {
