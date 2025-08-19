@@ -732,7 +732,7 @@ namespace S100Framework.Applications
                             //buffer["code"] = instance.GetType().Name;
                             //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             //SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+                            //SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
                             //var featureN = featureClass.CreateRow(buffer);
                             //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -748,33 +748,64 @@ namespace S100Framework.Applications
 
                     case 55: { // TUNNEL_Tunnel
                             throw new NotImplementedException($"No TUNNEL_Tunnel in DK and GL. {tableName}");
-                            //var instance = new Tunnel() {
-                            //};
-                            //if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                            //    string subtype = "";
-
-                            //    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                            //        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                            //    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                            //}
+                            //var instance = new Tunnel();
 
                             //if (current.CONDTN.HasValue) {
                             //    instance.condition = GetCondition(current.CONDTN.Value);
+                            //}
+
+                            //instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            //instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
+                            //    horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767m ? current.HORCLR!.Value : default(decimal?),
+                            //    horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767m ? current.HORACC!.Value : default(decimal?),
+                            //};
+
+                            //// TODO: interoperabilityIdentifier
+
+                            //if (current.SORDAT != default) {
+                            //    if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                            //        instance.reportedDate = current.SORDAT;
+                            //    }
+                            //    else {
+                            //        Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                            //    }
                             //}
 
                             //if (current.STATUS != default) {
                             //    instance.status = GetStatus(current.STATUS);
                             //}
 
-                            //instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            //AddInformation(instance.information, feature);
-                            //buffer["ps"] = ps101;
+                            //instance.verticalClearanceFixed = new() {
+                            //    verticalUncertainty = new() {
+                            //        uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767m ? current.VERACC.Value : default(decimal?),
+                            //        uncertaintyVariableFactor = default(decimal?)
+                            //    },
+                            //    //verticalClearanceValue = default(decimal?)
+                            //    //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP.Value : default(decimal?),
+                            //    //verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR.Value : default(decimal?),
+                            //    verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL.Value : default(decimal?),
+                            //};
 
+                            //instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+
+                            //if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                            //    string subtype = "";
+                            //    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                            //        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                            //    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            //}
+
+                            //AddInformation(instance.information, feature);
+
+                            //if (current.PICREP != default) {
+                            //    instance.pictorialRepresentation = current.PICREP;
+                            //}
+                            //buffer["ps"] = ps101;
                             //buffer["code"] = instance.GetType().Name;
                             //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             //SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+                            //SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
                             //var featureN = featureClass.CreateRow(buffer);
                             //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
