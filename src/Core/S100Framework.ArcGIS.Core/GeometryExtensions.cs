@@ -53,7 +53,13 @@ namespace ArcGIS.Core.Geometry
         public static void AddGeometry(this Dataset dataset, ArcGIS.Core.Geometry.Geometry geometry, string name) {
             switch (geometry) {
                 case ArcGIS.Core.Geometry.MapPoint point: {                              // Point
-                        var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Coordinate?.X == point.X && e?.Coordinate?.Y == point.Y);
+                        var pointLocation = string.Format(
+                             CultureInfo.InvariantCulture,
+                             "{0:0.#######},{1:0.#######}", point.X, point.Y
+                         );
+
+                        var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Location == pointLocation);
+
                         // Create point if not exist
                         if (datasetPoint == default) {
                             var p = new Point(point.X, point.Y) {

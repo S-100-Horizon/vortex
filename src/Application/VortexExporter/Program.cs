@@ -154,7 +154,6 @@ namespace S100Framework.Applications
                     var topology = source.BuildTopology(filter)!;
 
                     Log.Information("Topology finished! Found {curves} Curves, {composites} CompositeCurves, {surfaces} Surfaces", topology.Curves.Count(), topology.CompositeCurves.Count(), topology.Surfaces.Count());
-                    dataset.AddTopology(topology);
 
                     // InformationTypes
                     try {
@@ -325,9 +324,13 @@ namespace S100Framework.Applications
                     // Geometries
                     foreach (var (geometry, name) in geometries.OrderBy(e => e.geometry.GeometryType)) {
                         if (geometry.GeometryType == GeometryType.Polygon) continue;    // Skip polygons after topology
+                        if (geometry.GeometryType == GeometryType.Polyline) continue;    // Skip curves after topology
                         dataset?.AddGeometry(geometry, name!);
                         Log.Verbose("Adding {geometryType} with ID: {name}", geometry.GeometryType, name);
                     }
+
+                    // Add curves/surfaces after points
+                    dataset!.AddTopology(topology);
 
                     // Serialize to YAML
                     var yaml = S100Framework.YAML.Converter.Serialize(dataset!);
