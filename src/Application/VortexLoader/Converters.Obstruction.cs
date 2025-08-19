@@ -57,7 +57,7 @@ namespace S100Framework.Applications
                     instance.reportedDate = current.SORDAT;
                 }
                 else {
-                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), current.TableName!, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                 }
             }
 
