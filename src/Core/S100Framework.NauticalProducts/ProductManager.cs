@@ -5,6 +5,7 @@ using ArcGIS.Core.Geometry;
 using S100Framework.Catalogues;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S128.FeatureTypes;
+using S100Framework.DomainModel.S128.Horizon;
 using S100Framework.YAML;
 using Serilog;
 using System;
@@ -34,7 +35,7 @@ namespace S100Framework.NauticalProducts
 
         Task<YAML.Dataset> CreateNewUpdateAsync(string name);
 
-        ElectronicProduct ElectronicProduct(string name);
+        DomainModel.S128.FeatureTypes.ElectronicProduct ElectronicProduct(string name);
     }
 
     public interface IProductManager
@@ -90,8 +91,9 @@ namespace S100Framework.NauticalProducts
                 using var table = this._geodatabase.OpenDataset<Table>(configuration.GetName());
 
                 using var cursor = table.Search(new QueryFilter {
-                    WhereClause = "upper(ps) = 'S-128' AND code = 'NauticalProducts'",
+                    WhereClause = "upper(ps) = 'S-128.HORIZON' AND code = 'NauticalProducts'",
                 }, true);
+                
                 cursor.MoveNext();
 
                 Debug.Assert(cursor.Current != null);
@@ -101,7 +103,7 @@ namespace S100Framework.NauticalProducts
                 var code = Convert.ToString(c["code"]);
                 if (!string.IsNullOrEmpty(code) && code.Equals("NauticalProducts")) {
                     if (!c.IsNull("json")) {
-                        var settings = System.Text.Json.JsonSerializer.Deserialize<Settings.NauticalProducts>(Convert.ToString(c["json"])!);
+                        var settings = System.Text.Json.JsonSerializer.Deserialize<DomainModel.S128.Horizon.Settings.NauticalProducts>(Convert.ToString(c["json"])!);
 
                         if (settings != null) {
                             foreach (var connection in settings.Connections) {
@@ -196,6 +198,8 @@ namespace S100Framework.NauticalProducts
             if (!this._electronicProducts.ContainsKey(name))
                 throw new System.ArgumentException(nameof(name));
 
+            var timestamp = DateTime.UtcNow;
+
             var connection = this._connections[this._electronicProducts[name].productSpecification!.name]!;
 
             var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
@@ -217,7 +221,7 @@ namespace S100Framework.NauticalProducts
                 if (row128.IsNull("json"))
                     throw new System.ArgumentNullException(nameof(name));
 
-                var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<ElectronicProduct>(Convert.ToString(row128["json"])!)!;
+                var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<DomainModel.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(row128["json"])!)!;
 
                 electronicProduct.editionNumber += 1;
                 electronicProduct.updateNumber = 0;
@@ -436,6 +440,33 @@ namespace S100Framework.NauticalProducts
                 return dataset!;
             });
 
+            var yaml = dataset.Serialize();
+
+            await this._taskFactory.StartNew(() => {
+                using var attachment = this._geodatabase!.OpenDataset<Table>(this.QualifyTableName("attachment"));
+
+                using var buffer = attachment.CreateRowBuffer();
+
+                var electronicProduct = new S100Framework.DomainModel.S128.Horizon.ElectronicProduct(
+                    DatasetName: this._electronicProducts[name].datasetName!,
+                    Edition: this._electronicProducts[name].editionNumber!.Value,
+                    Update: this._electronicProducts[name].updateNumber!.Value,
+                    ExportTypes: DomainModel.S128.Horizon.ExportTypes.NewDataset,
+                    TimestampUTC: timestamp
+                );
+
+                buffer["ps"] = "S-128.Horizon";
+                buffer["code"] = nameof(S100Framework.DomainModel.S128.Horizon.ElectronicProduct);
+                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(electronicProduct);
+
+                using var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(yaml));
+
+                buffer["data_size"] = memoryStream.Length;
+                buffer["data"] = memoryStream;
+
+                attachment.CreateRow(buffer);
+            });
+
             return dataset;
         }
 
@@ -443,7 +474,7 @@ namespace S100Framework.NauticalProducts
             throw new NotImplementedException();
         }
 
-        ElectronicProduct IElectronicProductManager.ElectronicProduct(string name) => this._electronicProducts[name.ToUpperInvariant()];
+        DomainModel.S128.FeatureTypes.ElectronicProduct IElectronicProductManager.ElectronicProduct(string name) => this._electronicProducts[name.ToUpperInvariant()];
 
         public void Dispose() {
             if (!this._disposed) {
@@ -491,55 +522,55 @@ namespace S100Framework.NauticalProducts
     }
 
     public sealed class SingleThreadTaskScheduler : TaskScheduler, IDisposable
-    {
-        private readonly BlockingCollection<Task> _tasks;
-        private readonly Thread _processingThread;
+{
+    private readonly BlockingCollection<Task> _tasks;
+    private readonly Thread _processingThread;
 
-        public SingleThreadTaskScheduler() {
-            _tasks = new BlockingCollection<Task>();
+    public SingleThreadTaskScheduler() {
+        _tasks = new BlockingCollection<Task>();
 
-            _processingThread = new Thread(ProcessTasks) {
-                IsBackground = true, // Allow the application to exit even if this thread is running
-                Name = "SingleThreadTaskScheduler"
-            };
-            _processingThread.Start();
-        }
+        _processingThread = new Thread(ProcessTasks) {
+            IsBackground = true, // Allow the application to exit even if this thread is running
+            Name = "SingleThreadTaskScheduler"
+        };
+        _processingThread.Start();
+    }
 
-        private void ProcessTasks() {
-            try {
-                foreach (var task in _tasks.GetConsumingEnumerable()) {
-                    TryExecuteTask(task);
-                }
-            }
-            catch (ObjectDisposedException) {
-                // The collection was disposed, which is fine. The thread can exit.
+    private void ProcessTasks() {
+        try {
+            foreach (var task in _tasks.GetConsumingEnumerable()) {
+                TryExecuteTask(task);
             }
         }
-
-        protected override void QueueTask(Task task) {
-            if (_tasks.IsAddingCompleted) return;
-            _tasks.Add(task);
-        }
-
-        protected override bool TryExecuteTaskInline(Task task, bool taskWasPreviouslyQueued) {
-            if (Thread.CurrentThread == _processingThread) {
-                return TryExecuteTask(task);
-            }
-
-            // Otherwise, we cannot execute it inline. Let QueueTask handle it.
-            return false;
-        }
-
-        protected override IEnumerable<Task> GetScheduledTasks() {
-            return _tasks.ToArray();
-        }
-
-        public override int MaximumConcurrencyLevel => 1;
-
-        public void Dispose() {
-            _tasks.CompleteAdding();
-            _processingThread.Join();
-            _tasks.Dispose();
+        catch (ObjectDisposedException) {
+            // The collection was disposed, which is fine. The thread can exit.
         }
     }
+
+    protected override void QueueTask(Task task) {
+        if (_tasks.IsAddingCompleted) return;
+        _tasks.Add(task);
+    }
+
+    protected override bool TryExecuteTaskInline(Task task, bool taskWasPreviouslyQueued) {
+        if (Thread.CurrentThread == _processingThread) {
+            return TryExecuteTask(task);
+        }
+
+        // Otherwise, we cannot execute it inline. Let QueueTask handle it.
+        return false;
+    }
+
+    protected override IEnumerable<Task> GetScheduledTasks() {
+        return _tasks.ToArray();
+    }
+
+    public override int MaximumConcurrencyLevel => 1;
+
+    public void Dispose() {
+        _tasks.CompleteAdding();
+        _processingThread.Join();
+        _tasks.Dispose();
+    }
+}
 }
