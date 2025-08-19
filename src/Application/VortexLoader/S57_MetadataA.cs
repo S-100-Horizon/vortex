@@ -478,6 +478,17 @@ namespace S100Framework.Applications
                                 instance.depthRangeMaximumValue = current.DRVAL2.Value;
                             }
 
+                            // TODO: featuresdetected
+
+                            // TODO: full seafloor covearge achieved
+
+                            // TODO: interoperabilityIdentifier
+
+                            // TODO: line spacing maximum
+                            
+                            // TODO: line spacing minimum
+
+
                             if (current.SDISMX.HasValue && current.SDISMX.Value != -32767m) {
                                 if (current.SDISMX.Value % 1 == 0) {
                                     instance.measurementDistanceMaximum = Convert.ToInt32(current.SDISMX.Value);
@@ -486,6 +497,7 @@ namespace S100Framework.Applications
                                     Logger.Current.DataError(current.OBJECTID!.Value, current.LNAM ?? "Empty LNAM", current.TableName ?? "Unknown tablename", $"SDISMX on M_SREL: value is {current.SDISMX}");
                                 }
                             }
+
                             if (current.SDISMN.HasValue && current.SDISMN.Value != -32767m) {
                                 if (current.SDISMN.Value % 1 == 0) {
                                     instance.measurementDistanceMaximum = Convert.ToInt32(current.SDISMN.Value);
@@ -495,19 +507,22 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
-                            }
                             if (current.QUAPOS.HasValue) {
                                 instance.qualityOfHorizontalMeasurement = EnumHelper.GetEnumValue<qualityOfHorizontalMeasurement>(current.QUAPOS);
+                            }
+
+                            if (current.QUASOU != default) {
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
                             }
 
                             if (current.SCVAL1.HasValue && current.SCVAL1 != -32767) {
                                 instance.scaleValueMaximum = current.SCVAL1;
                             }
+
                             if (current.SCVAL2.HasValue && current.SCVAL2 != -32767) {
                                 instance.scaleValueMinimum = current.SCVAL2;
                             }
+
                             if (current.SURATH != default) {
                                 instance.surveyAuthority = current.SURATH;
                             }
@@ -515,8 +530,14 @@ namespace S100Framework.Applications
                             if (DateHelper.TryGetSurveyDateRange(current.SURSTA, current.SUREND, out var surveyDateRange)) {
                                 instance.surveyDateRange = surveyDateRange;
                             }
+                            
+                            if (current.SURTYP != default) {
+                                instance.surveyType = EnumHelper.GetEnumValues<surveyType>(current.SURTYP);
+                            }
 
-
+                            if (current.TECSOU != null) {
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                            }
 
                             AddInformation(instance.information, feature);
 
