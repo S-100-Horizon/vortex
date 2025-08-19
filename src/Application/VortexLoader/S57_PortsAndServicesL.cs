@@ -697,7 +697,6 @@ namespace S100Framework.Applications
                                     }
                                 }
 
-
                                 if (current.STATUS != default) {
                                     instance.status = GetStatus(current.STATUS);
                                 }
@@ -711,9 +710,7 @@ namespace S100Framework.Applications
                                     instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
-
                                 AddInformation(instance.information, feature);
-
 
                                 if (current.PICREP != default) {
                                     instance.pictorialRepresentation = current.PICREP;
