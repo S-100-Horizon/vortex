@@ -894,13 +894,14 @@ namespace S100Framework.Applications
                                 DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                                 if (dateRange != default) {
                                     instance.fixedDateRange = dateRange;
-                                }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
-                                instance.height = current.HEIGHT.Value;
-                            }
-                            else {
-                                instance.height = default(decimal?);
-                            }
+                                }
+
+                                if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                                    instance.height = current.HEIGHT.Value;
+                                }
+                                else {
+                                    instance.height = default(decimal?);
+                                }
 
                                 var horclr = current.HORCLR ?? default;
                                 var horacc = current.HORACC ?? default;
@@ -930,20 +931,18 @@ namespace S100Framework.Applications
                                     instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                                 }
 
-
                                 if (current.SORDAT != default) {
                                     if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
                                         instance.reportedDate = current.SORDAT;
                                     }
                                     else {
-                                        Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                        Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                     }
                                 }
 
                                 if (current.STATUS != default) {
                                     instance.status = GetStatus(current.STATUS);
                                 }
-
 
                                 if (current.VERLEN.HasValue) {
                                     instance.verticalLength = current.VERLEN.Value;
@@ -954,7 +953,11 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.WATLEV.HasValue) {
-                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV.Value);
+                                    if (current.WATLEV.Value == -32767)
+                                        instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
+                                    else {
+                                        instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                                    }
                                 }
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -965,7 +968,6 @@ namespace S100Framework.Applications
 
                                     instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
-
 
                                 AddInformation(instance.information, feature);
 

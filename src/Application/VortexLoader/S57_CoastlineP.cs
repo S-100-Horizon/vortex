@@ -45,14 +45,11 @@ namespace S100Framework.Applications
 
                 switch (fcSubtype) {
                     case 1: { // SLCONS_ShorelineConstruction
-                            var instance = new ShorelineConstruction() {
-                            };
+                            var instance = new ShorelineConstruction();
 
                             if (current.CATSLC.HasValue) {
                                 instance.categoryOfShorelineConstruction = EnumHelper.GetEnumValue<categoryOfShorelineConstruction>(current.CATSLC.Value);
                             }
-                            ;
-
 
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
@@ -71,8 +68,9 @@ namespace S100Framework.Applications
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
-                            }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            }
+
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
@@ -146,6 +144,7 @@ namespace S100Framework.Applications
                             }
 
                             AddInformation(instance.information, feature);
+
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
