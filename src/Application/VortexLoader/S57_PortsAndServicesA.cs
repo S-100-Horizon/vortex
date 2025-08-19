@@ -1706,8 +1706,6 @@ namespace S100Framework.Applications
                                     instance.condition = GetCondition(current.CONDTN.Value);
                                 }
 
-                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
                                 DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                                 if (dateRange != default) {
                                     instance.fixedDateRange = dateRange;
@@ -1728,27 +1726,23 @@ namespace S100Framework.Applications
                                     instance.status = GetStatus(current.STATUS);
                                 }
 
-                                if (current.VERLEN.HasValue) {
+                                if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
                                     instance.verticalLength = current.VERLEN.Value;
                                 }
+                                else {
+                                    instance.verticalLength = default(decimal?);
+                                }
 
-                                if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                                if (current.CONVIS.HasValue) {
                                     instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                                 }
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                     string subtype = "";
-
                                     if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                         throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                                 }
-
-                                //foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetTouchesValueFrom<DepthsA>(current)) {
-                                //    var drval1 = depthArea.DRVAL1 ?? default;
-                                //    ;
-                                //}
 
                                 AddInformation(instance.information, feature);
 
@@ -1769,7 +1763,6 @@ namespace S100Framework.Applications
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                     relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                                 }
-
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
