@@ -212,25 +212,69 @@ namespace S100Framework.Applications
                             throw new NotImplementedException($"No PIPSOL_PipelineSubmarineOnLand in DK or GL. {tableName}");
 
                             var instance = new PipelineSubmarineOnLand();
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            if (current.BURDEP.HasValue) {
+                                instance.buriedDepth = current.BURDEP.Value;
                             }
 
+                            if (current.CATPIP != default) {
+                                instance.categoryOfPipelinePipe = EnumHelper.GetEnumValues<categoryOfPipelinePipe>(current.CATPIP);
+                            }
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
+                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m) {
+                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                            }
+
+                            if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767m) {
+                                instance.depthRangeMinimumValue = current.DRVAL2.Value;
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            // TODO: multiplicityOfFeatures
+
+                            if (current.PRODCT != null) {
+                                instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
+                            }
+
+                            if (current.SORDAT != default) {
+                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                    instance.reportedDate = current.SORDAT;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
+                            // TODO: restriction
+
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
+
                             AddInformation(instance.information, feature);
+
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
                             buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["version"] = ImporterNIS.s101version;
