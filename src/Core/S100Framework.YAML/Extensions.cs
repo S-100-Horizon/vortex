@@ -93,7 +93,7 @@
             }
 
             foreach (var feature in dataset?.Features?.Where(e => e.Geometry == original) ?? []) {
-                Log.Information("Updating feature geometry reference with original {original} and target: {target}", original, target);
+                Log.Verbose("Updating feature geometry reference with original {original} and target: {target}", original, target);
                 feature.Geometry = target;
 
                 // Associations
@@ -101,7 +101,7 @@
                     continue;
 
                 foreach (var asso in feature.FeatureAssociation.Where(e => e.To.Contains(original))) {
-                    Log.Information("Updating feature association reference with original {original} and target: {target}", original, target);
+                    Log.Verbose("Updating feature association reference with original {original} and target: {target}", original, target);
                     asso.To = asso?.To?.Replace(original, target)!;
                 }
             }
