@@ -366,110 +366,109 @@ namespace S100Framework.Applications
                                 */
 
 
-                                var instance = new Obstruction {
-                                    surroundingDepth = default,
-                                    waterLevelEffect = default,
-                                };
+                                //     var instance = new Obstruction {
+                                //         surroundingDepth = default,
+                                //         waterLevelEffect = default,
+                                //     };
 
-                                if (current.CATOBS.HasValue) {
-                                    instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(current.CATOBS.Value);
-                                }
-
-
-                                if (current.CONDTN.HasValue) {
-                                    instance.condition = GetCondition(current.CONDTN.Value);
-                                }
-
-                                if (current.EXPSOU.HasValue) {
-                                    instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
-                                }
-
-                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
-                                instance.height = current.HEIGHT.Value;
-                            }
-                            else {
-                                instance.height = default(decimal?);
-                            }
-
-                                // DODO: Interoperability identifier
-
-                                // TODO: Maximum permitted draught
-
-                                if (current.NATSUR != default) {
-                                    instance.natureOfSurface = EnumHelper.GetEnumValues<natureOfSurface>(current.NATSUR);
-                                }
-
-                                if (current.PRODCT != default) {
-                                    instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
-                                }
-
-                                if (current.QUASOU != default) {
-                                    if (current.QUASOU == "-32767")
-                                        instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>("-1");
-                                    else {
-                                        instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
-                                    }
-                                }
+                                //     if (current.CATOBS.HasValue) {
+                                //         instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(current.CATOBS.Value);
+                                //     }
 
 
-                                if (current.SORDAT != default) {
-                                    if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                        instance.reportedDate = current.SORDAT;
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
-                                    }
-                                }
+                                //     if (current.CONDTN.HasValue) {
+                                //         instance.condition = GetCondition(current.CONDTN.Value);
+                                //     }
 
-                                if (current.STATUS != default) {
-                                    instance.status = GetStatus(current.STATUS);
-                                }
+                                //     if (current.EXPSOU.HasValue) {
+                                //         instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
+                                //     }
 
-                                if (current.TECSOU != null) {
-                                    instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
-                                }
+                                //     instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);                            
+                                //if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                                //     instance.height = current.HEIGHT.Value;
+                                // }
+                                // else {
+                                //     instance.height = default(decimal?);
+                                // }
 
-                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
-                                    instance.valueOfSounding = current.VALSOU.Value;
-                                }
-                                else {
-                                    instance.valueOfSounding = default(decimal?);
-                                }
+                                //     // DODO: Interoperability identifier
 
-                                if (current.VERLEN.HasValue) {
-                                    instance.verticalLength = current.VERLEN.Value;
-                                }
-                                else if (current.VERLEN.HasValue && current.VERLEN.Value == -32767m) {
-                                    instance.verticalLength = default(decimal?);
-                                }
+                                //     // TODO: Maximum permitted draught
+
+                                //     if (current.NATSUR != default) {
+                                //         instance.natureOfSurface = EnumHelper.GetEnumValues<natureOfSurface>(current.NATSUR);
+                                //     }
+
+                                //     if (current.PRODCT != default) {
+                                //         instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
+                                //     }
+
+                                //     if (current.QUASOU != default) {
+                                //         if (current.QUASOU == "-32767")
+                                //             instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>("-1");
+                                //         else {
+                                //             instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                //         }
+                                //     }
 
 
-                                if (current.WATLEV.HasValue) {
-                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
-                                }
+                                //     if (current.SORDAT != default) {
+                                //         if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                                //             instance.reportedDate = current.SORDAT;
+                                //         }
+                                //         else {
+                                //             Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                //         }
+                                //     }
+
+                                //     if (current.STATUS != default) {
+                                //         instance.status = GetStatus(current.STATUS);
+                                //     }
+
+                                //     if (current.TECSOU != null) {
+                                //         instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                                //     }
+
+                                //     if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
+                                //         instance.valueOfSounding = current.VALSOU.Value;
+                                //     }
+                                //     else {
+                                //         instance.valueOfSounding = default(decimal?);
+                                //     }
+
+                                //     if (current.VERLEN.HasValue) {
+                                //         instance.verticalLength = current.VERLEN.Value;
+                                //     }
+                                //     else if (current.VERLEN.HasValue && current.VERLEN.Value == -32767m) {
+                                //         instance.verticalLength = default(decimal?);
+                                //     }
+
+
+                                //     if (current.WATLEV.HasValue) {
+                                //         instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                                //     }
 
 
 
-                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                    string subtype = "";
+                                //     if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                //         string subtype = "";
 
-                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                //         if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                //             throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                                }
+                                //         instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                //     }
 
-                                AddInformation(instance.information, feature);
+                                //     AddInformation(instance.information, feature);
 
-                                // TODO: defaultClearanceDepth
+                                //     // TODO: defaultClearanceDepth
 
-                                
-
-                                foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
-                                    var drval1 = depthArea.DRVAL1 ?? default;
-                                    instance.surroundingDepth = drval1;
-                                }
+                                //foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
+                                //    var drval1 = depthArea.DRVAL1 ?? default;
+                                //    instance.surroundingDepth = drval1;
+                                //}
+                                var instance = ImporterNIS._converterRegistry.Convert<Obstruction>(new List<DangersA>() { current });
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;

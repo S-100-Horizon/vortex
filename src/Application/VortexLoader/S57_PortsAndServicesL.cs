@@ -515,7 +515,7 @@ namespace S100Framework.Applications
                             };
 
 
-                            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
+                            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
 
 
                             if (current.SOUACC.HasValue) {

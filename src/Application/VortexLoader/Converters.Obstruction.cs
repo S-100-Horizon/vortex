@@ -8,7 +8,7 @@ namespace S100Framework.Applications
 {
     internal static partial class Converters
     {
-
+        // OBSTRN
         internal static Obstruction CreateObstruction(DangersP current, int? scaleMinimum, Geodatabase source) {
 
             var instance = new Obstruction {
@@ -32,7 +32,9 @@ namespace S100Framework.Applications
 
             if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                 instance.height = current.HEIGHT.Value;
-
+            }
+            else {
+                instance.height = default(decimal?);
             }
 
             // DODO: Interoperability identifier
@@ -49,14 +51,16 @@ namespace S100Framework.Applications
 
             // TODO: QualityOfVerticalMeasurement
 
+
             if (current.SORDAT != default) {
                 if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
                     instance.reportedDate = current.SORDAT;
                 }
                 else {
-                    //Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), current.TableName!, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                 }
             }
+
 
             if (current.STATUS != default) {
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
@@ -96,6 +100,13 @@ namespace S100Framework.Applications
                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+            }
+
+            // TODO: default clearance depth
+
+            foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
+                var drval1 = depthArea.DRVAL1 ?? default;
+                instance.surroundingDepth = drval1;
             }
 
             return instance;

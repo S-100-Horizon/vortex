@@ -173,10 +173,9 @@ namespace S100Framework.Applications
                                     verticalDatum = default,
                                 };
 
-                                //    TODO: Fix hardcoded vertical datum of dataset -> EnumHelper.GetEnumValue<DomainModel.S101.verticalDatum>(current.VDAT.Value);
-                                if (current.VDAT.HasValue) {
-                                    vdat.verticalDatum = DomainModel.S101.verticalDatum.BalticSeaChartDatum2000;
-                                }
+                                vdat.verticalDatum = GetVerticalDatum(current.VDAT ?? 3);
+
+                                AddInformation(vdat.information, row);
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = vdat.GetType().Name;

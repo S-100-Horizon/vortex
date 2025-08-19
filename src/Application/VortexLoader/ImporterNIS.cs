@@ -664,7 +664,7 @@ namespace S100Framework.Applications
             return featureName;
         }
 
-        internal static List<information> CreateInformationFrom(Feature current) {
+        internal static List<information> CreateInformationFrom(Row current) {
             List<information> information = new List<information>();
 
             if (DBNull.Value != current["NTXTDS"]) {
@@ -902,7 +902,7 @@ namespace S100Framework.Applications
             return nobj;
         }
 
-        internal static void AddInformation(List<information> instanceInformation, Feature current) {
+        internal static void AddInformation(List<information> instanceInformation, Row current) {
             // TODO: Still missing decision on how GST wants handling of both files and a copy of the file content.
             // Sent to Nigel & Co.
             List<information> information = CreateInformationFrom(current);

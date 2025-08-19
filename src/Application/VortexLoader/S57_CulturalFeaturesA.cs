@@ -304,7 +304,7 @@ namespace S100Framework.Applications
                                     instance.fixedDateRange = dateRange;
                                 }
 
-                                instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 23);
+                                instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
 
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
