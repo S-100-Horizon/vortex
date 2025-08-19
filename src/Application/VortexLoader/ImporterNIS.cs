@@ -32,6 +32,7 @@ namespace S100Framework.Applications
         internal static string _scaminFilesPath = "";
         internal static string ps101 = "S-101";
         internal static string ps128 = "S-128";
+        internal static string s101version = "2.0.0";
         internal static Geodatabase _geodatabase;
 
         //internal static FeatureRelations featureRelations = null;

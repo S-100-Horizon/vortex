@@ -97,8 +97,9 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                buffer["code"] = instance.GetType().Name;
+                                buffer["version"] = ImporterNIS.s101version;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
@@ -185,8 +186,9 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                buffer["code"] = instance.GetType().Name;
+                                buffer["version"] = ImporterNIS.s101version;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -257,6 +259,7 @@ namespace S100Framework.Applications
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
+                                buffer["version"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer, current.SHAPE);
                                 ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
@@ -448,8 +451,9 @@ namespace S100Framework.Applications
                             }
 
                             buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                buffer["code"] = instance.GetType().Name;
+                                buffer["version"] = ImporterNIS.s101version;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -542,8 +546,9 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                buffer["code"] = instance.GetType().Name;
+                                buffer["version"] = ImporterNIS.s101version;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -571,8 +576,9 @@ namespace S100Framework.Applications
 
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                buffer["code"] = instance.GetType().Name;
+                                buffer["version"] = ImporterNIS.s101version;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
