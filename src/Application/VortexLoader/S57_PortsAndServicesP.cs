@@ -998,6 +998,7 @@ namespace S100Framework.Applications
 
                                 instance.categoryOfPile = categoryOfPile.MooringPost;
 
+
                                 if (current.COLOUR != default) {
                                     instance.colour = GetColours(current.COLOUR);
                                 }
@@ -1012,10 +1013,12 @@ namespace S100Framework.Applications
 
                                 instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
+
                                 DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                                 if (dateRange != default) {
                                     instance.fixedDateRange = dateRange;
                                 }
+
 
                                 if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                     instance.height = current.HEIGHT.Value;
@@ -1263,10 +1266,12 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
+
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
                             }
+
 
                             if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
@@ -1311,7 +1316,6 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-
                             AddInformation(instance.information, feature);
 
                             if (current.PICREP != default) {
@@ -1319,9 +1323,9 @@ namespace S100Framework.Applications
                             }
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["version"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["version"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
