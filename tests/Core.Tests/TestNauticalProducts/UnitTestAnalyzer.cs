@@ -194,8 +194,8 @@ namespace TestNauticalProducts
 
         [Fact]
         public async Task Test_Export() {
-            var s101 = Environment.GetEnvironmentVariable("S100-Horizon-S101-Database");
-            Assert.False(string.IsNullOrEmpty(s101));
+            //var s101 = Environment.GetEnvironmentVariable("S100-Horizon-S101-Database");
+            //Assert.False(string.IsNullOrEmpty(s101));
 
             FastZip fastZip = new();
 

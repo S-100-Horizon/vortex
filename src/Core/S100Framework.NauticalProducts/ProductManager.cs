@@ -106,8 +106,13 @@ namespace S100Framework.NauticalProducts
 
                         if (settings != null) {
                             foreach (var connection in settings.Connections) {
-                                var geodatabase = this.OpenGeodatabase(connection.ConnectionFile);
-                                _connections.Add(connection.ProductSpecification.ToUpperInvariant(), geodatabase);
+                                if (connection.ConnectionFile == default) {
+                                    _connections.Add(connection.ProductSpecification.ToUpperInvariant(), this._geodatabase);
+                                }
+                                else {
+                                    var geodatabase = this.OpenGeodatabase(connection.ConnectionFile);
+                                    _connections.Add(connection.ProductSpecification.ToUpperInvariant(), geodatabase);
+                                }
                             }
                         }
                     }
@@ -471,6 +476,26 @@ namespace S100Framework.NauticalProducts
 
         Task<YAML.Dataset> IElectronicProductManager.CreateNewUpdateAsync(string name) {
             throw new NotImplementedException();
+        }
+
+        async Task QueryUpdates(string name) {
+            if (string.IsNullOrEmpty(name))
+                throw new System.ArgumentNullException(nameof(name));
+            name = name.ToUpperInvariant();
+
+            if (!this._electronicProducts.ContainsKey(name))
+                throw new System.ArgumentException(nameof(name));
+
+            var connection = this._connections[this._electronicProducts[name].productSpecification!.name]!;
+
+            await this._taskFactory.StartNew(() => {
+                using var attachment = this._geodatabase!.OpenDataset<Table>(this.QualifyTableName("attachment"));
+
+                using var cursor = attachment.Search(new QueryFilter {
+                    PostfixClause = "ORDER BY created_date DESC",
+                }, true);
+
+            });
         }
 
         DomainModel.S128.FeatureTypes.ElectronicProduct IElectronicProductManager.ElectronicProduct(string name) => this._electronicProducts[name.ToUpperInvariant()];

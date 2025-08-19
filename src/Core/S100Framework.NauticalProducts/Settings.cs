@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace S100Horizon.Settings
 {
-    public record Connection(string ProductSpecification, Uri ConnectionFile);
+    public record Connection(string ProductSpecification, Uri? ConnectionFile = default);
     public class NauticalProducts
     {
         public Connection[] Connections { get; set; } = [];
