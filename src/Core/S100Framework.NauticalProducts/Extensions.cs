@@ -144,6 +144,8 @@ namespace S100Framework.NauticalProducts
                             if (string.IsNullOrEmpty(name))
                                 name = string.Empty;
 
+                            //if (name.Equals("S1799633")) System.Diagnostics.Debugger.Break();
+
                             var exteriorRing = shape.GetExteriorRing(0);
                             var coordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
 
