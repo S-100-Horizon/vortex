@@ -56,7 +56,7 @@ namespace S100Framework.Applications
             builderDomainModel.AppendLine();
             builderDomainModel.AppendLine($"namespace S100Framework.DomainModel.{productId} {{");
 
-            builderDomainModel.AppendLine("\tpublic static class Summary");
+            builderDomainModel.AppendLine("\tpublic class Summary : ISummary");
             builderDomainModel.AppendLine("\t{");
             builderDomainModel.AppendLine($"\t\tpublic static string Name => \"{productSpecification.XPathSelectElement("//S100FC:name", xmlNamespaceManager)!.Value}\";");
             builderDomainModel.AppendLine($"\t\tpublic static string Scope => \"{productSpecification.XPathSelectElement("//S100FC:scope", xmlNamespaceManager)!.Value}\";");

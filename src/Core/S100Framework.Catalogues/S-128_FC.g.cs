@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 
 
 namespace S100Framework.DomainModel.S128 {
-	public static class Summary
+	public class Summary : ISummary
 	{
 		public static string Name => "S-128 Catalogue of Nautical Products";
 		public static string Scope => "Catalogue of Nautical Products";

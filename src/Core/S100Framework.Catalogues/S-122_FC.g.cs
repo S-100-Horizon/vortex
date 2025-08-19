@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 
 
 namespace S100Framework.DomainModel.S122 {
-	public static class Summary
+	public class Summary : ISummary
 	{
 		public static string Name => "Marine Protected Area";
 		public static string Scope => "";

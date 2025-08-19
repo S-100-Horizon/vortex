@@ -5,6 +5,22 @@ using System.Xml.Serialization;
 
 namespace S100Framework.DomainModel
 {
+    public interface ISummary {
+        public static string Name => string.Empty;
+        public static string Scope => string.Empty;
+        public static string ProductId => string.Empty;
+        public static Version Version => throw new NotImplementedException();
+        public static DateOnly VersionDate => throw new NotImplementedException();
+        public static string[] ComplexTypes => [];
+        public static string[] InformationAssociationTypes => [];
+        public static string[] FeatureAssociationTypes => [];
+        public static string[] InformationTypes => [];
+        public static string[] FeatureTypes => [];
+        public static string[] PrimitiveFeatures(Primitives primitive) => throw new NotImplementedException();
+
+        public static Primitives[] FeaturePrimitives(string featureType) => throw new NotImplementedException();
+    }
+
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
     public class EnumerationAttribute : System.Attribute
     {

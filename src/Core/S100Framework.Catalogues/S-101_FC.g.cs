@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 
 
 namespace S100Framework.DomainModel.S101 {
-	public static class Summary
+	public class Summary : ISummary
 	{
 		public static string Name => "Electronic Navigational Chart";
 		public static string Scope => "Ocean, Coastal, Ports and Harbors. Excludes Inland waters.";
