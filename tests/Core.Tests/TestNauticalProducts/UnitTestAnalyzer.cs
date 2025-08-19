@@ -1,9 +1,6 @@
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using ICSharpCode.SharpZipLib.Zip;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using S100Framework.DomainModel.S128;
-using S100Framework.DomainModel.S128.Horizon;
 using S100Framework.YAML;
 using System.Diagnostics;
 using System.Text.Json;
@@ -74,9 +71,9 @@ namespace TestNauticalProducts
 
                 using var buffer = table.CreateRowBuffer();
                 buffer["ps"] = "S-128.Horizon";
-                buffer["code"] = nameof(S100Framework.DomainModel.S128.Horizon.Settings.NauticalProducts);
-                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Framework.DomainModel.S128.Horizon.Settings.NauticalProducts {
-                    Connections = [new S100Framework.DomainModel.S128.Horizon.Settings.Connection("S-101", new Uri(IO.Path.GetFullPath("s101.gdb")))],
+                buffer["code"] = nameof(S100Horizon.Settings.NauticalProducts);
+                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Horizon.Settings.NauticalProducts {
+                    Connections = [new S100Horizon.Settings.Connection("S-101", new Uri(IO.Path.GetFullPath("s101.gdb")))],
                 });
                 table.CreateRow(buffer);
             }
@@ -112,9 +109,9 @@ namespace TestNauticalProducts
 
                     using var buffer = table.CreateRowBuffer();
                     buffer["ps"] = "S-128.Horizon";
-                    buffer["code"] = nameof(S100Framework.DomainModel.S128.Horizon.Settings.NauticalProducts);
-                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Framework.DomainModel.S128.Horizon.Settings.NauticalProducts {
-                        Connections = [new S100Framework.DomainModel.S128.Horizon.Settings.Connection("S-101", new Uri(IO.Path.GetFullPath(Environment.GetEnvironmentVariable("S100-Horizon-S101-Database")!)))],
+                    buffer["code"] = nameof(S100Horizon.Settings.NauticalProducts);
+                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Horizon.Settings.NauticalProducts {
+                        Connections = [new S100Horizon.Settings.Connection("S-101", new Uri(IO.Path.GetFullPath(Environment.GetEnvironmentVariable("S100-Horizon-S101-Database")!)))],
                     });
                     table.CreateRow(buffer);                   
                 }

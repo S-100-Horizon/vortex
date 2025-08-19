@@ -523,7 +523,7 @@ namespace VortexProAppModule
 
                     using var cursor = configuration.Search(null, true);
                     while (cursor.MoveNext()) {
-                        var settings = JsonSerializer.Deserialize<S100Framework.Settings.Editor>(Convert.ToString(cursor.Current["json"]));
+                        var settings = JsonSerializer.Deserialize<S100Horizon.Settings.Editor>(Convert.ToString(cursor.Current["json"]));
                         if (!settings.ExcludeInEditor)
                             catalogues = [.. catalogues, Convert.ToString(cursor.Current["ps"])];
                     }

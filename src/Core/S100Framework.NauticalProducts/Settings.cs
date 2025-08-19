@@ -5,18 +5,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace S100Framework.DomainModel.S128.Horizon
+namespace S100Horizon.Settings
 {
-    namespace Settings
+    public record Connection(string ProductSpecification, Uri ConnectionFile);
+    public class NauticalProducts
     {
-        public record Connection(string ProductSpecification, Uri ConnectionFile);
-        public class NauticalProducts
-        {
-            public Connection[] Connections { get; set; } = [];
-        }
+        public Connection[] Connections { get; set; } = [];
     }
+}
 
-    public enum ExportTypes : int {
+namespace S100Framework.NauticalProducts
+{
+    public enum ExportTypes : int
+    {
         NewDataset = 1,
         NewEdition = 2,
         Update = 4,
@@ -24,5 +25,14 @@ namespace S100Framework.DomainModel.S128.Horizon
         Cancellation = 16,
     }
 
-    public record ElectronicProduct(string DatasetName, DateTime TimestampUTC, int Edition, int Update, ExportTypes ExportTypes);
+    public class ElectronicProduct
+    {
+        public required string DatasetName { get; set; } = string.Empty;
+        public required DateTime TimestampUTC { get; set; } = DateTime.UtcNow;
+
+        public required int Edition { get; set; }
+        public required int Update { get; set; }
+
+        public required ExportTypes ExportTypes { get; set; }
+    }
 }
