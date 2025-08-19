@@ -270,26 +270,27 @@ namespace S100Framework.Applications
 
                             //CONDTN, EXPSOU, NATCON, NATQUA, NATSUR, PRODCT, VERLEN, WATLEV
 
-                            var obstruction = new Obstruction {
-                                surroundingDepth = default,
-                                waterLevelEffect = default,
-                            };
+                            //var obstruction = new Obstruction {
+                            //    surroundingDepth = default,
+                            //    waterLevelEffect = default,
+                            //};
 
-                            //if (current.CATOBS categoryOfObstruction
+                            ////if (current.CATOBS categoryOfObstruction
 
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
+                            //if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                            //    string subtype = "";
 
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                            //    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                            //        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                obstruction.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                            }
+                            //    obstruction.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            //}
 
-                            AddInformation(obstruction.information, feature);
+                            //AddInformation(obstruction.information, feature);
 
-                            // TODO: defaultClearanceDepth
-
+                            //// TODO: defaultClearanceDepth
+                            var obstruction = ImporterNIS._converterRegistry.Convert<Obstruction>(new List<DangersP>() { current });
+                            
                             buffer["ps"] = ps101;
                             buffer["code"] = obstruction.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(obstruction);
