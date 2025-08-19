@@ -525,7 +525,7 @@ namespace VortexProAppModule
                     while (cursor.MoveNext()) {
                         var settings = JsonSerializer.Deserialize<S100Horizon.Settings.Editor>(Convert.ToString(cursor.Current["json"]));
                         if (!settings.ExcludeInEditor)
-                            catalogues = [.. catalogues, Convert.ToString(cursor.Current["ps"])];
+                            catalogues = [.. catalogues, Convert.ToString(cursor.Current["ps"]).Split('.').First()];
                     }
                     if (catalogues.Any())
                         return catalogues;
