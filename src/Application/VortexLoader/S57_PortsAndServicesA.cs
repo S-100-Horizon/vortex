@@ -1617,9 +1617,7 @@ namespace S100Framework.Applications
                                     instance.verticalLength = current.VERLEN.Value;
                                 }
 
-
                                 // TODO: visitors mooring (SMCFAC) 
-
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                     string subtype = "";
@@ -1629,7 +1627,6 @@ namespace S100Framework.Applications
 
                                     instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
-
 
                                 AddInformation(instance.information, feature);
 

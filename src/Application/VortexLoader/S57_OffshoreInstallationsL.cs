@@ -71,14 +71,12 @@ namespace S100Framework.Applications
                                     instance.categoryOfCable = EnumHelper.GetEnumValue<categoryOfCable>(current.CATCBL.Value);
                                 }
                             }
-                            ;
-
+                            
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
@@ -100,8 +98,8 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-
                             AddInformation(instance.information, feature);
+
                             buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["version"] = ImporterNIS.s101version;

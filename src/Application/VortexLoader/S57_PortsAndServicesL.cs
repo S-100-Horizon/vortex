@@ -958,6 +958,27 @@ namespace S100Framework.Applications
                             // CABLESUBMARINE
                             if (catmor == 6) {
                                 var instance = new CableSubmarine();
+                                // unknown
+                                instance.buriedDepth = null;
+
+                                instance.categoryOfCable = categoryOfCable.JunctionCable;
+
+                                if (current.CONDTN.HasValue) {
+                                    instance.condition = GetCondition(current.CONDTN.Value);
+                                }
+
+                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                                DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                                if (dateRange != default) {
+                                    instance.fixedDateRange = dateRange;
+                                }
+
+                                // TODO: interoperabilityIdentifier
+
+                                if (current.STATUS != default) {
+                                    instance.status = GetStatus(current.STATUS);
+                                }
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                     string subtype = "";
@@ -968,18 +989,8 @@ namespace S100Framework.Applications
                                     instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
-
-                                instance.categoryOfCable = categoryOfCable.JunctionCable;
-
-                                if (current.CONDTN.HasValue) {
-                                    instance.condition = GetCondition(current.CONDTN.Value);
-                                }
-
-                                if (current.STATUS != default) {
-                                    instance.status = GetStatus(current.STATUS);
-                                }
-                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                                 AddInformation(instance.information, feature);
+
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["version"] = ImporterNIS.s101version;
@@ -1054,9 +1065,7 @@ namespace S100Framework.Applications
                                     instance.verticalLength = current.VERLEN.Value;
                                 }
 
-
                                 // TODO: visitors mooring (SMCFAC) 
-
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                     string subtype = "";
@@ -1067,13 +1076,11 @@ namespace S100Framework.Applications
                                     instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
-
                                 AddInformation(instance.information, feature);
 
                                 if (current.PICREP != default) {
                                     instance.pictorialRepresentation = current.PICREP;
                                 }
-
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["version"] = ImporterNIS.s101version;

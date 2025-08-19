@@ -1092,7 +1092,7 @@ namespace S100Framework.Applications
 
                             // MOORING BUOY
                             if (catmor == 7) {
-                                var instance = new MooringBuoy {
+                                var instance = new MooringBuoy() {
                                     buoyShape = default,
                                 };
 
@@ -1117,6 +1117,7 @@ namespace S100Framework.Applications
                                     instance.fixedDateRange = dateRange;
                                 }
 
+
                                 // TODO: interoperabilityIdentifier
 
                                 // TODO: maximumPermittedDraught - From INFORM - No instances in GST - Not converted
@@ -1128,12 +1129,10 @@ namespace S100Framework.Applications
                                     instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                                 }
 
-
                                 DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
                                 if (periodicDateRange != default) {
                                     instance.periodicDateRange = periodicDateRange;
                                 }
-
 
                                 if (current.STATUS != default) {
                                     instance.status = GetStatus(current.STATUS);
@@ -1143,9 +1142,7 @@ namespace S100Framework.Applications
                                     instance.verticalLength = current.VERLEN.Value;
                                 }
 
-
                                 // TODO: visitors mooring (SMCFAC) 
-
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                     string subtype = "";
