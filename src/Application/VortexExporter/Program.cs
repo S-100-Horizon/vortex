@@ -109,10 +109,9 @@ namespace S100Framework.Applications
 
                         var electricProduct = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(current["json"])!);
 
-                        var polygon = (ArcGIS.Core.Geometry.Polygon)current.GetShape();
-                        var json = polygon.ToJson();
-
-                        var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
+                        var shape = (ArcGIS.Core.Geometry.Polygon)current.GetShape().Clone();
+                        //var json = polygon.ToJson();
+                        //var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
 
                         var whereClause = "upper(ps) = 'S-101'";
                         if (current.FindField("usageband") != -1 && !current.IsNull("usageband"))
