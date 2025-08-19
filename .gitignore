@@ -395,6 +395,9 @@ FodyWeavers.xsd
 *.msm
 *.msp
 
+# ArcGIS PRO
+*.lock
+
 # JetBrains Rider
 *.sln.iml
 /tests/Core.Tests/TestS100Framework.Roslyn/S-101_FC.cs
