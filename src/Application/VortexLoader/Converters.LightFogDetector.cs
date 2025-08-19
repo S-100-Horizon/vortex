@@ -10,7 +10,7 @@ namespace S100Framework.Applications
     {
         internal static LightFogDetector CreateLightFogDetector(AidsToNavigationP current, int? scaleMinimum, Geodatabase source) {
             var instance = new LightFogDetector();
-
+            
             if (current.COLOUR != default) {
                 instance.colour = ImporterNIS.GetColours(current.COLOUR);
             }
@@ -23,12 +23,12 @@ namespace S100Framework.Applications
             }
 
             // flareBearing is not populated. New field.                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
-                                instance.height = current.HEIGHT.Value;
-                            }
-                            else {
-                                instance.height = default(decimal?);
-                            }
+            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                instance.height = current.HEIGHT.Value;
+            }
+            else {
+                instance.height = default(decimal?);
+            }
 
             // DODO: Interoperability identifier
 
@@ -52,13 +52,14 @@ namespace S100Framework.Applications
 
             if (current.VERLEN.HasValue) {
                 instance.verticalLength = current.VERLEN.Value;
-            }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
-                                instance.height = current.HEIGHT.Value;
-                            }
-                            else {
-                                instance.height = default(decimal?);
-                            }
+            }
+            
+            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                instance.height = current.HEIGHT.Value;
+            }
+            else {
+                instance.height = default(decimal?);
+            }
 
             if (scaleMinimum.HasValue) {
                 instance.scaleMinimum = scaleMinimum;

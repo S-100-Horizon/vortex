@@ -108,10 +108,34 @@ namespace S100Framework.Applications.Singletons
             return errorCount;
         }
 
+        internal int Check_GetVersion() {
+            Int32 errorCount = 0;
 
+            var featureClasses = new List<string>() {
+                "curve",
+                "point",
+                "surface",
+                "pointset"
+            };
+            int recordCount = 0;
 
+            foreach (var featureclassName in featureClasses) {
+                using var featureClass = _geodatabase.OpenDataset<FeatureClass>(_geodatabase.GetName(featureclassName));
 
+                using var cursor = featureClass.Search(new QueryFilter() { WhereClause = "1=1" }, true);
 
+                while (cursor.MoveNext()) {
+                    recordCount++;
+                    var feature = cursor.Current;
+                    string? jsonValue = feature["json"]?.ToString();
+
+                    if (jsonValue != default && jsonValue.Contains("version")) {
+                        errorCount++;
+                    }
+                }
+            }
+            return errorCount;
+        }
     }
 
 

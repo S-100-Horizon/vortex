@@ -312,6 +312,9 @@ namespace S100Framework.Applications
                 status = SanityChecker.Instance.Check_GetEsriUnknown32767ErrorCount() == 0 ? "PASSED" : "FAILED";
                 Logger.Current.Information($"No ESRI unknown values (-31767) in S-101: {status}");
 
+                status = SanityChecker.Instance.Check_GetVersion() == 0 ? "PASSED" : "FAILED";
+                Logger.Current.Information($"No ESRI unknown values (-31767) in S-101: {status}");
+
                 Logger.Current.Information("Done");
                 return true;
             }
