@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 
 
 namespace S100Framework.DomainModel.S501 {
-	public static class Summary
+	public class Summary : ISummary
 	{
 		public static string Name => "Additional Military Layers";
 		public static string Scope => "Specialist maritime geospatial information for Defence.";

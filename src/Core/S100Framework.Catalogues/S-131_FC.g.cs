@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 
 
 namespace S100Framework.DomainModel.S131 {
-	public static class Summary
+	public class Summary : ISummary
 	{
 		public static string Name => "Feature Catalogue for S-131";
 		public static string Scope => "Global coverage of maritime areas";

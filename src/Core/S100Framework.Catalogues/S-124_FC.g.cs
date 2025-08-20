@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 
 
 namespace S100Framework.DomainModel.S124 {
-	public static class Summary
+	public class Summary : ISummary
 	{
 		public static string Name => "Navigational Warnings";
 		public static string Scope => "Global";

@@ -1,9 +1,6 @@
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using ICSharpCode.SharpZipLib.Zip;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using S100Framework.DomainModel.S128;
-using S100Framework.Settings;
 using S100Framework.YAML;
 using System.Diagnostics;
 using System.Text.Json;
@@ -29,9 +26,9 @@ namespace TestNauticalProducts
 
             //FastZip fastZip = new();
 
-            //var geodatabase = new IO.DirectoryInfo(@"s100ed7.gdb");
+            //var geodatabase = new IO.DirectoryInfo(@"s100ed8.gdb");
             //if (!geodatabase.Exists) {
-            //    fastZip.ExtractZip("s100ed7.gdb.zip", geodatabase.FullName, null);
+            //    fastZip.ExtractZip("s100ed8.gdb.zip", geodatabase.FullName, null);
             //}
         }
 
@@ -39,12 +36,12 @@ namespace TestNauticalProducts
         public void Test_ConnectionSerialization() {
             FastZip fastZip = new();
 
-            var geodatabase = new IO.DirectoryInfo(@"s100ed7.gdb");
+            var geodatabase = new IO.DirectoryInfo(@"s100ed8.gdb");
             if (!geodatabase.Exists) {
-                fastZip.ExtractZip("s100ed7.gdb.zip", geodatabase.FullName, null);
+                fastZip.ExtractZip("s100ed8.gdb.zip", geodatabase.FullName, null);
             }
 
-            var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s100ed7.gdb")));
+            var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s100ed8.gdb")));
             using var connection = new Geodatabase(connectionFile);
 
             System.Diagnostics.Debugger.Break();
@@ -62,21 +59,21 @@ namespace TestNauticalProducts
                 fastZip.ExtractZip("s101.gdb.zip", zipFileS101.FullName, null);
             }
 
-            var zipFileS128 = new IO.DirectoryInfo(@"s100ed7.gdb");
+            var zipFileS128 = new IO.DirectoryInfo(@"s100ed8.gdb");
             if (!zipFileS128.Exists) {
-                fastZip.ExtractZip("s100ed7.gdb.zip", zipFileS128.FullName, null);
+                fastZip.ExtractZip("s100ed8.gdb.zip", zipFileS128.FullName, null);
             }
 
-            var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s100ed7.gdb")));
+            var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s100ed8.gdb")));
             using var geodatabase = new Geodatabase(connectionFile);
 
             using (var table = geodatabase.OpenDataset<Table>("configuration")) {
 
                 using var buffer = table.CreateRowBuffer();
-                buffer["ps"] = "S-128";
-                buffer["code"] = nameof(S100Framework.Settings.NauticalProducts);
-                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Framework.Settings.NauticalProducts {
-                    Connections = [new Connection("S-101", new Uri(IO.Path.GetFullPath("s101.gdb")))],
+                buffer["ps"] = "S-128.Horizon";
+                buffer["code"] = nameof(S100Horizon.Settings.NauticalProducts);
+                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Horizon.Settings.NauticalProducts {
+                    Connections = [new S100Horizon.Settings.Connection("S-101", new Uri(IO.Path.GetFullPath("s101.gdb")))],
                 });
                 table.CreateRow(buffer);
             }
@@ -96,25 +93,25 @@ namespace TestNauticalProducts
 
             FastZip fastZip = new();
 
-            var zipFileS128 = new IO.DirectoryInfo(@"s128ed7.gdb");
+            var zipFileS128 = new IO.DirectoryInfo(@"s128ed8.gdb");
 
             if (zipFileS128.Exists) {
                 zipFileS128.Delete(true);
             }
-            fastZip.ExtractZip("s100ed7.gdb.zip", zipFileS128.FullName, null);
+            fastZip.ExtractZip("s100ed8.gdb.zip", zipFileS128.FullName, null);
 
             var productManager = await S100Framework.NauticalProducts.ProductManager.CreateInstanceAsync(() => {
-                var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s128ed7.gdb")));
+                var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s128ed8.gdb")));
 
                 var geodatabase = new Geodatabase(connectionFile);
 
                 using (var table = geodatabase.OpenDataset<Table>("configuration")) {
 
                     using var buffer = table.CreateRowBuffer();
-                    buffer["ps"] = "S-128";
-                    buffer["code"] = nameof(S100Framework.Settings.NauticalProducts);
-                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Framework.Settings.NauticalProducts {
-                        Connections = [new Connection("S-101", new Uri(IO.Path.GetFullPath(Environment.GetEnvironmentVariable("S100-Horizon-S101-Database")!)))],
+                    buffer["ps"] = "S-128.Horizon";
+                    buffer["code"] = nameof(S100Horizon.Settings.NauticalProducts);
+                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Horizon.Settings.NauticalProducts {
+                        Connections = [new S100Horizon.Settings.Connection("S-101", new Uri(IO.Path.GetFullPath(Environment.GetEnvironmentVariable("S100-Horizon-S101-Database")!)))],
                     });
                     table.CreateRow(buffer);                   
                 }
@@ -138,7 +135,7 @@ namespace TestNauticalProducts
 
                 var productSpecification = new S100Framework.DomainModel.S128.ComplexAttributes.productSpecification {
                     editionDate = S100Framework.DomainModel.S101.Summary.VersionDate,
-                    name = S100Framework.DomainModel.S101.Summary.Name,
+                    name = S100Framework.DomainModel.S101.Summary.ProductId,
                     version = S100Framework.DomainModel.S101.Summary.Version.ToString(),                    
                 };
 
@@ -202,15 +199,15 @@ namespace TestNauticalProducts
 
             FastZip fastZip = new();
 
-            var zipFileS128 = new IO.DirectoryInfo(@"s128ed7.gdb");
+            var zipFileS128 = new IO.DirectoryInfo(@"s128ed8.gdb");
 
             if (zipFileS128.Exists) {
                 zipFileS128.Delete(true);
             }
-            fastZip.ExtractZip("s128ed7.gdb.zip", zipFileS128.FullName, null);
+            fastZip.ExtractZip("s128ed8.gdb.zip", zipFileS128.FullName, null);
 
             var productManager = await S100Framework.NauticalProducts.ProductManager.CreateInstanceAsync(() => {
-                var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s128ed7.gdb")));
+                var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s128ed8.gdb")));
 
                 return new Geodatabase(connectionFile);
             });
