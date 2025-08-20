@@ -1,4 +1,5 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Geometry;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101.FeatureTypes;
@@ -117,6 +118,8 @@ namespace S100Framework.Applications
                     WhereClause = $"Product_GUID = '{globalid:B}'",
                 }, true);
 
+                var polygons = new List<ArcGIS.Core.Geometry.Polygon>();
+
                 while (cursorCoverage.MoveNext()) {
                     var productCoverage = new ProductCoverage((Feature)cursorCoverage.Current);
                     var catcov = productCoverage.CATCOV ?? default;
@@ -141,19 +144,20 @@ namespace S100Framework.Applications
                         throw new NotSupportedException("Multiple coverages after M_SCL cut");
                     }
 
+                    polygons.Add((ArcGIS.Core.Geometry.Polygon)productCoverage.SHAPE!);
 
                     switch (catcov) {
-                        case 1: {
-                                buffer["ps"] = ps128;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["version"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                SetShape(buffer, productCoverage.SHAPE);
-                                ImporterNIS.SetUsageBand(buffer, productCoverage!.PLTS_COMP_SCALE!.Value);
-                                var featureN = featureClass.CreateRow(buffer);
-                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-                                // TODO: Create relations
-                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+                        case 1: {                                
+                                //buffer["ps"] = ps128;
+                                //buffer["code"] = instance.GetType().Name;
+                                //buffer["version"] = ImporterNIS.s101version;
+                                //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                //SetShape(buffer, productCoverage.SHAPE);
+                                //ImporterNIS.SetUsageBand(buffer, productCoverage!.PLTS_COMP_SCALE!.Value);
+                                //var featureN = featureClass.CreateRow(buffer);
+                                //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                                //// TODO: Create relations
+                                //ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
                             }
 
                             // DATACOVERAGE
@@ -207,6 +211,19 @@ namespace S100Framework.Applications
 
                             break;
                     }
+                }
+
+                {
+                    buffer["ps"] = ps128;
+                    buffer["code"] = instance.GetType().Name;
+                    buffer["version"] = ImporterNIS.s101version;
+                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                    SetShape(buffer, (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons));
+                    ImporterNIS.SetUsageBand(buffer, Convert.ToInt32(cursor.Current["PLTS_COMP_SCALE"]));
+                    var featureN = featureClass.CreateRow(buffer);
+                    var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                    // TODO: Create relations
+                    ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
                 }
                 Logger.Current.DataObject(objectid, tableName, dsnm, System.Text.Json.JsonSerializer.Serialize(instance));
             }
