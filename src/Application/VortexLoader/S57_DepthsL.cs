@@ -217,6 +217,7 @@ namespace S100Framework.Applications
 
             bufferInformationType["ps"] = ps101;
             bufferInformationType["code"] = spatialQuality101.Code;
+            bufferInformationType["edition"] = ImporterNIS.s101version;
             bufferInformationType["json"] = System.Text.Json.JsonSerializer.Serialize(spatialQuality101, jsonSerializerOptions);
 
             var informationTypeRow = informationTypeTable.CreateRow(bufferInformationType);
@@ -228,6 +229,7 @@ namespace S100Framework.Applications
 
             informationAssociationBuffer["ps"] = ImporterNIS.ps101;
             informationAssociationBuffer["code"] = "association";
+            informationAssociationBuffer["edition"] = ImporterNIS.s101version;
 
             var association = informationassociationTable.CreateRow(informationAssociationBuffer);
             var informationAssociationName = (string)association["name"];

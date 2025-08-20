@@ -231,6 +231,7 @@ namespace S100Framework.Applications
                                 AddInformation(localDirectionOfBuoyage.information, feature);
                                 buffer["ps"] = ps101;
                                 buffer["code"] = localDirectionOfBuoyage.GetType().Name;
+                                buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(localDirectionOfBuoyage, jsonSerializerOptions);
                                 SetShape(buffer, current.SHAPE);
                                 ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);

@@ -52,6 +52,8 @@ namespace S100Framework.Applications
 
                     featureAssociationBuffer["ps"] = ImporterNIS.ps101;
                     featureAssociationBuffer["code"] = "BridgeAggregation";
+                    featureAssociationBuffer["edition"] = ImporterNIS.s101version;
+
                     var association = featureAssociation.CreateRow(featureAssociationBuffer);
                     string featureAssociationName = (string)association["name"];
                     bridge.BridgeAggregationName = featureAssociationName;
@@ -810,7 +812,7 @@ namespace S100Framework.Applications
                             //buffer["code"] = instance.GetType().Name;
                             //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             //SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+                            //SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
                             //var featureN = featureClass.CreateRow(buffer);
                             //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
@@ -1020,6 +1022,7 @@ namespace S100Framework.Applications
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = windturbine.GetType().Name;
+                                buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(windturbine, jsonSerializerOptions);
                                 SetShape(buffer, current.SHAPE);
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);

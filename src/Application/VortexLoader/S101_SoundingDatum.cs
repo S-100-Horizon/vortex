@@ -63,9 +63,9 @@ namespace S100Framework.Applications
                 instance.verticalDatum = DomainModel.S101.verticalDatum.BalticSeaChartDatum2000;
 
                 buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                buffer["code"] = instance.GetType().Name;
+                buffer["edition"] = ImporterNIS.s101version;
+                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                 SetShape(buffer, item);
                 ImporterNIS.SetUsageBand(buffer, _compilationScale);
 
@@ -86,9 +86,9 @@ namespace S100Framework.Applications
                 instance.verticalDatum = EnumHelper.GetEnumValue<DomainModel.S101.verticalDatum>(item.FieldName_FieldValue["verdat"]);
 
                 buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                buffer["code"] = instance.GetType().Name;
+                buffer["edition"] = ImporterNIS.s101version;
+                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                 SetShape(buffer, item.Geometry);
                 ImporterNIS.SetUsageBand(buffer, _compilationScale);
 

@@ -49,6 +49,7 @@ namespace S100Framework.Applications
                 {
                     buffer["ps"] = ps101;
                     buffer["code"] = dataCoverage_m_scl.GetType().Name;
+                    buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage_m_scl);
                     SetShape(buffer, m_sclPolygon.SHAPE);
                     ImporterNIS.SetUsageBand(buffer, Convert.ToInt32(m_sclPolygon.PLTS_COMP_SCALE));
@@ -218,7 +219,7 @@ namespace S100Framework.Applications
                 {
                     buffer["ps"] = ps128;
                     buffer["code"] = instance.GetType().Name;
-                    buffer["version"] = ImporterNIS.s101version;
+                    buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                     SetShape(buffer, (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons));
                     ImporterNIS.SetUsageBand(buffer, Convert.ToInt32(cursor.Current["PLTS_COMP_SCALE"]));
