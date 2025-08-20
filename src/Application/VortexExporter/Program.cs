@@ -118,7 +118,7 @@ namespace S100Framework.Applications
                             whereClause += $" AND usageband = {Convert.ToInt32(current["usageband"])}";
 
                         datasets.Add((new Dataset {
-                            CellName = $"101{electricProduct!.datasetName!}.000",
+                            CellName = $"{electricProduct!.datasetName!}.000",
                             Comment = "Not for navigation!",
                             Edition = 1,
                             ENCVer = "INT.IHO.S-101.2.0",
