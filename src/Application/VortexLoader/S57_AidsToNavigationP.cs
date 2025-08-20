@@ -15,7 +15,6 @@ namespace S100Framework.Applications
 
             using var aidstonavigationp = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
-
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
 
             using var buffer = featureClass.CreateRowBuffer();
@@ -1744,7 +1743,7 @@ namespace S100Framework.Applications
             foreach (var slaveId in _slaves.Keys) {
                 if (!ConversionAnalytics.Instance.IsConverted(slaveId)) {
                     _nonConvertedSlaves.Add(slaveId);
-                    Logger.Current.DataError(-1, tableName, "These slaves are missing the structure", $"{_slaves[slaveId]}");
+                    Logger.Current.DataError(-1, tableName, "These slaves are missing the structure and therefore not converted.", $"{_slaves[slaveId]}");
                 }
             }
         }

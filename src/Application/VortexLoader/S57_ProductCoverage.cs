@@ -222,7 +222,7 @@ namespace S100Framework.Applications
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                     SetShape(buffer, (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons));
-                    ImporterNIS.SetUsageBand(buffer, Convert.ToInt32(cursor.Current["PLTS_COMP_SCALE"]));
+                    ImporterNIS.SetUsageBand(buffer,_compilationScale);
                     var featureN = featureClass.CreateRow(buffer);
                     var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
                     // TODO: Create relations

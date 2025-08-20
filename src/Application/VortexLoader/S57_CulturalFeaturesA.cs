@@ -320,9 +320,7 @@ namespace S100Framework.Applications
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                                //if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                //    relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
-                                //}
+
                                 if (createBridgesAndRelations) {
                                     Bridges.Instance.AddRelation(relatedBridge.Name, name, typeof(SpanOpening));
 
@@ -339,6 +337,10 @@ namespace S100Framework.Applications
 
                                     featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings);
                                     featureN.Store();
+                                } else {
+                                    if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                        relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
+                                    }
                                 }
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -403,9 +405,6 @@ namespace S100Framework.Applications
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                                //if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                //    relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
-                                //}
                                 if (createBridgesAndRelations) {
                                     Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanFixed));
                                     // Create link to bridge
@@ -421,6 +420,10 @@ namespace S100Framework.Applications
                                     featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings);
                                     featureN.Store();
 
+                                } else {
+                                    if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                        relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
+                                    }
                                 }
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -496,9 +499,9 @@ namespace S100Framework.Applications
                             // TODO: InTheWater
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
