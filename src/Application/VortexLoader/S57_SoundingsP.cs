@@ -143,6 +143,7 @@ namespace S100Framework.Applications
                             bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(sounding);
                             bufferPointset["ps"] = ps101;
                             bufferPointset["code"] = sounding.GetType().Name;
+                            bufferPointset["edition"] = ImporterNIS.s101version;
                             var featureN = featureClass.CreateRow(bufferPointset);
 
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";

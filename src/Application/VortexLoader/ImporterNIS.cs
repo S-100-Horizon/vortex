@@ -120,7 +120,11 @@ namespace S100Framework.Applications
             _converterRegistry.Register<AidsToNavigationP, LightAirObstruction>(Converters.CreateLightAirObstruction);
             _converterRegistry.Register<AidsToNavigationP, LightFogDetector>(Converters.CreateLightFogDetector);
             _converterRegistry.Register<AidsToNavigationP, Daymark>(Converters.CreateDaymark);
-            _converterRegistry.Register<DangersP, Obstruction>(Converters.CreateObstruction);
+            _converterRegistry.Register<DangersP, Obstruction>(Converters.CreateObstruction); 
+            _converterRegistry.Register<DangersA, Obstruction>(Converters.CreateObstruction);
+            _converterRegistry.Register<DangersL, Obstruction>(Converters.CreateObstruction);
+
+            _converterRegistry.Register<AidsToNavigationP, Retroreflector>(Converters.CreateRetroreflector);
             _converterRegistry.Register<CulturalFeaturesA, LightSectored>(Converters.CreateLightSectored);
             _converterRegistry.Register<PortsAndServicesP, LightSectored>(Converters.CreateLightSectored);
             _converterRegistry.Register<PortsAndServicesP, SignalStationWarning>(Converters.CreateSignalStationWarning);
@@ -212,10 +216,14 @@ namespace S100Framework.Applications
 
                     //filter.WhereClause = "globalid = '{1F1D8B58-4959-4202-80F5-6CA4DD47D209}'";
 
+
+                    Logger.Current.Information($"Converting Dangers");
+                    Store(() => S57_DangersA(source, destination, filter));
+                    Store(() => S57_DangersL(source, destination, filter));
+                    Store(() => S57_DangersP(source, destination, filter));
+
                     Logger.Current.Information($"Converting Sounding Datums");
                     Store(() => S101_SoundingDatum(source, destination, filter));
-
-
 
                     Logger.Current.Information($"Converting Product Coverages");
                     Store(() => S57_ProductCoverage(source, destination, filter));
@@ -259,10 +267,6 @@ namespace S100Framework.Applications
                     Store(() => S57_CoastlineL(source, destination, filter));
                     Store(() => S57_CoastlineP(source, destination, filter));
 
-                    Logger.Current.Information($"Converting Dangers");
-                    Store(() => S57_DangersA(source, destination, filter));
-                    Store(() => S57_DangersL(source, destination, filter));
-                    Store(() => S57_DangersP(source, destination, filter));
 
                     Logger.Current.Information($"Converting Depth Areas");
                     Store(() => S57_DepthsA(source, destination, filter));
@@ -670,7 +674,8 @@ namespace S100Framework.Applications
         internal static List<information> CreateInformationFrom(Row current) {
             List<information> information = new List<information>();
 
-            if (DBNull.Value != current["NTXTDS"]) {
+
+            if (current.FindField("NTXTDS") != -1 && (DBNull.Value != current["NTXTDS"])) {
                 var ntxtds = Convert.ToString(current["NTXTDS"])?.Trim();
 
                 if (!string.IsNullOrEmpty(ntxtds) && ntxtds.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
@@ -704,7 +709,7 @@ namespace S100Framework.Applications
                 }
             }
 
-            if (DBNull.Value != current["TXTDSC"]) {
+            if (current.FindField("TXTDSC") != -1 && DBNull.Value != current["TXTDSC"]) {
                 var txtdsc = Convert.ToString(current["TXTDSC"])?.Trim();
                 if (!string.IsNullOrEmpty(txtdsc) && txtdsc.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, txtdsc);
@@ -740,7 +745,7 @@ namespace S100Framework.Applications
                 }
             }
 
-            if (DBNull.Value != current["INFORM"]) {
+            if (current.FindField("INFORM") != -1 && DBNull.Value != current["INFORM"]) {
                 var inform = Convert.ToString(current["INFORM"])?.Trim();
                 if (!string.IsNullOrEmpty(inform)) {
 
@@ -781,7 +786,7 @@ namespace S100Framework.Applications
                 }
             }
 
-            if (DBNull.Value != current["NINFOM"]) {
+            if (current.FindField("NINFOM") != -1 && DBNull.Value != current["NINFOM"]) {
                 var ninfom = Convert.ToString(current["NINFOM"])?.Trim();
 
                 // https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis

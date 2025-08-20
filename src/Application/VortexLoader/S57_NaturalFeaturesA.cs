@@ -183,6 +183,7 @@ namespace S100Framework.Applications
 
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["edition"] = ImporterNIS.s101version;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(bufferSurface, current.Shape);
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);

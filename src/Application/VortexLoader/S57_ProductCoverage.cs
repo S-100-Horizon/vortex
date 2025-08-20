@@ -131,7 +131,7 @@ namespace S100Framework.Applications
                         case 1: {
                                 buffer["ps"] = ps128;
                                 buffer["code"] = instance.GetType().Name;
-                                buffer["version"] = ImporterNIS.s101version;
+                                buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer, productCoverage.SHAPE);
                                 ImporterNIS.SetUsageBand(buffer, productCoverage!.PLTS_COMP_SCALE!.Value);
@@ -156,6 +156,7 @@ namespace S100Framework.Applications
                             {
                                 buffer["ps"] = ps101;
                                 buffer["code"] = dataCoverage.GetType().Name;
+                                buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage);
                                 SetShape(buffer, cutOutM_SCL[0]); // productCoverage.SHAPE);
                                 ImporterNIS.SetUsageBand(buffer, productCoverage.PLTS_COMP_SCALE.Value);
@@ -179,6 +180,7 @@ namespace S100Framework.Applications
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = vdat.GetType().Name;
+                                buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(vdat);
                                 SetShape(buffer, productCoverage.SHAPE);
                                 ImporterNIS.SetUsageBand(buffer, productCoverage.PLTS_COMP_SCALE.Value);
