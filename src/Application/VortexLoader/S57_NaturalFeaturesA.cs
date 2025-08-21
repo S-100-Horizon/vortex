@@ -377,7 +377,8 @@ namespace S100Framework.Applications
                                 instance.elevation = current.ELEVAT.Value;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);                            
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);       
+                            
                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
                                 instance.height = current.HEIGHT.Value;
                             }
