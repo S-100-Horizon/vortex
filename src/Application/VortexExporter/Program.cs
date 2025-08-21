@@ -17,8 +17,8 @@ namespace S100Framework.Applications
         private const string outputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff}| [{Level:u3}] {Message:lj} {NewLine}{Exception}";
         public class Options
         {
-            [Option('d', "dnsm", Required = false, HelpText = "", Default = "DK40349E")]
-            public string Dataset { get; set; } = "DK40349E";
+            [Option('d', "dnsm", Required = false, HelpText = "")]
+            public string? Dataset { get; set; }
 
             [Option('g', "geodatabase", Required = true, HelpText = "Geodatabase.")]
             public string Geodatabase { get; set; } = string.Empty;
@@ -101,7 +101,7 @@ namespace S100Framework.Applications
                     using var surface = source.OpenDataset<FeatureClass>(definitionFeatures.Single(e => e.GetAliasName().Equals("surface")).GetName());
 
                     using var cursor = surface.Search(new QueryFilter {
-                        WhereClause = $"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"{dsnm!.ToUpperInvariant()}\"%'",
+                        WhereClause = string.IsNullOrEmpty(dsnm) ? $"upper(ps) = 'S-128'" :$"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"{dsnm!.ToUpperInvariant()}\"%'",
                     }, true);
 
                     while (cursor.MoveNext()) {
