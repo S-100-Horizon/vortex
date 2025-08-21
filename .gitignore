@@ -400,25 +400,9 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-/tests/Core.Tests/TestS100Framework.Roslyn/S-101_FC.cs
-/tests/Core.Tests/TestS100Framework.Roslyn/S-101_ViewModel.cs
-/tests/Core.Tests/TestS100Framework.Roslyn/S-124_FC.cs
-/tests/Core.Tests/TestS100Framework.Roslyn/S-124_ViewModel.cs
-/tests/Core.Tests/TestS100Framework.Roslyn/S-128_FC.cs
-/tests/Core.Tests/TestS100Framework.Roslyn/S-128_ViewModel.cs
-/tests/Core.Tests/TestS100Framework.Roslyn/S-131_FC.cs
-/tests/Core.Tests/TestS100Framework.Roslyn/S-131_ViewModel.cs
-/tests/Core.Tests/TestS100Framework.Roslyn/S-122_FC.cs
-/tests/Core.Tests/TestS100Framework.Roslyn/S-122_ViewModel.cs
+
+# S-100 Horizon
 /src/Application/VortexExporter/Properties/launchSettings.json
-/tests/Core.Tests/TestS100Framework.Roslyn/S-501_FC.cs
-/tests/Core.Tests/TestS100Framework.Roslyn/S-501_ViewModel.cs
-/src/Application/VortexExporter/Properties/appsettings.json
-/tests/Core.Tests/TestS100Framework.Roslyn/S-201_FC.cs
-/tests/Core.Tests/TestS100Framework.Roslyn/S-201_ViewModel.cs
 /src/Application/VortexLoader/Properties/launchSettings.json
-/src/Application/VortexRoslyn/domainmodel.g.cs
-/tests/Core.Tests/TestS100Framework.Roslyn/S-127_FC.cs
-/tests/Core.Tests/TestS100Framework.Roslyn/S-127_ViewModel.cs
-/tests/Core.Tests/TestS100Framework.Roslyn/S-123_FC.cs
-/tests/Core.Tests/TestS100Framework.Roslyn/S-123_ViewModel.cs
+/tests/Core.Tests/TestS100Framework.Roslyn/*_FC.cs
+/tests/Core.Tests/TestS100Framework.Roslyn/*_ViewModel.cs
