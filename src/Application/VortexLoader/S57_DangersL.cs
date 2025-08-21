@@ -125,7 +125,7 @@ namespace S100Framework.Applications
                         break;
                     case 5: { // OBSTRN_Obstruction
                             if (!current.CATOBS.HasValue) {
-                                Logger.Current.DataError(objectid, tableName, longname, $"Unknown catobs: {current.CATOBS.Value}");
+                                Logger.Current.DataError(objectid, tableName, longname, $"Unknown catobs: null");
                                 continue;
                             }
                             // Foul ground
