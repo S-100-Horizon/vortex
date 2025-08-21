@@ -159,9 +159,6 @@ namespace S100Framework.Applications
                                 relatedBridge = relatedBridges[0];
                             }
 
-
-
-
                             bool openingBridge = false;
                             List<bridgeFunction> bridgeFunctionValue = new List<bridgeFunction>();
                             int? scaleMinimum = default;
@@ -259,8 +256,6 @@ namespace S100Framework.Applications
                             */
 
                             verticalUncertainty verticalUncertaintyValue = null;
-
-                            
 
                             if (openingBridge) {
                                 SpanOpening instance = null;
@@ -363,8 +358,6 @@ namespace S100Framework.Applications
                                     verticalUncertaintyValue = new verticalUncertainty() {
                                         uncertaintyFixed = current.VERACC.Value,
                                     };
-
-
 
                                     instance = new SpanFixed() {
                                         verticalClearanceFixed = new verticalClearanceFixed() {
