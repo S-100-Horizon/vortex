@@ -68,7 +68,7 @@ namespace S100Framework.Applications
                 if (!string.IsNullOrEmpty(o.Query)) {
                     filter.WhereClause = o.Query!.Trim();
 
-                    string pattern = @"PLTS_COMP_SCALE\s*=\s*(\d+)";
+                    string pattern = @"PLTS_COMP_SCALE\s*[=<>]{1,2}\s*(\d+)";
 
                     Match match = Regex.Match((string)o.Query, pattern, RegexOptions.IgnoreCase);
 
