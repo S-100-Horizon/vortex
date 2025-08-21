@@ -234,8 +234,6 @@ namespace S100Framework.Applications
                     case 20: { // SEAARE_SeaAreaNamedWaterArea
                             var instance = new SeaAreaNamedWaterArea();
 
-                            var instance = new SeaAreaNamedWaterArea();
-
                             if (current.CATSEA.HasValue) {
                                 instance.categoryOfSeaArea = EnumHelper.GetEnumValue<categoryOfSeaArea>(current.CATSEA.Value);
                             }
