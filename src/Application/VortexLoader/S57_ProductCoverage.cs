@@ -178,7 +178,7 @@ namespace S100Framework.Applications
                                 buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage);
                                 SetShape(buffer, cutOutM_SCL[0]); // productCoverage.SHAPE);
-                                ImporterNIS.SetUsageBand(buffer, productCoverage.PLTS_COMP_SCALE.Value);
+                                ImporterNIS.SetUsageBand(buffer, productCoverage.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
@@ -195,8 +195,6 @@ namespace S100Framework.Applications
 
                                 vdat.verticalDatum = GetVerticalDatum(current.VDAT ?? 3);
 
-                                AddInformation(vdat.information, row);
-
                                 buffer["ps"] = ps101;
                                 buffer["code"] = vdat.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
@@ -210,8 +208,6 @@ namespace S100Framework.Applications
                                 // TODO: Create relations
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
                             }
-
-
                             break;
                     }
                 }

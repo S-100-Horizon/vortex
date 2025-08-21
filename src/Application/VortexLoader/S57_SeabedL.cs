@@ -64,7 +64,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
                             buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
@@ -108,7 +108,7 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
                             buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;

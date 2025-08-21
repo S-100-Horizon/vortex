@@ -100,17 +100,17 @@ namespace S100Framework.Applications
                 }
             }
 
-            if (scaleMinimum.HasValue) {
-                instance.scaleMinimum = scaleMinimum;
-            }
-            else if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                string subtype = "";
 
+            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                string subtype = "";
                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
             }
+
+
+            ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+
 
             return instance;
 

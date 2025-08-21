@@ -274,7 +274,7 @@ namespace S100Framework.Applications
                     Logger.Current.Information($"Converting Ice features");
                     Store(() => S57_IcefeaturesA(source, destination, filter));
 
-                    Logger.Current.Information($"Converting Metadata");
+                    Logger.Current.Information($"Converting Metadata"); 
                     Store(() => S57_MetadataA(source, destination, filter));
 
                     Logger.Current.Information($"Converting Military Features");
@@ -671,6 +671,161 @@ namespace S100Framework.Applications
             return featureName;
         }
 
+        internal static List<information> CreateInformationFrom(int sourceObjectid, string sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
+            List<information> information = new List<information>();
+
+
+            if (!string.IsNullOrEmpty(ntxtds)) {
+
+                if (!string.IsNullOrEmpty(ntxtds) && ntxtds.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
+                    var filePath = System.IO.Path.Combine(_notesPath, ntxtds);
+                    if (File.Exists(filePath)) {
+                        var note = new Note(filePath);
+                        string? fileLocator = default;
+                        string fileReference = ntxtds;
+                        string language = "eng";
+
+                        var instance = new information {
+                            fileLocator = fileLocator,
+                            fileReference = FixFilename(fileReference) ?? default,
+                            language = language,
+                        };
+                        information.Add(instance);
+                    }
+                    else {
+                        Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {filePath}");
+                    }
+
+                }
+                else if (!string.IsNullOrEmpty(ntxtds)) {
+                    string language = "eng";
+
+                    var instance = new information {
+                        language = language,
+                        text = ntxtds,
+                    };
+                    information.Add(instance);
+                }
+            }
+
+            if (!string.IsNullOrEmpty(txtdsc)) {
+
+                if (!string.IsNullOrEmpty(txtdsc) && txtdsc.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
+                    var filePath = System.IO.Path.Combine(_notesPath, txtdsc);
+                    if (File.Exists(filePath)) {
+                        var note = new Note(filePath);
+                        string? fileLocator = default;
+                        string fileReference = txtdsc;
+                        string language = "eng";
+
+                        var instance = new information {
+                            fileLocator = fileLocator,
+                            fileReference = FixFilename(fileReference) ?? default,
+                            language = language,
+                        };
+                        information.Add(instance);
+
+                    }
+                    else {
+                        Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {filePath}");
+                    }
+                }
+                else if (!string.IsNullOrEmpty(txtdsc)) {
+                    string? fileLocator = default;
+                    string fileReference = txtdsc;
+                    string language = "eng";
+
+                    var instance = new information {
+                        fileLocator = fileLocator,
+                        language = language,
+                        text = txtdsc,
+                    };
+                    information.Add(instance);
+                }
+            }
+
+            if (!string.IsNullOrEmpty(inform)) {
+
+                //https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
+                // Separate discrete information populated in INFORM using a standard separator such as semicolon “;”.
+
+                string[] informs = inform != null ? inform.Split(';') : Array.Empty<string>();
+
+                foreach (var value in informs) {
+                    string? fileLocator = default;
+                    string language = "eng";
+
+                    if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
+                        var filePath = System.IO.Path.Combine(_notesPath, value);
+                        if (File.Exists(value)) {
+                            var instance = new information {
+                                fileLocator = fileLocator,
+                                fileReference = FixFilename(value) ?? default,
+                                headline = default,
+                                language = language,
+                                text = value,
+                            };
+                            information.Add(instance);
+                        }
+                        else {
+                            Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {value}");
+                        }
+                    }
+                    else if (!string.IsNullOrEmpty(value)) {
+                        var instance = new information {
+                            fileLocator = fileLocator,
+                            language = language,
+                            text = value,
+                        };
+                        information.Add(instance);
+                    }
+                }
+            }
+            
+
+            if (!string.IsNullOrEmpty(ninform)) {
+                // https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
+                // Separate discrete information populated in INFORM using a standard separator such as semicolon “;”.
+                if (!string.IsNullOrEmpty(ninform)) {
+
+                    string[] ninfoms = ninform != null ? ninform.Split(';') : Array.Empty<string>();
+
+                    foreach (var value in ninfoms) {
+                        string? fileLocator = default;
+                        string language = "dan";
+
+                        if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
+                            var filePath = System.IO.Path.Combine(_notesPath, value);
+                            if (File.Exists(value)) {
+                                var instance = new information {
+                                    fileLocator = fileLocator,
+                                    fileReference = FixFilename(value) ?? default,
+                                    headline = default,
+                                    language = language,
+                                    text = value,
+                                };
+                                information.Add(instance);
+                            }
+                            else {
+                                Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {value}");
+                            }
+                        }
+                        else if (!string.IsNullOrEmpty(value)) {
+                            var instance = new information {
+                                fileLocator = fileLocator,
+                                language = language,
+                                text = value,
+                            };
+                            information.Add(instance);
+                        }
+                    }
+                }
+            }
+            return information;
+        }
+
+
+
         internal static List<information> CreateInformationFrom(Row current) {
             List<information> information = new List<information>();
 
@@ -910,10 +1065,16 @@ namespace S100Framework.Applications
             return nobj;
         }
 
-        internal static void AddInformation(List<information> instanceInformation, Row current) {
+        //internal static void AddInformation(List<information> instanceInformation, Row current) {
+        //    // TODO: Still missing decision on how GST wants handling of both files and a copy of the file content.
+        //    // Sent to Nigel & Co.
+        //    List<information> information = CreateInformationFrom(current);
+        //    instanceInformation.AddRange(information);
+        //}
+        internal static void AddInformation(List<information> instanceInformation, int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
             // TODO: Still missing decision on how GST wants handling of both files and a copy of the file content.
             // Sent to Nigel & Co.
-            List<information> information = CreateInformationFrom(current);
+            List<information> information = CreateInformationFrom(sourceObjectid, sourceTableName, ntxtds, txtdsc, inform, ninform);
             instanceInformation.AddRange(information);
         }
     }

@@ -126,7 +126,7 @@ namespace S100Framework.Applications
                             //    }
                             //}
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;

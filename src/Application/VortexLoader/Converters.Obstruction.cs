@@ -317,6 +317,10 @@ namespace S100Framework.Applications
                 instance.surroundingDepth = drval1;
             }
 
+            ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+
+
+
             return instance;
         }
 

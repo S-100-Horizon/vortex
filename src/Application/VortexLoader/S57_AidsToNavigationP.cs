@@ -59,17 +59,6 @@ namespace S100Framework.Applications
 
                             var instance = _converterRegistry.Convert<CardinalBeacon>(current);
 
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
-
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                            }
-
-                            AddInformation(instance.information, feature);
-
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
@@ -185,7 +174,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             instance.pictorialRepresentation = current.PICREP;
 
@@ -312,7 +301,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
@@ -434,7 +423,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
@@ -560,7 +549,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
@@ -660,7 +649,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
@@ -754,7 +743,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
@@ -849,7 +838,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
@@ -949,7 +938,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
@@ -1044,7 +1033,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
@@ -1143,7 +1132,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             instance.pictorialRepresentation = current.PICREP;
 
@@ -1170,7 +1159,7 @@ namespace S100Framework.Applications
 
                     case 55: { // DAYMAR_Daymark // SLAVE RIND: 2
                             var instance = ImporterNIS._converterRegistry.Convert<Daymark>(current);
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
                             buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
@@ -1197,7 +1186,7 @@ namespace S100Framework.Applications
                             //We do not have in the database information regarding “Radio Activated” nor “Call Activated”. We do have one instance of “On request”. What does this refer to??
                             var instance = _converterRegistry.Convert<FogSignal>(current);
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
@@ -1229,17 +1218,6 @@ namespace S100Framework.Applications
                             if (FeatureRelations.Instance.GetS101CatlitTypeFrom(current) == typeof(LightSectored)) {
                                 var instance = ImporterNIS._converterRegistry.Convert<LightSectored>(current); // No related sectors - only the one on the feature.
 
-                                AddInformation(instance.information, feature);
-
-                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                    string subtype = "";
-
-                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                                }
-
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
@@ -1260,17 +1238,6 @@ namespace S100Framework.Applications
                             else if (FeatureRelations.Instance.GetS101CatlitTypeFrom(current) == typeof(LightAirObstruction)) {
                                 var instance = ImporterNIS._converterRegistry.Convert<LightAirObstruction>(current); //CreateLightAirObstruction(current);
 
-                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                    string subtype = "";
-
-                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                                }
-
-
-                                AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
@@ -1286,18 +1253,6 @@ namespace S100Framework.Applications
                             }
                             else if (FeatureRelations.Instance.GetS101CatlitTypeFrom(current) == typeof(LightFogDetector)) {
                                 var instance = ImporterNIS._converterRegistry.Convert<LightFogDetector>(current); // new List<AidsToNavigationP>() { current }); // var instance = CreateLightFogDetector(current);
-
-                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                    string subtype = "";
-
-                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                                }
-
-
-                                AddInformation(instance.information, feature);
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
@@ -1315,16 +1270,6 @@ namespace S100Framework.Applications
                             else if (FeatureRelations.Instance.GetS101CatlitTypeFrom(current) == typeof(LightAllAround)) {
                                 var instance = ImporterNIS._converterRegistry.Convert<LightAllAround>(current);
 
-                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                    string subtype = "";
-
-                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                                }
-
-                                AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
@@ -1414,7 +1359,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
@@ -1506,7 +1451,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
@@ -1570,7 +1515,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
@@ -1596,12 +1541,10 @@ namespace S100Framework.Applications
                     case 90: { // RADSTA_RadarStation  // SLAVE RIND: 2
                             var instance = _converterRegistry.Convert<RadarStation>(current);
 
-                            AddInformation(instance.information, feature);
-
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1619,12 +1562,11 @@ namespace S100Framework.Applications
 
                     case 95: { // RDOSTA_RadioStation // SLAVE RIND: 2
                             var instance = _converterRegistry.Convert<RadioStation>(current);
-                            AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1643,13 +1585,11 @@ namespace S100Framework.Applications
 
                     case 100: { // RETRFL_RetroReflector // SLAVE RIND: 2
                             var instance = _converterRegistry.Convert<Retroreflector>(current);
-
-                            AddInformation(instance.information, feature);
-
+                            
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1668,36 +1608,10 @@ namespace S100Framework.Applications
                     case 105: { // RTPBCN_RadarTransponderBeacon // SLAVE RIND: 2
                             var instance = _converterRegistry.Convert<RadarTransponderBeacon>(current);
 
-                            if (current.CATRTB.HasValue) {
-                                instance.categoryOfRadarTransponderBeacon = EnumHelper.GetEnumValue<categoryOfRadarTransponderBeacon>(current.CATRTB.Value);
-                            }
-
-                            if (current.SIGGRP != default) {
-                                instance.signalGroup = current.SIGGRP;
-                            }
-
-                            if (current.RADWAL != default) {
-                                if (TryGetRadarWaveLengths(current.RADWAL, out var lengths)) {
-                                    instance.radarWaveLength = lengths;
-                                }
-                            }
-
-                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
-                            if (periodicDateRange != default) {
-                                instance.periodicDateRange = periodicDateRange;
-                            }
-
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                            }
-
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1707,7 +1621,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
