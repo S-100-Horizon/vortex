@@ -97,7 +97,7 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 5: { // RCTLPT_RecommendedTrafficLanePart
-                            var instance = new RecommendedTrafficLanePart() {
+                            var instance = new RecommendedTrafficLanePart {
                                 orientationValue = default,
                             };
 
@@ -108,13 +108,14 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767m) {
+                            if (current.ORIENT.HasValue) {
                                 instance.orientationValue = current.ORIENT.Value;
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
+
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -123,7 +124,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;

@@ -19,8 +19,6 @@ namespace S100Framework.Applications
                 instance.categoryOfRadarTransponderBeacon = EnumHelper.GetEnumValue<categoryOfRadarTransponderBeacon>(current.CATRTB);
             }
 
-
-
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
 
             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);

@@ -671,7 +671,7 @@ namespace S100Framework.Applications
             return featureName;
         }
 
-        internal static List<information> CreateInformationFrom(int sourceObjectid, string sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
+        internal static List<information> CreateInformationFrom(int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
             List<information> information = new List<information>();
 
 
