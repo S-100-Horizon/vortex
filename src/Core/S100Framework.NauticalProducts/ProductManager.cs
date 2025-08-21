@@ -35,6 +35,10 @@ namespace S100Framework.NauticalProducts
 
         Task<YAML.Dataset> CreateNewUpdateAsync(string name);
 
+        Task<bool> QueryUpdates(string name, Action<object> action);
+
+        Task<bool> IsDirty(string name);
+
         DomainModel.S128.FeatureTypes.ElectronicProduct ElectronicProduct(string name);
     }
 
@@ -478,8 +482,8 @@ namespace S100Framework.NauticalProducts
         Task<YAML.Dataset> IElectronicProductManager.CreateNewUpdateAsync(string name) {
             throw new NotImplementedException();
         }
-
-        async Task<bool> QueryUpdates(string name) {
+        
+        async Task<bool> IElectronicProductManager.QueryUpdates(string name, Action<object> action) {
             if (string.IsNullOrEmpty(name))
                 throw new System.ArgumentNullException(nameof(name));
             name = name.ToUpperInvariant();
@@ -491,61 +495,45 @@ namespace S100Framework.NauticalProducts
 
             var connection = this._connections[this._electronicProducts[name].productSpecification!.name]!;
 
-            var dataset = await this._taskFactory.StartNew(() => {
-                using var attachment = this._geodatabase!.OpenDataset<Table>(this.QualifyTableName("attachment"));
-
-                using var cursor = attachment.Search(new QueryFilter {
-                    WhereClause = $"json LIKE '%\"datasetName\":\"{name}\"%'",
-                    PostfixClause = "ORDER BY created_date DESC",
-                }, true);
-
-                if (!cursor.MoveNext())
-                    return default;
-
-                return System.Text.Json.JsonSerializer.Deserialize<Dataset>(Convert.ToString(cursor.Current["json"])!);
-            });
+            var dataset = await this.GetLatestDataset(name);
 
             if (dataset == default)
                 return false;
 
-            var filter = await this._taskFactory.StartNew(() => {
-                using var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"));
+            var filter = await this.BuildSpatialQueryFilter(dataset, electronicProduct.specificUsage);
 
-                using var cursorS128 = surface.Search(new QueryFilter {
-                    WhereClause = $"json LIKE '%\"datasetName\":\"{name}\"%'",
-                }, false);
+            return await this._taskFactory.StartNew(() => {
+                string[] tableNames = ["point", "pointset", "curve", "surface"];
+                foreach (var baseTableName in tableNames) {
+                    using var fc = connection.OpenDataset<FeatureClass>(this.QualifyTableName($"{baseTableName}_H"));
 
-                cursorS128.MoveNext();
+                    using var cursor = fc.Search(filter, true);
+                    while (cursor.MoveNext()) {
+                        action(cursor.Current);
+                    }
+                }
+                return false;
+            });            
+        }
+        
+        async Task<bool> IElectronicProductManager.IsDirty(string name) {
+            if (string.IsNullOrEmpty(name))
+                throw new System.ArgumentNullException(nameof(name));
+            name = name.ToUpperInvariant();
 
-                Debug.Assert(cursorS128.Current != null);
+            if (!this._electronicProducts.ContainsKey(name))
+                throw new System.ArgumentException(nameof(name));
 
-                if (cursorS128.Current.IsNull("json"))
-                    throw new System.ArgumentNullException(nameof(name));
+            var electronicProduct = this._electronicProducts[name];
 
-                var whereClause = $"upper(ps) = 'S-101' AND GDB_FROM_DATE > {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss}";
+            var connection = this._connections[this._electronicProducts[name].productSpecification!.name]!;
 
-                whereClause += electronicProduct.specificUsage switch {
-                    DomainModel.S128.specificUsage.NavigationalPurposeOverview => $" AND usageband = 1",
-                    DomainModel.S128.specificUsage.NavigationalPurposeGeneral => $" AND usageband = 2",
-                    DomainModel.S128.specificUsage.NavigationalPurposeCoastal => $" AND usageband = 3",
-                    DomainModel.S128.specificUsage.NavigationalPurposeApproach => $" AND usageband = 4",
-                    DomainModel.S128.specificUsage.NavigationalPurposeHarbour => $" AND usageband = 5",
-                    _ => "",
-                };
+            var dataset = await this.GetLatestDataset(name);
 
-                ArcGIS.Core.Geometry.Polygon shapeCoverage;
+            if (dataset == default)
+                return false;
 
-                shapeCoverage = (ArcGIS.Core.Geometry.Polygon)((ArcGIS.Core.Data.Feature)cursorS128.Current).GetShape().Clone();
-
-                var filter = new SpatialQueryFilter {
-                    FilterGeometry = shapeCoverage,
-                    SpatialRelationship = SpatialRelationship.Relation,
-                    SpatialRelationshipDescription = Topology.Matrix.DE9IM,
-                    WhereClause = whereClause,
-                };
-
-                return filter;
-            });
+            var filter = await this.BuildSpatialQueryFilter(dataset, electronicProduct.specificUsage);
 
             var dirty = await this._taskFactory.StartNew(() => {
                 string[] tableNames = ["point", "pointset", "curve", "surface"];
@@ -555,11 +543,11 @@ namespace S100Framework.NauticalProducts
                     using var cursor = fc.Search(filter, true);
                     while (cursor.MoveNext()) {
                         return true;
-                    }                    
+                    }
                 }
                 return false;
             });
-            
+
             return dirty;
         }
 
@@ -607,6 +595,64 @@ namespace S100Framework.NauticalProducts
                 return this._geodatabase!.OpenDataset<T>(this.QualifyTableName(name));
             }
             throw new System.ArgumentException();
+        }
+
+        private async Task<Dataset?> GetLatestDataset(string name) {
+            return await this._taskFactory.StartNew(() => {
+                using var attachment = this._geodatabase!.OpenDataset<Table>(this.QualifyTableName("attachment"));
+
+                using var cursor = attachment.Search(new QueryFilter {
+                    WhereClause = $"json LIKE '%\"datasetName\":\"{name}\"%'",
+                    PostfixClause = "ORDER BY created_date DESC",
+                }, true);
+
+                if (!cursor.MoveNext())
+                    return default;
+
+                return System.Text.Json.JsonSerializer.Deserialize<Dataset>(Convert.ToString(cursor.Current["json"])!);
+            });
+        }
+
+        private async Task<SpatialQueryFilter> BuildSpatialQueryFilter(Dataset dataset, DomainModel.S128.specificUsage? specificUsage) {
+            return await this._taskFactory.StartNew(() => {
+                using var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"));
+
+                using var cursorS128 = surface.Search(new QueryFilter {
+                    WhereClause = $"json LIKE '%\"datasetName\":\"{dataset.DatasetName}\"%'",
+                }, false);
+
+                cursorS128.MoveNext();
+
+                Debug.Assert(cursorS128.Current != null);
+
+                if (cursorS128.Current.IsNull("json"))
+                    throw new System.ArgumentNullException(nameof(dataset.DatasetName));
+
+                var whereClause = $"upper(ps) = 'S-101' AND (created_data > {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss} OR las_edited_date > {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss})";
+
+                whereClause += specificUsage switch {
+                    DomainModel.S128.specificUsage.NavigationalPurposeOverview => $" AND usageband = 1",
+                    DomainModel.S128.specificUsage.NavigationalPurposeGeneral => $" AND usageband = 2",
+                    DomainModel.S128.specificUsage.NavigationalPurposeCoastal => $" AND usageband = 3",
+                    DomainModel.S128.specificUsage.NavigationalPurposeApproach => $" AND usageband = 4",
+                    DomainModel.S128.specificUsage.NavigationalPurposeHarbour => $" AND usageband = 5",
+                    _ => "",
+                };
+
+                ArcGIS.Core.Geometry.Polygon shapeCoverage;
+
+                shapeCoverage = (ArcGIS.Core.Geometry.Polygon)((ArcGIS.Core.Data.Feature)cursorS128.Current).GetShape().Clone();
+
+                var filter = new SpatialQueryFilter {
+                    FilterGeometry = shapeCoverage,
+                    SpatialRelationship = SpatialRelationship.Relation,
+                    SpatialRelationshipDescription = Topology.Matrix.DE9IM,
+                    WhereClause = whereClause,
+                };
+
+                return filter;
+            });
+
         }
     }
 
