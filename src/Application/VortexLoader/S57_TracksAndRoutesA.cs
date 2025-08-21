@@ -6,6 +6,7 @@ using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using System.ComponentModel;
+using YamlDotNet.Serialization;
 
 namespace S100Framework.Applications
 {
@@ -625,7 +626,6 @@ namespace S100Framework.Applications
                     case 60: { // TSSLPT_TrafficSeparationSchemeLanePart
                             var instance = new TrafficSeparationSchemeLanePart();
 
-
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
@@ -649,11 +649,9 @@ namespace S100Framework.Applications
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
-
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
