@@ -73,7 +73,7 @@ namespace S100Framework.Applications
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
                             buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
@@ -121,7 +121,7 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
 
 
@@ -236,7 +236,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
@@ -330,7 +330,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
@@ -383,7 +383,7 @@ namespace S100Framework.Applications
                             //}
 
                             //instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            //AddInformation(instance.information, feature);
+                            //AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
                             //buffer["ps"] = ps101;
 
                             //buffer["code"] = instance.GetType().Name;
@@ -463,7 +463,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
@@ -560,7 +560,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -620,7 +620,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
@@ -681,7 +681,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -726,7 +726,7 @@ namespace S100Framework.Applications
                             //}
 
                             //instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            //AddInformation(instance.information, feature);
+                            //AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
                             //buffer["ps"] = ps101;
 
                             //buffer["code"] = instance.GetType().Name;
@@ -796,7 +796,7 @@ namespace S100Framework.Applications
                             //    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             //}
 
-                            //AddInformation(instance.information, feature);
+                            //AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             //if (current.PICREP != default) {
                             //    instance.pictorialRepresentation = current.PICREP;

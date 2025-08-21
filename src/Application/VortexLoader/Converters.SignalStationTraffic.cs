@@ -1,6 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using VortexLoader;
 
@@ -12,23 +13,41 @@ namespace S100Framework.Applications
 
             var instance = new SignalStationTraffic();
 
-            if (scaleMinimum.HasValue) {
-                instance.scaleMinimum = scaleMinimum;
+            if (current.CATSIT != default) {
+                instance.categoryOfSignalStationTraffic = EnumHelper.GetEnumValues<categoryOfSignalStationTraffic>(current.CATSIT);
             }
-            else if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                string subtype = "";
 
-                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+            if (current.COMCHA != default) {
+                instance.communicationChannel = current.COMCHA.Split(',').ToList<string>();
+            }
 
-                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+            instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+            if (dateRange != default) {
+                instance.fixedDateRange = dateRange;
+            }
+
+            // TODO: interoperabilityIdentifier
+
+            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+            if (periodicDateRange != default) {
+                instance.periodicDateRange = periodicDateRange;
             }
 
             if (current.STATUS != default) {
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
             }
 
-            instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
+            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                string subtype = "";
+                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+            }
+
+
+
 
             return instance;
 

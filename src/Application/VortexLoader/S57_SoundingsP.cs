@@ -138,7 +138,7 @@ namespace S100Framework.Applications
                                 sounding.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(sounding.information, feature);
+                            AddInformation(sounding.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(sounding);
                             bufferPointset["ps"] = ps101;
@@ -198,7 +198,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
 

@@ -86,7 +86,8 @@ namespace S100Framework.Applications
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
-                            AddInformation(instance.information, feature);
+
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
