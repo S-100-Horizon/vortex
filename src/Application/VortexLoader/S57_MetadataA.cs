@@ -43,16 +43,10 @@ namespace S100Framework.Applications
 
                 //var displayScale = GetDisplayScale(serie); // DisplayScale.GetNearestBelowKey(plts_comp_scale) ?? default;
 
-
-
                 if (current.PUBREF != default) {
                     //if (System.Diagnostics.Debugger.IsAttached)
                     //System.Diagnostics.Debugger.Break();
-
-
                 }
-
-
 
                 switch (fcSubtype) {
                     case 1: { // M_ACCY_AccuracyOfData
