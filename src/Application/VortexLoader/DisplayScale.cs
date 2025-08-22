@@ -33,9 +33,14 @@
         }
 
         public static DisplayScale? GetDisplayScale(string series) {
-            DisplayScale scale = series.ToLower() switch {
-                "dk4" => new DisplayScale(11000, 22000, 90000),
-                "dk5" => new DisplayScale(6000, 12000, 22000),
+            DisplayScale scale = series.ToLower()[2] switch {
+                '4' => new DisplayScale(11000, 22000, 90000),
+                '5' => new DisplayScale(6000, 12000, 22000),
+
+                //"dk4" => new DisplayScale(11000, 22000, 90000),
+                //"dk5" => new DisplayScale(6000, 12000, 22000),
+                //"gl4" => new DisplayScale(11000, 22000, 90000),
+                //"gl5" => new DisplayScale(6000, 12000, 22000),
                 _ => throw new Exception("unknown series")
 
             };

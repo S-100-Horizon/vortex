@@ -4223,7 +4223,7 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public DangersA(Feature feature) {
-            base.TableName = "DangersA";
+            base.TableName = feature.GetTable().GetName();
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
                 base.Shape = this.SHAPE;
