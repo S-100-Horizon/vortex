@@ -11,6 +11,8 @@ namespace S100Framework.Applications.Singletons
 
     public class SpatialAssociations
     {
+        const int P_QUAPOS_approximate = 4;
+
         private static SpatialAssociations _instance;
         private static readonly object _lock = new object();
 
@@ -37,18 +39,34 @@ namespace S100Framework.Applications.Singletons
                 var feature = (Feature)cursor.Current;
                 var plts_spatialattributel = new PLTS_SpatialAttributeL(feature);
 
-                var wkt = ToWktWithDecimals(feature.GetShape(), 7);
 
-                if (_spatialAttributesL.ContainsKey(wkt)) {
-                    errorCount++;
-                    Console.WriteLine($"{plts_spatialattributel.OBJECTID!.Value}::{plts_spatialattributel.LNAM}::{plts_spatialattributel.GlobalId}");
-                    Logger.Current.DataError(plts_spatialattributel.OBJECTID!.Value, "PLTS_SpatialAttributeL", plts_spatialattributel.LNAM, $"Duplicate geometry. Ignoring this element");
-                    //throw new Exception("Multiple spatialattributeL in same band");
-                    continue;
-                    
+                var shape = feature.GetShape();
+
+                Polyline[] polylines = [];
+                if (shape is Polyline polyline) {
+                    foreach (var polylinePart in polyline.Parts) {
+                        polylines = [.. polylines, PolylineBuilderEx.CreatePolyline(polylinePart)];
+                    }
                 }
+                else
+                    throw new Exception($"Share geometry type not supported ({shape.GeometryType})");
 
-                _spatialAttributesL.Add(wkt, (plts_spatialattributel.GLOBALID, plts_spatialattributel.P_QUAPOS.Value, plts_spatialattributel.SHAPE));
+
+                foreach (var p in polylines) {
+                    var wkt = ToWktWithDecimals(p, 7);
+
+                    if (_spatialAttributesL.ContainsKey(wkt)) {
+                        errorCount++;
+                        Console.WriteLine($"{plts_spatialattributel.OBJECTID!.Value}::{plts_spatialattributel.LNAM}::{plts_spatialattributel.GlobalId}");
+                        Logger.Current.DataError(plts_spatialattributel.OBJECTID!.Value, "PLTS_SpatialAttributeL", plts_spatialattributel.LNAM, $"Duplicate geometry. Ignoring this element");
+                        //throw new Exception("Multiple spatialattributeL in same band");
+                        continue;
+
+                    }
+
+                    var quapos = plts_spatialattributel.P_QUAPOS.HasValue ? plts_spatialattributel.P_QUAPOS.Value : P_QUAPOS_approximate;
+                    _spatialAttributesL.Add(wkt, (plts_spatialattributel.GLOBALID!, quapos, plts_spatialattributel.SHAPE!));
+                }
             }
             ;
         }
@@ -59,7 +77,7 @@ namespace S100Framework.Applications.Singletons
             if (decimals < 0)
                 throw new ArgumentOutOfRangeException(nameof(decimals), "Decimals must be 0 or more.");
 
-            string wkt = GeometryEngine.Instance.ExportToWKT(WktExportFlags.WktExportLineString, geometry);
+            string wkt = GeometryEngine.Instance.ExportToWKT(WktExportFlags.WktExportDefaults, geometry);
 
             string pattern = @"-?\d+\.\d+|-?\d+";
 
