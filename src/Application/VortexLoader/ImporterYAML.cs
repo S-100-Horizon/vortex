@@ -32,9 +32,7 @@ namespace S100Framework.Applications
             var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals(productSpecification));
 
             arguments.WithParsed<Options>(o => {
-                if (o.Append) {
-                    append = o.Append;
-                }
+                append = o.Append;
 
                 if (!IO.File.Exists(o.Dataset))
                     throw new FileNotFoundException(o.Dataset);
@@ -127,7 +125,7 @@ namespace S100Framework.Applications
                     var match = Regex.Match(dataset.CellName, @"101DK00(\d)");
 
                     if (match.Success)
-                        rowbuffer["usageband"] = match.Groups[1].Value[0];
+                        rowbuffer["usageband"] = match.Groups[1].Value;
 
                     rowbuffer["ps"] = productSpecification;
                     rowbuffer["code"] = feature.Name;
@@ -172,7 +170,7 @@ namespace S100Framework.Applications
                     rowbuffer["code"] = informationType.Name;
                     rowbuffer["json"] = json;
                     tableInformationType.CreateRow(bufferInformationType);
-                }                
+                }
             });
             return true;
         }
