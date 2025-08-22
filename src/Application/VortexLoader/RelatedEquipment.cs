@@ -172,6 +172,7 @@ namespace S100Framework.Applications
 
                     buffer["ps"] = ImporterNIS.ps101;
                     buffer["code"] = lightSectored.GetType().Name;
+                    buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(lightSectored, ImporterNIS.jsonSerializerOptions);
                     ImporterNIS.SetShape(buffer, shape);
                     ImporterNIS.SetUsageBand(buffer, s57master.PLTS_COMP_SCALE.Value);
@@ -210,9 +211,9 @@ namespace S100Framework.Applications
                             return;
 
                         buffer["ps"] = ImporterNIS.ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["version"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+                        buffer["code"] = instance.GetType().Name;
+                        buffer["edition"] = ImporterNIS.s101version;
+                        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                         ImporterNIS.SetShape(buffer, shape);
                         ImporterNIS.SetUsageBand(buffer, relatedObject.S57Object.PLTS_COMP_SCALE.Value);
 
@@ -272,9 +273,9 @@ namespace S100Framework.Applications
                 var instance = ImporterNIS._converterRegistry.Convert(s57master, typeof(LightSectored), scaleMinimum);
 
                 buffer["ps"] = ImporterNIS.ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["version"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+                buffer["code"] = instance.GetType().Name;
+                buffer["edition"] = ImporterNIS.s101version;
+                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                 ImporterNIS.SetShape(buffer, s57master.Shape);
                 ImporterNIS.SetUsageBand(buffer, s57master.PLTS_COMP_SCALE.Value);
 
@@ -312,9 +313,9 @@ namespace S100Framework.Applications
                     }
 
                     buffer["ps"] = ImporterNIS.ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["version"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+                    buffer["code"] = instance.GetType().Name;
+                    buffer["edition"] = ImporterNIS.s101version;
+                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                     ImporterNIS.SetShape(buffer, s57master.Shape);
                     ImporterNIS.SetUsageBand(buffer, s57master.PLTS_COMP_SCALE.Value);
 
@@ -376,7 +377,7 @@ namespace S100Framework.Applications
             //        buffer["ps"] = ImporterNIS.ps101;
             //
             //                    buffer["code"] = instance.GetType().Name;
-             //                   buffer["version"] = ImporterNIS.s101version;
+             //                   buffer["edition"] = ImporterNIS.s101version;
                                 //        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //        SetShape(buffer, s57master.SHAPE);
 
@@ -416,7 +417,7 @@ namespace S100Framework.Applications
             //            buffer["ps"] = ImporterNIS.ps101;
             //
             //                    buffer["code"] = instance.GetType().Name;
-            //                    buffer["version"] = ImporterNIS.s101version;
+            //                    buffer["edition"] = ImporterNIS.s101version;
                                 //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //            SetShape(buffer, light.SHAPE);
 
@@ -478,7 +479,7 @@ namespace S100Framework.Applications
             //        buffer["ps"] = ImporterNIS.ps101;
             //
             //                    buffer["code"] = instance.GetType().Name;
-            //                    buffer["version"] = ImporterNIS.s101version;
+            //                    buffer["edition"] = ImporterNIS.s101version;
                                 //        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //        SetShape(buffer, s57master.SHAPE);
 
@@ -511,7 +512,7 @@ namespace S100Framework.Applications
             //            buffer["ps"] = ImporterNIS.ps101;
             //
             //                    buffer["code"] = instance.GetType().Name;
-            //                    buffer["version"] = ImporterNIS.s101version;
+            //                    buffer["edition"] = ImporterNIS.s101version;
                                 //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //            SetShape(buffer, light.SHAPE);
 
@@ -549,7 +550,7 @@ namespace S100Framework.Applications
             //            buffer["ps"] = ImporterNIS.ps101;
             //
             // buffer["code"] = instance.GetType().Name;
-            //                    buffer["version"] = ImporterNIS.s101version;
+            //                    buffer["edition"] = ImporterNIS.s101version;
                                 //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //            SetShape(buffer, light.SHAPE);
 
@@ -586,7 +587,7 @@ namespace S100Framework.Applications
             //            buffer["ps"] = ImporterNIS.ps101;
             //
             //                    buffer["code"] = instance.GetType().Name;
-            //                    buffer["version"] = ImporterNIS.s101version;
+            //                    buffer["edition"] = ImporterNIS.s101version;
                                 //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //            SetShape(buffer, radarTransponder.SHAPE);
 
@@ -622,7 +623,7 @@ namespace S100Framework.Applications
             //            buffer["ps"] = ImporterNIS.ps101;
             //
             //                    buffer["code"] = instance.GetType().Name;
-            //                    buffer["version"] = ImporterNIS.s101version;
+            //                    buffer["edition"] = ImporterNIS.s101version;
                                 //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //            SetShape(buffer, daymark.SHAPE);
 

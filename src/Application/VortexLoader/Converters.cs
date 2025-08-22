@@ -3,7 +3,6 @@
 namespace VortexLoader
 {
 
-
     public class ConverterRegistry
     {
         // The extra object is an additional parameter to the converter
@@ -16,7 +15,6 @@ namespace VortexLoader
 
             _converters[(typeof(TFrom), typeof(TTo))] = (input, scaleMinimum,  geodatabase) => converter((TFrom)input, scaleMinimum, geodatabase);
         }
-
 
         public TOut Convert<TOut>(object value, int? scaleMinimum = default(int?), Geodatabase geodatabase = null) {
             var fromType = value.GetType();

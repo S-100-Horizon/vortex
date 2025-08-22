@@ -68,7 +68,7 @@ namespace S100Framework.Applications
                 if (!string.IsNullOrEmpty(o.Query)) {
                     filter.WhereClause = o.Query!.Trim();
 
-                    string pattern = @"PLTS_COMP_SCALE\s*=\s*(\d+)";
+                    string pattern = @"PLTS_COMP_SCALE\s*[=<>]{1,2}\s*(\d+)";
 
                     Match match = Regex.Match((string)o.Query, pattern, RegexOptions.IgnoreCase);
 
@@ -120,7 +120,11 @@ namespace S100Framework.Applications
             _converterRegistry.Register<AidsToNavigationP, LightAirObstruction>(Converters.CreateLightAirObstruction);
             _converterRegistry.Register<AidsToNavigationP, LightFogDetector>(Converters.CreateLightFogDetector);
             _converterRegistry.Register<AidsToNavigationP, Daymark>(Converters.CreateDaymark);
-            _converterRegistry.Register<DangersP, Obstruction>(Converters.CreateObstruction);
+            _converterRegistry.Register<DangersP, Obstruction>(Converters.CreateObstruction); 
+            _converterRegistry.Register<DangersA, Obstruction>(Converters.CreateObstruction);
+            _converterRegistry.Register<DangersL, Obstruction>(Converters.CreateObstruction);
+
+            _converterRegistry.Register<AidsToNavigationP, Retroreflector>(Converters.CreateRetroreflector);
             _converterRegistry.Register<CulturalFeaturesA, LightSectored>(Converters.CreateLightSectored);
             _converterRegistry.Register<PortsAndServicesP, LightSectored>(Converters.CreateLightSectored);
             _converterRegistry.Register<PortsAndServicesP, SignalStationWarning>(Converters.CreateSignalStationWarning);
@@ -212,13 +216,17 @@ namespace S100Framework.Applications
 
                     //filter.WhereClause = "globalid = '{1F1D8B58-4959-4202-80F5-6CA4DD47D209}'";
 
+                    Logger.Current.Information($"Converting Product Coverages");
+                    Store(() => S57_ProductCoverage(source, destination, filter));
+
+                    Logger.Current.Information($"Converting Dangers");
+                    Store(() => S57_DangersA(source, destination, filter));
+                    Store(() => S57_DangersL(source, destination, filter));
+                    Store(() => S57_DangersP(source, destination, filter));
+
                     Logger.Current.Information($"Converting Sounding Datums");
                     Store(() => S101_SoundingDatum(source, destination, filter));
 
-
-
-                    Logger.Current.Information($"Converting Product Coverages");
-                    Store(() => S57_ProductCoverage(source, destination, filter));
 
                     //Logger.Current.Information($"Converting S101_RecommendedTracksAndRoutes");
                     //Store(() => S101_RecommendedTracksAndRoutes(source, destination, filter));
@@ -259,10 +267,6 @@ namespace S100Framework.Applications
                     Store(() => S57_CoastlineL(source, destination, filter));
                     Store(() => S57_CoastlineP(source, destination, filter));
 
-                    Logger.Current.Information($"Converting Dangers");
-                    Store(() => S57_DangersA(source, destination, filter));
-                    Store(() => S57_DangersL(source, destination, filter));
-                    Store(() => S57_DangersP(source, destination, filter));
 
                     Logger.Current.Information($"Converting Depth Areas");
                     Store(() => S57_DepthsA(source, destination, filter));
@@ -270,7 +274,7 @@ namespace S100Framework.Applications
                     Logger.Current.Information($"Converting Ice features");
                     Store(() => S57_IcefeaturesA(source, destination, filter));
 
-                    Logger.Current.Information($"Converting Metadata");
+                    Logger.Current.Information($"Converting Metadata"); 
                     Store(() => S57_MetadataA(source, destination, filter));
 
                     Logger.Current.Information($"Converting Military Features");
@@ -312,7 +316,7 @@ namespace S100Framework.Applications
                 status = SanityChecker.Instance.Check_GetEsriUnknown32767ErrorCount() == 0 ? "PASSED" : "FAILED";
                 Logger.Current.Information($"No ESRI unknown values (-31767) in S-101: {status}");
 
-                status = SanityChecker.Instance.Check_GetVersion() == 0 ? "PASSED" : "FAILED";
+                status = SanityChecker.Instance.Check_Editions() == 0 ? "PASSED" : "FAILED";
                 Logger.Current.Information($"No ESRI unknown values (-31767) in S-101: {status}");
 
                 Logger.Current.Information("Done");
@@ -667,10 +671,166 @@ namespace S100Framework.Applications
             return featureName;
         }
 
+        internal static List<information> CreateInformationFrom(int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
+            List<information> information = new List<information>();
+
+
+            if (!string.IsNullOrEmpty(ntxtds)) {
+
+                if (!string.IsNullOrEmpty(ntxtds) && ntxtds.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
+                    var filePath = System.IO.Path.Combine(_notesPath, ntxtds);
+                    if (File.Exists(filePath)) {
+                        var note = new Note(filePath);
+                        string? fileLocator = default;
+                        string fileReference = ntxtds;
+                        string language = "eng";
+
+                        var instance = new information {
+                            fileLocator = fileLocator,
+                            fileReference = FixFilename(fileReference) ?? default,
+                            language = language,
+                        };
+                        information.Add(instance);
+                    }
+                    else {
+                        Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {filePath}");
+                    }
+
+                }
+                else if (!string.IsNullOrEmpty(ntxtds)) {
+                    string language = "eng";
+
+                    var instance = new information {
+                        language = language,
+                        text = ntxtds,
+                    };
+                    information.Add(instance);
+                }
+            }
+
+            if (!string.IsNullOrEmpty(txtdsc)) {
+
+                if (!string.IsNullOrEmpty(txtdsc) && txtdsc.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
+                    var filePath = System.IO.Path.Combine(_notesPath, txtdsc);
+                    if (File.Exists(filePath)) {
+                        var note = new Note(filePath);
+                        string? fileLocator = default;
+                        string fileReference = txtdsc;
+                        string language = "eng";
+
+                        var instance = new information {
+                            fileLocator = fileLocator,
+                            fileReference = FixFilename(fileReference) ?? default,
+                            language = language,
+                        };
+                        information.Add(instance);
+
+                    }
+                    else {
+                        Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {filePath}");
+                    }
+                }
+                else if (!string.IsNullOrEmpty(txtdsc)) {
+                    string? fileLocator = default;
+                    string fileReference = txtdsc;
+                    string language = "eng";
+
+                    var instance = new information {
+                        fileLocator = fileLocator,
+                        language = language,
+                        text = txtdsc,
+                    };
+                    information.Add(instance);
+                }
+            }
+
+            if (!string.IsNullOrEmpty(inform)) {
+
+                //https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
+                // Separate discrete information populated in INFORM using a standard separator such as semicolon “;”.
+
+                string[] informs = inform != null ? inform.Split(';') : Array.Empty<string>();
+
+                foreach (var value in informs) {
+                    string? fileLocator = default;
+                    string language = "eng";
+
+                    if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
+                        var filePath = System.IO.Path.Combine(_notesPath, value);
+                        if (File.Exists(value)) {
+                            var instance = new information {
+                                fileLocator = fileLocator,
+                                fileReference = FixFilename(value) ?? default,
+                                headline = default,
+                                language = language,
+                                text = value,
+                            };
+                            information.Add(instance);
+                        }
+                        else {
+                            Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {value}");
+                        }
+                    }
+                    else if (!string.IsNullOrEmpty(value)) {
+                        var instance = new information {
+                            fileLocator = fileLocator,
+                            language = language,
+                            text = value,
+                        };
+                        information.Add(instance);
+                    }
+                }
+            }
+            
+
+            if (!string.IsNullOrEmpty(ninform)) {
+                // https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
+                // Separate discrete information populated in INFORM using a standard separator such as semicolon “;”.
+                if (!string.IsNullOrEmpty(ninform)) {
+
+                    string[] ninfoms = ninform != null ? ninform.Split(';') : Array.Empty<string>();
+
+                    foreach (var value in ninfoms) {
+                        string? fileLocator = default;
+                        string language = "dan";
+
+                        if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
+                            var filePath = System.IO.Path.Combine(_notesPath, value);
+                            if (File.Exists(value)) {
+                                var instance = new information {
+                                    fileLocator = fileLocator,
+                                    fileReference = FixFilename(value) ?? default,
+                                    headline = default,
+                                    language = language,
+                                    text = value,
+                                };
+                                information.Add(instance);
+                            }
+                            else {
+                                Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {value}");
+                            }
+                        }
+                        else if (!string.IsNullOrEmpty(value)) {
+                            var instance = new information {
+                                fileLocator = fileLocator,
+                                language = language,
+                                text = value,
+                            };
+                            information.Add(instance);
+                        }
+                    }
+                }
+            }
+            return information;
+        }
+
+
+
         internal static List<information> CreateInformationFrom(Row current) {
             List<information> information = new List<information>();
 
-            if (DBNull.Value != current["NTXTDS"]) {
+
+            if (current.FindField("NTXTDS") != -1 && (DBNull.Value != current["NTXTDS"])) {
                 var ntxtds = Convert.ToString(current["NTXTDS"])?.Trim();
 
                 if (!string.IsNullOrEmpty(ntxtds) && ntxtds.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
@@ -704,7 +864,7 @@ namespace S100Framework.Applications
                 }
             }
 
-            if (DBNull.Value != current["TXTDSC"]) {
+            if (current.FindField("TXTDSC") != -1 && DBNull.Value != current["TXTDSC"]) {
                 var txtdsc = Convert.ToString(current["TXTDSC"])?.Trim();
                 if (!string.IsNullOrEmpty(txtdsc) && txtdsc.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, txtdsc);
@@ -740,7 +900,7 @@ namespace S100Framework.Applications
                 }
             }
 
-            if (DBNull.Value != current["INFORM"]) {
+            if (current.FindField("INFORM") != -1 && DBNull.Value != current["INFORM"]) {
                 var inform = Convert.ToString(current["INFORM"])?.Trim();
                 if (!string.IsNullOrEmpty(inform)) {
 
@@ -781,7 +941,7 @@ namespace S100Framework.Applications
                 }
             }
 
-            if (DBNull.Value != current["NINFOM"]) {
+            if (current.FindField("NINFOM") != -1 && DBNull.Value != current["NINFOM"]) {
                 var ninfom = Convert.ToString(current["NINFOM"])?.Trim();
 
                 // https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
@@ -905,10 +1065,16 @@ namespace S100Framework.Applications
             return nobj;
         }
 
-        internal static void AddInformation(List<information> instanceInformation, Row current) {
+        //internal static void AddInformation(List<information> instanceInformation, Row current) {
+        //    // TODO: Still missing decision on how GST wants handling of both files and a copy of the file content.
+        //    // Sent to Nigel & Co.
+        //    List<information> information = CreateInformationFrom(current);
+        //    instanceInformation.AddRange(information);
+        //}
+        internal static void AddInformation(List<information> instanceInformation, int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
             // TODO: Still missing decision on how GST wants handling of both files and a copy of the file content.
             // Sent to Nigel & Co.
-            List<information> information = CreateInformationFrom(current);
+            List<information> information = CreateInformationFrom(sourceObjectid, sourceTableName, ntxtds, txtdsc, inform, ninform);
             instanceInformation.AddRange(information);
         }
     }

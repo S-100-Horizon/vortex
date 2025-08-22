@@ -8,7 +8,7 @@ namespace S100Framework.Applications
 {
     internal static partial class Converters
     {
-        // OBSTRN
+        // OBSTRN - DangersP
         internal static Obstruction CreateObstruction(DangersP current, int? scaleMinimum, Geodatabase source) {
 
             var instance = new Obstruction {
@@ -108,6 +108,218 @@ namespace S100Framework.Applications
                 var drval1 = depthArea.DRVAL1 ?? default;
                 instance.surroundingDepth = drval1;
             }
+
+            return instance;
+        }
+
+        // OBSTRN - DangersP
+        internal static Obstruction CreateObstruction(DangersA current, int? scaleMinimum, Geodatabase source) {
+
+            var instance = new Obstruction {
+                surroundingDepth = default,
+                waterLevelEffect = default,
+            };
+
+            if (current.CATOBS.HasValue) {
+                instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(current.CATOBS.Value);
+            }
+
+            if (current.CONDTN.HasValue) {
+                instance.condition = ImporterNIS.GetCondition(current.CONDTN.Value);
+            }
+
+            if (current.EXPSOU.HasValue) {
+                instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
+            }
+
+            instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                instance.height = current.HEIGHT.Value;
+            }
+            else {
+                instance.height = default(decimal?);
+            }
+
+            // DODO: Interoperability identifier
+
+            // TODO: Maximum permitted draught
+
+            if (current.NATSUR != default) {
+                instance.natureOfSurface = EnumHelper.GetEnumValues<natureOfSurface>(current.NATSUR);
+            }
+
+            if (current.PRODCT != default) {
+                instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
+            }
+
+            // TODO: QualityOfVerticalMeasurement
+
+
+            if (current.SORDAT != default) {
+                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                    instance.reportedDate = current.SORDAT;
+                }
+                else {
+                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), current.TableName!, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                }
+            }
+
+
+            if (current.STATUS != default) {
+                instance.status = ImporterNIS.GetStatus(current.STATUS);
+            }
+
+
+            if (current.TECSOU != null) {
+                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+            }
+
+
+            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
+                instance.valueOfSounding = current.VALSOU.Value;
+            }
+            else {
+                instance.valueOfSounding = default(decimal?);
+            }
+
+            if (current.VERLEN.HasValue) {
+                instance.verticalLength = current.VERLEN.Value;
+            }
+            else if (current.VERLEN.HasValue && current.VERLEN.Value == -32767m) {
+                instance.verticalLength = default(decimal?);
+            }
+
+            if (current.WATLEV.HasValue) {
+                instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+            }
+
+            if (scaleMinimum.HasValue) {
+                instance.scaleMinimum = scaleMinimum;
+            }
+            else if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                string subtype = "";
+
+                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+            }
+
+            // TODO: default clearance depth
+
+            foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
+                var drval1 = depthArea.DRVAL1 ?? default;
+                instance.surroundingDepth = drval1;
+            }
+
+            return instance;
+        }
+
+        // OBSTRN - DangersP
+        internal static Obstruction CreateObstruction(DangersL current, int? scaleMinimum, Geodatabase source) {
+
+            var instance = new Obstruction {
+                surroundingDepth = default,
+                waterLevelEffect = default,
+            };
+
+            if (current.CATOBS.HasValue) {
+                instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(current.CATOBS.Value);
+            }
+
+            if (current.CONDTN.HasValue) {
+                instance.condition = ImporterNIS.GetCondition(current.CONDTN.Value);
+            }
+
+            if (current.EXPSOU.HasValue) {
+                instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
+            }
+
+            instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                instance.height = current.HEIGHT.Value;
+            }
+            else {
+                instance.height = default(decimal?);
+            }
+
+            // DODO: Interoperability identifier
+
+            // TODO: Maximum permitted draught
+
+            if (current.NATSUR != default) {
+                instance.natureOfSurface = EnumHelper.GetEnumValues<natureOfSurface>(current.NATSUR);
+            }
+
+            if (current.PRODCT != default) {
+                instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
+            }
+
+            // TODO: QualityOfVerticalMeasurement
+
+
+            if (current.SORDAT != default) {
+                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
+                    instance.reportedDate = current.SORDAT;
+                }
+                else {
+                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), current.TableName!, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                }
+            }
+
+
+            if (current.STATUS != default) {
+                instance.status = ImporterNIS.GetStatus(current.STATUS);
+            }
+
+
+            if (current.TECSOU != null) {
+                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+            }
+
+
+            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
+                instance.valueOfSounding = current.VALSOU.Value;
+            }
+            else {
+                instance.valueOfSounding = default(decimal?);
+            }
+
+            if (current.VERLEN.HasValue) {
+                instance.verticalLength = current.VERLEN.Value;
+            }
+            else if (current.VERLEN.HasValue && current.VERLEN.Value == -32767m) {
+                instance.verticalLength = default(decimal?);
+            }
+
+            if (current.WATLEV.HasValue) {
+                instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+            }
+
+            if (scaleMinimum.HasValue) {
+                instance.scaleMinimum = scaleMinimum;
+            }
+            else if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                string subtype = "";
+
+                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+            }
+
+            // TODO: default clearance depth
+
+            foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
+                var drval1 = depthArea.DRVAL1 ?? default;
+                instance.surroundingDepth = drval1;
+            }
+
+            ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+
+
 
             return instance;
         }

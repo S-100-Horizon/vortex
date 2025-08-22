@@ -17,8 +17,8 @@ namespace S100Framework.Applications
         private const string outputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff}| [{Level:u3}] {Message:lj} {NewLine}{Exception}";
         public class Options
         {
-            [Option('d', "dnsm", Required = false, HelpText = "", Default = "DK40349E")]
-            public string Dataset { get; set; } = "DK40349E";
+            [Option('d', "dnsm", Required = false, HelpText = "")]
+            public string? Dataset { get; set; }
 
             [Option('g', "geodatabase", Required = true, HelpText = "Geodatabase.")]
             public string Geodatabase { get; set; } = string.Empty;
@@ -101,7 +101,7 @@ namespace S100Framework.Applications
                     using var surface = source.OpenDataset<FeatureClass>(definitionFeatures.Single(e => e.GetAliasName().Equals("surface")).GetName());
 
                     using var cursor = surface.Search(new QueryFilter {
-                        WhereClause = $"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"{dsnm!.ToUpperInvariant()}\"%'",
+                        WhereClause = string.IsNullOrEmpty(dsnm) ? $"upper(ps) = 'S-128'" : $"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"{dsnm!.ToUpperInvariant()}\"%'",
                     }, true);
 
                     while (cursor.MoveNext()) {
@@ -118,7 +118,7 @@ namespace S100Framework.Applications
                             whereClause += $" AND usageband = {Convert.ToInt32(current["usageband"])}";
 
                         datasets.Add((new Dataset {
-                            CellName = $"101{electricProduct!.datasetName!}.000",
+                            CellName = $"{electricProduct!.datasetName!}.000",
                             Comment = "Not for navigation!",
                             Edition = 1,
                             ENCVer = "INT.IHO.S-101.2.0",
@@ -146,6 +146,7 @@ namespace S100Framework.Applications
                     //if (datasetName.Equals("101DK40347E")) continue;
 
                     Log.Information("{dataset}", datasetName);
+                    var spatialAssociations = new Dictionary<string, S100Framework.YAML.Association>();
                     var geometries = new List<(ArcGIS.Core.Geometry.Geometry geometry, string name)>();
 
                     // Build Topology
@@ -272,15 +273,11 @@ namespace S100Framework.Applications
                                                 To = binding.informationId!,
                                             };
 
-                                            // Special case for SpatialAssociation
-                                            if (prim != Primitive.Surface && asso.Name.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase)) {
-                                                var curve = dataset?.Curves?.FirstOrDefault(e => e.Name == geometry);
-
-                                                curve?.AddAssociation(asso);
-                                            }
-                                            else {
+                                            // Special case for SpatialAssociation. Add to dictionary for later processing.
+                                            if (prim != Primitive.Surface && asso.Name.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase))
+                                                spatialAssociations.TryAdd(geometry, asso);
+                                            else
                                                 feature?.AddAssociation(asso);
-                                            }
                                         }
                                     }
                                 }
@@ -330,6 +327,13 @@ namespace S100Framework.Applications
 
                     // Add curves/surfaces after points
                     dataset!.AddTopology(topology);
+
+                    // Add Spatial Association Informationbindings. Must be handled after curves are added to dataset.
+                    foreach (var sa in spatialAssociations) {
+                        var curve = dataset?.Curves?.FirstOrDefault(e => e.Name == sa.Key);
+
+                        curve?.AddAssociation(sa.Value);
+                    }
 
                     // Serialize to YAML
                     var yaml = S100Framework.YAML.Converter.Serialize(dataset!);

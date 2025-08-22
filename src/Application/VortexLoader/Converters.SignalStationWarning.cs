@@ -23,7 +23,6 @@ namespace S100Framework.Applications
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-
             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
             if (dateRange != default) {
                 instance.fixedDateRange = dateRange;
@@ -32,8 +31,6 @@ namespace S100Framework.Applications
             // DODO: Interoperability identifier
 
             // TODO: Maximum permitted draught
-
-
 
             if (scaleMinimum.HasValue) {
                 instance.scaleMinimum = scaleMinimum;
@@ -46,6 +43,8 @@ namespace S100Framework.Applications
 
                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
             }
+
+            ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
             return instance;
         }

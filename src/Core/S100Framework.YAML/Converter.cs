@@ -84,6 +84,15 @@ namespace S100Framework.YAML
 
                 var required = property.GetCustomAttribute<UnknownValueAttribute>() != null;
 
+                // If the property is a dependent property, it should be required IF the master property is null.
+                //var dependentAttr = property.GetCustomAttribute<DependentAttribute>();
+                //if (dependentAttr is not null) {
+                //    var masterValue = properties.FirstOrDefault(p => p.Name == dependentAttr.PropertyName)?.GetValue(obj);
+
+                //    if (masterValue is null)
+                //        required = true;
+                //}
+
                 try {
                     attributes.BuildAttributeItem(propertyValue, property.Name, property.PropertyType, ref propertyId, parentId, required);
                 }
@@ -201,6 +210,15 @@ namespace S100Framework.YAML
                         propType = Nullable.GetUnderlyingType(propType) ?? propType;
 
                         var r = propInfo.GetCustomAttribute<UnknownValueAttribute>() != null;
+
+                        //If the property is a dependent property, it should be required IF the master property is null.
+                        //var dependentAttr = propInfo.GetCustomAttribute<DependentAttribute>();
+                        //if (dependentAttr is not null) {
+                        //    var masterValue = properties.FirstOrDefault(p => p.Name == dependentAttr.PropertyName)?.GetValue(t);
+
+                        //    if (masterValue is null)
+                        //        r = true;
+                        //}
 
                         attributes.BuildAttributeItem(propVal, objectName, propType, ref propertyId, parentId, r);
                     }
