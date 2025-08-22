@@ -80,6 +80,7 @@ namespace S100Framework.Applications
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
 
+            bool append = false;
 
             arguments.WithParsed<Options>(o => {
                 var target = o.Target!;
@@ -124,6 +125,8 @@ namespace S100Framework.Applications
                 }
                 else
                     throw new System.ArgumentOutOfRangeException(nameof(target));
+
+                append = o.Append;
             });
 
             using Geodatabase target = createGeodatabase();

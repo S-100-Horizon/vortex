@@ -52,6 +52,7 @@ namespace S100Framework.Applications
 
             // default value - overwritten by args
             var skinOfEarthOnly = false;
+            var append = false;
 
             arguments.WithParsed<Options>(o => {
                 var source = o.Source!;
@@ -96,6 +97,8 @@ namespace S100Framework.Applications
                 if (!string.IsNullOrEmpty(o.ScaminFilesPath)) {
                     _scaminFilesPath = o.ScaminFilesPath;
                 }
+
+                append = o.Append;
             });
 
             Func<Action, bool> Store = (a) => {
@@ -138,38 +141,40 @@ namespace S100Framework.Applications
             using (Geodatabase source = createGeodatabase()) {
 
                 Store(() => {
-                    var query = new QueryFilter {
-                        WhereClause = $"1=1",
-                    };
-                    using var point = destination.OpenDataset<FeatureClass>(destination.GetName("point"));
-                    using var pointset = destination.OpenDataset<FeatureClass>(destination.GetName("pointset"));
-                    using var curve = destination.OpenDataset<FeatureClass>(destination.GetName("curve"));
-                    using var surface = destination.OpenDataset<FeatureClass>(destination.GetName("surface"));
+                    if (!append) {
+                        var query = new QueryFilter {
+                            WhereClause = $"1=1",
+                        };
+                        using var point = destination.OpenDataset<FeatureClass>(destination.GetName("point"));
+                        using var pointset = destination.OpenDataset<FeatureClass>(destination.GetName("pointset"));
+                        using var curve = destination.OpenDataset<FeatureClass>(destination.GetName("curve"));
+                        using var surface = destination.OpenDataset<FeatureClass>(destination.GetName("surface"));
 
-                    //using var associationBinding = destination.OpenDataset<Table>(destination.GetName("associationbinding"));
-                    //using var attributeBinding = destination.OpenDataset<Table>(destination.GetName("attributebinding"));
-                    using var featureAssociation = destination.OpenDataset<Table>(destination.GetName("featureassociation"));
-                    using var informationAssociation = destination.OpenDataset<Table>(destination.GetName("InformationAssociation"));
-                    using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationType"));
+                        //using var associationBinding = destination.OpenDataset<Table>(destination.GetName("associationbinding"));
+                        //using var attributeBinding = destination.OpenDataset<Table>(destination.GetName("attributebinding"));
+                        using var featureAssociation = destination.OpenDataset<Table>(destination.GetName("featureassociation"));
+                        using var informationAssociation = destination.OpenDataset<Table>(destination.GetName("InformationAssociation"));
+                        using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationType"));
 
-                    Logger.Current.Information($"Deleting data from destination: {point.GetName()}");
-                    point.DeleteRows(query);
-                    Logger.Current.Information($"Deleting data from destination: {pointset.GetName()}");
-                    pointset.DeleteRows(query);
-                    Logger.Current.Information($"Deleting data from destination: {curve.GetName()}");
-                    curve.DeleteRows(query);
-                    Logger.Current.Information($"Deleting data from destination: {surface.GetName()}");
-                    surface.DeleteRows(query);
-                    //Logger.Current.Information($"Deleting data from destination: {associationBinding.GetName()}");
-                    //associationBinding.DeleteRows(query);
-                    //Logger.Current.Information($"Deleting data from destination: {attributeBinding.GetName()}");
-                    //attributeBinding.DeleteRows(query);
-                    Logger.Current.Information($"Deleting data from destination: {featureAssociation.GetName()}");
-                    featureAssociation.DeleteRows(query);
-                    Logger.Current.Information($"Deleting data from destination: {informationAssociation.GetName()}");
-                    informationAssociation.DeleteRows(query);
-                    Logger.Current.Information($"Deleting data from destination: {informationtype.GetName()}");
-                    informationtype.DeleteRows(query);
+                        Logger.Current.Information($"Deleting data from destination: {point.GetName()}");
+                        point.DeleteRows(query);
+                        Logger.Current.Information($"Deleting data from destination: {pointset.GetName()}");
+                        pointset.DeleteRows(query);
+                        Logger.Current.Information($"Deleting data from destination: {curve.GetName()}");
+                        curve.DeleteRows(query);
+                        Logger.Current.Information($"Deleting data from destination: {surface.GetName()}");
+                        surface.DeleteRows(query);
+                        //Logger.Current.Information($"Deleting data from destination: {associationBinding.GetName()}");
+                        //associationBinding.DeleteRows(query);
+                        //Logger.Current.Information($"Deleting data from destination: {attributeBinding.GetName()}");
+                        //attributeBinding.DeleteRows(query);
+                        Logger.Current.Information($"Deleting data from destination: {featureAssociation.GetName()}");
+                        featureAssociation.DeleteRows(query);
+                        Logger.Current.Information($"Deleting data from destination: {informationAssociation.GetName()}");
+                        informationAssociation.DeleteRows(query);
+                        Logger.Current.Information($"Deleting data from destination: {informationtype.GetName()}");
+                        informationtype.DeleteRows(query);
+                    }
                 });
 
                 Logger.Current.Information($"Loading subtypes codes to subtype name");
