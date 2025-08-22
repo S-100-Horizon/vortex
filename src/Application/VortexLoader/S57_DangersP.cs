@@ -510,7 +510,13 @@ namespace S100Framework.Applications
                             }
 
                             if (current.TECSOU != null) {
-                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                                /*
+                                    The TECSOU value 6 (swept by wire-drag) is prohibited in S-101. 
+                                    This value has been replaced by the technique of vertical measurement value 18 (mechanically swept). 
+                                    During the automated conversion process, all instances of TECSOU = 6 will be converted to technique of vertical measurement = 18.
+                                 */
+                                var tecsou = !string.IsNullOrEmpty(current.TECSOU) && int.Parse(current.TECSOU)==6 ? "18" : current.TECSOU;
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(tecsou);
                             }
 
                             if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
