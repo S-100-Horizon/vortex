@@ -26,9 +26,13 @@ namespace S100Framework.Applications
 
             int recordCount = 0;
 
+            var whereclause = $"({filter.WhereClause.Replace("PLTS_COMP_SCALE", "CSCL")}) AND (exporttype is not null AND upper(exporttype) NOT IN ('CANCEL'))";
+
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
-            using var cursor = productDefinitionsTable.Search(null, true);
+            using var cursor = productDefinitionsTable.Search(new QueryFilter {
+                WhereClause = whereclause,
+            }, true);
 
             // Add all M_SCL as datacoverages
             foreach (var m_sclPolygon in allM_CSCL) {
