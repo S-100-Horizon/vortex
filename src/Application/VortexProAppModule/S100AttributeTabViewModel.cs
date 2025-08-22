@@ -726,7 +726,7 @@ namespace VortexProAppModule
                 }
                 NotifyPropertyChanged(() => IsCreateButtonEnabled);
             }
-            catch {
+            catch (System.Exception ex) {
                 if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
             }
         }
