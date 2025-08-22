@@ -95,7 +95,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
@@ -103,7 +103,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
-                                buffer["version"] = ImporterNIS.s101version;
+                                buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
@@ -167,11 +167,11 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
-                                buffer["version"] = ImporterNIS.s101version;
+                                buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
@@ -260,10 +260,10 @@ namespace S100Framework.Applications
                                     instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
-                                AddInformation(instance.information, feature);
+                                AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
-                                buffer["version"] = ImporterNIS.s101version;
+                                buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                                 SetShape(buffer, current.SHAPE);
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
@@ -333,10 +333,10 @@ namespace S100Framework.Applications
                                     instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
-                                AddInformation(instance.information, feature);
+                                AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
-                                buffer["version"] = ImporterNIS.s101version;
+                                buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                                 SetShape(buffer, current.SHAPE);
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
@@ -460,7 +460,7 @@ namespace S100Framework.Applications
                                 //         instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 //     }
 
-                                //     AddInformation(instance.information, feature);
+                                //     AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                                 //     // TODO: defaultClearanceDepth
 
@@ -468,11 +468,11 @@ namespace S100Framework.Applications
                                 //    var drval1 = depthArea.DRVAL1 ?? default;
                                 //    instance.surroundingDepth = drval1;
                                 //}
-                                var instance = ImporterNIS._converterRegistry.Convert<Obstruction>(new List<DangersA>() { current });
+                                var instance = ImporterNIS._converterRegistry.Convert<Obstruction>(current);
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
-                                buffer["version"] = ImporterNIS.s101version;
+                                buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                                 SetShape(buffer, current.SHAPE);
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
@@ -515,11 +515,11 @@ namespace S100Framework.Applications
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
-                                buffer["version"] = ImporterNIS.s101version;
+                                buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
@@ -614,7 +614,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information, feature);
+                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
                                 var drval1 = depthArea.DRVAL1 ?? default;
@@ -624,7 +624,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
-                                buffer["version"] = ImporterNIS.s101version;
+                                buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);

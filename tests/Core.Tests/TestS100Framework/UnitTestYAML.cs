@@ -1,6 +1,7 @@
 ﻿using JsonFlatten;
 using Newtonsoft.Json.Linq;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.DomainModel.S101.InformationTypes;
 using System.Collections;
 using System.Text;
 using System.Text.Json;
@@ -64,6 +65,20 @@ namespace TestS100Framework
             };
 
             var yaml = S100Framework.YAML.Converter.Serialize(qualityOfBathymetricData);
+
+            System.Diagnostics.Debugger.Break();
+        }
+
+        [Fact]
+        public void Test_Serialize_ServiceHours() {
+            var serviceHours = new ServiceHours {
+                scheduleByDayOfWeek = [new S100Framework.DomainModel.S101.ComplexAttributes.scheduleByDayOfWeek {
+                    timeIntervalsByDayOfWeek = [new S100Framework.DomainModel.S101.ComplexAttributes.timeIntervalsByDayOfWeek {                        
+                    }],
+                }],
+            };
+
+            var json = System.Text.Json.JsonSerializer.Serialize(serviceHours);
 
             System.Diagnostics.Debugger.Break();
         }

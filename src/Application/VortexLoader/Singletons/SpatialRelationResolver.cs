@@ -14,10 +14,18 @@ namespace S100Framework.Applications.Singletons
         private static Dictionary<string, FeatureClass> _featureClasses = new();
 
         private static Geodatabase _geodatabase;
+        private static SQLSyntax _sqlSyntax;
+        private static Tuple<string, string, string> _tuple;
 
         private SpatialRelationResolver(Geodatabase geodatabase) {
             _geodatabase = geodatabase ?? throw new ArgumentNullException(nameof(geodatabase));
+
+            _sqlSyntax = _geodatabase.GetSQLSyntax();
+            var name = _geodatabase.GetDefinitions<TableDefinition>().First().GetName();
+            _tuple = _sqlSyntax.ParseTableName(name);
         }
+
+        private string GetFullTableName(string name) => _sqlSyntax.QualifyTableName(_tuple.Item1, _tuple.Item2, name);
 
         internal static void Initialize(Geodatabase geodatabase) {
             if (_instance != null) {
@@ -45,7 +53,7 @@ namespace S100Framework.Applications.Singletons
             //return new List<T>() { (T)(object)current.GlobalId };
 
             if (!_featureClasses.ContainsKey(typeof(T).Name)) {
-                _featureClasses[typeof(T).Name] = _geodatabase.OpenDataset<FeatureClass>(typeof(T).Name);
+                _featureClasses[typeof(T).Name] = _geodatabase.OpenDataset<FeatureClass>(GetFullTableName(typeof(T).Name));
             }
             var featureclass = _featureClasses[typeof(T).Name];
 
@@ -60,7 +68,7 @@ namespace S100Framework.Applications.Singletons
             //return new List<T>() { (T)(object)current.GlobalId };
 
             if (!_featureClasses.ContainsKey(typeof(T).Name)) {
-                _featureClasses[typeof(T).Name] = _geodatabase.OpenDataset<FeatureClass>(typeof(T).Name);
+                _featureClasses[typeof(T).Name] = _geodatabase.OpenDataset<FeatureClass>(GetFullTableName(typeof(T).Name));
             }
             var featureclass = _featureClasses[typeof(T).Name];
 

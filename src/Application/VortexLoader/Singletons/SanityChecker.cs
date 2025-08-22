@@ -108,7 +108,7 @@ namespace S100Framework.Applications.Singletons
             return errorCount;
         }
 
-        internal int Check_GetVersion() {
+        internal int Check_Editions() {
             Int32 errorCount = 0;
 
             var featureClasses = new List<string>() {
@@ -127,11 +127,9 @@ namespace S100Framework.Applications.Singletons
                 while (cursor.MoveNext()) {
                     recordCount++;
                     var feature = cursor.Current;
-                    string? jsonValue = feature["json"]?.ToString();
-
-                    if (jsonValue != default && jsonValue.Contains("version")) {
+                    var edition = feature["edition"];
+                    if (edition == null || edition == DBNull.Value || string.IsNullOrEmpty(edition.ToString()))
                         errorCount++;
-                    }
                 }
             }
             return errorCount;
