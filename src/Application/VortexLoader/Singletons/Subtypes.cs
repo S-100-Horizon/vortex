@@ -1,4 +1,5 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Internal.CIM;
 
 namespace S100Framework.Applications.Singletons
 {
@@ -7,6 +8,9 @@ namespace S100Framework.Applications.Singletons
         private static Subtypes _instance;
         private static readonly object _lock = new object();
         private readonly Geodatabase _geodatabase;
+        private SQLSyntax _sqlSyntax;
+        private Tuple<string, string, string> _tuple;
+
         private readonly Dictionary<string, Dictionary<int, string>> _subtypes;
 
         internal static void Initialize(Geodatabase geodatabase) {
@@ -25,7 +29,12 @@ namespace S100Framework.Applications.Singletons
             _subtypes = new Dictionary<string, Dictionary<int, string>>();
             _geodatabase = geodatabase;
 
+            _sqlSyntax = _geodatabase.GetSQLSyntax();
+            var name = _geodatabase.GetDefinitions<TableDefinition>().First().GetName();
+            _tuple = _sqlSyntax.ParseTableName(name);
         }
+
+        private string GetFullTableName(string name) => _sqlSyntax.QualifyTableName(_tuple.Item1, _tuple.Item2, name);
 
         public static Subtypes Instance {
             get {
@@ -36,17 +45,19 @@ namespace S100Framework.Applications.Singletons
         }
 
         private void RegisterSubtypes(string tableName) {
-            using var featureclass = _geodatabase.OpenDataset<FeatureClass>(tableName);
+            using var featureclass = _geodatabase.OpenDataset<FeatureClass>(GetFullTableName(tableName));
 
             var subtypes = new Dictionary<int, string>();
             foreach (var subtype in featureclass.GetSubtypes()) {
                 subtypes.Add(subtype.Key, subtype.Value);
 
             }
-            _subtypes[featureclass.GetName()] = subtypes;
+            _subtypes[_sqlSyntax.ParseTableName(featureclass.GetName()).Item3] = subtypes;
         }
 
         public bool TryGetSubtype(string tableName, int code, out string value) {
+            tableName = _sqlSyntax.ParseTableName(tableName).Item3;
+            
             if (!_subtypes.ContainsKey(tableName)) {
                 RegisterSubtypes(tableName);
             }
