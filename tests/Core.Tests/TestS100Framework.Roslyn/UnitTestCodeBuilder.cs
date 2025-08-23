@@ -138,7 +138,13 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.ISO8211, true);
+
+                var attributeRules = new S100Framework.Applications.Roslyn.AttributeRule[] {
+                    new S100Framework.Applications.Roslyn.AttributeRule("defaultClearanceDepth","[DependentUnknownValue(\"valueOfSounding\")]"),
+                };
+
+
+                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.ISO8211, true, attributeRules);
 
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
@@ -265,7 +271,7 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.ISO8211, false);
+                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.ISO8211, false, []);
 
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 

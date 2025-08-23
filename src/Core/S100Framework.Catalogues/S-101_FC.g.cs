@@ -19248,6 +19248,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[XmlElement("defaultClearanceDepth")]
+			[DependentUnknownValue("valueOfSounding")]
 			public decimal? defaultClearanceDepth {get;set;} = default;
 
 			public bool ShouldSerializedefaultClearanceDepth() { return defaultClearanceDepth.HasValue; }
@@ -19439,6 +19440,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
 
 			[XmlElement("defaultClearanceDepth")]
+			[DependentUnknownValue("valueOfSounding")]
 			public decimal? defaultClearanceDepth {get;set;} = default;
 
 			public bool ShouldSerializedefaultClearanceDepth() { return defaultClearanceDepth.HasValue; }
@@ -19658,6 +19660,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[XmlElement("defaultClearanceDepth")]
+			[DependentUnknownValue("valueOfSounding")]
 			public decimal? defaultClearanceDepth {get;set;} = default;
 
 			public bool ShouldSerializedefaultClearanceDepth() { return defaultClearanceDepth.HasValue; }

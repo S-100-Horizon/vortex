@@ -1,11 +1,13 @@
 ﻿using Pluralize.NET.Core;
 using S100Framework.DomainModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using static S100Framework.Applications.Roslyn;
 
 namespace S100Framework.Applications
 {
@@ -24,7 +26,13 @@ namespace S100Framework.Applications
             ISO8211 = 8211
         }
 
-        public static (string DomainModel, string ViewModel) Build(XDocument productSpecification, ProductFormat productFormat, bool supportingSpatialAssociation = false) {
+        public record AttributeRule(string Name, string Rule);
+
+        public static (string DomainModel, string ViewModel) Build(XDocument productSpecification, ProductFormat productFormat) {
+            return Build(productSpecification, productFormat, false, []);
+        }
+
+        public static (string DomainModel, string ViewModel) Build(XDocument productSpecification, ProductFormat productFormat, bool supportingSpatialAssociation, AttributeRule[] attributeRules) {
             var navigator = productSpecification.CreateNavigator();
             navigator.MoveToFollowing(XPathNodeType.Element);
             var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
@@ -443,6 +451,10 @@ namespace S100Framework.Applications
                                 builderDomainModel.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                             }
 
+                            foreach (var attributeRule in attributeRules.Where(e => e.Name.Equals(referenceCode))) {
+                                builderDomainModel.AppendLine($"\t\t\t{attributeRule.Rule}");
+                            }
+
                             //if (prefix.Equals("DateOnly")) {
                             //    builderDomainModel.AppendLine("\t\t\t[XmlIgnore]");
                             //}
@@ -607,6 +619,7 @@ namespace S100Framework.Applications
                         ShouldSerialize = shouldSerialize,
                         SupportingSpatialAssociation = supportingSpatialAssociation,
                         ProductFormat = productFormat,
+                        AttributeRules = attributeRules,
                     });
 
                     builderDomainModel.AppendLine(s);
@@ -653,6 +666,7 @@ namespace S100Framework.Applications
                             ShouldSerialize = shouldSerialize,
                             SupportingSpatialAssociation = supportingSpatialAssociation,
                             ProductFormat = productFormat,
+                            AttributeRules = attributeRules,
                         });
 
                         builderDomainModel.AppendLine(s);
@@ -734,6 +748,7 @@ namespace S100Framework.Applications
                             ShouldSerialize = shouldSerialize,
                             SupportingSpatialAssociation = supportingSpatialAssociation,
                             ProductFormat = productFormat,
+                            AttributeRules = attributeRules,
                         }, (builder) => {
                             builder.AppendLine();
                             if (productFormat == ProductFormat.GML) {
@@ -814,6 +829,7 @@ namespace S100Framework.Applications
                             ShouldSerialize = shouldSerialize,
                             SupportingSpatialAssociation = supportingSpatialAssociation,
                             ProductFormat = productFormat,
+                            AttributeRules = attributeRules,
                         }, (builder) => {
                             if (!(e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value))) {
                                 if (productFormat == ProductFormat.GML) {
@@ -899,6 +915,7 @@ namespace S100Framework.Applications
                 CodeListTypes = codelistTypes,
                 ComplexTypes = complexTypes,
                 ProductFormat = productFormat,
+                AttributeRules = attributeRules,
                 InformationAssociationsLookup = informationAssociationsLookup,
                 FeatureAssociationsLookup = featureAssociationsLookup,
                 Editors = editorBuilders,
@@ -917,6 +934,7 @@ namespace S100Framework.Applications
             public required IReadOnlyCollection<string> CodeListTypes { get; init; }
             public required IReadOnlyCollection<string> ComplexTypes { get; init; }
             public required ProductFormat ProductFormat { get; init; }
+            public required IReadOnlyCollection<AttributeRule> AttributeRules { get; init; }
             public required IReadOnlyDictionary<string, ICollection<string>> InformationAssociationsLookup { get; init; }
             public required IReadOnlyDictionary<string, ICollection<string>> FeatureAssociationsLookup { get; init; }
             public required IReadOnlyDictionary<string, Action<StringBuilder, int, int?>> Editors { get; init; }
@@ -1203,6 +1221,7 @@ namespace S100Framework.Applications
             public required IDictionary<string, Func<string, string>> ShouldSerialize { get; init; }
             public required bool SupportingSpatialAssociation { get; init; }
             public required ProductFormat ProductFormat { get; init; }
+            public required IReadOnlyCollection<AttributeRule> AttributeRules { get; init; }
         }
 
         private static string BuildClass(XElement e, BuildClassClient client, Action<StringBuilder>? postBuilder = default) {
@@ -1280,6 +1299,9 @@ namespace S100Framework.Applications
                     builder.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                 }
 
+                foreach (var attributeRule in client.AttributeRules.Where(e => e.Name.Equals(referenceCode))) {
+                    builder.AppendLine($"\t\t\t{attributeRule.Rule}");
+                }
                 //if (prefix.Equals("DateOnly")) {
                 //    builder.AppendLine("\t\t\t[XmlIgnore]");
                 //}
