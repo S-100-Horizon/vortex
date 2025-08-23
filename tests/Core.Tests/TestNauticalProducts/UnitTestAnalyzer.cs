@@ -221,5 +221,43 @@ namespace TestNauticalProducts
 
             System.Diagnostics.Debugger.Break();
         }
+
+        [Fact]
+        public async Task Test_FullExport() {
+            var s101 = Environment.GetEnvironmentVariable("S100-Horizon-S101-Database");
+            Assert.False(string.IsNullOrEmpty(s101));
+
+            s101 = @"g:\vortex\connections\s100ed8.sde";
+
+            Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
+
+            if (IO.File.Exists(s101) && ".sde".Equals(IO.Path.GetExtension(s101), StringComparison.InvariantCultureIgnoreCase)) {
+                createGeodatabase = () => { return new Geodatabase(new DatabaseConnectionFile(new Uri(IO.Path.GetFullPath(s101)))); };
+            }
+            else if (IO.Directory.Exists(s101) && ".gdb".Equals(IO.Path.GetExtension(s101), StringComparison.InvariantCultureIgnoreCase)) {
+                createGeodatabase = () => { return new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(s101)))); };
+            }
+            else
+                throw new System.ArgumentOutOfRangeException(nameof(s101));
+
+            var tt = new S100Horizon.Settings.NauticalProducts {
+                Connections = [new S100Horizon.Settings.Connection(S100Framework.DomainModel.S101.Summary.ProductId)],
+            };
+            var json = System.Text.Json.JsonSerializer.Serialize(tt);
+
+            var productManager = await S100Framework.NauticalProducts.ProductManager.CreateInstanceAsync(() => {
+                return createGeodatabase();
+            });
+            Assert.NotNull(productManager);
+
+            var product = productManager.ElectronicProductManager.ElectronicProduct("101DK0040349E");
+
+
+            var dataset = await productManager.ElectronicProductManager.CreateNewEditionAsync("101DK0040349E");
+
+            var yaml = dataset.Serialize();
+
+            System.Diagnostics.Debugger.Break();
+        }
     }
 }
