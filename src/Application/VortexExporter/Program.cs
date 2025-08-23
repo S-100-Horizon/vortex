@@ -127,7 +127,7 @@ namespace S100Framework.Applications
                         }, new SpatialQueryFilter {
                             FilterGeometry = shape,
                             SpatialRelationship = SpatialRelationship.Relation,
-                            SpatialRelationshipDescription = "T*****FF*",
+                            SpatialRelationshipDescription = Topology.Matrix.DE9IM,
                             WhereClause = whereClause,
                         }));
                     }

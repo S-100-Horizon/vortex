@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace S100Horizon.Settings
 {
-    public record Connection(string ProductSpecification, Uri ConnectionFile);
+    public record Connection(string ProductSpecification, Uri? ConnectionFile = default);
     public class NauticalProducts
     {
         public Connection[] Connections { get; set; } = [];
@@ -16,6 +16,13 @@ namespace S100Horizon.Settings
 
 namespace S100Framework.NauticalProducts
 {
+    public enum ProductFormat : int
+    {
+        GML = 1,
+        HDF5 = 5,
+        ISO8211 = 8211
+    }
+
     public enum ExportTypes : int
     {
         NewDataset = 1,
@@ -25,7 +32,7 @@ namespace S100Framework.NauticalProducts
         Cancellation = 16,
     }
 
-    public class ElectronicProduct
+    public class Dataset
     {
         public required string DatasetName { get; set; } = string.Empty;
         public required DateTime TimestampUTC { get; set; } = DateTime.UtcNow;

@@ -170,6 +170,8 @@ namespace S100Framework.Topology
 
         public static string[] Mask1FeatureTypes { get; set; } = ["DataCoverage"];
 
+        public const string DE9IM = "T*****FF*";
+
         protected Matrix() {
             //  Default protected constructor
         }
