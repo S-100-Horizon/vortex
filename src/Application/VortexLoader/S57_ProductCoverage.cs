@@ -26,7 +26,10 @@ namespace S100Framework.Applications
 
             int recordCount = 0;
 
-            var whereclause = $"({filter.WhereClause.Replace("PLTS_COMP_SCALE", "CSCL")}) AND (exporttype is not null AND upper(exporttype) NOT IN ('CANCEL'))";
+            //replica.gdb has exporttype equal null!!
+            //var whereclause = $"({filter.WhereClause.Replace("PLTS_COMP_SCALE", "CSCL")}) AND (exporttype is not null AND upper(exporttype) NOT IN ('CANCEL'))";
+
+            var whereclause = $"({filter.WhereClause.Replace("PLTS_COMP_SCALE", "CSCL")})";
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
