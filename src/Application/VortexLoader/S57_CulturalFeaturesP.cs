@@ -687,6 +687,7 @@ namespace S100Framework.Applications
                                             8 => natureOfConstruction.GlassReinforcedPlastic,
                                             11 => natureOfConstruction.Latticed,
                                             12 => natureOfConstruction.Glass,
+                                            -32767 => default,  //  Not supported in array
                                             _ => default,
                                         };
                                         if (natcon != default)
