@@ -45,7 +45,7 @@ namespace S100Framework.Applications
                 throw new InvalidProgramException();
 
             geodatabase.ApplyEdits(() => {
-                using var tableInformationType = geodatabase.OpenDataset<Table>("informationtype");
+                using var tableInformationType = geodatabase.OpenDataset<Table>(geodatabase.GetName("informationtype"));
 
                 using var fcPoint = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("point"));
                 using var fcPointSet = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("pointset"));
