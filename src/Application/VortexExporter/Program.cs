@@ -2,8 +2,8 @@
 using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.DomainModel;
+using S100Framework.ProductCatalogue;
 using S100Framework.YAML;
-using S100Framework.NauticalProducts;
 using Serilog;
 using System.Diagnostics;
 using Dataset = S100Framework.YAML.Dataset;

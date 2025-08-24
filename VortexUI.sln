@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S100Framework.WPF", "src\UI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S100Framework.YAML", "src\Core\S100Framework.YAML\S100Framework.YAML.csproj", "{4B7CD27B-CED0-4E0A-A90C-86411445ED13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S100Framework.NauticalProducts", "src\Core\S100Framework.NauticalProducts\S100Framework.NauticalProducts.csproj", "{EC9FE7C0-5D4D-477D-9D7C-5F15CBC355F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S100Framework.ProductCatalogue", "src\Core\S100Framework.ProductCatalogue\S100Framework.ProductCatalogue.csproj", "{EC9FE7C0-5D4D-477D-9D7C-5F15CBC355F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S100Framework.Topology", "src\Core\S100Framework.Topology\S100Framework.Topology.csproj", "{2B3783EE-ABDB-4A6E-9677-C826CD253FAD}"
 EndProject

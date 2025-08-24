@@ -7,7 +7,7 @@ using System.Text.Json;
 using Xunit.Abstractions;
 using IO = System.IO;
 
-namespace TestNauticalProducts
+namespace TestProductCatalogue
 {
     public class UnitTestAnalyzer
     {
@@ -71,14 +71,14 @@ namespace TestNauticalProducts
 
                 using var buffer = table.CreateRowBuffer();
                 buffer["ps"] = "S-128.Horizon";
-                buffer["code"] = nameof(S100Horizon.Settings.NauticalProducts);
-                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Horizon.Settings.NauticalProducts {
+                buffer["code"] = nameof(S100Horizon.Settings.ProductCatalogue);
+                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Horizon.Settings.ProductCatalogue {
                     Connections = [new S100Horizon.Settings.Connection("S-101", new Uri(IO.Path.GetFullPath("s101.gdb")))],
                 });
                 table.CreateRow(buffer);
             }
 
-            var productManager = await S100Framework.NauticalProducts.ProductManager.CreateInstanceAsync(() => {
+            var productManager = await S100Framework.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
                 return new Geodatabase(connectionFile);
             });
             Assert.NotNull(productManager);
@@ -100,7 +100,7 @@ namespace TestNauticalProducts
             }
             fastZip.ExtractZip("s100ed8.gdb.zip", zipFileS128.FullName, null);
 
-            var productManager = await S100Framework.NauticalProducts.ProductManager.CreateInstanceAsync(() => {
+            var productManager = await S100Framework.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
                 var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s128ed8.gdb")));
 
                 var geodatabase = new Geodatabase(connectionFile);
@@ -109,8 +109,8 @@ namespace TestNauticalProducts
 
                     using var buffer = table.CreateRowBuffer();
                     buffer["ps"] = "S-128.Horizon";
-                    buffer["code"] = nameof(S100Horizon.Settings.NauticalProducts);
-                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Horizon.Settings.NauticalProducts {
+                    buffer["code"] = nameof(S100Horizon.Settings.ProductCatalogue);
+                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Horizon.Settings.ProductCatalogue {
                         Connections = [new S100Horizon.Settings.Connection("S-101", new Uri(IO.Path.GetFullPath(Environment.GetEnvironmentVariable("S100-Horizon-S101-Database")!)))],
                     });
                     table.CreateRow(buffer);
@@ -206,7 +206,7 @@ namespace TestNauticalProducts
             }
             fastZip.ExtractZip("s128ed8.gdb.zip", zipFileS128.FullName, null);
 
-            var productManager = await S100Framework.NauticalProducts.ProductManager.CreateInstanceAsync(() => {
+            var productManager = await S100Framework.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
                 var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s128ed8.gdb")));
 
                 return new Geodatabase(connectionFile);
@@ -240,12 +240,12 @@ namespace TestNauticalProducts
             else
                 throw new System.ArgumentOutOfRangeException(nameof(s101));
 
-            var tt = new S100Horizon.Settings.NauticalProducts {
+            var tt = new S100Horizon.Settings.ProductCatalogue {
                 Connections = [new S100Horizon.Settings.Connection(S100Framework.DomainModel.S101.Summary.ProductId)],
             };
             var json = System.Text.Json.JsonSerializer.Serialize(tt);
 
-            var productManager = await S100Framework.NauticalProducts.ProductManager.CreateInstanceAsync(() => {
+            var productManager = await S100Framework.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
                 return createGeodatabase();
             });
             Assert.NotNull(productManager);

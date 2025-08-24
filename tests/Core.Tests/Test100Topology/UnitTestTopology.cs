@@ -9,7 +9,7 @@ using System.Text.Json;
 using Xunit.Abstractions;
 using IO = System.IO;
 using S100Framework.Topology;
-using S100Framework.NauticalProducts;
+using S100Framework.ProductCatalogue;
 
 namespace Test100Topology
 {

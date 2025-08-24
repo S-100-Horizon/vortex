@@ -37,7 +37,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLua", "tests\Core.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test100Topology", "tests\Core.Tests\Test100Topology\Test100Topology.csproj", "{AE3A41DA-3876-426C-BB8E-E644472E77D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S100Framework.NauticalProducts", "src\Core\S100Framework.NauticalProducts\S100Framework.NauticalProducts.csproj", "{EC9FE7C0-5D4D-477D-9D7C-5F15CBC355F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S100Framework.ProductCatalogue", "src\Core\S100Framework.ProductCatalogue\S100Framework.ProductCatalogue.csproj", "{EC9FE7C0-5D4D-477D-9D7C-5F15CBC355F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNauticalProducts", "tests\Core.Tests\TestNauticalProducts\TestNauticalProducts.csproj", "{2C0BAD8F-66E5-4B10-853A-FDE064F1F73F}"
 EndProject

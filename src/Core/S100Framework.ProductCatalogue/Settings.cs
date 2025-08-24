@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 namespace S100Horizon.Settings
 {
     public record Connection(string ProductSpecification, Uri? ConnectionFile = default);
-    public class NauticalProducts
+    public class ProductCatalogue
     {
         public Connection[] Connections { get; set; } = [];
     }
 }
 
-namespace S100Framework.NauticalProducts
+namespace S100Framework.ProductCatalogue
 {
     public enum ProductFormat : int
     {

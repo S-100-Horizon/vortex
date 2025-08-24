@@ -11,7 +11,7 @@ using System.Diagnostics;
 using System.Text;
 using IO = System.IO;
 
-namespace S100Framework.NauticalProducts
+namespace S100Framework.ProductCatalogue
 {
     public interface INauticalProductManager
     {
@@ -93,7 +93,7 @@ namespace S100Framework.NauticalProducts
                 using var table = this._geodatabase.OpenDataset<Table>(configuration.GetName());
 
                 using var cursor = table.Search(new QueryFilter {
-                    WhereClause = "upper(ps) = 'S-128.HORIZON' AND code = 'NauticalProducts'",
+                    WhereClause = "upper(ps) = 'S-128.HORIZON' AND code = 'ProductCatalogue'",
                 }, true);
 
                 cursor.MoveNext();
@@ -103,9 +103,9 @@ namespace S100Framework.NauticalProducts
                 var c = cursor.Current;
 
                 var code = Convert.ToString(c["code"]);
-                if (!string.IsNullOrEmpty(code) && code.Equals("NauticalProducts")) {
+                if (!string.IsNullOrEmpty(code) && code.Equals("ProductCatalogue")) {
                     if (!c.IsNull("json")) {
-                        var settings = System.Text.Json.JsonSerializer.Deserialize<S100Horizon.Settings.NauticalProducts>(Convert.ToString(c["json"])!);
+                        var settings = System.Text.Json.JsonSerializer.Deserialize<S100Horizon.Settings.ProductCatalogue>(Convert.ToString(c["json"])!);
 
                         if (settings != null) {
                             foreach (var connection in settings.Connections) {

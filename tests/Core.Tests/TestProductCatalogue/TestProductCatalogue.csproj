@@ -26,7 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Core\S100Framework.Catalogues\S100Framework.Catalogues.csproj" />
-    <ProjectReference Include="..\..\..\src\Core\S100Framework.NauticalProducts\S100Framework.NauticalProducts.csproj" />
+    <ProjectReference Include="..\..\..\src\Core\S100Framework.ProductCatalogue\S100Framework.ProductCatalogue.csproj" />
   </ItemGroup>
 
   <ItemGroup>
