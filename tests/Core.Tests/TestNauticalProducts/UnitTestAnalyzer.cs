@@ -113,7 +113,7 @@ namespace TestNauticalProducts
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Horizon.Settings.NauticalProducts {
                         Connections = [new S100Horizon.Settings.Connection("S-101", new Uri(IO.Path.GetFullPath(Environment.GetEnvironmentVariable("S100-Horizon-S101-Database")!)))],
                     });
-                    table.CreateRow(buffer);                   
+                    table.CreateRow(buffer);
                 }
 
                 return geodatabase;
@@ -136,7 +136,7 @@ namespace TestNauticalProducts
                 var productSpecification = new S100Framework.DomainModel.S128.ComplexAttributes.productSpecification {
                     editionDate = S100Framework.DomainModel.S101.Summary.VersionDate,
                     name = S100Framework.DomainModel.S101.Summary.ProductId,
-                    version = S100Framework.DomainModel.S101.Summary.Version.ToString(),                    
+                    version = S100Framework.DomainModel.S101.Summary.Version.ToString(),
                 };
 
                 var tasks = new List<Task>();
@@ -213,7 +213,7 @@ namespace TestNauticalProducts
             });
             Assert.NotNull(productManager);
 
-            
+
 
             var dataset = await productManager.ElectronicProductManager.CreateNewEditionAsync("101DK0040349E");
 
@@ -250,12 +250,17 @@ namespace TestNauticalProducts
             });
             Assert.NotNull(productManager);
 
-            var product = productManager.ElectronicProductManager.ElectronicProduct("101DK0040349E");
+            var productNames = productManager.ElectronicProductManager.ToArray();
 
+            foreach (var name in productNames) {
+                var product = productManager.ElectronicProductManager.ElectronicProduct(name);
 
-            var dataset = await productManager.ElectronicProductManager.CreateNewEditionAsync("101DK0040349E");
-
-            var yaml = dataset.Serialize();
+                S100Framework.YAML.Dataset dataset;
+                if (product.editionNumber == 1 && product.updateNumber == 0)
+                    dataset = await productManager.ElectronicProductManager.CreateNewDatasetAsync(name);
+                else
+                    dataset = await productManager.ElectronicProductManager.ReissueAsync(name);
+            }
 
             System.Diagnostics.Debugger.Break();
         }

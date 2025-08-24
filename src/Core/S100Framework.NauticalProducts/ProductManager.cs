@@ -1,22 +1,14 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Data.Topology;
-using ArcGIS.Core.Data.UtilityNetwork.Trace;
 using ArcGIS.Core.Geometry;
-using NetTopologySuite.Geometries.Utilities;
-using S100Framework.Catalogues;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S128.FeatureTypes;
 using S100Framework.YAML;
 using Serilog;
 using System;
+using System.Collections;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Background;
 using IO = System.IO;
 
 namespace S100Framework.NauticalProducts
@@ -25,21 +17,25 @@ namespace S100Framework.NauticalProducts
     {
     }
 
-    public interface IElectronicProductManager
+    public interface IElectronicProductManager : IEnumerable<string>
     {
         Task CreateElectronicProductAsync(string name, DomainModel.S128.ComplexAttributes.productSpecification productSpecification, S100Framework.DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary);
 
         Task CreateElectronicProductAsync(string name, DomainModel.S128.ComplexAttributes.productSpecification productSpecification, S100Framework.DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary, int edition, int update, byte[] zipfile);
 
+        Task<YAML.Dataset> CreateNewDatasetAsync(string name);
+
         Task<YAML.Dataset> CreateNewEditionAsync(string name);
 
         Task<YAML.Dataset> CreateNewUpdateAsync(string name);
 
-        Task<bool> QueryUpdates(string name, Action<object> action);
+        Task<YAML.Dataset> ReissueAsync(string name);
 
-        Task<bool> IsDirty(string name);
+        Task<bool> QueryUpdatesAsync(string name, Action<object> action);
 
-        DomainModel.S128.FeatureTypes.ElectronicProduct ElectronicProduct(string name);
+        Task<bool> IsDirtyAsync(string name);
+
+        ElectronicProduct ElectronicProduct(string name);
     }
 
     public interface IProductManager
@@ -49,6 +45,8 @@ namespace S100Framework.NauticalProducts
         IElectronicProductManager ElectronicProductManager { get; }
 
         Task Dispatch(Action action);
+
+        Task<TResult> Dispatch<TResult>(Func<TResult> function);
     }
 
     public class ProductManager : IProductManager, INauticalProductManager, IElectronicProductManager, IDisposable
@@ -81,7 +79,7 @@ namespace S100Framework.NauticalProducts
         }
 
         protected async Task<ProductManager> InitializeAsync(Func<Geodatabase> creator) {
-            await this._taskFactory.StartNew(() => {
+            await this.Dispatch(() => {
                 this._geodatabase = creator();
 
                 var tableDefinitions = this._geodatabase.GetDefinitions<TableDefinition>();
@@ -124,8 +122,8 @@ namespace S100Framework.NauticalProducts
                 }
             });
 
-            await this._taskFactory.StartNew(() => {
-                using (var surface = this.OpenDataset<FeatureClass>("surface")) {
+            await this.Dispatch(() => {
+                using (var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"))) {
                     using var cursor = surface.Search(new QueryFilter {
                         WhereClause = "upper(ps) = 'S-128'"
                     }, true);
@@ -152,11 +150,18 @@ namespace S100Framework.NauticalProducts
 
         public Task Dispatch(Action action) {
             return this._taskFactory.StartNew(() => {
-                action?.Invoke();
+                action();
+            });
+        }
+        public Task<TResult> Dispatch<TResult>(Func<TResult> function) {
+            return this._taskFactory.StartNew(() => {
+                return function();
             });
         }
 
-        Task IElectronicProductManager.CreateElectronicProductAsync(string name, DomainModel.S128.ComplexAttributes.productSpecification productSpecification, DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary) {
+        #region IElectronicProductManager
+
+        async Task IElectronicProductManager.CreateElectronicProductAsync(string name, DomainModel.S128.ComplexAttributes.productSpecification productSpecification, DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary) {
             if (string.IsNullOrEmpty(name))
                 throw new System.ArgumentNullException(nameof(name));
 
@@ -164,39 +169,57 @@ namespace S100Framework.NauticalProducts
 
             var key = new ElectronicProductKey(productSpecification.name, name);
 
-            return this._taskFactory.StartNew(() => {
+            await this.Dispatch(() => {
                 if (this._electronicProducts.ContainsKey(name))
                     throw new System.ArgumentException("An element with the same key already exists!");
 
-                using (var surface = this.OpenDataset<FeatureClass>("surface")) {
-                    using var buffer = surface.CreateRowBuffer();
-                    buffer["ps"] = "S-128";
-                    buffer["code"] = nameof(S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct);
+                this._geodatabase!.ApplyEdits(() => {
+                    using (var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"))) {
+                        using var buffer = surface.CreateRowBuffer();
+                        buffer["ps"] = "S-128";
+                        buffer["code"] = nameof(S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct);
 
-                    var electronicProduct = new S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct {
-                        datasetName = name,
-                        typeOfProductFormat = DomainModel.S128.typeOfProductFormat.IsoIec8211,
-                        notForNavigation = true,
-                        issueDate = DateOnly.FromDateTime(DateTime.Now),
-                        editionNumber = 0,
-                        agencyResponsibleForProduction = "Danish Geodata Agency",
-                        specificUsage = specificUsage,
-                        productSpecification = productSpecification,
-                    };
+                        var electronicProduct = new S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct {
+                            datasetName = name,
+                            typeOfProductFormat = DomainModel.S128.typeOfProductFormat.IsoIec8211,
+                            notForNavigation = true,
+                            issueDate = DateOnly.FromDateTime(DateTime.Now),
+                            editionNumber = 0,
+                            agencyResponsibleForProduction = "Danish Geodata Agency",
+                            specificUsage = specificUsage,
+                            productSpecification = productSpecification,
+                        };
 
-                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(electronicProduct);
-                    buffer["shape"] = boundary;
-                    surface.CreateRow(buffer);
+                        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(electronicProduct);
+                        buffer["shape"] = boundary;
+                        surface.CreateRow(buffer);
 
-                    var result = this._electronicProducts.TryAdd(name, electronicProduct);
-                    Debug.Assert(result);
-                }
+                        var result = this._electronicProducts.TryAdd(name, electronicProduct);
+                        Debug.Assert(result);
+                    }
+                });
             });
 
         }
 
         Task IElectronicProductManager.CreateElectronicProductAsync(string name, DomainModel.S128.ComplexAttributes.productSpecification productSpecification, DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary, int edition, int update, byte[] zipfile) {
             throw new NotImplementedException();
+        }
+
+        async Task<YAML.Dataset> IElectronicProductManager.CreateNewDatasetAsync(string name) {
+            if (string.IsNullOrEmpty(name))
+                throw new System.ArgumentNullException(nameof(name));
+            name = name.ToUpperInvariant();
+
+            if (!this._electronicProducts.ContainsKey(name))
+                throw new System.ArgumentException(nameof(name));
+
+            var result = await this.GetElectronicProductAsync(name);
+
+            if (!(result.ElectronicProduct.editionNumber == 1 && result.ElectronicProduct.updateNumber == 0))
+                throw new InvalidOperationException();
+
+            return await this.CreateDatasetAsync(result.ElectronicProduct, result.Filter, ExportTypes.NewDataset);
         }
 
         async Task<YAML.Dataset> IElectronicProductManager.CreateNewEditionAsync(string name) {
@@ -207,13 +230,114 @@ namespace S100Framework.NauticalProducts
             if (!this._electronicProducts.ContainsKey(name))
                 throw new System.ArgumentException(nameof(name));
 
-            var timestamp = DateTime.UtcNow;
+            var result = await this.GetElectronicProductAsync(name);
+
+            if (!(result.ElectronicProduct.editionNumber == 1 && result.ElectronicProduct.updateNumber == 0))
+                throw new InvalidOperationException();
+
+            result.ElectronicProduct.editionNumber += 1;
+            result.ElectronicProduct.updateNumber = 0;
+
+            return await this.CreateDatasetAsync(result.ElectronicProduct, result.Filter, ExportTypes.NewEdition);
+        }
+
+        Task<YAML.Dataset> IElectronicProductManager.CreateNewUpdateAsync(string name) {
+            throw new NotImplementedException();
+        }
+
+        async Task<YAML.Dataset> IElectronicProductManager.ReissueAsync(string name) {
+            if (string.IsNullOrEmpty(name))
+                throw new System.ArgumentNullException(nameof(name));
+            name = name.ToUpperInvariant();
+
+            if (!this._electronicProducts.ContainsKey(name))
+                throw new System.ArgumentException(nameof(name));
+
+            var result = await this.GetElectronicProductAsync(name);
+
+            return await this.CreateDatasetAsync(result.ElectronicProduct, result.Filter, ExportTypes.Reissue);
+        }
+
+        async Task<bool> IElectronicProductManager.QueryUpdatesAsync(string name, Action<object> action) {
+            if (string.IsNullOrEmpty(name))
+                throw new System.ArgumentNullException(nameof(name));
+            name = name.ToUpperInvariant();
+
+            if (!this._electronicProducts.ContainsKey(name))
+                throw new System.ArgumentException(nameof(name));
+
+            var electronicProduct = this._electronicProducts[name];
 
             var connection = this._connections[this._electronicProducts[name].productSpecification!.name]!;
 
-            var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
+            var dataset = await this.GetLatestDataset(name);
 
-            var dataset = await this._taskFactory.StartNew(() => {
+            if (dataset == default)
+                return false;
+
+            var filter = await this.BuildSpatialQueryFilter(dataset, electronicProduct.specificUsage);
+
+            return await this.Dispatch(() => {
+                string[] tableNames = ["point", "pointset", "curve", "surface"];
+                foreach (var baseTableName in tableNames) {
+                    using var fc = connection.OpenDataset<FeatureClass>(this.QualifyTableName($"{baseTableName}_H"));
+
+                    using var cursor = fc.Search(filter, true);
+                    while (cursor.MoveNext()) {
+                        action(cursor.Current);
+                    }
+                }
+                return false;
+            });
+        }
+
+        async Task<bool> IElectronicProductManager.IsDirtyAsync(string name) {
+            if (string.IsNullOrEmpty(name))
+                throw new System.ArgumentNullException(nameof(name));
+            name = name.ToUpperInvariant();
+
+            if (!this._electronicProducts.ContainsKey(name))
+                throw new System.ArgumentException(nameof(name));
+
+            var electronicProduct = this._electronicProducts[name];
+
+            var connection = this._connections[this._electronicProducts[name].productSpecification!.name]!;
+
+            var dataset = await this.GetLatestDataset(name);
+
+            if (dataset == default)
+                return false;
+
+            var filter = await this.BuildSpatialQueryFilter(dataset, electronicProduct.specificUsage);
+
+            var dirty = await this.Dispatch(() => {
+                string[] tableNames = ["point", "pointset", "curve", "surface"];
+                foreach (var baseTableName in tableNames) {
+                    using var fc = connection.OpenDataset<FeatureClass>(this.QualifyTableName($"{baseTableName}_H"));
+
+                    using var cursor = fc.Search(filter, true);
+                    while (cursor.MoveNext()) {
+                        return true;
+                    }
+                }
+                return false;
+            });
+
+            return dirty;
+        }
+
+        ElectronicProduct IElectronicProductManager.ElectronicProduct(string name) => this._electronicProducts[name.ToUpperInvariant()];
+
+        IEnumerator<string> IEnumerable<string>.GetEnumerator() {
+            foreach (var p in this._electronicProducts)
+                yield return p.Key;
+            yield break;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => this._electronicProducts.Keys.GetEnumerator();
+
+        private async Task<(ElectronicProduct ElectronicProduct, SpatialQueryFilter Filter)> GetElectronicProductAsync(string name) {
+            return await this.Dispatch(() => {
                 using var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"));
                 ArcGIS.Core.Data.Row row128;
 
@@ -232,9 +356,7 @@ namespace S100Framework.NauticalProducts
 
                 var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<DomainModel.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(row128["json"])!)!;
 
-                electronicProduct.editionNumber += 1;
-                electronicProduct.updateNumber = 0;
-                electronicProduct.issueDate = DateOnly.FromDateTime(DateTime.Now);
+                var shapeCoverage = (ArcGIS.Core.Geometry.Polygon)((ArcGIS.Core.Data.Feature)cursorS128.Current).GetShape();
 
                 var whereClause = "upper(ps) = 'S-101'";
 
@@ -247,20 +369,6 @@ namespace S100Framework.NauticalProducts
                     _ => "",
                 };
 
-                ArcGIS.Core.Geometry.Polygon shapeCoverage;
-
-                shapeCoverage = (ArcGIS.Core.Geometry.Polygon)((ArcGIS.Core.Data.Feature)cursorS128.Current).GetShape();
-
-                var dataset = new S100Framework.YAML.Dataset {
-                    CellName = $"{electronicProduct!.datasetName!}.000",
-                    Comment = electronicProduct.notForNavigation ? "Not for navigation!" : string.Empty,
-                    Edition = (uint?)electronicProduct.editionNumber,
-                    ENCVer = "INT.IHO.S-101.2.0",
-                    FCVer = "2.0",
-                    verticalDatum = "Baltic Sea Chart Datum 2000,44",
-                };
-
-                //  Topology                
                 var filter = new SpatialQueryFilter {
                     FilterGeometry = shapeCoverage,
                     SpatialRelationship = SpatialRelationship.Relation,
@@ -268,6 +376,30 @@ namespace S100Framework.NauticalProducts
                     WhereClause = whereClause,
                 };
 
+                return (electronicProduct, filter);
+            });
+        }
+
+        private async Task<YAML.Dataset> CreateDatasetAsync(ElectronicProduct electronicProduct, SpatialQueryFilter filter, ExportTypes exportType) {
+            var timestamp = DateTime.UtcNow;
+
+            var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
+
+            var connection = this._connections["S-101"]!;
+
+            electronicProduct.issueDate = DateOnly.FromDateTime(timestamp);
+
+            var dataset = new S100Framework.YAML.Dataset {
+                CellName = $"{electronicProduct!.datasetName!}.000",
+                Comment = electronicProduct.notForNavigation ? "Not for navigation!" : string.Empty,
+                Edition = (uint?)electronicProduct.editionNumber,
+                ENCVer = "INT.IHO.S-101.2.0",
+                FCVer = "2.0",
+                verticalDatum = "Baltic Sea Chart Datum 2000,44",
+                Update = (uint?)electronicProduct.updateNumber,
+            };
+
+            return await this.Dispatch(() => {
                 var topology = connection.BuildTopology(filter)!;
                 dataset.AddTopology(topology);
 
@@ -440,118 +572,52 @@ namespace S100Framework.NauticalProducts
                     Log.Verbose("Adding {geometryType} with ID: {name}", geometry.GeometryType, name);
                 }
 
-                row128["json"] = System.Text.Json.JsonSerializer.Serialize(electronicProduct);
-                row128.Store();
-                row128.Dispose();
+                this._geodatabase!.ApplyEdits(() => {
+                    using var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"));
 
-                this._electronicProducts[name] = electronicProduct;
+                    using var cursorS128 = surface.Search(new QueryFilter {
+                        WhereClause = $"json LIKE '%\"datasetName\":\"{electronicProduct.datasetName}\"%'",
+                    }, false);
 
+                    cursorS128.MoveNext();
+
+                    Debug.Assert(cursorS128.Current != null);
+
+                    var row128 = cursorS128.Current;
+                    row128["json"] = System.Text.Json.JsonSerializer.Serialize(electronicProduct);
+                    row128.Store();
+                    row128.Dispose();
+
+                    this._electronicProducts[electronicProduct.datasetName!.ToUpperInvariant()] = electronicProduct;
+
+                    using var attachment = this._geodatabase!.OpenDataset<Table>(this.QualifyTableName("attachment"));
+
+                    using var buffer = attachment.CreateRowBuffer();
+
+                    buffer["ps"] = "S-128.Horizon";
+                    buffer["code"] = nameof(Dataset);
+                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new Dataset {
+                        DatasetName = electronicProduct.datasetName!,
+                        Edition = electronicProduct.editionNumber!.Value,
+                        Update = electronicProduct.updateNumber!.Value,
+                        ExportTypes = exportType,
+                        TimestampUTC = timestamp
+                    });
+
+                    var yaml = dataset.Serialize();
+
+                    using var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(yaml));
+
+                    buffer["data_size"] = memoryStream.Length;
+                    buffer["data"] = memoryStream;
+
+                    attachment.CreateRow(buffer);
+                });
                 return dataset!;
             });
-
-            var yaml = dataset.Serialize();
-
-            await this._taskFactory.StartNew(() => {
-                using var attachment = this._geodatabase!.OpenDataset<Table>(this.QualifyTableName("attachment"));
-
-                using var buffer = attachment.CreateRowBuffer();
-
-                var electronicProduct = new Dataset {
-                    DatasetName = this._electronicProducts[name].datasetName!,
-                    Edition = this._electronicProducts[name].editionNumber!.Value,
-                    Update = this._electronicProducts[name].updateNumber!.Value,
-                    ExportTypes = ExportTypes.NewDataset,
-                    TimestampUTC = timestamp,
-                };
-
-                buffer["ps"] = "S-128.Horizon";
-                buffer["code"] = nameof(Dataset);
-                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(electronicProduct);
-
-                using var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(yaml));
-
-                buffer["data_size"] = memoryStream.Length;
-                buffer["data"] = memoryStream;
-
-                attachment.CreateRow(buffer);
-            });
-
-            return dataset;
         }
 
-        Task<YAML.Dataset> IElectronicProductManager.CreateNewUpdateAsync(string name) {
-            throw new NotImplementedException();
-        }
-        
-        async Task<bool> IElectronicProductManager.QueryUpdates(string name, Action<object> action) {
-            if (string.IsNullOrEmpty(name))
-                throw new System.ArgumentNullException(nameof(name));
-            name = name.ToUpperInvariant();
-
-            if (!this._electronicProducts.ContainsKey(name))
-                throw new System.ArgumentException(nameof(name));
-
-            var electronicProduct = this._electronicProducts[name];
-
-            var connection = this._connections[this._electronicProducts[name].productSpecification!.name]!;
-
-            var dataset = await this.GetLatestDataset(name);
-
-            if (dataset == default)
-                return false;
-
-            var filter = await this.BuildSpatialQueryFilter(dataset, electronicProduct.specificUsage);
-
-            return await this._taskFactory.StartNew(() => {
-                string[] tableNames = ["point", "pointset", "curve", "surface"];
-                foreach (var baseTableName in tableNames) {
-                    using var fc = connection.OpenDataset<FeatureClass>(this.QualifyTableName($"{baseTableName}_H"));
-
-                    using var cursor = fc.Search(filter, true);
-                    while (cursor.MoveNext()) {
-                        action(cursor.Current);
-                    }
-                }
-                return false;
-            });            
-        }
-        
-        async Task<bool> IElectronicProductManager.IsDirty(string name) {
-            if (string.IsNullOrEmpty(name))
-                throw new System.ArgumentNullException(nameof(name));
-            name = name.ToUpperInvariant();
-
-            if (!this._electronicProducts.ContainsKey(name))
-                throw new System.ArgumentException(nameof(name));
-
-            var electronicProduct = this._electronicProducts[name];
-
-            var connection = this._connections[this._electronicProducts[name].productSpecification!.name]!;
-
-            var dataset = await this.GetLatestDataset(name);
-
-            if (dataset == default)
-                return false;
-
-            var filter = await this.BuildSpatialQueryFilter(dataset, electronicProduct.specificUsage);
-
-            var dirty = await this._taskFactory.StartNew(() => {
-                string[] tableNames = ["point", "pointset", "curve", "surface"];
-                foreach (var baseTableName in tableNames) {
-                    using var fc = connection.OpenDataset<FeatureClass>(this.QualifyTableName($"{baseTableName}_H"));
-
-                    using var cursor = fc.Search(filter, true);
-                    while (cursor.MoveNext()) {
-                        return true;
-                    }
-                }
-                return false;
-            });
-
-            return dirty;
-        }
-
-        DomainModel.S128.FeatureTypes.ElectronicProduct IElectronicProductManager.ElectronicProduct(string name) => this._electronicProducts[name.ToUpperInvariant()];
+        #endregion
 
         public void Dispose() {
             if (!this._disposed) {
@@ -589,16 +655,8 @@ namespace S100Framework.NauticalProducts
             return createGeodatabase();
         }
 
-        private T OpenDataset<T>(string name) where T : ArcGIS.Core.Data.Dataset {
-            var typeFromHandle = typeof(T);
-            if (typeFromHandle == typeof(FeatureClass) || typeFromHandle == typeof(Table)) {
-                return this._geodatabase!.OpenDataset<T>(this.QualifyTableName(name));
-            }
-            throw new System.ArgumentException();
-        }
-
         private async Task<Dataset?> GetLatestDataset(string name) {
-            return await this._taskFactory.StartNew(() => {
+            return await this.Dispatch(() => {
                 using var attachment = this._geodatabase!.OpenDataset<Table>(this.QualifyTableName("attachment"));
 
                 using var cursor = attachment.Search(new QueryFilter {
@@ -614,7 +672,7 @@ namespace S100Framework.NauticalProducts
         }
 
         private async Task<SpatialQueryFilter> BuildSpatialQueryFilter(Dataset dataset, DomainModel.S128.specificUsage? specificUsage) {
-            return await this._taskFactory.StartNew(() => {
+            return await this.Dispatch(() => {
                 using var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"));
 
                 using var cursorS128 = surface.Search(new QueryFilter {
