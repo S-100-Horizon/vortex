@@ -199,7 +199,7 @@
 							</Fields>
 						</Index>
 						<Index xsi:type='esri:Index'>
-							<Name>I3ps</Name>
+							<Name>ps</Name>
 							<IsUnique>false</IsUnique>
 							<IsAscending>true</IsAscending>
 							<Fields xsi:type='esri:Fields'>
@@ -217,7 +217,7 @@
 							</Fields>
 						</Index>
 						<Index xsi:type='esri:Index'>
-							<Name>I3code</Name>
+							<Name>code</Name>
 							<IsUnique>false</IsUnique>
 							<IsAscending>true</IsAscending>
 							<Fields xsi:type='esri:Fields'>
@@ -235,7 +235,7 @@
 							</Fields>
 						</Index>
 						<Index xsi:type='esri:Index'>
-							<Name>I3name</Name>
+							<Name>name</Name>
 							<IsUnique>false</IsUnique>
 							<IsAscending>true</IsAscending>
 							<Fields xsi:type='esri:Fields'>
@@ -480,7 +480,7 @@
 							</Fields>
 						</Index>
 						<Index xsi:type='esri:Index'>
-							<Name>I4ps</Name>
+							<Name>ps</Name>
 							<IsUnique>false</IsUnique>
 							<IsAscending>true</IsAscending>
 							<Fields xsi:type='esri:Fields'>
@@ -498,7 +498,7 @@
 							</Fields>
 						</Index>
 						<Index xsi:type='esri:Index'>
-							<Name>I4code</Name>
+							<Name>code</Name>
 							<IsUnique>false</IsUnique>
 							<IsAscending>true</IsAscending>
 							<Fields xsi:type='esri:Fields'>
@@ -516,7 +516,7 @@
 							</Fields>
 						</Index>
 						<Index xsi:type='esri:Index'>
-							<Name>I4name</Name>
+							<Name>name</Name>
 							<IsUnique>false</IsUnique>
 							<IsAscending>true</IsAscending>
 							<Fields xsi:type='esri:Fields'>
@@ -761,7 +761,7 @@
 							</Fields>
 						</Index>
 						<Index xsi:type='esri:Index'>
-							<Name>I5name</Name>
+							<Name>name</Name>
 							<IsUnique>false</IsUnique>
 							<IsAscending>true</IsAscending>
 							<Fields xsi:type='esri:Fields'>
@@ -780,7 +780,7 @@
 							</Fields>
 						</Index>
 						<Index xsi:type='esri:Index'>
-							<Name>I5code</Name>
+							<Name>code</Name>
 							<IsUnique>false</IsUnique>
 							<IsAscending>true</IsAscending>
 							<Fields xsi:type='esri:Fields'>
@@ -798,7 +798,7 @@
 							</Fields>
 						</Index>
 						<Index xsi:type='esri:Index'>
-							<Name>I5ps</Name>
+							<Name>ps</Name>
 							<IsUnique>false</IsUnique>
 							<IsAscending>true</IsAscending>
 							<Fields xsi:type='esri:Fields'>
@@ -1002,7 +1002,7 @@
 							</Fields>
 						</Index>
 						<Index xsi:type='esri:Index'>
-							<Name>I6streamname</Name>
+							<Name>streamname</Name>
 							<IsUnique>false</IsUnique>
 							<IsAscending>true</IsAscending>
 							<Fields xsi:type='esri:Fields'>
@@ -1020,7 +1020,7 @@
 							</Fields>
 						</Index>
 						<Index xsi:type='esri:Index'>
-							<Name>I6streamname3</Name>
+							<Name>streamname_sequenceid</Name>
 							<IsUnique>false</IsUnique>
 							<IsAscending>true</IsAscending>
 							<Fields xsi:type='esri:Fields'>
@@ -1224,7 +1224,7 @@
 							</Fields>
 						</Index>
 						<Index xsi:type='esri:Index'>
-							<Name>I7ps</Name>
+							<Name>ps</Name>
 							<IsUnique>false</IsUnique>
 							<IsAscending>true</IsAscending>
 							<Fields xsi:type='esri:Fields'>
@@ -1242,7 +1242,7 @@
 							</Fields>
 						</Index>
 						<Index xsi:type='esri:Index'>
-							<Name>I7code</Name>
+							<Name>code</Name>
 							<IsUnique>false</IsUnique>
 							<IsAscending>true</IsAscending>
 							<Fields xsi:type='esri:Fields'>
@@ -1567,7 +1567,7 @@
 									</Fields>
 								</Index>
 								<Index xsi:type='esri:Index'>
-									<Name>I9ps</Name>
+									<Name>ps</Name>
 									<IsUnique>false</IsUnique>
 									<IsAscending>true</IsAscending>
 									<Fields xsi:type='esri:Fields'>
@@ -1585,7 +1585,7 @@
 									</Fields>
 								</Index>
 								<Index xsi:type='esri:Index'>
-									<Name>I9code</Name>
+									<Name>code</Name>
 									<IsUnique>false</IsUnique>
 									<IsAscending>true</IsAscending>
 									<Fields xsi:type='esri:Fields'>
@@ -1603,7 +1603,7 @@
 									</Fields>
 								</Index>
 								<Index xsi:type='esri:Index'>
-									<Name>I9name</Name>
+									<Name>name</Name>
 									<IsUnique>false</IsUnique>
 									<IsAscending>true</IsAscending>
 									<Fields xsi:type='esri:Fields'>
@@ -1622,7 +1622,7 @@
 									</Fields>
 								</Index>
 								<Index xsi:type='esri:Index'>
-									<Name>I9usageband</Name>
+									<Name>usageband</Name>
 									<IsUnique>false</IsUnique>
 									<IsAscending>true</IsAscending>
 									<Fields xsi:type='esri:Fields'>
@@ -2018,7 +2018,7 @@
 									</Fields>
 								</Index>
 								<Index xsi:type='esri:Index'>
-									<Name>I10ps</Name>
+									<Name>ps</Name>
 									<IsUnique>false</IsUnique>
 									<IsAscending>true</IsAscending>
 									<Fields xsi:type='esri:Fields'>
@@ -2036,7 +2036,7 @@
 									</Fields>
 								</Index>
 								<Index xsi:type='esri:Index'>
-									<Name>I10code</Name>
+									<Name>code</Name>
 									<IsUnique>false</IsUnique>
 									<IsAscending>true</IsAscending>
 									<Fields xsi:type='esri:Fields'>
@@ -2054,7 +2054,7 @@
 									</Fields>
 								</Index>
 								<Index xsi:type='esri:Index'>
-									<Name>I10name</Name>
+									<Name>name</Name>
 									<IsUnique>false</IsUnique>
 									<IsAscending>true</IsAscending>
 									<Fields xsi:type='esri:Fields'>
@@ -2073,7 +2073,7 @@
 									</Fields>
 								</Index>
 								<Index xsi:type='esri:Index'>
-									<Name>I10usageband</Name>
+									<Name>usageband</Name>
 									<IsUnique>false</IsUnique>
 									<IsAscending>true</IsAscending>
 									<Fields xsi:type='esri:Fields'>
@@ -2480,7 +2480,7 @@
 									</Fields>
 								</Index>
 								<Index xsi:type='esri:Index'>
-									<Name>I11ps</Name>
+									<Name>ps</Name>
 									<IsUnique>false</IsUnique>
 									<IsAscending>true</IsAscending>
 									<Fields xsi:type='esri:Fields'>
@@ -2498,7 +2498,7 @@
 									</Fields>
 								</Index>
 								<Index xsi:type='esri:Index'>
-									<Name>I11code</Name>
+									<Name>code</Name>
 									<IsUnique>false</IsUnique>
 									<IsAscending>true</IsAscending>
 									<Fields xsi:type='esri:Fields'>
@@ -2516,7 +2516,7 @@
 									</Fields>
 								</Index>
 								<Index xsi:type='esri:Index'>
-									<Name>I11name</Name>
+									<Name>name</Name>
 									<IsUnique>false</IsUnique>
 									<IsAscending>true</IsAscending>
 									<Fields xsi:type='esri:Fields'>
@@ -2535,7 +2535,7 @@
 									</Fields>
 								</Index>
 								<Index xsi:type='esri:Index'>
-									<Name>I11usageband</Name>
+									<Name>usageband</Name>
 									<IsUnique>false</IsUnique>
 									<IsAscending>true</IsAscending>
 									<Fields xsi:type='esri:Fields'>
@@ -2953,7 +2953,7 @@
 									</Fields>
 								</Index>
 								<Index xsi:type='esri:Index'>
-									<Name>I12ps</Name>
+									<Name>ps</Name>
 									<IsUnique>false</IsUnique>
 									<IsAscending>true</IsAscending>
 									<Fields xsi:type='esri:Fields'>
@@ -2971,7 +2971,7 @@
 									</Fields>
 								</Index>
 								<Index xsi:type='esri:Index'>
-									<Name>I12code</Name>
+									<Name>code</Name>
 									<IsUnique>false</IsUnique>
 									<IsAscending>true</IsAscending>
 									<Fields xsi:type='esri:Fields'>
@@ -2989,7 +2989,7 @@
 									</Fields>
 								</Index>
 								<Index xsi:type='esri:Index'>
-									<Name>I12name</Name>
+									<Name>name</Name>
 									<IsUnique>false</IsUnique>
 									<IsAscending>true</IsAscending>
 									<Fields xsi:type='esri:Fields'>
@@ -3008,7 +3008,7 @@
 									</Fields>
 								</Index>
 								<Index xsi:type='esri:Index'>
-									<Name>I12usageband</Name>
+									<Name>usageband</Name>
 									<IsUnique>false</IsUnique>
 									<IsAscending>true</IsAscending>
 									<Fields xsi:type='esri:Fields'>
@@ -3357,7 +3357,7 @@
 							</Fields>
 						</Index>
 						<Index xsi:type='esri:Index'>
-							<Name>I8ps</Name>
+							<Name>ps</Name>
 							<IsUnique>false</IsUnique>
 							<IsAscending>true</IsAscending>
 							<Fields xsi:type='esri:Fields'>
@@ -3375,7 +3375,7 @@
 							</Fields>
 						</Index>
 						<Index xsi:type='esri:Index'>
-							<Name>I8code</Name>
+							<Name>code</Name>
 							<IsUnique>false</IsUnique>
 							<IsAscending>true</IsAscending>
 							<Fields xsi:type='esri:Fields'>
@@ -3962,7 +3962,7 @@
 							<Value xsi:type='xs:string'>{49BD9121-C18E-4973-9BF1-510BBCC97418}</Value>
 							<Value xsi:type='xs:string'>S-128.Horizon</Value>
 							<Value xsi:nil='true'/>
-							<Value xsi:type='xs:string'>NauticalProducts</Value>
+							<Value xsi:type='xs:string'>ProductCatalogue</Value>
 							<Value xsi:type='xs:string'>{&quot;Connections&quot;:[{&quot;ProductSpecification&quot;:&quot;S-101&quot;,&quot;ConnectionFile&quot;:null}]}</Value>
 						</Values>
 					</Record>
