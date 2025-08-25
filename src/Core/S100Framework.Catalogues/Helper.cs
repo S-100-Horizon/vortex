@@ -1,4 +1,5 @@
 ﻿using S100Framework.DomainModel;
+using System.Reflection;
 
 namespace S100Framework.Catalogues
 {
@@ -19,6 +20,16 @@ namespace S100Framework.Catalogues
                 "s501" or "s-501" => new DomainModel.S501.Summary(),
                 _ => null
             };
+        }
+
+        public static int[]? GetValidEnumValues(Type intance, string propertyName) {
+            var property = intance.GetProperty(propertyName);
+            if(property == null) return null;
+
+            var attribute = (EnumerationValueAttribute?)property!.GetCustomAttribute(typeof(EnumerationValueAttribute));
+            if(attribute == null) return null;
+
+            return attribute.PropertyValues;                
         }
     }
 }

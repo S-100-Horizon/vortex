@@ -675,6 +675,8 @@ namespace S100Framework.Applications
                             // TODO: multiplicityOfFeatures
 
                             if (current.NATCON != default) {
+                                var supportedEnumValues = S100Framework.Catalogues.Helper.GetValidEnumValues(typeof(Landmark), "natureOfConstruction");
+
                                 var parts = current.NATCON.Split([',', ';'], StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
                                 foreach (var p in parts) {
                                     if (int.TryParse(p, out int value)) {
