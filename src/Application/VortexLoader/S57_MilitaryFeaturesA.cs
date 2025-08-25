@@ -50,7 +50,7 @@ namespace S100Framework.Applications
                             var instance = new MilitaryPracticeArea();
 
                             if (current.CATMPA != default) {
-                                instance.categoryOfMilitaryPracticeArea = EnumHelper.GetEnumValues<categoryOfMilitaryPracticeArea>(current.CATMPA);
+                                instance.categoryOfMilitaryPracticeArea = EnumHelper.GetEnumValues<MilitaryPracticeArea,categoryOfMilitaryPracticeArea>(current.CATMPA);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -70,7 +70,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
+                                instance.restriction = EnumHelper.GetEnumValues<MilitaryPracticeArea,restriction>(current.RESTRN);
                             }
 
                             if (current.STATUS != default) {

@@ -57,7 +57,7 @@ namespace S100Framework.Applications
                             var instance = new FishingFacility();
 
                             if (current.CATFIF.HasValue) {
-                                instance.categoryOfFishingFacility = EnumHelper.GetEnumValue<categoryOfFishingFacility>(current.CATFIF.Value);
+                                instance.categoryOfFishingFacility = EnumHelper.GetEnumValue<FishingFacility,categoryOfFishingFacility>(current.CATFIF.Value);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -137,7 +137,7 @@ namespace S100Framework.Applications
                                 // TODO: interoperabilityIdentifier
 
                                 if (current.QUASOU != default) {
-                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<FoulGround,qualityOfVerticalMeasurement>(current.QUASOU);
                                 }
 
                                 if (current.SORDAT != default) {
@@ -155,7 +155,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.TECSOU != null) {
-                                    instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                                    instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<FoulGround,techniqueOfVerticalMeasurement>(current.TECSOU);
                                 }
 
 

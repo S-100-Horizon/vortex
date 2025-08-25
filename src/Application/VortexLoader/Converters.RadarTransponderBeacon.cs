@@ -16,7 +16,7 @@ namespace S100Framework.Applications
             };
 
             if (current.CATRTB != null) {
-                instance.categoryOfRadarTransponderBeacon = EnumHelper.GetEnumValue<categoryOfRadarTransponderBeacon>(current.CATRTB);
+                instance.categoryOfRadarTransponderBeacon = EnumHelper.GetEnumValue<RadarTransponderBeacon,categoryOfRadarTransponderBeacon>(current.CATRTB);
             }
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -50,7 +50,7 @@ namespace S100Framework.Applications
                 };
             }
 
-            var rhythmOfLight = ImporterNIS.GetRythmOfLight(current);
+            var rhythmOfLight = ImporterNIS.GetRythmOfLight<RadarTransponderBeacon>(current);
 
             if (current.SIGGRP != default) {
                 instance.signalGroup = current.SIGGRP;

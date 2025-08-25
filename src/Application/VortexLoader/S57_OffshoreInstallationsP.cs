@@ -51,11 +51,11 @@ namespace S100Framework.Applications
                             var instance = new OffshorePlatform();
 
                             if (current.CATOFP != default) {
-                                instance.categoryOfOffshorePlatform = EnumHelper.GetEnumValue<categoryOfOffshorePlatform>(current.CATOFP);
+                                instance.categoryOfOffshorePlatform = EnumHelper.GetEnumValue<OffshorePlatform,categoryOfOffshorePlatform>(current.CATOFP);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<OffshorePlatform>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -83,7 +83,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.PRODCT != null) {
-                                instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
+                                instance.product = EnumHelper.GetEnumValues<OffshorePlatform,product>(current.PRODCT);
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -111,7 +111,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<OffshorePlatform,visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -148,150 +148,11 @@ namespace S100Framework.Applications
                         break;
                     case 5: { // PIPARE_PipelineArea
                             throw new NotImplementedException($"No PIPARE_PipelineArea in DK or GL. {tableName}");
-
-                            var instance = new SubmarinePipelineArea();
-
-
-                            if (current.CATPIP != default) {
-                                instance.categoryOfPipelinePipe = EnumHelper.GetEnumValues<categoryOfPipelinePipe>(current.CATPIP);
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
-                            if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
-                            }
-
-                            // TODO: interoperabilityIdentifier
-
-                            if (current.PRODCT != null) {
-                                instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
-                            }
-
-                            if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            // TODO: vesselspeedlimit
-
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
-                            }
-
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
-
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
-
-                            var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
-                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
-                            }
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
-
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-
                         }
                         break;
                     case 10: { // PIPSOL_PipelineSubmarineOnLand
                             throw new NotImplementedException($"No PIPSOL_PipelineSubmarineOnLand in DK or GL. {tableName}");
 
-                            var instance = new PipelineSubmarineOnLand();
-
-                            if (current.BURDEP.HasValue) {
-                                instance.buriedDepth = current.BURDEP.Value;
-                            }
-
-                            if (current.CATPIP != default) {
-                                instance.categoryOfPipelinePipe = EnumHelper.GetEnumValues<categoryOfPipelinePipe>(current.CATPIP);
-                            }
-
-                            if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
-                            }
-
-                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m) {
-                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
-                            }
-
-                            if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767m) {
-                                instance.depthRangeMinimumValue = current.DRVAL2.Value;
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
-                            if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
-                            }
-
-                            // TODO: interoperabilityIdentifier
-
-                            // TODO: multiplicityOfFeatures
-
-                            if (current.PRODCT != null) {
-                                instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
-                            }
-
-                            if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
-                                }
-                                else {
-                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
-                                }
-                            }
-
-                            // TODO: restriction
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
-                            }
-
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
-
-                            if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
-                            }
-                            buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
-
-                            var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
-                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
-                            }
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
-
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
 
                         }
                         break;

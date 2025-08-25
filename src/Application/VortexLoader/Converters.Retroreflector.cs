@@ -13,7 +13,7 @@ namespace S100Framework.Applications
             var instance = new Retroreflector();
 
             if (current.COLOUR != default) {
-                instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
+                instance.colour = EnumHelper.GetEnumValues<Retroreflector,colour>(current.COLOUR);
             }
 
             if (current.COLPAT != default) {

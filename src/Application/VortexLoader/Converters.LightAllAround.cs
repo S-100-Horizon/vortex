@@ -16,15 +16,15 @@ namespace S100Framework.Applications
             };
 
             if (current.CATLIT != null) {
-                instance.categoryOfLight = EnumHelper.GetEnumValues<categoryOfLight>(current.CATLIT);
+                instance.categoryOfLight = EnumHelper.GetEnumValues<LightAllAround,categoryOfLight>(current.CATLIT);
             }
 
             if (current.COLOUR != default) {
-                instance.colour = ImporterNIS.GetColours(current.COLOUR);
+                instance.colour = ImporterNIS.GetColours<LightAllAround>(current.COLOUR);
             }
 
             if (current.EXCLIT.HasValue) {
-                instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<exhibitionConditionOfLight>(current.EXCLIT.Value);
+                instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<LightAllAround,exhibitionConditionOfLight>(current.EXCLIT.Value);
             }
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -45,7 +45,7 @@ namespace S100Framework.Applications
             // TODO: interoperabilityidentifier
 
             if (current.LITVIS != null) {
-                instance.lightVisibility = EnumHelper.GetEnumValue<lightVisibility>(current.LITVIS);
+                instance.lightVisibility = EnumHelper.GetEnumValue<LightAllAround,lightVisibility>(current.LITVIS);
             }
 
             /*
@@ -63,7 +63,7 @@ namespace S100Framework.Applications
             }
 
             if (current.MARSYS.HasValue) {
-                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<LightAllAround,marksNavigationalSystemOf>(current.MARSYS.Value);
             }
 
             if (current.MLTYLT.HasValue) {
@@ -78,7 +78,7 @@ namespace S100Framework.Applications
                 instance.periodicDateRange = periodicDateRange;
             }
 
-            instance.rhythmOfLight = ImporterNIS.GetRythmOfLight(current);
+            instance.rhythmOfLight = ImporterNIS.GetRythmOfLight<LightAllAround>(current);
 
             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var fixedDateRange);
             if (dateRange != default) {
@@ -86,7 +86,7 @@ namespace S100Framework.Applications
             }
 
             if (current.SIGGEN != null) {
-                instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
+                instance.signalGeneration = EnumHelper.GetEnumValue<LightAllAround,signalGeneration>(current.SIGGEN.Value);
             }
 
             if (current.STATUS != default) {
@@ -99,7 +99,7 @@ namespace S100Framework.Applications
 
             if (current.VERLEN.HasValue) {
                 instance.verticalLength = current.VERLEN.Value;
-                instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                instance.verticalDatum = ImporterNIS.GetVerticalDatum<LightAirObstruction>(current.VERDAT ?? 3);
             }
 
             //if (plts_comp_scale != default) {

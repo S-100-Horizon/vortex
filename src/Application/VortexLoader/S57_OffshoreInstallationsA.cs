@@ -49,7 +49,7 @@ namespace S100Framework.Applications
                             var instance = new CableArea();
 
                             if (current.CATCBL.HasValue) {
-                                instance.categoryOfCable = EnumHelper.GetEnumValues<categoryOfCable>(current.CATCBL.Value);
+                                instance.categoryOfCable = EnumHelper.GetEnumValues<CableArea,categoryOfCable>(current.CATCBL.Value);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -62,7 +62,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
+                                instance.restriction = EnumHelper.GetEnumValues<CableArea,restriction>(current.RESTRN);
                             }
 
                             if (current.STATUS != default) {
@@ -104,11 +104,11 @@ namespace S100Framework.Applications
                             var instance = new OffshorePlatform();
 
                             if (current.CATOFP != default) {
-                                instance.categoryOfOffshorePlatform = EnumHelper.GetEnumValue<categoryOfOffshorePlatform>(current.CATOFP);
+                                instance.categoryOfOffshorePlatform = EnumHelper.GetEnumValue<OffshorePlatform,categoryOfOffshorePlatform>(current.CATOFP);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours< OffshorePlatform>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -136,7 +136,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.PRODCT != null) {
-                                instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
+                                instance.product = EnumHelper.GetEnumValues<OffshorePlatform,product>(current.PRODCT);
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -164,7 +164,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<OffshorePlatform,visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -243,7 +243,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.PRODCT != null) {
-                                instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
+                                instance.product = EnumHelper.GetEnumValues<OffshoreProductionArea,product>(current.PRODCT);
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -260,7 +260,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
+                                instance.restriction = EnumHelper.GetEnumValues<OffshoreProductionArea,restriction>(current.RESTRN);
                             }
 
                             if (current.STATUS != default) {
@@ -277,7 +277,7 @@ namespace S100Framework.Applications
                             // TODO: vesselspeedlimit
 
                             if (current.CONVIS.HasValue) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<OffshoreProductionArea,visualProminence>(current.CONVIS.Value);
                             }
 
                             // TODO: waterleveleffect
@@ -317,7 +317,7 @@ namespace S100Framework.Applications
 
 
                             if (current.CATPIP != default) {
-                                instance.categoryOfPipelinePipe = EnumHelper.GetEnumValues<categoryOfPipelinePipe>(current.CATPIP);
+                                instance.categoryOfPipelinePipe = EnumHelper.GetEnumValues<SubmarinePipelineArea,categoryOfPipelinePipe>(current.CATPIP);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -330,11 +330,11 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.PRODCT != null) {
-                                instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
+                                instance.product = EnumHelper.GetEnumValues<SubmarinePipelineArea,product>(current.PRODCT);
                             }
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
+                                instance.restriction = EnumHelper.GetEnumValues<SubmarinePipelineArea,restriction>(current.RESTRN);
                             }
 
                             if (current.STATUS != default) {

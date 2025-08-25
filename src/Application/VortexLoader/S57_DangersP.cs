@@ -125,72 +125,6 @@ namespace S100Framework.Applications
 
                     case 10: { // FSHFAC Fishing facilities
                             throw new NotImplementedException($"No FSHFAC in DK or GL. {tableName}");
-
-                            var instance = new FishingFacility();
-
-                            if (current.CATFIF.HasValue) {
-                                instance.categoryOfFishingFacility = EnumHelper.GetEnumValue<categoryOfFishingFacility>(current.CATFIF.Value);
-                            }
-
-                            if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                            // TODO: interoperabilityIdentifier
-
-                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
-                            if (periodicDateRange != default) {
-                                instance.periodicDateRange = periodicDateRange;
-                            }
-
-                            if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
-                                }
-                                else {
-                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
-                                }
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
-                                instance.verticalLength = current.VERLEN.Value;
-                            }
-                            else {
-                                instance.verticalLength = default(decimal?);
-                            }
-
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
-                            }
-
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
-
-                            buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
-
-                            var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
-                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
-                            }
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
-
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
                         break;
 
@@ -205,7 +139,7 @@ namespace S100Framework.Applications
                                 // TODO: interoperabilityIdentifier
 
                                 if (current.QUASOU != default) {
-                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<FoulGround,qualityOfVerticalMeasurement>(current.QUASOU);
                                 }
 
                                 if (current.SORDAT != default) {
@@ -222,7 +156,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.TECSOU != null) {
-                                    instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                                    instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<FoulGround,techniqueOfVerticalMeasurement>(current.TECSOU);
                                 }
 
                                 if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
@@ -323,7 +257,7 @@ namespace S100Framework.Applications
                             };
 
                             if (current.EXPSOU.HasValue) {
-                                instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
+                                instance.expositionOfSounding = EnumHelper.GetEnumValue<UnderwaterAwashRock,expositionOfSounding>(current.EXPSOU.Value);
                             }
 
                             AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
@@ -333,11 +267,11 @@ namespace S100Framework.Applications
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.NATSUR != null) {
-                                instance.natureOfSurface = EnumHelper.GetEnumValue<natureOfSurface>(current.NATSUR);
+                                instance.natureOfSurface = EnumHelper.GetEnumValue<UnderwaterAwashRock,natureOfSurface>(current.NATSUR);
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<UnderwaterAwashRock,qualityOfVerticalMeasurement>(current.QUASOU);
                             }
 
                             if (current.SORDAT != default) {
@@ -354,7 +288,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.TECSOU != default) {
-                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<UnderwaterAwashRock,techniqueOfVerticalMeasurement>(current.TECSOU);
                             }
 
                             if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
@@ -375,7 +309,7 @@ namespace S100Framework.Applications
                             // 7   floating
                             // -1  Unknown
                             if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV.Value);
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue<UnderwaterAwashRock,waterLevelEffect>(current.WATLEV.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -426,7 +360,7 @@ namespace S100Framework.Applications
                             };
 
                             if (current.CATWAT.HasValue) {
-                                instance.categoryOfWaterTurbulence = EnumHelper.GetEnumValue<categoryOfWaterTurbulence>(current.CATWAT);
+                                instance.categoryOfWaterTurbulence = EnumHelper.GetEnumValue<WaterTurbulence,categoryOfWaterTurbulence>(current.CATWAT);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -470,11 +404,11 @@ namespace S100Framework.Applications
 
                             // action point #42 Attributes converted correctly but the combination of both is prohibited in S-101 (DCEG 13.5). Ignore/ drop CATWRK when VALSOU is populated on conversion.
                             if (current.CATWRK.HasValue && !instance.valueOfSounding.HasValue) {
-                                instance.categoryOfWreck = EnumHelper.GetEnumValue<categoryOfWreck>(current.CATWRK.Value);
+                                instance.categoryOfWreck = EnumHelper.GetEnumValue<Wreck,categoryOfWreck>(current.CATWRK.Value);
                             }
 
                             if (current.EXPSOU.HasValue) {
-                                instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
+                                instance.expositionOfSounding = EnumHelper.GetEnumValue<Wreck,expositionOfSounding>(current.EXPSOU.Value);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -489,7 +423,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<Wreck,qualityOfVerticalMeasurement>(current.QUASOU);
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -516,7 +450,7 @@ namespace S100Framework.Applications
                                     During the automated conversion process, all instances of TECSOU = 6 will be converted to technique of vertical measurement = 18.
                                  */
                                 var tecsou = !string.IsNullOrEmpty(current.TECSOU) && int.Parse(current.TECSOU)==6 ? "18" : current.TECSOU;
-                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(tecsou);
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<Wreck,techniqueOfVerticalMeasurement>(tecsou);
                             }
 
                             if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
@@ -527,11 +461,11 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<Wreck,visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue<Wreck,waterLevelEffect>(current.WATLEV);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {

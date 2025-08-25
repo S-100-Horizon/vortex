@@ -40,7 +40,7 @@ namespace S100Framework.Applications
                 };
 
                 if (category != null) {
-                    instance.categoryOfRadioStation = EnumHelper.GetEnumValues<categoryOfRadioStation>(category);
+                    instance.categoryOfRadioStation = EnumHelper.GetEnumValues<RadioStation,categoryOfRadioStation>(category);
                 }
                 else {
                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Radiostation of type {subtype} is not converted.");

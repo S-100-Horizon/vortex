@@ -68,7 +68,7 @@ namespace S100Framework.Applications
                                     instance.categoryOfCable = categoryOfCable.TelecommunicationsCable;
                                 }
                                 else {
-                                    instance.categoryOfCable = EnumHelper.GetEnumValue<categoryOfCable>(current.CATCBL.Value);
+                                    instance.categoryOfCable = EnumHelper.GetEnumValue<CableSubmarine,categoryOfCable>(current.CATCBL.Value);
                                 }
                             }
                             
@@ -129,7 +129,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CATPIP != default) {
-                                instance.categoryOfPipelinePipe = EnumHelper.GetEnumValues<categoryOfPipelinePipe>(current.CATPIP);
+                                instance.categoryOfPipelinePipe = EnumHelper.GetEnumValues<PipelineSubmarineOnLand,categoryOfPipelinePipe>(current.CATPIP);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -156,7 +156,7 @@ namespace S100Framework.Applications
                             // TODO: multiplicityOfFeatures
 
                             if (current.PRODCT != null) {
-                                instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
+                                instance.product = EnumHelper.GetEnumValues<PipelineSubmarineOnLand,product>(current.PRODCT);
                             }
 
                             if (current.SORDAT != default) {

@@ -84,11 +84,11 @@ namespace S100Framework.Applications
                             };
 
                             if (current.CATMFA != null) {
-                                instance.categoryOfMarineFarmCulture = EnumHelper.GetEnumValue<categoryOfMarineFarmCulture>(current.CATMFA);
+                                instance.categoryOfMarineFarmCulture = EnumHelper.GetEnumValue<MarineFarmCulture,categoryOfMarineFarmCulture>(current.CATMFA);
                             }
 
                             if (current.EXPSOU.HasValue) {
-                                instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
+                                instance.expositionOfSounding = EnumHelper.GetEnumValue<MarineFarmCulture,expositionOfSounding>(current.EXPSOU.Value);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -108,11 +108,11 @@ namespace S100Framework.Applications
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<MarineFarmCulture,qualityOfVerticalMeasurement>(current.QUASOU);
                             }
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
+                                instance.restriction = EnumHelper.GetEnumValues<MarineFarmCulture,restriction>(current.RESTRN);
                             }
 
                             if (current.STATUS != default) {
@@ -138,7 +138,7 @@ namespace S100Framework.Applications
                             // TODO: VesselSpeedLimit
 
                             if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue<MarineFarmCulture,waterLevelEffect>(current.WATLEV);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {

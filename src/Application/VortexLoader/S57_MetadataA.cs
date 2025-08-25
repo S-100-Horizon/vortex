@@ -209,7 +209,7 @@ namespace S100Framework.Applications
                                 // TODO: interoperabilityIdentifier
 
                                 if (current.MARSYS.HasValue) {
-                                    localDirectionOfBuoyage.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                    localDirectionOfBuoyage.marksNavigationalSystemOf = EnumHelper.GetEnumValue<LocalDirectionOfBuoyage,marksNavigationalSystemOf>(current.MARSYS.Value);
                                 }
                                 //else {
                                 //    Logger.Current.DataError(current.OBJECTID ?? default, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown LNAM", $"Missing MARSYS value for M_NSYS where globalid = '{{{current.GLOBALID}}}'");
@@ -247,7 +247,7 @@ namespace S100Framework.Applications
                                 };
 
                                 if (current.MARSYS.HasValue) {
-                                    instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                    instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<NavigationalSystemOfMarks,marksNavigationalSystemOf>(current.MARSYS.Value);
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? default, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown LNAM", $"Missing MARSYS value for M_NSYS where globalid = '{{{current.GLOBALID}}}'");
@@ -509,11 +509,11 @@ namespace S100Framework.Applications
                             }
 
                             if (current.QUAPOS.HasValue) {
-                                instance.qualityOfHorizontalMeasurement = EnumHelper.GetEnumValue<qualityOfHorizontalMeasurement>(current.QUAPOS);
+                                instance.qualityOfHorizontalMeasurement = EnumHelper.GetEnumValue<QualityOfSurvey,qualityOfHorizontalMeasurement>(current.QUAPOS);
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<QualityOfSurvey,qualityOfVerticalMeasurement>(current.QUASOU);
                             }
 
                             if (current.SCVAL1.HasValue && current.SCVAL1 != -32767) {
@@ -533,11 +533,11 @@ namespace S100Framework.Applications
                             }
                             
                             if (current.SURTYP != default) {
-                                instance.surveyType = EnumHelper.GetEnumValues<surveyType>(current.SURTYP);
+                                instance.surveyType = EnumHelper.GetEnumValues<QualityOfSurvey,surveyType>(current.SURTYP);
                             }
 
                             if (current.TECSOU != null) {
-                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<QualityOfSurvey,techniqueOfVerticalMeasurement>(current.TECSOU);
                             }
 
                             AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
@@ -569,7 +569,7 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                            instance.verticalDatum = ImporterNIS.GetVerticalDatum<VerticalDatumOfData>(current.VERDAT ?? 3);
 
                             AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
                             buffer["ps"] = ps101;

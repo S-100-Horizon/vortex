@@ -33,11 +33,11 @@ namespace S100Framework.Applications
             var instance = new LightAirObstruction();
 
             if (current.COLOUR != default) {
-                instance.colour = ImporterNIS.GetColours(current.COLOUR);
+                instance.colour = ImporterNIS.GetColours< LightAirObstruction>(current.COLOUR);
             }
 
             if (current.EXCLIT.HasValue) {
-                instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<exhibitionConditionOfLight>(current.EXCLIT.Value);
+                instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<LightAirObstruction,exhibitionConditionOfLight>(current.EXCLIT.Value);
             }
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -58,7 +58,7 @@ namespace S100Framework.Applications
             }
 
             if (current.LITVIS != null) {
-                instance.lightVisibility = EnumHelper.GetEnumValues<lightVisibility>(current.LITVIS);
+                instance.lightVisibility = EnumHelper.GetEnumValues<LightAirObstruction,lightVisibility>(current.LITVIS);
             }
 
             if (current.MLTYLT.HasValue) {
@@ -73,7 +73,7 @@ namespace S100Framework.Applications
                 instance.periodicDateRange = periodicDateRange;
             }
 
-            instance.rhythmOfLight = ImporterNIS.GetRythmOfLight(current);
+            instance.rhythmOfLight = ImporterNIS.GetRythmOfLight<LightAirObstruction>(current);
 
             if (current.STATUS != default) {
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
@@ -83,7 +83,7 @@ namespace S100Framework.Applications
                 instance.valueOfNominalRange = current.VALNMR.Value;
             }
             // todo: mean sea level til baltic.
-            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+            instance.verticalDatum = ImporterNIS.GetVerticalDatum<LightAirObstruction>(current.VERDAT ?? 3);
 
 
             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {

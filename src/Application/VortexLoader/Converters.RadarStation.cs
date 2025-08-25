@@ -17,20 +17,22 @@ namespace S100Framework.Applications
             }
 
             if (current.CATRAS != null) {
-                instance.categoryOfRadarStation = EnumHelper.GetEnumValues<categoryOfRadarStation>(current.CATRAS);
+                instance.categoryOfRadarStation = EnumHelper.GetEnumValues<RadarStation,categoryOfRadarStation>(current.CATRAS);
             }
 
             if (current.COMCHA != default) {
                 instance.communicationChannel = ImporterNIS.GetCommunicationChannel(current.COMCHA);
             }
 
-            instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
-                                instance.height = current.HEIGHT.Value;
-                            }
-                            else {
-                                instance.height = default(decimal?);
-                            }
+            instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                instance.height = current.HEIGHT.Value;
+            }
+            else {
+                instance.height = default(decimal?);
+            }
+
 
             // TODO: interoperabilityidentifier
 

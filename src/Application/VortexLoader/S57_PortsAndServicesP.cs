@@ -103,7 +103,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<Berth,qualityOfVerticalMeasurement>(current.QUASOU);
                             }
 
                             if (current.STATUS != default) {
@@ -228,11 +228,11 @@ namespace S100Framework.Applications
                             var instance = new Crane();
 
                             if (current.CATCRN.HasValue) {
-                                instance.categoryOfCrane = EnumHelper.GetEnumValue<categoryOfCrane>(current.CATCRN.Value);
+                                instance.categoryOfCrane = EnumHelper.GetEnumValue<Crane,categoryOfCrane>(current.CATCRN.Value);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<Crane>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -292,7 +292,7 @@ namespace S100Framework.Applications
                                 verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR.Value : default(decimal?),
                             };
 
-                            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                            instance.verticalDatum = ImporterNIS.GetVerticalDatum<Crane>(current.VERDAT ?? 3);
 
 
                             if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
@@ -304,7 +304,7 @@ namespace S100Framework.Applications
 
 
                             if (current.CONVIS.HasValue) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<Crane,visualProminence>(current.CONVIS.Value);
                             }
 
 
@@ -387,7 +387,7 @@ namespace S100Framework.Applications
                             var instance = new Gate();
 
                             if (current.CATGAT.HasValue) {
-                                instance.categoryOfGate = EnumHelper.GetEnumValue<categoryOfGate>(current.CATGAT.Value);
+                                instance.categoryOfGate = EnumHelper.GetEnumValue<Gate,categoryOfGate>(current.CATGAT.Value);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -408,11 +408,11 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<Gate,natureOfConstruction>(current.NATCON);
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<Gate,qualityOfVerticalMeasurement>(current.QUASOU);
                             }
 
                             if (current.STATUS != default) {
@@ -428,7 +428,7 @@ namespace S100Framework.Applications
                                 verticalClearanceUnlimited = current.VERCLR.HasValue ? !(current.VERCLR!.Value == default(decimal)) : null
                             };
 
-                            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                            instance.verticalDatum = ImporterNIS.GetVerticalDatum<Gate>(current.VERDAT ?? 3);
 
                             if (current.SOUACC.HasValue) {
                                 instance.verticalUncertainty = new() {
@@ -506,7 +506,7 @@ namespace S100Framework.Applications
                             var instance = new HarbourFacility();
 
                             if (current.CATHAF != default) {
-                                instance.categoryOfHarbourFacility = EnumHelper.GetEnumValues<categoryOfHarbourFacility>(current.CATHAF);
+                                instance.categoryOfHarbourFacility = EnumHelper.GetEnumValues<HarbourFacility,categoryOfHarbourFacility>(current.CATHAF);
                             }
 
                             if (current.COMCHA != default) {
@@ -527,7 +527,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<HarbourFacility,natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -587,13 +587,13 @@ namespace S100Framework.Applications
 
 
                             if (current.CATHLK != default) {
-                                instance.categoryOfHulk = EnumHelper.GetEnumValues<categoryOfHulk>(current.CATHLK);
+                                instance.categoryOfHulk = EnumHelper.GetEnumValues<Hulk,categoryOfHulk>(current.CATHLK);
                             }
                             ;
 
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours< Hulk>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -645,7 +645,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<Hulk, visualProminence>(current.CONVIS.Value);
                             }
 
 
@@ -703,7 +703,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.COLOUR != default) {
-                                    instance.colour = GetColours(current.COLOUR);
+                                    instance.colour = GetColours<Dolphin>(current.COLOUR);
                                 }
 
                                 if (current.COLPAT != default) {
@@ -733,7 +733,7 @@ namespace S100Framework.Applications
 
 
                                 if (current.NATCON != default) {
-                                    instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                    instance.natureOfConstruction = EnumHelper.GetEnumValues<Dolphin,natureOfConstruction>(current.NATCON);
                                 }
 
                                 DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -763,7 +763,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                    instance.visualProminence = EnumHelper.GetEnumValue<Dolphin,visualProminence>(current.CONVIS.Value);
                                 }
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -880,7 +880,7 @@ namespace S100Framework.Applications
                                 instance.categoryOfShorelineConstruction = categoryOfShorelineConstruction.TieUpWall;
 
                                 if (current.COLOUR != default) {
-                                    instance.colour = GetColours(current.COLOUR);
+                                    instance.colour = GetColours<ShorelineConstruction>(current.COLOUR);
                                 }
 
                                 if (current.COLPAT != default) {
@@ -926,7 +926,7 @@ namespace S100Framework.Applications
                                 // TODO: interoperabilityIdentifier
 
                                 if (current.NATCON != default) {
-                                    instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                    instance.natureOfConstruction = EnumHelper.GetEnumValues<ShorelineConstruction,natureOfConstruction>(current.NATCON);
                                 }
 
                                 if (current.CONRAD.HasValue) {
@@ -951,14 +951,14 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                    instance.visualProminence = EnumHelper.GetEnumValue<ShorelineConstruction,visualProminence>(current.CONVIS.Value);
                                 }
 
                                 if (current.WATLEV.HasValue) {
                                     if (current.WATLEV.Value == -32767)
-                                        instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
+                                        instance.waterLevelEffect = EnumHelper.GetEnumValue<ShorelineConstruction, waterLevelEffect>(-1);
                                     else {
-                                        instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                                        instance.waterLevelEffect = EnumHelper.GetEnumValue<ShorelineConstruction, waterLevelEffect>(current.WATLEV);
                                     }
                                 }
 
@@ -1000,7 +1000,7 @@ namespace S100Framework.Applications
 
 
                                 if (current.COLOUR != default) {
-                                    instance.colour = GetColours(current.COLOUR);
+                                    instance.colour = GetColours<Pile>(current.COLOUR);
                                 }
 
                                 if (current.COLPAT != default) {
@@ -1051,7 +1051,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                    instance.visualProminence = EnumHelper.GetEnumValue<Pile,visualProminence>(current.CONVIS.Value);
                                 }
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -1105,7 +1105,7 @@ namespace S100Framework.Applications
 
 
                                 if (current.COLOUR != default) {
-                                    instance.colour = GetColours(current.COLOUR);
+                                    instance.colour = GetColours< MooringBuoy>(current.COLOUR);
                                 }
 
                                 if (current.COLPAT != default) {
@@ -1129,7 +1129,7 @@ namespace S100Framework.Applications
 
 
                                 if (current.NATCON != default) {
-                                    instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                    instance.natureOfConstruction = EnumHelper.GetEnumValues<MooringBuoy,natureOfConstruction>(current.NATCON);
                                 }
 
                                 DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -1187,7 +1187,7 @@ namespace S100Framework.Applications
                             var instance = new PilotBoardingPlace();
 
                             if (current.CATPIL.HasValue) {
-                                instance.categoryOfPilotBoardingPlace = EnumHelper.GetEnumValue<categoryOfPilotBoardingPlace>(current.CATPIL);
+                                instance.categoryOfPilotBoardingPlace = EnumHelper.GetEnumValue<PilotBoardingPlace,categoryOfPilotBoardingPlace>(current.CATPIL);
                             }
 
                             // TODO: CategoryOfPrecense - new S-101 att.
@@ -1253,7 +1253,7 @@ namespace S100Framework.Applications
                             instance.categoryOfPile = categoryOfPile.MooringPost;
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<Pile>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -1304,7 +1304,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<Pile,visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -1346,7 +1346,7 @@ namespace S100Framework.Applications
                             var instance = new RescueStation();
 
                             if (current.CATRSC != null) {
-                                instance.categoryOfRescueStation = EnumHelper.GetEnumValues<categoryOfRescueStation>(current.CATRSC);
+                                instance.categoryOfRescueStation = EnumHelper.GetEnumValues<RescueStation,categoryOfRescueStation>(current.CATRSC);
                             }
 
                             if (current.COMCHA != default) {
@@ -1450,7 +1450,7 @@ namespace S100Framework.Applications
                             var instance = new SmallCraftFacility();
 
                             if (current.CATSCF != default) {
-                                instance.categoryOfSmallCraftFacility = EnumHelper.GetEnumValues<categoryOfSmallCraftFacility>(current.CATSCF);
+                                instance.categoryOfSmallCraftFacility = EnumHelper.GetEnumValues<SmallCraftFacility,categoryOfSmallCraftFacility>(current.CATSCF);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);

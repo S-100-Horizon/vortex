@@ -124,7 +124,7 @@ namespace S100Framework.Applications
                             var instance = new FishingFacility();
 
                             if (current.CATFIF.HasValue) {
-                                instance.categoryOfFishingFacility = EnumHelper.GetEnumValue<categoryOfFishingFacility>(current.CATFIF.Value);
+                                instance.categoryOfFishingFacility = EnumHelper.GetEnumValue<FishingFacility,categoryOfFishingFacility>(current.CATFIF.Value);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -227,7 +227,7 @@ namespace S100Framework.Applications
                                 // TODO: interoperabilityIdentifier
 
                                 if (current.NATCON != default) {
-                                    instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                    instance.natureOfConstruction = EnumHelper.GetEnumValues<Dam,natureOfConstruction>(current.NATCON);
                                 }
 
                                 if (current.CONRAD.HasValue) {
@@ -247,7 +247,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                    instance.visualProminence = EnumHelper.GetEnumValue<Dam,visualProminence>(current.CONVIS.Value);
                                 }
 
 
@@ -290,7 +290,7 @@ namespace S100Framework.Applications
                                 // TODO: interoperabilityIdentifier
 
                                 if (current.QUASOU != default) {
-                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<FoulGround,qualityOfVerticalMeasurement>(current.QUASOU);
                                 }
 
                                 if (current.SORDAT != default) {
@@ -308,7 +308,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.TECSOU != null) {
-                                    instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                                    instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<FoulGround,techniqueOfVerticalMeasurement>(current.TECSOU);
                                 }
 
                                 if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
@@ -511,7 +511,7 @@ namespace S100Framework.Applications
 
 
                             if (current.CATWAT.HasValue) {
-                                instance.categoryOfWaterTurbulence = EnumHelper.GetEnumValue<categoryOfWaterTurbulence>(current.CATWAT);
+                                instance.categoryOfWaterTurbulence = EnumHelper.GetEnumValue<WaterTurbulence,categoryOfWaterTurbulence>(current.CATWAT);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -547,11 +547,11 @@ namespace S100Framework.Applications
 
                             // action point #42 Attributes converted correctly but the combination of both is prohibited in S-101 (DCEG 13.5). Ignore/ drop CATWRK when VALSOU is populated on conversion.
                             if (current.CATWRK.HasValue && !instance.valueOfSounding.HasValue) {
-                                instance.categoryOfWreck = EnumHelper.GetEnumValue<categoryOfWreck>(current.CATWRK.Value);
+                                instance.categoryOfWreck = EnumHelper.GetEnumValue<Wreck,categoryOfWreck>(current.CATWRK.Value);
                             }
 
                             if (current.EXPSOU.HasValue) {
-                                instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
+                                instance.expositionOfSounding = EnumHelper.GetEnumValue<Wreck,expositionOfSounding>(current.EXPSOU.Value);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -566,7 +566,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<Wreck,qualityOfVerticalMeasurement>(current.QUASOU);
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -587,7 +587,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.TECSOU != null) {
-                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<Wreck,techniqueOfVerticalMeasurement>(current.TECSOU);
                             }
 
                             if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
@@ -598,11 +598,11 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<Wreck,visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue<Wreck,waterLevelEffect>(current.WATLEV);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
