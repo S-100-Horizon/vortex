@@ -68,7 +68,7 @@ namespace S100Framework.Applications
                             if (current.NATQUA != default && current.NATQUA.Trim().Length > 0) {
                                 natquaValues = current.NATQUA.Trim().Trim(',').Split(',');
                                 natureOfSurfaceQualifyingTermsCount = natquaValues.Count();
-                                natureOfSurfaceQualifyingTermsList = EnumHelper.GetEnumValues<SeabedArea,natureOfSurfaceQualifyingTerms>(current.NATQUA);
+                                natureOfSurfaceQualifyingTermsList = EnumHelper.GetEnumValues<surfaceCharacteristics, natureOfSurfaceQualifyingTerms>(current.NATQUA);
                             }
 
                             // TODO: Verify this against action point 48
