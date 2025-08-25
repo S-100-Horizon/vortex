@@ -105,9 +105,9 @@ namespace S100Framework.Applications
 
                             if (current.QUASOU != default) {
                                 if (current.QUASOU == "-32767")
-                                    sounding.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>("-1");
+                                    sounding.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<Sounding,qualityOfVerticalMeasurement>("-1");
                                 else {
-                                    sounding.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                    sounding.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<Sounding,qualityOfVerticalMeasurement>(current.QUASOU);
                                 }
                             }
 
@@ -126,7 +126,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.TECSOU != null) {
-                                sounding.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                                sounding.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<Sounding,techniqueOfVerticalMeasurement>(current.TECSOU);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -184,7 +184,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.TECSOU != null) {
-                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<DepthNoBottomFound,techniqueOfVerticalMeasurement>(current.TECSOU);
                             }
 
 

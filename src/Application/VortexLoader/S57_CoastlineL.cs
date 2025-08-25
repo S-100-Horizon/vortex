@@ -74,7 +74,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<Coastline>(current.COLOUR);
                             }
 
                             if (current.ELEVAT.HasValue) {
@@ -114,7 +114,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<Coastline,visualProminence>(current.CONVIS.Value);
                             }
 
                             AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
@@ -148,11 +148,11 @@ namespace S100Framework.Applications
                             var instance = new ShorelineConstruction();
 
                             if (current.CATSLC.HasValue) {
-                                instance.categoryOfShorelineConstruction = EnumHelper.GetEnumValue<categoryOfShorelineConstruction>(current.CATSLC.Value);
+                                instance.categoryOfShorelineConstruction = EnumHelper.GetEnumValue<ShorelineConstruction,categoryOfShorelineConstruction>(current.CATSLC.Value);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<ShorelineConstruction>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -198,7 +198,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<ShorelineConstruction,natureOfConstruction>(current.NATCON);
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -223,14 +223,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<ShorelineConstruction,visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.WATLEV.HasValue) {
                                 if (current.WATLEV.Value == -32767)
-                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<ShorelineConstruction,waterLevelEffect>(-1);
                                 else {
-                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<ShorelineConstruction,waterLevelEffect>(current.WATLEV);
                                 }
                             }
 

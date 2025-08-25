@@ -39,7 +39,7 @@ namespace S100Framework.Applications
             //}
 
             if (current.EXCLIT.HasValue) {
-                instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<exhibitionConditionOfLight>(current.EXCLIT.Value);
+                instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<LightSectored,exhibitionConditionOfLight>(current.EXCLIT.Value);
             }
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -61,7 +61,7 @@ namespace S100Framework.Applications
             // TODO: interoperabilityidentifier
 
             if (current.MARSYS.HasValue) {
-                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<LightSectored,marksNavigationalSystemOf>(current.MARSYS.Value);
             }
 
             if (current.MLTYLT.HasValue) {
@@ -76,10 +76,10 @@ namespace S100Framework.Applications
                 instance.periodicDateRange = periodicDateRange;
             }
 
-            instance.sectorCharacteristics = (ImporterNIS.GetSectorCharacteristics(lights));
+            instance.sectorCharacteristics = (ImporterNIS.GetSectorCharacteristics<LightSectored>(lights));
 
             if (current.SIGGEN != null) {
-                instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
+                instance.signalGeneration = EnumHelper.GetEnumValue<LightSectored,signalGeneration>(current.SIGGEN.Value);
             }
 
             if (current.STATUS != default) {
@@ -131,7 +131,7 @@ namespace S100Framework.Applications
             //}
 
             if (current.EXCLIT.HasValue) {
-                instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<exhibitionConditionOfLight>(current.EXCLIT.Value);
+                instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<LightSectored,exhibitionConditionOfLight>(current.EXCLIT.Value);
             }
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -152,7 +152,7 @@ namespace S100Framework.Applications
             // TODO: interoperabilityidentifier
 
             if (current.MARSYS.HasValue) {
-                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<LightSectored,marksNavigationalSystemOf>(current.MARSYS.Value);
             }
 
             if (current.MLTYLT.HasValue) {
@@ -168,14 +168,14 @@ namespace S100Framework.Applications
             }
 
             if (lights.Count == 0) {
-                instance.sectorCharacteristics = (ImporterNIS.GetSectorCharacteristics([current]));
+                instance.sectorCharacteristics = (ImporterNIS.GetSectorCharacteristics< LightSectored>([current]));
             }
             else {
-                instance.sectorCharacteristics = (ImporterNIS.GetSectorCharacteristics(lights));
+                instance.sectorCharacteristics = (ImporterNIS.GetSectorCharacteristics<LightSectored>(lights));
             }
 
             if (current.SIGGEN != null) {
-                instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
+                instance.signalGeneration = EnumHelper.GetEnumValue<LightSectored,signalGeneration>(current.SIGGEN.Value);
             }
 
             if (current.STATUS != default) {

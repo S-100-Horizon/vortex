@@ -200,7 +200,7 @@ namespace S100Framework.Applications
                                     verticalDatum = default,
                                 };
 
-                                vdat.verticalDatum = GetVerticalDatum(current.VDAT ?? 3);
+                                vdat.verticalDatum = GetVerticalDatum<VerticalDatumOfData>(current.VDAT ?? 3);
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = vdat.GetType().Name;

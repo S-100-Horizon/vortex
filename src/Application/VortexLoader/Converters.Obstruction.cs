@@ -17,7 +17,7 @@ namespace S100Framework.Applications
             };
 
             if (current.CATOBS.HasValue) {
-                instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(current.CATOBS.Value);
+                instance.categoryOfObstruction = EnumHelper.GetEnumValue<Obstruction,categoryOfObstruction>(current.CATOBS.Value);
             }
 
             if (current.CONDTN.HasValue) {
@@ -25,7 +25,7 @@ namespace S100Framework.Applications
             }
 
             if (current.EXPSOU.HasValue) {
-                instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
+                instance.expositionOfSounding = EnumHelper.GetEnumValue<Obstruction,expositionOfSounding>(current.EXPSOU.Value);
             }
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -42,11 +42,11 @@ namespace S100Framework.Applications
             // TODO: Maximum permitted draught
 
             if (current.NATSUR != default) {
-                instance.natureOfSurface = EnumHelper.GetEnumValues<natureOfSurface>(current.NATSUR);
+                instance.natureOfSurface = EnumHelper.GetEnumValues<Obstruction,natureOfSurface>(current.NATSUR);
             }
 
             if (current.PRODCT != default) {
-                instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
+                instance.product = EnumHelper.GetEnumValues<Obstruction,product>(current.PRODCT);
             }
 
             // TODO: QualityOfVerticalMeasurement
@@ -68,7 +68,7 @@ namespace S100Framework.Applications
 
 
             if (current.TECSOU != null) {
-                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<Obstruction,techniqueOfVerticalMeasurement>(current.TECSOU);
             }
 
 
@@ -87,7 +87,7 @@ namespace S100Framework.Applications
             }
 
             if (current.WATLEV.HasValue) {
-                instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                instance.waterLevelEffect = EnumHelper.GetEnumValue<Obstruction,waterLevelEffect>(current.WATLEV);
             }
 
             if (scaleMinimum.HasValue) {
@@ -121,7 +121,7 @@ namespace S100Framework.Applications
             };
 
             if (current.CATOBS.HasValue) {
-                instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(current.CATOBS.Value);
+                instance.categoryOfObstruction = EnumHelper.GetEnumValue<Obstruction,categoryOfObstruction>(current.CATOBS.Value);
             }
 
             if (current.CONDTN.HasValue) {
@@ -129,7 +129,7 @@ namespace S100Framework.Applications
             }
 
             if (current.EXPSOU.HasValue) {
-                instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
+                instance.expositionOfSounding = EnumHelper.GetEnumValue<Obstruction,expositionOfSounding>(current.EXPSOU.Value);
             }
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -146,11 +146,11 @@ namespace S100Framework.Applications
             // TODO: Maximum permitted draught
 
             if (current.NATSUR != default) {
-                instance.natureOfSurface = EnumHelper.GetEnumValues<natureOfSurface>(current.NATSUR);
+                instance.natureOfSurface = EnumHelper.GetEnumValues<Obstruction,natureOfSurface>(current.NATSUR);
             }
 
             if (current.PRODCT != default) {
-                instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
+                instance.product = EnumHelper.GetEnumValues<Obstruction,product>(current.PRODCT);
             }
 
             // TODO: QualityOfVerticalMeasurement
@@ -172,7 +172,7 @@ namespace S100Framework.Applications
 
 
             if (current.TECSOU != null) {
-                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<Obstruction,techniqueOfVerticalMeasurement>(current.TECSOU);
             }
 
 
@@ -191,7 +191,7 @@ namespace S100Framework.Applications
             }
 
             if (current.WATLEV.HasValue) {
-                instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                instance.waterLevelEffect = EnumHelper.GetEnumValue<Obstruction,waterLevelEffect>(current.WATLEV);
             }
 
             if (scaleMinimum.HasValue) {
@@ -225,7 +225,7 @@ namespace S100Framework.Applications
             };
 
             if (current.CATOBS.HasValue) {
-                instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(current.CATOBS.Value);
+                instance.categoryOfObstruction = EnumHelper.GetEnumValue<Obstruction,categoryOfObstruction>(current.CATOBS.Value);
             }
 
             if (current.CONDTN.HasValue) {
@@ -233,7 +233,7 @@ namespace S100Framework.Applications
             }
 
             if (current.EXPSOU.HasValue) {
-                instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
+                instance.expositionOfSounding = EnumHelper.GetEnumValue<Obstruction,expositionOfSounding>(current.EXPSOU.Value);
             }
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -250,11 +250,11 @@ namespace S100Framework.Applications
             // TODO: Maximum permitted draught
 
             if (current.NATSUR != default) {
-                instance.natureOfSurface = EnumHelper.GetEnumValues<natureOfSurface>(current.NATSUR);
+                instance.natureOfSurface = EnumHelper.GetEnumValues<Obstruction,natureOfSurface>(current.NATSUR);
             }
 
             if (current.PRODCT != default) {
-                instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
+                instance.product = EnumHelper.GetEnumValues<Obstruction,product>(current.PRODCT);
             }
 
             // TODO: QualityOfVerticalMeasurement
@@ -276,7 +276,7 @@ namespace S100Framework.Applications
 
 
             if (current.TECSOU != null) {
-                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<Obstruction,techniqueOfVerticalMeasurement>(current.TECSOU);
             }
 
 
@@ -295,7 +295,7 @@ namespace S100Framework.Applications
             }
 
             if (current.WATLEV.HasValue) {
-                instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                instance.waterLevelEffect = EnumHelper.GetEnumValue<Obstruction,waterLevelEffect>(current.WATLEV);
             }
 
             if (scaleMinimum.HasValue) {

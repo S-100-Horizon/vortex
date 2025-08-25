@@ -99,7 +99,7 @@ namespace S100Framework.Applications
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
+                                instance.restriction = EnumHelper.GetEnumValues<DredgedArea,restriction>(current.RESTRN);
                             }
 
                             // TODO: InteroperabilityIdentifier
@@ -114,11 +114,11 @@ namespace S100Framework.Applications
                             //}
 
                             if (!string.IsNullOrEmpty(restrn)) {
-                                instance.restriction = EnumHelper.GetEnumValues<restriction>(restrn);
+                                instance.restriction = EnumHelper.GetEnumValues<DredgedArea,restriction>(restrn);
                             }
 
                             if (!string.IsNullOrEmpty(tecsou)) {
-                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(tecsou);
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<DredgedArea,techniqueOfVerticalMeasurement>(tecsou);
                             }
 
                             //TODO: verticalUncertainty - Not converted

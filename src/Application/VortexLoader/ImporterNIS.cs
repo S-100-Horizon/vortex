@@ -215,6 +215,10 @@ namespace S100Framework.Applications
                     filter.WhereClause = $"{whereClause} and globalid = '{{CA71EEFC-AF9F-4DB0-A55E-FD9D394FF58D}}'";
                     filter.WhereClause = $"{whereClause}";
                     */
+
+
+                    
+
                     Logger.Current.Information($"Converting all tables: {filter.WhereClause}");
 
                     //filter.WhereClause = "globalid = '{D7DE9631-CF20-4143-B3F4-47BB4A2AE541}'";
@@ -231,12 +235,9 @@ namespace S100Framework.Applications
                     Store(() => S57_DangersL(source, destination, filter));
                     Store(() => S57_DangersP(source, destination, filter));
 
-                    Logger.Current.Information($"Converting Sounding Datums");
-                    Store(() => S101_SoundingDatum(source, destination, filter));
-
-
                     //Logger.Current.Information($"Converting S101_RecommendedTracksAndRoutes");
                     //Store(() => S101_RecommendedTracksAndRoutes(source, destination, filter));
+
                     Logger.Current.Information($"Converting Cultural Features");
                     Store(() => S57_CulturalFeaturesA(source, destination, filter));
                     Store(() => S57_CulturalFeaturesL(source, destination, filter));
@@ -306,6 +307,9 @@ namespace S100Framework.Applications
 
                     Logger.Current.Information($"Converting Aids to Navigation");
                     Store(() => S57_AidsToNavigationP(source, destination, filter));
+
+                    Logger.Current.Information($"Converting Sounding Datums");
+                    Store(() => S101_SoundingDatum(source, destination, filter));
 
                     //Store(() => FeatureRelations.Instance.CreateRelations(destination));
 
@@ -379,8 +383,7 @@ namespace S100Framework.Applications
         /// </summary>
         /// <param _s101name="current"></param>
         /// <returns></returns>
-        internal static rhythmOfLight GetRythmOfLight(AidsToNavigationP current) {
-
+        internal static rhythmOfLight GetRythmOfLight<TType>(AidsToNavigationP current) where TType : DomainModel.FeatureNode {
             /*
                 When populating rhythm of light, the
                 sub-attributes signal group, signal period and signal sequence are only valid for non-fixed lights
@@ -408,7 +411,7 @@ namespace S100Framework.Applications
             lightCharacteristic lightCharacteristicsValue = default;
 
             if (current.LITCHR.HasValue) {
-                lightCharacteristicsValue = EnumHelper.GetEnumValue<lightCharacteristic>(current.LITCHR.Value);
+                lightCharacteristicsValue = EnumHelper.GetEnumValue<TType,lightCharacteristic>(current.LITCHR.Value);
             }
 
             var signalSequences = GetSignalSequences(current.SIGSEQ);
@@ -422,14 +425,14 @@ namespace S100Framework.Applications
             return rhythmOfLight;
         }
 
-        internal static verticalDatum GetVerticalDatum(int value) {
+        internal static verticalDatum GetVerticalDatum<TType>(int value) where TType : DomainModel.FeatureNode {
             /*
             if (current.VERDAT.HasValue) {
                 instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
             }
             */
             if (value != 3) {
-                return EnumHelper.GetEnumValue<verticalDatum>(value);
+                return EnumHelper.GetEnumValue<TType,verticalDatum>(value);
             }
 
             return verticalDatum.BalticSeaChartDatum2000;
@@ -468,11 +471,11 @@ namespace S100Framework.Applications
             return signalSequences;
         }
 
-        internal static List<colour> GetColours(string color) {
+        internal static List<colour> GetColours<TType>(string color) where TType : DomainModel.FeatureNode{
             if (color == "-32767") {
                 return new List<colour>() { (colour)(-1) };
             }
-            return EnumHelper.GetEnumValues<colour>(color);
+            return EnumHelper.GetEnumValues<TType,colour>(color);
 
 
             //List<colour> colours = new List<colour>();

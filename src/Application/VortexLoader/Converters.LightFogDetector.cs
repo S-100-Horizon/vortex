@@ -12,7 +12,7 @@ namespace S100Framework.Applications
             var instance = new LightFogDetector();
             
             if (current.COLOUR != default) {
-                instance.colour = ImporterNIS.GetColours(current.COLOUR);
+                instance.colour = ImporterNIS.GetColours< LightFogDetector>(current.COLOUR);
             }
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -37,10 +37,10 @@ namespace S100Framework.Applications
                 instance.periodicDateRange = periodicDateRange;
             }
 
-            instance.rhythmOfLight = ImporterNIS.GetRythmOfLight(current);
+            instance.rhythmOfLight = ImporterNIS.GetRythmOfLight<LightFogDetector>(current);
 
             if (current.SIGGEN != null) {
-                instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
+                instance.signalGeneration = EnumHelper.GetEnumValue<LightFogDetector,signalGeneration>(current.SIGGEN.Value);
             }
 
             if (current.STATUS != default) {

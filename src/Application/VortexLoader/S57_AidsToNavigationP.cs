@@ -4,6 +4,7 @@ using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System.ComponentModel;
 using System.Globalization;
 
 namespace S100Framework.Applications
@@ -86,11 +87,11 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BCNSHP.HasValue) {
-                                instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
+                                instance.beaconShape = EnumHelper.GetEnumValue<IsolatedDangerBeacon,beaconShape>(current.BCNSHP);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<IsolatedDangerBeacon>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -121,11 +122,11 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityidentifier
 
                             if (current.MARSYS.HasValue) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<IsolatedDangerBeacon,marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<IsolatedDangerBeacon,natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -150,7 +151,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark<IsolatedDangerBeacon>(current);
 
 
                             if (topmark != null) {
@@ -162,7 +163,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<IsolatedDangerBeacon,visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -210,15 +211,15 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BCNSHP.HasValue) {
-                                instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
+                                instance.beaconShape = EnumHelper.GetEnumValue<LateralBeacon,beaconShape>(current.BCNSHP);
                             }
 
                             if (current.CATLAM.HasValue) {
-                                instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(current.CATLAM.Value);
+                                instance.categoryOfLateralMark = EnumHelper.GetEnumValue<LateralBeacon,categoryOfLateralMark>(current.CATLAM.Value);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours< LateralBeacon>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -249,11 +250,11 @@ namespace S100Framework.Applications
                             }
 
                             if (current.MARSYS.HasValue) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<LateralBeacon,marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<LateralBeacon,natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -278,7 +279,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark<LateralBeacon>(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -288,7 +289,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<LateralBeacon,visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -336,11 +337,11 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BCNSHP.HasValue) {
-                                instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
+                                instance.beaconShape = EnumHelper.GetEnumValue<SafeWaterBeacon, beaconShape>(current.BCNSHP);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours< SafeWaterBeacon>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -371,11 +372,11 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityidentifier
 
                             if (current.MARSYS.HasValue) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<SafeWaterBeacon,marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<SafeWaterBeacon,natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -400,7 +401,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark< SafeWaterBeacon>(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -410,7 +411,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<SafeWaterBeacon,visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -458,15 +459,15 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BCNSHP.HasValue) {
-                                instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
+                                instance.beaconShape = EnumHelper.GetEnumValue<SpecialPurposeGeneralBeacon,beaconShape>(current.BCNSHP);
                             }
 
                             if (current.CATSPM != default) {
-                                instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
+                                instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<SpecialPurposeGeneralBeacon,categoryOfSpecialPurposeMark>(current.CATSPM);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours< SpecialPurposeGeneralBeacon>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -497,11 +498,11 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityidentifier
 
                             if (current.MARSYS.HasValue) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<SpecialPurposeGeneralBeacon,marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<SpecialPurposeGeneralBeacon,natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -526,7 +527,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark<SpecialPurposeGeneralBeacon>(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -536,7 +537,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<SpecialPurposeGeneralBeacon,visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -585,15 +586,15 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BOYSHP.HasValue) {
-                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                                instance.buoyShape = EnumHelper.GetEnumValue<CardinalBuoy,buoyShape>(current.BOYSHP);
                             }
 
                             if (current.CATCAM.HasValue) {
-                                instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(current.CATCAM.Value);
+                                instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<CardinalBuoy,categoryOfCardinalMark>(current.CATCAM.Value);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours< CardinalBuoy>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -610,11 +611,11 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityidentifier
 
                             if (current.MARSYS.HasValue) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<CardinalBuoy,marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<CardinalBuoy,natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -630,7 +631,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark< CardinalBuoy>(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -684,15 +685,15 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BOYSHP.HasValue) {
-                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                                instance.buoyShape = EnumHelper.GetEnumValue<InstallationBuoy,buoyShape>(current.BOYSHP);
                             }
 
                             if (current.CATINB.HasValue) {
-                                instance.categoryOfInstallationBuoy = EnumHelper.GetEnumValue<categoryOfInstallationBuoy>(current.CATINB.Value);
+                                instance.categoryOfInstallationBuoy = EnumHelper.GetEnumValue<InstallationBuoy,categoryOfInstallationBuoy>(current.CATINB.Value);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<InstallationBuoy>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -709,7 +710,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityidentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<InstallationBuoy,natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -718,7 +719,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PRODCT != default) {
-                                instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
+                                instance.product = EnumHelper.GetEnumValues<InstallationBuoy,product>(current.PRODCT);
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -730,7 +731,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<InstallationBuoy,visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -778,11 +779,11 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BOYSHP.HasValue) {
-                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                                instance.buoyShape = EnumHelper.GetEnumValue<IsolatedDangerBuoy, buoyShape>(current.BOYSHP);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours< IsolatedDangerBuoy>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -799,11 +800,11 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityidentifier
 
                             if (current.MARSYS.HasValue) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<IsolatedDangerBuoy, marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<IsolatedDangerBuoy,natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -819,7 +820,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark< IsolatedDangerBuoy>(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -874,15 +875,15 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BOYSHP.HasValue) {
-                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                                instance.buoyShape = EnumHelper.GetEnumValue<LateralBuoy,buoyShape>(current.BOYSHP);
                             }
 
                             if (current.CATLAM.HasValue) {
-                                instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(current.CATLAM.Value);
+                                instance.categoryOfLateralMark = EnumHelper.GetEnumValue<LateralBuoy,categoryOfLateralMark>(current.CATLAM.Value);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours< LateralBuoy>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -899,11 +900,11 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityidentifier
 
                             if (current.MARSYS.HasValue) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<LateralBuoy,marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<LateralBuoy,natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -919,7 +920,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark< LateralBuoy>(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -973,11 +974,11 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BOYSHP.HasValue) {
-                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                                instance.buoyShape = EnumHelper.GetEnumValue<SafeWaterBuoy,buoyShape>(current.BOYSHP);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours< SafeWaterBuoy>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -994,11 +995,11 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityidentifier
 
                             if (current.MARSYS.HasValue) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<SafeWaterBuoy,marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<SafeWaterBuoy,natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -1014,7 +1015,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark< SafeWaterBuoy>(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -1068,15 +1069,15 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BOYSHP.HasValue) {
-                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                                instance.buoyShape = EnumHelper.GetEnumValue<SpecialPurposeGeneralBuoy,buoyShape>(current.BOYSHP);
                             }
 
                             if (current.CATSPM != default) {
-                                instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
+                                instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<SpecialPurposeGeneralBuoy,categoryOfSpecialPurposeMark>(current.CATSPM);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
+                                instance.colour = EnumHelper.GetEnumValues<SpecialPurposeGeneralBuoy,colour>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -1093,11 +1094,11 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityidentifier
 
                             if (current.MARSYS.HasValue) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<SpecialPurposeGeneralBuoy,marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<SpecialPurposeGeneralBuoy,natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -1117,7 +1118,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength = current.VERLEN.Value;
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark< SpecialPurposeGeneralBuoy>(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -1295,7 +1296,7 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.COLOUR != default) {
-                                instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
+                                instance.colour = EnumHelper.GetEnumValues<LightFloat,colour>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -1320,7 +1321,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityidentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<LightFloat,natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -1336,7 +1337,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark< LightFloat>(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -1346,7 +1347,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<LightFloat,visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -1392,7 +1393,7 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.COLOUR != default) {
-                                instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
+                                instance.colour = EnumHelper.GetEnumValues<LightVessel,colour>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -1417,7 +1418,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityidentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<LightVessel,natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -1438,7 +1439,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<LightVessel,visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -1705,7 +1706,7 @@ namespace S100Framework.Applications
         /// <param _s101name="current"></param>
         /// <param _s101name="sectors"></param>
         /// <returns>List of sectorCharacteristics</returns>
-        internal static List<sectorCharacteristics> GetSectorCharacteristics(IList<AidsToNavigationP> lights) {
+        internal static List<sectorCharacteristics> GetSectorCharacteristics<TType>(IList<AidsToNavigationP> lights) where TType : DomainModel.FeatureNode {
             var sectorCharacteristics = new List<sectorCharacteristics>();
 
             //if (sectors == null || sectors.Count == 0) {
@@ -1737,18 +1738,18 @@ namespace S100Framework.Applications
             //}
             //else {
             foreach (var light in lights) {
-                var rhythmofLight = GetRythmOfLight(light);
+                var rhythmofLight = GetRythmOfLight<TType>(light);
                 if (light.SECTR1 != null && light.SECTR2 != null) {
                     {
                         List<lightVisibility> visibility = new List<lightVisibility>();
 
                         if (light.LITVIS != null) {
-                            visibility = EnumHelper.GetEnumValues<lightVisibility>(light.LITVIS);
+                            visibility = EnumHelper.GetEnumValues<TType,lightVisibility>(light.LITVIS);
                         }
 
                         List<colour> colours = new();
                         if (light.COLOUR != default) {
-                            colours = GetColours(light.COLOUR);
+                            colours = GetColours< TType>(light.COLOUR);
                         }
 
                         var sectorCharacteristic = new sectorCharacteristics() {

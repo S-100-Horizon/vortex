@@ -35,7 +35,7 @@ namespace S100Framework.Applications
             using var cursor = depthsl.Search(filter, true);
             int recordCount = 0;
 
-            var informationBinding = CreateAssociationSpatialQuality(target);
+            var informationBinding = CreateAssociationSpatialQuality<DepthContour>(target);
 
             while (cursor.MoveNext()) {
 
@@ -204,7 +204,7 @@ namespace S100Framework.Applications
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
 
-        private static List<informationBinding> CreateAssociationSpatialQuality(Geodatabase target) {
+        private static List<informationBinding> CreateAssociationSpatialQuality<TType>(Geodatabase target) where TType : DomainModel.FeatureNode {
             // create spatial quality
             SpatialQuality spatialQuality101 = new SpatialQuality();
 
@@ -213,7 +213,7 @@ namespace S100Framework.Applications
             using var bufferInformationType = informationTypeTable.CreateRowBuffer();
 
 
-            spatialQuality101.qualityOfHorizontalMeasurement = EnumHelper.GetEnumValue<qualityOfHorizontalMeasurement>(4);
+            spatialQuality101.qualityOfHorizontalMeasurement = EnumHelper.GetEnumValue<TType,qualityOfHorizontalMeasurement>(4);
 
             bufferInformationType["ps"] = ps101;
             bufferInformationType["code"] = spatialQuality101.Code;

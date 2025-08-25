@@ -14,7 +14,7 @@ namespace S100Framework.Applications
             var instance = new WindTurbine();
 
             if (current.COLOUR != default) {
-                instance.colour = ImporterNIS.GetColours(current.COLOUR);
+                instance.colour = ImporterNIS.GetColours<WindTurbine>(current.COLOUR);
             }
 
             if (current.COLPAT != default) {
@@ -47,7 +47,7 @@ namespace S100Framework.Applications
             // TODO: multiplicityOfFeatures
 
             if (current.NATCON != default) {
-                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                instance.natureOfConstruction = EnumHelper.GetEnumValues<WindTurbine,natureOfConstruction>(current.NATCON);
             }
 
             if (current.CONRAD.HasValue) {
@@ -84,19 +84,19 @@ namespace S100Framework.Applications
             if (current.VERLEN.HasValue) {
                 instance.verticalLength = current.VERLEN.Value;
 
-                instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                instance.verticalDatum = ImporterNIS.GetVerticalDatum<WindTurbine>(current.VERDAT ?? 3);
 
             }
 
             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                instance.visualProminence = EnumHelper.GetEnumValue<WindTurbine,visualProminence>(current.CONVIS.Value);
             }
 
             if (current.WATLEV.HasValue) {
                 if (current.WATLEV.Value == -32767)
-                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
+                    instance.waterLevelEffect = EnumHelper.GetEnumValue<WindTurbine, waterLevelEffect>(-1);
                 else {
-                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                    instance.waterLevelEffect = EnumHelper.GetEnumValue<WindTurbine, waterLevelEffect>(current.WATLEV);
                 }
             }
 

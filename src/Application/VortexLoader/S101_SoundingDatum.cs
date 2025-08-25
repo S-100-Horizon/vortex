@@ -83,7 +83,7 @@ namespace S100Framework.Applications
                     verticalDatum = default,
                 };
 
-                instance.verticalDatum = EnumHelper.GetEnumValue<DomainModel.S101.verticalDatum>(item.FieldName_FieldValue["verdat"]);
+                instance.verticalDatum = EnumHelper.GetEnumValue<SoundingDatum,DomainModel.S101.verticalDatum>(item.FieldName_FieldValue!["verdat"]);
 
                 buffer["ps"] = ps101;
                 buffer["code"] = instance.GetType().Name;

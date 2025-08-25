@@ -28,7 +28,7 @@ namespace S100Framework.Applications
             this._featureAssociation = _target.OpenDataset<Table>(_target.GetName("featureassociation"));
         }
 
-        internal topmark? GetTopMark(AidsToNavigationP structure) {
+        internal topmark? GetTopMark<TType>(AidsToNavigationP structure) where TType : DomainModel.FeatureNode {
             var topmarks = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(topmark), structure.GLOBALID);
 
             if (topmarks == null || topmarks.Count() == 0) {
@@ -48,7 +48,7 @@ namespace S100Framework.Applications
                 colourPattern? topmarkColourPattern = null;
 
                 if (relatedTopmark.COLOUR != default) {
-                    topmarkColours = ImporterNIS.GetColours(relatedTopmark.COLOUR);
+                    topmarkColours = ImporterNIS.GetColours<TType>(relatedTopmark.COLOUR);
                 }
 
                 if (relatedTopmark.COLPAT != default) {
@@ -70,7 +70,7 @@ namespace S100Framework.Applications
                 }
 
                 if (relatedTopmark.TOPSHP.HasValue) {
-                    topmark.topmarkDaymarkShape = EnumHelper.GetEnumValue<topmarkDaymarkShape>(relatedTopmark.TOPSHP.Value);
+                    topmark.topmarkDaymarkShape = EnumHelper.GetEnumValue<TType,topmarkDaymarkShape>(relatedTopmark.TOPSHP.Value);
                 }
 
                 ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", relatedTopmark.GLOBALID, "ATTRIBUTE. NO NAME AVAILABLE");
@@ -86,7 +86,7 @@ namespace S100Framework.Applications
 
 
 
-        internal Daymark? GetDayMark(AidsToNavigationP structure) {
+        internal Daymark? GetDayMark<TType>(AidsToNavigationP structure) where TType : DomainModel.FeatureNode {
             var daymarks = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(Daymark), structure.GLOBALID);
 
             if (daymarks == null || daymarks.Count() == 0) {
@@ -106,7 +106,7 @@ namespace S100Framework.Applications
                 colourPattern? daymarkColourPattern = null;
 
                 if (relatedDaymark.COLOUR != default) {
-                    daymarkColours = ImporterNIS.GetColours(relatedDaymark.COLOUR);
+                    daymarkColours = ImporterNIS.GetColours<TType>(relatedDaymark.COLOUR);
                 }
 
                 if (relatedDaymark.COLPAT != default) {
@@ -128,7 +128,7 @@ namespace S100Framework.Applications
                 }
 
                 if (relatedDaymark.TOPSHP.HasValue) {
-                    daymark.topmarkDaymarkShape = EnumHelper.GetEnumValue<topmarkDaymarkShape>(relatedDaymark.TOPSHP.Value);
+                    daymark.topmarkDaymarkShape = EnumHelper.GetEnumValue<TType,topmarkDaymarkShape>(relatedDaymark.TOPSHP.Value);
                 }
 
                 ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", relatedDaymark.GLOBALID, "ATTRIBUTE. NO NAME AVAILABLE");

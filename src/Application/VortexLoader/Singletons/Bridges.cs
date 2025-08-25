@@ -131,9 +131,9 @@ namespace S100Framework.Applications.Singletons
 
     [DebuggerDisplay("{childTypeS101} {ChildName}")]
     internal class BridgeRelation {
-        public string ParentName { get; set; }
-        public string ChildName { get; set; }
-        public Type childTypeS101 { get; set; }
+        public string? ParentName { get; set; }
+        public string? ChildName { get; set; }
+        public Type? childTypeS101 { get; set; }
     }
 
     public class Bridges  {

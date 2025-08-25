@@ -15,15 +15,15 @@ namespace S100Framework.Applications
             };
 
             if (current.BCNSHP.HasValue) {
-                instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
+                instance.beaconShape = EnumHelper.GetEnumValue<CardinalBeacon,beaconShape>(current.BCNSHP);
             }
 
             if (current.CATCAM.HasValue) {
-                instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(current.CATCAM.Value);
+                instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<CardinalBeacon, categoryOfCardinalMark>(current.CATCAM.Value);
             }
 
             if (current.COLOUR != default) {
-                instance.colour = ImporterNIS.GetColours(current.COLOUR);
+                instance.colour = ImporterNIS.GetColours<CardinalBeacon>(current.COLOUR);
             }
 
             if (current.COLPAT != default) {
@@ -55,11 +55,11 @@ namespace S100Framework.Applications
             // TODO: interoperabilityidentifier
 
             if (current.MARSYS.HasValue) {
-                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<CardinalBeacon,marksNavigationalSystemOf>(current.MARSYS.Value);
             }
 
             if (current.NATCON != default) {
-                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                instance.natureOfConstruction = EnumHelper.GetEnumValues<CardinalBeacon,natureOfConstruction> (current.NATCON);
             }
 
             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -84,7 +84,7 @@ namespace S100Framework.Applications
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
             }
 
-            var topmark = ImporterNIS.relatedEquipment?.GetTopMark(current);
+            var topmark = ImporterNIS.relatedEquipment?.GetTopMark<CardinalBeacon>(current);
             if (topmark != null) {
                 instance.topmark = topmark;
             }
@@ -94,7 +94,7 @@ namespace S100Framework.Applications
             }
 
             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                instance.visualProminence = EnumHelper.GetEnumValue<CardinalBeacon,visualProminence>(current.CONVIS.Value);
             }
 
 
