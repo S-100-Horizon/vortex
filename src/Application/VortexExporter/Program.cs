@@ -1,6 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using CommandLine;
+using S100Framework.Catalogues;
 using S100Framework.DomainModel;
 using S100Framework.ProductCatalogue;
 using S100Framework.YAML;
@@ -156,6 +157,9 @@ namespace S100Framework.Applications
                     Log.Information("Topology finished! Found {curves} Curves, {composites} CompositeCurves, {surfaces} Surfaces", topology.Curves.Count(), topology.CompositeCurves.Count(), topology.Surfaces.Count());
 
                     // InformationTypes
+                    var informations = new List<YAML.Information>();
+                    var informationsAdded = new List<string>();
+
                     try {
                         using var informationType = source.OpenDataset<Table>(definitionTables.Single(e => e.GetAliasName().Equals("informationtype")).GetName());
                         using var informationCursor = informationType.Search();
@@ -176,7 +180,8 @@ namespace S100Framework.Applications
                                 Attributes = (InformationNode)instance!,
                             };
 
-                            dataset.AddInformation(information);
+                            informations.Add(information);
+                            //dataset.AddInformation(information);
                         }
                     }
                     catch (Exception ex) {
@@ -278,6 +283,11 @@ namespace S100Framework.Applications
                                                 spatialAssociations.TryAdd(geometry, asso);
                                             else
                                                 feature?.AddAssociation(asso);
+
+                                            if (!informationsAdded.Contains(binding.informationId!)) {
+                                                informationsAdded.Add(binding.informationId!);
+                                                dataset!.AddInformation(informations.Single(e => e.ID!.Equals(binding.informationId!)));
+                                            }
                                         }
                                     }
                                 }

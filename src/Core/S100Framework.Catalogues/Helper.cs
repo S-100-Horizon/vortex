@@ -24,10 +24,10 @@ namespace S100Framework.Catalogues
 
         public static int[]? GetValidEnumValues(Type intance, string propertyName) {
             var property = intance.GetProperty(propertyName);
-            if(property == null) return null;
+            if (property == null) return null;
 
             var attribute = (EnumerationValueAttribute?)property!.GetCustomAttribute(typeof(EnumerationValueAttribute));
-            if(attribute == null) return null;
+            if(attribute == null) return ((int[])Enum.GetValues(property.PropertyType)).Select(e => (int)e).ToArray();
 
             return attribute.PropertyValues;                
         }
