@@ -51,7 +51,7 @@ namespace S100Framework.Applications
 
                             var orientationValue = current.ORIENT.HasValue && current.ORIENT.Value != -32767m ? current.ORIENT!.Value : default(decimal?); 
                             var depthValue = current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m ? current.DRVAL1!.Value : default(decimal?);
-                            var trafficFlow = EnumHelper.GetEnumValue<DeepWaterRoute,trafficFlow>(current.TRAFIC!.Value);
+                            var trafficFlow = EnumHelper.GetEnumValue<DeepWaterRoutePart, trafficFlow>(current.TRAFIC!.Value);
 
                             var instance = new DeepWaterRoutePart {
                                 depthRangeMinimumValue = depthValue,
