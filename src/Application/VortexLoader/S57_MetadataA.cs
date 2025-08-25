@@ -211,9 +211,9 @@ namespace S100Framework.Applications
                                 if (current.MARSYS.HasValue) {
                                     localDirectionOfBuoyage.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                                 }
-                                else {
-                                    Logger.Current.DataError(current.OBJECTID ?? default, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown LNAM", $"Missing MARSYS value for M_NSYS where globalid = '{{{current.GLOBALID}}}'");
-                                }
+                                //else {
+                                //    Logger.Current.DataError(current.OBJECTID ?? default, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown LNAM", $"Missing MARSYS value for M_NSYS where globalid = '{{{current.GLOBALID}}}'");
+                                //}
                                 localDirectionOfBuoyage.orientationValue = current.ORIENT.Value;
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
