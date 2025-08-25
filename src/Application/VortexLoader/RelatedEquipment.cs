@@ -70,7 +70,7 @@ namespace S100Framework.Applications
                 }
 
                 if (relatedTopmark.TOPSHP.HasValue) {
-                    topmark.topmarkDaymarkShape = EnumHelper.GetEnumValue<TType,topmarkDaymarkShape>(relatedTopmark.TOPSHP.Value);
+                    topmark.topmarkDaymarkShape = EnumHelper.GetEnumValue<topmark, topmarkDaymarkShape>(relatedTopmark.TOPSHP.Value);
                 }
 
                 ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", relatedTopmark.GLOBALID, "ATTRIBUTE. NO NAME AVAILABLE");
