@@ -141,6 +141,7 @@ namespace TestS100Framework
 
                 var attributeRules = new S100Framework.Applications.Roslyn.AttributeRule[] {
                     new S100Framework.Applications.Roslyn.AttributeRule("defaultClearanceDepth","[DependentUnknownValue(\"valueOfSounding\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("signalPeriod","[DependentUnknownValue(\"lightCharacteristic\")]"),
                 };
 
 
