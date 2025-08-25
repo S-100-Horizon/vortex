@@ -214,7 +214,7 @@ namespace S100Framework.YAML
                         //If the property is a dependent property, it should be required IF the master property is null.
                         var dependentAttr = propInfo.GetCustomAttribute<DependentUnknownValueAttribute>();
                         if (dependentAttr is not null) {
-                            var masterValue = properties.FirstOrDefault(p => p.Name == dependentAttr.PropertyName)?.GetValue(t);
+                            var masterValue = properties.Single(p => p.Name == dependentAttr.PropertyName)?.GetValue(propertyValue);
 
                             if (masterValue is null)
                                 r = true;
