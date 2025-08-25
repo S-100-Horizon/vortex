@@ -230,6 +230,10 @@ namespace S100Framework.Applications
                     Logger.Current.Information($"Converting Product Coverages");
                     Store(() => S57_ProductCoverage(source, destination, filter));
 
+                    Logger.Current.Information($"Converting Contours");
+                    Store(() => S57_DepthsL(source, destination, filter));
+
+
                     Logger.Current.Information($"Converting Dangers");
                     Store(() => S57_DangersA(source, destination, filter));
                     Store(() => S57_DangersL(source, destination, filter));
@@ -250,9 +254,6 @@ namespace S100Framework.Applications
 
                     Logger.Current.Information($"Converting Soundings");
                     Store(() => S57_SoundingsP(source, destination, filter));
-
-                    Logger.Current.Information($"Converting Contours");
-                    Store(() => S57_DepthsL(source, destination, filter));
 
                     Logger.Current.Information($"Converting Tides And Variations");
                     Store(() => S57_TidesAndVariationsA(source, destination, filter));
@@ -411,7 +412,7 @@ namespace S100Framework.Applications
             lightCharacteristic lightCharacteristicsValue = default;
 
             if (current.LITCHR.HasValue) {
-                lightCharacteristicsValue = EnumHelper.GetEnumValue<TType,lightCharacteristic>(current.LITCHR.Value);
+                lightCharacteristicsValue = EnumHelper.GetEnumValue<rhythmOfLight, lightCharacteristic>(current.LITCHR.Value);
             }
 
             var signalSequences = GetSignalSequences(current.SIGSEQ);
@@ -471,7 +472,7 @@ namespace S100Framework.Applications
             return signalSequences;
         }
 
-        internal static List<colour> GetColours<TType>(string color) where TType : DomainModel.FeatureNode{
+        internal static List<colour> GetColours<TType>(string color) where TType : class {//DomainModel.FeatureNode{
             if (color == "-32767") {
                 return new List<colour>() { (colour)(-1) };
             }

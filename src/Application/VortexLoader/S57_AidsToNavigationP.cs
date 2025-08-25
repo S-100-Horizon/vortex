@@ -1738,25 +1738,25 @@ namespace S100Framework.Applications
             //}
             //else {
             foreach (var light in lights) {
-                var rhythmofLight = GetRythmOfLight<TType>(light);
+                var rhythmofLightValue = GetRythmOfLight<TType>(light);
                 if (light.SECTR1 != null && light.SECTR2 != null) {
                     {
                         List<lightVisibility> visibility = new List<lightVisibility>();
 
                         if (light.LITVIS != null) {
-                            visibility = EnumHelper.GetEnumValues<TType,lightVisibility>(light.LITVIS);
+                            visibility = EnumHelper.GetEnumValues<lightSector, lightVisibility>(light.LITVIS);
                         }
 
                         List<colour> colours = new();
                         if (light.COLOUR != default) {
-                            colours = GetColours< TType>(light.COLOUR);
+                            colours = GetColours<lightSector>(light.COLOUR);
                         }
 
                         var sectorCharacteristic = new sectorCharacteristics() {
-                            lightCharacteristic = rhythmofLight.lightCharacteristic,
-                            signalGroup = rhythmofLight.signalGroup,
-                            signalPeriod = rhythmofLight.signalPeriod,
-                            signalSequence = rhythmofLight.signalSequence,
+                            lightCharacteristic = rhythmofLightValue.lightCharacteristic,
+                            signalGroup = rhythmofLightValue.signalGroup,
+                            signalPeriod = rhythmofLightValue.signalPeriod,
+                            signalSequence = rhythmofLightValue.signalSequence,
                             lightSector = new List<lightSector>() {
                                 new lightSector() {
                                     lightVisibility = visibility,

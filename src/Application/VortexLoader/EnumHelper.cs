@@ -2,7 +2,7 @@
 {
     public static class EnumHelper
     {
-        public static TEnum GetEnumValue<TType,TEnum>(object value) where TEnum : struct, Enum where TType : DomainModel.FeatureNode {
+        public static TEnum GetEnumValue<TType,TEnum>(object value) where TEnum : struct, Enum where TType : class {
 
             var validEnumValues = S100Framework.Catalogues.Helper.GetValidEnumValues(typeof(TType), typeof(TEnum).Name);
 
@@ -29,7 +29,9 @@
 
                 else if (Enum.IsDefined(typeof(TEnum), intValue)) {
                     if (!validEnumValues!.Contains<int>(intValue)) {
-                        throw new ArgumentException($"Invalid integer value for enum {typeof(TEnum).Name}: {intValue} not in validEnumValues:{validEnumValues}");
+                        //throw new ArgumentException($"Invalid integer value for enum {typeof(TEnum).Name}: {intValue} not in validEnumValues:{validEnumValues}");
+                        Logger.Current.DataError(-1,string.Empty,"enumvalue",$"Invalid integer value for enum {typeof(TEnum).Name}: {intValue} not in validEnumValues:{validEnumValues}");
+
                     }
 
                     return (TEnum)(object)intValue;
@@ -43,7 +45,7 @@
             }
         }
 
-        public static List<TEnum> GetEnumValues<TType,TEnum>(object value) where TEnum : struct, Enum where TType : DomainModel.FeatureNode {
+        public static List<TEnum> GetEnumValues<TType,TEnum>(object value) where TEnum : struct, Enum where TType : class { //DomainModel.FeatureNode {
             var validEnumValues = S100Framework.Catalogues.Helper.GetValidEnumValues(typeof(TType), typeof(TEnum).Name);
 
             List<TEnum> result = new List<TEnum>();
@@ -63,7 +65,9 @@
                     else if (Enum.TryParse(item.Trim(), true, out TEnum enumValue) && Enum.IsDefined(typeof(TEnum), enumValue)) {
                         var intValue = Convert.ToInt32(item);
                         if (!validEnumValues!.Contains<int>(intValue)) {
-                            throw new ArgumentException($"Invalid integer value for enum {typeof(TEnum).Name}: {intValue} not in validEnumValues:{validEnumValues}");
+                            //throw new ArgumentException($"Cannot convert enum value. Invalid integer value for enum {typeof(TEnum).Name}: {intValue} on {typeof(TType).Name} not in validEnumValues:{string.Join(",", validEnumValues)}");
+                            Logger.Current.DataError(-1, string.Empty, "enumvalues", $"Invalid integer value for enum {typeof(TEnum).Name}: {intValue} not in validEnumValues:{validEnumValues}");
+
                         }
                         result.Add(enumValue);
                     }
@@ -77,11 +81,12 @@
                 if (intValue == -32767) {
                     result.Add((TEnum)(object)-1);
                 }
+                else if (!validEnumValues!.Contains<int>(intValue)) {
+                    //throw new ArgumentException($"Cannot convert enum value. Invalid integer value for enum {typeof(TEnum).Name}: {intValue} on {typeof(TType).Name} not in validEnumValues:{string.Join(",", validEnumValues)}");
+                    Logger.Current.DataError(-1, string.Empty, "enumvalues", $"Invalid integer value for enum {typeof(TEnum).Name}: {intValue} not in validEnumValues:{validEnumValues}");
+                }
                 else if (Enum.IsDefined(typeof(TEnum), intValue)) {
                     result.Add((TEnum)(object)intValue);
-                }
-                else if (!validEnumValues!.Contains<int>(intValue)) {
-                    throw new ArgumentException($"Invalid integer value for enum {typeof(TEnum).Name}: {intValue} not in validEnumValues:{validEnumValues}");
                 }
                 else {
                     throw new ArgumentException($"Invalid integer value for enum {typeof(TEnum).Name}: {intValue}");
