@@ -187,9 +187,7 @@ namespace S100Framework.Applications
                     catch (Exception ex) {
                         Log.Information("Table: informationtype: {message} ", ex.Message);
                         Logger.Current.Error("Exception: {ex}", ex);
-                    }
-
-                    Log.Information("InformationTypes found: #{count}", dataset.InformationTypes?.Count ?? 0);
+                    }                    
 
                     // Features
                     foreach (var def in source.GetDefinitions<FeatureClassDefinition>()) {
@@ -326,6 +324,8 @@ namespace S100Framework.Applications
                             }
                         }
                     }
+
+                    Log.Information("InformationTypes found: #{count}", informationsAdded.Count);
 
                     // Geometries
                     foreach (var (geometry, name) in geometries.OrderBy(e => e.geometry.GeometryType)) {
