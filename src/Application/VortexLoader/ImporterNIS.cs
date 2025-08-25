@@ -409,7 +409,7 @@ namespace S100Framework.Applications
 
             var sigseq = current.SIGSEQ;
 
-            lightCharacteristic lightCharacteristicsValue = default;
+            lightCharacteristic? lightCharacteristicsValue = default;
 
             if (current.LITCHR.HasValue) {
                 lightCharacteristicsValue = EnumHelper.GetEnumValue<rhythmOfLight, lightCharacteristic>(current.LITCHR.Value);
@@ -426,7 +426,7 @@ namespace S100Framework.Applications
             return rhythmOfLight;
         }
 
-        internal static verticalDatum GetVerticalDatum<TType>(int value) where TType : DomainModel.FeatureNode {
+        internal static verticalDatum? GetVerticalDatum<TType>(int value) where TType : DomainModel.FeatureNode {
             /*
             if (current.VERDAT.HasValue) {
                 instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);

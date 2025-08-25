@@ -2,18 +2,20 @@
 {
     public static class EnumHelper
     {
-        public static TEnum GetEnumValue<TType,TEnum>(object value) where TEnum : struct, Enum where TType : class {
+        public static TEnum? GetEnumValue<TType,TEnum>(object value) where TEnum : struct, Enum where TType : class {
 
             var validEnumValues = S100Framework.Catalogues.Helper.GetValidEnumValues(typeof(TType), typeof(TEnum).Name);
 
             if (value is string strValue) {
                 if (value.ToString() == "-32767") {
-                    if (Enum.TryParse("-1", true, out TEnum enumValueUnknown)) {
-                        return enumValueUnknown;
-                    }
-                    else {
-                        throw new ArgumentException($"Invalid string value for enum {typeof(TEnum).Name}: {strValue}");
-                    }
+                    //  @jesoe UNKNOWN is defined as null
+                    return null;
+                    //if (Enum.TryParse("-1", true, out TEnum enumValueUnknown)) {
+                    //    return enumValueUnknown;
+                    //}
+                    //else {
+                    //    throw new ArgumentException($"Invalid string value for enum {typeof(TEnum).Name}: {strValue}");
+                    //}
                 }
                 else if (Enum.TryParse(strValue, true, out TEnum enumValue) && Enum.IsDefined(typeof(TEnum), enumValue)) {
                     return enumValue;
@@ -24,7 +26,8 @@
             }
             else if (value is int intValue) {
                 if (intValue == -32767) {
-                    return (TEnum)(object)-1;
+                    //  @jesoe UNKNOWN is defined as null
+                    return null;
                 }
 
                 else if (Enum.IsDefined(typeof(TEnum), intValue)) {
@@ -55,12 +58,13 @@
 
                 foreach (var item in values) {
                     if (item == "-32767") {
-                        if (Enum.TryParse("-1", true, out TEnum enumValueUnknown)) {
-                            result.Add(enumValueUnknown);
-                        }
-                        else {
-                            throw new ArgumentException($"Invalid string value for enum {typeof(TEnum).Name}: {item.Trim()}");
-                        }
+                        //  @jesoe UNKNOWN not allowed in list!
+                        //if (Enum.TryParse("-1", true, out TEnum enumValueUnknown)) {
+                        //    result.Add(enumValueUnknown);
+                        //}
+                        //else {
+                        //    throw new ArgumentException($"Invalid string value for enum {typeof(TEnum).Name}: {item.Trim()}");
+                        //}
                     }
                     else if (Enum.TryParse(item.Trim(), true, out TEnum enumValue) && Enum.IsDefined(typeof(TEnum), enumValue)) {
                         var intValue = Convert.ToInt32(item);
@@ -79,7 +83,8 @@
 
             else if (value is int intValue) {
                 if (intValue == -32767) {
-                    result.Add((TEnum)(object)-1);
+                    //  @jesoe UNKNOWN not allowed in list!
+                    //result.Add((TEnum)(object)-1);
                 }
                 else if (!validEnumValues!.Contains<int>(intValue)) {
                     //throw new ArgumentException($"Cannot convert enum value. Invalid integer value for enum {typeof(TEnum).Name}: {intValue} on {typeof(TType).Name} not in validEnumValues:{string.Join(",", validEnumValues)}");
