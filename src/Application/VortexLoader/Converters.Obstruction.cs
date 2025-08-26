@@ -50,7 +50,7 @@ namespace S100Framework.Applications
             }
 
             // TODO: QualityOfVerticalMeasurement
-            if (current.SORDAT != default) {
+            if (!string.IsNullOrEmpty(current.SORDAT)) {
                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                     instance.reportedDate = result;
                 }
@@ -152,7 +152,7 @@ namespace S100Framework.Applications
             }
 
             // TODO: QualityOfVerticalMeasurement
-            if (current.SORDAT != default) {
+            if (!string.IsNullOrEmpty(current.SORDAT)) {
                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                     instance.reportedDate = result;
                 }
@@ -253,7 +253,7 @@ namespace S100Framework.Applications
             }
 
             // TODO: QualityOfVerticalMeasurement
-            if (current.SORDAT != default) {
+            if (!string.IsNullOrEmpty(current.SORDAT)) {
                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                     instance.reportedDate = result;
                 }

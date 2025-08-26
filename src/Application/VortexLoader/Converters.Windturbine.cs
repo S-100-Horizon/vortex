@@ -52,7 +52,7 @@ namespace S100Framework.Applications
 
             if (current.CONRAD.HasValue) {
                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
-            }                            if (current.SORDAT != default) {
+            }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }

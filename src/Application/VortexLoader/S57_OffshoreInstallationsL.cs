@@ -157,7 +157,7 @@ namespace S100Framework.Applications
 
                             if (current.PRODCT != null) {
                                 instance.product = EnumHelper.GetEnumValues<PipelineSubmarineOnLand,product>(current.PRODCT);
-                            }                            if (current.SORDAT != default) {
+                            }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }

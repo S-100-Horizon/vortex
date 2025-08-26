@@ -30,7 +30,6 @@ namespace S100Framework.Applications
             if (createBridgesAndRelations) {
                 Bridges.Initialize(source);
 
-
                 foreach (var bridge in Bridges.Instance.BridgeElements()) {
                     var instance = new Bridge();
 
@@ -99,7 +98,7 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            if (current.SORDAT != default) {
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -457,7 +456,7 @@ namespace S100Framework.Applications
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
-                            if (current.SORDAT != default) {
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -561,7 +560,7 @@ namespace S100Framework.Applications
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
-                            if (current.SORDAT != default) {
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -666,7 +665,7 @@ namespace S100Framework.Applications
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
-                            if (current.SORDAT != default) {
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -854,7 +853,7 @@ namespace S100Framework.Applications
                                 instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
                             }
 
-                            if (current.SORDAT != default) {
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -985,7 +984,7 @@ namespace S100Framework.Applications
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
-                            if (current.SORDAT != default) {
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -1083,7 +1082,7 @@ namespace S100Framework.Applications
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
-                            if (current.SORDAT != default) {
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -1192,7 +1191,7 @@ namespace S100Framework.Applications
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
-                            if (current.SORDAT != default) {
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -1290,7 +1289,7 @@ namespace S100Framework.Applications
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<Road, natureOfConstruction>(current.NATCON);
                             }
-                            if (current.SORDAT != default) {
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -1351,7 +1350,7 @@ namespace S100Framework.Applications
                             if (periodicDateRange != default) {
                                 instance.periodicDateRange = periodicDateRange;
                             }
-                            if (current.SORDAT != default) {
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -1441,7 +1440,7 @@ namespace S100Framework.Applications
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
-                            if (current.SORDAT != default) {
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -1516,7 +1515,7 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            if (current.SORDAT != default) {
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }

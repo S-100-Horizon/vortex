@@ -34,7 +34,7 @@ namespace S100Framework.Applications
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
-                
+
                 if (ConversionAnalytics.Instance.IsConverted(globalid)) {
                     continue;
                 }
@@ -105,29 +105,28 @@ namespace S100Framework.Applications
 
                             if (current.QUASOU != default) {
                                 if (current.QUASOU == "-32767")
-                                    sounding.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<Sounding,qualityOfVerticalMeasurement>("-1");
+                                    sounding.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<Sounding, qualityOfVerticalMeasurement>("-1");
                                 else {
-                                    sounding.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<Sounding,qualityOfVerticalMeasurement>(current.QUASOU);
+                                    sounding.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<Sounding, qualityOfVerticalMeasurement>(current.QUASOU);
                                 }
                             }
 
 
-                            if (current.SORDAT != default) {
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     sounding.reportedDate = result;
                                 }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
                             }
-                            else {
-                                Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
-                            }
-
 
                             if (current.STATUS != default) {
                                 sounding.status = ImporterNIS.GetSingleStatus(current.STATUS);
                             }
 
                             if (current.TECSOU != null) {
-                                sounding.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<Sounding,techniqueOfVerticalMeasurement>(current.TECSOU);
+                                sounding.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<Sounding, techniqueOfVerticalMeasurement>(current.TECSOU);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -185,7 +184,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.TECSOU != null) {
-                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<DepthNoBottomFound,techniqueOfVerticalMeasurement>(current.TECSOU);
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<DepthNoBottomFound, techniqueOfVerticalMeasurement>(current.TECSOU);
                             }
 
 
@@ -199,7 +198,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
 

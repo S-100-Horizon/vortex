@@ -91,7 +91,7 @@ namespace S100Framework.Applications
                             }
 
                             // TODO: interoperabilityIdentifier
-                            if (current.SORDAT != default) {
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -149,7 +149,7 @@ namespace S100Framework.Applications
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<Causeway, natureOfConstruction>(current.NATCON);
                             }
-                            if (current.SORDAT != default) {
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -230,7 +230,7 @@ namespace S100Framework.Applications
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
-                            if (current.SORDAT != default) {
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -521,7 +521,7 @@ namespace S100Framework.Applications
                                 if (current.CONRAD.HasValue) {
                                     instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                                 }
-                                if (current.SORDAT != default) {
+                                if (!string.IsNullOrEmpty(current.SORDAT)) {
                                     if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                         instance.reportedDate = result;
                                     }
@@ -601,7 +601,7 @@ namespace S100Framework.Applications
                                 if (periodicDateRange != default) {
                                     instance.periodicDateRange = periodicDateRange;
                                 }
-                                if (current.SORDAT != default) {
+                                if (!string.IsNullOrEmpty(current.SORDAT)) {
                                     if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                         instance.reportedDate = result;
                                     }
@@ -712,7 +712,7 @@ namespace S100Framework.Applications
                                 if (current.CONRAD.HasValue) {
                                     instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                                 }
-                                if (current.SORDAT != default) {
+                                if (!string.IsNullOrEmpty(current.SORDAT)) {
                                     if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                         instance.reportedDate = result;
                                     }
@@ -810,7 +810,7 @@ namespace S100Framework.Applications
                                 if (current.CONRAD.HasValue) {
                                     instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                                 }
-                                if (current.SORDAT != default) {
+                                if (!string.IsNullOrEmpty(current.SORDAT)) {
                                     if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                         instance.reportedDate = result;
                                     }

@@ -71,7 +71,7 @@ namespace S100Framework.Applications
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
                             if (periodicDateRange != default) {
                                 instance.periodicDateRange = periodicDateRange;
-                            }                            if (current.SORDAT != default) {
+                            }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -136,7 +136,7 @@ if (current.STATUS != default) {
 
                                 if (current.QUASOU != default) {
                                     instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<FoulGround,qualityOfVerticalMeasurement>(current.QUASOU);
-                                }                            if (current.SORDAT != default) {
+                                }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -239,7 +239,7 @@ if (current.STATUS != default) {
 
                            //     // TODO: QualityOfVerticalMeasurement
 
-                           //     if (current.SORDAT != default) {
+                           //     if (!string.IsNullOrEmpty(current.SORDAT)) {
                            //         if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
                            //             instance.reportedDate = current.SORDAT;
                            //         }

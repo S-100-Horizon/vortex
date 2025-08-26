@@ -74,7 +74,7 @@ namespace S100Framework.Applications
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
                             if (periodicDateRange != default) {
                                 instance.periodicDateRange = periodicDateRange;
-                            }                            if (current.SORDAT != default) {
+                            }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -138,7 +138,7 @@ namespace S100Framework.Applications
 
                                 if (current.QUASOU != default) {
                                     instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<FoulGround, qualityOfVerticalMeasurement>(current.QUASOU);
-                                }                            if (current.SORDAT != default) {
+                                }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -270,7 +270,7 @@ namespace S100Framework.Applications
                                 instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<UnderwaterAwashRock, qualityOfVerticalMeasurement>(current.QUASOU);
                             }
 
-                            if (current.SORDAT != default) {
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -424,7 +424,7 @@ namespace S100Framework.Applications
 
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
-                            }                            if (current.SORDAT != default) {
+                            }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }

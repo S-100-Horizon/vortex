@@ -107,7 +107,7 @@ namespace S100Framework.Applications
                             // TODO: InteroperabilityIdentifier
 
 
-                            if (current.SORDAT != default) {
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }

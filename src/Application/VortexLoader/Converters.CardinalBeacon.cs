@@ -69,20 +69,15 @@ namespace S100Framework.Applications
 
             if (current.CONRAD.HasValue) {
                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
-            }                            if (current.SORDAT != default) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
-                                }
-                                else {
-                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
-                                }
-                            }
-
-        
-
-            
-
-
+            }
+            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                    instance.reportedDate = result;
+                }
+                else {
+                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                }
+            }
 
             if (current.STATUS != default) {
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
@@ -98,7 +93,7 @@ namespace S100Framework.Applications
             }
 
             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                instance.visualProminence = EnumHelper.GetEnumValue<CardinalBeacon,visualProminence>(current.CONVIS.Value);
+                instance.visualProminence = EnumHelper.GetEnumValue<CardinalBeacon, visualProminence>(current.CONVIS.Value);
             }
 
 
@@ -108,7 +103,7 @@ namespace S100Framework.Applications
 
             if (scaleMinimum.HasValue) {
                 instance.scaleMinimum = scaleMinimum;
-            } 
+            }
             else if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                 string subtype = "";
 
