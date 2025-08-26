@@ -113,13 +113,14 @@ namespace S100Framework.Applications
 
 
                             if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    sounding.reportedDate = current.SORDAT;
-                                }
-                                else {
-                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    sounding.reportedDate = result;
                                 }
                             }
+                            else {
+                                Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                            }
+
 
                             if (current.STATUS != default) {
                                 sounding.status = ImporterNIS.GetSingleStatus(current.STATUS);

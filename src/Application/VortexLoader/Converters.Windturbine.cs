@@ -52,16 +52,16 @@ namespace S100Framework.Applications
 
             if (current.CONRAD.HasValue) {
                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
-            }
+            }                            if (current.SORDAT != default) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
 
-            if (current.SORDAT != default) {
-                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                    instance.reportedDate = current.SORDAT;
-                }
-                else {
-                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
-                }
-            }
+
 
             if (current.STATUS != default) {
                 instance.status = ImporterNIS.GetStatus(current.STATUS);

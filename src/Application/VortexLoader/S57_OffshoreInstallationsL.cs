@@ -157,18 +157,16 @@ namespace S100Framework.Applications
 
                             if (current.PRODCT != null) {
                                 instance.product = EnumHelper.GetEnumValues<PipelineSubmarineOnLand,product>(current.PRODCT);
-                            }
-
-                            if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                            }                            if (current.SORDAT != default) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
-                            // TODO: restriction
+// TODO: restriction
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);

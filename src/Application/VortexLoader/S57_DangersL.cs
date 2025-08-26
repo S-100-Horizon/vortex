@@ -71,18 +71,16 @@ namespace S100Framework.Applications
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
                             if (periodicDateRange != default) {
                                 instance.periodicDateRange = periodicDateRange;
-                            }
-
-                            if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                            }                            if (current.SORDAT != default) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
-                            if (current.STATUS != default) {
+if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
@@ -138,19 +136,16 @@ namespace S100Framework.Applications
 
                                 if (current.QUASOU != default) {
                                     instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<FoulGround,qualityOfVerticalMeasurement>(current.QUASOU);
+                                }                            if (current.SORDAT != default) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
-
-                                if (current.SORDAT != default) {
-                                    if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                        instance.reportedDate = current.SORDAT;
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
-                                    }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
+                            }
 
-
-                                if (current.STATUS != default) {
+if (current.STATUS != default) {
                                     instance.status = GetStatus(current.STATUS);
                                 }
 

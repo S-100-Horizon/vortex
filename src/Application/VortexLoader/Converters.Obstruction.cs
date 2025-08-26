@@ -17,7 +17,7 @@ namespace S100Framework.Applications
             };
 
             if (current.CATOBS.HasValue) {
-                instance.categoryOfObstruction = EnumHelper.GetEnumValue<Obstruction,categoryOfObstruction>(current.CATOBS.Value);
+                instance.categoryOfObstruction = EnumHelper.GetEnumValue<Obstruction, categoryOfObstruction>(current.CATOBS.Value);
             }
 
             if (current.CONDTN.HasValue) {
@@ -25,7 +25,7 @@ namespace S100Framework.Applications
             }
 
             if (current.EXPSOU.HasValue) {
-                instance.expositionOfSounding = EnumHelper.GetEnumValue<Obstruction,expositionOfSounding>(current.EXPSOU.Value);
+                instance.expositionOfSounding = EnumHelper.GetEnumValue<Obstruction, expositionOfSounding>(current.EXPSOU.Value);
             }
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -42,22 +42,20 @@ namespace S100Framework.Applications
             // TODO: Maximum permitted draught
 
             if (current.NATSUR != default) {
-                instance.natureOfSurface = EnumHelper.GetEnumValues<Obstruction,natureOfSurface>(current.NATSUR);
+                instance.natureOfSurface = EnumHelper.GetEnumValues<Obstruction, natureOfSurface>(current.NATSUR);
             }
 
             if (current.PRODCT != default) {
-                instance.product = EnumHelper.GetEnumValues<Obstruction,product>(current.PRODCT);
+                instance.product = EnumHelper.GetEnumValues<Obstruction, product>(current.PRODCT);
             }
 
             // TODO: QualityOfVerticalMeasurement
-
-
             if (current.SORDAT != default) {
-                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                    instance.reportedDate = current.SORDAT;
+                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                    instance.reportedDate = result;
                 }
                 else {
-                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), current.TableName!, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                 }
             }
 
@@ -68,7 +66,7 @@ namespace S100Framework.Applications
 
 
             if (current.TECSOU != null) {
-                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<Obstruction,techniqueOfVerticalMeasurement>(current.TECSOU);
+                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<Obstruction, techniqueOfVerticalMeasurement>(current.TECSOU);
             }
 
 
@@ -87,7 +85,7 @@ namespace S100Framework.Applications
             }
 
             if (current.WATLEV.HasValue) {
-                instance.waterLevelEffect = EnumHelper.GetEnumValue<Obstruction,waterLevelEffect>(current.WATLEV);
+                instance.waterLevelEffect = EnumHelper.GetEnumValue<Obstruction, waterLevelEffect>(current.WATLEV);
             }
 
             if (scaleMinimum.HasValue) {
@@ -121,7 +119,7 @@ namespace S100Framework.Applications
             };
 
             if (current.CATOBS.HasValue) {
-                instance.categoryOfObstruction = EnumHelper.GetEnumValue<Obstruction,categoryOfObstruction>(current.CATOBS.Value);
+                instance.categoryOfObstruction = EnumHelper.GetEnumValue<Obstruction, categoryOfObstruction>(current.CATOBS.Value);
             }
 
             if (current.CONDTN.HasValue) {
@@ -129,7 +127,7 @@ namespace S100Framework.Applications
             }
 
             if (current.EXPSOU.HasValue) {
-                instance.expositionOfSounding = EnumHelper.GetEnumValue<Obstruction,expositionOfSounding>(current.EXPSOU.Value);
+                instance.expositionOfSounding = EnumHelper.GetEnumValue<Obstruction, expositionOfSounding>(current.EXPSOU.Value);
             }
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -146,25 +144,22 @@ namespace S100Framework.Applications
             // TODO: Maximum permitted draught
 
             if (current.NATSUR != default) {
-                instance.natureOfSurface = EnumHelper.GetEnumValues<Obstruction,natureOfSurface>(current.NATSUR);
+                instance.natureOfSurface = EnumHelper.GetEnumValues<Obstruction, natureOfSurface>(current.NATSUR);
             }
 
             if (current.PRODCT != default) {
-                instance.product = EnumHelper.GetEnumValues<Obstruction,product>(current.PRODCT);
+                instance.product = EnumHelper.GetEnumValues<Obstruction, product>(current.PRODCT);
             }
 
             // TODO: QualityOfVerticalMeasurement
-
-
             if (current.SORDAT != default) {
-                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                    instance.reportedDate = current.SORDAT;
+                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                    instance.reportedDate = result;
                 }
                 else {
-                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), current.TableName!, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                 }
             }
-
 
             if (current.STATUS != default) {
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
@@ -172,7 +167,7 @@ namespace S100Framework.Applications
 
 
             if (current.TECSOU != null) {
-                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<Obstruction,techniqueOfVerticalMeasurement>(current.TECSOU);
+                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<Obstruction, techniqueOfVerticalMeasurement>(current.TECSOU);
             }
 
 
@@ -191,7 +186,7 @@ namespace S100Framework.Applications
             }
 
             if (current.WATLEV.HasValue) {
-                instance.waterLevelEffect = EnumHelper.GetEnumValue<Obstruction,waterLevelEffect>(current.WATLEV);
+                instance.waterLevelEffect = EnumHelper.GetEnumValue<Obstruction, waterLevelEffect>(current.WATLEV);
             }
 
             if (scaleMinimum.HasValue) {
@@ -225,7 +220,7 @@ namespace S100Framework.Applications
             };
 
             if (current.CATOBS.HasValue) {
-                instance.categoryOfObstruction = EnumHelper.GetEnumValue<Obstruction,categoryOfObstruction>(current.CATOBS.Value);
+                instance.categoryOfObstruction = EnumHelper.GetEnumValue<Obstruction, categoryOfObstruction>(current.CATOBS.Value);
             }
 
             if (current.CONDTN.HasValue) {
@@ -233,7 +228,7 @@ namespace S100Framework.Applications
             }
 
             if (current.EXPSOU.HasValue) {
-                instance.expositionOfSounding = EnumHelper.GetEnumValue<Obstruction,expositionOfSounding>(current.EXPSOU.Value);
+                instance.expositionOfSounding = EnumHelper.GetEnumValue<Obstruction, expositionOfSounding>(current.EXPSOU.Value);
             }
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -250,25 +245,22 @@ namespace S100Framework.Applications
             // TODO: Maximum permitted draught
 
             if (current.NATSUR != default) {
-                instance.natureOfSurface = EnumHelper.GetEnumValues<Obstruction,natureOfSurface>(current.NATSUR);
+                instance.natureOfSurface = EnumHelper.GetEnumValues<Obstruction, natureOfSurface>(current.NATSUR);
             }
 
             if (current.PRODCT != default) {
-                instance.product = EnumHelper.GetEnumValues<Obstruction,product>(current.PRODCT);
+                instance.product = EnumHelper.GetEnumValues<Obstruction, product>(current.PRODCT);
             }
 
             // TODO: QualityOfVerticalMeasurement
-
-
             if (current.SORDAT != default) {
-                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                    instance.reportedDate = current.SORDAT;
+                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                    instance.reportedDate = result;
                 }
                 else {
-                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), current.TableName!, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                 }
             }
-
 
             if (current.STATUS != default) {
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
@@ -276,7 +268,7 @@ namespace S100Framework.Applications
 
 
             if (current.TECSOU != null) {
-                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<Obstruction,techniqueOfVerticalMeasurement>(current.TECSOU);
+                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<Obstruction, techniqueOfVerticalMeasurement>(current.TECSOU);
             }
 
 
@@ -295,7 +287,7 @@ namespace S100Framework.Applications
             }
 
             if (current.WATLEV.HasValue) {
-                instance.waterLevelEffect = EnumHelper.GetEnumValue<Obstruction,waterLevelEffect>(current.WATLEV);
+                instance.waterLevelEffect = EnumHelper.GetEnumValue<Obstruction, waterLevelEffect>(current.WATLEV);
             }
 
             if (scaleMinimum.HasValue) {

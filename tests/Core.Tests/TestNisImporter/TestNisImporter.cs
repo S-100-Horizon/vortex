@@ -1,5 +1,6 @@
 using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
+using ArcGIS.Core.Data.UtilityNetwork.Trace;
 using ArcGIS.Core.Geometry;
 using ArcGIS.Core.Internal.Geometry;
 using S100Framework.Applications;
@@ -50,6 +51,29 @@ namespace TestNisImporter
         }
 
         [Fact]
+        public void TestSordat() {
+            {
+                Assert.True(DateHelper.TryConvertSordat("20200613", out var result));
+                Assert.Equal("20200613", result);
+            }
+            {
+                Assert.True(DateHelper.TryConvertSordat("202006", out var result));
+                Assert.Equal("202006--", result);
+            }
+            {
+                Assert.True(DateHelper.TryConvertSordat("2008", out var result));
+                Assert.Equal("2008----", result);
+            }
+            {
+                Assert.False(DateHelper.TryConvertSordat("200813", out var result));
+            }
+            {
+                Assert.False(DateHelper.TryConvertSordat("20081232", out var result));
+            }
+        }
+
+
+        [Fact]
         public void TestSpeedLimitExtraction() {
             string[] inputs = {
             "Speed limit 10 knots",
@@ -71,11 +95,7 @@ namespace TestNisImporter
                     Assert.True(Convert.ToDecimal(speed) > 0m);
                 }
             }
-
         }
-
-
-
 
 
         [Fact]

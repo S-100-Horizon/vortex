@@ -149,7 +149,7 @@ namespace S100Framework.Applications
                             var instance = new Conveyor();
 
                             if (current.CATCON.HasValue) {
-                                instance.categoryOfConveyor = EnumHelper.GetEnumValue<Conveyor,categoryOfConveyor>(current.CATCON.Value);
+                                instance.categoryOfConveyor = EnumHelper.GetEnumValue<Conveyor, categoryOfConveyor>(current.CATCON.Value);
                             }
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours<Conveyor>(current.COLOUR);
@@ -186,19 +186,18 @@ namespace S100Framework.Applications
                             //TODO: multiplicityOfFeatures
 
                             if (current.PRODCT != null) {
-                                instance.product = EnumHelper.GetEnumValues<Conveyor,product>(current.PRODCT);
+                                instance.product = EnumHelper.GetEnumValues<Conveyor, product>(current.PRODCT);
                             }
 
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
-
                             if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -224,7 +223,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<Conveyor,visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<Conveyor, visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -266,7 +265,7 @@ namespace S100Framework.Applications
                             var instance = new Dam();
 
                             if (current.CATDAM.HasValue) {
-                                instance.categoryOfDam = EnumHelper.GetEnumValue<Dam,categoryOfDam>(current.CATDAM.Value);
+                                instance.categoryOfDam = EnumHelper.GetEnumValue<Dam, categoryOfDam>(current.CATDAM.Value);
                             }
 
                             if (current.COLOUR != default) {
@@ -297,7 +296,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<Dam,natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<Dam, natureOfConstruction>(current.NATCON);
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -317,7 +316,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<Dam,visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<Dam, visualProminence>(current.CONVIS.Value);
                             }
 
 
@@ -407,7 +406,7 @@ namespace S100Framework.Applications
                             var instance = new FortifiedStructure();
 
                             if (current.CATFOR.HasValue) {
-                                instance.categoryOfFortifiedStructure = EnumHelper.GetEnumValue<FortifiedStructure,categoryOfFortifiedStructure>(current.CATFOR.Value);
+                                instance.categoryOfFortifiedStructure = EnumHelper.GetEnumValue<FortifiedStructure, categoryOfFortifiedStructure>(current.CATFOR.Value);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -426,7 +425,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<FortifiedStructure,natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<FortifiedStructure, natureOfConstruction>(current.NATCON);
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -434,11 +433,11 @@ namespace S100Framework.Applications
                             }
 
                             if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -451,7 +450,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<FortifiedStructure,visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<FortifiedStructure, visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -493,7 +492,6 @@ namespace S100Framework.Applications
                     case 30: { // LNDMRK_Landmark
                             throw new NotImplementedException($"No LNDMRK_Landmark in DK | GL. {tableName}");
                         }
-                        break;
 
                     case 35: { // PIPOHD_PipelineOverhead
                             var instance = new PipelineOverhead();
@@ -526,11 +524,11 @@ namespace S100Framework.Applications
                             }
 
                             if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -550,7 +548,7 @@ namespace S100Framework.Applications
                             };
 
                             if (current.CONVIS.HasValue) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<PipelineOverhead,visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<PipelineOverhead, visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -599,13 +597,12 @@ namespace S100Framework.Applications
                             }
 
                             // TODO: interoperabilityIdentifier
-
                             if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -646,7 +643,7 @@ namespace S100Framework.Applications
                             var instance = new Road();
 
                             if (current.CATROD.HasValue) {
-                                instance.categoryOfRoad = EnumHelper.GetEnumValue<Road,categoryOfRoad>(current.CATROD.Value);
+                                instance.categoryOfRoad = EnumHelper.GetEnumValue<Road, categoryOfRoad>(current.CATROD.Value);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -658,15 +655,15 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<Road,natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<Road, natureOfConstruction>(current.NATCON);
                             }
 
                             if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
