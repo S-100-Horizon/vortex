@@ -108,7 +108,7 @@ namespace S100Framework.Applications.Singletons
             return errorCount;
         }
 
-        internal int Check_Editions() {
+        internal int Check_GetEditionsErrorCount() {
             Int32 errorCount = 0;
 
             var featureClasses = new List<string>() {

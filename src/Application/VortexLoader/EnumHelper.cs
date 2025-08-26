@@ -21,7 +21,7 @@
                     return enumValue;
                 }
                 else {
-                    throw new ArgumentException($"Invalid string value for enum {typeof(TEnum).Name}: {strValue}");
+                    throw new ArgumentException($"Invalid string value for enum {typeof(TType).Name}::{typeof(TEnum).Name}: {strValue}");
                 }
             }
             else if (value is int intValue) {
@@ -32,19 +32,17 @@
 
                 else if (Enum.IsDefined(typeof(TEnum), intValue)) {
                     if (!validEnumValues!.Contains<int>(intValue)) {
-                        //throw new ArgumentException($"Invalid integer value for enum {typeof(TEnum).Name}: {intValue} not in validEnumValues:{validEnumValues}");
-                        Logger.Current.DataError(-1,string.Empty,"enumvalue",$"Invalid integer value for enum {typeof(TEnum).Name}: {intValue} not in validEnumValues:{validEnumValues}");
-
+                        //throw new ArgumentException($"Invalid integer value for enum {typeof(TEnum).Name}: {intValue} not in validEnumValues:{string.Join(",", validEnumValues)}");
+                        Logger.Current.DataError(-1,string.Empty,"enumvalue",$"Invalid integer value for enum {typeof(TType).Name}::{typeof(TEnum).Name}: {intValue} not in validEnumValues:{string.Join(",", validEnumValues!)}");
                     }
-
                     return (TEnum)(object)intValue;
                 }
                 else {
-                    throw new ArgumentException($"Invalid integer value for enum {typeof(TEnum).Name}: {intValue}");
+                    throw new ArgumentException($"Invalid integer value for enum {typeof(TType).Name}::{typeof(TEnum).Name}: {intValue}");
                 }
             }
             else {
-                throw new ArgumentException($"Value must be of type string or int. Provided value type: {value.GetType().Name}");
+                throw new ArgumentException($"Value must be of type string or int. Provided value type: {typeof(TType).Name}::{typeof(TEnum).Name} - {value.GetType().Name}");
             }
         }
 
@@ -65,22 +63,21 @@
                         //else {
                         //    throw new ArgumentException($"Invalid string value for enum {typeof(TEnum).Name}: {item.Trim()}");
                         //}
-                        Logger.Current.DataError(-1, string.Empty, "enumvalues", $"Enum list contains -32767. This is not converted.");
+                        Logger.Current.DataError(-1, string.Empty, "enumvalues", $"Enum list contains -32767. This is not converted. {typeof(TType).Name}::{typeof(TEnum).Name} Total values in field: {values.Count()}");
                     }
                     else if (Enum.TryParse(item.Trim(), true, out TEnum enumValue) && Enum.IsDefined(typeof(TEnum), enumValue)) {
                         var intValue = Convert.ToInt32(item);
                         if (!validEnumValues!.Contains<int>(intValue)) {
-                            //throw new ArgumentException($"Cannot convert enum value. Invalid integer value for enum {typeof(TEnum).Name}: {intValue} on {typeof(TType).Name} not in validEnumValues:{string.Join(",", validEnumValues)}");
-                            Logger.Current.DataError(-1, string.Empty, "enumvalues", $"Invalid integer value for enum {typeof(TEnum).Name}: {intValue} not in validEnumValues:{validEnumValues}");
+                            //throw new ArgumentException($"Cannot convert enum value. Invalid integer value for enum {typeof(TType).Name}::{typeof(TEnum).Name}: {intValue} on {typeof(TType).Name} not in validEnumValues:{string.Join(",", validEnumValues)}");
+                            Logger.Current.DataError(-1, string.Empty, "enumvalues", $"Invalid integer value for enum {typeof(TType).Name}::{typeof(TEnum).Name}: {intValue} not in validEnumValues:{string.Join(",", validEnumValues!)}");
 
                         }
                         result.Add(enumValue);
                     }
                     else {
-                        throw new ArgumentException($"Invalid string value for enum {typeof(TEnum).Name}: {item.Trim()}");
+                        throw new ArgumentException($"Invalid string value for enum {typeof(TType).Name}::{typeof(TEnum).Name}: {item.Trim()}");
                     }
-                }
-            }
+                }            }
 
             else if (value is int intValue) {
                 if (intValue == -32767) {

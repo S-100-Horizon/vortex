@@ -50,6 +50,35 @@ namespace TestNisImporter
         }
 
         [Fact]
+        public void TestSpeedLimitExtraction() {
+            string[] inputs = {
+            "Speed limit 10 knots",
+            "Speedlimit is 10 Knots.",
+            "Speed limit is 3 knots",
+            "Speed limit is 12 knots outside the channel",
+            "Speedlimit 5 knots",
+            "During the period from 1st July to 30th September the speed limit is 10 Knots."
+            };
+
+            string pattern = @"\bspeed\s*limit(?: is)?\s+(\d+(?:\.\d+)?)\s+(knots?)\b";
+
+            foreach (var text in inputs) {
+                var match = Regex.Match(text, pattern, RegexOptions.IgnoreCase);
+                if (match.Success) {
+                    string speed = match.Groups[1].Value;
+                    string unit = match.Groups[2].Value;
+                    Assert.True(unit.ToLower() == "knots");
+                    Assert.True(Convert.ToDecimal(speed) > 0m);
+                }
+            }
+
+        }
+
+
+
+
+
+        [Fact]
         public void TestRounding() {
 
             Assert.True(RoundToIHO(5.6d) == 5.6d);

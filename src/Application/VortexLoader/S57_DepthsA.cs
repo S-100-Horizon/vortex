@@ -128,7 +128,10 @@ namespace S100Framework.Applications
                             //    };
                             //}
 
-                            // TODO: VesselSpeedLimit
+                            if (current.INFORM != null) {
+	instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+}
+
 
                             AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 

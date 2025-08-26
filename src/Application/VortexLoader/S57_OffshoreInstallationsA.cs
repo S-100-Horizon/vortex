@@ -1,8 +1,11 @@
 ﻿using ArcGIS.Core.Data;
+using NetTopologySuite.Utilities;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System.Text.RegularExpressions;
 
 namespace S100Framework.Applications
 {
@@ -69,7 +72,9 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // TODO: vesselspeedlimit
+                            if (current.INFORM != null) {
+                                instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+                            }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -274,7 +279,10 @@ namespace S100Framework.Applications
                                 instance.verticalLength = default(decimal?);
                             }
 
-                            // TODO: vesselspeedlimit
+                            if (current.INFORM != null) {
+                                instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+                            }
+
 
                             if (current.CONVIS.HasValue) {
                                 instance.visualProminence = EnumHelper.GetEnumValue<OffshoreProductionArea,visualProminence>(current.CONVIS.Value);
@@ -341,7 +349,10 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // TODO: vesselspeedlimit
+                            if (current.INFORM != null) {
+                                instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+                            }
+
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -382,6 +393,30 @@ namespace S100Framework.Applications
                 }
             }
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
+        }
+
+        private static List<vesselSpeedLimit> GetVesselSpeedLimit(string value) {
+            string pattern = @"\bspeed\s*limit(?: is)?\s+(\d+(?:\.\d+)?)\s+(knots?)\b";
+
+            var match = Regex.Match(value, pattern, RegexOptions.IgnoreCase);
+            if (match.Success) {
+                string speed = match.Groups[1].Value;
+                string unit = match.Groups[2].Value;
+
+
+                var units = unit.ToLower() switch {
+                    "knots" => speedUnits.Knots,
+                    _ => throw new NotImplementedException($"Vessel speed limit: Units {unit}")
+                };
+
+                return [new vesselSpeedLimit() {
+                    speedLimit = Convert.ToDecimal(speed),
+                    speedUnits = units
+                }];
+            }
+            else {
+                return [];
+            }
         }
     }
 }
