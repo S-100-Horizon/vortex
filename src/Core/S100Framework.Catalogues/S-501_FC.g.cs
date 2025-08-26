@@ -5548,6 +5548,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
+			[Upper(3)]
 			public List<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTerms {get;set;} = [];
 
 			[JsonIgnore]
@@ -6015,6 +6016,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,9,10,11])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -6041,6 +6043,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
 			[XmlElement("lightSector")]
+			[Lower(1)]
 			public List<lightSector> lightSector {get;set;} = [];
 
 			public bool ShouldSerializelightSector() { return lightSector.Any(); }
@@ -6173,6 +6176,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -6362,6 +6366,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("orientationValue")]
+			[Upper(2)]
 			public List<decimal> orientationValue {get;set;} = [];
 
 			public bool ShouldSerializeorientationValue() { return orientationValue.Any(); }
@@ -6627,6 +6632,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializespeciesGrouping() { return speciesGrouping.Any(); }
 
 			[XmlElement("nationalMaritimeAuthority")]
+			[Lower(1)]
 			public List<String> nationalMaritimeAuthority {get;set;} = [];
 
 			public bool ShouldSerializenationalMaritimeAuthority() { return nationalMaritimeAuthority.Any(); }
@@ -7346,6 +7352,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -7429,6 +7436,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -7800,11 +7808,13 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeinDispute() { return inDispute.HasValue; }
 
 			[XmlElement("nationality")]
+			[Lower(1)]
 			public List<String> nationality {get;set;} = [];
 
 			public bool ShouldSerializenationality() { return nationality.Any(); }
 
 			[XmlElement("nationalMaritimeAuthority")]
+			[Lower(1)]
 			public List<String> nationalMaritimeAuthority {get;set;} = [];
 
 			public bool ShouldSerializenationalMaritimeAuthority() { return nationalMaritimeAuthority.Any(); }
@@ -8046,6 +8056,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializesourceIdentification() { return sourceIdentification!=default; }
 
 			[XmlElement("nationalMaritimeAuthority")]
+			[Lower(1)]
 			public List<String> nationalMaritimeAuthority {get;set;} = [];
 
 			public bool ShouldSerializenationalMaritimeAuthority() { return nationalMaritimeAuthority.Any(); }
@@ -8066,6 +8077,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[XmlElement("nationality")]
+			[Lower(1)]
 			public List<String> nationality {get;set;} = [];
 
 			public bool ShouldSerializenationality() { return nationality.Any(); }
@@ -8110,11 +8122,13 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InternalWaters : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("nationality")]
+			[Lower(1)]
 			public List<String> nationality {get;set;} = [];
 
 			public bool ShouldSerializenationality() { return nationality.Any(); }
 
 			[XmlElement("nationalMaritimeAuthority")]
+			[Lower(1)]
 			public List<String> nationalMaritimeAuthority {get;set;} = [];
 
 			public bool ShouldSerializenationalMaritimeAuthority() { return nationalMaritimeAuthority.Any(); }
@@ -8708,6 +8722,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -8802,6 +8817,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -11195,6 +11211,7 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TerritorialSeaArea : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("nationality")]
+			[Lower(1)]
 			public List<String> nationality {get;set;} = [];
 
 			public bool ShouldSerializenationality() { return nationality.Any(); }
@@ -11255,6 +11272,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
 			[XmlElement("nationalMaritimeAuthority")]
+			[Lower(1)]
 			public List<String> nationalMaritimeAuthority {get;set;} = [];
 
 			public bool ShouldSerializenationalMaritimeAuthority() { return nationalMaritimeAuthority.Any(); }
@@ -11448,6 +11466,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -11859,6 +11878,7 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ExclusiveEconomicZone : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("nationalMaritimeAuthority")]
+			[Lower(1)]
 			public List<String> nationalMaritimeAuthority {get;set;} = [];
 
 			public bool ShouldSerializenationalMaritimeAuthority() { return nationalMaritimeAuthority.Any(); }
@@ -11899,6 +11919,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeinDispute() { return inDispute.HasValue; }
 
 			[XmlElement("nationality")]
+			[Lower(1)]
 			public List<String> nationality {get;set;} = [];
 
 			public bool ShouldSerializenationality() { return nationality.Any(); }
@@ -12157,6 +12178,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39,42])]
+			[Lower(1)]
 			public List<restriction> restriction {get;set;} = [];
 
 			[JsonIgnore]
@@ -12488,6 +12510,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializedebrisField() { return !string.IsNullOrEmpty(debrisField); }
 
 			[XmlElement("nationality")]
+			[Lower(1)]
 			public List<String> nationality {get;set;} = [];
 
 			public bool ShouldSerializenationality() { return nationality.Any(); }
@@ -12957,6 +12980,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -13106,6 +13130,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -13183,6 +13208,7 @@ namespace S100Framework.DomainModel.S501 {
 			public String? nationality {get;set;} = default;
 
 			[XmlElement("nationalMaritimeAuthority")]
+			[Lower(1)]
 			public List<String> nationalMaritimeAuthority {get;set;} = [];
 
 			public bool ShouldSerializenationalMaritimeAuthority() { return nationalMaritimeAuthority.Any(); }
@@ -13406,6 +13432,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,5])]
+			[Lower(1)]
 			public List<categoryOfFerry> categoryOfFerry {get;set;} = [];
 
 			[JsonIgnore]
@@ -14036,6 +14063,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
 			[XmlElement("surfaceCharacteristics")]
+			[Lower(1)]
 			public List<surfaceCharacteristics> surfaceCharacteristics {get;set;} = [];
 
 			public bool ShouldSerializesurfaceCharacteristics() { return surfaceCharacteristics.Any(); }
@@ -14120,6 +14148,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,14,15,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,42,43,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63])]
+			[Lower(1)]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
 			[JsonIgnore]
@@ -14160,6 +14189,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -14327,6 +14357,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("sectorCharacteristics")]
+			[Lower(1)]
 			public List<sectorCharacteristics> sectorCharacteristics {get;set;} = [];
 
 			public bool ShouldSerializesectorCharacteristics() { return sectorCharacteristics.Any(); }
@@ -14560,6 +14591,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -14957,6 +14989,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -15201,6 +15234,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,9,10,11])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -15665,6 +15699,7 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LineOfDelimitation : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("nationalMaritimeAuthority")]
+			[Lower(1)]
 			public List<String> nationalMaritimeAuthority {get;set;} = [];
 
 			public bool ShouldSerializenationalMaritimeAuthority() { return nationalMaritimeAuthority.Any(); }
@@ -15962,6 +15997,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -16120,6 +16156,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,10,11,12,14,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,60,61,62,63])]
+			[Lower(1)]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
 			[JsonIgnore]
@@ -16155,6 +16192,7 @@ namespace S100Framework.DomainModel.S501 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]

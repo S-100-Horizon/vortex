@@ -2796,6 +2796,7 @@ namespace S100Framework.DomainModel.S131 {
 		public class timeIntervalsByDayOfWeek {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
+			[Upper(7)]
 			public List<dayOfWeek> dayOfWeek {get;set;} = [];
 
 			[JsonIgnore]
@@ -2827,6 +2828,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class usefulMarkDescription {
 			[XmlElement("textContent")]
+			[Lower(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
@@ -2936,6 +2938,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializedistance() { return distance.HasValue; }
 
 			[XmlElement("sectorBearing")]
+			[Upper(2)]
 			public List<decimal> sectorBearing {get;set;} = [];
 
 			public bool ShouldSerializesectorBearing() { return sectorBearing.Any(); }
@@ -2961,6 +2964,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class cargoServicesDescription {
 			[XmlElement("textContent")]
+			[Lower(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
@@ -3016,6 +3020,7 @@ namespace S100Framework.DomainModel.S131 {
 			public SerializableEnumeration<categoryOfDepthsDescription> categoryOfDepthsDescriptionElement { get { return categoryOfDepthsDescription; } set { } }
 
 			[XmlElement("textContent")]
+			[Lower(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
@@ -3028,6 +3033,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class facilitiesLayoutDescription {
 			[XmlElement("textContent")]
+			[Lower(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
@@ -3043,6 +3049,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class generalPortDescription {
 			[XmlElement("textContent")]
+			[Lower(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
@@ -3055,6 +3062,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class graphic {
 			[XmlElement("pictorialRepresentation")]
+			[Lower(1)]
 			public List<String> pictorialRepresentation {get;set;} = [];
 
 			public bool ShouldSerializepictorialRepresentation() { return pictorialRepresentation.Any(); }
@@ -3087,6 +3095,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class landmarkDescription {
 			[XmlElement("textContent")]
+			[Lower(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
@@ -3099,6 +3108,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class limitsDescription {
 			[XmlElement("textContent")]
+			[Lower(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
@@ -3111,6 +3121,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class majorLightDescription {
 			[XmlElement("textContent")]
+			[Lower(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
@@ -3123,6 +3134,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class markedBy {
 			[XmlElement("textContent")]
+			[Lower(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
@@ -3135,6 +3147,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class offshoreMarkDescription {
 			[XmlElement("textContent")]
+			[Lower(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
@@ -3157,6 +3170,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializecategoryOfSchedule() { return categoryOfSchedule.HasValue; }
 
 			[XmlElement("timeIntervalsByDayOfWeek")]
+			[Lower(1)]
 			public List<timeIntervalsByDayOfWeek> timeIntervalsByDayOfWeek {get;set;} = [];
 
 			public bool ShouldSerializetimeIntervalsByDayOfWeek() { return timeIntervalsByDayOfWeek.Any(); }
@@ -4352,6 +4366,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ServiceHours : InformationType {
 			[XmlElement("scheduleByDayOfWeek")]
+			[Lower(1)]
 			public List<scheduleByDayOfWeek> scheduleByDayOfWeek {get;set;} = [];
 
 			public bool ShouldSerializescheduleByDayOfWeek() { return scheduleByDayOfWeek.Any(); }
@@ -4908,6 +4923,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeportFacilityNumber() { return !string.IsNullOrEmpty(portFacilityNumber); }
 
 			[XmlElement("bollardNumber")]
+			[Upper(2)]
 			public List<String> bollardNumber {get;set;} = [];
 
 			public bool ShouldSerializebollardNumber() { return bollardNumber.Any(); }
@@ -4918,11 +4934,13 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializegLNExtension() { return !string.IsNullOrEmpty(gLNExtension); }
 
 			[XmlElement("metreMarkNumber")]
+			[Upper(2)]
 			public List<String> metreMarkNumber {get;set;} = [];
 
 			public bool ShouldSerializemetreMarkNumber() { return metreMarkNumber.Any(); }
 
 			[XmlElement("manifoldNumber")]
+			[Upper(2)]
 			public List<String> manifoldNumber {get;set;} = [];
 
 			public bool ShouldSerializemanifoldNumber() { return manifoldNumber.Any(); }
@@ -5043,6 +5061,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializebollardPull() { return bollardPull.HasValue; }
 
 			[XmlElement("bollardNumber")]
+			[Upper(2)]
 			public List<String> bollardNumber {get;set;} = [];
 
 			public bool ShouldSerializebollardNumber() { return bollardNumber.Any(); }
@@ -5053,11 +5072,13 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializegLNExtension() { return !string.IsNullOrEmpty(gLNExtension); }
 
 			[XmlElement("metreMarkNumber")]
+			[Upper(2)]
 			public List<String> metreMarkNumber {get;set;} = [];
 
 			public bool ShouldSerializemetreMarkNumber() { return metreMarkNumber.Any(); }
 
 			[XmlElement("manifoldNumber")]
+			[Upper(2)]
 			public List<String> manifoldNumber {get;set;} = [];
 
 			public bool ShouldSerializemanifoldNumber() { return manifoldNumber.Any(); }
@@ -5776,6 +5797,7 @@ namespace S100Framework.DomainModel.S131 {
 		public partial class HarbourFacility : HarbourPhysicalInfrastructure {
 			[XmlIgnore]
 			[EnumerationValue([12,13])]
+			[Lower(1)]
 			public List<categoryOfHarbourFacility> categoryOfHarbourFacility {get;set;} = [];
 
 			[JsonIgnore]

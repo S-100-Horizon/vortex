@@ -503,6 +503,11 @@ namespace S100Framework.Applications
                                 }
                             }
                             else {
+                                if (lower > 0)
+                                    builderDomainModel.AppendLine($"\t\t\t[Lower({lower})]");
+                                if(upper.HasValue)
+                                    builderDomainModel.AppendLine($"\t\t\t[Upper({upper.Value})]");
+
                                 prefix = $"List<{prefix}>";
                                 postfix = " = [];";
                             }
@@ -1302,6 +1307,7 @@ namespace S100Framework.Applications
                 foreach (var attributeRule in client.AttributeRules.Where(e => e.Name.Equals(referenceCode))) {
                     builder.AppendLine($"\t\t\t{attributeRule.Rule}");
                 }
+
                 //if (prefix.Equals("DateOnly")) {
                 //    builder.AppendLine("\t\t\t[XmlIgnore]");
                 //}
@@ -1333,6 +1339,11 @@ namespace S100Framework.Applications
                     }
                 }
                 else {
+                    if (lower > 0)
+                        builder.AppendLine($"\t\t\t[Lower({lower})]");
+                    if (upper.HasValue)
+                        builder.AppendLine($"\t\t\t[Upper({upper.Value})]");
+
                     prefix = $"List<{prefix}>";
                     postfix = " = [];";
                 }
