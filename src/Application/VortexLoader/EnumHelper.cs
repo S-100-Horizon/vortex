@@ -65,6 +65,7 @@
                         //else {
                         //    throw new ArgumentException($"Invalid string value for enum {typeof(TEnum).Name}: {item.Trim()}");
                         //}
+                        Logger.Current.DataError(-1, string.Empty, "enumvalues", $"Enum list contains -32767. This is not converted.");
                     }
                     else if (Enum.TryParse(item.Trim(), true, out TEnum enumValue) && Enum.IsDefined(typeof(TEnum), enumValue)) {
                         var intValue = Convert.ToInt32(item);
