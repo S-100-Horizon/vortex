@@ -2129,6 +2129,7 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializelocalityIdentifier() { return !string.IsNullOrEmpty(localityIdentifier); }
 
 			[XmlElement("locationName")]
+			[Lower(1)]
 			public List<locationName> locationName {get;set;} = [];
 
 			public bool ShouldSerializelocationName() { return locationName.Any(); }
@@ -2146,6 +2147,7 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializelocalityIdentifier() { return !string.IsNullOrEmpty(localityIdentifier); }
 
 			[XmlElement("locationName")]
+			[Lower(1)]
 			public List<locationName> locationName {get;set;} = [];
 
 			public bool ShouldSerializelocationName() { return locationName.Any(); }
@@ -2285,6 +2287,7 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializeaffectedChartPublications() { return affectedChartPublications.Any(); }
 
 			[XmlElement("generalArea")]
+			[Lower(1)]
 			public List<generalArea> generalArea {get;set;} = [];
 
 			public bool ShouldSerializegeneralArea() { return generalArea.Any(); }

@@ -22,6 +22,8 @@ namespace S100Framework.DomainModel
         public static Primitives[] FeaturePrimitives(string featureType) => throw new NotImplementedException();
     }
 
+    #region Attribute
+
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
     public class EnumerationAttribute : System.Attribute
     {
@@ -92,6 +94,20 @@ namespace S100Framework.DomainModel
     public class RequiredAttribute : System.Attribute
     {
     }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class LowerAttribute(int lower) : System.Attribute
+    {
+        public int Lower = lower;
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class UpperAttribute(int upper) : System.Attribute
+    {
+        public int Upper = upper;
+    }
+
+    #endregion
 
     public interface IInformationBindingDefinition
     {

@@ -1574,6 +1574,7 @@ namespace S100Framework.DomainModel.S123 {
 		public class areaA3ServiceDescription {
 			[XmlIgnore]
 			[EnumerationValue([1,2])]
+			[Lower(1)]
 			public List<servingMobileSatelliteService> servingMobileSatelliteService {get;set;} = [];
 
 			[JsonIgnore]
@@ -1601,6 +1602,7 @@ namespace S100Framework.DomainModel.S123 {
 		public class broadcastContent {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[Lower(1)]
 			public List<typeOfBroadcastContent> typeOfBroadcastContent {get;set;} = [];
 
 			[JsonIgnore]
@@ -2075,6 +2077,7 @@ namespace S100Framework.DomainModel.S123 {
 		public class timeIntervalsByDayOfWeek {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
+			[Upper(7)]
 			public List<dayOfWeek> dayOfWeek {get;set;} = [];
 
 			[JsonIgnore]
@@ -2195,6 +2198,8 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializecategoryOfSchedule() { return categoryOfSchedule.HasValue; }
 
 			[XmlElement("timeIntervalsByDayOfWeek")]
+			[Lower(1)]
+			[Upper(10)]
 			public List<timeIntervalsByDayOfWeek> timeIntervalsByDayOfWeek {get;set;} = [];
 
 			public bool ShouldSerializetimeIntervalsByDayOfWeek() { return timeIntervalsByDayOfWeek.Any(); }
@@ -2708,6 +2713,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializecategoryOfAuthority() { return categoryOfAuthority.HasValue; }
 
 			[XmlElement("textContent")]
+			[Lower(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
@@ -2932,6 +2938,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializecategoryOfBroadcastCommunication() { return categoryOfBroadcastCommunication.HasValue; }
 
 			[XmlElement("broadcastContent")]
+			[Lower(1)]
 			public List<broadcastContent> broadcastContent {get;set;} = [];
 
 			public bool ShouldSerializebroadcastContent() { return broadcastContent.Any(); }
@@ -3321,6 +3328,7 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ServiceHours : InformationType {
 			[XmlElement("scheduleByDayOfWeek")]
+			[Lower(1)]
 			public List<scheduleByDayOfWeek> scheduleByDayOfWeek {get;set;} = [];
 
 			public bool ShouldSerializescheduleByDayOfWeek() { return scheduleByDayOfWeek.Any(); }
@@ -3436,6 +3444,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializecommunicationStandard() { return !string.IsNullOrEmpty(communicationStandard); }
 
 			[XmlElement("radioChannelDetails")]
+			[Lower(1)]
 			public List<radioChannelDetails> radioChannelDetails {get;set;} = [];
 
 			public bool ShouldSerializeradioChannelDetails() { return radioChannelDetails.Any(); }
@@ -4815,6 +4824,8 @@ namespace S100Framework.DomainModel.S123 {
 
 			[XmlIgnore]
 			[EnumerationValue([1])]
+			[Lower(1)]
+			[Upper(2)]
 			public List<textType> textType {get;set;} = [];
 
 			[JsonIgnore]
