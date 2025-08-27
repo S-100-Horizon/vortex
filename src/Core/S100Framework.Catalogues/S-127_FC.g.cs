@@ -2946,6 +2946,7 @@ namespace S100Framework.DomainModel.S127 {
 		public class timeIntervalsByDayOfWeek {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
+			[Upper(7)]
 			public List<dayOfWeek> dayOfWeek {get;set;} = [];
 
 			[JsonIgnore]
@@ -3061,6 +3062,7 @@ namespace S100Framework.DomainModel.S127 {
 			public bool ShouldSerializedistance() { return distance.HasValue; }
 
 			[XmlElement("sectorBearing")]
+			[Upper(2)]
 			public List<decimal> sectorBearing {get;set;} = [];
 
 			public bool ShouldSerializesectorBearing() { return sectorBearing.Any(); }
@@ -3083,6 +3085,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class graphic {
 			[XmlElement("pictorialRepresentation")]
+			[Lower(1)]
 			public List<String> pictorialRepresentation {get;set;} = [];
 
 			public bool ShouldSerializepictorialRepresentation() { return pictorialRepresentation.Any(); }
@@ -3125,6 +3128,7 @@ namespace S100Framework.DomainModel.S127 {
 			public bool ShouldSerializecategoryOfSchedule() { return categoryOfSchedule.HasValue; }
 
 			[XmlElement("timeIntervalsByDayOfWeek")]
+			[Lower(1)]
 			public List<timeIntervalsByDayOfWeek> timeIntervalsByDayOfWeek {get;set;} = [];
 
 			public bool ShouldSerializetimeIntervalsByDayOfWeek() { return timeIntervalsByDayOfWeek.Any(); }
@@ -4028,6 +4032,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ServiceHours : InformationType {
 			[XmlElement("scheduleByDayOfWeek")]
+			[Lower(1)]
 			public List<scheduleByDayOfWeek> scheduleByDayOfWeek {get;set;} = [];
 
 			public bool ShouldSerializescheduleByDayOfWeek() { return scheduleByDayOfWeek.Any(); }
@@ -4078,6 +4083,7 @@ namespace S100Framework.DomainModel.S127 {
 		public partial class ShipReport : InformationType {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[Lower(1)]
 			public List<categoryOfShipReport> categoryOfShipReport {get;set;} = [];
 
 			[JsonIgnore]
@@ -4090,6 +4096,7 @@ namespace S100Framework.DomainModel.S127 {
 			public Boolean iMOFormatForReporting {get;set;} = false;
 
 			[XmlElement("noticeTime")]
+			[Lower(1)]
 			public List<noticeTime> noticeTime {get;set;} = [];
 
 			public bool ShouldSerializenoticeTime() { return noticeTime.Any(); }
@@ -5080,6 +5087,7 @@ namespace S100Framework.DomainModel.S127 {
 		public partial class PiracyRiskArea : ReportableServiceArea {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,14,18,19,20,21,24,25,26,27,31,32,33,34])]
+			[Lower(1)]
 			public List<restriction> restriction {get;set;} = [];
 
 			[JsonIgnore]
@@ -5293,6 +5301,7 @@ namespace S100Framework.DomainModel.S127 {
 			public bool ShouldSerializecategoryOfVessel() { return categoryOfVessel.Any(); }
 
 			[XmlElement("orientationValue")]
+			[Upper(2)]
 			public List<decimal> orientationValue {get;set;} = [];
 
 			public bool ShouldSerializeorientationValue() { return orientationValue.Any(); }
@@ -5389,6 +5398,7 @@ namespace S100Framework.DomainModel.S127 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,7,8,13,14,25,26,27,28,29,30,35,36,37])]
+			[Lower(1)]
 			public List<restriction> restriction {get;set;} = [];
 
 			[JsonIgnore]
@@ -5659,6 +5669,7 @@ namespace S100Framework.DomainModel.S127 {
 		public partial class SignalStationWarning : FeatureType {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18])]
+			[Lower(1)]
 			public List<categoryOfSignalStationWarning> categoryOfSignalStationWarning {get;set;} = [];
 
 			[JsonIgnore]
@@ -5746,6 +5757,7 @@ namespace S100Framework.DomainModel.S127 {
 		public partial class SignalStationTraffic : OrganizationContactArea {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,13])]
+			[Lower(1)]
 			public List<categoryOfSignalStationTraffic> categoryOfSignalStationTraffic {get;set;} = [];
 
 			[JsonIgnore]

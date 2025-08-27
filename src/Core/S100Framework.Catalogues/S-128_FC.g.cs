@@ -1448,6 +1448,7 @@ namespace S100Framework.DomainModel.S128 {
 		public class timeIntervalOfCycle {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
+			[Lower(1)]
 			public List<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit {get;set;} = [];
 
 			[JsonIgnore]
@@ -2136,6 +2137,7 @@ namespace S100Framework.DomainModel.S128 {
 			public bool ShouldSerializeagencyResponsibleForProduction() { return !string.IsNullOrEmpty(agencyResponsibleForProduction); }
 
 			[XmlIgnore]
+			[Lower(1)]
 			public List<catalogueElementClassification> catalogueElementClassification {get;set;} = [];
 
 			[JsonIgnore]
@@ -2298,6 +2300,7 @@ namespace S100Framework.DomainModel.S128 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
+			[Upper(3)]
 			public List<navigationPurpose> navigationPurpose {get;set;} = [];
 
 			[JsonIgnore]

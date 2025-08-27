@@ -5550,6 +5550,7 @@ namespace S100Framework.DomainModel.S201 {
 			public SerializableEnumeration<lightCharacteristic> lightCharacteristicElement { get { return lightCharacteristic; } set { } }
 
 			[XmlElement("signalGroup")]
+			[Upper(10)]
 			public List<String> signalGroup {get;set;} = [];
 
 			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
@@ -5560,6 +5561,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
 			[XmlElement("signalSequence")]
+			[Upper(10)]
 			public List<signalSequence> signalSequence {get;set;} = [];
 
 			public bool ShouldSerializesignalSequence() { return signalSequence.Any(); }
@@ -5637,6 +5639,7 @@ namespace S100Framework.DomainModel.S201 {
 		public class lightSector {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -5696,11 +5699,14 @@ namespace S100Framework.DomainModel.S201 {
 			public SerializableEnumeration<lightCharacteristic> lightCharacteristicElement { get { return lightCharacteristic; } set { } }
 
 			[XmlElement("lightSector")]
+			[Lower(1)]
+			[Upper(10)]
 			public List<lightSector> lightSector {get;set;} = [];
 
 			public bool ShouldSerializelightSector() { return lightSector.Any(); }
 
 			[XmlElement("signalGroup")]
+			[Upper(10)]
 			public List<String> signalGroup {get;set;} = [];
 
 			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
@@ -5711,6 +5717,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
 			[XmlElement("signalSequence")]
+			[Upper(10)]
 			public List<signalSequence> signalSequence {get;set;} = [];
 
 			public bool ShouldSerializesignalSequence() { return signalSequence.Any(); }
@@ -6536,6 +6543,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -6659,6 +6667,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -6791,6 +6800,7 @@ namespace S100Framework.DomainModel.S201 {
 		public abstract class GenericLight : Equipment {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -6871,6 +6881,7 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class Landmark : StructureObject {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
+			[Lower(1)]
 			public List<categoryOfLandmark> categoryOfLandmark {get;set;} = [];
 
 			[JsonIgnore]
@@ -7339,6 +7350,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializeObscuredSector() { return ObscuredSector.Any(); }
 
 			[XmlElement("sectorCharacteristics")]
+			[Lower(1)]
 			public List<sectorCharacteristics> sectorCharacteristics {get;set;} = [];
 
 			public bool ShouldSerializesectorCharacteristics() { return sectorCharacteristics.Any(); }
@@ -7815,6 +7827,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("typeOfEnvironmentalObservationEquipment")]
+			[Lower(1)]
 			public List<String> typeOfEnvironmentalObservationEquipment {get;set;} = [];
 
 			public bool ShouldSerializetypeOfEnvironmentalObservationEquipment() { return typeOfEnvironmentalObservationEquipment.Any(); }
@@ -7954,6 +7967,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -8821,6 +8835,7 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class LightFloat : StructureObject {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -8944,6 +8959,7 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class LightVessel : StructureObject {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Lower(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[JsonIgnore]
@@ -10142,6 +10158,7 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class SpecialPurposeGeneralBeacon : GenericBeacon {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
+			[Lower(1)]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
 			[JsonIgnore]
@@ -10228,6 +10245,7 @@ namespace S100Framework.DomainModel.S201 {
 		public partial class SpecialPurposeGeneralBuoy : GenericBuoy {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
+			[Lower(1)]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
 			[JsonIgnore]
