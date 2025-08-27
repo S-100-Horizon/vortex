@@ -13,35 +13,41 @@ namespace S100Framework.Applications
     internal static partial class ImporterNIS
     {
         private static void S57_CulturalFeaturesA(Geodatabase source, Geodatabase target, QueryFilter filter) {
-            var createBridgesAndRelations = false;
+            var createBridgesAndRelations = true;
 
             var tableName = "CulturalFeaturesA";
 
             using var culturalFeaturesA = source.OpenDataset<FeatureClass>(source.GetName(tableName));
             Subtypes.Instance.RegisterSubtypes(culturalFeaturesA);
 
-            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
+            using var surface = target.OpenDataset<FeatureClass>(target.GetName("surface"));
             using var featureAssociation = target.OpenDataset<Table>(target.GetName("featureassociation"));
+            using var featureType = target.OpenDataset<Table>(target.GetName("featuretype"));
 
-            using var buffer = featureClass.CreateRowBuffer();
-            using var insert = featureClass.CreateInsertCursor();
+            //using var buffer = surface.CreateRowBuffer();
+            //using var insert = surface.CreateInsertCursor();
 
-            // Bridges
+            using var bufferFeatureType = featureType.CreateRowBuffer();
+            using var insertFeatureType = featureType.CreateInsertCursor();
+            using var bufferSurface = surface.CreateRowBuffer();
+            using var insertSurface = surface.CreateInsertCursor();
+
+            // Bridges - Store an aggregation per bridge
             if (createBridgesAndRelations) {
-                Bridges.Initialize(source);
+                Bridges.Initialize(source,target);
 
                 foreach (var bridge in Bridges.Instance.BridgeElements()) {
                     var instance = new Bridge();
 
-                    buffer["ps"] = ps101;
-                    buffer["code"] = instance.GetType().Name;
-                    buffer["edition"] = ImporterNIS.s101version;
-                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                    bufferFeatureType["ps"] = ps101;
+                    bufferFeatureType["code"] = instance.GetType().Name;
+                    bufferFeatureType["edition"] = ImporterNIS.s101version;
+                    bufferFeatureType["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
 
-                    SetShape(buffer, bridge.DissolvedGeometry);
-                    SetUsageBand(buffer, ImporterNIS._compilationScale);
+                    //SetShape(buffer, bridge.DissolvedGeometry);
+                    //SetUsageBand(buffer, ImporterNIS._compilationScale);
 
-                    var featureN = featureClass.CreateRow(buffer);
+                    var featureN = featureType.CreateRow(bufferFeatureType);
                     var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                     bridge.Name = name;
@@ -126,14 +132,14 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation = current.PICREP;
                             }
 
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+                            bufferSurface["ps"] = ps101;
+                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["edition"] = ImporterNIS.s101version;
+                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            SetShape(bufferSurface, current.SHAPE);
+                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
-                            var featureN = featureClass.CreateRow(buffer);
+                            var featureN = surface.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
@@ -307,14 +313,14 @@ namespace S100Framework.Applications
 
 
                                 AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                                buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                SetShape(buffer, current.SHAPE);
-                                SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+                                bufferSurface["ps"] = ps101;
+                                bufferSurface["code"] = instance.GetType().Name;
+                                bufferSurface["edition"] = ImporterNIS.s101version;
+                                bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                SetShape(bufferSurface, current.SHAPE);
+                                SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
-                                var featureN = featureClass.CreateRow(buffer);
+                                var featureN = surface.CreateRow(bufferSurface);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
 
@@ -390,14 +396,14 @@ namespace S100Framework.Applications
                                     instance.pictorialRepresentation = current.PICREP;
                                 }
 
-                                buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                SetShape(buffer, current.SHAPE);
-                                SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+                                bufferSurface["ps"] = ps101;
+                                bufferSurface["code"] = instance.GetType().Name;
+                                bufferSurface["edition"] = ImporterNIS.s101version;
+                                bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                SetShape(bufferSurface, current.SHAPE);
+                                SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
-                                var featureN = featureClass.CreateRow(buffer);
+                                var featureN = surface.CreateRow(bufferSurface);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                                 if (createBridgesAndRelations) {
@@ -494,14 +500,14 @@ namespace S100Framework.Applications
                             */
                             // TODO: InTheWater
 
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+                            bufferSurface["ps"] = ps101;
+                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["edition"] = ImporterNIS.s101version;
+                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            SetShape(bufferSurface, current.SHAPE);
+                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
-                            var featureN = featureClass.CreateRow(buffer);
+                            var featureN = surface.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -598,14 +604,14 @@ namespace S100Framework.Applications
 
                             // TODO: InTheWater
 
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+                            bufferSurface["ps"] = ps101;
+                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["edition"] = ImporterNIS.s101version;
+                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            SetShape(bufferSurface, current.SHAPE);
+                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
-                            var featureN = featureClass.CreateRow(buffer);
+                            var featureN = surface.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
@@ -713,14 +719,14 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation = current.PICREP;
                             }
 
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+                            bufferSurface["ps"] = ps101;
+                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["edition"] = ImporterNIS.s101version;
+                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            SetShape(bufferSurface, current.SHAPE);
+                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
-                            var featureN = featureClass.CreateRow(buffer);
+                            var featureN = surface.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
@@ -810,7 +816,7 @@ namespace S100Framework.Applications
                             //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             //SetShape(buffer, current.SHAPE);
                             //SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
-                            //var featureN = featureClass.CreateRow(buffer);
+                            //var featureN = surface.CreateRow(buffer);
                             //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             //if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
@@ -891,14 +897,14 @@ namespace S100Framework.Applications
 
                             //TODO: inTheWater
 
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+                            bufferSurface["ps"] = ps101;
+                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["edition"] = ImporterNIS.s101version;
+                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            SetShape(bufferSurface, current.SHAPE);
+                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
-                            var featureN = featureClass.CreateRow(buffer);
+                            var featureN = surface.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
@@ -915,14 +921,14 @@ namespace S100Framework.Applications
                             if (current.CATLMK == "19") {
                                 var windturbine = ImporterNIS._converterRegistry.Convert<WindTurbine>(current);
 
-                                buffer["ps"] = ps101;
-                                buffer["code"] = windturbine.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(windturbine, jsonSerializerOptions);
-                                SetShape(buffer, current.SHAPE);
-                                SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+                                bufferSurface["ps"] = ps101;
+                                bufferSurface["code"] = windturbine.GetType().Name;
+                                bufferSurface["edition"] = ImporterNIS.s101version;
+                                bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(windturbine, jsonSerializerOptions);
+                                SetShape(bufferSurface, current.SHAPE);
+                                SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
-                                var windturbineFeature = featureClass.CreateRow(buffer);
+                                var windturbineFeature = surface.CreateRow(bufferSurface);
                                 var structureName = Convert.ToString(windturbineFeature["name"]);
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
@@ -1022,14 +1028,14 @@ namespace S100Framework.Applications
 
                             //TODO: inTheWater
 
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+                            bufferSurface["ps"] = ps101;
+                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["edition"] = ImporterNIS.s101version;
+                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            SetShape(bufferSurface, current.SHAPE);
+                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
-                            var featureN = featureClass.CreateRow(buffer);
+                            var featureN = surface.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
@@ -1119,14 +1125,14 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation = current.PICREP;
                             }
 
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+                            bufferSurface["ps"] = ps101;
+                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["edition"] = ImporterNIS.s101version;
+                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            SetShape(bufferSurface, current.SHAPE);
+                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
-                            var featureN = featureClass.CreateRow(buffer);
+                            var featureN = surface.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
@@ -1232,14 +1238,14 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation = current.PICREP;
                             }
 
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+                            bufferSurface["ps"] = ps101;
+                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["edition"] = ImporterNIS.s101version;
+                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            SetShape(bufferSurface, current.SHAPE);
+                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
-                            var featureN = featureClass.CreateRow(buffer);
+                            var featureN = surface.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             //FeatureRelations.Instance.AddRelation(new(typeof(Bridge), relatedBridge, new(instance.GetType(), name), featureN, s101MasterFeature, _featureAssociation);
@@ -1311,14 +1317,14 @@ namespace S100Framework.Applications
 
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+                            bufferSurface["ps"] = ps101;
+                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["edition"] = ImporterNIS.s101version;
+                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            SetShape(bufferSurface, current.SHAPE);
+                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
-                            var featureN = featureClass.CreateRow(buffer);
+                            var featureN = surface.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
@@ -1372,14 +1378,14 @@ namespace S100Framework.Applications
 
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+                            bufferSurface["ps"] = ps101;
+                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["edition"] = ImporterNIS.s101version;
+                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            SetShape(bufferSurface, current.SHAPE);
+                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
-                            var featureN = featureClass.CreateRow(buffer);
+                            var featureN = surface.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
@@ -1479,14 +1485,14 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation = current.PICREP;
                             }
 
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+                            bufferSurface["ps"] = ps101;
+                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["edition"] = ImporterNIS.s101version;
+                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            SetShape(bufferSurface, current.SHAPE);
+                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
-                            var featureN = featureClass.CreateRow(buffer);
+                            var featureN = surface.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
@@ -1555,14 +1561,14 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation = current.PICREP;
                             }
 
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+                            bufferSurface["ps"] = ps101;
+                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["edition"] = ImporterNIS.s101version;
+                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            SetShape(bufferSurface, current.SHAPE);
+                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
-                            var featureN = featureClass.CreateRow(buffer);
+                            var featureN = surface.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
