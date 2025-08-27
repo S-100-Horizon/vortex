@@ -1,5 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
+using S100Framework.DomainModel;
 using System.Diagnostics;
 
 
@@ -31,14 +32,14 @@ namespace S100Framework.Applications.Singletons
 
     class FeatureGrouper
     {
-        internal List<BridgeElement> GroupAndDissolveToBridgeElements(List<FeatureClass> featureclasses) {
+        internal List<BridgeElement> GroupAndDissolveToBridgeElements(List<FeatureClass> featureclasses, int plts_comp_scale) {
             var groups = new List<List<string>>();
 
             var features = new List<(string ObjectID, Geometry Geometry)>();
 
             foreach (var featureclass in featureclasses) {
                 var tableName = featureclass.GetName().ToLower();
-                using (var cursor = featureclass.Search(new QueryFilter() { WhereClause = "fcsubtype in (5,45)" })) {
+                using (var cursor = featureclass.Search(new QueryFilter() { WhereClause = $"fcsubtype in (5,45) and plts_comp_scale = {plts_comp_scale}" })) {
                     while (cursor.MoveNext()) {
                         using (var row = (Feature)cursor.Current) {
                             long oid = row.GetObjectID();
@@ -169,7 +170,7 @@ namespace S100Framework.Applications.Singletons
         }
 
         internal List<BridgeElement> GetBridgeElementsContainingOID(string tableName, long oid) {
-            return _groups.Where(be => be.ContainsOID(tableName.ToLower(),oid)).ToList();
+            return _groups!.Where(be => be.ContainsOID(tableName.ToLower(),oid)).ToList();
         }
 
         internal IEnumerable<BridgeElement> BridgeElements() {
@@ -178,61 +179,75 @@ namespace S100Framework.Applications.Singletons
             }
         }
 
-        private static Geodatabase _geodatabase;
+        private static Geodatabase _source;
+        private static Geodatabase _destination;
 
-        private Bridges(Geodatabase geodatabase) {
-            _geodatabase = geodatabase ?? throw new ArgumentNullException(nameof(geodatabase));
+        private Bridges(Geodatabase source, Geodatabase destination, int plts_comp_scale) {
+            _source = source ?? throw new ArgumentNullException(nameof(source));
+            _destination = destination ?? throw new ArgumentNullException(nameof(destination));
 
             var culturalFeaturesATableName = "CulturalFeaturesA";
             var portsAndServicesTableName = "PortsAndServicesA";
 
-            using var culturalFeaturesA = _geodatabase.OpenDataset<FeatureClass>(_geodatabase.GetName(culturalFeaturesATableName));
-            using var portsAndServicesA = _geodatabase.OpenDataset<FeatureClass>(_geodatabase.GetName(portsAndServicesTableName));
+            using var culturalFeaturesA = _source.OpenDataset<FeatureClass>(_source.GetName(culturalFeaturesATableName));
+            using var portsAndServicesA = _source.OpenDataset<FeatureClass>(_source.GetName(portsAndServicesTableName));
 
             var featureGrouper = new FeatureGrouper();
-            _groups = featureGrouper.GroupAndDissolveToBridgeElements(new() { culturalFeaturesA, portsAndServicesA } );
+            _groups = featureGrouper.GroupAndDissolveToBridgeElements(new() { culturalFeaturesA, portsAndServicesA }, plts_comp_scale);
         }
 
-        internal static void Initialize(Geodatabase geodatabase) {
+        internal static void Initialize(Geodatabase source, Geodatabase destination) {
             if (_instance != null) {
                 throw new InvalidOperationException("Bridges has already been initialized.");
             }
 
             lock (_lock) {
                 if (_instance == null) {
-                    _instance = new Bridges(geodatabase);
+                    _instance = new Bridges(source, destination, ImporterNIS._compilationScale);
                 }
             }
         }
 
         internal void CreateRelations() {
+            var name = _destination.GetName("featuretype");
+            using var featuretypeTable = _destination.OpenDataset<Table>(_destination.GetName("featuretype"));
 
-            using var surface = _geodatabase.OpenDataset<FeatureClass>(_geodatabase.GetName("surface"));
+            using var bufferFeatureType = featuretypeTable.CreateRowBuffer();
+            using var insertFeatureType = featuretypeTable.CreateInsertCursor();
 
-            using (var cursor = surface.Search(new QueryFilter() { WhereClause = "code = 'Bridge'" })) {
+            var bridgeElements = _instance.BridgeElements().ToList();
+
+            using (var cursor = featuretypeTable.CreateUpdateCursor(new QueryFilter() { WhereClause = "code = 'Bridge'" }, useRecyclingCursor : true)) {
                 while (cursor.MoveNext()) {
-                    using (var row = (Feature)cursor.Current) {
+                    using (var row = cursor.Current) {
                         long oid = row.GetObjectID();
-                        var shape = row.GetShape();
+                        //var shape = row.GetShape();
                         //S100Framework.DomainModel.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"])!);
+
                         var bindings = _instance!.GetBindings(row["name"].ToString());
 
+                        var featureBindings = new List<featureBinding>();
+
+                        foreach (var binding in bindings) {
+                            var relatedBridge = row["name"].ToString();
+                            var bridgeElement = bridgeElements.SingleOrDefault(e => e.Name == relatedBridge);
+                            var featureBinding = new featureBinding {
+                                association = "BridgeAggregation",
+                                associationId = bridgeElement!.BridgeAggregationName,
+                                featureId = binding.ChildName,
+                                role = "theComponent",
+                                roleType = "association"
+
+                            };
+                            featureBindings.Add(featureBinding);
+                        }
+                        row["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(featureBindings);
+                        row.Store();
                     }
                 }
             }
+            // Note: all elements are already bound to the bridge - see relatedBridge
 
-
-
-
-            //// Store all bridge relations
-            //foreach (var bridge in _instance!.BridgeElements()) {
-            //    // Create relations for each bridge
-            //    var bindings = _instance!.GetBindings(bridge.Name);
-            //    // Todo: write all aggregations
-            //    ;
-
-
-            //}
         }
 
         internal static Bridges Instance {

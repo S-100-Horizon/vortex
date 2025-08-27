@@ -157,7 +157,10 @@ namespace S100Framework.Applications
                         using var featureAssociation = destination.OpenDataset<Table>(destination.GetName("featureassociation"));
                         using var informationAssociation = destination.OpenDataset<Table>(destination.GetName("InformationAssociation"));
                         using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationType"));
+                        using var featureType = destination.OpenDataset<Table>(destination.GetName("featureType"));
 
+                        Logger.Current.Information($"Deleting data from destination: {featureType.GetName()}");
+                        featureType.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {point.GetName()}");
                         point.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {pointset.GetName()}");
@@ -227,6 +230,12 @@ namespace S100Framework.Applications
 
                     //filter.WhereClause = "globalid = '{1F1D8B58-4959-4202-80F5-6CA4DD47D209}'";
 
+                    Logger.Current.Information($"Converting Cultural Features");
+                    Store(() => S57_CulturalFeaturesA(source, destination, filter));
+                    Store(() => S57_CulturalFeaturesL(source, destination, filter));
+                    Store(() => S57_CulturalFeaturesP(source, destination, filter));
+
+
                     Logger.Current.Information($"Converting Product Coverages");
                     Store(() => S57_ProductCoverage(source, destination, filter));
 
@@ -242,10 +251,6 @@ namespace S100Framework.Applications
                     //Logger.Current.Information($"Converting S101_RecommendedTracksAndRoutes");
                     //Store(() => S101_RecommendedTracksAndRoutes(source, destination, filter));
 
-                    Logger.Current.Information($"Converting Cultural Features");
-                    Store(() => S57_CulturalFeaturesA(source, destination, filter));
-                    Store(() => S57_CulturalFeaturesL(source, destination, filter));
-                    Store(() => S57_CulturalFeaturesP(source, destination, filter));
 
                     Logger.Current.Information($"Converting PortsAndServices");
                     Store(() => S57_PortsAndServicesA(source, destination, filter));
