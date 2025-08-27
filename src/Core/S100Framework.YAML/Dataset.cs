@@ -7,6 +7,7 @@ namespace S100Framework.YAML
 {
     public enum Primitive
     {
+        NoGeometry = -1,
         Point = 1,
         Curve = 2,
         Surface = 3,

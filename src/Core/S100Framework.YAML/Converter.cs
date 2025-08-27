@@ -155,6 +155,10 @@ namespace S100Framework.YAML
                     break;
 
                 // Ensure enum value comes 'EnumMemberAttribute' and no enums are sat to 0, -1 or "unknown".
+                //case Type t when t == typeof(Primitive):
+                //    System.Diagnostics.Debugger.Break();
+                //    break;
+
                 case Type t when t.IsEnum:
                     var enumvalue = ToEnumString(propertyValue);
 
@@ -685,7 +689,7 @@ namespace S100Framework.YAML
                                 feature.Name = value;
                                 break;
                             case "Prim":
-                                feature.Prim = Enum.Parse<Primitive>(value);
+                                feature.Prim = string.IsNullOrEmpty(value) ? Primitive.NoGeometry : Enum.Parse<Primitive>(value);
                                 break;
                             case "Foid":
                                 feature.Foid = value;
