@@ -170,7 +170,7 @@ namespace S100Framework.Applications.Singletons
         }
 
         internal List<BridgeElement> GetBridgeElementsContainingOID(string tableName, long oid) {
-            return _groups.Where(be => be.ContainsOID(tableName.ToLower(),oid)).ToList();
+            return _groups!.Where(be => be.ContainsOID(tableName.ToLower(),oid)).ToList();
         }
 
         internal IEnumerable<BridgeElement> BridgeElements() {
@@ -223,8 +223,8 @@ namespace S100Framework.Applications.Singletons
                         long oid = row.GetObjectID();
                         //var shape = row.GetShape();
                         //S100Framework.DomainModel.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"])!);
+
                         var bindings = _instance!.GetBindings(row["name"].ToString());
-                        ;
 
                         var featureBindings = new List<featureBinding>();
 
@@ -233,7 +233,7 @@ namespace S100Framework.Applications.Singletons
                             var bridgeElement = bridgeElements.SingleOrDefault(e => e.Name == relatedBridge);
                             var featureBinding = new featureBinding {
                                 association = "BridgeAggregation",
-                                associationId = bridgeElement.BridgeAggregationName,
+                                associationId = bridgeElement!.BridgeAggregationName,
                                 featureId = binding.ChildName,
                                 role = "theComponent",
                                 roleType = "association"
@@ -241,14 +241,11 @@ namespace S100Framework.Applications.Singletons
                             };
                             featureBindings.Add(featureBinding);
                         }
-
-                        // Write all bindings to featuretype
                         row["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(featureBindings);
                         row.Store();
                     }
                 }
             }
-
             // Note: all elements are already bound to the bridge - see relatedBridge
 
         }
