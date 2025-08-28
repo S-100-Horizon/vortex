@@ -82,23 +82,7 @@ namespace S100Framework.YAML
 
                 var propertyValue = property.GetValue(obj, null);
 
-                var required = property.GetCustomAttribute<UnknownValueAttribute>() != null;
-
-                // If the property is a dependent property, it should be required IF the master property is null.
-                var dependentAttr = property.GetCustomAttribute<DependentUnknownValueAttribute>();
-                if (dependentAttr is not null) {
-                    var masterValue = properties.FirstOrDefault(p => p.Name == dependentAttr.PropertyName)?.GetValue(obj);
-
-                    if (masterValue is null)
-                        required = true;
-                }
-
-                // If the property (list) has a lowerAttribute, it should be required if lower > 1
-                var lowerAttr = property.GetCustomAttribute<LowerAttribute>();
-                if (lowerAttr is not null) {
-                    if (lowerAttr.Lower > 0)
-                        required = true;
-                }
+                var required = IsRequired(obj, property);
 
                 try {
                     attributes.BuildAttributeItem(propertyValue, property.Name, property.PropertyType, ref propertyId, parentId, required);
@@ -108,6 +92,42 @@ namespace S100Framework.YAML
                 }
             }
             return attributes;
+        }
+
+        private static bool IsRequired(object obj, PropertyInfo property) {
+            var type = obj.GetType();
+            var properties = type.GetProperties();
+
+            // If property should be unknown, its required
+            var unknownValueAttr = property.GetCustomAttribute<UnknownValueAttribute>();
+            if (unknownValueAttr is not null)
+                return true;
+
+            // If the property (list) has a lowerAttribute, it should be required if lower > 1
+            var lowerAttr = property.GetCustomAttribute<LowerAttribute>();
+            if (lowerAttr is not null) {
+                if (lowerAttr.Lower > 0)
+                    return true;
+            }
+
+            // If the property is a dependent property, it should be required IF the master property is null.
+            var dependentAttr = property.GetCustomAttribute<DependentUnknownValueAttribute>();
+            if (dependentAttr is not null) {
+                var dependentValue = properties.FirstOrDefault(p => p.Name == dependentAttr.PropertyName)?.GetValue(obj);
+
+                if (dependentValue is null)
+                    return true;
+            } 
+
+            // If its conditional depencency is a boolean and true, this property is required
+            var conditionalDependencyAttr = property.GetCustomAttribute<ConditionalDependencyAttribute<bool>>();
+            if (conditionalDependencyAttr is not null) {
+                var dependentProperty = properties.FirstOrDefault(p => p.Name == conditionalDependencyAttr.PropertyName);
+                if (dependentProperty is not null && conditionalDependencyAttr.Velue == true)
+                    return true;
+            }
+
+            return false;
         }
 
         private static void BuildAttributeItem(this List<YamlAttributeItem> attributes, object? propertyValue, string propertyName, Type propertyType, ref int propertyId, int? parentId, bool required = false) {
@@ -222,24 +242,7 @@ namespace S100Framework.YAML
                         var propType = propInfo.PropertyType;
                         propType = Nullable.GetUnderlyingType(propType) ?? propType;
 
-                        var r = propInfo.GetCustomAttribute<UnknownValueAttribute>() != null;
-
-                        //If the property is a dependent property, it should be required IF the master property is null.
-                        var dependentAttr = propInfo.GetCustomAttribute<DependentUnknownValueAttribute>();
-                        if (dependentAttr is not null) {
-                            var masterValue = properties.Single(p => p.Name == dependentAttr.PropertyName)?.GetValue(propertyValue);
-
-                            if (masterValue is null)
-                                r = true;
-                        }
-
-                        // If the property (list) has a lowerAttribute, it should be required 
-                        var lowerAttr = propInfo.GetCustomAttribute<LowerAttribute>();
-
-                        if (lowerAttr is not null) {
-                            if (lowerAttr.Lower > 0)
-                                r = true;
-                        }
+                        var r = IsRequired(propertyValue, propInfo);
 
                         attributes.BuildAttributeItem(propVal, objectName, propType, ref propertyId, parentId, r);
                     }
