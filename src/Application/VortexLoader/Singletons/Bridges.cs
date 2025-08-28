@@ -1,7 +1,9 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using S100Framework.DomainModel;
+using S100Framework.DomainModel.S101.FeatureTypes;
 using System.Diagnostics;
+using System.Reflection;
 
 
 namespace S100Framework.Applications.Singletons
@@ -135,7 +137,11 @@ namespace S100Framework.Applications.Singletons
         public string? ParentName { get; set; }
         public string? ChildName { get; set; }
         public Type? childTypeS101 { get; set; }
+
+
     }
+    
+
 
     public class Bridges  {
 
@@ -215,7 +221,7 @@ namespace S100Framework.Applications.Singletons
             using var bufferFeatureType = featuretypeTable.CreateRowBuffer();
             using var insertFeatureType = featuretypeTable.CreateInsertCursor();
 
-            var bridgeElements = _instance.BridgeElements().ToList();
+            var bridgeElements = _instance!.BridgeElements().ToList();
 
             using (var cursor = featuretypeTable.CreateUpdateCursor(new QueryFilter() { WhereClause = "code = 'Bridge'" }, useRecyclingCursor : true)) {
                 while (cursor.MoveNext()) {
@@ -224,9 +230,10 @@ namespace S100Framework.Applications.Singletons
                         //var shape = row.GetShape();
                         //S100Framework.DomainModel.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"])!);
 
-                        var bindings = _instance!.GetBindings(row["name"].ToString());
+                        var bindings = _instance!.GetBindings(row["name"].ToString()!);
 
                         var featureBindings = new List<featureBinding>();
+
 
                         foreach (var binding in bindings) {
                             var relatedBridge = row["name"].ToString();
@@ -237,11 +244,20 @@ namespace S100Framework.Applications.Singletons
                                 featureId = binding.ChildName,
                                 role = "theComponent",
                                 roleType = "association"
-
                             };
                             featureBindings.Add(featureBinding);
                         }
                         row["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(featureBindings);
+
+                        // Update opening bridge
+                        var canOpen = bindings.Any(obj => {
+                            return obj.childTypeS101 == typeof(SpanOpening);
+                        });
+                        S100Framework.DomainModel.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"].ToString()!))!;
+                        bridge.openingBridge = canOpen;
+                        
+                        row["json"] = System.Text.Json.JsonSerializer.Serialize(bridge);
+
                         row.Store();
                     }
                 }

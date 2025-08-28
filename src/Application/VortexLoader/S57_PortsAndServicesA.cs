@@ -783,6 +783,7 @@ if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
                             }
 
                             // TODO: product
+
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
@@ -792,7 +793,7 @@ if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
                                 }
                             }
 
-// TODO: restriction
+                            // TODO: restriction
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);

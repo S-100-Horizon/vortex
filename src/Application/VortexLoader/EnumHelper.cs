@@ -77,8 +77,8 @@
                     else {
                         throw new ArgumentException($"Invalid string value for enum {typeof(TType).Name}::{typeof(TEnum).Name}: {item.Trim()}");
                     }
-                }            }
-
+                }            
+            }
             else if (value is int intValue) {
                 if (intValue == -32767) {
                     //  @jesoe UNKNOWN not allowed in list!
@@ -102,7 +102,6 @@
             return result;
         }
     }
-
 }
 
 

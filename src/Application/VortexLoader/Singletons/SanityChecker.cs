@@ -18,7 +18,7 @@ namespace S100Framework.Applications.Singletons
 
         internal static void Initialize(Geodatabase geodatabase) {
             if (_instance != null) {
-                throw new InvalidOperationException("SpatialAssociations has already been initialized.");
+                throw new InvalidOperationException("SanityChecker has already been initialized.");
             }
 
             lock (_lock) {
@@ -31,7 +31,7 @@ namespace S100Framework.Applications.Singletons
         internal static SanityChecker Instance {
             get {
                 if (_instance == null) {
-                    throw new InvalidOperationException("SpatialAssociations must be initialized before use.");
+                    throw new InvalidOperationException("SanityChecker must be initialized before use.");
                 }
 
                 return _instance;

@@ -219,29 +219,23 @@ namespace S100Framework.Applications
                     filter.WhereClause = $"{whereClause}";
                     */
 
-
-                    
-
                     Logger.Current.Information($"Converting all tables: {filter.WhereClause}");
 
                     //filter.WhereClause = "globalid = '{D7DE9631-CF20-4143-B3F4-47BB4A2AE541}'";
                     //filter.WhereClause = "globalid = '{855B900E-760C-4D68-AE02-8F3CA6FE60DD}'";
                     //filter.WhereClause = "globalid = '{BAFFC1F3-A89C-4E13-982F-B577E50A06DC}'";
-
                     //filter.WhereClause = "globalid = '{1F1D8B58-4959-4202-80F5-6CA4DD47D209}'";
 
                     Logger.Current.Information($"Converting Cultural Features");
-                    Store(() => S57_CulturalFeaturesA(source, destination, filter));
+                    Store(() => S57_CulturalFeaturesA(source, destination, filter)); 
                     Store(() => S57_CulturalFeaturesL(source, destination, filter));
                     Store(() => S57_CulturalFeaturesP(source, destination, filter));
-
 
                     Logger.Current.Information($"Converting Product Coverages");
                     Store(() => S57_ProductCoverage(source, destination, filter));
 
                     Logger.Current.Information($"Converting Contours");
                     Store(() => S57_DepthsL(source, destination, filter));
-
 
                     Logger.Current.Information($"Converting Dangers");
                     Store(() => S57_DangersA(source, destination, filter));
@@ -250,7 +244,6 @@ namespace S100Framework.Applications
 
                     //Logger.Current.Information($"Converting S101_RecommendedTracksAndRoutes");
                     //Store(() => S101_RecommendedTracksAndRoutes(source, destination, filter));
-
 
                     Logger.Current.Information($"Converting PortsAndServices");
                     Store(() => S57_PortsAndServicesA(source, destination, filter));
@@ -275,12 +268,10 @@ namespace S100Framework.Applications
                     Store(() => S57_SeabedL(source, destination, filter));
                     Store(() => S57_SeabedP(source, destination, filter));
 
-
                     Logger.Current.Information($"Converting CoastLines");
                     Store(() => S57_CoastlineA(source, destination, filter));
                     Store(() => S57_CoastlineL(source, destination, filter));
                     Store(() => S57_CoastlineP(source, destination, filter));
-
 
                     Logger.Current.Information($"Converting Depth Areas");
                     Store(() => S57_DepthsA(source, destination, filter));
@@ -311,16 +302,19 @@ namespace S100Framework.Applications
                     Store(() => S57_TracksAndRoutesL(source, destination, filter));
                     Store(() => S57_TracksAndRoutesP(source, destination, filter));
 
-                    Logger.Current.Information($"Converting Aids to Navigation");
-                    Store(() => S57_AidsToNavigationP(source, destination, filter));
 
                     Logger.Current.Information($"Converting Sounding Datums");
                     Store(() => S101_SoundingDatum(source, destination, filter));
 
-                    //Store(() => FeatureRelations.Instance.CreateRelations(destination));
+                    Logger.Current.Information($"Converting Aids to Navigation");
+                    Store(() => S57_AidsToNavigationP(source, destination, filter));
 
+                    //Store(() => FeatureRelations.Instance.CreateRelations(destination));
                 }
 
+                //Logger.Current.Information($"Igniting afterburner");
+                //Afterburner.Initialize(destination);
+                //Afterburner.Instance.CutClosedRoadLines();
 
                 Logger.Current.Information($"Loading sanity checker");
                 SanityChecker.Initialize(destination);
@@ -331,7 +325,7 @@ namespace S100Framework.Applications
                 Logger.Current.Information($"No Empty drawing index in S-101: {status}");
 
                 status = SanityChecker.Instance.Check_GetEsriUnknown32767ErrorCount() == 0 ? "PASSED" : "FAILED";
-                Logger.Current.Information($"No ESRI unknown values (-31767) in S-101: {status}");
+                Logger.Current.Information($"No ESRI unknown values (-32767) in S-101: {status}");
 
                 status = SanityChecker.Instance.Check_GetEditionsErrorCount() == 0 ? "PASSED" : "FAILED";
                 Logger.Current.Information($"No missing edition-info in S-101: {status}");

@@ -38,6 +38,9 @@ namespace S100Framework.Applications
                 WhereClause = $"({whereClause}) AND (fcsubtype = 45)"
             };
 
+            int dissolved_M_QUAL_Count = 0;
+            int M_SDAT_Count = 0;
+
             // Take all M_QUAL and cut out M_SDAT
 
             //var all_M_QUAL = Geometries.AllGeometries(metadataA, M_Qual_WhereFilter);
@@ -68,7 +71,7 @@ namespace S100Framework.Applications
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                 SetShape(buffer, item);
                 ImporterNIS.SetUsageBand(buffer, _compilationScale);
-
+                dissolved_M_QUAL_Count++;
                 var featureN = featureClass.CreateRow(buffer);
                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
             }
@@ -94,8 +97,10 @@ namespace S100Framework.Applications
 
                 var featureN = featureClass.CreateRow(buffer);
                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
+                M_SDAT_Count++;
             }
+            Logger.Current.DataTotalCount("M_SDAT", M_SDAT_Count, M_SDAT_Count);
+            Logger.Current.DataTotalCount("M_QUAL", dissolved_M_QUAL_Count, dissolved_M_QUAL_Count);
         }
     }
 }

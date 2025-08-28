@@ -1160,6 +1160,10 @@ namespace S100Framework.Applications
                                 categoryOfPylon = default,
                             };
 
+                            if (current.CATPYL.HasValue) {
+                                instance.categoryOfPylon = EnumHelper.GetEnumValue<PylonBridgeSupport,categoryOfPylon>(current.CATPYL.Value);
+                            }
+
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours<PylonBridgeSupport>(current.COLOUR);
                             }
