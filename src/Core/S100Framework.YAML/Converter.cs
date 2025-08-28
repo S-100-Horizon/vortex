@@ -117,7 +117,7 @@ namespace S100Framework.YAML
 
                 if (dependentValue is null)
                     return true;
-            } 
+            }
 
             // If its conditional depencency is a boolean and true, this property is required
             var conditionalDependencyAttr = property.GetCustomAttribute<ConditionalDependencyAttribute<bool>>();
@@ -205,7 +205,13 @@ namespace S100Framework.YAML
                         break;
                     }
 
-                    if (propertyValue is not IEnumerable collection) break;
+                    if (propertyValue is not IEnumerable collection)
+                        break;
+
+                    // If collection is required but empty
+                    if (required && !collection.GetEnumerator().MoveNext()) {
+                        attributes.Add(new(propertyName, null, null, parentId));
+                    }
 
                     foreach (var item in collection!) {
                         var type = item.GetType();
