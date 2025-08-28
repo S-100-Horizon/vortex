@@ -157,8 +157,8 @@ namespace S100Framework.Applications
                     Log.Information("Topology finished! Found {curves} Curves, {composites} CompositeCurves, {surfaces} Surfaces", topology.Curves.Count(), topology.CompositeCurves.Count(), topology.Surfaces.Count());
 
                     // InformationTypes
-                    var informations = new List<YAML.Information>();
-                    var informationsAdded = new List<string>();
+                    var informationTypes = new List<YAML.Information>();
+                    var informationsTypesAdded = new List<string>();
 
                     try {
                         using var informationType = source.OpenDataset<Table>(definitionTables.Single(e => e.GetAliasName().Equals("informationtype")).GetName());
@@ -177,17 +177,57 @@ namespace S100Framework.Applications
                             var information = new YAML.Information {
                                 Name = code,
                                 ID = name,
-                                Attributes = (InformationNode)instance!,
                             };
-
-                            informations.Add(information);
+                            // Only emit attributes if feature contains any non-static properties
+                            if (!S100Framework.YAML.Converter.IsDefault(instance!))
+                                information.Attributes = (InformationNode)instance!;
+                            informationTypes.Add(information);
                             //dataset.AddInformation(information);
                         }
                     }
                     catch (Exception ex) {
                         Log.Information("Table: informationtype: {message} ", ex.Message);
                         Logger.Current.Error("Exception: {ex}", ex);
-                    }                    
+                    }
+
+
+
+                    // FeatureTypes
+                    var featureTypes = new List<YAML.Feature>();
+                    var featureTypesAdded = new List<string>();
+
+                    try {
+                        using var featureType = source.OpenDataset<Table>(definitionTables.Single(e => e.GetAliasName().Equals("featuretype")).GetName());
+                        using var featureCursor = featureType.Search();
+                        while (featureCursor.MoveNext()) {
+                            var current = featureCursor.Current;
+
+                            var name = current["name"].ToString()!;
+                            var code = current["code"].ToString()!;
+                            var json = current["json"].ToString()!;
+
+                            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true)!;
+
+                            var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+
+                            var foid = $"110:{name[1..]}:1";       // Geodatastyrelsen: 110 
+
+                            var feature = new YAML.Feature {
+                                Prim = Primitive.NoGeometry,
+                                Name = code,
+                                Foid = foid,
+                            };
+                            // Only emit attributes if feature contains any non-static properties
+                            if (!S100Framework.YAML.Converter.IsDefault(instance!))
+                                feature.Attributes = (FeatureNode)instance!;
+                            featureTypes.Add(feature);
+                        }
+                    }
+                    catch (Exception ex) {
+                        Log.Information("Table: featuretype: {message} ", ex.Message);
+                        Logger.Current.Error("Exception: {ex}", ex);
+                    }
+
 
                     // Features
                     foreach (var def in source.GetDefinitions<FeatureClassDefinition>()) {
@@ -282,9 +322,9 @@ namespace S100Framework.Applications
                                             else
                                                 feature?.AddAssociation(asso);
 
-                                            if (!informationsAdded.Contains(binding.informationId!)) {
-                                                informationsAdded.Add(binding.informationId!);
-                                                dataset!.AddInformation(informations.Single(e => e.ID!.Equals(binding.informationId!)));
+                                            if (!informationsTypesAdded.Contains(binding.informationId!)) {
+                                                informationsTypesAdded.Add(binding.informationId!);
+                                                dataset!.AddInformation(informationTypes.Single(e => e.ID!.Equals(binding.informationId!)));
                                             }
                                         }
                                     }
@@ -309,6 +349,12 @@ namespace S100Framework.Applications
                                             };
 
                                             feature?.AddFeatureAssociation(asso);
+
+                                            var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId![1..]}:1"));
+                                            if (noGeometry != null && !featureTypesAdded.Contains(binding.featureId)) {
+                                                featureTypesAdded.Add(binding.featureId);
+                                                dataset?.AddFeature(noGeometry);
+                                            }
                                         }
                                     }
                                 }
@@ -325,7 +371,8 @@ namespace S100Framework.Applications
                         }
                     }
 
-                    Log.Information("InformationTypes found: #{count}", informationsAdded.Count);
+                    Log.Information("FeatureTypes (noGeometry) found: #{count}", featureTypesAdded.Count);
+                    Log.Information("InformationTypes found: #{count}", informationsTypesAdded.Count);
 
                     // Geometries
                     foreach (var (geometry, name) in geometries.OrderBy(e => e.geometry.GeometryType)) {
