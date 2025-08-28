@@ -93,6 +93,13 @@ namespace S100Framework.YAML
                         required = true;
                 }
 
+                // If the property (list) has a lowerAttribute, it should be required if lower > 1
+                var lowerAttr = property.GetCustomAttribute<LowerAttribute>();
+                if (lowerAttr is not null) {
+                    if (lowerAttr.Lower > 0)
+                        required = true;
+                }
+
                 try {
                     attributes.BuildAttributeItem(propertyValue, property.Name, property.PropertyType, ref propertyId, parentId, required);
                 }
@@ -223,6 +230,14 @@ namespace S100Framework.YAML
                             var masterValue = properties.Single(p => p.Name == dependentAttr.PropertyName)?.GetValue(propertyValue);
 
                             if (masterValue is null)
+                                r = true;
+                        }
+
+                        // If the property (list) has a lowerAttribute, it should be required 
+                        var lowerAttr = propInfo.GetCustomAttribute<LowerAttribute>();
+
+                        if (lowerAttr is not null) {
+                            if (lowerAttr.Lower > 0)
                                 r = true;
                         }
 
