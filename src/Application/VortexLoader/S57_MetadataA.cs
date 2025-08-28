@@ -489,7 +489,6 @@ namespace S100Framework.Applications
                             
                             // TODO: line spacing minimum
 
-
                             if (current.SDISMX.HasValue && current.SDISMX.Value != -32767m) {
                                 if (current.SDISMX.Value % 1 == 0) {
                                     instance.measurementDistanceMaximum = Convert.ToInt32(current.SDISMX.Value);
