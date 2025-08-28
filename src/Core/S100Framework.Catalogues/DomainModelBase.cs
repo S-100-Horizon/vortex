@@ -81,7 +81,7 @@ namespace S100Framework.DomainModel
     public class ConditionalDependencyAttribute<T>(string propertyName, T value) : System.Attribute
     {
         public string PropertyName = propertyName;
-        public T Velue = value;
+        public T Value = value;
     }
 
     [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]
