@@ -123,7 +123,7 @@ namespace S100Framework.YAML
             var conditionalDependencyAttr = property.GetCustomAttribute<ConditionalDependencyAttribute<bool>>();
             if (conditionalDependencyAttr is not null) {
                 var dependentProperty = properties.FirstOrDefault(p => p.Name == conditionalDependencyAttr.PropertyName);
-                if (dependentProperty is not null && conditionalDependencyAttr.Velue == true)
+                if (dependentProperty is not null && conditionalDependencyAttr.Value == true)
                     return true;
             }
 
