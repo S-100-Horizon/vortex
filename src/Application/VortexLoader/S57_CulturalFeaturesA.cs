@@ -325,7 +325,7 @@ namespace S100Framework.Applications
 
 
                                 if (createBridgesAndRelations) {
-                                    Bridges.Instance.AddRelation(relatedBridge.Name, name, typeof(SpanOpening));
+                                    Bridges.Instance.AddRelation(relatedBridge.Name, name, typeof(SpanOpening), current.OBJNAM,current.NOBJNM);
 
 
                                     // Create link to bridge
@@ -407,7 +407,7 @@ namespace S100Framework.Applications
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                                 if (createBridgesAndRelations) {
-                                    Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanFixed));
+                                    Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanFixed),current.OBJNAM,current.NOBJNM);
                                     // Create link to bridge
                                     List<DomainModel.featureBinding> bindings = new List<DomainModel.featureBinding>();
                                     bindings.Add(new() {
@@ -1260,7 +1260,7 @@ namespace S100Framework.Applications
 
                             if (createBridgesAndRelations) {
 
-                                Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(PylonBridgeSupport));
+                                Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(PylonBridgeSupport), current.OBJNAM, current.NOBJNM);
                                 // Create link to bridge
                                 List<DomainModel.featureBinding> bindings = new List<DomainModel.featureBinding>();
                                 bindings.Add(new() {
